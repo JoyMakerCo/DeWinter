@@ -12,10 +12,18 @@ public class FactionInfoTextController : MonoBehaviour {
 
     public int testTheWatersCost;
 
-    bool availableTestTheWaters;
+    public bool availableSpymasterTestTheWaters;
+    public bool availableTestTheWaters;
 
 	// Use this for initialization
 	void Start () {
+        if (GameData.servantDictionary["Spymaster"].Hired())
+        {
+            availableSpymasterTestTheWaters = true;
+        } else
+        {
+            availableSpymasterTestTheWaters = false;
+        }
         availableTestTheWaters = true;
         IncrementKnowledgeTimers();
         UpdateInfo();
@@ -45,7 +53,12 @@ public class FactionInfoTextController : MonoBehaviour {
 
     public void TestTheWatersPower(string faction)
     {
-        if (availableTestTheWaters && GameData.moneyCount > testTheWatersCost)
+        if (availableSpymasterTestTheWaters)
+        {
+            availableSpymasterTestTheWaters = false;
+            GameData.factionList[faction].CalculateKnownPower();
+            UpdateInfo();
+        } else if (availableTestTheWaters && GameData.moneyCount > testTheWatersCost)
         {
             availableTestTheWaters = false;
             GameData.moneyCount -= testTheWatersCost;
@@ -60,7 +73,13 @@ public class FactionInfoTextController : MonoBehaviour {
 
     public void TestTheWatersAllegiance(string faction)
     {
-        if (availableTestTheWaters && GameData.moneyCount > testTheWatersCost)
+        if (availableSpymasterTestTheWaters)
+        {
+            availableSpymasterTestTheWaters = false;
+            GameData.factionList[faction].CalculateKnownAllegiance();
+            UpdateInfo();
+        }
+        else if(availableTestTheWaters && GameData.moneyCount > testTheWatersCost)
         {
             availableTestTheWaters = false;
             GameData.moneyCount -= testTheWatersCost;

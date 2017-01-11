@@ -152,7 +152,7 @@ public class Event
         GameData.moneyCount += eventStages[currentStage].stageMoneyChange;
         if (eventStages[currentStage].stageEnemyAdd != null)
         {
-            GameData.enemyList.Add(eventStages[currentStage].stageEnemyAdd);
+            EnemyInventory.AddEnemy(eventStages[currentStage].stageEnemyAdd);
         }
     }
 }

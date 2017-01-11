@@ -81,8 +81,7 @@ public class GameData : MonoBehaviour
     //Gossip Inventory
     public static List<Gossip> gossipInventory = new List<Gossip>();
 
-    //Enemy Stuff
-    public static List<Enemy> enemyList = new List<Enemy>();
+    //Enemy Inventory is handled by the Enemy Inventory Class
 
     //Pierre Quest Inventory and related Stuff
     public static int nextQuestDay;
@@ -281,10 +280,11 @@ public class GameData : MonoBehaviour
 
         //Servant Stuff
         servantDictionary.Clear();
-        servantDictionary.Add("Handmaiden", new Servant("Handmaiden"));
-        servantDictionary.Add("Seamstress", new Servant("Seamstress"));
-        servantDictionary.Add("Spymaster", new Servant("Spymaster"));
-        servantDictionary.Add("Bodyguard", new Servant("Bodyguard"));
+        servantDictionary.Add("Camille", new Servant("Camille"));
+        servantDictionary.Add("Seamstress", new Servant("Amelia"));
+        servantDictionary.Add("Tailor", new Servant("Maurice"));
+        servantDictionary.Add("Spymaster", new Servant("Thérèse"));
+        servantDictionary.Add("Bodyguard", new Servant("Hansel"));
         seamstressDiscount = 0.8; //Seamstress Price will be 80% of normal price.
 
         //UI Stuff
@@ -303,7 +303,7 @@ public class GameData : MonoBehaviour
         gossipInventory.Clear();
 
         //Enemy Stuff
-        enemyList.Clear();
+        EnemyInventory.enemyInventory.Clear();
 
         //Pierre Quest Inventory and Related Stuff
         lastQuestDay = 0;

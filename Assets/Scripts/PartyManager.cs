@@ -17,7 +17,7 @@ public class PartyManager : MonoBehaviour {
     //Checks all the relevant Enemies and sees if they're going to attend the Party
     void EnemyCheck()
     {
-        foreach (Enemy e in GameData.enemyList)
+        foreach (Enemy e in EnemyInventory.enemyInventory)
         {
             if(e.faction == GameData.factionList[GameData.tonightsParty.faction])
             {

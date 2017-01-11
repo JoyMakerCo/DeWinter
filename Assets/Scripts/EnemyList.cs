@@ -14,7 +14,7 @@ public class EnemyList : MonoBehaviour {
 
     public void GenerateEnemyButtons()
     {
-        foreach (Enemy e in GameData.enemyList)
+        foreach (Enemy e in EnemyInventory.enemyInventory)
         {
             GameObject button = GameObject.Instantiate(enemyButtonPrefab);
             EnemyButton buttonStats = button.GetComponent<EnemyButton>();

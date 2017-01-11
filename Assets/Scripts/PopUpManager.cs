@@ -26,6 +26,7 @@ public class PopUpManager : MonoBehaviour {
     public GameObject ambushModal;
     public GameObject noOutfitModal;
     public GameObject alterOutfitModal;
+    public GameObject sewNewOutfitModal;
 
     public GameObject hostRemarkSlotPrefab;
 
@@ -139,8 +140,24 @@ public class PopUpManager : MonoBehaviour {
         titleText.text = "RSVP";
         //Body Text (Update with Spymaster)
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "You've been invited to a " + affectedParty.SizeString() + " Party being held by the " + affectedParty.faction + "." +
-            "\nWould you like to attend?";
+        bodyText.text = "You've been invited to a " + affectedParty.SizeString() + " Party being held by " + affectedParty.host.name + " of the " + affectedParty.faction + ".";
+        if (GameData.servantDictionary["Spymaster"].Hired()) {
+            if(affectedParty.enemyList.Count > 0)
+            {
+                bodyText.text += "\nIt appears that some of your enemies will be in attendance:";
+                foreach (Enemy e in affectedParty.enemyList){
+                    bodyText.text += "\n-" + e.Name();
+                }
+                bodyText.text += "\nWould you still like to attend?";
+            } else
+            {
+                bodyText.text += "\nIt appears that none of your Enemies will be in attendance. Magnifique!" +
+                                 "\nWould you like to attend?";
+            }
+
+        } else {
+            bodyText.text += "\nWould you like to attend?";
+        }
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
@@ -206,13 +223,13 @@ public class PopUpManager : MonoBehaviour {
         if (today)
         {
             Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-            bodyText.text = "The " + affectedParty.SizeString() + " Party being held by the " + affectedParty.faction + " is tonight!" +
+            bodyText.text = "The " + affectedParty.SizeString() + " Party being held by " + affectedParty.host.name + " of the " + affectedParty.faction + " is tonight!" +
                 "\nCancelling the day of will seriously harm your reputation." +
                 "\nAre you sure you want to cancel last minute like this? ";
         } else
         {
             Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-            bodyText.text = "You've already agreed to attend the " + affectedParty.SizeString() + " Party being held by the " + affectedParty.faction + "." +
+            bodyText.text = "You've already agreed to attend the " + affectedParty.SizeString() + " Party being held by " + affectedParty.host.name + " of the " + affectedParty.faction + "." +
                 "\nCancelling will harm your reputation." +
                 "\nWould you like cancel?";
         }
@@ -349,11 +366,11 @@ public class PopUpManager : MonoBehaviour {
         BroadcastMessage("ActiveModal");
     }
 
-    //This is used in the Wardrobe Screen to tell Players they don't have enough spare room in their Wardrobe for more Outfits
+    //This is used in the Wardrobe Screen to tell Players they don't have enough spare room in their Wardrobe for more Outfits purchased from the Merchant
     void CreateCantFitModal(object[] objectStorage)
     {
         int merchantInventoryNumber = (int)objectStorage[0];
-        int maxInventoryNumber = (int)objectStorage[1];
+        int maxInventorySize = (int)objectStorage[1];
 
         //Make the Pop Up
         GameObject popUp = Instantiate(messageModal) as GameObject;
@@ -364,12 +381,29 @@ public class PopUpManager : MonoBehaviour {
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "I'm sorry Madamme, but you do not have enough space in your wardobe to fit this " + OutfitInventory.outfitInventories["merchant"][merchantInventoryNumber].Name() + ". " +
-            "\nAt this time your Wardrobe can only hold " + maxInventoryNumber + " Outfits. Perhaps there is some way to expand your closet space?";
+            "\nAt this time your Wardrobe can only hold " + OutfitInventory.personalInventoryMaxSize + " Outfits. Perhaps there is some way to expand your closet space?";
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
 
-    //This is used in the Wardrobe Screen so Players can use the 'Alteration' function of the Seamstress
+    //This is used in the Wardrobe Screen to tell Players they don't have enough spare room in their Wardrobe for more Outfits created by the Seamstress
+    void CreateCantFitNewOutfitModal()
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(messageModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "Oh No!";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "I'm sorry Madamme, but you do not have enough space in your wardobe to fit a new Outfit. I can't create anything when you have no room to store it." +
+            "\nAt this time your Wardrobe can only hold " + OutfitInventory.personalInventoryMaxSize + " Outfits. Perhaps there is some way to expand your closet space?";
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This is used in the Wardrobe Screen so Players can use the 'Alteration' function of the Tailor Servant
     void CreateAlterOutfitModal(object[] objectStorage)
     {
         int inventoryNumber = (int)objectStorage[0];
@@ -392,6 +426,25 @@ public class PopUpManager : MonoBehaviour {
         Slider luxuryBar = popUp.transform.Find("LuxuryText").Find("Slider").GetComponent<Slider>();
         luxuryBar.value = outfit.luxury;
 
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This is used in the Wardrobe Screen so Players can use the 'Sew New Outfit' function of the Seamstress Servant
+    void CreateSewNewOutfitModal(object[] objectStorage)
+    {
+        OutfitInventoryList personalOutfitInventoryList = objectStorage[0] as OutfitInventoryList;
+        //Make the Pop Up
+        GameObject popUp = Instantiate(sewNewOutfitModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        SewNewOutfitPopUpController popUpController = popUp.GetComponent<SewNewOutfitPopUpController>();
+        popUpController.personalInventoryList = personalOutfitInventoryList;
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "New Outfit";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "What would you like me to create?";
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }

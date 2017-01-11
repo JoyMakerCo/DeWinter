@@ -130,4 +130,15 @@ public class Room {
     {
         guestList[Random.Range(0, guestList.Count)] = new Guest(e);
     }
+
+    public void RemoveEnemy(Enemy e)
+    {
+        for(int i = 0; i < guestList.Count; i++)
+        {
+            if (guestList[i].name == e.Name() && guestList[i].isEnemy)
+            {
+                guestList[i] = new Guest();
+            }
+        }
+    }
 }
