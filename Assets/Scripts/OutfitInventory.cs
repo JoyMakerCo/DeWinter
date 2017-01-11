@@ -21,7 +21,7 @@ public class OutfitInventory : MonoBehaviour {
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
-            print("Duplicate Game Data container self-destructing!");
+            print("Duplicate Outfit Inventory container self-destructing!");
         }
         else
         {

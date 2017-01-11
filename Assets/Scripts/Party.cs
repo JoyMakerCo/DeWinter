@@ -476,6 +476,7 @@ public class Party {
         tempRewardList.Add(new Reward(this, "Faction Rep", "Bourgeoisie", 0));
         tempRewardList.Add(new Reward(this, "Faction Rep", "Revolution", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Seamstress", 0));
+        tempRewardList.Add(new Reward(this, "Introduction", "Tailor", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Spymaster", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Bodyguard", 0));
         tempRewardList.Add(new Reward(this, "Gossip", "Crown", 0));
@@ -506,10 +507,10 @@ public class Party {
         wonRewardsList = tempRewardList; //The new, totaled list, replaces the old one 
     }
 
+    //Adds an Enemy to the Party, used by the Enemy Inventory Script
     public void AddEnemy(Enemy enemy)
     {
-        
-        //Scroll through all of the Rooms, add an Enemy
+        //Randomly Select a Room, add the Enemy
         int xPos = Random.Range(0, roomGrid.GetLength(0));
         int yPos = Random.Range(0, roomGrid.GetLength(1));
         if (roomGrid[xPos,yPos] != null){
@@ -527,6 +528,26 @@ public class Party {
         {
             AddEnemy(enemy);
         }
+    }
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        if (enemyList.Contains(enemy))
+        {
+            //Scroll through all of the Rooms, Remove the Enemy Enemy
+            for(int i = 0; i < roomGrid.GetLength(0); i++)
+            {
+                for(int j = 0; j < roomGrid.GetLength(1); j++)
+                {
+                    if (roomGrid[i, j] != null)
+                    {
+                        roomGrid[i, j].RemoveEnemy(enemy); 
+                    }
+                }
+            }
+        }
+        //Remove the Enemy from the Enemy List
+        enemyList.Remove(enemy);
     }
 
     public void InvitePlayer()

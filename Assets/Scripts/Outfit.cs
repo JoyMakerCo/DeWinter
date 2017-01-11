@@ -92,7 +92,7 @@ public class Outfit {
             return (int)(outfitPrice * 0.5);
         } else
         {
-            if (!GameData.servantDictionary["Seamstress"].Hired())
+            if (!GameData.servantDictionary["Seamstress"].Hired() && !GameData.servantDictionary["Tailor"].Hired())
             {
                 int outfitPrice = CalculatePrice();
                 return outfitPrice;

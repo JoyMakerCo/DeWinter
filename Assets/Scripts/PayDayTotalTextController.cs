@@ -22,11 +22,12 @@ public class PayDayTotalTextController : MonoBehaviour {
             Servant s = GameData.servantDictionary[k];
             if (s.Hired())
             {
-                payDayText += "\n" + s.NameAndTitle() + " " + s.Wage().ToString("£" + "#,##0") + "/Week";
                 wageTotal += s.Wage();
             }
         }
         payDayText += "\nTotal: " + wageTotal.ToString("£" + "#,##0") + "/Week";
+        int payDayTime = 7 - ((GameData.currentDay + 1) % 7); //Servants get paid every 7 days. The +1 is to throw off the fact that days are zero-indexed
+        payDayText += "\nNext Pay Day is in " + payDayTime + " Days";
         myText.text = payDayText;
     }
 }

@@ -800,7 +800,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 break;
             case 7:
                 effect = "New Enemy";
-                GameData.enemyList.Add(new Enemy(GameData.factionList[room.party.faction]));
+                EnemyInventory.AddEnemy(new Enemy(GameData.factionList[room.party.faction]));
                 break;
             case 8:
                 effect = "Forgot All Gossip";
@@ -821,7 +821,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 } else //If they have no Gossip to Lose
                 {
                     effect = "New Enemy";
-                    GameData.enemyList.Add(new Enemy(GameData.factionList[room.party.faction]));
+                    EnemyInventory.AddEnemy(new Enemy(GameData.factionList[room.party.faction]));
                 }
                 break;
             case 9:
