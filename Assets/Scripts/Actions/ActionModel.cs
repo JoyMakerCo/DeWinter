@@ -1,24 +1,36 @@
 ﻿using System.Collections.Generic;
 using Core;
 
-namespace Actions
+namespace DeWinter
 {
-	public class ActionModel : IModel
+	public class ActionModel : DocumentModel
 	{
-		public List<ActionVO> Actions;
+		public Dictionary<string, List<ActionVO>> Actions;
 		public List<ActionVO> History;
 
-		ActionModel()
+		private Dictionary<string, ActionVO> _definitions;
+
+		ActionModel() : base("Actions")
 		{
-			Actions = new List<ActionVO>();
+			Actions = new Dictionary<string, List<ActionVO>>();
 		}
 
-		public void AddAction(ActionVO action, bool topPriority=false)
+		public void AddAction(string actionName, bool topPriority=false)
 		{
+			ActionVO action;
+			if (!_definitions.TryGetValue(actionName, out action))
+				return;
+
+			List<ActionVO> actions;
+			if (!Actions.TryGetValue(action.Type, out actions))
+				actions = new List<ActionVO>();
+
 			if (topPriority)
-				Actions.Insert(0, action);
+				actions.Insert(0, action);
 			else 
-				Actions.Add(action);
+				actions.Add(action);
+
+			Actions[action.Type] = actions;
 		}
 	}
 }
