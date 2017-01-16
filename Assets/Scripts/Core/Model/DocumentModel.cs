@@ -23,6 +23,11 @@ namespace Core
 		}
 
 		[OnDeserialized]
-		internal virtual void OnLoadComplete() {}
+		private void OnDeserialized(StreamingContext context)
+		{
+			OnLoadComplete();
+		}
+
+		protected virtual void OnLoadComplete() {}
 	}
 }

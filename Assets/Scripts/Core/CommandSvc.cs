@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Util;
 
 namespace Core
@@ -19,6 +20,8 @@ namespace Core
 
 	public class CommandSvc : IAppService
 	{
+		private Dictionary<string, List<Type>> _associations = new Dictionary<string, List<Type>>();
+
 		// Basic send with typed value object
 		public void Execute<T, U>(U data) where T:ICommand<U>, new()
 		{
