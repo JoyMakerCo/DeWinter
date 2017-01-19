@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Faction {
 
@@ -16,6 +17,8 @@ public class Faction {
     public string knownAllegiance = "Unknown"; //Used in the 'Test the Waters' screen
     public int allegianceKnowledgeTimer;
 
+    public List<string> benefitsList = new List<string>();
+
     public Faction (string nme, int mL, int lL, int all)
     {
         name = nme;
@@ -24,8 +27,9 @@ public class Faction {
         power = 10;
         allegiance = all;
         playerReputation = 0;
-        playerReputationLevelRequirements = new int[10];
+        playerReputationLevelRequirements = new int[11];
         StockPlayerReputationLevelRequirements();
+        StockBenefitsList();
     }
 
     public string Likes()
@@ -121,6 +125,55 @@ public class Faction {
         playerReputationLevelRequirements[7] = 300;
         playerReputationLevelRequirements[8] = 350;
         playerReputationLevelRequirements[9] = 400;
+        playerReputationLevelRequirements[10] = 999999; //A cap just so it doesn't freak out should the player run over 400
+    }
+
+    void StockBenefitsList()
+    {
+        benefitsList.Add("Level 0: Invited to Small " + name + " Parties");
+        benefitsList.Add("Level 1: Wine upon entering " + name + " Parties");
+        switch (name)
+        {
+            case "Crown":
+                benefitsList.Add("Level 2: Training in Courtly Dances");
+                break;
+            case "Church":
+                benefitsList.Add("Level 2: Confessions allow Scandals to disappear faster");
+                break;
+            case "Military":
+                benefitsList.Add("Level 2: A free bodyguard is provided");
+                break;
+            case "Bourgeoisie":
+                benefitsList.Add("Level 2: The merchant stocks 4 Outfits per day instead of 3");
+                break;
+            case "Revolution":
+                benefitsList.Add("Level 2: Selling Gossip to the press is now less risky");
+                break;
+        }
+        benefitsList.Add("Level 3: Invited to Medium " + name + " Parties, extra time at Small " + name + " Parties");
+        benefitsList.Add("Level 4: Extra attention from the drink servers at " + name + " Parties");
+        benefitsList.Add("Level 5: Always know the Power of the " + name);
+        benefitsList.Add("Level 3: Invited to Large " + name + " Parties, extra time at Medium " + name + " Parties");
+        benefitsList.Add("Level 7: Always know Allegiance of the " + name);
+        benefitsList.Add("Level 8: The " + name + " will come to your aid in an hour of great need.");
+        switch (name)
+        {
+            case "Crown":
+                benefitsList.Add("Level 9: A title and Royal Allowance");
+                break;
+            case "Church":
+                benefitsList.Add("Level 9: Confessions to a Cardinal lend you immunity to Scandal");
+                break;
+            case "Military":
+                benefitsList.Add("Level 9: The Military has a ship waiting for you");
+                break;
+            case "Bourgeoisie":
+                benefitsList.Add("Level 9: You are given influence at the Fashion Houses and may pick styles");
+                break;
+            case "Revolution":
+                benefitsList.Add("Level 9: You are a member of the Revolution Council");
+                break;
+        }
     }
 
     public int PlayerReputationLevel()
@@ -144,17 +197,17 @@ public class Faction {
             case 1:
                 return 1;
             case 2:
-                return 2;
+                return 1;
             case 3:
                 return 2;
             case 4:
-                return 3;
+                return 2;
             case 5:
-                return 3;
+                return 2;
             case 6:
-                return 4;
+                return 3;
             default:
-                return 4;
+                return 3;
         }
 
     }
@@ -187,63 +240,73 @@ public class Faction {
         return power;
     }
 
-    public void CalculateKnownPower()
+    public string PowerString()
     {
         //Text Conversion
         if (power >= 90)
         {
-            knownPower = "Dominating";
+            return "Dominating";
         }
         else if (power < 90 && power >= 60)
         {
-            knownPower = "Formidable";
+            return "Formidable";
         }
         else if (power < 60 && power > 40)
         {
-            knownPower = "Significant";
+            return "Significant";
         }
         else if (power <= 40 && power > 10)
         {
-            knownPower = "Weak";
+            return "Weak";
         }
-        else if (10 <= power)
+        else
         {
-            knownPower = "Insignificant";
+            return "Insignificant";
         }
+    }
+
+    public void CalculateKnownPower()
+    {
+        knownPower = PowerString();
         powerKnowledgeTimer = 0;
     }
 
-    public void CalculateKnownAllegiance()
+    public string AllegianceString()
     {
         //Text Conversion
         if (allegiance > 80)
         {
-            knownAllegiance = "Ultra Monarchist";
+            return "Ultra Monarchist";
         }
         else if (allegiance > 50 && allegiance <= 80)
         {
-            knownAllegiance = "Monarchist";
+            return "Monarchist";
         }
         else if (allegiance > 20 && allegiance <= 50)
         {
-            knownAllegiance = "Leaning Towards the Monarchy";
+            return "Leaning Towards the Monarchy";
         }
         else if (allegiance >= -20 && allegiance <= 20)
         {
-            knownAllegiance = "Undecided";
+            return "Undecided";
         }
         else if (allegiance >= -50 && allegiance < -20)
         {
-            knownAllegiance = "Leaning Towards the Revolution";
+            return "Leaning Towards the Revolution";
         }
         else if (allegiance >= -80 && allegiance < -50)
         {
-            knownAllegiance = "Revolutionary";
-        } 
-        else if (allegiance < -80)
-        {
-            knownAllegiance = "Radical Revolutionary";
+            return "Revolutionary";
         }
+        else
+        {
+            return "Radical Revolutionary";
+        }
+    }
+
+    public void CalculateKnownAllegiance()
+    {
+        knownAllegiance = AllegianceString();
         allegianceKnowledgeTimer = 0;
     }
 }
