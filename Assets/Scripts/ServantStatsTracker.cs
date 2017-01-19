@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class ServantStatsTracker : MonoBehaviour {
 
+    public GameObject screenFader; // It's for the Pop-ups
+
     public Text nameText;
     public Text descriptionText;
 
@@ -11,6 +13,8 @@ public class ServantStatsTracker : MonoBehaviour {
     Image hireOrFireButtonImage;
     Text hireOrFireButtonText;
     public ServantInventoryList servantList;
+
+    static bool attemptedCamilleFiring = false;
 	
 	void Start()
     {
@@ -26,8 +30,16 @@ public class ServantStatsTracker : MonoBehaviour {
             descriptionText.text = servantList.selectedServant.Description();
             if(servantList.inventoryType == ServantInventoryList.InventoryType.Personal)
             {
-                hireOrFireButtonImage.color = Color.white;
-                hireOrFireButtonText.text = "Fire " + servantList.selectedServant.Name();
+                if (servantList.selectedServant.Name() != "Camille" || !attemptedCamilleFiring)
+                {
+                    hireOrFireButtonImage.color = Color.white;
+                    hireOrFireButtonText.text = "Fire " + servantList.selectedServant.Name();
+                } else
+                {
+                    hireOrFireButtonImage.color = Color.gray;
+                    hireOrFireButtonText.text = "Fire " + servantList.selectedServant.Name();
+                }
+
             } else
             {
                 hireOrFireButtonImage.color = Color.white;
@@ -62,11 +74,15 @@ public class ServantStatsTracker : MonoBehaviour {
         {
             if (servantList.selectedServant.Hired())
             {
-                if(servantList.selectedServant.Name() != "Camille")
+                if(servantList.selectedServant.Name() != "Camille") //Camille cannot be fired because she's really just a money sink and plot device
                 {
                     servantList.selectedServant.Fire();
                     servantList.ClearInventoryButtons();
                     servantList.GenerateInventoryButtons();
+                } else if (!attemptedCamilleFiring) //If the Player hasn't attempted to fire Camille yet then throw up this message bubble
+                {
+                    attemptedCamilleFiring = true;
+                    screenFader.gameObject.SendMessage("CreateCamilleFiringModal");
                 }
             }
         }

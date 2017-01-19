@@ -50,9 +50,20 @@ public class OutfitInventory : MonoBehaviour {
     void RestockMerchantInventory()
     {
         merchantInventory.Clear();
-        outfitInventories["merchant"].Add(new Outfit(GameData.currentStyle));
-        outfitInventories["merchant"].Add(new Outfit());
-        outfitInventories["merchant"].Add(new Outfit());
+        //Checking for Faction Benefit. If the Player is level 2+ with the Bourgeoisie Faction then the Merchant stocks additional wares
+        if (GameData.factionList["Bourgeoisie"].PlayerReputationLevel() >= 2)
+        {
+            outfitInventories["merchant"].Add(new Outfit(GameData.currentStyle));
+            outfitInventories["merchant"].Add(new Outfit());
+            outfitInventories["merchant"].Add(new Outfit());
+            outfitInventories["merchant"].Add(new Outfit());
+        } else
+        {
+            outfitInventories["merchant"].Add(new Outfit(GameData.currentStyle));
+            outfitInventories["merchant"].Add(new Outfit());
+            outfitInventories["merchant"].Add(new Outfit());
+        }
+
     }
 
 }

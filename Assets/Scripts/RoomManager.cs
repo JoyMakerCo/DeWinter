@@ -109,11 +109,27 @@ public class RoomManager : MonoBehaviour
             if (party.roomGrid[xPos, yPos].punchBowl)
             {
                 party.currentPlayerDrinkAmount = party.maxPlayerDrinkAmount;
+            } else if (!party.roomGrid[xPos, yPos].cleared && party.currentPlayerDrinkAmount != party.maxPlayerDrinkAmount)
+            {
+                RandomWineCheck(); // Level 4 Faction Benefit
             }
         }
         else
         {
             Debug.Log("Out of turns. Go home!");
+        }
+    }
+
+    void RandomWineCheck()
+    {
+        if(GameData.factionList[party.faction].PlayerReputationLevel() >= 4)
+        {
+            int randomInt = Random.Range(0, 4);
+            if(randomInt == 0)
+            {
+                party.currentPlayerDrinkAmount = party.maxPlayerDrinkAmount;
+                screenFader.gameObject.SendMessage("CreateRandomWineModal", party);
+            }
         }
     }
 

@@ -8,6 +8,7 @@ public class FactionInfoButton : MonoBehaviour {
     private Image image;
 
     public FactionInfoTextController textController;
+    public string faction;
     public enum InfoType {Allegiance, Power};
     public InfoType infoType;
 
@@ -19,38 +20,57 @@ public class FactionInfoButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (textController.availableSpymasterTestTheWaters)
+        DisplayButton();
+	}
+
+    void DisplayButton()
+    {
+        if(infoType == InfoType.Allegiance)
         {
-            if (infoType == InfoType.Allegiance)
+            if (GameData.factionList[faction].PlayerReputationLevel() >= 7)
             {
-                text.text = "Learn Current Allegiance (Spymaster - Free!)";
+                text.text = "";
+                image.color = Color.clear;
             }
             else
             {
-                text.text = "Learn Current Power (Spymaster - Free!)";
+                if (textController.availableSpymasterTestTheWaters)
+                {
+                    text.text = "Learn Current Allegiance (Spymaster - Free!)";
+                    image.color = Color.white;
+                } else if (textController.availableTestTheWaters && GameData.moneyCount >= textController.testTheWatersCost)
+                {
+                    text.text = "Learn Current Allegiance (£" + textController.testTheWatersCost + ")";
+                    image.color = Color.white;
+                } else
+                {
+                    text.text = "Learn Current Allegiance (£" + textController.testTheWatersCost + ")";
+                    image.color = Color.gray;
+                }
             }
-            image.color = Color.white;
-        } else if (textController.availableTestTheWaters && GameData.moneyCount >= textController.testTheWatersCost)
-        {
-            if (infoType == InfoType.Allegiance)
-            {
-                text.text = "Learn Current Allegiance (£" + textController.testTheWatersCost + ")";
-            }
-            else
-            {
-                text.text = "Learn Current Power (£" + textController.testTheWatersCost + ")";
-            }
-            image.color = Color.white;
         } else
         {
-            if (infoType == InfoType.Allegiance)
+            if (GameData.factionList[faction].PlayerReputationLevel() >= 5)
             {
-                text.text = "Learn Current Allegiance (£" + textController.testTheWatersCost + ")";
-            } else
-            {
-                text.text = "Learn Current Power (£" + textController.testTheWatersCost + ")";
+                text.text = "";
+                image.color = Color.clear;
             }
-            image.color = Color.gray;
+            else
+            {
+                if (textController.availableSpymasterTestTheWaters)
+                {
+                    text.text = "Learn Current Power (Spymaster - Free!)";
+                    image.color = Color.white;
+                } else if (textController.availableTestTheWaters && GameData.moneyCount >= textController.testTheWatersCost)
+                {
+                    text.text = "Learn Current Power (£" + textController.testTheWatersCost + ")";
+                    image.color = Color.white;
+                } else
+                {
+                    text.text = "Learn Current Power (£" + textController.testTheWatersCost + ")";
+                    image.color = Color.gray;
+                }
+            }
         }
-	}
+    }
 }
