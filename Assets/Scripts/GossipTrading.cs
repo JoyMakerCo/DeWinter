@@ -221,8 +221,16 @@ public class GossipTrading : MonoBehaviour {
         if (Random.Range(1,101) <= CaughtChance())
         {
             //Player Rep Loss
-            GameData.reputationCount -= 25;
-            GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name()].playerReputation -= 25;
+            if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 2)
+            {
+                GameData.reputationCount -= 15;
+                GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name()].playerReputation -= 15;
+            }
+            else
+            {
+                GameData.reputationCount -= 25;
+                GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name()].playerReputation -= 25;
+            }
             //Angry Pop-Up About It
             screenFader.gameObject.SendMessage("CreateCaughtTradingGossipModal", GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction());
         }

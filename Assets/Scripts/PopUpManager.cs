@@ -17,6 +17,7 @@ public class PopUpManager : MonoBehaviour {
     public GameObject gossipSaleModal;
     public GameObject cancellationModal;
     public GameObject buyOrSellModal;
+    public GameObject hireAndFireServantModal;
     public GameObject cantAffordModal;
     public GameObject confidenceTallyModal;
     public GameObject roomChoiceModal;
@@ -105,6 +106,62 @@ public class PopUpManager : MonoBehaviour {
         bodyText.text = "It's time to pay the help. You're currently employing " + servantsHired + "." +
             "\nTheir cost of employment this week is " + totalWages + "." +
             "\nThis leaves you with " + GameData.moneyCount.ToString("£" + "#,##0");
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This confirmation modal is used for Hiring and Firing Servants
+    void CreateHireAndFireModal(Servant s)
+    {
+        
+        //Make the Pop up
+        GameObject popUp = Instantiate(buyOrSellModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        Text hireFireButtonText = popUp.transform.Find("HireFireButton").Find("Text").GetComponent<Text>();
+        Text dontHireFireButtonText = popUp.transform.Find("DontHireFireButton").Find("Text").GetComponent<Text>();
+
+        //Set the Pop Up Values
+        HireOrFirePopUpController controller = popUp.GetComponent<HireOrFirePopUpController>();
+        controller.servant = s;
+
+        //Fill in the Text
+        if (s.Hired())
+        {
+            titleText.text = "Fire Them?";
+            bodyText.text = "Are you sure you want fire " + s.NameAndTitle() + "?";
+            hireFireButtonText.text = "Fire";
+            dontHireFireButtonText.text = "Don't Fire";
+        }
+        else
+        {
+            titleText.text = "Fire Them?";
+            bodyText.text = "Are you sure you want to hire " + s.NameAndTitle() + " for " + s.Wage().ToString() + "?";
+            hireFireButtonText.text = "Hire";
+            dontHireFireButtonText.text = "Don't Hire";
+        }
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This is a modal used to explain why the Player can't actually Fire Camille, the Handmaiden
+    void CreateCamilleFiringModal()
+    {
+        //Make the Pop up
+        GameObject popUp = Instantiate(messageModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        popUp.transform.SetAsFirstSibling();
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "Wait a minute...";
+        //Body Text (Update with more Servants)
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "“Camille, what exactly do I pay you for?”" +
+                        "\n“Oh Madamme, why do you ask?”" +
+                        "\n“No reason, just thinking about... budget stuff.”" +
+                        "\n“Well Madamme, I clean your house, do your laundry, cook your meals, sweep your chimney, manage the household, mend your clothes -”" +
+                        "\n“Fine! Fine! Forget I asked!”";
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
@@ -568,6 +625,42 @@ public class PopUpManager : MonoBehaviour {
         BroadcastMessage("ActiveModal");
     }
 
+    //This appears at the beginning of a Party when the Player has enough Reputation with the Faction that they get their wine glass instantly filled
+    void CreateEntranceWineModal(Party p)
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(messageModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        popUp.transform.SetAsFirstSibling();
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "For you, Madamme";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "Madamme, thank you for joining us tonight. " + p.host.name + " asked me to make sure you were taken care of when the Party began." +
+                        "\n<Your Wineglass is now full>";
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This randomly appears when the Player enters an uncleared Room during a Party and they Player has enough Reputation with the Faction that they get their wine glass filled
+    void CreateRandomWineModal(Party p)
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(messageModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        popUp.transform.SetAsFirstSibling();
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "Let's Top That Up";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "Madamme, I noticed you were running a little low on refreshment. As per " + p.host.name + "'s request, I'll check in occassional to make sure you have enough to drink." +
+                        "\n<Your Wineglass is now full>";
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
     //This is used in the Party Scene for Players to choose whether they wish to engage in conversation (Work the Room) or try to avoid everyone (Move Through)
     void CreateRoomChoiceModal(int[] intStorage)
     {
@@ -831,6 +924,10 @@ public class PopUpManager : MonoBehaviour {
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, it appears that you've been found out. While 'Le Mecure' does its best to conceal our sources, some members of the " + gossipFaction.Name() + 
                 " seem to have figured out that you were out supplier. This has damaged your Reputation both with them and with society in General.";
+        if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 2)
+        {
+            bodyText.text += "\n\nThankfully your contacts in the Revolution have minimized the effects somewhat.";
+        }
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }

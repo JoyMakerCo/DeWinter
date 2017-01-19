@@ -37,7 +37,7 @@ public class PartyManager : MonoBehaviour {
         GameData.tonightsParty.playerOutfit = OutfitInventory.personalInventory[GameData.partyOutfitID];
         OutfitDegradation();
 
-        //Is the Player using the Garter Flack Accessory? If so then increase the amount of Booze they can carry!
+        //Is the Player using the Garter Flask Accessory? If so then increase the amount of Booze they can carry!
         if (GameData.partyAccessoryID != -1)
         {
             GameData.tonightsParty.playerAccessory = AccessoryInventory.personalInventory[GameData.partyAccessoryID];
@@ -45,7 +45,25 @@ public class PartyManager : MonoBehaviour {
             {
                 GameData.tonightsParty.maxPlayerDrinkAmount++;
             }
-        }      
+        }
+
+        //Extra Turns because of Faction Reputation Level?
+        if (GameData.tonightsParty.partySize == 1 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 3)
+        {
+            GameData.tonightsParty.turns += 2;
+            GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
+        }
+        else if (GameData.tonightsParty.partySize == 2 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 6)
+        {
+            GameData.tonightsParty.turns += 3;
+            GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
+        }
+        else if (GameData.tonightsParty.partySize == 3 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 9)
+        {
+            GameData.tonightsParty.turns += 4;
+            GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
+        }
+        FreeWineCheck();
     }
 
     void ConfidenceTally()
@@ -128,6 +146,17 @@ public class PartyManager : MonoBehaviour {
         objectStorage[9] = GameData.tonightsParty.maxPlayerConfidence;
         objectStorage[10] = GameData.tonightsParty.currentPlayerConfidence;
         screenFader.gameObject.SendMessage("CreateConfidenceTallyModal", objectStorage);
+    }
+
+    void FreeWineCheck()
+    {
+        if(GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 1)
+        {
+            //Fill Up their Glass
+            GameData.tonightsParty.currentPlayerDrinkAmount = GameData.tonightsParty.maxPlayerDrinkAmount;
+            //Explanatory Pop Up
+            screenFader.gameObject.SendMessage("CreateEntranceWineModal", GameData.tonightsParty);
+        }
     }
 
     //This is currently called by the 'Leave the Party' Button in the Party Scene. May need to automate this in some fashion?

@@ -93,6 +93,7 @@ public class Servant {
             if (!slotTaken)
             {
                 hired = true;
+                GameData.moneyCount -= wage;
             } else
             {
                 Debug.Log("Can't Hire that Servant, there's someone in that slot already");
