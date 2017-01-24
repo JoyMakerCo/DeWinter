@@ -14,9 +14,6 @@ public class WorkTheRoomManager : MonoBehaviour
     Text title;
     public bool isAmbush;
 
-    List<Sprite> femaleGuestSpriteList = new List<Sprite>();
-    List<Sprite> maleGuestSpriteList = new List<Sprite>();
-
     List<Image> guestImageList = new List<Image>();
 
     public GameObject playerVisual;
@@ -37,71 +34,91 @@ public class WorkTheRoomManager : MonoBehaviour
     List<GameObject> guestVisualList;
 
     public GameObject guest0Visual;
-    Text guest0NameText;
-    Image guest0GuestImage;
-    Text guest0InterestText;
-    Scrollbar guest0InterestBar;
-    Image guest0InterestBarBackground;
-    Scrollbar guest0OpinionBar;
-    Image guest0DispositionIcon;
+    public Text guest0NameText;
+    public Image guest0GuestImage;
+    public Text guest0InterestText;
+    public Scrollbar guest0InterestBar;
+    public Image guest0InterestBarBackground;
+    public Scrollbar guest0OpinionBar;
+    public Image guest0DispositionIcon;
 
     public GameObject guest1Visual;
-    Text guest1NameText;
-    Image guest1GuestImage;
-    Text guest1InterestText;
-    Scrollbar guest1InterestBar;
-    Image guest1InterestBarBackground;
-    Scrollbar guest1OpinionBar;
-    Image guest1DispositionIcon;
+    public Text guest1NameText;
+    public Image guest1GuestImage;
+    public Text guest1InterestText;
+    public Scrollbar guest1InterestBar;
+    public Image guest1InterestBarBackground;
+    public Scrollbar guest1OpinionBar;
+    public Image guest1DispositionIcon;
 
     public GameObject guest2Visual;
-    Text guest2NameText;
-    Image guest2GuestImage;
-    Text guest2InterestText;
-    Scrollbar guest2InterestBar;
-    Image guest2InterestBarBackground;
-    Scrollbar guest2OpinionBar;
-    Image guest2DispositionIcon;
+    public Text guest2NameText;
+    public Image guest2GuestImage;
+    public Text guest2InterestText;
+    public Scrollbar guest2InterestBar;
+    public Image guest2InterestBarBackground;
+    public Scrollbar guest2OpinionBar;
+    public Image guest2DispositionIcon;
 
     public GameObject guest3Visual;
-    Text guest3NameText;
-    Image guest3GuestImage;
-    Text guest3InterestText;
-    Scrollbar guest3InterestBar;
-    Image guest3InterestBarBackground;
-    Scrollbar guest3OpinionBar;
-    Image guest3DispositionIcon;
+    public Text guest3NameText;
+    public Image guest3GuestImage;
+    public Text guest3InterestText;
+    public Scrollbar guest3InterestBar;
+    public Image guest3InterestBarBackground;
+    public Scrollbar guest3OpinionBar;
+    public Image guest3DispositionIcon;
 
-    public Sprite femaleGuestImage0;
-    public Sprite femaleGuestImage1;
-    public Sprite femaleGuestImage2;
-    public Sprite femaleGuestImage3;
+    public Sprite femaleGuestImage0Charmed;
+    public Sprite femaleGuestImage0Approve;
+    public Sprite femaleGuestImage0Neutral;
+    public Sprite femaleGuestImage0PutOut;
 
-    public Sprite maleGuestImage0;
-    public Sprite maleGuestImage1;
-    public Sprite maleGuestImage2;
-    public Sprite maleGuestImage3;
-    public Sprite maleGuestImage4;
+    public Sprite femaleGuestImage1Charmed;
+    public Sprite femaleGuestImage1Approve;
+    public Sprite femaleGuestImage1Neutral;
+    public Sprite femaleGuestImage1PutOut;
+
+    public Sprite maleGuestImage0Charmed;
+    public Sprite maleGuestImage0Approve;
+    public Sprite maleGuestImage0Neutral;
+    public Sprite maleGuestImage0PutOut;
+
+    public Sprite maleGuestImage1Charmed;
+    public Sprite maleGuestImage1Approve;
+    public Sprite maleGuestImage1Neutral;
+    public Sprite maleGuestImage1PutOut;
+
+    Dictionary<string, Dictionary<string, Sprite>> GuestImageSprintDictionaries = new Dictionary<string, Dictionary<string, Sprite>>();
+    Dictionary<string, Sprite> femaleGuestImageSpriteDictionary0 = new Dictionary<string, Sprite>();
+    Dictionary<string, Sprite> femaleGuestImageSpriteDictionary1 = new Dictionary<string, Sprite>();
+    Dictionary<string, Sprite> maleGuestImageSpriteDictionary0 = new Dictionary<string, Sprite>();
+    Dictionary<string, Sprite> maleGuestImageSpriteDictionary1 = new Dictionary<string, Sprite>();
 
     private List<RemarkSlot> remarkSlotList;
 
     public GameObject remarkSlot0;
+    public RemarkSlot remarkSlot0RemarkSlot;
     Image remarkSlot0TargetingImage;
     Image remarkSlot0DispositionIcon;
 
     public GameObject remarkSlot1;
+    public RemarkSlot remarkSlot1RemarkSlot;
     Image remarkSlot1TargetingImage;
     Image remarkSlot1DispositionIcon;
 
     public GameObject remarkSlot2;
+    public RemarkSlot remarkSlot2RemarkSlot;
     Image remarkSlot2TargetingImage;
     Image remarkSlot2DispositionIcon;
 
     public GameObject remarkSlot3;
+    public RemarkSlot remarkSlot3RemarkSlot;
     Image remarkSlot3TargetingImage;
     Image remarkSlot3DispositionIcon;
 
     public GameObject remarkSlot4;
+    public RemarkSlot remarkSlot4RemarkSlot;
     Image remarkSlot4TargetingImage;
     Image remarkSlot4DispositionIcon;
 
@@ -142,7 +159,7 @@ public class WorkTheRoomManager : MonoBehaviour
         drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetComponent<Image>();
 
         //Stock the Guest Images Lists
-        StockGuestImageLists();
+        StockGuestImageDictionaries();
 
         //Set Up the Guests
         SetUpGuests();
@@ -165,11 +182,11 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //Set Up Remarks
         remarkSlotList = new List<RemarkSlot>();
-        remarkSlotList.Add(remarkSlot0.GetComponent<RemarkSlot>());
-        remarkSlotList.Add(remarkSlot1.GetComponent<RemarkSlot>());
-        remarkSlotList.Add(remarkSlot2.GetComponent<RemarkSlot>());
-        remarkSlotList.Add(remarkSlot3.GetComponent<RemarkSlot>());
-        remarkSlotList.Add(remarkSlot4.GetComponent<RemarkSlot>());
+        remarkSlotList.Add(remarkSlot0RemarkSlot);
+        remarkSlotList.Add(remarkSlot1RemarkSlot);
+        remarkSlotList.Add(remarkSlot2RemarkSlot);
+        remarkSlotList.Add(remarkSlot3RemarkSlot);
+        remarkSlotList.Add(remarkSlot4RemarkSlot);
 
         //Turn Timer
         turnTimerBar.value = currentTurnTimer / maxTurnTimer;
@@ -245,17 +262,10 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void SetUpGuests()
     {
-        
+
         //Set Up Guest 0
-        guest0NameText = guest0Visual.transform.Find("Name").GetComponent<Text>();
         guest0NameText.text = room.guestList[0].name;
-        guest0GuestImage = guest0Visual.transform.Find("GuestImage").GetComponent<Image>();
         guest0GuestImage.sprite = GenerateGuestImage(0);
-        guest0InterestText = guest0Visual.transform.Find("InterestText").GetComponent<Text>();
-        guest0InterestBar = guest0Visual.transform.Find("InterestBar").GetComponent<Scrollbar>();
-        guest0InterestBarBackground = guest0Visual.transform.Find("InterestBar").GetComponent<Image>();
-        guest0OpinionBar = guest0Visual.transform.Find("OpinionBar").GetComponent<Scrollbar>();
-        guest0DispositionIcon = guest0Visual.transform.Find("DispositionIcon").GetComponent<Image>();
         guest0DispositionIcon.color = DispositionImageColor(0);
         if (room.guestList[0].isEnemy)
         {
@@ -269,15 +279,8 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //Set Up Guest 1
-        guest1NameText = guest1Visual.transform.Find("Name").GetComponent<Text>();
-        guest1NameText.text = room.guestList[1].name;
-        guest1GuestImage = guest1Visual.transform.Find("GuestImage").GetComponent<Image>();
-        guest1GuestImage.sprite = GenerateGuestImage(1);
-        guest1InterestText = guest1Visual.transform.Find("InterestText").GetComponent<Text>();
-        guest1InterestBar = guest1Visual.transform.Find("InterestBar").GetComponent<Scrollbar>();
-        guest1InterestBarBackground = guest1Visual.transform.Find("InterestBar").GetComponent<Image>();
-        guest1OpinionBar = guest1Visual.transform.Find("OpinionBar").GetComponent<Scrollbar>();
-        guest1DispositionIcon = guest1Visual.transform.Find("DispositionIcon").GetComponent<Image>();
+        guest1NameText.text = room.guestList[1].name; 
+        guest1GuestImage.sprite = GenerateGuestImage(1);    
         guest1DispositionIcon.color = DispositionImageColor(1);
         if (room.guestList[1].isEnemy)
         {
@@ -291,15 +294,8 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //Set Up Guest 2
-        guest2NameText = guest2Visual.transform.Find("Name").GetComponent<Text>();
         guest2NameText.text = room.guestList[2].name;
-        guest2GuestImage = guest2Visual.transform.Find("GuestImage").GetComponent<Image>();
-        guest2GuestImage.sprite = GenerateGuestImage(2);
-        guest2InterestText = guest2Visual.transform.Find("InterestText").GetComponent<Text>();
-        guest2InterestBar = guest2Visual.transform.Find("InterestBar").GetComponent<Scrollbar>();
-        guest2InterestBarBackground = guest2Visual.transform.Find("InterestBar").GetComponent<Image>();
-        guest2OpinionBar = guest2Visual.transform.Find("OpinionBar").GetComponent<Scrollbar>();
-        guest2DispositionIcon = guest2Visual.transform.Find("DispositionIcon").GetComponent<Image>();
+        guest2GuestImage.sprite = GenerateGuestImage(2);   
         guest2DispositionIcon.color = DispositionImageColor(2);
         if (room.guestList[2].isEnemy)
         {
@@ -313,15 +309,8 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //Set Up Guest 3
-        guest3NameText = guest3Visual.transform.Find("Name").GetComponent<Text>();
         guest3NameText.text = room.guestList[3].name;
-        guest3GuestImage = guest3Visual.transform.Find("GuestImage").GetComponent<Image>();
-        guest3GuestImage.sprite = GenerateGuestImage(3);
-        guest3InterestText = guest3Visual.transform.Find("InterestText").GetComponent<Text>();
-        guest3InterestBar = guest3Visual.transform.Find("InterestBar").GetComponent<Scrollbar>();
-        guest3InterestBarBackground = guest3Visual.transform.Find("InterestBar").GetComponent<Image>();
-        guest3OpinionBar = guest3Visual.transform.Find("OpinionBar").GetComponent<Scrollbar>();
-        guest3DispositionIcon = guest3Visual.transform.Find("DispositionIcon").GetComponent<Image>();
+        guest3GuestImage.sprite = GenerateGuestImage(3);    
         guest3DispositionIcon.color = DispositionImageColor(3);
         if (room.guestList[3].isEnemy)
         {
@@ -365,8 +354,7 @@ public class WorkTheRoomManager : MonoBehaviour
         {
             //Targeting Profiles Get Taken into Account Here
             switch (room.party.playerHand[targetingRemark].targetingProfileInt)
-            {
-                
+            {          
                 case 1:
                     //No flip or failsafe version necessary, it's just one target
                     GuestTargeted(guestNumber);
@@ -424,8 +412,7 @@ public class WorkTheRoomManager : MonoBehaviour
         } else
         {
             Debug.Log("No remark selected :(");
-        }
-       
+        }      
     }
 
     void GuestTargeted(int guestNumber)
@@ -553,17 +540,65 @@ public class WorkTheRoomManager : MonoBehaviour
         switch (guestNumber)
         {
             case 0:
-                guest0GuestImage.color = ReactionColor(0);
+                //guest0GuestImage.color = ReactionColor(0);
+                guest0GuestImage.sprite = ReactionSprite(0);
                 break;
             case 1:
-                guest1GuestImage.color = ReactionColor(1);
+                //guest1GuestImage.color = ReactionColor(1);
+                guest1GuestImage.sprite = ReactionSprite(1);
                 break;
             case 2:
-                guest2GuestImage.color = ReactionColor(2);
+                //guest2GuestImage.color = ReactionColor(2);
+                guest2GuestImage.sprite = ReactionSprite(2);
                 break;
             case 3:
-                guest3GuestImage.color = ReactionColor(3);
+                //guest3GuestImage.color = ReactionColor(3);
+                guest3GuestImage.sprite = ReactionSprite(3);
                 break;
+        }
+    }
+    
+    //Called by the Pointer Exit button function of the Guest Images, used to reset Guest Images after the player mouses away from them
+    public void GuestUnhighlighting()
+    {
+        string dictionaryString;
+        for (int i = 0; i < guestImageList.Count; i++)
+        {
+            //Which Guest Image is Being Selected?
+            if (room.guestList[i].isFemale)
+            {
+                if (room.guestList[i].imageInt == 0)
+                {
+                    dictionaryString = "female0";
+                }
+                else
+                {
+                    dictionaryString = "female1";
+                }
+            }
+            else
+            {
+                if (room.guestList[i].imageInt == 0)
+                {
+                    dictionaryString = "male0";
+                }
+                else
+                {
+                    dictionaryString = "male1";
+                }
+            }
+            //What is the Locked In State of this Guest?
+            if (room.guestList[i].lockedInState == 1)
+            {
+                guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Charmed"];
+            } else if (room.guestList[i].lockedInState == 0)
+            {
+                guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Neutral"];
+            } else
+            {
+                guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Put Out"];
+            }
+            guestImageList[i].color = Color.white;
         }
     }
 
@@ -609,18 +644,9 @@ public class WorkTheRoomManager : MonoBehaviour
 
     IEnumerator TimerAttackDisplay(Guest g)
     {
-
         Debug.Log("Attack Timer Started!");
         yield return new WaitForSeconds(0.75f);
         g.attackTimerWaiting = false;
-    }
-
-    public void GuestUnhighlighting()
-    {
-        foreach (Image t in guestImageList)
-        {
-            t.color = Color.white;
-        }
     }
 
     public float GoingEarlyBonus()
@@ -634,6 +660,7 @@ public class WorkTheRoomManager : MonoBehaviour
         }
     }
 
+    //Unused at the moment, should there be a color shift with Guests when they're highlighted?
     Color ReactionColor(int guestNumber)
     {
         if(!room.guestList[guestNumber].dispositionRevealed && room.party.currentPlayerIntoxication >= 50)
@@ -652,6 +679,53 @@ public class WorkTheRoomManager : MonoBehaviour
         {
             return Color.gray;
         }
+    }
+
+    Sprite ReactionSprite(int guestNumber)
+    {
+        string dictionaryString;
+        string reactionString;
+        //Which Guest Image is Being Selected?
+        if (room.guestList[guestNumber].isFemale)
+        {
+            if (room.guestList[guestNumber].imageInt == 0)
+            {
+                dictionaryString = "female0";
+            }
+            else
+            {
+                dictionaryString = "female1";
+            }
+        }
+        else
+        {
+            if (room.guestList[guestNumber].imageInt == 0)
+            {
+                dictionaryString = "male0";
+            }
+            else
+            {
+                dictionaryString = "male1";
+            }
+        }
+        //Which Guest Image State is Being Selected?
+        if (!room.guestList[guestNumber].dispositionRevealed && room.party.currentPlayerIntoxication >= 50) //Is the Player too trashed to notice at all?
+        {
+            reactionString = "Neutral";
+        }
+        if (room.party.playerHand[targetingRemark].tone == room.guestList[guestNumber].disposition.like) //They like the tone
+        {
+            reactionString = "Approve";
+        }
+        else if (room.party.playerHand[targetingRemark].tone == room.guestList[guestNumber].disposition.dislike) //They dislike the tone
+        {
+            reactionString = "Disapprove";
+        }
+        else //Neutral Tone
+        {
+            reactionString = "Neutral";
+        }
+        return GuestImageSprintDictionaries[dictionaryString][reactionString];
     }
 
     Color DispositionImageColor(int guest)
@@ -685,34 +759,64 @@ public class WorkTheRoomManager : MonoBehaviour
                 }
             }
         }
-
         //Pause the Next Turn Timer
         turnTimerActive = false;
     }
 
-    void StockGuestImageLists()
+    void StockGuestImageDictionaries()
     {
-        femaleGuestSpriteList.Add(femaleGuestImage0);
-        femaleGuestSpriteList.Add(femaleGuestImage1);
-        femaleGuestSpriteList.Add(femaleGuestImage2);
-        femaleGuestSpriteList.Add(femaleGuestImage3);
+        GuestImageSprintDictionaries.Add("female0", femaleGuestImageSpriteDictionary0);
+        GuestImageSprintDictionaries.Add("female1", femaleGuestImageSpriteDictionary1);
+        GuestImageSprintDictionaries.Add("male0", maleGuestImageSpriteDictionary0);
+        GuestImageSprintDictionaries.Add("male1", maleGuestImageSpriteDictionary1);
 
-        maleGuestSpriteList.Add(maleGuestImage0);
-        maleGuestSpriteList.Add(maleGuestImage1);
-        maleGuestSpriteList.Add(maleGuestImage2);
-        maleGuestSpriteList.Add(maleGuestImage3);
-        maleGuestSpriteList.Add(maleGuestImage4);
+        femaleGuestImageSpriteDictionary0.Add("Charmed", femaleGuestImage0Charmed);
+        femaleGuestImageSpriteDictionary0.Add("Approve", femaleGuestImage0Approve);
+        femaleGuestImageSpriteDictionary0.Add("Neutral", femaleGuestImage0Neutral);
+        femaleGuestImageSpriteDictionary0.Add("Disapprove", femaleGuestImage0PutOut);
+        femaleGuestImageSpriteDictionary0.Add("Put Out", femaleGuestImage0PutOut);
+
+        femaleGuestImageSpriteDictionary1.Add("Charmed", femaleGuestImage1Charmed);
+        femaleGuestImageSpriteDictionary1.Add("Approve", femaleGuestImage1Approve);
+        femaleGuestImageSpriteDictionary1.Add("Neutral", femaleGuestImage1Neutral);
+        femaleGuestImageSpriteDictionary1.Add("Disapprove", femaleGuestImage1PutOut);
+        femaleGuestImageSpriteDictionary1.Add("Put Out", femaleGuestImage1PutOut);
+
+        maleGuestImageSpriteDictionary0.Add("Charmed", maleGuestImage0Charmed);
+        maleGuestImageSpriteDictionary0.Add("Approve", maleGuestImage0Approve);
+        maleGuestImageSpriteDictionary0.Add("Neutral", maleGuestImage0Neutral);
+        maleGuestImageSpriteDictionary0.Add("Disapprove", maleGuestImage0PutOut);
+        maleGuestImageSpriteDictionary0.Add("Put Out", maleGuestImage0PutOut);
+
+        maleGuestImageSpriteDictionary1.Add("Charmed", maleGuestImage1Charmed);
+        maleGuestImageSpriteDictionary1.Add("Approve", maleGuestImage1Approve);
+        maleGuestImageSpriteDictionary1.Add("Neutral", maleGuestImage1Neutral);
+        maleGuestImageSpriteDictionary1.Add("Disapprove", maleGuestImage1PutOut);
+        maleGuestImageSpriteDictionary1.Add("Put Out", maleGuestImage1PutOut);
     }
 
     Sprite GenerateGuestImage(int guest)
     {
         if (room.guestList[guest].isFemale)
         {
-            return femaleGuestSpriteList[room.guestList[guest].imageInt];
+            if(room.guestList[guest].imageInt == 0)
+            {
+                return femaleGuestImage0Neutral;
+            } else
+            {
+                return femaleGuestImage1Neutral;
+            }
         }
         else
         {
-            return maleGuestSpriteList[room.guestList[guest].imageInt];
+            if (room.guestList[guest].imageInt == 0)
+            {
+                return maleGuestImage0Neutral;
+            }
+            else
+            {
+                return maleGuestImage1Neutral;
+            }
         }
     }
 
@@ -1220,8 +1324,10 @@ public class WorkTheRoomManager : MonoBehaviour
         }
     }
 
+    
     void VisualizeGuests()
     {
+        //Guest 0
         guest0InterestText.text = InterestState(room.guestList[0]);
         if (room.guestList[0].isEnemy)
         {
@@ -1233,6 +1339,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest0InterestBar.value = InterestTimer(room.guestList[0]);
         guest0OpinionBar.value = (float)room.guestList[0].currentOpinion / 100;
         guest0DispositionIcon.color = DispositionImageColor(0);
+        //Guest 1
         guest1InterestText.text = InterestState(room.guestList[1]);
         if (room.guestList[1].isEnemy)
         {
@@ -1245,6 +1352,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest1InterestBar.value = InterestTimer(room.guestList[1]);
         guest1OpinionBar.value = (float)room.guestList[1].currentOpinion / 100;
         guest1DispositionIcon.color = DispositionImageColor(1);
+        //Guest 2
         guest2InterestText.text = InterestState(room.guestList[2]);
         if (room.guestList[2].isEnemy)
         {
@@ -1257,6 +1365,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest2InterestBar.value = InterestTimer(room.guestList[2]);
         guest2OpinionBar.value = (float)room.guestList[2].currentOpinion / 100;
         guest2DispositionIcon.color = DispositionImageColor(2);
+        //Guest 3
         guest3InterestText.text = InterestState(room.guestList[3]);
         if (room.guestList[3].isEnemy)
         {
@@ -1270,6 +1379,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest3OpinionBar.value = (float)room.guestList[3].currentOpinion / 100;
         guest3DispositionIcon.color = DispositionImageColor(3);
     }
+    
 }
 
     
