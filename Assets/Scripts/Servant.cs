@@ -24,6 +24,7 @@ public class Servant {
         switch (name)
         {
             case "Camille":
+                //TODO: Can't be fired include the 'Attempted Firing' Event
                 slot = "Handmaiden";
                 title = "Handmaiden";
                 description = "- Your loyal Handmaiden" +
