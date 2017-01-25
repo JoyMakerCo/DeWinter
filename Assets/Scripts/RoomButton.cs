@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
 public class RoomButton : MonoBehaviour {
 
-    public Room myRoom;
+    public RoomVO myRoom;
     public RoomManager roomManager;
     Text myDescriptionText;
     Outline myOutline; // Indicates that the Player is there

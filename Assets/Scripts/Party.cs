@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DeWinter;
 
 public class Party {
 
@@ -17,8 +18,7 @@ public class Party {
 
     public Notable host;
 
-    public Room[,] roomGrid;
-    public Room entranceRoom;
+    public MapVO Map;
     public int turns;
     public int turnsLeft;
 
@@ -327,71 +327,6 @@ public class Party {
         if (furthestRoom.entranceDistance == 0)
         {
             GenerateRooms();
-        }
-    }
-
-    void FloodFill(Room entranceRoom) //The Russell recommended version
-    {
-        List <Room> roomList = new List<Room>();
-        roomList.Add(entranceRoom);
-        entranceRoom.entranceDistance = 0;
-        int xPosInt;
-        int yPosInt;
-        while (roomList.Count > 0)
-        {
-            //Remove the First Point from the List
-            xPosInt = roomList[0].xPos;
-            yPosInt = roomList[0].yPos;
-            roomList.RemoveAt(0);
-            //Add it's elgible neighbors to the List and Fill their Points
-            if ((yPosInt + 1) < roomGrid.GetLength(1))
-            {
-                Room northRoom = roomGrid[xPosInt, yPosInt + 1];
-                if (northRoom != null)
-                {
-                    if (roomGrid[northRoom.xPos, northRoom.yPos].entranceDistance == -1)
-                    {
-                        roomList.Add(northRoom);
-                        northRoom.entranceDistance = roomGrid[xPosInt, yPosInt].entranceDistance + 1;
-                    }
-                }
-            }
-            if ((yPosInt - 1) >= 0)
-            {
-                Room southRoom = roomGrid[xPosInt, yPosInt - 1];
-                if (southRoom != null)
-                {
-                    if (roomGrid[southRoom.xPos, southRoom.yPos].entranceDistance == -1)
-                    {
-                        roomList.Add(southRoom);
-                        southRoom.entranceDistance = roomGrid[xPosInt, yPosInt].entranceDistance + 1;
-                    }
-                }
-            }
-            if ((xPosInt + 1) < roomGrid.GetLength(0))
-            {
-                Room eastRoom = roomGrid[xPosInt + 1, yPosInt];
-                if (eastRoom != null)
-                {
-                    if (roomGrid[eastRoom.xPos, eastRoom.yPos].entranceDistance == -1)
-                    {
-                        roomList.Add(eastRoom);
-                        eastRoom.entranceDistance = roomGrid[xPosInt, yPosInt].entranceDistance + 1;
-                    }
-                }
-            }
-            if ((xPosInt - 1) >= 0)
-            {
-                Room westRoom = roomGrid[xPosInt - 1, yPosInt];
-                if (westRoom != null)
-                {
-                    if (roomGrid[westRoom.xPos, westRoom.yPos].entranceDistance == -1)
-                    {
-                        roomList.Add(westRoom);
-                        westRoom.entranceDistance = roomGrid[xPosInt, yPosInt].entranceDistance + 1;
-                    }
-                }
-            }
         }
     }
 

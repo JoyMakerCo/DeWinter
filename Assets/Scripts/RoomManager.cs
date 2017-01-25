@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DeWinter;
 
 public class RoomManager : MonoBehaviour
 {
 
     public PartyManager partyManager;
     public Party party; //What Party are we managing?
-    public Room[,] roomButtonGrid; // Holds the Rooms
-    public Room entranceRoom; //Whichever Room is the Entrance
-    public Room currentPlayerRoom;
+    public RoomVO[,] roomButtonGrid; // Holds the Rooms
+    public RoomVO entranceRoom; //Whichever Room is the Entrance
+    public RoomVO currentPlayerRoom;
     public GameObject roomButtonPrefab;
     public GameObject houseOutlinePrefab; //This is used to Outline the house when it's done
     public Canvas canvas; //New Interface objects need to get parented to this in order to work

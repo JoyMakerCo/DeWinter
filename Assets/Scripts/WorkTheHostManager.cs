@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using DeWinter;
 
 public class WorkTheHostManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class WorkTheHostManager : MonoBehaviour
     public RoomManager roomManager;
     LevelManager levelManager;
 
-    public Room room;
+    public RoomVO room;
     Text title;
     public bool isAmbush;
 
