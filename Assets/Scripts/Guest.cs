@@ -10,7 +10,7 @@ public class Guest {
     public int dispositionInt;
     public Disposition disposition;
     public bool dispositionRevealed;
-    public Faction faction;
+    public FactionVO faction;
     public bool isFemale; //Determines the gender of the Guest
     public int imageInt;
     //Opinion Boredom and Interest Stuff

@@ -16,7 +16,7 @@ public class GameData : MonoBehaviour
     public static int uprisingDay; //The Day of the Uprising Month that the Game Ends On
 
     //Reputation and Faction Stuff
-    public static Dictionary<string, Faction> factionList = new Dictionary<string, Faction>();
+    public static Dictionary<string, FactionVO> factionList = new Dictionary<string, FactionVO>();
     public static int reputationCount;
     public static int playerReputationLevel;
 
@@ -125,11 +125,6 @@ public class GameData : MonoBehaviour
 
         //Reputation and Faction Stuff
         reputationCount = 300;
-        factionList.Add("Crown", new Faction("Crown", 100, 100, 100));
-        factionList.Add("Church", new Faction("Church", 100, -100, 60));
-        factionList.Add("Military", new Faction("Military", 0, 0, 0));
-        factionList.Add("Bourgeoisie", new Faction("Bourgeoisie", -100, 100, -60));
-        factionList.Add("Revolution", new Faction("Revolution", -100, -100, -100));
 
         //Party Stuff
         tonightsParty = null;

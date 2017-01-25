@@ -8,12 +8,12 @@ public class Enemy {
     private string flavorText;
     public int dispositionInt;
     public Disposition disposition;
-    public Faction faction;
+    public FactionVO faction;
     public bool isFemale; //Determines the gender of the Guest
     public int imageInt;
 
     //Generates a Random Enemy from a particular Faction
-    public Enemy(Faction fac)
+    public Enemy(FactionVO fac)
     {
         dispositionInt = Random.Range(0, 4);
         disposition = GameData.dispositionList[dispositionInt];
@@ -32,7 +32,7 @@ public class Enemy {
     }
 
     //Generates an Enemy with a Particular Name, Faction and Gender
-    public Enemy(Faction fac, string nme, bool gen)
+    public Enemy(FactionVO fac, string nme, bool gen)
     {
         dispositionInt = Random.Range(0, 4);
         disposition = GameData.dispositionList[dispositionInt];

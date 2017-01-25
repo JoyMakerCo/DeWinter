@@ -9,6 +9,7 @@ namespace DeWinter
 		public void Start ()
 		{
 			DeWinterApp.RegisterModel<DevotionModel>();
+			DeWinterApp.RegisterModel<FactionModel>();
 
 			GameObject.Destroy(this.gameObject);
 		}

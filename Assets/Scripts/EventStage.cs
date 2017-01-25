@@ -11,10 +11,10 @@ public class EventStage : MonoBehaviour {
     public int stageMoneyChange;
     public Enemy stageEnemyAdd;
     public Gossip stageGossipAdd;
-    public Faction stageFaction1; //The Faction that's being altered
+    public FactionVO stageFaction1; //The Faction that's being altered
     public string stageFaction1Value; //Is is the Player's Faction Rep that's being changed? Or is it the Faction Allegiance or Power?
     public int stageFaction1Change; //How much is it being changed by?
-    public Faction stageFaction2; //Is there a second faction being affected?
+    public FactionVO stageFaction2; //Is there a second faction being affected?
     public string stageFaction2Value; //Same as the first
     public int stageFaction2Change; //Also same as the first
 
@@ -93,7 +93,7 @@ public class EventStage : MonoBehaviour {
     }
 
     //1 Option Constructor that alters a Faction
-    public EventStage(string desc, int sRepChng, int sMonChng, Faction fac1, string fac1Value, int fac1Chnge, EventOption op0)
+    public EventStage(string desc, int sRepChng, int sMonChng, FactionVO fac1, string fac1Value, int fac1Chnge, EventOption op0)
     {
         description = desc;
         stageRepChange = sRepChng;
@@ -108,7 +108,7 @@ public class EventStage : MonoBehaviour {
     }
 
     //1 Option Constructor that alters two Factions
-    public EventStage(string desc, int sRepChng, int sMonChng, Faction fac1, string fac1Value, int fac1Chnge, Faction fac2, string fac2Value, int fac2Chnge, EventOption op0)
+    public EventStage(string desc, int sRepChng, int sMonChng, FactionVO fac1, string fac1Value, int fac1Chnge, FactionVO fac2, string fac2Value, int fac2Chnge, EventOption op0)
     {
         description = desc;
         stageRepChange = sRepChng;

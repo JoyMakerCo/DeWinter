@@ -1,33 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
-public class Faction {
+public class FactionVO
+{
+	[JsonProperty("Name")]
+    public string Name;
 
-    string name;
-    public int playerReputation; //What's the Player's Rep with this faction? Raw Number
+	[JsonProperty("Modesty")]
+	public int modestyLike; //How modest do they like their outfits?
+
+	[JsonProperty("Luxury")]
+	public int luxuryLike; //How luxurious do they like their outfits?
+
+	[JsonProperty("Allegiance")]
+	float allegiance; //-100 means the Faction is devoted to the Revolution, 100 means they are devoted to the Crown
+
+	[JsonProperty("Power")]
+	float power; //How powerful is this faction in the game?
+
+	private int[] playerReputationLevelRequirements;
+
+    public int playerReputation=0; //What's the Player's Rep with this faction? Raw Number
     private int playerReputationLevel; //The Player's 'Reputation Level'. Intended to make the Reputation system a little more understandable
-    private int[] playerReputationLevelRequirements;
-    float power; //How powerful is this faction in the game?
     public string knownPower = "Unknown"; //Used in the 'Test the Waters' screen
     public int powerKnowledgeTimer;
-    public int modestyLike; //How modest do they like their outfits?
-    public int luxuryLike; //How luxurious do they like their outfits?
-    float allegiance; //-100 means the Faction is devoted to the Revolution, 100 means they are devoted to the Crown
     public string knownAllegiance = "Unknown"; //Used in the 'Test the Waters' screen
     public int allegianceKnowledgeTimer;
 
     public List<string> benefitsList = new List<string>();
 
-    public Faction (string nme, int mL, int lL, int all)
+    public FactionVO ()
     {
-        name = nme;
-        modestyLike = mL;
-        luxuryLike = lL;
         power = 10;
-        allegiance = all;
-        playerReputation = 0;
-        playerReputationLevelRequirements = new int[11];
         StockPlayerReputationLevelRequirements();
         StockBenefitsList();
     }
@@ -115,24 +121,16 @@ public class Faction {
 
     private void StockPlayerReputationLevelRequirements()
     {
-        playerReputationLevelRequirements[0] = 0;
-        playerReputationLevelRequirements[1] = 20;
-        playerReputationLevelRequirements[2] = 50;
-        playerReputationLevelRequirements[3] = 100;
-        playerReputationLevelRequirements[4] = 150;
-        playerReputationLevelRequirements[5] = 200;
-        playerReputationLevelRequirements[6] = 250;
-        playerReputationLevelRequirements[7] = 300;
-        playerReputationLevelRequirements[8] = 350;
-        playerReputationLevelRequirements[9] = 400;
-        playerReputationLevelRequirements[10] = 999999; //A cap just so it doesn't freak out should the player run over 400
+		playerReputationLevelRequirements = new int[]{
+			0, 20, 50, 100, 150, 200, 250, 300, 350, 400, int.MaxValue
+		};
     }
 
     void StockBenefitsList()
     {
-        benefitsList.Add("Level 0: Invited to Small " + name + " Parties");
-        benefitsList.Add("Level 1: Wine upon entering " + name + " Parties");
-        switch (name)
+        benefitsList.Add("Level 0: Invited to Small " + Name + " Parties");
+        benefitsList.Add("Level 1: Wine upon entering " + Name + " Parties");
+        switch (Name)
         {
             case "Crown":
                 benefitsList.Add("Level 2: Training in Courtly Dances");
@@ -150,13 +148,13 @@ public class Faction {
                 benefitsList.Add("Level 2: Selling Gossip to the press is now less risky");
                 break;
         }
-        benefitsList.Add("Level 3: Invited to Medium " + name + " Parties, extra time at Small " + name + " Parties");
-        benefitsList.Add("Level 4: Extra attention from the drink servers at " + name + " Parties");
-        benefitsList.Add("Level 5: Always know the Power of the " + name);
-        benefitsList.Add("Level 3: Invited to Large " + name + " Parties, extra time at Medium " + name + " Parties");
-        benefitsList.Add("Level 7: Always know Allegiance of the " + name);
-        benefitsList.Add("Level 8: The " + name + " will come to your aid in an hour of great need.");
-        switch (name)
+        benefitsList.Add("Level 3: Invited to Medium " + Name + " Parties, extra time at Small " + Name + " Parties");
+        benefitsList.Add("Level 4: Extra attention from the drink servers at " + Name + " Parties");
+        benefitsList.Add("Level 5: Always know the Power of the " + Name);
+        benefitsList.Add("Level 3: Invited to Large " + Name + " Parties, extra time at Medium " + Name + " Parties");
+        benefitsList.Add("Level 7: Always know Allegiance of the " + Name);
+        benefitsList.Add("Level 8: The " + Name + " will come to your aid in an hour of great need.");
+        switch (Name)
         {
             case "Crown":
                 benefitsList.Add("Level 9: A title and Royal Allowance");
@@ -212,11 +210,6 @@ public class Faction {
 
     }
 
-    public string Name()
-    {
-        return name;
-    }
-
     public float Allegiance()
     {
         return allegiance;
@@ -224,7 +217,7 @@ public class Faction {
 
     public void ChangeAllegiance(int changeAmount)
     {
-        if (name != "Revolution" || name != "Crown")
+        if (Name != "Revolution" || Name != "Crown")
         {
             allegiance = Mathf.Clamp(allegiance + changeAmount, -100, 100);
         }

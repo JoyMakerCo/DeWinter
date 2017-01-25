@@ -149,7 +149,7 @@ public class Reward {
 
     void GenerateRandomQuestReward(PierreQuest pQuest)
     {
-        Faction faction = pQuest.Faction(); 
+        FactionVO faction = pQuest.Faction(); 
         int typeRandomInt = Random.Range(1, 4);
         //Amount is determined Inverse to Time Limit
         int multiplier = 12 - pQuest.daysLeft;
@@ -224,10 +224,10 @@ public class Reward {
         }
     }
 
-    string RandomExclusiveFaction(Faction faction)
+    string RandomExclusiveFaction(FactionVO faction)
     {
         int factionRandom = Random.Range(0, 5);
-        Faction selectedFaction;
+        FactionVO selectedFaction;
         switch (factionRandom)
         {
             case 0:
@@ -248,7 +248,7 @@ public class Reward {
         }
         if(selectedFaction != faction)
         {
-            return selectedFaction.Name();
+            return selectedFaction.Name;
         } else
         {
             return RandomExclusiveFaction(faction);

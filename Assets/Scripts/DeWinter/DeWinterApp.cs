@@ -35,5 +35,10 @@ namespace DeWinter
 		{
 			App.Service<MessageSvc>().Send<T>(messageID, data);
 		}
+
+		public static void SendMessage<T>(T data)
+		{
+			App.Service<MessageSvc>().Send<T>(data);
+		}
 	}
 }

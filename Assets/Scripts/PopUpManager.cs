@@ -912,7 +912,7 @@ public class PopUpManager : MonoBehaviour {
     }
 
     //This is used in the Estate Tab to tell Players that they were caught trading in Gossip Items
-    void CreateCaughtTradingGossipModal(Faction gossipFaction)
+    void CreateCaughtTradingGossipModal(FactionVO gossipFaction)
     {
         //Make the Pop Up
         GameObject popUp = Instantiate(messageModal) as GameObject;
@@ -922,7 +922,7 @@ public class PopUpManager : MonoBehaviour {
         titleText.text = "Merde!";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, it appears that you've been found out. While 'Le Mecure' does its best to conceal our sources, some members of the " + gossipFaction.Name() + 
+        bodyText.text = "Madamme, it appears that you've been found out. While 'Le Mecure' does its best to conceal our sources, some members of the " + gossipFaction.Name + 
                 " seem to have figured out that you were out supplier. This has damaged your Reputation both with them and with society in General.";
         if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 2)
         {
@@ -950,7 +950,7 @@ public class PopUpManager : MonoBehaviour {
         titleText.text = "A Call for Gossip!";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction().Name() + "." +
+        bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction().Name + "." +
                 "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.Name() + ". \n\nHow does that sound?";
         //Modal Background Shift
         BroadcastMessage("ActiveModal");

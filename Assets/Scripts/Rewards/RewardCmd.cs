@@ -7,18 +7,12 @@ namespace DeWinter
 	{
 		public void Execute(RewardVO reward)
 		{
-			GameDataModel gameData = DeWinterApp.GetModel<GameDataModel>();
-			double bal;
+			AdjustBalanceVO vo = new AdjustBalanceVO();
 			foreach(KeyValuePair<string, double> kvp in reward.Balances)
 			{
-				if (gameData.Balances.TryGetValue(kvp.Key, out bal))
-				{
-					gameData.Balances.Add(kvp.Key, kvp.Value);
-				}
-				else
-				{
-					gameData.Balances[kvp.Key] += kvp.Value;
-				}
+				vo.Type = kvp.Key;
+				vo.Amount = kvp.Value;
+				DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
 			}
 		}
 	}

@@ -32,13 +32,13 @@ public class GossipTrading : MonoBehaviour {
             {
                 if (GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue() > 0)
                 {
-                    myDescriptionText.text = "Push the " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name() + " to the Crown by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue();
+                    myDescriptionText.text = "Push the " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name + " to the Crown by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue();
                     myDescriptionText.color = Color.white;
                     myBackgroundImage.color = Color.white;
                 }
                 else if (GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue() < 0)
                 {
-                    myDescriptionText.text = "Push the " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name() + " to the Revolution by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue();
+                    myDescriptionText.text = "Push the " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name + " to the Revolution by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue();
                     myDescriptionText.color = Color.white;
                     myBackgroundImage.color = Color.white;
                 } else
@@ -52,12 +52,12 @@ public class GossipTrading : MonoBehaviour {
             {
                 if (GameData.gossipInventory[gossipInventoryList.selectedGossipItem].PowerShiftValue() > 0)
                 {
-                    myDescriptionText.text = "Boost " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name() + " Power by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].PowerShiftValue();
+                    myDescriptionText.text = "Boost " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name + " Power by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].PowerShiftValue();
                     myDescriptionText.color = Color.white;
                     myBackgroundImage.color = Color.white;
                 } else
                 {
-                    myDescriptionText.text = "Undermine " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name() + " Power by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].PowerShiftValue();
+                    myDescriptionText.text = "Undermine " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name + " Power by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].PowerShiftValue();
                     myDescriptionText.color = Color.white;
                     myBackgroundImage.color = Color.white;
                 }             
@@ -103,7 +103,7 @@ public class GossipTrading : MonoBehaviour {
                 objectStorage[3] = GameData.gossipInventory[gossipInventoryList.selectedGossipItem].PowerShiftValue();
                 break;
         }        
-        objectStorage[4] = GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name();
+        objectStorage[4] = GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name;
         objectStorage[5] = CaughtChance();
         screenFader.gameObject.SendMessage("CreateSellGossipModal", objectStorage);
     }
@@ -120,7 +120,7 @@ public class GossipTrading : MonoBehaviour {
     {
         if (GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue() != 0)
         {
-            GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name()].ChangeAllegiance(GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue());
+            GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name].ChangeAllegiance(GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue());
             PierreQuestCheck(GameData.gossipInventory[gossipInventoryList.selectedGossipItem]);
             GetCaughtCheck();
             RemoveGossipItem(gossipInventoryList.selectedGossipItem);
@@ -129,7 +129,7 @@ public class GossipTrading : MonoBehaviour {
 
     public void PropagandaForPower()
     {
-        GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name()].ChangePower(GameData.gossipInventory[gossipInventoryList.selectedGossipItem].PowerShiftValue());
+        GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name].ChangePower(GameData.gossipInventory[gossipInventoryList.selectedGossipItem].PowerShiftValue());
         PierreQuestCheck(GameData.gossipInventory[gossipInventoryList.selectedGossipItem]);
         GetCaughtCheck();
         RemoveGossipItem(gossipInventoryList.selectedGossipItem);
@@ -224,12 +224,12 @@ public class GossipTrading : MonoBehaviour {
             if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 2)
             {
                 GameData.reputationCount -= 15;
-                GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name()].playerReputation -= 15;
+                GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name].playerReputation -= 15;
             }
             else
             {
                 GameData.reputationCount -= 25;
-                GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name()].playerReputation -= 25;
+                GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name].playerReputation -= 25;
             }
             //Angry Pop-Up About It
             screenFader.gameObject.SendMessage("CreateCaughtTradingGossipModal", GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction());

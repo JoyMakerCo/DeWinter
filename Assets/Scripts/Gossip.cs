@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Gossip {
 
-    Faction faction; // The Faction this Gossip is relevant to
+    FactionVO faction; // The Faction this Gossip is relevant to
     //Character character The Character this Gossip is relevant to (requires the Character system to be in place)
     int livreValue;
     int factionPowerShift;
@@ -33,7 +33,7 @@ public class Gossip {
         flavorText = RandomFlavorText();
     }
 
-    Faction RandomFaction(string partyFaction)
+    FactionVO RandomFaction(string partyFaction)
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
         int factionRandom = Random.Range(0, 7);
@@ -75,7 +75,7 @@ public class Gossip {
 
     int RandomFactionAllegianceShift()
     {
-        if(faction.Name() == "Revolution" || faction.Name() == "Crown")
+        if(faction.Name == "Revolution" || faction.Name == "Crown")
         {
             return 0;
         } else
@@ -99,7 +99,7 @@ public class Gossip {
 
     public string Name()
     {
-        return "A tidbit of " + faction.Name() + " Gossip";
+        return "A tidbit of " + faction.Name + " Gossip";
     }
 
     public int LivreValue()
@@ -122,7 +122,7 @@ public class Gossip {
         return freshness / 10;
     }
 
-    public Faction Faction()
+    public FactionVO Faction()
     {
         return faction;
     }

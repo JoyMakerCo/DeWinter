@@ -6,6 +6,7 @@ namespace Core
 	public class MessageSvc : IAppService, IDisposable
 	{
 		protected Dictionary<string, List<Delegate>> _listeners;
+		protected Dictionary<Type, List<Delegate>> _typeListeners;
 		protected Dictionary<string, List<Delegate>> _markedForRemoval;
 		protected bool _isNotifying;
 
@@ -24,6 +25,22 @@ namespace Core
 		public void Subscribe<T>(string messageID, Action<T> callback)
 		{
 			AddDelegate(messageID, callback, _listeners);
+		}
+
+		public void Subscribe<T>(Action<T> callback)
+		{
+			List<Delegate> result;
+			Type type = typeof(T);
+			if (!_typeListeners.TryGetValue(type, out result))
+			{
+				result = new List<Delegate>();
+				_typeListeners[type] = result;
+			}
+			if (!result.Contains(callback))
+			{
+				result.Add(callback);
+				_typeListeners[type] = result;
+			}		
 		}
 
 		public void Unsubscribe(string messageID, Delegate callback)
@@ -80,13 +97,26 @@ namespace Core
 			}
 		}
 
+		public void Send<T>(T messageData)
+		{
+			List<Delegate> callbacks;
+			if (_typeListeners.TryGetValue(typeof(T), out callbacks))
+			{
+				_isNotifying = true;
+				foreach(Delegate action in callbacks)
+				{
+					(action as Action<T>).Invoke(messageData);
+				}
+				RemoveMarkedDelegates();
+			}
+		}
+
 		protected void AddDelegate(string type, Delegate d, Dictionary<string, List<Delegate>> dict)
 		{
 			List<Delegate> result;
 			if (!dict.TryGetValue(type, out result))
 			{
 				result = new List<Delegate>();
-				dict[type] = result;
 			}
 			if (!result.Contains(d))
 			{
