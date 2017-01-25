@@ -145,7 +145,7 @@ public class GameData : MonoBehaviour
         roomAdjectiveList.Add("Dim");
         roomAdjectiveList.Add("Tasteless");
         roomAdjectiveList.Add("Crowded");
-        roomAdjectiveList.Add("Open");
+        roomAdjectiveList.Add("Sparse");
         roomAdjectiveList.Add("Quiet");
         roomAdjectiveList.Add("Loud");
         roomAdjectiveList.Add("Drunken");
@@ -168,10 +168,10 @@ public class GameData : MonoBehaviour
 
         //For Dispositions
         dispositionList.Clear();
-        dispositionList.Add(new Disposition("Aggressive", Color.red, "Boast", "Reassurance"));
-        dispositionList.Add(new Disposition("Mysterious", Color.magenta, "Intrigue", "Flattery"));
-        dispositionList.Add(new Disposition("Vain", Color.blue, "Flattery", "Boast"));
-        dispositionList.Add(new Disposition("Infirm", Color.yellow, "Reassurance", "Intrigue"));
+        dispositionList.Add(new Disposition("Politics", Color.red, "Politics", "Theater"));
+        dispositionList.Add(new Disposition("Theater", Color.magenta, "Theater", "Gossip"));
+        dispositionList.Add(new Disposition("Gossip", Color.blue, "Gossip", "Music"));
+        dispositionList.Add(new Disposition("Music", Color.yellow, "Music", "Politics"));
 
         //For Guests
         femaleTitleList.Clear();
