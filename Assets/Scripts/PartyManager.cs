@@ -93,7 +93,7 @@ public class PartyManager : MonoBehaviour {
         int outfitStyleReaction;
         if (GameData.currentStyle == OutfitInventory.personalInventory[GameData.partyOutfitID].style)
         {
-            outfitStyleReaction = 50;
+            outfitStyleReaction = 30;
         } else
         {
             outfitStyleReaction = 0;
@@ -106,7 +106,7 @@ public class PartyManager : MonoBehaviour {
         {
             if (GameData.currentStyle == AccessoryInventory.personalInventory[GameData.partyAccessoryID].Style())
             {
-                accessoryStyleReaction = 50;
+                accessoryStyleReaction = 30;
             }
             else
             {
@@ -115,7 +115,7 @@ public class PartyManager : MonoBehaviour {
             GameData.tonightsParty.maxPlayerConfidence += accessoryStyleReaction;
             if (OutfitInventory.personalInventory[GameData.partyOutfitID].style == AccessoryInventory.personalInventory[GameData.partyAccessoryID].Style())
             {
-                outfitAccessoryStyleMatch = 50;
+                outfitAccessoryStyleMatch = 30;
             }
             else
             {
