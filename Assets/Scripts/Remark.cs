@@ -27,15 +27,15 @@ public class Remark {
         }
         else
         {
-            if (info == "Boast")
+            if (info == "Politics")
             {
                 RandomExclusiveTone(0);
             }
-            else if (info == "Intrigue")
+            else if (info == "Theater")
             {
                 RandomExclusiveTone(1);
             }
-            else if (info == "Flattery")
+            else if (info == "Gossip")
             {
                 RandomExclusiveTone(2);
             }

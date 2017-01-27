@@ -40,10 +40,10 @@ public class Guest {
         isFemale = GenderDeterminer();
         if (isFemale)
         {
-            imageInt = Random.Range(0, 4);
+            imageInt = Random.Range(0, 2);
         } else
         {
-            imageInt = Random.Range(0, 5);
+            imageInt = Random.Range(0, 2);
         }
         name = GenerateName(); // Have to Generate the Name after the Gender
     }
