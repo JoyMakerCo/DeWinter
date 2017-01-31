@@ -38,6 +38,10 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+roomManager.ChoiceModal(Room.xPos, Room.yPos);
+roomManager.PartyEventModal(Room.xPos, Room.yPos);
+
+
     //TODO - Complete Overhaul as per the Multiple Room Shapes Spec
     public void SetUpMap(Party p)
     {
@@ -67,11 +71,11 @@ public class RoomManager : MonoBehaviour
                     mapButton.transform.localPosition = new Vector3(i * (buttonwidth+padding) - offsetFromCenterX, j * (buttonwidth + padding) - offsetFromCenterY, 0);
                     mapButtonGrid[i, j] = mapButton; 
                     //Set the Room that this button represents
-                    roomButton.myRoom = GameData.tonightsParty.roomGrid[i, j];
+                    roomButton.Room = GameData.tonightsParty.roomGrid[i, j];
                     roomButton.roomManager = this;
-                    if (roomButton.myRoom.entrance)
+                    if (roomButton.Room.entrance)
                     {
-                        entranceRoom = roomButton.myRoom; //Setting the Entrance Room in the Room Manager
+                        entranceRoom = roomButton.Room; //Setting the Entrance Room in the Room Manager
                     }
                     Debug.Log("Room Created at Grid Square: " + i.ToString() + "," + j.ToString());
                 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
 public class PartyManager : MonoBehaviour {
     public GameObject screenFader; // It's for the Confidence Tally pop-up
@@ -9,33 +10,17 @@ public class PartyManager : MonoBehaviour {
     void Start()
     {
         ConfidenceTally();
-        EnemyCheck();
         EngageParty();
-        GameData.tonightsParty.roomGrid[GameData.tonightsParty.entranceRoom.xPos, GameData.tonightsParty.entranceRoom.yPos].playerHere = true;
-    }
-
-    //Checks all the relevant Enemies and sees if they're going to attend the Party
-    void EnemyCheck()
-    {
-        foreach (Enemy e in EnemyInventory.enemyInventory)
-        {
-            if(e.faction == GameData.factionList[GameData.tonightsParty.faction])
-            {
-                if(Random.Range(0,2) == 0)
-                {
-                    GameData.tonightsParty.AddEnemy(e);
-                }
-            }
-        }
     }
 
     void EngageParty()
     {
         //Instantiate a the room Holder Parent Object
         roomManager.SetUpMap(GameData.tonightsParty);
+
         //Damage the Outfit's Novelty, how that the Confidence has already been Tallied
         GameData.tonightsParty.playerOutfit = OutfitInventory.personalInventory[GameData.partyOutfitID];
-        OutfitDegradation();
+		DeWinterApp.SendCommand<DegradeOutfitCmd, int>(GameData.partyOutfitID);
 
         //Is the Player using the Garter Flask Accessory? If so then increase the amount of Booze they can carry!
         if (GameData.partyAccessoryID != -1)
@@ -200,22 +185,5 @@ public class PartyManager : MonoBehaviour {
         }
         GameData.partyOutfitID = -1;
         GameData.partyAccessoryID = -1;
-    }
-
-    void OutfitDegradation()
-    {
-        //Reduce Novelty of Outfit. If Outfit has been used twice in a row then it's lowered double.
-        if (GameData.partyOutfitID != GameData.lastPartyOutfitID)
-        {
-            OutfitInventory.outfitInventories["personal"][GameData.partyOutfitID].novelty += GameData.noveltyDamage;
-            GameData.woreSameOutfitTwice = false;
-        }
-        else
-        {
-            OutfitInventory.outfitInventories["personal"][GameData.partyOutfitID].novelty += GameData.noveltyDamage * 2;
-            GameData.woreSameOutfitTwice = true;
-        }
-        //Now that the calculations are finished, the outfit now becomes the last used outfit.
-        GameData.lastPartyOutfitID = GameData.partyOutfitID;
     }
 }

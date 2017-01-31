@@ -7,6 +7,7 @@ namespace DeWinter
 		public string Name;
 		public RoomVO Entrance;
 		public Party Party;
+		public RoomVO [] Rooms;
 
 		public MapVO () {}
 

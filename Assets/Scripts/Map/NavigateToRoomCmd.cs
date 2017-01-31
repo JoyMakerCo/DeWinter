@@ -5,21 +5,22 @@ namespace DeWinter
 {
 	public class NavigateToRoomCmd : ICommand<RoomVO>
 	{
-		public void Execute<RoomVO>(RoomVO room)
+		public void Execute(RoomVO room)
 		{
 			MapModel model = DeWinterApp.GetModel<MapModel>();
+			Random rnd = new Random();
 
 			// Make sure the player can move to the next room
-			if ((new Random()).Next(100) < MoveThrough(model.Room))
+			if (rnd.Next(100) < model.MoveThroughChance)
 			{
 
 				// Make sure the room is connected
-				foreach (Door door in model.Room)
+				foreach (Door door in model.Room.Doors)
 				{
-					if (model.Room == door.Room)
+					if (room == door.Room)
 					{
 						model.Room = door.Room;
-						DeWinterApp.SendMessage<RoomVO>(MapMessage.ENTERED_ROOM, model.Room);
+						DeWinterApp.SendMessage<RoomVO>(MapMessage.ENTERED_ROOM, room);
 						return;
 					}
 				}
@@ -28,13 +29,6 @@ namespace DeWinter
 			{
 				// Denied! Player can't move through the room yet.
 			}
-		}
-
-		private bool MoveThrough(RoomVO room)
-		{
-			Random rnd = new Random();
-			int chance = 90 - (room.Cleared ? 0 : room.Difficulty * 10);
-			return rnd.Next(100) < chance;
 		}
 	}
 }

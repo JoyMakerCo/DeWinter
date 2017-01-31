@@ -6,12 +6,15 @@ namespace Core
 	public class MessageSvc : IAppService, IDisposable
 	{
 		protected Dictionary<string, List<Delegate>> _listeners;
+		protected Dictionary<Type, List<Delegate>> _typeListeners;
 		protected Dictionary<string, List<Delegate>> _markedForRemoval;
+		protected Dictionary<Type, List<Delegate>> _typeMarkedForRemoval;
 		protected bool _isNotifying;
 
 		public MessageSvc ()
 		{
 			_listeners = new Dictionary<string, List<Delegate>>();
+			_typeListeners = new Dictionary<Type, List<Delegate>>();
 			_markedForRemoval = null;
 			_isNotifying = false;
 		}
@@ -26,11 +29,27 @@ namespace Core
 			AddDelegate(messageID, callback, _listeners);
 		}
 
+		public void Subscribe<T>(Action<T> callback)
+		{
+			List<Delegate> result;
+			Type t = typeof(T);
+			if (!_typeListeners.TryGetValue(t, out result))
+			{
+				result = new List<Delegate>();
+			}
+			if (!result.Contains(callback))
+			{
+				result.Add(callback);
+				_typeListeners[t] = result;
+			}
+		}
+
 		public void Unsubscribe(string messageID, Delegate callback)
 		{
 			if (!_isNotifying)
 			{
 				RemoveDelegate(messageID, callback, _listeners);
+				RemoveDelegate(messageID, callback, _markedForRemoval);
 			}
 			else
 			{
@@ -39,6 +58,32 @@ namespace Core
 					_markedForRemoval = new Dictionary<string, List<Delegate>>();
 				}
 				AddDelegate(messageID, callback, _markedForRemoval);
+			}
+		}
+
+		public void Unsubscribe<T>(Delegate callback)
+		{
+			List<Delegate> delegates;
+			Type t = typeof(T);
+			if (_typeListeners.TryGetValue(t, out delegates) && delegates.Contains(callback))
+			{
+				if (!_isNotifying)
+				{
+					RemoveDelegate<T>(callback, _typeListeners);
+					RemoveDelegate<T>(callback, _typeMarkedForRemoval);
+				}
+				else
+				{
+					if (_typeMarkedForRemoval == null)
+					{
+						_typeMarkedForRemoval = new Dictionary<Type, List<Delegate>>();
+					}
+					if (!_typeMarkedForRemoval.TryGetValue(t, out delegates))
+					{
+						_typeMarkedForRemoval[t] = new List<Delegate>();
+					}
+					_typeMarkedForRemoval[t].Add(callback);
+				}
 			}
 		}
 
@@ -80,28 +125,49 @@ namespace Core
 			}
 		}
 
+		public void Send<T>(T messageData)
+		{
+			List<Delegate> callbacks;
+			Type t = typeof(T);
+			if (_typeListeners.TryGetValue(t, out callbacks))
+			{
+				_isNotifying = true;
+				foreach(Delegate action in callbacks)
+				{
+					(action as Action<T>).Invoke(messageData);
+				}
+				RemoveMarkedDelegates();
+			}
+		}
+
 		protected void AddDelegate(string type, Delegate d, Dictionary<string, List<Delegate>> dict)
 		{
 			List<Delegate> result;
 			if (!dict.TryGetValue(type, out result))
 			{
 				result = new List<Delegate>();
-				dict[type] = result;
+				dict.Add(type, result);
 			}
 			if (!result.Contains(d))
 			{
-				result.Add(d);
-				dict[type] = result;
+				dict[type].Add(d);
 			}
 		}
 
 		protected void RemoveDelegate(string type, Delegate d, Dictionary<string, List<Delegate>> dict)
 		{
-			List<Delegate> result;
-			if (dict.TryGetValue(type, out result))
+			if (dict.ContainsKey(type))
 			{
-				result.Remove(d);
-				dict[type] = result;
+				dict[type].Remove(d);
+			}
+		}
+
+		protected void RemoveDelegate<T>(Delegate d, Dictionary<Type, List<Delegate>> dict)
+		{
+			Type t = typeof(T);
+			if (dict.ContainsKey(t))
+			{
+				dict[t].Remove(d);
 			}
 		}
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Core;
 
 namespace DeWinter
@@ -26,6 +27,33 @@ namespace DeWinter
 		public bool IsEntrance
 		{
 			get { return Room == Map.Entrance; }
+		}
+
+		public bool HostHere
+		{
+			get {
+				return Array.IndexOf(Room.Features, PartyConstants.HOST) >= 0;
+			}
+		}
+
+		public int MoveThroughChance
+		{
+			get {
+				if (Room == null) return 0; // Early out
+
+				int chance = 90 - (Room.Cleared ? 0 : Room.Difficulty * 10);
+
+				// TODO: Make Accessories Configurable
+				if(GameData.tonightsParty.playerAccessory != null)
+		        {
+		            if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
+		            {
+		                chance += 10;
+		            }
+		        }
+
+		        return Math.Min(chance, 100);
+			}
 		}
 	}
 }

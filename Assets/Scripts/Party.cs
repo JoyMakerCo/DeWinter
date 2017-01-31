@@ -53,7 +53,6 @@ public class Party {
         SetFaction();
         partySize = Random.Range(1, 4);
         GenerateRandomDescription();
-        GenerateRooms();
         turns = (partySize * 5) + 1;
         turnsLeft = turns;
         FillPlayerHand();
@@ -67,7 +66,6 @@ public class Party {
         SetExclusiveFaction(notThisFaction);
         partySize = Random.Range(1, 4);
         GenerateRandomDescription();
-        GenerateRooms();
         turns = (partySize * 5) + 1;
         turnsLeft = turns;
         FillPlayerHand();
@@ -88,7 +86,6 @@ public class Party {
             partySize = size;
         }       
         GenerateRandomDescription();
-        GenerateRooms();
         turns = (partySize * 5) + 1;
         turnsLeft = turns;
         FillPlayerHand();
@@ -212,124 +209,6 @@ public class Party {
         description = "This party is being hosted by some dude or dudette. This segment will later have randomly generated Text describing the party. It should be pretty damn funny.";
     }
 
-    void GenerateRooms()
-    {
-        int gridDimensionX = 0;
-        int gridDimensionY = 0;
-        int roomCount = 0; //The Total Amount of Rooms at the Party
-        int roomDeletionAmount = 0;
-        switch (partySize)
-        {
-            case 1:
-                gridDimensionX = 3;
-                gridDimensionY = 3;
-                roomDeletionAmount = 2;
-                break;
-            case 2:
-                gridDimensionX = 4;
-                gridDimensionY = 4;
-                roomDeletionAmount = Random.Range(3, 5);
-                break;
-            case 3:
-                gridDimensionX = 5;
-                gridDimensionY = 5;
-                roomDeletionAmount = Random.Range(5, 7);
-                break;
-        }
-        //Set the Party's Map Size along with some Faction Specific Changes
-        if (faction == "Crown")
-        {
-            gridDimensionX++;
-            roomDeletionAmount++;
-        } else if (faction == "Revolution"){
-            gridDimensionY++;
-            roomDeletionAmount++;
-        }
-        roomGrid = new Room [gridDimensionX, gridDimensionY];
-        roomCount = gridDimensionX * gridDimensionY;
-        //Fill the Grid with Randomized Rooms
-        for(int i = 0; i < gridDimensionX; i++)
-        {
-            for (int j = 0; j < gridDimensionY; j++)
-            {
-                roomGrid[i, j] = new Room(this, i, j);
-            }
-        }
-        //Delete a few Random Rooms (Party Size amount)
-        for (int i = 0; i < roomDeletionAmount; i++)
-        {
-            if(roomGrid[Random.Range(0, gridDimensionX), Random.Range(0, gridDimensionY)] != null)
-            {
-                roomGrid[Random.Range(0, gridDimensionX), Random.Range(0, gridDimensionY)] = null;
-                roomCount--;
-            }    
-        }
-        //Set the Entrance (Random, Southern-most Room)
-        Room selectedRoom = null;
-        while (selectedRoom == null){ //Just in case it selects a null cell
-            selectedRoom = roomGrid[Random.Range(0, gridDimensionX), 0];
-        }
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].entrance = true;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].starRating = 1;
-
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].name = "The Entrance";
-        entranceRoom = roomGrid[selectedRoom.xPos, selectedRoom.yPos]; // This is for the Party Manager Later
-        //Flood fill to set Room Entrance Distance 
-        FloodFill(entranceRoom);
-        //FloodFill(roomGrid, selectedRoom.xPos, selectedRoom.yPos, 0);
-
-        Room furthestRoom = selectedRoom; // Lowest possible distance Room, the entrance
-        for (int i = 0; i < gridDimensionX; i++)
-        {
-            for (int j = 0; j < gridDimensionY; j++)
-            {
-                if (roomGrid[i, j] != null) // Safety Measure
-                {
-                    if (roomGrid[i, j].entranceDistance == -1) //Is it untouched by Flood Fill?
-                    {
-                        roomGrid[i, j] = null; // Kill the bastard Room if there are no connectors
-                        roomCount--;
-                    } else
-                    {
-                        if (roomGrid[i,j].entranceDistance > furthestRoom.entranceDistance)
-                        {
-                            furthestRoom = roomGrid[i, j];
-                        }
-                        if (!roomGrid[i, j].entrance && !roomGrid[i, j].hostHere)
-                        {
-                            roomGrid[i, j].SetStarRating((Random.Range(1, 4)+ Random.Range(1, 5))-2); //Set the Star Rating, using a basically normalized curve
-                        }
-                    }
-                }
-            }
-        }
-        //Put in a minimum amount of Punch Bowls (None in the Entrance)
-        int punchBowlAmount = Mathf.Clamp(roomCount / 3, 1, roomCount-1); //-1 Because you can't place Punch Bowls in the Entrance
-        int punchCounter = 0;
-        int randomRoomX;
-        int randomRoomY;
-        while(punchCounter < punchBowlAmount)
-        {
-            randomRoomX = Random.Range(0, gridDimensionX);
-            randomRoomY = Random.Range(0, gridDimensionY);
-            if (roomGrid[randomRoomX,randomRoomY] != null && !roomGrid[randomRoomX, randomRoomY].entrance)
-            {
-                    roomGrid[randomRoomX, randomRoomY].punchBowl = true;
-                    
-            }
-            punchCounter++;
-        }
-        //Host Stuff
-        roomGrid[furthestRoom.xPos, furthestRoom.yPos].SetStarRating(6); //The Furthest Room is the Host, represented internally by a Star Rating of 6
-        host = roomGrid[furthestRoom.xPos, furthestRoom.yPos].host; //Setting the Host for the Party, this is used elsewhere
-        //If the Party makes it so there's no other Rooms other than the Entrance (too many deletions) then just redo it
-        if (furthestRoom.entranceDistance == 0)
-        {
-            GenerateRooms();
-        }
-    }
-
     public string SizeString()
     {
         switch (partySize)
@@ -442,49 +321,6 @@ public class Party {
         wonRewardsList = tempRewardList; //The new, totaled list, replaces the old one 
     }
 
-    //Adds an Enemy to the Party, used by the Enemy Inventory Script
-    public void AddEnemy(Enemy enemy)
-    {
-        //Randomly Select a Room, add the Enemy
-        int xPos = Random.Range(0, roomGrid.GetLength(0));
-        int yPos = Random.Range(0, roomGrid.GetLength(1));
-        if (roomGrid[xPos,yPos] != null){
-            Room enemyRoom = roomGrid[xPos, yPos];
-            if (!enemyRoom.hostHere && !enemyRoom.entrance)
-            {
-                enemyRoom.AddEnemy(enemy);
-                //Put the Enemy in the Enemy List, just in case we need that Data
-                enemyList.Add(enemy);
-            } else
-            {
-                AddEnemy(enemy);
-            }
-        } else
-        {
-            AddEnemy(enemy);
-        }
-    }
-
-    public void RemoveEnemy(Enemy enemy)
-    {
-        if (enemyList.Contains(enemy))
-        {
-            //Scroll through all of the Rooms, Remove the Enemy Enemy
-            for(int i = 0; i < roomGrid.GetLength(0); i++)
-            {
-                for(int j = 0; j < roomGrid.GetLength(1); j++)
-                {
-                    if (roomGrid[i, j] != null)
-                    {
-                        roomGrid[i, j].RemoveEnemy(enemy); 
-                    }
-                }
-            }
-        }
-        //Remove the Enemy from the Enemy List
-        enemyList.Remove(enemy);
-    }
-
     public void InvitePlayer()
     {
         invited = true;
@@ -500,5 +336,4 @@ public class Party {
             lastTone = playerHand[i].tone;
         }
     }
-   
 }

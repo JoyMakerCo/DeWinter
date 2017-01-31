@@ -6,6 +6,7 @@ public class EnemyInventory : MonoBehaviour {
 
     static EnemyInventory instance = null;
 
+    // TODO: This needs a model.
     public static List<Enemy> enemyInventory = new List<Enemy>();
 
     void Start () {
@@ -50,7 +51,7 @@ public class EnemyInventory : MonoBehaviour {
                             {
                                 if (Random.Range(0, 2) == 0)
                                 {
-                                    p.AddEnemy(e);
+									EnemyInventory.AddEnemy(e);
                                 }
                             }
                         }
@@ -61,7 +62,7 @@ public class EnemyInventory : MonoBehaviour {
                             {
                                 if (Random.Range(0, 2) == 0)
                                 {
-                                    p.AddEnemy(e);
+									EnemyInventory.AddEnemy(e);
                                 }
                             }
                         }
@@ -93,7 +94,7 @@ public class EnemyInventory : MonoBehaviour {
                             Party p = d.party1;
                             if (p.enemyList.Contains(e))
                             {
-                                p.RemoveEnemy(e);
+								EnemyInventory.RemoveEnemy(e);
                             }
                         }
                         if (d.party2.faction != null)
@@ -101,7 +102,7 @@ public class EnemyInventory : MonoBehaviour {
                             Party p = d.party2;
                             if (p.enemyList.Contains(e))
                             {
-                                p.RemoveEnemy(e);
+								EnemyInventory.RemoveEnemy(e);
                             }
                         }
                     }

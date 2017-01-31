@@ -6,16 +6,38 @@ namespace DeWinter
 {
 	public class GenerateMapCmd : ICommand<Party>
 	{
-		public void Execute<Party>(Party p)
+		private RoomVO [] roomList;
+
+		public void Execute(Party party)
 		{
 			Random rnd = new Random();
-			MapVO map = new MapVO(p);
-			map.Entrance = BuildEntrance(p.partySize, rnd);
+			MapVO map = new MapVO(party);
+
+
+			switch (party.partySize)
+			{
+			case 1:
+				roomList = new RoomVO[7];
+                break;
+            case 2:
+				roomList = new RoomVO[rnd.Next(11, 13)];
+                break;
+            case 3:
+				roomList = new RoomVO[rnd.Next(18, 20)];
+				break;
+			}
+
+			map.Entrance = roomList[0] = BuildEntrance(party.partySize, rnd);
+			map.Entrance.Difficulty = 1;
+
+			PopulateEnemies(map, rnd, roomList.Length);
+			DeWinterApp.SendMessage<MapVO>(MapMessage.MAP_READY, map);
 		}
 
 		private RoomVO BuildEntrance(int size, Random rnd)
 		{
-			
+			RoomVO entrance = new RoomVO("Entrance");
+			return entrance;
 		}
 
 		private string GenerateRandomName(Random rnd)
@@ -32,41 +54,50 @@ namespace DeWinter
 	    	return list[index];
 	    }
 
-		private List<Guest> GenerateGuests(int difficulty)
+	    private void AddRandomFeatures(RoomVO room, Random rnd)
 	    {
-			Random rnd = new Random();
-			List<Guest> result;
+	    	//TODO: make features abstract and configurable
+	    	int punchBowlChance = 33;
+	    	if (rnd.Next(100) < punchBowlChance)
+	    	{
+	    		room.Features = new string[]{ PartyConstants.PUNCHBOWL };
+	    	}
+	    }
+
+		private List<Guest> GenerateGuests(int difficulty, Random rnd)
+	    {
+			List<Guest> result = new List<Guest>();
 	        switch (difficulty)
 	        {
 	            case 1:
-					result.Add(new Guest(Random.Next(25, 51), Random.Next(6, 10)));
-					result.Add(new Guest(Random.Next(25, 51), Random.Next(6, 10)));
-					result.Add(new Guest(Random.Next(25, 51), Random.Next(6, 10)));
-					result.Add(new Guest(Random.Next(25, 51), Random.Next(6, 10)));
+					result.Add(new Guest(rnd.Next(25, 51), rnd.Next(6, 10)));
+					result.Add(new Guest(rnd.Next(25, 51), rnd.Next(6, 10)));
+					result.Add(new Guest(rnd.Next(25, 51), rnd.Next(6, 10)));
+					result.Add(new Guest(rnd.Next(25, 51), rnd.Next(6, 10)));
 	                break;
 	            case 2:
-					result.Add(new Guest(Random.Next(25, 46), Random.Next(5, 9)));
-					result.Add(new Guest(Random.Next(25, 46), Random.Next(5, 9)));
-					result.Add(new Guest(Random.Next(25, 46), Random.Next(5, 9)));
-					result.Add(new Guest(Random.Next(25, 46), Random.Next(5, 9)));
+					result.Add(new Guest(rnd.Next(25, 46), rnd.Next(5, 9)));
+					result.Add(new Guest(rnd.Next(25, 46), rnd.Next(5, 9)));
+					result.Add(new Guest(rnd.Next(25, 46), rnd.Next(5, 9)));
+					result.Add(new Guest(rnd.Next(25, 46), rnd.Next(5, 9)));
 	                break;
 	            case 3:
-					result.Add(new Guest(Random.Next(25, 41), Random.Next(4, 8)));
-					result.Add(new Guest(Random.Next(25, 41), Random.Next(4, 8)));
-					result.Add(new Guest(Random.Next(25, 41), Random.Next(4, 8)));
-					result.Add(new Guest(Random.Next(25, 41), Random.Next(4, 8)));
+					result.Add(new Guest(rnd.Next(25, 41), rnd.Next(4, 8)));
+					result.Add(new Guest(rnd.Next(25, 41), rnd.Next(4, 8)));
+					result.Add(new Guest(rnd.Next(25, 41), rnd.Next(4, 8)));
+					result.Add(new Guest(rnd.Next(25, 41), rnd.Next(4, 8)));
 	                break;
 	            case 4:
-					result.Add(new Guest(Random.Next(25, 36), Random.Next(3, 7)));
-					result.Add(new Guest(Random.Next(25, 36), Random.Next(3, 7)));
-					result.Add(new Guest(Random.Next(25, 36), Random.Next(3, 7)));
-					result.Add(new Guest(Random.Next(25, 36), Random.Next(3, 7)));
+					result.Add(new Guest(rnd.Next(25, 36), rnd.Next(3, 7)));
+					result.Add(new Guest(rnd.Next(25, 36), rnd.Next(3, 7)));
+					result.Add(new Guest(rnd.Next(25, 36), rnd.Next(3, 7)));
+					result.Add(new Guest(rnd.Next(25, 36), rnd.Next(3, 7)));
 	                break;
 	            case 5:
-					result.Add(new Guest(Random.Next(20, 31), Random.Next(2, 6)));
-					result.Add(new Guest(Random.Next(20, 31), Random.Next(2, 6)));
-					result.Add(new Guest(Random.Next(20, 31), Random.Next(2, 6)));
-					result.Add(new Guest(Random.Next(20, 31), Random.Next(2, 6)));
+					result.Add(new Guest(rnd.Next(20, 31), rnd.Next(2, 6)));
+					result.Add(new Guest(rnd.Next(20, 31), rnd.Next(2, 6)));
+					result.Add(new Guest(rnd.Next(20, 31), rnd.Next(2, 6)));
+					result.Add(new Guest(rnd.Next(20, 31), rnd.Next(2, 6)));
 	                break;
 	        }
 	        return result;
@@ -84,6 +115,23 @@ namespace DeWinter
 				new Reward(party, "Random", 6),
 				new Reward(party, "Random", 7)
     		};
+	    }
+
+	    private void PopulateEnemies(MapVO map, Random rnd, int numRooms)
+	    {
+	    	int roomID = numRooms-1;
+			Faction faction = GameData.factionList[GameData.tonightsParty.faction];
+			foreach (Enemy e in EnemyInventory.enemyInventory)
+	        {
+				if(e.faction == faction && rnd.Next(0,2) == 0)
+                {
+                	roomList[roomID].Enemies.Add(e);
+                }
+                if (--roomID == 0)
+                {
+                	return;
+				}
+	        }
 	    }
 	}
 }

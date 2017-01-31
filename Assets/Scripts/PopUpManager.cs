@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using DeWinter;
 
-public class PopUpManager : MonoBehaviour {
-
+public class PopUpManager : MonoBehaviour
+{
     public GameObject screenFader;
 
     public GameObject quitGameModal;
@@ -664,6 +665,9 @@ public class PopUpManager : MonoBehaviour {
     //This is used in the Party Scene for Players to choose whether they wish to engage in conversation (Work the Room) or try to avoid everyone (Move Through)
     void CreateRoomChoiceModal(int[] intStorage)
     {
+    	MapModel model = DeWinterApp.GetModel<MapModel>();
+    	RoomVO room = model.Room;
+
         int xPos = intStorage[0];
         int yPos = intStorage[1];
 
@@ -678,32 +682,25 @@ public class PopUpManager : MonoBehaviour {
         
         Text moveThroughText = popUp.transform.Find("MoveThroughButton").Find("Text").GetComponent<Text>();
         Image moveThroughButtonImage = popUp.transform.Find("MoveThroughButton").GetComponent<Image>();
-        if (!GameData.tonightsParty.roomGrid[xPos, yPos].hostHere) //If the Host isn't here
+
+        if (!model.HostHere) //If the Host isn't here
         {
             moveThroughButtonImage.color = Color.white;
             moveThroughText.color = Color.white;
-            int moveThroughChance = GameData.tonightsParty.roomGrid[xPos, yPos].MoveThroughChance();
             //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-            if(GameData.tonightsParty.playerAccessory != null)
-            {
-                if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
-                {
-                    moveThroughChance += 10;
-                }
-            }
-            moveThroughText.text = "Move Through (" + moveThroughChance.ToString() + "%)";
-            bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
+            moveThroughText.text = "Move Through (" + model.MoveThroughChance.ToString() + "%)";
+            bodyText.text = "You've entered the " + model.Room.Name +
                         "\n\nWould you like to 'Work the Room' and engage the party goers in Conversation, or would you like to 'Move Through' and hope nobody notices you?";
         } else // If the Host Is there
         {
             moveThroughButtonImage.color = Color.clear;
             moveThroughText.color = Color.clear;
-            bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
+            bodyText.text = "You've entered the " + model.Room.Name +
                        "\n\nPrepare to 'Work the Room' and engage the Host in Conversation. They may be alone but they'll be far more demanding than a regular Guest.";
         }
         Text workTheRoomText = popUp.transform.Find("WorkTheRoomButton").Find("Text").GetComponent<Text>();
         Image workTheRoomImage = popUp.transform.Find("WorkTheRoomButton").GetComponent<Image>();
-        if (!GameData.tonightsParty.roomGrid[xPos, yPos].cleared)
+        if (!room.Cleared)
         {
             workTheRoomImage.color = Color.white;
             workTheRoomText.color = Color.white;
@@ -722,7 +719,7 @@ public class PopUpManager : MonoBehaviour {
     //This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
     void CreateWorkTheRoomModal(object[] objectStorage)
     {
-        Room room = objectStorage[0] as Room;
+        RoomVO room = objectStorage[0] as RoomVO;
         bool isAmbush = (bool)objectStorage[1];
         RoomManager roomManager = objectStorage[2] as RoomManager;
         //Make the Pop Up
@@ -743,7 +740,7 @@ public class PopUpManager : MonoBehaviour {
     //This is used in the Party Scene to brings up the Conversation/Work the Host Modal where the Player combats the Host with their charms
     void CreateWorkTheHostModal(object[] objectStorage)
     {
-        Room room = objectStorage[0] as Room;
+        RoomVO room = objectStorage[0] as RoomVO;
         RoomManager roomManager = objectStorage[1] as RoomManager; ;
         //Make the Pop Up
         GameObject popUp = Instantiate(workTheHostModal) as GameObject;
