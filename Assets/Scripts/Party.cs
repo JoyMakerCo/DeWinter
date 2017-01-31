@@ -335,11 +335,11 @@ public class Party {
         switch (partySize)
         {
             case 1:
-                return "Small";
+                return "Trivial";
             case 2:
-                return "Medium";
+                return "Decent";
             case 3:
-                return "Large";
+                return "Grand";
             default:
                 return "Nothing";
         }
