@@ -48,7 +48,7 @@ public class PierreQuestInventoryList : MonoBehaviour {
         if (GameData.currentDay >= GameData.nextQuestDay)
         {
             //Actually Assigning the Quest
-            if (GameData.pierreQuestInventory.Count < 3)
+            if (GameData.pierreQuestInventory.Count < 3 && GameData.playerReputationLevel >= 1)
             {
                 //Create the Quest
                 PierreQuest newPierreQuest = new PierreQuest();

@@ -60,13 +60,26 @@ public class CalendarManager : MonoBehaviour {
             Party party = GameData.calendar.daysFromNow(i).party1;
             if (party.faction != null)
             {
-                if (party.partySize <= GameData.factionList[party.faction].largestAllowableParty() && i <= party.invitationDistance && party.invited == false && party.partySize > 0)
+                //Is the Party within Invite Range? && Has the Player been Invited Already? && Is it a real Party at all?
+                if (i <= party.invitationDistance && party.invited == false && party.partySize > 0)
                 {
-                    //Invitation Pop Up
-                    screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
-                    //Actually Inviting the Player
-                    party.InvitePlayer();
-                }
+                    //Is the Player of the Right Faction Benefit Level? 
+                    if (party.partySize <= GameData.factionList[party.faction].largestAllowableParty())
+                    {
+                        //Invitation Pop Up
+                        screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
+                        //Actually Inviting the Player
+                        party.InvitePlayer();
+                    }
+                    //Or do they have just such a Reputation that they get invited anyway?
+                    else if (party.partySize <= GameData.reputationLevels[GameData.playerReputationLevel].PartyInviteImportance())
+                    {
+                        //Invitation Pop Up
+                        screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
+                        //Actually Inviting the Player
+                        party.InvitePlayer();
+                    }
+                }        
             }
         }
         //Party Invites (Party 2)
@@ -77,12 +90,25 @@ public class CalendarManager : MonoBehaviour {
                 Party party = GameData.calendar.daysFromNow(i).party2;
                 if (party.faction != null)
                 {
-                    if (party.partySize <= GameData.factionList[party.faction].largestAllowableParty() && i <= party.invitationDistance && party.invited == false && party.partySize > 0)
+                    //Is the Party within Invite Range? && Has the Player been Invited Already? && Is it a real Party at all?
+                    if (i <= party.invitationDistance && party.invited == false && party.partySize > 0)
                     {
-                        //Invitation Pop Up
-                        screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
-                        //Actually Inviting the Player
-                        party.InvitePlayer();
+                        //Is the Player of the Right Faction Benefit Level? 
+                        if (party.partySize <= GameData.factionList[party.faction].largestAllowableParty())
+                        {
+                            //Invitation Pop Up
+                            screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
+                            //Actually Inviting the Player
+                            party.InvitePlayer();
+                        }
+                        //Or do they have just such a Reputation that they get invited anyway?
+                        else if (party.partySize <= GameData.reputationLevels[GameData.playerReputationLevel].PartyInviteImportance())
+                        {
+                            //Invitation Pop Up
+                            screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
+                            //Actually Inviting the Player
+                            party.InvitePlayer();
+                        }
                     }
                 }
             }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class JournalTabController : MonoBehaviour {
+    public GameObject personalTab;
+    public GameObject personalButton;
     public GameObject factionsTab;
     public GameObject factionsButton;
     public GameObject notablesTab;
@@ -11,16 +13,29 @@ public class JournalTabController : MonoBehaviour {
     public GameObject enemiesTab;
     public GameObject enemiesButton;
 
+    public GeneralReputationBenefitsListController benefitsController;
+
     // Use this for initialization
     void Start()
     {
-        FactionsSelected();
+        PersonalSelected();
+    }
+
+    public void PersonalSelected()
+    {
+        benefitsController.DisplayBenefits(); //Just making sure the the Benefits are properly tallied up and displayed
+        personalTab.transform.SetAsLastSibling();
+        personalButton.GetComponent<Image>().color = Color.black;
+        factionsButton.GetComponent<Image>().color = Color.white;
+        notablesButton.GetComponent<Image>().color = Color.white;
+        enemiesButton.GetComponent<Image>().color = Color.white;
     }
 
     public void FactionsSelected()
     {
         factionsTab.transform.SetAsLastSibling();
         factionsButton.GetComponent<Image>().color = Color.black;
+        personalButton.GetComponent<Image>().color = Color.white;
         notablesButton.GetComponent<Image>().color = Color.white;
         enemiesButton.GetComponent<Image>().color = Color.white;
     }
@@ -29,6 +44,7 @@ public class JournalTabController : MonoBehaviour {
     {
         notablesTab.transform.SetAsLastSibling();
         notablesButton.GetComponent<Image>().color = Color.black;
+        personalButton.GetComponent<Image>().color = Color.white;
         factionsButton.GetComponent<Image>().color = Color.white;
         enemiesButton.GetComponent<Image>().color = Color.white;
     }
@@ -37,6 +53,7 @@ public class JournalTabController : MonoBehaviour {
     {
         enemiesTab.transform.SetAsLastSibling();
         enemiesButton.GetComponent<Image>().color = Color.black;
+        personalButton.GetComponent<Image>().color = Color.white;
         factionsButton.GetComponent<Image>().color = Color.white;
         notablesButton.GetComponent<Image>().color = Color.white;
     }

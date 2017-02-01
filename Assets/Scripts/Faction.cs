@@ -171,7 +171,7 @@ public class Faction {
                 benefitsList.Add("Level 9: You are given influence at the Fashion Houses and may pick styles");
                 break;
             case "Revolution":
-                benefitsList.Add("Level 9: You are a member of the Revolution Council");
+                benefitsList.Add("Level 9: You are a member of the Revolutionary Council");
                 break;
         }
     }

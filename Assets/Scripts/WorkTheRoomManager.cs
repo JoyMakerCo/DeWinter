@@ -30,6 +30,7 @@ public class WorkTheRoomManager : MonoBehaviour
     float currentTurnTimer = 5;
     float maxTurnTimer = 5;
     bool turnTimerActive;
+    public Image reparteeIndicatorImage;
 
     List<GameObject> guestVisualList;
 
@@ -190,6 +191,13 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //Turn Timer
         turnTimerBar.value = currentTurnTimer / maxTurnTimer;
+        if(GameData.playerReputationLevel >= 2)
+        {
+            reparteeIndicatorImage.color = Color.green;
+        } else
+        {
+            reparteeIndicatorImage.color = Color.clear;
+        }
 
         //Ready Go Text
         readyGoText.text = GameData.conversationIntroList[Random.Range(0, GameData.conversationIntroList.Count)];
@@ -429,7 +437,14 @@ public class WorkTheRoomManager : MonoBehaviour
         //Do they like the Tone?
         if (room.party.playerHand[targetingRemark].tone == guest.disposition.like) //They like the tone
         {
-            ChangeGuestOpinion(guest, (int)(Random.Range(25,36)));
+            if (guest.isEnemy && GameData.playerReputationLevel >= 4)
+            {
+                ChangeGuestOpinion(guest, (int)((Random.Range(25, 36) * ReparteBonus()) * 1.25));
+            }
+            else
+            {
+                ChangeGuestOpinion(guest, (int)(Random.Range(25, 36) * ReparteBonus()));
+            }
             AddRemarkToHand(); //Add a new Remark for Tone success           
             room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 5, 5, room.party.maxPlayerConfidence); //Confidence Reward
             guest.dispositionRevealed = true; // Reveal their Disposition to the Player (if concealed)
@@ -437,7 +452,14 @@ public class WorkTheRoomManager : MonoBehaviour
         {
             if (!fascinatorEffect) //If the the Player doesn't have the Fascinator Accessory or its ability has already been used up
             {
-                ChangeGuestOpinion(guest, (int)(Random.Range(-17, -11)));
+                if (guest.isEnemy && GameData.playerReputationLevel >= 4)
+                {
+                    ChangeGuestOpinion(guest, (int)((Random.Range(-17, -11) * ReparteBonus()) * 1.25));
+                }
+                else
+                {
+                    ChangeGuestOpinion(guest, (int)(Random.Range(-17, -11) * ReparteBonus()));
+                }
                 room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence - 10, 0, room.party.maxPlayerConfidence); //Confidence Penalty
             } else //If it hasn't yet, use up the ability and ignore the first Negative Comment Effect
             {
@@ -446,7 +468,13 @@ public class WorkTheRoomManager : MonoBehaviour
 
         } else //Neutral Tone
         {
-            ChangeGuestOpinion(guest, (int)(Random.Range(12, 18) * GoingEarlyBonus()));
+            if(guest.isEnemy && GameData.playerReputationLevel >= 4)
+            {
+                ChangeGuestOpinion(guest, (int)((Random.Range(12, 18) * ReparteBonus())*1.25));
+            } else
+            {
+                ChangeGuestOpinion(guest, (int)(Random.Range(12, 18) * ReparteBonus()));
+            }
         }
         // Refill Interest of the Selected
         guest.currentInterestTimer = guest.maxInterestTimer + 1; //Everyone loses one because of the Turn Timer
@@ -649,9 +677,9 @@ public class WorkTheRoomManager : MonoBehaviour
         g.attackTimerWaiting = false;
     }
 
-    public float GoingEarlyBonus()
+    public float ReparteBonus()
     {
-        if(currentTurnTimer/maxTurnTimer >= 0.5)
+        if(currentTurnTimer/maxTurnTimer >= 0.5 && GameData.playerReputationLevel >= 2)
         {
             return 1.25f;
         } else
