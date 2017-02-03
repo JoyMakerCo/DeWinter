@@ -8,6 +8,7 @@ public class Faction {
     public int playerReputation; //What's the Player's Rep with this faction? Raw Number
     private int playerReputationLevel; //The Player's 'Reputation Level'. Intended to make the Reputation system a little more understandable
     private int[] playerReputationLevelRequirements;
+    private int[] playerConfidenceBonus;
     float power; //How powerful is this faction in the game?
     public string knownPower = "Unknown"; //Used in the 'Test the Waters' screen
     public int powerKnowledgeTimer;
@@ -28,6 +29,7 @@ public class Faction {
         allegiance = all;
         playerReputation = 0;
         playerReputationLevelRequirements = new int[11];
+        playerConfidenceBonus = new int[11];
         StockPlayerReputationLevelRequirements();
         StockBenefitsList();
     }
@@ -128,64 +130,96 @@ public class Faction {
         playerReputationLevelRequirements[10] = 999999; //A cap just so it doesn't freak out should the player run over 400
     }
 
+    private void StockConfidenceBenefits()
+    {
+        playerConfidenceBonus[0] = 0;
+        playerConfidenceBonus[1] = 10;
+        playerConfidenceBonus[2] = 20;
+        playerConfidenceBonus[3] = 30;
+        playerConfidenceBonus[4] = 40;
+        playerConfidenceBonus[5] = 50;
+        playerConfidenceBonus[6] = 60;
+        playerConfidenceBonus[7] = 70;
+        playerConfidenceBonus[8] = 80;
+        playerConfidenceBonus[9] = 90;
+    }
+
     void StockBenefitsList()
     {
-        benefitsList.Add("Level 0: Invited to Small " + name + " Parties");
-        benefitsList.Add("Level 1: Wine upon entering " + name + " Parties");
+        benefitsList.Add("Level 0: No new invitations to Trivial " + name + " Parties");
+        benefitsList.Add("Level 1: Invited to Trivial " + name + " Parties");
+        benefitsList.Add("Level 2: Wine upon entering " + name + " Parties");
         switch (name)
         {
             case "Crown":
-                benefitsList.Add("Level 2: Training in Courtly Dances");
+                benefitsList.Add("Level 3: Training in Courtly Dances");
                 break;
             case "Church":
-                benefitsList.Add("Level 2: Confessions allow Scandals to disappear faster");
+                benefitsList.Add("Level 3: Confessions allow Scandals to disappear faster");
                 break;
             case "Military":
-                benefitsList.Add("Level 2: A free bodyguard is provided");
+                benefitsList.Add("Level 3: Alcohol effects you less");
                 break;
             case "Bourgeoisie":
-                benefitsList.Add("Level 2: The merchant stocks 4 Outfits per day instead of 3");
+                benefitsList.Add("Level 3: The merchant stocks 4 Outfits per day instead of 3");
                 break;
             case "Revolution":
-                benefitsList.Add("Level 2: Selling Gossip to the press is now less risky");
+                benefitsList.Add("Level 3: Selling Gossip to the press is now less risky");
                 break;
         }
-        benefitsList.Add("Level 3: Invited to Medium " + name + " Parties, extra time at Small " + name + " Parties");
-        benefitsList.Add("Level 4: Extra attention from the drink servers at " + name + " Parties");
-        benefitsList.Add("Level 5: Always know the Power of the " + name);
-        benefitsList.Add("Level 3: Invited to Large " + name + " Parties, extra time at Medium " + name + " Parties");
-        benefitsList.Add("Level 7: Always know Allegiance of the " + name);
-        benefitsList.Add("Level 8: The " + name + " will come to your aid in an hour of great need.");
+        benefitsList.Add("Level 4: Invited to Decent " + name + " Parties, extra time at Trivial " + name + " Parties");
+        benefitsList.Add("Level 5: Extra attention from the drink servers at " + name + " Parties");
+        benefitsList.Add("Level 6: Always know the Power of the " + name);
+        benefitsList.Add("Level 7: Invited to Grand " + name + " Parties, extra time at Decent " + name + " Parties");
+        benefitsList.Add("Level 8: Always know Allegiance of the " + name);
         switch (name)
         {
             case "Crown":
-                benefitsList.Add("Level 9: A title and Royal Allowance");
+                benefitsList.Add("Level 9: A title and Royal Allowance. Extra time at Grand " + name + " Parties");
                 break;
             case "Church":
-                benefitsList.Add("Level 9: Confessions to a Cardinal lend you immunity to Scandal");
+                benefitsList.Add("Level 9: Confessions to a Cardinal lend you immunity to Scandal. Extra time at Grand " + name + " Parties");
                 break;
             case "Military":
-                benefitsList.Add("Level 9: The Military has a ship waiting for you");
+                benefitsList.Add("Level 9: Your Enemies in the Military Faction have been surpressed, Extra time at Grand " + name + " Parties");
                 break;
             case "Bourgeoisie":
-                benefitsList.Add("Level 9: You are given influence at the Fashion Houses and may pick styles");
+                benefitsList.Add("Level 9: You are given influence at the Fashion Houses and may pick styles. Extra time at Grand " + name + " Parties");
                 break;
             case "Revolution":
-                benefitsList.Add("Level 9: You are a member of the Revolutionary Council");
+                benefitsList.Add("Level 9: You are a member of the Revolutionary Council. Extra time at Grand " + name + " Parties");
                 break;
         }
     }
 
     public int PlayerReputationLevel()
     {
-        int i = 0;
-        while (playerReputation > playerReputationLevelRequirements[i])
+        if(playerReputation <= -20)
         {
-            //Debug.Log(name + " Faction Level: " + i);
-            i++;
+            return -1;
+        } else
+        {
+            int i = 0;
+            while (playerReputation > playerReputationLevelRequirements[i])
+            {
+                //Debug.Log(name + " Faction Level: " + i);
+                i++;
+            }
+            playerReputationLevel = i;
+            return playerReputationLevel;
         }
-        playerReputationLevel = i;
-        return playerReputationLevel;
+        
+    }
+
+    public int PlayerConfidenceBenefit()
+    {
+        if(PlayerReputationLevel() == -1)
+        {
+            return -10;
+        } else
+        {
+            return playerConfidenceBonus[PlayerReputationLevel()];
+        }
     }
 
     public int largestAllowableParty()
@@ -193,19 +227,19 @@ public class Faction {
         switch (PlayerReputationLevel())
         {
             case 0:
-                return 1;
+                return 0;
             case 1:
                 return 1;
             case 2:
                 return 1;
             case 3:
-                return 2;
+                return 1;
             case 4:
                 return 2;
             case 5:
                 return 2;
             case 6:
-                return 3;
+                return 2;
             default:
                 return 3;
         }

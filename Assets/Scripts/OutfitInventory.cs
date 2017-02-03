@@ -51,7 +51,7 @@ public class OutfitInventory : MonoBehaviour {
     {
         merchantInventory.Clear();
         //Checking for Faction Benefit. If the Player is level 2+ with the Bourgeoisie Faction then the Merchant stocks additional wares
-        if (GameData.factionList["Bourgeoisie"].PlayerReputationLevel() >= 2)
+        if (GameData.factionList["Bourgeoisie"].PlayerReputationLevel() >= 3)
         {
             outfitInventories["merchant"].Add(new Outfit(GameData.currentStyle));
             outfitInventories["merchant"].Add(new Outfit());

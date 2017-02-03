@@ -865,7 +865,12 @@ public class WorkTheRoomManager : MonoBehaviour
             room.party.currentPlayerDrinkAmount--;
             room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 20, 20, room.party.maxPlayerConfidence);
             int drinkStrength = room.party.drinkStrength;
-            //Is the Player using the Snuff Box Accessory? If so then decrease the Intoxicating Effects of Booze!
+            //Is the Player decent friends with the Military? If so, make them more alcohol tolerant!
+            if(GameData.factionList["Military"].PlayerReputationLevel() >= 3)
+            {
+                drinkStrength -= 3;
+            }
+            //Is the Player using the Snuff Box Accessory? If so, then decrease the Intoxicating Effects of Booze!
             if (GameData.partyAccessoryID != -1)
             {
                 if (AccessoryInventory.personalInventory[GameData.partyAccessoryID].Type() == "Snuff Box")

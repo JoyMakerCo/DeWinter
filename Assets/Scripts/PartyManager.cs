@@ -49,12 +49,12 @@ public class PartyManager : MonoBehaviour {
         }
 
         //Extra Turns because of Faction Reputation Level?
-        if (GameData.tonightsParty.partySize == 1 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 3)
+        if (GameData.tonightsParty.partySize == 1 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 4)
         {
             GameData.tonightsParty.turns += 2;
             GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
         }
-        else if (GameData.tonightsParty.partySize == 2 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 6)
+        else if (GameData.tonightsParty.partySize == 2 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 7)
         {
             GameData.tonightsParty.turns += 3;
             GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
@@ -125,7 +125,7 @@ public class PartyManager : MonoBehaviour {
             GameData.tonightsParty.maxPlayerConfidence += outfitAccessoryStyleMatch;
         }
         //Faction Rep
-        int factionReaction = GameData.factionList[GameData.tonightsParty.faction].playerReputation / 10;
+        int factionReaction = GameData.factionList[GameData.tonightsParty.faction].PlayerConfidenceBenefit();
         GameData.tonightsParty.maxPlayerConfidence += factionReaction;
         //General Rep Reaction
         int generalRepReaction = GameData.reputationLevels[GameData.playerReputationLevel].ConfidenceBonus();
@@ -151,7 +151,7 @@ public class PartyManager : MonoBehaviour {
 
     void FreeWineCheck()
     {
-        if(GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 1)
+        if(GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 2)
         {
             //Fill Up their Glass
             GameData.tonightsParty.currentPlayerDrinkAmount = GameData.tonightsParty.maxPlayerDrinkAmount;
