@@ -221,7 +221,7 @@ public class GossipTrading : MonoBehaviour {
         if (Random.Range(1,101) <= CaughtChance())
         {
             //Player Rep Loss
-            if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 2)
+            if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 3)
             {
                 GameData.reputationCount -= 15;
                 GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction().Name()].playerReputation -= 15;

@@ -8,10 +8,11 @@ public class PartyManager : MonoBehaviour {
 
     void Start()
     {
-        ConfidenceTally();
-        EnemyCheck();
-        EngageParty();
-        GameData.tonightsParty.roomGrid[GameData.tonightsParty.entranceRoom.xPos, GameData.tonightsParty.entranceRoom.yPos].playerHere = true;
+        FashionChangeCheck(); //If the Player is of sufficiently high General Reputation, they may change the Style of Fashion just by showing up
+        ConfidenceTally(); //Tally up the Player's Total Confidence
+        EnemyCheck(); //Place all the Enemies in the Party
+        EngageParty(); //Start the Party
+        GameData.tonightsParty.roomGrid[GameData.tonightsParty.entranceRoom.xPos, GameData.tonightsParty.entranceRoom.yPos].playerHere = true; //Put the Player in the Entrance
     }
 
     //Checks all the relevant Enemies and sees if they're going to attend the Party
@@ -48,12 +49,12 @@ public class PartyManager : MonoBehaviour {
         }
 
         //Extra Turns because of Faction Reputation Level?
-        if (GameData.tonightsParty.partySize == 1 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 3)
+        if (GameData.tonightsParty.partySize == 1 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 4)
         {
             GameData.tonightsParty.turns += 2;
             GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
         }
-        else if (GameData.tonightsParty.partySize == 2 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 6)
+        else if (GameData.tonightsParty.partySize == 2 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 7)
         {
             GameData.tonightsParty.turns += 3;
             GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
@@ -93,7 +94,7 @@ public class PartyManager : MonoBehaviour {
         int outfitStyleReaction;
         if (GameData.currentStyle == OutfitInventory.personalInventory[GameData.partyOutfitID].style)
         {
-            outfitStyleReaction = 50;
+            outfitStyleReaction = 30;
         } else
         {
             outfitStyleReaction = 0;
@@ -106,7 +107,7 @@ public class PartyManager : MonoBehaviour {
         {
             if (GameData.currentStyle == AccessoryInventory.personalInventory[GameData.partyAccessoryID].Style())
             {
-                accessoryStyleReaction = 50;
+                accessoryStyleReaction = 30;
             }
             else
             {
@@ -115,7 +116,7 @@ public class PartyManager : MonoBehaviour {
             GameData.tonightsParty.maxPlayerConfidence += accessoryStyleReaction;
             if (OutfitInventory.personalInventory[GameData.partyOutfitID].style == AccessoryInventory.personalInventory[GameData.partyAccessoryID].Style())
             {
-                outfitAccessoryStyleMatch = 50;
+                outfitAccessoryStyleMatch = 30;
             }
             else
             {
@@ -124,10 +125,10 @@ public class PartyManager : MonoBehaviour {
             GameData.tonightsParty.maxPlayerConfidence += outfitAccessoryStyleMatch;
         }
         //Faction Rep
-        int factionReaction = GameData.factionList[GameData.tonightsParty.faction].playerReputation / 10;
+        int factionReaction = GameData.factionList[GameData.tonightsParty.faction].PlayerConfidenceBenefit();
         GameData.tonightsParty.maxPlayerConfidence += factionReaction;
-        //General Rep
-        int generalRepReaction = GameData.reputationCount / 20;
+        //General Rep Reaction
+        int generalRepReaction = GameData.reputationLevels[GameData.playerReputationLevel].ConfidenceBonus();
         GameData.tonightsParty.maxPlayerConfidence += generalRepReaction;
         //Set Starting Confidence (Needs penalties for multiple Parties in a Row)
         GameData.tonightsParty.currentPlayerConfidence = GameData.tonightsParty.maxPlayerConfidence;
@@ -150,7 +151,7 @@ public class PartyManager : MonoBehaviour {
 
     void FreeWineCheck()
     {
-        if(GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 1)
+        if(GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 2)
         {
             //Fill Up their Glass
             GameData.tonightsParty.currentPlayerDrinkAmount = GameData.tonightsParty.maxPlayerDrinkAmount;
@@ -217,5 +218,26 @@ public class PartyManager : MonoBehaviour {
         }
         //Now that the calculations are finished, the outfit now becomes the last used outfit.
         GameData.lastPartyOutfitID = GameData.partyOutfitID;
+    }
+
+    //If the Player is of sufficiently high General Reputation, they may change the Style of Fashion just by showing up with matching Outfit and Accessories
+    void FashionChangeCheck()
+    {
+        //Is the Player in the wrong Style (but matching) and are they Level 8 or higher?
+        if (OutfitInventory.outfitInventories["personal"][GameData.partyOutfitID].style != GameData.currentStyle && GameData.playerReputationLevel >= 8 && OutfitInventory.outfitInventories["personal"][GameData.partyOutfitID].style == AccessoryInventory.personalInventory[GameData.partyAccessoryID].Style())
+        {
+            //25% Chance
+            if(Random.Range(1,5) == 1)
+            {
+                //Store the Old and New Styles before the shift
+                string[] stringStorage = new string[2];
+                stringStorage[0] = GameData.currentStyle;
+                stringStorage[1] = OutfitInventory.outfitInventories["personal"][GameData.partyOutfitID].style;
+                //Change the Style to Match the Player's Outfit (and thus their Accessory's)
+                GameData.currentStyle = OutfitInventory.outfitInventories["personal"][GameData.partyOutfitID].style;
+                //Send Out a Relevant Pop-Up
+                screenFader.gameObject.SendMessage("CreateEntranceFashionChangeModal", stringStorage);
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@ public class FactionInfoButton : MonoBehaviour {
     {
         if(infoType == InfoType.Allegiance)
         {
-            if (GameData.factionList[faction].PlayerReputationLevel() >= 7)
+            if (GameData.factionList[faction].PlayerReputationLevel() >= 8)
             {
                 text.text = "";
                 image.color = Color.clear;
@@ -50,7 +50,7 @@ public class FactionInfoButton : MonoBehaviour {
             }
         } else
         {
-            if (GameData.factionList[faction].PlayerReputationLevel() >= 5)
+            if (GameData.factionList[faction].PlayerReputationLevel() >= 6)
             {
                 text.text = "";
                 image.color = Color.clear;
