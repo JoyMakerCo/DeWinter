@@ -127,7 +127,7 @@ roomManager.PartyEventModal(Room.xPos, Room.yPos);
 
     void RandomWineCheck()
     {
-        if(GameData.factionList[party.faction].PlayerReputationLevel() >= 4)
+        if(GameData.factionList[party.faction].PlayerReputationLevel() >= 5)
         {
             int randomInt = Random.Range(0, 4);
             if(randomInt == 0)

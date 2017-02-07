@@ -32,6 +32,7 @@ public class WorkTheHostManager : MonoBehaviour
     float currentTurnTimer = 5;
     float maxTurnTimer = 5;
     bool turnTimerActive;
+    public Image reparteeIndicatorImage;
 
     public GameObject hostVisual;
     Text hostNameText;
@@ -165,7 +166,23 @@ public class WorkTheHostManager : MonoBehaviour
                 room.host.maxInterestTimer = room.host.currentInterestTimer * 1.5f;
 
             }
-        }    
+        }
+
+        //Turn Timer
+        if(GameData.playerReputationLevel >= 5)
+        {
+            maxTurnTimer = (float)(maxTurnTimer * 1.1);
+            currentTurnTimer = maxTurnTimer;
+        }
+        turnTimerBar.value = currentTurnTimer / maxTurnTimer;
+        if (GameData.playerReputationLevel >= 2)
+        {
+            reparteeIndicatorImage.color = Color.green;
+        }
+        else
+        {
+            reparteeIndicatorImage.color = Color.clear;
+        }
 
         //Start/Intro Timer
         StartCoroutine(ConversationStartTimerWait());

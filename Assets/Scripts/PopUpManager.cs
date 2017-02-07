@@ -507,6 +507,27 @@ public class PopUpManager : MonoBehaviour
         BroadcastMessage("ActiveModal");
     }
 
+    //This is used at the beginning of a Party, if the Player is of such a high General Reputation that they change the Style of Fashion just by showing up with matching Outfit and Accessories
+    void CreateEntranceFashionChangeModal(string[] stringStorage)
+    {
+        string oldStyle = stringStorage[0] as string;
+        string newStyle = stringStorage[1] as string;
+        //Make the Pop Up
+        GameObject popUp = Instantiate(messageModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        popUp.transform.SetAsFirstSibling();
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "Style Change!";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "You hear audible gasps as you exit your carriage. Your expertly coordinated Outfit, combined with your significant social stature, seems to have taken everyone aback. You can see the wheels turning in their minds as they rethink their stylings and choice of attire." +
+            "\nYou have started a new fashion trend. The " + oldStyle + " Style is now out of fashion and " +
+            "\nthe " + newStyle + " Style is now in fashion!";
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
     //This is used in the beginning of the Party Screen to tally up a Player's Confidence stat
     void CreateConfidenceTallyModal(object[] objectStorage)
     {
@@ -953,7 +974,7 @@ public class PopUpManager : MonoBehaviour
         BroadcastMessage("ActiveModal");
     }
 
-    //This is used in the Estate Tab to tell Players that Pierre has assigned a new Quest
+    //This is used in the Estate Tab to confirm selling various bits of Gossip
     void CreateSellGossipModal(object[] objectStorage)
     {
         GossipTrading gossipTrader = objectStorage[0] as GossipTrading;

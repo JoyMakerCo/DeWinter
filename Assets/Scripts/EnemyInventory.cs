@@ -20,6 +20,17 @@ public class EnemyInventory : MonoBehaviour {
             instance = this;
             GameObject.DontDestroyOnLoad(gameObject);
         }
+        //If the Player is of a sufficient Faction Level with the Military then all their Enemies in that Faction are surpressed
+        if (GameData.factionList["Military"].PlayerReputationLevel() >= 9)
+        {
+            foreach (Enemy e in enemyInventory)
+            {
+                if(e.faction == GameData.factionList["Military"])
+                {
+                    RemoveEnemy(e);
+                }
+            }
+        }
     }
 
     public void ClearInventory()
@@ -30,10 +41,17 @@ public class EnemyInventory : MonoBehaviour {
     //Adds an Enemy to the Player's Enemy Inventory then scans the calendar going forward, adding the Enemy to appropriate Parties
     public static void AddEnemy(Enemy e)
     {
-        enemyInventory.Add(e);
-        AdditionPartyScan(e);
+        if(e.faction == GameData.factionList["Military"] && GameData.factionList["Military"].PlayerReputationLevel() >= 9)
+        {
+            Debug.Log("These Enemies have been surpressed, due to the Player's Faction level with the Military");
+        } else
+        {
+            enemyInventory.Add(e);
+            AdditionPartyScan(e);
+        }
     }
 
+    //Adds the Enemy to future Parties, used in the Add Enemy Function
     static void AdditionPartyScan(Enemy e)
     {
         foreach(Month m in GameData.calendar.monthList)
@@ -79,6 +97,7 @@ public class EnemyInventory : MonoBehaviour {
         enemyInventory.Remove(e);
     }
 
+    //Removes the Enemy from any future Parties, used in the Remove Enemies Function
     static void RemovalPartyScan(Enemy e)
     {
         foreach (Month m in GameData.calendar.monthList)

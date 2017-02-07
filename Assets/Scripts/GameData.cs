@@ -19,6 +19,7 @@ public class GameData : MonoBehaviour
     public static Dictionary<string, Faction> factionList = new Dictionary<string, Faction>();
     public static int reputationCount;
     public static int playerReputationLevel;
+    public static ReputationLevel[] reputationLevels;
 
     //Party Stuff
     public static Party tonightsParty;
@@ -123,8 +124,22 @@ public class GameData : MonoBehaviour
         uprisingDay = Random.Range(25, 31);
 
 
-        //Reputation and Faction Stuff
-        reputationCount = 300;
+        //Reputation
+        reputationCount = 400;
+        reputationLevels = new ReputationLevel[11];
+        reputationLevels[0] = new ReputationLevel(0, 0, -10, 0);
+        reputationLevels[1] = new ReputationLevel(1, 20, 0, 0);
+        reputationLevels[2] = new ReputationLevel(2, 50, 5, 0);
+        reputationLevels[3] = new ReputationLevel(3, 100, 10, 0);
+        reputationLevels[4] = new ReputationLevel(4, 150, 15, 0);
+        reputationLevels[5] = new ReputationLevel(5, 200, 20, 0);
+        reputationLevels[6] = new ReputationLevel(6, 250, 25, 1);
+        reputationLevels[7] = new ReputationLevel(7, 300, 30, 1);
+        reputationLevels[8] = new ReputationLevel(8, 350, 35, 1);
+        reputationLevels[9] = new ReputationLevel(9, 400, 40, 2);
+        reputationLevels[10] = new ReputationLevel(10, 99999, 40, 2); //Just there to put an upper limit on the whole thing
+
+        //Faction Stuff
         factionList.Add("Crown", new Faction("Crown", 100, 100, 100));
         factionList.Add("Church", new Faction("Church", 100, -100, 60));
         factionList.Add("Military", new Faction("Military", 0, 0, 0));
