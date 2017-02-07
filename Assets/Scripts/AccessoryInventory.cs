@@ -7,9 +7,9 @@ public class AccessoryInventory : MonoBehaviour {
 
     static AccessoryInventory instance = null;
 
-    public static Dictionary<string, List<Accessory>> accessoryInventories = new Dictionary<string, List<Accessory>>();
-    public static List<Accessory> personalInventory = new List<Accessory>();
-    public static List<Accessory> merchantInventory = new List<Accessory>();
+    public static Dictionary<string, List<AccessoryVO>> accessoryInventories = new Dictionary<string, List<AccessoryVO>>();
+    public static List<AccessoryVO> personalInventory = new List<AccessoryVO>();
+    public static List<AccessoryVO> merchantInventory = new List<AccessoryVO>();
     public GameObject accessoryInventoryButtonPrefab;
 
     public static int personalInventoryMaxSize = 7; //The Max Size at Game Start
@@ -50,8 +50,8 @@ public class AccessoryInventory : MonoBehaviour {
     {
         Debug.Log("Stocking Merchant Accessory Inventory!");
         merchantInventory.Clear();
-        merchantInventory.Add(new Accessory(GameData.currentStyle));
-        merchantInventory.Add(new Accessory());
+        merchantInventory.Add(new AccessoryVO(GameData.currentStyle));
+        merchantInventory.Add(new AccessoryVO());
     }
 
 }

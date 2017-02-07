@@ -16,7 +16,7 @@ public class MoneyTracker : MonoBehaviour {
             //The Actual Transaction
             foreach (string k in GameData.servantDictionary.Keys)
             {
-                Servant s = GameData.servantDictionary[k];
+                ServantVO s = GameData.servantDictionary[k];
                 if (s.Hired())
                 {
                     GameData.moneyCount -= s.Wage();

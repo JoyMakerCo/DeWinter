@@ -1,39 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public struct WeightedElement<T>
+namespace Util
 {
-	public T Value;
-	public int Weight;
-	public WeightedElement(T value, int weight)
+	public class WeightedArray<T>
 	{
-		Value = value;
-		Weight = weight;
-	}
-}
-
-public class WeightedArray<T> : List<WeightedElement<T>>
-{
-	public WeightedArray () : base() {}
-	public WeightedArray(int capacity) : base(capacity) {}
-	public WeightedArray(IEnumerable<WeightedElement<T>> collection) : base(collection) {}
-
-	public T Choose()
-	{
-		int value = 0;
-		foreach (WeightedElement<T> elt in this)
+		public WeightedArray () : base()
 		{
-			value += elt.Weight;
+			Clear();
 		}
-		value = (new Random()).Next(value);
-		foreach (WeightedElement<T> elt in this)
+
+		private List<int> _weights;
+		private List<T> _elements;
+		private int _totalWeight;
+
+		public void Add(T element, int weight)
 		{
-			if (value < elt.Weight)
+			if (weight > 0)
 			{
-				return elt.Value;
+				_elements.Add(element);
+				_weights.Add(weight);
+				_totalWeight += weight;
 			}
-			value -= elt.Weight;
 		}
-		return this[Count-1].Value;
+
+		public void Remove(T element)
+		{
+			int index = _elements.FindIndex(x => x==element);
+			if (index >= 0)
+			{
+				_elements.RemoveAt(index);
+				_totalWeight -= _weights[index];
+				_weights.RemoveAt(index);
+			}
+		}
+
+		public T Choose()
+		{
+			if (_elements.Count == 0) return null;
+			int value = (new Random()).Next(_totalWeight);
+			int total = _totalWeight;
+			for (int i=_elements.Count-1; i>=0; i--)
+			{
+				total -= _weights[i];
+				if (value > total)
+				{
+					return _elements[i];
+				}
+			}
+			return _elements[0];
+		}
+
+		public int Count
+		{
+			get { return _elements.Count; }
+		}
+
+		public void Clear()
+		{
+			_weights.Clear();
+			_elements.Clear();
+			_totalWeight = 0;
+		}
 	}
 }

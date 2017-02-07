@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
 
@@ -6,34 +7,47 @@ namespace DeWinter
 {
 	public class GameModel : DocumentModel
 	{
+		[JsonProperty("livre")]
+		public int Livre;
+
+		[JsonProperty("reputation")]
+		public int Reputation
+		{
+			get { return _reputation; }
+			set
+			{
+				_reputation = value;
+				if (_reputation < 0)
+					_reputation = 0;
+				PlayerReputationVO msg = new PlayerReputationVO(_reputation, ReputationLevel);
+				DeWinterApp.SendMessage<PlayerReputationVO>(msg);
+			}
+		}
+
+		public int ReputationLevel
+		{
+			get
+			{
+				for(int i=_reputationLevels.Length-1; i>=0; i--)
+				{
+					if (_reputation >= _reputationLevels[i])
+					{
+						return i+1;
+					}
+				}
+				return 1;
+			}
+		}
+
+		public string Allegiance;
+
+		public Party CurrentParty;
+
 		public GameModel() : base("GameData") {}
 
-		[JsonProperty("factionList")]
-		public FactionVO[] Factions;
+		[JsonProperty("reputationLevels")]
+		private int[] _reputationLevels;
 
-		[JsonProperty("roomAdjectiveList")]
-		public string[] RoomAdjectives;
-
-		[JsonProperty("roomNounList")]
-		public string[] RoomNouns;
-
-		[JsonProperty("dispositionList")]
-		public Disposition[] Dispositions;
-
-		[JsonProperty("femaleTitleList")]
-		public string[] FemaleTitles;
-
-		[JsonProperty("maleTitleList")]
-		public string[] MaleTitles;
-
-		[JsonProperty("femaleFirstNameList")]
-		public string[] FemaleNames;
-
-		[JsonProperty("maleFirstNameList")]
-		public string[] MaleNames;
-
-		[JsonProperty("lastNameList")]
-		public string[] LastNames;	
-
+		private int _reputation;
 	}
 }

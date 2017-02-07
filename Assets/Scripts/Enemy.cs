@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy {
-
+public class Enemy
+{
     //General Settings
     private string name;
     private string flavorText;
     public int dispositionInt;
     public Disposition disposition;
-    public FactionVO faction;
+    public string Faction;
     public bool isFemale; //Determines the gender of the Guest
     public int imageInt;
 
     //Generates a Random Enemy from a particular Faction
-    public Enemy(FactionVO fac)
+    public Enemy(string faction)
     {
         dispositionInt = Random.Range(0, 4);
         disposition = GameData.dispositionList[dispositionInt];
-        faction = fac;
+        Faction = faction;
         isFemale = GenderDeterminer();
         if (isFemale)
         {
@@ -32,11 +32,11 @@ public class Enemy {
     }
 
     //Generates an Enemy with a Particular Name, Faction and Gender
-    public Enemy(FactionVO fac, string nme, bool gen)
+	public Enemy(string faction, string nme, bool gen)
     {
         dispositionInt = Random.Range(0, 4);
         disposition = GameData.dispositionList[dispositionInt];
-        faction = fac;
+		Faction = faction;
         isFemale = gen;
         if (isFemale)
         {

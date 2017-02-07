@@ -19,7 +19,7 @@ public class PayDayTotalTextController : MonoBehaviour {
         int wageTotal = 0;
         foreach (string k in GameData.servantDictionary.Keys)
         {
-            Servant s = GameData.servantDictionary[k];
+            ServantVO s = GameData.servantDictionary[k];
             if (s.Hired())
             {
                 wageTotal += s.Wage();

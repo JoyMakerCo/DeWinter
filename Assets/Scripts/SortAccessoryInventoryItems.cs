@@ -120,8 +120,8 @@ public class SortAccessoryInventoryItems : MonoBehaviour {
 
     void Swap(int accessory1, int accessory2)
     {
-        Accessory placeHolder1 = AccessoryInventory.accessoryInventories[inventoryType][accessory1];
-        Accessory placeHolder2 = AccessoryInventory.accessoryInventories[inventoryType][accessory2];
+        AccessoryVO placeHolder1 = AccessoryInventory.accessoryInventories[inventoryType][accessory1];
+        AccessoryVO placeHolder2 = AccessoryInventory.accessoryInventories[inventoryType][accessory2];
 
         AccessoryInventory.accessoryInventories[inventoryType][accessory1] = placeHolder2;
         AccessoryInventory.accessoryInventories[inventoryType][accessory2] = placeHolder1;

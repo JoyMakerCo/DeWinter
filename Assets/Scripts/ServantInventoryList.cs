@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ServantInventoryList : MonoBehaviour {
 
-    public Servant selectedServant;
+    public ServantVO selectedServant;
     public GameObject gossipInventoryButtonPrefab;
     public enum InventoryType {Personal, Available};
     public InventoryType inventoryType;
@@ -18,7 +18,7 @@ public class ServantInventoryList : MonoBehaviour {
     {
         foreach (string k in GameData.servantDictionary.Keys)
         {
-            Servant s = GameData.servantDictionary[k];
+            ServantVO s = GameData.servantDictionary[k];
             if (inventoryType == InventoryType.Personal)
             {
                 if (s.Hired())

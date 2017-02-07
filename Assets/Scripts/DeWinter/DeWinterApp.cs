@@ -40,5 +40,20 @@ namespace DeWinter
 		{
 			App.Service<MessageSvc>().Send<T>(data);
 		}
+
+		public static void Subscribe(string messageID, Action callback)
+		{
+			App.Service<MessageSvc>().Subscribe(messageID, callback);
+		}
+
+		public static void Subscribe<T>(string messageID, Action<T> callback)
+		{
+			App.Service<MessageSvc>().Subscribe<T>(messageID, callback);
+		}
+
+		public static void Subscribe<T>(Action<T> callback)
+		{
+			App.Service<MessageSvc>().Subscribe<T>(callback);
+		}
 	}
 }

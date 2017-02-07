@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class ServantInventoryButton : MonoBehaviour {
 
-    public Servant servant;
+    public ServantVO servant;
     public Text nameText;
     public Image servantThumbnail;
     private Outline outline; // This is for highlighting buttons
@@ -37,7 +37,7 @@ public class ServantInventoryButton : MonoBehaviour {
         }
     }
 
-    void DisplayServant(Servant s)
+    void DisplayServant(ServantVO s)
     {
         if (s != null)
         {

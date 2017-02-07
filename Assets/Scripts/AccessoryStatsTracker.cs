@@ -38,7 +38,7 @@ public class AccessoryStatsTracker : MonoBehaviour {
             if (accessoryInventoryList.selectedAccessory != -1)
             {
                 //Text
-                Accessory displayAccessory = AccessoryInventory.accessoryInventories[inventoryType][accessoryInventoryList.selectedAccessory];
+                AccessoryVO displayAccessory = AccessoryInventory.accessoryInventories[inventoryType][accessoryInventoryList.selectedAccessory];
                 accessoryNameText.text = displayAccessory.Name();
                 accessoryDescriptionText.text = displayAccessory.Description();
                 accessoryCostText.text = displayAccessory.Price(inventoryType).ToString("£" + "#,##0"); //Uses Personal Inventory Price
@@ -57,7 +57,7 @@ public class AccessoryStatsTracker : MonoBehaviour {
             if (accessoryInventoryList.selectedAccessory != -1)
             {
                 //Text
-                Accessory displayAccessory = AccessoryInventory.accessoryInventories[inventoryType][accessoryInventoryList.selectedAccessory];
+                AccessoryVO displayAccessory = AccessoryInventory.accessoryInventories[inventoryType][accessoryInventoryList.selectedAccessory];
                 accessoryNameText.text = displayAccessory.Name();
                 accessoryDescriptionText.text = displayAccessory.Description();
                 accessoryCostText.text = displayAccessory.Price(inventoryType).ToString("£" + "#,##0"); //Uses Personal Inventory Price
@@ -78,7 +78,7 @@ public class AccessoryStatsTracker : MonoBehaviour {
             accessorySaleButtonText.color = Color.clear;
             if (accessoryInventoryList.selectedAccessory != -1) //If an Outfit is Selected
             {
-                Accessory displayAccessory = AccessoryInventory.accessoryInventories["personal"][accessoryInventoryList.selectedAccessory];
+                AccessoryVO displayAccessory = AccessoryInventory.accessoryInventories["personal"][accessoryInventoryList.selectedAccessory];
                 accessoryNameText.text = displayAccessory.Name();
                 accessoryDescriptionText.text = displayAccessory.Description();
                 accessoryCostText.text = displayAccessory.Price(inventoryType).ToString("£" + "#,##0"); //Uses Personal Inventory Prices

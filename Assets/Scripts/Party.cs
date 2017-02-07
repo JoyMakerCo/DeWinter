@@ -45,7 +45,7 @@ public class Party {
     public int blackOutEffectAmount; //This is also used for the After Party Report
 
     public Outfit playerOutfit;
-    public Accessory playerAccessory;
+    public AccessoryVO playerAccessory;
 
     // Default Constructor
     public Party()

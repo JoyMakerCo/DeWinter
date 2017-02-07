@@ -87,7 +87,7 @@ public class PopUpManager : MonoBehaviour {
         string servantsHired = "";
         foreach (string k in GameData.servantDictionary.Keys)
         {
-            Servant s = GameData.servantDictionary[k];
+            ServantVO s = GameData.servantDictionary[k];
             if (s.Hired())
             {
                 totalWages += s.Wage();
@@ -111,7 +111,7 @@ public class PopUpManager : MonoBehaviour {
     }
 
     //This confirmation modal is used for Hiring and Firing Servants
-    void CreateHireAndFireModal(Servant s)
+    void CreateHireAndFireModal(ServantVO s)
     {
         
         //Make the Pop up

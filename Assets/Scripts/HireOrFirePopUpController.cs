@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HireOrFirePopUpController : MonoBehaviour {
 
-    public Servant servant;
+    public ServantVO servant;
 
     void HireOrFire()
     {
