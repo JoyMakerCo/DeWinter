@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using DeWinter;
 
 public class RoomManager : MonoBehaviour
 {
 
     public PartyManager partyManager;
     public Party party; //What Party are we managing?
-    public RoomVO[,] roomButtonGrid; // Holds the Rooms
-    public RoomVO entranceRoom; //Whichever Room is the Entrance
-    public RoomVO currentPlayerRoom;
+    public Room[,] roomButtonGrid; // Holds the Rooms
+    public Room entranceRoom; //Whichever Room is the Entrance
+    public Room currentPlayerRoom;
     public GameObject roomButtonPrefab;
     public GameObject houseOutlinePrefab; //This is used to Outline the house when it's done
     public Canvas canvas; //New Interface objects need to get parented to this in order to work
@@ -37,10 +36,6 @@ public class RoomManager : MonoBehaviour
             ScanForPlayerAndAdjacents();
         }
     }
-
-roomManager.ChoiceModal(Room.xPos, Room.yPos);
-roomManager.PartyEventModal(Room.xPos, Room.yPos);
-
 
     //TODO - Complete Overhaul as per the Multiple Room Shapes Spec
     public void SetUpMap(Party p)
@@ -71,11 +66,11 @@ roomManager.PartyEventModal(Room.xPos, Room.yPos);
                     mapButton.transform.localPosition = new Vector3(i * (buttonwidth+padding) - offsetFromCenterX, j * (buttonwidth + padding) - offsetFromCenterY, 0);
                     mapButtonGrid[i, j] = mapButton; 
                     //Set the Room that this button represents
-                    roomButton.Room = GameData.tonightsParty.roomGrid[i, j];
+                    roomButton.myRoom = GameData.tonightsParty.roomGrid[i, j];
                     roomButton.roomManager = this;
-                    if (roomButton.Room.entrance)
+                    if (roomButton.myRoom.entrance)
                     {
-                        entranceRoom = roomButton.Room; //Setting the Entrance Room in the Room Manager
+                        entranceRoom = roomButton.myRoom; //Setting the Entrance Room in the Room Manager
                     }
                     Debug.Log("Room Created at Grid Square: " + i.ToString() + "," + j.ToString());
                 }

@@ -8,9 +8,6 @@ namespace DeWinter
 	{
 		public GameModel() : base("GameData") {}
 
-		[JsonProperty("factionList")]
-		public FactionVO[] Factions;
-
 		[JsonProperty("roomAdjectiveList")]
 		public string[] RoomAdjectives;
 
