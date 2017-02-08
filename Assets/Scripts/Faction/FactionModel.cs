@@ -9,21 +9,20 @@ namespace DeWinter
 	{
 		private Dictionary<string, FactionVO> _factions;
 
-		public FactionModel () : base("FactionData") {}
-
 		[JsonProperty("factions")]
-		public FactionVO[] Factions
+		public Dictionary<string, FactionVO> Factions
 		{
-			set {
-				FactionVO factions;
-				_factions = new Dictionary<string, FactionVO>();
-				foreach (FactionVO faction in value)
+			get { return _factions; }
+			private set {
+				_factions = value;
+				foreach (KeyValuePair<string,FactionVO> kvp in _factions)
 				{
-					_factions[faction.Name] = faction;
+					_factions[kvp.Key].Name = kvp.Key;
 				}
-				int i=0;
 			}
 		}
+
+		public FactionModel () : base("FactionData") {}
 
 		public FactionVO this[string faction]
 		{

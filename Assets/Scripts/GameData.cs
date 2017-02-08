@@ -5,22 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
-    static GameData instance = null;
-
-    //Basic Data Book Keeping
-    public static int moneyCount;
-    public static int currentMonth;
-    public static int currentDay;
-    public static int startMonthInt;
-    public static int uprisingMonth; //The Month that the Game Ends On
-    public static int uprisingDay; //The Day of the Uprising Month that the Game Ends On
-
-    //Reputation and Faction Stuff
-    public static Dictionary<string, Faction> factionList = new Dictionary<string, Faction>();
-    public static int reputationCount;
-    public static int playerReputationLevel;
-    public static ReputationLevel[] reputationLevels;
-
     //Party Stuff
     public static Party tonightsParty;
     public static int lastDay;
