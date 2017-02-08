@@ -40,7 +40,6 @@ namespace DeWinter
 		{
 			App.Service<MessageSvc>().Send<T>(data);
 		}
-<<<<<<< HEAD:Assets/Scripts/DeWinterApp.cs
 
 		public static void Subscribe<T>(Action<T> action)
 		{
@@ -56,7 +55,5 @@ namespace DeWinter
 		{
 			App.Service<MessageSvc>().Subscribe(message, action);
 		}
-=======
->>>>>>> fcf81d0f165e7c44c7f73c586c71c550354c522d:Assets/Scripts/DeWinter/DeWinterApp.cs
 	}
 }

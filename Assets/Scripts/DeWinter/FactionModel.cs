@@ -9,10 +9,9 @@ namespace DeWinter
 	{
 		private Dictionary<string, FactionVO> _factions;
 
-		public FactionModel () : base("Factions") {}
+		public FactionModel () : base("FactionData") {}
 
-
-		[JsonProperty("Factions")]
+		[JsonProperty("factions")]
 		public FactionVO[] Factions
 		{
 			set {
@@ -28,14 +27,14 @@ namespace DeWinter
 
 		public FactionVO this[string faction]
 		{
-			set
-			{
-				_factions[faction] = value;
-			}
 			get
 			{
 				return _factions[faction];
 			}
 		}
+
+		[JsonProperty("preference")]
+
+		public Dictionary<string, string[]> Preference;
 	}
 }
