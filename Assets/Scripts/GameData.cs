@@ -116,7 +116,7 @@ public class GameData : MonoBehaviour
 
     public void ResetValues()
     {
-        moneyCount = 200;
+        moneyCount = 600;
         currentMonth = 0; //Month of the current Year (Also Zero Indexed)
         currentDay = 0; //Day of the current Month (Zero Indexed)
         startMonthInt = currentMonth;
@@ -125,7 +125,7 @@ public class GameData : MonoBehaviour
 
 
         //Reputation
-        reputationCount = 10;
+        reputationCount = 400;
         reputationLevels = new ReputationLevel[11];
         reputationLevels[0] = new ReputationLevel(0, 0, -10, 0);
         reputationLevels[1] = new ReputationLevel(1, 20, 0, 0);

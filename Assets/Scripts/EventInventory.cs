@@ -28,7 +28,7 @@ public class EventInventory : MonoBehaviour
         //---- New Event----
         eventInventories["intro"].Add(new Event(1, "Yvette’s Story - The Beginning",
             //Stage 0
-            new EventStage("The carriage rumbles and bounces along the cobbles as you approach Paris. It’s taken over a week to get here, even with what little luggage you have. You’ve already finished all of your books and Armand's letter is your only entertainment, other than staring out the window.", 0, 0, //Stage 0
+            new EventStage("The carriage rumbles and bounces along the cobbles as you approach the Capitol. It’s taken over a week to get here, even with what little luggage you have. You’ve already finished all of your books and Armand's letter is your only entertainment, other than staring out the window.", 0, 0, //Stage 0
                 new EventOption("<Read Armand’s Letter>", 1),
                 new EventOption("<Look Out the Window>", 3),
                 new EventOption("<To the Coachman> “Let’s go! I don’t have all day!”", 4)),
@@ -37,8 +37,8 @@ public class EventInventory : MonoBehaviour
             "\n\n‘My Dearest Yvette,"+
             "\n\nI know you must still be in shock from your parents’ passing…’" + 
             "\nYou’re also still in shock from your tiny inheritance. Your older siblings received the lion’s share of the family fishing business." +
-            "\n\n‘I know it may be sudden, but I want to invite you to live with me in Paris.’" +
-            "\nYou were engaged to Armand, before he moved north to Paris to pursue his dreams of changing the Country. You mailed love letters soaked in perfume, he replied with volumes about how much he missed you. The son of a Baron, falling in love with someone like you. It didn’t feel real sometimes.", 0, 0, //Stage 1
+            "\n\n‘I know it may be sudden, but I want to invite you to live with me in the Capitol.’" +
+            "\nYou were engaged to Armand, before he moved north to the Capitol to pursue his dreams of changing the Country. You mailed love letters soaked in perfume, he replied with volumes about how much he missed you. The son of a Baron, falling in love with someone like you. It didn’t feel real sometimes.", 0, 0, //Stage 1
                 new EventOption("<Continue>", 2)),
             //Stage 2
             new EventStage("‘I can’t wait for you to see it. It’s a place unlike anything back home, a bustling place where anyone can be anything." +
@@ -49,7 +49,7 @@ public class EventInventory : MonoBehaviour
                 new EventOption("<Look Out the Window>", 3),
                 new EventOption("<To the Coachman> “Can we pick up the pace, please?”", 4)),
             //Stage 3
-            new EventStage("You crane your neck out the window to peer at the streets of Paris. So much of it is exactly as Armand described it. The streets are a riot of color and energy as people go about their days. Elegant persons of fashion share the streets with beggars in rags." + 
+            new EventStage("You crane your neck out the window to peer at the Capitol. So much of it is exactly as Armand described it. The streets are a riot of color and energy as people go about their days. Elegant persons of fashion share the streets with beggars in rags." + 
             "\n\nIt’s all such a far cry from back home. Though part of you is worried by such unfamiliar surroundings, you mostly feel excited.This place is to be the stage for your new life.", 0, 0, //Stage 3
                 new EventOption("<Read Armand’s Letter>", 1),
                 new EventOption("<To the Coachman> “Can we pick up the pace, please?”", 4)),
