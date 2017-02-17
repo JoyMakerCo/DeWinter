@@ -49,6 +49,7 @@ public class CalendarManager : MonoBehaviour {
         {
             GameData.tonightsParty = GameData.calendar.today().party1;
         }
+        GameData.tonightsParty = GameData.calendar.today().party1;
         Debug.Log("Tonights Party is: a " + GameData.tonightsParty.partySize + " " + GameData.tonightsParty.faction + " Party");
     }
 

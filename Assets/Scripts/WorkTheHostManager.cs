@@ -112,7 +112,7 @@ public class WorkTheHostManager : MonoBehaviour
 
         //Set Up the Player
         playerNameText = playerVisual.transform.Find("Name").GetComponent<Text>();
-        playerNameText.text = "Lady De Winter";
+        playerNameText.text = "Yvette";
         playerConfidenceText = playerVisual.transform.Find("ConfidenceCounter").GetComponent<Text>();
         playerConfidenceText.text = "Confidence: " + room.party.currentPlayerConfidence + "/" + room.party.maxPlayerConfidence;
         playerConfidenceBar = playerVisual.transform.Find("ConfidenceBar").GetComponent<Scrollbar>();
@@ -835,13 +835,13 @@ public class WorkTheHostManager : MonoBehaviour
         {
             room.host.currentOpinion += amount;
         }
-        //Are they Charmed or Put Out?
+        //Are they Charmed or Put Off?
         if (room.host.currentOpinion >= room.host.maxOpinion && room.host.lockedInState == 0) //If they're not already Charmed then Player Hand is refilled once
         {
             room.host.lockedInState = 1;
             RefillPlayerHand();
         }
-        else if (room.host.currentOpinion <= 0 && room.host.lockedInState == 0) //If they're not already Put Out then Player Confidence is reduced by 10
+        else if (room.host.currentOpinion <= 0 && room.host.lockedInState == 0) //If they're not already Put Off then Player Confidence is reduced by 10
         {
             room.host.lockedInState = -1;
             room.party.currentPlayerConfidence -= 10;
@@ -851,7 +851,7 @@ public class WorkTheHostManager : MonoBehaviour
         {
             room.host.currentOpinion = room.host.maxOpinion;
         }
-        else if (room.host.lockedInState == -1) // If they're Put Out then Opinion is 0
+        else if (room.host.lockedInState == -1) // If they're Put Off then Opinion is 0
         {
             room.host.currentOpinion = 0;
         }
@@ -906,7 +906,7 @@ public class WorkTheHostManager : MonoBehaviour
         }
         else if (room.host.lockedInState == -1)
         {
-            return "Put Out";
+            return "Put Off";
         }
         else if (room.host.currentInterestTimer == 0)
         {
@@ -920,7 +920,7 @@ public class WorkTheHostManager : MonoBehaviour
 
     void VictoryCheck()
     {
-        //Check to see if everyone is either Charmed or Put Out 
+        //Check to see if everyone is either Charmed or Put Off 
         int charmedAmount = 0;
         int putOutAmount = 0;
         if (room.host.lockedInState == 1)

@@ -150,7 +150,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //Visualize the Player
         playerNameText = playerVisual.transform.Find("Name").GetComponent<Text>();
-        playerNameText.text = "Lady De Winter";
+        playerNameText.text = "Yvette";
         playerConfidenceText = playerVisual.transform.Find("ConfidenceCounter").GetComponent<Text>();
         playerConfidenceText.text = "Confidence: " + room.party.currentPlayerConfidence + "/" + room.party.maxPlayerConfidence;
         playerConfidenceBar = playerVisual.transform.Find("ConfidenceBar").GetComponent<Scrollbar>();
@@ -273,7 +273,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //Set Up Guest 0
         guest0NameText.text = room.guestList[0].name;
-        guest0GuestImage.sprite = GenerateGuestImage(0);
+        guest0GuestImage.sprite = GuestStateSprite(0);
         guest0DispositionIcon.color = DispositionImageColor(0);
         if (room.guestList[0].isEnemy)
         {
@@ -288,7 +288,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //Set Up Guest 1
         guest1NameText.text = room.guestList[1].name; 
-        guest1GuestImage.sprite = GenerateGuestImage(1);    
+        guest1GuestImage.sprite = GuestStateSprite(1);    
         guest1DispositionIcon.color = DispositionImageColor(1);
         if (room.guestList[1].isEnemy)
         {
@@ -303,7 +303,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //Set Up Guest 2
         guest2NameText.text = room.guestList[2].name;
-        guest2GuestImage.sprite = GenerateGuestImage(2);   
+        guest2GuestImage.sprite = GuestStateSprite(2);   
         guest2DispositionIcon.color = DispositionImageColor(2);
         if (room.guestList[2].isEnemy)
         {
@@ -318,7 +318,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //Set Up Guest 3
         guest3NameText.text = room.guestList[3].name;
-        guest3GuestImage.sprite = GenerateGuestImage(3);    
+        guest3GuestImage.sprite = GuestStateSprite(3);    
         guest3DispositionIcon.color = DispositionImageColor(3);
         if (room.guestList[3].isEnemy)
         {
@@ -568,20 +568,20 @@ public class WorkTheRoomManager : MonoBehaviour
         switch (guestNumber)
         {
             case 0:
-                //guest0GuestImage.color = ReactionColor(0);
-                guest0GuestImage.sprite = ReactionSprite(0);
+                guest0GuestImage.color = ReactionColor(0);
+                //guest0GuestImage.sprite = ReactionSprite(0);
                 break;
             case 1:
-                //guest1GuestImage.color = ReactionColor(1);
-                guest1GuestImage.sprite = ReactionSprite(1);
+                guest1GuestImage.color = ReactionColor(1);
+                //guest1GuestImage.sprite = ReactionSprite(1);
                 break;
             case 2:
-                //guest2GuestImage.color = ReactionColor(2);
-                guest2GuestImage.sprite = ReactionSprite(2);
+                guest2GuestImage.color = ReactionColor(2);
+                //guest2GuestImage.sprite = ReactionSprite(2);
                 break;
             case 3:
-                //guest3GuestImage.color = ReactionColor(3);
-                guest3GuestImage.sprite = ReactionSprite(3);
+                guest3GuestImage.color = ReactionColor(3);
+                //guest3GuestImage.sprite = ReactionSprite(3);
                 break;
         }
     }
@@ -624,7 +624,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Neutral"];
             } else
             {
-                guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Put Out"];
+                guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Put Off"];
             }
             guestImageList[i].color = Color.white;
         }
@@ -756,6 +756,56 @@ public class WorkTheRoomManager : MonoBehaviour
         return GuestImageSprintDictionaries[dictionaryString][reactionString];
     }
 
+    Sprite GuestStateSprite(int guestNumber)
+    {
+        string dictionaryString;
+        string reactionString;
+        //Which Guest Image is Being Selected?
+        if (room.guestList[guestNumber].isFemale)
+        {
+            if (room.guestList[guestNumber].imageInt == 0)
+            {
+                dictionaryString = "female0";
+            }
+            else
+            {
+                dictionaryString = "female1";
+            }
+        }
+        else
+        {
+            if (room.guestList[guestNumber].imageInt == 0)
+            {
+                dictionaryString = "male0";
+            }
+            else
+            {
+                dictionaryString = "male1";
+            }
+        }
+        //Which Guest Image State is Being Selected?
+        if(room.guestList[guestNumber].lockedInState == 1)
+        {
+            reactionString = "Charmed";
+        } else if (room.guestList[guestNumber].lockedInState == -1)
+        {
+            reactionString = "Put Off";
+        } else
+        {
+            if(room.guestList[guestNumber].currentOpinion >= 70)
+            {
+                reactionString = "Approve";
+            } else if (room.guestList[guestNumber].currentOpinion <= 30)
+            {
+                reactionString = "Disapprove";
+            } else
+            {
+                reactionString = "Neutral";
+            }
+        }
+        return GuestImageSprintDictionaries[dictionaryString][reactionString];
+    }
+
     Color DispositionImageColor(int guest)
     {
         if (room.party.currentPlayerIntoxication >= 50 && room.guestList[guest].dispositionRevealed == false)
@@ -778,9 +828,9 @@ public class WorkTheRoomManager : MonoBehaviour
         foreach (Guest g in room.guestList)
         {
             g.currentInterestTimer = Mathf.Clamp(g.currentInterestTimer - 1, 0, g.maxInterestTimer);
-            if (g.currentInterestTimer <= 0 && g.lockedInState == 0 && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored 
+            if (g.currentInterestTimer <= 0 && g.lockedInState == 0 && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored they merely wait
             {
-                g.currentOpinion = Mathf.Clamp(g.currentOpinion - 10, 0, g.maxOpinion);
+                ChangeGuestOpinion(g, -10);
                 if (g.currentOpinion <= 0)
                 {
                     g.lockedInState = -1;
@@ -802,50 +852,25 @@ public class WorkTheRoomManager : MonoBehaviour
         femaleGuestImageSpriteDictionary0.Add("Approve", femaleGuestImage0Approve);
         femaleGuestImageSpriteDictionary0.Add("Neutral", femaleGuestImage0Neutral);
         femaleGuestImageSpriteDictionary0.Add("Disapprove", femaleGuestImage0PutOut);
-        femaleGuestImageSpriteDictionary0.Add("Put Out", femaleGuestImage0PutOut);
+        femaleGuestImageSpriteDictionary0.Add("Put Off", femaleGuestImage0PutOut);
 
         femaleGuestImageSpriteDictionary1.Add("Charmed", femaleGuestImage1Charmed);
         femaleGuestImageSpriteDictionary1.Add("Approve", femaleGuestImage1Approve);
         femaleGuestImageSpriteDictionary1.Add("Neutral", femaleGuestImage1Neutral);
         femaleGuestImageSpriteDictionary1.Add("Disapprove", femaleGuestImage1PutOut);
-        femaleGuestImageSpriteDictionary1.Add("Put Out", femaleGuestImage1PutOut);
+        femaleGuestImageSpriteDictionary1.Add("Put Off", femaleGuestImage1PutOut);
 
         maleGuestImageSpriteDictionary0.Add("Charmed", maleGuestImage0Charmed);
         maleGuestImageSpriteDictionary0.Add("Approve", maleGuestImage0Approve);
         maleGuestImageSpriteDictionary0.Add("Neutral", maleGuestImage0Neutral);
         maleGuestImageSpriteDictionary0.Add("Disapprove", maleGuestImage0PutOut);
-        maleGuestImageSpriteDictionary0.Add("Put Out", maleGuestImage0PutOut);
+        maleGuestImageSpriteDictionary0.Add("Put Off", maleGuestImage0PutOut);
 
         maleGuestImageSpriteDictionary1.Add("Charmed", maleGuestImage1Charmed);
         maleGuestImageSpriteDictionary1.Add("Approve", maleGuestImage1Approve);
         maleGuestImageSpriteDictionary1.Add("Neutral", maleGuestImage1Neutral);
         maleGuestImageSpriteDictionary1.Add("Disapprove", maleGuestImage1PutOut);
-        maleGuestImageSpriteDictionary1.Add("Put Out", maleGuestImage1PutOut);
-    }
-
-    Sprite GenerateGuestImage(int guest)
-    {
-        if (room.guestList[guest].isFemale)
-        {
-            if(room.guestList[guest].imageInt == 0)
-            {
-                return femaleGuestImage0Neutral;
-            } else
-            {
-                return femaleGuestImage1Neutral;
-            }
-        }
-        else
-        {
-            if (room.guestList[guest].imageInt == 0)
-            {
-                return maleGuestImage0Neutral;
-            }
-            else
-            {
-                return maleGuestImage1Neutral;
-            }
-        }
+        maleGuestImageSpriteDictionary1.Add("Put Off", maleGuestImage1PutOut);
     }
 
     public void SpendConfidenceGetRemark()
@@ -1043,22 +1068,22 @@ public class WorkTheRoomManager : MonoBehaviour
         {
             guest.currentOpinion += amount;
         }
-        //Are they Charmed or Put Out?
+        //Are they Charmed or Put Off?
         if (guest.currentOpinion >= 100 && guest.lockedInState == 0) //If they're not already Charmed then Player Hand is refilled once
         {
             guest.lockedInState = 1;
             RefillPlayerHand();
         }
-        else if (guest.currentOpinion <= 0 && guest.lockedInState == 0) //If they're not already Put Out then Player Confidence is reduced by 10
+        else if (guest.currentOpinion <= 0 && guest.lockedInState == 0) //If they're not already Put Off then Player Confidence is reduced by 30
         {
             guest.lockedInState = -1;
-            room.party.currentPlayerConfidence -= 20;
+            room.party.currentPlayerConfidence -= 30;
         }
         if (guest.lockedInState == 1) // If they're Charmed then Opinion is 100
         {
             guest.currentOpinion = 100;
         }
-        else if (guest.lockedInState == -1) // If they're Put Out then Opinion is 0
+        else if (guest.lockedInState == -1) // If they're Put Off then Opinion is 0
         {
             guest.currentOpinion = 0;
         }
@@ -1115,7 +1140,7 @@ public class WorkTheRoomManager : MonoBehaviour
             }
             else if (guest.lockedInState == -1)
             {
-                return "Put Out";
+                return "Put Off";
             }
             else if (guest.currentInterestTimer == 0)
             {
@@ -1160,9 +1185,9 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void VictoryCheck()
     {
-        //Check to see if everyone is either Charmed or Put Out 
+        //Check to see if everyone is either Charmed or Put Off 
         int charmedAmount = 0;
-        int putOutAmount = 0;
+        int putOffAmount = 0;
         foreach (Guest t in room.guestList)
         {
             if(t.lockedInState == 1)
@@ -1170,10 +1195,10 @@ public class WorkTheRoomManager : MonoBehaviour
                 charmedAmount++;
             } else if (t.lockedInState == -1)
             {
-                putOutAmount++;
+                putOffAmount++;
             }
             //If the Conversation is Over
-            if (charmedAmount + putOutAmount == room.guestList.Count)
+            if (charmedAmount + putOffAmount == room.guestList.Count)
             {
                 Debug.Log("Conversation Over!");
                 room.cleared = true;
@@ -1201,7 +1226,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 GameData.tonightsParty.wonRewardsList.Add(givenReward);
                 object[] objectStorage = new object[4];
                 objectStorage[0] = charmedAmount;
-                objectStorage[1] = putOutAmount;
+                objectStorage[1] = putOffAmount;
                 objectStorage[2] = room.hostHere;
                 objectStorage[3] = givenReward;
                 screenFader.gameObject.SendMessage("WorkTheRoomReportModal", objectStorage);
@@ -1372,6 +1397,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest0InterestBar.value = InterestTimer(room.guestList[0]);
         guest0OpinionBar.value = (float)room.guestList[0].currentOpinion / 100;
         guest0DispositionIcon.color = DispositionImageColor(0);
+        guest0GuestImage.sprite = GuestStateSprite(0);
         //Guest 1
         guest1InterestText.text = InterestState(room.guestList[1]);
         if (room.guestList[1].isEnemy)
@@ -1385,6 +1411,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest1InterestBar.value = InterestTimer(room.guestList[1]);
         guest1OpinionBar.value = (float)room.guestList[1].currentOpinion / 100;
         guest1DispositionIcon.color = DispositionImageColor(1);
+        guest1GuestImage.sprite = GuestStateSprite(1);
         //Guest 2
         guest2InterestText.text = InterestState(room.guestList[2]);
         if (room.guestList[2].isEnemy)
@@ -1398,6 +1425,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest2InterestBar.value = InterestTimer(room.guestList[2]);
         guest2OpinionBar.value = (float)room.guestList[2].currentOpinion / 100;
         guest2DispositionIcon.color = DispositionImageColor(2);
+        guest2GuestImage.sprite = GuestStateSprite(2);
         //Guest 3
         guest3InterestText.text = InterestState(room.guestList[3]);
         if (room.guestList[3].isEnemy)
@@ -1411,6 +1439,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest3InterestBar.value = InterestTimer(room.guestList[3]);
         guest3OpinionBar.value = (float)room.guestList[3].currentOpinion / 100;
         guest3DispositionIcon.color = DispositionImageColor(3);
+        guest3GuestImage.sprite = GuestStateSprite(3);
     }
     
 }

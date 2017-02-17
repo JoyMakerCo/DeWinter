@@ -125,7 +125,7 @@ public class GameData : MonoBehaviour
 
 
         //Reputation
-        reputationCount = 10;
+        reputationCount = 20;
         reputationLevels = new ReputationLevel[11];
         reputationLevels[0] = new ReputationLevel(0, 0, -10, 0);
         reputationLevels[1] = new ReputationLevel(1, 20, 0, 0);

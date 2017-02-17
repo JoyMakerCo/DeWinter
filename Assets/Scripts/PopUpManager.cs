@@ -863,7 +863,7 @@ public class PopUpManager : MonoBehaviour {
     void WorkTheRoomReportModal(object[] objectStorage)
     {
         int guestsCharmed = (int)objectStorage[0];
-        int guestsPutOut = (int)objectStorage[1];
+        int guestsPutOff = (int)objectStorage[1];
         bool hostHere = (bool)objectStorage[2];
         
         //Make the Pop Up
@@ -876,7 +876,7 @@ public class PopUpManager : MonoBehaviour {
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         if (!hostHere)
         {
-            bodyText.text = "The Conversation is over, you managed to Charm " + guestsCharmed + " Guests and " + guestsPutOut + " Guests felt Put Out after speaking with you.";
+            bodyText.text = "The Conversation is over, you managed to Charm " + guestsCharmed + " Guests and " + guestsPutOff + " Guests felt Put Off after speaking with you.";
         } else
         {
             if(guestsCharmed == 1)
@@ -884,7 +884,7 @@ public class PopUpManager : MonoBehaviour {
                 bodyText.text = "The Conversation is over, and you managed to Charm the Host!";
             } else
             {
-                bodyText.text = "The Conversation is over, but the Host was unfortunately Put Out by your behavior.";
+                bodyText.text = "The Conversation is over, but the Host was unfortunately Put Off by your behavior.";
             }
             
         }

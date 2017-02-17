@@ -20,7 +20,7 @@ public class Guest {
     public float currentInterestTimer;
     public bool attackTimerWaiting; //Only used for Enemies
     public int attackNumber;
-    public int lockedInState = 0; //0 for Active, 1 for Charmed and -1 for Put Out
+    public int lockedInState = 0; //0 for Active, 1 for Charmed and -1 for Put Off
 
     //Enemy Stuff
     public bool isEnemy;

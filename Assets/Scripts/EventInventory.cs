@@ -34,7 +34,7 @@ public class EventInventory : MonoBehaviour
                 new EventOption("<To the Coachman> “Let’s go! I don’t have all day!”", 4)),
             //Stage 1
             new EventStage("You must have read the brief letter over a hundred times, but you still find new details to puzzle over." +
-            "\n\n‘My Dearest Yvette,"+
+            "\n\n‘My Dearest Yvette," +
             "\n\nI know you must still be in shock from your parents’ passing…’" + 
             "\nYou’re also still in shock from your tiny inheritance. Your older siblings received the lion’s share of the family fishing business." +
             "\n\n‘I know it may be sudden, but I want to invite you to live with me in Paris.’" +

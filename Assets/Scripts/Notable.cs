@@ -15,7 +15,7 @@ public class Notable {
     public float maxInterestTimer;
     public float currentInterestTimer;
     public bool interestTimerWaiting;
-    public int lockedInState = 0; //0 for Active, 1 for Charmed and -1 for Put Out
+    public int lockedInState = 0; //0 for Active, 1 for Charmed and -1 for Put Off
     //Disposition Stuff
     public int dispositionInt;
     public float dispositionTimerSwitchMax;

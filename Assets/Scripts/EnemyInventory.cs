@@ -7,6 +7,7 @@ public class EnemyInventory : MonoBehaviour {
     static EnemyInventory instance = null;
 
     public static List<Enemy> enemyInventory = new List<Enemy>();
+    public static bool enemyInventoryUnlocked = false; //Used to determine if the Player has gained their first Enemy and thus allowed the Enemies part of the Journal to appear.
 
     void Start () {
         if (instance != null && instance != this)
@@ -48,6 +49,7 @@ public class EnemyInventory : MonoBehaviour {
             enemyInventory.Add(e);
             AdditionPartyScan(e);
         }
+        enemyInventoryUnlocked = true;
     }
 
     //Adds the Enemy to future Parties, used in the Add Enemy Function

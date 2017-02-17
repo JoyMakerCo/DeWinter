@@ -7,7 +7,7 @@ public class FireBackRemarkSlot {
         public int dispositionInt;
         public Disposition disposition;
         public bool dispositionRevealed;
-        public int lockedInState = 0; //0 for Active, 1 for Charmed and -1 for Put Out
+        public int lockedInState = 0; //0 for Active, 1 for Charmed and -1 for Put Off
 
         //Generates a random regular Guest
         public FireBackRemarkSlot()
