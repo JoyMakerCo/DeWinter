@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
+using Util;
 
 namespace DeWinter
 {
-	public class FactionModel : DocumentModel
+	public class FactionModel : DocumentModel, IInitializable
 	{
 		private Dictionary<string, FactionVO> _factions;
 
@@ -24,6 +25,11 @@ namespace DeWinter
 
 		public FactionModel () : base("FactionData") {}
 
+		public void Initialize()
+		{
+			DeWinterApp.Subscribe<AdjustBalanceVO>(HandleFactionReputation);
+		}
+
 		public FactionVO this[string faction]
 		{
 			get
@@ -33,7 +39,32 @@ namespace DeWinter
 		}
 
 		[JsonProperty("preference")]
-
 		public Dictionary<string, string[]> Preference;
+
+		[JsonProperty("power")]
+		public Dictionary<int, string> Power;
+
+		[JsonProperty("allegiance")]
+		public Dictionary<int, string> Allegiance;
+
+		public string VictoriousPower
+		{
+			get
+			{
+				return _factions["Crown"].Power >= _factions["Revolution"].Power
+					? "Crown"
+					: "Revolution";
+			}
+		}
+
+		private void HandleFactionReputation(AdjustBalanceVO vo)
+		{
+			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
+			{
+				_factions[vo.Type].playerReputation += (int)vo.Amount;
+				vo.IsRequest = false;
+				DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+			}
+		}
 	}
 }

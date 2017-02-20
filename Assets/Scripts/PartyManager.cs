@@ -3,12 +3,16 @@ using System.Collections;
 using UnityEngine.UI;
 using DeWinter;
 
-public class PartyManager : MonoBehaviour {
+public class PartyManager : MonoBehaviour
+{
     public GameObject screenFader; // It's for the Confidence Tally pop-up
     public RoomManager roomManager;
 
+    private PartyModel _model;
+
     void Start()
-    {
+	{
+		_model = DeWinterApp.GetModel<PartyModel>();
         ConfidenceTally();
         EngageParty();
         FashionChangeCheck(); //If the Player is of sufficiently high General Reputation, they may change the Style of Fashion just by showing up
@@ -23,11 +27,11 @@ public class PartyManager : MonoBehaviour {
     {
         foreach (Enemy e in EnemyInventory.enemyInventory)
         {
-            if(e.faction == GameData.factionList[GameData.tonightsParty.faction])
+            if(e.Faction == _model.Party.faction)
             {
                 if(Random.Range(0,2) == 0)
                 {
-                    GameData.tonightsParty.AddEnemy(e);
+                	_model.Party.enemyList.Add(e);
                 }
             }
         }

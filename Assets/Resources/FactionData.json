@@ -10,56 +10,66 @@
 				{
 					requirement:0,
 					text:"Level 0: No new invitations to Trivial Crown Parties",
-					confidence:0
+					confidence:0,
+					largestAllowableParty:0
 				},
 				{
 					requirement:20,
 					text:"Level 1: Invited to Trivial Crown Parties",
-					confidence:10
+					confidence:10,
+					largestAllowableParty:1
 				},
 				{
 					requirement:50,
 					text:"Level 2: Wine upon entering Crown Parties",
-					confidence:20
+					confidence:20,
+					largestAllowableParty:1
 				},
 				{
 					requirement:100,
 					text:"Level 3: Training in Courtly Dances",
-					confidence:30
+					confidence:30,
+					largestAllowableParty:1
 				},
 				{
 					requirement:150,
 			        text:"Level 4: Invited to Decent Crown Parties, extra time at Trivial Crown Parties",
-					confidence:40
+					confidence:40,
+					largestAllowableParty:2
 				},
 				{
 					requirement:200,
 			        text:"Level 5: Extra attention from the drink servers at Crown Parties",
-					confidence:50
+					confidence:50,
+					largestAllowableParty:2
 				},
 				{
 					requirement:250,
 			        text:"Level 6: Always know the Power of the Crown",
 					confidence:60,
-					importance:1
+					importance:1,
+					largestAllowableParty:2
 				},
 				{
 					requirement:300,
 			        text:"Level 7: Invited to Grand Crown Parties, extra time at Decent Crown Parties",
 					confidence:70
-					importance:1
+					importance:1,
+					largestAllowableParty:3
 				},
 				{
 					requirement:350,
 			        text:"Level 8: Always know Allegiance of the Crown",
 					confidence:80,
-					importance:1
+					importance:1,
+					largestAllowableParty:3
 				},
 				{
 					requirement:400,
                 	text:"Level 9: A title and Royal Allowance. Extra time at Grand Crown Parties",
 					confidence:90,
-					importance:2
+					importance:2,
+					largestAllowableParty:3
 				}
 			]
 		},
@@ -324,7 +334,7 @@
 		40:"Significant",
 		60:"Formidable",
 		90:"Dominating"
-	}
+	},
 	maxPartySize:[
 		0,1,1,1,2,2,2,3,3,3
 	]

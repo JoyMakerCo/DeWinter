@@ -1,47 +1,32 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using DeWinter;
 
-public class ServantInventoryList : MonoBehaviour {
-
-    public Servant selectedServant;
+public class ServantInventoryList : MonoBehaviour
+{
+    public ServantVO selectedServant;
     public GameObject gossipInventoryButtonPrefab;
     public enum InventoryType {Personal, Available};
     public InventoryType inventoryType;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         GenerateInventoryButtons();
         selectedServant = null;
     }
 
     public void GenerateInventoryButtons()
     {
-        foreach (string k in GameData.servantDictionary.Keys)
-        {
-            Servant s = GameData.servantDictionary[k];
-            if (inventoryType == InventoryType.Personal)
-            {
-                if (s.Hired())
-                {
-                    GameObject button = GameObject.Instantiate(gossipInventoryButtonPrefab);
-                    ServantInventoryButton buttonStats = button.GetComponent<ServantInventoryButton>();
-                    buttonStats.servant = s;
-                    button.transform.SetParent(this.transform, false);
-                    Debug.Log("Servant Button: " + s.NameAndTitle() + " is made!");
-                }
-            } else
-            {
-                if (!s.Hired() && s.Introduced())
-                {
-                    GameObject button = GameObject.Instantiate(gossipInventoryButtonPrefab);
-                    ServantInventoryButton buttonStats = button.GetComponent<ServantInventoryButton>();
-                    buttonStats.servant = s;
-                    button.transform.SetParent(this.transform, false);
-                    Debug.Log("Servant Button: " + s.NameAndTitle() + " is made!");
-                }
-            }
-            
-        }
+    	ClearInventoryButtons();
+		List<ServantVO> Servants = (inventoryType == InventoryType.Personal)
+			? DeWinterApp.GetModel<ServantModel>().Hired.Values
+			: DeWinterApp.GetModel<ServantModel>().Introduced;
+
+		foreach(ServantVO s in Servants)
+    	{
+    		MakeButton(s);
+    	}
     }
 
     public void ClearInventoryButtons()
@@ -50,5 +35,14 @@ public class ServantInventoryList : MonoBehaviour {
         {
             GameObject.Destroy(child.gameObject);
         }
+    }
+
+    private GameObject MakeButton(ServantVO s)
+    {
+		GameObject button = GameObject.Instantiate(gossipInventoryButtonPrefab);
+        ServantInventoryButton buttonStats = button.GetComponent<ServantInventoryButton>();
+        buttonStats.servant = s;
+        button.transform.SetParent(this.transform, false);
+        Debug.Log("Servant Button: " + s.NameAndTitle + " is made!");
     }
 }

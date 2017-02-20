@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 
 namespace DeWinter
@@ -6,6 +7,8 @@ namespace DeWinter
 	public class PartyModel : DocumentModel
 	{
 		public PartyModel(): base("PartyData") {}
+
+		public Party Party;
 
 		[JsonProperty("conversationIntroList")]
 		public Disposition[] ConversationIntros;

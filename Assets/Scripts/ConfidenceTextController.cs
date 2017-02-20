@@ -2,17 +2,27 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ConfidenceTextController : MonoBehaviour {
-    Text myText;
+namespace DeWinter
+{
+	public class ConfidenceTextController : MonoBehaviour
+	{
+	    Text myText;
+	    private PartyModel _model;
 
-    // Use this for initialization
-    void Start()
-    {
-        myText = this.GetComponent<Text>();
-    }
+	    // Use this for initialization
+	    void Start()
+	    {
+	        myText = this.GetComponent<Text>();
+			_model = DeWinterApp.GetModel<PartyModel>();
+	        DeWinterApp.Subscribe<AdjustBalanceVO>(HandleConfidenceUpdate);
+	    }
 
-    void Update()
-    {
-        myText.text = "Confidence: " + GameData.tonightsParty.currentPlayerConfidence + "/" + GameData.tonightsParty.maxPlayerConfidence;
-    }
+		private void HandleConfidenceUpdate(AdjustBalanceVO vo)
+	    {
+	    	if (!vo.IsRequest)
+	    	{
+		        myText.text = "Confidence: " + _model.Party.currentPlayerConfidence + "/" + _model.Party.maxPlayerConfidence;
+		    }
+	    }
+	}
 }

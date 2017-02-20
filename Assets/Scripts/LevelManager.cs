@@ -5,6 +5,10 @@ using System.Collections;
 public class LevelManager : MonoBehaviour
 {
     public SceneFadeInOut screenFader;
+	public string victoriousPower;
+    public string victoryDegree;
+    public string playerVictoryStatus;
+    public string playerAllegiance;
 
     public void LoadLevel(string sceneName)
     {

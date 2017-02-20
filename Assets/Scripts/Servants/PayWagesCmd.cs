@@ -12,7 +12,7 @@ namespace DeWinter
 			GameModel model = DeWinterApp.GetModel<GameModel>();
 			foreach (KeyValuePair<string, ServantVO> kvp in servantModel.Servants)
 			{
-				model.Livre -= kvp.Value.wage;
+				model.Livre -= kvp.Value.Wage;
 			}
 		}
 	}

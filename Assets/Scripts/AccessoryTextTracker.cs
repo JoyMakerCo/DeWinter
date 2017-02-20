@@ -1,21 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
-public class AccessoryTextTracker : MonoBehaviour {
-
+public class AccessoryTextTracker : MonoBehaviour
+{
     Text myText;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+		ItemVO accessory = DeWinterApp.GetModel<InventoryModel>().SelectedItem;
         myText = this.GetComponent<Text>();
-        if(GameData.partyAccessoryID != -1)
-        {
-            myText.text = "Acessory: " + AccessoryInventory.personalInventory[GameData.partyAccessoryID].Name();
-        } else
-        {
-            myText.text = "";
-        }
-        
+        myText.text = (accessory != null)
+			? "Acessory: " + accessory.Name
+			: "";
     }
 }

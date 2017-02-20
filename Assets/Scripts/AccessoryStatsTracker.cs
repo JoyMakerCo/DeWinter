@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
-public class AccessoryStatsTracker : MonoBehaviour {
-
+public class AccessoryStatsTracker : MonoBehaviour
+{
     public string inventoryType;
 
     private Text accessoryNameText;
@@ -33,16 +34,17 @@ public class AccessoryStatsTracker : MonoBehaviour {
 
     void Update()
     {
+    	InventoryModel m = DeWinterApp.GetModel<InventoryModel>();
         if (inventoryType == "personal")
         {
             if (accessoryInventoryList.selectedAccessory != -1)
             {
-                //Text
-                Accessory displayAccessory = AccessoryInventory.accessoryInventories[inventoryType][accessoryInventoryList.selectedAccessory];
-                accessoryNameText.text = displayAccessory.Name();
-                accessoryDescriptionText.text = displayAccessory.Description();
-                accessoryCostText.text = displayAccessory.Price(inventoryType).ToString("£" + "#,##0"); //Uses Personal Inventory Price
-                accessorySaleButtonText.text = "Sell for " + displayAccessory.Price(inventoryType).ToString("£" + "#,##0");
+                //Text            
+                ItemVO displayAccessory = m.SelectedItem;
+                accessoryNameText.text = displayAccessory.Name;
+                accessoryDescriptionText.text = displayAccessory.Description;
+                accessoryCostText.text = displayAccessory.SellPriceString; //Uses Personal Inventory Price
+                accessorySaleButtonText.text = "Sell for " + displayAccessory.SellPriceString;
             }
             else
             {
@@ -57,11 +59,11 @@ public class AccessoryStatsTracker : MonoBehaviour {
             if (accessoryInventoryList.selectedAccessory != -1)
             {
                 //Text
-                Accessory displayAccessory = AccessoryInventory.accessoryInventories[inventoryType][accessoryInventoryList.selectedAccessory];
-                accessoryNameText.text = displayAccessory.Name();
-                accessoryDescriptionText.text = displayAccessory.Description();
-                accessoryCostText.text = displayAccessory.Price(inventoryType).ToString("£" + "#,##0"); //Uses Personal Inventory Price
-                accessorySaleButtonText.text = "Buy for " + displayAccessory.Price(inventoryType).ToString("£" + "#,##0");
+                ItemVO displayAccessory = m.SelectedMarketItem;
+                accessoryNameText.text = displayAccessory.Name;
+                accessoryDescriptionText.text = displayAccessory.Description;
+                accessoryCostText.text = displayAccessory.PriceString; //Uses Personal Inventory Price
+                accessorySaleButtonText.text = "Buy for " + displayAccessory.PriceString;
             }
             else
             {
@@ -78,10 +80,10 @@ public class AccessoryStatsTracker : MonoBehaviour {
             accessorySaleButtonText.color = Color.clear;
             if (accessoryInventoryList.selectedAccessory != -1) //If an Outfit is Selected
             {
-                Accessory displayAccessory = AccessoryInventory.accessoryInventories["personal"][accessoryInventoryList.selectedAccessory];
-                accessoryNameText.text = displayAccessory.Name();
-                accessoryDescriptionText.text = displayAccessory.Description();
-                accessoryCostText.text = displayAccessory.Price(inventoryType).ToString("£" + "#,##0"); //Uses Personal Inventory Prices
+                ItemVO displayAccessory = m.SelectedItem;
+                accessoryNameText.text = displayAccessory.Name;
+                accessoryDescriptionText.text = displayAccessory.Description;
+                accessoryCostText.text = displayAccessory.SellPriceString; //Uses Personal Inventory Prices
             }
             else
             {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DeWinter;
 
 public class Guest {
 
@@ -10,7 +11,7 @@ public class Guest {
     public int dispositionInt;
     public Disposition disposition;
     public bool dispositionRevealed;
-    public Faction faction;
+    public FactionVO faction;
     public bool isFemale; //Determines the gender of the Guest
     public int imageInt;
     //Opinion Boredom and Interest Stuff
@@ -84,9 +85,9 @@ public class Guest {
         attackTimerWaiting = false; //Only used for Enemies
         dispositionRevealed = false;
         isEnemy = true;
-        isFemale = enemy.isFemale;
+        isFemale = enemy.IsFemale;
         imageInt = enemy.imageInt;
-        name = enemy.Name(); // Have to Generate the Name after the Gender
+        name = enemy.Name; // Have to Generate the Name after the Gender
     }
 
     string GenerateName()

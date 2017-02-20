@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DeWinter;
 
 public class Gossip {
 
-    Faction faction; // The Faction this Gossip is relevant to
+    string Faction; // The Faction this Gossip is relevant to
     //Character character The Character this Gossip is relevant to (requires the Character system to be in place)
     int livreValue;
     int factionPowerShift;
@@ -11,9 +12,10 @@ public class Gossip {
     public float freshness;
     public string flavorText;
 
-	public Gossip(Party party)
+	public Gossip(Party party) : this(party.faction) {}
+    public Gossip(string faction=null)
     {
-        faction = RandomFaction(party.faction);
+        Faction = faction;
         //character = SomethingSomething <- If the Gossip affects a specific character
         livreValue = RandomLivreValue();
         factionPowerShift = 100;
@@ -22,36 +24,14 @@ public class Gossip {
         flavorText = RandomFlavorText();
     }
 
-    public Gossip(string factionString)
-    {
-        faction = GameData.factionList[factionString];
-        //character = SomethingSomething <- If the Gossip affects a specific character
-        livreValue = RandomLivreValue();
-        factionPowerShift = 100;
-        factionAllegianceShift = RandomFactionAllegianceShift();
-        freshness = 11; // Starts at 11 because they lose 1 on the day they start
-        flavorText = RandomFlavorText();
-    }
-
-    Faction RandomFaction(string partyFaction)
+    string RandomFaction(string partyFaction)
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
-        int factionRandom = Random.Range(0, 7);
-        switch (factionRandom)
-        {
-            case 0:
-                return GameData.factionList["Crown"];
-            case 1:
-                return GameData.factionList["Church"];
-            case 2:
-                return GameData.factionList["Military"];
-            case 3:
-                return GameData.factionList["Bourgeoisie"];
-            case 4:
-                return GameData.factionList["Revolution"];
-            default:
-                return GameData.factionList[partyFaction];
-         }
+		if (partyFaction != null && Random.Range(0,2) == 0)
+			return partyFaction;
+
+		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+		return fmod.Factions.Keys[Random.Range(0,fmod.Factions.Count)];
      }
 
     //Character RandomCharacter (Picks a Random active character from the Faction)
@@ -75,7 +55,7 @@ public class Gossip {
 
     int RandomFactionAllegianceShift()
     {
-        if(faction.Name() == "Revolution" || faction.Name() == "Crown")
+        if(Faction.Name() == "Revolution" || Faction.Name() == "Crown")
         {
             return 0;
         } else
@@ -99,7 +79,7 @@ public class Gossip {
 
     public string Name()
     {
-        return "A tidbit of " + faction.Name() + " Gossip";
+        return "A tidbit of " + Faction.Name() + " Gossip";
     }
 
     public int LivreValue()
@@ -120,10 +100,5 @@ public class Gossip {
     public float FreshnessValue()
     {
         return freshness / 10;
-    }
-
-    public Faction Faction()
-    {
-        return faction;
     }
 }

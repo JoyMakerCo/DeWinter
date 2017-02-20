@@ -7,7 +7,7 @@ using DeWinter;
 namespace DeWinter
 {
 	[Serializable]
-	internal class RoomStatusIndicator
+	public class RoomStatusIndicator
 	{
 		public string ID;
 		public Image Icon;

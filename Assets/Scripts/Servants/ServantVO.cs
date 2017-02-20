@@ -2,33 +2,36 @@
 using System.Collections;
 using Newtonsoft.Json;
 
-public class ServantVO
+namespace DeWinter
 {
-	[JsonProperty("name")]
-	public string name; //What is their given name?
-	
-	[JsonProperty("slot")]
-    public string slot; //What role do they fill? Seamstress? Spymaster? Bodyguard?
+	public class ServantVO
+	{
+		[JsonProperty("name")]
+		public string Name; //What is their given name?
+		
+		[JsonProperty("slot")]
+	    public string slot; //What role do they fill? Seamstress? Spymaster? Bodyguard?
 
-	[JsonProperty("title")]
-	public string title; //Title, just used in name stuff
+		[JsonProperty("title")]
+		public string title; //Title, just used in name stuff
 
-	[JsonProperty("description")]
-	public string description; //What this servant can do for the Player
+		[JsonProperty("description")]
+		public string description; //What this servant can do for the Player
 
-	[JsonProperty("wage")]
-	public int wage; //How much they cost per week
+		[JsonProperty("wage")]
+		public int Wage; //How much they cost per week
 
-    public bool introduced=false; //Has this servant been introduced yet?
-    public bool hired=false; //Are you employing this Servant right now?
+		public bool Hired=false;
+		public bool Introduced=false;
 
-    public string NameAndTitle
-    {
-    	get { return name + ", the " + title; }
-    }
+	    public string NameAndTitle
+	    {
+	    	get { return Name + ", the " + title; }
+	    }
 
-    public string RecordData
-    {
-		get { return description + "\n- Costs " + wage.ToString("£" + "#,##0") + "/Week"; }
-    }
+	    public string RecordData
+	    {
+			get { return description + "\n- Costs " + Wage.ToString("£" + "#,##0") + "/Week"; }
+	    }
+	}
 }

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DeWinter;
 
 public class PierreQuest {
 
-    private Faction faction; // The Faction this Quest is relevant to
+    private FactionVO faction; // The Faction this Quest is relevant to
     //Character character //The Character this Quest is relevant to (requires the Character system to be in place)
     public int daysTimeLimit; //How long the Player has to complete this Quest
     public int daysLeft;
@@ -21,14 +22,10 @@ public class PierreQuest {
 
     public bool GossipMatch(Gossip gossip)
     {
-        if(gossip.Faction() == faction)
-        {
-            return true;
-        }
-        return false;
+        return gossip.Faction == faction;
     }
 
-    Faction RandomFaction()
+    FactionVO RandomFaction()
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
         int factionRandom = Random.Range(0, 5);
@@ -70,7 +67,7 @@ public class PierreQuest {
         daysTimeLimit = Random.Range(i, i + 3);
     }
 
-    public Faction Faction()
+    public FactionVO Faction()
     {
         return faction;
     }

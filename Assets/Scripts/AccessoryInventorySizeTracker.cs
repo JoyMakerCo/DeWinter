@@ -2,18 +2,23 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class AccessoryInventorySizeTracker : MonoBehaviour {
-    private Text myText;
+namespace DeWinter
+{
+	public class AccessoryInventorySizeTracker : MonoBehaviour {
+	    private Text myText;
+	    private InventoryModel _model;
 
-    // Use this for initialization
-    void Start()
-    {
-        myText = GetComponent<Text>();
-    }
+	    // Use this for initialization
+	    void Start()
+	    {
+	    	_model = DeWinterApp.GetModel<InventoryModel>();
+	        myText = GetComponent<Text>();
+	    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        myText.text = AccessoryInventory.personalInventory.Count.ToString() + "/" + AccessoryInventory.personalInventoryMaxSize.ToString();
-    }
+	    // Update is called once per frame
+	    void Update()
+	    {
+			myText.text = _model.Inventory["personal"].Count.ToString() + "/" + _model.MaxSlots;
+	    }
+	}
 }

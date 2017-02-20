@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DeWinter;
 
 public class Notable {
 
     //General Settings
     public string name;
-    public Faction faction;
+    public FactionVO faction;
     public bool isFemale; //Determines the gender of the Guest
     public bool enemy;
     public int imageInt;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using DeWinter;
 
 public class PopUpManager : MonoBehaviour
 {
+// TODO: Refactor to work with Dialog Manager
     public GameObject screenFader;
 
     public GameObject quitGameModal;
@@ -53,7 +55,6 @@ public class PopUpManager : MonoBehaviour
         popUp.transform.SetAsLastSibling();
         //Set the Event Time
         EventManager eventManager = popUp.transform.GetComponent<EventManager>();
-        eventManager.eventInventory = eventInventory.GetComponent<EventInventory>();
         eventManager.eventTime = eventTime;
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
@@ -86,14 +87,12 @@ public class PopUpManager : MonoBehaviour
         //Set Up the Information
         int totalWages = 0;
         string servantsHired = "";
-        foreach (string k in GameData.servantDictionary.Keys)
+        ServantModel model = DeWinterApp.GetModel<ServantModel>();
+		GameModel gameModel = DeWinterApp.GetModel<GameModel>();
+        foreach (KeyValuePair<string, ServantVO> kvp in model.Servants)
         {
-            Servant s = GameData.servantDictionary[k];
-            if (s.Hired())
-            {
-                totalWages += s.Wage();
-                servantsHired += s.NameAndTitle();
-            }
+            totalWages += kvp.Value.Wage;
+            servantsHired += kvp.Value.NameAndTitle;
         }
         //Make the Pop up
         GameObject popUp = Instantiate(messageModal) as GameObject;
@@ -106,13 +105,13 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "It's time to pay the help. You're currently employing " + servantsHired + "." +
             "\nTheir cost of employment this week is " + totalWages + "." +
-            "\nThis leaves you with " + GameData.moneyCount.ToString("£" + "#,##0");
+			"\nThis leaves you with £" + gameModel.Livre.ToString("#,##0");
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
 
     //This confirmation modal is used for Hiring and Firing Servants
-    void CreateHireAndFireModal(Servant s)
+    void CreateHireAndFireModal(ServantVO s)
     {
         
         //Make the Pop up
@@ -124,21 +123,18 @@ public class PopUpManager : MonoBehaviour
         Text dontHireFireButtonText = popUp.transform.Find("DontHireFireButton").Find("Text").GetComponent<Text>();
 
         //Set the Pop Up Values
-        HireOrFirePopUpController controller = popUp.GetComponent<HireOrFirePopUpController>();
-        controller.servant = s;
-
         //Fill in the Text
-        if (s.Hired())
+        if (s.hired)
         {
-            titleText.text = "Fire Them?";
-            bodyText.text = "Are you sure you want fire " + s.NameAndTitle() + "?";
+            titleText.text = "Fire + " + s.Name + "?";
+            bodyText.text = "Are you sure you want fire " + s.NameAndTitle + "?";
             hireFireButtonText.text = "Fire";
             dontHireFireButtonText.text = "Don't Fire";
         }
         else
         {
-            titleText.text = "Fire Them?";
-            bodyText.text = "Are you sure you want to hire " + s.NameAndTitle() + " for " + s.Wage().ToString() + "?";
+			titleText.text = "Hire + " + s.Name + "?";
+            bodyText.text = "Are you sure you want to hire " + s.NameAndTitle + " for £" + s.Wage.ToString() + "?";
             hireFireButtonText.text = "Hire";
             dontHireFireButtonText.text = "Don't Hire";
         }
@@ -192,6 +188,7 @@ public class PopUpManager : MonoBehaviour
         GameObject popUp = Instantiate(rSVPModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
         RSVPPopUpController popUpController = popUp.GetComponent<RSVPPopUpController>();
+        ServantModel model = DeWinterApp.GetModel<ServantModel>();
         popUpController.party = affectedParty;
         //Title Text
         Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
@@ -199,12 +196,12 @@ public class PopUpManager : MonoBehaviour
         //Body Text (Update with Spymaster)
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "You've been invited to a " + affectedParty.SizeString() + " Party being held by " + affectedParty.host.name + " of the " + affectedParty.faction + ".";
-        if (GameData.servantDictionary["Spymaster"].Hired()) {
+        if (model.Servants.ContainsKey("Spymaster")) {
             if(affectedParty.enemyList.Count > 0)
             {
                 bodyText.text += "\nIt appears that some of your enemies will be in attendance:";
                 foreach (Enemy e in affectedParty.enemyList){
-                    bodyText.text += "\n-" + e.Name();
+                    bodyText.text += "\n-" + e.Name;
                 }
                 bodyText.text += "\nWould you still like to attend?";
             } else
@@ -220,7 +217,7 @@ public class PopUpManager : MonoBehaviour
         BroadcastMessage("ActiveModal");
     }
 
-    void CreateTwoPartyChoicePopUp(Day day)
+    void CreateTwoPartyChoicePopUp(Party party1, Party party2, bool isToday)
     {
         //Make the Pop up
         GameObject popUp = Instantiate(twoPartyChoiceModal) as GameObject;
@@ -234,16 +231,14 @@ public class PopUpManager : MonoBehaviour
                 "\nWhich party are you interested in?";
         //Party Assignment
         TwoPartyChoicePopUpController popUpController = popUp.GetComponent<TwoPartyChoicePopUpController>();
-        popUpController.affectedDay = day;
+		popUpController.isToday = isToday;
         popUpController.screenFader = screenFader;
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
 
-    void CreateTwoPartyRSVPdPopUp(Day day)
+    void CreateTwoPartyRSVPdPopUp(Party party1, Party party2)
     {
-        Party party1 = day.party1;
-        Party party2 = day.party2;
         //Make the Pop up
         GameObject popUp = Instantiate(twoPartyRSVPdModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
@@ -930,7 +925,7 @@ public class PopUpManager : MonoBehaviour
     }
 
     //This is used in the Estate Tab to tell Players that they were caught trading in Gossip Items
-    void CreateCaughtTradingGossipModal(Faction gossipFaction)
+    void CreateCaughtTradingGossipModal(FactionVO gossipFaction)
     {
         //Make the Pop Up
         GameObject popUp = Instantiate(messageModal) as GameObject;
@@ -942,7 +937,7 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, it appears that you've been found out. While 'Le Mecure' does its best to conceal our sources, some members of the " + gossipFaction.Name() + 
                 " seem to have figured out that you were out supplier. This has damaged your Reputation both with them and with society in General.";
-        if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 2)
+        if (GameData.factionList["Revolution"].ReputationLevel >= 2)
         {
             bodyText.text += "\n\nThankfully your contacts in the Revolution have minimized the effects somewhat.";
         }

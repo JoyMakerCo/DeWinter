@@ -867,7 +867,7 @@ public class WorkTheRoomManager : MonoBehaviour
             room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 20, 20, room.party.maxPlayerConfidence);
             int drinkStrength = room.party.drinkStrength;
             //Is the Player decent friends with the Military? If so, make them more alcohol tolerant!
-            if(GameData.factionList["Military"].PlayerReputationLevel() >= 3)
+            if(GameData.factionList["Military"].ReputationLevel >= 3)
             {
                 drinkStrength -= 3;
             }

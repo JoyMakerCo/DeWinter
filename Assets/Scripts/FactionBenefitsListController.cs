@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DeWinter;
 
 public class FactionBenefitsListController : MonoBehaviour {
 
@@ -15,13 +16,14 @@ public class FactionBenefitsListController : MonoBehaviour {
 
     public void DisplayBenefits(string factionName)
     {
-        text.text = "The " + factionName + "(Level " + GameData.factionList[factionName].PlayerReputationLevel() + ")";
-        if(GameData.factionList[factionName].PlayerReputationLevel() != -1)
+		int repLevel = GameData.factionList[factionName].ReputationLevel;
+        text.text = "The " + factionName + "(Level " + repLevel.ToString() + ")";
+		if(repLevel != -1)
         {
-            for (int i = 0; i < GameData.factionList[factionName].PlayerReputationLevel() + 1; i++)
+			for (int i = 0; i < repLevel; i++)
             {
-                text.text += "\n" + GameData.factionList[factionName].benefitsList[i];
-                Debug.Log(factionName + "Level " + i + " Faction Benefits!");
+				text.text += "\n" + GameData.factionList[factionName].FactionBenefits(i);
+                Debug.Log(factionName + "Level " + i.ToString() + " Faction Benefits!");
             }
         } else
         {

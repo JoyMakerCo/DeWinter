@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using DeWinter;
 
 public class AccessoryInventoryButton : MonoBehaviour {
     public int accessoryID;
@@ -10,6 +11,7 @@ public class AccessoryInventoryButton : MonoBehaviour {
     private Text myDescriptionText;
     private Text myPriceText;
     private Outline myOutline; // This is for highlighting buttons
+    private ItemVO _accessory;
 
     //public WardrobeImageController imageController;
     AccessoryInventoryList accessoryInventoryList;
@@ -24,38 +26,28 @@ public class AccessoryInventoryButton : MonoBehaviour {
 
     void Update()
     {
-        DisplayOutfitStats(inventoryType, accessoryID);
-        if (accessoryInventoryList.selectedAccessory == accessoryID)
-        {
-            myOutline.effectColor = Color.yellow;
-        }
-        else
-        {
-            myOutline.effectColor = Color.clear;
-        }
+        DisplayOutfitStats();
+		myOutline.effectColor = (accessoryInventoryList.selectedAccessory == accessoryID)
+        	? Color.yellow
+			: Color.clear;
     }
 
-    public void DisplayOutfitStats(string inv, int aID)
+    public void DisplayOutfitStats()
     {
-        if (AccessoryInventory.accessoryInventories[inv].ElementAtOrDefault(aID) != null)
+		if (_accessory != null)
         {
-            myDescriptionText.text = AccessoryInventory.accessoryInventories[inv][aID].Name();
-            if (inv == "personal")
-            {
-                myPriceText.text = AccessoryInventory.accessoryInventories[inv][aID].Price(inventoryType).ToString("£" + "#,##0");
-            }
-            if (inv == "merchant")
-            {
-                myPriceText.text = AccessoryInventory.accessoryInventories[inv][aID].Price(inventoryType).ToString("£" + "#,##0");
-            }
+            myDescriptionText.text = _accessory.Name;
+			myPriceText.text = (inventoryType == "merchant")
+				? _accessory.PriceString
+				: _accessory.SellPriceString;
         }
     }
 
     public void SetInventoryItem()
     {
         Debug.Log("Selected Inventory Item: " + accessoryID.ToString());
-        accessoryInventoryList.selectedAccessory = accessoryID;
-        GameData.partyAccessoryID = accessoryID;
+		DeWinterApp.GetModel<InventoryModel>().partyAccessoryID = accessoryID;
+		accessoryInventoryList.selectedAccessory = accessoryID;
         //imageController.displayID = OutfitInventory.outfitInventories[inventoryType][outfitID].imageID;
     }
 }

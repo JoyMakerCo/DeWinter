@@ -2,13 +2,27 @@
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
+using Util;
 
 namespace DeWinter
 {
-	public class GameModel : DocumentModel
+	public class GameModel : DocumentModel, IInitializable, IDisposable
 	{
+		private int _reputation;
+		private int _livre;
+
+		public string Allegiance;
+
 		[JsonProperty("livre")]
-		public int Livre;
+		public int Livre
+		{
+			get { return _livre; }
+			set
+			{
+				_livre = value;
+				DeWinterApp.SendMessage<AdjustBalanceVO>(new AdjustBalanceVO(BalanceTypes.LIVRE, _livre, false));
+			}
+		}
 
 		[JsonProperty("reputation")]
 		public int Reputation
@@ -30,7 +44,7 @@ namespace DeWinter
 			{
 				for(int i=_reputationLevels.Length-1; i>=0; i--)
 				{
-					if (_reputation >= _reputationLevels[i])
+					if (_reputation >= _reputationLevels[i].Reputation)
 					{
 						return i+1;
 					}
@@ -39,15 +53,47 @@ namespace DeWinter
 			}
 		}
 
-		public string Allegiance;
-
-		public Party CurrentParty;
-
 		public GameModel() : base("GameData") {}
 
-		[JsonProperty("reputationLevels")]
-		private int[] _reputationLevels;
+		public void Initialize()
+		{
+			DeWinterApp.Subscribe<AdjustBalanceVO>(HandleAdjustBalance);
+		}
 
-		private int _reputation;
+		public void Dispose()
+		{
+			DeWinterApp.Unsubscribe<AdjustBalanceVO>(HandleAdjustBalance);
+		}
+
+		[JsonProperty("reputationLevels")]
+		private FactionReputationLevel[] _reputationLevels;
+
+		public int PartyInviteImportance
+		{
+			get {
+				return _reputationLevels[ReputationLevel].PartyInviteImportance;
+			}
+		}
+
+		private void HandleAdjustBalance(AdjustBalanceVO msg)
+		{
+			if (msg.IsRequest)
+			{
+				switch (msg.Type)
+				{
+					case BalanceTypes.LIVRE:
+						Livre += (int)(msg.Amount);
+						msg.IsRequest = false;
+						DeWinterApp.SendMessage<AdjustBalanceVO>(msg);
+						break;
+
+					case BalanceTypes.REPUTATION:
+						Reputation += (int)(msg.Amount);
+						msg.IsRequest = false;
+						DeWinterApp.SendMessage<AdjustBalanceVO>(msg);
+						break;
+				}
+			}
+		}
 	}
 }

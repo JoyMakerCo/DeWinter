@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using DeWinter;
 
 public class CalendarButton : MonoBehaviour {
 
@@ -16,12 +19,14 @@ public class CalendarButton : MonoBehaviour {
     private Image mySlashImage;
     private Outline myOutline;
     private Color defaultColor;
-    private Day buttonDay;
+	private CalendarModel _calendarModel;
+	private DateTime _day;
 
     int startPositionPlusDays;
 
     void Start()
     {
+		_calendarModel = DeWinterApp.GetModel<CalendarModel>();
         myText = this.transform.Find("Text").GetComponent<Text>();
         myDate = this.transform.Find("DateText").GetComponent<Text>();
         myBlockImage = this.GetComponent<Image>();
@@ -32,151 +37,94 @@ public class CalendarButton : MonoBehaviour {
         defaultColor = myBlockImage.color;
     }
 
-    void Update ()
+    private void SetButtonDay()
     {
-        UpdateButtonDisplay();
+		_day = _calendarModel.Today;
+    	int offset = (_day.Day - (int)(_day.DayOfWeek))%7;
+    	offset = (int)Math.Floor((float)((offset < 0 ? offset + 7 : offset) + _day.Day - 1)/7f);
+		_day = _day.AddDays(7*(rowID - offset) + columnID - (int)(_day.DayOfWeek));
     }
 
-    void UpdateButtonDisplay()
+    // TODO: Respond to events, not update once per frame
+    void Update ()
     {
         SetButtonDay();
-        if (buttonDay != null)
-        {
-            //Is there a party? If so, then display it. If not, then blank text
-            if (buttonDay.party1.invited && !buttonDay.party2.invited)
-            {
-                myDate.text = buttonDay.displayDay.ToString();
-                myText.text = buttonDay.party1.SizeString() + " " + buttonDay.party1.faction + " Party";
-            } else if (!buttonDay.party1.invited && buttonDay.party2.invited)
-            {
-                myDate.text = buttonDay.displayDay.ToString();
-                myText.text = buttonDay.party2.SizeString() + " " + buttonDay.party2.faction + " Party";
-            } else if (buttonDay.party1.invited && buttonDay.party2.invited)
-            {
-                myDate.text = buttonDay.displayDay.ToString();
-                myText.text = "Two Parties";
-            } else
-            {
-                myDate.text = buttonDay.displayDay.ToString();
-                myText.text = "";
-            }
-            // Is this Day in the display month? If not, then gray it out
-            if (buttonDay.month == GameData.displayMonthInt)
-            {
-                myBlockImage.color = defaultColor;
-            } else
-            {
-                myBlockImage.color = Color.gray;
-            }
-            // Is this day today? If so, then Outline it
-            if (GameData.currentMonth == buttonDay.month && GameData.currentDay == buttonDay.day)
-            {
-                myOutline.effectColor = Color.black;
-                myXImage.color = Color.clear;
-            } else if (GameData.currentMonth > buttonDay.month || (GameData.currentMonth == buttonDay.month && GameData.currentDay > buttonDay.day))
-            {
-                myOutline.effectColor = Color.clear;
-                myXImage.color = Color.white;
-            }  else
-            {
-                myOutline.effectColor = Color.clear;
-                myXImage.color = Color.clear;
-            }
-            //What's the state of the Party RSVP?
-            if(buttonDay.party1.RSVP == 1)
-            {
-                myCircleImage.color = Color.white;
-                mySlashImage.color = Color.clear;
-            } else if (buttonDay.party1.RSVP == -1)
-            {
-                myCircleImage.color = Color.clear;
-                mySlashImage.color = Color.white;
-            } else
-            {
-                myCircleImage.color = Color.clear;
-                mySlashImage.color = Color.clear;
-            }
-        } else
-        {
-            myDate.text = "000";
-            myText.text = "Error: Null Day";
-        }
+		bool isCurrentMonth = (_day.Month == _calendarModel.Today.Month);
+		myDate.text = _day.Day.ToString();
+        
+        List<Party> parties;
+		Party party=null;
+		int count = 0;
 
+        if (_calendarModel.Parties.TryGetValue(_day, out parties))
+        {
+        	foreach (Party p in parties)
+        	{
+        		if (p.invited)
+        		{
+					if (p.RSVP == 1 || party == null || party.RSVP == 0)
+        				party = p;
+        			count++;
+        		}
+        	}
+        }
+    	switch (count)
+    	{
+    		case 0:
+				myText.text = "";
+    			break;
+    		case 1:
+				myText.text = party.SizeString() + " " + party.faction + " Party";
+				break;
+			default:
+				myText.text = count.ToString() + " Parties";
+				break;
+    	}
+
+		myBlockImage.color = isCurrentMonth ? defaultColor : Color.gray;
+
+		// For days that have already passed
+		myXImage.color = _calendarModel.Today > _day ? Color.white : Color.clear;
+
+		// For Today
+		myOutline.effectColor = _calendarModel.Today == _day ? Color.black : Color.clear;
+
+		// For confirmed parties
+		myCircleImage.color = (party != null && party.RSVP == 1) ? Color.white : Color.clear;
+
+		// For negative RSVP
+		mySlashImage.color = (party != null && party.RSVP == -1) ? Color.white : Color.clear;
     }
 
     public void RSVP()
     {
-        //Pop Up Window      
-        if (GameData.calendar.monthList[GameData.displayMonthInt].dayList[rowID, columnID] != null)
-        {
-            if (buttonDay.party1.invited && !buttonDay.party2.invited)
-            {
-                if (buttonDay.party1.RSVP != 1)
-                {
-                    screenFader.gameObject.SendMessage("CreateRSVPPopUp", buttonDay.party1);
-                }
-                else
-                {
-                    object[] objectStorage = new object[2];
-                    objectStorage[0] = buttonDay.party1;
-                    if (GameData.currentMonth == buttonDay.month && GameData.currentDay == buttonDay.day)
-                    {
-                        objectStorage[1] = true;
-                    }
-                    else
-                    {
-                        objectStorage[1] = false;
-                    }
-                    screenFader.gameObject.SendMessage("CreateCancellationPopUp", objectStorage);
-                }
-            }
-            else if (!buttonDay.party1.invited && buttonDay.party2.invited)
-            {
-                if (buttonDay.party2.RSVP != 1)
-                {
-                    screenFader.gameObject.SendMessage("CreateRSVPPopUp", buttonDay.party2);
-                }
-                else
-                {
-                    object[] objectStorage = new object[2];
-                    objectStorage[0] = buttonDay.party2;
-                    if (GameData.currentMonth == buttonDay.month && GameData.currentDay == buttonDay.day)
-                    {
-                        objectStorage[1] = true;
-                    }
-                    else
-                    {
-                        objectStorage[1] = false;
-                    }
-                    screenFader.gameObject.SendMessage("CreateCancellationPopUp", objectStorage);
-                }
-            }
-            else if (buttonDay.party1.invited && buttonDay.party2.invited)
-            {
-                screenFader.gameObject.SendMessage("CreateTwoPartyChoicePopUp", buttonDay);
-            }
-            else
-            {
-                Debug.Log("No Party On This Day :(");
-            }
-        }
-    }
+        //Pop Up Window
+        List<Party> parties;
+		if (_day != default(DateTime) && _calendarModel.Parties.TryGetValue(_day, out parties))
+		{
+			parties = parties.FindAll(x => x.invited);
+			if (parties.Count == 0) return; // No parties!
 
-    //TODO Make the month of April/March display properly. Currently, if you scroll the Calendar past April the days start getting positioned wrong, with March's days coming after... it's own days. It's very strange.
-    void SetButtonDay()
-    {
-        if (GameData.calendar.monthList[GameData.displayMonthInt].dayList[rowID, columnID] != null)
-        {
-            buttonDay = GameData.calendar.monthList[GameData.displayMonthInt].dayList[rowID, columnID];
-        }
-        else if (rowID < 2)
-        {
-            buttonDay = GameData.calendar.monthList[GameData.displayMonthInt - 1].dayList[(rowID + GameData.calendar.monthList[GameData.displayMonthInt - 1].weeks), columnID];
-        }
-        else
-        {
-            //Something is going wrong here with April, hand math it out?
-            buttonDay = GameData.calendar.monthList[GameData.displayMonthInt + 1].dayList[(rowID - GameData.calendar.monthList[GameData.displayMonthInt + 1].weeks), columnID];
-        }
+			Party party = parties.Find(x => x.RSVP == 1);
+			if (party != null)
+			{
+				object[] objectStorage = new object[2];
+				objectStorage[0] = party;
+				objectStorage[1] = (_day == _calendarModel.Today);
+				screenFader.gameObject.SendMessage("CreateCancellationPopUp", objectStorage);
+			}
+			else if (parties.Count == 1)
+			{
+				screenFader.gameObject.SendMessage("CreateRSVPPopUp", parties[0]);
+			}
+			else
+			{
+				object[] objectStorage = new object[3];
+				objectStorage[0] = parties[0];
+				objectStorage[1] = parties[1];
+				objectStorage[2] = _day;
+				screenFader.gameObject.SendMessage("CreateTwoPartyChoicePopUp", objectStorage);
+			}
+		}
     }
 }

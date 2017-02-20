@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
 public class EventOptionButton : MonoBehaviour {
 
     public int option;
     private Text myText;
+    private EventModel _eventModel;
 
     void Start()
     {
+		_eventModel = DeWinterApp.GetModel<EventModel>();
         myText = this.GetComponentInChildren<Text>();
     }
 
@@ -19,27 +22,17 @@ public class EventOptionButton : MonoBehaviour {
 
     public void DisplayEventOption()
     {
-        EventOption eventOption = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option];
-        if (eventOption.optionButtonText == null)         
-        {
-            myText.text = "Nothing";
-            this.transform.localScale = new Vector3(0, 0, 0); //Shrink it until it doesn't exist
-        } else if (eventOption.servantRequired != null)
-        {
-            if (GameData.servantDictionary[eventOption.servantRequired.Slot()].Hired())
-            {
-                myText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].optionButtonText;
-                this.transform.localScale = new Vector3(1, 1, 1); //Unshrink it to it's original size
-            } else
-            {
-                myText.text = "Nothing";
-                this.transform.localScale = new Vector3(0, 0, 0); //Shrink it until it doesn't exist
-            }
-        }
-        else
-        {
-            myText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].optionButtonText;
-            this.transform.localScale = new Vector3(1, 1, 1); //Unshrink it to it's original size
-        }
+		Event selectedEvent = _eventModel.SelectedEvent;
+		EventOption eventOption = selectedEvent.eventStages[selectedEvent.currentStage].stageEventOptions[option];
+		bool show = (eventOption.optionButtonText != null);
+
+
+		if (show && eventOption.servantRequired != null)
+		{
+			ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+			show = smod.GetHired(eventOption.servantRequired) != null;
+		}
+		if (show) myText.text = eventOption.optionButtonText;
+		this.gameObject.SetActive(show);
     }
 }

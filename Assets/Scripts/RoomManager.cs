@@ -122,7 +122,7 @@ public class RoomManager : MonoBehaviour
 
     void RandomWineCheck()
     {
-        if(GameData.factionList[party.faction].PlayerReputationLevel() >= 5)
+        if(GameData.factionList[party.faction].ReputationLevel >= 5)
         {
             int randomInt = Random.Range(0, 4);
             if(randomInt == 0)

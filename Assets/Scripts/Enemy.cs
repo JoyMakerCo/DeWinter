@@ -1,89 +1,69 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
+using DeWinter;
 
-public class Enemy {
-
+public class Enemy
+{
     //General Settings
-    private string name;
+    public string Name;
     private string flavorText;
     public int dispositionInt;
     public Disposition disposition;
-    public Faction faction;
-    public bool isFemale; //Determines the gender of the Guest
+    public string Faction;
+    public bool IsFemale; //Determines the gender of the Guest
     public int imageInt;
 
+	//Generates an Enemy with a Particular Name, Faction and Gender
+    public Enemy(string faction, string name, bool isFemale)
+    {
+    	Random rnd = new Random();
+		PartyModel model = DeWinterApp.GetModel<PartyModel>();
+
+		disposition = model.Dispositions[rnd.Next(model.Dispositions.Length)];
+        Faction = faction;
+        IsFemale = isFemale;
+		imageInt = rnd.Next(IsFemale ? 4 : 5);
+        Name = name;
+        flavorText = GenerateFlavorText();
+    }
+
     //Generates a Random Enemy from a particular Faction
-    public Enemy(Faction fac)
-    {
-        dispositionInt = Random.Range(0, 4);
-        disposition = GameData.dispositionList[dispositionInt];
-        faction = fac;
-        isFemale = GenderDeterminer();
-        if (isFemale)
-        {
-            imageInt = Random.Range(0, 4);
-        }
-        else
-        {
-            imageInt = Random.Range(0, 5);
-        }
-        name = GenerateName(); // Have to Generate the Name after the Gender
-        flavorText = GenerateFlavorText();
-    }
+	public Enemy(string faction=null)
+	{
+		Random rnd = new Random();
+		PartyModel model = DeWinterApp.GetModel<PartyModel>();
 
-    //Generates an Enemy with a Particular Name, Faction and Gender
-    public Enemy(Faction fac, string nme, bool gen)
-    {
-        dispositionInt = Random.Range(0, 4);
-        disposition = GameData.dispositionList[dispositionInt];
-        faction = fac;
-        isFemale = gen;
-        if (isFemale)
-        {
-            imageInt = Random.Range(0, 4);
-        }
-        else
-        {
-            imageInt = Random.Range(0, 5);
-        }
-        name = nme;
+		disposition = model.Dispositions[rnd.Next(model.Dispositions.Length)];
+        Faction = faction;
+        IsFemale = GenderDeterminer();
+		imageInt = rnd.Next(IsFemale ? 4 : 5);
+        Name = GenerateName();
         flavorText = GenerateFlavorText();
-    }
+	}
 
-    string GenerateName()
+    private string GenerateName()
     {
+    	PartyModel model = DeWinterApp.GetModel<PartyModel>();
         string title;
         string firstName;
-        if (isFemale)
+        Random rnd = new Random();
+        if (IsFemale)
         {
-            title = GameData.femaleTitleList[Random.Range(0, GameData.femaleTitleList.Count)];
-            firstName = GameData.femaleFirstNameList[Random.Range(0, GameData.femaleFirstNameList.Count)];
+            title = model.FemaleTitles[rnd.Next(model.FemaleTitles.Length)];
+			firstName = model.FemaleNames[rnd.Next(model.FemaleNames.Length)];
         }
         else
         {
-            title = GameData.maleTitleList[Random.Range(0, GameData.maleTitleList.Count)];
-            firstName = GameData.maleFirstNameList[Random.Range(0, GameData.maleFirstNameList.Count)];
+			title = model.MaleTitles[rnd.Next(model.MaleTitles.Length)];
+			firstName = model.MaleNames[rnd.Next(model.MaleNames.Length)];
         }
-        string lastName = GameData.lastNameList[Random.Range(0, GameData.lastNameList.Count)];
+		string lastName = model.LastNames[rnd.Next(model.LastNames.Length)];
         return title + " " + firstName + " de " + lastName;
     }
 
-    bool GenderDeterminer()
+	private static bool GenderDeterminer()
     {
-        int genderInt = Random.Range(1, 3);
-        if (genderInt == 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public string Name()
-    {
-        return name;
+		return (new Random()).Next(2) == 0;
     }
 
     public string FlavorText()

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using DeWinter;
 
 public class BuyAndSell : MonoBehaviour {
     public GameObject screenFader; // It's for the BuyAndSell pop-up
@@ -24,7 +25,7 @@ public class BuyAndSell : MonoBehaviour {
         {
             if (OutfitInventory.personalInventory.Count < OutfitInventory.personalInventoryMaxSize) // Will it fit in the Player's inventory?
             {
-                if (GameData.moneyCount >= OutfitInventory.merchantInventory[merchantInventoryList.selectedInventoryOutfit].OutfitPrice(inventoryType)) // Can they afford it?
+                if (DeWinterApp.GetModel<GameModel>().Livre >= OutfitInventory.merchantInventory[merchantInventoryList.selectedInventoryOutfit].OutfitPrice(inventoryType)) // Can they afford it?
                 {
                     object[] objectStorage = new object[3];
                     objectStorage[0] = "merchant";

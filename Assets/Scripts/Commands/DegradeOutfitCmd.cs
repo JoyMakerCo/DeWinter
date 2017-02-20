@@ -7,19 +7,13 @@ namespace DeWinter
 	{
 		public void Execute (int partyOutfitID)
 		{
+			InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
 			//Reduce Novelty of Outfit. If Outfit has been used twice in a row then it's lowered double.
-	        if (partyOutfitID != GameData.lastPartyOutfitID)
-	        {
-	            OutfitInventory.outfitInventories["personal"][partyOutfitID].novelty += GameData.noveltyDamage;
-	            GameData.woreSameOutfitTwice = false;
-	        }
-	        else
-	        {
-	            OutfitInventory.outfitInventories["personal"][partyOutfitID].novelty += GameData.noveltyDamage * 2;
-	            GameData.woreSameOutfitTwice = true;
-	        }
+			model.woreSameOutfitTwice = (partyOutfitID != model.lastPartyOutfitID);
+			OutfitInventory.outfitInventories["personal"][partyOutfitID].novelty += 
+				(model.woreSameOutfitTwice ? model.NoveltyDamage : model.NoveltyDamage*2);
 	        //Now that the calculations are finished, the outfit now becomes the last used outfit.
-	        GameData.lastPartyOutfitID = partyOutfitID;
+			model.lastPartyOutfitID = partyOutfitID;
         }
 	}
 }

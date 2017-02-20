@@ -120,7 +120,7 @@ namespace DeWinter
 	    private void PopulateEnemies(MapVO map, Random rnd, int numRooms)
 	    {
 	    	int roomID = numRooms-1;
-			Faction faction = GameData.factionList[GameData.tonightsParty.faction];
+			FactionVO faction = GameData.factionList[GameData.tonightsParty.faction];
 			foreach (Enemy e in EnemyInventory.enemyInventory)
 	        {
 				if(e.faction == faction && rnd.Next(0,2) == 0)

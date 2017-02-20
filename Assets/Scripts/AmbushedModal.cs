@@ -14,7 +14,6 @@ public class AmbushedModal : MonoBehaviour {
         public void Dismiss()
         {
             Destroy(transform.parent.gameObject);
-            GameData.activeModals--;
         }
 
         public void CreateAmbushedWorkTheRoomModal()

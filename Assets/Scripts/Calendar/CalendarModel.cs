@@ -8,13 +8,56 @@ namespace DeWinter
 {
 	public class CalendarModel : DocumentModel
 	{
+		public static readonly string[] MONTHS = {
+			"Janvier",
+        	"Fevrier",
+        	"Mars",
+        	"Avril",
+        	"Mai",
+        	"Juin",
+        	"Juillet",
+        	"Aout",
+        	"Septembre",
+        	"Octobre",
+        	"Novembre",
+        	"Decembre"
+        };
+
+		public Dictionary<DateTime, List<Party>> Parties;
+
 		private DateTime _startDate;
 		private int _gameLength;
+		private int _day=-1;
 
-		public int Day=0;
+		public int Day
+		{
+			get { return _day; }
+			set {
+				if (value != _day)
+				{
+					CalendarDayVO msg = new CalendarDayVO(_day = value, Today);
+					DeWinterApp.SendMessage<CalendarDayVO>(msg);
 
-		[JsonProperty("eventChance")]
-		public float EventChance;
+// TODO: Register commands to respond to messages
+					DeWinterApp.SendCommand<PayDayCmd, CalendarDayVO>(msg);
+				}
+			}
+		}
+
+		public string GetMonthString(DateTime date)
+		{
+			return MONTHS[date.Month-1];
+		}
+
+		public string GetMonthString(int day)
+		{
+			return MONTHS[_startDate.AddDays(day).Month-1];
+		}
+
+		public string GetMonthString()
+		{
+			return MONTHS[Today.Month - 1];
+		}
 
 		[JsonProperty("gameLength")]
 		public int DaysLeft
@@ -29,14 +72,24 @@ namespace DeWinter
 			set { _startDate = DateTime.Parse(value); }
 		}
 
-		public DateTime Date
+		public DateTime Today
 		{
-			get { return _startDate.AddDays(Day); }
+			get { return _startDate.AddDays(_day); }
 		}
 
-		public int EndDate
+		public DateTime EndDate
 		{
 			get { return _startDate.AddDays(_gameLength); }
+		}
+
+		public DateTime DaysFromNow(int days)
+		{
+			return Today.AddDays(days);
+		}
+
+		public DateTime Yesterday
+		{
+			get { return DaysFromNow(-1); }
 		}
 
 		public int uprisingDay; //The Day of the Uprising that the Game Ends On
@@ -46,6 +99,7 @@ namespace DeWinter
 		public CalendarModel() : base("CalendarData")
 		{
 			uprisingDay= (new Random()).Next(25, 31);
+			Parties = new Dictionary<DateTime, List<Party>>();
 		}
 	}
 }

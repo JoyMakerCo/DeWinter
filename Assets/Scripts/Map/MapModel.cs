@@ -1,14 +1,30 @@
 ﻿using System;
 using System.Collections;
 using Core;
+using Newtonsoft.Json;
 
 namespace DeWinter
 {
-	public class MapModel : IModel
+	public class MapModel : DocumentModel
 	{
-		public MapVO Map;
-
 		private RoomVO _room;
+		private MapVO _map;
+
+		[JsonProperty("roomAdjectiveList")]
+		public string [] RoomAdjectives;
+
+		[JsonProperty("roomNounList")]
+		public string [] RoomNames;
+
+		public MapVO Map
+		{
+			get { return _map; }
+			set {
+				_map = value;
+				_room = (_map != null) ? _map.Entrance : null;
+			}
+		}
+
 		public RoomVO Room
 		{
 			get { return _room; }
@@ -18,11 +34,7 @@ namespace DeWinter
 			}
 		}
 
-		public MapModel (MapVO map)
-		{
-			Map = map;
-			Room = map.Entrance;
-		}
+		public MapModel() : base("MapData") {}
 
 		public bool IsEntrance
 		{
@@ -42,14 +54,14 @@ namespace DeWinter
 				if (Room == null) return 0; // Early out
 
 				int chance = 90 - (Room.Cleared ? 0 : Room.Difficulty * 10);
+				InventoryModel inventory = DeWinterApp.GetModel<InventoryModel>();
+				ItemVO accessory;
 
-				// TODO: Make Accessories Configurable
-				if(GameData.tonightsParty.playerAccessory != null)
+// TODO: Implement Item states
+				if(inventory.Equipped.TryGetValue("accessory", out accessory)
+					&& accessory.Name == "Cane")
 		        {
-		            if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
-		            {
-		                chance += 10;
-		            }
+	                chance += 10;
 		        }
 
 		        return Math.Min(chance, 100);

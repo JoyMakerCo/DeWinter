@@ -135,7 +135,7 @@ public class Room {
     {
         for(int i = 0; i < guestList.Count; i++)
         {
-            if (guestList[i].name == e.Name() && guestList[i].isEnemy)
+            if (guestList[i].name == e.Name && guestList[i].isEnemy)
             {
                 guestList[i] = new Guest();
             }

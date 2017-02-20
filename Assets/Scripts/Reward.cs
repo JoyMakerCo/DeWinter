@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using DeWinter;
 
 public class Reward {
 
@@ -149,7 +151,7 @@ public class Reward {
 
     void GenerateRandomQuestReward(PierreQuest pQuest)
     {
-        Faction faction = pQuest.Faction(); 
+        FactionVO faction = pQuest.Faction(); 
         int typeRandomInt = Random.Range(1, 4);
         //Amount is determined Inverse to Time Limit
         int multiplier = 12 - pQuest.daysLeft;
@@ -180,7 +182,12 @@ public class Reward {
             case "Livre":
                 return amount + " Livres";
             case "Introduction":
-                return "An Introduction to Hire " + GameData.servantDictionary[subtype].NameAndTitle();
+				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+				ServantVO[] servants = smod.GetServants(subtype);
+				ServantVO servant = Array.Find(servants, s => !s.Hired && !s.Introduced);
+                return servant != null
+                	? "An Introduction to Hire " + servant.NameAndTitle
+                	: null;
             case "Gossip":
                 return "A tidbit of " + SubType() + " Gossip";
         }
@@ -206,7 +213,7 @@ public class Reward {
     string PartyRandomFaction()
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
-        int factionRandom = Random.Range(0, 7);
+        int factionRandom = UnityEngine.Random.Range(0, 7);
         switch (factionRandom)
         {
             case 0:
@@ -224,10 +231,10 @@ public class Reward {
         }
     }
 
-    string RandomExclusiveFaction(Faction faction)
+    string RandomExclusiveFaction(FactionVO faction)
     {
-        int factionRandom = Random.Range(0, 5);
-        Faction selectedFaction;
+        int factionRandom = UnityEngine.Random.Range(0, 5);
+        FactionVO selectedFaction;
         switch (factionRandom)
         {
             case 0:
@@ -248,7 +255,7 @@ public class Reward {
         }
         if(selectedFaction != faction)
         {
-            return selectedFaction.Name();
+            return selectedFaction.Name;
         } else
         {
             return RandomExclusiveFaction(faction);

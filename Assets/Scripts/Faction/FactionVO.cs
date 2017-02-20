@@ -18,12 +18,15 @@ namespace DeWinter
 
 		[JsonProperty("importance")]
 		public int Importance;
+
+		[JsonProperty("largestAllowableParty")]
+		public int LargestAllowableParty;
 	}
 
 	public class FactionVO
 	{
-		private float _power;
-		private float _allegiance;
+		private int _power;
+		private int _allegiance;
 
 		[JsonProperty("Name")]
 	    public string Name;
@@ -38,29 +41,31 @@ namespace DeWinter
 		private bool _steadfast; //Would this faction change allegiances?
 
 		[JsonProperty("Allegiance")]
-		public float Allegiance //-100 means the Faction is devoted to the Revolution, 100 means they are devoted to the Crown
+		public int Allegiance //-100 means the Faction is devoted to the Revolution, 100 means they are devoted to the Crown
 		{
 			get { return _allegiance; }
 			set
 			{
 				if (!_steadfast)
 				{
-					_allegiance = Mathf.Clamp(value, -100f, 100f);
+					_allegiance = Mathf.Clamp(value, -100, 100);
 				}
 			}
 		}
 
 		[JsonProperty("Power")]
-		public float Power //How powerful is this faction in the game?
+		public int Power //How powerful is this faction in the game?
 		{
 			get { return _power; }
-			set { _power = Mathf.Clamp(value, 0f, 100f); }
+			set {
+				_power = Mathf.Clamp(value, 0, 100);
+			}
 		}
 
 		[JsonProperty("Levels")]
 		private FactionLevel[] _levels;
 
-		public int RepLevel
+		public int ReputationLevel
 		{
 			get
 			{
@@ -79,7 +84,24 @@ namespace DeWinter
 
 		public int ConfidenceBonus
 		{
-			get { return _levels[RepLevel].Confidence; }
+			get { return _levels[ReputationLevel].Confidence; }
+		}
+
+		public string FactionBenefits()
+		{
+			return _levels[ReputationLevel].Text;
+		}
+
+		public string FactionBenefits(int level)
+		{
+			return _levels[level].Text;
+		}
+
+		public int LargestAllowableParty
+		{
+			get {
+				return _levels[ReputationLevel].LargestAllowableParty;
+			}
 		}
 
 	// TODO: This belongs in the View, not in the data.
@@ -87,8 +109,3 @@ namespace DeWinter
 	    public int allegianceKnowledgeTimer;
 	}
 }
-/*
-TODO: Display strings; should be used in Views, not data
-likes = "They don't care about your clothes";
-likes = ll + " and " + ml + " Outfits"
-*/

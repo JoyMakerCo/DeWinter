@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using DeWinter;
 
-public class Party {
-
+public class Party
+{
     public string faction;
     public int partySize;
     public bool invited;
@@ -45,7 +45,7 @@ public class Party {
     public int blackOutEffectAmount; //This is also used for the After Party Report
 
     public Outfit playerOutfit;
-    public Accessory playerAccessory;
+    public ItemVO playerAccessory;
 
     // Default Constructor
     public Party()

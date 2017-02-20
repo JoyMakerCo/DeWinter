@@ -20,7 +20,7 @@ public class EnemyList : MonoBehaviour {
             EnemyButton buttonStats = button.GetComponent<EnemyButton>();
             buttonStats.enemy = e;
             button.transform.SetParent(this.transform, false);
-            Debug.Log("Enemy Button: " + e.Name() + " has been made!");
+            Debug.Log("Enemy Button: " + e.Name + " has been made!");
         }
     }
 

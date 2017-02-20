@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using DeWinter;
 
 public class AccessoryInventoryList : MonoBehaviour {
 
@@ -17,15 +19,19 @@ public class AccessoryInventoryList : MonoBehaviour {
 
     public void GenerateInventoryButtons()
     {
-        for (int i = 0; i < AccessoryInventory.accessoryInventories[inventoryType].Count; i++)
+		List<ItemVO> accessories = DeWinterApp.GetModel<InventoryModel>().Inventory[inventoryType];
+        for (int i = 0; i < accessories.Count; i++)
         {
-            GameObject button = GameObject.Instantiate(accessoryInventoryButtonPrefab);
-            AccessoryInventoryButton buttonStats = button.GetComponent<AccessoryInventoryButton>();
-            buttonStats.accessoryID = i;
-            buttonStats.inventoryType = inventoryType;
-            button.transform.SetParent(this.transform, false);
-            //buttonStats.imageController = imageController;
-            Debug.Log("Generating Accessory Inventory Button, Type: " + inventoryType + ", Number: " + i);
+        	if (accessories[i].Type == "Accessory")
+        	{
+	            GameObject button = GameObject.Instantiate(accessoryInventoryButtonPrefab);
+	            AccessoryInventoryButton buttonStats = button.GetComponent<AccessoryInventoryButton>();
+	            buttonStats.accessoryID = i;
+	            buttonStats.inventoryType = inventoryType;
+	            button.transform.SetParent(this.transform, false);
+	            //buttonStats.imageController = imageController;
+	            Debug.Log("Generating Accessory Inventory Button, Type: " + inventoryType + ", Number: " + i);
+	        }
         }
     }
 
@@ -39,7 +45,7 @@ public class AccessoryInventoryList : MonoBehaviour {
 
     public void SelectPartyAccessory()
     {
-        GameData.partyAccessoryID = selectedAccessory;
+        DeWinterApp.GetModel<InventoryModel>().partyAccessoryID = selectedAccessory;
         Debug.Log("Party Accessory Set!");
     }
 }

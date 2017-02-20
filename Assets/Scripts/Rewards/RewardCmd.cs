@@ -12,6 +12,7 @@ namespace DeWinter
 			{
 				vo.Type = kvp.Key;
 				vo.Amount = kvp.Value;
+				vo.IsRequest = true;
 				DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
 			}
 		}

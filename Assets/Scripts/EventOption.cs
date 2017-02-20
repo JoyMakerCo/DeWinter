@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DeWinter;
 
-public class EventOption{
-
+public class EventOption
+{
     public string optionButtonText;
     //Determines the next stage the Event will hop to. If it's -1 then the Event finishes
     public int nextStage1;
     int nextStage1Chance;
     public int nextStage2;
     int nextStage2Chance;
-    public Servant servantRequired;
+    public string servantRequired;
 
     //Full Constructor, no chance based outcome
     public EventOption(string buttonText, int nxtStge1)
@@ -23,25 +24,25 @@ public class EventOption{
     }
 
     //Full Constructor, Servant Based Option with no chance based outcome
-    public EventOption(Servant servant, string buttonText, int nxtStge1)
+    public EventOption(string servantType, string buttonText, int nxtStge1)
     {
         optionButtonText = buttonText;
         nextStage1 = nxtStge1;
         nextStage1Chance = 1;
         nextStage2 = 0;
         nextStage2Chance = 0;
-        servantRequired = servant;
+		servantRequired = servantType;
     }
 
     //Full Constructor, Servant Based Option with chance based outcome
-    public EventOption(Servant servant, string buttonText, int nxtStge1, int nxtStge1Chance, int nxtStge2, int nxtStge2Chance)
+	public EventOption(string servantType, string buttonText, int nxtStge1, int nxtStge1Chance, int nxtStge2, int nxtStge2Chance)
     {
         optionButtonText = buttonText;
         nextStage1 = nxtStge1;
         nextStage1Chance = nxtStge1Chance;
         nextStage2 = nxtStge2;
         nextStage2Chance = nxtStge2Chance;
-        servantRequired = servant;
+		servantRequired = servantType;
     }
 
     //Full Constructor, chance based outcome with two choices
