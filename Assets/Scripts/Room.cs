@@ -63,13 +63,13 @@ public class Room {
         }
     }
 
-    public void SetStarRating(int stars) //Only should be used at creation
+    public void SetStarRatingAndGuests(int stars, int guests) //Only should be used at creation
     {
         starRating = stars;
-        GenerateGuestsAndHost();
+        GenerateGuestsAndHost(guests);
     }
-
-    void GenerateGuestsAndHost()
+    
+    void GenerateGuestsAndHost(int guests)
     {
         guestList.Clear(); // Just in case, to make sure there aren't more than 4 Guests
         //Constructor = Guest(opinion, interest cap)
@@ -80,34 +80,34 @@ public class Room {
                 name = "?????";
                 break;
             case 1:
-                guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
-                guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
-                guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
-                guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
+                }
                 break;
             case 2:
-                guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
-                guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
-                guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
-                guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
+                }
                 break;
             case 3:
-                guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
-                guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
-                guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
-                guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
+                }
                 break;
             case 4:
-                guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
-                guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
-                guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
-                guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
+                }
                 break;
             case 5:
-                guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
-                guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
-                guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
-                guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
+                }
                 break;
             case 6:
                 hostHere = true;

@@ -270,8 +270,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void SetUpGuests()
     {
-
-        //Set Up Guest 0
+        //---- Set Up Guest 0 ----
         guest0NameText.text = room.guestList[0].name;
         guest0GuestImage.sprite = GuestStateSprite(0);
         guest0DispositionIcon.color = DispositionImageColor(0);
@@ -285,8 +284,9 @@ public class WorkTheRoomManager : MonoBehaviour
             guest0NameText.color = Color.white;
             guest0InterestBarBackground.color = Color.white;
         }
+        guestImageList.Add(guest0GuestImage);
 
-        //Set Up Guest 1
+        //---- Set Up Guest 1 ----
         guest1NameText.text = room.guestList[1].name; 
         guest1GuestImage.sprite = GuestStateSprite(1);    
         guest1DispositionIcon.color = DispositionImageColor(1);
@@ -300,42 +300,45 @@ public class WorkTheRoomManager : MonoBehaviour
             guest1NameText.color = Color.white;
             guest1InterestBarBackground.color = Color.white;
         }
-
-        //Set Up Guest 2
-        guest2NameText.text = room.guestList[2].name;
-        guest2GuestImage.sprite = GuestStateSprite(2);   
-        guest2DispositionIcon.color = DispositionImageColor(2);
-        if (room.guestList[2].isEnemy)
-        {
-            guest2NameText.color = Color.red;
-            guest2InterestBarBackground.color = Color.clear;
-        }
-        else
-        {
-            guest2NameText.color = Color.white;
-            guest2InterestBarBackground.color = Color.white;
-        }
-
-        //Set Up Guest 3
-        guest3NameText.text = room.guestList[3].name;
-        guest3GuestImage.sprite = GuestStateSprite(3);    
-        guest3DispositionIcon.color = DispositionImageColor(3);
-        if (room.guestList[3].isEnemy)
-        {
-            guest3NameText.color = Color.red;
-            guest3InterestBarBackground.color = Color.clear;
-        }
-        else
-        {
-            guest3NameText.color = Color.white;
-            guest3InterestBarBackground.color = Color.white;
-        }
-
-        //Put the Guest Images in the list (for Highlighting Purposes)
-        guestImageList.Add(guest0GuestImage);
         guestImageList.Add(guest1GuestImage);
-        guestImageList.Add(guest2GuestImage);
-        guestImageList.Add(guest3GuestImage);
+
+        //---- Set Up Guest 2 ----
+        if (room.guestList.Count > 2)
+        {
+            guest2NameText.text = room.guestList[2].name;
+            guest2GuestImage.sprite = GuestStateSprite(2);
+            guest2DispositionIcon.color = DispositionImageColor(2);
+            if (room.guestList[2].isEnemy)
+            {
+                guest2NameText.color = Color.red;
+                guest2InterestBarBackground.color = Color.clear;
+            }
+            else
+            {
+                guest2NameText.color = Color.white;
+                guest2InterestBarBackground.color = Color.white;
+            }
+            guestImageList.Add(guest2GuestImage);
+        }
+
+        //---- Set Up Guest 3 ----
+        if (room.guestList.Count > 3)
+        {
+            guest3NameText.text = room.guestList[3].name;
+            guest3GuestImage.sprite = GuestStateSprite(3);
+            guest3DispositionIcon.color = DispositionImageColor(3);
+            if (room.guestList[3].isEnemy)
+            {
+                guest3NameText.color = Color.red;
+                guest3InterestBarBackground.color = Color.clear;
+            }
+            else
+            {
+                guest3NameText.color = Color.white;
+                guest3InterestBarBackground.color = Color.white;
+            }
+            guestImageList.Add(guest3GuestImage);
+        }     
     }
 
     public void StartTargeting(int selectedRemark)
@@ -576,12 +579,20 @@ public class WorkTheRoomManager : MonoBehaviour
                 //guest1GuestImage.sprite = ReactionSprite(1);
                 break;
             case 2:
-                guest2GuestImage.color = ReactionColor(2);
-                //guest2GuestImage.sprite = ReactionSprite(2);
+                //There might not be 3 or more Guests, so this check is to make sure nothing breaks
+                if (room.guestList.Count > 2)
+                {
+                    guest2GuestImage.color = ReactionColor(2);
+                    //guest2GuestImage.sprite = ReactionSprite(2);
+                }
                 break;
             case 3:
-                guest3GuestImage.color = ReactionColor(3);
-                //guest3GuestImage.sprite = ReactionSprite(3);
+                //There might not be 4 Guests, so this check is to make sure nothing breaks
+                if (room.guestList.Count > 3)
+                {
+                    guest3GuestImage.color = ReactionColor(3);
+                    //guest3GuestImage.sprite = ReactionSprite(3);
+                }
                 break;
         }
     }
@@ -904,10 +915,14 @@ public class WorkTheRoomManager : MonoBehaviour
                 }
             }        
             room.party.currentPlayerIntoxication += drinkStrength;
+
+            //Conceal the dispositions of all the Guests in the room (only has effect if the Player is drunk)
             foreach (Guest t in room.guestList)
             {
                 t.dispositionRevealed = false;
             }
+
+            //Check for Blacking Out
             if (room.party.currentPlayerIntoxication >= room.party.maxPlayerIntoxication)
             {
                 BlackOut();
@@ -1267,6 +1282,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void InterestTimersDisplayCheck()
     {
+        //------------- Guest 0 -------------
         if (room.guestList[0].lockedInState != 0 || room.guestList[0].isEnemy)
         {
             guest0InterestBar.image.color = Color.clear;
@@ -1278,6 +1294,7 @@ public class WorkTheRoomManager : MonoBehaviour
             guest0InterestBarBackground.color = Color.white;
         }
 
+        //------------- Guest 1 -------------
         if (room.guestList[1].lockedInState != 0 || room.guestList[1].isEnemy)
         {
             guest1InterestBar.image.color = Color.clear;
@@ -1289,26 +1306,36 @@ public class WorkTheRoomManager : MonoBehaviour
             guest1InterestBarBackground.color = Color.white;
         }
 
-        if (room.guestList[2].lockedInState != 0 || room.guestList[2].isEnemy)
+        //------------- Guest 2 -------------
+        //There might not be 3 Guests or more, so this check is to make sure nothing breaks
+        if (room.guestList.Count > 2)
         {
-            guest2InterestBar.image.color = Color.clear;
-            guest2InterestBarBackground.color = Color.clear;
-        }
-        else
-        {
-            guest2InterestBar.image.color = Color.white;
-            guest2InterestBarBackground.color = Color.white;
+            if (room.guestList[2].lockedInState != 0 || room.guestList[2].isEnemy)
+            {
+                guest2InterestBar.image.color = Color.clear;
+                guest2InterestBarBackground.color = Color.clear;
+            }
+            else
+            {
+                guest2InterestBar.image.color = Color.white;
+                guest2InterestBarBackground.color = Color.white;
+            }
         }
 
-        if (room.guestList[3].lockedInState != 0 || room.guestList[3].isEnemy)
+        //------------- Guest 3 -------------
+        //There might not be 4 Guests or more, so this check is to make sure nothing breaks
+        if (room.guestList.Count > 3)
         {
-            guest3InterestBar.image.color = Color.clear;
-            guest3InterestBarBackground.color = Color.clear;
-        }
-        else
-        {
-            guest3InterestBar.image.color = Color.white;
-            guest3InterestBarBackground.color = Color.white;
+            if (room.guestList[3].lockedInState != 0 || room.guestList[3].isEnemy)
+            {
+                guest3InterestBar.image.color = Color.clear;
+                guest3InterestBarBackground.color = Color.clear;
+            }
+            else
+            {
+                guest3InterestBar.image.color = Color.white;
+                guest3InterestBarBackground.color = Color.white;
+            }
         }
     }
 
@@ -1384,7 +1411,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
     
     void VisualizeGuests()
-    {
+    { 
         //Guest 0
         guest0InterestText.text = InterestState(room.guestList[0]);
         if (room.guestList[0].isEnemy)
@@ -1412,36 +1439,43 @@ public class WorkTheRoomManager : MonoBehaviour
         guest1OpinionBar.value = (float)room.guestList[1].currentOpinion / 100;
         guest1DispositionIcon.color = DispositionImageColor(1);
         guest1GuestImage.sprite = GuestStateSprite(1);
-        //Guest 2
-        guest2InterestText.text = InterestState(room.guestList[2]);
-        if (room.guestList[2].isEnemy)
+        //Guest 2 
+        //There might not be 3 Guests or more, so this check is to make sure nothing breaks
+        if(room.guestList.Count > 2)
         {
-            guest2InterestText.color = Color.red;
+            guest2InterestText.text = InterestState(room.guestList[2]);
+            if (room.guestList[2].isEnemy)
+            {
+                guest2InterestText.color = Color.red;
+            }
+            else
+            {
+                guest2InterestText.color = Color.white;
+            }
+            guest2InterestBar.value = InterestTimer(room.guestList[2]);
+            guest2OpinionBar.value = (float)room.guestList[2].currentOpinion / 100;
+            guest2DispositionIcon.color = DispositionImageColor(2);
+            guest2GuestImage.sprite = GuestStateSprite(2);
         }
-        else
+        //Guest 3 
+        //There might not be 4 Guests, so this check is to make sure nothing breaks
+        if (room.guestList.Count > 3)
         {
-            guest2InterestText.color = Color.white;
+            guest3InterestText.text = InterestState(room.guestList[3]);
+            if (room.guestList[3].isEnemy)
+            {
+                guest3InterestText.color = Color.red;
+            }
+            else
+            {
+                guest3InterestText.color = Color.white;
+            }
+            guest3InterestBar.value = InterestTimer(room.guestList[3]);
+            guest3OpinionBar.value = (float)room.guestList[3].currentOpinion / 100;
+            guest3DispositionIcon.color = DispositionImageColor(3);
+            guest3GuestImage.sprite = GuestStateSprite(3);
         }
-        guest2InterestBar.value = InterestTimer(room.guestList[2]);
-        guest2OpinionBar.value = (float)room.guestList[2].currentOpinion / 100;
-        guest2DispositionIcon.color = DispositionImageColor(2);
-        guest2GuestImage.sprite = GuestStateSprite(2);
-        //Guest 3
-        guest3InterestText.text = InterestState(room.guestList[3]);
-        if (room.guestList[3].isEnemy)
-        {
-            guest3InterestText.color = Color.red;
-        }
-        else
-        {
-            guest3InterestText.color = Color.white;
-        }
-        guest3InterestBar.value = InterestTimer(room.guestList[3]);
-        guest3OpinionBar.value = (float)room.guestList[3].currentOpinion / 100;
-        guest3DispositionIcon.color = DispositionImageColor(3);
-        guest3GuestImage.sprite = GuestStateSprite(3);
-    }
-    
+    }  
 }
 
     

@@ -9,9 +9,11 @@ public class EventManager : MonoBehaviour {
     public Text descriptionText;
     public string eventTime;
     public EventInventory eventInventory;
+    LevelManager levelManager;
 
     void Start()
     {
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         EventStart();
     }
     
@@ -49,23 +51,32 @@ public class EventManager : MonoBehaviour {
 
     public void EventOptionSelect(int option)
     {
-        int nextStage = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].ChooseNextStage();
-        //Step 0: Did this just complete the event? If so then dismiss the Pop-Up and End the Event
-        if (nextStage == -1)
+        //The Start Party Value is currently only used for the Tutorial Party
+        if (GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].Party() == null)
         {
-            //Close the Pop-Up Here
-            Dismiss();
-        }
-        
-        //Step 1: Which stage do I advance to?
-        GameData.selectedEvent.currentStage = nextStage;
-        Debug.Log("This stage is now " + nextStage);
-        
-        //Step 2: Get the Money, Change the Rep
-        GameData.selectedEvent.EventStageRewards();
+            int nextStage = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].ChooseNextStage();
+            //Step 0: Did this just complete the event? If so then dismiss the Pop-Up and End the Event
+            if (nextStage == -1)
+            {
+                //Close the Pop-Up Here
+                Dismiss();
+            }
 
-        //Step 3: What's the Description Text say now? The Event Option Buttons should update on their own
-        descriptionText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].description;
+            //Step 1: Which stage do I advance to?
+            GameData.selectedEvent.currentStage = nextStage;
+            Debug.Log("This stage is now " + nextStage);
+
+            //Step 2: Get the Money, Change the Rep
+            GameData.selectedEvent.EventStageRewards();
+
+            //Step 3: What's the Description Text say now? The Event Option Buttons should update on their own
+            descriptionText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].description;
+        } else //If there is a Party started by this option then start the Tutorial Party!
+        {
+            GameData.tonightsParty = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].Party();
+            GameData.activeModals = 0; //A little bit Hax here just to make sure that the Party starts without any modal screen darkening fucking anything up
+            levelManager.LoadLevel("Game_PartyLoadOut");
+        }    
     }
 
     void Dismiss()

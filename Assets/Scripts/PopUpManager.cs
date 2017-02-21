@@ -7,6 +7,7 @@ public class PopUpManager : MonoBehaviour {
 
     public GameObject screenFader;
 
+    public GameObject newGameModal;
     public GameObject quitGameModal;
     public GameObject messageModal;
     public GameObject eventModal;
@@ -32,6 +33,16 @@ public class PopUpManager : MonoBehaviour {
     public GameObject hostRemarkSlotPrefab;
 
     public GameObject eventInventory;
+
+    //This is used at the very beginning when the Player is starting a new Game
+    public void CreadNewGamePopUp()
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(newGameModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
 
     //This is how Players Quit the Game
     void CreateQuitGamePopUp()

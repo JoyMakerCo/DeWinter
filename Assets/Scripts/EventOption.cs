@@ -10,6 +10,7 @@ public class EventOption{
     public int nextStage2;
     int nextStage2Chance;
     public Servant servantRequired;
+    Party party;
 
     //Full Constructor, no chance based outcome
     public EventOption(string buttonText, int nxtStge1)
@@ -19,7 +20,8 @@ public class EventOption{
         nextStage1Chance = 1;
         nextStage2 = 0;
         nextStage2Chance = 0;
-        servantRequired = null;    
+        servantRequired = null;
+        party = null;    
     }
 
     //Full Constructor, Servant Based Option with no chance based outcome
@@ -31,6 +33,7 @@ public class EventOption{
         nextStage2 = 0;
         nextStage2Chance = 0;
         servantRequired = servant;
+        party = null;
     }
 
     //Full Constructor, Servant Based Option with chance based outcome
@@ -42,6 +45,7 @@ public class EventOption{
         nextStage2 = nxtStge2;
         nextStage2Chance = nxtStge2Chance;
         servantRequired = servant;
+        party = null;
     }
 
     //Full Constructor, chance based outcome with two choices
@@ -53,6 +57,19 @@ public class EventOption{
         nextStage2 = nxtStge2;
         nextStage2Chance = nxtStge2Chance;
         servantRequired = null;
+        party = null;
+    }
+
+    //Full Party Constructor, used for the Tutorial Party
+    public EventOption(string buttonText, Party p)
+    {
+        optionButtonText = buttonText;
+        nextStage1 = 0;
+        nextStage1Chance = 0;
+        nextStage2 = 0;
+        nextStage2Chance = 0;
+        servantRequired = null;
+        party = p;
     }
 
     //Empty, Null, Dummy Constructor
@@ -61,6 +78,7 @@ public class EventOption{
         optionButtonText = null;
         nextStage1 = -1;
         servantRequired = null;
+        party = null;
     }
 
     public int ChooseNextStage()
@@ -76,5 +94,11 @@ public class EventOption{
             chosenStage = nextStage2;
         }
         return chosenStage;
+    }
+
+    //Used for starting a specific Party for the Tutorial
+    public Party Party()
+    {
+        return party;
     }
 }

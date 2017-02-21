@@ -50,7 +50,7 @@ public class Party {
     // Default Constructor
     public Party()
     {
-        SetFaction();
+        SetRandomFaction();
         partySize = Random.Range(1, 4);
         GenerateRandomDescription();
         GenerateRooms();
@@ -84,7 +84,7 @@ public class Party {
             partySize = 1;
         } else
         {
-            SetFactionGuaranteed();
+            SetFactionGuaranteedParty();
             partySize = size;
         }       
         GenerateRandomDescription();
@@ -96,7 +96,36 @@ public class Party {
         invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
     }
 
-    void SetFactionGuaranteed()
+    //Constructor that makes the tutorial Party, a preconstructed Party with a specific Room setup and special events
+    //TODO: What Faction is it?
+    public Party(bool tutorial)
+    {
+        if (tutorial) //If the bool is true then make that tutorial Party
+        {
+            partySize = 1;
+            SetFactionGuaranteedParty();
+            GenerateTutorialDescription();
+            GenerateTutorialRooms();
+            turns = 10;
+            turnsLeft = turns;
+            FillPlayerHand();
+            invited = true;
+            invitationDistance = 1;
+        } else //If the bool is false then make a regular Party
+        {
+            SetRandomFaction();
+            partySize = Random.Range(1, 4);
+            GenerateRandomDescription();
+            GenerateRooms();
+            turns = (partySize * 5) + 1;
+            turnsLeft = turns;
+            FillPlayerHand();
+            invited = false;
+            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+        }   
+    }
+
+    void SetFactionGuaranteedParty()
     {
         int partyFaction = Random.Range(0, 5);
         if (partyFaction == 0)
@@ -131,7 +160,7 @@ public class Party {
         }
     }
 
-    void SetFaction()
+    void SetRandomFaction()
     {
         int partyFaction = Random.Range(0, 7);
         switch (partyFaction)
@@ -206,10 +235,15 @@ public class Party {
             SetExclusiveFaction(nTF);
         }
     }
-
+    
     void GenerateRandomDescription()
     {
         description = "This party is being hosted by some dude or dudette. This segment will later have randomly generated Text describing the party. It should be pretty damn funny.";
+    }
+
+    void GenerateTutorialDescription()
+    {
+        description = "The Orphan's Feast is a small social gathering spot for people of every class of society, though almost everyone who comes here does so alone. ";
     }
 
     void GenerateRooms()
@@ -273,7 +307,7 @@ public class Party {
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].starRating = 1;
 
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].name = "The Entrance";
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].name = "The Vestibule";
         entranceRoom = roomGrid[selectedRoom.xPos, selectedRoom.yPos]; // This is for the Party Manager Later
         //Flood fill to set Room Entrance Distance 
         FloodFill(entranceRoom);
@@ -298,7 +332,7 @@ public class Party {
                         }
                         if (!roomGrid[i, j].entrance && !roomGrid[i, j].hostHere)
                         {
-                            roomGrid[i, j].SetStarRating((Random.Range(1, 4)+ Random.Range(1, 5))-2); //Set the Star Rating, using a basically normalized curve
+                            roomGrid[i, j].SetStarRatingAndGuests((Random.Range(1, 4)+ Random.Range(1, 5))-2, 4); //Set the Star Rating, using a basically normalized curve
                         }
                     }
                 }
@@ -321,13 +355,56 @@ public class Party {
             punchCounter++;
         }
         //Host Stuff
-        roomGrid[furthestRoom.xPos, furthestRoom.yPos].SetStarRating(6); //The Furthest Room is the Host, represented internally by a Star Rating of 6
+        roomGrid[furthestRoom.xPos, furthestRoom.yPos].SetStarRatingAndGuests(6, 0); //The Furthest Room is the Host, represented internally by a Star Rating of 6
         host = roomGrid[furthestRoom.xPos, furthestRoom.yPos].host; //Setting the Host for the Party, this is used elsewhere
         //If the Party makes it so there's no other Rooms other than the Entrance (too many deletions) then just redo it
         if (furthestRoom.entranceDistance == 0)
         {
             GenerateRooms();
         }
+    }
+
+    //This Method is used to make the specific map used in the Tutorial Party
+    //TODO: Make this fill out the specific Room difficulties and Guest Counts
+    //TODO: Make this work with Mike's new Room/Map Creation Setup
+    void GenerateTutorialRooms()
+    {
+        int gridDimensionX = 3;
+        int gridDimensionY = 4;
+        //int roomCount = 8; //The Total Amount of Rooms at the Party
+        roomGrid = new Room[gridDimensionX, gridDimensionY];
+
+        //Fill the Grid with Specific Rooms (Left to right, top to Bottom)
+        //Row 3
+        roomGrid[0, 3] = new Room(this, 0, 3);
+        roomGrid[0, 3].SetStarRatingAndGuests(3, 4);
+        roomGrid[1, 3] = new Room(this, 1, 3);
+        roomGrid[1, 3].SetStarRatingAndGuests(6, 0); //Host Room
+        roomGrid[2, 3] = new Room(this, 2, 3);
+        roomGrid[2, 3].SetStarRatingAndGuests(3, 4);
+        //Row 2
+        roomGrid[0, 2] = new Room(this, 0, 2);
+        roomGrid[0, 2].SetStarRatingAndGuests(2, 4);
+        roomGrid[1, 2] = new Room(this, 1, 2);
+        roomGrid[1, 2].SetStarRatingAndGuests(2, 3);
+        roomGrid[2, 2] = new Room(this, 2, 2);
+        roomGrid[2, 2].SetStarRatingAndGuests(3, 3);
+        //Row 1
+        roomGrid[1, 1] = new Room(this, 1, 1);
+        roomGrid[1, 1].SetStarRatingAndGuests(1, 2);
+        //Row 0
+        roomGrid[1, 0] = new Room(this, 1, 0);
+
+        //Set the Entrance (Southern-most Room)
+        Room selectedRoom = roomGrid[1, 0];
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].entrance = true;
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].starRating = 1;
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].name = "The Vestibule";
+        entranceRoom = roomGrid[selectedRoom.xPos, selectedRoom.yPos]; // This is for the Party Manager Later
+        
+        //Flood fill to set Room Entrance Distance 
+        FloodFill(entranceRoom);
     }
 
     void FloodFill(Room entranceRoom) //The Russell recommended version

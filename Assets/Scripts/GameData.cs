@@ -8,6 +8,10 @@ public class GameData : MonoBehaviour
     static GameData instance = null;
 
     //Basic Data Book Keeping
+    public static string playerCharacter;
+    public static string gameDifficulty;
+    public static bool fTEsOn;
+
     public static int moneyCount;
     public static int currentMonth;
     public static int currentDay;

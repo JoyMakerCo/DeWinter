@@ -84,21 +84,26 @@ public class EventInventory : MonoBehaviour
             //Stage 9
             new EventStage("“I don’t know Madame. Monsieur Armand packed up and left a few days ago, all in a great hurry. I know he was involved in politics but I never asked about the specifics. He seemed worried but I’m sure he’ll be fine!” Camille’s facial expression doesn’t show a lot of confidence." + 
             "\n\nCamille suddenly brightens up again. “As you’re alone, perhaps you should go out and meet some new people! You might find someone who could help you find your way in the city. I know a place nearby that may help you do just that.”", 0, 0,
-                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", -1),
-                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", -1)),
+                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", new Party(true)),
+                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", 12)),
             //Stage 10
             new EventStage("Camille shifts awkwardly from foot to foot." +
             "\n\n“I’m afraid not Madame. Monsieur Armand packed up and left a few days ago, all in a great hurry. I’ve spent the last few days preparing the house for your arrival.”" +
             "\n\nCamille suddenly brightens up again. “This is the perfect time to go out and meet some new people! You might find someone who could help you find your way in the city. I know a place nearby that may help you do just that.”", 0, 0,
-                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", -1),
-                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", -1)),
+                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", new Party(true)),
+                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", 12)),
              //Stage 11
              new EventStage("Camille stares at you, a little startled by your brusqueness." +
              "\n\n“Um… Monsieur Armand isn’t here and he’s not coming back. He’s paid the rent through the month. You still need to pay me every week.”" + 
              "\n\nShe shifts awkwardly from foot to foot." + 
              "\n\n“As you are alone now, perhaps you should go meet some new people. You might find someone who could help you find your way in the city.”", 0, 0,
-                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", -1),
-                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", -1))));
+                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", new Party(true)),
+                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", 12)),
+            //Stage 12
+            new EventStage("“Are you sure Madamme?” Camille asks tentatively." +
+            "\n\n<If it is your first time playing the game, we do not advise skipping the tutorial Party. It will teach you a lot of useful things you'll need to play the game.>", 0, 0,
+                new EventOption("<Start the Tutorial> “On second thought, I could use a little help", new Party(true)),
+                new EventOption("<Skip the Tutorial> “I'm Sure”", -1))));
     }
     //This is all the Party Events
     // Priority Weight, "Event Title", Event Stage 0, Event Stage 1, etc...
