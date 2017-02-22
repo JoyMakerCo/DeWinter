@@ -27,8 +27,6 @@ public class WorkTheRoomManager : MonoBehaviour
     public Image drinkBoozeButtonImage;
 
     public Scrollbar turnTimerBar;
-    float currentTurnTimer = 5;
-    float maxTurnTimer = 5;
     bool turnTimerActive;
     public Image reparteeIndicatorImage;
 
@@ -39,8 +37,10 @@ public class WorkTheRoomManager : MonoBehaviour
     public Image guest0GuestImage;
     public Text guest0InterestText;
     public Scrollbar guest0InterestBar;
-    public Image guest0InterestBarBackground;
+    public Image guest0InterestBarImage;
+    public Text guest0OpinionText;
     public Scrollbar guest0OpinionBar;
+    public Image guest0OpinionBarImage;
     public Image guest0DispositionIcon;
 
     public GameObject guest1Visual;
@@ -48,8 +48,10 @@ public class WorkTheRoomManager : MonoBehaviour
     public Image guest1GuestImage;
     public Text guest1InterestText;
     public Scrollbar guest1InterestBar;
-    public Image guest1InterestBarBackground;
+    public Image guest1InterestBarImage;
+    public Text guest1OpinionText;
     public Scrollbar guest1OpinionBar;
+    public Image guest1OpinionBarImage;
     public Image guest1DispositionIcon;
 
     public GameObject guest2Visual;
@@ -57,8 +59,10 @@ public class WorkTheRoomManager : MonoBehaviour
     public Image guest2GuestImage;
     public Text guest2InterestText;
     public Scrollbar guest2InterestBar;
-    public Image guest2InterestBarBackground;
+    public Image guest2InterestBarImage;
+    public Text guest2OpinionText;
     public Scrollbar guest2OpinionBar;
+    public Image guest2OpinionBarImage;
     public Image guest2DispositionIcon;
 
     public GameObject guest3Visual;
@@ -66,8 +70,10 @@ public class WorkTheRoomManager : MonoBehaviour
     public Image guest3GuestImage;
     public Text guest3InterestText;
     public Scrollbar guest3InterestBar;
-    public Image guest3InterestBarBackground;
+    public Image guest3InterestBarImage;
+    public Text guest3OpinionText;
     public Scrollbar guest3OpinionBar;
+    public Image guest3OpinionBarImage;
     public Image guest3DispositionIcon;
 
     public Sprite femaleGuestImage0Charmed;
@@ -177,8 +183,8 @@ public class WorkTheRoomManager : MonoBehaviour
             {
                 room.party.playerHand.RemoveAt(3);
             }
-            room.party.playerHand.Add(new Remark("ambush"));
-            room.party.playerHand.Add(new Remark("ambush"));
+            room.party.playerHand.Add(new Remark("ambush", room.guestList.Count));
+            room.party.playerHand.Add(new Remark("ambush", room.guestList.Count));
         }
 
         //Set Up Remarks
@@ -187,10 +193,10 @@ public class WorkTheRoomManager : MonoBehaviour
         remarkSlotList.Add(remarkSlot1RemarkSlot);
         remarkSlotList.Add(remarkSlot2RemarkSlot);
         remarkSlotList.Add(remarkSlot3RemarkSlot);
-        remarkSlotList.Add(remarkSlot4RemarkSlot);
+        remarkSlotList.Add(remarkSlot4RemarkSlot);  
 
         //Turn Timer
-        turnTimerBar.value = currentTurnTimer / maxTurnTimer;
+        turnTimerBar.value = room.currentTurnTimer / room.maxTurnTimer;
         if(GameData.playerReputationLevel >= 2)
         {
             reparteeIndicatorImage.color = Color.green;
@@ -201,7 +207,14 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //Ready Go Text
         readyGoText.text = GameData.conversationIntroList[Random.Range(0, GameData.conversationIntroList.Count)];
-        StartCoroutine(ConversationStartTimerWait());
+        //Tutorial Pop-Up? Only used in the tutorial Room
+        if (room.tutorial)
+        {
+            screenFader.gameObject.SendMessage("CreateWorkTheRoomTutorialPopUp", this);
+        } else
+        {
+            StartCoroutine(ConversationStartTimerWait());
+        }
 
         //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
         if (AccessoryInventory.personalInventory[GameData.partyAccessoryID].Type() == "Fascinator")
@@ -252,9 +265,9 @@ public class WorkTheRoomManager : MonoBehaviour
         //Turn Timer
         if(conversationStarted && turnTimerActive)
         {
-            currentTurnTimer -= Time.deltaTime;
-            turnTimerBar.value = currentTurnTimer / maxTurnTimer;
-            if (currentTurnTimer <= 0)
+            room.currentTurnTimer -= Time.deltaTime;
+            turnTimerBar.value = room.currentTurnTimer / room.maxTurnTimer;
+            if (room.currentTurnTimer <= 0)
             {
                 EndTurn();
             }
@@ -277,12 +290,12 @@ public class WorkTheRoomManager : MonoBehaviour
         if (room.guestList[0].isEnemy)
         {
             guest0NameText.color = Color.red;
-            guest0InterestBarBackground.color = Color.clear;
+            guest0InterestBarImage.color = Color.clear;
         }
         else
         {
             guest0NameText.color = Color.white;
-            guest0InterestBarBackground.color = Color.white;
+            guest0InterestBarImage.color = Color.white;
         }
         guestImageList.Add(guest0GuestImage);
 
@@ -293,12 +306,12 @@ public class WorkTheRoomManager : MonoBehaviour
         if (room.guestList[1].isEnemy)
         {
             guest1NameText.color = Color.red;
-            guest1InterestBarBackground.color = Color.clear;
+            guest1InterestBarImage.color = Color.clear;
         }
         else
         {
             guest1NameText.color = Color.white;
-            guest1InterestBarBackground.color = Color.white;
+            guest1InterestBarImage.color = Color.white;
         }
         guestImageList.Add(guest1GuestImage);
 
@@ -311,14 +324,26 @@ public class WorkTheRoomManager : MonoBehaviour
             if (room.guestList[2].isEnemy)
             {
                 guest2NameText.color = Color.red;
-                guest2InterestBarBackground.color = Color.clear;
+                guest2InterestBarImage.color = Color.clear;
             }
             else
             {
                 guest2NameText.color = Color.white;
-                guest2InterestBarBackground.color = Color.white;
+                guest2InterestBarImage.color = Color.white;
             }
             guestImageList.Add(guest2GuestImage);
+        } else
+        {
+            guest2NameText.text = "";
+            guest2GuestImage.sprite = null;
+            guest2GuestImage.color = Color.clear;
+            guest2DispositionIcon.color = Color.clear;
+            guest2InterestBar.image.color = Color.clear;
+            guest2InterestBarImage.color = Color.clear;
+            guest2InterestText.color = Color.clear;
+            guest2OpinionText.color = Color.clear;
+            guest2OpinionBarImage.color = Color.clear;
+            guest2OpinionBar.image.color = Color.clear;
         }
 
         //---- Set Up Guest 3 ----
@@ -330,15 +355,28 @@ public class WorkTheRoomManager : MonoBehaviour
             if (room.guestList[3].isEnemy)
             {
                 guest3NameText.color = Color.red;
-                guest3InterestBarBackground.color = Color.clear;
+                guest3InterestBarImage.color = Color.clear;
             }
             else
             {
                 guest3NameText.color = Color.white;
-                guest3InterestBarBackground.color = Color.white;
+                guest3InterestBarImage.color = Color.white;
             }
             guestImageList.Add(guest3GuestImage);
-        }     
+        }
+        else
+        {
+            guest3NameText.text = "";
+            guest3GuestImage.sprite = null;
+            guest3GuestImage.color = Color.clear;
+            guest3DispositionIcon.color = Color.clear;
+            guest3InterestBarImage.color = Color.clear;
+            guest3InterestBar.image.color = Color.clear;
+            guest3InterestText.color = Color.clear;
+            guest3OpinionText.color = Color.clear;
+            guest3OpinionBarImage.color = Color.clear;
+            guest3OpinionBar.image.color = Color.clear;
+        }
     }
 
     public void StartTargeting(int selectedRemark)
@@ -690,7 +728,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
     public float ReparteBonus()
     {
-        if(currentTurnTimer/maxTurnTimer >= 0.5 && GameData.playerReputationLevel >= 2)
+        if(room.currentTurnTimer/room.maxTurnTimer >= 0.5 && GameData.playerReputationLevel >= 2)
         {
             return 1.25f;
         } else
@@ -832,8 +870,8 @@ public class WorkTheRoomManager : MonoBehaviour
     void EndTurn()
     {
         //Reset the Turn Timer
-        currentTurnTimer = maxTurnTimer;
-        turnTimerBar.value = currentTurnTimer / maxTurnTimer;
+        room.currentTurnTimer = room.maxTurnTimer;
+        turnTimerBar.value = room.currentTurnTimer / room.maxTurnTimer;
 
         //Increment all the Guest Timers, issue Boredom Damage
         foreach (Guest g in room.guestList)
@@ -1106,9 +1144,9 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void AddRemarkToHand()
     {
-        if (room.party.playerHand.Count < 6) // This is one larger than it should be because remarks are deducted after they're added
+        if (room.party.playerHand.Count < 6) // This is one larger than it should be because Remarks are deducted after they're added
         {
-            Remark remark = new Remark(room.party.lastTone);
+            Remark remark = new Remark(room.party.lastTone, room.guestList.Count);
             room.party.lastTone = remark.tone;
             room.party.playerHand.Add(remark);
         }
@@ -1119,7 +1157,7 @@ public class WorkTheRoomManager : MonoBehaviour
         int numberOfCardsForRefill = 5 - room.party.playerHand.Count;
         for (int i = 0; i < numberOfCardsForRefill; i++)
         {
-            Remark remark = new Remark(room.party.lastTone);
+            Remark remark = new Remark(room.party.lastTone, room.guestList.Count);
             room.party.lastTone = remark.tone;
             room.party.playerHand.Add(remark);
         }
@@ -1286,24 +1324,24 @@ public class WorkTheRoomManager : MonoBehaviour
         if (room.guestList[0].lockedInState != 0 || room.guestList[0].isEnemy)
         {
             guest0InterestBar.image.color = Color.clear;
-            guest0InterestBarBackground.color = Color.clear;
+            guest0InterestBarImage.color = Color.clear;
         }
         else
         {
             guest0InterestBar.image.color = Color.white;
-            guest0InterestBarBackground.color = Color.white;
+            guest0InterestBarImage.color = Color.white;
         }
 
         //------------- Guest 1 -------------
         if (room.guestList[1].lockedInState != 0 || room.guestList[1].isEnemy)
         {
             guest1InterestBar.image.color = Color.clear;
-            guest1InterestBarBackground.color = Color.clear;
+            guest1InterestBarImage.color = Color.clear;
         }
         else
         {
             guest1InterestBar.image.color = Color.white;
-            guest1InterestBarBackground.color = Color.white;
+            guest1InterestBarImage.color = Color.white;
         }
 
         //------------- Guest 2 -------------
@@ -1313,12 +1351,12 @@ public class WorkTheRoomManager : MonoBehaviour
             if (room.guestList[2].lockedInState != 0 || room.guestList[2].isEnemy)
             {
                 guest2InterestBar.image.color = Color.clear;
-                guest2InterestBarBackground.color = Color.clear;
+                guest2InterestBarImage.color = Color.clear;
             }
             else
             {
                 guest2InterestBar.image.color = Color.white;
-                guest2InterestBarBackground.color = Color.white;
+                guest2InterestBarImage.color = Color.white;
             }
         }
 
@@ -1329,12 +1367,12 @@ public class WorkTheRoomManager : MonoBehaviour
             if (room.guestList[3].lockedInState != 0 || room.guestList[3].isEnemy)
             {
                 guest3InterestBar.image.color = Color.clear;
-                guest3InterestBarBackground.color = Color.clear;
+                guest3InterestBarImage.color = Color.clear;
             }
             else
             {
                 guest3InterestBar.image.color = Color.white;
-                guest3InterestBarBackground.color = Color.white;
+                guest3InterestBarImage.color = Color.white;
             }
         }
     }
@@ -1411,8 +1449,8 @@ public class WorkTheRoomManager : MonoBehaviour
 
     
     void VisualizeGuests()
-    { 
-        //Guest 0
+    {
+        //---- Guest 0 ----
         guest0InterestText.text = InterestState(room.guestList[0]);
         if (room.guestList[0].isEnemy)
         {
@@ -1425,7 +1463,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest0OpinionBar.value = (float)room.guestList[0].currentOpinion / 100;
         guest0DispositionIcon.color = DispositionImageColor(0);
         guest0GuestImage.sprite = GuestStateSprite(0);
-        //Guest 1
+        //---- Guest 1 ----
         guest1InterestText.text = InterestState(room.guestList[1]);
         if (room.guestList[1].isEnemy)
         {
@@ -1439,7 +1477,7 @@ public class WorkTheRoomManager : MonoBehaviour
         guest1OpinionBar.value = (float)room.guestList[1].currentOpinion / 100;
         guest1DispositionIcon.color = DispositionImageColor(1);
         guest1GuestImage.sprite = GuestStateSprite(1);
-        //Guest 2 
+        //---- Guest 2 ---- 
         //There might not be 3 Guests or more, so this check is to make sure nothing breaks
         if(room.guestList.Count > 2)
         {
@@ -1457,7 +1495,7 @@ public class WorkTheRoomManager : MonoBehaviour
             guest2DispositionIcon.color = DispositionImageColor(2);
             guest2GuestImage.sprite = GuestStateSprite(2);
         }
-        //Guest 3 
+        //---- Guest 3 ----
         //There might not be 4 Guests, so this check is to make sure nothing breaks
         if (room.guestList.Count > 3)
         {

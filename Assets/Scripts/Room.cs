@@ -7,6 +7,7 @@ public class Room {
     public Party party; //What party is this Room part of?
     public int starRating; //How difficult is this Room? 1-5 Stars
     public bool cleared; //Has this Room been Cleared?
+    public bool tutorial; //Is this the first Room in the Tutorial? If so, then a pop up will happen in this Room. Ugh... there has GOT be a less hax way to do this...
 
     public string name; //Randomly Generated Room Name
     public int xPos; //Where is this room in the Party's Room Grid?
@@ -24,6 +25,9 @@ public class Room {
     public List<Reward> rewardList = new List<Reward>(); //Holds all the Rewards one could win from the Room. Index 4 = 4 Charmed Guests, Index 3 = 3 Charmed Guests, etc...
     public List<Gossip> gossipList = new List<Gossip>();
 
+    public float currentTurnTimer; //Used in Conversations
+    public float maxTurnTimer; //Also Used in Conversations
+
     public Notable host;
 
     //Initially used in Party Generation
@@ -35,6 +39,9 @@ public class Room {
         name = GenerateName();
         GenerateRewards();
         revealed = false;
+        maxTurnTimer = 5;
+        currentTurnTimer = maxTurnTimer;
+        tutorial = false;
     }
 
     string GenerateName()
@@ -141,4 +148,16 @@ public class Room {
             }
         }
     }
+
+    public void SetTurnTimer(float newTurnTimer)
+    {
+        maxTurnTimer = newTurnTimer;
+        currentTurnTimer = maxTurnTimer;
+    }
+
+    public void SetTutorial()
+    {
+        tutorial = true;
+    }
+
 }

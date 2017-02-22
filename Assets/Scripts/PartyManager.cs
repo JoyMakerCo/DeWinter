@@ -64,6 +64,7 @@ public class PartyManager : MonoBehaviour {
             GameData.tonightsParty.turns += 4;
             GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
         }
+        TutorialCheck();
         FreeWineCheck();
     }
 
@@ -147,6 +148,16 @@ public class PartyManager : MonoBehaviour {
         objectStorage[9] = GameData.tonightsParty.maxPlayerConfidence;
         objectStorage[10] = GameData.tonightsParty.currentPlayerConfidence;
         screenFader.gameObject.SendMessage("CreateConfidenceTallyModal", objectStorage);
+    }
+
+    //If this Party is the Tutorial Party then it needs to give an explanatory pop-up at the Party's start
+    void TutorialCheck()
+    {
+        if (GameData.tonightsParty.tutorial)
+        {
+            //Explanatory Pop Up
+            screenFader.gameObject.SendMessage("CreatePartyTutorialPopUp");
+        }
     }
 
     void FreeWineCheck()

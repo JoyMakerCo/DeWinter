@@ -11,6 +11,7 @@ public class PopUpManager : MonoBehaviour {
     public GameObject quitGameModal;
     public GameObject messageModal;
     public GameObject eventModal;
+    public GameObject workTheRoomTutorialModal;
     public GameObject twoPartyChoiceModal;
     public GameObject twoPartyRSVPdModal;
     public GameObject rSVPModal;
@@ -50,6 +51,48 @@ public class PopUpManager : MonoBehaviour {
         //Make the Pop Up
         GameObject popUp = Instantiate(quitGameModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This is used at the beginning of the Tutorial Party to teach you how Parties work and navigating them
+    void CreatePartyTutorialPopUp()
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(messageModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        popUp.transform.SetAsFirstSibling();
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "Welcome!";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "Bonjour Madamme and Welcome to the Orphan's Feast!"
+            + "\nYou're alone? Don't worry! You'll find some of our other patrons in the next room." 
+            + "\nIn fact, we even have a real big shot here tonight. He's getting drinks in the back. You should talk to him!"
+            + "\n\n<You're in the Vestibule, click on a Room next to you to go to that Room>";
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This is used at the beginning of the first Tutorial Conversation to teach you how Work the Room... works
+    void CreateWorkTheRoomTutorialPopUp(WorkTheRoomManager wRM)
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(workTheRoomTutorialModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        //Set the Pop Up's Variable
+        WorkTheRoomPopUpModalController popUpController = popUp.transform.GetComponent<WorkTheRoomPopUpModalController>();
+        popUpController.workTheRoomManager = wRM;
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "Charming the Room";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "There are some Guests in front of you. Say something to them!"
+            + "\nHow? Click on your Remarks at the bottom of the screen, then click on the Guests to use the Remarks."
+            + "\nTry to match the color of your Remarks to the color of the Guests. If they like what you're about to say they'll turn green. If they don't like it they'll turn red."
+            + "\nOnce their Opinion Bar is all the way to the right then they'll be Charmed. Charm them both to finish the Conversation. Just don't make them too angry or you'll Put them Off and maybe run out of Confidence.";
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }

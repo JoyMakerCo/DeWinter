@@ -12,6 +12,7 @@ public class Party {
     public int playerRSVPDistance = -1;
     public int modestyPreference;
     public int luxuryPreference;
+    public bool tutorial;
 
     public string description; // Randomly Generated Flavor Description
 
@@ -50,6 +51,7 @@ public class Party {
     // Default Constructor
     public Party()
     {
+        tutorial = false;
         SetRandomFaction();
         partySize = Random.Range(1, 4);
         GenerateRandomDescription();
@@ -64,6 +66,7 @@ public class Party {
     //Constructor that makes a Party that ISN'T the included faction
     public Party(string notThisFaction)
     {
+        tutorial = false;
         SetExclusiveFaction(notThisFaction);
         partySize = Random.Range(1, 4);
         GenerateRandomDescription();
@@ -78,6 +81,7 @@ public class Party {
     //Constructor that make parties of a particular size, -1 means no Party
     public Party(int size)
     {
+        tutorial = false;
         if (size == -1)
         {
             faction = null;
@@ -98,8 +102,9 @@ public class Party {
 
     //Constructor that makes the tutorial Party, a preconstructed Party with a specific Room setup and special events
     //TODO: What Faction is it?
-    public Party(bool tutorial)
+    public Party(bool t)
     {
+        tutorial = t;
         if (tutorial) //If the bool is true then make that tutorial Party
         {
             partySize = 1;
@@ -387,15 +392,18 @@ public class Party {
         roomGrid[0, 2].SetStarRatingAndGuests(2, 4);
         roomGrid[1, 2] = new Room(this, 1, 2);
         roomGrid[1, 2].SetStarRatingAndGuests(2, 3);
+        roomGrid[1, 2].SetTurnTimer(6.25f);
         roomGrid[2, 2] = new Room(this, 2, 2);
         roomGrid[2, 2].SetStarRatingAndGuests(3, 3);
         //Row 1
         roomGrid[1, 1] = new Room(this, 1, 1);
         roomGrid[1, 1].SetStarRatingAndGuests(1, 2);
+        roomGrid[1, 1].SetTurnTimer(7.5f);
+        roomGrid[1, 1].SetTutorial();
         //Row 0
-        roomGrid[1, 0] = new Room(this, 1, 0);
+        roomGrid[1, 0] = new Room(this, 1, 0); // This Room is the Vestibule
 
-        //Set the Entrance (Southern-most Room)
+        //Set the Vestibule (Southern-most Room)
         Room selectedRoom = roomGrid[1, 0];
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entrance = true;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
@@ -638,7 +646,7 @@ public class Party {
         lastTone = playerHand[0].tone;
         for (int i = 1; i < 5; i++)
         {
-            playerHand.Add(new Remark(lastTone));
+            playerHand.Add(new Remark(lastTone, 2));
             lastTone = playerHand[i].tone;
         }
     }

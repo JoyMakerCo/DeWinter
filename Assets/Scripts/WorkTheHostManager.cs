@@ -142,7 +142,7 @@ public class WorkTheHostManager : MonoBehaviour
             {
                 room.party.playerHand.RemoveAt(4);
             }
-            room.party.playerHand.Add(new Remark("ambush"));
+            room.party.playerHand.Add(new Remark("ambush", room.guestList.Count));
         }
 
         //Set Up the Remarks--------------------
@@ -861,7 +861,7 @@ public class WorkTheHostManager : MonoBehaviour
     {
         if (room.party.playerHand.Count < 6) // This is one larger than it should be because Remarks are deducted after they're added
         {
-            Remark remark = new Remark(room.party.lastTone);
+            Remark remark = new Remark(room.party.lastTone, room.guestList.Count);
             room.party.lastTone = remark.tone;
             room.party.playerHand.Add(remark);
         }
@@ -872,7 +872,7 @@ public class WorkTheHostManager : MonoBehaviour
         int numberOfCardsForRefill = 5 - room.party.playerHand.Count;
         for (int i = 0; i < numberOfCardsForRefill; i++)
         {
-            Remark remark = new Remark(room.party.lastTone);
+            Remark remark = new Remark(room.party.lastTone, room.guestList.Count);
             room.party.lastTone = remark.tone;
             room.party.playerHand.Add(remark);
         }
