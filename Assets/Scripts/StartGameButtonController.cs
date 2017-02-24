@@ -8,6 +8,7 @@ public class StartGameButtonController : MonoBehaviour {
     EventInventory eventInventory;
     OutfitInventory outfitInventory;
     AccessoryInventory accessoryInventory;
+    public DismissPopUp dismiss;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,7 @@ public class StartGameButtonController : MonoBehaviour {
         eventInventory.StockFullInventory();
         outfitInventory.StockInventory();
         accessoryInventory.StockInventory();
+        dismiss.Dismiss();
         levelManager.LoadLevel("Game_Estate");
 	}
 }

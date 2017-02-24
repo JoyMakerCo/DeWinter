@@ -985,7 +985,7 @@ public class WorkTheRoomManager : MonoBehaviour
             case 2:
                 effect = "Faction Reputation Loss";
                 effectAmount = Random.Range(20, 51) * -1;
-                room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction, effectAmount));
+                room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction.Name(), effectAmount));
                 break;
             case 3:
                 effect = "Outfit Novelty Loss";
@@ -1015,7 +1015,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 break;
             case 7:
                 effect = "New Enemy";
-                EnemyInventory.AddEnemy(new Enemy(GameData.factionList[room.party.faction]));
+                EnemyInventory.AddEnemy(new Enemy(room.party.faction));
                 break;
             case 8:
                 effect = "Forgot All Gossip";
@@ -1036,7 +1036,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 } else //If they have no Gossip to Lose
                 {
                     effect = "New Enemy";
-                    EnemyInventory.AddEnemy(new Enemy(GameData.factionList[room.party.faction]));
+                    EnemyInventory.AddEnemy(new Enemy(room.party.faction));
                 }
                 break;
             case 9:
@@ -1059,7 +1059,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 case 2:
                     effect = "Faction Reputation Gain";
                     effectAmount = Random.Range(20, 51);
-                    room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction, effectAmount));
+                    room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction.Name(), effectAmount));
                     break;
                 case 3:
                     effect = "Livre Gained";
@@ -1295,26 +1295,47 @@ public class WorkTheRoomManager : MonoBehaviour
         //Check to see if the Player has run out of Confidence
         if (room.party.currentPlayerConfidence <= 0)
         {
-            //The Player loses a turn
-            room.party.turnsLeft--;
-            //The Player has their Confidence Reset
-            room.party.currentPlayerConfidence = room.party.startingPlayerConfidence / 2;
-            //The Player is relocated to the Entrance
-            roomManager.MovePlayerToEntrance();
-            //The Player's Reputation is Punished
-            int reputationLoss = 25;
-            int factionReputationLoss = 50;
-            GameData.reputationCount -= reputationLoss;
-            GameData.factionList[room.party.faction].playerReputation -= factionReputationLoss;
-            //Explanation Screen Pop Up goes here
-            object[] objectStorage = new object[3];
-            objectStorage[0] = room.party.faction;
-            objectStorage[1] = reputationLoss;
-            objectStorage[2] = factionReputationLoss;
-            screenFader.gameObject.SendMessage("CreateFailedConfidenceModal", objectStorage);
-            //The Player is pulled from the Work the Room session
-            Destroy(gameObject);
-            GameData.activeModals--;
+            if (!room.party.tutorial) //If this is not the tutorial Party
+            {
+                //The Player loses a turn
+                room.party.turnsLeft--;
+                //The Player has their Confidence Reset
+                room.party.currentPlayerConfidence = room.party.startingPlayerConfidence / 2;
+                //The Player is relocated to the Entrance
+                roomManager.MovePlayerToEntrance();
+                //The Player's Reputation is Punished
+                int reputationLoss = 25;
+                int factionReputationLoss = 50;
+                GameData.reputationCount -= reputationLoss;
+                room.party.faction.playerReputation -= factionReputationLoss;
+                //Explanation Screen Pop Up goes here
+                object[] objectStorage = new object[3];
+                objectStorage[0] = room.party;
+                objectStorage[1] = reputationLoss;
+                objectStorage[2] = factionReputationLoss;
+                screenFader.gameObject.SendMessage("CreateFailedConfidenceModal", objectStorage);
+                //The Player is pulled from the Work the Room session
+                Destroy(gameObject);
+                GameData.activeModals--;
+            } else //The tutorial Party is a lot more forgiving
+            {
+                //The Player has their Confidence Reset
+                room.party.currentPlayerConfidence = room.party.startingPlayerConfidence;
+                //The Player is relocated to the Entrance
+                roomManager.MovePlayerToEntrance();
+                //The Player's Reputation is not Punished
+                int reputationLoss = 0;
+                int factionReputationLoss = 0;
+                //Explanation Screen Pop Up goes here
+                object[] objectStorage = new object[3];
+                objectStorage[0] = room.party;
+                objectStorage[1] = reputationLoss;
+                objectStorage[2] = factionReputationLoss;
+                screenFader.gameObject.SendMessage("CreateFailedConfidenceModal", objectStorage);
+                //The Player is pulled from the Work the Room session
+                Destroy(gameObject);
+                GameData.activeModals--;
+            }  
         }
     }
 

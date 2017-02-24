@@ -8,6 +8,7 @@ public class Room {
     public int starRating; //How difficult is this Room? 1-5 Stars
     public bool cleared; //Has this Room been Cleared?
     public bool tutorial; //Is this the first Room in the Tutorial? If so, then a pop up will happen in this Room. Ugh... there has GOT be a less hax way to do this...
+    public bool noMoveThrough; //Can you 'Move Through' this room? Will only be used in the Tutorial and maybe the trial. Again, there has GOT to be a less hax way to do this
 
     public string name; //Randomly Generated Room Name
     public int xPos; //Where is this room in the Party's Room Grid?
@@ -42,6 +43,7 @@ public class Room {
         maxTurnTimer = 5;
         currentTurnTimer = maxTurnTimer;
         tutorial = false;
+        noMoveThrough = false;
     }
 
     string GenerateName()
@@ -118,7 +120,7 @@ public class Room {
                 break;
             case 6:
                 hostHere = true;
-                host = new Notable();
+                host = party.host;
                 name = "The Host's Quarters";
                 break;
         }
@@ -158,6 +160,11 @@ public class Room {
     public void SetTutorial()
     {
         tutorial = true;
+    }
+
+    public void SetNoMoveThrough()
+    {
+        noMoveThrough = true;
     }
 
 }

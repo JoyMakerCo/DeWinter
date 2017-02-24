@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Party {
 
-    public string faction;
+    public Faction faction;
     public int partySize;
     public bool invited;
     public int invitationDistance; // How many days before does the Player have to be before they get invited (if eligible)?
@@ -48,56 +48,46 @@ public class Party {
     public Outfit playerOutfit;
     public Accessory playerAccessory;
 
-    // Default Constructor
-    public Party()
-    {
-        tutorial = false;
-        SetRandomFaction();
-        partySize = Random.Range(1, 4);
-        GenerateRandomDescription();
-        GenerateRooms();
-        turns = (partySize * 5) + 1;
-        turnsLeft = turns;
-        FillPlayerHand();
-        invited = false;
-        invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
-    }
-
-    //Constructor that makes a Party that ISN'T the included faction
-    public Party(string notThisFaction)
-    {
-        tutorial = false;
-        SetExclusiveFaction(notThisFaction);
-        partySize = Random.Range(1, 4);
-        GenerateRandomDescription();
-        GenerateRooms();
-        turns = (partySize * 5) + 1;
-        turnsLeft = turns;
-        FillPlayerHand();
-        invited = false;
-        invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
-    }
-
-    //Constructor that make parties of a particular size, -1 means no Party
+    //Constructor that make parties of a particular size, 0 means no Party
     public Party(int size)
     {
         tutorial = false;
-        if (size == -1)
+        if (size == 0)
         {
             faction = null;
-            partySize = 1;
-        } else
+        }
+        else
         {
             SetFactionGuaranteedParty();
             partySize = size;
-        }       
-        GenerateRandomDescription();
-        GenerateRooms();
-        turns = (partySize * 5) + 1;
-        turnsLeft = turns;
-        FillPlayerHand();
-        invited = false;
-        invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+            host = new Notable(faction);
+            GenerateRandomDescription();
+            GenerateRooms();
+            turns = (partySize * 5) + 1;
+            turnsLeft = turns;
+            FillPlayerHand();
+            invited = false;
+            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+        }
+    }
+
+    //Constructor that makes a Party that ISN'T the included faction
+    public Party(Faction notThisFaction)
+    {
+        tutorial = false;
+        SetExclusiveFaction(notThisFaction);
+        if(faction != null)
+        {
+            partySize = Random.Range(1, 4);
+            host = new Notable(faction);
+            GenerateRandomDescription();
+            GenerateRooms();
+            turns = (partySize * 5) + 1;
+            turnsLeft = turns;
+            FillPlayerHand();
+            invited = false;
+            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+        }
     }
 
     //Constructor that makes the tutorial Party, a preconstructed Party with a specific Room setup and special events
@@ -109,6 +99,7 @@ public class Party {
         {
             partySize = 1;
             SetFactionGuaranteedParty();
+            host = new Notable(faction);
             GenerateTutorialDescription();
             GenerateTutorialRooms();
             turns = 10;
@@ -135,33 +126,33 @@ public class Party {
         int partyFaction = Random.Range(0, 5);
         if (partyFaction == 0)
         {
-            faction = "Crown";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            faction = GameData.factionList["Crown"];
+            modestyPreference = faction.modestyLike;
+            luxuryPreference = faction.luxuryLike;
         }
         if (partyFaction == 1)
         {
-            faction = "Church";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            faction = GameData.factionList["Church"];
+            modestyPreference = faction.modestyLike;
+            luxuryPreference = faction.luxuryLike;
         }
         if (partyFaction == 2)
         {
-            faction = "Military";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            faction = GameData.factionList["Military"];
+            modestyPreference = faction.modestyLike;
+            luxuryPreference = faction.luxuryLike;
         }
         if (partyFaction == 3)
         {
-            faction = "Bourgeoisie";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            faction = GameData.factionList["Bourgeoisie"];
+            modestyPreference = faction.modestyLike;
+            luxuryPreference = faction.luxuryLike;
         }
         if (partyFaction == 4)
         {
-            faction = "Revolution";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            faction = GameData.factionList["Revolution"];
+            modestyPreference = faction.modestyLike;
+            luxuryPreference = faction.luxuryLike;
         }
     }
 
@@ -171,29 +162,29 @@ public class Party {
         switch (partyFaction)
         {
             case 0:
-                faction = "Crown";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Crown"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             case 1:
-                faction = "Church";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Church"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             case 2:
-                faction = "Military";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Military"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             case 3:
-                faction = "Bourgeoisie";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Bourgeoisie"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             case 4:
-                faction = "Revolution";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Revolution"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             default:
                 faction = null;
@@ -201,35 +192,35 @@ public class Party {
         }
     }
 
-    void SetExclusiveFaction(string nTF)
+    void SetExclusiveFaction(Faction nTF)
     {
         int partyFaction = Random.Range(0, 7);
         switch (partyFaction)
         {
             case 0:
-                faction = "Crown";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Crown"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             case 1:
-                faction = "Church";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Church"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             case 2:
-                faction = "Military";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Military"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             case 3:
-                faction = "Bourgeoisie";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Bourgeoisie"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             case 4:
-                faction = "Revolution";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                faction = GameData.factionList["Revolution"];
+                modestyPreference = faction.modestyLike;
+                luxuryPreference = faction.luxuryLike;
                 break;
             default:
                 faction = null;
@@ -276,11 +267,11 @@ public class Party {
                 break;
         }
         //Set the Party's Map Size along with some Faction Specific Changes
-        if (faction == "Crown")
+        if (faction == GameData.factionList["Crown"])
         {
             gridDimensionX++;
             roomDeletionAmount++;
-        } else if (faction == "Revolution"){
+        } else if (faction == GameData.factionList["Revolution"]){
             gridDimensionY++;
             roomDeletionAmount++;
         }
@@ -309,6 +300,8 @@ public class Party {
             selectedRoom = roomGrid[Random.Range(0, gridDimensionX), 0];
         }
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entrance = true;
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].noMoveThrough = true;
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].cleared = true;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].starRating = 1;
 
@@ -393,6 +386,7 @@ public class Party {
         roomGrid[1, 2] = new Room(this, 1, 2);
         roomGrid[1, 2].SetStarRatingAndGuests(2, 3);
         roomGrid[1, 2].SetTurnTimer(6.25f);
+        roomGrid[1, 2].SetNoMoveThrough();
         roomGrid[2, 2] = new Room(this, 2, 2);
         roomGrid[2, 2].SetStarRatingAndGuests(3, 3);
         //Row 1
@@ -400,12 +394,15 @@ public class Party {
         roomGrid[1, 1].SetStarRatingAndGuests(1, 2);
         roomGrid[1, 1].SetTurnTimer(7.5f);
         roomGrid[1, 1].SetTutorial();
+        roomGrid[1, 1].SetNoMoveThrough();
         //Row 0
         roomGrid[1, 0] = new Room(this, 1, 0); // This Room is the Vestibule
 
         //Set the Vestibule (Southern-most Room)
         Room selectedRoom = roomGrid[1, 0];
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entrance = true;
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].noMoveThrough = true;
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].cleared = true;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].starRating = 1;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].name = "The Vestibule";

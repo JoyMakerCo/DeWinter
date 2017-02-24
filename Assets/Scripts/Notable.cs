@@ -15,7 +15,7 @@ public class Notable {
     public float maxInterestTimer;
     public float currentInterestTimer;
     public bool interestTimerWaiting;
-    public int lockedInState = 0; //0 for Active, 1 for Charmed and -1 for Put Off
+    public int lockedInState; //0 for Active, 1 for Charmed and -1 for Put Off
     //Disposition Stuff
     public int dispositionInt;
     public float dispositionTimerSwitchMax;
@@ -27,12 +27,14 @@ public class Notable {
     public float hostRemarkCompletionTimerCurrent;
 
     //Generates a random regular Notable
-    public Notable()
+    public Notable(Faction f)
     {
+        faction = f;
         dispositionInt = Random.Range(0, 4);
         disposition = GameData.dispositionList[dispositionInt];
         currentOpinion = Random.Range(25, 51);
         maxOpinion = 225;
+        lockedInState = 0;
         maxInterestTimer = 4;
         currentInterestTimer = 4;
         interestTimerWaiting = false;
@@ -61,6 +63,7 @@ public class Notable {
         disposition = GameData.dispositionList[dispositionInt];
         currentOpinion = opinion;
         maxOpinion = 250;
+        lockedInState = 0;
         maxInterestTimer = interest;
         currentInterestTimer = maxInterestTimer;
         enemy = false;

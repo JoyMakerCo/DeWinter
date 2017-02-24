@@ -696,7 +696,7 @@ public class WorkTheHostManager : MonoBehaviour
             case 2:
                 effect = "Faction Reputation Loss";
                 effectAmount = Random.Range(20, 51) * -1;
-                room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction, effectAmount));
+                room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction.Name(), effectAmount));
                 break;
             case 3:
                 effect = "Outfit Novelty Loss";
@@ -727,7 +727,7 @@ public class WorkTheHostManager : MonoBehaviour
                 break;
             case 7:
                 effect = "New Enemy";
-                EnemyInventory.AddEnemy(new Enemy(GameData.factionList[room.party.faction]));
+                EnemyInventory.AddEnemy(new Enemy(room.party.faction));
                 break;
             case 8:
                 effect = "Forgot All Gossip";
@@ -749,7 +749,7 @@ public class WorkTheHostManager : MonoBehaviour
                 else //If they have no Gossip to Lose
                 {
                     effect = "New Enemy";
-                    EnemyInventory.AddEnemy(new Enemy(GameData.factionList[room.party.faction]));
+                    EnemyInventory.AddEnemy(new Enemy(room.party.faction));
                 }
                 break;
             case 9:
@@ -772,7 +772,7 @@ public class WorkTheHostManager : MonoBehaviour
                 case 2:
                     effect = "Faction Reputation Gain";
                     effectAmount = Random.Range(20, 51);
-                    room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction, effectAmount));
+                    room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction.Name(), effectAmount));
                     break;
                 case 3:
                     effect = "Livre Gained";
@@ -970,7 +970,7 @@ public class WorkTheHostManager : MonoBehaviour
             int reputationLoss = 25;
             int factionReputationLoss = 50;
             GameData.reputationCount -= reputationLoss;
-            GameData.factionList[room.party.faction].playerReputation -= factionReputationLoss;
+            room.party.faction.playerReputation -= factionReputationLoss;
             //Explanation Screen Pop Up goes here
             object[] objectStorage = new object[3];
             objectStorage[0] = room.party.faction;

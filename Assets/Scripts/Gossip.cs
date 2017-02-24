@@ -33,7 +33,7 @@ public class Gossip {
         flavorText = RandomFlavorText();
     }
 
-    Faction RandomFaction(string partyFaction)
+    Faction RandomFaction(Faction partyFaction)
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
         int factionRandom = Random.Range(0, 7);
@@ -50,7 +50,7 @@ public class Gossip {
             case 4:
                 return GameData.factionList["Revolution"];
             default:
-                return GameData.factionList[partyFaction];
+                return partyFaction;
          }
      }
 

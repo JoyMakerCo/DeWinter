@@ -66,7 +66,7 @@ public class EnemyInventory : MonoBehaviour {
                         if (d.party1.faction != null)
                         {
                             Party p = d.party1;
-                            if (e.faction == GameData.factionList[p.faction])
+                            if (e.faction == p.faction)
                             {
                                 if (Random.Range(0, 2) == 0)
                                 {
@@ -77,7 +77,7 @@ public class EnemyInventory : MonoBehaviour {
                         if (d.party2.faction != null)
                         {
                             Party p = d.party2;
-                            if (e.faction == GameData.factionList[p.faction])
+                            if (e.faction == p.faction)
                             {
                                 if (Random.Range(0, 2) == 0)
                                 {

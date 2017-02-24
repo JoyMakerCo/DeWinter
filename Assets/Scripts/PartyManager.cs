@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PartyManager : MonoBehaviour {
     public GameObject screenFader; // It's for the Confidence Tally pop-up
     public RoomManager roomManager;
+    public LevelManager levelManager;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class PartyManager : MonoBehaviour {
     {
         foreach (Enemy e in EnemyInventory.enemyInventory)
         {
-            if(e.faction == GameData.factionList[GameData.tonightsParty.faction])
+            if(e.faction == GameData.tonightsParty.faction)
             {
                 if(Random.Range(0,2) == 0)
                 {
@@ -49,17 +50,17 @@ public class PartyManager : MonoBehaviour {
         }
 
         //Extra Turns because of Faction Reputation Level?
-        if (GameData.tonightsParty.partySize == 1 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 4)
+        if (GameData.tonightsParty.partySize == 1 && GameData.tonightsParty.faction.PlayerReputationLevel() >= 4)
         {
             GameData.tonightsParty.turns += 2;
             GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
         }
-        else if (GameData.tonightsParty.partySize == 2 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 7)
+        else if (GameData.tonightsParty.partySize == 2 && GameData.tonightsParty.faction.PlayerReputationLevel() >= 7)
         {
             GameData.tonightsParty.turns += 3;
             GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
         }
-        else if (GameData.tonightsParty.partySize == 3 && GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 9)
+        else if (GameData.tonightsParty.partySize == 3 && GameData.tonightsParty.faction.PlayerReputationLevel() >= 9)
         {
             GameData.tonightsParty.turns += 4;
             GameData.tonightsParty.turnsLeft = GameData.tonightsParty.turns;
@@ -75,10 +76,10 @@ public class PartyManager : MonoBehaviour {
         //Calculate Confidence Values Here------------
         //Faction Outfit Likes (Military doesn't know anything, so they use the Average Value)
         float outfitReaction;
-        if (GameData.tonightsParty.faction != "Military")
+        if (GameData.tonightsParty.faction != GameData.factionList["Military"])
         {
-            float modestyLike = GameData.factionList[GameData.tonightsParty.faction].modestyLike;
-            float luxuryLike = GameData.factionList[GameData.tonightsParty.faction].luxuryLike;
+            float modestyLike = GameData.tonightsParty.faction.modestyLike;
+            float luxuryLike = GameData.tonightsParty.faction.luxuryLike;
             float outfitModesty = OutfitInventory.personalInventory[GameData.partyOutfitID].modesty;
             float outfitLuxury = OutfitInventory.personalInventory[GameData.partyOutfitID].luxury;
             float outfitNovelty = (float)OutfitInventory.personalInventory[GameData.partyOutfitID].novelty / 100;
@@ -126,7 +127,7 @@ public class PartyManager : MonoBehaviour {
             GameData.tonightsParty.maxPlayerConfidence += outfitAccessoryStyleMatch;
         }
         //Faction Rep
-        int factionReaction = GameData.factionList[GameData.tonightsParty.faction].PlayerConfidenceBenefit();
+        int factionReaction = GameData.tonightsParty.faction.PlayerConfidenceBenefit();
         GameData.tonightsParty.maxPlayerConfidence += factionReaction;
         //General Rep Reaction
         int generalRepReaction = GameData.reputationLevels[GameData.playerReputationLevel].ConfidenceBonus();
@@ -162,7 +163,7 @@ public class PartyManager : MonoBehaviour {
 
     void FreeWineCheck()
     {
-        if(GameData.factionList[GameData.tonightsParty.faction].PlayerReputationLevel() >= 2)
+        if(GameData.tonightsParty.faction.PlayerReputationLevel() >= 2)
         {
             //Fill Up their Glass
             GameData.tonightsParty.currentPlayerDrinkAmount = GameData.tonightsParty.maxPlayerDrinkAmount;
@@ -174,44 +175,51 @@ public class PartyManager : MonoBehaviour {
     //This is currently called by the 'Leave the Party' Button in the Party Scene. May need to automate this in some fashion?
     public void FinishTheParty()
     {
-        GameData.tonightsParty.turnsLeft = 0; // This makes this easier for the After Party Report to Advance Time properly
-        GameData.tonightsParty.CompileRewardsAndGossip();
-        //Distribute the Rewards into the Player's 'Accounts' in Game Data and the appropriate Inventories
-        foreach (Reward t in GameData.tonightsParty.wonRewardsList)
+        if (!GameData.tonightsParty.tutorial || (GameData.tonightsParty.tutorial && GameData.tonightsParty.host.lockedInState != 0))
         {
-            switch (t.Type())
+            GameData.tonightsParty.turnsLeft = 0; // This makes this easier for the After Party Report to Advance Time properly
+            GameData.tonightsParty.CompileRewardsAndGossip();
+            //Distribute the Rewards into the Player's 'Accounts' in Game Data and the appropriate Inventories
+            foreach (Reward t in GameData.tonightsParty.wonRewardsList)
             {
-                case "Reputation":
-                    GameData.reputationCount += t.amount;
-                    break;
-                case "Faction Rep":
-                    GameData.factionList[t.SubType()].playerReputation += t.amount;
-                    break;
-                case "Introduction":
-                    if(t.amount > 0)
-                    {
-                        if(!GameData.servantDictionary[t.SubType()].Introduced() && !GameData.servantDictionary[t.SubType()].Hired())
+                switch (t.Type())
+                {
+                    case "Reputation":
+                        GameData.reputationCount += t.amount;
+                        break;
+                    case "Faction Rep":
+                        GameData.factionList[t.SubType()].playerReputation += t.amount;
+                        break;
+                    case "Introduction":
+                        if (t.amount > 0)
                         {
-                            GameData.servantDictionary[t.SubType()].Introduce();
+                            if (!GameData.servantDictionary[t.SubType()].Introduced() && !GameData.servantDictionary[t.SubType()].Hired())
+                            {
+                                GameData.servantDictionary[t.SubType()].Introduce();
+                            }
                         }
-                    }
-                    break;
-                case "Gossip":
-                    if (t.amount > 0)
-                    {
-                        for(int i = 0; i < t.amount; i++)
+                        break;
+                    case "Gossip":
+                        if (t.amount > 0)
                         {
-                            GameData.gossipInventory.Add(new Gossip(t.SubType()));
+                            for (int i = 0; i < t.amount; i++)
+                            {
+                                GameData.gossipInventory.Add(new Gossip(t.SubType()));
+                            }
                         }
-                    }
-                    break;
-                default:
-                    Debug.Log("Something went wrong with issuing this Reward of " + t.amount + " " + t.Name());
-                    break;
+                        break;
+                    default:
+                        Debug.Log("Something went wrong with issuing this Reward of " + t.amount + " " + t.Name());
+                        break;
+                }
             }
+            GameData.partyOutfitID = -1;
+            GameData.partyAccessoryID = -1;
+            levelManager.LoadLevel("Game_AfterPartyReport");
+        } else
+        {
+            Debug.Log("Player can't leave the Tutorial Party until they've met the Host");
         }
-        GameData.partyOutfitID = -1;
-        GameData.partyAccessoryID = -1;
     }
 
     void OutfitDegradation()

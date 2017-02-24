@@ -36,7 +36,7 @@ public class PopUpManager : MonoBehaviour {
     public GameObject eventInventory;
 
     //This is used at the very beginning when the Player is starting a new Game
-    public void CreadNewGamePopUp()
+    public void CreateNewGamePopUp()
     {
         //Make the Pop Up
         GameObject popUp = Instantiate(newGameModal) as GameObject;
@@ -69,7 +69,7 @@ public class PopUpManager : MonoBehaviour {
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Bonjour Madamme and Welcome to the Orphan's Feast!"
             + "\nYou're alone? Don't worry! You'll find some of our other patrons in the next room." 
-            + "\nIn fact, we even have a real big shot here tonight. He's getting drinks in the back. You should talk to him!"
+            + "\n\nIn fact, we even have a real big shot here tonight. He's getting drinks in the back. You should talk to him!"
             + "\n\n<You're in the Vestibule, click on a Room next to you to go to that Room>";
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
@@ -755,20 +755,29 @@ public class PopUpManager : MonoBehaviour {
         Image moveThroughButtonImage = popUp.transform.Find("MoveThroughButton").GetComponent<Image>();
         if (!GameData.tonightsParty.roomGrid[xPos, yPos].hostHere) //If the Host isn't here
         {
-            moveThroughButtonImage.color = Color.white;
-            moveThroughText.color = Color.white;
-            int moveThroughChance = GameData.tonightsParty.roomGrid[xPos, yPos].MoveThroughChance();
-            //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-            if(GameData.tonightsParty.playerAccessory != null)
+            if(!GameData.tonightsParty.roomGrid[xPos, yPos].noMoveThrough)
             {
-                if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
+                moveThroughButtonImage.color = Color.white;
+                moveThroughText.color = Color.white;
+                int moveThroughChance = GameData.tonightsParty.roomGrid[xPos, yPos].MoveThroughChance();
+                //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
+                if (GameData.tonightsParty.playerAccessory != null)
                 {
-                    moveThroughChance += 10;
+                    if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
+                    {
+                        moveThroughChance += 10;
+                    }
                 }
+                moveThroughText.text = "Move Through (" + moveThroughChance.ToString() + "%)";
+                bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
+                            "\n\nWould you like to 'Work the Room' and engage the party goers in Conversation, or would you like to 'Move Through' and hope nobody notices you?";
+            } else //If the Player has entered a Room where they are not allowed to Move Through
+            {
+                moveThroughButtonImage.color = Color.clear;
+                moveThroughText.color = Color.clear;
+                bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
+                            "\n\nClick the button below to 'Work the Room' and engage the party goers in Conversation.";
             }
-            moveThroughText.text = "Move Through (" + moveThroughChance.ToString() + "%)";
-            bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
-                        "\n\nWould you like to 'Work the Room' and engage the party goers in Conversation, or would you like to 'Move Through' and hope nobody notices you?";
         } else // If the Host Is there
         {
             moveThroughButtonImage.color = Color.clear;
@@ -789,7 +798,6 @@ public class PopUpManager : MonoBehaviour {
             workTheRoomImage.color = Color.clear;
             workTheRoomText.color = Color.clear;
         }
-
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
@@ -951,7 +959,8 @@ public class PopUpManager : MonoBehaviour {
     //This Message Modal variation is used in the Party Scene to tell the Player they ran out of Confidence during the Work the Room or Host sequence and have embarassed themselves
     void CreateFailedConfidenceModal(object[] objectStorage)
     {
-        string faction = objectStorage[0] as string;
+        Party party = objectStorage[0] as Party;
+        Faction faction = party.faction;
         int reputationLoss = (int)objectStorage[1];
         int factionReputationLoss = (int)objectStorage[2];
         //Make the Pop Up
@@ -962,9 +971,17 @@ public class PopUpManager : MonoBehaviour {
         titleText.text = "Oh No!";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "It appears that you ran out of Confidence during that Conversation. You just started stammering before suddenly leaving to 'Get Some Air'." +
-            "\n\nYou've spent an hour here in the Entrance collecting your wits but your sudden disappearance was considered quite rude." +
-            "\n\nYou've lost " + factionReputationLoss + " Repuation with the " + faction + " and " + reputationLoss + " Reputation with society in general.";
+        if (!party.tutorial) //If this is not the Tutorial Party (aka: a regular party)
+        {
+            bodyText.text = "It appears that you ran out of Confidence during that Conversation. You just started stammering before suddenly leaving to 'Get Some Air'." +
+            "\n\nYou've spent an hour here in the Vestibule collecting your wits but your sudden disappearance was considered quite rude." +
+            "\n\nYou've lost " + factionReputationLoss + " Repuation with the " + faction.Name() + " and " + reputationLoss + " Reputation with society in general.";
+        } else //If this is the Tutorial Party, which is a lot more forgiving
+        {
+            bodyText.text = "It appears that you ran out of Confidence during that Conversation. You just started stammering before suddenly leaving to 'Get Some Air'." +
+                        "\n\nYou've spent a few moments here in the Vestibule collecting your wits but your sudden disappearance was considered quite rude." +
+                        "\n\nFortunately, the patrons at the Orphan's Feast are much more forgiving than the rest of the society. Give it another try!";
+        }
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }

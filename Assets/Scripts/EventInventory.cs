@@ -125,7 +125,7 @@ public class EventInventory : MonoBehaviour
             new EventStage("The room erupts into laughter, but you see something in the drunken woman's eyes. It looks like your retort cut deeper than you thought. She glares at you, her eyes boiling with hate." 
                          + "\n'I'll remember this.' she hisses at you under her breath before stalking away, a little more composed than before, but only a little."
                          + "\n\n-You have a new Enemy"                       
-                         + "\n-You have gained 50 Reputation", 50, 0, new Enemy(GameData.factionList[p.faction]),//Stage 2
+                         + "\n-You have gained 50 Reputation", 50, 0, new Enemy(p.faction),//Stage 2
                 new EventOption("Return to the Party <End Event>", -1)),
             new EventStage("One of the friends quietly thanks you for being a good sport. The drunk guest continues her slurred tirade to nobody in particular. You walk away, searching for a damp cloth to blot your dress with."
                          + "\n\n-You have regained 15 Reputation", 15, 0, //Stage 3
@@ -154,7 +154,7 @@ public class EventInventory : MonoBehaviour
                          + "\nBy the time you turn back to the group, desperate for some support, you find that they've already vanished to other portions of the party. The Duchess storms away, leaving a trail of confused and upset party guests in her wake."
                          + "\nThere is a slight ringing in your ears."
                          + "\n\n-You have a new Enemy" 
-                         + "n-You have lost 25 Reputation", -25, 0, new Enemy(GameData.factionList[p.faction]),
+                         + "n-You have lost 25 Reputation", -25, 0, new Enemy(p.faction),
                 new EventOption("'Well, that could have gone better.' <End Event>", -1)),
             new EventStage("Talking about someone who's actually at the party seems like a recipe for disaster, so you choose to avoid their circle." 
                          + "\nPerhaps they'll talk about you next.", 0, 0, //Stage 4
@@ -232,7 +232,7 @@ public class EventInventory : MonoBehaviour
                          + "\n'But, an hour ago you told me it was your father's' one of the other Guests interjects. A grumble of discontent grows among the crowd."
                          + "\n'Ah, I forgot something very important... over there.' the fake Baron gestures vaguely in a direction before scurrying away. He shoots a look back at you. This isn't over." 
                          + "\n\n-You have gained 75 Reputation." 
-                         + "\n-You have a new Enemy",75, 0, new Enemy(GameData.factionList[p.faction]),
+                         + "\n-You have a new Enemy",75, 0, new Enemy(p.faction),
                 new EventOption("Return to the Party <End Event>", -1)),
             //Stage 4
             new EventStage("He narrows his eyes at you before rummaging through his pockets, muttering some words that are truly not befitting a man of his supposed title.'"
