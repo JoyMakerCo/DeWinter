@@ -9,11 +9,10 @@ public class EventManager : MonoBehaviour {
     public Text descriptionText;
     public string eventTime;
     public EventInventory eventInventory;
-    LevelManager levelManager;
+    public LevelManager levelManager; //Assigned via the pop up manager
 
     void Start()
     {
-        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         EventStart();
     }
     
@@ -52,7 +51,7 @@ public class EventManager : MonoBehaviour {
     public void EventOptionSelect(int option)
     {
         //The Start Party Value is currently only used for the Tutorial Party
-        if (GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].Party() == null)
+        if (GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].party == null)
         {
             int nextStage = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].ChooseNextStage();
             //Step 0: Did this just complete the event? If so then dismiss the Pop-Up and End the Event
@@ -73,7 +72,7 @@ public class EventManager : MonoBehaviour {
             descriptionText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].description;
         } else //If there is a Party started by this option then start the Tutorial Party!
         {
-            GameData.tonightsParty = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].Party();
+            GameData.tonightsParty = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].party;
             GameData.activeModals = 0; //A little bit Hax here just to make sure that the Party starts without any modal screen darkening fucking anything up
             levelManager.LoadLevel("Game_PartyLoadOut");
         }    

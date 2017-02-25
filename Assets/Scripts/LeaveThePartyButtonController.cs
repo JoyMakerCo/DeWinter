@@ -10,7 +10,7 @@ public class LeaveThePartyButtonController : MonoBehaviour {
 
     void Update()
     {
-        if (!GameData.tonightsParty.tutorial || (GameData.tonightsParty.tutorial && GameData.tonightsParty.host.lockedInState != 0))
+        if (!GameData.tonightsParty.tutorial || (GameData.tonightsParty.tutorial && GameData.tonightsParty.host.notableLockedInState != Notable.lockedInState.Interested))
         {
             buttonImage.color = Color.white;
             buttonText.color = Color.white;

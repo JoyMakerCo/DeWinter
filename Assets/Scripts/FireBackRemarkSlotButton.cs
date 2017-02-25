@@ -19,7 +19,7 @@ public class FireBackRemarkSlotButton : MonoBehaviour {
 
     void Update()
     {
-        if (myHostRemarkSlot.lockedInState == 1)
+        if (myHostRemarkSlot.remarkSlotLockedInState == FireBackRemarkSlot.lockedInState.Completed)
         {
             remarkSlotImage.color = Color.black;
         }

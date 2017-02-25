@@ -175,7 +175,7 @@ public class PartyManager : MonoBehaviour {
     //This is currently called by the 'Leave the Party' Button in the Party Scene. May need to automate this in some fashion?
     public void FinishTheParty()
     {
-        if (!GameData.tonightsParty.tutorial || (GameData.tonightsParty.tutorial && GameData.tonightsParty.host.lockedInState != 0))
+        if (!GameData.tonightsParty.tutorial || (GameData.tonightsParty.tutorial && GameData.tonightsParty.host.notableLockedInState != Notable.lockedInState.Interested))
         {
             GameData.tonightsParty.turnsLeft = 0; // This makes this easier for the After Party Report to Advance Time properly
             GameData.tonightsParty.CompileRewardsAndGossip();

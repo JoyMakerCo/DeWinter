@@ -401,7 +401,7 @@ public class Party {
         //Set the Vestibule (Southern-most Room)
         Room selectedRoom = roomGrid[1, 0];
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entrance = true;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].noMoveThrough = true;
+        roomGrid[selectedRoom.xPos, selectedRoom.yPos].SetNoMoveThrough();
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].cleared = true;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
         roomGrid[selectedRoom.xPos, selectedRoom.yPos].starRating = 1;

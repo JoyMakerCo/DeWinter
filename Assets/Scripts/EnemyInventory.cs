@@ -7,7 +7,7 @@ public class EnemyInventory : MonoBehaviour {
     static EnemyInventory instance = null;
 
     public static List<Enemy> enemyInventory = new List<Enemy>();
-    public static bool enemyInventoryUnlocked = false; //Used to determine if the Player has gained their first Enemy and thus allowed the Enemies part of the Journal to appear.
+    public static bool enemyInventoryUnlocked = false; //Used to determine if the Player has gained their first Enemy and thus allowed the Enemies part of the Journal to appear. This can't be replaced by checking to see if the enemyInventory is empty because the Player may get rid of Enemies and return to zero, which would remove UI elements from their HUD and be confusing
 
     void Start () {
         if (instance != null && instance != this)

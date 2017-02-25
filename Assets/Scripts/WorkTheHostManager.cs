@@ -444,11 +444,11 @@ public class WorkTheHostManager : MonoBehaviour
         //Do they like the Tone?
         if (room.party.playerHand[targetingRemark].tone == hostRemarkSlotList[slotNumber].disposition.like) //They like the tone
         {
-            if (hostRemarkSlotList[slotNumber].lockedInState != 1)
+            if (hostRemarkSlotList[slotNumber].remarkSlotLockedInState != FireBackRemarkSlot.lockedInState.Completed)
             {
                 hostRemarkSlotComplete++;
             }
-            hostRemarkSlotList[slotNumber].lockedInState = 1;
+            hostRemarkSlotList[slotNumber].remarkSlotLockedInState = FireBackRemarkSlot.lockedInState.Completed;
             AddRemarkToHand(); //Add a new Remark for Tone success           
             room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 5, 5, room.party.maxPlayerConfidence); //Confidence Reward        
         }
@@ -459,7 +459,7 @@ public class WorkTheHostManager : MonoBehaviour
         else //Neutral Tone
         {
             hostRemarkSlotComplete++;
-            hostRemarkSlotList[slotNumber].lockedInState = 1;
+            hostRemarkSlotList[slotNumber].remarkSlotLockedInState = FireBackRemarkSlot.lockedInState.Completed;
         }
         // Up the Remaining Timer?
         room.host.hostRemarkCompletionTimerCurrent = Mathf.Clamp(room.host.hostRemarkCompletionTimerCurrent + 1.0f, 1.0f, room.host.hostRemarkCompletionTimerMax);
@@ -606,12 +606,12 @@ public class WorkTheHostManager : MonoBehaviour
 
         //Increment the Host's Interest Timer, issue Boredom Damage
         room.host.currentInterestTimer = Mathf.Clamp(room.host.currentInterestTimer - 1, 0, room.host.maxInterestTimer);
-        if (room.host.currentInterestTimer <= 0 && room.host.lockedInState == 0)
+        if (room.host.currentInterestTimer <= 0 && room.host.notableLockedInState == Notable.lockedInState.Interested)
         { 
             room.host.currentOpinion = Mathf.Clamp(room.host.currentOpinion - 10, 0, room.host.maxOpinion);
             if (room.host.currentOpinion <= 0)
-            { 
-                room.host.lockedInState = -1;
+            {
+                room.host.notableLockedInState = Notable.lockedInState.PutOff;
             }
         }
 
@@ -831,27 +831,27 @@ public class WorkTheHostManager : MonoBehaviour
 
     void ChangeHostOpinion(int amount)
     {
-        if (room.host.lockedInState == 0) //Is this one locked in yet?
+        if (room.host.notableLockedInState == Notable.lockedInState.Interested) //Is this one locked in yet?
         {
             room.host.currentOpinion += amount;
         }
         //Are they Charmed or Put Off?
-        if (room.host.currentOpinion >= room.host.maxOpinion && room.host.lockedInState == 0) //If they're not already Charmed then Player Hand is refilled once
+        if (room.host.currentOpinion >= room.host.maxOpinion && room.host.notableLockedInState == Notable.lockedInState.Interested) //If they're not already Charmed then Player Hand is refilled once
         {
-            room.host.lockedInState = 1;
+            room.host.notableLockedInState = Notable.lockedInState.Charmed;
             RefillPlayerHand();
         }
-        else if (room.host.currentOpinion <= 0 && room.host.lockedInState == 0) //If they're not already Put Off then Player Confidence is reduced by 10
+        else if (room.host.currentOpinion <= 0 && room.host.notableLockedInState == Notable.lockedInState.Interested) //If they're not already Put Off then Player Confidence is reduced by 10
         {
-            room.host.lockedInState = -1;
+            room.host.notableLockedInState = Notable.lockedInState.PutOff;
             room.party.currentPlayerConfidence -= 10;
         }
 
-        if (room.host.lockedInState == 1) // If they're Charmed then Opinion is Maxed out
+        if (room.host.notableLockedInState == Notable.lockedInState.Charmed) // If they're Charmed then Opinion is Maxed out
         {
             room.host.currentOpinion = room.host.maxOpinion;
         }
-        else if (room.host.lockedInState == -1) // If they're Put Off then Opinion is 0
+        else if (room.host.notableLockedInState == Notable.lockedInState.PutOff) // If they're Put Off then Opinion is 0
         {
             room.host.currentOpinion = 0;
         }
@@ -900,11 +900,11 @@ public class WorkTheHostManager : MonoBehaviour
 
     string InterestState()
     {
-        if (room.host.lockedInState == 1)
+        if (room.host.notableLockedInState == Notable.lockedInState.Charmed)
         {
             return "Charmed";
         }
-        else if (room.host.lockedInState == -1)
+        else if (room.host.notableLockedInState == Notable.lockedInState.PutOff)
         {
             return "Put Off";
         }
@@ -923,11 +923,11 @@ public class WorkTheHostManager : MonoBehaviour
         //Check to see if everyone is either Charmed or Put Off 
         int charmedAmount = 0;
         int putOutAmount = 0;
-        if (room.host.lockedInState == 1)
+        if (room.host.notableLockedInState == Notable.lockedInState.Charmed)
         {
             charmedAmount++;
         }
-        else if (room.host.lockedInState == -1)
+        else if (room.host.notableLockedInState == Notable.lockedInState.PutOff)
         {
             putOutAmount++;
         }
@@ -984,7 +984,7 @@ public class WorkTheHostManager : MonoBehaviour
     }
     void InterestTimersDisplayCheck()
     {
-        if (room.host.lockedInState != 0)
+        if (room.host.notableLockedInState != Notable.lockedInState.Interested)
         {
             hostInterestBar.image.color = Color.clear;
             hostInterestBarBackground.color = Color.clear;

@@ -524,7 +524,7 @@ public class WorkTheRoomManager : MonoBehaviour
         if (guest.isEnemy)
         {
             //Hammering on Offended Guests gives confidence
-            if (guest.lockedInState == -1)
+            if (guest.guestLockedInState == Guest.lockedInState.PutOff)
             {
                 room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 10, 10, (int)(room.party.maxPlayerConfidence * 1.5));
             }
@@ -532,7 +532,7 @@ public class WorkTheRoomManager : MonoBehaviour
             Guest charmedGuest = null;
             foreach (Guest g in room.guestList)
             {
-                if (g.lockedInState == 1)
+                if (guest.guestLockedInState == Guest.lockedInState.Charmed)
                 {
                     charmedGuest = g;
                 }
@@ -665,10 +665,10 @@ public class WorkTheRoomManager : MonoBehaviour
                 }
             }
             //What is the Locked In State of this Guest?
-            if (room.guestList[i].lockedInState == 1)
+            if (room.guestList[i].guestLockedInState == Guest.lockedInState.Charmed)
             {
                 guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Charmed"];
-            } else if (room.guestList[i].lockedInState == 0)
+            } else if (room.guestList[i].guestLockedInState == Guest.lockedInState.Interested)
             {
                 guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Neutral"];
             } else
@@ -695,7 +695,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 //2 = Rumor Monger (Lower the Opinion of all uncharmed Guests)
                 foreach (Guest g in room.guestList)
                 {
-                    if(g.lockedInState != 1)
+                    if(g.guestLockedInState != Guest.lockedInState.Charmed)
                     {
                         g.currentOpinion -= 10;
                     }
@@ -708,7 +708,7 @@ public class WorkTheRoomManager : MonoBehaviour
             case 4:
                 //4 = Antagonize (Uncharm a Charmed Guest, if there is one)
                 charmedGuest.currentOpinion = 90;
-                charmedGuest.lockedInState = 0;
+                charmedGuest.guestLockedInState =Guest.lockedInState.Interested;
                 break;
         }
         if (attackNumber != 0)
@@ -833,10 +833,10 @@ public class WorkTheRoomManager : MonoBehaviour
             }
         }
         //Which Guest Image State is Being Selected?
-        if(room.guestList[guestNumber].lockedInState == 1)
+        if(room.guestList[guestNumber].guestLockedInState == Guest.lockedInState.Charmed)
         {
             reactionString = "Charmed";
-        } else if (room.guestList[guestNumber].lockedInState == -1)
+        } else if (room.guestList[guestNumber].guestLockedInState == Guest.lockedInState.PutOff)
         {
             reactionString = "Put Off";
         } else
@@ -877,12 +877,12 @@ public class WorkTheRoomManager : MonoBehaviour
         foreach (Guest g in room.guestList)
         {
             g.currentInterestTimer = Mathf.Clamp(g.currentInterestTimer - 1, 0, g.maxInterestTimer);
-            if (g.currentInterestTimer <= 0 && g.lockedInState == 0 && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored they merely wait
+            if (g.currentInterestTimer <= 0 && g.guestLockedInState == Guest.lockedInState.Interested && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored they merely wait
             {
                 ChangeGuestOpinion(g, -10);
                 if (g.currentOpinion <= 0)
                 {
-                    g.lockedInState = -1;
+                    g.guestLockedInState = Guest.lockedInState.PutOff;
                 }
             }
         }
@@ -1117,26 +1117,26 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void ChangeGuestOpinion(Guest guest, int amount)
     {
-        if (guest.lockedInState == 0) //Is this one locked in yet?
+        if (guest.guestLockedInState == Guest.lockedInState.Interested) //Is this one locked in yet?
         {
             guest.currentOpinion += amount;
         }
         //Are they Charmed or Put Off?
-        if (guest.currentOpinion >= 100 && guest.lockedInState == 0) //If they're not already Charmed then Player Hand is refilled once
+        if (guest.currentOpinion >= 100 && guest.guestLockedInState == Guest.lockedInState.Interested) //If they're not already Charmed then Player Hand is refilled once
         {
-            guest.lockedInState = 1;
+            guest.guestLockedInState = Guest.lockedInState.Charmed;
             RefillPlayerHand();
         }
-        else if (guest.currentOpinion <= 0 && guest.lockedInState == 0) //If they're not already Put Off then Player Confidence is reduced by 30
+        else if (guest.currentOpinion <= 0 && guest.guestLockedInState == Guest.lockedInState.Interested) //If they're not already Put Off then Player Confidence is reduced by 30
         {
-            guest.lockedInState = -1;
+            guest.guestLockedInState = Guest.lockedInState.PutOff;
             room.party.currentPlayerConfidence -= 30;
         }
-        if (guest.lockedInState == 1) // If they're Charmed then Opinion is 100
+        if (guest.guestLockedInState == Guest.lockedInState.Charmed) // If they're Charmed then Opinion is 100
         {
             guest.currentOpinion = 100;
         }
-        else if (guest.lockedInState == -1) // If they're Put Off then Opinion is 0
+        else if (guest.guestLockedInState == Guest.lockedInState.PutOff) // If they're Put Off then Opinion is 0
         {
             guest.currentOpinion = 0;
         }
@@ -1187,11 +1187,11 @@ public class WorkTheRoomManager : MonoBehaviour
     {
         if (!guest.isEnemy)
         {
-            if (guest.lockedInState == 1)
+            if (guest.guestLockedInState == Guest.lockedInState.Charmed)
             {
                 return "Charmed";
             }
-            else if (guest.lockedInState == -1)
+            else if (guest.guestLockedInState == Guest.lockedInState.PutOff)
             {
                 return "Put Off";
             }
@@ -1220,11 +1220,11 @@ public class WorkTheRoomManager : MonoBehaviour
                         return "Attacking!";
                 }
             } else {
-                if (guest.lockedInState == 1)
+                if (guest.guestLockedInState == Guest.lockedInState.Charmed)
                 {
                     return "Dazed";
                 }
-                else if (guest.lockedInState == -1)
+                else if (guest.guestLockedInState == Guest.lockedInState.PutOff)
                 {
                     return "Offended";
                 }
@@ -1241,12 +1241,12 @@ public class WorkTheRoomManager : MonoBehaviour
         //Check to see if everyone is either Charmed or Put Off 
         int charmedAmount = 0;
         int putOffAmount = 0;
-        foreach (Guest t in room.guestList)
+        foreach (Guest g in room.guestList)
         {
-            if(t.lockedInState == 1)
+            if(g.guestLockedInState == Guest.lockedInState.Charmed)
             {
                 charmedAmount++;
-            } else if (t.lockedInState == -1)
+            } else if (g.guestLockedInState == Guest.lockedInState.PutOff)
             {
                 putOffAmount++;
             }
@@ -1342,7 +1342,7 @@ public class WorkTheRoomManager : MonoBehaviour
     void InterestTimersDisplayCheck()
     {
         //------------- Guest 0 -------------
-        if (room.guestList[0].lockedInState != 0 || room.guestList[0].isEnemy)
+        if (room.guestList[0].guestLockedInState != Guest.lockedInState.Interested || room.guestList[0].isEnemy)
         {
             guest0InterestBar.image.color = Color.clear;
             guest0InterestBarImage.color = Color.clear;
@@ -1354,7 +1354,7 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //------------- Guest 1 -------------
-        if (room.guestList[1].lockedInState != 0 || room.guestList[1].isEnemy)
+        if (room.guestList[1].guestLockedInState != Guest.lockedInState.Interested || room.guestList[1].isEnemy)
         {
             guest1InterestBar.image.color = Color.clear;
             guest1InterestBarImage.color = Color.clear;
@@ -1369,7 +1369,7 @@ public class WorkTheRoomManager : MonoBehaviour
         //There might not be 3 Guests or more, so this check is to make sure nothing breaks
         if (room.guestList.Count > 2)
         {
-            if (room.guestList[2].lockedInState != 0 || room.guestList[2].isEnemy)
+            if (room.guestList[2].guestLockedInState != Guest.lockedInState.Interested || room.guestList[2].isEnemy)
             {
                 guest2InterestBar.image.color = Color.clear;
                 guest2InterestBarImage.color = Color.clear;
@@ -1385,7 +1385,7 @@ public class WorkTheRoomManager : MonoBehaviour
         //There might not be 4 Guests or more, so this check is to make sure nothing breaks
         if (room.guestList.Count > 3)
         {
-            if (room.guestList[3].lockedInState != 0 || room.guestList[3].isEnemy)
+            if (room.guestList[3].guestLockedInState != Guest.lockedInState.Interested || room.guestList[3].isEnemy)
             {
                 guest3InterestBar.image.color = Color.clear;
                 guest3InterestBarImage.color = Color.clear;
@@ -1467,7 +1467,6 @@ public class WorkTheRoomManager : MonoBehaviour
             }
         }
     }
-
     
     void VisualizeGuests()
     {

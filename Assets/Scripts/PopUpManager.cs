@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class PopUpManager : MonoBehaviour {
 
     public GameObject screenFader;
+    public LevelManager levelManager;
+    public EventInventory eventInventory;
+    public OutfitInventory outfitInventory;
+    public AccessoryInventory accessoryInventory;
 
     public GameObject newGameModal;
     public GameObject quitGameModal;
@@ -33,7 +37,7 @@ public class PopUpManager : MonoBehaviour {
 
     public GameObject hostRemarkSlotPrefab;
 
-    public GameObject eventInventory;
+
 
     //This is used at the very beginning when the Player is starting a new Game
     public void CreateNewGamePopUp()
@@ -41,6 +45,14 @@ public class PopUpManager : MonoBehaviour {
         //Make the Pop Up
         GameObject popUp = Instantiate(newGameModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
+
+        //Fill in the Values
+        StartGameButtonController buttonController = popUp.GetComponent<StartGameButtonController>();
+        buttonController.levelManager = levelManager;
+        buttonController.outfitInventory = outfitInventory;
+        buttonController.accessoryInventory = accessoryInventory;
+        buttonController.eventInventory = eventInventory;
+
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
@@ -108,6 +120,7 @@ public class PopUpManager : MonoBehaviour {
         EventManager eventManager = popUp.transform.GetComponent<EventManager>();
         eventManager.eventInventory = eventInventory.GetComponent<EventInventory>();
         eventManager.eventTime = eventTime;
+        eventManager.levelManager = levelManager;
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
