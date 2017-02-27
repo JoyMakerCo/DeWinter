@@ -29,7 +29,7 @@ public class JournalTabController : MonoBehaviour {
         personalButton.GetComponent<Image>().color = Color.black;
         factionsButton.GetComponent<Image>().color = Color.white;
         notablesButton.GetComponent<Image>().color = Color.white;
-        if (EnemyInventory.enemyInventoryUnlocked) // Can only see this tab if the Player actually has Enemies
+        if (EnemyInventory.enemyInventory != null) // Can only see this tab if the Player actually has Enemies
         {
             enemiesButton.GetComponent<Image>().color = Color.white;
             enemiesButtonText.color = Color.white;
@@ -46,7 +46,7 @@ public class JournalTabController : MonoBehaviour {
         factionsButton.GetComponent<Image>().color = Color.black;
         personalButton.GetComponent<Image>().color = Color.white;
         notablesButton.GetComponent<Image>().color = Color.white;
-        if (EnemyInventory.enemyInventoryUnlocked) // Can only see this tab if the Player actually has Enemies
+        if (EnemyInventory.enemyInventory != null) // Can only see this tab if the Player actually has Enemies
         {
             enemiesButton.GetComponent<Image>().color = Color.white;
             enemiesButtonText.color = Color.white;
@@ -64,7 +64,7 @@ public class JournalTabController : MonoBehaviour {
         notablesButton.GetComponent<Image>().color = Color.black;
         personalButton.GetComponent<Image>().color = Color.white;
         factionsButton.GetComponent<Image>().color = Color.white;
-        if (EnemyInventory.enemyInventoryUnlocked) // Can only see this tab if the Player actually has Enemies
+        if (EnemyInventory.enemyInventory != null) // Can only see this tab if the Player actually has Enemies
         {
             enemiesButton.GetComponent<Image>().color = Color.white;
             enemiesButtonText.color = Color.white;
@@ -78,7 +78,7 @@ public class JournalTabController : MonoBehaviour {
 
     public void EnemiesSelected()
     {
-        if (EnemyInventory.enemyInventoryUnlocked) // Can only open this tab if the Player actually has Enemies
+        if (EnemyInventory.enemyInventory != null) // Can only open this tab if the Player actually has Enemies
         {
             enemiesTab.transform.SetAsLastSibling();
             enemiesButton.GetComponent<Image>().color = Color.black;

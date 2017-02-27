@@ -6,8 +6,7 @@ public class EnemyInventory : MonoBehaviour {
 
     static EnemyInventory instance = null;
 
-    public static List<Enemy> enemyInventory = new List<Enemy>();
-    public static bool enemyInventoryUnlocked = false; //Used to determine if the Player has gained their first Enemy and thus allowed the Enemies part of the Journal to appear. This can't be replaced by checking to see if the enemyInventory is empty because the Player may get rid of Enemies and return to zero, which would remove UI elements from their HUD and be confusing
+    public static List<Enemy> enemyInventory;
 
     void Start () {
         if (instance != null && instance != this)
@@ -41,7 +40,11 @@ public class EnemyInventory : MonoBehaviour {
     //Adds an Enemy to the Player's Enemy Inventory then scans the calendar going forward, adding the Enemy to appropriate Parties
     public static void AddEnemy(Enemy e)
     {
-        if(e.faction == GameData.factionList["Military"] && GameData.factionList["Military"].PlayerReputationLevel() >= 9)
+        if(enemyInventory == null)
+        {
+            enemyInventory = new List<Enemy>();
+        }
+        if (e.faction == GameData.factionList["Military"] && GameData.factionList["Military"].PlayerReputationLevel() >= 9)
         {
             Debug.Log("These Enemies have been surpressed, due to the Player's Faction level with the Military");
         } else
@@ -49,7 +52,6 @@ public class EnemyInventory : MonoBehaviour {
             enemyInventory.Add(e);
             AdditionPartyScan(e);
         }
-        enemyInventoryUnlocked = true;
     }
 
     //Adds the Enemy to future Parties, used in the Add Enemy Function

@@ -322,7 +322,10 @@ public class GameData : MonoBehaviour
         gossipInventory.Clear();
 
         //Enemy Stuff
-        EnemyInventory.enemyInventory.Clear();
+        if(EnemyInventory.enemyInventory != null)
+        {
+            EnemyInventory.enemyInventory.Clear();
+        }
 
         //Pierre Quest Inventory and Related Stuff
         lastQuestDay = 0;

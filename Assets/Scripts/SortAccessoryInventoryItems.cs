@@ -58,7 +58,7 @@ public class SortAccessoryInventoryItems : MonoBehaviour {
         while (swapped)
         {
             swapped = false;
-            for (int i = 1; i < OutfitInventory.outfitInventories[inventoryType].Count; i++)
+            for (int i = 1; i < AccessoryInventory.accessoryInventories[inventoryType].Count; i++)
             {
                 if (ascendingOrder)
                 {
