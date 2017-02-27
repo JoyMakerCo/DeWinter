@@ -69,7 +69,10 @@ public class EventManager : MonoBehaviour {
             GameData.selectedEvent.EventStageRewards();
 
             //Step 3: What's the Description Text say now? The Event Option Buttons should update on their own
-            descriptionText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].description;
+            if(GameData.selectedEvent.currentStage != -1)
+            {
+                descriptionText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].description;
+            }
         } else //If there is a Party started by this option then start the Tutorial Party!
         {
             GameData.tonightsParty = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].party;

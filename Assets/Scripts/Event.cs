@@ -168,11 +168,14 @@ public class Event
 
     public void EventStageRewards()
     {
-        GameData.reputationCount += eventStages[currentStage].stageRepChange;
-        GameData.moneyCount += eventStages[currentStage].stageMoneyChange;
-        if (eventStages[currentStage].stageEnemyAdd != null)
+        if (currentStage != -1) //This is here to prevent a bug that happens when the Event finishes up
         {
-            EnemyInventory.AddEnemy(eventStages[currentStage].stageEnemyAdd);
-        }
+            GameData.reputationCount += eventStages[currentStage].stageRepChange;
+            GameData.moneyCount += eventStages[currentStage].stageMoneyChange;
+            if (eventStages[currentStage].stageEnemyAdd != null)
+            {
+                EnemyInventory.AddEnemy(eventStages[currentStage].stageEnemyAdd);
+            }
+        }      
     }
 }
