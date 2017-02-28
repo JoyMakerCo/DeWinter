@@ -19,16 +19,19 @@ public class PartyManager : MonoBehaviour {
     //Checks all the relevant Enemies and sees if they're going to attend the Party
     void EnemyCheck()
     {
-        foreach (Enemy e in EnemyInventory.enemyInventory)
+        if(EnemyInventory.enemyInventory != null)
         {
-            if(e.faction == GameData.tonightsParty.faction)
+            foreach (Enemy e in EnemyInventory.enemyInventory)
             {
-                if(Random.Range(0,2) == 0)
+                if (e.faction == GameData.tonightsParty.faction)
                 {
-                    GameData.tonightsParty.AddEnemy(e);
+                    if (Random.Range(0, 2) == 0)
+                    {
+                        GameData.tonightsParty.AddEnemy(e);
+                    }
                 }
             }
-        }
+        }       
     }
 
     void EngageParty()
