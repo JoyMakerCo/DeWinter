@@ -34,9 +34,9 @@ public class TonightsPartyInfo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         tonightsPartyText.text = GameData.tonightsParty.Name();
-        hostedByText.text = GameData.tonightsParty.faction;
-        factionLikesText.text = GameData.factionList[GameData.tonightsParty.faction].Likes();
-        factionDislikesText.text = GameData.factionList[GameData.tonightsParty.faction].Dislikes();
+        hostedByText.text = GameData.tonightsParty.faction.Name();
+        factionLikesText.text = GameData.tonightsParty.faction.Likes();
+        factionDislikesText.text = GameData.tonightsParty.faction.Dislikes();
         partyDescriptionText.text = GameData.tonightsParty.Description();
         objective1Text.text = GameData.tonightsParty.Objective1();
         objective2Text.text = GameData.tonightsParty.Objective2();

@@ -63,27 +63,15 @@ public class Month {
 
     public Day SelectDayByInt(int dayNumber)
     {
-        int dayCount = 0;
-        int row = 0;
-        int column = 0;
-        while (dayCount < dayNumber)
+        if(dayNumber <= days)
         {
-            //This section advances the rows and columns
-            if (column < 6)
-            {
-                column++;
-            }
-            else
-            {
-                column = 0;
-                row++;
-            }
-            //This section determines whether day count goes up
-            if (dayList[row,column] != null)
-            {
-                dayCount++;
-            }     
-        }
-        return dayList[row,column];
+            int row = (int)Mathf.Floor(dayNumber / 7);
+            int column = dayNumber - (row * 7);
+            return dayList[row, column];
+        } else
+        {
+            Debug.Log("Selected a Day that doesn't exist in this Month: " + dayNumber);
+            return null;
+        }       
     }
 }

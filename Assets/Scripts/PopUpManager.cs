@@ -6,10 +6,16 @@ using UnityEngine.UI;
 public class PopUpManager : MonoBehaviour {
 
     public GameObject screenFader;
+    public LevelManager levelManager;
+    public EventInventory eventInventory;
+    public OutfitInventory outfitInventory;
+    public AccessoryInventory accessoryInventory;
 
+    public GameObject newGameModal;
     public GameObject quitGameModal;
     public GameObject messageModal;
     public GameObject eventModal;
+    public GameObject workTheRoomTutorialModal;
     public GameObject twoPartyChoiceModal;
     public GameObject twoPartyRSVPdModal;
     public GameObject rSVPModal;
@@ -31,7 +37,25 @@ public class PopUpManager : MonoBehaviour {
 
     public GameObject hostRemarkSlotPrefab;
 
-    public GameObject eventInventory;
+
+
+    //This is used at the very beginning when the Player is starting a new Game
+    public void CreateNewGamePopUp()
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(newGameModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+
+        //Fill in the Values
+        StartGameButtonController buttonController = popUp.GetComponent<StartGameButtonController>();
+        buttonController.levelManager = levelManager;
+        buttonController.outfitInventory = outfitInventory;
+        buttonController.accessoryInventory = accessoryInventory;
+        buttonController.eventInventory = eventInventory;
+
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
 
     //This is how Players Quit the Game
     void CreateQuitGamePopUp()
@@ -39,6 +63,48 @@ public class PopUpManager : MonoBehaviour {
         //Make the Pop Up
         GameObject popUp = Instantiate(quitGameModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This is used at the beginning of the Tutorial Party to teach you how Parties work and navigating them
+    void CreatePartyTutorialPopUp()
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(messageModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        popUp.transform.SetAsFirstSibling();
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "Welcome!";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "Bonjour Madamme and Welcome to the Orphan's Feast!"
+            + "\nYou're alone? Don't worry! You'll find some of our other patrons in the next room." 
+            + "\n\nIn fact, we even have a real big shot here tonight. He's getting drinks in the back. You should talk to him!"
+            + "\n\n<You're in the Vestibule, click on a Room next to you to go to that Room>";
+        //Modal Background Shift
+        BroadcastMessage("ActiveModal");
+    }
+
+    //This is used at the beginning of the first Tutorial Conversation to teach you how Work the Room... works
+    void CreateWorkTheRoomTutorialPopUp(WorkTheRoomManager wRM)
+    {
+        //Make the Pop Up
+        GameObject popUp = Instantiate(workTheRoomTutorialModal) as GameObject;
+        popUp.transform.SetParent(gameObject.transform, false);
+        //Set the Pop Up's Variable
+        WorkTheRoomPopUpModalController popUpController = popUp.transform.GetComponent<WorkTheRoomPopUpModalController>();
+        popUpController.workTheRoomManager = wRM;
+        //Title Text
+        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
+        titleText.text = "Charming the Room";
+        //Body Text
+        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
+        bodyText.text = "There are some Guests in front of you. Say something to them!"
+            + "\nHow? Click on your Remarks at the bottom of the screen, then click on the Guests to use the Remarks."
+            + "\nTry to match the color of your Remarks to the color of the Guests. If they like what you're about to say they'll turn green. If they don't like it they'll turn red."
+            + "\nOnce their Opinion Bar is all the way to the right then they'll be Charmed. Charm them both to finish the Conversation. Just don't make them too angry or you'll Put them Off and maybe run out of Confidence.";
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
@@ -54,6 +120,7 @@ public class PopUpManager : MonoBehaviour {
         EventManager eventManager = popUp.transform.GetComponent<EventManager>();
         eventManager.eventInventory = eventInventory.GetComponent<EventInventory>();
         eventManager.eventTime = eventTime;
+        eventManager.levelManager = levelManager;
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
@@ -701,20 +768,29 @@ public class PopUpManager : MonoBehaviour {
         Image moveThroughButtonImage = popUp.transform.Find("MoveThroughButton").GetComponent<Image>();
         if (!GameData.tonightsParty.roomGrid[xPos, yPos].hostHere) //If the Host isn't here
         {
-            moveThroughButtonImage.color = Color.white;
-            moveThroughText.color = Color.white;
-            int moveThroughChance = GameData.tonightsParty.roomGrid[xPos, yPos].MoveThroughChance();
-            //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-            if(GameData.tonightsParty.playerAccessory != null)
+            if(!GameData.tonightsParty.roomGrid[xPos, yPos].noMoveThrough)
             {
-                if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
+                moveThroughButtonImage.color = Color.white;
+                moveThroughText.color = Color.white;
+                int moveThroughChance = GameData.tonightsParty.roomGrid[xPos, yPos].MoveThroughChance();
+                //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
+                if (GameData.tonightsParty.playerAccessory != null)
                 {
-                    moveThroughChance += 10;
+                    if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
+                    {
+                        moveThroughChance += 10;
+                    }
                 }
+                moveThroughText.text = "Move Through (" + moveThroughChance.ToString() + "%)";
+                bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
+                            "\n\nWould you like to 'Work the Room' and engage the party goers in Conversation, or would you like to 'Move Through' and hope nobody notices you?";
+            } else //If the Player has entered a Room where they are not allowed to Move Through
+            {
+                moveThroughButtonImage.color = Color.clear;
+                moveThroughText.color = Color.clear;
+                bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
+                            "\n\nClick the button below to 'Work the Room' and engage the party goers in Conversation.";
             }
-            moveThroughText.text = "Move Through (" + moveThroughChance.ToString() + "%)";
-            bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
-                        "\n\nWould you like to 'Work the Room' and engage the party goers in Conversation, or would you like to 'Move Through' and hope nobody notices you?";
         } else // If the Host Is there
         {
             moveThroughButtonImage.color = Color.clear;
@@ -735,7 +811,6 @@ public class PopUpManager : MonoBehaviour {
             workTheRoomImage.color = Color.clear;
             workTheRoomText.color = Color.clear;
         }
-
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }
@@ -863,7 +938,7 @@ public class PopUpManager : MonoBehaviour {
     void WorkTheRoomReportModal(object[] objectStorage)
     {
         int guestsCharmed = (int)objectStorage[0];
-        int guestsPutOut = (int)objectStorage[1];
+        int guestsPutOff = (int)objectStorage[1];
         bool hostHere = (bool)objectStorage[2];
         
         //Make the Pop Up
@@ -876,7 +951,7 @@ public class PopUpManager : MonoBehaviour {
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         if (!hostHere)
         {
-            bodyText.text = "The Conversation is over, you managed to Charm " + guestsCharmed + " Guests and " + guestsPutOut + " Guests felt Put Out after speaking with you.";
+            bodyText.text = "The Conversation is over, you managed to Charm " + guestsCharmed + " Guests and " + guestsPutOff + " Guests felt Put Off after speaking with you.";
         } else
         {
             if(guestsCharmed == 1)
@@ -884,7 +959,7 @@ public class PopUpManager : MonoBehaviour {
                 bodyText.text = "The Conversation is over, and you managed to Charm the Host!";
             } else
             {
-                bodyText.text = "The Conversation is over, but the Host was unfortunately Put Out by your behavior.";
+                bodyText.text = "The Conversation is over, but the Host was unfortunately Put Off by your behavior.";
             }
             
         }
@@ -897,7 +972,8 @@ public class PopUpManager : MonoBehaviour {
     //This Message Modal variation is used in the Party Scene to tell the Player they ran out of Confidence during the Work the Room or Host sequence and have embarassed themselves
     void CreateFailedConfidenceModal(object[] objectStorage)
     {
-        string faction = objectStorage[0] as string;
+        Party party = objectStorage[0] as Party;
+        Faction faction = party.faction;
         int reputationLoss = (int)objectStorage[1];
         int factionReputationLoss = (int)objectStorage[2];
         //Make the Pop Up
@@ -908,9 +984,17 @@ public class PopUpManager : MonoBehaviour {
         titleText.text = "Oh No!";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "It appears that you ran out of Confidence during that Conversation. You just started stammering before suddenly leaving to 'Get Some Air'." +
-            "\n\nYou've spent an hour here in the Entrance collecting your wits but your sudden disappearance was considered quite rude." +
-            "\n\nYou've lost " + factionReputationLoss + " Repuation with the " + faction + " and " + reputationLoss + " Reputation with society in general.";
+        if (!party.tutorial) //If this is not the Tutorial Party (aka: a regular party)
+        {
+            bodyText.text = "It appears that you ran out of Confidence during that Conversation. You just started stammering before suddenly leaving to 'Get Some Air'." +
+            "\n\nYou've spent an hour here in the Vestibule collecting your wits but your sudden disappearance was considered quite rude." +
+            "\n\nYou've lost " + factionReputationLoss + " Repuation with the " + faction.Name() + " and " + reputationLoss + " Reputation with society in general.";
+        } else //If this is the Tutorial Party, which is a lot more forgiving
+        {
+            bodyText.text = "It appears that you ran out of Confidence during that Conversation. You just started stammering before suddenly leaving to 'Get Some Air'." +
+                        "\n\nYou've spent a few moments here in the Vestibule collecting your wits but your sudden disappearance was considered quite rude." +
+                        "\n\nFortunately, the patrons at the Orphan's Feast are much more forgiving than the rest of the society. Give it another try!";
+        }
         //Modal Background Shift
         BroadcastMessage("ActiveModal");
     }

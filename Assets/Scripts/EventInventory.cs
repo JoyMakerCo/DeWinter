@@ -28,17 +28,17 @@ public class EventInventory : MonoBehaviour
         //---- New Event----
         eventInventories["intro"].Add(new Event(1, "Yvette’s Story - The Beginning",
             //Stage 0
-            new EventStage("The carriage rumbles and bounces along the cobbles as you approach the Capitol. It’s taken over a week to get here, even with what little luggage you have. You’ve already finished all of your books and Armand's letter is your only entertainment, other than staring out the window.", 0, 0, //Stage 0
+            new EventStage("The carriage rumbles and bounces along the cobbles as you approach Paris. It’s taken over a week to get here, even with what little luggage you have. You’ve already finished all of your books and Armand's letter is your only entertainment, other than staring out the window.", 0, 0, //Stage 0
                 new EventOption("<Read Armand’s Letter>", 1),
                 new EventOption("<Look Out the Window>", 3),
                 new EventOption("<To the Coachman> “Let’s go! I don’t have all day!”", 4)),
             //Stage 1
             new EventStage("You must have read the brief letter over a hundred times, but you still find new details to puzzle over." +
-            "\n\n‘My Dearest Yvette,"+
+            "\n\n‘My Dearest Yvette," +
             "\n\nI know you must still be in shock from your parents’ passing…’" + 
             "\nYou’re also still in shock from your tiny inheritance. Your older siblings received the lion’s share of the family fishing business." +
-            "\n\n‘I know it may be sudden, but I want to invite you to live with me in the Capitol.’" +
-            "\nYou were engaged to Armand, before he moved north to the Capitol to pursue his dreams of changing the Country. You mailed love letters soaked in perfume, he replied with volumes about how much he missed you. The son of a Baron, falling in love with someone like you. It didn’t feel real sometimes.", 0, 0, //Stage 1
+            "\n\n‘I know it may be sudden, but I want to invite you to live with me in Paris.’" +
+            "\nYou were engaged to Armand, before he moved north to Paris to pursue his dreams of changing the Country. You mailed love letters soaked in perfume, he replied with volumes about how much he missed you. The son of a Baron, falling in love with someone like you. It didn’t feel real sometimes.", 0, 0, //Stage 1
                 new EventOption("<Continue>", 2)),
             //Stage 2
             new EventStage("‘I can’t wait for you to see it. It’s a place unlike anything back home, a bustling place where anyone can be anything." +
@@ -49,7 +49,7 @@ public class EventInventory : MonoBehaviour
                 new EventOption("<Look Out the Window>", 3),
                 new EventOption("<To the Coachman> “Can we pick up the pace, please?”", 4)),
             //Stage 3
-            new EventStage("You crane your neck out the window to peer at the Capitol. So much of it is exactly as Armand described it. The streets are a riot of color and energy as people go about their days. Elegant persons of fashion share the streets with beggars in rags." + 
+            new EventStage("You crane your neck out the window to peer at the streets of Paris. So much of it is exactly as Armand described it. The streets are a riot of color and energy as people go about their days. Elegant persons of fashion share the streets with beggars in rags." + 
             "\n\nIt’s all such a far cry from back home. Though part of you is worried by such unfamiliar surroundings, you mostly feel excited.This place is to be the stage for your new life.", 0, 0, //Stage 3
                 new EventOption("<Read Armand’s Letter>", 1),
                 new EventOption("<To the Coachman> “Can we pick up the pace, please?”", 4)),
@@ -84,21 +84,26 @@ public class EventInventory : MonoBehaviour
             //Stage 9
             new EventStage("“I don’t know Madame. Monsieur Armand packed up and left a few days ago, all in a great hurry. I know he was involved in politics but I never asked about the specifics. He seemed worried but I’m sure he’ll be fine!” Camille’s facial expression doesn’t show a lot of confidence." + 
             "\n\nCamille suddenly brightens up again. “As you’re alone, perhaps you should go out and meet some new people! You might find someone who could help you find your way in the city. I know a place nearby that may help you do just that.”", 0, 0,
-                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", -1),
-                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", -1)),
+                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", new Party(true)),
+                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", 12)),
             //Stage 10
             new EventStage("Camille shifts awkwardly from foot to foot." +
             "\n\n“I’m afraid not Madame. Monsieur Armand packed up and left a few days ago, all in a great hurry. I’ve spent the last few days preparing the house for your arrival.”" +
             "\n\nCamille suddenly brightens up again. “This is the perfect time to go out and meet some new people! You might find someone who could help you find your way in the city. I know a place nearby that may help you do just that.”", 0, 0,
-                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", -1),
-                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", -1)),
+                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", new Party(true)),
+                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", 12)),
              //Stage 11
              new EventStage("Camille stares at you, a little startled by your brusqueness." +
              "\n\n“Um… Monsieur Armand isn’t here and he’s not coming back. He’s paid the rent through the month. You still need to pay me every week.”" + 
              "\n\nShe shifts awkwardly from foot to foot." + 
              "\n\n“As you are alone now, perhaps you should go meet some new people. You might find someone who could help you find your way in the city.”", 0, 0,
-                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", -1),
-                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", -1))));
+                new EventOption("<Start the Tutorial> “Thanks Camille, I’ll take all the help I can get”", new Party(true)),
+                new EventOption("<Skip the Tutorial> “No Camille. I’ll take care of this myself”", 12)),
+            //Stage 12
+            new EventStage("“Are you sure Madamme?” Camille asks tentatively." +
+            "\n\n<If it is your first time playing the game, we do not advise skipping the tutorial Party. It will teach you a lot of useful things you'll need to play the game.>", 0, 0,
+                new EventOption("<Start the Tutorial> “On second thought, I could use a little help", new Party(true)),
+                new EventOption("<Skip the Tutorial> “I'm Sure”", -1))));
     }
     //This is all the Party Events
     // Priority Weight, "Event Title", Event Stage 0, Event Stage 1, etc...
@@ -120,7 +125,7 @@ public class EventInventory : MonoBehaviour
             new EventStage("The room erupts into laughter, but you see something in the drunken woman's eyes. It looks like your retort cut deeper than you thought. She glares at you, her eyes boiling with hate." 
                          + "\n'I'll remember this.' she hisses at you under her breath before stalking away, a little more composed than before, but only a little."
                          + "\n\n-You have a new Enemy"                       
-                         + "\n-You have gained 50 Reputation", 50, 0, new Enemy(GameData.factionList[p.faction]),//Stage 2
+                         + "\n-You have gained 50 Reputation", 50, 0, new Enemy(p.faction),//Stage 2
                 new EventOption("Return to the Party <End Event>", -1)),
             new EventStage("One of the friends quietly thanks you for being a good sport. The drunk guest continues her slurred tirade to nobody in particular. You walk away, searching for a damp cloth to blot your dress with."
                          + "\n\n-You have regained 15 Reputation", 15, 0, //Stage 3
@@ -149,7 +154,7 @@ public class EventInventory : MonoBehaviour
                          + "\nBy the time you turn back to the group, desperate for some support, you find that they've already vanished to other portions of the party. The Duchess storms away, leaving a trail of confused and upset party guests in her wake."
                          + "\nThere is a slight ringing in your ears."
                          + "\n\n-You have a new Enemy" 
-                         + "n-You have lost 25 Reputation", -25, 0, new Enemy(GameData.factionList[p.faction]),
+                         + "n-You have lost 25 Reputation", -25, 0, new Enemy(p.faction),
                 new EventOption("'Well, that could have gone better.' <End Event>", -1)),
             new EventStage("Talking about someone who's actually at the party seems like a recipe for disaster, so you choose to avoid their circle." 
                          + "\nPerhaps they'll talk about you next.", 0, 0, //Stage 4
@@ -227,7 +232,7 @@ public class EventInventory : MonoBehaviour
                          + "\n'But, an hour ago you told me it was your father's' one of the other Guests interjects. A grumble of discontent grows among the crowd."
                          + "\n'Ah, I forgot something very important... over there.' the fake Baron gestures vaguely in a direction before scurrying away. He shoots a look back at you. This isn't over." 
                          + "\n\n-You have gained 75 Reputation." 
-                         + "\n-You have a new Enemy",75, 0, new Enemy(GameData.factionList[p.faction]),
+                         + "\n-You have a new Enemy",75, 0, new Enemy(p.faction),
                 new EventOption("Return to the Party <End Event>", -1)),
             //Stage 4
             new EventStage("He narrows his eyes at you before rummaging through his pockets, muttering some words that are truly not befitting a man of his supposed title.'"

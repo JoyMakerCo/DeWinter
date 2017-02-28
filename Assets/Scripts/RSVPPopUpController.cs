@@ -17,11 +17,11 @@ public class RSVPPopUpController : MonoBehaviour {
         party.RSVP = -1;
         if (today)
         {
-            GameData.factionList[party.faction].playerReputation -= 40;
+            party.faction.playerReputation -= 40;
             GameData.reputationCount -= 20;
         } else
         {
-            GameData.factionList[party.faction].playerReputation -= 20;
+            party.faction.playerReputation -= 20;
             GameData.reputationCount -= 10;
         }
     }

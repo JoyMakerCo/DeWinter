@@ -112,7 +112,7 @@ public class WorkTheHostManager : MonoBehaviour
 
         //Set Up the Player
         playerNameText = playerVisual.transform.Find("Name").GetComponent<Text>();
-        playerNameText.text = "Lady De Winter";
+        playerNameText.text = "Yvette";
         playerConfidenceText = playerVisual.transform.Find("ConfidenceCounter").GetComponent<Text>();
         playerConfidenceText.text = "Confidence: " + room.party.currentPlayerConfidence + "/" + room.party.maxPlayerConfidence;
         playerConfidenceBar = playerVisual.transform.Find("ConfidenceBar").GetComponent<Scrollbar>();
@@ -142,7 +142,7 @@ public class WorkTheHostManager : MonoBehaviour
             {
                 room.party.playerHand.RemoveAt(4);
             }
-            room.party.playerHand.Add(new Remark("ambush"));
+            room.party.playerHand.Add(new Remark("ambush", room.guestList.Count));
         }
 
         //Set Up the Remarks--------------------
@@ -444,11 +444,11 @@ public class WorkTheHostManager : MonoBehaviour
         //Do they like the Tone?
         if (room.party.playerHand[targetingRemark].tone == hostRemarkSlotList[slotNumber].disposition.like) //They like the tone
         {
-            if (hostRemarkSlotList[slotNumber].lockedInState != 1)
+            if (hostRemarkSlotList[slotNumber].remarkSlotLockedInState != FireBackRemarkSlot.lockedInState.Completed)
             {
                 hostRemarkSlotComplete++;
             }
-            hostRemarkSlotList[slotNumber].lockedInState = 1;
+            hostRemarkSlotList[slotNumber].remarkSlotLockedInState = FireBackRemarkSlot.lockedInState.Completed;
             AddRemarkToHand(); //Add a new Remark for Tone success           
             room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 5, 5, room.party.maxPlayerConfidence); //Confidence Reward        
         }
@@ -459,7 +459,7 @@ public class WorkTheHostManager : MonoBehaviour
         else //Neutral Tone
         {
             hostRemarkSlotComplete++;
-            hostRemarkSlotList[slotNumber].lockedInState = 1;
+            hostRemarkSlotList[slotNumber].remarkSlotLockedInState = FireBackRemarkSlot.lockedInState.Completed;
         }
         // Up the Remaining Timer?
         room.host.hostRemarkCompletionTimerCurrent = Mathf.Clamp(room.host.hostRemarkCompletionTimerCurrent + 1.0f, 1.0f, room.host.hostRemarkCompletionTimerMax);
@@ -606,12 +606,12 @@ public class WorkTheHostManager : MonoBehaviour
 
         //Increment the Host's Interest Timer, issue Boredom Damage
         room.host.currentInterestTimer = Mathf.Clamp(room.host.currentInterestTimer - 1, 0, room.host.maxInterestTimer);
-        if (room.host.currentInterestTimer <= 0 && room.host.lockedInState == 0)
+        if (room.host.currentInterestTimer <= 0 && room.host.notableLockedInState == Notable.lockedInState.Interested)
         { 
             room.host.currentOpinion = Mathf.Clamp(room.host.currentOpinion - 10, 0, room.host.maxOpinion);
             if (room.host.currentOpinion <= 0)
-            { 
-                room.host.lockedInState = -1;
+            {
+                room.host.notableLockedInState = Notable.lockedInState.PutOff;
             }
         }
 
@@ -696,7 +696,7 @@ public class WorkTheHostManager : MonoBehaviour
             case 2:
                 effect = "Faction Reputation Loss";
                 effectAmount = Random.Range(20, 51) * -1;
-                room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction, effectAmount));
+                room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction.Name(), effectAmount));
                 break;
             case 3:
                 effect = "Outfit Novelty Loss";
@@ -727,7 +727,7 @@ public class WorkTheHostManager : MonoBehaviour
                 break;
             case 7:
                 effect = "New Enemy";
-                EnemyInventory.AddEnemy(new Enemy(GameData.factionList[room.party.faction]));
+                EnemyInventory.AddEnemy(new Enemy(room.party.faction));
                 break;
             case 8:
                 effect = "Forgot All Gossip";
@@ -749,7 +749,7 @@ public class WorkTheHostManager : MonoBehaviour
                 else //If they have no Gossip to Lose
                 {
                     effect = "New Enemy";
-                    EnemyInventory.AddEnemy(new Enemy(GameData.factionList[room.party.faction]));
+                    EnemyInventory.AddEnemy(new Enemy(room.party.faction));
                 }
                 break;
             case 9:
@@ -772,7 +772,7 @@ public class WorkTheHostManager : MonoBehaviour
                 case 2:
                     effect = "Faction Reputation Gain";
                     effectAmount = Random.Range(20, 51);
-                    room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction, effectAmount));
+                    room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction.Name(), effectAmount));
                     break;
                 case 3:
                     effect = "Livre Gained";
@@ -831,27 +831,27 @@ public class WorkTheHostManager : MonoBehaviour
 
     void ChangeHostOpinion(int amount)
     {
-        if (room.host.lockedInState == 0) //Is this one locked in yet?
+        if (room.host.notableLockedInState == Notable.lockedInState.Interested) //Is this one locked in yet?
         {
             room.host.currentOpinion += amount;
         }
-        //Are they Charmed or Put Out?
-        if (room.host.currentOpinion >= room.host.maxOpinion && room.host.lockedInState == 0) //If they're not already Charmed then Player Hand is refilled once
+        //Are they Charmed or Put Off?
+        if (room.host.currentOpinion >= room.host.maxOpinion && room.host.notableLockedInState == Notable.lockedInState.Interested) //If they're not already Charmed then Player Hand is refilled once
         {
-            room.host.lockedInState = 1;
+            room.host.notableLockedInState = Notable.lockedInState.Charmed;
             RefillPlayerHand();
         }
-        else if (room.host.currentOpinion <= 0 && room.host.lockedInState == 0) //If they're not already Put Out then Player Confidence is reduced by 10
+        else if (room.host.currentOpinion <= 0 && room.host.notableLockedInState == Notable.lockedInState.Interested) //If they're not already Put Off then Player Confidence is reduced by 10
         {
-            room.host.lockedInState = -1;
+            room.host.notableLockedInState = Notable.lockedInState.PutOff;
             room.party.currentPlayerConfidence -= 10;
         }
 
-        if (room.host.lockedInState == 1) // If they're Charmed then Opinion is Maxed out
+        if (room.host.notableLockedInState == Notable.lockedInState.Charmed) // If they're Charmed then Opinion is Maxed out
         {
             room.host.currentOpinion = room.host.maxOpinion;
         }
-        else if (room.host.lockedInState == -1) // If they're Put Out then Opinion is 0
+        else if (room.host.notableLockedInState == Notable.lockedInState.PutOff) // If they're Put Off then Opinion is 0
         {
             room.host.currentOpinion = 0;
         }
@@ -861,7 +861,7 @@ public class WorkTheHostManager : MonoBehaviour
     {
         if (room.party.playerHand.Count < 6) // This is one larger than it should be because Remarks are deducted after they're added
         {
-            Remark remark = new Remark(room.party.lastTone);
+            Remark remark = new Remark(room.party.lastTone, room.guestList.Count);
             room.party.lastTone = remark.tone;
             room.party.playerHand.Add(remark);
         }
@@ -872,7 +872,7 @@ public class WorkTheHostManager : MonoBehaviour
         int numberOfCardsForRefill = 5 - room.party.playerHand.Count;
         for (int i = 0; i < numberOfCardsForRefill; i++)
         {
-            Remark remark = new Remark(room.party.lastTone);
+            Remark remark = new Remark(room.party.lastTone, room.guestList.Count);
             room.party.lastTone = remark.tone;
             room.party.playerHand.Add(remark);
         }
@@ -900,13 +900,13 @@ public class WorkTheHostManager : MonoBehaviour
 
     string InterestState()
     {
-        if (room.host.lockedInState == 1)
+        if (room.host.notableLockedInState == Notable.lockedInState.Charmed)
         {
             return "Charmed";
         }
-        else if (room.host.lockedInState == -1)
+        else if (room.host.notableLockedInState == Notable.lockedInState.PutOff)
         {
-            return "Put Out";
+            return "Put Off";
         }
         else if (room.host.currentInterestTimer == 0)
         {
@@ -920,14 +920,14 @@ public class WorkTheHostManager : MonoBehaviour
 
     void VictoryCheck()
     {
-        //Check to see if everyone is either Charmed or Put Out 
+        //Check to see if everyone is either Charmed or Put Off 
         int charmedAmount = 0;
         int putOutAmount = 0;
-        if (room.host.lockedInState == 1)
+        if (room.host.notableLockedInState == Notable.lockedInState.Charmed)
         {
             charmedAmount++;
         }
-        else if (room.host.lockedInState == -1)
+        else if (room.host.notableLockedInState == Notable.lockedInState.PutOff)
         {
             putOutAmount++;
         }
@@ -970,7 +970,7 @@ public class WorkTheHostManager : MonoBehaviour
             int reputationLoss = 25;
             int factionReputationLoss = 50;
             GameData.reputationCount -= reputationLoss;
-            GameData.factionList[room.party.faction].playerReputation -= factionReputationLoss;
+            room.party.faction.playerReputation -= factionReputationLoss;
             //Explanation Screen Pop Up goes here
             object[] objectStorage = new object[3];
             objectStorage[0] = room.party.faction;
@@ -984,7 +984,7 @@ public class WorkTheHostManager : MonoBehaviour
     }
     void InterestTimersDisplayCheck()
     {
-        if (room.host.lockedInState != 0)
+        if (room.host.notableLockedInState != Notable.lockedInState.Interested)
         {
             hostInterestBar.image.color = Color.clear;
             hostInterestBarBackground.color = Color.clear;
