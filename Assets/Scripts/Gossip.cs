@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
+using System.Linq;
 using DeWinter;
 
 public class Gossip {
 
-    string Faction; // The Faction this Gossip is relevant to
+    public string Faction; // The Faction this Gossip is relevant to
     //Character character The Character this Gossip is relevant to (requires the Character system to be in place)
     int livreValue;
     int factionPowerShift;
@@ -24,52 +25,36 @@ public class Gossip {
         flavorText = RandomFlavorText();
     }
 
-    string RandomFaction(string partyFaction)
+    string RandomFaction(string faction)
     {
+    	Random rnd = new Random();
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
-		if (partyFaction != null && Random.Range(0,2) == 0)
-			return partyFaction;
+		if (faction != null && rnd.Next(2) == 0)
+			return faction;
 
 		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
-		return fmod.Factions.Keys[Random.Range(0,fmod.Factions.Count)];
+		return fmod.Factions.Keys.ToArray()[rnd.Next(fmod.Factions.Count)];
      }
 
     //Character RandomCharacter (Picks a Random active character from the Faction)
     
     int RandomLivreValue()
     {
-        return Random.Range(25, 101);
+        return (new Random()).Next(25, 101);
     }
 
     int RandomFactionPowerShift()
     {
-        int positiveOrNegative = Random.Range(0, 4);
-        if(positiveOrNegative == 0) //Low chance, but still possible that the Gossip will make the Faction more powerful, not less
-        {
-            return Random.Range(10, 51);
-        } else
-        {
-            return (Random.Range(10, 51) * -1);
-        }
+    	Random rnd = new Random();
+    	return rnd.Next(4) == 0 ? rnd.Next(10, 51) : -rnd.Next(10, 51);
     }
 
     int RandomFactionAllegianceShift()
     {
-        if(Faction.Name() == "Revolution" || Faction.Name() == "Crown")
-        {
-            return 0;
-        } else
-        {
-            int positiveOrNegative = Random.Range(0, 2);
-            if (positiveOrNegative == 0) // A 50/50 Chance
-            {
-                return Random.Range(10, 51);
-            }
-            else
-            {
-                return (Random.Range(10, 51) * -1);
-            }
-        }   
+		if (Faction == "Revolution" || Faction == "Crown")
+			return 0;
+		Random rnd = new Random();
+    	return rnd.Next(1) == 0 ? rnd.Next(10, 51) : -rnd.Next(10, 51);
     }
 
     string RandomFlavorText()
@@ -79,7 +64,7 @@ public class Gossip {
 
     public string Name()
     {
-        return "A tidbit of " + Faction.Name() + " Gossip";
+        return "A tidbit of " + Faction + " Gossip";
     }
 
     public int LivreValue()

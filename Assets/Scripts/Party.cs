@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using DeWinter;
 
-public class Party
-{
+public class Party {
+
     public string faction;
     public int partySize;
     public bool invited;
@@ -18,7 +18,6 @@ public class Party
 
     public Notable host;
 
-    public MapVO Map;
     public int turns;
     public int turnsLeft;
 
@@ -95,36 +94,37 @@ public class Party
 
     void SetFactionGuaranteed()
     {
+// TODO: set by model
         int partyFaction = Random.Range(0, 5);
         if (partyFaction == 0)
         {
             faction = "Crown";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            modestyPreference = GameData.factionList[faction].Modesty;
+            luxuryPreference = GameData.factionList[faction].Luxury;
         }
         if (partyFaction == 1)
         {
             faction = "Church";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            modestyPreference = GameData.factionList[faction].Modesty;
+            luxuryPreference = GameData.factionList[faction].Luxury;
         }
         if (partyFaction == 2)
         {
             faction = "Military";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            modestyPreference = GameData.factionList[faction].Modesty;
+            luxuryPreference = GameData.factionList[faction].Luxury;
         }
         if (partyFaction == 3)
         {
             faction = "Bourgeoisie";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            modestyPreference = GameData.factionList[faction].Modesty;
+            luxuryPreference = GameData.factionList[faction].Luxury;
         }
         if (partyFaction == 4)
         {
             faction = "Revolution";
-            modestyPreference = GameData.factionList[faction].modestyLike;
-            luxuryPreference = GameData.factionList[faction].luxuryLike;
+            modestyPreference = GameData.factionList[faction].Modesty;
+            luxuryPreference = GameData.factionList[faction].Luxury;
         }
     }
 
@@ -135,28 +135,28 @@ public class Party
         {
             case 0:
                 faction = "Crown";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             case 1:
                 faction = "Church";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             case 2:
                 faction = "Military";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             case 3:
                 faction = "Bourgeoisie";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             case 4:
                 faction = "Revolution";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             default:
                 faction = null;
@@ -171,28 +171,28 @@ public class Party
         {
             case 0:
                 faction = "Crown";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             case 1:
                 faction = "Church";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             case 2:
                 faction = "Military";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             case 3:
                 faction = "Bourgeoisie";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             case 4:
                 faction = "Revolution";
-                modestyPreference = GameData.factionList[faction].modestyLike;
-                luxuryPreference = GameData.factionList[faction].luxuryLike;
+                modestyPreference = GameData.factionList[faction].Modesty;
+                luxuryPreference = GameData.factionList[faction].Luxury;
                 break;
             default:
                 faction = null;
@@ -321,6 +321,12 @@ public class Party
         wonRewardsList = tempRewardList; //The new, totaled list, replaces the old one 
     }
 
+    public void RemoveEnemy(Enemy enemy)
+    {
+        //Remove the Enemy from the Enemy List
+        enemyList.Remove(enemy);
+    }
+
     public void InvitePlayer()
     {
         invited = true;
@@ -335,5 +341,5 @@ public class Party
             playerHand.Add(new Remark(lastTone));
             lastTone = playerHand[i].tone;
         }
-    }
+    }  
 }

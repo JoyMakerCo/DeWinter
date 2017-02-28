@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
 public class ServantStatsTracker : MonoBehaviour {
 
@@ -26,24 +27,24 @@ public class ServantStatsTracker : MonoBehaviour {
 	void Update () {
 	if (servantList.selectedServant != null)
         {
-            nameText.text = servantList.selectedServant.NameAndTitle();
-            descriptionText.text = servantList.selectedServant.Description();
+            nameText.text = servantList.selectedServant.NameAndTitle;
+            descriptionText.text = servantList.selectedServant.description;
             if(servantList.inventoryType == ServantInventoryList.InventoryType.Personal)
             {
-                if (servantList.selectedServant.Name() != "Camille" || !attemptedCamilleFiring)
+                if (servantList.selectedServant.Name != "Camille" || !attemptedCamilleFiring)
                 {
                     hireOrFireButtonImage.color = Color.white;
-                    hireOrFireButtonText.text = "Fire " + servantList.selectedServant.Name();
+                    hireOrFireButtonText.text = "Fire " + servantList.selectedServant.Name;
                 } else
                 {
                     hireOrFireButtonImage.color = Color.gray;
-                    hireOrFireButtonText.text = "Fire " + servantList.selectedServant.Name();
+                    hireOrFireButtonText.text = "Fire " + servantList.selectedServant.Name;
                 }
 
             } else
             {
                 hireOrFireButtonImage.color = Color.white;
-                hireOrFireButtonText.text = "Hire " + servantList.selectedServant.Name() + " for " + servantList.selectedServant.Wage().ToString("£" + "#,##0");
+                hireOrFireButtonText.text = "Hire " + servantList.selectedServant.Name + " for " + servantList.selectedServant.Wage.ToString("£" + "#,##0");
             }
             
         } else
@@ -57,33 +58,25 @@ public class ServantStatsTracker : MonoBehaviour {
 
     public void HireServant()
     {
-        if (servantList.selectedServant != null)
-        {
-            if (servantList.selectedServant.Introduced())
-            {
-                servantList.selectedServant.Hire();
-                servantList.ClearInventoryButtons();
-                servantList.GenerateInventoryButtons();
-            }
-        }
+		DeWinterApp.SendCommand<HireServantCmd, ServantVO>(servantList.selectedServant);
+        servantList.ClearInventoryButtons();
+        servantList.GenerateInventoryButtons();
     }
 
     public void FireServant()
     {
-        if(servantList.selectedServant != null)
+		ServantVO servant = servantList.selectedServant;
+		if(servant != null)
         {
-            if (servantList.selectedServant.Hired())
+			if (servant.Name != "Camille")
             {
-                if(servantList.selectedServant.Name() != "Camille") //Camille cannot be fired because she's really just a money sink and plot device
-                {
-                    servantList.selectedServant.Fire();
-                    servantList.ClearInventoryButtons();
-                    servantList.GenerateInventoryButtons();
-                } else if (!attemptedCamilleFiring) //If the Player hasn't attempted to fire Camille yet then throw up this message bubble
-                {
-                    attemptedCamilleFiring = true;
-                    screenFader.gameObject.SendMessage("CreateCamilleFiringModal");
-                }
+				DeWinterApp.SendCommand<FireServantCmd, ServantVO>(servantList.selectedServant);
+		        servantList.ClearInventoryButtons();
+		        servantList.GenerateInventoryButtons();
+            } else if (!attemptedCamilleFiring) //If the Player hasn't attempted to fire Camille yet then throw up this message bubble
+            {
+                attemptedCamilleFiring = true;
+                screenFader.gameObject.SendMessage("CreateCamilleFiringModal");
             }
         }
     }

@@ -49,7 +49,7 @@ public class TonightsPartyInfo : MonoBehaviour {
 
     private string GetLikes(FactionVO faction)
     {
-		if (faction.Modesty == faction.Luxury == 0)
+		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
 
 		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
@@ -64,7 +64,7 @@ public class TonightsPartyInfo : MonoBehaviour {
 
 	private string GetDislikes(FactionVO faction)
     {
-		if (faction.Modesty == faction.Luxury == 0)
+		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
     }
 }

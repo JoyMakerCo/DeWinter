@@ -10,21 +10,21 @@ public class NextStyleTracker : MonoBehaviour {
     void Start()
     {
         myText = this.GetComponent<Text>();
-        DeWinterApp.Subscribe<CalendarDayVO>(CalendarConsts.DAY_START, HandleCalendarDay);
-        HandleCalendarDay();
+        DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
+        HandleCalendarDay(null);
     }
 
     void OnDestroy()
     {
-		DeWinterApp.Unsubscribe(CalendarConsts.DAY_START, HandleCalendarDay);
+		DeWinterApp.Unsubscribe<CalendarDayVO>(HandleCalendarDay);
     }
 
-	private void HandleCalendarDay()
+	private void HandleCalendarDay(CalendarDayVO day)
     {
     	ServantModel servantModel = DeWinterApp.GetModel<ServantModel>();
 		if (servantModel.Servants.ContainsKey("Seamstress"))
 		{
-			myText.text = DeWinterApp.GetModel<InventoryModel>().nextStyle;
+			myText.text = DeWinterApp.GetModel<InventoryModel>().NextStyle;
 		}
 		else
 		{

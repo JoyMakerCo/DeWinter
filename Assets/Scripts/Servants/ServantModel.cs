@@ -5,9 +5,13 @@ using Newtonsoft.Json;
 
 namespace DeWinter
 {
+// TODO: Servants are essentially Inventory Items. Incorporate into Inventory?
 	public class ServantModel : DocumentModel
 	{
 		private Dictionary<string, ServantVO[]> _servants;
+
+		public Dictionary<string, ServantVO> Hired = new Dictionary<string, ServantVO>();
+		public Dictionary<string, List<ServantVO>> Introduced = new Dictionary<string, List<ServantVO>>();
 
 		public ServantModel () : base ("ServantData") {}
 
@@ -15,7 +19,7 @@ namespace DeWinter
 		public float SeamstressDiscount;
 
 		[JsonProperty("servants")]
-		public Dictionary<string, ServantVO[]> Servants
+		public Dictionary<string, ServantVO[]> Servants // Dictionary of Servants by Slot
 		{
 			get { return _servants; }
 			set {
@@ -28,26 +32,6 @@ namespace DeWinter
 					}
 				}
 			}
-		}
-
-		public ServantVO GetHired(string slot)
-		{
-			ServantVO[] list;
-			if (_servants.TryGetValue(slot, out list))
-			{
-				return Array.Find(list, s => s.Hired);
-			}
-			return null;
-		}
-
-		public ServantVO[] GetIntroduced(string slot)
-		{
-			ServantVO[] list;
-			if (_servants.TryGetValue(slot, out list))
-			{
-				return Array.FindAll(list, s => s.Introduced && !s.Hired);
-			}
-			return new ServantVO[0];
 		}
 
 		public ServantVO[] GetServants(string slot)

@@ -56,7 +56,7 @@ namespace DeWinter
 				{
 					foreach (RoomStatusIndicator indicator in StatusIndicators)
 					{
-						indicator.Icon.enabled = (Array.IndexOf(Room.Features) >= 0);
+						indicator.Icon.enabled = (Array.IndexOf(Room.Features, indicator.ID) >= 0);
 					}
 				}
 				_revealed = true;

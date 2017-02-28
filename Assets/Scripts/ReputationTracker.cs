@@ -11,8 +11,6 @@ namespace DeWinter
 	    // Use this for initialization
 	    void Start()
 	    {
-	        UpdateReputation();
-	        DefeatCheck();
 	        DeWinterApp.Subscribe<PlayerReputationVO>(HandlePlayerReputation);
 	    }
 
@@ -20,7 +18,7 @@ namespace DeWinter
 	    {
 	    	if (vo.Reputation > -20)
 	    	{
-		        numberText.text = PlayerReputationLevel() + "(" + vo.Reputation.ToString("#,##0") + ")";
+		        numberText.text = vo.Level.ToString() + " (" + vo.Reputation.ToString("#,##0") + ")";
 		    }
 		    else
 		    {

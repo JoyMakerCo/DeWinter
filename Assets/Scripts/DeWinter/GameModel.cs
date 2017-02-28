@@ -10,6 +10,7 @@ namespace DeWinter
 	{
 		private int _reputation;
 		private int _livre;
+		private int _level;
 
 		public string Allegiance;
 
@@ -33,24 +34,23 @@ namespace DeWinter
 				_reputation = value;
 				if (_reputation < 0)
 					_reputation = 0;
-				PlayerReputationVO msg = new PlayerReputationVO(_reputation, ReputationLevel);
+
+				_level=_reputationLevels.Length-1;
+				while (_level>=0 && _reputation >= _reputationLevels[_level].Reputation)
+					_level--;
+				PlayerReputationVO msg = new PlayerReputationVO(_reputation, _level+1);
 				DeWinterApp.SendMessage<PlayerReputationVO>(msg);
 			}
 		}
 
+		public int ConfidenceBonus
+		{
+			get { return _reputationLevels[ReputationLevel].Confidence; }
+		}
+
 		public int ReputationLevel
 		{
-			get
-			{
-				for(int i=_reputationLevels.Length-1; i>=0; i--)
-				{
-					if (_reputation >= _reputationLevels[i].Reputation)
-					{
-						return i+1;
-					}
-				}
-				return 1;
-			}
+			get { return _level+1; }
 		}
 
 		public GameModel() : base("GameData") {}
@@ -63,6 +63,20 @@ namespace DeWinter
 		public void Dispose()
 		{
 			DeWinterApp.Unsubscribe<AdjustBalanceVO>(HandleAdjustBalance);
+		}
+
+		// TODO: Localization model would be handy here
+		public string BenefitsList
+		{
+			get
+			{
+				string str = "";
+				for (int i=_level; i>=0; i--)
+				{
+					str += _reputationLevels[i].Description + "\n";
+				}
+				return str;
+			}
 		}
 
 		[JsonProperty("reputationLevels")]

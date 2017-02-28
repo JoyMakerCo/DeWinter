@@ -1,49 +1,63 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class PartyTracker : MonoBehaviour {
-    private Text myText;
-    public Party nextParty;
+namespace DeWinter
+{
+	public class PartyTracker : MonoBehaviour
+	{
+		private const int MAX_PARTY_RANGE = 15;
+	    private Text myText;
+	    public Party nextParty;
 
-    void Start()
-    {
-        myText = GetComponent<Text>();
-    }
+	    void Start()
+	    {
+	        myText = GetComponent<Text>();
+	        DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
+	    }
 
-    void Update()
-    {
-        updateParty();
-    }
+		public void HandleCalendarDay(CalendarDayVO day)
+	    {
+			CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
+			DateTime date = day.Date;
+			List<Party> parties;
+			int i;
+			string suffix;
+	    	nextParty = null;
 
-    //TODO - Account for Monthly Rollovers. This can't necessarily see into the next month
-    //This function controls the text that tells players what the next party is in the Wardrobe screen. Not a necessity but very helpful
-    public void updateParty()
-    {
-        Party nextParty = null;
-        int i = 0;
-        while (nextParty == null)
-        {
-            if(GameData.calendar.daysFromNow(i).party1.faction != null && GameData.calendar.daysFromNow(i).party1.invited)
-            {
-                nextParty = GameData.calendar.daysFromNow(i).party1;
-            } else
-            {
-                i++;
-            }        
-        }
-        if (i == 0)
-        {
-            myText.text = nextParty.SizeString() + " " + nextParty.faction + " Party (Today)";
-        } else if (i == 1)
-        {
-            myText.text = nextParty.SizeString() + " " + nextParty.faction + " Party (Tomorrow)";
-        } else if (i == 2)
-        {
-            myText.text = nextParty.SizeString() + " " + nextParty.faction + " Party (The Day After Tomorrow)";
-        } else
-        {
-            myText.text = nextParty.SizeString() + " " + nextParty.faction + " Party (" + i + " Days from Now)";
-        }
-    }
+			for (i=0; nextParty == null && i<MAX_PARTY_RANGE; i++)
+			{
+				if (model.Parties.TryGetValue(date.AddDays(i), out parties) && parties.Count > 0)
+				{
+					nextParty = parties[0];
+				}
+			}
+
+			if (nextParty != null)
+			{
+				switch (i)
+				{
+					case 0:
+						suffix = " Party (Today)";
+						break;
+					case 1:
+						suffix = " Party (Tomorrow)";
+						break;
+					case 2:
+						suffix = " Party (The Day After Tomorrow)";
+						break;
+					default:
+						suffix = " Party (" + i + " Days from Now)";
+						break;
+				}
+				myText.text = nextParty.SizeString() + " " + nextParty.faction + suffix;
+			}
+			else
+			{
+				myText.text = "";
+			}
+		}
+	}
 }

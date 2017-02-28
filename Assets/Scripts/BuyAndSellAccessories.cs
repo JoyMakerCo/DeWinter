@@ -18,7 +18,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
     public void createBuyAndSellPopUp()
     {
     	InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
-        if (inventoryType == "personal" && personalAccessoryList.selectedAccessory != -1)
+        if (inventoryType == "personal" && personalAccessoryList.selectedAccessory != null)
         {
             object[] objectStorage = new object[3];
             objectStorage[0] = "personal";
@@ -26,11 +26,11 @@ public class BuyAndSellAccessories : MonoBehaviour {
             objectStorage[2] = personalAccessoryList.selectedAccessory;
             screenFader.gameObject.SendMessage("CreateBuyOrSellModal", objectStorage);
         }
-        else if (inventoryType == "merchant" && merchantAccessoryList.selectedAccessory != -1)
+        else if (inventoryType == "merchant" && merchantAccessoryList.selectedAccessory != null)
         {
             if (model.Inventory.Count < model.MaxSlots) // Will it fit in the Player's inventory?
             {
-                if (DeWinterApp.GetModel<GameModel>().Livre >= model.Market[merchantAccessoryList.selectedAccessory].Price) // Can they afford it?
+                if (DeWinterApp.GetModel<GameModel>().Livre >= merchantAccessoryList.selectedAccessory.Price) // Can they afford it?
                 {
                     object[] objectStorage = new object[3];
                     objectStorage[0] = "merchant";
@@ -41,7 +41,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
                 else //If the Player can't afford it give them the Can't Afford Modal
                 {
                     object[] objectStorage = new object[1];
-                    objectStorage[0] = model.Market[merchantAccessoryList.selectedAccessory].Name;
+                    objectStorage[0] = merchantAccessoryList.selectedAccessory.Name;
                     screenFader.gameObject.SendMessage("CreateCantAffordModal", objectStorage);
                 }
             }

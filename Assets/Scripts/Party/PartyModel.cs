@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core;
+using Newtonsoft.Json;
 
 namespace DeWinter
 {
 	public class PartyModel : DocumentModel
 	{
+		public int DrinkAmount;
+
 		public PartyModel(): base("PartyData") {}
 
 		public Party Party;
+
+		[JsonProperty("maxPlayerDrinkAmount")]
+		public int MaxDrinkAmount;
 
 		[JsonProperty("conversationIntroList")]
 		public Disposition[] ConversationIntros;

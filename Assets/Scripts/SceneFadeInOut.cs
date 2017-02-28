@@ -21,7 +21,7 @@ public class SceneFadeInOut : MonoBehaviour {
         {
             // ... call the StartScene function.
             StartScene();
-        } else if (!sceneStarting && GameData.activeModals > 0)
+        } else if (!sceneStarting)
         {
            sceneFadeImage.enabled = true;
            //Can't directly modify a Color's Alpha value... for some reason
@@ -71,20 +71,6 @@ public class SceneFadeInOut : MonoBehaviour {
             sceneStarting = false;
         }
     }
-
-    public void ActiveModal()
-    {
-        GameData.activeModals++;
-        Debug.Log("Amount of live Modals: " + GameData.activeModals);
-    }
-
-    /*
-    public void UnActiveModal()
-    {
-        GameData.activeModals--;
-        Debug.Log("Amount of live Modals: " + activeModals);
-    }
-    */
 
     public void EndScene()
     {

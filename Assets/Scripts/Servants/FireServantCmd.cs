@@ -10,11 +10,11 @@ namespace DeWinter
 		{
 			ServantModel model = DeWinterApp.GetModel<ServantModel>();
 
-			if (model.Servants.ContainsValue(servant))
+			if (model.Hired.ContainsKey(servant.slot) && model.Hired[servant.slot] == servant)
 			{
-				servant.hired = false;
-				servant.introduced = false;
-				model.Servants.Remove(servant.slot);
+				servant.Hired = false;
+				servant.Introduced = false;
+				model.Hired.Remove(servant.slot);
 				Debug.Log(servant.NameAndTitle + " Fired!");
 			}
 		}

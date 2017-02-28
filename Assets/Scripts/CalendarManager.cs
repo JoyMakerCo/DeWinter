@@ -32,13 +32,13 @@ public class CalendarManager : MonoBehaviour
 				{
 					if (party.RSVP == 0 && _factionModel[party.faction].LargestAllowableParty >= party.partySize)
 					{
-						AdjustBalanceVO vo = new AdjustBalanceVO("Reputation", -20);
-						DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+						AdjustValueVO vo = new AdjustValueVO("Reputation", -20);
+						DeWinterApp.SendMessage<AdjustValueVO>(vo);
 
 						vo.Type = party.faction;
 						vo.Amount = -40;
 						vo.IsRequest = true;
-						DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+						DeWinterApp.SendMessage<AdjustValueVO>(vo);
 		                screenFader.gameObject.SendMessage("CreateMissedPartyRSVPModal", party); //Party from the night before
 					}
 				}

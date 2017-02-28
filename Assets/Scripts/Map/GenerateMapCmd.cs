@@ -6,131 +6,146 @@ namespace DeWinter
 {
 	public class GenerateMapCmd : ICommand<Party>
 	{
-		private RoomVO [] roomList;
+		private MapModel _model;
+		private MapVO _map;
+		private Random _rnd;
+		private Party _party;
+		private int _capacity;
 
 		public void Execute(Party party)
 		{
-			Random rnd = new Random();
-			MapVO map = new MapVO(party);
-
+			_party = party;
+			_model = DeWinterApp.GetModel<MapModel>();
+			_rnd = new Random();
 
 			switch (party.partySize)
 			{
 			case 1:
-				roomList = new RoomVO[7];
+				_map = new MapVO(3,4);
+				_capacity = 12;
                 break;
             case 2:
-				roomList = new RoomVO[rnd.Next(11, 13)];
+				_map = new MapVO(5,3);
+				_capacity = 15;
                 break;
             case 3:
-				roomList = new RoomVO[rnd.Next(18, 20)];
+				_map = new MapVO(7,3);
+				_capacity = 21;
 				break;
 			}
 
-			map.Entrance = roomList[0] = BuildEntrance(party.partySize, rnd);
-			map.Entrance.Difficulty = 1;
-
-			PopulateEnemies(map, rnd, roomList.Length);
-			DeWinterApp.SendMessage<MapVO>(MapMessage.MAP_READY, map);
+			BuildRoom(_map.Width >> 1, 0);
+			_map.Entrance.Difficulty = 1;
+			PopulateEnemies();
+			_model.Map = _map;
 		}
 
-		private RoomVO BuildEntrance(int size, Random rnd)
+// TODO: Floorplan map building
+		private void BuildRoom(int X, int Y)
 		{
-			RoomVO entrance = new RoomVO("Entrance");
-			return entrance;
+			if (X >= 0 && X < _map.Width && Y < _map.Depth && !(_map.Rooms[X,Y] is RoomVO))
+			{
+				if (_rnd.Next(_map.NumRooms) < _capacity)
+				{
+					RoomVO room = new RoomVO(_map.NumRooms > _capacity ? GenerateRandomName() : "The Entrance");
+					room.Features = GetRandomFeatures();
+					room.Difficulty = 1 + _rnd.Next(5);
+					room.Guests = GenerateGuests(room.Difficulty);
+					room.Rewards = GenerateRewards();
+
+					_map.Rooms[X,Y] = room;
+	// TODO: Update this when map drawing gets more fleshed out
+	room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
+					_capacity--;
+
+					BuildRoom(X, Y+1);
+					BuildRoom(X-1, Y);
+					BuildRoom(X+1, Y);
+				}
+			}
 		}
 
-		private string GenerateRandomName(Random rnd)
+		private string GenerateRandomName()
 	    {
-//	    	GameDataModel model =  DeWinterApp.GetModel<GameDataModel>();
-            string adjective = GetRandomDescriptor(GameData.roomAdjectiveList, rnd);
-			string noun = GetRandomDescriptor(GameData.roomNounList, rnd);
+            string adjective = GetRandomDescriptor(_model.RoomAdjectives);
+			string noun = GetRandomDescriptor(_model.RoomNames);
             return "The " + adjective + " " + noun;
 	    }
 
-	    private string GetRandomDescriptor(List<string> list, Random seed)
+	    private string GetRandomDescriptor(string[] list)
 	    {
-	    	int index = seed.Next(0, list.Count);
+	    	int index = _rnd.Next(list.Length);
 	    	return list[index];
 	    }
 
-	    private void AddRandomFeatures(RoomVO room, Random rnd)
+	    private string[] GetRandomFeatures()
 	    {
-	    	//TODO: make features abstract and configurable
+	    	List<string> result = new List<string>();
+
+			//TODO: make features abstract and configurable
 	    	int punchBowlChance = 33;
-	    	if (rnd.Next(100) < punchBowlChance)
-	    	{
-	    		room.Features = new string[]{ PartyConstants.PUNCHBOWL };
-	    	}
+	    	if (_rnd.Next(100) < punchBowlChance)
+	    		result.Add(PartyConstants.PUNCHBOWL);
+
+	    	return result.ToArray();
 	    }
 
-		private List<Guest> GenerateGuests(int difficulty, Random rnd)
+		private Guest[] GenerateGuests(int difficulty)
 	    {
-			List<Guest> result = new List<Guest>();
 	        switch (difficulty)
 	        {
 	            case 1:
-					result.Add(new Guest(rnd.Next(25, 51), rnd.Next(6, 10)));
-					result.Add(new Guest(rnd.Next(25, 51), rnd.Next(6, 10)));
-					result.Add(new Guest(rnd.Next(25, 51), rnd.Next(6, 10)));
-					result.Add(new Guest(rnd.Next(25, 51), rnd.Next(6, 10)));
-	                break;
-	            case 2:
-					result.Add(new Guest(rnd.Next(25, 46), rnd.Next(5, 9)));
-					result.Add(new Guest(rnd.Next(25, 46), rnd.Next(5, 9)));
-					result.Add(new Guest(rnd.Next(25, 46), rnd.Next(5, 9)));
-					result.Add(new Guest(rnd.Next(25, 46), rnd.Next(5, 9)));
-	                break;
-	            case 3:
-					result.Add(new Guest(rnd.Next(25, 41), rnd.Next(4, 8)));
-					result.Add(new Guest(rnd.Next(25, 41), rnd.Next(4, 8)));
-					result.Add(new Guest(rnd.Next(25, 41), rnd.Next(4, 8)));
-					result.Add(new Guest(rnd.Next(25, 41), rnd.Next(4, 8)));
-	                break;
+					return generateGuestList(4, 25, 51, 6, 10);
+				case 2:
+					return generateGuestList(4, 25, 46, 5, 9);
+				case 3:
+					return generateGuestList(4, 25, 41, 4, 8);
 	            case 4:
-					result.Add(new Guest(rnd.Next(25, 36), rnd.Next(3, 7)));
-					result.Add(new Guest(rnd.Next(25, 36), rnd.Next(3, 7)));
-					result.Add(new Guest(rnd.Next(25, 36), rnd.Next(3, 7)));
-					result.Add(new Guest(rnd.Next(25, 36), rnd.Next(3, 7)));
-	                break;
+					return generateGuestList(4, 25, 36, 3, 7);
 	            case 5:
-					result.Add(new Guest(rnd.Next(20, 31), rnd.Next(2, 6)));
-					result.Add(new Guest(rnd.Next(20, 31), rnd.Next(2, 6)));
-					result.Add(new Guest(rnd.Next(20, 31), rnd.Next(2, 6)));
-					result.Add(new Guest(rnd.Next(20, 31), rnd.Next(2, 6)));
-	                break;
+					return generateGuestList(4, 20, 31, 2, 6);
 	        }
-	        return result;
+	        return new Guest[0];
 		}
 
-		private List<Reward> GenerateRewards(Party party)
+		private Guest[] generateGuestList(int count, int opinionMin, int opinionMax, int interestMin, int interestMax)
+		{
+			Guest[] result = new Guest[count];
+			for (int i=0; i<count; i++)
+			{
+				result[i] = new Guest(_rnd.Next(opinionMin, opinionMax), _rnd.Next(interestMin, interestMax));
+			}
+			return result;
+		}
+
+		private Reward [] GenerateRewards()
     	{
-    		return new List<Reward> {
-				new Reward(party, "Random", 0),
-				new Reward(party, "Random", 1),
-				new Reward(party, "Random", 2),
-				new Reward(party, "Random", 3),
-				new Reward(party, "Random", 4),
-				new Reward(party, "Random", 5),
-				new Reward(party, "Random", 6),
-				new Reward(party, "Random", 7)
+    		return new Reward[] {
+				new Reward(_party, "Random", 0),
+				new Reward(_party, "Random", 1),
+				new Reward(_party, "Random", 2),
+				new Reward(_party, "Random", 3),
+				new Reward(_party, "Random", 4),
+				new Reward(_party, "Random", 5),
+				new Reward(_party, "Random", 6),
+				new Reward(_party, "Random", 7)
     		};
 	    }
 
-	    private void PopulateEnemies(MapVO map, Random rnd, int numRooms)
+	    private void PopulateEnemies()
 	    {
-	    	int roomID = numRooms-1;
-			FactionVO faction = GameData.factionList[GameData.tonightsParty.faction];
-			foreach (Enemy e in EnemyInventory.enemyInventory)
+			List<Enemy> enemies = EnemyInventory.enemyInventory.FindAll(e => e.Faction == GameData.tonightsParty.faction);
+			int X, Y;
+			foreach (Enemy e in enemies)
 	        {
-				if(e.faction == faction && rnd.Next(0,2) == 0)
+				X = _rnd.Next(_map.Width);
+				Y = _rnd.Next(_map.Depth);
+				if(_map.Rooms[X, Y] != null
+					&& _map.Rooms[X, Y] != _map.Entrance
+					&& _rnd.Next(0,2) == 0)
                 {
-                	roomList[roomID].Enemies.Add(e);
+					_map.Rooms[X, Y].Enemies.Add(e);
                 }
-                if (--roomID == 0)
-                {
-                	return;
-				}
 	        }
 	    }
 	}

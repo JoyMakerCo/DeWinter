@@ -42,7 +42,7 @@ namespace DeWinter
 			get { return SellPrice.ToString("£" + "#,##0"); }
 		}
 
-		public ItemVO Clone()
+		public object Clone()
 		{
 			ItemVO result = new ItemVO();
 			result.Name = this.Name;

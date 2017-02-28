@@ -6,8 +6,8 @@ public class BuyAndSellPopUpController : MonoBehaviour
 {
     public string inventoryType;
     public string itemType;
-    public int inventoryNumber;
-    public ItemVO item;
+    public Outfit outfit;
+    public ItemVO accessory;
     OutfitInventoryList personalOutfitInventoryList;
     OutfitInventoryList merchantOutfitInventoryList;
     OutfitInventory outfitInventory;
@@ -30,6 +30,8 @@ public class BuyAndSellPopUpController : MonoBehaviour
         wardrobeImageController = GameObject.Find("ItemImageOutline").GetComponent<WardrobeImageController>();
     }
 
+
+    // TODO: COmmandify
     public void BuyOrSell()
     {
         if (itemType == "Outfit")
@@ -38,32 +40,32 @@ public class BuyAndSellPopUpController : MonoBehaviour
             if (inventoryType == "personal") //Selling Things
             {
                 //Add Money to our Account. Sold Items sell at 50% of their purchase price.
-				_gameModel.Livre += OutfitInventory.outfitInventories[inventoryType][inventoryNumber].OutfitPrice(inventoryType);
-                Debug.Log("Outfit Sold for " + OutfitInventory.outfitInventories[inventoryType][inventoryNumber].OutfitPrice(inventoryType));
+				_gameModel.Livre += outfit.OutfitPrice(inventoryType);
+                Debug.Log("Outfit Sold for " + outfit.OutfitPrice(inventoryType));
 
                 //Remove the Sold Item from the Personal Inventory
-                OutfitInventory.outfitInventories[inventoryType].RemoveAt(inventoryNumber);
+                OutfitInventory.outfitInventories[inventoryType].Remove(outfit);
 
                 //If that item was worn last at a party then reset the Last Party Outfit ID, so an item with its ID doesn't get a wrongful double Novelty hit
-				if (inventoryNumber == _inventoryModel.lastPartyOutfitID)
+				if (outfit == OutfitInventory.LastPartyOutfit)
                 {
-                	_inventoryModel.lastPartyOutfitID = -1;
+					OutfitInventory.LastPartyOutfit = null;
                 }
             }
             else if (inventoryType == "merchant") //Buying Things
             {
                 //Remove Money from our account
-				_gameModel.Livre -= OutfitInventory.outfitInventories[inventoryType][inventoryNumber].OutfitPrice(inventoryType);
-                Debug.Log("Outfit Bought for" + OutfitInventory.outfitInventories[inventoryType][inventoryNumber].OutfitPrice(inventoryType));
+				_gameModel.Livre -= outfit.OutfitPrice(inventoryType);
+                Debug.Log("Outfit Bought for" + outfit.OutfitPrice(inventoryType).ToString());
 
                 //Add the Sold Item to the Personal Inventory
-                OutfitInventory.outfitInventories["personal"].Add(OutfitInventory.outfitInventories[inventoryType][inventoryNumber]);
+                OutfitInventory.outfitInventories["personal"].Add(outfit);
 
                 //Remove the Sold Item from the Merchant Inventory
-                OutfitInventory.outfitInventories[inventoryType].RemoveAt(inventoryNumber);
+                OutfitInventory.outfitInventories[inventoryType].Remove(outfit);
             }
-            personalOutfitInventoryList.selectedInventoryOutfit = -1;
-            merchantOutfitInventoryList.selectedInventoryOutfit = -1;
+            personalOutfitInventoryList.selectedInventoryOutfit = null;
+            merchantOutfitInventoryList.selectedInventoryOutfit = null;
             //Clear and Create New Buttons
             personalOutfitInventoryList.ClearInventoryButtons();
             merchantOutfitInventoryList.ClearInventoryButtons();
@@ -74,20 +76,21 @@ public class BuyAndSellPopUpController : MonoBehaviour
         {
             if (inventoryType == "personal") //Selling Things
             {
-	        	DeWinterApp.SendCommand<SellItemCmd, ItemVO>(item);
+	        	DeWinterApp.SendCommand<SellItemCmd, ItemVO>(accessory);
 
                 //If that item was worn last at a party then reset the Last Party Outfit ID, so an item with its ID doesn't get a wrongful double Novelty hit
-                if (inventoryNumber == _inventoryModel.lastPartyOutfitID)
+                ItemVO lastAccssory; 
+				if (_inventoryModel.LastEquipped.TryGetValue(ItemConsts.ACCESSORY, out lastAccssory) && lastAccssory == accessory)
                 {
-					_inventoryModel.lastPartyOutfitID = -1;
+					_inventoryModel.LastEquipped.Remove(ItemConsts.ACCESSORY);
                 }
             }
             else if (inventoryType == "merchant") //Buying Things
             {
-				DeWinterApp.SendCommand<BuyItemCmd, ItemVO>(item);
+				DeWinterApp.SendCommand<BuyItemCmd, ItemVO>(accessory);
             }
-            personalAccessoryInventoryList.selectedAccessory = -1;
-            merchantAccessoryInventoryList.selectedAccessory = -1;
+            personalAccessoryInventoryList.selectedAccessory = null;
+            merchantAccessoryInventoryList.selectedAccessory = null;
             //Clear and Create New Buttons
             personalAccessoryInventoryList.ClearInventoryButtons();
             merchantAccessoryInventoryList.ClearInventoryButtons();

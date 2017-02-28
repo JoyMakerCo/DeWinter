@@ -6,12 +6,12 @@ using UnityEngine.UI;
 using DeWinter;
 
 public class AccessoryInventoryButton : MonoBehaviour {
-    public int accessoryID;
+	public ItemVO accessory;
+
     public string inventoryType;
     private Text myDescriptionText;
     private Text myPriceText;
     private Outline myOutline; // This is for highlighting buttons
-    private ItemVO _accessory;
 
     //public WardrobeImageController imageController;
     AccessoryInventoryList accessoryInventoryList;
@@ -27,27 +27,26 @@ public class AccessoryInventoryButton : MonoBehaviour {
     void Update()
     {
         DisplayOutfitStats();
-		myOutline.effectColor = (accessoryInventoryList.selectedAccessory == accessoryID)
+		myOutline.effectColor = (accessoryInventoryList.selectedAccessory == accessory)
         	? Color.yellow
 			: Color.clear;
     }
 
     public void DisplayOutfitStats()
     {
-		if (_accessory != null)
+		if (accessory != null)
         {
-            myDescriptionText.text = _accessory.Name;
+            myDescriptionText.text = accessory.Name;
 			myPriceText.text = (inventoryType == "merchant")
-				? _accessory.PriceString
-				: _accessory.SellPriceString;
+				? accessory.PriceString
+				: accessory.SellPriceString;
         }
     }
 
     public void SetInventoryItem()
     {
-        Debug.Log("Selected Inventory Item: " + accessoryID.ToString());
-		DeWinterApp.GetModel<InventoryModel>().partyAccessoryID = accessoryID;
-		accessoryInventoryList.selectedAccessory = accessoryID;
-        //imageController.displayID = OutfitInventory.outfitInventories[inventoryType][outfitID].imageID;
+        Debug.Log("Selected Inventory Item: " + accessory.Name);
+		accessoryInventoryList.selectedAccessory = accessory;
+//TODO: Display Image
     }
 }

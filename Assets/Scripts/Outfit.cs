@@ -76,7 +76,8 @@ public class Outfit
         int calcPrice = (int)((Mathf.Abs(modesty) + Mathf.Abs(luxury))*noveltyPercent);
         if(style != GameData.currentStyle) //Check to see if this Outfit matches what's in Style
         {
-            calcPrice = (int)(calcPrice*GameData.outOfStylePriceMultiplier);
+// TODO: Populated by model
+            calcPrice = (int)(calcPrice*DeWinter.DeWinterApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
         }
         if (calcPrice < 10) // If the Price is less than 10 make it 10. Will Sell for 5 at most (Sell price is 50% of Buy Price)
         {
@@ -95,7 +96,7 @@ public class Outfit
         {
 // TODO: This value should be modified within the model, not the VO
         	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-			if (smod.Hired.ContainsKey("Seamstress") || smod.Hired.ContainsKey("Tailor"))
+			if (smod.Hired.ContainsKey("Seamstress") != null || smod.Hired.ContainsKey("Tailor") != null)
 			{
 				return (int)(outfitPrice * smod.SeamstressDiscount);
 			}
@@ -105,7 +106,7 @@ public class Outfit
 
     int GenerateRandom()
     {
-		return (int)Mathf.Tan(Random.Range(-1.5608, 1.5608));
+		return (int)Mathf.Tan(Random.Range(-1.5608f, 1.5608f));
     }
     
     public string Name()

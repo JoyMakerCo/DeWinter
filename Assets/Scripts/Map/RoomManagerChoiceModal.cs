@@ -14,12 +14,11 @@ public class RoomManagerChoiceModal : MonoBehaviour {
     public void Dismiss()
     {
         Destroy(transform.parent.gameObject);
-        GameData.activeModals--;
     }
 
     public void CreateWorkTheRoomOrHostModal(bool isAmbush)
     {
-        if (!roomManager.currentPlayerRoom.hostHere)
+        if (!roomManager.currentPlayerRoom.HostHere)
         {
             roomManager.WorkTheRoomModal(isAmbush);
         } else
@@ -30,7 +29,7 @@ public class RoomManagerChoiceModal : MonoBehaviour {
 
     public void TryToMoveThrough()
     {
-        if (!roomManager.currentPlayerRoom.hostHere)
+        if (!roomManager.currentPlayerRoom.HostHere)
         {
             roomManager.MoveThrough();
         } else

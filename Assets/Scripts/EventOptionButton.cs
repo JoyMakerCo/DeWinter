@@ -30,7 +30,7 @@ public class EventOptionButton : MonoBehaviour {
 		if (show && eventOption.servantRequired != null)
 		{
 			ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-			show = smod.GetHired(eventOption.servantRequired) != null;
+			show = smod.Hired.ContainsKey(eventOption.servantRequired);
 		}
 		if (show) myText.text = eventOption.optionButtonText;
 		this.gameObject.SetActive(show);

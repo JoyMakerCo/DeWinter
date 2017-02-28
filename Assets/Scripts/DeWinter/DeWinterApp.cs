@@ -61,7 +61,12 @@ namespace DeWinter
 			App.Service<MessageSvc>().Unsubscribe<T>(action);
 		}
 
-		public static void Unubscribe(string message, Delegate action)
+		public static void Unsubscribe(string message, Action action)
+		{
+			App.Service<MessageSvc>().Unsubscribe(message, action);
+		}
+
+		public static void Unsubscribe<T>(string message, Action<T> action)
 		{
 			App.Service<MessageSvc>().Unsubscribe(message, action);
 		}

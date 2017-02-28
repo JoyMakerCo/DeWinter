@@ -16,18 +16,9 @@ public class FactionBenefitsListController : MonoBehaviour {
 
     public void DisplayBenefits(string factionName)
     {
-		int repLevel = GameData.factionList[factionName].ReputationLevel;
-        text.text = "The " + factionName + "(Level " + repLevel.ToString() + ")";
-		if(repLevel != -1)
-        {
-			for (int i = 0; i < repLevel; i++)
-            {
-				text.text += "\n" + GameData.factionList[factionName].FactionBenefits(i);
-                Debug.Log(factionName + "Level " + i.ToString() + " Faction Benefits!");
-            }
-        } else
-        {
-            text.text += "\nLevel -1: Persona Non Grata at all " + factionName + " Parties";
-        }        
+    	FactionModel model = DeWinterApp.GetModel<FactionModel>();
+        string str = "The " + factionName + "(Level " + model[factionName].ReputationLevel.ToString() + ")\n";
+		str += model[factionName].FactionBenefitsList;
+		text.text = str;
     }
 }

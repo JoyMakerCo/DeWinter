@@ -6,7 +6,7 @@ using Util;
 
 namespace DeWinter
 {
-	public class FactionModel : DocumentModel, IInitializable
+	public class FactionModel : DocumentModel, IInitializable, IDisposable
 	{
 		private Dictionary<string, FactionVO> _factions;
 
@@ -28,6 +28,15 @@ namespace DeWinter
 		public void Initialize()
 		{
 			DeWinterApp.Subscribe<AdjustBalanceVO>(HandleFactionReputation);
+			DeWinterApp.Subscribe<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
+			DeWinterApp.Subscribe<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+		}
+
+		public void Dispose()
+		{
+			DeWinterApp.Unsubscribe<AdjustBalanceVO>(HandleFactionReputation);
+			DeWinterApp.Unsubscribe<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
+			DeWinterApp.Unsubscribe<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
 		}
 
 		public FactionVO this[string faction]
@@ -64,6 +73,26 @@ namespace DeWinter
 				_factions[vo.Type].playerReputation += (int)vo.Amount;
 				vo.IsRequest = false;
 				DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+			}
+		}
+
+		private void HandleFactionAllegiance(AdjustBalanceVO vo)
+		{
+			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
+			{
+				_factions[vo.Type].Allegiance += (int)vo.Amount;
+				vo.IsRequest = false;
+				DeWinterApp.SendMessage<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
+			}
+		}
+
+		private void HandleFactionPower(AdjustBalanceVO vo)
+		{
+			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
+			{
+				_factions[vo.Type].Power += (int)vo.Amount;
+				vo.IsRequest = false;
+				DeWinterApp.SendMessage<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
 			}
 		}
 	}

@@ -9,7 +9,7 @@ namespace DeWinter
 	{
 		public QuestModel () : base("QuestData")
 		{
-			DeWinterApp.Subscribe<CalendarDayVO>(CalendarConsts.DAY_START, HandleCalendarDay);
+			DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
 		}
 
 		public List<PierreQuest> Quests = new List<PierreQuest>();
@@ -17,14 +17,14 @@ namespace DeWinter
 		[JsonProperty("quests")]
 		private PierreQuest [] _quests;
 
-		private int _nextQuestDay=0;
+		public int NextQuestDay=0;
 
 		private void HandleCalendarDay(CalendarDayVO msg)
 		{
-			if (msg.Day >= _nextQuestDay)
+			if (msg.Day >= NextQuestDay)
 			{
 //TODO: Send a command that updates quests
-				_nextQuestDay = msg.Day + (new Random()).Next(3, 6);
+				NextQuestDay = msg.Day + (new Random()).Next(3, 6);
 			}
 		}
 	}

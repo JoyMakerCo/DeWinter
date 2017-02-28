@@ -9,16 +9,19 @@ namespace DeWinter
 		{
 			InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
 			Random rnd = new Random();
-			List<ItemVO> itemTable = model.Inventory.Values;
+// TODO: More than just accessories
+			List<ItemVO> itemTable = model.Inventory[ItemConsts.ACCESSORY];
 			int count = itemTable.Count;
 			string style;
 			ItemVO item;
 
-			for (model.Market.Clear(); model.Market.Count < _numMarketSlots; model.Market.Add(item))
+			model.Market.Clear();
+			while (model.Market.Count < model.NumMarketSlots)
 			{
-				item = itemTable[rnd.Next(count)].Clone();
-				item.States["Style"] = style = Styles[rnd.Next(Styles.Length)];
+				item = itemTable[rnd.Next(count)].Clone() as ItemVO;
+				item.States[ItemConsts.STYLE] = style = model.Styles[rnd.Next(model.Styles.Length)];
 				item.Name = style + " " + item.Name;
+				model.Market.Add(item);
 			}
 		}
 	}

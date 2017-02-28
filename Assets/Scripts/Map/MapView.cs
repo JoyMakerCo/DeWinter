@@ -14,7 +14,7 @@ namespace DeWinter
 
 		void Start() 
 		{
-			DeWinterApp.Subscribe<MapVO>(MapMessage.MAP_READY, HandleMapReady);
+			DeWinterApp.Subscribe<MapVO>(HandleMapReady);
 			DeWinterApp.Subscribe<RoomVO>(MapMessage.SELECT_ROOM, HandleSelectRoom);
 		}
 

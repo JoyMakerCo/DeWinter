@@ -10,9 +10,9 @@ namespace DeWinter
 		{
 			ServantModel servantModel = DeWinterApp.GetModel<ServantModel>();
 			GameModel model = DeWinterApp.GetModel<GameModel>();
-			foreach (KeyValuePair<string, ServantVO> kvp in servantModel.Servants)
+			foreach (ServantVO servant in servantModel.Hired.Values)
 			{
-				model.Livre -= kvp.Value.Wage;
+				model.Livre -= servant.Wage;
 			}
 		}
 	}

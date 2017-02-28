@@ -40,8 +40,15 @@ namespace DeWinter
 
 // TODO: Register commands to respond to messages
 					DeWinterApp.SendCommand<PayDayCmd, CalendarDayVO>(msg);
+					if (_day == uprisingDay)
+						DeWinterApp.SendMessage(CalendarConsts.UPRISING_DAY);
 				}
 			}
+		}
+
+		public DateTime StartDate
+		{
+			get { return _startDate; }
 		}
 
 		public string GetMonthString(DateTime date)

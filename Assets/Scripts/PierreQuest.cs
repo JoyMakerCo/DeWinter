@@ -1,86 +1,57 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using DeWinter;
 
-public class PierreQuest {
+public class PierreQuest
+{
+	private static readonly string[] FACTIONS = new string[]{"Crown", "Church", "Military", "Bourgoisie", "Revolution"};
+	private const int MAX_DEADLINE = 15;
 
-    private FactionVO faction; // The Faction this Quest is relevant to
+    public string Faction; // The Faction this Quest is relevant to
     //Character character //The Character this Quest is relevant to (requires the Character system to be in place)
     public int daysTimeLimit; //How long the Player has to complete this Quest
     public int daysLeft;
-    private string name;
+    public string Name;
     public Reward reward;
 
     public PierreQuest()
     {
-        faction = RandomFaction();
+		Faction = FACTIONS[new System.Random().Next(5)];
         GenerateDeadline();
         daysLeft = daysTimeLimit;
         reward = new Reward(this);
-        name = GenerateName();
+        Name = GenerateName();
     }
 
     public bool GossipMatch(Gossip gossip)
     {
-        return gossip.Faction == faction;
-    }
-
-    FactionVO RandomFaction()
-    {
-        //Randomly Choose a faction, weighted towards the Faction hosting the Party
-        int factionRandom = Random.Range(0, 5);
-        switch (factionRandom)
-        {
-            case 0:
-                return GameData.factionList["Crown"];
-            case 1:
-                return GameData.factionList["Church"];
-            case 2:
-                return GameData.factionList["Military"];
-            case 3:
-                return GameData.factionList["Bourgeoisie"];
-            default:
-                return GameData.factionList["Revolution"];
-        }
+        return gossip.Faction == Faction;
     }
 
     string GenerateName()
     {
-        return "Get " + faction.Name() + " Gossip";
+        return "Get " + Faction + " Gossip";
     }
 
     void GenerateDeadline()
     {
-        Party nextParty = null;
-        int i = 0;
-        while (nextParty == null)
-        {
-            if (GameData.calendar.daysFromNow(i).party1.faction != null && GameData.calendar.daysFromNow(i).party1.invited)
-            {
-                nextParty = GameData.calendar.daysFromNow(i).party1;
-            }
-            else
-            {
-                i++;
-            }
-        }
-        daysTimeLimit = Random.Range(i, i + 3);
-    }
-
-    public FactionVO Faction()
-    {
-        return faction;
-    }
-
-    public string Name()
-    {
-        return name;
+    	CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
+    	List<Party> parties;
+    	DateTime day = model.Today;
+		for (int i=0; i<MAX_DEADLINE; i++)
+		{
+			if (model.Parties.TryGetValue(day.AddDays(i), out parties) && parties.Count > 0)
+			{
+				daysTimeLimit = i + new System.Random().Next(3);
+				return;
+			}
+		}
     }
 
     public string FlavorText()
     {
-        return "We need Gossip concerning the " + faction.Name() + ". Get it to me and I can get you " + reward.Name() + " for it.";
+        return "We need Gossip concerning the " + Faction + ". Get it to me and I can get you " + reward.Name() + " for it.";
     }
-
-
 }

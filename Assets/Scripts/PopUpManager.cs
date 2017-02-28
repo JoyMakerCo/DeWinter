@@ -89,10 +89,14 @@ public class PopUpManager : MonoBehaviour
         string servantsHired = "";
         ServantModel model = DeWinterApp.GetModel<ServantModel>();
 		GameModel gameModel = DeWinterApp.GetModel<GameModel>();
-        foreach (KeyValuePair<string, ServantVO> kvp in model.Servants)
+		ServantVO servant;
+        foreach (string slot in model.Servants.Keys)
         {
-            totalWages += kvp.Value.Wage;
-            servantsHired += kvp.Value.NameAndTitle;
+			if (model.Hired.TryGetValue(slot, out servant))
+        	{
+	            totalWages += servant.Wage;
+				servantsHired += servant.NameAndTitle;
+	        }
         }
         //Make the Pop up
         GameObject popUp = Instantiate(messageModal) as GameObject;
@@ -113,7 +117,6 @@ public class PopUpManager : MonoBehaviour
     //This confirmation modal is used for Hiring and Firing Servants
     void CreateHireAndFireModal(ServantVO s)
     {
-        
         //Make the Pop up
         GameObject popUp = Instantiate(buyOrSellModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
@@ -124,7 +127,7 @@ public class PopUpManager : MonoBehaviour
 
         //Set the Pop Up Values
         //Fill in the Text
-        if (s.hired)
+        if (s.Hired)
         {
             titleText.text = "Fire + " + s.Name + "?";
             bodyText.text = "Are you sure you want fire " + s.NameAndTitle + "?";
@@ -262,7 +265,7 @@ public class PopUpManager : MonoBehaviour
     void CreateCancellationPopUp(object[] objectStorage)
     {
         Party affectedParty = objectStorage[0] as Party;
-        bool today = (bool)objectStorage[1];
+        bool today = (bool)(objectStorage[1]);
         //Make the Pop up
         GameObject popUp = Instantiate(cancellationModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
@@ -314,7 +317,6 @@ public class PopUpManager : MonoBehaviour
         //Info Is Parsed Out Here
         string inventoryType = objectStorage[0] as string;
         string itemType = objectStorage[1] as string;
-        int inventoryNumber = (int)objectStorage[2];
         int itemPrice;
 
         //Make the Pop up
@@ -327,37 +329,38 @@ public class PopUpManager : MonoBehaviour
         BuyAndSellPopUpController controller = popUp.GetComponent<BuyAndSellPopUpController>();
         controller.inventoryType = inventoryType;
         controller.itemType = itemType;
-        controller.inventoryNumber = inventoryNumber;
+		controller.outfit = objectStorage[2] as Outfit;
+		controller.accessory = objectStorage[2] as ItemVO;
 
         //Fill in the Text
-        if (itemType == "Outfit")
+		if (controller.outfit != null)
         {
             if (inventoryType == "personal")
             {
                 titleText.text = "Sell This?";
-                itemPrice = OutfitInventory.outfitInventories[inventoryType][inventoryNumber].OutfitPrice(inventoryType); //Items are at Half Price from the Player Inventory to the Merchant
-                bodyText.text = "Are you sure you want to sell this " + OutfitInventory.outfitInventories[inventoryType][inventoryNumber].Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
-            }
+				itemPrice = controller.outfit.OutfitPrice(inventoryType); //Items are at Half Price from the Player Inventory to the Merchant
+				bodyText.text = "Are you sure you want to sell this " + controller.outfit.Name();
+			}
             else
             {
                 titleText.text = "Buy This?";
-                itemPrice = OutfitInventory.outfitInventories[inventoryType][inventoryNumber].OutfitPrice(inventoryType);
-                bodyText.text = "Are you sure you want to buy this " + OutfitInventory.outfitInventories[inventoryType][inventoryNumber].Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
+				itemPrice = controller.outfit.OutfitPrice(inventoryType);
+				bodyText.text = "Are you sure you want to buy this " + controller.outfit.Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
         }
-        else if (itemType == "Accessory")
+		else if (controller.accessory != null)
         {
             if (inventoryType == "personal")
             {
                 titleText.text = "Sell This?";
-                itemPrice = AccessoryInventory.accessoryInventories[inventoryType][inventoryNumber].Price(inventoryType); //Items are at Half Price from the Player Inventory to the Merchant
-                bodyText.text = "Are you sure you want to sell this " + AccessoryInventory.accessoryInventories[inventoryType][inventoryNumber].Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
+				itemPrice = controller.accessory.SellPrice; //Items are at Half Price from the Player Inventory to the Merchant
+				bodyText.text = "Are you sure you want to sell this " + controller.accessory.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
             else
             {
                 titleText.text = "Buy This?";
-                itemPrice = AccessoryInventory.accessoryInventories[inventoryType][inventoryNumber].Price(inventoryType);
-                bodyText.text = "Are you sure you want to buy this " + AccessoryInventory.accessoryInventories[inventoryType][inventoryNumber].Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
+				itemPrice = controller.accessory.Price;
+				bodyText.text = "Are you sure you want to buy this " + controller.accessory.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
         }
         //Modal Background Shift
@@ -526,8 +529,8 @@ public class PopUpManager : MonoBehaviour
     //This is used in the beginning of the Party Screen to tally up a Player's Confidence stat
     void CreateConfidenceTallyModal(object[] objectStorage)
     {
-        int partyOutfitID = (int)objectStorage[0];
-        int partyAccessoryID = (int)objectStorage[1];
+        Outfit outfit = objectStorage[0] as Outfit;
+        ItemVO accessory = objectStorage[1] as ItemVO;
         string partyFaction = objectStorage[2].ToString();
         int outfitReaction = (int)objectStorage[3];
         int outfitStyleReaction = (int)objectStorage[4];
@@ -553,12 +556,12 @@ public class PopUpManager : MonoBehaviour
         string line5;
         string line6;
         //--- Line 1 ---
-        if (partyAccessoryID != -1)
+        if (accessory != null)
         {
-            line1 = "You wore your " + OutfitInventory.personalInventory[partyOutfitID].Name() + " and " + AccessoryInventory.personalInventory[partyAccessoryID].Name() + " to the Party, hosted by the " + partyFaction + ".";
+            line1 = "You wore your " + outfit.Name() + " and " + accessory.Name + " to the Party, hosted by the " + partyFaction + ".";
         } else
         {
-            line1 = "You wore your " + OutfitInventory.personalInventory[partyOutfitID].Name() + " to the Party, hosted by the " + partyFaction + ".";
+            line1 = "You wore your " + outfit.Name() + " to the Party, hosted by the " + partyFaction + ".";
         }
         //--- Line 2 ---
         if (partyFaction != "Military")
@@ -587,7 +590,7 @@ public class PopUpManager : MonoBehaviour
         }
         //--- Line 3 ---
         //Without Accessory
-        if(partyAccessoryID == -1)
+        if(accessory == null)
         {
             //In Style
             if (outfitStyleReaction > 0)
@@ -597,7 +600,7 @@ public class PopUpManager : MonoBehaviour
             //Out of Style
             else
             {
-                line3 = "\n\nOh no! Your Outfit is in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style and it appears that " + GameData.currentStyle + " is in vogue at the moment. (+" + outfitStyleReaction + " Max Confidence)";
+                line3 = "\n\nOh no! Your Outfit is in the " + outfit.style + " style and it appears that " + GameData.currentStyle + " is in vogue at the moment. (+" + outfitStyleReaction + " Max Confidence)";
             }
         }
         //With Accessory
@@ -611,22 +614,22 @@ public class PopUpManager : MonoBehaviour
             //Outfit is in Style, but the Accessory is not
             else if (outfitStyleReaction > 0 && accessoryStyleReaction == 0)
             {
-                line3 = "\n\nAh! Your Outfit is in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style, which is in fashion. However, is appears that your Accessory is not. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
+                line3 = "\n\nAh! Your Outfit is in the " + outfit.style + " style, which is in fashion. However, is appears that your Accessory is not. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
             } 
             //Outfit is not in Style, but the Accessory is
             else if (outfitStyleReaction == 0 && accessoryStyleReaction > 0)
             {
-                line3 = "\n\nAh! Your Outfit is in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style, while the " + GameData.currentStyle + " is what's in fashion. However, your Accessory is in fashionis. Which is good, at least. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
+                line3 = "\n\nAh! Your Outfit is in the " + outfit.style + " style, while the " + GameData.currentStyle + " is what's in fashion. However, your Accessory is in fashionis. Which is good, at least. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
             }
             //Neither are in Style, but they Match
             else if (outfitStyleReaction == 0 && accessoryStyleReaction == 0 && outfitAccessoryStyleMatch > 0)
             {
-                line3 = "\n\nHmm... Your Outfit and Accessory match, but they're in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style and it appears that " + GameData.currentStyle + " is in vogue at the moment. At least you're well coordinated. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
+                line3 = "\n\nHmm... Your Outfit and Accessory match, but they're in the " + outfit.style + " style and it appears that " + GameData.currentStyle + " is in vogue at the moment. At least you're well coordinated. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
             }
             //Neither are in Style and they don't even fucking Match, what a fucking mess
             else
             {
-                line3 = "\n\nMon dieu! Your Outfit is in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style, your Accessory is in the " + AccessoryInventory.personalInventory[partyAccessoryID].Style() + " and the " + GameData.currentStyle + " is what's in Fashion! How did this happen? (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
+                line3 = "\n\nMon dieu! Your Outfit is in the " + outfit.style + " style, your Accessory is in the " + (string)(accessory.States[ItemConsts.STYLE]) + " and the " + GameData.currentStyle + " is what's in Fashion! How did this happen? (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
             } 
         }
         
@@ -699,12 +702,12 @@ public class PopUpManager : MonoBehaviour
         Text moveThroughText = popUp.transform.Find("MoveThroughButton").Find("Text").GetComponent<Text>();
         Image moveThroughButtonImage = popUp.transform.Find("MoveThroughButton").GetComponent<Image>();
 
-        if (!model.HostHere) //If the Host isn't here
+        if (!model.Room.HostHere) //If the Host isn't here
         {
             moveThroughButtonImage.color = Color.white;
             moveThroughText.color = Color.white;
             //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-            moveThroughText.text = "Move Through (" + model.MoveThroughChance.ToString() + "%)";
+            moveThroughText.text = "Move Through (" + model.Room.MoveThroughChance.ToString() + "%)";
             bodyText.text = "You've entered the " + model.Room.Name +
                         "\n\nWould you like to 'Work the Room' and engage the party goers in Conversation, or would you like to 'Move Through' and hope nobody notices you?";
         } else // If the Host Is there
@@ -743,7 +746,7 @@ public class PopUpManager : MonoBehaviour
         popUp.transform.SetParent(gameObject.transform, false);
         //Set the room and the Work The Room Manager should handle the rest.
         WorkTheRoomManager workManager = popUp.GetComponent<WorkTheRoomManager>();
-        workManager.room = room;
+        workManager.Room = room;
         workManager.isAmbush = isAmbush;
         workManager.roomManager = roomManager;
 
@@ -925,7 +928,7 @@ public class PopUpManager : MonoBehaviour
     }
 
     //This is used in the Estate Tab to tell Players that they were caught trading in Gossip Items
-    void CreateCaughtTradingGossipModal(FactionVO gossipFaction)
+    void CreateCaughtTradingGossipModal(string faction)
     {
         //Make the Pop Up
         GameObject popUp = Instantiate(messageModal) as GameObject;
@@ -935,7 +938,7 @@ public class PopUpManager : MonoBehaviour
         titleText.text = "Merde!";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, it appears that you've been found out. While 'Le Mecure' does its best to conceal our sources, some members of the " + gossipFaction.Name() + 
+        bodyText.text = "Madamme, it appears that you've been found out. While 'Le Mecure' does its best to conceal our sources, some members of the " + faction + 
                 " seem to have figured out that you were out supplier. This has damaged your Reputation both with them and with society in General.";
         if (GameData.factionList["Revolution"].ReputationLevel >= 2)
         {
@@ -963,7 +966,7 @@ public class PopUpManager : MonoBehaviour
         titleText.text = "A Call for Gossip!";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction().Name() + "." +
+        bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction + "." +
                 "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.Name() + ". \n\nHow does that sound?";
         //Modal Background Shift
         BroadcastMessage("ActiveModal");

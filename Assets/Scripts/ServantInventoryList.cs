@@ -8,10 +8,12 @@ public class ServantInventoryList : MonoBehaviour
     public GameObject gossipInventoryButtonPrefab;
     public enum InventoryType {Personal, Available};
     public InventoryType inventoryType;
+    private ServantModel _model;
 
     // Use this for initialization
     void Start ()
     {
+		_model = DeWinterApp.GetModel<ServantModel>();
         GenerateInventoryButtons();
         selectedServant = null;
     }
@@ -19,14 +21,21 @@ public class ServantInventoryList : MonoBehaviour
     public void GenerateInventoryButtons()
     {
     	ClearInventoryButtons();
-		List<ServantVO> Servants = (inventoryType == InventoryType.Personal)
-			? DeWinterApp.GetModel<ServantModel>().Hired.Values
-			: DeWinterApp.GetModel<ServantModel>().Introduced;
+		List<ServantVO> servants;
+		if (inventoryType == InventoryType.Personal)
+		{
+			servants = new List<ServantVO>(_model.Hired.Values);
+		}
+		else
+		{
+			servants = new List<ServantVO>();
+			foreach(List<ServantVO> intros in _model.Introduced.Values)
+			{
+				servants.AddRange(intros);
+			}
+		}
 
-		foreach(ServantVO s in Servants)
-    	{
-    		MakeButton(s);
-    	}
+		servants.ForEach(MakeButton);
     }
 
     public void ClearInventoryButtons()
@@ -37,7 +46,7 @@ public class ServantInventoryList : MonoBehaviour
         }
     }
 
-    private GameObject MakeButton(ServantVO s)
+    private void MakeButton(ServantVO s)
     {
 		GameObject button = GameObject.Instantiate(gossipInventoryButtonPrefab);
         ServantInventoryButton buttonStats = button.GetComponent<ServantInventoryButton>();

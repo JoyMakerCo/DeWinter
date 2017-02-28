@@ -17,11 +17,11 @@ namespace DeWinter
         	if (!terminate)
         	{
 				terminate = (room.Enemies != null && room.Enemies.Remove(enemy));
-				if (!terminate && room.Doors != null)
+				if (!terminate && room.Neighbors != null)
 				{
-	    			foreach(Door door in room.Doors)
+	    			foreach(RoomVO neighbor in room.Neighbors)
 	    			{
-	    				RemoveEnemyFromRoom(door.Room, enemy);
+						RemoveEnemyFromRoom(neighbor, enemy);
 	    			}
 	    		}
 	        }

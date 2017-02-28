@@ -18,7 +18,8 @@ namespace DeWinter
 	    // Update is called once per frame
 	    void Update()
 	    {
-			myText.text = _model.Inventory["personal"].Count.ToString() + "/" + _model.MaxSlots;
+	    // TODO: Count ALL Items
+			myText.text = _model.Inventory[ItemConsts.ACCESSORY].Count.ToString() + "/" + _model.MaxSlots;
 	    }
 	}
 }

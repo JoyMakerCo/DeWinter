@@ -37,7 +37,7 @@ public class AccessoryStatsTracker : MonoBehaviour
     	InventoryModel m = DeWinterApp.GetModel<InventoryModel>();
         if (inventoryType == "personal")
         {
-            if (accessoryInventoryList.selectedAccessory != -1)
+            if (accessoryInventoryList.selectedAccessory != null)
             {
                 //Text            
                 ItemVO displayAccessory = m.SelectedItem;
@@ -56,7 +56,7 @@ public class AccessoryStatsTracker : MonoBehaviour
         }
         else if (inventoryType == "merchant")
         {
-            if (accessoryInventoryList.selectedAccessory != -1)
+            if (accessoryInventoryList.selectedAccessory != null)
             {
                 //Text
                 ItemVO displayAccessory = m.SelectedMarketItem;
@@ -78,7 +78,7 @@ public class AccessoryStatsTracker : MonoBehaviour
             accessorySaleButton.color = Color.clear;
             accessorySaleButtonText.text = "";
             accessorySaleButtonText.color = Color.clear;
-            if (accessoryInventoryList.selectedAccessory != -1) //If an Outfit is Selected
+            if (accessoryInventoryList.selectedAccessory != null) //If an Outfit is Selected
             {
                 ItemVO displayAccessory = m.SelectedItem;
                 accessoryNameText.text = displayAccessory.Name;

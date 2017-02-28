@@ -35,10 +35,11 @@ public class GossipInventoryButton : MonoBehaviour {
 
     public void DisplayGossipStats(int gID)
     {
-        if (GameData.gossipInventory.ElementAtOrDefault(gID) != null)
+		Gossip g = GameData.gossipInventory.ElementAtOrDefault(gID);
+        if (g != null)
         {
-            myDescriptionText.text = GameData.gossipInventory[gID].Name();
-            myFreshnessText.text = GameData.gossipInventory[gID].freshness + "/10";
+            myDescriptionText.text = g.Name();
+            myFreshnessText.text = g.freshness + "/10";
         }
     }
 

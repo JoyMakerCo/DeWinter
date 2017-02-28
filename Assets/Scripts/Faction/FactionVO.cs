@@ -87,14 +87,29 @@ namespace DeWinter
 			get { return _levels[ReputationLevel].Confidence; }
 		}
 
-		public string FactionBenefits()
+		public string FactionBenefits
 		{
-			return _levels[ReputationLevel].Text;
+			get
+			{
+				return _levels[ReputationLevel].Text;
+			}
 		}
 
-		public string FactionBenefits(int level)
+		public string GetFactionBenefits(int level)
 		{
 			return _levels[level].Text;
+		}
+
+		public string FactionBenefitsList
+		{
+			get 
+			{
+				string str = "";
+				int lvl = ReputationLevel;
+				for (int i=0; i<lvl; i++)
+					str += FactionBenefits[i] + "\n";
+				return str;
+			}
 		}
 
 		public int LargestAllowableParty
@@ -103,9 +118,5 @@ namespace DeWinter
 				return _levels[ReputationLevel].LargestAllowableParty;
 			}
 		}
-
-	// TODO: This belongs in the View, not in the data.
-		public int powerKnowledgeTimer;
-	    public int allegianceKnowledgeTimer;
 	}
 }

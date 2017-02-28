@@ -11,7 +11,7 @@ namespace DeWinter
 		{
 			InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
 			AdjustBalanceVO msg = new AdjustBalanceVO("Livre", -item.Price);
-			item.SellPrice = item.Price * model.SellbackMultiplier;
+			item.SellPrice = (int)((float)item.Price * model.SellbackMultiplier);
 			if (!model.Inventory.ContainsKey(item.Type))
 				model.Inventory.Add(item.Type, new List<ItemVO>());
 			model.Inventory[item.Type].Add(item);

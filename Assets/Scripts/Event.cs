@@ -22,13 +22,13 @@ public class Event
     }
     public void EventStageRewards()
     {
-		AdjustBalanceVO vo = new AdjustBalanceVO(BalanceTypes.LIVRE, eventStages[currentStage].stageMoneyChange);
-		DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+		AdjustValueVO vo = new AdjustValueVO(BalanceTypes.LIVRE, eventStages[currentStage].stageMoneyChange);
+		DeWinterApp.SendMessage<AdjustValueVO>(vo);
 
 		vo.Type = BalanceTypes.REPUTATION;
 		vo.Amount = eventStages[currentStage].stageRepChange;
 		vo.IsRequest = true;
-		DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+		DeWinterApp.SendMessage<AdjustValueVO>(vo);
 
         if (eventStages[currentStage].stageEnemyAdd != null)
         {

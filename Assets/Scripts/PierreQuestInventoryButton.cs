@@ -37,7 +37,7 @@ public class PierreQuestInventoryButton : MonoBehaviour {
     {
         if (GameData.pierreQuestInventory.ElementAtOrDefault(qID) != null)
         {
-            myDescriptionText.text = GameData.pierreQuestInventory[qID].Name();
+            myDescriptionText.text = GameData.pierreQuestInventory[qID].Name;
             myTimeRemainingText.text = GameData.pierreQuestInventory[qID].daysLeft + "/" + GameData.pierreQuestInventory[qID].daysTimeLimit;
         }
     }

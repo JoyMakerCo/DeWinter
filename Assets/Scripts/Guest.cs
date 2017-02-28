@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using DeWinter;
 
-public class Guest {
-
+public class Guest
+{
     //General Settings
-    public string name;
+    public string Name;
     public int dispositionInt;
     public Disposition disposition;
     public bool dispositionRevealed;
@@ -46,7 +46,7 @@ public class Guest {
         {
             imageInt = Random.Range(0, 2);
         }
-        name = GenerateName(); // Have to Generate the Name after the Gender
+        Name = GenerateName(); // Have to Generate the Name after the Gender
     }
 
     //Generates a Guest with a specific Opinion level and Interest Timer, used by the Room class to set difficulty
@@ -70,7 +70,7 @@ public class Guest {
         {
             imageInt = Random.Range(0, 5);
         }
-        name = GenerateName();  // Have to Generate the Name after the Gender
+        Name = GenerateName();  // Have to Generate the Name after the Gender
     }
 
     //Generates a Guest who is an Enemy, Enemy is the greater class tracking the Persistent Enemy, Guests with a true 'isEnemy' bool are here for the actual battles
@@ -87,7 +87,7 @@ public class Guest {
         isEnemy = true;
         isFemale = enemy.IsFemale;
         imageInt = enemy.imageInt;
-        name = enemy.Name; // Have to Generate the Name after the Gender
+        Name = enemy.Name; // Have to Generate the Name after the Gender
     }
 
     string GenerateName()
@@ -96,14 +96,14 @@ public class Guest {
         string firstName;
         if (isFemale)
         {
-            title = GameData.femaleTitleList[Random.Range(0, GameData.femaleTitleList.Count)];
-            firstName = GameData.femaleFirstNameList[Random.Range(0, GameData.femaleFirstNameList.Count)];
+            title = GameData.femaleTitleList[Random.Range(0, GameData.femaleTitleList.Length)];
+			firstName = GameData.femaleFirstNameList[Random.Range(0, GameData.femaleFirstNameList.Length)];
         } else
         {
-            title = GameData.maleTitleList[Random.Range(0, GameData.maleTitleList.Count)];
-            firstName = GameData.maleFirstNameList[Random.Range(0, GameData.maleFirstNameList.Count)];
+			title = GameData.maleTitleList[Random.Range(0, GameData.maleTitleList.Length)];
+			firstName = GameData.maleFirstNameList[Random.Range(0, GameData.maleFirstNameList.Length)];
         }
-        string lastName = GameData.lastNameList[Random.Range(0, GameData.lastNameList.Count)];
+		string lastName = GameData.lastNameList[Random.Range(0, GameData.lastNameList.Length)];
         return title + " " + firstName + " de " + lastName;
     }
 

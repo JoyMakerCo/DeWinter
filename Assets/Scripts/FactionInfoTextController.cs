@@ -18,11 +18,23 @@ public class FactionInfoTextController : MonoBehaviour {
     public bool availableSpymasterTestTheWaters;
     public bool availableTestTheWaters;
 
+    private Dictionary<string, int> _allegianceTimers;
+	private Dictionary<string, int> _powerTimers;
+
 	// Use this for initialization
 	void Start () {
 		ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-		availableSpymasterTestTheWaters = (smod.GetHired("Spymaster") != null);
+		availableSpymasterTestTheWaters = (smod.Hired.ContainsKey("Spymaster"));
         availableTestTheWaters = true;
+
+        _allegianceTimers = new Dictionary<string, int>();
+		_powerTimers = new Dictionary<string, int>();
+		foreach(string faction in DeWinterApp.GetModel<FactionModel>().Factions.Keys)
+		{
+			_powerTimers.Add(faction, 0);
+			_allegianceTimers.Add(faction, 0);
+		}
+
         IncrementKnowledgeTimers();
         UpdateInfo();
 	}
@@ -44,7 +56,7 @@ public class FactionInfoTextController : MonoBehaviour {
         {
             crownInfo.text = "- The Royalty and members of high ranking nobility alligned with them" +
                         "\n- Like Expensive but Modest Clothes" +
-                        "\n- Power: " + GameData.factionList["Crown"].knownPower + " " + ConvertKnowledgeTimer(GameData.factionList["Crown"].powerKnowledgeTimer);
+                        "\n- Power: " + GameData.factionList["Crown"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Crown"]);
         }
         //---- Church Info ----
         if (GameData.factionList["Church"].ReputationLevel >= 8)
@@ -58,15 +70,15 @@ public class FactionInfoTextController : MonoBehaviour {
         {
             churchInfo.text = "- The Clergy and those alligned with them" +
                          "\n- Like Vintage and Modest Clothes" +
-                         "\n- Allegiance: " + GameData.factionList["Church"].knownAllegiance + " " + ConvertKnowledgeTimer(GameData.factionList["Church"].allegianceKnowledgeTimer) +
+                         "\n- Allegiance: " + GameData.factionList["Church"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Church"]) +
 				"\n- Power: " + GetPowerString(GameData.factionList["Church"].Power) + " (Faction Benefit)";
         }
         else
         {
             churchInfo.text = "- The Clergy and those alligned with them" +
                         "\n- Like Vintage and Modest Clothes" +
-                        "\n- Allegiance: " + GameData.factionList["Church"].knownAllegiance + " " + ConvertKnowledgeTimer(GameData.factionList["Church"].allegianceKnowledgeTimer) +
-                        "\n- Power: " + GameData.factionList["Church"].knownPower + " " + ConvertKnowledgeTimer(GameData.factionList["Church"].powerKnowledgeTimer);
+                        "\n- Allegiance: " + GameData.factionList["Church"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Church"]) +
+                        "\n- Power: " + GameData.factionList["Church"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Church"]);
         }
         //---- Military Info ----
         if (GameData.factionList["Military"].ReputationLevel >= 8)
@@ -80,15 +92,15 @@ public class FactionInfoTextController : MonoBehaviour {
         {
             militaryInfo.text = "- The Generals and Troops of the armed forces and those alligned with them" +
                         "\n- Couldn't care less about your clothes" +
-                        "\n- Allegiance: " + GameData.factionList["Military"].knownAllegiance + " " + ConvertKnowledgeTimer(GameData.factionList["Military"].allegianceKnowledgeTimer) +
+                        "\n- Allegiance: " + GameData.factionList["Military"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Military"]) +
 				"\n- Power: " + GetPowerString(GameData.factionList["Military"].Power) + " (Faction Benefit)";
         }
         else
         {
             militaryInfo.text = "- The Generals and Troops of the armed forces and those alligned with them" +
                         "\n- Couldn't care less about your clothes" +
-                        "\n- Allegiance: " + GameData.factionList["Military"].knownAllegiance + " " + ConvertKnowledgeTimer(GameData.factionList["Military"].allegianceKnowledgeTimer) +
-                        "\n- Power: " + GameData.factionList["Military"].knownPower + " " + ConvertKnowledgeTimer(GameData.factionList["Military"].powerKnowledgeTimer);
+                        "\n- Allegiance: " + GameData.factionList["Military"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Military"]) +
+                        "\n- Power: " + GameData.factionList["Military"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Military"]);
         }
         //---- Bourgeoisie Info ----
         if (GameData.factionList["Bourgeoisie"].ReputationLevel >= 8)
@@ -102,15 +114,15 @@ public class FactionInfoTextController : MonoBehaviour {
         {
             bourgeoisieInfo.text = "- The newly wealthy Mercantile class" +
                         "\n- Like clothes that are Luxurious and Racy" +
-                        "\n- Allegiance: " + GameData.factionList["Bourgeoisie"].knownAllegiance + " " + ConvertKnowledgeTimer(GameData.factionList["Bourgeoisie"].allegianceKnowledgeTimer) +
+                        "\n- Allegiance: " + GameData.factionList["Bourgeoisie"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Bourgeoisie"]) +
                         "\n- Power: " + GetPowerString(GameData.factionList["Bourgeoisie"].Power) + " (Faction Benefit)";
         }
         else
         {
             bourgeoisieInfo.text = "- The newly wealthy Mercantile class" +
                         "\n- Like clothes that are Luxurious and Racy" +
-                        "\n- Allegiance: " + GameData.factionList["Bourgeoisie"].knownAllegiance + " " + ConvertKnowledgeTimer(GameData.factionList["Bourgeoisie"].allegianceKnowledgeTimer) +
-                        "\n- Power: " + GameData.factionList["Bourgeoisie"].knownPower + " " + ConvertKnowledgeTimer(GameData.factionList["Bourgeoisie"].powerKnowledgeTimer);
+                        "\n- Allegiance: " + GameData.factionList["Bourgeoisie"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Bourgeoisie"]) +
+                        "\n- Power: " + GameData.factionList["Bourgeoisie"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Bourgeoisie"]);
         }
         //---- Revolution Info ----
         if (GameData.factionList["Revolution"].ReputationLevel >= 8)
@@ -129,7 +141,7 @@ public class FactionInfoTextController : MonoBehaviour {
         {
             revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
                         "\n - Like clothes that are Vintage and Racy" +
-                        "\n- Power: " + GameData.factionList["Revolution"].knownPower + " " + ConvertKnowledgeTimer(GameData.factionList["Revolution"].powerKnowledgeTimer);
+                        "\n- Power: " + GameData.factionList["Revolution"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Revolution"]);
         }
     }
 
@@ -142,14 +154,14 @@ public class FactionInfoTextController : MonoBehaviour {
             if (availableSpymasterTestTheWaters)
             {
                 availableSpymasterTestTheWaters = false;
-                GameData.factionList[faction].CalculateKnownPower();
-                UpdateInfo();
+				_powerTimers[faction] = 0;
+				UpdateInfo();
             }
             else if (availableTestTheWaters && GameData.moneyCount > testTheWatersCost)
             {
                 availableTestTheWaters = false;
                 GameData.moneyCount -= testTheWatersCost;
-                GameData.factionList[faction].CalculateKnownPower();
+				_powerTimers[faction] = 0;
                 UpdateInfo();
             }
             else
@@ -170,14 +182,14 @@ public class FactionInfoTextController : MonoBehaviour {
             if (availableSpymasterTestTheWaters)
             {
                 availableSpymasterTestTheWaters = false;
-                GameData.factionList[faction].CalculateKnownAllegiance();
+				_powerTimers[faction] = 0;
                 UpdateInfo();
             }
             else if (availableTestTheWaters && GameData.moneyCount > testTheWatersCost)
             {
                 availableTestTheWaters = false;
                 GameData.moneyCount -= testTheWatersCost;
-                GameData.factionList[faction].CalculateKnownAllegiance();
+                _powerTimers[faction] = 0;
                 UpdateInfo();
             }
             else
@@ -189,15 +201,13 @@ public class FactionInfoTextController : MonoBehaviour {
 
     void IncrementKnowledgeTimers()
     {
-        //No Allegiance Timers for Crown and Revolution in here because they don't need to have them
-        GameData.factionList["Crown"].powerKnowledgeTimer++;
-        GameData.factionList["Church"].powerKnowledgeTimer++;
-        GameData.factionList["Church"].allegianceKnowledgeTimer++;
-        GameData.factionList["Military"].powerKnowledgeTimer++;
-        GameData.factionList["Military"].allegianceKnowledgeTimer++;
-        GameData.factionList["Bourgeoisie"].powerKnowledgeTimer++;
-        GameData.factionList["Bourgeoisie"].allegianceKnowledgeTimer++;
-        GameData.factionList["Revolution"].powerKnowledgeTimer++;
+
+        //Allegiance Timers for Crown and Revolution aren't used
+        foreach (string faction in _allegianceTimers.Keys)
+        {
+        	_allegianceTimers[faction]++;
+			_powerTimers[faction]++;
+        }
     }
 
 // TODO: Store them in order

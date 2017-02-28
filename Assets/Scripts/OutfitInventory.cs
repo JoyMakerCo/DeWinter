@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
-public class OutfitInventory : MonoBehaviour {
-
+public class OutfitInventory : MonoBehaviour
+{
     static OutfitInventory instance = null;
 
     public static Dictionary<string, List<Outfit>> outfitInventories = new Dictionary<string, List<Outfit>>();
@@ -14,6 +14,10 @@ public class OutfitInventory : MonoBehaviour {
 
     public static int personalInventoryMaxSize = 5; //The Max Size at Game Start
     public static int personalInventoryMaxSizeCieling = 9; //The Max Possible Size
+
+    //Used for seeing if the same Outfit was used twice in a row
+	public static Outfit LastPartyOutfit=null;
+	public static Outfit PartyOutfit;
 
     // Use this for initialization
     void Start()

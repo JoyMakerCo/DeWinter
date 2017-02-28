@@ -87,15 +87,15 @@ public class Notable {
         string firstName;
         if (isFemale)
         {
-            title = GameData.femaleTitleList[Random.Range(0, GameData.femaleTitleList.Count)];
-            firstName = GameData.femaleFirstNameList[Random.Range(0, GameData.femaleFirstNameList.Count)];
+            title = GameData.femaleTitleList[Random.Range(0, GameData.femaleTitleList.Length)];
+            firstName = GameData.femaleFirstNameList[Random.Range(0, GameData.femaleFirstNameList.Length)];
         }
         else
         {
-            title = GameData.maleTitleList[Random.Range(0, GameData.maleTitleList.Count)];
-            firstName = GameData.maleFirstNameList[Random.Range(0, GameData.maleFirstNameList.Count)];
+            title = GameData.maleTitleList[Random.Range(0, GameData.maleTitleList.Length)];
+            firstName = GameData.maleFirstNameList[Random.Range(0, GameData.maleFirstNameList.Length)];
         }
-        string lastName = GameData.lastNameList[Random.Range(0, GameData.lastNameList.Count)];
+        string lastName = GameData.lastNameList[Random.Range(0, GameData.lastNameList.Length)];
         return title + " " + firstName + " de " + lastName;
     }
 

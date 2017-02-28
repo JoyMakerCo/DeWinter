@@ -11,7 +11,7 @@ public class AdvanceTimeButtonTextController : MonoBehaviour {
 
     void Start ()
     {
-    	DeWinterApp.GetModel<InventoryModel>().partyOutfitID = -1;
+    	OutfitInventory.PartyOutfit = null;
     	_model = DeWinterApp.GetModel<PartyModel>();
         myText = this.GetComponentInChildren<Text>();
         myOutline = this.GetComponent<Outline>();
