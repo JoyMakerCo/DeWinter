@@ -19,14 +19,6 @@ public class TwoPartyRSVPdPopUpController : MonoBehaviour {
 
     public void SelectParty(int partyNumber)
     {
-        switch (partyNumber)
-        {
-            case 1:
-                GameData.tonightsParty = GameData.calendar.today().party1;
-                break;
-            case 2:
-                GameData.tonightsParty = GameData.calendar.today().party2;
-                break;
-        }
+		GameData.tonightsParty = (partyNumber == 1) ? party1 : party2;
     }
 }

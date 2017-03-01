@@ -15,9 +15,9 @@ public class TwoPartyChoicePopUpController : MonoBehaviour {
     void Start () {
     	
         Text party1ButtonText = this.transform.Find("Party1Button").Find("Text").GetComponent<Text>();
-        party1ButtonText.text = Party1.Name;
+        party1ButtonText.text = Party1.Name();
         Text party2ButtonText = this.transform.Find("Party2Button").Find("Text").GetComponent<Text>();
-        party2ButtonText.text = Party2.Name;
+        party2ButtonText.text = Party2.Name();
     }
 
     public void SelectParty(int partyNumber)

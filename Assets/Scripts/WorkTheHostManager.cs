@@ -171,7 +171,7 @@ public class WorkTheHostManager : MonoBehaviour
         //Is the Player using the Fan Accessory? If so then increase the Host Remark Time by 1.5x!
         if(Party.playerAccessory != null)
         {
-            if (Party.playerAccessory.Type() == "Fan")
+            if (Party.playerAccessory.Type == "Fan")
             {
                 Party.host.currentInterestTimer = Party.host.currentInterestTimer * 1.5f;
                 Party.host.maxInterestTimer = Party.host.currentInterestTimer * 1.5f;
@@ -711,23 +711,22 @@ public class WorkTheHostManager : MonoBehaviour
             case 3:
                 effect = "Outfit Novelty Loss";
                 effectAmount = Random.Range(20, 51);
-                OutfitInventory.personalInventory[OutfitInventory.PartyOutfit].novelty = Mathf.Clamp(OutfitInventory.personalInventory[OutfitInventory.PartyOutfit].novelty - effectAmount, 0, 100);
+                OutfitInventory.PartyOutfit.novelty = Mathf.Clamp(OutfitInventory.PartyOutfit.novelty - effectAmount, 0, 100);
                 break;
             case 4:
                 effect = "Outfit Ruined";
-                OutfitInventory.personalInventory.RemoveAt(OutfitInventory.PartyOutfit);
+                OutfitInventory.personalInventory.Remove(OutfitInventory.PartyOutfit);
                 break;
             case 5:
                 effect = "Accessory Ruined";
-                if (GameData.PartyAccessory != -1) //If the Player actually wore and Accessory to this Party
-                {
-                    GameData.Accessories.RemoveAt(GameData.PartyAccessory);
-                }
-                else
+                InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
+                if (!imod.Equipped.Remove(ItemConsts.ACCESSORY)) //If the Player actually wore and Accessory to this Party
                 {
                     effect = "Livre Lost";
-                    effectAmount = Random.Range(30, 61) * -1;
+					effectAmount =  -Random.Range(30, 61);
                     Party.wonRewardsList.Add(new Reward(Party, "Livre", effectAmount));
+					AdjustValueVO vo = new AdjustValueVO(BalanceTypes.LIVRE, effectAmount);
+					DeWinterApp.SendMessage<AdjustValueVO>(vo);
                 }
                 break;
             case 6:
@@ -737,7 +736,7 @@ public class WorkTheHostManager : MonoBehaviour
                 break;
             case 7:
                 effect = "New Enemy";
-                EnemyInventory.AddEnemy(new Enemy(GameData.factionList[Party.faction]));
+                EnemyInventory.AddEnemy(new Enemy(Party.faction));
                 break;
             case 8:
                 effect = "Forgot All Gossip";
@@ -759,7 +758,7 @@ public class WorkTheHostManager : MonoBehaviour
                 else //If they have no Gossip to Lose
                 {
                     effect = "New Enemy";
-                    EnemyInventory.AddEnemy(new Enemy(GameData.factionList[Party.faction]));
+                    EnemyInventory.AddEnemy(new Enemy(Party.faction));
                 }
                 break;
             case 9:
@@ -944,14 +943,14 @@ public class WorkTheHostManager : MonoBehaviour
         if (charmedAmount + putOutAmount > 0)
         {
             Debug.Log("Conversation Over!");
-            room.cleared = true;
+            room.Cleared = true;
             //Rewards and Gossip Distributed Here
-            Reward givenReward = room.rewardList[5];  //Hosts give level 5 Rewards
+            Reward givenReward = room.Rewards[5];  //Hosts give level 5 Rewards
             GameData.tonightsParty.wonRewardsList.Add(givenReward);
             object[] objectStorage = new object[4];
             objectStorage[0] = charmedAmount;
             objectStorage[1] = putOutAmount;
-            objectStorage[2] = Party.hostHere;
+            objectStorage[2] = room.HostHere;
             objectStorage[3] = givenReward;
             screenFader.gameObject.SendMessage("WorkTheRoomReportModal", objectStorage);
             //Close the Window
@@ -1047,7 +1046,7 @@ public class WorkTheHostManager : MonoBehaviour
                 objectStorage[2] = Random.Range(1, 6);
                 screenFader.gameObject.SendMessage("CreateHostRemarkModal", objectStorage);
                 Text introText = hostRemarkWindow.transform.FindChild("IntroTextPanel").Find("Text").GetComponent<Text>();
-                introText.text = GameData.hostRemarkIntroList[Random.Range(0, GameData.hostRemarkIntroList.Count)];
+				introText.text = _partyModel.HostIntros[Random.Range(0, _partyModel.HostIntros.Length)];
                 //So there'll be a wait before the next Host Remark
                 hostRemarkTimer = Party.host.nextHostRemarkTimer;
                 //Kills the Wait Screen

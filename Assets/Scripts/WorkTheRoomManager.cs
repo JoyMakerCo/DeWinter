@@ -141,6 +141,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
     private PartyModel _partyModel;
 	private MapModel _mapModel;
+	private InventoryModel _inventoryModel;
 
     public RoomVO Room
     {
@@ -158,6 +159,7 @@ public class WorkTheRoomManager : MonoBehaviour
     {
 		_partyModel = DeWinterApp.GetModel<PartyModel>();
 		_mapModel = DeWinterApp.GetModel<MapModel>();
+		_inventoryModel = DeWinterApp.GetModel<InventoryModel>();
 
         screenFader = this.transform.parent.GetComponent<SceneFadeInOut>();
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
@@ -217,17 +219,12 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //Ready Go Text
-        readyGoText.text = GameData.conversationIntroList[Random.Range(0, GameData.conversationIntroList.Count)];
+		readyGoText.text = _partyModel.ConversationIntros[Random.Range(0, _partyModel.ConversationIntros.Length)];
         StartCoroutine(ConversationStartTimerWait());
 
         //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
-        if (GameData.Accessories[GameData.PartyAccessory].Type() == "Fascinator")
-        {
-            fascinatorEffect = true;
-        } else
-        {
-            fascinatorEffect = false;
-        }
+        ItemVO accessory;
+		fascinatorEffect = (_inventoryModel.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Type == "Fascinator");
     }
 
     // Update is called once per frame
@@ -888,13 +885,11 @@ public class WorkTheRoomManager : MonoBehaviour
                 drinkStrength -= 3;
             }
             //Is the Player using the Snuff Box Accessory? If so, then decrease the Intoxicating Effects of Booze!
-            if (GameData.PartyAccessory != -1)
+            ItemVO accessory;
+			if (_inventoryModel.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Type == "Snuff Box")
             {
-                if (GameData.Accessories[GameData.PartyAccessory].Type() == "Snuff Box")
-                {
-                    drinkStrength -= 5;
-                }
-            }        
+                drinkStrength -= 5;
+            }
             Party.currentPlayerIntoxication += drinkStrength;
             foreach (Guest t in Room.Guests)
             {
@@ -914,6 +909,7 @@ public class WorkTheRoomManager : MonoBehaviour
         int effectSelection = Random.Range(1, 11);
         string effect;
         int effectAmount = 0;
+		AdjustValueVO vo;
         switch (effectSelection)
         {
             case 1:
@@ -929,32 +925,33 @@ public class WorkTheRoomManager : MonoBehaviour
             case 3:
                 effect = "Outfit Novelty Loss";
                 effectAmount = Random.Range(20, 51);
-                OutfitInventory.personalInventory[OutfitInventory.PartyOutfit].novelty = Mathf.Clamp(OutfitInventory.personalInventory[OutfitInventory.PartyOutfit].novelty - effectAmount, 0, 100);
+                OutfitInventory.PartyOutfit.novelty = Mathf.Clamp(OutfitInventory.PartyOutfit.novelty - effectAmount, 0, 100);
                 break;
             case 4:
                 effect = "Outfit Ruined";
-                OutfitInventory.personalInventory.RemoveAt(OutfitInventory.PartyOutfit);
+                OutfitInventory.personalInventory.Remove(OutfitInventory.PartyOutfit);
                 break;
             case 5:
                 effect = "Accessory Ruined";
-                if(GameData.PartyAccessory != -1) //If the Player actually wore and Accessory to this Party
-                {
-                    GameData.Accessories.RemoveAt(GameData.PartyAccessory);
-                } else
+                if(!_inventoryModel.Equipped.Remove(ItemConsts.ACCESSORY)) //If the Player actually wore and Accessory to this Party
                 {
                     effect = "Livre Lost";
-                    effectAmount = Random.Range(30, 61) * -1;
+                    effectAmount = -Random.Range(30, 61);
                     Party.wonRewardsList.Add(new Reward(Party, "Livre", effectAmount));
+                    vo = new AdjustValueVO(BalanceTypes.LIVRE, effectAmount);
+                    DeWinterApp.SendMessage<AdjustValueVO>(vo);
                 }
                 break;
             case 6:
-                effect = "Livre Lost";
-                effectAmount = Random.Range(30, 61) * -1;
+				effect = "Livre Lost";
+                effectAmount = -Random.Range(30, 61);
                 Party.wonRewardsList.Add(new Reward(Party, "Livre", effectAmount));
+                vo = new AdjustValueVO(BalanceTypes.LIVRE, effectAmount);
+                DeWinterApp.SendMessage<AdjustValueVO>(vo);
                 break;
             case 7:
                 effect = "New Enemy";
-                EnemyInventory.AddEnemy(new Enemy(GameData.factionList[Party.faction]));
+                EnemyInventory.AddEnemy(new Enemy(Party.faction));
                 break;
             case 8:
                 effect = "Forgot All Gossip";
@@ -975,7 +972,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 } else //If they have no Gossip to Lose
                 {
                     effect = "New Enemy";
-                    EnemyInventory.AddEnemy(new Enemy(GameData.factionList[Party.faction]));
+                    EnemyInventory.AddEnemy(new Enemy(Party.faction));
                 }
                 break;
             case 9:
@@ -1208,7 +1205,7 @@ public class WorkTheRoomManager : MonoBehaviour
                     foreach (Reward r in GameData.tonightsParty.wonRewardsList)
                     {
                         //If that Servant has already been Introduced or if the Reward of their Introduction has already been handed out then change the Reward to Gossip
-                        if ((r.SubType() == givenReward.SubType() && r.amount > 0) || GameData.servantDictionary[givenReward.SubType()].Introduced())
+                        if ((r.SubType() == givenReward.SubType() && r.amount > 0) || DeWinterApp.GetModel<ServantModel>().Introduced.ContainsKey(givenReward.SubType()))
                         {
                             givenReward = new Reward(GameData.tonightsParty, "Gossip", 1);
                         }
@@ -1375,7 +1372,7 @@ public class WorkTheRoomManager : MonoBehaviour
     void VisualizeGuests()
     {
         //Guest 0
-        guest0InterestText.text = InterestState(Room.Guests[0].name);
+        guest0InterestText.text = InterestState(Room.Guests[0]);
         if (Room.Guests[0].isEnemy)
         {
             guest0InterestText.color = Color.red;

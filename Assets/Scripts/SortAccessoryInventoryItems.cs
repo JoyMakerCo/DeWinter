@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace DeWinter
@@ -26,13 +27,15 @@ namespace DeWinter
 
 	    private InventoryModel _model;
 
-	    private ItemVO[] _list;
+	    private List<ItemVO> _list;
 
 	    // Use this for initialization
 	    void Start()
 	    {
 			_model = DeWinterApp.GetModel<InventoryModel>();
 	        SetUpButtons();
+
+	        _model.Inventory.TryGetValue(ItemConsts.ACCESSORY, out _list);
 	        SortByType();
 	    }
 
@@ -51,89 +54,35 @@ namespace DeWinter
 
 	    public void SortByType()
 	    {
-// 			Array.Sort(_list
-	        if (sortedBy == "type")
-	        {
-	            ascendingOrder = !ascendingOrder;
-	        }
-	        else
-	        {
-	            ascendingOrder = false;
-	        }
-	        SelectedButton("type");
+			ascendingOrder = (sortedBy == "type") && !ascendingOrder;
+			SelectedButton("type");
 	        sortedBy = "type";
-	        bool swapped = true;
-	        while (swapped)
-	        {
-	            swapped = false;
-	            for (int i = 1; i < OutfitInventory.outfitInventories[inventoryType].Count; i++)
-	            {
-	                if (ascendingOrder)
-	                {
-	                    if (AccessoryInventory.accessoryInventories[inventoryType][i - 1].TypeNumber() > AccessoryInventory.accessoryInventories[inventoryType][i].TypeNumber())
-	                    {
-	                        Swap(i - 1, i);
-	                        swapped = true;
-	                    }
-	                }
-	                else
-	                {
-	                    if (AccessoryInventory.accessoryInventories[inventoryType][i - 1].TypeNumber() < AccessoryInventory.accessoryInventories[inventoryType][i].TypeNumber())
-	                    {
-	                        Swap(i - 1, i);
-	                        swapped = true;
-	                    }
-	                }
-	            }
-	        }
-	    }
+ 			_list.Sort(sortByTypeComparer);
+ 		}
+
+		private int sortByTypeComparer(ItemVO a, ItemVO b)
+		{
+			return ascendingOrder ? a.Name.CompareTo(b.Name) : b.Name.CompareTo(a.Name);
+		}
 
 	    public void SortByStyle()
 	    {
-	        if (sortedBy == "style")
-	        {
-	            ascendingOrder = !ascendingOrder;
-	        }
-	        else
-	        {
-	            ascendingOrder = false;
-	        }
-	        SelectedButton("style");
-	        sortedBy = "style";
-	        bool swapped = true;
-	        while (swapped)
-	        {
-	            swapped = false;
-	            for (int i = 1; i < AccessoryInventory.accessoryInventories[inventoryType].Count; i++)
-	            {
-	                if (ascendingOrder)
-	                {
-	                    if (AccessoryInventory.accessoryInventories[inventoryType][i - 1].StyleNumber() > AccessoryInventory.accessoryInventories[inventoryType][i].StyleNumber())
-	                    {
-	                        Swap(i - 1, i);
-	                        swapped = true;
-	                    }
-	                }
-	                else
-	                {
-	                    if (AccessoryInventory.accessoryInventories[inventoryType][i - 1].StyleNumber() < AccessoryInventory.accessoryInventories[inventoryType][i].StyleNumber())
-	                    {
-	                        Swap(i - 1, i);
-	                        swapped = true;
-	                    }
-	                }
-	            }
-	        }
-	    }
+			ascendingOrder = (sortedBy == "style") && !ascendingOrder;
+			SelectedButton("style");
+			sortedBy = "style";
+ 			_list.Sort(sortByStyleComparer);
+ 		}
 
-	    void Swap(int accessory1, int accessory2)
-	    {
-	        Accessory placeHolder1 = AccessoryInventory.accessoryInventories[inventoryType][accessory1];
-	        Accessory placeHolder2 = AccessoryInventory.accessoryInventories[inventoryType][accessory2];
+		private int sortByStyleComparer(ItemVO a, ItemVO b)
+		{
+			object styleA, styleB;
+			if (a.States == null || !a.States.TryGetValue(ItemConsts.STYLE, out styleA))
+				styleA = null;
+			if (b.States == null || !b.States.TryGetValue(ItemConsts.STYLE, out styleB))
+				styleB = null;
 
-	        AccessoryInventory.accessoryInventories[inventoryType][accessory1] = placeHolder2;
-	        AccessoryInventory.accessoryInventories[inventoryType][accessory2] = placeHolder1;
-	    }
+			return ascendingOrder ? ((string)styleA).CompareTo((string)styleB) : ((string)styleB).CompareTo((string)styleA);
+		}
 
 	    void SelectedButton(string button)
 	    {

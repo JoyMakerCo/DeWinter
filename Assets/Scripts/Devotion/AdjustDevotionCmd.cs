@@ -3,9 +3,9 @@ using Core;
 
 namespace DeWinter
 {
-	public class AdjustDevotionCmd : ICommand<AdjustBalanceVO>
+	public class AdjustDevotionCmd : ICommand<AdjustValueVO>
 	{
-		public void Execute (AdjustBalanceVO vo)
+		public void Execute (AdjustValueVO vo)
 		{
 			NotableVO notable;
 			DevotionModel model = DeWinterApp.GetModel<DevotionModel>();
@@ -14,7 +14,7 @@ namespace DeWinter
 				notable.Devotion += (int)vo.Amount;
 				model.Notables[vo.Type] = notable;
 				vo.IsRequest = false;
-				DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+				DeWinterApp.SendMessage<AdjustValueVO>(vo);
 			}
 		}
 	}

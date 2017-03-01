@@ -9,6 +9,7 @@ public static class GameData
 	public static Party tonightsParty
 	{
 		get { return DeWinterApp.GetModel<PartyModel>().Party; }
+		set { DeWinterApp.GetModel<PartyModel>().Party = value; }
 	}
 
 	public static ItemVO partyAccessory
@@ -43,6 +44,11 @@ public static class GameData
 	{
 		get { return DeWinterApp.GetModel<GameModel>().Reputation; }
 		set { DeWinterApp.GetModel<GameModel>().Reputation = value; }
+	}
+
+	public static int playerReputationLevel
+	{
+		get { return DeWinterApp.GetModel<GameModel>().ReputationLevel; }
 	}
 
 	public static string Allegiance

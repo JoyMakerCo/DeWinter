@@ -11,7 +11,7 @@ namespace DeWinter
 			if (day.Day%7 == 0)
 			{
 				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-				AdjustBalanceVO vo = new AdjustBalanceVO(BalanceTypes.LIVRE, 0);
+				AdjustValueVO vo = new AdjustValueVO(BalanceTypes.LIVRE, 0);
 				ServantVO servant;
 				foreach (KeyValuePair<string, ServantVO[]> kvp in smod.Servants)
 	            {
@@ -22,7 +22,7 @@ namespace DeWinter
 
 	            if (vo.Amount < 0)
 	            {
-		            DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+					DeWinterApp.SendMessage<AdjustValueVO>(vo);
 		            //TODO: Pop Up Window to explain the Transaction        
 	         	}
 			}

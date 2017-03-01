@@ -14,10 +14,10 @@ namespace DeWinter
 	    {
 	        myText = this.GetComponent<Text>();
 			_model = DeWinterApp.GetModel<PartyModel>();
-	        DeWinterApp.Subscribe<AdjustBalanceVO>(HandleConfidenceUpdate);
+			DeWinterApp.Subscribe<AdjustValueVO>(HandleConfidenceUpdate);
 	    }
 
-		private void HandleConfidenceUpdate(AdjustBalanceVO vo)
+		private void HandleConfidenceUpdate(AdjustValueVO vo)
 	    {
 	    	if (!vo.IsRequest)
 	    	{

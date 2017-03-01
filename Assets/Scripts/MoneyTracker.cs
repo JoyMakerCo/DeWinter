@@ -13,11 +13,11 @@ namespace DeWinter
 	    void Start()
 	    {
 	        myText = GetComponent<Text>();
-	        DeWinterApp.Subscribe<AdjustBalanceVO>(HandleBalanceUpdate);
+			DeWinterApp.Subscribe<AdjustValueVO>(HandleBalanceUpdate);
 			DeWinterApp.Subscribe<CalendarDayVO>(HandleDateUpdate);
 	    }
 
-		private void HandleBalanceUpdate(AdjustBalanceVO vo)
+		private void HandleBalanceUpdate(AdjustValueVO vo)
 		{
 			if (!vo.IsRequest && vo.Type == BalanceTypes.LIVRE)
 			{

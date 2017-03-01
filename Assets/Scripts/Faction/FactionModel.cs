@@ -27,16 +27,16 @@ namespace DeWinter
 
 		public void Initialize()
 		{
-			DeWinterApp.Subscribe<AdjustBalanceVO>(HandleFactionReputation);
-			DeWinterApp.Subscribe<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
-			DeWinterApp.Subscribe<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+			DeWinterApp.Subscribe<AdjustValueVO>(HandleFactionReputation);
+			DeWinterApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
+			DeWinterApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
 		}
 
 		public void Dispose()
 		{
-			DeWinterApp.Unsubscribe<AdjustBalanceVO>(HandleFactionReputation);
-			DeWinterApp.Unsubscribe<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
-			DeWinterApp.Unsubscribe<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleFactionReputation);
+			DeWinterApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
+			DeWinterApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
 		}
 
 		public FactionVO this[string faction]
@@ -66,33 +66,33 @@ namespace DeWinter
 			}
 		}
 
-		private void HandleFactionReputation(AdjustBalanceVO vo)
+		private void HandleFactionReputation(AdjustValueVO vo)
 		{
 			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
 			{
 				_factions[vo.Type].playerReputation += (int)vo.Amount;
 				vo.IsRequest = false;
-				DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+				DeWinterApp.SendMessage<AdjustValueVO>(vo);
 			}
 		}
 
-		private void HandleFactionAllegiance(AdjustBalanceVO vo)
+		private void HandleFactionAllegiance(AdjustValueVO vo)
 		{
 			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
 			{
 				_factions[vo.Type].Allegiance += (int)vo.Amount;
 				vo.IsRequest = false;
-				DeWinterApp.SendMessage<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
+				DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
 			}
 		}
 
-		private void HandleFactionPower(AdjustBalanceVO vo)
+		private void HandleFactionPower(AdjustValueVO vo)
 		{
 			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
 			{
 				_factions[vo.Type].Power += (int)vo.Amount;
 				vo.IsRequest = false;
-				DeWinterApp.SendMessage<AdjustBalanceVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
+				DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
 			}
 		}
 	}

@@ -17,10 +17,10 @@ namespace DeWinter
 		public int MaxDrinkAmount;
 
 		[JsonProperty("conversationIntroList")]
-		public Disposition[] ConversationIntros;
+		public string[] ConversationIntros;
 
 		[JsonProperty("hostRemarkIntroList")]
-		public Disposition[] HostIntros;
+		public string[] HostIntros;
 
 		[JsonProperty("dispositionList")]
 		public Disposition[] Dispositions;

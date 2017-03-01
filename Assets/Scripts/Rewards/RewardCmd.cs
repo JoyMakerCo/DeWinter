@@ -7,13 +7,13 @@ namespace DeWinter
 	{
 		public void Execute(RewardVO reward)
 		{
-			AdjustBalanceVO vo = new AdjustBalanceVO();
+			AdjustValueVO vo = new AdjustValueVO();
 			foreach(KeyValuePair<string, double> kvp in reward.Balances)
 			{
 				vo.Type = kvp.Key;
 				vo.Amount = kvp.Value;
 				vo.IsRequest = true;
-				DeWinterApp.SendMessage<AdjustBalanceVO>(vo);
+				DeWinterApp.SendMessage<AdjustValueVO>(vo);
 			}
 		}
 	}

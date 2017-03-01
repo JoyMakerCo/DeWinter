@@ -96,7 +96,7 @@ public class Outfit
         {
 // TODO: This value should be modified within the model, not the VO
         	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-			if (smod.Hired.ContainsKey("Seamstress") != null || smod.Hired.ContainsKey("Tailor") != null)
+			if (smod.Hired.ContainsKey("Seamstress") || smod.Hired.ContainsKey("Tailor"))
 			{
 				return (int)(outfitPrice * smod.SeamstressDiscount);
 			}
