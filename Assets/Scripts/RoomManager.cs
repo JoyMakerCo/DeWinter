@@ -43,7 +43,7 @@ public class RoomManager : MonoBehaviour
         party = p;
         GameObject roomHolder = new GameObject();
         roomHolder.transform.SetParent(canvas.transform, false);
-        roomHolder.transform.localPosition = new Vector3(0, -50, 0);
+        roomHolder.transform.localPosition = new Vector3(0, -25, 0);
         roomHolder.transform.SetAsFirstSibling();
         //Make the Room Buttons ----------------------
         //Positioning (Set Up)
@@ -122,7 +122,7 @@ public class RoomManager : MonoBehaviour
 
     void RandomWineCheck()
     {
-        if(GameData.factionList[party.faction].PlayerReputationLevel() >= 5)
+        if(party.faction.PlayerReputationLevel() >= 5)
         {
             int randomInt = Random.Range(0, 4);
             if(randomInt == 0)
@@ -209,7 +209,12 @@ public class RoomManager : MonoBehaviour
 
     public void ChoiceModal(int xPos, int yPos)
     {
-        if (!currentPlayerRoom.entrance) // Players can freely move through the Entrance Tile
+        Debug.Log("No Move Through:" + currentPlayerRoom.noMoveThrough);
+        Debug.Log("Cleared:" + currentPlayerRoom.cleared);
+        if (currentPlayerRoom.noMoveThrough && currentPlayerRoom.cleared) 
+        {   
+          //No Modal  
+        } else
         {
             //Work the Room or Move Through
             int[] intStorage = new int[2];
@@ -258,7 +263,7 @@ public class RoomManager : MonoBehaviour
 
     public void MoveThrough()
     {
-        if (!currentPlayerRoom.hostHere)
+        if (!currentPlayerRoom.hostHere && !currentPlayerRoom.noMoveThrough) //If this is not a Host Room and the Player is allowed to Move Through this Room
         {
             int checkValue = Random.Range(0, 100);
             string[] stringStorage = new string[1];

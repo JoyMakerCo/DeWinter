@@ -8,6 +8,10 @@ public class GameData : MonoBehaviour
     static GameData instance = null;
 
     //Basic Data Book Keeping
+    public static string playerCharacter;
+    public static string gameDifficulty;
+    public static bool fTEsOn;
+
     public static int moneyCount;
     public static int currentMonth;
     public static int currentDay;
@@ -125,7 +129,7 @@ public class GameData : MonoBehaviour
 
 
         //Reputation
-        reputationCount = 400;
+        reputationCount = 20;
         reputationLevels = new ReputationLevel[11];
         reputationLevels[0] = new ReputationLevel(0, 0, -10, 0);
         reputationLevels[1] = new ReputationLevel(1, 20, 0, 0);
@@ -318,7 +322,10 @@ public class GameData : MonoBehaviour
         gossipInventory.Clear();
 
         //Enemy Stuff
-        EnemyInventory.enemyInventory.Clear();
+        if(EnemyInventory.enemyInventory != null)
+        {
+            EnemyInventory.enemyInventory.Clear();
+        }
 
         //Pierre Quest Inventory and Related Stuff
         lastQuestDay = 0;

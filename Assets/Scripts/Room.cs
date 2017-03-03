@@ -7,6 +7,8 @@ public class Room {
     public Party party; //What party is this Room part of?
     public int starRating; //How difficult is this Room? 1-5 Stars
     public bool cleared; //Has this Room been Cleared?
+    public bool tutorial; //Is this the first Room in the Tutorial? If so, then a pop up will happen in this Room. Ugh... there has GOT be a less hax way to do this...
+    public bool noMoveThrough; //Can you 'Move Through' this room? Will only be used in the Tutorial and maybe the trial. Again, there has GOT to be a less hax way to do this
 
     public string name; //Randomly Generated Room Name
     public int xPos; //Where is this room in the Party's Room Grid?
@@ -24,6 +26,9 @@ public class Room {
     public List<Reward> rewardList = new List<Reward>(); //Holds all the Rewards one could win from the Room. Index 4 = 4 Charmed Guests, Index 3 = 3 Charmed Guests, etc...
     public List<Gossip> gossipList = new List<Gossip>();
 
+    public float currentTurnTimer; //Used in Conversations
+    public float maxTurnTimer; //Also Used in Conversations
+
     public Notable host;
 
     //Initially used in Party Generation
@@ -35,6 +40,10 @@ public class Room {
         name = GenerateName();
         GenerateRewards();
         revealed = false;
+        maxTurnTimer = 5;
+        currentTurnTimer = maxTurnTimer;
+        tutorial = false;
+        noMoveThrough = false;
     }
 
     string GenerateName()
@@ -63,13 +72,13 @@ public class Room {
         }
     }
 
-    public void SetStarRating(int stars) //Only should be used at creation
+    public void SetStarRatingAndGuests(int stars, int guests) //Only should be used at creation
     {
         starRating = stars;
-        GenerateGuestsAndHost();
+        GenerateGuestsAndHost(guests);
     }
-
-    void GenerateGuestsAndHost()
+    
+    void GenerateGuestsAndHost(int guests)
     {
         guestList.Clear(); // Just in case, to make sure there aren't more than 4 Guests
         //Constructor = Guest(opinion, interest cap)
@@ -80,38 +89,38 @@ public class Room {
                 name = "?????";
                 break;
             case 1:
-                guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
-                guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
-                guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
-                guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(25, 51), Random.Range(6, 10)));
+                }
                 break;
             case 2:
-                guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
-                guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
-                guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
-                guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(25, 46), Random.Range(5, 9)));
+                }
                 break;
             case 3:
-                guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
-                guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
-                guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
-                guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(25, 41), Random.Range(4, 8)));
+                }
                 break;
             case 4:
-                guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
-                guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
-                guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
-                guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(25, 36), Random.Range(3, 7)));
+                }
                 break;
             case 5:
-                guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
-                guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
-                guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
-                guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
+                for (int i = 0; i < guests; i++)
+                {
+                    guestList.Add(new Guest(Random.Range(20, 31), Random.Range(2, 6)));
+                }
                 break;
             case 6:
                 hostHere = true;
-                host = new Notable();
+                host = party.host;
                 name = "The Host's Quarters";
                 break;
         }
@@ -141,4 +150,21 @@ public class Room {
             }
         }
     }
+
+    public void SetTurnTimer(float newTurnTimer)
+    {
+        maxTurnTimer = newTurnTimer;
+        currentTurnTimer = maxTurnTimer;
+    }
+
+    public void SetTutorial()
+    {
+        tutorial = true;
+    }
+
+    public void SetNoMoveThrough()
+    {
+        noMoveThrough = true;
+    }
+
 }

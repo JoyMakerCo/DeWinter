@@ -14,22 +14,7 @@ public class CalendarManager : MonoBehaviour {
         {
             PrepareTonightsParty();
             PartyInvitations();
-            //Missed RSVPs
-            if (GameData.currentDay != 0)
-            {
-                if (GameData.calendar.daysFromNow(-1).party1.RSVP == 0 && (GameData.factionList[GameData.calendar.daysFromNow(-1).party1.faction].largestAllowableParty() >= GameData.calendar.daysFromNow(-1).party1.partySize)) //If the Party from the night before wasn't replied to then:
-                {
-                    GameData.reputationCount -= 20;
-                    GameData.factionList[GameData.calendar.daysFromNow(-1).party1.faction].playerReputation -= 40;
-                    screenFader.gameObject.SendMessage("CreateMissedPartyRSVPModal", GameData.calendar.daysFromNow(-1).party1); //Party from the night before
-                }
-                if (GameData.calendar.daysFromNow(-1).party2.RSVP == 0 && (GameData.factionList[GameData.calendar.daysFromNow(-1).party2.faction].largestAllowableParty() >= GameData.calendar.daysFromNow(-1).party2.partySize)) //If the Party from the night before wasn't replied to then:
-                {
-                    GameData.reputationCount -= 20;
-                    GameData.factionList[GameData.calendar.daysFromNow(-1).party2.faction].playerReputation -= 40;
-                    screenFader.gameObject.SendMessage("CreateMissedPartyRSVPModal", GameData.calendar.daysFromNow(-1).party2); //Party from the night before
-                }
-            }  
+            MissedRSVPsCheck();
         }
     }
 
@@ -49,6 +34,7 @@ public class CalendarManager : MonoBehaviour {
         {
             GameData.tonightsParty = GameData.calendar.today().party1;
         }
+        GameData.tonightsParty = GameData.calendar.today().party1;
         Debug.Log("Tonights Party is: a " + GameData.tonightsParty.partySize + " " + GameData.tonightsParty.faction + " Party");
     }
 
@@ -64,7 +50,7 @@ public class CalendarManager : MonoBehaviour {
                 if (i <= party.invitationDistance && party.invited == false && party.partySize > 0)
                 {
                     //Is the Player of the Right Faction Benefit Level? 
-                    if (party.partySize <= GameData.factionList[party.faction].largestAllowableParty())
+                    if (party.partySize <= party.faction.largestAllowableParty())
                     {
                         //Invitation Pop Up
                         screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
@@ -94,7 +80,7 @@ public class CalendarManager : MonoBehaviour {
                     if (i <= party.invitationDistance && party.invited == false && party.partySize > 0)
                     {
                         //Is the Player of the Right Faction Benefit Level? 
-                        if (party.partySize <= GameData.factionList[party.faction].largestAllowableParty())
+                        if (party.partySize <= party.faction.largestAllowableParty())
                         {
                             //Invitation Pop Up
                             screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
@@ -111,6 +97,25 @@ public class CalendarManager : MonoBehaviour {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    void MissedRSVPsCheck()
+    {
+        if (GameData.currentDay != 0)
+        {
+            if (GameData.calendar.yesterday().party1.RSVP == 0 && (GameData.calendar.yesterday().party1.faction.largestAllowableParty() >= GameData.calendar.yesterday().party1.partySize)) //If the Party from the night before wasn't replied to then:
+            {
+                GameData.reputationCount -= 20;
+                GameData.calendar.yesterday().party1.faction.playerReputation -= 40;
+                screenFader.gameObject.SendMessage("CreateMissedPartyRSVPModal", GameData.calendar.yesterday().party1); //Party from the night before
+            }
+            if (GameData.calendar.yesterday().party2.RSVP == 0 && (GameData.calendar.yesterday().party2.faction.largestAllowableParty() >= GameData.calendar.yesterday().party2.partySize)) //If the Party from the night before wasn't replied to then:
+            {
+                GameData.reputationCount -= 20;
+                GameData.calendar.yesterday().party2.faction.playerReputation -= 40;
+                screenFader.gameObject.SendMessage("CreateMissedPartyRSVPModal", GameData.calendar.yesterday().party2); //Party from the night before
             }
         }
     }

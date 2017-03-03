@@ -16,13 +16,14 @@ public class Remark {
     {
         toneInt = Random.Range(0, 4);
         tone = GameData.dispositionList[toneInt].like; //Randomly takes a tone for the Remark from the disposition list
-        GenerateTargettingProfile();
+        GenerateTargettingProfile(2);
         ambushRemark = false;
     }
 
-    public Remark(string info)
+    public Remark(string info, int guestNumber)
     {
-        if (info == "ambush") {
+        if (info == "ambush")
+        {
             ambushRemark = true;
         }
         else
@@ -44,12 +45,22 @@ public class Remark {
                 RandomExclusiveTone(3);
             }
         }
-        GenerateTargettingProfile();
+        GenerateTargettingProfile(guestNumber);
     }
 	
-    void GenerateTargettingProfile()
+    void GenerateTargettingProfile(int guestNumber) //Guest Number is the number of Guests in the Room, which determines the targetting profiles available
     {
-        int profileInt = Random.Range(1, 6);
+        int profileInt;
+        if (guestNumber == 2)
+        {
+            profileInt = Random.Range(1, 4);
+        } else if (guestNumber == 3)
+        {
+            profileInt = Random.Range(1, 5);
+        } else
+        {
+            profileInt = Random.Range(1, 6);
+        }
         switch (profileInt)
         {
             case 1:

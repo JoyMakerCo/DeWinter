@@ -23,29 +23,29 @@ public class Day {
     {
         if (month == 0 && day == 0)
         {
-            party1 = new Party(-1);//No Party on the first day
-            party2 = new Party(-1);
+            party1 = new Party(0);//No Party on the first day
+            party2 = new Party(0);
         }
         else if (month == 0 && day == 1)
         {
             party1 = new Party(1); // Guaranteed Tiny Party
-            party2 = new Party(-1);
+            party2 = new Party(0);
         }
         else if (month == 0 && day == 4)
         {
             party1 = new Party(1); // Guaranteed Tiny Party
-            party2 = new Party(-1);
+            party2 = new Party(0);
         }
         else
         {
-            party1 = new Party();
+            party1 = new Party(Random.Range(0, 4));
             if (Random.Range(1, 4) == 1)
             {
                 party2 = new Party(party1.faction);
             }
             else
             {
-                party2 = new Party(-1);
+                party2 = new Party(0);
             }
         }
     }

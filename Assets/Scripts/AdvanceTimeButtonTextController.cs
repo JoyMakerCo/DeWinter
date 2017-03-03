@@ -16,14 +16,21 @@ public class AdvanceTimeButtonTextController : MonoBehaviour {
 
     void Update ()
     {
-        if (GameData.tonightsParty.faction == null || GameData.tonightsParty.RSVP == -1 || GameData.tonightsParty.RSVP == 0)
+        if (GameData.tonightsParty != null)
         {
-            myOutline.effectColor = Color.clear;
-            myText.text = "Next Day";
+            if (GameData.tonightsParty.faction == null || GameData.tonightsParty.RSVP == -1 || GameData.tonightsParty.RSVP == 0)
+            {
+                myOutline.effectColor = Color.clear;
+                myText.text = "Next Day";
+            }
+            else
+            {
+                myOutline.effectColor = Color.yellow;
+                myText.text = "Go to the Party!";
+            }
         } else
         {
-            myOutline.effectColor = Color.yellow;
-            myText.text = "Go to the Party!";
-        }
+            Debug.Log("Tonight's party isn't being assigned!");
+        }    
 	}
 }

@@ -27,7 +27,7 @@ public class Faction {
         luxuryLike = lL;
         power = 10;
         allegiance = all;
-        playerReputation = 0;
+        playerReputation = 20;
         playerReputationLevelRequirements = new int[11];
         playerConfidenceBonus = new int[11];
         StockPlayerReputationLevelRequirements();
