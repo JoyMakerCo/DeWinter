@@ -21,6 +21,6 @@ public class DifficultySelectionController : MonoBehaviour {
         normalButton.GetComponent<Image>().color = Color.black;
         hardButton.GetComponent<Image>().color = Color.gray;
         difficultyDescriptionText.text = "Ideal for new Players, this difficulty setting will provide a decent challenge but also let you sit back and experience the story."
-                                    + "\n\nRememeber: You might not get the ending you want at first, but that's alright. Surprises are part of the fun!";
+                                    + "\n\nRemember: You might not get the ending you want at first, but that's alright. Surprises are part of the fun!";
     }
 }
