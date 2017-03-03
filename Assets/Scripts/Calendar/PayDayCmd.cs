@@ -11,7 +11,7 @@ namespace DeWinter
 			if (day.Day%7 == 0)
 			{
 				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-				AdjustValueVO vo = new AdjustValueVO(BalanceTypes.LIVRE, 0);
+				AdjustValueVO vo = new AdjustValueVO(GameConsts.LIVRE, 0);
 				ServantVO servant;
 				foreach (KeyValuePair<string, ServantVO[]> kvp in smod.Servants)
 	            {

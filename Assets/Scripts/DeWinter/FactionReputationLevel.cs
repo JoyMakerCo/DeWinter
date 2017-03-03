@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace DeWinter
 {
-	public class FactionReputationLevel
+	public class ReputationLevel
 	{
 		[JsonProperty("reputation")]
 		public int Reputation;
@@ -15,6 +15,6 @@ namespace DeWinter
 		public int PartyInviteImportance;
 
 		[JsonProperty("text")]
-		public int Description;
+		public string Description;
 	}
 }

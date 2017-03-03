@@ -19,7 +19,7 @@ namespace DeWinter
 
 		private void HandleBalanceUpdate(AdjustValueVO vo)
 		{
-			if (!vo.IsRequest && vo.Type == BalanceTypes.LIVRE)
+			if (!vo.IsRequest && vo.Type == GameConsts.LIVRE)
 			{
 				myText.text = vo.Amount.ToString("£" + "#,##0");
 

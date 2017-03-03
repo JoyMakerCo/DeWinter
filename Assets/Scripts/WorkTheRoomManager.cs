@@ -938,7 +938,7 @@ public class WorkTheRoomManager : MonoBehaviour
                     effect = "Livre Lost";
                     effectAmount = -Random.Range(30, 61);
                     Party.wonRewardsList.Add(new Reward(Party, "Livre", effectAmount));
-                    vo = new AdjustValueVO(BalanceTypes.LIVRE, effectAmount);
+                    vo = new AdjustValueVO(GameConsts.LIVRE, effectAmount);
                     DeWinterApp.SendMessage<AdjustValueVO>(vo);
                 }
                 break;
@@ -946,7 +946,7 @@ public class WorkTheRoomManager : MonoBehaviour
 				effect = "Livre Lost";
                 effectAmount = -Random.Range(30, 61);
                 Party.wonRewardsList.Add(new Reward(Party, "Livre", effectAmount));
-                vo = new AdjustValueVO(BalanceTypes.LIVRE, effectAmount);
+                vo = new AdjustValueVO(GameConsts.LIVRE, effectAmount);
                 DeWinterApp.SendMessage<AdjustValueVO>(vo);
                 break;
             case 7:

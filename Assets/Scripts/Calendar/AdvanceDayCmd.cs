@@ -9,7 +9,8 @@ namespace DeWinter
 		{
 			CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
 			model.Day++;
-		}
+
+			OutfitInventory.RestockMerchantInventory();
+		} 
 	}
 }
-

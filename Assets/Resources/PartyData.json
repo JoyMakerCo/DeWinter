@@ -7,7 +7,6 @@
         "Oh, I've heard so much about you!",
         "You simply must meet my friends!"
 	],
-
     hostRemarkIntroList:[
         "Have you enjoyed yourself so far?",
         "What do you think of the new king?",
@@ -16,16 +15,16 @@
         "Wherever did you get that dress?"
 	],
     oldDispositionList:[
-        { "Aggressive", 0xFF0000, "Boast", "Reassurance" },
-        { "Mysterious", 0xFF00FF, "Intrigue", "Flattery" },
-        { "Vain", 0x0000FF, "Flattery", "Boast" },
-        { "Infirm", 0xFFFF00, "Reassurance", "Intrigue" }
+        { name:"Aggressive", color:0xFF0000, like:"Boast", dislike:"Reassurance" },
+        { name:"Mysterious", color:0xFF00FF, like:"Intrigue", dislike:"Flattery" },
+        { name:"Vain", color:0x0000FF, like:"Flattery", dislike:"Boast" },
+        { name:"Infirm", color:0xFFFF00, like:"Reassurance", dislike:"Intrigue" }
 	],
     dispositionList:[
-        { "Politics", 0xFF0000, "Politics", "Theatre" },
-        { "Theatre", 0xFF00FF, "Theatre", "Gossip" },
-        { "Gossip", 0x0000FF, "Gossip", "Music" },
-        { "Music", 0xFFFF00, "Music", "Politics" }
+        { name:"Politics", color:0xFF0000, like:"Politics", dislike:"Theatre" },
+        { name:"Theatre", color:0xFF00FF, like:"Theatre", dislike:"Gossip" },
+        { name:"Gossip", color:0x0000FF, like:"Gossip", dislike:"Music" },
+        { name:"Music", color:0xFFFF00, like:"Music", dislike:"Politics" }
 	],
     femaleTitleList:[
         "Duchess",

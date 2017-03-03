@@ -22,8 +22,8 @@ public class EventOptionButton : MonoBehaviour {
 
     public void DisplayEventOption()
     {
-		Event selectedEvent = _eventModel.SelectedEvent;
-		EventOption eventOption = selectedEvent.eventStages[selectedEvent.currentStage].stageEventOptions[option];
+		EventVO selectedEvent = _eventModel.SelectedEvent;
+		EventOption eventOption = selectedEvent.currentStage.Options[option];
 		bool show = (eventOption.optionButtonText != null);
 
 

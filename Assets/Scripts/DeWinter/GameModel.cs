@@ -21,7 +21,7 @@ namespace DeWinter
 			set
 			{
 				_livre = value;
-				DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(BalanceTypes.LIVRE, _livre, false));
+				DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(GameConsts.LIVRE, _livre, false));
 			}
 		}
 
@@ -35,9 +35,16 @@ namespace DeWinter
 				if (_reputation < 0)
 					_reputation = 0;
 
-				_level=_reputationLevels.Length-1;
-				while (_level>=0 && _reputation >= _reputationLevels[_level].Reputation)
-					_level--;
+				if (_reputationLevels != null)
+				{
+					_level = _reputationLevels.Length-1;
+					while (_level>=0 && _reputation >= _reputationLevels[_level].Reputation)
+						_level--;
+				}
+				else
+				{
+					_level = 0;
+				}
 				PlayerReputationVO msg = new PlayerReputationVO(_reputation, _level+1);
 				DeWinterApp.SendMessage<PlayerReputationVO>(msg);
 			}
@@ -80,7 +87,7 @@ namespace DeWinter
 		}
 
 		[JsonProperty("reputationLevels")]
-		private FactionReputationLevel[] _reputationLevels;
+		private ReputationLevel[] _reputationLevels;
 
 		public int PartyInviteImportance
 		{
@@ -95,13 +102,13 @@ namespace DeWinter
 			{
 				switch (msg.Type)
 				{
-					case BalanceTypes.LIVRE:
+					case GameConsts.LIVRE:
 						Livre += (int)(msg.Amount);
 						msg.IsRequest = false;
 						DeWinterApp.SendMessage<AdjustValueVO>(msg);
 						break;
 
-					case BalanceTypes.REPUTATION:
+					case GameConsts.REPUTATION:
 						Reputation += (int)(msg.Amount);
 						msg.IsRequest = false;
 						DeWinterApp.SendMessage<AdjustValueVO>(msg);

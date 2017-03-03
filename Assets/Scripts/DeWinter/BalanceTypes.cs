@@ -2,7 +2,7 @@
 
 namespace DeWinter
 {
-	public class BalanceTypes
+	public class GameConsts
 	{
 		public const string LIVRE = "Livre";
 		public const string REPUTATION = "Reputation";

@@ -10,7 +10,6 @@ public class BuyAndSellPopUpController : MonoBehaviour
     public ItemVO accessory;
     OutfitInventoryList personalOutfitInventoryList;
     OutfitInventoryList merchantOutfitInventoryList;
-    OutfitInventory outfitInventory;
     AccessoryInventoryList personalAccessoryInventoryList;
     AccessoryInventoryList merchantAccessoryInventoryList;
     WardrobeImageController wardrobeImageController;
@@ -22,7 +21,6 @@ public class BuyAndSellPopUpController : MonoBehaviour
 		_inventoryModel = DeWinterApp.GetModel<InventoryModel>();
 		_gameModel = DeWinterApp.GetModel<GameModel>();
 
-        outfitInventory = GameObject.Find("OutfitInventory").GetComponent<OutfitInventory>();
         personalOutfitInventoryList = GameObject.Find("PlayerInventoryDisplay").transform.Find("OutfitDisplay").Find("OutfitListPanel").Find("GridWithElements").GetComponent<OutfitInventoryList>();
         merchantOutfitInventoryList = GameObject.Find("ShopDisplay").transform.Find("OutfitDisplay").Find("OutfitListPanel").Find("GridWithElements").GetComponent<OutfitInventoryList>();
         personalAccessoryInventoryList = GameObject.Find("PlayerInventoryDisplay").transform.Find("AccessoryDisplay").Find("AccessoryListPanel").Find("GridWithElements").GetComponent<AccessoryInventoryList>();

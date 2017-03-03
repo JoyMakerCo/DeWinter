@@ -35,6 +35,12 @@ namespace DeWinter
 		[JsonProperty("startingStyle")]
 		public string CurrentStyle;
 
+		[JsonProperty("luxury")]
+		public Dictionary<int, string> Luxury;
+
+		[JsonProperty("modesty")]
+		public Dictionary<int, string> Modesty;
+
 		public string NextStyle;
 
 // TODO: These definitely need to be in the view, not the model

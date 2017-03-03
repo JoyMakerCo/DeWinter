@@ -21,22 +21,22 @@ public class EventManager : MonoBehaviour
         //Select the Event
         WeightedSelection();
         //Reset the Event to its beginning
-        _eventModel.SelectedEvent.currentStage = 0;
+        _eventModel.SelectedEvent.currentStageIndex = 0;
         //Text and Title
-		titleText.text = _eventModel.SelectedEvent.eventTitle;
-		descriptionText.text = _eventModel.SelectedEvent.eventStages[0].description;
+		titleText.text = _eventModel.SelectedEvent.Name;
+		descriptionText.text = _eventModel.SelectedEvent.currentStage.Description;
     }
 
     //TODO Implement an actual Weighted Selection System. Currently, all the Events have the same weight.
     public void WeightedSelection()
     {
-        int randomSelection = Random.Range(0, _eventModel.eventInventories[eventTime].Count);
+        int randomSelection = Random.Range(0, _eventModel.eventInventories[eventTime].Length);
 		_eventModel.SelectedEvent = _eventModel.eventInventories[eventTime][randomSelection];
     }
 
     public void EventOptionSelect(int option)
     {
-		int nextStage = _eventModel.SelectedEvent.eventStages[_eventModel.SelectedEvent.currentStage].stageEventOptions[option].ChooseNextStage();
+		int nextStage = _eventModel.SelectedEvent.currentStage.Options[option].ChooseNextStage();
         //Step 0: Did this just complete the event? If so then dismiss the Pop-Up and End the Event
         if (nextStage == -1)
         {
@@ -45,14 +45,17 @@ public class EventManager : MonoBehaviour
         }
         
         //Step 1: Which stage do I advance to?
-		_eventModel.SelectedEvent.currentStage = nextStage;
+		_eventModel.SelectedEvent.currentStageIndex = nextStage;
         Debug.Log("This stage is now " + nextStage);
         
         //Step 2: Get the Money, Change the Rep
-		_eventModel.SelectedEvent.EventStageRewards();
+		foreach(RewardVO reward in _eventModel.SelectedEvent.currentStage.Rewards)
+		{
+			DeWinterApp.SendCommand<GrantRewardCmd, RewardVO>(reward);
+		}
 
         //Step 3: What's the Description Text say now? The Event Option Buttons should update on their own
-		descriptionText.text = _eventModel.SelectedEvent.eventStages[_eventModel.SelectedEvent.currentStage].description;
+		descriptionText.text = _eventModel.SelectedEvent.currentStage.Description;
     }
 
     void Dismiss()

@@ -725,7 +725,7 @@ public class WorkTheHostManager : MonoBehaviour
                     effect = "Livre Lost";
 					effectAmount =  -Random.Range(30, 61);
                     Party.wonRewardsList.Add(new Reward(Party, "Livre", effectAmount));
-					AdjustValueVO vo = new AdjustValueVO(BalanceTypes.LIVRE, effectAmount);
+					AdjustValueVO vo = new AdjustValueVO(GameConsts.LIVRE, effectAmount);
 					DeWinterApp.SendMessage<AdjustValueVO>(vo);
                 }
                 break;
