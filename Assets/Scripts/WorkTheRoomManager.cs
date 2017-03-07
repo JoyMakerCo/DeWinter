@@ -217,13 +217,17 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
-        if (AccessoryInventory.personalInventory[GameData.partyAccessoryID].Type() == "Fascinator")
+        if(GameData.partyAccessoryID != -1)
         {
-            fascinatorEffect = true;
-        } else
-        {
-            fascinatorEffect = false;
-        }
+            if (AccessoryInventory.personalInventory[GameData.partyAccessoryID].Type() == "Fascinator")
+            {
+                fascinatorEffect = true;
+            }
+            else
+            {
+                fascinatorEffect = false;
+            }
+        }       
     }
 
     // Update is called once per frame

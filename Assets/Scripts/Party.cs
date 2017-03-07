@@ -30,7 +30,7 @@ public class Party {
     //Drinking and Intoxication
     public int maxPlayerIntoxication = 100;
     public int currentPlayerIntoxication = 0;
-    public int currentPlayerDrinkAmount = 0;
+    public int currentPlayerDrinkAmount = 3;
     public int maxPlayerDrinkAmount = 3;
     public int drinkStrength = 20;
 

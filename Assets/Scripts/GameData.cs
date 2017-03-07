@@ -120,7 +120,7 @@ public class GameData : MonoBehaviour
 
     public void ResetValues()
     {
-        moneyCount = 200;
+        moneyCount = 600;
         currentMonth = 0; //Month of the current Year (Also Zero Indexed)
         currentDay = 0; //Day of the current Month (Zero Indexed)
         startMonthInt = currentMonth;

@@ -7,13 +7,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
 
     public AccessoryInventoryList personalAccessoryList;
     public AccessoryInventoryList merchantAccessoryList;
-
-    void Start()
-    {
-        personalAccessoryList = GameObject.Find("PlayerInventoryDisplay").transform.Find("AccessoryDisplay").Find("AccessoryListPanel").Find("GridWithElements").GetComponent<AccessoryInventoryList>();
-        merchantAccessoryList = GameObject.Find("ShopDisplay").transform.Find("AccessoryDisplay").Find("AccessoryListPanel").Find("GridWithElements").GetComponent<AccessoryInventoryList>();
-    }
-
+       
     public void createBuyAndSellPopUp()
     {
         if (inventoryType == "personal" && personalAccessoryList.selectedAccessory != -1)
