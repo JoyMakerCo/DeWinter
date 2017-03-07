@@ -48,7 +48,6 @@ public class CalendarManager : MonoBehaviour
 
     void PrepareTonightsParty()
     {
-        Debug.Log("Today is Day: " + _calendarModel.Day.ToString() + " Month: " + _calendarModel.GetMonthString());
         List<Party> parties;
         if (_calendarModel.Parties.TryGetValue(_calendarModel.Today, out parties))
         {

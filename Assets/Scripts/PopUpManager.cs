@@ -34,8 +34,6 @@ public class PopUpManager : MonoBehaviour
 
     public GameObject hostRemarkSlotPrefab;
 
-    public GameObject eventInventory;
-
     //This is how Players Quit the Game
     void CreateQuitGamePopUp()
     {
@@ -43,7 +41,6 @@ public class PopUpManager : MonoBehaviour
         GameObject popUp = Instantiate(quitGameModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
         //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is how Events happen in both the Estate Screen and the Parties
@@ -56,8 +53,6 @@ public class PopUpManager : MonoBehaviour
         //Set the Event Time
         EventManager eventManager = popUp.transform.GetComponent<EventManager>();
         eventManager.eventTime = eventTime;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is how the Players know that Styles have gone in and out of fashion
@@ -77,8 +72,6 @@ public class PopUpManager : MonoBehaviour
         bodyText.text = "The " + oldStyle + " Style is now out of fashion and " +
             "\nthe " + newStyle + " Style is now in fashion!" +
             "\nAdjust your wardrobe accordingly!";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This tells the Players that it's Pay Day for all their Servants
@@ -110,8 +103,6 @@ public class PopUpManager : MonoBehaviour
         bodyText.text = "It's time to pay the help. You're currently employing " + servantsHired + "." +
             "\nTheir cost of employment this week is " + totalWages + "." +
 			"\nThis leaves you with £" + gameModel.Livre.ToString("#,##0");
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This confirmation modal is used for Hiring and Firing Servants
@@ -141,8 +132,6 @@ public class PopUpManager : MonoBehaviour
             hireFireButtonText.text = "Hire";
             dontHireFireButtonText.text = "Don't Hire";
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is a modal used to explain why the Player can't actually Fire Camille, the Handmaiden
@@ -162,8 +151,6 @@ public class PopUpManager : MonoBehaviour
                         "\n“No reason, just thinking about... budget stuff.”" +
                         "\n“Well Madamme, I clean your house, do your laundry, cook your meals, sweep your chimney, manage the household, mend your clothes -”" +
                         "\n“Fine! Fine! Forget I asked!”";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     void CreatePartyInvitationPopUp(Party party)
@@ -180,8 +167,6 @@ public class PopUpManager : MonoBehaviour
             bodyText.text = "Madamme, an invitation from " + party.host.name + " of the " + party.faction + " has arrived!" +
                 "\n\nIt says you've been invited to attend their " + party.SizeString() + " Party." +
                 "\n\nI've added the event to your Calendar.";
-            //Modal Background Shift
-            BroadcastMessage("ActiveModal");    
     }
 
     //This is how Players RSVP to parties
@@ -216,8 +201,6 @@ public class PopUpManager : MonoBehaviour
         } else {
             bodyText.text += "\nWould you like to attend?";
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     void CreateTwoPartyChoicePopUp(Party party1, Party party2, bool isToday)
@@ -236,8 +219,6 @@ public class PopUpManager : MonoBehaviour
         TwoPartyChoicePopUpController popUpController = popUp.GetComponent<TwoPartyChoicePopUpController>();
 		popUpController.isToday = isToday;
         popUpController.screenFader = screenFader;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     void CreateTwoPartyRSVPdPopUp(Party party1, Party party2)
@@ -257,8 +238,6 @@ public class PopUpManager : MonoBehaviour
         popUpController.party1 = party1;
         popUpController.party2 = party2;
         popUpController.screenFader = screenFader;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is how Players cancel their RSVP to Parties
@@ -289,9 +268,6 @@ public class PopUpManager : MonoBehaviour
                 "\nCancelling will harm your reputation." +
                 "\nWould you like cancel?";
         }
-        
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This tells Players they can't attend a Party if they don't have any Outfits
@@ -307,8 +283,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, it's not a figure of speech." +
             "\nYou literally have nothing to wear to this party. If we check in with the Merchant she might have something, but otherwise you may have to cancel.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen to confirm buying or selling Items
@@ -363,8 +337,6 @@ public class PopUpManager : MonoBehaviour
 				bodyText.text = "Are you sure you want to buy this " + controller.accessory.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen and Servant Hiring Screen to tell Players they don't have enough money to afford something
@@ -383,8 +355,6 @@ public class PopUpManager : MonoBehaviour
         bodyText.text = "I'm sorry Madamme, but you do not have enough Livres to afford the " + objectString + "." +
                         "\n\nYou could either sell some of your existing wardrobe, or you could borrow money from your various friends." +
                         "\n\nThis will cost you 20 Reputation but it would get you 200 Livres.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     void CreateOutOfMoneyModal()
@@ -418,8 +388,6 @@ public class PopUpManager : MonoBehaviour
         dismissButtonButton.interactable = false;
         dismissButtonImage.color = Color.clear;
         dismissButtonText.color = Color.clear;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen to tell Players they don't have enough spare room in their Wardrobe for more Outfits purchased from the Merchant
@@ -438,8 +406,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "I'm sorry Madamme, but you do not have enough space in your wardobe to fit this " + OutfitInventory.outfitInventories["merchant"][merchantInventoryNumber].Name() + ". " +
             "\nAt this time your Wardrobe can only hold " + OutfitInventory.personalInventoryMaxSize + " Outfits. Perhaps there is some way to expand your closet space?";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen to tell Players they don't have enough spare room in their Wardrobe for more Outfits created by the Seamstress
@@ -455,8 +421,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "I'm sorry Madamme, but you do not have enough space in your wardobe to fit a new Outfit. I can't create anything when you have no room to store it." +
             "\nAt this time your Wardrobe can only hold " + OutfitInventory.personalInventoryMaxSize + " Outfits. Perhaps there is some way to expand your closet space?";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen so Players can use the 'Alteration' function of the Tailor Servant
@@ -481,9 +445,6 @@ public class PopUpManager : MonoBehaviour
         modestyBar.value = outfit.modesty;
         Slider luxuryBar = popUp.transform.Find("LuxuryText").Find("Slider").GetComponent<Slider>();
         luxuryBar.value = outfit.luxury;
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen so Players can use the 'Sew New Outfit' function of the Seamstress Servant
@@ -501,8 +462,6 @@ public class PopUpManager : MonoBehaviour
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "What would you like me to create?";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used at the beginning of a Party, if the Player is of such a high General Reputation that they change the Style of Fashion just by showing up with matching Outfit and Accessories
@@ -522,8 +481,6 @@ public class PopUpManager : MonoBehaviour
         bodyText.text = "You hear audible gasps as you exit your carriage. Your expertly coordinated Outfit, combined with your significant social stature, seems to have taken everyone aback. You can see the wheels turning in their minds as they rethink their stylings and choice of attire." +
             "\nYou have started a new fashion trend. The " + oldStyle + " Style is now out of fashion and " +
             "\nthe " + newStyle + " Style is now in fashion!";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the beginning of the Party Screen to tally up a Player's Confidence stat
@@ -640,9 +597,6 @@ public class PopUpManager : MonoBehaviour
         //--- Line 6 ---
         line6 = "\n\nOverall your Maximum Confidence is at " + maxConfidence + " and your Current Confidence is " + currentConfidence;
         bodyText.text = line1 + line2 + line3 + line4 + line5 + line6;
-        
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This appears at the beginning of a Party when the Player has enough Reputation with the Faction that they get their wine glass instantly filled
@@ -659,8 +613,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, thank you for joining us tonight. " + p.host.name + " asked me to make sure you were taken care of when the Party began." +
                         "\n<Your Wineglass is now full>";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This randomly appears when the Player enters an uncleared Room during a Party and they Player has enough Reputation with the Faction that they get their wine glass filled
@@ -677,8 +629,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, I noticed you were running a little low on refreshment. As per " + p.host.name + "'s request, I'll check in occassional to make sure you have enough to drink." +
                         "\n<Your Wineglass is now full>";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Party Scene for Players to choose whether they wish to engage in conversation (Work the Room) or try to avoid everyone (Move Through)
@@ -730,9 +680,6 @@ public class PopUpManager : MonoBehaviour
             workTheRoomImage.color = Color.clear;
             workTheRoomText.color = Color.clear;
         }
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
@@ -751,9 +698,6 @@ public class PopUpManager : MonoBehaviour
         workManager.roomManager = roomManager;
 
         Debug.Log("Made Work the Room. Ambush is " + isAmbush);
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Party Scene to brings up the Conversation/Work the Host Modal where the Player combats the Host with their charms
@@ -770,9 +714,6 @@ public class PopUpManager : MonoBehaviour
         workManager.roomManager = roomManager;
 
         Debug.Log("Made Work the Host");
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     void CreateHostRemarkModal(object[] objectStorage)
@@ -814,8 +755,6 @@ public class PopUpManager : MonoBehaviour
         }
         workManager.hostRemarkActive = true;
         Debug.Log("Made Fire Back Remark Modal");
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This Message Modal variation is used in the Party Scene to tell the Player they succesfully Moved Through a Room in a Party
@@ -832,8 +771,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "You've succesfully moved through the " + roomName + " unnoticed." +
             "\nNow you can back to your real mission uninterrupted.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This Window is used to tell Players that they've failed to Move Through a Room and have been Ambushed
@@ -850,8 +787,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "You've been Ambushed in the " + roomName + " !" +
             "\nPrepare for Conversation!";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This Window is used are Work the Room or Ambush events to tell Players what they've one in conversation combat
@@ -885,8 +820,6 @@ public class PopUpManager : MonoBehaviour
         }
         Reward givenReward = objectStorage[3] as Reward;
         bodyText.text += "\n\nYour Reward for Clearing this Room is " + givenReward.Name();
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This Message Modal variation is used in the Party Scene to tell the Player they ran out of Confidence during the Work the Room or Host sequence and have embarassed themselves
@@ -906,8 +839,6 @@ public class PopUpManager : MonoBehaviour
         bodyText.text = "It appears that you ran out of Confidence during that Conversation. You just started stammering before suddenly leaving to 'Get Some Air'." +
             "\n\nYou've spent an hour here in the Entrance collecting your wits but your sudden disappearance was considered quite rude." +
             "\n\nYou've lost " + factionReputationLoss + " Repuation with the " + faction + " and " + reputationLoss + " Reputation with society in general.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     void CreateMissedPartyRSVPModal(Party party)
@@ -923,8 +854,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "You didn't RSVP to the " + party.Name() + "." +
             "\nThe Host is rather upset with you and you've lost Reputation";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Estate Tab to tell Players that they were caught trading in Gossip Items
@@ -944,8 +873,6 @@ public class PopUpManager : MonoBehaviour
         {
             bodyText.text += "\n\nThankfully your contacts in the Revolution have minimized the effects somewhat.";
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Estate Tab to tell Players that Pierre has assigned a new Quest
@@ -968,8 +895,6 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction + "." +
                 "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.Name() + ". \n\nHow does that sound?";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Estate Tab to confirm selling various bits of Gossip
@@ -1019,8 +944,6 @@ public class PopUpManager : MonoBehaviour
         {
             bodyText.text += "\n\n The more you leak me Gossip in a single day, the harder it is for me to conceal my sources. Today, I'd guess there is currently a " + caughtChance + "% chance of you being caught. Can you acccept that risk?";
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Estate Tab to tell Players that Pierre has Redeemed their Quest
@@ -1036,8 +959,5 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Thank you Madamme, this is exactly the kind of sallacious trash our esteemed readers require!" +
                 "\nWe'll take care of your reward of " + quest.reward.Name() + " immediately.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
-
 }

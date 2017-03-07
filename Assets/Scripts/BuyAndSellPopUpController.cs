@@ -74,7 +74,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
         {
             if (inventoryType == "personal") //Selling Things
             {
-	        	DeWinterApp.SendCommand<SellItemCmd, ItemVO>(accessory);
+	        	DeWinterApp.SendMessage<ItemVO>(InventoryConsts.SELL_ITEM, accessory);
 
                 //If that item was worn last at a party then reset the Last Party Outfit ID, so an item with its ID doesn't get a wrongful double Novelty hit
                 ItemVO lastAccssory; 
@@ -85,7 +85,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
             }
             else if (inventoryType == "merchant") //Buying Things
             {
-				DeWinterApp.SendCommand<BuyItemCmd, ItemVO>(accessory);
+				DeWinterApp.SendMessage<ItemVO>(InventoryConsts.BUY_ITEM, accessory);
             }
             personalAccessoryInventoryList.selectedAccessory = null;
             merchantAccessoryInventoryList.selectedAccessory = null;

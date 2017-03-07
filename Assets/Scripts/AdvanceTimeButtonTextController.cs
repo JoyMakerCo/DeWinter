@@ -11,8 +11,8 @@ public class AdvanceTimeButtonTextController : MonoBehaviour {
 
     void Start ()
     {
+		_model = DeWinterApp.GetModel<PartyModel>();
     	OutfitInventory.PartyOutfit = null;
-    	_model = DeWinterApp.GetModel<PartyModel>();
         myText = this.GetComponentInChildren<Text>();
         myOutline = this.GetComponent<Outline>();
     }
@@ -20,7 +20,7 @@ public class AdvanceTimeButtonTextController : MonoBehaviour {
     void Update ()
     {
     	
-		if (_model.Party.faction == null || _model.Party.RSVP == -1 || _model.Party.RSVP == 0)
+		if (_model.Party == null || _model.Party.faction == null || _model.Party.RSVP == -1 || _model.Party.RSVP == 0)
         {
             myOutline.effectColor = Color.clear;
             myText.text = "Next Day";

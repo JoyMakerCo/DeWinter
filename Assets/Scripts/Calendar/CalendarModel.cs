@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
+using Util;
 
 namespace DeWinter
 {
-	public class CalendarModel : DocumentModel
+	public class CalendarModel : DocumentModel, IInitializable
 	{
 		public static readonly string[] MONTHS = {
 			"Janvier",
@@ -27,7 +28,7 @@ namespace DeWinter
 
 		private DateTime _startDate;
 		private int _gameLength;
-		private int _day=-1;
+		private int _day=0;
 
 		public int Day
 		{
@@ -38,8 +39,6 @@ namespace DeWinter
 					CalendarDayVO msg = new CalendarDayVO(_day = value, Today);
 					DeWinterApp.SendMessage<CalendarDayVO>(msg);
 
-// TODO: Register commands to respond to messages
-					DeWinterApp.SendCommand<PayDayCmd, CalendarDayVO>(msg);
 					if (_day == uprisingDay)
 						DeWinterApp.SendMessage(CalendarConsts.UPRISING_DAY);
 				}
@@ -105,8 +104,15 @@ namespace DeWinter
 
 		public CalendarModel() : base("CalendarData")
 		{
-			uprisingDay= (new Random()).Next(25, 31);
 			Parties = new Dictionary<DateTime, List<Party>>();
 		}
+
+		public void Initialize()
+		{
+			uprisingDay= (new Random()).Next(25, 31);
+			DeWinterApp.Subscribe(CalendarConsts.ADVANCE_DAY, AdvanceDay);
+		}
+
+		private void AdvanceDay() { Day++; }
 	}
 }

@@ -72,10 +72,8 @@ namespace DeWinter
 			{
 				_factions[vo.Type].playerReputation += (int)vo.Amount;
 				vo.IsRequest = false;
+// TODO: This is clunky. Make it a bit more clear.
 				DeWinterApp.SendMessage<AdjustValueVO>(vo);
-
-				// TODO: Trigger commands via message
-				DeWinterApp.SendCommand<CheckMilitaryReputationCmd>();
 			}
 		}
 

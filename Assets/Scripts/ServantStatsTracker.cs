@@ -58,7 +58,7 @@ public class ServantStatsTracker : MonoBehaviour {
 
     public void HireServant()
     {
-		DeWinterApp.SendCommand<HireServantCmd, ServantVO>(servantList.selectedServant);
+		DeWinterApp.SendMessage<ServantVO>(ServantConsts.HIRE_SERVANT, servantList.selectedServant);
         servantList.ClearInventoryButtons();
         servantList.GenerateInventoryButtons();
     }
@@ -70,7 +70,7 @@ public class ServantStatsTracker : MonoBehaviour {
         {
 			if (servant.Name != "Camille")
             {
-				DeWinterApp.SendCommand<FireServantCmd, ServantVO>(servantList.selectedServant);
+				DeWinterApp.SendMessage<ServantVO>(ServantConsts.FIRE_SERVANT, servantList.selectedServant);
 		        servantList.ClearInventoryButtons();
 		        servantList.GenerateInventoryButtons();
             } else if (!attemptedCamilleFiring) //If the Player hasn't attempted to fire Camille yet then throw up this message bubble

@@ -10,7 +10,7 @@ namespace Core
 
 	public interface ICommand<T>
 	{
-		void Execute(T data);
+		void Execute(T msg);
 	}
 
 	public interface ICommand
@@ -20,18 +20,105 @@ namespace Core
 
 	public class CommandSvc : IAppService
 	{
-		private Dictionary<string, List<Type>> _associations = new Dictionary<string, List<Type>>();
+		private Dictionary<string, List<Delegate>> _messageAssociations;
+		private Dictionary<Type, List<Delegate>> _typeAssociations;
 
-		// Basic send with typed value object
-		public void Execute<T, U>(U data) where T:ICommand<U>, new()
+		private delegate void MessageDelegate<T, C>(T msg);
+		private delegate void CommandDelegate<C>();
+
+		public CommandSvc()
 		{
-			(new T()).Execute(data);
+			_messageAssociations = new Dictionary<string, List<Delegate>>();
+			_typeAssociations = new Dictionary<Type, List<Delegate>>();
 		}
 
-		// Basic send method without parameter
-		public void Execute<T>() where T:ICommand, new()
+		public void Register<C, T>() where C : ICommand<T>, new()
 		{
-			(new T()).Execute();
+			Type t = typeof(T);
+			if (!_typeAssociations.ContainsKey(t))
+			{
+				_typeAssociations.Add(t, new List<Delegate>());
+				App.Service<MessageSvc>().Subscribe<T>(HandleMessage<T>);
+			}
+			Action<T> handleMsg = msg => new C().Execute(msg);
+			_typeAssociations[t].Add(handleMsg);
+		}
+
+		public void Register<C>(string messageID) where C : ICommand, new()
+		{
+			if (!_messageAssociations.ContainsKey(messageID))
+			{
+				_messageAssociations.Add(messageID, new List<Delegate>());
+			}
+			Action handleMsg = delegate() { new C().Execute(); };
+			_messageAssociations[messageID].Add(handleMsg);
+			App.Service<MessageSvc>().Subscribe(messageID, handleMsg);
+		}
+
+		public void Register<C, T>(string messageID) where C : ICommand<T>, new()
+		{
+			if (!_messageAssociations.ContainsKey(messageID))
+			{
+				_messageAssociations.Add(messageID, new List<Delegate>());
+			}
+			Action<T> handleMsg = msg => new C().Execute(msg);
+			_messageAssociations[messageID].Add(handleMsg);
+			App.Service<MessageSvc>().Subscribe<T>(messageID, handleMsg);
+		}
+
+// TODO: Implement unregistering commands
+		public void Unregister<C, T>() where C : ICommand
+		{
+//			App.Service<MessageSvc>().Unsubscribe
+		}
+
+		public void Unregister<C, T>(string messageID) where C : ICommand
+		{
+//			App.Service<MessageSvc>().Unsubscribe
+		}
+
+		public void Unregister<C>(string messageID) where C : ICommand
+		{
+//			App.Service<MessageSvc>().Unsubscribe
+		}
+
+		private void HandleMessage(string messageID)
+		{
+			List<Delegate> delegates;
+			if (_messageAssociations.TryGetValue(messageID, out delegates))
+			{
+				foreach(Delegate d in delegates)
+				{
+					if (d is Action)
+						(d as Action).Invoke();
+				}
+			}
+		}
+
+		private void HandleMessage<T>(string messageID, T msg)
+		{
+			List<Delegate> delegates;
+			if (_messageAssociations.TryGetValue(messageID, out delegates))
+			{
+				foreach(Delegate d in delegates)
+				{
+					if (d is Action<T>)
+						(d as Action<T>).Invoke(msg);
+				}
+			}
+		}
+
+		private void HandleMessage<T>(T msg)
+		{
+			List<Delegate> delegates;
+			if (_typeAssociations.TryGetValue(typeof(T), out delegates))
+			{
+				foreach(Delegate d in delegates)
+				{
+					if (d is Action<T>)
+						(d as Action<T>).Invoke(msg);
+				}
+			}
 		}
 	}
 }

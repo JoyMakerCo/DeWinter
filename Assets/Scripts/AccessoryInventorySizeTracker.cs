@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace DeWinter
@@ -19,7 +20,8 @@ namespace DeWinter
 	    void Update()
 	    {
 	    // TODO: Count ALL Items
-			myText.text = _model.Inventory[ItemConsts.ACCESSORY].Count.ToString() + "/" + _model.MaxSlots;
+	    	List<ItemVO> items;
+			myText.text = (_model.Inventory.TryGetValue(ItemConsts.ACCESSORY, out items) ? items.Count : 0).ToString() + "/" + _model.MaxSlots;
 	    }
 	}
 }

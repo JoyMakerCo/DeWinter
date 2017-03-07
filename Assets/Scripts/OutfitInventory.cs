@@ -21,11 +21,16 @@ public static class OutfitInventory
 	public static void StockInventory()
     {
         //Put the two Lists in the Dictionary
-        outfitInventories.Add("personal", personalInventory);
-        outfitInventories.Add("merchant", merchantInventory);
-
-        //Put the Player's starting Outfits in the Personal List
-        outfitInventories["personal"].Add( new Outfit(100, 0, 0, "Frankish"));
+        if (!outfitInventories.ContainsKey("personal"))
+        {
+			//Put the Player's starting Outfits in the Personal List
+			personalInventory.Add( new Outfit(100, 0, 0, "Frankish"));
+	        outfitInventories.Add("personal", personalInventory);
+       	}
+		if (!outfitInventories.ContainsKey("merchant"))
+		{
+	        outfitInventories.Add("merchant", merchantInventory);
+	    }
     }
 
     //Run whenever the Estate Streen Starts Up

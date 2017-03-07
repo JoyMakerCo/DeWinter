@@ -201,13 +201,13 @@ public class FactionInfoTextController : MonoBehaviour {
 
     void IncrementKnowledgeTimers()
     {
-
         //Allegiance Timers for Crown and Revolution aren't used
-        foreach (string faction in _allegianceTimers.Keys)
+		List<string> factions = new List<string>(_allegianceTimers.Keys);
+        foreach (string faction in factions)
         {
         	_allegianceTimers[faction]++;
 			_powerTimers[faction]++;
-        }
+		}
     }
 
 // TODO: Store them in order

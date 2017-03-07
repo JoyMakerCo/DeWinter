@@ -58,7 +58,7 @@ public class ServantButtonController : MonoBehaviour
         {
             if (!_servant.Hired && GameData.moneyCount >= _servant.Wage) //If they are NOT Hired and you CAN afford them
             {
-            	DeWinterApp.SendCommand<HireServantCmd, ServantVO>(_servant);
+            	DeWinterApp.SendMessage<ServantVO>(ServantConsts.HIRE_SERVANT, _servant);
             }
             else if (!_servant.Hired && GameData.moneyCount < _servant.Wage) //If they are NOT Hired and you CAN'T afford them
             {
@@ -68,7 +68,7 @@ public class ServantButtonController : MonoBehaviour
             }
             else // If they ARE Hired, then it doesn't really matter whether or not you can afford her
             {
-				DeWinterApp.SendCommand<FireServantCmd, ServantVO>(_servant);
+				DeWinterApp.SendMessage<ServantVO>(ServantConsts.FIRE_SERVANT, _servant);
             }
         } else
         {

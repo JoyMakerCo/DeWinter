@@ -35,7 +35,12 @@ namespace DeWinter
 			_model = DeWinterApp.GetModel<InventoryModel>();
 	        SetUpButtons();
 
-	        _model.Inventory.TryGetValue(ItemConsts.ACCESSORY, out _list);
+	        if (inventoryType == "personal")
+		        _model.Inventory.TryGetValue(ItemConsts.ACCESSORY, out _list);
+		    else
+		    	_list = _model.Market.FindAll(i => i.Type == ItemConsts.ACCESSORY);
+
+		    if (_list == null) _list = new List<ItemVO>();
 	        SortByType();
 	    }
 

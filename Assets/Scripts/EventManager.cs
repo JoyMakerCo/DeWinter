@@ -51,7 +51,7 @@ public class EventManager : MonoBehaviour
         //Step 2: Get the Money, Change the Rep
 		foreach(RewardVO reward in _eventModel.SelectedEvent.currentStage.Rewards)
 		{
-			DeWinterApp.SendCommand<GrantRewardCmd, RewardVO>(reward);
+			DeWinterApp.SendMessage<RewardVO>(reward);
 		}
 
         //Step 3: What's the Description Text say now? The Event Option Buttons should update on their own

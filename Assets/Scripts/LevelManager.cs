@@ -11,7 +11,6 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(string sceneName)
     {
-        Debug.Log ("New Level load: " + sceneName);
         DeWinterApp.Subscribe(CalendarConsts.UPRISING_DAY, HandleUprisingDay);
         SceneManager.LoadScene(sceneName);
     }
@@ -26,10 +25,10 @@ public class LevelManager : MonoBehaviour
     public void AdvanceTimeLoadLevel() 
     {
         //If there's no Party tonight
-        if (GameData.tonightsParty.faction == null || GameData.tonightsParty.RSVP == -1 || GameData.tonightsParty.RSVP == 0)  // If there's no party tonight OR if it's been negatively RSVP'd to
+		if (GameData.tonightsParty == null || GameData.tonightsParty.faction == null || GameData.tonightsParty.RSVP == -1 || GameData.tonightsParty.RSVP == 0)  // If there's no party tonight OR if it's been negatively RSVP'd to
         {
-        	DeWinterApp.SendCommand<AdvanceDayCmd>();
-            LoadLevel("Game_Estate");
+        	DeWinterApp.SendMessage(CalendarConsts.ADVANCE_DAY);
+	        LoadLevel("Game_Estate");
         } else // If there is a Party tonight
         {
             if(GameData.tonightsParty.turnsLeft != 0) // Has the party happened yet?
@@ -46,7 +45,7 @@ public class LevelManager : MonoBehaviour
                 }
             } else
             {
-				DeWinterApp.SendCommand<AdvanceDayCmd>();
+				DeWinterApp.SendMessage(CalendarConsts.ADVANCE_DAY);
                 LoadLevel("Game_Estate");
             }
            

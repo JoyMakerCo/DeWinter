@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using DeWinter;
 
-// TODO: Make this a model
+// TODO: Make this part of PartyModel
 public class PartyManager : MonoBehaviour
 {
     public GameObject screenFader; // It's for the Confidence Tally pop-up
@@ -21,7 +21,7 @@ public class PartyManager : MonoBehaviour
         EngageParty();
         FashionChangeCheck(); //If the Player is of sufficiently high General Reputation, they may change the Style of Fashion just by showing up
         ConfidenceTally(); //Tally up the Player's Total Confidence
-        DeWinterApp.SendCommand<GenerateMapCmd, Party>(_model.Party);
+		DeWinterApp.SendMessage<Party>(PartyConstants.GENERATE_MAP, GameData.tonightsParty);
 
 		EnemyCheck(); //Place all the Enemies in the Party
         EngageParty(); //Start the Party
@@ -41,11 +41,11 @@ public class PartyManager : MonoBehaviour
     void EngageParty()
     {
         //Instantiate a the room Holder Parent Object
-		DeWinterApp.SendCommand<GenerateMapCmd, Party>(GameData.tonightsParty);
+		DeWinterApp.SendMessage<Party>(PartyConstants.GENERATE_MAP, GameData.tonightsParty);
 
         //Damage the Outfit's Novelty, how that the Confidence has already been Tallied
         GameData.tonightsParty.playerOutfit = OutfitInventory.PartyOutfit;
-		DeWinterApp.SendCommand<DegradeOutfitCmd>();
+		DeWinterApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, GameData.tonightsParty.playerOutfit);
 
 		ItemVO accessory;
 		if (DeWinterApp.GetModel<InventoryModel>().Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Garter Flask")
@@ -186,7 +186,7 @@ public class PartyManager : MonoBehaviour
                 case "Introduction":
                     if(t.amount > 0)
                     {
-						DeWinterApp.SendCommand<IntroServantCmd, string>(t.SubType());
+						DeWinterApp.SendMessage<string>(ServantConsts.INTRODUCE_SERVANT, t.SubType());
                     }
                     break;
                 case "Gossip":
@@ -205,11 +205,6 @@ public class PartyManager : MonoBehaviour
         }
         OutfitInventory.PartyOutfit = null;
         GameData.partyAccessory = null;
-    }
-
-    void OutfitDegradation()
-    {
-    	DeWinterApp.SendCommand<DegradeOutfitCmd>();
     }
 
     //If the Player is of sufficiently high General Reputation, they may change the Style of Fashion just by showing up with matching Outfit and Accessories
