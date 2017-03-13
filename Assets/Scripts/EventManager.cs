@@ -11,6 +11,8 @@ public class EventManager : MonoBehaviour
     public Text descriptionText;
     public string eventTime;
 
+	public LevelManager levelManager; //Assigned via the pop up manager
+	
     private EventModel _eventModel;
 
     void Start()
@@ -43,19 +45,37 @@ public class EventManager : MonoBehaviour
             //Close the Pop-Up Here
             Dismiss();
         }
-        
+
         //Step 1: Which stage do I advance to?
 		_eventModel.SelectedEvent.currentStageIndex = nextStage;
         Debug.Log("This stage is now " + nextStage);
-        
-        //Step 2: Get the Money, Change the Rep
-		foreach(RewardVO reward in _eventModel.SelectedEvent.currentStage.Rewards)
-		{
-			DeWinterApp.SendMessage<RewardVO>(reward);
-		}
 
-        //Step 3: What's the Description Text say now? The Event Option Buttons should update on their own
-		descriptionText.text = _eventModel.SelectedEvent.currentStage.Description;
+		if (_eventModel.SelectedEvent.currentStage != null)
+		{
+			// For normal, non-tutorial partes
+			// TODO: Make this not completely hacky
+			if (_eventModel.SelectedEvent.currentStage.Options[option].eventOptionParty == null)
+			{
+		        //Step 2: Grant Rewards
+				foreach(RewardVO reward in _eventModel.SelectedEvent.currentStage.Rewards)
+				{
+					DeWinterApp.SendMessage<RewardVO>(reward);
+				}
+
+		        //Step 3: What's the Description Text say now? The Event Option Buttons should update on their own
+				descriptionText.text = _eventModel.SelectedEvent.currentStage.Description;
+			}
+			// Start tutorial Party
+			else
+			{
+				GameData.tonightsParty = _eventModel.SelectedEvent.currentStage.Options[option].eventOptionParty;
+	            levelManager.LoadLevel("Game_PartyLoadOut");
+			}
+		}
+		else
+		{
+			descriptionText.text = "";
+		}
     }
 
     void Dismiss()

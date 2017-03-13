@@ -36,11 +36,10 @@ namespace DeWinter
 	        SetUpButtons();
 
 	        if (inventoryType == "personal")
-		        _model.Inventory.TryGetValue(ItemConsts.ACCESSORY, out _list);
+				_list = _model.Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
 		    else
-		    	_list = _model.Market.FindAll(i => i.Type == ItemConsts.ACCESSORY);
+		    	_list = _model.Market.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
 
-		    if (_list == null) _list = new List<ItemVO>();
 	        SortByType();
 	    }
 

@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using DeWinter;
 
 // TODO: Feed this to the inventory model
 public static class OutfitInventory

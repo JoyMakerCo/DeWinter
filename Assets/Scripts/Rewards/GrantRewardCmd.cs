@@ -1,5 +1,7 @@
 ﻿using Core;
+using System;
 using System.Collections.Generic;
+using Util;
 
 namespace DeWinter
 {
@@ -25,9 +27,9 @@ namespace DeWinter
 					break;
 
 				case RewardConsts.ENEMY:
-					Enemy e;
+					Enemy e = new Enemy(reward.Type);
+					EnemyInventory.AddEnemy(e);
 //					// TODO: Create or find the enemy in the model
-//					EnemyInventory.AddEnemy(e);
 					break;
 
 				case RewardConsts.DEVOTION:
@@ -43,8 +45,14 @@ namespace DeWinter
 
 		private void RewardItem(string type, int quantity)
 		{
-// TODO
 			InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
+			if (imod.Inventory.Count < imod.NumSlots)
+			{
+				ItemVO[] itemz = Array.FindAll(imod.ItemDefinitions, i=>i.Type == type);
+				ItemVO item = itemz[new Random().Next(itemz.Length)].Clone();
+				item.Quantity = quantity;
+				imod.Inventory.Add(item);
+			}
 		}
 	}
 }

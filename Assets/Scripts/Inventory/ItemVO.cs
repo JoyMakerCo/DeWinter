@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Util;
 
 namespace DeWinter
 {
-	public class ItemVO : ICloneable
+	public class ItemVO : ICloneable<ItemVO>
 	{
 		[JsonProperty("name")]
 		public string Name;
@@ -42,7 +43,7 @@ namespace DeWinter
 			get { return SellPrice.ToString("£" + "#,##0"); }
 		}
 
-		public object Clone()
+		public ItemVO Clone()
 		{
 			ItemVO result = new ItemVO();
 			result.Name = this.Name;

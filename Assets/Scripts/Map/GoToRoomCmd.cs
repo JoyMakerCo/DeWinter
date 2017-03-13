@@ -16,7 +16,7 @@ namespace DeWinter
 			if (model.Room == null || model.Room.IsNeighbor(room))
 			{
 				// Make sure the player can move to the next room
-				if (model.Room == null ||  rnd.Next(100) < model.Room.MoveThroughChance)
+				if (model.Room == null || rnd.Next(100) < model.Room.MoveThroughChance)
 				{
 					model.Room = room;
 					// Doing this will broadcast a message.

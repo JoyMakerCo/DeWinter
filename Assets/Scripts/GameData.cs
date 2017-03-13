@@ -5,6 +5,7 @@ using DeWinter;
 public static class GameData
 {
 	public static string playerVictoryStatus;
+	public static bool fTEsOn;
 
 	public static Party tonightsParty
 	{
@@ -110,6 +111,6 @@ public static class GameData
 
 	public static List<ItemVO> Accessories
 	{
-		get { return DeWinterApp.GetModel<InventoryModel>().Inventory[ItemConsts.ACCESSORY]; }
+		get { return DeWinterApp.GetModel<InventoryModel>().Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0); }
 	}
 }

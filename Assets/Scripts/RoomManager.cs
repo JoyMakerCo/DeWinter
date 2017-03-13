@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DeWinter;
@@ -50,7 +51,6 @@ private const int PADDING = 5;
 		GameObject roomHolder = new GameObject();
 		roomHolder.transform.SetParent(canvas.transform, false);
         roomHolder.transform.SetAsFirstSibling();
-
 		Map = map;
 
         //Make the Room Buttons ----------------------
@@ -90,6 +90,37 @@ private const int PADDING = 5;
         //Map Set Up is complete, notify the rest of the game
     }
 
+    public void PlayerMovement(int xPos, int yPos)
+    {
+        if (_partyModel.Party.turnsLeft > 0)
+        {
+            currentPlayerRoom = _model.Map.Rooms[xPos, yPos];
+			if (Array.IndexOf(currentPlayerRoom.Features, PartyConstants.PUNCHBOWL) >= 0)
+            {
+				_partyModel.Party.currentPlayerDrinkAmount = _partyModel.Party.maxPlayerDrinkAmount;
+			} else if (!_model.Map.Rooms[xPos, yPos].Cleared && _partyModel.Party.currentPlayerDrinkAmount < _partyModel.Party.maxPlayerDrinkAmount)
+            {
+                RandomWineCheck(); // Level 4 Faction Benefit
+            }
+        }
+        else
+        {
+            Debug.Log("Out of turns. Go home!");
+        }
+    }
+
+    void RandomWineCheck()
+    {
+		if(GameData.factionList[_partyModel.Party.faction].ReputationLevel >= 5)
+        {
+			if(UnityEngine.Random.Range(0, 4) == 0)
+            {
+				_partyModel.Party.currentPlayerDrinkAmount = _partyModel.Party.maxPlayerDrinkAmount;
+				screenFader.gameObject.SendMessage("CreateRandomWineModal", _partyModel.Party);
+            }
+        }
+    }
+
     public void MovePlayerToEntrance()
     {
 		currentPlayerRoom = (_model.Map != null) ? _model.Map.Entrance : null;
@@ -98,14 +129,17 @@ private const int PADDING = 5;
     public void ChoiceModal(int xPos, int yPos)
     {
         if (!_model.Room.IsEntrance) // Players can freely move through the Entrance Tile
-        {
-            //Work the Room or Move Through
-            int[] intStorage = new int[2];
-            intStorage[0] = xPos;
-            intStorage[1] = yPos;
-            screenFader.gameObject.SendMessage("CreateRoomChoiceModal", intStorage);
-        }
-    }
+	    {
+	        Debug.Log("No Move Through:" + currentPlayerRoom.IsImpassible);
+	        Debug.Log("Cleared:" + currentPlayerRoom.Cleared);
+	        if (!currentPlayerRoom.IsImpassible || !currentPlayerRoom.Cleared) 
+	        {   
+	            //Work the Room or Move Through
+	            int[] intStorage = new int[2]{ xPos, yPos };
+	            screenFader.gameObject.SendMessage("CreateRoomChoiceModal", intStorage);
+	        }
+	    }
+   	}
 
     public void WorkTheRoomModal(bool isAmbush)
     {
@@ -146,9 +180,9 @@ private const int PADDING = 5;
 
     public void MoveThrough()
     {
-        if (!currentPlayerRoom.HostHere)
+        if (!currentPlayerRoom.HostHere && !currentPlayerRoom.IsImpassible) //If this is not a Host Room and the Player is allowed to Move Through this Room
         {
-            int checkValue = Random.Range(0, 100);
+            int checkValue = UnityEngine.Random.Range(0, 100);
             string[] stringStorage = new string[1];
             stringStorage[0] = currentPlayerRoom.Name;
             int moveThroughChance = currentPlayerRoom.MoveThroughChance;

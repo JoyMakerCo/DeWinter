@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -17,11 +18,10 @@ namespace DeWinter
 	    }
 
 	    // Update is called once per frame
+	    // TODO: This has to not be updated every frame
 	    void Update()
 	    {
-	    // TODO: Count ALL Items
-	    	List<ItemVO> items;
-			myText.text = (_model.Inventory.TryGetValue(ItemConsts.ACCESSORY, out items) ? items.Count : 0).ToString() + "/" + _model.MaxSlots;
+			myText.text = _model.Inventory.Count.ToString() + "/" + _model.MaxSlots;
 	    }
 	}
 }

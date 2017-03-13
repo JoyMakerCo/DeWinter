@@ -45,7 +45,7 @@ public static class EnemyInventory
 					cmod.Parties[date][i].enemyList.Add(e);
 			}
     	}
-    }
+	}
 
     //Removes the Enemy from the Player's Inventory and from any future Parties
     public static void RemoveEnemy(Enemy e)

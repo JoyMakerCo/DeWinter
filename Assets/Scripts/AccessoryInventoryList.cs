@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DeWinter;
@@ -21,9 +22,9 @@ public class AccessoryInventoryList : MonoBehaviour
     {
 		List<ItemVO> accessories;
 		if (inventoryType == "personal")
-			DeWinterApp.GetModel<InventoryModel>().Inventory.TryGetValue(ItemConsts.ACCESSORY, out accessories);
+			accessories = DeWinterApp.GetModel<InventoryModel>().Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
 		else
-			accessories = DeWinterApp.GetModel<InventoryModel>().Market.FindAll(i => i.Type == ItemConsts.ACCESSORY);
+			accessories = DeWinterApp.GetModel<InventoryModel>().Market.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
 
 		if (accessories != null)
 		{

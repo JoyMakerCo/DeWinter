@@ -16,26 +16,9 @@ namespace DeWinter
 		public List<Enemy> Enemies;
 		public string [] Features;
 		public RoomVO [] Neighbors; // Starting North, Clockwise
-
-		RoomVO North
-		{
-			get { return Neighbors[0]; }
-		}
-
-		RoomVO East
-		{
-			get { return Neighbors[1]; }
-		}
-
-		RoomVO South
-		{
-			get { return Neighbors[2]; }
-		}
-
-		RoomVO West
-		{
-			get { return Neighbors[3]; }
-		}
+		public float TurnTimer; // Custom TurnTimer?
+public bool IsTutorial=false; //TODO: Remove bad engineering
+		public bool IsImpassible=false;
 
 // TODO: The map data structure will take care of this
 public bool IsEntrance=false;
@@ -49,6 +32,7 @@ public bool IsEntrance=false;
 		public int MoveThroughChance
 		{
 			get {
+				if (IsImpassible) return 0;
 				int chance = 90 - (Cleared ? 0 : Difficulty * 10);
 				InventoryModel inventory = DeWinterApp.GetModel<InventoryModel>();
 				ItemVO accessory;

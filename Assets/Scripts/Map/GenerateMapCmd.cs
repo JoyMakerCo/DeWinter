@@ -16,53 +16,69 @@ namespace DeWinter
 		{
 			_party = party;
 			_model = DeWinterApp.GetModel<MapModel>();
-			_rnd = new Random();
 
-			switch (party.partySize)
+			if (_party.tutorial)
 			{
-			case 1:
-				_map = new MapVO(3,4);
-				_capacity = 12;
-                break;
-            case 2:
-				_map = new MapVO(5,3);
-				_capacity = 15;
-                break;
-            case 3:
-				_map = new MapVO(7,3);
-				_capacity = 21;
-				break;
+				_map = _model.Maps["Tutorial"];
 			}
+			else
+			{
+				_rnd = new Random();
 
-			BuildRoom(_map.Width >> 1, 0);
-			_map.Entrance.Difficulty = 1;
-			PopulateEnemies();
+				switch (party.partySize)
+				{
+				case 1:
+					_map = new MapVO(3,3);
+	                break;
+	            case 2:
+					_map = new MapVO(5,3);
+	                break;
+	            case 3:
+					_map = new MapVO(9,3);
+					break;
+				}
+
+				_capacity = _map.NumRooms;
+
+				_map.Entrance = BuildRoom(_rnd.Next(_map.Width), 0);
+				_map.Entrance.Difficulty = 1;
+				_map.Entrance.Cleared = true;
+				_map.Entrance.Name = "The Vestibule";
+				_map.Entrance.Features = new string[0];
+
+				PopulateEnemies();
+			}
 			_model.Map = _map;
 		}
 
 // TODO: Floorplan map building
-		private void BuildRoom(int X, int Y)
+		private RoomVO BuildRoom(int X, int Y)
 		{
-			if (X >= 0 && X < _map.Width && Y < _map.Depth && !(_map.Rooms[X,Y] is RoomVO))
+			if (X < 0 || X >= _map.Width || Y >= _map.Depth || _rnd.Next(_map.NumRooms) > _capacity) return null;
+			if (_map.Rooms[X,Y] is RoomVO) return _map.Rooms[X,Y];
+
+			RoomVO room = new RoomVO(GenerateRandomName());
+			room.Features = GetRandomFeatures();
+			room.Difficulty = 1 + _rnd.Next(5);
+			room.Guests = GenerateGuests(room.Difficulty);
+			room.Rewards = GenerateRewards();
+
+			_map.Rooms[X,Y] = room;
+// TODO: Update this when map drawing gets more fleshed out
+room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
+
+			room.Neighbors = new RoomVO[4];
+			room.Neighbors[1] = BuildRoom(X+1, Y); // East
+			room.Neighbors[3] = BuildRoom(X-1, Y); // West
+			room.Neighbors[0] = BuildRoom(X, Y+1); // North
+			room.Neighbors[2] = BuildRoom(X, Y-1); // South
+
+			_capacity--;
+			if (_capacity == 0)
 			{
-				if (_rnd.Next(_map.NumRooms) < _capacity)
-				{
-					RoomVO room = new RoomVO(_map.NumRooms > _capacity ? GenerateRandomName() : "The Entrance");
-					room.Features = GetRandomFeatures();
-					room.Difficulty = 1 + _rnd.Next(5);
-					room.Guests = GenerateGuests(room.Difficulty);
-					room.Rewards = GenerateRewards();
-
-					_map.Rooms[X,Y] = room;
-	// TODO: Update this when map drawing gets more fleshed out
-	room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
-					_capacity--;
-
-					BuildRoom(X, Y+1);
-					BuildRoom(X-1, Y);
-					BuildRoom(X+1, Y);
-				}
+				room.Features = new string[1] { PartyConstants.HOST };
 			}
+			return room;
 		}
 
 		private string GenerateRandomName()
@@ -127,8 +143,7 @@ namespace DeWinter
 				new Reward(_party, "Random", 3),
 				new Reward(_party, "Random", 4),
 				new Reward(_party, "Random", 5),
-				new Reward(_party, "Random", 6),
-				new Reward(_party, "Random", 7)
+				new Reward(_party, "Random", 6)
     		};
 	    }
 

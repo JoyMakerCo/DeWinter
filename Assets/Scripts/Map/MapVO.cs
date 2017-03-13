@@ -7,10 +7,7 @@ namespace DeWinter
 		public string Name;
 		public RoomVO[,] Rooms;
 
-		public RoomVO Entrance
-		{
-			get { return (Rooms != null) ? Rooms[Width >> 1, 0] : null; }
-		}
+		public RoomVO Entrance;
 
 		public int NumRooms
 		{

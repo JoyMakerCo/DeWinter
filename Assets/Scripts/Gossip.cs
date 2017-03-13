@@ -31,10 +31,10 @@ public class Gossip {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
 		if (faction != null && rnd.Next(2) == 0)
 			return faction;
-
-		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
-		return fmod.Factions.Keys.ToArray()[rnd.Next(fmod.Factions.Count)];
-     }
+		
+		string[] factions = DeWinterApp.GetModel<FactionModel>().Factions.Keys.ToArray();
+		return factions[rnd.Next(factions.Length)];
+	}
 
     //Character RandomCharacter (Picks a Random active character from the Faction)
     
@@ -84,6 +84,6 @@ public class Gossip {
 
     public float FreshnessValue()
     {
-        return freshness / 10;
+        return freshness * 0.1f;
     }
 }

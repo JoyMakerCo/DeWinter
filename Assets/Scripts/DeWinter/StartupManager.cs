@@ -27,7 +27,7 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<GrantRewardCmd, RewardVO>();
 			DeWinterApp.RegisterCommand<CheckMilitaryReputationCmd, AdjustValueVO>();
 			DeWinterApp.RegisterCommand<RestockMerchantCmd, CalendarDayVO>();
-			DeWinterApp.RegisterCommand<GenerateMapCmd, Party>(PartyConstants.GENERATE_MAP);
+			DeWinterApp.RegisterCommand<GenerateMapCmd, Party>(MapMessage.GENERATE_MAP);
 			DeWinterApp.RegisterCommand<DegradeOutfitCmd, Outfit>(InventoryConsts.BUY_ITEM);
 			DeWinterApp.RegisterCommand<IntroServantCmd, string>(ServantConsts.INTRODUCE_SERVANT);
 			DeWinterApp.RegisterCommand<HireServantCmd, ServantVO>(ServantConsts.HIRE_SERVANT);

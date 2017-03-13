@@ -1,39 +1,132 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
-public struct WeightedElement<T>
+namespace Util
 {
-	public T Value;
-	public int Weight;
-	public WeightedElement(T value, int weight)
+	public class WeightedArray<T> : IList<T>
 	{
-		Value = value;
-		Weight = weight;
-	}
-}
+		private List<T> _elements;
+		private List<int> _weights;
+		private int _totalWeight;
 
-public class WeightedArray<T> : List<WeightedElement<T>>
-{
-	public WeightedArray () : base() {}
-	public WeightedArray(int capacity) : base(capacity) {}
-	public WeightedArray(IEnumerable<WeightedElement<T>> collection) : base(collection) {}
-
-	public T Choose()
-	{
-		int value = 0;
-		foreach (WeightedElement<T> elt in this)
+		public WeightedArray () : base()
 		{
-			value += elt.Weight;
+			_elements = new List<T>();
+			_weights = new List<int>();
+			_totalWeight = 0;
 		}
-		value = (new Random()).Next(value);
-		foreach (WeightedElement<T> elt in this)
+
+		public WeightedArray(WeightedArray<T> collection)
 		{
-			if (value < elt.Weight)
+			_elements = new List<T>(collection._elements);
+			_weights = new List<int>(collection._weights);
+			_totalWeight = collection._totalWeight;
+		}
+
+		public int Count
+		{
+			get { return _elements.Count; }
+		}
+
+		public bool IsFixedSize { get { return false; } }
+		public bool IsReadOnly { get { return false; } }
+		public T this [int index] {
+			get { return _elements[index]; }
+			set { _elements[index] = value; }
+		}
+
+		public void Add (T value)
+		{
+			this.Add(value, 0);
+		}
+
+		public void Add (T value, int weight)
+		{
+			if (weight < 0) weight = 0;
+			_elements.Add(value);
+			_totalWeight += weight;
+			_weights.Add(weight);
+		}
+
+		public void Clear ()
+		{
+			_elements.Clear();
+			_weights.Clear();
+			_totalWeight = 0;
+		}
+
+		public void CopyTo(T[] list, int index)
+		{
+			for(int i=Math.Min(index + Count, list.Length)-1; i>=0; i--)
 			{
-				return elt.Value;
+				list[i+index] = _elements[i];
 			}
-			value -= elt.Weight;
 		}
-		return this[Count-1].Value;
+
+		public bool Contains (T value)
+		{
+			return _elements.Contains(value);
+		}
+
+		public int IndexOf (T value)
+		{
+			return _elements.IndexOf(value);
+		}
+
+		public void Insert (int index, T value)
+		{
+			this.Insert(index, value, 0);
+		}
+
+		public void Insert (int index, T value, int weight)
+		{
+			if (value is T)
+			{
+				_elements.Insert(index, value);
+				if (weight < 0) weight = 0;
+				_weights.Insert(index, weight);
+				_totalWeight += weight;
+			}
+		}
+
+		public bool Remove(T item)
+		{
+			int i = this.IndexOf(item);
+			if (i < 0) return false;
+			_totalWeight -= _weights[i];
+			_weights.RemoveAt(i);
+			this.RemoveAt(i);
+			return true;
+		}
+
+		public void RemoveAt (int index)
+		{
+			_elements.RemoveAt(index);
+			_totalWeight -= _weights[index];
+			_weights.RemoveAt(index);
+		}
+
+		public T Choose()
+		{
+			int query = new Random().Next(_totalWeight);
+			int value = _totalWeight;
+			for (int i=_weights.Count-1; i>0; i--)
+			{
+				value -= _weights[i];
+				if (value < query)
+					return this[i];
+			}
+			return this[0];
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return (IEnumerator)((IEnumerable<T>)this).GetEnumerator();
+		}
+
+		IEnumerator<T> IEnumerable<T>.GetEnumerator() {
+			return ((IEnumerable<T>)this).GetEnumerator();
+		}
 	}
 }

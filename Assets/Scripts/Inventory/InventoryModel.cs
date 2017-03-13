@@ -54,7 +54,10 @@ public ItemVO SelectedMarketItem;
 		public Dictionary<string, ItemVO> LastEquipped = new Dictionary<string, ItemVO>();
 
 		// Inventories stored by ItemVO.Type (eg, Accessory, Gossip, Outfit)
-		public Dictionary<string, List<ItemVO>> Inventory = new Dictionary<string, List<ItemVO>>();
+		public List<ItemVO> Inventory = new List<ItemVO>();
+
+		[JsonProperty("items")]
+		public ItemVO[] ItemDefinitions;
 
 		public List<ItemVO> Market=new List<ItemVO>();
 	}

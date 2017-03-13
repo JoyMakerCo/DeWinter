@@ -5,14 +5,15 @@ using DeWinter;
 
 public class Party {
 
-    public string faction;
+    public string faction=null;
     public int partySize;
-    public bool invited;
+    public bool invited=false;
     public int invitationDistance; // How many days before does the Player have to be before they get invited (if eligible)?
     public int RSVP = 0; //0 means no RSVP yet, 1 means Attending and -1 means Decline
     public int playerRSVPDistance = -1;
     public int modestyPreference;
     public int luxuryPreference;
+    public bool tutorial=false;
 
     public string description; // Randomly Generated Flavor Description
 
@@ -46,167 +47,122 @@ public class Party {
     public Outfit playerOutfit;
     public ItemVO playerAccessory;
 
-    // Default Constructor
-    public Party()
+    //Constructor that make parties of a particular size, 0 means no Party
+    public Party(int size)
     {
-        SetFaction();
-        partySize = Random.Range(1, 4);
-        GenerateRandomDescription();
-        turns = (partySize * 5) + 1;
-        turnsLeft = turns;
-        FillPlayerHand();
-        invited = false;
-        invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+        partySize = size;
+        if (size > 0)
+        {
+            SetFactionGuaranteedParty();
+			GenerateRandomDescription();
+            host = new Notable(faction);
+            turns = (partySize * 5) + 1;
+            turnsLeft = turns;
+            FillPlayerHand();
+            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+        }
     }
 
     //Constructor that makes a Party that ISN'T the included faction
-    public Party(string notThisFaction)
+    public Party(string faction)
     {
-        SetExclusiveFaction(notThisFaction);
-        partySize = Random.Range(1, 4);
-        GenerateRandomDescription();
-        turns = (partySize * 5) + 1;
-        turnsLeft = turns;
-        FillPlayerHand();
-        invited = false;
-        invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+		SetExclusiveFaction(faction);
+        if(faction != null)
+        {
+            partySize = Random.Range(1, 4);
+            host = new Notable(faction);
+            GenerateRandomDescription();
+            turns = (partySize * 5) + 1;
+            turnsLeft = turns;
+            FillPlayerHand();
+            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+        }
     }
 
-    //Constructor that make parties of a particular size, -1 means no Party
-    public Party(int size)
+    //Constructor that makes the tutorial Party, a preconstructed Party with a specific Room setup and special events
+    //TODO: What Faction is it?
+    public Party (bool isTutorial=false)
     {
-        if (size == -1)
-        {
-            faction = null;
-            partySize = 1;
-        } else
-        {
-            SetFactionGuaranteed();
-            partySize = size;
-        }       
-        GenerateRandomDescription();
-        turns = (partySize * 5) + 1;
-        turnsLeft = turns;
-        FillPlayerHand();
-        invited = false;
-        invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+		tutorial = isTutorial;
+    	if (isTutorial)
+    	{
+			GenerateTutorialDescription();
+			turns = 10;
+			invited = true;
+	        invitationDistance = 1;
+    	}
+    	else
+    	{
+			SetFactionGuaranteedParty();
+			GenerateRandomDescription();
+            host = new Notable(faction);
+            turns = (partySize * 5) + 1;
+            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
+    	}
+		FillPlayerHand();
+		turnsLeft = turns;
     }
 
-    void SetFactionGuaranteed()
+    void SetFactionGuaranteedParty()
     {
 // TODO: set by model
-        int partyFaction = Random.Range(0, 5);
-        if (partyFaction == 0)
+        switch(Random.Range(0, 5))
         {
-            faction = "Crown";
-            modestyPreference = GameData.factionList[faction].Modesty;
-            luxuryPreference = GameData.factionList[faction].Luxury;
+			case 0: faction = "Crown"; break;
+			case 1: faction = "Church"; break;
+			case 2: faction = "Military"; break;
+			case 3: faction = "Bourgeoisie"; break;
+			case 4: faction = "Revolution"; break;
+		}
+		modestyPreference = GameData.factionList[faction].Modesty;
+        luxuryPreference = GameData.factionList[faction].Luxury;
+    }
+
+    void SetRandomFaction()
+    {
+		switch (Random.Range(0, 7))
+        {
+			case 0: faction = "Crown"; break;
+			case 1: faction = "Church"; break;
+			case 2: faction = "Military"; break;
+			case 3: faction = "Bourgeoisie"; break;
+			case 4: faction = "Revolution"; break;
+			default: faction = null; break;
         }
-        if (partyFaction == 1)
+        if (faction != null)
         {
-            faction = "Church";
-            modestyPreference = GameData.factionList[faction].Modesty;
-            luxuryPreference = GameData.factionList[faction].Luxury;
-        }
-        if (partyFaction == 2)
-        {
-            faction = "Military";
-            modestyPreference = GameData.factionList[faction].Modesty;
-            luxuryPreference = GameData.factionList[faction].Luxury;
-        }
-        if (partyFaction == 3)
-        {
-            faction = "Bourgeoisie";
-            modestyPreference = GameData.factionList[faction].Modesty;
-            luxuryPreference = GameData.factionList[faction].Luxury;
-        }
-        if (partyFaction == 4)
-        {
-            faction = "Revolution";
-            modestyPreference = GameData.factionList[faction].Modesty;
+			modestyPreference = GameData.factionList[faction].Modesty;
             luxuryPreference = GameData.factionList[faction].Luxury;
         }
     }
 
-    void SetFaction()
+    void SetExclusiveFaction(string excludeFaction)
     {
-        int partyFaction = Random.Range(0, 7);
+        int partyFaction = Random.Range(0, 6);
         switch (partyFaction)
         {
-            case 0:
-                faction = "Crown";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            case 1:
-                faction = "Church";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            case 2:
-                faction = "Military";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            case 3:
-                faction = "Bourgeoisie";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            case 4:
-                faction = "Revolution";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            default:
-                faction = null;
-                break;
+			case 0: faction = "Crown"; break;
+			case 1: faction = "Church"; break;
+			case 2: faction = "Military"; break;
+			case 3: faction = "Bourgeoisie"; break;
+		}
+		if (faction != null)
+        {
+			if (faction == excludeFaction)
+				faction = "Revolution";
+			modestyPreference = GameData.factionList[faction].Modesty;
+            luxuryPreference = GameData.factionList[faction].Luxury;
         }
     }
-
-    void SetExclusiveFaction(string nTF)
-    {
-        int partyFaction = Random.Range(0, 7);
-        switch (partyFaction)
-        {
-            case 0:
-                faction = "Crown";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            case 1:
-                faction = "Church";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            case 2:
-                faction = "Military";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            case 3:
-                faction = "Bourgeoisie";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            case 4:
-                faction = "Revolution";
-                modestyPreference = GameData.factionList[faction].Modesty;
-                luxuryPreference = GameData.factionList[faction].Luxury;
-                break;
-            default:
-                faction = null;
-                break;
-        }
-        if(nTF == faction)
-        {
-            SetExclusiveFaction(nTF);
-        }
-    }
-
+    
     void GenerateRandomDescription()
     {
         description = "This party is being hosted by some dude or dudette. This segment will later have randomly generated Text describing the party. It should be pretty damn funny.";
+    }
+
+    void GenerateTutorialDescription()
+    {
+        description = "The Orphan's Feast is a small social gathering spot for people of every class of society, though almost everyone who comes here does so alone. ";
     }
 
     public string SizeString()
@@ -338,7 +294,7 @@ public class Party {
         lastTone = playerHand[0].tone;
         for (int i = 1; i < 5; i++)
         {
-            playerHand.Add(new Remark(lastTone));
+            playerHand.Add(new Remark(lastTone, 2));
             lastTone = playerHand[i].tone;
         }
     }  
