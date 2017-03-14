@@ -47,9 +47,6 @@ public class PopUpManager : MonoBehaviour
         //Fill in the Values
         StartGameButtonController buttonController = popUp.GetComponent<StartGameButtonController>();
         buttonController.levelManager = levelManager;
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is how Players Quit the Game
@@ -77,8 +74,6 @@ public class PopUpManager : MonoBehaviour
             + "\nYou're alone? Don't worry! You'll find some of our other patrons in the next room." 
             + "\n\nIn fact, we even have a real big shot here tonight. He's getting drinks in the back. You should talk to him!"
             + "\n\n<You're in the Vestibule, click on a Room next to you to go to that Room>";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used at the beginning of the first Tutorial Conversation to teach you how Work the Room... works
@@ -99,8 +94,6 @@ public class PopUpManager : MonoBehaviour
             + "\nHow? Click on your Remarks at the bottom of the screen, then click on the Guests to use the Remarks."
             + "\nTry to match the color of your Remarks to the color of the Guests. If they like what you're about to say they'll turn green. If they don't like it they'll turn red."
             + "\nOnce their Opinion Bar is all the way to the right then they'll be Charmed. Charm them both to finish the Conversation. Just don't make them too angry or you'll Put them Off and maybe run out of Confidence.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is how Events happen in both the Estate Screen and the Parties
@@ -114,8 +107,6 @@ public class PopUpManager : MonoBehaviour
         EventManager eventManager = popUp.transform.GetComponent<EventManager>();
         eventManager.eventTime = eventTime;
         eventManager.levelManager = levelManager;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is how the Players know that Styles have gone in and out of fashion
@@ -281,25 +272,6 @@ public class PopUpManager : MonoBehaviour
         //Party Assignment
         TwoPartyChoicePopUpController popUpController = popUp.GetComponent<TwoPartyChoicePopUpController>();
 		popUpController.isToday = isToday;
-        popUpController.screenFader = screenFader;
-    }
-
-    void CreateTwoPartyRSVPdPopUp(Party party1, Party party2)
-    {
-        //Make the Pop up
-        GameObject popUp = Instantiate(twoPartyRSVPdModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Which Party?";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, you're currently scheduled to go to two Parties tonight." +
-                "\nWhich one will you be going to?";
-        //Party Assignment
-        TwoPartyRSVPdPopUpController popUpController = popUp.GetComponent<TwoPartyRSVPdPopUpController>();
-        popUpController.party1 = party1;
-        popUpController.party2 = party2;
         popUpController.screenFader = screenFader;
     }
 
@@ -760,8 +732,6 @@ public class PopUpManager : MonoBehaviour
             workTheRoomImage.color = Color.clear;
             workTheRoomText.color = Color.clear;
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
@@ -929,8 +899,6 @@ public class PopUpManager : MonoBehaviour
                         "\n\nYou've spent a few moments here in the Vestibule collecting your wits but your sudden disappearance was considered quite rude." +
                         "\n\nFortunately, the patrons at the Orphan's Feast are much more forgiving than the rest of the society. Give it another try!";
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     void CreateMissedPartyRSVPModal(Party party)

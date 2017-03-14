@@ -1,5 +1,8 @@
-﻿using System;
+﻿using UnityEngine;
+
+using System;
 using System.Collections.Generic;
+using Dialog;
 using Core;
 
 namespace DeWinter
@@ -96,6 +99,16 @@ namespace DeWinter
 		public static void Unsubscribe<T>(Action<T> callback)
 		{
 			App.Service<MessageSvc>().Unsubscribe<T>(callback);
+		}
+
+		public static GameObject OpenDialog(string DialogID)
+		{
+			return App.Service<DialogSvc>().Open(DialogID);
+		}
+
+		public static GameObject OpenDialog<T>(string DialogID, T Data)
+		{
+			return App.Service<DialogSvc>().Open(DialogID, Data);
 		}
 	}
 }

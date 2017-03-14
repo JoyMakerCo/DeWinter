@@ -22,7 +22,7 @@ public class CalendarManager : MonoBehaviour
 			_calendarModel = DeWinterApp.GetModel<CalendarModel>();
 			_factionModel = DeWinterApp.GetModel<FactionModel>();
 
-            PrepareTonightsParty();
+			DeWinterApp.SendMessage(PartyMessages.PREPARE_PARTY);
             PartyInvitations();
             //Missed RSVPs
         	List<Party> parties;
@@ -44,25 +44,6 @@ public class CalendarManager : MonoBehaviour
 				}
 			}
         }
-    }
-
-    void PrepareTonightsParty()
-    {
-        List<Party> parties;
-        if (_calendarModel.Parties.TryGetValue(_calendarModel.Today, out parties))
-        {
-        	parties = parties.FindAll(x => x.RSVP == 1);
-        	switch (parties.Count)
-        	{
-        		case 1:
-        			DeWinterApp.GetModel<PartyModel>().Party = parties[0];
-					Debug.Log("Tonights Party is: a " + parties[0].SizeString() + " " + parties[0].faction + " Party");
-        			break;
-        		case 2:
-					screenFader.gameObject.SendMessage("CreateTwoPartyRSVPdPopUp", new Party[]{parties[0], parties[1]});
-	    			break;    			
-        	}
-	    }
     }
 
     void PartyInvitations()

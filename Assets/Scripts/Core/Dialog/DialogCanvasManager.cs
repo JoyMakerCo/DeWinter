@@ -38,6 +38,9 @@ namespace Dialog
 			GameObject dialog;
 			if (!_dialogs.TryGetValue(dialogID, out dialog))
 			{
+				DialogView cmp = dialog.GetComponent<DialogView>();
+				if (cmp != null) cmp.Manager = this;
+
 				dialog = GameObject.Instantiate<GameObject>(prefab);
 				_dialogs.Add(dialogID, dialog);
 				dialog.transform.SetParent(_canvas.transform, false);
@@ -57,7 +60,7 @@ namespace Dialog
 			{
 				DialogView cmp = dlg.GetComponent<DialogView>();
 				if (cmp is IDialog<T>)
-					(cmp as IDialog<T>).Initialize(vo);
+					(cmp as IDialog<T>).OnOpen(vo);
 			}
 			return dlg;
 		}
@@ -91,7 +94,6 @@ namespace Dialog
 			DialogView dlgCmp = dlg.GetComponent<DialogView>();
 			if (dlgCmp != null)
 			{
-				dlgCmp.OnClose();
 				if (dlgCmp is IDisposable)
 				{
 					(dlgCmp as IDisposable).Dispose();

@@ -32,6 +32,7 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<IntroServantCmd, string>(ServantConsts.INTRODUCE_SERVANT);
 			DeWinterApp.RegisterCommand<HireServantCmd, ServantVO>(ServantConsts.HIRE_SERVANT);
 			DeWinterApp.RegisterCommand<FireServantCmd, ServantVO>(ServantConsts.FIRE_SERVANT);
+			DeWinterApp.RegisterCommand<PreparePartyCmd>(PartyMessages.PREPARE_PARTY);
 
 			Instantiate<GameObject>(InventoriesPrefab);
 

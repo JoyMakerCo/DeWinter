@@ -18,7 +18,7 @@ public class EventOption
 	public EventOption(string servantType, string buttonText, params int[] stages)
     {
         optionButtonText = buttonText;
-        for (int i=0; i<stages.Length; i+=2)
+        for (int i=0; i+1<stages.Length; i+=2)
         {
         	Stages.Add(stages[i], stages[i+1]);
         }
