@@ -5,15 +5,11 @@ using DeWinter;
 
 public class StartGameButtonController : MonoBehaviour
 {
-    public LevelManager levelManager; //Filled in by the PopUpManager
-    public DismissPopUp dismiss;
-	
 	// This performs all the actions necessary for starting the game;
-	void StartGame()
+	public void StartGame()
 	{
-		OutfitInventory.StockInventory();
-        dismiss.Dismiss();
-        levelManager.LoadLevel("Game_Estate");
+		DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
         DeWinterApp.SendMessage(CalendarConsts.ADVANCE_DAY);
+		OutfitInventory.StockInventory();
 	}
 }

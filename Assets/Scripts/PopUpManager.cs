@@ -43,10 +43,6 @@ public class PopUpManager : MonoBehaviour
         //Make the Pop Up
         GameObject popUp = Instantiate(newGameModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
-
-        //Fill in the Values
-        StartGameButtonController buttonController = popUp.GetComponent<StartGameButtonController>();
-        buttonController.levelManager = levelManager;
     }
 
     //This is how Players Quit the Game

@@ -14,14 +14,14 @@ namespace DeWinter
 
 		void Start ()
 		{
-			DeWinterApp.Subscribe<string>(GameMessages.CHANGE_SCENE, HandleScene);
+			DeWinterApp.Subscribe<string>(GameMessages.LOAD_SCENE, HandleScene);
 			DeWinterApp.Subscribe<float>(GameMessages.FADE_IN, FadeIn);
 			DeWinterApp.Subscribe<float>(GameMessages.FADE_OUT, FadeOut);
 		}
 
 		void Destroy()
 		{
-			DeWinterApp.Unsubscribe<string>(GameMessages.CHANGE_SCENE, HandleScene);
+			DeWinterApp.Unsubscribe<string>(GameMessages.LOAD_SCENE, HandleScene);
 			DeWinterApp.Unsubscribe<float>(GameMessages.FADE_IN, FadeIn);
 			DeWinterApp.Unsubscribe<float>(GameMessages.FADE_OUT, FadeOut);
 		}

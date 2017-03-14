@@ -9,9 +9,13 @@ public class LevelManager : MonoBehaviour
     public string playerVictoryStatus;
     public string playerAllegiance;
 
+    void Start()
+    {
+		DeWinterApp.Subscribe(CalendarConsts.UPRISING_DAY, HandleUprisingDay);
+    }
+
     public void LoadLevel(string sceneName)
     {
-        DeWinterApp.Subscribe(CalendarConsts.UPRISING_DAY, HandleUprisingDay);
         SceneManager.LoadScene(sceneName);
     }
 

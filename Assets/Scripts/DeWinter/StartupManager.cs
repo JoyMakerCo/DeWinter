@@ -33,6 +33,7 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<HireServantCmd, ServantVO>(ServantConsts.HIRE_SERVANT);
 			DeWinterApp.RegisterCommand<FireServantCmd, ServantVO>(ServantConsts.FIRE_SERVANT);
 			DeWinterApp.RegisterCommand<PreparePartyCmd>(PartyMessages.PREPARE_PARTY);
+			DeWinterApp.RegisterCommand<LoadSceneCmd, string>(GameMessages.LOAD_SCENE);
 
 			Instantiate<GameObject>(InventoriesPrefab);
 
