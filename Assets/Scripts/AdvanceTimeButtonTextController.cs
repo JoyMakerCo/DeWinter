@@ -20,12 +20,12 @@ public class AdvanceTimeButtonTextController : MonoBehaviour {
         {
             if (GameData.tonightsParty.faction == null || GameData.tonightsParty.RSVP == -1 || GameData.tonightsParty.RSVP == 0)
             {
-                myOutline.effectColor = Color.clear;
+         //       myOutline.effectColor = Color.clear;
                 myText.text = "Next Day";
             }
             else
             {
-                myOutline.effectColor = Color.yellow;
+         //     myOutline.effectColor = Color.yellow;
                 myText.text = "Go to the Party!";
             }
         } else
