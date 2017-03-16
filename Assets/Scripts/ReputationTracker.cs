@@ -22,8 +22,7 @@ namespace DeWinter
 		    }
 		    else
 		    {
-	            LevelManager man = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-	            man.LoadLevel("Game_EndScreen");
+				DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
 		    }
 	    }
 	}

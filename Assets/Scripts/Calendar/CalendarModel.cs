@@ -28,7 +28,7 @@ namespace DeWinter
 
 		private DateTime _startDate;
 		private int _gameLength;
-		private int _day=0;
+		private int _day=-1;
 
 		public int Day
 		{
@@ -38,9 +38,6 @@ namespace DeWinter
 				{
 					CalendarDayVO msg = new CalendarDayVO(_day = value, Today);
 					DeWinterApp.SendMessage<CalendarDayVO>(msg);
-
-					if (_day == uprisingDay)
-						DeWinterApp.SendMessage(CalendarConsts.UPRISING_DAY);
 				}
 			}
 		}
@@ -110,7 +107,7 @@ namespace DeWinter
 		public void Initialize()
 		{
 			uprisingDay= (new Random()).Next(25, 31);
-			DeWinterApp.Subscribe(CalendarConsts.ADVANCE_DAY, AdvanceDay);
+			DeWinterApp.Subscribe(CalendarMessages.ADVANCE_DAY, AdvanceDay);
 		}
 
 		private void AdvanceDay() { Day++; }

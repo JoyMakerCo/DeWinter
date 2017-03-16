@@ -50,7 +50,7 @@ namespace DeWinter
 			App.Service<CommandSvc>().Unregister<C, T>(messageID);
 		}
 
-		public static void UnregisterCommand<C, T>() where C:ICommand
+		public static void UnregisterCommand<C, T>() where C:ICommand<T>
 		{
 			App.Service<CommandSvc>().Unregister<C, T>();
 		}
@@ -108,7 +108,7 @@ namespace DeWinter
 
 		public static GameObject OpenDialog<T>(string DialogID, T Data)
 		{
-			return App.Service<DialogSvc>().Open(DialogID, Data);
+			return App.Service<DialogSvc>().Open<T>(DialogID, Data);
 		}
 	}
 }

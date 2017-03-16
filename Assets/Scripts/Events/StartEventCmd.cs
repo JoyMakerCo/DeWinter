@@ -1,27 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using Core;
 
 namespace DeWinter
 {
-	public class StartEventCommand : ICommand<string>
+	public class StartEventCmd : ICommand<CalendarDayVO>
 	{
-		public void Execute(string eventName)
+		private const string MODAL_ID = "EventPopUpModal";
+
+		public void Execute (CalendarDayVO day)
 		{
-/*
-			int randomRangeMax = 100;
-        //Intro Event
-        if (GameData.currentDay == 0)
-        {
-            screenFader.gameObject.SendMessage("CreateEventPopUp", "intro");
-        }
-        //All the Other Events
-        if (GameData.currentDay > 2 && (Random.Range(1, randomRangeMax + 1) < GameData.eventChance))
-        {
-            screenFader.gameObject.SendMessage("CreateEventPopUp", "night");
-        }
-*/
-		}
+			Random rnd = new Random();
+			CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
+			EventModel emod = DeWinterApp.GetModel<EventModel>();
+			if (emod.SelectedEvent == null
+				&& cmod.Day >= 2
+				&& (rnd.Next(100) < emod.EventChance))
+			{
+				EventVO [] events = emod.eventInventories["night"];
+
+//			//Select the Event
+//	        WeightedSelection();
+
+				emod.SelectedEvent = events[rnd.Next(events.Length)];
+				emod.SelectedEvent.currentStageIndex = 0;
+			}
+			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
+	    }
 	}
 }

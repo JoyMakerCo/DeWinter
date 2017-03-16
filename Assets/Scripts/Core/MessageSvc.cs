@@ -10,6 +10,8 @@ namespace Core
 		protected Dictionary<Type, List<Delegate>> _typeListeners;
 		protected List<KeyValuePair<string, Delegate>> _markedForRemoval;
 		protected List<KeyValuePair<Type, Delegate>> _typeMarkedForRemoval;
+		protected List<KeyValuePair<string, Delegate>> _markedForSubscription;
+		protected List<KeyValuePair<Type, Delegate>> _typeMarkedForSubscription;
 		protected bool _isNotifying;
 
 		public MessageSvc ()
@@ -17,43 +19,79 @@ namespace Core
 			_listeners = new Dictionary<string, List<Delegate>>();
 			_typeListeners = new Dictionary<Type, List<Delegate>>();
 			_markedForRemoval = null;
+			_typeMarkedForRemoval = null;
+			_markedForSubscription = null;
+			_typeMarkedForSubscription = null;
 			_isNotifying = false;
 		}
 
 		public void Subscribe(string messageID, Action callback)
 		{
-			if (!_listeners.ContainsKey(messageID))
+			if (!_isNotifying)
 			{
-				_listeners.Add(messageID, new List<Delegate>());
+				if (!_listeners.ContainsKey(messageID))
+				{
+					_listeners.Add(messageID, new List<Delegate>());
+				}
+				if (!_listeners[messageID].Contains(callback))
+				{
+					_listeners[messageID].Add(callback);
+				}
 			}
-			if (!_listeners[messageID].Contains(callback))
+			else if (!_listeners.ContainsKey(messageID) || !_listeners[messageID].Contains(callback))
 			{
-				_listeners[messageID].Add(callback);
+				if (_markedForSubscription == null)
+				{
+					_markedForSubscription = new List<KeyValuePair<string, Delegate>>();
+				}
+				_markedForSubscription.Add(new KeyValuePair<string, Delegate>(messageID, callback));
 			}
 		}
 
 		public void Subscribe<T>(string messageID, Action<T> callback)
 		{
-			if (!_listeners.ContainsKey(messageID))
+			if (!_isNotifying)
 			{
-				_listeners.Add(messageID, new List<Delegate>());
+				if (!_listeners.ContainsKey(messageID))
+				{
+					_listeners.Add(messageID, new List<Delegate>());
+				}
+				if (!_listeners[messageID].Contains(callback))
+				{
+					_listeners[messageID].Add(callback);
+				}
 			}
-			if (!_listeners[messageID].Contains(callback))
+			else if (!_listeners.ContainsKey(messageID) || !_listeners[messageID].Contains(callback))
 			{
-				_listeners[messageID].Add(callback);
+				if (_markedForSubscription == null)
+				{
+					_markedForSubscription = new List<KeyValuePair<string, Delegate>>();
+				}
+				_markedForSubscription.Add(new KeyValuePair<string, Delegate>(messageID, callback));
 			}
 		}
 
 		public void Subscribe<T>(Action<T> callback)
 		{
 			Type t = typeof(T);
-			if (!_typeListeners.ContainsKey(t))
+			if (!_isNotifying)
 			{
-				_typeListeners.Add(t, new List<Delegate>());
+				if (!_typeListeners.ContainsKey(t))
+				{
+					_typeListeners.Add(t, new List<Delegate>());
+				}
+				if (!_typeListeners[t].Contains(callback))
+				{
+					_typeListeners[t].Add(callback);
+				}
 			}
-			if (!_typeListeners[t].Contains(callback))
+			else if (!_typeListeners.ContainsKey(t) || !_typeListeners[t].Contains(callback))
 			{
-				_typeListeners[t].Add(callback);
+				if (_typeMarkedForSubscription == null)
+				{
+					_typeMarkedForSubscription = new List<KeyValuePair<Type, Delegate>>();
+				}
+				_typeMarkedForSubscription.Add(new KeyValuePair<Type, Delegate>(t, callback));
 			}
 		}
 
@@ -109,7 +147,7 @@ namespace Core
 						(action as Action).Invoke();
 					}
 				}
-				RemoveMarkedDelegates();
+				ResolveMarkedDelegates();
 			}
 		}
 
@@ -124,7 +162,7 @@ namespace Core
 					if (d is Action<T>)
 						(d as Action<T>).Invoke(msg);
 				}
-				RemoveMarkedDelegates();
+				ResolveMarkedDelegates();
 			}
 		}
 
@@ -139,14 +177,45 @@ namespace Core
 				{
 					(action as Action<T>).Invoke(messageData);
 				}
-				RemoveMarkedDelegates();
+				ResolveMarkedDelegates();
 			}
 		}
 
-		protected void RemoveMarkedDelegates()
+		protected void ResolveMarkedDelegates()
 		{
 			_isNotifying = false;
-
+			if (_markedForSubscription != null)
+			{
+				foreach(KeyValuePair<string, Delegate> kvp in _markedForSubscription)
+				{
+					if (!_listeners.ContainsKey(kvp.Key))
+					{
+						_listeners.Add(kvp.Key, new List<Delegate>());
+					}
+					if (!_listeners[kvp.Key].Contains(kvp.Value))
+					{
+						_listeners[kvp.Key].Add(kvp.Value);
+					}
+				}
+				_markedForSubscription.Clear();
+				_markedForSubscription = null;
+			}
+			if (_typeMarkedForSubscription != null)
+			{
+				foreach(KeyValuePair<Type, Delegate> kvp in _typeMarkedForSubscription)
+				{
+					if (!_typeListeners.ContainsKey(kvp.Key))
+					{
+						_typeListeners.Add(kvp.Key, new List<Delegate>());
+					}
+					if (!_typeListeners[kvp.Key].Contains(kvp.Value))
+					{
+						_typeListeners[kvp.Key].Add(kvp.Value);
+					}
+				}
+				_typeMarkedForSubscription.Clear();
+				_typeMarkedForSubscription = null;
+			}
 			if (_markedForRemoval != null)
 			{
 				foreach(KeyValuePair<string, Delegate> kvp in _markedForRemoval)
@@ -156,6 +225,11 @@ namespace Core
 						_listeners[kvp.Key].Remove(kvp.Value);
 					}
 				}
+				_markedForRemoval.Clear();
+				_markedForRemoval = null;
+			}
+			if (_typeMarkedForRemoval != null)
+			{
 				foreach(KeyValuePair<Type, Delegate> kvp in _typeMarkedForRemoval)
 				{
 					if (_typeListeners.ContainsKey(kvp.Key))
@@ -163,8 +237,6 @@ namespace Core
 						_typeListeners[kvp.Key].Remove(kvp.Value);
 					}
 				}
-				_markedForRemoval.Clear();
-				_markedForRemoval = null;
 				_typeMarkedForRemoval.Clear();
 				_typeMarkedForRemoval = null;
 			}
@@ -172,7 +244,7 @@ namespace Core
 
 		public void Dispose()
 		{
-			RemoveMarkedDelegates();
+			ResolveMarkedDelegates();
 			_listeners.Clear();
 			_listeners = null;
 			_typeListeners.Clear();

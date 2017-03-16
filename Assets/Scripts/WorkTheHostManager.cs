@@ -808,7 +808,7 @@ public class WorkTheHostManager : MonoBehaviour
         Debug.Log("Trying to go to the After Party Report Screen!");
         party.blackOutEnding = true;
         roomManager.partyManager.FinishTheParty();
-        levelManager.LoadLevel("Game_AfterPartyReport");
+        DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_AfterPartyReport");
         Debug.Log("At the After Party Report Screen!");
     }
 

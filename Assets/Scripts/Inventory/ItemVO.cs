@@ -20,7 +20,7 @@ namespace DeWinter
 		public string[] Tags;
 
 		[JsonProperty("states")]
-		public Dictionary<string, object> States;
+		public Dictionary<string, object> States = new Dictionary<string, object>();
 
 		[JsonProperty("Price")]
 		public int Price;

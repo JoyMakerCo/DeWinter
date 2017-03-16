@@ -200,7 +200,7 @@ public class PartyManager : MonoBehaviour
             }
 			OutfitInventory.PartyOutfit = null;
 	        GameData.partyAccessory = null;
-            levelManager.LoadLevel("Game_AfterPartyReport");
+			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_AfterPartyReport");
         } else
         {
             Debug.Log("Player can't leave the Tutorial Party until they've met the Host");

@@ -19,7 +19,6 @@ public class AdvanceTimeButtonTextController : MonoBehaviour {
 
     void Update ()
     {
-    	
 		if (_model.Party == null || _model.Party.faction == null || _model.Party.RSVP == -1 || _model.Party.RSVP == 0)
         {
             myOutline.effectColor = Color.clear;

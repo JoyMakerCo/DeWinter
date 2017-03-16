@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace DeWinter
 {
-	public class ButtonMessage : Component
+	public class ButtonMessage : MonoBehaviour
 	{
-		public void SendMessage(string messageID)
+		public void SendButtonMessage(string messageID)
 		{
 			DeWinterApp.SendMessage(messageID);
 		}

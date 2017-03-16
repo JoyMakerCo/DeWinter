@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NoOutfitModal : MonoBehaviour {
-
-    private SceneFadeInOut sceneFader;
+public class NoOutfitModal : MonoBehaviour
+{
+	public SceneFadeInOut sceneFader;
     private MainScreenTabsController tabsController;
 
     void Start()
@@ -29,4 +29,3 @@ public class NoOutfitModal : MonoBehaviour {
         tabsController.WardrobeSelected();
     }
 }
-

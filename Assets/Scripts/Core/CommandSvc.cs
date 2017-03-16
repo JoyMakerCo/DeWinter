@@ -20,104 +20,91 @@ namespace Core
 
 	public class CommandSvc : IAppService
 	{
-		private Dictionary<string, List<Delegate>> _messageAssociations;
-		private Dictionary<Type, List<Delegate>> _typeAssociations;
-
-		private delegate void MessageDelegate<T, C>(T msg);
-		private delegate void CommandDelegate<C>();
+		private Dictionary<string, Dictionary<Type, Delegate>> _messageAssociations;
+		private Dictionary<Type, Dictionary<Type, Delegate>> _typeAssociations;
+		private bool _executing=false;
 
 		public CommandSvc()
 		{
-			_messageAssociations = new Dictionary<string, List<Delegate>>();
-			_typeAssociations = new Dictionary<Type, List<Delegate>>();
+			_messageAssociations = new Dictionary<string, Dictionary<Type, Delegate>>();
+			_typeAssociations = new Dictionary<Type, Dictionary<Type, Delegate>>();
 		}
 
 		public void Register<C, T>() where C : ICommand<T>, new()
 		{
 			Type t = typeof(T);
+			Type c = typeof(C);
 			if (!_typeAssociations.ContainsKey(t))
 			{
-				_typeAssociations.Add(t, new List<Delegate>());
-				App.Service<MessageSvc>().Subscribe<T>(HandleMessage<T>);
+				_typeAssociations.Add(t, new Dictionary<Type, Delegate>());
 			}
-			Action<T> handleMsg = msg => new C().Execute(msg);
-			_typeAssociations[t].Add(handleMsg);
+			if (!_typeAssociations[t].ContainsKey(c))
+			{
+				Action<T> handleMsg = msg => new C().Execute(msg);
+				_typeAssociations[t].Add(c, handleMsg);
+				App.Service<MessageSvc>().Subscribe<T>(handleMsg);
+			}
 		}
 
 		public void Register<C>(string messageID) where C : ICommand, new()
 		{
+			Type c = typeof(C);
 			if (!_messageAssociations.ContainsKey(messageID))
 			{
-				_messageAssociations.Add(messageID, new List<Delegate>());
+				_messageAssociations.Add(messageID, new Dictionary<Type, Delegate>());
 			}
-			Action handleMsg = delegate() { new C().Execute(); };
-			_messageAssociations[messageID].Add(handleMsg);
-			App.Service<MessageSvc>().Subscribe(messageID, handleMsg);
+			if (!_messageAssociations[messageID].ContainsKey(c))
+			{
+				Action handleMsg = () => new C().Execute();
+				_messageAssociations[messageID].Add(c, handleMsg);
+				App.Service<MessageSvc>().Subscribe(messageID, handleMsg);
+			}
 		}
 
 		public void Register<C, T>(string messageID) where C : ICommand<T>, new()
 		{
+			Type c = typeof(C);
 			if (!_messageAssociations.ContainsKey(messageID))
 			{
-				_messageAssociations.Add(messageID, new List<Delegate>());
+				_messageAssociations.Add(messageID, new Dictionary<Type, Delegate>());
 			}
-			Action<T> handleMsg = msg => new C().Execute(msg);
-			_messageAssociations[messageID].Add(handleMsg);
-			App.Service<MessageSvc>().Subscribe<T>(messageID, handleMsg);
+			if (!_messageAssociations[messageID].ContainsKey(c))
+			{
+				Action<T> handleMsg = msg => new C().Execute(msg);
+				_messageAssociations[messageID].Add(c, handleMsg);
+				App.Service<MessageSvc>().Subscribe(messageID, handleMsg);
+			}
 		}
 
-// TODO: Implement unregistering commands
-		public void Unregister<C, T>() where C : ICommand
+
+		public void Unregister<C, T>() where C : ICommand<T>
 		{
-//			App.Service<MessageSvc>().Unsubscribe
+			Type t = typeof(T);
+			if (_typeAssociations.ContainsKey(t))
+			{
+				Type c = typeof(C);
+				App.Service<MessageSvc>().Unsubscribe<T>(_typeAssociations[t][c] as Action<T>);
+				_typeAssociations[t].Remove(typeof(C));
+			}
 		}
 
 		public void Unregister<C, T>(string messageID) where C : ICommand
 		{
-//			App.Service<MessageSvc>().Unsubscribe
+			if (_messageAssociations.ContainsKey(messageID))
+			{
+				Type c = typeof(C);
+				App.Service<MessageSvc>().Unsubscribe(messageID, _messageAssociations[messageID][c]);
+				_messageAssociations[messageID].Remove(c);
+			}
 		}
 
 		public void Unregister<C>(string messageID) where C : ICommand
 		{
-//			App.Service<MessageSvc>().Unsubscribe
-		}
-
-		private void HandleMessage(string messageID)
-		{
-			List<Delegate> delegates;
-			if (_messageAssociations.TryGetValue(messageID, out delegates))
+			if (_messageAssociations.ContainsKey(messageID))
 			{
-				foreach(Delegate d in delegates)
-				{
-					if (d is Action)
-						(d as Action).Invoke();
-				}
-			}
-		}
-
-		private void HandleMessage<T>(string messageID, T msg)
-		{
-			List<Delegate> delegates;
-			if (_messageAssociations.TryGetValue(messageID, out delegates))
-			{
-				foreach(Delegate d in delegates)
-				{
-					if (d is Action<T>)
-						(d as Action<T>).Invoke(msg);
-				}
-			}
-		}
-
-		private void HandleMessage<T>(T msg)
-		{
-			List<Delegate> delegates;
-			if (_typeAssociations.TryGetValue(typeof(T), out delegates))
-			{
-				foreach(Delegate d in delegates)
-				{
-					if (d is Action<T>)
-						(d as Action<T>).Invoke(msg);
-				}
+				Type c = typeof(C);
+				App.Service<MessageSvc>().Unsubscribe(messageID, _messageAssociations[messageID][c]);
+				_messageAssociations[messageID].Remove(c);
 			}
 		}
 	}

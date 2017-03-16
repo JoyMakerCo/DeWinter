@@ -23,16 +23,19 @@ public class EventOptionButton : MonoBehaviour {
     public void DisplayEventOption()
     {
 		EventVO selectedEvent = _eventModel.SelectedEvent;
-		EventOption eventOption = selectedEvent.currentStage.Options[option];
-		bool show = (eventOption.optionButtonText != null);
+		EventStage stage = selectedEvent.currentStage;
+		bool show = (option < stage.Options.Length && stage.Options[option].optionButtonText != null);
 
-
-		if (show && eventOption.servantRequired != null)
+		if (show)
 		{
-			ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-			show = smod.Hired.ContainsKey(eventOption.servantRequired);
+			EventOption eventOption = stage.Options[option];
+			if (show && eventOption.servantRequired != null)
+			{
+				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+				show = smod.Hired.ContainsKey(eventOption.servantRequired);
+				if (show) myText.text = eventOption.optionButtonText;
+			}
 		}
-		if (show) myText.text = eventOption.optionButtonText;
 		this.gameObject.SetActive(show);
     }
 }

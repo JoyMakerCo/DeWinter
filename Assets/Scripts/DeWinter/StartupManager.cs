@@ -20,13 +20,15 @@ namespace DeWinter
 			DeWinterApp.RegisterModel<EventModel>();
 			DeWinterApp.RegisterModel<QuestModel>();
 
+// TODO: Okay, fine, make commands directly executable.
 			DeWinterApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryConsts.SELL_ITEM);
 			DeWinterApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryConsts.BUY_ITEM);
 			DeWinterApp.RegisterCommand<PayDayCmd, CalendarDayVO>();
+			DeWinterApp.RegisterCommand<RestockMerchantCmd, CalendarDayVO>();
+			DeWinterApp.RegisterCommand<CheckUprisingDayCmd, CalendarDayVO>();
 			DeWinterApp.RegisterCommand<DancingCmd, NotableVO>(PartyConstants.START_DANCING);
 			DeWinterApp.RegisterCommand<GrantRewardCmd, RewardVO>();
 			DeWinterApp.RegisterCommand<CheckMilitaryReputationCmd, AdjustValueVO>();
-			DeWinterApp.RegisterCommand<RestockMerchantCmd, CalendarDayVO>();
 			DeWinterApp.RegisterCommand<GenerateMapCmd, Party>(MapMessage.GENERATE_MAP);
 			DeWinterApp.RegisterCommand<DegradeOutfitCmd, Outfit>(InventoryConsts.BUY_ITEM);
 			DeWinterApp.RegisterCommand<IntroServantCmd, string>(ServantConsts.INTRODUCE_SERVANT);
@@ -34,8 +36,13 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<FireServantCmd, ServantVO>(ServantConsts.FIRE_SERVANT);
 			DeWinterApp.RegisterCommand<PreparePartyCmd>(PartyMessages.PREPARE_PARTY);
 			DeWinterApp.RegisterCommand<LoadSceneCmd, string>(GameMessages.LOAD_SCENE);
+			DeWinterApp.RegisterCommand<QuitCmd>(GameMessages.QUIT_GAME);
+			DeWinterApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
+			DeWinterApp.RegisterCommand<StartEventCmd, CalendarDayVO>();
+			DeWinterApp.RegisterCommand<EventReadyCmd, string>(GameMessages.SCENE_READY);
 
-			Instantiate<GameObject>(InventoriesPrefab);
+// TODO: Get rid of this when the Calendar Inventory is swallowed buy the model
+Instantiate<GameObject>(InventoriesPrefab);
 
 			Destroy(this.gameObject);
 		}

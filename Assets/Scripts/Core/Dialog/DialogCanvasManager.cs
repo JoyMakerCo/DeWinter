@@ -13,7 +13,7 @@ namespace Dialog
 		protected Dictionary<string, GameObject> _dialogs;
 		protected Canvas _canvas;
 
-		void Start()
+		void Awake()
 		{
 			App.Service<DialogSvc>().RegisterManager(this);
 
@@ -36,19 +36,16 @@ namespace Dialog
 				return null;
 			
 			GameObject dialog;
-			if (!_dialogs.TryGetValue(dialogID, out dialog))
+			if (_dialogs.TryGetValue(dialogID, out dialog))
 			{
 				DialogView cmp = dialog.GetComponent<DialogView>();
 				if (cmp != null) cmp.Manager = this;
+			}
 
-				dialog = GameObject.Instantiate<GameObject>(prefab);
-				_dialogs.Add(dialogID, dialog);
-				dialog.transform.SetParent(_canvas.transform, false);
-			}
-			else
-			{
-				dialog.GetComponent<RectTransform>().SetAsLastSibling();
-			}
+			dialog = GameObject.Instantiate<GameObject>(prefab);
+			_dialogs.Add(dialogID, dialog);
+			dialog.transform.SetParent(_canvas.transform, false);
+			dialog.GetComponent<RectTransform>().SetAsLastSibling();
 
 			return dialog;
 		}
@@ -92,12 +89,9 @@ namespace Dialog
 		protected void HandleCloseDialog(string dialogID, GameObject dlg)
 		{
 			DialogView dlgCmp = dlg.GetComponent<DialogView>();
-			if (dlgCmp != null)
+			if (dlgCmp is IDisposable)
 			{
-				if (dlgCmp is IDisposable)
-				{
-					(dlgCmp as IDisposable).Dispose();
-				}
+				(dlgCmp as IDisposable).Dispose();
 			}
 			_dialogs.Remove(dialogID);
 			GameObject.Destroy(dlg);
@@ -105,8 +99,14 @@ namespace Dialog
 
 		public void CloseAll()
 		{
+			DialogView view;
 			foreach(KeyValuePair<string, GameObject> kvp in _dialogs)
 			{
+				view = kvp.Value.GetComponent<DialogView>();
+				if (view is IDisposable)
+				{
+					(view as IDisposable).Dispose();
+				}
 				GameObject.Destroy(kvp.Value);
 			}
 			_dialogs.Clear();

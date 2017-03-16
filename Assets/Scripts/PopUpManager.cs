@@ -11,10 +11,9 @@ public class PopUpManager : MonoBehaviour
     public GameObject screenFader;
     public LevelManager levelManager;
 
-    public GameObject newGameModal;
+	public GameObject newGameModal;
     public GameObject quitGameModal;
     public GameObject messageModal;
-    public GameObject eventModal;
     public GameObject workTheRoomTutorialModal;
     public GameObject twoPartyChoiceModal;
     public GameObject twoPartyRSVPdModal;
@@ -90,19 +89,6 @@ public class PopUpManager : MonoBehaviour
             + "\nHow? Click on your Remarks at the bottom of the screen, then click on the Guests to use the Remarks."
             + "\nTry to match the color of your Remarks to the color of the Guests. If they like what you're about to say they'll turn green. If they don't like it they'll turn red."
             + "\nOnce their Opinion Bar is all the way to the right then they'll be Charmed. Charm them both to finish the Conversation. Just don't make them too angry or you'll Put them Off and maybe run out of Confidence.";
-    }
-
-    //This is how Events happen in both the Estate Screen and the Parties
-    void CreateEventPopUp(string eventTime)
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(eventModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        popUp.transform.SetAsLastSibling();
-        //Set the Event Time
-        EventManager eventManager = popUp.transform.GetComponent<EventManager>();
-        eventManager.eventTime = eventTime;
-        eventManager.levelManager = levelManager;
     }
 
     //This is how the Players know that Styles have gone in and out of fashion

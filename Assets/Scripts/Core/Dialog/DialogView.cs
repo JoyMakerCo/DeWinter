@@ -9,8 +9,9 @@ namespace Dialog
 		void OnOpen(T vo);
 	}
 
-	public class DialogView : Component
+	public class DialogView : MonoBehaviour
 	{
+		[HideInInspector]
 		public DialogCanvasManager Manager;
 
 		public void Close()
