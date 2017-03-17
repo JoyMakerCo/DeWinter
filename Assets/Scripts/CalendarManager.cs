@@ -14,7 +14,7 @@ public class CalendarManager : MonoBehaviour {
         {
             PrepareTonightsParty();
             PartyInvitations();
-            MissedRSVPsCheck();
+   //         MissedRSVPsCheck();
         }
     }
 

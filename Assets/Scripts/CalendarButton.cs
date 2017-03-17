@@ -28,7 +28,7 @@ public class CalendarButton : MonoBehaviour {
         myXImage = this.transform.Find("XImage").GetComponent<Image>();
         myCircleImage = this.transform.Find("CircleImage").GetComponent<Image>();
         mySlashImage = this.transform.Find("SlashImage").GetComponent<Image>();
-        myOutline = this.GetComponent<Outline>();
+       // myOutline = this.GetComponent<Outline>();
         defaultColor = myBlockImage.color;
     }
 
@@ -71,15 +71,15 @@ public class CalendarButton : MonoBehaviour {
             // Is this day today? If so, then Outline it
             if (GameData.currentMonth == buttonDay.month && GameData.currentDay == buttonDay.day)
             {
-                myOutline.effectColor = Color.black;
+               // myOutline.effectColor = Color.black;
                 myXImage.color = Color.clear;
             } else if (GameData.currentMonth > buttonDay.month || (GameData.currentMonth == buttonDay.month && GameData.currentDay > buttonDay.day))
             {
-                myOutline.effectColor = Color.clear;
+             //   myOutline.effectColor = Color.clear;
                 myXImage.color = Color.white;
             }  else
             {
-                myOutline.effectColor = Color.clear;
+             //   myOutline.effectColor = Color.clear;
                 myXImage.color = Color.clear;
             }
             //What's the state of the Party RSVP?
