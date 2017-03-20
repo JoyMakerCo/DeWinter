@@ -18,11 +18,15 @@ public class EventOption
 	public EventOption(string servantType, string buttonText, params int[] stages)
     {
         optionButtonText = buttonText;
-        for (int i=0; i+1<stages.Length; i+=2)
+		servantRequired = servantType;
+
+		if (stages.Length == 1)
+			Stages.Add(stages[0], 100);
+
+        else for (int i=0; i+1<stages.Length; i+=2)
         {
         	Stages.Add(stages[i], stages[i+1]);
         }
-		servantRequired = servantType;
     }
 
     //Full Constructor, no chance based outcome

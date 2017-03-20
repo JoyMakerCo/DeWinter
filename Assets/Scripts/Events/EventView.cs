@@ -8,7 +8,6 @@ namespace DeWinter
 {
 	public class EventView : DialogView, IDialog<EventVO>
 	{
-	// TODO: Make UI respond to Events; move logic into command
 	    public Text titleText;
 	    public Text descriptionText;
 
@@ -16,14 +15,22 @@ namespace DeWinter
 
 		public void OnOpen(EventVO e)
 	    {
-			Debug.Log("Starting Event: " + e.Name);
+	    	_event = e;
+	    }
 
+	    void Start()
+	    {
+			DeWinterApp.Subscribe<EventVO>(HandleEventUpdate);
+			DeWinterApp.SendMessage<EventVO>(_event);
+	    }
+
+		private void HandleEventUpdate(EventVO e)
+		{
 			_event = e;
 
-	        //Text and Title
 			titleText.text = e.Name;
 			descriptionText.text = e.currentStage.Description;
-	    }
+		}
 
 	    public void EventOptionSelect(int option)
 	    {
@@ -40,21 +47,20 @@ namespace DeWinter
 
 			if (_event.currentStage != null)
 			{
-				// For normal, non-tutorial partes
-				// TODO: Make this not completely hacky
-				if (_event.currentStage.Options[option].eventOptionParty == null)
+				// Set descriptive text
+				descriptionText.text = _event.currentStage.Description;
+
+				// Grant rewards
+				if (_event.currentStage.Rewards != null)
 				{
-			        //Step 2: Grant Rewards
 					foreach(RewardVO reward in _event.currentStage.Rewards)
 					{
 						DeWinterApp.SendMessage<RewardVO>(reward);
 					}
-
-			        //Step 3: What's the Description Text say now? The Event Option Buttons should update on their own
-					descriptionText.text = _event.currentStage.Description;
 				}
-				// Start tutorial Party
-				else
+
+				// Start tutorial Party (Currently tutorial only)
+				if (_event.currentStage.Options[option].eventOptionParty == null)
 				{
 					GameData.tonightsParty = _event.currentStage.Options[option].eventOptionParty;
 					DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_PartyLoadOut"); 

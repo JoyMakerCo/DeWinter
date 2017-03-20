@@ -93,7 +93,7 @@ namespace Core
 			if (_messageAssociations.ContainsKey(messageID))
 			{
 				Type c = typeof(C);
-				App.Service<MessageSvc>().Unsubscribe(messageID, _messageAssociations[messageID][c]);
+				App.Service<MessageSvc>().Unsubscribe<T>(messageID, _messageAssociations[messageID][c] as Action<T>);
 				_messageAssociations[messageID].Remove(c);
 			}
 		}
@@ -103,7 +103,7 @@ namespace Core
 			if (_messageAssociations.ContainsKey(messageID))
 			{
 				Type c = typeof(C);
-				App.Service<MessageSvc>().Unsubscribe(messageID, _messageAssociations[messageID][c]);
+				App.Service<MessageSvc>().Unsubscribe(messageID, _messageAssociations[messageID][c] as Action);
 				_messageAssociations[messageID].Remove(c);
 			}
 		}

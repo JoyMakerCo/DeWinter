@@ -33,18 +33,22 @@ public class TonightsPartyInfo : MonoBehaviour {
     }
 	
 	// Update is called once per frame
+	// TODO: Respond to a setter
 	void Update () {
-        tonightsPartyText.text = GameData.tonightsParty.Name();
-        hostedByText.text = GameData.tonightsParty.faction;
-		factionLikesText.text = GetLikes(GameData.factionList[GameData.tonightsParty.faction]);
-		factionDislikesText.text = GetDislikes(GameData.factionList[GameData.tonightsParty.faction]);
-        partyDescriptionText.text = GameData.tonightsParty.Description();
-        objective1Text.text = GameData.tonightsParty.Objective1();
-        objective2Text.text = GameData.tonightsParty.Objective2();
-        objective3Text.text = GameData.tonightsParty.Objective3();
-        guest1Text.text = GameData.tonightsParty.Guest1();
-        guest2Text.text = GameData.tonightsParty.Guest2();
-        guest3Text.text = GameData.tonightsParty.Guest3();
+		if (GameData.tonightsParty != null)
+		{
+	        tonightsPartyText.text = GameData.tonightsParty.Name();
+	        hostedByText.text = GameData.tonightsParty.faction;
+			factionLikesText.text = GetLikes(GameData.factionList[GameData.tonightsParty.faction]);
+			factionDislikesText.text = GetDislikes(GameData.factionList[GameData.tonightsParty.faction]);
+	        partyDescriptionText.text = GameData.tonightsParty.Description();
+	        objective1Text.text = GameData.tonightsParty.Objective1();
+	        objective2Text.text = GameData.tonightsParty.Objective2();
+	        objective3Text.text = GameData.tonightsParty.Objective3();
+	        guest1Text.text = GameData.tonightsParty.Guest1();
+	        guest2Text.text = GameData.tonightsParty.Guest2();
+	        guest3Text.text = GameData.tonightsParty.Guest3();
+	     }
     }
 
     private string GetLikes(FactionVO faction)
