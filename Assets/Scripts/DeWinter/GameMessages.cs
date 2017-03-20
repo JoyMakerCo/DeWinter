@@ -11,5 +11,7 @@ namespace DeWinter
 		public static string FADE_IN_COMPLETE = "FadeInCompleteMsg";
 		public static string QUIT_GAME = "QUIT_GAME";
 		public static string SCENE_READY = "SCENE_READY";
+		public static string NEW_GAME = "NEW_GAME";
+		public static string START_TUTORIAL = "START_TUTORIAL";
 	}
 }

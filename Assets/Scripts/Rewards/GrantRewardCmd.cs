@@ -40,6 +40,10 @@ namespace DeWinter
 					vo = new AdjustValueVO(reward.Type, reward.Quantity);
 					DeWinterApp.SendMessage<AdjustValueVO>(vo);
 					break;
+
+				case RewardConsts.MESSAGE:
+					DeWinterApp.SendMessage(reward.Type);
+					break;
 			}
 		}
 

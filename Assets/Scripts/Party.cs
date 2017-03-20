@@ -79,30 +79,6 @@ public class Party {
         }
     }
 
-    //Constructor that makes the tutorial Party, a preconstructed Party with a specific Room setup and special events
-    //TODO: What Faction is it?
-    public Party (bool isTutorial=false)
-    {
-		tutorial = isTutorial;
-    	if (isTutorial)
-    	{
-			GenerateTutorialDescription();
-			turns = 10;
-			invited = true;
-	        invitationDistance = 1;
-    	}
-    	else
-    	{
-			SetFactionGuaranteedParty();
-			GenerateRandomDescription();
-            host = new Notable(faction);
-            turns = (partySize * 5) + 1;
-            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
-    	}
-		FillPlayerHand();
-		turnsLeft = turns;
-    }
-
     void SetFactionGuaranteedParty()
     {
 // TODO: set by model

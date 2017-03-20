@@ -87,6 +87,8 @@ namespace DeWinter
 			map.Rooms[1, 1].IsImpassible=true;
 	        //Row 0
 	        map.Rooms[1, 0] = map.Entrance = new RoomVO("The Vestibule");
+
+	        Maps[map.Name] = map;
 		}
 
 		private Guest[] GenerateGuests(int difficulty, int numGuests)

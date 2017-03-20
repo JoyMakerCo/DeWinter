@@ -10,7 +10,7 @@ namespace DeWinter
 		public string Type; // Livre, Reputation, etc
 		public int Quantity; // Number
 
-		public RewardVO(string category, string type, int quantity)
+		public RewardVO(string category, string type, int quantity=0)
 		{
 			Category = category;
 			Type = type;

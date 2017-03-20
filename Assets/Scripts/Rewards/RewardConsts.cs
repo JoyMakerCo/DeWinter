@@ -10,5 +10,6 @@ namespace DeWinter
 		public const string ENEMY = "EnemyReward";
 		public const string DEVOTION = "DevotionReward";
 		public const string FACTION = "FactionReward";
+		public const string MESSAGE = "InternalMessageReward";
 	}
 }
