@@ -19,6 +19,7 @@ namespace DeWinter
 			DeWinterApp.RegisterModel<DevotionModel>();
 			DeWinterApp.RegisterModel<EventModel>();
 			DeWinterApp.RegisterModel<QuestModel>();
+			DeWinterApp.RegisterModel<MapModel>();
 
 // TODO: Okay, fine, make commands directly executable.
 			DeWinterApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryConsts.SELL_ITEM);

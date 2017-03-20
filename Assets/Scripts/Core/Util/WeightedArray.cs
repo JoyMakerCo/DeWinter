@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Util
 {
@@ -81,13 +82,10 @@ namespace Util
 
 		public void Insert (int index, T value, int weight)
 		{
-			if (value is T)
-			{
-				_elements.Insert(index, value);
-				if (weight < 0) weight = 0;
-				_weights.Insert(index, weight);
-				_totalWeight += weight;
-			}
+			_elements.Insert(index, value);
+			if (weight < 0) weight = 0;
+			_weights.Insert(index, weight);
+			_totalWeight += weight;
 		}
 
 		public bool Remove(T item)
@@ -109,15 +107,18 @@ namespace Util
 
 		public T Choose()
 		{
-			int query = new Random().Next(_totalWeight);
-			int value = _totalWeight;
-			for (int i=_weights.Count-1; i>0; i--)
+			if (_elements.Count > 0)
 			{
-				value -= _weights[i];
-				if (value < query)
-					return this[i];
+				int query = new Random().Next(_totalWeight);
+				int value = _totalWeight;
+				for (int i=_weights.Count-1; i>0; i--)
+				{
+					value -= _weights[i];
+					if (value < query)
+						return _elements[i];
+				}
 			}
-			return this[0];
+			return _elements.FirstOrDefault();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()

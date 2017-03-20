@@ -47,6 +47,8 @@ namespace DeWinter
 
 			if (_event.currentStage != null)
 			{
+				DeWinterApp.SendMessage<EventVO>(_event);
+
 				// Set descriptive text
 				descriptionText.text = _event.currentStage.Description;
 
@@ -58,16 +60,10 @@ namespace DeWinter
 						DeWinterApp.SendMessage<RewardVO>(reward);
 					}
 				}
-
-				// Start tutorial Party (Currently tutorial only)
-				if (_event.currentStage.Options[option].eventOptionParty == null)
-				{
-					GameData.tonightsParty = _event.currentStage.Options[option].eventOptionParty;
-					DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_PartyLoadOut"); 
-				}
 			}
 			else
 			{
+				// That's an error.
 				descriptionText.text = "";
 			}
 	    }
