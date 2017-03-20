@@ -44,9 +44,6 @@ public class Party {
     public string blackOutEffect; // This is used for the After Party Report
     public int blackOutEffectAmount; //This is also used for the After Party Report
 
-    public Outfit playerOutfit;
-    public ItemVO playerAccessory;
-
     //Constructor that make parties of a particular size, 0 means no Party
     public Party(int size)
     {

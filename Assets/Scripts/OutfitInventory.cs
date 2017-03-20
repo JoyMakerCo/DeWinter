@@ -16,7 +16,11 @@ public static class OutfitInventory
 
     //Used for seeing if the same Outfit was used twice in a row
 	public static Outfit LastPartyOutfit=null;
+
 	public static Outfit PartyOutfit;
+//	{
+//		get { return GameData.tonightsParty.playerOutfit
+//	}
 
 	//This is called ONCE at the Start Screen when you push the Start Button
 	public static void StockInventory()

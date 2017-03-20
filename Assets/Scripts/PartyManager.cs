@@ -28,8 +28,7 @@ public class PartyManager : MonoBehaviour
 		DeWinterApp.SendMessage<Party>(MapMessage.GENERATE_MAP, _party);
 
         //Damage the Outfit's Novelty, how that the Confidence has already been Tallied
-        _party.playerOutfit = OutfitInventory.PartyOutfit;
-		DeWinterApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, _party.playerOutfit);
+		DeWinterApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, OutfitInventory.PartyOutfit);
 
 		ItemVO accessory;
 		if (DeWinterApp.GetModel<InventoryModel>().Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Garter Flask")

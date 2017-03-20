@@ -35,13 +35,13 @@ public class AfterPartyReportTextController : MonoBehaviour {
 				rewardString += "\nYou said some pretty rude things about your host, which lost you " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.faction + ".";
                     break;
                 case "Outfit Novelty Loss":
-				rewardString += "\nYou spent most of the night talking to everyone about your Outfit. It may be safe to say that some were rather tired of hearing about it. Your " + _model.Party.playerOutfit.Name() + " has lost " + _model.Party.blackOutEffectAmount.ToString("N0") + " Novelty";
+				rewardString += "\nYou spent most of the night talking to everyone about your Outfit. It may be safe to say that some were rather tired of hearing about it. Your " + OutfitInventory.PartyOutfit.Name() + " has lost " + _model.Party.blackOutEffectAmount.ToString("N0") + " Novelty";
                     break;
                 case "Outfit Ruined":
-                    rewardString += "\nYou crashed into a waiter, who spilled wine all over you. Your " + _model.Party.playerOutfit.Name() + " has been ruined!";
+                    rewardString += "\nYou crashed into a waiter, who spilled wine all over you. Your " + OutfitInventory.PartyOutfit.Name() + " has been ruined!";
                     break;
                 case "Accessory Ruined":
-                    rewardString += "\nYou dropped your " + _model.Party.playerAccessory.Name + " in a fountain and nobody was able to find it. I'm afraid it was completely lost!";
+                    rewardString += "\nYou dropped your " + GameData.partyAccessory.Name + " in a fountain and nobody was able to find it. I'm afraid it was completely lost!";
                     break;
                 case "Livre Lost":
                     rewardString += "\nWhen you got home last night, you didn't have your coin purse with you and you couldn't remember where you left it. You've lost " + Mathf.Abs(_model.Party.blackOutEffectAmount) + " Livres.";

@@ -163,14 +163,10 @@ public class WorkTheHostManager : MonoBehaviour
         hostRemarkTimer = party.host.nextHostRemarkTimer;
 
         //Is the Player using the Fan Accessory? If so then increase the Host Remark Time by 1.5x!
-        if(party.playerAccessory != null)
-        {
-            if (party.playerAccessory.Type == "Fan")
-            {
-                party.host.currentInterestTimer = party.host.currentInterestTimer * 1.5f;
-                party.host.maxInterestTimer = party.host.currentInterestTimer * 1.5f;
-
-            }
+		if(GameData.partyAccessory != null && GameData.partyAccessory.Type == "Fan")
+		{
+            party.host.currentInterestTimer = party.host.currentInterestTimer * 1.5f;
+            party.host.maxInterestTimer = party.host.currentInterestTimer * 1.5f;
         }
 
         //Turn Timer

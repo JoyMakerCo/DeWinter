@@ -677,9 +677,9 @@ public class PopUpManager : MonoBehaviour
                 moveThroughText.color = Color.white;
                 int moveThroughChance = room.MoveThroughChance;
                 //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-                if (GameData.tonightsParty.playerAccessory != null)
+                if (GameData.partyAccessory != null)
                 {
-                    if (GameData.tonightsParty.playerAccessory.Type == "Cane")
+					if (GameData.partyAccessory.Type == "Cane")
                     {
                         moveThroughChance += 10;
                     }

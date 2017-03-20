@@ -187,9 +187,9 @@ private const int PADDING = 5;
             stringStorage[0] = currentPlayerRoom.Name;
             int moveThroughChance = currentPlayerRoom.MoveThroughChance;
             //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-            if (GameData.tonightsParty.playerAccessory != null)
+            if (GameData.partyAccessory != null)
             {
-                if (GameData.tonightsParty.playerAccessory.Type == "Cane")
+				if (GameData.partyAccessory.Type == "Cane")
                 {
                     moveThroughChance += 10;
                 }
