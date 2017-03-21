@@ -9,7 +9,7 @@ public class Outfit
     public int modesty;
     public int luxury;
     public string style; // Styles: Frankish, Venezian and Catalan
-    int price;
+    public int price;
     public int imageID;
     public bool altered; //Each Outfit can only be altered once. This starts as false;
 

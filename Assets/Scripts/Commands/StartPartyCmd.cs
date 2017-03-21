@@ -15,7 +15,7 @@ namespace DeWinter
 			}
 	        else if (OutfitInventory.PartyOutfit != null)
 	        {
-	            DeWinterApp.SendMessage<string>(SceneConsts.GAME_PARTY);
+	            DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTY);
 	        } else
 	        {
 	            Debug.Log("No Outfit selected :(");

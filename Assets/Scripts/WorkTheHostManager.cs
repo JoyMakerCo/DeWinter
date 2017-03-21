@@ -9,7 +9,6 @@ public class WorkTheHostManager : MonoBehaviour
 {
     public SceneFadeInOut screenFader;
     public RoomManager roomManager;
-    LevelManager levelManager;
 
     public RoomVO room;
     Text title;
@@ -111,7 +110,6 @@ public class WorkTheHostManager : MonoBehaviour
     void Start()
     {
         screenFader = this.transform.parent.GetComponent<SceneFadeInOut>();
-        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
 
         title = this.transform.Find("TitleText").GetComponent<Text>();
         title.text = room.Name;

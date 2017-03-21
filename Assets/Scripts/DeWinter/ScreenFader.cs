@@ -57,6 +57,12 @@ namespace DeWinter
 			FaderImage.color = endColor;
 			_activeCoroutine = null;
 			DeWinterApp.SendMessage(isFadeOut ? GameMessages.FADE_OUT_COMPLETE : GameMessages.FADE_IN_COMPLETE);
+			if (_sceneId != null && isFadeOut)
+			{
+				DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, _sceneId);
+				_sceneId = null;
+				FadeIn(seconds);
+			}
 		}
 	}
 }

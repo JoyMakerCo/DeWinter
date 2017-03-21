@@ -22,7 +22,6 @@ namespace Core
 	{
 		private Dictionary<string, Dictionary<Type, Delegate>> _messageAssociations;
 		private Dictionary<Type, Dictionary<Type, Delegate>> _typeAssociations;
-		private bool _executing=false;
 
 		public CommandSvc()
 		{

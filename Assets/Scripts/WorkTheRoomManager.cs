@@ -5,12 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using DeWinter;
 
-// TODO: Everything.
 public class WorkTheRoomManager : MonoBehaviour
 {
     public SceneFadeInOut screenFader;
     public RoomManager roomManager;
-    LevelManager levelManager;
 
     public RoomVO room;
     Text title;
@@ -158,7 +156,6 @@ public class WorkTheRoomManager : MonoBehaviour
     void Start()
     {
         screenFader = this.transform.parent.GetComponent<SceneFadeInOut>();
-        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
 
         title = this.transform.Find("TitleText").GetComponent<Text>();
         title.text = room.Name;
