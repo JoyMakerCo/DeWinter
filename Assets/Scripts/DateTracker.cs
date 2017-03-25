@@ -4,18 +4,17 @@ using UnityEngine.UI;
 using System.Globalization;
 
 public class DateTracker : MonoBehaviour {
-    private Text myText;
+    public Text myText;
 
     void Start()
     {
-        myText = GetComponent<Text>();
         updateDate();
     }
 
     public void updateDate()
     {
         string month = GameData.calendar.monthList[GameData.currentMonth].name;
-        string day = dayString(GameData.currentDay + 1); //Zero Indexed Days
+        int day = GameData.currentDay + 1; //Zero Indexed Days
         myText.text = month + " " + day + ", 1795";
     }
 
