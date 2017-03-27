@@ -43,6 +43,8 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<EventReadyCmd, string>(GameMessages.SCENE_READY);
 			DeWinterApp.RegisterCommand<NewGameCmd>(GameMessages.NEW_GAME);
 			DeWinterApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
+			DeWinterApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
+
 
 // TODO: Get rid of this when the Calendar Inventory is swallowed buy the model
 Instantiate<GameObject>(InventoriesPrefab);

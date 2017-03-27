@@ -16,15 +16,17 @@ namespace DeWinter
 		{
 			_party = party;
 			_model = DeWinterApp.GetModel<MapModel>();
+			_rnd = new Random();
 
+			// Determine if the party uses a preset.
 			if (_party.tutorial)
 			{
 				_map = _model.Maps["Tutorial"];
 			}
+
+			// Build a new map from scratch.
 			else
 			{
-				_rnd = new Random();
-
 				switch (party.partySize)
 				{
 				case 1:
@@ -40,28 +42,51 @@ namespace DeWinter
 
 				_capacity = _map.NumRooms;
 
+				// Recursively build the map.
 				_map.Entrance = BuildRoom(_rnd.Next(_map.Width), 0);
 				_map.Entrance.Difficulty = 1;
 				_map.Entrance.Cleared = true;
 				_map.Entrance.Name = "The Vestibule";
 				_map.Entrance.Features = new string[0];
-
-				PopulateEnemies();
 			}
+
+			// Fill in the blanks
+			foreach(RoomVO room in _map.Rooms)
+			{
+				if (room != null)
+				{
+					if (string.IsNullOrEmpty(room.Name))
+						room.Name = GenerateRandomName();
+
+					if (room.Features == null)
+						room.Features = GetRandomFeatures();
+
+					if (room.Difficulty == 0)
+						room.Difficulty = 1 + _rnd.Next(5);
+
+					if (room.Guests == null)
+						room.Guests = GenerateGuests(room.Difficulty);
+
+					if (room.Rewards == null)
+						room.Rewards = GenerateRewards();
+
+					if (room.Neighbors == null)
+						FindNeighbors(room);
+				}
+			}
+
+			PopulateEnemies();
+
 			_model.Map = _map;
 		}
 
 // TODO: Floorplan map building
 		private RoomVO BuildRoom(int X, int Y)
 		{
-			if (X < 0 || X >= _map.Width || Y >= _map.Depth || _rnd.Next(_map.NumRooms) > _capacity) return null;
+			if (!ValidCoords(X,Y) || _rnd.Next(_map.NumRooms) > _capacity) return null;
 			if (_map.Rooms[X,Y] is RoomVO) return _map.Rooms[X,Y];
 
-			RoomVO room = new RoomVO(GenerateRandomName());
-			room.Features = GetRandomFeatures();
-			room.Difficulty = 1 + _rnd.Next(5);
-			room.Guests = GenerateGuests(room.Difficulty);
-			room.Rewards = GenerateRewards();
+			RoomVO room = new RoomVO();
 
 			_map.Rooms[X,Y] = room;
 // TODO: Update this when map drawing gets more fleshed out
@@ -105,6 +130,29 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 
 	    	return result.ToArray();
 	    }
+
+		private void FindNeighbors(RoomVO room)
+		{
+			// This seems convoluted, but in future iterations of the map,
+			// rooms may have more than one door in each direction.
+			// This logic will change significatnly at that iteration. 
+			RoomVO[] result = new RoomVO[4];
+			for (int x=_map.Rooms.GetLength(0)-1; x>=0; x--)
+			{
+				for (int y=_map.Rooms.GetLength(1)-1; y>=0; y--)
+				{
+					if (_map.Rooms[x,y] == room)
+					{
+						result[0] = ValidCoords(x,y+1) ? _map.Rooms[x,y+1] : null;
+						result[1] = ValidCoords(x+1,y) ? _map.Rooms[x+1,y] : null;
+						result[2] = ValidCoords(x,y-1) ? _map.Rooms[x,y-1] : null;
+						result[3] = ValidCoords(x-1,y) ? _map.Rooms[x-1,y] : null;
+						_map.Rooms[x,y].Neighbors = result;
+						return;
+					}
+				}
+			}
+		}
 
 		private Guest[] GenerateGuests(int difficulty)
 	    {
@@ -162,6 +210,14 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 					_map.Rooms[X, Y].Enemies.Add(e);
                 }
 	        }
+	    }
+
+	    private bool ValidCoords(int x, int y)
+	    {
+	    	return x >= 0
+	    		&& y >= 0
+	    		&& x < _map.Width
+	    		&& y < _map.Depth;
 	    }
 	}
 }

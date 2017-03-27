@@ -6,18 +6,15 @@ using DeWinter;
 
 public class RoomManager : MonoBehaviour
 {
-// TODO: Refine room drawing
-private const int PADDING = 5;
+	private const int PADDING = 5;
 
     public PartyManager partyManager;
-    public MapVO Map = null; //Whichever Room is the Entrance
     public GameObject roomButtonPrefab;
     public GameObject houseOutlinePrefab; //This is used to Outline the house when it's done
     public Canvas canvas; //New Interface objects need to get parented to this in order to work
     public GameObject screenFader;
     public GameObject roomHolder;
 
-    private int _buttonWidth;
     private Dictionary<RoomVO, RoomButton> _buttons;
 
     //Images for the Map Buttons
@@ -37,88 +34,60 @@ private const int PADDING = 5;
 		set { _model.Room = value; }
 	}
 
+	public MapVO Map
+	{
+		get { return _model.Map; }
+	}
+
     void Start()
     {
 		_model = DeWinterApp.GetModel<MapModel>();
 		_partyModel = DeWinterApp.GetModel<PartyModel>();
         partyManager = this.transform.parent.GetComponent<PartyManager>();
-        DeWinterApp.Subscribe<MapVO>(HandleMap);
 		DeWinterApp.Subscribe<Party>(PartyConstants.SHOW_DRINK_MODAL, handleDrinkModal);
+		DeWinterApp.Subscribe<RoomVO>(HandleRoom);
+		DrawMap();
     }
 
-	private void HandleMap(MapVO map)
-    {
-		GameObject roomHolder = new GameObject();
-		roomHolder.transform.SetParent(canvas.transform, false);
-        roomHolder.transform.SetAsFirstSibling();
-		Map = map;
-
-        //Make the Room Buttons ----------------------
-        //Positioning (Set Up)
-		_buttonWidth = (int)roomButtonPrefab.GetComponent<RectTransform>().rect.width;
-		_buttons = new Dictionary<RoomVO, RoomButton>();
-		foreach (RoomVO rm in map.Rooms)
+	private void HandleRoom(RoomVO room)
+	{
+		foreach (RoomVO mapRoom in Map.Rooms)
 		{
-			if (rm != null)
-				DrawRoom(rm);
+			if (mapRoom != null)
+				_buttons[mapRoom].UpdateRoom(mapRoom, room.IsNeighbor(mapRoom), mapRoom == room);
 		}
 	}
 
-	private void DrawRoom(RoomVO room)
-	{
-		if (room != null) return;
-		if (room.Shape != null)
+	private void DrawMap()
+    {
+        //Make the Room Buttons ----------------------
+        //Positioning (Set Up)
+		int buttonWidth = (int)roomButtonPrefab.GetComponent<RectTransform>().rect.width;
+		_buttons = new Dictionary<RoomVO, RoomButton>();
+
+		//Putting an Outline around the Map/House
+        GameObject houseOutline = Instantiate<GameObject>(houseOutlinePrefab);
+        houseOutline.transform.SetParent(roomHolder.transform, false);
+		((RectTransform)houseOutline.transform).sizeDelta = new Vector2(((_model.Map.Width + PADDING)*buttonWidth), ((_model.Map.Depth + PADDING)*buttonWidth));
+
+        //Map Set Up is complete, notify the rest of the game
+		foreach (RoomVO rm in Map.Rooms)
 		{
-// TODO: Make room drawing more sophisticated
-			GameObject mapButton = Instantiate(roomButtonPrefab, roomButtonPrefab.transform.position, roomButtonPrefab.transform.rotation) as GameObject;
+			DrawRoom(rm, buttonWidth);
+		}
+	}
+
+	private void DrawRoom(RoomVO room, int buttonWidth)
+	{
+		if (room != null && room.Shape != null)
+		{
+			GameObject mapButton = Instantiate(roomButtonPrefab) as GameObject;
 			RoomButton roomButton = mapButton.GetComponent<RoomButton>();
-			roomButton.Room = room;
 			mapButton.transform.SetParent(roomHolder.transform, false);
-			mapButton.transform.localPosition = new Vector3((room.Shape[0].x + PADDING)*_buttonWidth, (room.Shape[0].y + PADDING)*_buttonWidth, 0);
+			mapButton.transform.localPosition = new Vector3((room.Shape[0].x-(Map.Width>>1))*(buttonWidth + PADDING), (room.Shape[0].y - (Map.Depth>>1))*(PADDING + buttonWidth), 0);
+			roomButton.Room = room;
 			_buttons.Add(room, roomButton);
 		}
-
-        //Putting an Outline around the Map/House
-        GameObject houseOutline = Instantiate(houseOutlinePrefab, houseOutlinePrefab.transform.position, houseOutlinePrefab.transform.rotation) as GameObject;
-        houseOutline.transform.SetParent(roomHolder.transform, false);
-        RectTransform houseOutlineRT = (RectTransform)houseOutline.transform;
-        houseOutlineRT.sizeDelta = new Vector2((_model.Map.Width * _buttonWidth) + 10, (_model.Map.Depth * _buttonWidth) + 10);
-        //float outlineXPos = (mapButtonGrid[0, 0].transform.position.x + mapButtonGrid[mapButtonGrid.GetUpperBound(0), mapButtonGrid.GetUpperBound(1)].transform.position.x) / 2;
-        //float outlineYPos = (mapButtonGrid[0, 0].transform.position.y + mapButtonGrid[mapButtonGrid.GetUpperBound(0), mapButtonGrid.GetUpperBound(1)].transform.position.y) / 2;
-        houseOutline.transform.localPosition = new Vector3(0, 0, 0);
-        houseOutline.transform.SetAsFirstSibling();
-        //Map Set Up is complete, notify the rest of the game
-    }
-
-    public void PlayerMovement(int xPos, int yPos)
-    {
-        if (_partyModel.Party.turnsLeft > 0)
-        {
-            currentPlayerRoom = _model.Map.Rooms[xPos, yPos];
-			if (Array.IndexOf(currentPlayerRoom.Features, PartyConstants.PUNCHBOWL) >= 0)
-            {
-				_partyModel.Party.currentPlayerDrinkAmount = _partyModel.Party.maxPlayerDrinkAmount;
-			} else if (!_model.Map.Rooms[xPos, yPos].Cleared && _partyModel.Party.currentPlayerDrinkAmount < _partyModel.Party.maxPlayerDrinkAmount)
-            {
-                RandomWineCheck(); // Level 4 Faction Benefit
-            }
-        }
-        else
-        {
-            Debug.Log("Out of turns. Go home!");
-        }
-    }
-
-    void RandomWineCheck()
-    {
-		if(GameData.factionList[_partyModel.Party.faction].ReputationLevel >= 5)
-        {
-			if(UnityEngine.Random.Range(0, 4) == 0)
-            {
-				_partyModel.Party.currentPlayerDrinkAmount = _partyModel.Party.maxPlayerDrinkAmount;
-				screenFader.gameObject.SendMessage("CreateRandomWineModal", _partyModel.Party);
-            }
-        }
     }
 
     public void MovePlayerToEntrance()

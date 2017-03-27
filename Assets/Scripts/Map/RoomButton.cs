@@ -16,16 +16,13 @@ namespace DeWinter
 	public class RoomButton : MonoBehaviour
 	{
 	    public Text DescriptionText;
-		public Text StarIndicatorText;
 	    public Outline OutLine;
 	    public RoomStatusIndicator [] StatusIndicators;
 	
-		private bool _revealed;
-
 		// Use this for initialization
 		void Start ()
 		{
-			OutLine.enabled = _revealed = false;
+			OutLine.enabled = false;
 			foreach (RoomStatusIndicator indicator in StatusIndicators)
 			{
 				indicator.Icon.enabled = false;
@@ -38,29 +35,31 @@ namespace DeWinter
 			get { return _room; }
 			set 
 			{
-				_room = Room;
-				DescriptionText.text = Room.Name;
-				StarIndicatorText.text = string.Concat(System.Linq.Enumerable.Repeat("*", Room.Difficulty));
+				_room = value;
+				if (_room != null)
+				{
+					string txt = Room.Name + "\n" + new string('*', _room.Difficulty);
+					DescriptionText.text = txt;
+				}
 			}
 		}
 
-		private bool _isAdjacent;
-		public bool IsAdjacent
+		public void OnClick()
 		{
-			get { return _isAdjacent; }
-			set
+			DeWinterApp.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
+		}
+
+		public void UpdateRoom(RoomVO room, bool isAdjacent, bool isCurrent)
+		{
+			_room = room;
+			OutLine.enabled = isAdjacent;
+			if (!_room.Revealed && isAdjacent)
 			{
-				_isAdjacent = value;
-				OutLine.enabled = value;
-				if (!_revealed && value)
+				foreach (RoomStatusIndicator indicator in StatusIndicators)
 				{
-					foreach (RoomStatusIndicator indicator in StatusIndicators)
-					{
-						indicator.Icon.enabled = (Array.IndexOf(Room.Features, indicator.ID) >= 0);
-					}
+					indicator.Icon.enabled = (Array.IndexOf(Room.Features, indicator.ID) >= 0);
 				}
-				_revealed = true;
 			}
-	    }
+		}
 	}
 }

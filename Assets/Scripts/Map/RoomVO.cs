@@ -53,11 +53,6 @@ public bool IsEntrance=false;
 		public Vector2[] Shape;
 	    public string Style;
 
-	    public RoomVO(string name=null)
-	    {
-	    	Name = name;
-	    }
-
 	    public bool IsNeighbor(RoomVO room)
 	    {
 	    	return Neighbors != null && Array.IndexOf(Neighbors, room) >= 0;

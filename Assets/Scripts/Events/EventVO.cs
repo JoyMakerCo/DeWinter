@@ -17,7 +17,7 @@ namespace DeWinter
 
 		public EventStage currentStage
 		{
-			get { return (currentStageIndex >= 0 || currentStageIndex < eventStages.Length)
+			get { return (currentStageIndex >= 0 && currentStageIndex < eventStages.Length)
 				? eventStages[currentStageIndex]
 				: null;
 			}

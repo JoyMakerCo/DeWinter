@@ -13,18 +13,22 @@ namespace DeWinter
 
 	    private EventVO _event;
 
-		public void OnOpen(EventVO e)
-	    {
-	    	_event = e;
-	    }
-
-	    void Start()
+		void Awake()
 	    {
 			DeWinterApp.Subscribe<EventVO>(HandleEventUpdate);
-			DeWinterApp.SendMessage<EventVO>(_event);
 	    }
 
-		private void HandleEventUpdate(EventVO e)
+		void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<EventVO>(HandleEventUpdate);
+	    }
+
+		public void OnOpen(EventVO e)
+	    {
+			DeWinterApp.SendMessage<EventVO>(e);
+	    }
+
+ 		private void HandleEventUpdate(EventVO e)
 		{
 			_event = e;
 
@@ -34,37 +38,30 @@ namespace DeWinter
 
 	    public void EventOptionSelect(int option)
 	    {
-			int nextStage = _event.currentStage.Options[option].ChooseNextStage();
-	        //Step 0: Did this just complete the event? If so then dismiss the Pop-Up and End the Event
-	        if (nextStage == -1)
-	        {
-	        	Close();
-	        }
-
-	        //Step 1: Which stage do I advance to?
+			EventOption opt = _event.currentStage.Options[option];
+			int nextStage = opt != null ? opt.ChooseNextStage() : -1;
 			_event.currentStageIndex = nextStage;
-	        Debug.Log("This stage is now " + nextStage);
 
+	        // Advance to the next stage
 			if (_event.currentStage != null)
-			{
+	        {
+	        	// Inform the app
 				DeWinterApp.SendMessage<EventVO>(_event);
 
 				// Set descriptive text
 				descriptionText.text = _event.currentStage.Description;
 
 				// Grant rewards
-				if (_event.currentStage.Rewards != null)
+				foreach(RewardVO reward in _event.currentStage.Rewards)
 				{
-					foreach(RewardVO reward in _event.currentStage.Rewards)
-					{
-						DeWinterApp.SendMessage<RewardVO>(reward);
-					}
+					DeWinterApp.SendMessage<RewardVO>(reward);
 				}
 			}
+
+			// End of event.
 			else
 			{
-				// That's an error.
-				descriptionText.text = "";
+				Close();
 			}
 	    }
 	}

@@ -56,28 +56,35 @@ namespace DeWinter
 			map.Rooms[0, 3] = new RoomVO();
 	        map.Rooms[0, 3].Difficulty = 3;
 			map.Rooms[0, 3].Guests = GenerateGuests(3,4);
+			map.Rooms[0, 3].Name = GenerateName();
 
-			map.Rooms[1, 3] = new RoomVO("The Host's Quarters");
+			map.Rooms[1, 3] = new RoomVO();
+			map.Rooms[1, 3].Name = "The Host's Quarters";
 			map.Rooms[1, 3].Difficulty = 6;
 	        map.Rooms[1, 3].Features = new string[]{PartyConstants.HOST};
 
 	        map.Rooms[2, 3] = new RoomVO();
 			map.Rooms[2, 3].Difficulty = 3;
 	        map.Rooms[2, 3].Guests = GenerateGuests(3, 4);
+			map.Rooms[2, 3].Name = GenerateName();
+
 	        //Row 2
 	        map.Rooms[0, 2] = new RoomVO();
 			map.Rooms[0, 2].Difficulty = 2;
 	        map.Rooms[0, 2].Guests = GenerateGuests(2, 4);
+			map.Rooms[0, 2].Name = GenerateName();
 
 	        map.Rooms[1, 2] = new RoomVO();
 			map.Rooms[1, 2].Difficulty = 2;
 	        map.Rooms[1, 2].Guests = GenerateGuests(2, 3);
 	        map.Rooms[1, 2].TurnTimer = 6.25f;
 			map.Rooms[1, 2].IsImpassible=true;
+			map.Rooms[1, 2].Name = GenerateName();
 
 	        map.Rooms[2, 2] = new RoomVO();
 			map.Rooms[2, 2].Difficulty = 3;
 	        map.Rooms[2, 2].Guests = GenerateGuests(3, 3);
+			map.Rooms[2, 2].Name = GenerateName();
 	        //Row 1
 	        map.Rooms[1, 1] = new RoomVO();
 			map.Rooms[1, 1].Difficulty = 1;
@@ -85,8 +92,21 @@ namespace DeWinter
 	        map.Rooms[1, 1].TurnTimer = 7.5f;
 			map.Rooms[1, 1].IsTutorial = true;
 			map.Rooms[1, 1].IsImpassible=true;
+			map.Rooms[1, 1].Name = GenerateName();
 	        //Row 0
-	        map.Rooms[1, 0] = map.Entrance = new RoomVO("The Vestibule");
+	        map.Rooms[1, 0] = map.Entrance = new RoomVO();
+			map.Rooms[1, 0].Name = "The Vestibule";
+
+	        for (int x=map.Width-1; x>=0; x--)
+	        {
+				for (int y=map.Depth-1; y>=0; y--)
+		        {
+		        	if (map.Rooms[x,y] != null)
+		        	{
+		        		map.Rooms[x,y].Shape = new UnityEngine.Vector2[]{ new UnityEngine.Vector2(x,y) };
+		        	}
+		        }
+	        }
 
 	        Maps[map.Name] = map;
 		}
@@ -121,6 +141,18 @@ namespace DeWinter
 				guests[i] = new Guest(rnd.Next(ranges[0], ranges[1]), rnd.Next(ranges[2], ranges[3]));
 			}
 			return guests;
+		}
+
+		public string GenerateName()
+		{
+            string adjective = GetRandomDescriptor(RoomAdjectives);
+			string noun = GetRandomDescriptor(RoomNames);
+            return "The " + adjective + " " + noun;
+		}
+
+		string GetRandomDescriptor(string[] descriptors)
+		{
+			return descriptors[new Random().Next(descriptors.Length)];
 		}
 	}
 }
