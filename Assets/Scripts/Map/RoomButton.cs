@@ -16,13 +16,13 @@ namespace DeWinter
 	public class RoomButton : MonoBehaviour
 	{
 	    public Text DescriptionText;
-	    public Outline OutLine;
+	    public Outline outLine;
 	    public RoomStatusIndicator [] StatusIndicators;
 	
 		// Use this for initialization
 		void Start ()
 		{
-			OutLine.enabled = false;
+			outLine.enabled = false;
 			foreach (RoomStatusIndicator indicator in StatusIndicators)
 			{
 				indicator.Icon.enabled = false;
@@ -52,7 +52,8 @@ namespace DeWinter
 		public void UpdateRoom(RoomVO room, bool isAdjacent, bool isCurrent)
 		{
 			_room = room;
-			OutLine.enabled = isAdjacent;
+			outLine.enabled = isAdjacent;
+			outLine.effectColor = isCurrent ? Color.white : Color.black;
 			if (!_room.Revealed && isAdjacent)
 			{
 				foreach (RoomStatusIndicator indicator in StatusIndicators)

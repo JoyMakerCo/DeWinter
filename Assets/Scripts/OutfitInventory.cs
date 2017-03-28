@@ -18,9 +18,6 @@ public static class OutfitInventory
 	public static Outfit LastPartyOutfit=null;
 
 	public static Outfit PartyOutfit;
-//	{
-//		get { return GameData.tonightsParty.playerOutfit
-//	}
 
 	//This is called ONCE at the Start Screen when you push the Start Button
 	public static void StockInventory()
