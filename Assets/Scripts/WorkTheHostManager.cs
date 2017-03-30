@@ -520,32 +520,9 @@ public class WorkTheHostManager : MonoBehaviour
 
     void HostRemarkSlotHighlight(int slotNumber)
     {
-        if (slotNumber >= hostRemarkSlotList.Count)
-        {
-            slotNumber -= hostRemarkSlotList.Count;
-        }
-        else if (slotNumber < 0)
-        {
-            slotNumber += hostRemarkSlotList.Count;
-        }
-        switch (slotNumber)
-        {
-            case 0:
-                hostRemarkSlotButtonList[0].remarkSlotImage.color = HostRemarkSlotReactionColor(0);
-                break;
-            case 1:
-                hostRemarkSlotButtonList[1].remarkSlotImage.color = HostRemarkSlotReactionColor(1);
-                break;
-            case 2:
-                hostRemarkSlotButtonList[2].remarkSlotImage.color = HostRemarkSlotReactionColor(2);
-                break;
-            case 3:
-                hostRemarkSlotButtonList[3].remarkSlotImage.color = HostRemarkSlotReactionColor(3);
-                break;
-            case 4:
-                hostRemarkSlotButtonList[4].remarkSlotImage.color = HostRemarkSlotReactionColor(4);
-                break;
-        }
+		slotNumber %= hostRemarkSlotList.Count;
+		if (slotNumber < 0) slotNumber += hostRemarkSlotList.Count;
+		hostRemarkSlotButtonList[slotNumber].remarkSlotImage.color = HostRemarkSlotReactionColor(slotNumber);
     }
 
     public Color ReactionColor()

@@ -43,10 +43,7 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<NewGameCmd>(GameMessages.NEW_GAME);
 			DeWinterApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			DeWinterApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
-
-// StartPartyCmd will be registered after the tutorial is complete.
-//			DeWinterApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
-			DeWinterApp.RegisterCommand<StartTutorialPartyCmd>(PartyMessages.START_PARTY);
+			DeWinterApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
 
 
 // TODO: Get rid of this when the Calendar Inventory is swallowed buy the model

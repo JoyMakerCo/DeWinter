@@ -21,32 +21,25 @@ namespace Dialog
 			_prefabs = new Dictionary<string, GameObject>();
 			_dialogs = new Dictionary<string, GameObject>();
 
-			(new List<GameObject>(DialogPrefabs)).ForEach(RegisterPrefab);
-		}
-
-		protected void RegisterPrefab(GameObject prefab)
-		{
-			_prefabs[prefab.name] = prefab;
+			foreach (GameObject prefab in DialogPrefabs)
+			{
+				_prefabs.Add(prefab.name, prefab);
+			}
 		}
 
 		public GameObject Open(string dialogID)
 		{
+			Close(dialogID);
 			GameObject prefab;
 			if (!_prefabs.TryGetValue(dialogID, out prefab))
 				return null;
 			
-			GameObject dialog;
-			if (_dialogs.TryGetValue(dialogID, out dialog))
-			{
-				DialogView cmp = dialog.GetComponent<DialogView>();
-				if (cmp != null) cmp.Manager = this;
-			}
-
-			dialog = GameObject.Instantiate<GameObject>(prefab);
+			GameObject dialog = GameObject.Instantiate<GameObject>(prefab);
+			DialogView cmp = dialog.GetComponent<DialogView>();
+			if (cmp != null) cmp.Manager = this;
 			_dialogs.Add(dialogID, dialog);
 			dialog.transform.SetParent(_canvas.transform, false);
 			dialog.GetComponent<RectTransform>().SetAsLastSibling();
-
 			return dialog;
 		}
 

@@ -39,16 +39,17 @@ namespace DeWinter
 					_map = new MapVO(9,3);
 					break;
 				}
-
-				_capacity = _map.NumRooms;
+				_capacity = _map.Rooms.Length;
 
 				// Recursively build the map.
 				_map.Entrance = BuildRoom(_rnd.Next(_map.Width), 0);
-				_map.Entrance.Difficulty = 1;
-				_map.Entrance.Cleared = true;
-				_map.Entrance.Name = "The Vestibule";
-				_map.Entrance.Features = new string[0];
 			}
+
+			_map.Entrance.Difficulty = 0;
+			_map.Entrance.Cleared = true;
+			_map.Entrance.Name = "The Vestibule";
+			_map.Entrance.Features = new string[0];
+			_map.Entrance.Guests = new Guest[0];
 
 			// Fill in the blanks
 			foreach(RoomVO room in _map.Rooms)
@@ -83,7 +84,7 @@ namespace DeWinter
 // TODO: Floorplan map building
 		private RoomVO BuildRoom(int X, int Y)
 		{
-			if (!ValidCoords(X,Y) || _rnd.Next(_map.NumRooms) > _capacity) return null;
+			if (!ValidCoords(X,Y) || _rnd.Next(_map.Rooms.Length) > _capacity) return null;
 			if (_map.Rooms[X,Y] is RoomVO) return _map.Rooms[X,Y];
 
 			RoomVO room = new RoomVO();
@@ -101,7 +102,7 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 			_capacity--;
 			if (_capacity == 0)
 			{
-				room.Features = new string[1] { PartyConstants.HOST };
+				room.Features = new string[] { PartyConstants.HOST };
 			}
 			return room;
 		}

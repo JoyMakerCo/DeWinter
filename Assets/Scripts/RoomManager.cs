@@ -44,9 +44,11 @@ public class RoomManager : MonoBehaviour
 		_model = DeWinterApp.GetModel<MapModel>();
 		_partyModel = DeWinterApp.GetModel<PartyModel>();
         partyManager = this.transform.parent.GetComponent<PartyManager>();
+		DeWinterApp.SendMessage<Party>(MapMessage.GENERATE_MAP, _partyModel.Party);
 		DeWinterApp.Subscribe<Party>(PartyConstants.SHOW_DRINK_MODAL, handleDrinkModal);
 		DeWinterApp.Subscribe<RoomVO>(HandleRoom);
 		DrawMap();
+		currentPlayerRoom = Map.Entrance;
     }
 
 	private void HandleRoom(RoomVO room)
@@ -54,8 +56,13 @@ public class RoomManager : MonoBehaviour
 		foreach (RoomVO mapRoom in Map.Rooms)
 		{
 			if (mapRoom != null)
-				_buttons[mapRoom].UpdateRoom(mapRoom, room.IsNeighbor(mapRoom), mapRoom == room);
+				_buttons[mapRoom].SetCurrentRoom(room);
 		}
+
+		if (room.HostHere)
+			WorkTheHostModal();
+		else
+			WorkTheRoomModal(false);
 	}
 
 	private void DrawMap()
@@ -116,6 +123,7 @@ public class RoomManager : MonoBehaviour
         {
 			_partyModel.Party.turnsLeft--;
 			SoberUp(5);
+
             //Work the Room!
             object[] objectStorage = new object[3];
             objectStorage[0] = currentPlayerRoom;

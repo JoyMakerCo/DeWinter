@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace DeWinter
 {
@@ -8,11 +9,6 @@ namespace DeWinter
 		public RoomVO[,] Rooms;
 
 		public RoomVO Entrance;
-
-		public int NumRooms
-		{
-			get { return Rooms != null ? Rooms.Length : 0; }
-		}
 
 		public int Width
 		{
@@ -24,6 +20,7 @@ namespace DeWinter
 			get { return (Rooms != null) ? Rooms.GetLength(1) : 0; }
 		}
 
+		// Default Constructor
 		public MapVO () {}
 		public MapVO (int width, int depth)
 		{

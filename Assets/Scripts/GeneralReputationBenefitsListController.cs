@@ -15,6 +15,11 @@ namespace DeWinter
 			DeWinterApp.Subscribe<PlayerReputationVO>(HandleReputation);
 	    }
 
+	    void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<PlayerReputationVO>(HandleReputation);
+	    }
+
 	    private void HandleReputation(PlayerReputationVO rep)
 	    {
 	    	GameModel model = DeWinterApp.GetModel<GameModel>();

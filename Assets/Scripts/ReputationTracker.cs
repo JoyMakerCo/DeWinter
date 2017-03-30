@@ -14,6 +14,11 @@ namespace DeWinter
 	        DeWinterApp.Subscribe<PlayerReputationVO>(HandlePlayerReputation);
 	    }
 
+	    void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<PlayerReputationVO>(HandlePlayerReputation);
+	    }
+
 		private void HandlePlayerReputation(PlayerReputationVO vo)
 	    {
 	    	if (vo.Reputation > -20)

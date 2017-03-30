@@ -16,13 +16,20 @@ namespace DeWinter
 	public class RoomButton : MonoBehaviour
 	{
 	    public Text DescriptionText;
-	    public Outline outLine;
 	    public RoomStatusIndicator [] StatusIndicators;
-	
+
+	    private Outline _outline;
+	    private Button _button;
+
 		// Use this for initialization
-		void Start ()
+		void Awake ()
 		{
-			outLine.enabled = false;
+			_outline = this.gameObject.GetComponent<Outline>();
+			_button = this.gameObject.GetComponent<Button>();
+			_button.interactable = false;
+			_outline.enabled = false;
+			DescriptionText.enabled = false;
+
 			foreach (RoomStatusIndicator indicator in StatusIndicators)
 			{
 				indicator.Icon.enabled = false;
@@ -38,8 +45,7 @@ namespace DeWinter
 				_room = value;
 				if (_room != null)
 				{
-					string txt = Room.Name + "\n" + new string('*', _room.Difficulty);
-					DescriptionText.text = txt;
+					DescriptionText.text = Room.Name + "\n" + new string('*', _room.Difficulty);
 				}
 			}
 		}
@@ -49,16 +55,27 @@ namespace DeWinter
 			DeWinterApp.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
 		}
 
-		public void UpdateRoom(RoomVO room, bool isAdjacent, bool isCurrent)
+		public void SetCurrentRoom(RoomVO currentRoom)
 		{
-			_room = room;
-			outLine.enabled = isAdjacent;
-			outLine.effectColor = isCurrent ? Color.white : Color.black;
-			if (!_room.Revealed && isAdjacent)
+			
+			bool enable =
+				_room != null &&
+				currentRoom != null &&
+				(_room == currentRoom || _room.IsNeighbor(currentRoom));
+
+			_outline.enabled = enable;
+			_button.interactable = enable;
+
+			if (enable)
 			{
-				foreach (RoomStatusIndicator indicator in StatusIndicators)
+				_outline.effectColor = (_room == currentRoom) ? Color.white : Color.black;
+				if (!DescriptionText.enabled)
 				{
-					indicator.Icon.enabled = (Array.IndexOf(Room.Features, indicator.ID) >= 0);
+					DescriptionText.enabled = true;
+					foreach (RoomStatusIndicator indicator in StatusIndicators)
+					{
+						indicator.Icon.enabled = (Array.IndexOf(Room.Features, indicator.ID) >= 0);
+					}
 				}
 			}
 		}

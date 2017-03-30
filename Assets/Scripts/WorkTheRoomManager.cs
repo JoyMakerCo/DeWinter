@@ -177,6 +177,8 @@ public class WorkTheRoomManager : MonoBehaviour
         //Set Up the Guests
         SetUpGuests();
 
+		DeWinterApp.Subscribe(PartyMessages.START_TIMERS, HandleStartTimers);
+
         //Generate the Remarks
         if (isAmbush)
         {
@@ -215,12 +217,13 @@ public class WorkTheRoomManager : MonoBehaviour
 		string[] conversationIntroList = DeWinterApp.GetModel<PartyModel>().ConversationIntros;
         readyGoText.text = conversationIntroList[Random.Range(0, conversationIntroList.Length)];
         //Tutorial Pop-Up? Only used in the tutorial Room
+        // This can be made less hacky by registering the dialog in a command triggered by entering a room
         if (room.IsTutorial)
         {
             screenFader.gameObject.SendMessage("CreateWorkTheRoomTutorialPopUp", this);
         } else
         {
-            StartCoroutine(ConversationStartTimerWait());
+        	DeWinterApp.SendMessage(PartyMessages.START_TIMERS);
         }
 
         //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
@@ -290,6 +293,11 @@ public class WorkTheRoomManager : MonoBehaviour
         //Victory and Defeat Checks------------ 
         VictoryCheck();
         ConfidenceCheck();
+    }
+
+    void OnDestroy()
+    {
+		DeWinterApp.Unsubscribe(PartyMessages.START_TIMERS, HandleStartTimers);
     }
 
     void SetUpGuests()
@@ -1407,6 +1415,11 @@ public class WorkTheRoomManager : MonoBehaviour
         }
     }
 
+	private void HandleStartTimers()
+	{
+		StartCoroutine(ConversationStartTimerWait());
+	}
+
     public IEnumerator ConversationStartTimerWait()
     {
         Debug.Log("Ready? Go! Timer Started!");
@@ -1418,7 +1431,6 @@ public class WorkTheRoomManager : MonoBehaviour
 
     public IEnumerator NextTurnTimerWait()
     {
-        Debug.Log("Next Turn Timer Started!");
         yield return new WaitForSeconds(0.75f);
         turnTimerActive = true;
     }
