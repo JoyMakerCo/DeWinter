@@ -5,16 +5,26 @@ using UnityEngine;
 public class ReputationLevel {
 
     private int level;
+    private string name;
     private int requiredReputation;
     private int confidenceBonus;
     private int mandatoryPartyInviteImportance;
 
-    public ReputationLevel(int l, int rR, int cB, int mI)
+    public ReputationLevel(int l, string n, int rR, int cB, int mI)
     {
         level = l;
+        name = n;
         requiredReputation = rR;
         confidenceBonus = cB;
         mandatoryPartyInviteImportance = mI;
+    }
+
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
     }
 
     //How much Reputation is reqruired for this Reputation Level?

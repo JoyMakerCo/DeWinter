@@ -114,24 +114,24 @@ public class FactionInfoTextController : MonoBehaviour {
                         "\n- Allegiance: " + GameData.factionList["Bourgeoisie"].knownAllegiance + " " + ConvertKnowledgeTimer(GameData.factionList["Bourgeoisie"].allegianceKnowledgeTimer) +
                         "\n- Power: " + GameData.factionList["Bourgeoisie"].knownPower + " " + ConvertKnowledgeTimer(GameData.factionList["Bourgeoisie"].powerKnowledgeTimer);
         }
-        //---- Revolution Info ----
-        if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 8)
+        //---- Third Estate Info ----
+        if (GameData.factionList["Third Estate"].PlayerReputationLevel() >= 8)
         {
             revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
                         "\n - Like clothes that are Vintage and Racy" +
-                        "\n- Power: " + GameData.factionList["Revolution"].PowerString() + " (Faction Benefit)";
+                        "\n- Power: " + GameData.factionList["Third Estate"].PowerString() + " (Faction Benefit)";
         }
-        else if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 6)
+        else if (GameData.factionList["Third Estate"].PlayerReputationLevel() >= 6)
         {
             revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
                         "\n - Like clothes that are Vintage and Racy" +
-                        "\n- Power: " + GameData.factionList["Revolution"].PowerString() + " (Faction Benefit)";
+                        "\n- Power: " + GameData.factionList["Third Estate"].PowerString() + " (Faction Benefit)";
         }
         else
         {
             revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
                         "\n - Like clothes that are Vintage and Racy" +
-                        "\n- Power: " + GameData.factionList["Revolution"].knownPower + " " + ConvertKnowledgeTimer(GameData.factionList["Revolution"].powerKnowledgeTimer);
+                        "\n- Power: " + GameData.factionList["Third Estate"].knownPower + " " + ConvertKnowledgeTimer(GameData.factionList["Third Estate"].powerKnowledgeTimer);
         }
     }
 
@@ -199,7 +199,7 @@ public class FactionInfoTextController : MonoBehaviour {
         GameData.factionList["Military"].allegianceKnowledgeTimer++;
         GameData.factionList["Bourgeoisie"].powerKnowledgeTimer++;
         GameData.factionList["Bourgeoisie"].allegianceKnowledgeTimer++;
-        GameData.factionList["Revolution"].powerKnowledgeTimer++;
+        GameData.factionList["Third Estate"].powerKnowledgeTimer++;
     }
 
     string ConvertKnowledgeTimer(int timer)

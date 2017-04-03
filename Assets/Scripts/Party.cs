@@ -150,7 +150,7 @@ public class Party {
         }
         if (partyFaction == 4)
         {
-            faction = GameData.factionList["Revolution"];
+            faction = GameData.factionList["Third Estate"];
             modestyPreference = faction.modestyLike;
             luxuryPreference = faction.luxuryLike;
         }
@@ -182,7 +182,7 @@ public class Party {
                 luxuryPreference = faction.luxuryLike;
                 break;
             case 4:
-                faction = GameData.factionList["Revolution"];
+                faction = GameData.factionList["Third Estate"];
                 modestyPreference = faction.modestyLike;
                 luxuryPreference = faction.luxuryLike;
                 break;
@@ -218,7 +218,7 @@ public class Party {
                 luxuryPreference = faction.luxuryLike;
                 break;
             case 4:
-                faction = GameData.factionList["Revolution"];
+                faction = GameData.factionList["Third Estate"];
                 modestyPreference = faction.modestyLike;
                 luxuryPreference = faction.luxuryLike;
                 break;
@@ -271,7 +271,7 @@ public class Party {
         {
             gridDimensionX++;
             roomDeletionAmount++;
-        } else if (faction == GameData.factionList["Revolution"]){
+        } else if (faction == GameData.factionList["Third Estate"]){
             gridDimensionY++;
             roomDeletionAmount++;
         }

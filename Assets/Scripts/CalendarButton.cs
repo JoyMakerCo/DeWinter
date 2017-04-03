@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class CalendarButton : MonoBehaviour {
@@ -7,14 +8,27 @@ public class CalendarButton : MonoBehaviour {
     public int rowID; //Button Row
     public int columnID; // Button Column?
     public GameObject screenFader; // It's for the RSVP pop-up
+    public Image currentDayOutline;
+    public Text date;
+    public Image pastDayXImage;
+    //Party Indicators
+    public Image party1FactionImage;
+    public Image party1PositiveReplyImage;
+    public Image party1NegativeReplyImage;
+    public Image party2FactionImage;
+    public Image party2PositiveReplyImage;
+    public Image party2NegativeReplyImage;
 
-    private Text myText;
-    private Text myDate;
+    //Faction Icon Sprites
+    public Sprite crownFactionSprite;
+    public Sprite churchFactionSprite;
+    public Sprite militaryFactionSprite;
+    public Sprite bourgeoisieFactionSprite;
+    public Sprite thirdEstateFactionSprite;
+
+    Dictionary<string, Sprite> factionSprites = new Dictionary<string, Sprite>();
+
     private Image myBlockImage;
-    private Image myXImage;
-    private Image myCircleImage;
-    private Image mySlashImage;
-    private Outline myOutline;
     private Color defaultColor;
     private Day buttonDay;
 
@@ -22,14 +36,9 @@ public class CalendarButton : MonoBehaviour {
 
     void Start()
     {
-        myText = this.transform.Find("Text").GetComponent<Text>();
-        myDate = this.transform.Find("DateText").GetComponent<Text>();
         myBlockImage = this.GetComponent<Image>();
-        myXImage = this.transform.Find("XImage").GetComponent<Image>();
-        myCircleImage = this.transform.Find("CircleImage").GetComponent<Image>();
-        mySlashImage = this.transform.Find("SlashImage").GetComponent<Image>();
-        myOutline = this.GetComponent<Outline>();
         defaultColor = myBlockImage.color;
+        StockSpriteDictionary();
     }
 
     void Update ()
@@ -40,25 +49,59 @@ public class CalendarButton : MonoBehaviour {
     void UpdateButtonDisplay()
     {
         SetButtonDay();
-        if (buttonDay != null)
+        if (buttonDay != null) //If there's no error in the date or Day
         {
-            //Is there a party? If so, then display it. If not, then blank text
-            if (buttonDay.party1.invited && !buttonDay.party2.invited)
+            date.text = buttonDay.displayDay.ToString();
+            //Is there a party? If so, then display it. If not, then no icons
+            if (buttonDay.party1.invited)
             {
-                myDate.text = buttonDay.displayDay.ToString();
-                myText.text = buttonDay.party1.SizeString() + " " + buttonDay.party1.faction + " Party";
-            } else if (!buttonDay.party1.invited && buttonDay.party2.invited)
-            {
-                myDate.text = buttonDay.displayDay.ToString();
-                myText.text = buttonDay.party2.SizeString() + " " + buttonDay.party2.faction + " Party";
-            } else if (buttonDay.party1.invited && buttonDay.party2.invited)
-            {
-                myDate.text = buttonDay.displayDay.ToString();
-                myText.text = "Two Parties";
+                party1FactionImage.color = Color.white;
+                party1FactionImage.sprite = factionSprites[buttonDay.party1.faction.Name()];         
             } else
             {
-                myDate.text = buttonDay.displayDay.ToString();
-                myText.text = "";
+                party1FactionImage.color = Color.clear;
+            }
+            if (buttonDay.party2.invited)
+            {
+                party2FactionImage.color = Color.white;
+                party2FactionImage.sprite = factionSprites[buttonDay.party2.faction.Name()];
+            }
+            else
+            {
+                party2FactionImage.color = Color.clear;
+            }
+            //What's the state of the Party RSVP?
+            //---- Party 1 ----
+            if (buttonDay.party1.RSVP == 1)
+            {
+                party1PositiveReplyImage.color = Color.white;
+                party1NegativeReplyImage.color = Color.clear;
+            }
+            else if (buttonDay.party1.RSVP == -1)
+            {
+                party1PositiveReplyImage.color = Color.clear;
+                party1NegativeReplyImage.color = Color.white;
+            }
+            else
+            {
+                party1PositiveReplyImage.color = Color.clear;
+                party1NegativeReplyImage.color = Color.clear;
+            }
+            //---- Party 2 ----
+            if (buttonDay.party2.RSVP == 1)
+            {
+                party2PositiveReplyImage.color = Color.white;
+                party2NegativeReplyImage.color = Color.clear;
+            }
+            else if (buttonDay.party2.RSVP == -1)
+            {
+                party2PositiveReplyImage.color = Color.clear;
+                party2NegativeReplyImage.color = Color.white;
+            }
+            else
+            {
+                party2PositiveReplyImage.color = Color.clear;
+                party2NegativeReplyImage.color = Color.clear;
             }
             // Is this Day in the display month? If not, then gray it out
             if (buttonDay.month == GameData.displayMonthInt)
@@ -71,37 +114,22 @@ public class CalendarButton : MonoBehaviour {
             // Is this day today? If so, then Outline it
             if (GameData.currentMonth == buttonDay.month && GameData.currentDay == buttonDay.day)
             {
-                myOutline.effectColor = Color.black;
-                myXImage.color = Color.clear;
+                currentDayOutline.color = Color.white;
+                this.transform.SetAsLastSibling();
+                pastDayXImage.color = Color.clear;
             } else if (GameData.currentMonth > buttonDay.month || (GameData.currentMonth == buttonDay.month && GameData.currentDay > buttonDay.day))
             {
-                myOutline.effectColor = Color.clear;
-                myXImage.color = Color.white;
+                currentDayOutline.color = Color.clear;
+                pastDayXImage.color = Color.white;
             }  else
             {
-                myOutline.effectColor = Color.clear;
-                myXImage.color = Color.clear;
-            }
-            //What's the state of the Party RSVP?
-            if(buttonDay.party1.RSVP == 1)
-            {
-                myCircleImage.color = Color.white;
-                mySlashImage.color = Color.clear;
-            } else if (buttonDay.party1.RSVP == -1)
-            {
-                myCircleImage.color = Color.clear;
-                mySlashImage.color = Color.white;
-            } else
-            {
-                myCircleImage.color = Color.clear;
-                mySlashImage.color = Color.clear;
+                currentDayOutline.color = Color.clear;
+                pastDayXImage.color = Color.clear;
             }
         } else
         {
-            myDate.text = "000";
-            myText.text = "Error: Null Day";
+            date.text = "000";
         }
-
     }
 
     public void RSVP()
@@ -178,5 +206,14 @@ public class CalendarButton : MonoBehaviour {
             //Something is going wrong here with April, hand math it out?
             buttonDay = GameData.calendar.monthList[GameData.displayMonthInt + 1].dayList[(rowID - GameData.calendar.monthList[GameData.displayMonthInt + 1].weeks), columnID];
         }
+    }
+
+    void StockSpriteDictionary()
+    {
+        factionSprites.Add("Crown", crownFactionSprite);
+        factionSprites.Add("Church", churchFactionSprite);
+        factionSprites.Add("Military", militaryFactionSprite);
+        factionSprites.Add("Bourgeoisie", bourgeoisieFactionSprite);
+        factionSprites.Add("Third Estate", thirdEstateFactionSprite);
     }
 }
