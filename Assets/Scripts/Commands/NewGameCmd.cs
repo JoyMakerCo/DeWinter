@@ -12,10 +12,13 @@ namespace DeWinter
 
 			// Populate initial parties
 			CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
-			cmod.Parties.Add(cmod.DaysFromNow(1), new Party(1));
-			cmod.Parties.Add(cmod.DaysFromNow(4), new Party(1));
+			Party p = new Party(1);
+			cmod.AddParty(1, new Party(1));
+			cmod.AddParty(4, p);
 			if (new Random().Next(3) == 0)
-				cmod.Parties.Add(cmod.DaysFromNow(4), new Party(1));
+			{
+				cmod.AddParty(4, new Party(p.faction));
+			}
 
 			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
 		}

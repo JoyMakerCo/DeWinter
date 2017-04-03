@@ -110,6 +110,24 @@ namespace DeWinter
 			DeWinterApp.Subscribe(CalendarMessages.ADVANCE_DAY, AdvanceDay);
 		}
 
+		// TODO: Parties should probably store their dates
+		public void AddParty(DateTime date, Party party)
+		{
+			if (!Parties.ContainsKey(date))
+			{
+				Parties.Add(date, new List<Party>{party});
+			}
+			else
+			{
+				Parties[date].Add(party);
+			}
+		}
+
+		public void AddParty(int day, Party party)
+		{
+			AddParty(_startDate.AddDays(day), party);
+		}
+
 		private void AdvanceDay() { Day++; }
 	}
 }
