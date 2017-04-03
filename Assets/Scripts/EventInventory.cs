@@ -473,7 +473,7 @@ public class EventInventory : MonoBehaviour
                     + "\nYou wait on edge for an hour, but they never show. They must have passed by your home entirely."
                     + "\n\nThe next morning, at breakfast, Isaac joins you in the dining room, sporting some fresh bandages. He bows awkwardly to you when he enters."
                     + "\n“Merci beaucoup Madamme. If it weren't for you I'd be in a jail cell right now, or worse. You're a true friend of the people and I'll make sure everyone knows it.” He bows again before leaving out the back door."
-                    + "\n\n-You have gained 50 Reputation with the Revolution", 0, 0, GameData.factionList["Revolution"], "Reputation", 50,
+                    + "\n\n-You have gained 50 Reputation with the Revolution", 0, 0, GameData.factionList["Third Estate"], "Reputation", 50,
                 new EventOption("“As far as mornings after go, that was pretty good.” <End Event>", -1)),
             //Stage 3
             new EventStage("Camille escorts Isaac up the stairs towards the attic. He's barely out of sight before you hear a sharp knock on the door."
@@ -488,14 +488,14 @@ public class EventInventory : MonoBehaviour
             new EventStage("Isaac's eyes go wide as you start shouting for the marshals. He tries to run but trips and spills across your floor. An urgent fist pounds at the door, which you rush to open. The marshalls burst into the room and aprehend the young revolutionary."
                     + "\n“Merci beaucoup Madamme, your actions helped bring this vile criminal to justice. Your King and Country extend their gratitude.” Isaac stares at you accusingly as they marshalls frog march him out the door. You have a feeling that he'll make sure everyone knows where your loyalties lie."
                     + "\n\n-You have gained 50 Reputation with the Crown" 
-                    + "\n-You have lost 50 Reputation with the Revolution", 0, 0, GameData.factionList["Revolution"], "Reputation", -50, GameData.factionList["Crown"], "Reputation", 50,
+                    + "\n-You have lost 50 Reputation with the Revolution", 0, 0, GameData.factionList["Third Estate"], "Reputation", -50, GameData.factionList["Crown"], "Reputation", 50,
                 new EventOption("“Another victory for justice. Now, about fixing that window...” <End Event>", -1)),
             //Stage 5
             new EventStage("Hearing your words, the marshals silently ready their weapons and stalk up your stairs towards the attic."
                     + "\nMoments later you hear the crash and scuffle of a fight. It isn't long before the marshals are roughly dragging the wounded Isaac down your stairs." 
                     + "\n“Madamme, your King and Country extend their gratitude,” the leader of the marchals says as he looks you up and down. He's certain you hid Isaac, but you also gave him up. Isaac stares at you accusingly before he's shoved out the door." 
                     + "\n\n-You have gained 30 Reputation with the Crown"
-                    + "\n-You have lost 50 Reputation with the Revolution", 0, 0, GameData.factionList["Revolution"], "Reputation", -50, GameData.factionList["Crown"], "Reputation", 30,
+                    + "\n-You have lost 50 Reputation with the Revolution", 0, 0, GameData.factionList["Third Estate"], "Reputation", -50, GameData.factionList["Crown"], "Reputation", 30,
                 new EventOption("“Sorry Isaac, it was either you or me.” <End Event>.", -1)),
             //Stage 6
             new EventStage("You give the marshals an excruciatingly detailed tour of your home, starting with the kitchen and first floor. That should give Camille enough time to hide Isaac and tend to his wounds. By the time you finish showing them the second floor, it's been over an hour. The marshals are equally bored and furious."
@@ -503,7 +503,7 @@ public class EventInventory : MonoBehaviour
                     + "\n\nThe next morning, at breakfast, Isaac joins you in the dining room, sporting some fresh bandages. He bows awkwardly to you when he enters."
                     + "\n“Merci beaucoup Madamme. If it weren't for you I'd be in a jail cell right now, or worse. You're took an enormous risk to help me, I'll never forget that. All of my brothers and sisters of the Revolution will never forget that either.” He bows again before leaving out the back door."
                     + "\n\n-You have gained 70 Reputation with the Revolution"
-                    + "\n-You have lost 50 Reputation with the Crown", 0, 0, GameData.factionList["Revolution"], "Reputation", 70, GameData.factionList["Crown"], "Reputation", -50,
+                    + "\n-You have lost 50 Reputation with the Crown", 0, 0, GameData.factionList["Third Estate"], "Reputation", 70, GameData.factionList["Crown"], "Reputation", -50,
                 new EventOption("“As far as mornings after go, that was pretty good.” <End Event>.", -1)),
             //Stage 7
             new EventStage("You start to give the marshals a tour of the first floor, in order to give Camille enough time to hide Isaac properly. However, as you lead them into the kitchen, one of the marshals notices something."
@@ -513,7 +513,7 @@ public class EventInventory : MonoBehaviour
                     + "\n“Why was this criminal hiding in the attic with your maid?” the leader of the marshals asks, his hand resting on his spare manacles." 
                     + "\nIsaac suddenly interjects “She was my hostage! I forced them to hide me here!” the marshals beat him until he's quiet. The leader of the marshals looks you up and down then leaves with Isaac. His story is just plausible enough, but the marshals still suspect you. Isaac looks at you one last time before he's shoved at the door. He knows you tried to save him."
                     + "\n\n-You have gained 10 Reputation with the Revolution"
-                    + "\n-You have lost 70 Reputation with the Crown", 0, 0, GameData.factionList["Revolution"], "Reputation", 10, GameData.factionList["Crown"], "Reputation", -70,
+                    + "\n-You have lost 70 Reputation with the Crown", 0, 0, GameData.factionList["Third Estate"], "Reputation", 10, GameData.factionList["Crown"], "Reputation", -70,
                 new EventOption("<End Event>.", -1))));
         //---- Event 6 ---- This Shall Not Stand!
         //The press is talking shit about you! Worst of all, it's mostly true! Getting it to stop makes you an enemy. Failing to Make it stop gets you a scandal

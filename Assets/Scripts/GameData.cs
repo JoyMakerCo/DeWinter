@@ -23,7 +23,7 @@ public class GameData : MonoBehaviour
     public static Dictionary<string, Faction> factionList = new Dictionary<string, Faction>();
     public static int reputationCount;
     public static int playerReputationLevel;
-    public static ReputationLevel[] reputationLevels;
+    public static List<ReputationLevel> reputationLevels = new List<ReputationLevel>();
 
     //Party Stuff
     public static Party tonightsParty;
@@ -127,28 +127,27 @@ public class GameData : MonoBehaviour
         uprisingMonth = 0;
         uprisingDay = Random.Range(25, 31);
 
-
-        //Reputation
-        reputationCount = 21;
-        reputationLevels = new ReputationLevel[11];
-        reputationLevels[0] = new ReputationLevel(0, "Disregarded", 0, -10, 0);
-        reputationLevels[1] = new ReputationLevel(1, "Known", 20, 0, 0);
-        reputationLevels[2] = new ReputationLevel(2, "Accepted", 50, 5, 0);
-        reputationLevels[3] = new ReputationLevel(3, "Liked", 100, 10, 0);
-        reputationLevels[4] = new ReputationLevel(4, "Praised", 150, 15, 0);
-        reputationLevels[5] = new ReputationLevel(5, "Favored", 200, 20, 0);
-        reputationLevels[6] = new ReputationLevel(6, "Admired", 250, 25, 1);
-        reputationLevels[7] = new ReputationLevel(7, "Esteemed", 300, 30, 1);
-        reputationLevels[8] = new ReputationLevel(8, "Celebrated", 350, 35, 1);
-        reputationLevels[9] = new ReputationLevel(9, "Beloved", 400, 40, 2);
-        reputationLevels[10] = new ReputationLevel(10, "Impossible", 99999, 40, 2); //Just there to put an upper limit on the whole thing
-
         //Faction Stuff
         factionList.Add("Crown", new Faction("Crown", 100, 100, 100));
         factionList.Add("Church", new Faction("Church", 100, -100, 60));
         factionList.Add("Military", new Faction("Military", 0, 0, 0));
         factionList.Add("Bourgeoisie", new Faction("Bourgeoisie", -100, 100, -60));
-        factionList.Add("Revolution", new Faction("Revolution", -100, -100, -100));
+        factionList.Add("Third Estate", new Faction("Third Estate", -100, -100, -100));
+
+        //Reputation
+        reputationCount = 21;
+        reputationLevels.Clear();
+        reputationLevels.Add(new ReputationLevel(0, "Disregarded", 0, -10, 0));
+        reputationLevels.Add(new ReputationLevel(1, "Known", 20, 0, 0));
+        reputationLevels.Add(new ReputationLevel(2, "Accepted", 50, 5, 0));
+        reputationLevels.Add(new ReputationLevel(3, "Liked", 100, 10, 0));
+        reputationLevels.Add(new ReputationLevel(4, "Praised", 150, 15, 0));
+        reputationLevels.Add(new ReputationLevel(5, "Favored", 200, 20, 0));
+        reputationLevels.Add(new ReputationLevel(6, "Admired", 250, 25, 1));
+        reputationLevels.Add(new ReputationLevel(7, "Esteemed", 300, 30, 1));
+        reputationLevels.Add(new ReputationLevel(8, "Celebrated", 350, 35, 1));
+        reputationLevels.Add(new ReputationLevel(9, "Beloved", 400, 40, 2));
+        reputationLevels.Add(new ReputationLevel(10, "Impossible", 99999, 40, 2)); //Just there to put an upper limit on the whole thing
 
         //Party Stuff
         tonightsParty = null;

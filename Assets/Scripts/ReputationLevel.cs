@@ -19,9 +19,12 @@ public class ReputationLevel {
         mandatoryPartyInviteImportance = mI;
     }
 
-    public string Name()
+    public string Name
     {
-        return name;
+        get
+        {
+            return name;
+        }
     }
 
     //How much Reputation is reqruired for this Reputation Level?

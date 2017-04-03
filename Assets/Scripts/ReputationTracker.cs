@@ -6,6 +6,7 @@ public class ReputationTracker : MonoBehaviour {
     public Text numberText;
     public Text levelText;
     public Image reputationIcon;
+    public Slider reputationBar;
 
     public Sprite reputationLevel0Icon;
     public Sprite reputationLevel1Icon;
@@ -35,20 +36,22 @@ public class ReputationTracker : MonoBehaviour {
 
     public void UpdateReputation()
     {
-        numberText.text = PlayerReputationLevel() + "(" + GameData.reputationCount.ToString("#,##0") + ")";
-        levelText.text = GameData.reputationLevels[PlayerReputationLevel()].Name();
-        reputationIcon.sprite = reputationLevelIconArray[PlayerReputationLevel()];                     
+        PlayerReputationLevel();
+        int playerReputationLevel = GameData.playerReputationLevel;
+        numberText.text = shownReputationValue(playerReputationLevel) + "/" + shownReputationNextLevelValue(playerReputationLevel);
+        levelText.text = GameData.reputationLevels[playerReputationLevel].Name;
+        reputationIcon.sprite = reputationLevelIconArray[playerReputationLevel];
+        reputationBar.value = shownReputationValue(playerReputationLevel) / shownReputationNextLevelValue(playerReputationLevel);                     
     }
 
-    public int PlayerReputationLevel()
+    public void PlayerReputationLevel()
     {
         int i = 0;
-        while (GameData.reputationCount > GameData.reputationLevels[i].RequiredReputation())
+        while (GameData.reputationCount >= GameData.reputationLevels[i].RequiredReputation())
         {
             i++;
         }
         GameData.playerReputationLevel = i-1;
-        return GameData.playerReputationLevel;
     }
 
     void DefeatCheck()
@@ -74,5 +77,30 @@ public class ReputationTracker : MonoBehaviour {
         reputationLevelIconArray[7] = reputationLevel7Icon;
         reputationLevelIconArray[8] = reputationLevel8Icon;
         reputationLevelIconArray[9] = reputationLevel9Icon;
+    }
+
+    int shownReputationValue(int repLevel)
+    {
+        if(repLevel == 1)
+        {
+            return GameData.reputationCount;
+        } else
+        {
+            int repValue = GameData.reputationCount - GameData.reputationLevels[repLevel].RequiredReputation();
+            return repValue;
+        }
+    }
+
+    int shownReputationNextLevelValue(int repLevel)
+    {
+        if(repLevel == 1)
+        {
+            return GameData.reputationLevels[repLevel].RequiredReputation();
+        } else
+        {
+            int nextLevelValue = GameData.reputationLevels[repLevel + 1].RequiredReputation() - GameData.reputationLevels[repLevel].RequiredReputation();
+            return nextLevelValue;
+        }
+
     }
 }
