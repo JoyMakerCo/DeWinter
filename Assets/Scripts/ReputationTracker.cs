@@ -45,10 +45,10 @@ namespace DeWinter
 	    {
 	    	if (vo.Reputation > -20)
 	    	{
-				ReputationLevel repLvl = _gmod.GetReputationLevel(vo.Level + 1);
+				ReputationLevel repLvl = _gmod.ReputationLevels[vo.Level + 1];
 				int nextLvl = repLvl.Reputation;
 				numberText.text = vo.Reputation.ToString("#,##0") + "/" + nextLvl.ToString("#,##0");
-				levelText.text = _gmod.GetReputationLevel(vo.Level).Name;
+				levelText.text = _gmod.ReputationLevels[vo.Level].Title;
 		        reputationIcon.sprite = reputationLevelIconArray[vo.Level];
 		        reputationBar.value = (float)vo.Reputation / (float)nextLvl;
 		    }

@@ -35,10 +35,10 @@ namespace DeWinter
 				if (_reputation < 0)
 					_reputation = 0;
 
-				if (_reputationLevels != null)
+				if (ReputationLevels != null)
 				{
-					_level = _reputationLevels.Length-1;
-					while (_level>=0 && _reputation >= _reputationLevels[_level].Reputation)
+					_level = ReputationLevels.Length-1;
+					while (_level>=0 && _reputation >= ReputationLevels[_level].Reputation)
 						_level--;
 				}
 				else
@@ -52,7 +52,7 @@ namespace DeWinter
 
 		public int ConfidenceBonus
 		{
-			get { return _reputationLevels[ReputationLevel].Confidence; }
+			get { return ReputationLevels[ReputationLevel].Confidence; }
 		}
 
 		public int ReputationLevel
@@ -80,28 +80,19 @@ namespace DeWinter
 				string str = "";
 				for (int i=_level; i>=0; i--)
 				{
-					str += _reputationLevels[i].Description + "\n";
+					str += ReputationLevels[i].Description + "\n";
 				}
 				return str;
 			}
 		}
 
 		[JsonProperty("reputationLevels")]
-		private ReputationLevel[] _reputationLevels;
-
-		public ReputationLevel GetReputationLevel(int level)
-		{
-			return
-				level < 0 ? _reputationLevels[0]
-				: level < _reputationLevels.Length
-				? _reputationLevels[level]
-				: _reputationLevels[_reputationLevels.Length - 1];
-		}
+		public ReputationLevel[] ReputationLevels;
 
 		public int PartyInviteImportance
 		{
 			get {
-				return _reputationLevels[ReputationLevel].PartyInviteImportance;
+				return ReputationLevels[ReputationLevel].PartyInviteImportance;
 			}
 		}
 
