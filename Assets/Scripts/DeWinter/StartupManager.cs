@@ -8,7 +8,7 @@ namespace DeWinter
 	{
 		public GameObject InventoriesPrefab;
 
-		void Start ()
+		void Awake ()
 		{
 			DeWinterApp.RegisterModel<GameModel>();
 			DeWinterApp.RegisterModel<FactionModel>();

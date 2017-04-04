@@ -226,7 +226,7 @@ public class Reward {
             case 3:
                 return "Bourgeoisie";
             case 4:
-                return "Revolution";
+                return "Third Estate";
             default:
                 return party.faction;
         }

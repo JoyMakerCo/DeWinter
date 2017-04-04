@@ -16,5 +16,8 @@ namespace DeWinter
 
 		[JsonProperty("text")]
 		public string Description;
+
+		[JsonProperty("name")]
+		public string Name;
 	}
 }

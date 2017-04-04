@@ -39,7 +39,7 @@ public class GossipTrading : MonoBehaviour
                 }
                 else if (GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue() < 0)
                 {
-                    myDescriptionText.text = "Push the " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction + " to the Revolution by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue();
+                    myDescriptionText.text = "Push the " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction + " to the Third Estate by " + GameData.gossipInventory[gossipInventoryList.selectedGossipItem].AllegianceShiftValue();
                     myDescriptionText.color = Color.white;
                     myBackgroundImage.color = Color.white;
                 } else
@@ -230,7 +230,7 @@ public class GossipTrading : MonoBehaviour
         if (Random.Range(1,101) <= CaughtChance())
         {
             //Player Rep Loss
-            if (GameData.factionList["Revolution"].ReputationLevel >= 3)
+            if (GameData.factionList["Third Estate"].ReputationLevel >= 3)
             {
                 GameData.reputationCount -= 15;
                 GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction].playerReputation -= 15;

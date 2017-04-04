@@ -911,9 +911,9 @@ public class PopUpManager : MonoBehaviour
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, it appears that you've been found out. While 'Le Mecure' does its best to conceal our sources, some members of the " + faction + 
                 " seem to have figured out that you were out supplier. This has damaged your Reputation both with them and with society in General.";
-        if (GameData.factionList["Revolution"].ReputationLevel >= 2)
+        if (GameData.factionList["Third Estate"].ReputationLevel >= 2)
         {
-            bodyText.text += "\n\nThankfully your contacts in the Revolution have minimized the effects somewhat.";
+            bodyText.text += "\n\nThankfully your contacts in the Third Estate have minimized the effects somewhat.";
         }
     }
 
@@ -972,7 +972,7 @@ public class PopUpManager : MonoBehaviour
                     bodyText.text += " in exchange for " + tradeForAmount + " Allegiance to the Crown from the " + faction + "?";
                 } else
                 {
-                    bodyText.text += " in exchange for " + tradeForAmount + " Allegiance to the Revolution from the " + faction + "?";
+                    bodyText.text += " in exchange for " + tradeForAmount + " Allegiance to the Third Estate from the " + faction + "?";
                 }
                 break;
             case "Power":

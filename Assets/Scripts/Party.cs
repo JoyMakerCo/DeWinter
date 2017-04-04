@@ -85,11 +85,11 @@ public class Party {
 			case 1: faction = "Church"; break;
 			case 2: faction = "Military"; break;
 			case 3: faction = "Bourgeoisie"; break;
-			case 4: faction = "Revolution"; break;
+			case 4: faction = "Third Estate"; break;
 		}
 		modestyPreference = GameData.factionList[faction].Modesty;
         luxuryPreference = GameData.factionList[faction].Luxury;
-    }
+   }
 
     void SetRandomFaction()
     {
@@ -99,7 +99,7 @@ public class Party {
 			case 1: faction = "Church"; break;
 			case 2: faction = "Military"; break;
 			case 3: faction = "Bourgeoisie"; break;
-			case 4: faction = "Revolution"; break;
+			case 4: faction = "Third Estate"; break;
 			default: faction = null; break;
         }
         if (faction != null)
@@ -120,9 +120,9 @@ public class Party {
 			case 3: faction = "Bourgeoisie"; break;
 		}
 		if (faction != null)
-        {
+		{
 			if (faction == excludeFaction)
-				faction = "Revolution";
+				faction = "Third Estate";
 			modestyPreference = GameData.factionList[faction].Modesty;
             luxuryPreference = GameData.factionList[faction].Luxury;
         }
@@ -217,7 +217,7 @@ public class Party {
         tempRewardList.Add(new Reward(this, "Faction Rep", "Church", 0));
         tempRewardList.Add(new Reward(this, "Faction Rep", "Military", 0));
         tempRewardList.Add(new Reward(this, "Faction Rep", "Bourgeoisie", 0));
-        tempRewardList.Add(new Reward(this, "Faction Rep", "Revolution", 0));
+        tempRewardList.Add(new Reward(this, "Faction Rep", "Third Estate", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Seamstress", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Tailor", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Spymaster", 0));
@@ -226,7 +226,7 @@ public class Party {
         tempRewardList.Add(new Reward(this, "Gossip", "Church", 0));
         tempRewardList.Add(new Reward(this, "Gossip", "Military", 0));
         tempRewardList.Add(new Reward(this, "Gossip", "Bourgeoisie", 0));
-        tempRewardList.Add(new Reward(this, "Gossip", "Revolution", 0));
+        tempRewardList.Add(new Reward(this, "Gossip", "Third Estate", 0));
         for (int i = 0; i < wonRewardsList.Count; i++)
         {
             for(int j = 0; j < tempRewardList.Count; j++)

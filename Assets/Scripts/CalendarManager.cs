@@ -24,6 +24,7 @@ public class CalendarManager : MonoBehaviour
 
 			DeWinterApp.SendMessage(PartyMessages.PREPARE_PARTY);
             PartyInvitations();
+
             //Missed RSVPs
         	List<Party> parties;
 			if (_calendarModel.Parties.TryGetValue(_calendarModel.Yesterday, out parties))
@@ -32,14 +33,9 @@ public class CalendarManager : MonoBehaviour
 				{
 					if (party.RSVP == 0 && _factionModel[party.faction].LargestAllowableParty >= party.partySize)
 					{
-						AdjustValueVO vo = new AdjustValueVO("Reputation", -20);
+						AdjustValueVO vo = new AdjustValueVO("Reputation", -40);
 						DeWinterApp.SendMessage<AdjustValueVO>(vo);
-
-						vo.Type = party.faction;
-						vo.Amount = -40;
-						vo.IsRequest = true;
-						DeWinterApp.SendMessage<AdjustValueVO>(vo);
-		                screenFader.gameObject.SendMessage("CreateMissedPartyRSVPModal", party); //Party from the night before
+						screenFader.gameObject.SendMessage("CreateMissedPartyRSVPModal", party); //Party from the night before
 					}
 				}
 			}
@@ -67,8 +63,9 @@ public class CalendarManager : MonoBehaviour
         		{
 					//Invitation Pop Up
                     screenFader.gameObject.SendMessage("CreatePartyInvitationPopUp", party);
+
                     //Actually Inviting the Player
-                    party.InvitePlayer();
+                    party.invited = true;
 	    		}
         	}
         }

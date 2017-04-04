@@ -51,7 +51,7 @@ public class Gossip {
 
     int RandomFactionAllegianceShift()
     {
-		if (Faction == "Revolution" || Faction == "Crown")
+		if (Faction == "Third Estate" || Faction == "Crown")
 			return 0;
 		Random rnd = new Random();
     	return rnd.Next(1) == 0 ? rnd.Next(10, 51) : -rnd.Next(10, 51);

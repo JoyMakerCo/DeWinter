@@ -89,6 +89,15 @@ namespace DeWinter
 		[JsonProperty("reputationLevels")]
 		private ReputationLevel[] _reputationLevels;
 
+		public ReputationLevel GetReputationLevel(int level)
+		{
+			return
+				level < 0 ? _reputationLevels[0]
+				: level < _reputationLevels.Length
+				? _reputationLevels[level]
+				: _reputationLevels[_reputationLevels.Length - 1];
+		}
+
 		public int PartyInviteImportance
 		{
 			get {

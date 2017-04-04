@@ -41,7 +41,7 @@ namespace DeWinter
 		private bool _steadfast; //Would this faction change allegiances?
 
 		[JsonProperty("Allegiance")]
-		public int Allegiance //-100 means the Faction is devoted to the Revolution, 100 means they are devoted to the Crown
+		public int Allegiance //-100 means the Faction is devoted to the Third Estate, 100 means they are devoted to the Crown
 		{
 			get { return _allegiance; }
 			set

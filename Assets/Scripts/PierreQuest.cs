@@ -6,7 +6,7 @@ using DeWinter;
 
 public class PierreQuest
 {
-	private static readonly string[] FACTIONS = new string[]{"Crown", "Church", "Military", "Bourgoisie", "Revolution"};
+	private static readonly string[] FACTIONS = new string[]{"Crown", "Church", "Military", "Bourgoisie", "Third Estate"};
 	private const int MAX_DEADLINE = 15;
 
     public string Faction; // The Faction this Quest is relevant to

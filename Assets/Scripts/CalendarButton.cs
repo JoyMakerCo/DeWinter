@@ -10,14 +10,27 @@ public class CalendarButton : MonoBehaviour {
     public int rowID; //Button Row
     public int columnID; // Button Column?
     public GameObject screenFader; // It's for the RSVP pop-up
+    public Image currentDayOutline;
+    public Text date;
+    public Image pastDayXImage;
+    //Party Indicators
+    public Image party1FactionImage;
+    public Image party1PositiveReplyImage;
+    public Image party1NegativeReplyImage;
+    public Image party2FactionImage;
+    public Image party2PositiveReplyImage;
+    public Image party2NegativeReplyImage;
 
-    private Text myText;
-    private Text myDate;
+    //Faction Icon Sprites
+    public Sprite crownFactionSprite;
+    public Sprite churchFactionSprite;
+    public Sprite militaryFactionSprite;
+    public Sprite bourgeoisieFactionSprite;
+    public Sprite thirdEstateFactionSprite;
+
+    Dictionary<string, Sprite> factionSprites = new Dictionary<string, Sprite>();
+
     private Image myBlockImage;
-    private Image myXImage;
-    private Image myCircleImage;
-    private Image mySlashImage;
-    private Outline myOutline;
     private Color defaultColor;
 	private CalendarModel _calendarModel;
 	private DateTime _day;
@@ -27,14 +40,9 @@ public class CalendarButton : MonoBehaviour {
     void Start()
     {
 		_calendarModel = DeWinterApp.GetModel<CalendarModel>();
-        myText = this.transform.Find("Text").GetComponent<Text>();
-        myDate = this.transform.Find("DateText").GetComponent<Text>();
         myBlockImage = this.GetComponent<Image>();
-        myXImage = this.transform.Find("XImage").GetComponent<Image>();
-        myCircleImage = this.transform.Find("CircleImage").GetComponent<Image>();
-        mySlashImage = this.transform.Find("SlashImage").GetComponent<Image>();
-        myOutline = this.GetComponent<Outline>();
         defaultColor = myBlockImage.color;
+        StockSpriteDictionary();
     }
 
     private void SetButtonDay()
@@ -50,50 +58,41 @@ public class CalendarButton : MonoBehaviour {
     {
         SetButtonDay();
 		bool isCurrentMonth = (_day.Month == _calendarModel.Today.Month);
-		myDate.text = _day.Day.ToString();
-        
         List<Party> parties;
-		Party party=null;
-		int count = 0;
-
-        if (_calendarModel.Parties.TryGetValue(_day, out parties))
-        {
-        	foreach (Party p in parties)
-        	{
-        		if (p.invited)
-        		{
-					if (p.RSVP == 1 || party == null || party.RSVP == 0)
-        				party = p;
-        			count++;
-        		}
-        	}
-        }
-    	switch (count)
-    	{
-    		case 0:
-				myText.text = "";
-    			break;
-    		case 1:
-				myText.text = party.SizeString() + " " + party.faction + " Party";
-				break;
-			default:
-				myText.text = count.ToString() + " Parties";
-				break;
-    	}
+		int count=0;
+		bool doEnable;
 
 		myBlockImage.color = isCurrentMonth ? defaultColor : Color.gray;
+		date.text = _calendarModel.GetDateString(_day);
 
-		// For days that have already passed
-		myXImage.color = _calendarModel.Today > _day ? Color.white : Color.clear;
+		if (_calendarModel.Parties.TryGetValue(_day, out parties))
+		{
+			count = parties.FindAll(p => p.invited).Count;
+		}
 
-		// For Today
-		myOutline.effectColor = _calendarModel.Today == _day ? Color.black : Color.clear;
+		doEnable = count > 0;
+		party1PositiveReplyImage.enabled = doEnable && parties[0].RSVP == 1;
+		party1NegativeReplyImage.enabled = doEnable && parties[0].RSVP == -1;
+		party1FactionImage.enabled = doEnable;
+		if (doEnable)
+		{
+			party1FactionImage.sprite = factionSprites[parties[0].faction];
+		}
 
-		// For confirmed parties
-		myCircleImage.color = (party != null && party.RSVP == 1) ? Color.white : Color.clear;
+		doEnable = count > 1;
+		party2PositiveReplyImage.enabled = doEnable && (parties[1].RSVP == 1);
+		party2NegativeReplyImage.enabled = doEnable && (parties[1].RSVP == -1);
+		party2FactionImage.enabled = doEnable;
+		if (doEnable)
+		{
+			party2FactionImage.sprite = factionSprites[parties[1].faction];
+		}
 
-		// For negative RSVP
-		mySlashImage.color = (party != null && party.RSVP == -1) ? Color.white : Color.clear;
+		doEnable = (_day == _calendarModel.Today);
+
+		currentDayOutline.enabled = doEnable;
+		if (doEnable) this.transform.SetAsLastSibling();
+		pastDayXImage.enabled = (_calendarModel.Today > _day);
     }
 
     public void RSVP()
@@ -126,5 +125,14 @@ public class CalendarButton : MonoBehaviour {
 				screenFader.gameObject.SendMessage("CreateTwoPartyChoicePopUp", objectStorage);
 			}
 		}
+    }
+
+    void StockSpriteDictionary()
+    {
+        factionSprites.Add("Crown", crownFactionSprite);
+        factionSprites.Add("Church", churchFactionSprite);
+        factionSprites.Add("Military", militaryFactionSprite);
+        factionSprites.Add("Bourgeoisie", bourgeoisieFactionSprite);
+        factionSprites.Add("Third Estate", thirdEstateFactionSprite);
     }
 }

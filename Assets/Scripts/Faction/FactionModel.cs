@@ -60,9 +60,9 @@ namespace DeWinter
 		{
 			get
 			{
-				return _factions["Crown"].Power >= _factions["Revolution"].Power
+				return _factions["Crown"].Power >= _factions["Third Estate"].Power
 					? "Crown"
-					: "Revolution";
+					: "Third Estate";
 			}
 		}
 

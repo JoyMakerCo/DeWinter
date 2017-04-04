@@ -62,6 +62,21 @@ namespace DeWinter
 			return MONTHS[Today.Month - 1];
 		}
 
+		public string GetDateString()
+		{
+			return GetDateString(Today);
+		}
+
+		public string GetDateString(DateTime d)
+		{
+			return d.Day.ToString() + " " + GetMonthString(d) + ", " + d.Year.ToString();
+		}
+
+		public string GetDateString(int day)
+		{
+			return GetDateString(_startDate.AddDays(day));
+		}
+
 		[JsonProperty("gameLength")]
 		public int DaysLeft
 		{
@@ -129,5 +144,24 @@ namespace DeWinter
 		}
 
 		private void AdvanceDay() { Day++; }
+
+		string dayString(int day)
+	    {
+	        if (day <= 0)
+	        {
+	            return day.ToString();
+	        }
+	        switch (day % 10)
+	        {
+	            case 1:
+	                return day + "st";
+	            case 2:
+	                return day + "nd";
+	            case 3:
+	                return day + "rd";
+	            default:
+	                return day + "th";
+	        }
+	    }
 	}
 }

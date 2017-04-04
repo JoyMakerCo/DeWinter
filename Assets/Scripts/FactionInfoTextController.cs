@@ -124,24 +124,24 @@ public class FactionInfoTextController : MonoBehaviour {
                         "\n- Allegiance: " + GameData.factionList["Bourgeoisie"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Bourgeoisie"]) +
                         "\n- Power: " + GameData.factionList["Bourgeoisie"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Bourgeoisie"]);
         }
-        //---- Revolution Info ----
-        if (GameData.factionList["Revolution"].ReputationLevel >= 8)
+        //---- Third Estate Info ----
+        if (GameData.factionList["Third Estate"].ReputationLevel >= 8)
         {
             revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
                         "\n - Like clothes that are Vintage and Racy" +
-				"\n- Power: " + GetPowerString(GameData.factionList["Revolution"].Power) + " (Faction Benefit)";
+				"\n- Power: " + GetPowerString(GameData.factionList["Third Estate"].Power) + " (Faction Benefit)";
         }
-        else if (GameData.factionList["Revolution"].ReputationLevel >= 6)
+        else if (GameData.factionList["Third Estate"].ReputationLevel >= 6)
         {
             revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
                         "\n - Like clothes that are Vintage and Racy" +
-							"\n- Power: " + GetPowerString(GameData.factionList["Revolution"].Power) + " (Faction Benefit)";
+							"\n- Power: " + GetPowerString(GameData.factionList["Third Estate"].Power) + " (Faction Benefit)";
         }
         else
         {
             revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
                         "\n - Like clothes that are Vintage and Racy" +
-                        "\n- Power: " + GameData.factionList["Revolution"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Revolution"]);
+                        "\n- Power: " + GameData.factionList["Third Estate"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Third Estate"]);
         }
     }
 
@@ -201,7 +201,7 @@ public class FactionInfoTextController : MonoBehaviour {
 
     void IncrementKnowledgeTimers()
     {
-        //Allegiance Timers for Crown and Revolution aren't used
+        //Allegiance Timers for Crown and Third Estate aren't used
 		List<string> factions = new List<string>(_allegianceTimers.Keys);
         foreach (string faction in factions)
         {
