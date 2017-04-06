@@ -967,7 +967,6 @@ public class WorkTheHostManager : MonoBehaviour
 
     public IEnumerator ConversationStartTimerWait()
     {
-        Debug.Log("Ready? Go! Timer Started!");
         yield return new WaitForSeconds(2.0f);
         Destroy(readyGoPanel);
         Destroy(readyGoText);
@@ -976,7 +975,6 @@ public class WorkTheHostManager : MonoBehaviour
 
     public IEnumerator NextTurnTimerWait()
     {
-        Debug.Log("Next Turn Timer Started!");
         yield return new WaitForSeconds(0.75f);
         turnTimerActive = true;
     }
@@ -989,7 +987,6 @@ public class WorkTheHostManager : MonoBehaviour
             party.host.ChangeDisposition();
             hostDispositionSwitchTimer = party.host.dispositionTimerSwitchMax;
             hostDispositionIcon.color = GameData.dispositionList[party.host.dispositionInt].color;
-            Debug.Log("Host Disposition Switched!");
         }
     }
 

@@ -42,7 +42,7 @@ namespace Core
 			Type t = typeof(T);
 			if (_models.TryGetValue(t, out m))
 			{
-				(m as IDisposable).Dispose();
+				DisposeValue(m as IDisposable);
 				_models.Remove(t);
 			}
 		}

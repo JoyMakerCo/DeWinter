@@ -17,6 +17,12 @@ namespace DeWinter
 			DeWinterApp.Subscribe<CalendarDayVO>(HandleDateUpdate);
 	    }
 
+	    void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleBalanceUpdate);
+			DeWinterApp.Unsubscribe<CalendarDayVO>(HandleDateUpdate);
+	    }
+
 		private void HandleBalanceUpdate(AdjustValueVO vo)
 		{
 			if (!vo.IsRequest && vo.Type == GameConsts.LIVRE)

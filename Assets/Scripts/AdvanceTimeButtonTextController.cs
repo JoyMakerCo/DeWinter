@@ -9,7 +9,6 @@ public class AdvanceTimeButtonTextController : MonoBehaviour {
     void Start ()
     {
         myText = this.GetComponentInChildren<Text>();
-        OutfitInventory.PartyOutfit = null;
     }
 
     void Update ()

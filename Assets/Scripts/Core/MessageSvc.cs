@@ -17,12 +17,14 @@ namespace Core
 
 		public void Remove(Action<T> action)
 		{
-			EventHandler -= action;
+			if (EventHandler != null)
+				EventHandler -= action;
 		}
 
 		public void Send(T data)
 		{
-			EventHandler(data);
+			if (EventHandler != null)
+				EventHandler(data);
 		}
 	}
 
@@ -38,12 +40,14 @@ namespace Core
 
 		public void Remove(Action action)
 		{
-			EventHandler -= action;
+			if (EventHandler != null)
+				EventHandler -= action;
 		}
 
 		public void Send()
 		{
-			EventHandler();
+			if (EventHandler != null)
+				EventHandler();
 		}
 	}
 

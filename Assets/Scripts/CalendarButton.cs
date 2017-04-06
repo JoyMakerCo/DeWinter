@@ -37,7 +37,7 @@ public class CalendarButton : MonoBehaviour {
 
     int startPositionPlusDays;
 
-    void Start()
+    void Awake()
     {
 		_calendarModel = DeWinterApp.GetModel<CalendarModel>();
         myBlockImage = this.GetComponent<Image>();

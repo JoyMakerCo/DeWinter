@@ -18,6 +18,11 @@ namespace DeWinter
 	        DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
 	    }
 
+	    void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<CalendarDayVO>(HandleCalendarDay);
+	    }
+
 		public void HandleCalendarDay(CalendarDayVO day)
 	    {
 			CalendarModel model = DeWinterApp.GetModel<CalendarModel>();

@@ -32,21 +32,18 @@ namespace DeWinter
 			set
 			{
 				_reputation = value;
-				if (_reputation < 0)
-					_reputation = 0;
-
 				if (ReputationLevels != null)
 				{
-					_level = ReputationLevels.Length-1;
-					while (_level>=0 && _reputation >= ReputationLevels[_level].Reputation)
-						_level--;
+					for(_level=0; _level < ReputationLevels.Length; _level++)
+					{
+						if (_reputation < ReputationLevels[_level].Reputation)
+						{
+							PlayerReputationVO msg = new PlayerReputationVO(_reputation, _level);
+							DeWinterApp.SendMessage<PlayerReputationVO>(msg);
+							return;
+						}
+					}
 				}
-				else
-				{
-					_level = 0;
-				}
-				PlayerReputationVO msg = new PlayerReputationVO(_reputation, _level+1);
-				DeWinterApp.SendMessage<PlayerReputationVO>(msg);
 			}
 		}
 

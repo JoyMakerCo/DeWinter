@@ -6,7 +6,7 @@ using Dialog;
 
 namespace DeWinter
 {
-	public class EventView : DialogView, IDialog<EventVO>
+	public class EventViewMediator : DialogView, IDialog<EventVO>
 	{
 	    public Text titleText;
 	    public Text descriptionText;
@@ -61,6 +61,7 @@ namespace DeWinter
 			// End of event.
 			else
 			{
+				DeWinterApp.SendMessage<EventVO>(EventMessages.END_EVENT, _event);
 				Close();
 			}
 	    }

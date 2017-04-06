@@ -19,6 +19,7 @@ namespace DeWinter
 			MapModel mmod = DeWinterApp.GetModel<MapModel>();
 			mmod.Map = mmod.Maps[TUTORIAL_MAP_ID];
 
+			DeWinterApp.GetModel<EventModel>().SelectedEvent = null;
 			DeWinterApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT); 
 		}

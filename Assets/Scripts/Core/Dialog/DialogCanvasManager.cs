@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Core;
 
@@ -57,52 +59,36 @@ namespace Dialog
 
 		public bool Close(string dialogID)
 		{
-			GameObject dlog;
-			if (_dialogs.TryGetValue(dialogID, out dlog))
+			GameObject dlg;
+			if (_dialogs.TryGetValue(dialogID, out dlg) && dlg != null)
 			{
-				HandleCloseDialog(dialogID, dlog);
-				return true;
+				GameObject.Destroy(dlg);
 			}
-			return false;
+			return _dialogs.Remove(dialogID);
 		}
 
 		public bool Close(GameObject dialog)
 		{
-			foreach(KeyValuePair<string, GameObject> kvp in _dialogs)
-			{
-				if (kvp.Value == dialog)
-				{
-					HandleCloseDialog(kvp.Key, kvp.Value);
-					return true;
-				}
-			}
-			return false;
-		}
-
-		protected void HandleCloseDialog(string dialogID, GameObject dlg)
-		{
-			DialogView dlgCmp = dlg.GetComponent<DialogView>();
-			if (dlgCmp is IDisposable)
-			{
-				(dlgCmp as IDisposable).Dispose();
-			}
-			_dialogs.Remove(dialogID);
-			GameObject.Destroy(dlg);
+			if (dialog == null) return false;
+			IEnumerable<string> keys = _dialogs.Keys.Where(x => _dialogs[x] == dialog);
+			bool result = keys.Count() > 0;
+			foreach(string key in keys) _dialogs.Remove(key);
+			GameObject.Destroy(dialog);
+			return result;
 		}
 
 		public void CloseAll()
 		{
-			DialogView view;
 			foreach(KeyValuePair<string, GameObject> kvp in _dialogs)
 			{
-				view = kvp.Value.GetComponent<DialogView>();
-				if (view is IDisposable)
-				{
-					(view as IDisposable).Dispose();
-				}
 				GameObject.Destroy(kvp.Value);
 			}
 			_dialogs.Clear();
+		}
+
+		void OnDestroy()
+		{
+			App.Service<DialogSvc>().UnregisterManager(this);
 		}
 	}
 }

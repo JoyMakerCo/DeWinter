@@ -16,6 +16,11 @@ namespace DeWinter
 			DeWinterApp.Subscribe<EventVO>(HandleEventUpdate);
 	    }
 
+	    void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<EventVO>(HandleEventUpdate);
+	    }
+
 		private void HandleEventUpdate(EventVO e)
 	    {
 			EventStage stage = e.currentStage;
