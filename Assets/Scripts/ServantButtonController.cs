@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using DeWinter;
 
 public class ServantButtonController : MonoBehaviour
 {
@@ -8,21 +10,26 @@ public class ServantButtonController : MonoBehaviour
     private Image buttonImage;
     public GameObject screenFader; // It's for the Can't Afford Pop-up
     public string servantType;
+    private ServantModel _model;
+    private ServantVO _servant;
 
     void Start()
     {
         buttonText = transform.GetChild(0).GetComponent<Text>();
         buttonImage = this.GetComponent<Image>();
+		_model = DeWinterApp.GetModel<ServantModel>();
     }
 
     void Update()
     {
-        if (GameData.servantDictionary[servantType].Introduced()) //Don't even show the button unless they've been Introduced
+		List<ServantVO> servants;
+		_servant = (_model.Introduced.TryGetValue(servantType, out servants) && servants.Count > 0) ? servants[0] : null;
+		if (_servant != null) //Don't even show the button unless they've been Introduced
         {
             buttonImage.color = Color.white;
-            if (!GameData.servantDictionary[servantType].Hired())
+            if (!_servant.Hired)
             {
-                if (GameData.servantDictionary[servantType].Wage() < GameData.moneyCount)
+                if (_servant.Wage < GameData.moneyCount)
                 {
                     buttonText.color = Color.white;
                 }
@@ -30,12 +37,12 @@ public class ServantButtonController : MonoBehaviour
                 {
                     buttonText.color = Color.red;
                 }
-                buttonText.text = "Hire " + GameData.servantDictionary[servantType].Name() + " for £" + GameData.servantDictionary[servantType].Wage();
+                buttonText.text = "Hire " + _servant.Name + " for £" + _servant.Wage;
             }
             else
             {
                 buttonText.color = Color.white;
-                buttonText.text = "Fire " + GameData.servantDictionary[servantType].Name();
+                buttonText.text = "Fire " + _servant.Name;
             }
         } else
         {
@@ -47,22 +54,21 @@ public class ServantButtonController : MonoBehaviour
 
     public void HireOrFire()
     {
-        if (GameData.servantDictionary[servantType].Introduced()) //Can't hire them unless they've been Introduced
+        if (_servant.Introduced) //Can't hire them unless they've been Introduced
         {
-            if (!GameData.servantDictionary[servantType].Hired() && GameData.moneyCount >= GameData.servantDictionary[servantType].Wage()) //If they are NOT Hired and you CAN afford them
+            if (!_servant.Hired && GameData.moneyCount >= _servant.Wage) //If they are NOT Hired and you CAN afford them
             {
-                GameData.servantDictionary[servantType].Hire();
-                GameData.moneyCount -= GameData.servantDictionary[servantType].Wage(); //Everyone's gotta get paid!
+            	DeWinterApp.SendMessage<ServantVO>(ServantConsts.HIRE_SERVANT, _servant);
             }
-            else if (!GameData.servantDictionary[servantType].Hired() && GameData.moneyCount < GameData.servantDictionary[servantType].Wage()) //If they are NOT Hired and you CAN'T afford them
+            else if (!_servant.Hired && GameData.moneyCount < _servant.Wage) //If they are NOT Hired and you CAN'T afford them
             {
                 object[] objectStorage = new object[1];
-                objectStorage[0] = GameData.servantDictionary[servantType].NameAndTitle() + "'s wages";
+                objectStorage[0] = _servant.NameAndTitle + "'s wages";
                 screenFader.gameObject.SendMessage("CreateCantAffordModal", objectStorage);
             }
             else // If they ARE Hired, then it doesn't really matter whether or not you can afford her
             {
-                GameData.servantDictionary[servantType].Fire();
+				DeWinterApp.SendMessage<ServantVO>(ServantConsts.FIRE_SERVANT, _servant);
             }
         } else
         {

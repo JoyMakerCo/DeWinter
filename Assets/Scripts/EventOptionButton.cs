@@ -1,45 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
-public class EventOptionButton : MonoBehaviour {
+namespace DeWinter
+{
+	public class EventOptionButton : MonoBehaviour
+	{
+	    public int option;
 
-    public int option;
-    private Text myText;
+	    public Text myText;
 
-    void Start()
-    {
-        myText = this.GetComponentInChildren<Text>();
-    }
+	    void Awake()
+	    {
+			DeWinterApp.Subscribe<EventVO>(HandleEventUpdate);
+	    }
 
-    void Update()
-    {
-        DisplayEventOption();
-    }
+	    void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<EventVO>(HandleEventUpdate);
+	    }
 
-    public void DisplayEventOption()
-    {
-        EventOption eventOption = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option];
-        if (eventOption.optionButtonText == null)         
-        {
-            myText.text = "Nothing";
-            this.transform.localScale = new Vector3(0, 0, 0); //Shrink it until it doesn't exist
-        } else if (eventOption.servantRequired != null)
-        {
-            if (GameData.servantDictionary[eventOption.servantRequired.Slot()].Hired())
-            {
-                myText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].optionButtonText;
-                this.transform.localScale = new Vector3(1, 1, 1); //Unshrink it to it's original size
-            } else
-            {
-                myText.text = "Nothing";
-                this.transform.localScale = new Vector3(0, 0, 0); //Shrink it until it doesn't exist
-            }
-        }
-        else
-        {
-            myText.text = GameData.selectedEvent.eventStages[GameData.selectedEvent.currentStage].stageEventOptions[option].optionButtonText;
-            this.transform.localScale = new Vector3(1, 1, 1); //Unshrink it to it's original size
-        }
-    }
+		private void HandleEventUpdate(EventVO e)
+	    {
+			EventStage stage = e.currentStage;
+			bool show = (option < stage.Options.Length && stage.Options[option].optionButtonText != null);
+			if (show)
+			{
+				EventOption eventOption = stage.Options[option];
+				if (show && eventOption.servantRequired != null)
+				{
+					ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+					show = smod.Hired.ContainsKey(eventOption.servantRequired);
+				}
+				if (show) myText.text = eventOption.optionButtonText;
+			}
+			this.gameObject.SetActive(show);
+	    }
+	}
 }

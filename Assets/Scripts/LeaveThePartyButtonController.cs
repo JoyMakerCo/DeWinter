@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DeWinter;
 
 public class LeaveThePartyButtonController : MonoBehaviour {
 
@@ -10,7 +11,7 @@ public class LeaveThePartyButtonController : MonoBehaviour {
 
     void Update()
     {
-        if (!GameData.tonightsParty.tutorial || (GameData.tonightsParty.tutorial && GameData.tonightsParty.host.notableLockedInState != Notable.lockedInState.Interested))
+		if (!GameData.tonightsParty.tutorial || (GameData.tonightsParty.tutorial && GameData.tonightsParty.host.notableLockedInState != LockedInState.Interested))
         {
             buttonImage.color = Color.white;
             buttonText.color = Color.white;

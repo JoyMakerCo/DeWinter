@@ -4,9 +4,9 @@ namespace DeWinter
 {
 	public class RequirementVO
 	{
-		CriteriaType Type;
-		string Value;
-		int Quantity=0;
+		public CriteriaType Type;
+		public string Value;
+		public int Quantity=0;
 
 		public RequirementVO (string value, CriteriaType type=CriteriaType.Balance, int quantity=1)
 		{

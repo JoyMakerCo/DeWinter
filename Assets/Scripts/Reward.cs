@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using DeWinter;
 
 public class Reward {
 
@@ -57,13 +59,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 10;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 1;
                 }
                 break;
@@ -76,13 +78,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 20;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 1;
                 }
                 break;
@@ -95,13 +97,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 30;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 1;
                 }
                 break;
@@ -114,27 +116,27 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 40;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 1;
                 }
                 break;
             case 5:
-                typeRandomInt = Random.Range(1, 6);
-                if (typeRandomInt == 1 || typeRandomInt == 2)
+                typeRandomInt = (new Random()).Next(6);
+                if (typeRandomInt == 0 || typeRandomInt == 1)
                 {
                     type = "Reputation";
                     amount = 30;
                 }
-                else if (typeRandomInt == 3 || typeRandomInt == 4)
+                else if (typeRandomInt == 2 || typeRandomInt == 3)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction.Name();
+                    subtype = party.faction;
                     amount = 60;
                 }
                 else
@@ -149,23 +151,24 @@ public class Reward {
 
     void GenerateRandomQuestReward(PierreQuest pQuest)
     {
-        Faction faction = pQuest.Faction(); 
-        int typeRandomInt = Random.Range(1, 4);
+        string faction = pQuest.Faction; 
+		Random rnd = new Random();
+        int typeRandomInt = rnd.Next(4);
         //Amount is determined Inverse to Time Limit
         int multiplier = 12 - pQuest.daysLeft;
-        if (typeRandomInt == 1)
+        if (typeRandomInt == 0)
         {
             type = "Reputation";
-            amount = multiplier * (Random.Range(6, 16));
-        } else if (typeRandomInt == 2)
+            amount = multiplier * (rnd.Next(6, 16));
+        } else if (typeRandomInt == 1)
         {
             type = "Faction Reputation";
             subtype = RandomExclusiveFaction(faction);
-            amount = multiplier * (Random.Range(10, 21));
+			amount = multiplier * (rnd.Next(10, 21));
         } else
         {
             type = "Livre";
-            amount = multiplier * (Random.Range(10, 21));
+			amount = multiplier * (rnd.Next(10, 21));
         }
     }
 
@@ -180,7 +183,12 @@ public class Reward {
             case "Livre":
                 return amount + " Livres";
             case "Introduction":
-                return "An Introduction to Hire " + GameData.servantDictionary[subtype].NameAndTitle();
+				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+				ServantVO[] servants = smod.GetServants(subtype);
+				ServantVO servant = Array.Find(servants, s => !s.Hired && !s.Introduced);
+                return servant != null
+                	? "An Introduction to Hire " + servant.NameAndTitle
+                	: null;
             case "Gossip":
                 return "A tidbit of " + SubType() + " Gossip";
         }
@@ -206,7 +214,7 @@ public class Reward {
     string PartyRandomFaction()
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
-        int factionRandom = Random.Range(0, 7);
+        int factionRandom = new Random().Next(7);
         switch (factionRandom)
         {
             case 0:
@@ -218,40 +226,17 @@ public class Reward {
             case 3:
                 return "Bourgeoisie";
             case 4:
-                return "Revolution";
+                return "Third Estate";
             default:
-                return party.faction.Name();
+                return party.faction;
         }
     }
 
-    string RandomExclusiveFaction(Faction faction)
+    string RandomExclusiveFaction(string faction)
     {
-        int factionRandom = Random.Range(0, 5);
-        Faction selectedFaction;
-        switch (factionRandom)
-        {
-            case 0:
-                selectedFaction = GameData.factionList["Crown"];
-                break;
-            case 1:
-                selectedFaction = GameData.factionList["Church"];
-                break;
-            case 2:
-                selectedFaction = GameData.factionList["Military"];
-                break;
-            case 3:
-                selectedFaction = GameData.factionList["Bourgeoisie"];
-                break;
-            default:
-                selectedFaction = GameData.factionList["Revolution"];
-                break;
-        }
-        if(selectedFaction != faction)
-        {
-            return selectedFaction.Name();
-        } else
-        {
-            return RandomExclusiveFaction(faction);
-        }
+    	FactionModel model = DeWinterApp.GetModel<FactionModel>();
+    	List<string> factions = new List<string>(model.Factions.Keys);
+    	string val = factions[new Random().Next(factions.Count-1)];
+    	return (val != faction) ? val : factions[factions.Count-1];
     }
 }

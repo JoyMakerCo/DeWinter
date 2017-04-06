@@ -3,37 +3,22 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Globalization;
 
-public class DateTracker : MonoBehaviour {
-    public Text myText;
+namespace DeWinter
+{
+	public class DateTracker : MonoBehaviour
+	{
+	    public Text myText;
+	    private CalendarModel _cmod;
 
-    void Start()
-    {
-        updateDate();
-    }
+	    void Start()
+	    {
+			_cmod = DeWinterApp.GetModel<CalendarModel>();
+	        updateDate();
+	    }
 
-    public void updateDate()
-    {
-        string month = GameData.calendar.monthList[GameData.currentMonth].name;
-        int day = GameData.currentDay + 1; //Zero Indexed Days
-        myText.text = month + " " + day + ", 1795";
-    }
-
-    string dayString(int day)
-    {
-        if (day <= 0)
-        {
-            return day.ToString();
-        }
-        switch (day % 10)
-        {
-            case 1:
-                return day + "st";
-            case 2:
-                return day + "nd";
-            case 3:
-                return day + "rd";
-            default:
-                return day + "th";
-        }
-    }
+	    public void updateDate()
+	    {
+	        myText.text = _cmod.GetDateString();
+	    }
+	}
 }

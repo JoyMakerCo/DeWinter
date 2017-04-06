@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DeWinter;
 
 public class RSVPPopUpController : MonoBehaviour {
 
@@ -17,11 +18,11 @@ public class RSVPPopUpController : MonoBehaviour {
         party.RSVP = -1;
         if (today)
         {
-            party.faction.playerReputation -= 40;
+        	DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -40));
             GameData.reputationCount -= 20;
         } else
         {
-            party.faction.playerReputation -= 20;
+			DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -20));
             GameData.reputationCount -= 10;
         }
     }

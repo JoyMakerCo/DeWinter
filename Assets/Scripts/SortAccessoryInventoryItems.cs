@@ -1,168 +1,130 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class SortAccessoryInventoryItems : MonoBehaviour {
+namespace DeWinter
+{
+	public class SortAccessoryInventoryItems : MonoBehaviour {
 
-    public string inventoryType;
+	    public string inventoryType;
 
-    public GameObject typeButton;
-    public GameObject styleButton;
+	    public GameObject typeButton;
+	    public GameObject styleButton;
 
-    Image typeButtonImage;
-    Image styleButtonImage;
+	    Image typeButtonImage;
+	    Image styleButtonImage;
 
-    Image typeButtonTriangleImage;
-    Image styleButtonTriangleImage;
+	    Image typeButtonTriangleImage;
+	    Image styleButtonTriangleImage;
 
-    Text typeButtonText;
-    Text styleButtonText;
+	    Text typeButtonText;
+	    Text styleButtonText;
 
-    string sortedBy;
-    bool ascendingOrder;
+	    string sortedBy;
+	    bool ascendingOrder;
 
-    // Use this for initialization
-    void Start()
-    {
-        SetUpButtons();
-        SortByType();
-    }
+	    private InventoryModel _model;
 
-    void SetUpButtons()
-    {
-        //--Type--
-        typeButtonImage = typeButton.GetComponent<Image>();
-        typeButtonTriangleImage = typeButton.transform.Find("Image").GetComponent<Image>();
-        typeButtonText = typeButton.transform.Find("Text").GetComponent<Text>();
+	    private List<ItemVO> _list;
 
-        //--Style--
-        styleButtonImage = styleButton.GetComponent<Image>();
-        styleButtonTriangleImage = styleButton.transform.Find("Image").GetComponent<Image>();
-        styleButtonText = styleButton.transform.Find("Text").GetComponent<Text>();
+	    // Use this for initialization
+	    void Start()
+	    {
+			_model = DeWinterApp.GetModel<InventoryModel>();
+	        SetUpButtons();
 
-    }
+	        if (inventoryType == "personal")
+				_list = _model.Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
+		    else
+		    	_list = _model.Market.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
 
-    public void SortByType()
-    {
-        if (sortedBy == "type")
-        {
-            ascendingOrder = !ascendingOrder;
-        }
-        else
-        {
-            ascendingOrder = false;
-        }
-        SelectedButton("type");
-        sortedBy = "type";
-        bool swapped = true;
-        while (swapped)
-        {
-            swapped = false;
-            for (int i = 1; i < AccessoryInventory.accessoryInventories[inventoryType].Count; i++)
-            {
-                if (ascendingOrder)
-                {
-                    if (AccessoryInventory.accessoryInventories[inventoryType][i - 1].TypeNumber() > AccessoryInventory.accessoryInventories[inventoryType][i].TypeNumber())
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }
-                else
-                {
-                    if (AccessoryInventory.accessoryInventories[inventoryType][i - 1].TypeNumber() < AccessoryInventory.accessoryInventories[inventoryType][i].TypeNumber())
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }
-            }
-        }
-    }
+	        SortByType();
+	    }
 
-    public void SortByStyle()
-    {
-        if (sortedBy == "style")
-        {
-            ascendingOrder = !ascendingOrder;
-        }
-        else
-        {
-            ascendingOrder = false;
-        }
-        SelectedButton("style");
-        sortedBy = "style";
-        bool swapped = true;
-        while (swapped)
-        {
-            swapped = false;
-            for (int i = 1; i < AccessoryInventory.accessoryInventories[inventoryType].Count; i++)
-            {
-                if (ascendingOrder)
-                {
-                    if (AccessoryInventory.accessoryInventories[inventoryType][i - 1].StyleNumber() > AccessoryInventory.accessoryInventories[inventoryType][i].StyleNumber())
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }
-                else
-                {
-                    if (AccessoryInventory.accessoryInventories[inventoryType][i - 1].StyleNumber() < AccessoryInventory.accessoryInventories[inventoryType][i].StyleNumber())
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }
-            }
-        }
-    }
+	    void SetUpButtons()
+	    {
+	        //--Type--
+	        typeButtonImage = typeButton.GetComponent<Image>();
+	        typeButtonTriangleImage = typeButton.transform.Find("Image").GetComponent<Image>();
+	        typeButtonText = typeButton.transform.Find("Text").GetComponent<Text>();
 
-    void Swap(int accessory1, int accessory2)
-    {
-        Accessory placeHolder1 = AccessoryInventory.accessoryInventories[inventoryType][accessory1];
-        Accessory placeHolder2 = AccessoryInventory.accessoryInventories[inventoryType][accessory2];
+	        //--Style--
+	        styleButtonImage = styleButton.GetComponent<Image>();
+	        styleButtonTriangleImage = styleButton.transform.Find("Image").GetComponent<Image>();
+	        styleButtonText = styleButton.transform.Find("Text").GetComponent<Text>();
+	    }
 
-        AccessoryInventory.accessoryInventories[inventoryType][accessory1] = placeHolder2;
-        AccessoryInventory.accessoryInventories[inventoryType][accessory2] = placeHolder1;
-    }
+	    public void SortByType()
+	    {
+			ascendingOrder = (sortedBy == "type") && !ascendingOrder;
+			SelectedButton("type");
+	        sortedBy = "type";
+ 			_list.Sort(sortByTypeComparer);
+ 		}
 
-    void SelectedButton(string button)
-    {
-        switch (button)
-        {
-            case "type":
-                typeButtonImage.color = Color.black;
-                typeButtonText.alignment = TextAnchor.MiddleLeft;
-                typeButtonTriangleImage.color = Color.white;
-                if (ascendingOrder)
-                {
-                    typeButtonTriangleImage.transform.localScale = new Vector3(1, -1, 1);
-                }
-                else
-                {
-                    typeButtonTriangleImage.transform.localScale = new Vector3(1, 1, 1);
-                }
-                styleButtonImage.color = Color.white;
-                styleButtonText.alignment = TextAnchor.MiddleCenter;
-                styleButtonTriangleImage.color = Color.clear;
-                break;
-            case "style":
-                styleButtonImage.color = Color.black;
-                styleButtonText.alignment = TextAnchor.MiddleLeft;
-                styleButtonTriangleImage.color = Color.white;
-                if (ascendingOrder)
-                {
-                    styleButtonTriangleImage.transform.localScale = new Vector3(1, -1, 1);
-                }
-                else
-                {
-                    styleButtonTriangleImage.transform.localScale = new Vector3(1, 1, 1);
-                }
-                typeButtonImage.color = Color.white;
-                typeButtonText.alignment = TextAnchor.MiddleCenter;
-                typeButtonTriangleImage.color = Color.clear;
-                break;
-        }
-    }
+		private int sortByTypeComparer(ItemVO a, ItemVO b)
+		{
+			return ascendingOrder ? a.Name.CompareTo(b.Name) : b.Name.CompareTo(a.Name);
+		}
+
+	    public void SortByStyle()
+	    {
+			ascendingOrder = (sortedBy == "style") && !ascendingOrder;
+			SelectedButton("style");
+			sortedBy = "style";
+ 			_list.Sort(sortByStyleComparer);
+ 		}
+
+		private int sortByStyleComparer(ItemVO a, ItemVO b)
+		{
+			object styleA, styleB;
+			if (a.States == null || !a.States.TryGetValue(ItemConsts.STYLE, out styleA))
+				styleA = null;
+			if (b.States == null || !b.States.TryGetValue(ItemConsts.STYLE, out styleB))
+				styleB = null;
+
+			return ascendingOrder ? ((string)styleA).CompareTo((string)styleB) : ((string)styleB).CompareTo((string)styleA);
+		}
+
+	    void SelectedButton(string button)
+	    {
+	        switch (button)
+	        {
+	            case "type":
+	                typeButtonImage.color = Color.black;
+	                typeButtonText.alignment = TextAnchor.MiddleLeft;
+	                typeButtonTriangleImage.color = Color.white;
+	                if (ascendingOrder)
+	                {
+	                    typeButtonTriangleImage.transform.localScale = new Vector3(1, -1, 1);
+	                }
+	                else
+	                {
+	                    typeButtonTriangleImage.transform.localScale = new Vector3(1, 1, 1);
+	                }
+	                styleButtonImage.color = Color.white;
+	                styleButtonText.alignment = TextAnchor.MiddleCenter;
+	                styleButtonTriangleImage.color = Color.clear;
+	                break;
+	            case "style":
+	                styleButtonImage.color = Color.black;
+	                styleButtonText.alignment = TextAnchor.MiddleLeft;
+	                styleButtonTriangleImage.color = Color.white;
+	                if (ascendingOrder)
+	                {
+	                    styleButtonTriangleImage.transform.localScale = new Vector3(1, -1, 1);
+	                }
+	                else
+	                {
+	                    styleButtonTriangleImage.transform.localScale = new Vector3(1, 1, 1);
+	                }
+	                typeButtonImage.color = Color.white;
+	                typeButtonText.alignment = TextAnchor.MiddleCenter;
+	                typeButtonTriangleImage.color = Color.clear;
+	                break;
+	        }
+	    }
+	}
 }

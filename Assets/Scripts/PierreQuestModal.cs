@@ -9,7 +9,7 @@ public class PierreQuestModal : MonoBehaviour {
 	public void AcceptQuest()
     {
         GameData.pierreQuestInventory.Add(quest);
-        Debug.Log(quest.Name() + " added to Quest Inventory!");
+        Debug.Log(quest.Name + " added to Quest Inventory!");
         questList.ClearInventoryButtons();
         questList.GenerateInventoryButtons();
     }

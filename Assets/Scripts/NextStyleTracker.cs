@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
 public class NextStyleTracker : MonoBehaviour {
 
@@ -9,24 +10,25 @@ public class NextStyleTracker : MonoBehaviour {
     void Start()
     {
         myText = this.GetComponent<Text>();
-        //This is just to force an update at the beginning.
-        updateStyle();
+        DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
+        HandleCalendarDay(null);
     }
 
-    void Update () {
-        updateStyle();
-    }
-
-    public void updateStyle()
+    void OnDestroy()
     {
-        if (GameData.servantDictionary["Seamstress"].Hired())
-        {
-            myText.text = GameData.nextStyle;
-        }
-        else
-        {
-            myText.text = "Unknown";
-        }
-        
+		DeWinterApp.Unsubscribe<CalendarDayVO>(HandleCalendarDay);
+    }
+
+	private void HandleCalendarDay(CalendarDayVO day)
+    {
+    	ServantModel servantModel = DeWinterApp.GetModel<ServantModel>();
+		if (servantModel.Servants.ContainsKey("Seamstress"))
+		{
+			myText.text = DeWinterApp.GetModel<InventoryModel>().NextStyle;
+		}
+		else
+		{
+			myText.text = "Unknown";
+		}
     }
 }

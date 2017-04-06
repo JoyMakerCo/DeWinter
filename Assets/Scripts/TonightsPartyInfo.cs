@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
 public class TonightsPartyInfo : MonoBehaviour {
 
@@ -32,17 +33,51 @@ public class TonightsPartyInfo : MonoBehaviour {
     }
 	
 	// Update is called once per frame
+	// TODO: Respond to a setter
 	void Update () {
-        tonightsPartyText.text = GameData.tonightsParty.Name();
-        hostedByText.text = GameData.tonightsParty.faction.Name();
-        factionLikesText.text = GameData.tonightsParty.faction.Likes();
-        factionDislikesText.text = GameData.tonightsParty.faction.Dislikes();
-        partyDescriptionText.text = GameData.tonightsParty.Description();
-        objective1Text.text = GameData.tonightsParty.Objective1();
-        objective2Text.text = GameData.tonightsParty.Objective2();
-        objective3Text.text = GameData.tonightsParty.Objective3();
-        guest1Text.text = GameData.tonightsParty.Guest1();
-        guest2Text.text = GameData.tonightsParty.Guest2();
-        guest3Text.text = GameData.tonightsParty.Guest3();
+		if (GameData.tonightsParty != null)
+		{
+	        tonightsPartyText.text = GameData.tonightsParty.Name();
+	        hostedByText.text = GameData.tonightsParty.faction;
+			factionLikesText.text = GetLikes(GameData.factionList[GameData.tonightsParty.faction]);
+			factionDislikesText.text = GetDislikes(GameData.factionList[GameData.tonightsParty.faction]);
+	        partyDescriptionText.text = GameData.tonightsParty.Description();
+	        objective1Text.text = GameData.tonightsParty.Objective1();
+	        objective2Text.text = GameData.tonightsParty.Objective2();
+	        objective3Text.text = GameData.tonightsParty.Objective3();
+	        guest1Text.text = GameData.tonightsParty.Guest1();
+	        guest2Text.text = GameData.tonightsParty.Guest2();
+	        guest3Text.text = GameData.tonightsParty.Guest3();
+	     }
+    }
+
+    private string GetLikes(FactionVO faction)
+    {
+		if (faction.Modesty == 0 && faction.Luxury == 0)
+			return "They don't care about your clothes.";
+
+		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+		int index = (faction.Luxury < 0 ? 0 : faction.Luxury == 0 ? 1 : 2);
+		string str = (index != 1) ? fmod.Preference["Luxury"][index] : "";
+
+		index = (faction.Modesty < 0 ? 0 : faction.Modesty == 0 ? 1 : 2);
+		str += (index != 1) ? (", " + fmod.Preference["Modesty"][index]) : "";
+
+		return str + " outfits.";
+    }
+
+	private string GetDislikes(FactionVO faction)
+    {
+		if (faction.Modesty == 0 && faction.Luxury == 0)
+			return "They don't care about your clothes.";
+
+		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+		int index = (faction.Luxury < 0 ? 0 : faction.Luxury == 0 ? 2 : 1);
+		string str = (index != 1) ? fmod.Preference["Luxury"][index] : "";
+
+		index = (faction.Modesty < 0 ? 0 : faction.Modesty == 0 ? 2 : 1);
+		str += (index != 1) ? (", " + fmod.Preference["Modesty"][index]) : "";
+
+		return str + " outfits.";
     }
 }

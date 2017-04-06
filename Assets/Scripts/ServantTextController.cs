@@ -1,21 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class ServantTextController : MonoBehaviour {
+namespace DeWinter
+{
+	public class ServantTextController : MonoBehaviour {
 
-    private Text textField;
-    public string servantType;
+	    private Text textField;
+	    public string servantType;
 
-    void Start () {
-        textField = this.GetComponent<Text>();
-        //If the Servant has been introduced then their description doesn't show up
-        if (GameData.servantDictionary[servantType].Introduced())
-        {
-            textField.color = Color.white;
-        } else
-        {
-            textField.color = Color.clear;
-        }
-    }
+	    void Start ()
+	    {
+	    	List<ServantVO> servants;
+	        textField = this.GetComponent<Text>();
+
+	        //If the Servant has been introduced then their description doesn't show up
+			if (DeWinterApp.GetModel<ServantModel>().Introduced.TryGetValue(servantType, out servants) && servants.Count > 0)
+	        {
+	            textField.color = Color.white;
+	        } else
+	        {
+	            textField.color = Color.clear;
+	        }
+	    }
+	}
 }

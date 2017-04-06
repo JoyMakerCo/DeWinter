@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DeWinter;
 
 public class BuyAndSellAccessories : MonoBehaviour {
     public GameObject screenFader; // It's for the BuyAndSell pop-up
@@ -10,7 +11,8 @@ public class BuyAndSellAccessories : MonoBehaviour {
        
     public void createBuyAndSellPopUp()
     {
-        if (inventoryType == "personal" && personalAccessoryList.selectedAccessory != -1)
+    	InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
+        if (inventoryType == "personal" && personalAccessoryList.selectedAccessory != null)
         {
             object[] objectStorage = new object[3];
             objectStorage[0] = "personal";
@@ -18,11 +20,11 @@ public class BuyAndSellAccessories : MonoBehaviour {
             objectStorage[2] = personalAccessoryList.selectedAccessory;
             screenFader.gameObject.SendMessage("CreateBuyOrSellModal", objectStorage);
         }
-        else if (inventoryType == "merchant" && merchantAccessoryList.selectedAccessory != -1)
+        else if (inventoryType == "merchant" && merchantAccessoryList.selectedAccessory != null)
         {
-            if (AccessoryInventory.personalInventory.Count < AccessoryInventory.personalInventoryMaxSize) // Will it fit in the Player's inventory?
+            if (model.Inventory.Count < model.MaxSlots) // Will it fit in the Player's inventory?
             {
-                if (GameData.moneyCount >= AccessoryInventory.merchantInventory[merchantAccessoryList.selectedAccessory].Price(inventoryType)) // Can they afford it?
+                if (DeWinterApp.GetModel<GameModel>().Livre >= merchantAccessoryList.selectedAccessory.Price) // Can they afford it?
                 {
                     object[] objectStorage = new object[3];
                     objectStorage[0] = "merchant";
@@ -33,7 +35,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
                 else //If the Player can't afford it give them the Can't Afford Modal
                 {
                     object[] objectStorage = new object[1];
-                    objectStorage[0] = AccessoryInventory.merchantInventory[merchantAccessoryList.selectedAccessory].Name();
+                    objectStorage[0] = merchantAccessoryList.selectedAccessory.Name;
                     screenFader.gameObject.SendMessage("CreateCantAffordModal", objectStorage);
                 }
             }
@@ -41,7 +43,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
             {
                 object[] objectStorage = new object[2];
                 objectStorage[0] = merchantAccessoryList.selectedAccessory;
-                objectStorage[1] = AccessoryInventory.personalInventoryMaxSize;
+                objectStorage[1] = model.MaxSlots;
                 screenFader.gameObject.SendMessage("CreateCantFitModal", objectStorage);
             }
         }

@@ -1,47 +1,41 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using DeWinter;
 
-public class ServantInventoryList : MonoBehaviour {
-
-    public Servant selectedServant;
+public class ServantInventoryList : MonoBehaviour
+{
+    public ServantVO selectedServant;
     public GameObject gossipInventoryButtonPrefab;
     public enum InventoryType {Personal, Available};
     public InventoryType inventoryType;
+    private ServantModel _model;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+		_model = DeWinterApp.GetModel<ServantModel>();
         GenerateInventoryButtons();
         selectedServant = null;
     }
 
     public void GenerateInventoryButtons()
     {
-        foreach (string k in GameData.servantDictionary.Keys)
-        {
-            Servant s = GameData.servantDictionary[k];
-            if (inventoryType == InventoryType.Personal)
-            {
-                if (s.Hired())
-                {
-                    GameObject button = GameObject.Instantiate(gossipInventoryButtonPrefab);
-                    ServantInventoryButton buttonStats = button.GetComponent<ServantInventoryButton>();
-                    buttonStats.servant = s;
-                    button.transform.SetParent(this.transform, false);
-                    Debug.Log("Servant Button: " + s.NameAndTitle() + " is made!");
-                }
-            } else
-            {
-                if (!s.Hired() && s.Introduced())
-                {
-                    GameObject button = GameObject.Instantiate(gossipInventoryButtonPrefab);
-                    ServantInventoryButton buttonStats = button.GetComponent<ServantInventoryButton>();
-                    buttonStats.servant = s;
-                    button.transform.SetParent(this.transform, false);
-                    Debug.Log("Servant Button: " + s.NameAndTitle() + " is made!");
-                }
-            }
-            
-        }
+    	ClearInventoryButtons();
+		List<ServantVO> servants;
+		if (inventoryType == InventoryType.Personal)
+		{
+			servants = new List<ServantVO>(_model.Hired.Values);
+		}
+		else
+		{
+			servants = new List<ServantVO>();
+			foreach(List<ServantVO> intros in _model.Introduced.Values)
+			{
+				servants.AddRange(intros);
+			}
+		}
+
+		servants.ForEach(MakeButton);
     }
 
     public void ClearInventoryButtons()
@@ -50,5 +44,14 @@ public class ServantInventoryList : MonoBehaviour {
         {
             GameObject.Destroy(child.gameObject);
         }
+    }
+
+    private void MakeButton(ServantVO s)
+    {
+		GameObject button = GameObject.Instantiate(gossipInventoryButtonPrefab);
+        ServantInventoryButton buttonStats = button.GetComponent<ServantInventoryButton>();
+        buttonStats.servant = s;
+        button.transform.SetParent(this.transform, false);
+        Debug.Log("Servant Button: " + s.NameAndTitle + " is made!");
     }
 }

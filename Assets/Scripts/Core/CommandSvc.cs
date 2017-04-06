@@ -10,7 +10,7 @@ namespace Core
 
 	public interface ICommand<T>
 	{
-		void Execute(T data);
+		void Execute(T msg);
 	}
 
 	public interface ICommand
@@ -20,18 +20,91 @@ namespace Core
 
 	public class CommandSvc : IAppService
 	{
-		private Dictionary<string, List<Type>> _associations = new Dictionary<string, List<Type>>();
+		private Dictionary<string, Dictionary<Type, Delegate>> _messageAssociations;
+		private Dictionary<Type, Dictionary<Type, Delegate>> _typeAssociations;
 
-		// Basic send with typed value object
-		public void Execute<T, U>(U data) where T:ICommand<U>, new()
+		public CommandSvc()
 		{
-			(new T()).Execute(data);
+			_messageAssociations = new Dictionary<string, Dictionary<Type, Delegate>>();
+			_typeAssociations = new Dictionary<Type, Dictionary<Type, Delegate>>();
 		}
 
-		// Basic send method without parameter
-		public void Execute<T>() where T:ICommand, new()
+		public void Register<C, T>() where C : ICommand<T>, new()
 		{
-			(new T()).Execute();
+			Type t = typeof(T);
+			Type c = typeof(C);
+			if (!_typeAssociations.ContainsKey(t))
+			{
+				_typeAssociations.Add(t, new Dictionary<Type, Delegate>());
+			}
+			if (!_typeAssociations[t].ContainsKey(c))
+			{
+				Action<T> handleMsg = msg => new C().Execute(msg);
+				_typeAssociations[t].Add(c, handleMsg);
+				App.Service<MessageSvc>().Subscribe<T>(handleMsg);
+			}
+		}
+
+		public void Register<C>(string messageID) where C : ICommand, new()
+		{
+			Type c = typeof(C);
+			if (!_messageAssociations.ContainsKey(messageID))
+			{
+				_messageAssociations.Add(messageID, new Dictionary<Type, Delegate>());
+			}
+			if (!_messageAssociations[messageID].ContainsKey(c))
+			{
+				Action handleMsg = () => new C().Execute();
+				_messageAssociations[messageID].Add(c, handleMsg);
+				App.Service<MessageSvc>().Subscribe(messageID, handleMsg);
+			}
+		}
+
+		public void Register<C, T>(string messageID) where C : ICommand<T>, new()
+		{
+			Type c = typeof(C);
+			if (!_messageAssociations.ContainsKey(messageID))
+			{
+				_messageAssociations.Add(messageID, new Dictionary<Type, Delegate>());
+			}
+			if (!_messageAssociations[messageID].ContainsKey(c))
+			{
+				Action<T> handleMsg = msg => new C().Execute(msg);
+				_messageAssociations[messageID].Add(c, handleMsg);
+				App.Service<MessageSvc>().Subscribe(messageID, handleMsg);
+			}
+		}
+
+
+		public void Unregister<C, T>() where C : ICommand<T>
+		{
+			Type t = typeof(T);
+			if (_typeAssociations.ContainsKey(t))
+			{
+				Type c = typeof(C);
+				App.Service<MessageSvc>().Unsubscribe<T>(_typeAssociations[t][c] as Action<T>);
+				_typeAssociations[t].Remove(typeof(C));
+			}
+		}
+
+		public void Unregister<C, T>(string messageID) where C : ICommand
+		{
+			if (_messageAssociations.ContainsKey(messageID))
+			{
+				Type c = typeof(C);
+				App.Service<MessageSvc>().Unsubscribe<T>(messageID, _messageAssociations[messageID][c] as Action<T>);
+				_messageAssociations[messageID].Remove(c);
+			}
+		}
+
+		public void Unregister<C>(string messageID) where C : ICommand
+		{
+			if (_messageAssociations.ContainsKey(messageID))
+			{
+				Type c = typeof(C);
+				App.Service<MessageSvc>().Unsubscribe(messageID, _messageAssociations[messageID][c] as Action);
+				_messageAssociations[messageID].Remove(c);
+			}
 		}
 	}
 }

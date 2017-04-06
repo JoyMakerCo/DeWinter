@@ -21,7 +21,7 @@ public class PierreQuestManager : MonoBehaviour {
         if (pierreQuestInventoryList.selectedQuest != -1)
         {
             PierreQuest displayQuest = GameData.pierreQuestInventory[pierreQuestInventoryList.selectedQuest];
-            questNameText.text = displayQuest.Name();
+            questNameText.text = displayQuest.Name;
             questFlavorText.text = displayQuest.FlavorText();
         }
         else

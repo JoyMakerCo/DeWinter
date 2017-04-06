@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DeWinter;
 
-public class Outfit {
-
+public class Outfit
+{
     public int novelty;
     public int modesty;
     public int luxury;
     public string style; // Styles: Frankish, Venezian and Catalan
-    int price;
+    public int price;
     public int imageID;
     public bool altered; //Each Outfit can only be altered once. This starts as false;
 
@@ -75,7 +76,8 @@ public class Outfit {
         int calcPrice = (int)((Mathf.Abs(modesty) + Mathf.Abs(luxury))*noveltyPercent);
         if(style != GameData.currentStyle) //Check to see if this Outfit matches what's in Style
         {
-            calcPrice = (int)(calcPrice*GameData.outOfStylePriceMultiplier);
+// TODO: Populated by model
+            calcPrice = (int)(calcPrice*DeWinter.DeWinterApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
         }
         if (calcPrice < 10) // If the Price is less than 10 make it 10. Will Sell for 5 at most (Sell price is 50% of Buy Price)
         {
@@ -86,33 +88,25 @@ public class Outfit {
 
     public int OutfitPrice(string inventory)
     {
+		float outfitPrice = (float)CalculatePrice();
         if(inventory == "personal")
         {
-            int outfitPrice = CalculatePrice();
-            return (int)(outfitPrice * 0.5);
+            return (int)(outfitPrice * 0.5f);
         } else
         {
-            if (!GameData.servantDictionary["Seamstress"].Hired() && !GameData.servantDictionary["Tailor"].Hired())
-            {
-                int outfitPrice = CalculatePrice();
-                return outfitPrice;
-            } else
-            {
-                int outfitPrice = (int)(CalculatePrice() * GameData.seamstressDiscount);
-                return outfitPrice;
-            }
+// TODO: This value should be modified within the model, not the VO
+        	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+			if (smod.Hired.ContainsKey("Seamstress") || smod.Hired.ContainsKey("Tailor"))
+			{
+				return (int)(outfitPrice * smod.SeamstressDiscount);
+			}
+			return (int)outfitPrice;
         }
     }
 
     int GenerateRandom()
     {
-        int value = 0;
-        value += Random.Range(0, 51);
-        value += Random.Range(0, 51);
-        value += Random.Range(0, 51);
-        value += Random.Range(0, 51);
-        value -= 100;
-        return value;
+		return (int)Mathf.Tan(Random.Range(-1.5608f, 1.5608f));
     }
     
     public string Name()

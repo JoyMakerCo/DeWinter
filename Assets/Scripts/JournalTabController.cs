@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DeWinter;
 
 public class JournalTabController : MonoBehaviour {
     public GameObject personalTab;
@@ -24,7 +25,6 @@ public class JournalTabController : MonoBehaviour {
 
     public void PersonalSelected()
     {
-        benefitsController.DisplayBenefits(); //Just making sure the the Benefits are properly tallied up and displayed
         personalTab.transform.SetAsLastSibling();
         personalButton.GetComponent<Image>().color = Color.black;
         factionsButton.GetComponent<Image>().color = Color.white;

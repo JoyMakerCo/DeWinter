@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class SortOutfitInventoryItems : MonoBehaviour {
@@ -22,11 +23,15 @@ public class SortOutfitInventoryItems : MonoBehaviour {
     Text luxuryButtonText;
     Text modestyButtonText;
 
+    private List<Outfit> _list;
+
     string sortedBy;
     bool ascendingOrder;
 
     // Use this for initialization
     void Start () {
+		OutfitInventory.StockInventory();
+		OutfitInventory.outfitInventories.TryGetValue(inventoryType, out _list);
         SetUpButtons();
         SortByNovelty();
 	}
@@ -49,126 +54,44 @@ public class SortOutfitInventoryItems : MonoBehaviour {
         modestyButtonText = modestyButton.transform.Find("Text").GetComponent<Text>();
     }
 
-    public void SortByNovelty()
+	public void SortByNovelty()
     {
-        if(sortedBy == "novelty")
-        {
-            ascendingOrder = !ascendingOrder;
-        } else
-        {
-            ascendingOrder = false;
-        }
-        SelectedButton("novelty");
-        sortedBy = "novelty";
-        bool swapped = true;
-        while (swapped)
-        {
-            swapped = false;
-            for (int i = 1; i < OutfitInventory.outfitInventories[inventoryType].Count; i++)
-            {
-                if (ascendingOrder)
-                {
-                    if (OutfitInventory.outfitInventories[inventoryType][i - 1].novelty > OutfitInventory.outfitInventories[inventoryType][i].novelty)
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                } else
-                {
-                    if (OutfitInventory.outfitInventories[inventoryType][i - 1].novelty < OutfitInventory.outfitInventories[inventoryType][i].novelty)
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }                
-            }
-        }
-    }
+		ascendingOrder = (sortedBy == "novelty") && !ascendingOrder;
+		SelectedButton("novelty");
+		sortedBy = "novelty";
+		_list.Sort(sortByNoveltyComparer);
+	}
 
-    public void SortByLuxury()
+	private int sortByNoveltyComparer(Outfit a, Outfit b)
+	{
+		return a.novelty.CompareTo(b.novelty);
+	}
+
+	public void SortByLuxury()
     {
-        if (sortedBy == "luxury")
-        {
-            ascendingOrder = !ascendingOrder;
-        }
-        else
-        {
-            ascendingOrder = false;
-        }
-        SelectedButton("luxury");
-        sortedBy = "luxury";
-        bool swapped = true;
-        while (swapped)
-        {
-            swapped = false;
-            for (int i = 1; i < OutfitInventory.outfitInventories[inventoryType].Count; i++)
-            {
-                if (ascendingOrder)
-                {
-                    if (OutfitInventory.outfitInventories[inventoryType][i - 1].luxury > OutfitInventory.outfitInventories[inventoryType][i].luxury)
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }
-                else
-                {
-                    if (OutfitInventory.outfitInventories[inventoryType][i - 1].luxury < OutfitInventory.outfitInventories[inventoryType][i].luxury)
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }
-            }
-        }
-    }
+		ascendingOrder = (sortedBy == "luxury") && !ascendingOrder;
+		SelectedButton("luxury");
+		sortedBy = "luxury";
+		_list.Sort(sortByLuxuryComparer);
+	}
+
+	private int sortByLuxuryComparer(Outfit a, Outfit b)
+	{
+		return a.luxury.CompareTo(b.luxury);
+	}
 
     public void SortByModesty()
     {
-        if (sortedBy == "modesty")
-        {
-            ascendingOrder = !ascendingOrder;
-        }
-        else
-        {
-            ascendingOrder = false;
-        }
-        SelectedButton("modesty");
-        sortedBy = "modesty";
-        bool swapped = true;
-        while (swapped)
-        {
-            swapped = false;
-            for (int i = 1; i < OutfitInventory.outfitInventories[inventoryType].Count; i++)
-            {
-                if (ascendingOrder)
-                {
-                    if (OutfitInventory.outfitInventories[inventoryType][i - 1].modesty > OutfitInventory.outfitInventories[inventoryType][i].modesty)
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }
-                else
-                {
-                    if (OutfitInventory.outfitInventories[inventoryType][i - 1].modesty < OutfitInventory.outfitInventories[inventoryType][i].modesty)
-                    {
-                        Swap(i - 1, i);
-                        swapped = true;
-                    }
-                }
-            }
-        }
-    }
+		ascendingOrder = (sortedBy == "luxury") && !ascendingOrder;
+		SelectedButton("luxury");
+		sortedBy = "luxury";
+		_list.Sort(sortByModestyComparer);
+	}
 
-    void Swap(int outfit1, int outfit2)
-    {
-        Outfit placeHolder1 = OutfitInventory.outfitInventories[inventoryType][outfit1];
-        Outfit placeHolder2 = OutfitInventory.outfitInventories[inventoryType][outfit2];
-
-        OutfitInventory.outfitInventories[inventoryType][outfit1] = placeHolder2;
-        OutfitInventory.outfitInventories[inventoryType][outfit2] = placeHolder1;
-    }
+	private int sortByModestyComparer(Outfit a, Outfit b)
+	{
+		return a.modesty.CompareTo(b.modesty);
+	}
 
     void SelectedButton(string button)
     {

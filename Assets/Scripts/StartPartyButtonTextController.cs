@@ -17,7 +17,7 @@ public class StartPartyButtonTextController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (inventoryList.selectedInventoryOutfit == -1)
+        if (inventoryList.selectedInventoryOutfit == null)
         {
             myOutline.effectColor = Color.clear;
             myText.text = "<- Select Your Outfit";

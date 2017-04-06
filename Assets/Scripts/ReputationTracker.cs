@@ -2,105 +2,73 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ReputationTracker : MonoBehaviour {
-    public Text numberText;
-    public Text levelText;
-    public Image reputationIcon;
-    public Slider reputationBar;
+namespace DeWinter
+{
+	public class ReputationTracker : MonoBehaviour
+	{
+	    public Text numberText;
+	    public Text levelText;
+	    public Image reputationIcon;
+	    public Slider reputationBar;
 
-    public Sprite reputationLevel0Icon;
-    public Sprite reputationLevel1Icon;
-    public Sprite reputationLevel2Icon;
-    public Sprite reputationLevel3Icon;
-    public Sprite reputationLevel4Icon;
-    public Sprite reputationLevel5Icon;
-    public Sprite reputationLevel6Icon;
-    public Sprite reputationLevel7Icon;
-    public Sprite reputationLevel8Icon;
-    public Sprite reputationLevel9Icon;
+	    public Sprite reputationLevel0Icon;
+	    public Sprite reputationLevel1Icon;
+	    public Sprite reputationLevel2Icon;
+	    public Sprite reputationLevel3Icon;
+	    public Sprite reputationLevel4Icon;
+	    public Sprite reputationLevel5Icon;
+	    public Sprite reputationLevel6Icon;
+	    public Sprite reputationLevel7Icon;
+	    public Sprite reputationLevel8Icon;
+	    public Sprite reputationLevel9Icon;
 
-    Sprite[] reputationLevelIconArray = new Sprite[10];
+	    Sprite[] reputationLevelIconArray = new Sprite[10];
+	    private GameModel _gmod;
 
-    // Use this for initialization
-    void Start()
-    {
-        StockReputationLevelIcons();
-        UpdateReputation();
-        DefeatCheck();
-    }
+	    // Use this for initialization
+	    void Awake()
+	    {
+			_gmod = DeWinterApp.GetModel<GameModel>();
+	        StockReputationLevelIcons();
+			DeWinterApp.Subscribe<PlayerReputationVO>(HandlePlayerReputation);
 
-    void Update()
-    {
-        UpdateReputation();
-    }
+			PlayerReputationVO vo = new PlayerReputationVO(GameData.reputationCount,  GameData.playerReputationLevel);
+			HandlePlayerReputation(vo);
+	    }
 
-    public void UpdateReputation()
-    {
-        PlayerReputationLevel();
-        int playerReputationLevel = GameData.playerReputationLevel;
-        numberText.text = shownReputationValue(playerReputationLevel) + "/" + shownReputationNextLevelValue(playerReputationLevel);
-        levelText.text = GameData.reputationLevels[playerReputationLevel].Name;
-        reputationIcon.sprite = reputationLevelIconArray[playerReputationLevel];
-        reputationBar.value = shownReputationValue(playerReputationLevel) / shownReputationNextLevelValue(playerReputationLevel);                     
-    }
+	    void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<PlayerReputationVO>(HandlePlayerReputation);
+	    }
 
-    public void PlayerReputationLevel()
-    {
-        int i = 0;
-        while (GameData.reputationCount >= GameData.reputationLevels[i].RequiredReputation())
-        {
-            i++;
-        }
-        GameData.playerReputationLevel = i-1;
-    }
+		private void HandlePlayerReputation(PlayerReputationVO vo)
+	    {
+	    	if (vo.Reputation > -20)
+	    	{
+				int repNeeded = _gmod.ReputationLevels[vo.Level].Reputation;
+				numberText.text = vo.Reputation.ToString("#,##0") + "/" + repNeeded.ToString("#,##0");
+				levelText.text = _gmod.ReputationLevels[vo.Level].Title;
+		        reputationIcon.sprite = reputationLevelIconArray[vo.Level];
+				reputationBar.value = (float)vo.Reputation / (float)repNeeded;
+		    }
+		    else
+		    {
+				DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
+		    }
+	    }
 
-    void DefeatCheck()
-    {
-        //If your Reputation drops to -20 or below then you lose (for now)
-        if (GameData.reputationCount <= -20)
-        {
-            GameData.playerVictoryStatus = "Reputation Loss";
-            LevelManager man = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-            man.LoadLevel("Game_EndScreen");
-        }
-    }
-
-    void StockReputationLevelIcons()
-    {
-        reputationLevelIconArray[0] = reputationLevel0Icon;
-        reputationLevelIconArray[1] = reputationLevel1Icon;
-        reputationLevelIconArray[2] = reputationLevel2Icon;
-        reputationLevelIconArray[3] = reputationLevel3Icon;
-        reputationLevelIconArray[4] = reputationLevel4Icon;
-        reputationLevelIconArray[5] = reputationLevel5Icon;
-        reputationLevelIconArray[6] = reputationLevel6Icon;
-        reputationLevelIconArray[7] = reputationLevel7Icon;
-        reputationLevelIconArray[8] = reputationLevel8Icon;
-        reputationLevelIconArray[9] = reputationLevel9Icon;
-    }
-
-    int shownReputationValue(int repLevel)
-    {
-        if(repLevel == 1)
-        {
-            return GameData.reputationCount;
-        } else
-        {
-            int repValue = GameData.reputationCount - GameData.reputationLevels[repLevel].RequiredReputation();
-            return repValue;
-        }
-    }
-
-    int shownReputationNextLevelValue(int repLevel)
-    {
-        if(repLevel == 1)
-        {
-            return GameData.reputationLevels[repLevel].RequiredReputation();
-        } else
-        {
-            int nextLevelValue = GameData.reputationLevels[repLevel + 1].RequiredReputation() - GameData.reputationLevels[repLevel].RequiredReputation();
-            return nextLevelValue;
-        }
-
-    }
+		private void StockReputationLevelIcons()
+		{
+		    reputationLevelIconArray[0] = reputationLevel0Icon;
+		    reputationLevelIconArray[1] = reputationLevel1Icon;
+		    reputationLevelIconArray[2] = reputationLevel2Icon;
+		    reputationLevelIconArray[3] = reputationLevel3Icon;
+		    reputationLevelIconArray[4] = reputationLevel4Icon;
+		    reputationLevelIconArray[5] = reputationLevel5Icon;
+		    reputationLevelIconArray[6] = reputationLevel6Icon;
+		    reputationLevelIconArray[7] = reputationLevel7Icon;
+		    reputationLevelIconArray[8] = reputationLevel8Icon;
+		    reputationLevelIconArray[9] = reputationLevel9Icon;
+		}
+	}
 }

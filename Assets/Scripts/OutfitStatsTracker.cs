@@ -50,10 +50,10 @@ public class OutfitStatsTracker : MonoBehaviour {
 	void Update () {
         if (inventoryType == "personal")
         {
-            if (outfitInventoryList.selectedInventoryOutfit != -1)
+            if (outfitInventoryList.selectedInventoryOutfit != null)
             {
                 //Text
-                Outfit displayOutfit = OutfitInventory.outfitInventories[inventoryType][outfitInventoryList.selectedInventoryOutfit];
+                Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
                 outfitNameText.text = displayOutfit.Name();
                 outfitCostText.text = displayOutfit.OutfitPrice(inventoryType).ToString("£" + "#,##0");
                 outfitSaleButtonText.text = "Sell for " + displayOutfit.OutfitPrice(inventoryType).ToString("£" + "#,##0");
@@ -77,10 +77,10 @@ public class OutfitStatsTracker : MonoBehaviour {
             }
         }  else if (inventoryType == "merchant")
         {
-            if (outfitInventoryList.selectedInventoryOutfit != -1)
+            if (outfitInventoryList.selectedInventoryOutfit != null)
             {
                 //Text
-                Outfit displayOutfit = OutfitInventory.outfitInventories[inventoryType][outfitInventoryList.selectedInventoryOutfit];
+                Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
                 outfitNameText.text = displayOutfit.Name();
                 outfitCostText.text = displayOutfit.OutfitPrice(inventoryType).ToString("£" + "#,##0");
                 outfitSaleButtonText.text = "Buy for " + displayOutfit.OutfitPrice(inventoryType).ToString("£" + "#,##0");
@@ -107,10 +107,10 @@ public class OutfitStatsTracker : MonoBehaviour {
             outfitSaleButton.color = Color.clear;
             outfitSaleButtonText.text = "";
             outfitSaleButtonText.color = Color.clear;
-            if (outfitInventoryList.selectedInventoryOutfit != -1) //If an Outfit is Selected
+            if (outfitInventoryList.selectedInventoryOutfit != null) //If an Outfit is Selected
             {
                 //Text
-                Outfit displayOutfit = OutfitInventory.outfitInventories["personal"][outfitInventoryList.selectedInventoryOutfit];
+                Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
                 outfitNameText.text = displayOutfit.Name();
                 outfitCostText.text = displayOutfit.OutfitPrice("personal").ToString("£" + "#,##0"); //Uses Personal Inventory Prices
                 //Sliders

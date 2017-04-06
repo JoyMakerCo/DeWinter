@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DeWinter;
 
+// TODO: Style switching handled by command
 public class StyleTracker : MonoBehaviour {
     public GameObject styleChangeModal;
     private Text myText;
@@ -9,26 +11,29 @@ public class StyleTracker : MonoBehaviour {
 
     void Start()
     {
+    	CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
+		InventoryModel invModel = DeWinterApp.GetModel<InventoryModel>();
+
         myText = this.GetComponent<Text>();
         //This is just to force an update at the beginning.
         myText.text = GameData.currentStyle;
         //Is it Style Switch Time?
-        if (GameData.currentDay >= GameData.nextStyleSwitch)
+        if (model.Day >= model.NextStyleSwitchDay)
         {
             //Pop Up Window
             //Can only pass an object, so make it an Array! Hax?            
             object[] stringStorage = new object[2];
             stringStorage[0] = GameData.currentStyle;
-            stringStorage[1] = GameData.nextStyle;
+			stringStorage[1] = invModel.NextStyle;
             screenFader.gameObject.SendMessage("CreateFashionPopUp", stringStorage);
             //Actually switching styles
-            GameData.currentStyle = GameData.nextStyle;
-            GameData.nextStyle = SwitchStyle(GameData.currentStyle); //First version is initially set in Game Data. This is super hax. Fix it.
-            GameData.lastStyleSwitch = GameData.nextStyleSwitch;
-            GameData.nextStyleSwitch = GameData.lastStyleSwitch + Random.Range(6, 9);
+			invModel.CurrentStyle = invModel.NextStyle;
+			invModel.NextStyle = SwitchStyle(GameData.currentStyle); //First version is initially set in Game Data. This is super hax. Fix it.
+			model.NextStyleSwitchDay = model.Day + Random.Range(6, 9);
         }
     }
 
+    // TODO: Respond to message
     void Update()
     {
         myText.text = GameData.currentStyle;
@@ -36,23 +41,16 @@ public class StyleTracker : MonoBehaviour {
 
     string SwitchStyle(string lastStyle)
     {
-        string selectedStyle = lastStyle;
-        while (selectedStyle == lastStyle)
+        string selectedStyle;
+		switch (Random.Range(0,2))
         {
-            int styleNumber = Random.Range(1, 4); //Fucking exclusive Random Ints
-            switch (styleNumber)
-            {
-                case 1:
-                    selectedStyle = "Frankish";
-                    break;
-                case 2:
-                    selectedStyle = "Venezian";
-                    break;
-                default:
-                    selectedStyle = "Catalan";
-                    break;
-            }
-        }  
-        return selectedStyle;
+            case 0:
+                selectedStyle = "Frankish";
+                break;
+            default:
+                selectedStyle = "Venezian";
+                break;
+        }
+		return selectedStyle == lastStyle ? "Catalan" : selectedStyle;
     }
 }

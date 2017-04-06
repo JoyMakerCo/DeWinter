@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine.UI;
 
 public class OutfitInventoryButton : MonoBehaviour {
-    public int outfitID;
+    public Outfit outfit;
     public string inventoryType;
     private Text myDescriptionText;
     private Text myPriceText;
@@ -24,8 +24,8 @@ public class OutfitInventoryButton : MonoBehaviour {
 
     void Update()
     {
-        DisplayOutfitStats(inventoryType, outfitID);
-        if (outfitInventoryList.selectedInventoryOutfit == outfitID)
+		DisplayOutfitStats(outfit, inventoryType);
+        if (outfitInventoryList.selectedInventoryOutfit == outfit)
         {
             myOutline.effectColor = Color.yellow;
         }
@@ -35,27 +35,17 @@ public class OutfitInventoryButton : MonoBehaviour {
         }       
     }
 
-    public void DisplayOutfitStats(string inv, int oID)
+    public void DisplayOutfitStats(Outfit o, string inventoryType)
     {
-        if(OutfitInventory.outfitInventories[inv].ElementAtOrDefault(oID) != null)
-        {
-            myDescriptionText.text = OutfitInventory.outfitInventories[inv][oID].Name();
-            if (inv == "personal")
-            {
-                myPriceText.text = OutfitInventory.outfitInventories[inv][oID].OutfitPrice(inv).ToString("£" + "#,##0");
-            } 
-            if (inv == "merchant")
-            {
-                myPriceText.text = OutfitInventory.outfitInventories[inv][oID].OutfitPrice(inv).ToString("£" + "#,##0");
-            }    
-        } 
+		myDescriptionText.text = o.Name();
+		myPriceText.text = o.OutfitPrice(inventoryType).ToString("£" + "#,##0");
     }
 
     public void SetInventoryItem()
     {
-        Debug.Log("Selected Inventory Item: " + outfitID.ToString());
-        outfitInventoryList.selectedInventoryOutfit = outfitID;
-        imageController.displayID = OutfitInventory.outfitInventories[inventoryType][outfitID].imageID;
-        GameData.partyOutfitID = outfitID;
+        Debug.Log("Selected Inventory Item: " + outfit.Name());
+        outfitInventoryList.selectedInventoryOutfit = outfit;
+        imageController.displayID = outfit.imageID;
+        OutfitInventory.PartyOutfit = outfit;
     }
 }

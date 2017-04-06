@@ -1,25 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using DeWinter;
 
 public class Party {
 
-    public Faction faction;
+    public string faction=null;
     public int partySize;
-    public bool invited;
+    public bool invited=false;
     public int invitationDistance; // How many days before does the Player have to be before they get invited (if eligible)?
     public int RSVP = 0; //0 means no RSVP yet, 1 means Attending and -1 means Decline
     public int playerRSVPDistance = -1;
     public int modestyPreference;
     public int luxuryPreference;
-    public bool tutorial;
+    public bool tutorial=false;
 
     public string description; // Randomly Generated Flavor Description
 
     public Notable host;
 
-    public Room[,] roomGrid;
-    public Room entranceRoom;
     public int turns;
     public int turnsLeft;
 
@@ -45,190 +44,87 @@ public class Party {
     public string blackOutEffect; // This is used for the After Party Report
     public int blackOutEffectAmount; //This is also used for the After Party Report
 
-    public Outfit playerOutfit;
-    public Accessory playerAccessory;
-
     //Constructor that make parties of a particular size, 0 means no Party
     public Party(int size)
     {
-        tutorial = false;
-        if (size == 0)
-        {
-            faction = null;
-        }
-        else
+        partySize = size;
+        if (size > 0)
         {
             SetFactionGuaranteedParty();
-            partySize = size;
+			GenerateRandomDescription();
             host = new Notable(faction);
-            GenerateRandomDescription();
-            GenerateRooms();
             turns = (partySize * 5) + 1;
             turnsLeft = turns;
             FillPlayerHand();
-            invited = false;
             invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
         }
     }
 
     //Constructor that makes a Party that ISN'T the included faction
-    public Party(Faction notThisFaction)
+    public Party(string faction)
     {
-        tutorial = false;
-        SetExclusiveFaction(notThisFaction);
+		SetExclusiveFaction(faction);
         if(faction != null)
         {
             partySize = Random.Range(1, 4);
             host = new Notable(faction);
             GenerateRandomDescription();
-            GenerateRooms();
             turns = (partySize * 5) + 1;
             turnsLeft = turns;
             FillPlayerHand();
-            invited = false;
             invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
         }
-    }
-
-    //Constructor that makes the tutorial Party, a preconstructed Party with a specific Room setup and special events
-    //TODO: What Faction is it?
-    public Party(bool t)
-    {
-        tutorial = t;
-        if (tutorial) //If the bool is true then make that tutorial Party
-        {
-            partySize = 1;
-            SetFactionGuaranteedParty();
-            host = new Notable(faction);
-            GenerateTutorialDescription();
-            GenerateTutorialRooms();
-            turns = 10;
-            turnsLeft = turns;
-            FillPlayerHand();
-            invited = true;
-            invitationDistance = 1;
-        } else //If the bool is false then make a regular Party
-        {
-            SetRandomFaction();
-            partySize = Random.Range(1, 4);
-            GenerateRandomDescription();
-            GenerateRooms();
-            turns = (partySize * 5) + 1;
-            turnsLeft = turns;
-            FillPlayerHand();
-            invited = false;
-            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
-        }   
     }
 
     void SetFactionGuaranteedParty()
     {
-        int partyFaction = Random.Range(0, 5);
-        if (partyFaction == 0)
+// TODO: set by model
+        switch(Random.Range(0, 5))
         {
-            faction = GameData.factionList["Crown"];
-            modestyPreference = faction.modestyLike;
-            luxuryPreference = faction.luxuryLike;
-        }
-        if (partyFaction == 1)
-        {
-            faction = GameData.factionList["Church"];
-            modestyPreference = faction.modestyLike;
-            luxuryPreference = faction.luxuryLike;
-        }
-        if (partyFaction == 2)
-        {
-            faction = GameData.factionList["Military"];
-            modestyPreference = faction.modestyLike;
-            luxuryPreference = faction.luxuryLike;
-        }
-        if (partyFaction == 3)
-        {
-            faction = GameData.factionList["Bourgeoisie"];
-            modestyPreference = faction.modestyLike;
-            luxuryPreference = faction.luxuryLike;
-        }
-        if (partyFaction == 4)
-        {
-            faction = GameData.factionList["Third Estate"];
-            modestyPreference = faction.modestyLike;
-            luxuryPreference = faction.luxuryLike;
-        }
-    }
+			case 0: faction = "Crown"; break;
+			case 1: faction = "Church"; break;
+			case 2: faction = "Military"; break;
+			case 3: faction = "Bourgeoisie"; break;
+			case 4: faction = "Third Estate"; break;
+		}
+		modestyPreference = GameData.factionList[faction].Modesty;
+        luxuryPreference = GameData.factionList[faction].Luxury;
+   }
 
     void SetRandomFaction()
     {
-        int partyFaction = Random.Range(0, 7);
-        switch (partyFaction)
+		switch (Random.Range(0, 7))
         {
-            case 0:
-                faction = GameData.factionList["Crown"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            case 1:
-                faction = GameData.factionList["Church"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            case 2:
-                faction = GameData.factionList["Military"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            case 3:
-                faction = GameData.factionList["Bourgeoisie"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            case 4:
-                faction = GameData.factionList["Third Estate"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            default:
-                faction = null;
-                break;
+			case 0: faction = "Crown"; break;
+			case 1: faction = "Church"; break;
+			case 2: faction = "Military"; break;
+			case 3: faction = "Bourgeoisie"; break;
+			case 4: faction = "Third Estate"; break;
+			default: faction = null; break;
+        }
+        if (faction != null)
+        {
+			modestyPreference = GameData.factionList[faction].Modesty;
+            luxuryPreference = GameData.factionList[faction].Luxury;
         }
     }
 
-    void SetExclusiveFaction(Faction nTF)
+    void SetExclusiveFaction(string excludeFaction)
     {
-        int partyFaction = Random.Range(0, 7);
+        int partyFaction = Random.Range(0, 6);
         switch (partyFaction)
         {
-            case 0:
-                faction = GameData.factionList["Crown"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            case 1:
-                faction = GameData.factionList["Church"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            case 2:
-                faction = GameData.factionList["Military"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            case 3:
-                faction = GameData.factionList["Bourgeoisie"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            case 4:
-                faction = GameData.factionList["Third Estate"];
-                modestyPreference = faction.modestyLike;
-                luxuryPreference = faction.luxuryLike;
-                break;
-            default:
-                faction = null;
-                break;
-        }
-        if(nTF == faction)
-        {
-            SetExclusiveFaction(nTF);
+			case 0: faction = "Crown"; break;
+			case 1: faction = "Church"; break;
+			case 2: faction = "Military"; break;
+			case 3: faction = "Bourgeoisie"; break;
+		}
+		if (faction != null)
+		{
+			if (faction == excludeFaction)
+				faction = "Third Estate";
+			modestyPreference = GameData.factionList[faction].Modesty;
+            luxuryPreference = GameData.factionList[faction].Luxury;
         }
     }
     
@@ -240,241 +136,6 @@ public class Party {
     void GenerateTutorialDescription()
     {
         description = "The Orphan's Feast is a small social gathering spot for people of every class of society, though almost everyone who comes here does so alone. ";
-    }
-
-    void GenerateRooms()
-    {
-        int gridDimensionX = 0;
-        int gridDimensionY = 0;
-        int roomCount = 0; //The Total Amount of Rooms at the Party
-        int roomDeletionAmount = 0;
-        switch (partySize)
-        {
-            case 1:
-                gridDimensionX = 3;
-                gridDimensionY = 3;
-                roomDeletionAmount = 2;
-                break;
-            case 2:
-                gridDimensionX = 4;
-                gridDimensionY = 4;
-                roomDeletionAmount = Random.Range(3, 5);
-                break;
-            case 3:
-                gridDimensionX = 5;
-                gridDimensionY = 5;
-                roomDeletionAmount = Random.Range(5, 7);
-                break;
-        }
-        //Set the Party's Map Size along with some Faction Specific Changes
-        if (faction == GameData.factionList["Crown"])
-        {
-            gridDimensionX++;
-            roomDeletionAmount++;
-        } else if (faction == GameData.factionList["Third Estate"]){
-            gridDimensionY++;
-            roomDeletionAmount++;
-        }
-        roomGrid = new Room [gridDimensionX, gridDimensionY];
-        roomCount = gridDimensionX * gridDimensionY;
-        //Fill the Grid with Randomized Rooms
-        for(int i = 0; i < gridDimensionX; i++)
-        {
-            for (int j = 0; j < gridDimensionY; j++)
-            {
-                roomGrid[i, j] = new Room(this, i, j);
-            }
-        }
-        //Delete a few Random Rooms (Party Size amount)
-        for (int i = 0; i < roomDeletionAmount; i++)
-        {
-            if(roomGrid[Random.Range(0, gridDimensionX), Random.Range(0, gridDimensionY)] != null)
-            {
-                roomGrid[Random.Range(0, gridDimensionX), Random.Range(0, gridDimensionY)] = null;
-                roomCount--;
-            }    
-        }
-        //Set the Entrance (Random, Southern-most Room)
-        Room selectedRoom = null;
-        while (selectedRoom == null){ //Just in case it selects a null cell
-            selectedRoom = roomGrid[Random.Range(0, gridDimensionX), 0];
-        }
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].entrance = true;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].noMoveThrough = true;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].cleared = true;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].starRating = 1;
-
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].name = "The Vestibule";
-        entranceRoom = roomGrid[selectedRoom.xPos, selectedRoom.yPos]; // This is for the Party Manager Later
-        //Flood fill to set Room Entrance Distance 
-        FloodFill(entranceRoom);
-        //FloodFill(roomGrid, selectedRoom.xPos, selectedRoom.yPos, 0);
-
-        Room furthestRoom = selectedRoom; // Lowest possible distance Room, the entrance
-        for (int i = 0; i < gridDimensionX; i++)
-        {
-            for (int j = 0; j < gridDimensionY; j++)
-            {
-                if (roomGrid[i, j] != null) // Safety Measure
-                {
-                    if (roomGrid[i, j].entranceDistance == -1) //Is it untouched by Flood Fill?
-                    {
-                        roomGrid[i, j] = null; // Kill the bastard Room if there are no connectors
-                        roomCount--;
-                    } else
-                    {
-                        if (roomGrid[i,j].entranceDistance > furthestRoom.entranceDistance)
-                        {
-                            furthestRoom = roomGrid[i, j];
-                        }
-                        if (!roomGrid[i, j].entrance && !roomGrid[i, j].hostHere)
-                        {
-                            roomGrid[i, j].SetStarRatingAndGuests((Random.Range(1, 4)+ Random.Range(1, 5))-2, 4); //Set the Star Rating, using a basically normalized curve
-                        }
-                    }
-                }
-            }
-        }
-        //Put in a minimum amount of Punch Bowls (None in the Entrance)
-        int punchBowlAmount = Mathf.Clamp(roomCount / 3, 1, roomCount-1); //-1 Because you can't place Punch Bowls in the Entrance
-        int punchCounter = 0;
-        int randomRoomX;
-        int randomRoomY;
-        while(punchCounter < punchBowlAmount)
-        {
-            randomRoomX = Random.Range(0, gridDimensionX);
-            randomRoomY = Random.Range(0, gridDimensionY);
-            if (roomGrid[randomRoomX,randomRoomY] != null && !roomGrid[randomRoomX, randomRoomY].entrance)
-            {
-                    roomGrid[randomRoomX, randomRoomY].punchBowl = true;
-                    
-            }
-            punchCounter++;
-        }
-        //Host Stuff
-        roomGrid[furthestRoom.xPos, furthestRoom.yPos].SetStarRatingAndGuests(6, 0); //The Furthest Room is the Host, represented internally by a Star Rating of 6
-        host = roomGrid[furthestRoom.xPos, furthestRoom.yPos].host; //Setting the Host for the Party, this is used elsewhere
-        //If the Party makes it so there's no other Rooms other than the Entrance (too many deletions) then just redo it
-        if (furthestRoom.entranceDistance == 0)
-        {
-            GenerateRooms();
-        }
-    }
-
-    //This Method is used to make the specific map used in the Tutorial Party
-    //TODO: Make this fill out the specific Room difficulties and Guest Counts
-    //TODO: Make this work with Mike's new Room/Map Creation Setup
-    void GenerateTutorialRooms()
-    {
-        int gridDimensionX = 3;
-        int gridDimensionY = 4;
-        //int roomCount = 8; //The Total Amount of Rooms at the Party
-        roomGrid = new Room[gridDimensionX, gridDimensionY];
-
-        //Fill the Grid with Specific Rooms (Left to right, top to Bottom)
-        //Row 3
-        roomGrid[0, 3] = new Room(this, 0, 3);
-        roomGrid[0, 3].SetStarRatingAndGuests(3, 4);
-        roomGrid[1, 3] = new Room(this, 1, 3);
-        roomGrid[1, 3].SetStarRatingAndGuests(6, 0); //Host Room
-        roomGrid[2, 3] = new Room(this, 2, 3);
-        roomGrid[2, 3].SetStarRatingAndGuests(3, 4);
-        //Row 2
-        roomGrid[0, 2] = new Room(this, 0, 2);
-        roomGrid[0, 2].SetStarRatingAndGuests(2, 4);
-        roomGrid[1, 2] = new Room(this, 1, 2);
-        roomGrid[1, 2].SetStarRatingAndGuests(2, 3);
-        roomGrid[1, 2].SetTurnTimer(6.25f);
-        roomGrid[1, 2].SetNoMoveThrough();
-        roomGrid[2, 2] = new Room(this, 2, 2);
-        roomGrid[2, 2].SetStarRatingAndGuests(3, 3);
-        //Row 1
-        roomGrid[1, 1] = new Room(this, 1, 1);
-        roomGrid[1, 1].SetStarRatingAndGuests(1, 2);
-        roomGrid[1, 1].SetTurnTimer(7.5f);
-        roomGrid[1, 1].SetTutorial();
-        roomGrid[1, 1].SetNoMoveThrough();
-        //Row 0
-        roomGrid[1, 0] = new Room(this, 1, 0); // This Room is the Vestibule
-
-        //Set the Vestibule (Southern-most Room)
-        Room selectedRoom = roomGrid[1, 0];
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].entrance = true;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].SetNoMoveThrough();
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].cleared = true;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].entranceDistance = 0;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].starRating = 1;
-        roomGrid[selectedRoom.xPos, selectedRoom.yPos].name = "The Vestibule";
-        entranceRoom = roomGrid[selectedRoom.xPos, selectedRoom.yPos]; // This is for the Party Manager Later
-        
-        //Flood fill to set Room Entrance Distance 
-        FloodFill(entranceRoom);
-    }
-
-    void FloodFill(Room entranceRoom) //The Russell recommended version
-    {
-        List <Room> roomList = new List<Room>();
-        roomList.Add(entranceRoom);
-        entranceRoom.entranceDistance = 0;
-        int xPosInt;
-        int yPosInt;
-        while (roomList.Count > 0)
-        {
-            //Remove the First Point from the List
-            xPosInt = roomList[0].xPos;
-            yPosInt = roomList[0].yPos;
-            roomList.RemoveAt(0);
-            //Add it's elgible neighbors to the List and Fill their Points
-            if ((yPosInt + 1) < roomGrid.GetLength(1))
-            {
-                Room northRoom = roomGrid[xPosInt, yPosInt + 1];
-                if (northRoom != null)
-                {
-                    if (roomGrid[northRoom.xPos, northRoom.yPos].entranceDistance == -1)
-                    {
-                        roomList.Add(northRoom);
-                        northRoom.entranceDistance = roomGrid[xPosInt, yPosInt].entranceDistance + 1;
-                    }
-                }
-            }
-            if ((yPosInt - 1) >= 0)
-            {
-                Room southRoom = roomGrid[xPosInt, yPosInt - 1];
-                if (southRoom != null)
-                {
-                    if (roomGrid[southRoom.xPos, southRoom.yPos].entranceDistance == -1)
-                    {
-                        roomList.Add(southRoom);
-                        southRoom.entranceDistance = roomGrid[xPosInt, yPosInt].entranceDistance + 1;
-                    }
-                }
-            }
-            if ((xPosInt + 1) < roomGrid.GetLength(0))
-            {
-                Room eastRoom = roomGrid[xPosInt + 1, yPosInt];
-                if (eastRoom != null)
-                {
-                    if (roomGrid[eastRoom.xPos, eastRoom.yPos].entranceDistance == -1)
-                    {
-                        roomList.Add(eastRoom);
-                        eastRoom.entranceDistance = roomGrid[xPosInt, yPosInt].entranceDistance + 1;
-                    }
-                }
-            }
-            if ((xPosInt - 1) >= 0)
-            {
-                Room westRoom = roomGrid[xPosInt - 1, yPosInt];
-                if (westRoom != null)
-                {
-                    if (roomGrid[westRoom.xPos, westRoom.yPos].entranceDistance == -1)
-                    {
-                        roomList.Add(westRoom);
-                        westRoom.entranceDistance = roomGrid[xPosInt, yPosInt].entranceDistance + 1;
-                    }
-                }
-            }
-        }
     }
 
     public string SizeString()
@@ -556,7 +217,7 @@ public class Party {
         tempRewardList.Add(new Reward(this, "Faction Rep", "Church", 0));
         tempRewardList.Add(new Reward(this, "Faction Rep", "Military", 0));
         tempRewardList.Add(new Reward(this, "Faction Rep", "Bourgeoisie", 0));
-        tempRewardList.Add(new Reward(this, "Faction Rep", "Revolution", 0));
+        tempRewardList.Add(new Reward(this, "Faction Rep", "Third Estate", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Seamstress", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Tailor", 0));
         tempRewardList.Add(new Reward(this, "Introduction", "Spymaster", 0));
@@ -565,7 +226,7 @@ public class Party {
         tempRewardList.Add(new Reward(this, "Gossip", "Church", 0));
         tempRewardList.Add(new Reward(this, "Gossip", "Military", 0));
         tempRewardList.Add(new Reward(this, "Gossip", "Bourgeoisie", 0));
-        tempRewardList.Add(new Reward(this, "Gossip", "Revolution", 0));
+        tempRewardList.Add(new Reward(this, "Gossip", "Third Estate", 0));
         for (int i = 0; i < wonRewardsList.Count; i++)
         {
             for(int j = 0; j < tempRewardList.Count; j++)
@@ -589,45 +250,8 @@ public class Party {
         wonRewardsList = tempRewardList; //The new, totaled list, replaces the old one 
     }
 
-    //Adds an Enemy to the Party, used by the Enemy Inventory Script
-    public void AddEnemy(Enemy enemy)
-    {
-        //Randomly Select a Room, add the Enemy
-        int xPos = Random.Range(0, roomGrid.GetLength(0));
-        int yPos = Random.Range(0, roomGrid.GetLength(1));
-        if (roomGrid[xPos,yPos] != null){
-            Room enemyRoom = roomGrid[xPos, yPos];
-            if (!enemyRoom.hostHere && !enemyRoom.entrance)
-            {
-                enemyRoom.AddEnemy(enemy);
-                //Put the Enemy in the Enemy List, just in case we need that Data
-                enemyList.Add(enemy);
-            } else
-            {
-                AddEnemy(enemy);
-            }
-        } else
-        {
-            AddEnemy(enemy);
-        }
-    }
-
     public void RemoveEnemy(Enemy enemy)
     {
-        if (enemyList.Contains(enemy))
-        {
-            //Scroll through all of the Rooms, Remove the Enemy Enemy
-            for(int i = 0; i < roomGrid.GetLength(0); i++)
-            {
-                for(int j = 0; j < roomGrid.GetLength(1); j++)
-                {
-                    if (roomGrid[i, j] != null)
-                    {
-                        roomGrid[i, j].RemoveEnemy(enemy); 
-                    }
-                }
-            }
-        }
         //Remove the Enemy from the Enemy List
         enemyList.Remove(enemy);
     }
@@ -646,6 +270,5 @@ public class Party {
             playerHand.Add(new Remark(lastTone, 2));
             lastTone = playerHand[i].tone;
         }
-    }
-   
+    }  
 }

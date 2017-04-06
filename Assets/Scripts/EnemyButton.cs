@@ -55,8 +55,8 @@ public class EnemyButton : MonoBehaviour {
     {
         if (e != null)
         {
-            nameText.text = e.Name();
-            if (e.isFemale)
+            nameText.text = e.Name;
+            if (e.IsFemale)
             {
                 enemyThumbnail.sprite = femaleSpriteList[e.imageInt];
             } else
@@ -68,7 +68,7 @@ public class EnemyButton : MonoBehaviour {
 
     public void SetEnemy()
     {
-        Debug.Log("Selected Enemy: " + enemy.Name());
+        Debug.Log("Selected Enemy: " + enemy.Name);
         enemyList.selectedEnemy = enemy;
     }
 

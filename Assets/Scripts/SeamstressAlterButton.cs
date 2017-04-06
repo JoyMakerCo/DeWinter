@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using DeWinter;
 
 public class SeamstressAlterButton : MonoBehaviour {
 
@@ -8,16 +9,18 @@ public class SeamstressAlterButton : MonoBehaviour {
     public SceneFadeInOut screenFader;
     Image buttonImage;
     Text buttonText;
+    ServantModel _model;
 
     void Start()
     {
         buttonImage = this.GetComponent<Image>();
         buttonText = this.transform.Find("Text").GetComponent<Text>();
+		_model = DeWinterApp.GetModel<ServantModel>();
     }
 
     void Update()
     {
-        if (GameData.servantDictionary["Seamstress"].Hired()) //If the Seamstress has been hired, enable the New Outfit Ability
+		if (_model.Hired.ContainsKey("Seamstress")) //If the Seamstress has been hired, enable the New Outfit Ability
         {
             buttonText.text = "Seamstress - New Outfit";
             if (OutfitInventory.personalInventory.Count < OutfitInventory.personalInventoryMaxSize) //As long as there is room to fit the new Outfit
@@ -30,12 +33,12 @@ public class SeamstressAlterButton : MonoBehaviour {
                 buttonImage.color = Color.gray;
                 buttonText.color = Color.white;
             }
-        } else if (GameData.servantDictionary["Tailor"].Hired()) //If the Tailor has been hired, enable the Alter Outfit Ability
+		} else if (_model.Hired.ContainsKey("Tailor")) //If the Tailor has been hired, enable the Alter Outfit Ability
         {
             buttonText.text = "Tailor - Alter (£20)";
-            if (outfitInventoryList.selectedInventoryOutfit != -1) //As long as an Outfit has been selected
+            if (outfitInventoryList.selectedInventoryOutfit != null) //As long as an Outfit has been selected
             {
-                if (OutfitInventory.personalInventory[outfitInventoryList.selectedInventoryOutfit].altered || GameData.moneyCount < 20) //As long as they have the money to pay for it
+                if (outfitInventoryList.selectedInventoryOutfit.altered || GameData.moneyCount < 20) //As long as they have the money to pay for it
                 {
                     buttonImage.color = Color.gray;
                     buttonText.color = Color.white;                    
@@ -62,10 +65,10 @@ public class SeamstressAlterButton : MonoBehaviour {
 
     public void ClothierServantAbility()
     {
-        if (GameData.servantDictionary["Tailor"].Hired())
+		if (_model.Hired.ContainsKey("Tailor"))
         {
             AlterationWindow();
-        } else if (GameData.servantDictionary["Seamstress"].Hired())
+		} else if (_model.Hired.ContainsKey("Seamstress"))
         {
             CreateNewOutfitWindow();
         }
@@ -73,7 +76,7 @@ public class SeamstressAlterButton : MonoBehaviour {
 
     void AlterationWindow()
     {
-        if (!OutfitInventory.personalInventory[outfitInventoryList.selectedInventoryOutfit].altered && GameData.moneyCount > 20) //If the Seamstress has been Hired and the Outfit hasn't been Altered AND you can afford it
+        if (!outfitInventoryList.selectedInventoryOutfit.altered && GameData.moneyCount > 20) //If the Seamstress has been Hired and the Outfit hasn't been Altered AND you can afford it
         {
             object[] objectStorage = new object[1];
             objectStorage[0] = outfitInventoryList.selectedInventoryOutfit;

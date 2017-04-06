@@ -1,39 +1,50 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 
-public class MonthSelector : MonoBehaviour {
+namespace DeWinter
+{
+	public class MonthSelector : MonoBehaviour
+	{
+	    public Text displayMonthText;
+	    private int _displayMonth;
+	    private CalendarModel _model;
 
-    public Text displayMonthText;
+	    // Update is called once per frame
+	    void Start()
+	    {
+	    	_model = DeWinterApp.GetModel<CalendarModel>();
+	    	DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
+	        DisplayMonth = _model.Today.Month;
+	    }
 
-    // Update is called once per frame
-    void Start()
-    {
-        ViewCurrentMonth();
-    }
+	    public void ViewMonthAhead()
+	    {
+	    	DisplayMonth++;
+	    }
 
-    void Update () {
-        displayMonthText.text = GameData.calendar.monthList[GameData.displayMonthInt].name;
+	    public void ViewMonthBehind()
+	    {
+			DisplayMonth--;
+	    }
+
+		private void HandleCalendarDay(CalendarDayVO day)
+	    {
+			DisplayMonth = day.Date.Month;
+	    }
+
+	    public int DisplayMonth
+	    {
+	    	get { return _displayMonth; }
+	    	set {
+				_displayMonth = (value < _model.StartDate.Month)
+					? _model.StartDate.Month
+					: value > _model.EndDate.Month
+					? _model.EndDate.Month
+					: value;
+				displayMonthText.text = _model.GetMonthString(_displayMonth);
+	    	}
+	    }
 	}
-
-    public void ViewMonthAhead()
-    {
-        if (GameData.displayMonthInt < (GameData.gameLengthMonths+GameData.startMonthInt))
-        {
-            GameData.displayMonthInt++;
-        }
-    }
-
-    public void ViewMonthBehind()
-    {
-        if (GameData.displayMonthInt > GameData.startMonthInt)
-        {
-            GameData.displayMonthInt--;
-        }    
-    }
-
-    public void ViewCurrentMonth()
-    {
-        GameData.displayMonthInt = GameData.currentMonth;
-    }
 }

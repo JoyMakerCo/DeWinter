@@ -2,48 +2,47 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class MoneyTracker : MonoBehaviour {
-    private Text myText;
-    public GameObject screenFader;
+namespace DeWinter
+{
+	public class MoneyTracker : MonoBehaviour
+	{
+	    private Text myText;
+	    public GameObject screenFader;
 
-    // Use this for initialization
-    void Start()
-    {
-        myText = GetComponent<Text>();
-        //Is it Pay Day?
-        if ((GameData.currentDay+1) % 7 == 0) //Servants get paid every 7 days. The +1 is to throw off the fact that days are zero-indexed
-        {
-            //The Actual Transaction
-            foreach (string k in GameData.servantDictionary.Keys)
-            {
-                Servant s = GameData.servantDictionary[k];
-                if (s.Hired())
-                {
-                    GameData.moneyCount -= s.Wage();
-                }
-            }
-            //Pop Up Window to explain the Transaction        
-            screenFader.gameObject.SendMessage("CreatePayDayPopUp");
-        }
-    }
+	    // Use this for initialization
+	    void Start()
+	    {
+	        myText = GetComponent<Text>();
+			DeWinterApp.Subscribe<AdjustValueVO>(HandleBalanceUpdate);
+			DeWinterApp.Subscribe<CalendarDayVO>(HandleDateUpdate);
+	    }
 
-    void Update()
-    {
-        updateMoney();
-    }
+	    void OnDestroy()
+	    {
+			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleBalanceUpdate);
+			DeWinterApp.Unsubscribe<CalendarDayVO>(HandleDateUpdate);
+	    }
 
-    public void updateMoney()
-    {
-        myText.text = GameData.moneyCount.ToString("£" + "#,##0");
-        VictoryOrDefeatCheck();
-    }
+		private void HandleBalanceUpdate(AdjustValueVO vo)
+		{
+			if (!vo.IsRequest && vo.Type == GameConsts.LIVRE)
+			{
+				myText.text = vo.Amount.ToString("£" + "#,##0");
 
-    void VictoryOrDefeatCheck()
-    {
-        //If your Money drops to 0 or below then you lose (for now)
-        if (GameData.moneyCount < 0)
-        {
-            screenFader.gameObject.SendMessage("CreateOutOfMoneyModal");
-        }
-    }
+// TODO: This check should be in a command.
+				//If your Money drops to 0 or below then you lose (for now)
+		        if (vo.Amount <= 0d)
+		        {
+		            screenFader.gameObject.SendMessage("CreateOutOfMoneyModal");
+		        }
+		    }
+		}
+
+// TODO: Use Dialog System via PayDayCmd.cs
+		private void HandleDateUpdate(CalendarDayVO day)
+		{
+			if (day.Day%7 == 0)
+				screenFader.gameObject.SendMessage("CreatePayDayPopUp");
+		}
+	}
 }

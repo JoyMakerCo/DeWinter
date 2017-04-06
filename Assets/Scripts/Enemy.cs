@@ -1,52 +1,69 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
+using DeWinter;
 
-public class Enemy : PartyGoer {
-
+public class Enemy
+{
     //General Settings
+    public string Name;
     private string flavorText;
+    public int dispositionInt;
+    public Disposition disposition;
+    public string Faction;
+    public bool IsFemale; //Determines the gender of the Guest
+    public int imageInt;
+
+	//Generates an Enemy with a Particular Name, Faction and Gender
+    public Enemy(string faction, string name, bool isFemale)
+    {
+    	Random rnd = new Random();
+		PartyModel model = DeWinterApp.GetModel<PartyModel>();
+
+		disposition = model.Dispositions[rnd.Next(model.Dispositions.Length)];
+        Faction = faction;
+        IsFemale = isFemale;
+		imageInt = rnd.Next(IsFemale ? 4 : 5);
+        Name = name;
+        flavorText = GenerateFlavorText();
+    }
 
     //Generates a Random Enemy from a particular Faction
-    public Enemy(Faction fac)
+	public Enemy(string faction=null)
+	{
+		Random rnd = new Random();
+		PartyModel model = DeWinterApp.GetModel<PartyModel>();
+
+		disposition = model.Dispositions[rnd.Next(model.Dispositions.Length)];
+        Faction = faction;
+        IsFemale = GenderDeterminer();
+		imageInt = rnd.Next(IsFemale ? 4 : 5);
+        Name = GenerateName();
+        flavorText = GenerateFlavorText();
+	}
+
+    private string GenerateName()
     {
-        dispositionInt = Random.Range(0, 4);
-        disposition = GameData.dispositionList[dispositionInt];
-        faction = fac;
-        isFemale = GenderDeterminer();
-        if (isFemale)
+    	PartyModel model = DeWinterApp.GetModel<PartyModel>();
+        string title;
+        string firstName;
+        Random rnd = new Random();
+        if (IsFemale)
         {
-            imageInt = Random.Range(0, 4);
+            title = model.FemaleTitles[rnd.Next(model.FemaleTitles.Length)];
+			firstName = model.FemaleNames[rnd.Next(model.FemaleNames.Length)];
         }
         else
         {
-            imageInt = Random.Range(0, 5);
+			title = model.MaleTitles[rnd.Next(model.MaleTitles.Length)];
+			firstName = model.MaleNames[rnd.Next(model.MaleNames.Length)];
         }
-        name = GenerateName(); // Have to Generate the Name after the Gender
-        flavorText = GenerateFlavorText();
+		string lastName = model.LastNames[rnd.Next(model.LastNames.Length)];
+        return title + " " + firstName + " de " + lastName;
     }
 
-    //Generates an Enemy with a Particular Name, Faction and Gender
-    public Enemy(Faction fac, string nme, bool gen)
+	private static bool GenderDeterminer()
     {
-        dispositionInt = Random.Range(0, 4);
-        disposition = GameData.dispositionList[dispositionInt];
-        faction = fac;
-        isFemale = gen;
-        if (isFemale)
-        {
-            imageInt = Random.Range(0, 4);
-        }
-        else
-        {
-            imageInt = Random.Range(0, 5);
-        }
-        name = nme;
-        flavorText = GenerateFlavorText();
-    }
-
-    public string Name()
-    {
-        return name;
+		return (new Random()).Next(2) == 0;
     }
 
     public string FlavorText()

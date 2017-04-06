@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using DeWinter;
 
 public class RoomManager : MonoBehaviour
 {
+	private const int PADDING = 5;
 
     public PartyManager partyManager;
-    public Party party; //What Party are we managing?
-    public Room[,] roomButtonGrid; // Holds the Rooms
-    public Room entranceRoom; //Whichever Room is the Entrance
-    public Room currentPlayerRoom;
     public GameObject roomButtonPrefab;
     public GameObject houseOutlinePrefab; //This is used to Outline the house when it's done
     public Canvas canvas; //New Interface objects need to get parented to this in order to work
-    bool mapSetUp = false;
     public GameObject screenFader;
+    public GameObject roomHolder;
+
+    private Dictionary<RoomVO, RoomButton> _buttons;
 
     //Images for the Map Buttons
     public Sprite mapBlock2x2;
@@ -23,213 +25,105 @@ public class RoomManager : MonoBehaviour
     public Sprite mapBlock4x3T;
     public Sprite mapBlock4x4L;
 
+    private MapModel _model;
+	private PartyModel _partyModel;
+
+	public RoomVO currentPlayerRoom
+	{
+		get { return _model.Room; }
+		set { _model.Room = value; }
+	}
+
+	public MapVO Map
+	{
+		get { return _model.Map; }
+	}
+
     void Start()
     {
-        mapSetUp = false;
+		_model = DeWinterApp.GetModel<MapModel>();
+		_partyModel = DeWinterApp.GetModel<PartyModel>();
         partyManager = this.transform.parent.GetComponent<PartyManager>();
+		DeWinterApp.SendMessage<Party>(MapMessage.GENERATE_MAP, _partyModel.Party);
+		DeWinterApp.Subscribe<Party>(PartyConstants.SHOW_DRINK_MODAL, handleDrinkModal);
+		DeWinterApp.Subscribe<RoomVO>(HandleRoom);
+		DrawMap();
+		currentPlayerRoom = Map.Entrance;
     }
 
-    void Update()
-    {
-        if (mapSetUp)
-        {
-            ScanForPlayerAndAdjacents();
-        }
-    }
+	private void HandleRoom(RoomVO room)
+	{
+		foreach (RoomVO mapRoom in Map.Rooms)
+		{
+			if (mapRoom != null)
+				_buttons[mapRoom].SetCurrentRoom(room);
+		}
 
-    //TODO - Complete Overhaul as per the Multiple Room Shapes Spec
-    public void SetUpMap(Party p)
+		if (room.HostHere)
+			WorkTheHostModal();
+		else
+			WorkTheRoomModal(false);
+	}
+
+	private void DrawMap()
     {
-        party = p;
-        GameObject roomHolder = new GameObject();
-        roomHolder.transform.SetParent(canvas.transform, false);
-        roomHolder.transform.localPosition = new Vector3(0, -25, 0);
-        roomHolder.transform.SetAsFirstSibling();
         //Make the Room Buttons ----------------------
         //Positioning (Set Up)
-        int buttonwidth = (int)roomButtonPrefab.GetComponent<RectTransform>().rect.width;
-        int padding = 5; // Space between Rooms  
-        int offsetFromCenterX = ((GameData.tonightsParty.roomGrid.GetLength(0) * buttonwidth) + padding) / 2;
-        int offsetFromCenterY = ((GameData.tonightsParty.roomGrid.GetLength(1) * buttonwidth) + padding) / 2;
-        GameObject[,] mapButtonGrid = new GameObject[GameData.tonightsParty.roomGrid.GetLength(0), GameData.tonightsParty.roomGrid.GetLength(1)];
-        for (int i = 0; i < GameData.tonightsParty.roomGrid.GetLength(0); i++)
-        {
-            for (int j = 0; j < GameData.tonightsParty.roomGrid.GetLength(1); j++)
-            {
-                if (GameData.tonightsParty.roomGrid[i, j] != null)
-                {
-                    //Parenting
-                    GameObject mapButton = Instantiate(roomButtonPrefab, roomButtonPrefab.transform.position, roomButtonPrefab.transform.rotation) as GameObject;
-                    mapButton.transform.SetParent(roomHolder.transform, false);
-                    RoomButton roomButton = mapButton.GetComponent<RoomButton>();
-                    //Positioning (Actual)
-                    mapButton.transform.localPosition = new Vector3(i * (buttonwidth+padding) - offsetFromCenterX, j * (buttonwidth + padding) - offsetFromCenterY, 0);
-                    mapButtonGrid[i, j] = mapButton; 
-                    //Set the Room that this button represents
-                    roomButton.myRoom = GameData.tonightsParty.roomGrid[i, j];
-                    roomButton.roomManager = this;
-                    if (roomButton.myRoom.entrance)
-                    {
-                        entranceRoom = roomButton.myRoom; //Setting the Entrance Room in the Room Manager
-                    }
-                    Debug.Log("Room Created at Grid Square: " + i.ToString() + "," + j.ToString());
-                }
-            }
-        }
-        //Putting an Outline around the Map/House
-        GameObject houseOutline = Instantiate(houseOutlinePrefab, houseOutlinePrefab.transform.position, houseOutlinePrefab.transform.rotation) as GameObject;
+		int buttonWidth = (int)roomButtonPrefab.GetComponent<RectTransform>().rect.width;
+		_buttons = new Dictionary<RoomVO, RoomButton>();
+
+		//Putting an Outline around the Map/House
+        GameObject houseOutline = Instantiate<GameObject>(houseOutlinePrefab);
         houseOutline.transform.SetParent(roomHolder.transform, false);
-        RectTransform houseOutlineRT = (RectTransform)houseOutline.transform;
-        houseOutlineRT.sizeDelta = new Vector2((GameData.tonightsParty.roomGrid.GetLength(0) * buttonwidth) + 10, (GameData.tonightsParty.roomGrid.GetLength(1) * buttonwidth) + 10);
-        //float outlineXPos = (mapButtonGrid[0, 0].transform.position.x + mapButtonGrid[mapButtonGrid.GetUpperBound(0), mapButtonGrid.GetUpperBound(1)].transform.position.x) / 2;
-        //float outlineYPos = (mapButtonGrid[0, 0].transform.position.y + mapButtonGrid[mapButtonGrid.GetUpperBound(0), mapButtonGrid.GetUpperBound(1)].transform.position.y) / 2;
-        houseOutline.transform.localPosition = new Vector3(0, 0, 0);
-        houseOutline.transform.SetAsFirstSibling();
+		((RectTransform)houseOutline.transform).sizeDelta = new Vector2(((_model.Map.Width + PADDING)*buttonWidth), ((_model.Map.Depth + PADDING)*buttonWidth));
+
         //Map Set Up is complete, notify the rest of the game
-        mapSetUp = true;
-    }
+		foreach (RoomVO rm in Map.Rooms)
+		{
+			DrawRoom(rm, buttonWidth);
+		}
+	}
 
-    public void PlayerMovement(int xPos, int yPos)
-    {
-        if (party.turnsLeft > 0)
-        {
-            for (int i = 0; i < party.roomGrid.GetLength(0); i++) // Search via the X Axis
-            {
-                for (int j = 0; j < party.roomGrid.GetLength(1); j++) //Search via the Y Axis
-                {
-                    if (party.roomGrid[i, j] != null) //If this room is not null
-                    {
-                        party.roomGrid[i, j].playerHere = false;
-                        party.roomGrid[i, j].playerAdjacent = false;
-                    }
-                }
-            }
-            party.roomGrid[xPos, yPos].playerHere = true;
-            currentPlayerRoom = party.roomGrid[xPos, yPos];
-            if (party.roomGrid[xPos, yPos].punchBowl)
-            {
-                party.currentPlayerDrinkAmount = party.maxPlayerDrinkAmount;
-            } else if (!party.roomGrid[xPos, yPos].cleared && party.currentPlayerDrinkAmount != party.maxPlayerDrinkAmount)
-            {
-                RandomWineCheck(); // Level 4 Faction Benefit
-            }
-        }
-        else
-        {
-            Debug.Log("Out of turns. Go home!");
-        }
-    }
-
-    void RandomWineCheck()
-    {
-        if(party.faction.PlayerReputationLevel() >= 5)
-        {
-            int randomInt = Random.Range(0, 4);
-            if(randomInt == 0)
-            {
-                party.currentPlayerDrinkAmount = party.maxPlayerDrinkAmount;
-                screenFader.gameObject.SendMessage("CreateRandomWineModal", party);
-            }
-        }
+	private void DrawRoom(RoomVO room, int buttonWidth)
+	{
+		if (room != null && room.Shape != null)
+		{
+			GameObject mapButton = Instantiate(roomButtonPrefab) as GameObject;
+			RoomButton roomButton = mapButton.GetComponent<RoomButton>();
+			mapButton.transform.SetParent(roomHolder.transform, false);
+			mapButton.transform.localPosition = new Vector3((room.Shape[0].x-(Map.Width>>1))*(buttonWidth + PADDING), (room.Shape[0].y - (Map.Depth>>1))*(PADDING + buttonWidth), 0);
+			roomButton.Room = room;
+			_buttons.Add(room, roomButton);
+		}
     }
 
     public void MovePlayerToEntrance()
     {
-        for (int i = 0; i < party.roomGrid.GetLength(0); i++) // Search via the X Axis
-        {
-            for (int j = 0; j < party.roomGrid.GetLength(1); j++) //Search via the Y Axis
-            {
-                if (party.roomGrid[i, j] != null) //If this room is not null
-                {
-                    party.roomGrid[i, j].playerHere = false;
-                    party.roomGrid[i, j].playerAdjacent = false;
-                }
-            }
-        }
-        party.roomGrid[entranceRoom.xPos, entranceRoom.yPos].playerHere = true;
-        currentPlayerRoom = party.roomGrid[entranceRoom.xPos, entranceRoom.yPos];
-    }
-
-    void ScanForPlayerAndAdjacents()
-    {
-        for (int i = 0; i < party.roomGrid.GetLength(0); i++) // Search via the X Axis
-        {
-            for (int j = 0; j < party.roomGrid.GetLength(1); j++) //Search via the Y Axis
-            {
-                if (party.roomGrid[i, j] != null) //If this room is not null
-                {
-                    if (party.roomGrid[i, j].playerHere)
-                    { //Is the Player is in this Room
-                        party.roomGrid[i, j].revealed = true;
-                        //North
-                        if ((j + 1) < party.roomGrid.GetLength(1)) //Is the North Room on the Map?
-                        {
-                            Room northRoom = party.roomGrid[i, j + 1];
-                            if (northRoom != null)
-                            {
-                                party.roomGrid[northRoom.xPos, northRoom.yPos].playerAdjacent = true;
-                                party.roomGrid[northRoom.xPos, northRoom.yPos].revealed = true;
-                            }
-                        }
-                        //South
-                        if ((j - 1) >= 0) //Is the South Room on the Map?
-                        {
-                            Room southRoom = party.roomGrid[i, j - 1];
-                            if (southRoom != null)
-                            {
-                                party.roomGrid[southRoom.xPos, southRoom.yPos].playerAdjacent = true;
-                                party.roomGrid[southRoom.xPos, southRoom.yPos].revealed = true;
-                            }
-                        }
-                        //East
-                        if ((i + 1) < party.roomGrid.GetLength(0)) //Is the North Room on the Map?
-                        {
-                            Room eastRoom = party.roomGrid[i + 1, j];
-                            if (eastRoom != null)
-                            {
-                                party.roomGrid[eastRoom.xPos, eastRoom.yPos].playerAdjacent = true;
-                                party.roomGrid[eastRoom.xPos, eastRoom.yPos].revealed = true;
-                            }
-                        }
-                        //West
-                        if ((i - 1) >= 0) //Is the North Room on the Map?
-                        {
-                            Room westRoom = party.roomGrid[i - 1, j];
-                            if (westRoom != null)
-                            {
-                                party.roomGrid[westRoom.xPos, westRoom.yPos].playerAdjacent = true;
-                                party.roomGrid[westRoom.xPos, westRoom.yPos].revealed = true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+		currentPlayerRoom = (_model.Map != null) ? _model.Map.Entrance : null;
     }
 
     public void ChoiceModal(int xPos, int yPos)
     {
-        Debug.Log("No Move Through:" + currentPlayerRoom.noMoveThrough);
-        Debug.Log("Cleared:" + currentPlayerRoom.cleared);
-        if (currentPlayerRoom.noMoveThrough && currentPlayerRoom.cleared) 
-        {   
-          //No Modal  
-        } else
-        {
-            //Work the Room or Move Through
-            int[] intStorage = new int[2];
-            intStorage[0] = xPos;
-            intStorage[1] = yPos;
-            screenFader.gameObject.SendMessage("CreateRoomChoiceModal", intStorage);
-        }
-    }
+        if (!_model.Room.IsEntrance) // Players can freely move through the Entrance Tile
+	    {
+	        Debug.Log("No Move Through:" + currentPlayerRoom.IsImpassible);
+	        Debug.Log("Cleared:" + currentPlayerRoom.Cleared);
+	        if (!currentPlayerRoom.IsImpassible || !currentPlayerRoom.Cleared) 
+	        {   
+	            //Work the Room or Move Through
+	            int[] intStorage = new int[2]{ xPos, yPos };
+	            screenFader.gameObject.SendMessage("CreateRoomChoiceModal", intStorage);
+	        }
+	    }
+   	}
 
     public void WorkTheRoomModal(bool isAmbush)
     {
-        if (!currentPlayerRoom.cleared)
+		if (!currentPlayerRoom.Cleared)
         {
-            party.turnsLeft--;
-            party.currentPlayerIntoxication = Mathf.Clamp(party.currentPlayerIntoxication - 5, 0, party.maxPlayerIntoxication);
+			_partyModel.Party.turnsLeft--;
+			SoberUp(5);
+
             //Work the Room!
             object[] objectStorage = new object[3];
             objectStorage[0] = currentPlayerRoom;
@@ -245,10 +139,10 @@ public class RoomManager : MonoBehaviour
 
     public void WorkTheHostModal()
     {
-        if (!currentPlayerRoom.cleared)
+        if (!currentPlayerRoom.Cleared)
         {
-            party.turnsLeft--;
-            party.currentPlayerIntoxication = Mathf.Clamp(party.currentPlayerIntoxication - 5, 0, party.maxPlayerIntoxication);
+			_partyModel.Party.turnsLeft--;
+			SoberUp(5);
             //Work the Host!
             object[] objectStorage = new object[2];
             objectStorage[0] = currentPlayerRoom;
@@ -263,16 +157,16 @@ public class RoomManager : MonoBehaviour
 
     public void MoveThrough()
     {
-        if (!currentPlayerRoom.hostHere && !currentPlayerRoom.noMoveThrough) //If this is not a Host Room and the Player is allowed to Move Through this Room
+        if (!currentPlayerRoom.HostHere && !currentPlayerRoom.IsImpassible) //If this is not a Host Room and the Player is allowed to Move Through this Room
         {
-            int checkValue = Random.Range(0, 100);
+            int checkValue = UnityEngine.Random.Range(0, 100);
             string[] stringStorage = new string[1];
-            stringStorage[0] = currentPlayerRoom.name;
-            int moveThroughChance = currentPlayerRoom.MoveThroughChance();
+            stringStorage[0] = currentPlayerRoom.Name;
+            int moveThroughChance = currentPlayerRoom.MoveThroughChance;
             //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-            if (GameData.tonightsParty.playerAccessory != null)
+            if (GameData.partyAccessory != null)
             {
-                if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
+				if (GameData.partyAccessory.Type == "Cane")
                 {
                     moveThroughChance += 10;
                 }
@@ -292,17 +186,29 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    public void PartyEventModal(int xPos, int yPos)
+    public void PartyEventModal(RoomVO room)
     {
-        if(!party.roomGrid[xPos, yPos].cleared) //If the Room hasn't been cleared already, do all the stuff
+        if(!room.Cleared) //If the Room hasn't been cleared already, do all the stuff
         {
             //Standdard Turn Stuff
-            party.turnsLeft--;
-            party.currentPlayerIntoxication = Mathf.Clamp(party.currentPlayerIntoxication - 20, 0, party.maxPlayerIntoxication);
+			_partyModel.Party.turnsLeft--;
+            SoberUp(20);
             //Make the Event Happen
             screenFader.gameObject.SendMessage("CreateEventPopUp", "party");
             //Clear the Room
-            party.roomGrid[xPos, yPos].cleared = true;
+            room.Cleared = true;
         }
+    }
+
+    private void SoberUp(int amount)
+    {
+		_partyModel.Party.currentPlayerIntoxication -= amount;
+		if (_partyModel.Party.currentPlayerIntoxication<0)
+			_partyModel.Party.currentPlayerIntoxication=0;
+    }
+
+    private void handleDrinkModal(Party p)
+    {
+		screenFader.gameObject.SendMessage("CreateRandomWineModal", p);
     }
 }

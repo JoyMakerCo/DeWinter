@@ -3,14 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using DeWinter;
 
 public class WorkTheRoomManager : MonoBehaviour
 {
     public SceneFadeInOut screenFader;
     public RoomManager roomManager;
-    LevelManager levelManager;
 
-    public Room room;
+    public RoomVO room;
     Text title;
     public bool isAmbush;
 
@@ -143,26 +143,32 @@ public class WorkTheRoomManager : MonoBehaviour
     public Image readyGoPanel;
     public Text readyGoText;
 
+    int maxTurnTimer=5;
+
     bool fascinatorEffect; //The Fascinator Accessory lets the first negative comment go ignored during each Conversation
+
+    private Party party
+    {
+    	get { return DeWinterApp.GetModel<PartyModel>().Party; }
+    }
 
     // Use this for initialization
     void Start()
     {
         screenFader = this.transform.parent.GetComponent<SceneFadeInOut>();
-        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
 
         title = this.transform.Find("TitleText").GetComponent<Text>();
-        title.text = room.name;
+        title.text = room.Name;
 
         //Visualize the Player
         playerNameText = playerVisual.transform.Find("Name").GetComponent<Text>();
         playerNameText.text = "Yvette";
         playerConfidenceText = playerVisual.transform.Find("ConfidenceCounter").GetComponent<Text>();
-        playerConfidenceText.text = "Confidence: " + room.party.currentPlayerConfidence + "/" + room.party.maxPlayerConfidence;
+        playerConfidenceText.text = "Confidence: " + party.currentPlayerConfidence + "/" + party.maxPlayerConfidence;
         playerConfidenceBar = playerVisual.transform.Find("ConfidenceBar").GetComponent<Scrollbar>();
-        playerConfidenceBar.value = (float)room.party.currentPlayerConfidence / room.party.maxPlayerConfidence;
+        playerConfidenceBar.value = (float)party.currentPlayerConfidence / party.maxPlayerConfidence;
         playerIntoxicationText = playerVisual.transform.Find("DrinkBoozeButton").Find("IntoxicationCounter").GetComponent<Text>();
-        playerIntoxicationText.text = "Intoxication: " + room.party.currentPlayerIntoxication + "/" + room.party.maxPlayerIntoxication;
+        playerIntoxicationText.text = "Intoxication: " + party.currentPlayerIntoxication + "/" + party.maxPlayerIntoxication;
         drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetComponent<Image>();
 
         //Stock the Guest Images Lists
@@ -171,20 +177,22 @@ public class WorkTheRoomManager : MonoBehaviour
         //Set Up the Guests
         SetUpGuests();
 
+		DeWinterApp.Subscribe(PartyMessages.START_TIMERS, HandleStartTimers);
+
         //Generate the Remarks
         if (isAmbush)
         {
-            if (room.party.playerHand.Count == 5)
+            if (party.playerHand.Count == 5)
             {
-                room.party.playerHand.RemoveAt(4);
-                room.party.playerHand.RemoveAt(3);
+                party.playerHand.RemoveAt(4);
+                party.playerHand.RemoveAt(3);
             }
-            if (room.party.playerHand.Count == 4)
+            if (party.playerHand.Count == 4)
             {
-                room.party.playerHand.RemoveAt(3);
+                party.playerHand.RemoveAt(3);
             }
-            room.party.playerHand.Add(new Remark("ambush", room.guestList.Count));
-            room.party.playerHand.Add(new Remark("ambush", room.guestList.Count));
+            party.playerHand.Add(new Remark("ambush", room.Guests.Length));
+			party.playerHand.Add(new Remark("ambush", room.Guests.Length));
         }
 
         //Set Up Remarks
@@ -196,7 +204,7 @@ public class WorkTheRoomManager : MonoBehaviour
         remarkSlotList.Add(remarkSlot4RemarkSlot);  
 
         //Turn Timer
-        turnTimerBar.value = room.currentTurnTimer / room.maxTurnTimer;
+        turnTimerBar.value = room.TurnTimer / maxTurnTimer;
         if(GameData.playerReputationLevel >= 2)
         {
             reparteeIndicatorImage.color = Color.green;
@@ -206,20 +214,22 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //Ready Go Text
-        readyGoText.text = GameData.conversationIntroList[Random.Range(0, GameData.conversationIntroList.Count)];
+		string[] conversationIntroList = DeWinterApp.GetModel<PartyModel>().ConversationIntros;
+        readyGoText.text = conversationIntroList[Random.Range(0, conversationIntroList.Length)];
         //Tutorial Pop-Up? Only used in the tutorial Room
-        if (room.tutorial)
+        // This can be made less hacky by registering the dialog in a command triggered by entering a room
+        if (room.IsTutorial)
         {
             screenFader.gameObject.SendMessage("CreateWorkTheRoomTutorialPopUp", this);
         } else
         {
-            StartCoroutine(ConversationStartTimerWait());
+        	DeWinterApp.SendMessage(PartyMessages.START_TIMERS);
         }
 
         //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
-        if(GameData.partyAccessoryID != -1)
+        if(GameData.partyAccessory != null)
         {
-            if (AccessoryInventory.personalInventory[GameData.partyAccessoryID].Type() == "Fascinator")
+			if (GameData.partyAccessory.Type == "Fascinator")
             {
                 fascinatorEffect = true;
             }
@@ -234,9 +244,9 @@ public class WorkTheRoomManager : MonoBehaviour
     void Update()
     {
         //Visualize the Player---------------
-        playerConfidenceText.text = "Confidence: " + room.party.currentPlayerConfidence + "/" + room.party.maxPlayerConfidence;
-        playerConfidenceBar.value = (float)room.party.currentPlayerConfidence / room.party.maxPlayerConfidence;
-        if (room.party.currentPlayerConfidence <= 25)
+        playerConfidenceText.text = "Confidence: " + party.currentPlayerConfidence + "/" + party.maxPlayerConfidence;
+        playerConfidenceBar.value = (float)party.currentPlayerConfidence / party.maxPlayerConfidence;
+        if (party.currentPlayerConfidence <= 25)
         {
             playerConfidenceText.color = Color.red;
         }
@@ -244,9 +254,9 @@ public class WorkTheRoomManager : MonoBehaviour
         {
             playerConfidenceText.color = Color.white;
         }
-        playerIntoxicationText.text = "Intoxication: " + room.party.currentPlayerIntoxication + "/" + room.party.maxPlayerIntoxication;
-        playerDrinkAmountText.text = "Booze Glass: " + room.party.currentPlayerDrinkAmount + "/" + room.party.maxPlayerDrinkAmount;
-        if (room.party.currentPlayerDrinkAmount > 0)
+        playerIntoxicationText.text = "Intoxication: " + party.currentPlayerIntoxication + "/" + party.maxPlayerIntoxication;
+        playerDrinkAmountText.text = "Booze Glass: " + party.currentPlayerDrinkAmount + "/" + party.maxPlayerDrinkAmount;
+        if (party.currentPlayerDrinkAmount > 0)
         {
             drinkBoozeButtonImage.color = Color.white;
         } else
@@ -269,9 +279,9 @@ public class WorkTheRoomManager : MonoBehaviour
         //Turn Timer
         if(conversationStarted && turnTimerActive)
         {
-            room.currentTurnTimer -= Time.deltaTime;
-            turnTimerBar.value = room.currentTurnTimer / room.maxTurnTimer;
-            if (room.currentTurnTimer <= 0)
+            room.TurnTimer -= Time.deltaTime;
+            turnTimerBar.value = room.TurnTimer / maxTurnTimer;
+            if (room.TurnTimer <= 0)
             {
                 EndTurn();
             }
@@ -285,13 +295,18 @@ public class WorkTheRoomManager : MonoBehaviour
         ConfidenceCheck();
     }
 
+    void OnDestroy()
+    {
+		DeWinterApp.Unsubscribe(PartyMessages.START_TIMERS, HandleStartTimers);
+    }
+
     void SetUpGuests()
     {
         //---- Set Up Guest 0 ----
-        guest0NameText.text = room.guestList[0].name;
+        guest0NameText.text = room.Guests[0].Name;
         guest0GuestImage.sprite = GuestStateSprite(0);
         guest0DispositionIcon.color = DispositionImageColor(0);
-        if (room.guestList[0].isEnemy)
+        if (room.Guests[0].isEnemy)
         {
             guest0NameText.color = Color.red;
             guest0InterestBarImage.color = Color.clear;
@@ -304,10 +319,10 @@ public class WorkTheRoomManager : MonoBehaviour
         guestImageList.Add(guest0GuestImage);
 
         //---- Set Up Guest 1 ----
-        guest1NameText.text = room.guestList[1].name; 
+        guest1NameText.text = room.Guests[1].Name; 
         guest1GuestImage.sprite = GuestStateSprite(1);    
         guest1DispositionIcon.color = DispositionImageColor(1);
-        if (room.guestList[1].isEnemy)
+        if (room.Guests[1].isEnemy)
         {
             guest1NameText.color = Color.red;
             guest1InterestBarImage.color = Color.clear;
@@ -320,12 +335,12 @@ public class WorkTheRoomManager : MonoBehaviour
         guestImageList.Add(guest1GuestImage);
 
         //---- Set Up Guest 2 ----
-        if (room.guestList.Count > 2)
+        if (room.Guests.Length > 2)
         {
-            guest2NameText.text = room.guestList[2].name;
+            guest2NameText.text = room.Guests[2].Name;
             guest2GuestImage.sprite = GuestStateSprite(2);
             guest2DispositionIcon.color = DispositionImageColor(2);
-            if (room.guestList[2].isEnemy)
+            if (room.Guests[2].isEnemy)
             {
                 guest2NameText.color = Color.red;
                 guest2InterestBarImage.color = Color.clear;
@@ -351,12 +366,12 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //---- Set Up Guest 3 ----
-        if (room.guestList.Count > 3)
+        if (room.Guests.Length > 3)
         {
-            guest3NameText.text = room.guestList[3].name;
+            guest3NameText.text = room.Guests[3].Name;
             guest3GuestImage.sprite = GuestStateSprite(3);
             guest3DispositionIcon.color = DispositionImageColor(3);
-            if (room.guestList[3].isEnemy)
+            if (room.Guests[3].isEnemy)
             {
                 guest3NameText.color = Color.red;
                 guest3InterestBarImage.color = Color.clear;
@@ -387,12 +402,12 @@ public class WorkTheRoomManager : MonoBehaviour
     {
         if (conversationStarted)
         {
-            if (room.party.playerHand[selectedRemark] != null && !room.party.playerHand[selectedRemark].ambushRemark)
+            if (party.playerHand[selectedRemark] != null && !party.playerHand[selectedRemark].ambushRemark)
             {
                 targetingMode = true;
                 targetingRemark = selectedRemark;
-                //Debug.Log("Remark Tone: " + GameData.dispositionList[room.party.playerHand[selectedRemark].toneInt].like + " " + room.party.playerHand[selectedRemark].toneInt);
-                //Debug.Log("Remark Targeting Profile: " + room.party.playerHand[selectedRemark].targetingProfileInt);
+                //Debug.Log("Remark Tone: " + GameData.dispositionList[party.playerHand[selectedRemark].toneInt].like + " " + party.playerHand[selectedRemark].toneInt);
+                //Debug.Log("Remark Targeting Profile: " + party.playerHand[selectedRemark].targetingProfileInt);
             }
             else
             {
@@ -406,7 +421,7 @@ public class WorkTheRoomManager : MonoBehaviour
         if (targetingMode) //If a remark has been selected
         {
             //Targeting Profiles Get Taken into Account Here
-            switch (room.party.playerHand[targetingRemark].targetingProfileInt)
+            switch (party.playerHand[targetingRemark].targetingProfileInt)
             {          
                 case 1:
                     //No flip or failsafe version necessary, it's just one target
@@ -454,10 +469,10 @@ public class WorkTheRoomManager : MonoBehaviour
                     break;
             }
             //Deselect any remarks
-            room.party.playerHand.RemoveAt(targetingRemark);
+            party.playerHand.RemoveAt(targetingRemark);
             targetingRemark = -1;
             targetingMode = false;
-            if (room.party.playerHand.Count == 0)
+            if (party.playerHand.Count == 0)
             {
                 SpendConfidenceGetRemark();
             }
@@ -471,16 +486,16 @@ public class WorkTheRoomManager : MonoBehaviour
     void GuestTargeted(int guestNumber)
     {  
         //Wraparound is handled here
-        if (guestNumber >= room.guestList.Count)
+        if (guestNumber >= room.Guests.Length)
         {
-            guestNumber -= room.guestList.Count;
+            guestNumber -= room.Guests.Length;
         } else if (guestNumber < 0)
         {
-            guestNumber += room.guestList.Count;
+            guestNumber += room.Guests.Length;
         }
-        Guest guest = room.guestList[guestNumber];
+        Guest guest = room.Guests[guestNumber];
         //Do they like the Tone?
-        if (room.party.playerHand[targetingRemark].tone == guest.disposition.like) //They like the tone
+        if (party.playerHand[targetingRemark].tone == guest.disposition.like) //They like the tone
         {
             if (guest.isEnemy && GameData.playerReputationLevel >= 4)
             {
@@ -491,9 +506,9 @@ public class WorkTheRoomManager : MonoBehaviour
                 ChangeGuestOpinion(guest, (int)(Random.Range(25, 36) * ReparteBonus()));
             }
             AddRemarkToHand(); //Add a new Remark for Tone success           
-            room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 5, 5, room.party.maxPlayerConfidence); //Confidence Reward
+            party.currentPlayerConfidence = Mathf.Clamp(party.currentPlayerConfidence + 5, 5, party.maxPlayerConfidence); //Confidence Reward
             guest.dispositionRevealed = true; // Reveal their Disposition to the Player (if concealed)
-        } else if (room.party.playerHand[targetingRemark].tone == guest.disposition.dislike) //They dislike the tone
+        } else if (party.playerHand[targetingRemark].tone == guest.disposition.dislike) //They dislike the tone
         {
             if (!fascinatorEffect) //If the the Player doesn't have the Fascinator Accessory or its ability has already been used up
             {
@@ -505,7 +520,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 {
                     ChangeGuestOpinion(guest, (int)(Random.Range(-17, -11) * ReparteBonus()));
                 }
-                room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence - 10, 0, room.party.maxPlayerConfidence); //Confidence Penalty
+                party.currentPlayerConfidence = Mathf.Clamp(party.currentPlayerConfidence - 10, 0, party.maxPlayerConfidence); //Confidence Penalty
             } else //If it hasn't yet, use up the ability and ignore the first Negative Comment Effect
             {
                 fascinatorEffect = false;
@@ -528,15 +543,15 @@ public class WorkTheRoomManager : MonoBehaviour
         if (guest.isEnemy)
         {
             //Hammering on Offended Guests gives confidence
-            if (guest.guestLockedInState == Guest.lockedInState.PutOff)
+            if (guest.lockedInState == LockedInState.PutOff)
             {
-                room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 10, 10, (int)(room.party.maxPlayerConfidence * 1.5));
+                party.currentPlayerConfidence = Mathf.Clamp(party.currentPlayerConfidence + 10, 10, (int)(party.maxPlayerConfidence * 1.5));
             }
             //Check for Charmed Guests, this is necessary for the Attack Check below
             Guest charmedGuest = null;
-            foreach (Guest g in room.guestList)
+            foreach (Guest g in room.Guests)
             {
-                if (guest.guestLockedInState == Guest.lockedInState.Charmed)
+                if (guest.lockedInState == LockedInState.Charmed)
                 {
                     charmedGuest = g;
                 }
@@ -550,7 +565,7 @@ public class WorkTheRoomManager : MonoBehaviour
     {
         if (targetingMode)
         {
-            switch (room.party.playerHand[targetingRemark].targetingProfileInt)
+            switch (party.playerHand[targetingRemark].targetingProfileInt)
             {
                 case 1:
                     //No flip or failsafe version necessary, it's just one target
@@ -602,13 +617,13 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void GuestHighlight(int guestNumber)
     {
-        if (guestNumber >= room.guestList.Count)
+        if (guestNumber >= room.Guests.Length)
         {
-            guestNumber -= room.guestList.Count;
+            guestNumber -= room.Guests.Length;
         }
         else if (guestNumber < 0)
         {
-            guestNumber += room.guestList.Count;
+            guestNumber += room.Guests.Length;
         }
         switch (guestNumber)
         {
@@ -622,7 +637,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 break;
             case 2:
                 //There might not be 3 or more Guests, so this check is to make sure nothing breaks
-                if (room.guestList.Count > 2)
+                if (room.Guests.Length > 2)
                 {
                     guest2GuestImage.color = ReactionColor(2);
                     //guest2GuestImage.sprite = ReactionSprite(2);
@@ -630,7 +645,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 break;
             case 3:
                 //There might not be 4 Guests, so this check is to make sure nothing breaks
-                if (room.guestList.Count > 3)
+                if (room.Guests.Length > 3)
                 {
                     guest3GuestImage.color = ReactionColor(3);
                     //guest3GuestImage.sprite = ReactionSprite(3);
@@ -646,9 +661,9 @@ public class WorkTheRoomManager : MonoBehaviour
         for (int i = 0; i < guestImageList.Count; i++)
         {
             //Which Guest Image is Being Selected?
-            if (room.guestList[i].isFemale)
+            if (room.Guests[i].isFemale)
             {
-                if (room.guestList[i].imageInt == 0)
+                if (room.Guests[i].imageInt == 0)
                 {
                     dictionaryString = "female0";
                 }
@@ -659,7 +674,7 @@ public class WorkTheRoomManager : MonoBehaviour
             }
             else
             {
-                if (room.guestList[i].imageInt == 0)
+                if (room.Guests[i].imageInt == 0)
                 {
                     dictionaryString = "male0";
                 }
@@ -669,10 +684,10 @@ public class WorkTheRoomManager : MonoBehaviour
                 }
             }
             //What is the Locked In State of this Guest?
-            if (room.guestList[i].guestLockedInState == Guest.lockedInState.Charmed)
+            if (room.Guests[i].lockedInState == LockedInState.Charmed)
             {
                 guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Charmed"];
-            } else if (room.guestList[i].guestLockedInState == Guest.lockedInState.Interested)
+            } else if (room.Guests[i].lockedInState == LockedInState.Interested)
             {
                 guestImageList[i].sprite = GuestImageSprintDictionaries[dictionaryString]["Neutral"];
             } else
@@ -697,9 +712,9 @@ public class WorkTheRoomManager : MonoBehaviour
                 break;
             case 2:
                 //2 = Rumor Monger (Lower the Opinion of all uncharmed Guests)
-                foreach (Guest g in room.guestList)
+                foreach (Guest g in room.Guests)
                 {
-                    if(g.guestLockedInState != Guest.lockedInState.Charmed)
+                    if(g.lockedInState != LockedInState.Charmed)
                     {
                         g.currentOpinion -= 10;
                     }
@@ -707,12 +722,12 @@ public class WorkTheRoomManager : MonoBehaviour
                 break;
             case 3:
                 //3 = Belittle (Sap your Confidence)
-                room.party.currentPlayerConfidence -= 20;
+                party.currentPlayerConfidence -= 20;
                 break;
             case 4:
                 //4 = Antagonize (Uncharm a Charmed Guest, if there is one)
                 charmedGuest.currentOpinion = 90;
-                charmedGuest.guestLockedInState =Guest.lockedInState.Interested;
+                charmedGuest.lockedInState =LockedInState.Interested;
                 break;
         }
         if (attackNumber != 0)
@@ -732,7 +747,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
     public float ReparteBonus()
     {
-        if(room.currentTurnTimer/room.maxTurnTimer >= 0.5 && GameData.playerReputationLevel >= 2)
+        if(room.TurnTimer/maxTurnTimer >= 0.5 && GameData.playerReputationLevel >= 2)
         {
             return 1.25f;
         } else
@@ -744,15 +759,15 @@ public class WorkTheRoomManager : MonoBehaviour
     //Unused at the moment, should there be a color shift with Guests when they're highlighted?
     Color ReactionColor(int guestNumber)
     {
-        if(!room.guestList[guestNumber].dispositionRevealed && room.party.currentPlayerIntoxication >= 50)
+        if(!room.Guests[guestNumber].dispositionRevealed && party.currentPlayerIntoxication >= 50)
         {
             return Color.gray;
         }
-        if (room.party.playerHand[targetingRemark].tone == room.guestList[guestNumber].disposition.like) //They like the tone
+        if (party.playerHand[targetingRemark].tone == room.Guests[guestNumber].disposition.like) //They like the tone
         {
             return Color.green;
         }
-        else if (room.party.playerHand[targetingRemark].tone == room.guestList[guestNumber].disposition.dislike) //They dislike the tone
+        else if (party.playerHand[targetingRemark].tone == room.Guests[guestNumber].disposition.dislike) //They dislike the tone
         {
             return Color.red;
         }
@@ -767,9 +782,9 @@ public class WorkTheRoomManager : MonoBehaviour
         string dictionaryString;
         string reactionString;
         //Which Guest Image is Being Selected?
-        if (room.guestList[guestNumber].isFemale)
+        if (room.Guests[guestNumber].isFemale)
         {
-            if (room.guestList[guestNumber].imageInt == 0)
+            if (room.Guests[guestNumber].imageInt == 0)
             {
                 dictionaryString = "female0";
             }
@@ -780,7 +795,7 @@ public class WorkTheRoomManager : MonoBehaviour
         }
         else
         {
-            if (room.guestList[guestNumber].imageInt == 0)
+            if (room.Guests[guestNumber].imageInt == 0)
             {
                 dictionaryString = "male0";
             }
@@ -790,15 +805,15 @@ public class WorkTheRoomManager : MonoBehaviour
             }
         }
         //Which Guest Image State is Being Selected?
-        if (!room.guestList[guestNumber].dispositionRevealed && room.party.currentPlayerIntoxication >= 50) //Is the Player too trashed to notice at all?
+        if (!room.Guests[guestNumber].dispositionRevealed && party.currentPlayerIntoxication >= 50) //Is the Player too trashed to notice at all?
         {
             reactionString = "Neutral";
         }
-        if (room.party.playerHand[targetingRemark].tone == room.guestList[guestNumber].disposition.like) //They like the tone
+        if (party.playerHand[targetingRemark].tone == room.Guests[guestNumber].disposition.like) //They like the tone
         {
             reactionString = "Approve";
         }
-        else if (room.party.playerHand[targetingRemark].tone == room.guestList[guestNumber].disposition.dislike) //They dislike the tone
+        else if (party.playerHand[targetingRemark].tone == room.Guests[guestNumber].disposition.dislike) //They dislike the tone
         {
             reactionString = "Disapprove";
         }
@@ -814,9 +829,9 @@ public class WorkTheRoomManager : MonoBehaviour
         string dictionaryString;
         string reactionString;
         //Which Guest Image is Being Selected?
-        if (room.guestList[guestNumber].isFemale)
+        if (room.Guests[guestNumber].isFemale)
         {
-            if (room.guestList[guestNumber].imageInt == 0)
+            if (room.Guests[guestNumber].imageInt == 0)
             {
                 dictionaryString = "female0";
             }
@@ -827,7 +842,7 @@ public class WorkTheRoomManager : MonoBehaviour
         }
         else
         {
-            if (room.guestList[guestNumber].imageInt == 0)
+            if (room.Guests[guestNumber].imageInt == 0)
             {
                 dictionaryString = "male0";
             }
@@ -837,18 +852,18 @@ public class WorkTheRoomManager : MonoBehaviour
             }
         }
         //Which Guest Image State is Being Selected?
-        if(room.guestList[guestNumber].guestLockedInState == Guest.lockedInState.Charmed)
+        if(room.Guests[guestNumber].lockedInState == LockedInState.Charmed)
         {
             reactionString = "Charmed";
-        } else if (room.guestList[guestNumber].guestLockedInState == Guest.lockedInState.PutOff)
+        } else if (room.Guests[guestNumber].lockedInState == LockedInState.PutOff)
         {
             reactionString = "Put Off";
         } else
         {
-            if(room.guestList[guestNumber].currentOpinion >= 70)
+            if(room.Guests[guestNumber].currentOpinion >= 70)
             {
                 reactionString = "Approve";
-            } else if (room.guestList[guestNumber].currentOpinion <= 30)
+            } else if (room.Guests[guestNumber].currentOpinion <= 30)
             {
                 reactionString = "Disapprove";
             } else
@@ -861,32 +876,32 @@ public class WorkTheRoomManager : MonoBehaviour
 
     Color DispositionImageColor(int guest)
     {
-        if (room.party.currentPlayerIntoxication >= 50 && room.guestList[guest].dispositionRevealed == false)
+        if (party.currentPlayerIntoxication >= 50 && room.Guests[guest].dispositionRevealed == false)
         {
             return Color.gray;
         }
         else
         {
-            return GameData.dispositionList[room.guestList[guest].dispositionInt].color;
+            return GameData.dispositionList[room.Guests[guest].dispositionInt].color;
         }
     }
 
     void EndTurn()
     {
         //Reset the Turn Timer
-        room.currentTurnTimer = room.maxTurnTimer;
-        turnTimerBar.value = room.currentTurnTimer / room.maxTurnTimer;
+        room.TurnTimer = maxTurnTimer;
+        turnTimerBar.value = room.TurnTimer / maxTurnTimer;
 
         //Increment all the Guest Timers, issue Boredom Damage
-        foreach (Guest g in room.guestList)
+        foreach (Guest g in room.Guests)
         {
             g.currentInterestTimer = Mathf.Clamp(g.currentInterestTimer - 1, 0, g.maxInterestTimer);
-            if (g.currentInterestTimer <= 0 && g.guestLockedInState == Guest.lockedInState.Interested && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored they merely wait
+            if (g.currentInterestTimer <= 0 && g.lockedInState == LockedInState.Interested && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored they merely wait
             {
                 ChangeGuestOpinion(g, -10);
                 if (g.currentOpinion <= 0)
                 {
-                    g.guestLockedInState = Guest.lockedInState.PutOff;
+                    g.lockedInState = LockedInState.PutOff;
                 }
             }
         }
@@ -929,43 +944,43 @@ public class WorkTheRoomManager : MonoBehaviour
     public void SpendConfidenceGetRemark()
     {
         int confidenceCost = 10;
-        if (room.party.currentPlayerConfidence >= confidenceCost && room.party.playerHand.Count < 5)
+        if (party.currentPlayerConfidence >= confidenceCost && party.playerHand.Count < 5)
         {
-            room.party.currentPlayerConfidence -= confidenceCost;
+            party.currentPlayerConfidence -= confidenceCost;
             AddRemarkToHand();
         }
     }
 
     public void DrinkForConfidence()
     {
-        if (room.party.currentPlayerDrinkAmount > 0 && room.party.currentPlayerConfidence != room.party.maxPlayerConfidence)
+        if (party.currentPlayerDrinkAmount > 0 && party.currentPlayerConfidence != party.maxPlayerConfidence)
         {
-            room.party.currentPlayerDrinkAmount--;
-            room.party.currentPlayerConfidence = Mathf.Clamp(room.party.currentPlayerConfidence + 20, 20, room.party.maxPlayerConfidence);
-            int drinkStrength = room.party.drinkStrength;
+            party.currentPlayerDrinkAmount--;
+            party.currentPlayerConfidence = Mathf.Clamp(party.currentPlayerConfidence + 20, 20, party.maxPlayerConfidence);
+            int drinkStrength = party.drinkStrength;
             //Is the Player decent friends with the Military? If so, make them more alcohol tolerant!
-            if(GameData.factionList["Military"].PlayerReputationLevel() >= 3)
+            if(GameData.factionList["Military"].ReputationLevel >= 3)
             {
                 drinkStrength -= 3;
             }
             //Is the Player using the Snuff Box Accessory? If so, then decrease the Intoxicating Effects of Booze!
-            if (GameData.partyAccessoryID != -1)
+            if (GameData.partyAccessory != null)
             {
-                if (AccessoryInventory.personalInventory[GameData.partyAccessoryID].Type() == "Snuff Box")
+                if (GameData.partyAccessory.Type == "Snuff Box")
                 {
                     drinkStrength -= 5;
                 }
             }        
-            room.party.currentPlayerIntoxication += drinkStrength;
+            party.currentPlayerIntoxication += drinkStrength;
 
             //Conceal the dispositions of all the Guests in the room (only has effect if the Player is drunk)
-            foreach (Guest t in room.guestList)
+            foreach (Guest t in room.Guests)
             {
                 t.dispositionRevealed = false;
             }
 
             //Check for Blacking Out
-            if (room.party.currentPlayerIntoxication >= room.party.maxPlayerIntoxication)
+            if (party.currentPlayerIntoxication >= party.maxPlayerIntoxication)
             {
                 BlackOut();
             }
@@ -984,47 +999,48 @@ public class WorkTheRoomManager : MonoBehaviour
             case 1:
                 effect = "Reputation Loss";
                 effectAmount = Random.Range(20,51) * -1;
-                room.party.wonRewardsList.Add(new Reward(room.party, "Reputation", effectAmount));
+                party.wonRewardsList.Add(new Reward(party, "Reputation", effectAmount));
                 break;
             case 2:
                 effect = "Faction Reputation Loss";
                 effectAmount = Random.Range(20, 51) * -1;
-                room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction.Name(), effectAmount));
+                party.wonRewardsList.Add(new Reward(party, "Faction Reputation", party.faction, effectAmount));
                 break;
             case 3:
                 effect = "Outfit Novelty Loss";
                 effectAmount = Random.Range(20, 51);
-                OutfitInventory.personalInventory[GameData.partyOutfitID].novelty = Mathf.Clamp(OutfitInventory.personalInventory[GameData.partyOutfitID].novelty - effectAmount, 0, 100);
+                OutfitInventory.PartyOutfit.novelty = Mathf.Clamp(OutfitInventory.PartyOutfit.novelty - effectAmount, 0, 100);
                 break;
             case 4:
                 effect = "Outfit Ruined";
-                OutfitInventory.personalInventory.RemoveAt(GameData.partyOutfitID);
+				OutfitInventory.personalInventory.Remove(OutfitInventory.PartyOutfit);
+				OutfitInventory.PartyOutfit = null;
                 break;
             case 5:
                 effect = "Accessory Ruined";
-                if(GameData.partyAccessoryID != -1) //If the Player actually wore and Accessory to this Party
+                if(GameData.partyAccessory != null) //If the Player actually wore and Accessory to this Party
                 {
-                    AccessoryInventory.personalInventory.RemoveAt(GameData.partyAccessoryID);
+					DeWinterApp.SendMessage<ItemVO>(InventoryConsts.REMOVE_ITEM, GameData.partyAccessory);
                 } else
                 {
                     effect = "Livre Lost";
                     effectAmount = Random.Range(30, 61) * -1;
-                    room.party.wonRewardsList.Add(new Reward(room.party, "Livre", effectAmount));
+                    party.wonRewardsList.Add(new Reward(party, "Livre", effectAmount));
                 }
                 break;
             case 6:
                 effect = "Livre Lost";
                 effectAmount = Random.Range(30, 61) * -1;
-                room.party.wonRewardsList.Add(new Reward(room.party, "Livre", effectAmount));
+                party.wonRewardsList.Add(new Reward(party, "Livre", effectAmount));
                 break;
             case 7:
                 effect = "New Enemy";
-                EnemyInventory.AddEnemy(new Enemy(room.party.faction));
+                EnemyInventory.AddEnemy(new Enemy(party.faction));
                 break;
             case 8:
                 effect = "Forgot All Gossip";
                 List<Reward> gossipList = new List<Reward>();
-                foreach (Reward r in room.party.wonRewardsList)
+                foreach (Reward r in party.wonRewardsList)
                 {
                     if(r.Type() == "Gossip")
                     {
@@ -1035,12 +1051,12 @@ public class WorkTheRoomManager : MonoBehaviour
                 {
                     foreach (Reward r in gossipList)
                     {
-                        room.party.wonRewardsList.Remove(r);
+                        party.wonRewardsList.Remove(r);
                     }
                 } else //If they have no Gossip to Lose
                 {
                     effect = "New Enemy";
-                    EnemyInventory.AddEnemy(new Enemy(room.party.faction));
+                    EnemyInventory.AddEnemy(new Enemy(party.faction));
                 }
                 break;
             case 9:
@@ -1058,53 +1074,52 @@ public class WorkTheRoomManager : MonoBehaviour
                 case 1:
                     effect = "Reputation Gain";
                     effectAmount = Random.Range(20, 51);
-                    room.party.wonRewardsList.Add(new Reward(room.party, "Reputation", effectAmount));
+                    party.wonRewardsList.Add(new Reward(party, "Reputation", effectAmount));
                     break;
                 case 2:
                     effect = "Faction Reputation Gain";
                     effectAmount = Random.Range(20, 51);
-                    room.party.wonRewardsList.Add(new Reward(room.party, "Faction Reputation", room.party.faction.Name(), effectAmount));
+                    party.wonRewardsList.Add(new Reward(party, "Faction Reputation", party.faction, effectAmount));
                     break;
                 case 3:
                     effect = "Livre Gained";
                     effectAmount = Random.Range(30, 61);
-                    room.party.wonRewardsList.Add(new Reward(room.party, "Livre", effectAmount));
+                    party.wonRewardsList.Add(new Reward(party, "Livre", effectAmount));
                     break;
                 case 4:
                     effect = "New Gossip";
-                    room.party.wonRewardsList.Add(new Reward(room.party, "Gossip", 1));
+                    party.wonRewardsList.Add(new Reward(party, "Gossip", 1));
                     break;
                 default:
                     effect = "Eliminated an Enemy";
-                    if(room.party.enemyList.Count == 0)
+                    if(party.enemyList.Count == 0)
                     {
                         effect = "New Gossip";
-                        room.party.wonRewardsList.Add(new Reward(room.party, "Gossip", 1));
+                        party.wonRewardsList.Add(new Reward(party, "Gossip", 1));
                     } else
                     {
-                        room.party.enemyList.RemoveAt(Random.Range(0, room.party.enemyList.Count));
+                        party.enemyList.RemoveAt(Random.Range(0, party.enemyList.Count));
                     }
                     break;
             }  
         }
-        room.party.blackOutEffect = effect;
-        room.party.blackOutEffectAmount = effectAmount;
+        party.blackOutEffect = effect;
+        party.blackOutEffectAmount = effectAmount;
         Debug.Log("Black Out Effect Chosen! It's " + effect);
         //Close Window
         Destroy(gameObject);
-        GameData.activeModals--;
 
         //Send to After Party Report Screen
         Debug.Log("Trying to go to the After Party Report Screen!");
-        room.party.blackOutEnding = true;
+        party.blackOutEnding = true;
         roomManager.partyManager.FinishTheParty();
-        levelManager.LoadLevel("Game_AfterPartyReport");
+		DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_AfterPartyReport");
         Debug.Log("At the After Party Report Screen!");
     }
 
     public Sprite VisualizeTargetingProfile(int remarkInt)
     {
-        switch (room.party.playerHand[remarkInt].targetingProfileInt)
+        switch (party.playerHand[remarkInt].targetingProfileInt)
         {
             case 1:
                 return targetingProfile1;
@@ -1121,26 +1136,26 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void ChangeGuestOpinion(Guest guest, int amount)
     {
-        if (guest.guestLockedInState == Guest.lockedInState.Interested) //Is this one locked in yet?
+        if (guest.lockedInState == LockedInState.Interested) //Is this one locked in yet?
         {
             guest.currentOpinion += amount;
         }
         //Are they Charmed or Put Off?
-        if (guest.currentOpinion >= 100 && guest.guestLockedInState == Guest.lockedInState.Interested) //If they're not already Charmed then Player Hand is refilled once
+        if (guest.currentOpinion >= 100 && guest.lockedInState == LockedInState.Interested) //If they're not already Charmed then Player Hand is refilled once
         {
-            guest.guestLockedInState = Guest.lockedInState.Charmed;
+            guest.lockedInState = LockedInState.Charmed;
             RefillPlayerHand();
         }
-        else if (guest.currentOpinion <= 0 && guest.guestLockedInState == Guest.lockedInState.Interested) //If they're not already Put Off then Player Confidence is reduced by 30
+        else if (guest.currentOpinion <= 0 && guest.lockedInState == LockedInState.Interested) //If they're not already Put Off then Player Confidence is reduced by 30
         {
-            guest.guestLockedInState = Guest.lockedInState.PutOff;
-            room.party.currentPlayerConfidence -= 30;
+            guest.lockedInState = LockedInState.PutOff;
+            party.currentPlayerConfidence -= 30;
         }
-        if (guest.guestLockedInState == Guest.lockedInState.Charmed) // If they're Charmed then Opinion is 100
+        if (guest.lockedInState == LockedInState.Charmed) // If they're Charmed then Opinion is 100
         {
             guest.currentOpinion = 100;
         }
-        else if (guest.guestLockedInState == Guest.lockedInState.PutOff) // If they're Put Off then Opinion is 0
+        else if (guest.lockedInState == LockedInState.PutOff) // If they're Put Off then Opinion is 0
         {
             guest.currentOpinion = 0;
         }
@@ -1148,22 +1163,22 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void AddRemarkToHand()
     {
-        if (room.party.playerHand.Count < 6) // This is one larger than it should be because Remarks are deducted after they're added
+        if (party.playerHand.Count < 6) // This is one larger than it should be because Remarks are deducted after they're added
         {
-            Remark remark = new Remark(room.party.lastTone, room.guestList.Count);
-            room.party.lastTone = remark.tone;
-            room.party.playerHand.Add(remark);
+            Remark remark = new Remark(party.lastTone, room.Guests.Length);
+            party.lastTone = remark.tone;
+            party.playerHand.Add(remark);
         }
     }
 
     void RefillPlayerHand()
     {
-        int numberOfCardsForRefill = 5 - room.party.playerHand.Count;
+        int numberOfCardsForRefill = 5 - party.playerHand.Count;
         for (int i = 0; i < numberOfCardsForRefill; i++)
         {
-            Remark remark = new Remark(room.party.lastTone, room.guestList.Count);
-            room.party.lastTone = remark.tone;
-            room.party.playerHand.Add(remark);
+            Remark remark = new Remark(party.lastTone, room.Guests.Length);
+            party.lastTone = remark.tone;
+            party.playerHand.Add(remark);
         }
     }
 
@@ -1176,7 +1191,7 @@ public class WorkTheRoomManager : MonoBehaviour
     {
         if (targetingMode)
         {
-            room.party.playerHand.RemoveAt(targetingRemark);
+            party.playerHand.RemoveAt(targetingRemark);
             AddRemarkToHand();
             EndTurn();
         }
@@ -1191,11 +1206,11 @@ public class WorkTheRoomManager : MonoBehaviour
     {
         if (!guest.isEnemy)
         {
-            if (guest.guestLockedInState == Guest.lockedInState.Charmed)
+            if (guest.lockedInState == LockedInState.Charmed)
             {
                 return "Charmed";
             }
-            else if (guest.guestLockedInState == Guest.lockedInState.PutOff)
+            else if (guest.lockedInState == LockedInState.PutOff)
             {
                 return "Put Off";
             }
@@ -1224,11 +1239,11 @@ public class WorkTheRoomManager : MonoBehaviour
                         return "Attacking!";
                 }
             } else {
-                if (guest.guestLockedInState == Guest.lockedInState.Charmed)
+                if (guest.lockedInState == LockedInState.Charmed)
                 {
                     return "Dazed";
                 }
-                else if (guest.guestLockedInState == Guest.lockedInState.PutOff)
+                else if (guest.lockedInState == LockedInState.PutOff)
                 {
                     return "Offended";
                 }
@@ -1245,36 +1260,37 @@ public class WorkTheRoomManager : MonoBehaviour
         //Check to see if everyone is either Charmed or Put Off 
         int charmedAmount = 0;
         int putOffAmount = 0;
-        foreach (Guest g in room.guestList)
+        foreach (Guest g in room.Guests)
         {
-            if(g.guestLockedInState == Guest.lockedInState.Charmed)
+            if(g.lockedInState == LockedInState.Charmed)
             {
                 charmedAmount++;
-            } else if (g.guestLockedInState == Guest.lockedInState.PutOff)
+            } else if (g.lockedInState == LockedInState.PutOff)
             {
                 putOffAmount++;
             }
             //If the Conversation is Over
-            if (charmedAmount + putOffAmount == room.guestList.Count)
+            if (charmedAmount + putOffAmount == room.Guests.Length)
             {
                 Debug.Log("Conversation Over!");
-                room.cleared = true;
+                room.Cleared = true;
                 //Remove the Ambush Cards (If present)
-                foreach (Remark r in room.party.playerHand)
+                foreach (Remark r in party.playerHand)
                 {
                     if (r.ambushRemark)
                     {
-                        room.party.playerHand.Remove(r);
+                        party.playerHand.Remove(r);
                     }
                 }
                 //Rewards Distributed Here
-                Reward givenReward = room.rewardList[charmedAmount]; //Amount of Charmed Guests determines the level of Reward.
+                Reward givenReward = room.Rewards[charmedAmount]; //Amount of Charmed Guests determines the level of Reward.
                 if (givenReward.Type() == "Introduction")
                 {
+                	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
                     foreach (Reward r in GameData.tonightsParty.wonRewardsList)
                     {
                         //If that Servant has already been Introduced or if the Reward of their Introduction has already been handed out then change the Reward to Gossip
-                        if ((r.SubType() == givenReward.SubType() && r.amount > 0) || GameData.servantDictionary[givenReward.SubType()].Introduced())
+						if ((r.SubType() == givenReward.SubType() && r.amount > 0) || smod.Introduced.ContainsKey(givenReward.SubType()))
                         {
                             givenReward = new Reward(GameData.tonightsParty, "Gossip", 1);
                         }
@@ -1284,12 +1300,11 @@ public class WorkTheRoomManager : MonoBehaviour
                 object[] objectStorage = new object[4];
                 objectStorage[0] = charmedAmount;
                 objectStorage[1] = putOffAmount;
-                objectStorage[2] = room.hostHere;
+                objectStorage[2] = room.HostHere;
                 objectStorage[3] = givenReward;
                 screenFader.gameObject.SendMessage("WorkTheRoomReportModal", objectStorage);
                 //Close the Window
                 Destroy(gameObject);
-                GameData.activeModals--;
             }
         }
     }
@@ -1297,34 +1312,33 @@ public class WorkTheRoomManager : MonoBehaviour
     void ConfidenceCheck()
     {
         //Check to see if the Player has run out of Confidence
-        if (room.party.currentPlayerConfidence <= 0)
+        if (party.currentPlayerConfidence <= 0)
         {
-            if (!room.party.tutorial) //If this is not the tutorial Party
+            if (!party.tutorial) //If this is not the tutorial Party
             {
                 //The Player loses a turn
-                room.party.turnsLeft--;
+                party.turnsLeft--;
                 //The Player has their Confidence Reset
-                room.party.currentPlayerConfidence = room.party.startingPlayerConfidence / 2;
+                party.currentPlayerConfidence = party.startingPlayerConfidence / 2;
                 //The Player is relocated to the Entrance
                 roomManager.MovePlayerToEntrance();
                 //The Player's Reputation is Punished
                 int reputationLoss = 25;
                 int factionReputationLoss = 50;
                 GameData.reputationCount -= reputationLoss;
-                room.party.faction.playerReputation -= factionReputationLoss;
+				DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -factionReputationLoss));
                 //Explanation Screen Pop Up goes here
                 object[] objectStorage = new object[3];
-                objectStorage[0] = room.party;
+                objectStorage[0] = party;
                 objectStorage[1] = reputationLoss;
                 objectStorage[2] = factionReputationLoss;
                 screenFader.gameObject.SendMessage("CreateFailedConfidenceModal", objectStorage);
                 //The Player is pulled from the Work the Room session
                 Destroy(gameObject);
-                GameData.activeModals--;
             } else //The tutorial Party is a lot more forgiving
             {
                 //The Player has their Confidence Reset
-                room.party.currentPlayerConfidence = room.party.startingPlayerConfidence;
+                party.currentPlayerConfidence = party.startingPlayerConfidence;
                 //The Player is relocated to the Entrance
                 roomManager.MovePlayerToEntrance();
                 //The Player's Reputation is not Punished
@@ -1332,13 +1346,12 @@ public class WorkTheRoomManager : MonoBehaviour
                 int factionReputationLoss = 0;
                 //Explanation Screen Pop Up goes here
                 object[] objectStorage = new object[3];
-                objectStorage[0] = room.party;
+                objectStorage[0] = party;
                 objectStorage[1] = reputationLoss;
                 objectStorage[2] = factionReputationLoss;
                 screenFader.gameObject.SendMessage("CreateFailedConfidenceModal", objectStorage);
                 //The Player is pulled from the Work the Room session
                 Destroy(gameObject);
-                GameData.activeModals--;
             }  
         }
     }
@@ -1346,7 +1359,7 @@ public class WorkTheRoomManager : MonoBehaviour
     void InterestTimersDisplayCheck()
     {
         //------------- Guest 0 -------------
-        if (room.guestList[0].guestLockedInState != Guest.lockedInState.Interested || room.guestList[0].isEnemy)
+        if (room.Guests[0].lockedInState != LockedInState.Interested || room.Guests[0].isEnemy)
         {
             guest0InterestBar.image.color = Color.clear;
             guest0InterestBarImage.color = Color.clear;
@@ -1358,7 +1371,7 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //------------- Guest 1 -------------
-        if (room.guestList[1].guestLockedInState != Guest.lockedInState.Interested || room.guestList[1].isEnemy)
+        if (room.Guests[1].lockedInState != LockedInState.Interested || room.Guests[1].isEnemy)
         {
             guest1InterestBar.image.color = Color.clear;
             guest1InterestBarImage.color = Color.clear;
@@ -1371,9 +1384,9 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //------------- Guest 2 -------------
         //There might not be 3 Guests or more, so this check is to make sure nothing breaks
-        if (room.guestList.Count > 2)
+        if (room.Guests.Length > 2)
         {
-            if (room.guestList[2].guestLockedInState != Guest.lockedInState.Interested || room.guestList[2].isEnemy)
+            if (room.Guests[2].lockedInState != LockedInState.Interested || room.Guests[2].isEnemy)
             {
                 guest2InterestBar.image.color = Color.clear;
                 guest2InterestBarImage.color = Color.clear;
@@ -1387,9 +1400,9 @@ public class WorkTheRoomManager : MonoBehaviour
 
         //------------- Guest 3 -------------
         //There might not be 4 Guests or more, so this check is to make sure nothing breaks
-        if (room.guestList.Count > 3)
+        if (room.Guests.Length > 3)
         {
-            if (room.guestList[3].guestLockedInState != Guest.lockedInState.Interested || room.guestList[3].isEnemy)
+            if (room.Guests[3].lockedInState != LockedInState.Interested || room.Guests[3].isEnemy)
             {
                 guest3InterestBar.image.color = Color.clear;
                 guest3InterestBarImage.color = Color.clear;
@@ -1402,6 +1415,11 @@ public class WorkTheRoomManager : MonoBehaviour
         }
     }
 
+	private void HandleStartTimers()
+	{
+		StartCoroutine(ConversationStartTimerWait());
+	}
+
     public IEnumerator ConversationStartTimerWait()
     {
         Debug.Log("Ready? Go! Timer Started!");
@@ -1413,7 +1431,6 @@ public class WorkTheRoomManager : MonoBehaviour
 
     public IEnumerator NextTurnTimerWait()
     {
-        Debug.Log("Next Turn Timer Started!");
         yield return new WaitForSeconds(0.75f);
         turnTimerActive = true;
     }
@@ -1442,13 +1459,13 @@ public class WorkTheRoomManager : MonoBehaviour
     {
         for (int i = 0; i < remarkSlotList.Count; i++)
         {
-            if (room.party.playerHand.ElementAtOrDefault(i) != null)
+            if (party.playerHand.ElementAtOrDefault(i) != null)
             {
-                if (!room.party.playerHand[i].ambushRemark)
+                if (!party.playerHand[i].ambushRemark)
                 {
                     remarkSlotList[i].targetingProfileImage.color = Color.white;
                     remarkSlotList[i].targetingProfileImage.sprite = VisualizeTargetingProfile(i);
-                    remarkSlotList[i].dispositionIcon.color = GameData.dispositionList[room.party.playerHand[i].toneInt].color;
+                    remarkSlotList[i].dispositionIcon.color = GameData.dispositionList[party.playerHand[i].toneInt].color;
                     if (targetingFlipped)
                     {
                         remarkSlotList[i].targetingProfileImage.transform.localScale = new Vector3(-1, 1, 1);
@@ -1475,21 +1492,21 @@ public class WorkTheRoomManager : MonoBehaviour
     void VisualizeGuests()
     {
         //---- Guest 0 ----
-        guest0InterestText.text = InterestState(room.guestList[0]);
-        if (room.guestList[0].isEnemy)
+        guest0InterestText.text = InterestState(room.Guests[0]);
+        if (room.Guests[0].isEnemy)
         {
             guest0InterestText.color = Color.red;
         } else
         {
             guest0InterestText.color = Color.white;
         }
-        guest0InterestBar.value = InterestTimer(room.guestList[0]);
-        guest0OpinionBar.value = (float)room.guestList[0].currentOpinion / 100;
+        guest0InterestBar.value = InterestTimer(room.Guests[0]);
+        guest0OpinionBar.value = (float)room.Guests[0].currentOpinion / 100;
         guest0DispositionIcon.color = DispositionImageColor(0);
         guest0GuestImage.sprite = GuestStateSprite(0);
         //---- Guest 1 ----
-        guest1InterestText.text = InterestState(room.guestList[1]);
-        if (room.guestList[1].isEnemy)
+        guest1InterestText.text = InterestState(room.Guests[1]);
+        if (room.Guests[1].isEnemy)
         {
             guest1InterestText.color = Color.red;
         }
@@ -1497,16 +1514,16 @@ public class WorkTheRoomManager : MonoBehaviour
         {
             guest1InterestText.color = Color.white;
         }
-        guest1InterestBar.value = InterestTimer(room.guestList[1]);
-        guest1OpinionBar.value = (float)room.guestList[1].currentOpinion / 100;
+        guest1InterestBar.value = InterestTimer(room.Guests[1]);
+        guest1OpinionBar.value = (float)room.Guests[1].currentOpinion / 100;
         guest1DispositionIcon.color = DispositionImageColor(1);
         guest1GuestImage.sprite = GuestStateSprite(1);
         //---- Guest 2 ---- 
         //There might not be 3 Guests or more, so this check is to make sure nothing breaks
-        if(room.guestList.Count > 2)
+        if(room.Guests.Length > 2)
         {
-            guest2InterestText.text = InterestState(room.guestList[2]);
-            if (room.guestList[2].isEnemy)
+            guest2InterestText.text = InterestState(room.Guests[2]);
+            if (room.Guests[2].isEnemy)
             {
                 guest2InterestText.color = Color.red;
             }
@@ -1514,17 +1531,17 @@ public class WorkTheRoomManager : MonoBehaviour
             {
                 guest2InterestText.color = Color.white;
             }
-            guest2InterestBar.value = InterestTimer(room.guestList[2]);
-            guest2OpinionBar.value = (float)room.guestList[2].currentOpinion / 100;
+            guest2InterestBar.value = InterestTimer(room.Guests[2]);
+            guest2OpinionBar.value = (float)room.Guests[2].currentOpinion / 100;
             guest2DispositionIcon.color = DispositionImageColor(2);
             guest2GuestImage.sprite = GuestStateSprite(2);
         }
         //---- Guest 3 ----
         //There might not be 4 Guests, so this check is to make sure nothing breaks
-        if (room.guestList.Count > 3)
+        if (room.Guests.Length > 3)
         {
-            guest3InterestText.text = InterestState(room.guestList[3]);
-            if (room.guestList[3].isEnemy)
+            guest3InterestText.text = InterestState(room.Guests[3]);
+            if (room.Guests[3].isEnemy)
             {
                 guest3InterestText.color = Color.red;
             }
@@ -1532,8 +1549,8 @@ public class WorkTheRoomManager : MonoBehaviour
             {
                 guest3InterestText.color = Color.white;
             }
-            guest3InterestBar.value = InterestTimer(room.guestList[3]);
-            guest3OpinionBar.value = (float)room.guestList[3].currentOpinion / 100;
+            guest3InterestBar.value = InterestTimer(room.Guests[3]);
+            guest3OpinionBar.value = (float)room.Guests[3].currentOpinion / 100;
             guest3DispositionIcon.color = DispositionImageColor(3);
             guest3GuestImage.sprite = GuestStateSprite(3);
         }

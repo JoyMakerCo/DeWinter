@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using DeWinter;
 
-public class AccessoryInventoryList : MonoBehaviour {
-
-    public string inventoryType;
-    public int selectedAccessory;
+public class AccessoryInventoryList : MonoBehaviour
+{
+   	public string inventoryType;
+    public ItemVO selectedAccessory;
     public GameObject accessoryInventoryButtonPrefab;
     //public WardrobeImageController imageController;
 
@@ -12,20 +15,29 @@ public class AccessoryInventoryList : MonoBehaviour {
     void Start()
     {
         GenerateInventoryButtons();
-        selectedAccessory = -1; // So nothing is selected at the start
+        selectedAccessory = null; // So nothing is selected at the start
     }
 
     public void GenerateInventoryButtons()
     {
-        for (int i = 0; i < AccessoryInventory.accessoryInventories[inventoryType].Count; i++)
-        {
-            GameObject button = GameObject.Instantiate(accessoryInventoryButtonPrefab);
-            AccessoryInventoryButton buttonStats = button.GetComponent<AccessoryInventoryButton>();
-            buttonStats.accessoryID = i;
-            buttonStats.inventoryType = inventoryType;
-            button.transform.SetParent(this.transform, false);
-            //buttonStats.imageController = imageController;
-            Debug.Log("Generating Accessory Inventory Button, Type: " + inventoryType + ", Number: " + i);
+		List<ItemVO> accessories;
+		if (inventoryType == "personal")
+			accessories = DeWinterApp.GetModel<InventoryModel>().Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
+		else
+			accessories = DeWinterApp.GetModel<InventoryModel>().Market.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
+
+		if (accessories != null)
+		{
+			foreach (ItemVO accessory in accessories)
+	        {
+	            GameObject button = GameObject.Instantiate(accessoryInventoryButtonPrefab);
+	            AccessoryInventoryButton buttonStats = button.GetComponent<AccessoryInventoryButton>();
+	            buttonStats.accessory = accessory;
+	            buttonStats.inventoryType = inventoryType;
+	            button.transform.SetParent(this.transform, false);
+	            //buttonStats.imageController = imageController;
+	            Debug.Log("Generating Accessory Inventory Button, Type: " + inventoryType + ", Item: " + accessory.Name);
+	        }
         }
     }
 
@@ -39,7 +51,7 @@ public class AccessoryInventoryList : MonoBehaviour {
 
     public void SelectPartyAccessory()
     {
-        GameData.partyAccessoryID = selectedAccessory;
+        GameData.partyAccessory = selectedAccessory;
         Debug.Log("Party Accessory Set!");
     }
 }

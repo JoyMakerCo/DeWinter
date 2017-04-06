@@ -11,6 +11,6 @@ public class FactionReputationTracker : MonoBehaviour {
 	}
 
 	void Update () {
-	    myText.text = "- Your Reputation Level with The " + factionTracked + " is " + GameData.factionList[factionTracked].PlayerReputationLevel().ToString();
+	    myText.text = "- Your Reputation Level with The " + factionTracked + " is " + GameData.factionList[factionTracked].ReputationLevel.ToString();
 	}
 }

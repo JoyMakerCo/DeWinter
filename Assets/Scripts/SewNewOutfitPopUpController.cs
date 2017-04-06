@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using DeWinter;
 
 public class SewNewOutfitPopUpController : MonoBehaviour {
 
@@ -52,7 +53,6 @@ public class SewNewOutfitPopUpController : MonoBehaviour {
             personalInventoryList.ClearInventoryButtons();
             personalInventoryList.GenerateInventoryButtons();
             Destroy(transform.parent.gameObject);
-            GameData.activeModals--;
         } else
         {
             Debug.Log("Can't Afford to make that Outfit :(");
@@ -64,7 +64,7 @@ public class SewNewOutfitPopUpController : MonoBehaviour {
         int calcPrice = (int)(Mathf.Abs(outfitModesty) + Mathf.Abs(outfitLuxury));
         if (outfitStyle != GameData.currentStyle) //Check to see if this Outfit matches what's in Style
         {
-            calcPrice = (int)(calcPrice * GameData.outOfStylePriceMultiplier);
+			calcPrice = (int)(calcPrice * DeWinterApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
         }
         if (calcPrice < 10) // If the Price is less than 10 make it 10. Will Sell for 5 at most (Sell price is 50% of Buy Price)
         {

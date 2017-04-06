@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Core;
 
@@ -13,7 +15,7 @@ namespace Dialog
 		protected Dictionary<string, GameObject> _dialogs;
 		protected Canvas _canvas;
 
-		void Start()
+		void Awake()
 		{
 			App.Service<DialogSvc>().RegisterManager(this);
 
@@ -21,32 +23,25 @@ namespace Dialog
 			_prefabs = new Dictionary<string, GameObject>();
 			_dialogs = new Dictionary<string, GameObject>();
 
-			(new List<GameObject>(DialogPrefabs)).ForEach(RegisterPrefab);
-		}
-
-		protected void RegisterPrefab(GameObject prefab)
-		{
-			_prefabs[prefab.name] = prefab;
+			foreach (GameObject prefab in DialogPrefabs)
+			{
+				_prefabs.Add(prefab.name, prefab);
+			}
 		}
 
 		public GameObject Open(string dialogID)
 		{
+			Close(dialogID);
 			GameObject prefab;
 			if (!_prefabs.TryGetValue(dialogID, out prefab))
 				return null;
 			
-			GameObject dialog;
-			if (!_dialogs.TryGetValue(dialogID, out dialog))
-			{
-				dialog = GameObject.Instantiate<GameObject>(prefab);
-				_dialogs.Add(dialogID, dialog);
-				dialog.transform.SetParent(_canvas.transform, false);
-			}
-			else
-			{
-				dialog.GetComponent<RectTransform>().SetAsLastSibling();
-			}
-
+			GameObject dialog = GameObject.Instantiate<GameObject>(prefab);
+			DialogView cmp = dialog.GetComponent<DialogView>();
+			if (cmp != null) cmp.Manager = this;
+			_dialogs.Add(dialogID, dialog);
+			dialog.transform.SetParent(_canvas.transform, false);
+			dialog.GetComponent<RectTransform>().SetAsLastSibling();
 			return dialog;
 		}
 
@@ -57,48 +52,29 @@ namespace Dialog
 			{
 				DialogView cmp = dlg.GetComponent<DialogView>();
 				if (cmp is IDialog<T>)
-					(cmp as IDialog<T>).Initialize(vo);
+					(cmp as IDialog<T>).OnOpen(vo);
 			}
 			return dlg;
 		}
 
 		public bool Close(string dialogID)
 		{
-			GameObject dlog;
-			if (_dialogs.TryGetValue(dialogID, out dlog))
+			GameObject dlg;
+			if (_dialogs.TryGetValue(dialogID, out dlg) && dlg != null)
 			{
-				HandleCloseDialog(dialogID, dlog);
-				return true;
+				GameObject.Destroy(dlg);
 			}
-			return false;
+			return _dialogs.Remove(dialogID);
 		}
 
 		public bool Close(GameObject dialog)
 		{
-			foreach(KeyValuePair<string, GameObject> kvp in _dialogs)
-			{
-				if (kvp.Value == dialog)
-				{
-					HandleCloseDialog(kvp.Key, kvp.Value);
-					return true;
-				}
-			}
-			return false;
-		}
-
-		protected void HandleCloseDialog(string dialogID, GameObject dlg)
-		{
-			DialogView dlgCmp = dlg.GetComponent<DialogView>();
-			if (dlgCmp != null)
-			{
-				dlgCmp.OnClose();
-				if (dlgCmp is IDisposable)
-				{
-					(dlgCmp as IDisposable).Dispose();
-				}
-			}
-			_dialogs.Remove(dialogID);
-			GameObject.Destroy(dlg);
+			if (dialog == null) return false;
+			IEnumerable<string> keys = _dialogs.Keys.Where(x => _dialogs[x] == dialog);
+			bool result = keys.Count() > 0;
+			foreach(string key in keys) _dialogs.Remove(key);
+			GameObject.Destroy(dialog);
+			return result;
 		}
 
 		public void CloseAll()
@@ -108,6 +84,11 @@ namespace Dialog
 				GameObject.Destroy(kvp.Value);
 			}
 			_dialogs.Clear();
+		}
+
+		void OnDestroy()
+		{
+			App.Service<DialogSvc>().UnregisterManager(this);
 		}
 	}
 }

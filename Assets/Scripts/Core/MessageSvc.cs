@@ -1,134 +1,160 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Core
 {
+	public interface IMessageEvent {}
+	public class TypeEvent<T> : IMessageEvent
+	{
+		protected event Action<T> EventHandler;
+
+		public void Add(Action<T> action)
+		{
+			if (EventHandler == null || !EventHandler.GetInvocationList().Contains(action))
+				EventHandler += action;
+		}
+
+		public void Remove(Action<T> action)
+		{
+			if (EventHandler != null)
+				EventHandler -= action;
+		}
+
+		public void Send(T data)
+		{
+			if (EventHandler != null)
+				EventHandler(data);
+		}
+	}
+
+	public class MessageEvent : IMessageEvent
+	{
+		protected event Action EventHandler;
+
+		public void Add(Action action)
+		{
+			if (EventHandler == null || !EventHandler.GetInvocationList().Contains(action))
+				EventHandler += action;
+		}
+
+		public void Remove(Action action)
+		{
+			if (EventHandler != null)
+				EventHandler -= action;
+		}
+
+		public void Send()
+		{
+			if (EventHandler != null)
+				EventHandler();
+		}
+	}
+
 	public class MessageSvc : IAppService, IDisposable
 	{
-		protected Dictionary<string, List<Delegate>> _listeners;
-		protected Dictionary<string, List<Delegate>> _markedForRemoval;
-		protected bool _isNotifying;
+		protected Dictionary<Type, IMessageEvent> _typeHandlers;
+		protected Dictionary<string, Dictionary<Type, IMessageEvent>> _messageTypeHandlers;
+		protected Dictionary<string, MessageEvent> _messageHandlers;
 
 		public MessageSvc ()
 		{
-			_listeners = new Dictionary<string, List<Delegate>>();
-			_markedForRemoval = null;
-			_isNotifying = false;
+			_typeHandlers = new Dictionary<Type, IMessageEvent>();
+			_messageHandlers = new Dictionary<string, MessageEvent>();
+			_messageTypeHandlers = new Dictionary<string, Dictionary<Type, IMessageEvent>>();
 		}
 
 		public void Subscribe(string messageID, Action callback)
 		{
-			AddDelegate(messageID, callback, _listeners);
+			if (!_messageHandlers.ContainsKey(messageID))
+			{
+				_messageHandlers.Add(messageID, new MessageEvent());
+			}
+			_messageHandlers[messageID].Add(callback);
 		}
 
 		public void Subscribe<T>(string messageID, Action<T> callback)
 		{
-			AddDelegate(messageID, callback, _listeners);
+			if (!_messageTypeHandlers.ContainsKey(messageID))
+			{
+				_messageTypeHandlers.Add(messageID, new Dictionary<Type, IMessageEvent>());
+			}
+			Type t = typeof(T);
+			if (!_messageTypeHandlers[messageID].ContainsKey(t))
+			{
+				_messageTypeHandlers[messageID].Add(t, new TypeEvent<T>());
+			}
+			(_messageTypeHandlers[messageID][t] as TypeEvent<T>).Add(callback);
 		}
 
-		public void Unsubscribe(string messageID, Delegate callback)
+		public void Subscribe<T>(Action<T> callback)
 		{
-			if (!_isNotifying)
+			Type t = typeof(T);
+			if (!_typeHandlers.ContainsKey(t))
 			{
-				RemoveDelegate(messageID, callback, _listeners);
+				_typeHandlers.Add(t, new TypeEvent<T>());
 			}
-			else
+			(_typeHandlers[t] as TypeEvent<T>).Add(callback);
+		}
+
+		public void Unsubscribe(string messageID, Action callback)
+		{
+			if (_messageHandlers.ContainsKey(messageID))
 			{
-				if (_markedForRemoval == null)
-				{
-					_markedForRemoval = new Dictionary<string, List<Delegate>>();
-				}
-				AddDelegate(messageID, callback, _markedForRemoval);
+				_messageHandlers[messageID].Remove(callback);
+			}
+		}
+
+		public void Unsubscribe<T>(Action<T> callback)
+		{
+			Type t = typeof(T);
+			if (_typeHandlers.ContainsKey(t))
+			{
+				(_typeHandlers[t] as TypeEvent<T>).Remove(callback);
+			}
+		}
+
+		public void Unsubscribe<T>(string messageID, Action<T> callback)
+		{
+			Type t = typeof(T);
+			if (_messageTypeHandlers.ContainsKey(messageID) && _messageTypeHandlers[messageID].ContainsKey(t))
+			{
+				(_messageTypeHandlers[messageID][t] as TypeEvent<T>).Remove(callback);
 			}
 		}
 
 		public void Send(string messageID)
 		{
-			List<Delegate> callbacks;
-			if (_listeners.TryGetValue(messageID, out callbacks))
-			{
-				_isNotifying = true;
-				foreach(Delegate action in callbacks)
-				{
-					if (action is Action)
-					{
-						(action as Action).Invoke();
-					}
-				}
-				RemoveMarkedDelegates();
-			}
+			MessageEvent e;
+			if (_messageHandlers.TryGetValue(messageID, out e))
+				e.Send();
 		}
 
 		public void Send<T>(string messageID, T messageData)
 		{
-			List<Delegate> callbacks;
-			if (_listeners.TryGetValue(messageID, out callbacks))
-			{
-				_isNotifying = true;
-				foreach(Delegate action in callbacks)
-				{
-					if (action is Action<T>)
-					{
-						(action as Action<T>).Invoke(messageData);
-					}
-					else if (action is Action)
-					{
-						(action as Action).Invoke();
-					}
-				}
-				RemoveMarkedDelegates();
-			}
+			IMessageEvent e;
+			Dictionary<Type, IMessageEvent> d;
+			Type t = typeof(T);
+			if (_messageTypeHandlers.TryGetValue(messageID, out d) && d.TryGetValue(t, out e))
+				(e as TypeEvent<T>).Send(messageData);
 		}
 
-		protected void AddDelegate(string type, Delegate d, Dictionary<string, List<Delegate>> dict)
+		public void Send<T>(T messageData)
 		{
-			List<Delegate> result;
-			if (!dict.TryGetValue(type, out result))
-			{
-				result = new List<Delegate>();
-				dict[type] = result;
-			}
-			if (!result.Contains(d))
-			{
-				result.Add(d);
-				dict[type] = result;
-			}
-		}
-
-		protected void RemoveDelegate(string type, Delegate d, Dictionary<string, List<Delegate>> dict)
-		{
-			List<Delegate> result;
-			if (dict.TryGetValue(type, out result))
-			{
-				result.Remove(d);
-				dict[type] = result;
-			}
-		}
-
-		protected void RemoveMarkedDelegates()
-		{
-			_isNotifying = false;
-
-			if (_markedForRemoval != null)
-			{
-				foreach(KeyValuePair<string, List<Delegate>> kvp in _markedForRemoval)
-				{
-					foreach(Delegate d in kvp.Value)
-					{
-						RemoveDelegate(kvp.Key, d, _listeners);
-					}
-				}
-				_markedForRemoval.Clear();
-				_markedForRemoval = null;
-			}
+			IMessageEvent e;
+			Type t = typeof(T);
+			if (_typeHandlers.TryGetValue(t, out e))
+				(e as TypeEvent<T>).Send(messageData);
 		}
 
 		public void Dispose()
 		{
-			_markedForRemoval.Clear();
-			_markedForRemoval = null;
-			_listeners.Clear();
-			_listeners = null;
+			_typeHandlers.Clear();
+			_typeHandlers = null;
+			_messageHandlers.Clear();
+			_messageHandlers = null;
+			_messageTypeHandlers.Clear();
+			_messageTypeHandlers = null;
 		}
 	}
 }

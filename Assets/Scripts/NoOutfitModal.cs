@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NoOutfitModal : MonoBehaviour {
-
-    private SceneFadeInOut sceneFader;
+public class NoOutfitModal : MonoBehaviour
+{
+	public SceneFadeInOut sceneFader;
     private MainScreenTabsController tabsController;
 
     void Start()
@@ -15,14 +15,12 @@ public class NoOutfitModal : MonoBehaviour {
     public void Dismiss()
     {
         Destroy(transform.parent.gameObject);
-        GameData.activeModals--;
     }
 
     public void CreateCancellationModal()
     {
         object[] objectStorage = new object[1];
-        Day cancellationDay = GameData.calendar.monthList[GameData.currentMonth].SelectDayByInt(GameData.currentDay);
-        objectStorage[0] = cancellationDay; //Day
+        objectStorage[0] = DeWinter.DeWinterApp.GetModel<DeWinter.CalendarModel>().Today;
         sceneFader.gameObject.SendMessage("CreateCancellationPopUp", objectStorage);
     }
 
@@ -31,4 +29,3 @@ public class NoOutfitModal : MonoBehaviour {
         tabsController.WardrobeSelected();
     }
 }
-

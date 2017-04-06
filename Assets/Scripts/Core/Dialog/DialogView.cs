@@ -1,28 +1,23 @@
 ﻿using System;
 using UnityEngine;
+using Util;
 
 namespace Dialog
 {
 	public interface IDialog<T>
 	{
-		void Initialize(T vo);
+		void OnOpen(T vo);
 	}
 
 	public class DialogView : MonoBehaviour
 	{
-		protected DialogCanvasManager _mgr;
-
-		void Start()
-		{
-			_mgr = GetComponentInParent<DialogCanvasManager>();
-		}
+		[HideInInspector]
+		public DialogCanvasManager Manager;
 
 		public void Close()
 		{
-			if (_mgr != null)
-				_mgr.Close(this.gameObject);
+			if (Manager != null)
+				Manager.Close(this.gameObject);
 		}
-
-		public virtual void OnClose() {}
 	}
 }

@@ -18,7 +18,7 @@ namespace DeWinter
 
 				if ((new Random()).Next(100) < seductionChance)
 				{
-					DeWinterApp.SendCommand<DancingCmd, NotableVO>(notable);
+					DeWinterApp.SendMessage<NotableVO>(PartyConstants.START_DANCING, notable);
 				}
 			}
 		}

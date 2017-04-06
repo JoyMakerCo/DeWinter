@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DeWinter;
 
 public class Notable : PartyGoer {
 
     public bool interestTimerWaiting;
 
-    public lockedInState notableLockedInState;
+    public LockedInState notableLockedInState;
 
     //Disposition Stuff
     public float dispositionTimerSwitchMax;
@@ -16,14 +17,14 @@ public class Notable : PartyGoer {
     public float hostRemarkCompletionTimerCurrent;
 
     //Generates a random regular Notable
-    public Notable(Faction f)
+    public Notable(string f)
     {
         faction = f;
         dispositionInt = Random.Range(0, 4);
         disposition = GameData.dispositionList[dispositionInt];
         currentOpinion = Random.Range(25, 51);
         maxOpinion = 225;
-        notableLockedInState = lockedInState.Interested;
+        notableLockedInState = LockedInState.Interested;
         maxInterestTimer = 4;
         currentInterestTimer = 4;
         interestTimerWaiting = false;
@@ -37,7 +38,7 @@ public class Notable : PartyGoer {
         {
             imageInt = Random.Range(0, 4);
         }
-        name = GenerateName(); // Have to Generate the Name after the Gender
+        Name = GenerateName(); // Have to Generate the Name after the Gender
         dispositionTimerSwitchMax = Random.Range(4, 7);
         nextHostRemarkTimer = 10;
         hostRemarkCompletionTimerMax = 6;
@@ -51,7 +52,7 @@ public class Notable : PartyGoer {
         disposition = GameData.dispositionList[dispositionInt];
         currentOpinion = opinion;
         maxOpinion = 250;
-        notableLockedInState = lockedInState.Interested;
+        notableLockedInState = LockedInState.Interested;
         maxInterestTimer = interest;
         currentInterestTimer = maxInterestTimer;
         dispositionRevealed = false;
@@ -64,7 +65,7 @@ public class Notable : PartyGoer {
         {
             imageInt = Random.Range(0, 5);
         }
-        name = GenerateName();  // Have to Generate the Name after the Gender
+        Name = GenerateName();  // Have to Generate the Name after the Gender
         nextHostRemarkTimer = 10;
         hostRemarkCompletionTimerMax = 6;
         hostRemarkCompletionTimerCurrent = hostRemarkCompletionTimerMax;
@@ -85,4 +86,3 @@ public class Notable : PartyGoer {
         dispositionTimerSwitchMax = Random.Range(4.0f, 7.0f);
     }
 }
-

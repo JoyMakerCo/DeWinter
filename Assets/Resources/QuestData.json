@@ -1,0 +1,51 @@
+﻿{
+	noveltyDamage:20,
+	outOfStyleMultiplier:0.75,
+	styles:[
+		"Frankish",
+		"Catalan",
+		"Venezian"
+	],
+	accessories:[
+		{
+			type:"cane",
+			name:"Cane",
+			description:"helps you delicately push your way through crowds.\n\nAdds a 10% bonus to making 'Move Through' attempts on Rooms.",
+			state:{
+				"moveThrough":"+10%"
+			}
+		},
+		{
+			type:"fan",
+			name:"Fan",
+			description:"adds an air of mystery to you. It helps make you look thoughtful, when you're really just grasping for a witty reply.\n\nGives you 50% more time to answer Host Remarks.",
+			state:{
+				"responseTime":"+50%"
+			}
+		},
+		{
+			type:"fascinator",
+            name:"Fascinator",
+            description:"distracts people when you might have said the wrong thing. Look how shiny it is!\n\nFirst Negative Remark in any Conversation is Ignored.",
+			state:{
+				"responseTime":"+50%"
+			}
+        },
+		{
+            type:"flask",
+            name:"Garter Flask",
+            description:"helps you take a little extra drink with you when you refill at the Punch Bowl.\n\nIncreases Max Booze Capacity by 1.",
+			state:{
+				"boozeCapacity":"+1"
+			}
+        },
+		{
+            type:"snuff",
+            name:"Snuff Box",
+            description:"helps keep you awake and alert, even when you've been overserved by the help.\n\nDrinking still gives you Confidence, but doesn't Intoxicate you as much.",
+			state:{
+				"intoxication":"-25%"
+			}
+        }
+	]
+}
