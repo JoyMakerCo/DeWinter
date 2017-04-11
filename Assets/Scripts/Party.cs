@@ -14,6 +14,7 @@ public class Party {
     public int modestyPreference;
     public int luxuryPreference;
     public bool tutorial=false;
+    public float MaleToFemaleRatio = 1f; //Default: 1:1
 
     public string description; // Randomly Generated Flavor Description
 
@@ -24,12 +25,9 @@ public class Party {
 
     public int maxPlayerConfidence = 0;
     public int startingPlayerConfidence = 0;
-    public int currentPlayerConfidence = 0;
 
     //Drinking and Intoxication
     public int maxPlayerIntoxication = 100;
-    public int currentPlayerIntoxication = 0;
-    public int currentPlayerDrinkAmount = 3;
     public int maxPlayerDrinkAmount = 3;
     public int drinkStrength = 20;
 
@@ -55,7 +53,6 @@ public class Party {
             host = new Notable(faction);
             turns = (partySize * 5) + 1;
             turnsLeft = turns;
-            FillPlayerHand();
             invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
         }
     }
@@ -71,7 +68,6 @@ public class Party {
             GenerateRandomDescription();
             turns = (partySize * 5) + 1;
             turnsLeft = turns;
-            FillPlayerHand();
             invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
         }
     }
@@ -260,15 +256,4 @@ public class Party {
     {
         invited = true;
     }
-
-    void FillPlayerHand()
-    {
-        playerHand.Add(new Remark());
-        lastTone = playerHand[0].tone;
-        for (int i = 1; i < 5; i++)
-        {
-            playerHand.Add(new Remark(lastTone, 2));
-            lastTone = playerHand[i].tone;
-        }
-    }  
 }

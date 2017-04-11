@@ -49,7 +49,7 @@ namespace DeWinter
 			_map.Entrance.Cleared = true;
 			_map.Entrance.Name = "The Vestibule";
 			_map.Entrance.Features = new string[0];
-			_map.Entrance.Guests = new Guest[0];
+			_map.Entrance.Guests = new GuestVO[0];
 
 			// Fill in the blanks
 			foreach(RoomVO room in _map.Rooms)
@@ -155,7 +155,7 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 			}
 		}
 
-		private Guest[] GenerateGuests(int difficulty)
+		private GuestVO[] GenerateGuests(int difficulty)
 	    {
 	        switch (difficulty)
 	        {
@@ -170,15 +170,15 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 	            case 5:
 					return generateGuestList(4, 20, 31, 2, 6);
 	        }
-	        return new Guest[0];
+	        return new GuestVO[0];
 		}
 
-		private Guest[] generateGuestList(int count, int opinionMin, int opinionMax, int interestMin, int interestMax)
+		private GuestVO[] generateGuestList(int count, int opinionMin, int opinionMax, int interestMin, int interestMax)
 		{
-			Guest[] result = new Guest[count];
+			GuestVO[] result = new GuestVO[count];
 			for (int i=0; i<count; i++)
 			{
-				result[i] = new Guest(_rnd.Next(opinionMin, opinionMax), _rnd.Next(interestMin, interestMax));
+				result[i] = new GuestVO(_rnd.Next(opinionMin, opinionMax), _rnd.Next(interestMin, interestMax));
 			}
 			return result;
 		}

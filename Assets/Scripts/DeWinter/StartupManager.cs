@@ -45,6 +45,7 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			DeWinterApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
 			DeWinterApp.RegisterCommand<EndEventCmd, EventVO>(EventMessages.END_EVENT);
+			DeWinterApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 
 
 // TODO: Get rid of this when the Calendar Inventory is swallowed buy the model

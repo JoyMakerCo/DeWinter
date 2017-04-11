@@ -72,7 +72,7 @@ public class PopUpManager : MonoBehaviour
     }
 
     //This is used at the beginning of the first Tutorial Conversation to teach you how Work the Room... works
-    void CreateWorkTheRoomTutorialPopUp(WorkTheRoomManager wRM)
+    void CreateWorkTheRoomTutorialPopUp(EncounterViewMediator wRM)
     {
         //Make the Pop Up
         GameObject popUp = Instantiate(workTheRoomTutorialModal) as GameObject;
@@ -726,7 +726,7 @@ public class PopUpManager : MonoBehaviour
         GameObject popUp = Instantiate(workTheRoomModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
         //Set the room and the Work The Room Manager should handle the rest.
-        WorkTheRoomManager workManager = popUp.GetComponent<WorkTheRoomManager>();
+        EncounterViewMediator workManager = popUp.GetComponent<EncounterViewMediator>();
         workManager.room = room;
         workManager.isAmbush = isAmbush;
         workManager.roomManager = roomManager;

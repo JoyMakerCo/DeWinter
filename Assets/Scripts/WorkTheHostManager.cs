@@ -610,7 +610,7 @@ public class WorkTheHostManager : MonoBehaviour
 
     Sprite GenerateHostImage()
     {
-        if (party.host.isFemale)
+        if (party.host.IsFemale)
         {
             return femaleHostSpriteList[party.host.imageInt];
         }

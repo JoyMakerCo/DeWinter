@@ -12,7 +12,7 @@ namespace DeWinter
 	    public bool Cleared=false;
 	    public bool Revealed=false;
 		public Reward [] Rewards;
-		public Guest [] Guests;
+		public GuestVO [] Guests;
 		public List<Enemy> Enemies;
 		public string [] Features;
 		public RoomVO [] Neighbors; // Starting North, Clockwise

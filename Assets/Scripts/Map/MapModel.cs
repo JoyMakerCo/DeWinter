@@ -104,7 +104,7 @@ namespace DeWinter
 	        Maps[map.Name] = map;
 		}
 
-		private Guest[] GenerateGuests(int difficulty, int numGuests)
+		private GuestVO[] GenerateGuests(int difficulty, int numGuests)
 		{
 			int[] ranges;
 			switch (difficulty)
@@ -125,13 +125,13 @@ namespace DeWinter
 					ranges = new int[]{20, 31, 2, 6};
 	                break;
 	            default:
-	            	return new Guest[0];
+	            	return new GuestVO[0];
 	        }
-			Guest[] guests = new Guest[numGuests];
+			GuestVO[] guests = new GuestVO[numGuests];
 			Random rnd = new Random();
 			for (int i=0; i<numGuests; i++)
 			{
-				guests[i] = new Guest(rnd.Next(ranges[0], ranges[1]), rnd.Next(ranges[2], ranges[3]));
+				guests[i] = new GuestVO(rnd.Next(ranges[0], ranges[1]), rnd.Next(ranges[2], ranges[3]));
 			}
 			return guests;
 		}

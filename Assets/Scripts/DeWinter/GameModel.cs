@@ -84,7 +84,7 @@ namespace DeWinter
 		}
 
 		[JsonProperty("reputationLevels")]
-		public ReputationLevel[] ReputationLevels;
+		private ReputationLevel[] ReputationLevels;
 
 		public int PartyInviteImportance
 		{
