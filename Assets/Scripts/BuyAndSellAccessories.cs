@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DeWinter;
 
 public class BuyAndSellAccessories : MonoBehaviour {
@@ -41,10 +42,10 @@ public class BuyAndSellAccessories : MonoBehaviour {
             }
             else // If it won't fit then give them the "Can't Fit" Modal (hurr hurr hurr)
             {
-                object[] objectStorage = new object[2];
-                objectStorage[0] = merchantAccessoryList.selectedAccessory;
-                objectStorage[1] = model.MaxSlots;
-                screenFader.gameObject.SendMessage("CreateCantFitModal", objectStorage);
+				Dictionary<string, string> subs = new Dictionary<string, string>()
+					{{"$ITEM",merchantAccessoryList.selectedAccessory.Name},
+					{"$CAPACITY",OutfitInventory.personalInventoryMaxSize.ToString()}};
+				DeWinterApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
             }
         }
     }

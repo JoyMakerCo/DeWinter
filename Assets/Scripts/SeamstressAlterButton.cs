@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using DeWinter;
 
 public class SeamstressAlterButton : MonoBehaviour {
@@ -93,8 +94,9 @@ public class SeamstressAlterButton : MonoBehaviour {
             screenFader.gameObject.SendMessage("CreateSewNewOutfitModal", objectStorage);
         } else 
         {
-            //Error Message telling the Player to make Room
-            screenFader.gameObject.SendMessage("CreateCantFitNewOutfitModal");
+			Dictionary<string, string> subs = new Dictionary<string, string>()
+				{{"$CAPACITY",OutfitInventory.personalInventoryMaxSize.ToString()}};
+			DeWinterApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
         }
     }
 }

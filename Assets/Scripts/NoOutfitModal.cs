@@ -1,31 +1,42 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using DeWinter;
 
-public class NoOutfitModal : MonoBehaviour
+namespace DeWinter
 {
-	public SceneFadeInOut sceneFader;
-    private MainScreenTabsController tabsController;
+	public class NoOutfitModal : MonoBehaviour
+	{
+	    private MainScreenTabsController tabsController;
 
-    void Start()
-    {
-        sceneFader = GameObject.Find("ScreenFader").GetComponent<SceneFadeInOut>();
-        tabsController = GameObject.Find("MainScreenTabsContainer").GetComponent<MainScreenTabsController>();
-    }
+	    void Start()
+	    {
+	        tabsController = GameObject.Find("MainScreenTabsContainer").GetComponent<MainScreenTabsController>();
+	    }
 
-    public void Dismiss()
-    {
-        Destroy(transform.parent.gameObject);
-    }
+	    public void Dismiss()
+	    {
+	        Destroy(transform.parent.gameObject);
+	    }
 
-    public void CreateCancellationModal()
-    {
-        object[] objectStorage = new object[1];
-        objectStorage[0] = DeWinter.DeWinterApp.GetModel<DeWinter.CalendarModel>().Today;
-        sceneFader.gameObject.SendMessage("CreateCancellationPopUp", objectStorage);
-    }
+	    public void CreateCancellationModal()
+	    {
+	    	List<Party> parties;
+	    	DateTime today = DeWinterApp.GetModel<CalendarModel>().Today;
+	    	if (DeWinterApp.GetModel<CalendarModel>().Parties.TryGetValue(today, out parties))
+	    	{
+	    		Party party = parties.Find(p => p.RSVP == 1);
+	    		if (party != null)
+	    		{
+					DeWinterApp.OpenDialog<Party>("CancellationModal", party);
+				}
+			}
+	    }
 
-    public void GoToTheMerchant()
-    {
-        tabsController.WardrobeSelected();
-    }
+	    public void GoToTheMerchant()
+	    {
+	        tabsController.WardrobeSelected();
+	    }
+	}
 }

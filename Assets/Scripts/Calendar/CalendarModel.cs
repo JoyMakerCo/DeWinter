@@ -28,19 +28,8 @@ namespace DeWinter
 
 		private DateTime _startDate;
 		private int _gameLength;
-		private int _day=-1;
 
-		public int Day
-		{
-			get { return _day; }
-			set {
-				if (value != _day)
-				{
-					CalendarDayVO msg = new CalendarDayVO(_day = value, Today);
-					DeWinterApp.SendMessage<CalendarDayVO>(msg);
-				}
-			}
-		}
+		private int _day = -1;
 
 		public DateTime StartDate
 		{
@@ -72,15 +61,10 @@ namespace DeWinter
 			return d.Day.ToString() + " " + GetMonthString(d) + ", " + d.Year.ToString();
 		}
 
-		public string GetDateString(int day)
-		{
-			return GetDateString(_startDate.AddDays(day));
-		}
-
 		[JsonProperty("gameLength")]
 		public int DaysLeft
 		{
-			get { return _gameLength - Day; }
+			get { return _gameLength - _day; }
 			private set { _gameLength = value; }
 		}
 
@@ -93,6 +77,10 @@ namespace DeWinter
 		public DateTime Today
 		{
 			get { return _startDate.AddDays(_day); }
+			set {
+				_day = (value - _startDate).Days;
+				DeWinterApp.SendMessage<DateTime>(value);
+			}
 		}
 
 		public DateTime EndDate
@@ -102,7 +90,7 @@ namespace DeWinter
 
 		public DateTime DaysFromNow(int days)
 		{
-			return Today.AddDays(days);
+			return _startDate.AddDays(days + _day);
 		}
 
 		public DateTime Yesterday
@@ -110,9 +98,9 @@ namespace DeWinter
 			get { return DaysFromNow(-1); }
 		}
 
-		public int uprisingDay; //The Day of the Uprising that the Game Ends On
+		public DateTime uprisingDay; //The Day of the Uprising that the Game Ends On
 
-		public int NextStyleSwitchDay;
+		public DateTime NextStyleSwitchDay;
 
 		public CalendarModel() : base("CalendarData")
 		{
@@ -121,29 +109,20 @@ namespace DeWinter
 
 		public void Initialize()
 		{
-			uprisingDay= (new Random()).Next(25, 31);
-			DeWinterApp.Subscribe(CalendarMessages.ADVANCE_DAY, AdvanceDay);
+			uprisingDay= _startDate.AddDays(new Random().Next(25, 31));
 		}
 
-		// TODO: Parties should probably store their dates
-		public void AddParty(DateTime date, Party party)
+		public void AddParty(Party party)
 		{
-			if (!Parties.ContainsKey(date))
+			if (!Parties.ContainsKey(party.Date))
 			{
-				Parties.Add(date, new List<Party>{party});
+				Parties.Add(party.Date, new List<Party>{party});
 			}
 			else
 			{
-				Parties[date].Add(party);
+				Parties[party.Date].Add(party);
 			}
 		}
-
-		public void AddParty(int day, Party party)
-		{
-			AddParty(_startDate.AddDays(day), party);
-		}
-
-		private void AdvanceDay() { Day++; }
 
 		string dayString(int day)
 	    {

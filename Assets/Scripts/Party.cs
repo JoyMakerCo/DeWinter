@@ -14,6 +14,7 @@ public class Party {
     public int modestyPreference;
     public int luxuryPreference;
     public bool tutorial=false;
+    public System.DateTime Date;
 
     public string description; // Randomly Generated Flavor Description
 

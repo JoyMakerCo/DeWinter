@@ -4,9 +4,9 @@ using Core;
 
 namespace DeWinter
 {
-	public class PreparePartyCmd : ICommand
+	public class PreparePartyCmd : ICommand<DateTime>
 	{
-		public void Execute()
+		public void Execute(DateTime day)
 		{
 			CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
 			List<Party> parties;

@@ -15,7 +15,7 @@ namespace DeWinter
 	    void Start()
 	    {
 	    	_model = DeWinterApp.GetModel<CalendarModel>();
-	    	DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
+	    	DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
 	        DisplayMonth = _model.Today.Month;
 	    }
 
@@ -29,7 +29,7 @@ namespace DeWinter
 			DisplayMonth--;
 	    }
 
-		private void HandleCalendarDay(CalendarDayVO day)
+		private void HandleCalendarDay(DateTime day)
 	    {
 			DisplayMonth = day.Date.Month;
 	    }

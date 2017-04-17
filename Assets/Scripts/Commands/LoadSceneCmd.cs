@@ -9,6 +9,7 @@ namespace DeWinter
 		public void Execute (string sceneName)
 		{
 			SceneManager.LoadScene(sceneName);
+			// TODO: Make commands able to persist with a callback
 		}
 	}
 }
