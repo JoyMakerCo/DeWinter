@@ -22,7 +22,7 @@ namespace DeWinter
 
 			DeWinterApp.GetModel<EventModel>().SelectedEvent = null;
 			DeWinterApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			DeWinterApp.RegisterCommand<MakePartiesCmd, DateTime>();
+			DeWinterApp.RegisterCommand<CreateInvitationsCmd, DateTime>();
 			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT); 
 		}
 	}

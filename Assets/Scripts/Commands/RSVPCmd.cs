@@ -13,7 +13,8 @@ namespace DeWinter
 			}
 			else // Denying RSVP
 			{
-				int rep = (DeWinterApp.GetModel<CalendarModel>().Today == party.Date) ? 40 : 20;
+				int rep = 0;
+//				int rep = (DeWinterApp.GetModel<CalendarModel>().Today == party.Date) ? 40 : 20;
 				DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -rep));
 	            GameData.reputationCount -= rep;
 			}

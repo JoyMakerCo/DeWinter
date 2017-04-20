@@ -41,11 +41,13 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
 			DeWinterApp.RegisterCommand<EndEventCmd, EventVO>(EventMessages.END_EVENT);
 			DeWinterApp.RegisterCommand<RSVPCmd, Party>(PartyMessages.RSVP);
+			DeWinterApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
+			DeWinterApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
 
 			DeWinterApp.RegisterCommand<PayDayCmd, DateTime>();
 			DeWinterApp.RegisterCommand<RestockMerchantCmd, DateTime>();
 			DeWinterApp.RegisterCommand<CheckUprisingDayCmd, DateTime>();
-			DeWinterApp.RegisterCommand<PreparePartyCmd, DateTime>();
+			DeWinterApp.RegisterCommand<CreateInvitationsCmd, DateTime>();
 			DeWinterApp.RegisterCommand<StartEventCmd, DateTime>();
 			DeWinterApp.RegisterCommand<CheckStyleChangeCmd, DateTime>();
 			DeWinterApp.RegisterCommand<EventReadyCmd, DateTime>();

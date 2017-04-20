@@ -9,7 +9,6 @@ public class PopUpManager : MonoBehaviour
 {
 // TODO: Refactor to work with Dialog Manager
     public GameObject screenFader;
-    public LevelManager levelManager;
 
 	public GameObject newGameModal;
     public GameObject quitGameModal;
@@ -26,7 +25,6 @@ public class PopUpManager : MonoBehaviour
     public GameObject workTheHostModal;
     public GameObject hostRemarkModal;
     public GameObject ambushModal;
-    public GameObject noOutfitModal;
     public GameObject alterOutfitModal;
     public GameObject sewNewOutfitModal;
 
@@ -96,21 +94,6 @@ public class PopUpManager : MonoBehaviour
             hireFireButtonText.text = "Hire";
             dontHireFireButtonText.text = "Don't Hire";
         }
-    }
-
-    //This tells Players they can't attend a Party if they don't have any Outfits
-    void CreateNoOutfitModal()
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(noOutfitModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "You Have Nothing to Wear!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, it's not a figure of speech." +
-            "\nYou literally have nothing to wear to this party. If we check in with the Merchant she might have something, but otherwise you may have to cancel.";
     }
 
     //This is used in the Wardrobe Screen to confirm buying or selling Items

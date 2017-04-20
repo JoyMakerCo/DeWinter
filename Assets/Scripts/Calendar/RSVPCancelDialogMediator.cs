@@ -8,6 +8,8 @@ namespace DeWinter
 {
 	public class RSVPCancelDialogMediator : DialogView, IDialog<Party>
 	{
+		public const string DIALOG_ID = "CancellationModal";
+
 		public Text BodyText;
 		public Text TitleText;
 

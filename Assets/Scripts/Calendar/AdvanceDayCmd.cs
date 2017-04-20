@@ -3,15 +3,12 @@ using Core;
 
 namespace DeWinter
 {
-	public class AdvanceDayCmd : ICommand<string>
+	public class AdvanceDayCmd : ICommand
 	{
-		public void Execute(string scene)
+		public void Execute()
 		{
-			if (scene == SceneConsts.GAME_ESTATE)
-			{
-				CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
-				cmod.Today = cmod.Today.AddDays(1);
-			}
+			CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
+			cmod.Today = cmod.Today.AddDays(1);
 		}
 	}
 }

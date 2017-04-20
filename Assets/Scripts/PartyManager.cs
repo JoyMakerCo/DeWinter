@@ -10,7 +10,6 @@ namespace DeWinter
 	{
 	    public GameObject screenFader; // It's for the Confidence Tally pop-up
 	    public RoomManager roomManager;
-	    public LevelManager levelManager;
 
 		private FactionVO _faction;
 

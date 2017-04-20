@@ -24,12 +24,12 @@ namespace DeWinter
         	"Decembre"
         };
 
-		public Dictionary<DateTime, List<Party>> Parties;
+		public Dictionary<DateTime, List<Party>> Parties = new Dictionary<DateTime, List<Party>>();
 
 		private DateTime _startDate;
 		private int _gameLength;
 
-		private int _day = -1;
+		private int _day = 0;
 
 		public DateTime StartDate
 		{
@@ -39,11 +39,6 @@ namespace DeWinter
 		public string GetMonthString(DateTime date)
 		{
 			return MONTHS[date.Month-1];
-		}
-
-		public string GetMonthString(int day)
-		{
-			return MONTHS[_startDate.AddDays(day).Month-1];
 		}
 
 		public string GetMonthString()
@@ -102,26 +97,24 @@ namespace DeWinter
 
 		public DateTime NextStyleSwitchDay;
 
-		public CalendarModel() : base("CalendarData")
-		{
-			Parties = new Dictionary<DateTime, List<Party>>();
-		}
+		public CalendarModel() : base("CalendarData") {}
 
 		public void Initialize()
 		{
 			uprisingDay= _startDate.AddDays(new Random().Next(25, 31));
 		}
 
-		public void AddParty(Party party)
+		public void UpdateParty(Party party)
 		{
 			if (!Parties.ContainsKey(party.Date))
 			{
 				Parties.Add(party.Date, new List<Party>{party});
 			}
-			else
+			else if (!Parties[party.Date].Contains(party))
 			{
 				Parties[party.Date].Add(party);
 			}
+			DeWinterApp.SendMessage<Party>(party);
 		}
 
 		string dayString(int day)

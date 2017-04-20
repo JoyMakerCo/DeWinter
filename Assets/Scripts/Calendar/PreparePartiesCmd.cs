@@ -22,8 +22,7 @@ namespace DeWinter
 				if (cmod.Parties.TryGetValue(cmod.DaysFromNow(i), out parties))
 	        	{
 	        		parties = parties.FindAll(p =>
-	        			p.faction != null
-	        			&& i <= p.invitationDistance
+	        			i <= p.invitationDistance
 	        			&& !p.invited
 	        			&& p.partySize > 0
 	        			&& (p.partySize <= fmod[p.faction].LargestAllowableParty || p.partySize <= gmod.PartyInviteImportance));

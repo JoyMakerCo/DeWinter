@@ -8,25 +8,26 @@ namespace DeWinter
 	{
 		public void Execute (DateTime date)
 		{
-			CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
-	        List<Party> parties;
-			if (date != default(DateTime) && cmod.Parties.TryGetValue(date, out parties))
+			Dictionary<DateTime, List<Party>> calendar = DeWinterApp.GetModel<CalendarModel>().Parties;
+			if (calendar.ContainsKey(date))
 			{
-				parties = parties.FindAll(x => x.invited);
+				List<Party> parties = calendar[date].FindAll(x => x.invited);
 				if (parties.Count == 0) return; // No parties!
 
-				Party party = parties.Find(x => x.RSVP == 1);
-				if (party != null) // You RSVP'd. Cancel?
+				if (parties.Count == 1) // Easy choice.
 				{
-					DeWinterApp.OpenDialog<Party>(DialogConsts.CANCEL_RSVP_DIALOG, party);
-				}
-				else if (parties.Count == 1) // Easy choice.
-				{
-					DeWinterApp.OpenDialog<Party>(DialogConsts.RSVP_DIALOG, parties[0]);
+					if (parties[0].RSVP < 1)
+					{
+						DeWinterApp.OpenDialog<Party>(RSVPDialogMediator.DIALOG_ID, parties[0]);
+					}
+					else
+					{
+						DeWinterApp.OpenDialog<Party>(RSVPCancelDialogMediator.DIALOG_ID, parties[0]);
+					}
 				}
 				else // Multiple Parties
 				{
-					DeWinterApp.OpenDialog<List<Party>>(DialogConsts.RSVP_CHOICE_DIALOG, parties);
+					DeWinterApp.OpenDialog<List<Party>>(RSVPChoiceDialogMediator.DIALOG_ID, parties);
 				}
 			}
 		}
