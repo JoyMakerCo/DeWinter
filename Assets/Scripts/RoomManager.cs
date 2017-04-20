@@ -173,7 +173,9 @@ public class RoomManager : MonoBehaviour
             }
             if (checkValue <= moveThroughChance) //The Player Moves through
             {
-                screenFader.gameObject.SendMessage("CreateMovedThroughModal", stringStorage);
+            	Dictionary<string, string> subs = new Dictionary<string, string>()
+					{{"$ROOMNAME",currentPlayerRoom.Name}};
+            	DeWinterApp.OpenMessageDialog(DialogConsts.MOVED_THROUGH_DIALOG, subs);
             }
             else // The Player fails to Move Through and is Ambushed!
             {
@@ -209,6 +211,8 @@ public class RoomManager : MonoBehaviour
 
     private void handleDrinkModal(Party p)
     {
-		screenFader.gameObject.SendMessage("CreateRandomWineModal", p);
+    	Dictionary<string, string> subs = new Dictionary<string, string>(){
+    		{"$HOSTNAME",p.host.Name}};
+    	DeWinterApp.OpenMessageDialog(DialogConsts.REFILL_WINE_DIALOG, subs);
     }
 }

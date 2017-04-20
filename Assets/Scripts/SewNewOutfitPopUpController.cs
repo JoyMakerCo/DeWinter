@@ -62,7 +62,7 @@ public class SewNewOutfitPopUpController : MonoBehaviour {
     int CalculatePrice()
     {
         int calcPrice = (int)(Mathf.Abs(outfitModesty) + Mathf.Abs(outfitLuxury));
-        if (outfitStyle != GameData.currentStyle) //Check to see if this Outfit matches what's in Style
+        if (outfitStyle != DeWinterApp.GetModel<InventoryModel>().CurrentStyle) //Check to see if this Outfit matches what's in Style
         {
 			calcPrice = (int)(calcPrice * DeWinterApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
         }

@@ -3,12 +3,12 @@ using Core;
 
 namespace DeWinter
 {
-	public class CheckUprisingDayCmd : ICommand<CalendarDayVO>
+	public class CheckUprisingDayCmd : ICommand<DateTime>
 	{
-		public void Execute (CalendarDayVO day)
+		public void Execute (DateTime day)
 		{
 			CalendarModel imod = DeWinterApp.GetModel<CalendarModel>();
-			if (day.Day == imod.uprisingDay)
+			if (day == imod.uprisingDay)
 			{
 				string victoriousPower;
 

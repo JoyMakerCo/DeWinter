@@ -35,7 +35,7 @@ public static class EnemyInventory
     private static void AdditionPartyScan(Enemy e)
     {
     	CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
-		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d > cmod.Today);
+		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d > DeWinterApp.GetModel<CalendarModel>().Today);
     	System.Random rnd = new System.Random();
     	foreach(DateTime date in dates)
     	{
@@ -55,10 +55,11 @@ public static class EnemyInventory
     }
 
     //Removes the Enemy from any future Parties, used in the Remove Enemies Function
+    // TODO: Populate enemies when parties start, so that this method doesn't have to exist
     private static void RemovalPartyScan(Enemy e)
     {
 		CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
-		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d >= cmod.Today);
+		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d >= DeWinterApp.GetModel<CalendarModel>().Today);
     	foreach (DateTime d in dates)
     	{
     		for (int i=cmod.Parties[d].Count-1; i>=0; i--)

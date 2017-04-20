@@ -8,43 +8,54 @@ namespace DeWinter
 	public class MonthSelector : MonoBehaviour
 	{
 	    public Text displayMonthText;
-	    private int _displayMonth;
+	    private DateTime _date;
 	    private CalendarModel _model;
 
 	    // Update is called once per frame
 	    void Start()
 	    {
 	    	_model = DeWinterApp.GetModel<CalendarModel>();
-	    	DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
-	        DisplayMonth = _model.Today.Month;
+	    	DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
 	    }
 
-	    public void ViewMonthAhead()
+	    void OnDestroy()
 	    {
-	    	DisplayMonth++;
+			DeWinterApp.Unsubscribe<DateTime>(HandleCalendarDay);
 	    }
 
-	    public void ViewMonthBehind()
+	    public void NextMonth()
 	    {
-			DisplayMonth--;
-	    }
-
-		private void HandleCalendarDay(CalendarDayVO day)
-	    {
-			DisplayMonth = day.Date.Month;
-	    }
-
-	    public int DisplayMonth
-	    {
-	    	get { return _displayMonth; }
-	    	set {
-				_displayMonth = (value < _model.StartDate.Month)
-					? _model.StartDate.Month
-					: value > _model.EndDate.Month
-					? _model.EndDate.Month
-					: value;
-				displayMonthText.text = _model.GetMonthString(_displayMonth);
+	    	if (_date.Month < _model.EndDate.Month)
+	    	{
+	    		_date = _date.AddMonths(1);
+	    		UpdateMonth();
 	    	}
+	    }
+
+	    public void PrevMonth()
+	    {
+			if (_date.Month > _model.StartDate.Month)
+	    	{
+	    		_date = _date.AddMonths(-1);
+	    		UpdateMonth();
+	    	}
+	    }
+
+	    public void CurrMonth()
+	    {
+	    	HandleCalendarDay(_model.Today);
+	    }
+
+		private void HandleCalendarDay(DateTime day)
+	    {
+	    	_date = new DateTime(day.Year, day.Month, 1);
+	    	UpdateMonth();
+		}
+
+	    private void UpdateMonth()
+	    {
+			displayMonthText.text = _model.GetMonthString(_date);
+			DeWinterApp.SendMessage<DateTime>(CalendarMessages.VIEW_MONTH, _date);
 	    }
 	}
 }

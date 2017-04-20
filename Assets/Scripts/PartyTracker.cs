@@ -15,15 +15,15 @@ namespace DeWinter
 	    void Start()
 	    {
 	        myText = GetComponent<Text>();
-	        DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
+	        DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<CalendarDayVO>(HandleCalendarDay);
+			DeWinterApp.Unsubscribe<DateTime>(HandleCalendarDay);
 	    }
 
-		public void HandleCalendarDay(CalendarDayVO day)
+		public void HandleCalendarDay(DateTime day)
 	    {
 			CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
 			DateTime date = day.Date;

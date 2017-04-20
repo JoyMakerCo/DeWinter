@@ -74,7 +74,7 @@ public class Outfit
     {
         float noveltyPercent = (float)novelty / 100;
         int calcPrice = (int)((Mathf.Abs(modesty) + Mathf.Abs(luxury))*noveltyPercent);
-        if(style != GameData.currentStyle) //Check to see if this Outfit matches what's in Style
+        if(style != DeWinterApp.GetModel<InventoryModel>().CurrentStyle) //Check to see if this Outfit matches what's in Style
         {
 // TODO: Populated by model
             calcPrice = (int)(calcPrice*DeWinter.DeWinterApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
