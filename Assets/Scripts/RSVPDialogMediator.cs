@@ -10,8 +10,6 @@ using Core;
 
 public class RSVPDialogMediator : DialogView, IDialog<Party>
 {
-	public const string DIALOG_ID = "RSVPPopUpModal";
-	
 	public Text TitleTxt;
 	public Text BodyTxt;
 

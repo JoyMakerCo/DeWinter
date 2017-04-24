@@ -7,11 +7,17 @@ using Core;
 
 namespace Dialog
 {
+	[Serializable]
+	public struct DialogBinding
+	{
+		public string Key;
+		public GameObject Prefab;
+	}
+
 	public class DialogCanvasManager : MonoBehaviour
 	{
-		public GameObject[] DialogPrefabs;
+		public DialogBinding[] DialogPrefabs;
 
-		protected Dictionary<string, GameObject> _prefabs;
 		protected List<GameObject> _dialogs;
 		protected Canvas _canvas;
 
@@ -20,22 +26,16 @@ namespace Dialog
 			App.Service<DialogSvc>().RegisterManager(this);
 
 			_canvas = this.gameObject.GetComponent<Canvas>();
-			_prefabs = new Dictionary<string, GameObject>();
 			_dialogs = new List<GameObject>();
-
-			foreach (GameObject prefab in DialogPrefabs)
-			{
-				_prefabs.Add(prefab.name, prefab);
-			}
 		}
 
 		public GameObject Open(string dialogID)
 		{
-			GameObject prefab;
-			if (!_prefabs.TryGetValue(dialogID, out prefab))
-				return null;
-			
-			GameObject dialog = GameObject.Instantiate<GameObject>(prefab);
+			DialogBinding binding = Array.Find(DialogPrefabs, d=>d.Key == dialogID);
+			if (binding.Equals(default(DialogBinding)) || binding.Prefab == null)
+				return null; // Early out
+
+			GameObject dialog = GameObject.Instantiate<GameObject>(binding.Prefab);
 			DialogView cmp = dialog.GetComponent<DialogView>();
 			if (cmp != null) cmp.Manager = this;
 			_dialogs.Add(dialog);
@@ -59,13 +59,25 @@ namespace Dialog
 		public bool Close(GameObject dialog)
 		{
 			int count = _dialogs.RemoveAll(d => ReferenceEquals(d, dialog));
-			if (dialog != null) GameObject.Destroy(dialog);
+			if (dialog != null)
+			{
+				DialogView view = dialog.GetComponent<DialogView>();
+				if (view is IDisposable)
+					(view as IDisposable).Dispose();
+				GameObject.Destroy(dialog);
+			}
 			return (dialog != null && count > 0);
 		}
 
 		public void CloseAll()
 		{
-			_dialogs.ForEach(GameObject.Destroy);
+			foreach(GameObject d in _dialogs)
+			{
+				DialogView v = d.GetComponent<DialogView>();
+				if (v is IDisposable)
+					(v as IDisposable).Dispose();
+				GameObject.Destroy(d);
+			}
 			_dialogs.Clear();
 		}
 

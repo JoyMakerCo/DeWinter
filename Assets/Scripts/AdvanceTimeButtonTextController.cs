@@ -48,7 +48,7 @@ namespace DeWinter
 			else if (OutfitInventory.personalInventory.Count <= 0)
 			{
 				//You ain't got no clothes to attend the party! 
-                DeWinterApp.OpenDialog(NoOutfitModal.DIALOG_ID);
+                DeWinterApp.OpenDialog(DialogConsts.NO_OUTFIT);
 			}
 			else
 			{
