@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 using DeWinter;
@@ -10,16 +11,16 @@ public class NextStyleTracker : MonoBehaviour {
     void Start()
     {
         myText = this.GetComponent<Text>();
-        DeWinterApp.Subscribe<CalendarDayVO>(HandleCalendarDay);
-        HandleCalendarDay(null);
+        DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
+        HandleCalendarDay(default(DateTime));
     }
 
     void OnDestroy()
     {
-		DeWinterApp.Unsubscribe<CalendarDayVO>(HandleCalendarDay);
+		DeWinterApp.Unsubscribe<DateTime>(HandleCalendarDay);
     }
 
-	private void HandleCalendarDay(CalendarDayVO day)
+	private void HandleCalendarDay(DateTime day)
     {
     	ServantModel servantModel = DeWinterApp.GetModel<ServantModel>();
 		if (servantModel.Servants.ContainsKey("Seamstress"))

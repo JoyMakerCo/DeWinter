@@ -10,7 +10,6 @@ namespace DeWinter
 	{
 	    public GameObject screenFader; // It's for the Confidence Tally pop-up
 	    public RoomManager roomManager;
-	    public LevelManager levelManager;
 
 		private FactionVO _faction;
 
@@ -24,7 +23,8 @@ namespace DeWinter
 			DeWinterApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, OutfitInventory.PartyOutfit);
 
 			ItemVO accessory;
-			if (DeWinterApp.GetModel<InventoryModel>().Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Garter Flask")
+			InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
+			if (imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Garter Flask")
 			{
 				GameData.tonightsParty.maxPlayerDrinkAmount++;
 			}
@@ -53,6 +53,7 @@ namespace DeWinter
 	    {
 	        GameData.tonightsParty.maxPlayerConfidence = 0;
 	        GameData.tonightsParty.currentPlayerConfidence = 0;
+	        InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
 	        //Calculate Confidence Values Here------------
 	        //Faction Outfit Likes (Military doesn't know anything, so they use the Average Value)
 	        float outfitReaction;
@@ -75,7 +76,7 @@ namespace DeWinter
 	        }
 	        //Is it in Style?
 	        int outfitStyleReaction;
-	        if (GameData.currentStyle == OutfitInventory.PartyOutfit.style)
+	        if (imod.CurrentStyle == OutfitInventory.PartyOutfit.style)
 	        {
 	            outfitStyleReaction = 50;
 	            outfitStyleReaction = 30;
@@ -89,7 +90,7 @@ namespace DeWinter
 	        int outfitAccessoryStyleMatch = 0;
 	        if (GameData.partyAccessory != null) //Has an Accessory been worn at all?
 	        {
-				if (GameData.currentStyle == GameData.partyAccessory.States["Style"] as string)
+				if (imod.CurrentStyle == GameData.partyAccessory.States["Style"] as string)
 	            {
 	                accessoryStyleReaction = 30;
 	            }
@@ -139,8 +140,7 @@ namespace DeWinter
 	    {
 	        if (GameData.tonightsParty.tutorial)
 	        {
-	            //Explanatory Pop Up
-	            screenFader.gameObject.SendMessage("CreatePartyTutorialPopUp");
+	        	DeWinterApp.OpenMessageDialog(DialogConsts.PARTY_TUTORIAL_DIALOG);
 	        }
 	    }
 
@@ -151,7 +151,9 @@ namespace DeWinter
 	            //Fill Up their Glass
 	            GameData.tonightsParty.currentPlayerDrinkAmount = GameData.tonightsParty.maxPlayerDrinkAmount;
 	            //Explanatory Pop Up
-	            screenFader.gameObject.SendMessage("CreateEntranceWineModal", GameData.tonightsParty);
+	            Dictionary<string, string> substitutions = new Dictionary<string, string>()
+					{{"$HOSTNAME",GameData.tonightsParty.host.Name}};
+	            DeWinterApp.OpenMessageDialog(DialogConsts.REPUTATION_WINE_DIALOG, substitutions);
 	        }
 	    }
 
@@ -203,22 +205,20 @@ namespace DeWinter
 	    void FashionChangeCheck()
 	    {
 	    	GameModel gm = DeWinterApp.GetModel<GameModel>();
+			InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
 	        //Is the Player in the wrong Style (but matching) and are they Level 8 or higher?
-	        if (OutfitInventory.PartyOutfit.style != GameData.currentStyle
+	        if (OutfitInventory.PartyOutfit.style != imod.CurrentStyle
 	        	&& gm.ReputationLevel >= 8
 	        	&& OutfitInventory.PartyOutfit.style == GameData.partyAccessory.States[ItemConsts.STYLE] as string)
 	        {
 	            //25% Chance
 	            if(Random.Range(0,4) == 0)
 	            {
-	                //Store the Old and New Styles before the shift
-	                string[] stringStorage = new string[2];
-	                stringStorage[0] = GameData.currentStyle;
-	                stringStorage[1] = OutfitInventory.PartyOutfit.style;
-	                //Change the Style to Match the Player's Outfit (and thus their Accessory's)
-	                GameData.currentStyle = OutfitInventory.PartyOutfit.style;
 	                //Send Out a Relevant Pop-Up
-	                screenFader.gameObject.SendMessage("CreateEntranceFashionChangeModal", stringStorage);
+	                Dictionary<string, string> substitutions = new Dictionary<string, string>(){
+						{"$OLDSTYLE",imod.CurrentStyle},
+						{"$NEWSTYLE",OutfitInventory.PartyOutfit.style}};
+					DeWinterApp.OpenMessageDialog(DialogConsts.SET_TREND_DIALOG, substitutions);
 	            }
 	        }
 	    }

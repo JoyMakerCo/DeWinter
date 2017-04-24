@@ -40,10 +40,10 @@ public class BuyAndSell : MonoBehaviour {
                 }
             } else // If it won't fit then give them the "Can't Fit" Modal (hurr hurr hurr)
             {
-                object[] objectStorage = new object[2];
-                objectStorage[0] = merchantInventoryList.selectedInventoryOutfit;
-                objectStorage[1] = OutfitInventory.personalInventoryMaxSize;
-                screenFader.gameObject.SendMessage("CreateCantFitModal", objectStorage);
+            	Dictionary<string, string> subs = new Dictionary<string, string>(){
+					{"$ITEM",merchantInventoryList.selectedInventoryOutfit.Name()},
+					{"$CAPACITY",OutfitInventory.personalInventoryMaxSize.ToString()}};
+				DeWinterApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
             }           
         }
     }

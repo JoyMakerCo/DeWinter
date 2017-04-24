@@ -98,12 +98,6 @@ public static class GameData
 		get { return DeWinterApp.GetModel<PartyModel>().MaleNames; }
 	}
 
-	public static string currentStyle
-	{
-		get { return DeWinterApp.GetModel<InventoryModel>().CurrentStyle; }
-		set { DeWinterApp.GetModel<InventoryModel>().CurrentStyle = value; }
-	}
-
 	public static Dictionary<string, ServantVO[]> servantDictionary
 	{
 		get { return DeWinterApp.GetModel<ServantModel>().Servants; }
