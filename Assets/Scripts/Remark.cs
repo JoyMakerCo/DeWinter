@@ -7,6 +7,11 @@ public class Remark
     public Disposition Disposition;
     public BitArray Profile;
 
+    public bool IsAmbush
+    {
+    	get { return Profile == (BitArray)0; }
+    }
+
     // Todo: Generate this stuff in a command
     public Remark(string info, int numGuests)
     {

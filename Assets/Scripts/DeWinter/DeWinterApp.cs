@@ -40,6 +40,16 @@ namespace DeWinter
 			App.Service<CommandSvc>().Register<C, T>(messageID);
 		}
 
+		public static void Execute<C>() where C:ICommand, new()
+		{
+			App.Service<CommandSvc>().Execute<C>();
+		}
+
+		public static void Execute<C, T>(T value) where C:ICommand<T>, new()
+		{
+			App.Service<CommandSvc>().Execute<C, T>(value);
+		}
+
 		public static void UnregisterCommand<C>(string messageID) where C:ICommand
 		{
 			App.Service<CommandSvc>().Unregister<C>(messageID);
@@ -93,7 +103,7 @@ namespace DeWinter
 
 		public static void Unsubscribe<T>(string message, Action<T> callback)
 		{
-			App.Service<MessageSvc>().Unsubscribe<T>(callback);
+			App.Service<MessageSvc>().Unsubscribe<T>(message, callback);
 		}
 
 		public static void Unsubscribe<T>(Action<T> callback)
@@ -109,6 +119,47 @@ namespace DeWinter
 		public static GameObject OpenDialog<T>(string DialogID, T Data)
 		{
 			return App.Service<DialogSvc>().Open<T>(DialogID, Data);
+		}
+
+		public static GameObject OpenMessageDialog(string dialogID, string button, Dictionary<string, string> substitutions)
+		{
+			MessageDialogVO vo = new MessageDialogVO();
+			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE, substitutions);
+			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY, substitutions);
+			vo.Button = button;
+			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+		}
+
+		public static GameObject OpenMessageDialog(string dialogID, Dictionary<string, string> substitutions)
+		{
+			MessageDialogVO vo = new MessageDialogVO();
+			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE, substitutions);
+			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY, substitutions);
+			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+		}
+
+		public static GameObject OpenMessageDialog(string dialogID)
+		{
+			MessageDialogVO vo = new MessageDialogVO();
+			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE);
+			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY);
+			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+		}
+
+		public static GameObject OpenMessageDialog(string dialogID, string button)
+		{
+			MessageDialogVO vo = new MessageDialogVO();
+			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE);
+			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY);
+			vo.Button = button;
+			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+		}
+
+		// Easy shorthand for creating a request to modify a model value
+		public static void AdjustValue<T>(string ID, T value)
+		{
+			RequestAdjustValueVO<T> vo = new RequestAdjustValueVO<T>(ID, value);
+			App.Service<MessageSvc>().Send<RequestAdjustValueVO<T>>(vo);
 		}
 	}
 }

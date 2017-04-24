@@ -1,22 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Core;
 
 namespace DeWinter
 {
-	public class EventReadyCmd : ICommand<string>
+	public class EventReadyCmd : ICommand<DateTime>
 	{
 		private const string EVENT_DIALOG_ID = "EventPopUpModal";
 
-		public void Execute (string sceneID)
+		public void Execute (DateTime day)
 		{
-			if (sceneID == SceneConsts.GAME_ESTATE)
+			EventModel emod = DeWinterApp.GetModel<EventModel>();
+			if (emod.SelectedEvent != null)
 			{
-				EventModel emod = DeWinterApp.GetModel<EventModel>();
-				if (emod.SelectedEvent != null)
-				{
-					DeWinterApp.OpenDialog<EventVO>(EVENT_DIALOG_ID, emod.SelectedEvent);
-				}
+				DeWinterApp.OpenDialog<EventVO>(EVENT_DIALOG_ID, emod.SelectedEvent);
 			}
 		}
 	}

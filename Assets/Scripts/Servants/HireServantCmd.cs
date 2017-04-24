@@ -27,7 +27,7 @@ namespace DeWinter
 			model.Introduced[servant.slot].Remove(servant);
 			model.Hired.Add(servant.slot, servant);
 			AdjustValueVO msg = new AdjustValueVO("Livre", -servant.Wage);
-			DeWinterApp.SendMessage<AdjustValueVO>(msg);
+			DeWinterApp.AdjustValue<>(msg);
 			Debug.Log(servant.NameAndTitle + " Hired!");
 		}
 	}

@@ -13,7 +13,7 @@ namespace DeWinter
 			if (model.Inventory.Remove(item))
 			{
 				AdjustValueVO msg = new AdjustValueVO("Livre", item.SellPrice);
-				DeWinterApp.SendMessage<AdjustValueVO>(msg);
+				DeWinterApp.AdjustValue<>(msg);
 				Debug.Log(item.Name + " Sold for £" + msg.Amount.ToString());
 			}
 		}

@@ -8,6 +8,7 @@ namespace DeWinter
 	public class InventoryModel : DocumentModel
 	{
 		private int _nextStyleSwitch;
+		private string _currentStyle;
 
 		public InventoryModel() : base ("InventoryData") {}
 
@@ -33,7 +34,14 @@ namespace DeWinter
 		public int NumMarketSlots;
 
 		[JsonProperty("startingStyle")]
-		public string CurrentStyle;
+		public string CurrentStyle
+		{
+			set {
+				_currentStyle = value;
+				DeWinterApp.SendMessage<string>(InventoryConsts.STYLE, _currentStyle);
+			}
+			get { return _currentStyle; }
+		}
 
 		[JsonProperty("luxury")]
 		public Dictionary<int, string> Luxury;

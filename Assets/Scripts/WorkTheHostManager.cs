@@ -891,38 +891,35 @@ public class WorkTheHostManager : MonoBehaviour
 
     void VictoryCheck()
     {
-        //Check to see if everyone is either Charmed or Put Off 
-        int charmedAmount = 0;
-        int putOutAmount = 0;
-        if (party.host.notableLockedInState == LockedInState.Charmed)
-        {
-            charmedAmount++;
-        }
-        else if (party.host.notableLockedInState == LockedInState.PutOff)
-        {
-            putOutAmount++;
-        }
-        //If the Conversation is Over
-        if (charmedAmount + putOutAmount > 0)
-        {
-            Debug.Log("Conversation Over!");
-            room.Cleared = true;
-            //Rewards and Gossip Distributed Here
-            Reward givenReward = room.Rewards[5];  //Hosts give level 5 Rewards
-            GameData.tonightsParty.wonRewardsList.Add(givenReward);
-            object[] objectStorage = new object[4];
-            objectStorage[0] = charmedAmount;
-            objectStorage[1] = putOutAmount;
-            objectStorage[2] = room.HostHere;
-            objectStorage[3] = givenReward;
-            screenFader.gameObject.SendMessage("WorkTheRoomReportModal", objectStorage);
-            //Close the Window
-            if (hostRemarkWindow != null)
+    	string dialogType=null;
+    	Reward reward = null;
+    	Dictionary<string, string> subs = new Dictionary<string, string>();
+		switch (party.host.notableLockedInState)
+		{
+			case LockedInState.Charmed:
+				dialogType = DialogConsts.CHARMED_HOST_DIALOG;
+				reward = room.Rewards[5];
+				break;
+			case LockedInState.PutOff:
+				dialogType = DialogConsts.FAILED_HOST_DIALOG;
+				reward = room.Rewards[5];
+				break;
+			default:
+				break;
+		}
+		if (dialogType != null && reward != null)
+		{
+			room.Cleared = true;
+			GameData.tonightsParty.wonRewardsList.Add(reward);
+			subs.Add("$REWARD",reward.Name());
+			DeWinterApp.OpenMessageDialog(dialogType, subs);
+
+			if (hostRemarkWindow != null)
             {
                 Destroy(hostRemarkWindow);
             }
             Destroy(gameObject);
-        }
+		}
     }
 
     void ConfidenceCheck()
@@ -940,13 +937,14 @@ public class WorkTheHostManager : MonoBehaviour
             int reputationLoss = 25;
             int factionReputationLoss = 50;
             GameData.reputationCount -= reputationLoss;
-			DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -factionReputationLoss));
+			DeWinterApp.AdjustValue<>(new AdjustValueVO(party.faction, -factionReputationLoss));
             //Explanation Screen Pop Up goes here
-            object[] objectStorage = new object[3];
-            objectStorage[0] = party.faction;
-            objectStorage[1] = reputationLoss;
-            objectStorage[2] = factionReputationLoss;
-            screenFader.gameObject.SendMessage("CreateFailedConfidenceModal", objectStorage);
+            Dictionary<string, string> subs = new Dictionary<string, string>(){
+				{"$FACTIONREPUTATION",factionReputationLoss.ToString()},
+				{"$FACTION",party.faction},
+				{"$REPUTATION",reputationLoss.ToString()}};
+            DeWinterApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_DIALOG, subs);
+
             //The Player is pulled from the Work the Room session
             Destroy(gameObject);
         }

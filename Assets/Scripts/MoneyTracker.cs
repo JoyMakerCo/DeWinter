@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace DeWinter
@@ -13,36 +14,17 @@ namespace DeWinter
 	    void Start()
 	    {
 	        myText = GetComponent<Text>();
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleBalanceUpdate);
-			DeWinterApp.Subscribe<CalendarDayVO>(HandleDateUpdate);
+			DeWinterApp.Subscribe<int>(GameConsts.LIVRE, HandleBalanceUpdate);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleBalanceUpdate);
-			DeWinterApp.Unsubscribe<CalendarDayVO>(HandleDateUpdate);
+			DeWinterApp.Unsubscribe<int>(GameConsts.LIVRE, HandleBalanceUpdate);
 	    }
 
-		private void HandleBalanceUpdate(AdjustValueVO vo)
+		private void HandleBalanceUpdate(int livre)
 		{
-			if (!vo.IsRequest && vo.Type == GameConsts.LIVRE)
-			{
-				myText.text = vo.Amount.ToString("£" + "#,##0");
-
-// TODO: This check should be in a command.
-				//If your Money drops to 0 or below then you lose (for now)
-		        if (vo.Amount <= 0d)
-		        {
-		            screenFader.gameObject.SendMessage("CreateOutOfMoneyModal");
-		        }
-		    }
-		}
-
-// TODO: Use Dialog System via PayDayCmd.cs
-		private void HandleDateUpdate(CalendarDayVO day)
-		{
-			if (day.Day%7 == 0)
-				screenFader.gameObject.SendMessage("CreatePayDayPopUp");
+			myText.text = livre.ToString("£" + "#,##0");
 		}
 	}
 }

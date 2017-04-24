@@ -11,5 +11,6 @@ namespace DeWinter
 		public string[] Disikes;
 	    public bool IsFemale;
 	    public int Opinion;
+	    public LockedInState LockedInState;
 	}
 }

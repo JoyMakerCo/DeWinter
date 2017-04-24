@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using DeWinter;
 
 public class Party {
 
-    public string faction=null;
+    public string faction;
     public int partySize;
     public bool invited=false;
     public int invitationDistance; // How many days before does the Player have to be before they get invited (if eligible)?
@@ -15,6 +15,7 @@ public class Party {
     public int luxuryPreference;
     public bool tutorial=false;
     public float MaleToFemaleRatio = 1f; //Default: 1:1
+    public System.DateTime Date;
 
     public string description; // Randomly Generated Flavor Description
 
@@ -45,83 +46,51 @@ public class Party {
     //Constructor that make parties of a particular size, 0 means no Party
     public Party(int size)
     {
+		Random rnd = new Random();
+
         partySize = size;
-        if (size > 0)
-        {
-            SetFactionGuaranteedParty();
-			GenerateRandomDescription();
-            host = new Notable(faction);
-            turns = (partySize * 5) + 1;
-            turnsLeft = turns;
-            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
-        }
+		SetRandomFaction();
+		GenerateRandomDescription();
+        host = new Notable(faction);
+        turns = (partySize * 5) + 1;
+        turnsLeft = turns;
+        invitationDistance = 1 + rnd.Next(8) + rnd.Next(8); //Pseudo Normalized Value
     }
 
     //Constructor that makes a Party that ISN'T the included faction
     public Party(string faction)
     {
-		SetExclusiveFaction(faction);
-        if(faction != null)
-        {
-            partySize = Random.Range(1, 4);
-            host = new Notable(faction);
-            GenerateRandomDescription();
-            turns = (partySize * 5) + 1;
-            turnsLeft = turns;
-            invitationDistance = Random.Range(1, 8) + Random.Range(1, 9) - 1; //Pseudo Normalized Value
-        }
-    }
+		Random rnd = new Random();
 
-    void SetFactionGuaranteedParty()
-    {
-// TODO: set by model
-        switch(Random.Range(0, 5))
-        {
-			case 0: faction = "Crown"; break;
-			case 1: faction = "Church"; break;
-			case 2: faction = "Military"; break;
-			case 3: faction = "Bourgeoisie"; break;
-			case 4: faction = "Third Estate"; break;
-		}
-		modestyPreference = GameData.factionList[faction].Modesty;
-        luxuryPreference = GameData.factionList[faction].Luxury;
-   }
+		SetExclusiveFaction(faction);
+
+        partySize = rnd.Next(1, 4);
+        host = new Notable(faction);
+        GenerateRandomDescription();
+        turns = (partySize * 5) + 1;
+        turnsLeft = turns;
+		invitationDistance = 1 + rnd.Next(8) + rnd.Next(8); //Pseudo Normalized Value
+    }
 
     void SetRandomFaction()
     {
-		switch (Random.Range(0, 7))
-        {
-			case 0: faction = "Crown"; break;
-			case 1: faction = "Church"; break;
-			case 2: faction = "Military"; break;
-			case 3: faction = "Bourgeoisie"; break;
-			case 4: faction = "Third Estate"; break;
-			default: faction = null; break;
-        }
-        if (faction != null)
-        {
-			modestyPreference = GameData.factionList[faction].Modesty;
-            luxuryPreference = GameData.factionList[faction].Luxury;
-        }
+    	FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+    	int factionIndex = new Random().Next(fmod.Factions.Count);
+		List<string> factions = new List<string>(fmod.Factions.Keys);
+		faction = factions[factionIndex];
+		modestyPreference = fmod.Factions[faction].Modesty;
+		luxuryPreference = fmod.Factions[faction].Luxury;
     }
 
     void SetExclusiveFaction(string excludeFaction)
     {
-        int partyFaction = Random.Range(0, 6);
-        switch (partyFaction)
-        {
-			case 0: faction = "Crown"; break;
-			case 1: faction = "Church"; break;
-			case 2: faction = "Military"; break;
-			case 3: faction = "Bourgeoisie"; break;
-		}
-		if (faction != null)
-		{
-			if (faction == excludeFaction)
-				faction = "Third Estate";
-			modestyPreference = GameData.factionList[faction].Modesty;
-            luxuryPreference = GameData.factionList[faction].Luxury;
-        }
+		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+    	int factionIndex = new Random().Next(1, fmod.Factions.Count);
+		List<string> factions = new List<string>(fmod.Factions.Keys);
+    	faction = factions[factionIndex];
+    	if (faction == excludeFaction) faction = factions[0];
+		modestyPreference = fmod.Factions[faction].Modesty;
+		luxuryPreference = fmod.Factions[faction].Luxury;
     }
     
     void GenerateRandomDescription()

@@ -9,7 +9,6 @@ namespace DeWinter
 		public bool attackTimerWaiting; //Only used for Enemies
 	    public int attackNumber;
 
-	    public string Name;
 	    private string flavorText;
 	    public int dispositionInt;
 	    public Disposition disposition;

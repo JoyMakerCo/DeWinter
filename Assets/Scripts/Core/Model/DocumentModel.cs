@@ -15,11 +15,13 @@ namespace Core
 				LoadFile(File);
 		}
 
-		public void LoadFile (string File)
+		public bool LoadFile (string File)
 		{
 			_filename = File;
 			TextAsset file = Resources.Load<TextAsset>(_filename);
-			JsonConvert.PopulateObject(file.text, this);
+			if (file != null)
+				JsonConvert.PopulateObject(file.text, this);
+			return file != null;
 		}
 
 		[OnDeserialized]

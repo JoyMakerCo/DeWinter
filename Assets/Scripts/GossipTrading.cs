@@ -125,7 +125,7 @@ public class GossipTrading : MonoBehaviour
         if (gossip.AllegianceShiftValue() != 0)
         {
 			AdjustValueVO vo = new AdjustValueVO(gossip.Faction, gossip.AllegianceShiftValue());
-			DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
+			DeWinterApp.AdjustValue<>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
             PierreQuestCheck(gossip);
             GetCaughtCheck();
             RemoveGossipItem(gossipInventoryList.selectedGossipItem);
@@ -137,7 +137,7 @@ public class GossipTrading : MonoBehaviour
     {
 		Gossip gossip = GameData.gossipInventory[gossipInventoryList.selectedGossipItem];
 		AdjustValueVO vo = new AdjustValueVO(gossip.Faction, gossip.PowerShiftValue());
-		DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
+		DeWinterApp.AdjustValue<>(FactionConsts.ADJUST_FACTION_POWER, vo);
         PierreQuestCheck(gossip);
         GetCaughtCheck();
         RemoveGossipItem(gossipInventoryList.selectedGossipItem);
@@ -174,7 +174,7 @@ public class GossipTrading : MonoBehaviour
                 else if (p.reward.Type() == "Faction Power")
                 {
 					AdjustValueVO vo = new AdjustValueVO(p.reward.SubType(), p.reward.amount);
-					DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
+					DeWinterApp.AdjustValue<>(FactionConsts.ADJUST_FACTION_POWER, vo);
                 }
                 
                 //Generate Pop Up Here

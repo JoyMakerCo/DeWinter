@@ -9,19 +9,24 @@ namespace DeWinter
 	{
 		private Text _text;
 
-		void Start ()
+		void Awake ()
 		{
 			_text = GetComponent<Text>();
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleRep);
+			DeWinterApp.Subscribe<PlayerReputationVO>(GameConsts.REPUTATION, HandleRep);
 
-			AdjustValueVO vo = new AdjustValueVO(GameConsts.REPUTATION, DeWinterApp.GetModel<GameModel>().Reputation, false);
+			GameModel model = DeWinterApp.GetModel<GameModel>();
+			PlayerReputationVO vo = new PlayerReputationVO(model.Reputation, model.ReputationLevel);
 			HandleRep(vo);
 		}
-		
-		private void HandleRep (AdjustValueVO vo)
+
+		void OnDestroy()
 		{
-			if (vo.Type == GameConsts.REPUTATION && !vo.IsRequest)
-				_text.text = vo.Amount.ToString("###,###");
+			DeWinterApp.Unsubscribe<PlayerReputationVO>(GameConsts.REPUTATION, HandleRep);
+		}
+
+		private void HandleRep (PlayerReputationVO vo)
+		{
+			_text.text = vo.Reputation.ToString("###,###");
 		}
 	}
 }

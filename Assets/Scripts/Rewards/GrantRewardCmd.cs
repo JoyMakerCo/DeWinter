@@ -14,7 +14,7 @@ namespace DeWinter
 			{
 				case RewardConsts.VALUE:
 					vo = new AdjustValueVO(reward.Type, reward.Quantity);
-					DeWinterApp.SendMessage<AdjustValueVO>(vo);
+					DeWinterApp.AdjustValue<>(vo);
 					break;
 
 				case RewardConsts.GOSSIP:
@@ -38,7 +38,7 @@ namespace DeWinter
 
 				case RewardConsts.FACTION:
 					vo = new AdjustValueVO(reward.Type, reward.Quantity);
-					DeWinterApp.SendMessage<AdjustValueVO>(vo);
+					DeWinterApp.AdjustValue<>(vo);
 					break;
 
 				case RewardConsts.MESSAGE:

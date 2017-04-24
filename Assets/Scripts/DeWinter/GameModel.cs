@@ -21,7 +21,7 @@ namespace DeWinter
 			set
 			{
 				_livre = value;
-				DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(GameConsts.LIVRE, _livre, false));
+				DeWinterApp.SendMessage<int>(GameConsts.LIVRE, _livre);
 			}
 		}
 
@@ -61,12 +61,12 @@ namespace DeWinter
 
 		public void Initialize()
 		{
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleAdjustBalance);
+			DeWinterApp.Subscribe<RequestAdjustValueVO<int>>(HandleAdjustValue);
 		}
 
 		public void Dispose()
 		{
-			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleAdjustBalance);
+			DeWinterApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleAdjustValue);
 		}
 
 		// TODO: Localization model would be handy here
@@ -93,24 +93,17 @@ namespace DeWinter
 			}
 		}
 
-		private void HandleAdjustBalance(AdjustValueVO msg)
+		private void HandleAdjustValue(RequestAdjustValueVO<int> vo)
 		{
-			if (msg.IsRequest)
+			switch (vo.Type)
 			{
-				switch (msg.Type)
-				{
-					case GameConsts.LIVRE:
-						Livre += (int)(msg.Amount);
-						msg.IsRequest = false;
-						DeWinterApp.SendMessage<AdjustValueVO>(msg);
-						break;
+				case GameConsts.LIVRE:
+					Livre += vo.Value;
+					break;
 
-					case GameConsts.REPUTATION:
-						Reputation += (int)(msg.Amount);
-						msg.IsRequest = false;
-						DeWinterApp.SendMessage<AdjustValueVO>(msg);
-						break;
-				}
+				case GameConsts.REPUTATION:
+					Reputation += vo.Value;
+					break;
 			}
 		}
 	}

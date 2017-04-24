@@ -18,10 +18,16 @@ namespace Core
 		void Execute();
 	}
 
+	public interface IPersistentCommand
+	{
+		void OnCompleteCommand();
+	}
+
 	public class CommandSvc : IAppService
 	{
 		private Dictionary<string, Dictionary<Type, Delegate>> _messageAssociations;
 		private Dictionary<Type, Dictionary<Type, Delegate>> _typeAssociations;
+		private List<IPersistentCommand> _commands;
 
 		public CommandSvc()
 		{
@@ -75,6 +81,15 @@ namespace Core
 			}
 		}
 
+		public void Execute<C>() where C : ICommand, new()
+		{
+			new C().Execute();
+		}
+
+		public void Execute<C, T>(T value) where C: ICommand<T>, new() 
+		{
+			new C().Execute(value);
+		}
 
 		public void Unregister<C, T>() where C : ICommand<T>
 		{

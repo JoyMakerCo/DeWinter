@@ -16,7 +16,7 @@ namespace DeWinter
 				item.SellPrice = (int)((float)item.Price * model.SellbackMultiplier);
 				model.Inventory.Add(item);
 				model.Market.Remove(item);
-				DeWinterApp.SendMessage<AdjustValueVO>(msg);
+				DeWinterApp.AdjustValue<>(msg);
 				Debug.Log(item.Name + " Bought for £" + msg.Amount.ToString());
 			}
 		}

@@ -14,15 +14,12 @@ namespace DeWinter
 	    {
 	        myText = this.GetComponent<Text>();
 			_model = DeWinterApp.GetModel<PartyModel>();
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleConfidenceUpdate);
+			DeWinterApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleConfidenceUpdate);
 	    }
 
-		private void HandleConfidenceUpdate(AdjustValueVO vo)
+		private void HandleConfidenceUpdate(int confidence)
 	    {
-	    	if (!vo.IsRequest)
-	    	{
-		        myText.text = "Confidence: " + _model.Party.currentPlayerConfidence + "/" + _model.Party.maxPlayerConfidence;
-		    }
+	        myText.text = "Confidence: " + confidence.ToString() + "/" + _model.Party.maxPlayerConfidence.ToString();
 	    }
 	}
 }

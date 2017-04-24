@@ -10,10 +10,8 @@ namespace DeWinter
 	{
 // Everything left-aligned under this comment should be scripted separately
 Text title;
-public Text playerDrinkAmountText;
 public GameObject playerVisual;
 Text playerNameText;
-Text playerIntoxicationText;
 Image playerImage;
 
 		public KeyValuePair<BitArray, Sprite>[] RemarkSprites;
@@ -32,6 +30,9 @@ Image playerImage;
 	    public Image readyGoPanel;
 	    public Text readyGoText;
 
+		// TODO: Passive Buff system
+		private bool _fascinatorEffect; //The Fascinator Accessory lets the first negative comment go ignored during each Conversation
+
 		void Awake()
 		{
 // TODO: Add these to the objects themselves
@@ -39,7 +40,6 @@ title = this.transform.Find("TitleText").GetComponent<Text>();
 playerNameText = playerVisual.transform.Find("Name").GetComponent<Text>();
 playerNameText.text = "Yvette";
 drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetComponent<Image>();
-playerIntoxicationText = playerVisual.transform.Find("DrinkBoozeButton").Find("IntoxicationCounter").GetComponent<Text>();
 
 			_model = DeWinterApp.GetModel<PartyModel>();
 			DeWinterApp.Subscribe<RoomVO>(HandleRoom);
@@ -73,33 +73,19 @@ playerIntoxicationText = playerVisual.transform.Find("DrinkBoozeButton").Find("I
 			}
 		}
 
-	    bool fascinatorEffect; //The Fascinator Accessory lets the first negative comment go ignored during each Conversation
-
 	    // Use this for initialization
 	    void Start()
 	    {
-
-playerIntoxicationText.text = "Intoxication: " + _model.Party.currentPlayerIntoxication + "/" + _model.Party.maxPlayerIntoxication;
-
 			reparteeIndicatorImage.enabled = (GameData.playerReputationLevel >= 2);
 
 	        //Ready Go Text
+	        // TODO: Put all of this into the localization file
 			string[] conversationIntroList = DeWinterApp.GetModel<PartyModel>().ConversationIntros;
 	        readyGoText.text = conversationIntroList[Random.Range(0, conversationIntroList.Length)];
 
 	        //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
 	        // TODO: Passive buff system
-			fascinatorEffect = (GameData.partyAccessory != null && GameData.partyAccessory.Type == "Fascinator");
-
-	        //Tutorial Pop-Up? Only used in the tutorial Room
-	        // This can be made less hacky by registering the dialog in a command triggered by entering a room
-	        if (_model.Party.tutorial)
-	        {
-				DeWinterApp.OpenDialog("WorkTheRoomTutorialPopUpModal");
-	        } else
-	        {
-	        	DeWinterApp.SendMessage<float>(PartyMessages.START_TIMERS, _model.TurnTimer);
-	        }
+			_fascinatorEffect = (GameData.partyAccessory != null && GameData.partyAccessory.Type == "Fascinator");
 	    }
 
 	    // Update is called once per frame
@@ -126,13 +112,8 @@ playerIntoxicationText.text = "Intoxication: " + _model.Party.currentPlayerIntox
 
 		private void HandleBooze(int tox)
 		{
-			playerIntoxicationText.text = "Intoxication: " + tox.ToString() + "/" + _model.Party.maxPlayerIntoxication;
-			playerDrinkAmountText.text = "Booze Glass: " + tox.ToString() + "/" + _model.Party.maxPlayerDrinkAmount;
-			drinkBoozeButtonImage.color (tox > 0) ? Color.white : Color.gray;
+			drinkBoozeButtonImage.color =  (tox > 0) ? Color.white : Color.gray;
 		}
-	        
-	        //Visualizing the Remarks--------------
-//	        VisualizeRemarks();
 	        
 	        //Turn Timer
 //	        if(conversationStarted && turnTimerActive)
@@ -159,94 +140,14 @@ playerIntoxicationText.text = "Intoxication: " + _model.Party.currentPlayerIntox
 
 		IEnumerator TimerCoroutine(float seconds)
 		{
-			yield return WaitForSeconds(seconds);
-			EndTurn();
+			float t = seconds;
+			while (t > 0)
+			{
+				t -= Time.deltaTime;
+				yield return null;
+			}
+			EndTurn(t/seconds);
 		}
-
-	    public void StartTargeting(int selectedRemark)
-	    {
-	        if (conversationStarted)
-	        {
-	            if (party.playerHand[selectedRemark] != null && !party.playerHand[selectedRemark].ambushRemark)
-	            {
-	                targetingMode = true;
-	                targetingRemark = selectedRemark;
-	                //Debug.Log("Remark Tone: " + GameData.dispositionList[party.playerHand[selectedRemark].toneInt].like + " " + party.playerHand[selectedRemark].toneInt);
-	                //Debug.Log("Remark Targeting Profile: " + party.playerHand[selectedRemark].targetingProfileInt);
-	            }
-	            else
-	            {
-	                Debug.Log("No Remark to Select");
-	            }
-	        }
-	    }
-
-	    public void GuestSelected(int guestNumber)
-	    {
-	        if (targetingMode) //If a remark has been selected
-	        {
-	            //Targeting Profiles Get Taken into Account Here
-	            switch (party.playerHand[targetingRemark].targetingProfileInt)
-	            {          
-	                case 1:
-	                    //No flip or failsafe version necessary, it's just one target
-	                    GuestTargeted(guestNumber);
-	                    break;
-	                case 11:
-	                    //Flip versions and failsafes
-	                    if (!targetingFlipped)
-	                    {
-	                        GuestTargeted(guestNumber);
-	                        GuestTargeted(guestNumber+1);
-	                    }
-	                    else
-	                    {
-	                        GuestTargeted(guestNumber);
-	                        GuestTargeted(guestNumber - 1);
-	                    }
-	                    break;
-	                case 101:
-	                    //Flip Versions and Failsafes
-	                    if (!targetingFlipped)
-	                    {
-	                        GuestTargeted(guestNumber);
-	                        GuestTargeted(guestNumber + 2);
-	                    }
-	                    else
-	                    {
-	                        GuestTargeted(guestNumber);
-	                        GuestTargeted(guestNumber - 2);
-	                    }
-	                    break;
-	                case 1011:
-	                    //Flip version but no failsafes, as it covers all 4 Guests
-	                    if (!targetingFlipped)
-	                    {
-	                        GuestTargeted(guestNumber);
-	                        GuestTargeted(guestNumber + 2);
-	                        GuestTargeted(guestNumber + 3);
-	                    } else
-	                    {
-	                        GuestTargeted(guestNumber);
-	                        GuestTargeted(guestNumber - 2);
-	                        GuestTargeted(guestNumber - 3);
-	                    }
-	                    break;
-	            }
-	            //Deselect any remarks
-	            party.playerHand.RemoveAt(targetingRemark);
-	            targetingRemark = -1;
-	            targetingMode = false;
-	            if (party.playerHand.Count == 0)
-	            {
-	                SpendConfidenceGetRemark();
-	            }
-	            EndTurn();
-	        } else
-	        {
-	            Debug.Log("No remark selected :(");
-	        }      
-	    }
 
 	    void GuestTargeted(int guestNumber)
 	    {  
@@ -507,7 +408,6 @@ playerIntoxicationText.text = "Intoxication: " + _model.Party.currentPlayerIntox
 	    {
 	        Debug.Log("Attack Timer Started!");
 	        yield return new WaitForSeconds(0.75f);
-	        g.attackTimerWaiting = false;
 	    }
 
 	    public float ReparteBonus()
@@ -651,27 +551,14 @@ playerIntoxicationText.text = "Intoxication: " + _model.Party.currentPlayerIntox
 	        }
 	    }
 
-	    void EndTurn()
+	    void EndTurn(float repartee=0.0f)
 	    {
-	        //Reset the Turn Timer
-	        room.TurnTimer = maxTurnTimer;
-	        turnTimerBar.value = room.TurnTimer / maxTurnTimer;
+	    	StopAllCoroutines();
+	    	if (repartee >= 0.5f)
+		    	DeWinterApp.SendMessage(PartyMessages.REPARTEE_BONUS);
 
-	        //Increment all the Guest Timers, issue Boredom Damage
-	        foreach (GuestVO g in room.Guests)
-	        {
-	            g.currentInterestTimer = Mathf.Clamp(g.currentInterestTimer - 1, 0, g.maxInterestTimer);
-	            if (g.currentInterestTimer <= 0 && g.lockedInState == LockedInState.Interested && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored they merely wait
-	            {
-	                ChangeGuestOpinion(g, -10);
-	                if (g.currentOpinion <= 0)
-	                {
-	                    g.lockedInState = LockedInState.PutOff;
-	                }
-	            }
-	        }
-	        //Pause the Next Turn Timer
-	        turnTimerActive = false;
+	        //Signal End of turn (resets timers, etc)
+			DeWinterApp.SendMessage(PartyMessages.END_TURN);
 	    }
 
 	    void StockGuestImageDictionaries()
@@ -1091,7 +978,7 @@ playerIntoxicationText.text = "Intoxication: " + _model.Party.currentPlayerIntox
 	                int reputationLoss = 25;
 	                int factionReputationLoss = 50;
 	                GameData.reputationCount -= reputationLoss;
-					DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -factionReputationLoss));
+					DeWinterApp.AdjustValue<>(new AdjustValueVO(party.faction, -factionReputationLoss));
 	                //Explanation Screen Pop Up goes here
 	                object[] objectStorage = new object[3];
 	                objectStorage[0] = party;
@@ -1127,40 +1014,6 @@ playerIntoxicationText.text = "Intoxication: " + _model.Party.currentPlayerIntox
 	        turnTimerActive = true;
 	    }
 
-	    void VisualizeRemarks()
-	    {
-	        for (int i = 0; i < remarkSlotList.Count; i++)
-	        {
-	            if (party.playerHand.ElementAtOrDefault(i) != null)
-	            {
-	                if (!party.playerHand[i].ambushRemark)
-	                {
-	                    remarkSlotList[i].targetingProfileImage.color = Color.white;
-	                    remarkSlotList[i].targetingProfileImage.sprite = VisualizeTargetingProfile(i);
-	                    remarkSlotList[i].dispositionIcon.color = GameData.dispositionList[party.playerHand[i].toneInt].color;
-	                    if (targetingFlipped)
-	                    {
-	                        remarkSlotList[i].targetingProfileImage.transform.localScale = new Vector3(-1, 1, 1);
-	                    }
-	                    else
-	                    {
-	                        remarkSlotList[i].targetingProfileImage.transform.localScale = new Vector3(1, 1, 1);
-	                    }
-	                }
-	                else
-	                {
-	                    remarkSlotList[i].targetingProfileImage.color = Color.black;
-	                    remarkSlotList[i].dispositionIcon.color = Color.black;
-	                }
-	            }
-	            else
-	            {
-	                remarkSlotList[i].targetingProfileImage.color = Color.clear;
-	                remarkSlotList[i].dispositionIcon.color = Color.clear;
-	            }
-	        }
-	    }
-	    
 	    void VisualizeGuests()
 	    {
 	        //---- Guest 0 ----

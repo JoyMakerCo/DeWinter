@@ -4,27 +4,32 @@ using Core;
 
 namespace DeWinter
 {
-	public class PayDayCmd : ICommand<CalendarDayVO>
+	public class PayDayCmd : ICommand<DateTime>
 	{
-		public void Execute (CalendarDayVO day)
+		public void Execute (DateTime day)
 		{
 			if (day.Day%7 == 0)
 			{
 				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-				AdjustValueVO vo = new AdjustValueVO(GameConsts.LIVRE, 0);
+				int numservants=0;
 				ServantVO servant;
+				float livre = 0;
 				foreach (KeyValuePair<string, ServantVO[]> kvp in smod.Servants)
 	            {
 	            	servant = Array.Find(kvp.Value, s => s.Hired);
 	            	if (servant != null)
-		            	vo.Amount -= servant.Wage;
+		            	livre += servant.Wage;
 	            }
 
-	            if (vo.Amount < 0)
+	            if (livre > 0)
 	            {
-					DeWinterApp.SendMessage<AdjustValueVO>(vo);
-		            //TODO: Pop Up Window to explain the Transaction        
-	         	}
+	            	DeWinterApp.AdjustValue(GameConsts.LIVRE, -livre);
+					Dictionary<string, string> substitutions = new Dictionary<string, string>(){
+						{"$NUMSERVANTS",numservants.ToString()},
+						{"$TOTALWAGES", livre.ToString()},
+						{"$LIVRE",GameData.moneyCount.ToString()}};
+					DeWinterApp.OpenMessageDialog(DialogConsts.PAY_DAY_DIALOG, substitutions);
+				}
 			}
 		}
 	}

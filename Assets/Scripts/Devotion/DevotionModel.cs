@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Core;
 
-using UnityEngine;
-
 namespace DeWinter
 {
-	public class DevotionModel : DocumentModel
+	public class DevotionModel : DocumentModel, Util.IInitializable, IDisposable
 	{
 		[JsonProperty("SeductionMod")]
 		public int SeductionModifier;
@@ -27,5 +26,27 @@ namespace DeWinter
 		public Dictionary <string, NotableVO> Notables;
 
 		public DevotionModel() : base("Devotion") {}
+
+		public void Initialize()
+		{
+			DeWinterApp.Subscribe<RequestAdjustValueVO<int>>(HandleDevotion);
+		}
+
+		public void Dispose()
+		{
+			DeWinterApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleDevotion);
+		}	
+
+		private void HandleDevotion(RequestAdjustValueVO<int> vo)
+		{
+			NotableVO notable;
+			if (Notables.TryGetValue(vo.Type, out notable))
+			{
+				notable.Devotion += (int)vo.Value;
+				Notables[vo.Type] = notable;
+				DeWinterApp.SendMessage<NotableVO>(notable);
+			}
+
+		}
 	}
 }
