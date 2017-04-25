@@ -10,7 +10,6 @@ namespace DeWinter
 {
 	public class NoOutfitModal : DialogView
 	{
-		public const string DIALOG_ID = "NoOutfitModal";
 		private const string DIALOG_PHRASE = "no_outfit_dialog";
 
 		public Text BodyText;
@@ -35,7 +34,7 @@ namespace DeWinter
 	    		Party party = parties.Find(p => p.RSVP == 1);
 	    		if (party != null)
 	    		{
-					DeWinterApp.OpenDialog<Party>(RSVPCancelDialogMediator.DIALOG_ID, party);
+					DeWinterApp.OpenDialog<Party>(DialogConsts.CANCEL, party);
 				}
 			}
 	    }

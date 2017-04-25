@@ -18,16 +18,16 @@ namespace DeWinter
 				{
 					if (parties[0].RSVP < 1)
 					{
-						DeWinterApp.OpenDialog<Party>(RSVPDialogMediator.DIALOG_ID, parties[0]);
+						DeWinterApp.OpenDialog<Party>(DialogConsts.RSVP, parties[0]);
 					}
 					else
 					{
-						DeWinterApp.OpenDialog<Party>(RSVPCancelDialogMediator.DIALOG_ID, parties[0]);
+						DeWinterApp.OpenDialog<Party>(DialogConsts.CANCEL, parties[0]);
 					}
 				}
 				else // Multiple Parties
 				{
-					DeWinterApp.OpenDialog<List<Party>>(RSVPChoiceDialogMediator.DIALOG_ID, parties);
+					DeWinterApp.OpenDialog<List<Party>>(DialogConsts.RSVPx2, parties);
 				}
 			}
 		}

@@ -15,7 +15,7 @@ namespace DeWinter
 			p.Date = day.Date;
 			p.invited = true;
 			cmod.UpdateParty(p);
-			DeWinterApp.OpenDialog<Party>(RSVPDialogMediator.DIALOG_ID, p);
+			DeWinterApp.OpenDialog<Party>(DialogConsts.RSVP, p);
 
 			if (rnd.Next(3) == 0) // Chance of a random future engagement
 			{
@@ -23,7 +23,7 @@ namespace DeWinter
 				p.Date = cmod.DaysFromNow(rnd.Next(2,6));
 				p.invited = true;
 				cmod.UpdateParty(p);
-				DeWinterApp.OpenDialog<Party>(RSVPDialogMediator.DIALOG_ID, p);
+				DeWinterApp.OpenDialog<Party>(DialogConsts.RSVP, p);
 			}
 		}
 	}
