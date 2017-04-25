@@ -3,9 +3,9 @@ using Core;
 
 namespace DeWinter
 {
-	public class RestockMerchantCmd : ICommand<CalendarDayVO>
+	public class RestockMerchantCmd : ICommand<DateTime>
 	{
-		public void Execute(CalendarDayVO day)
+		public void Execute(DateTime day)
 		{
 			InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
 			Random rnd = new Random();

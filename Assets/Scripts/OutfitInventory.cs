@@ -38,17 +38,18 @@ public static class OutfitInventory
     //Run whenever the Estate Streen Starts Up
 	public static void RestockMerchantInventory()
     {
+		InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
         merchantInventory.Clear();
         //Checking for Faction Benefit. If the Player is level 2+ with the Bourgeoisie Faction then the Merchant stocks additional wares
         if (GameData.factionList["Bourgeoisie"].ReputationLevel >= 3)
         {
-            outfitInventories["merchant"].Add(new Outfit(GameData.currentStyle));
+            outfitInventories["merchant"].Add(new Outfit(imod.CurrentStyle));
             outfitInventories["merchant"].Add(new Outfit());
             outfitInventories["merchant"].Add(new Outfit());
             outfitInventories["merchant"].Add(new Outfit());
         } else
         {
-            outfitInventories["merchant"].Add(new Outfit(GameData.currentStyle));
+			outfitInventories["merchant"].Add(new Outfit(imod.CurrentStyle));
             outfitInventories["merchant"].Add(new Outfit());
             outfitInventories["merchant"].Add(new Outfit());
         }

@@ -1258,54 +1258,54 @@ public class WorkTheRoomManager : MonoBehaviour
     void VictoryCheck()
     {
         //Check to see if everyone is either Charmed or Put Off 
-        int charmedAmount = 0;
+		int charmedAmount = 0;
         int putOffAmount = 0;
-        foreach (Guest g in room.Guests)
+
+		foreach (Guest g in room.Guests)
         {
-            if(g.lockedInState == LockedInState.Charmed)
-            {
-                charmedAmount++;
-            } else if (g.lockedInState == LockedInState.PutOff)
-            {
-                putOffAmount++;
+        	switch (g.lockedInState)
+        	{
+            	case LockedInState.Charmed:
+            		charmedAmount++;
+            		break;
+            	case LockedInState.PutOff:
+            		putOffAmount++;
+            		break;
             }
-            //If the Conversation is Over
-            if (charmedAmount + putOffAmount == room.Guests.Length)
+        }
+
+        //If the Conversation is Over
+        if (charmedAmount + putOffAmount == room.Guests.Length)
+        {
+	        room.Cleared = true;
+
+            //Remove the Ambush Cards (If present)
+            party.playerHand.RemoveAll(r => r.ambushRemark);
+
+            //Rewards Distributed Here
+            Reward givenReward = room.Rewards[charmedAmount]; //Amount of Charmed Guests determines the level of Reward.
+            if (givenReward.Type() == "Introduction")
             {
-                Debug.Log("Conversation Over!");
-                room.Cleared = true;
-                //Remove the Ambush Cards (If present)
-                foreach (Remark r in party.playerHand)
+            	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+                foreach (Reward r in GameData.tonightsParty.wonRewardsList)
                 {
-                    if (r.ambushRemark)
+                    //If that Servant has already been Introduced or if the Reward of their Introduction has already been handed out then change the Reward to Gossip
+					if ((r.SubType() == givenReward.SubType() && r.amount > 0) || smod.Introduced.ContainsKey(givenReward.SubType()))
                     {
-                        party.playerHand.Remove(r);
+                        givenReward = new Reward(GameData.tonightsParty, "Gossip", 1);
                     }
                 }
-                //Rewards Distributed Here
-                Reward givenReward = room.Rewards[charmedAmount]; //Amount of Charmed Guests determines the level of Reward.
-                if (givenReward.Type() == "Introduction")
-                {
-                	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-                    foreach (Reward r in GameData.tonightsParty.wonRewardsList)
-                    {
-                        //If that Servant has already been Introduced or if the Reward of their Introduction has already been handed out then change the Reward to Gossip
-						if ((r.SubType() == givenReward.SubType() && r.amount > 0) || smod.Introduced.ContainsKey(givenReward.SubType()))
-                        {
-                            givenReward = new Reward(GameData.tonightsParty, "Gossip", 1);
-                        }
-                    }
-                }
-                GameData.tonightsParty.wonRewardsList.Add(givenReward);
-                object[] objectStorage = new object[4];
-                objectStorage[0] = charmedAmount;
-                objectStorage[1] = putOffAmount;
-                objectStorage[2] = room.HostHere;
-                objectStorage[3] = givenReward;
-                screenFader.gameObject.SendMessage("WorkTheRoomReportModal", objectStorage);
-                //Close the Window
-                Destroy(gameObject);
             }
+
+			GameData.tonightsParty.wonRewardsList.Add(givenReward);
+            Dictionary<string, string> subs = new Dictionary<string, string>(){
+				{"$NUMCHARMED",charmedAmount.ToString()},
+				{"$NUMPUTOFF",putOffAmount.ToString()},
+				{"$REWARD",givenReward.Name()}};
+            DeWinterApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
+
+            //Close the Window
+            Destroy(gameObject);
         }
     }
 
@@ -1328,11 +1328,13 @@ public class WorkTheRoomManager : MonoBehaviour
                 GameData.reputationCount -= reputationLoss;
 				DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -factionReputationLoss));
                 //Explanation Screen Pop Up goes here
-                object[] objectStorage = new object[3];
-                objectStorage[0] = party;
-                objectStorage[1] = reputationLoss;
-                objectStorage[2] = factionReputationLoss;
-                screenFader.gameObject.SendMessage("CreateFailedConfidenceModal", objectStorage);
+
+				Dictionary<string, string> subs = new Dictionary<string, string>(){
+				{"$FACTIONREPUTATION",factionReputationLoss.ToString()},
+				{"$FACTION",party.faction},
+				{"$REPUTATION",reputationLoss.ToString()}};
+           		DeWinterApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_DIALOG, subs);
+
                 //The Player is pulled from the Work the Room session
                 Destroy(gameObject);
             } else //The tutorial Party is a lot more forgiving
@@ -1342,14 +1344,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 //The Player is relocated to the Entrance
                 roomManager.MovePlayerToEntrance();
                 //The Player's Reputation is not Punished
-                int reputationLoss = 0;
-                int factionReputationLoss = 0;
-                //Explanation Screen Pop Up goes here
-                object[] objectStorage = new object[3];
-                objectStorage[0] = party;
-                objectStorage[1] = reputationLoss;
-                objectStorage[2] = factionReputationLoss;
-                screenFader.gameObject.SendMessage("CreateFailedConfidenceModal", objectStorage);
+	            DeWinterApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_TUTORIAL_DIALOG);
                 //The Player is pulled from the Work the Room session
                 Destroy(gameObject);
             }  

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using DeWinter;
 
@@ -23,7 +24,7 @@ public class PierreQuestInventoryList : MonoBehaviour {
         }
         GenerateInventoryButtons();
         selectedQuest = -1; // So nothing is selected at the start
-		DeWinterApp.Subscribe<CalendarDayVO>(HandleDay);
+		DeWinterApp.Subscribe<DateTime>(HandleDay);
     }
 
     public void GenerateInventoryButtons()
@@ -46,9 +47,9 @@ public class PierreQuestInventoryList : MonoBehaviour {
         }
     }
 
-	private void HandleDay(CalendarDayVO day)
+	private void HandleDay(DateTime day)
 	{
-		if (day.Day >= _model.NextQuestDay)
+		if (day >= _model.NextQuestDay)
         {
             //Actually Assigning the Quest
 			if (GameData.pierreQuestInventory.Count < 3 && DeWinterApp.GetModel<GameModel>().ReputationLevel > 0)
@@ -61,7 +62,7 @@ public class PierreQuestInventoryList : MonoBehaviour {
                 objectStorage[1] = this;
                 screenFader.gameObject.SendMessage("CreateNewPierreQuestModal", objectStorage);
             }
-            _model.NextQuestDay += Random.Range(3, 6);
+            _model.NextQuestDay = day.AddDays(UnityEngine.Random.Range(3, 6));
         }       
     }
 }
