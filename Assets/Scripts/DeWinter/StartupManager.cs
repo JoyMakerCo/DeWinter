@@ -38,10 +38,13 @@ namespace DeWinter
 			DeWinterApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			DeWinterApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
 			DeWinterApp.RegisterCommand<EndEventCmd, EventVO>(EventMessages.END_EVENT);
-			DeWinterApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 			DeWinterApp.RegisterCommand<RSVPCmd, Party>(PartyMessages.RSVP);
 			DeWinterApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
 			DeWinterApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
+
+			// Party
+			DeWinterApp.RegisterCommand<SelectGuestCmd, KeyValuePair<GuestVO, RemarkVO>>();
+			DeWinterApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 
 			DeWinterApp.RegisterCommand<PayDayCmd, DateTime>();
 			DeWinterApp.RegisterCommand<RestockMerchantCmd, DateTime>();

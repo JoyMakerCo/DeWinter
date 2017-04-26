@@ -13,5 +13,5 @@ namespace DeWinter
 		public const string START_DANCING = "StartDancingMsg";
 	}
 
-	public enum LockedInState { PutOff, Uninterested, Interested };
+	public enum LockedInState { PutOff, Uninterested, Interested, Charmed };
 }

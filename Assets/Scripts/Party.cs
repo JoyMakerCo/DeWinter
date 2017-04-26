@@ -32,7 +32,7 @@ public class Party {
     public int maxPlayerDrinkAmount = 3;
     public int drinkStrength = 20;
 
-    public List<Remark> playerHand = new List<Remark>();
+    public List<RemarkVO> playerHand = new List<RemarkVO>();
     public string lastTone;
 
     public List<Reward> wonRewardsList = new List<Reward>(); //Starts Empty, gets rewards added as the Party goes on and Rooms are cleared

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DeWinter
 {
-	public class ButtonMessage : MonoBehaviour
+	public class ButtonMessageHandler : MonoBehaviour
 	{
 		public void SendButtonMessage(string messageID)
 		{

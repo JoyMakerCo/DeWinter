@@ -14,7 +14,7 @@ namespace DeWinter
 
 		public Party Party;
 
-		private GuestVO[] _guests;
+		public GuestVO[] Guests;
 
 		[JsonProperty("maxPlayerDrinkAmount")]
 		public int MaxDrinkAmount;
@@ -79,13 +79,13 @@ namespace DeWinter
 			}
 		}
 
-		private List<Remark> _hand;
-		public List<Remark> Hand
+		private List<RemarkVO> _hand;
+		public List<RemarkVO> Hand
 		{
 			get { return _hand; }
 			set {
 				_hand = value;
-				DeWinterApp.SendMessage<List<Remark>>(_hand);
+				DeWinterApp.SendMessage<List<RemarkVO>>(_hand);
 			}
 		}
 
@@ -101,12 +101,14 @@ namespace DeWinter
 		{
 			DeWinterApp.Unsubscribe<Party>(PartyMessages.RSVP, HandleRSVP);
 			DeWinterApp.Unsubscribe<DateTime>(HandleDay);
+			DeWinterApp.Unsubscribe(PartyMessages.REPARTEE_BONUS, HandleRepartee);
+			DeWinterApp.Unsubscribe<RoomVO>(HandleRoom);
 		}
 
 		private void HandleRoom(RoomVO room)
 		{
-			_guests = room.Guests;
-			DeWinterApp.SendMessage<GuestVO[]>(_guests);
+			Guests = room.Guests;
+			DeWinterApp.SendMessage<GuestVO[]>(Guests);
 		}
 
 		private void HandleDay(DateTime date)
@@ -140,6 +142,7 @@ namespace DeWinter
 
 		private void HandleBored()
 		{
+/*
 			g.currentInterestTimer = Mathf.Clamp(g.currentInterestTimer - 1, 0, g.maxInterestTimer);
 		            if (g.currentInterestTimer <= 0 && g.lockedInState == LockedInState.Interested && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored they merely wait
 		            {
@@ -149,6 +152,7 @@ namespace DeWinter
 		                    g.lockedInState = LockedInState.PutOff;
 		                }
 		            }
+*/
 		}
 	}
 }

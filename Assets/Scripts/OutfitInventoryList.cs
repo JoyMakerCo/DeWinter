@@ -24,7 +24,7 @@ public class OutfitInventoryList : MonoBehaviour {
             buttonStats.inventoryType = inventoryType;
             button.transform.SetParent(this.transform, false);
             buttonStats.imageController = imageController;
-            //Debug.Log(inventoryType + " Outfit Button: " + i + " is made!");
+            Debug.Log(inventoryType + " Outfit Button: " + o.Name() + " is made!");
         }
     }
 

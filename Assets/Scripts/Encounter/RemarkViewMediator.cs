@@ -13,7 +13,7 @@ namespace DeWinter
 
 		void Start()
 		{
-			DeWinterApp.Subscribe<Remark>(PartyMessages.REMARK_SELECTED, HandleRemarkSelected);
+			DeWinterApp.Subscribe<RemarkVO>(PartyMessages.REMARK_SELECTED, HandleRemarkSelected);
 			_encounterView = GetComponentInParent<EncounterViewMediator>();
 			_profileImage = GetComponent<Image>();
 			_dispositionImage = GetComponentInChildren<Image>();
@@ -21,21 +21,21 @@ namespace DeWinter
 
 		void OnDestroy()
 		{
-			DeWinterApp.Unsubscribe<Remark>(PartyMessages.REMARK_SELECTED, HandleRemarkSelected);
+			DeWinterApp.Unsubscribe<RemarkVO>(PartyMessages.REMARK_SELECTED, HandleRemarkSelected);
 		}
 
-		private void HandleRemarkSelected(Remark remark)
+		private void HandleRemarkSelected(RemarkVO remark)
 		{
 			_profileImage.color = (remark == _remark) ? Color.white : Color.gray;
 		}
 
 		void OnMouseDown()
 	    {
-	        DeWinterApp.SendMessage<Remark>(PartyMessages.REMARK_SELECTED, _remark);
+	        DeWinterApp.SendMessage<RemarkVO>(PartyMessages.REMARK_SELECTED, _remark);
 	    }
 
-		private Remark _remark;
-		public Remark Remark
+		private RemarkVO _remark;
+		public RemarkVO Remark
 		{
 			get { return _remark; }
 			set {

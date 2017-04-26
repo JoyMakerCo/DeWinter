@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -22,8 +23,8 @@ Image playerImage;
 		public Image drinkBoozeButtonImage;
 
 		private PartyModel _model;
-		private RoomVO _room;
-		private Remark _selectedRemark=null;
+		private RemarkVO _selectedRemark=null;
+		private bool[] _targetted; // Targeted guests
 
 		public Image reparteeIndicatorImage;
 
@@ -42,38 +43,30 @@ playerNameText.text = "Yvette";
 drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetComponent<Image>();
 
 			_model = DeWinterApp.GetModel<PartyModel>();
+
 			DeWinterApp.Subscribe<RoomVO>(HandleRoom);
-			DeWinterApp.Subscribe<List<Remark>>(HandleHand);
+			DeWinterApp.Subscribe<List<RemarkVO>>(HandleHand);
 			DeWinterApp.Subscribe<float>(PartyMessages.START_TIMERS, HandleTimers);
 			DeWinterApp.Subscribe<int>(GameConsts.INTOXICATION, HandleBooze);
+
+			DeWinterApp.Subscribe<RemarkVO>(HandleRemarkSelected);
+			DeWinterApp.Subscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleGuestTargeted);
+			DeWinterApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleGuestSelected);
 		}
 
 		void OnDestroy()
 	    {
 			DeWinterApp.Unsubscribe<RoomVO>(HandleRoom);
-			DeWinterApp.Unsubscribe<List<Remark>>(HandleHand);
+			DeWinterApp.Unsubscribe<List<RemarkVO>>(HandleHand);
 			DeWinterApp.Unsubscribe<float>(PartyMessages.START_TIMERS, HandleTimers);
 			DeWinterApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleBooze);
+
+			DeWinterApp.Unsubscribe<RemarkVO>(HandleRemarkSelected);
+			DeWinterApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleGuestTargeted);
+			DeWinterApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleGuestSelected);
 	    }
 
-		private void HandleRoom(RoomVO room)
-		{
-			_room = room;
-			title.text = _room.Name;
-		}
-
-		private void HandleHand(List<Remark> Hand)
-		{
-			bool isRemark;
-			for (int i = RemarkViews.Length-1; i>=0; i--)
-			{
-				isRemark = (i < Hand.Count);
-				RemarkViews[i].enabled = isRemark;
-				if (isRemark) RemarkViews[i].Remark = Hand[i];
-			}
-		}
-
-	    // Use this for initialization
+		// Use this for initialization
 	    void Start()
 	    {
 			reparteeIndicatorImage.enabled = (GameData.playerReputationLevel >= 2);
@@ -81,14 +74,14 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	        //Ready Go Text
 	        // TODO: Put all of this into the localization file
 			string[] conversationIntroList = DeWinterApp.GetModel<PartyModel>().ConversationIntros;
-	        readyGoText.text = conversationIntroList[Random.Range(0, conversationIntroList.Length)];
+	        readyGoText.text = conversationIntroList[new System.Random().Next(conversationIntroList.Length)];
 
 	        //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
 	        // TODO: Passive buff system
 			_fascinatorEffect = (GameData.partyAccessory != null && GameData.partyAccessory.Type == "Fascinator");
 	    }
 
-	    // Update is called once per frame
+	    // Poll for input
 	    void Update()
 	    {
 			if(Input.GetKeyDown(KeyCode.D))
@@ -97,7 +90,7 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	        }
 	        else if (Input.GetKeyDown(KeyCode.F))
 	        {
-	            TargettingFlip();
+	        	FlipTargets();
 	        }
 			else if (Input.GetKeyDown(KeyCode.C))
 	        {
@@ -109,29 +102,95 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	        }
         }
 
+        // TODO: This can live in the text object itself
+		private void HandleRoom(RoomVO room)
+		{
+			title.text = room.Name;
+		}
+
+		private void HandleHand(List<RemarkVO> Hand)
+		{
+			bool isRemark;
+			for (int i = RemarkViews.Length-1; i>=0; i--)
+			{
+				isRemark = (i < Hand.Count);
+				RemarkViews[i].enabled = isRemark;
+				if (isRemark) RemarkViews[i].Remark = Hand[i];
+			}
+		}
 
 		private void HandleBooze(int tox)
 		{
 			drinkBoozeButtonImage.color =  (tox > 0) ? Color.white : Color.gray;
 		}
-	        
-	        //Turn Timer
-//	        if(conversationStarted && turnTimerActive)
-//	        {
-//	            room.TurnTimer -= Time.deltaTime;
-//	            turnTimerBar.value = room.TurnTimer / maxTurnTimer;
-//	            if (room.TurnTimer <= 0)
-//	            {
-//	                EndTurn();
-//	            }
-//	        } else if (conversationStarted && !turnTimerActive)
-//	        {           
-//	            StartCoroutine(NextTurnTimerWait());
-//	        }        
-//
-//	        //Victory and Defeat Checks------------ 
-//	        VictoryCheck();
-//	        ConfidenceCheck();
+
+		private void HandleRemarkSelected(RemarkVO remark)
+		{
+			_selectedRemark = remark;
+			foreach(GuestViewMediator guestView in GuestViews)
+			{
+				guestView.GetComponent<GraphicRaycaster>().enabled = (_selectedRemark != null);
+			}
+		}
+
+		private void HandleGuestTargeted(GuestVO guest)
+		{
+			if (_targetted == null && _selectedRemark != null) // Early out if targets have already been set
+			{
+				if (guest != null) // The argument guest is the one being explicitly targeted
+				{
+					int index = Array.FindIndex(GuestViews, v => v.Guest == guest);
+					if (index >= 0)
+					{
+						int numGuests = _model.Guests.Length;
+						bool isTarget;
+						_targetted = new bool[numGuests];
+						_targetted[index] = true; // Set the initial target to true
+
+						// Select the other targets in the profile
+						for (int i = numGuests - 1; i > 0; i--)
+						{
+							isTarget = (1 & (_selectedRemark.Profile >> i)) == 1;
+							_targetted[(i+index)%numGuests] = isTarget;
+							if (isTarget) DeWinterApp.SendMessage<GuestVO>(PartyMessages.GUEST_TARGETED, _model.Guests[i]);
+						}
+					}
+				}
+				else // Argument guest is null. This happens when the user stops targetting a guest.
+				{
+					_targetted = null;
+				}
+			}
+		}
+
+		private void HandleGuestSelected(GuestVO guest)
+		{
+			KeyValuePair<GuestVO, RemarkVO> payload;
+			for (int i=_targetted.Length-1; i>=0; i--)
+			{
+				if (_targetted[i])
+				{
+					// Let a command do the heavy lifting
+					payload = new KeyValuePair<GuestVO, RemarkVO>(_model.Guests[i], _selectedRemark);
+					DeWinterApp.SendMessage<KeyValuePair<GuestVO, RemarkVO>>(payload);
+				}
+			}
+			DeWinterApp.SendMessage<RemarkVO>(null); // Deselect the remark
+			DeWinterApp.SendMessage<GuestVO[]>(_model.Guests);
+		}
+
+		public void FlipTargets()
+	    {
+			int flip = _selectedRemark.Profile;
+			_selectedRemark.Profile = 0;
+	    	while (flip > 0)
+	    	{
+	    		_selectedRemark.Profile <<= 1;
+	    		_selectedRemark.Profile += (flip & 1);
+				flip >>= 1;
+	    	}
+	    	DeWinterApp.SendMessage<RemarkVO>(_selectedRemark);
+	    }
 
 		private void HandleTimers(float seconds)
 		{
@@ -144,13 +203,16 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 			while (t > 0)
 			{
 				t -= Time.deltaTime;
+
 				yield return null;
 			}
 			EndTurn(t/seconds);
 		}
 
-	    void GuestTargeted(int guestNumber)
-	    {  
+//	        VictoryCheck();
+//	        ConfidenceCheck();
+
+/*
 	        //Wraparound is handled here
 	        if (guestNumber >= room.Guests.Length)
 	        {
@@ -226,99 +288,10 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	            EnemyAttackCheck(guest, charmedGuest);
 	        }
 	    }
+*/
 
-	    public void GuestHighlighting(int guestNumber)
-	    {
-	        if (targetingMode)
-	        {
-	            switch (party.playerHand[targetingRemark].targetingProfileInt)
-	            {
-	                case 1:
-	                    //No flip or failsafe version necessary, it's just one target
-	                    GuestHighlight(guestNumber);
-	                    break;
-	                case 11:
-	                    //Flip versions and failsafes
-	                     if (!targetingFlipped)
-	                     {
-	                        GuestHighlight(guestNumber);
-	                        GuestHighlight(guestNumber + 1);
-	                     }else
-	                     {
-	                        GuestHighlight(guestNumber);
-	                        GuestHighlight(guestNumber - 1);
-	                     }
-	                    break;
-	                case 101:
-	                    //Flip Versions and Failsafes
-	                    if (!targetingFlipped)
-	                    {
-	                        GuestHighlight(guestNumber);
-	                        GuestHighlight(guestNumber + 2);
-	                    }
-	                    else
-	                    {
-	                        GuestHighlight(guestNumber);
-	                        GuestHighlight(guestNumber - 2);
-	                    }
-	                    break;
-	                case 1011:
-	                    //Flip version but no failsafes, as it covers all 4 Guests
-	                    if (!targetingFlipped)
-	                    {
-	                        GuestHighlight(guestNumber);
-	                        GuestHighlight(guestNumber + 2);
-	                        GuestHighlight(guestNumber + 3);
-	                    }
-	                    else
-	                    {
-	                        GuestHighlight(guestNumber);
-	                        GuestHighlight(guestNumber - 2);
-	                        GuestHighlight(guestNumber - 3);
-	                    }
-	                    break;
-	            }
-	        }    
-	    }
 
-	    void GuestHighlight(int guestNumber)
-	    {
-	        if (guestNumber >= room.Guests.Length)
-	        {
-	            guestNumber -= room.Guests.Length;
-	        }
-	        else if (guestNumber < 0)
-	        {
-	            guestNumber += room.Guests.Length;
-	        }
-	        switch (guestNumber)
-	        {
-	            case 0:
-	                guest0GuestImage.color = ReactionColor(0);
-	                //guest0GuestImage.sprite = ReactionSprite(0);
-	                break;
-	            case 1:
-	                guest1GuestImage.color = ReactionColor(1);
-	                //guest1GuestImage.sprite = ReactionSprite(1);
-	                break;
-	            case 2:
-	                //There might not be 3 or more Guests, so this check is to make sure nothing breaks
-	                if (room.Guests.Length > 2)
-	                {
-	                    guest2GuestImage.color = ReactionColor(2);
-	                    //guest2GuestImage.sprite = ReactionSprite(2);
-	                }
-	                break;
-	            case 3:
-	                //There might not be 4 Guests, so this check is to make sure nothing breaks
-	                if (room.Guests.Length > 3)
-	                {
-	                    guest3GuestImage.color = ReactionColor(3);
-	                    //guest3GuestImage.sprite = ReactionSprite(3);
-	                }
-	                break;
-	        }
-	    }
+
 	    
 	    //Called by the Pointer Exit button function of the Guest Images, used to reset Guest Images after the player mouses away from them
 	    public void GuestUnhighlighting()
@@ -418,27 +391,6 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	        } else
 	        {
 	            return 1.0f;
-	        }
-	    }
-
-	    //Unused at the moment, should there be a color shift with Guests when they're highlighted?
-	    Color ReactionColor(int guestNumber)
-	    {
-	        if(!room.Guests[guestNumber].dispositionRevealed && party.currentPlayerIntoxication >= 50)
-	        {
-	            return Color.gray;
-	        }
-	        if (party.playerHand[targetingRemark].tone == room.Guests[guestNumber].disposition.like) //They like the tone
-	        {
-	            return Color.green;
-	        }
-	        else if (party.playerHand[targetingRemark].tone == room.Guests[guestNumber].disposition.dislike) //They dislike the tone
-	        {
-	            return Color.red;
-	        }
-	        else //Neutral Tone
-	        {
-	            return Color.gray;
 	        }
 	    }
 
@@ -551,10 +503,10 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	        }
 	    }
 
-	    void EndTurn(float repartee=0.0f)
+	    void EndTurn(float percentComplete=0.0f)
 	    {
 	    	StopAllCoroutines();
-	    	if (repartee >= 0.5f)
+			if (percentComplete >= 0.5f)
 		    	DeWinterApp.SendMessage(PartyMessages.REPARTEE_BONUS);
 
 	        //Signal End of turn (resets timers, etc)
@@ -817,7 +769,7 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	    {
 	        if (party.playerHand.Count < 6) // This is one larger than it should be because Remarks are deducted after they're added
 	        {
-	            Remark remark = new Remark(party.lastTone, room.Guests.Length);
+	            RemarkVO remark = new RemarkVO(party.lastTone, room.Guests.Length);
 	            party.lastTone = remark.tone;
 	            party.playerHand.Add(remark);
 	        }
@@ -828,15 +780,10 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	        int numberOfCardsForRefill = 5 - party.playerHand.Count;
 	        for (int i = 0; i < numberOfCardsForRefill; i++)
 	        {
-	            Remark remark = new Remark(party.lastTone, room.Guests.Length);
+	            RemarkVO remark = new RemarkVO(party.lastTone, room.Guests.Length);
 	            party.lastTone = remark.tone;
 	            party.playerHand.Add(remark);
 	        }
-	    }
-
-	    public void TargettingFlip()
-	    {
-	        targetingFlipped = !targetingFlipped;
 	    }
 
 	    public void ExchangeRemark()
@@ -904,60 +851,6 @@ drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetCompo
 	                    return "Plotting";
 	                }
 	            }         
-	        }
-	    }
-
-	    void VictoryCheck()
-	    {
-	        //Check to see if everyone is either Charmed or Put Off 
-	        int charmedAmount = 0;
-	        int putOffAmount = 0;
-	        foreach (GuestVO g in room.Guests)
-	        {
-	            if(g.lockedInState == LockedInState.Charmed)
-	            {
-	                charmedAmount++;
-	            } else if (g.lockedInState == LockedInState.PutOff)
-	            {
-	                putOffAmount++;
-	            }
-	            //If the Conversation is Over
-	            if (charmedAmount + putOffAmount == room.Guests.Length)
-	            {
-	                Debug.Log("Conversation Over!");
-	                room.Cleared = true;
-	                //Remove the Ambush Cards (If present)
-	                foreach (Remark r in party.playerHand)
-	                {
-	                    if (r.ambushRemark)
-	                    {
-	                        party.playerHand.Remove(r);
-	                    }
-	                }
-	                //Rewards Distributed Here
-	                Reward givenReward = room.Rewards[charmedAmount]; //Amount of Charmed Guests determines the level of Reward.
-	                if (givenReward.Type() == "Introduction")
-	                {
-	                	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
-	                    foreach (Reward r in GameData.tonightsParty.wonRewardsList)
-	                    {
-	                        //If that Servant has already been Introduced or if the Reward of their Introduction has already been handed out then change the Reward to Gossip
-							if ((r.SubType() == givenReward.SubType() && r.amount > 0) || smod.Introduced.ContainsKey(givenReward.SubType()))
-	                        {
-	                            givenReward = new Reward(GameData.tonightsParty, "Gossip", 1);
-	                        }
-	                    }
-	                }
-	                GameData.tonightsParty.wonRewardsList.Add(givenReward);
-	                object[] objectStorage = new object[4];
-	                objectStorage[0] = charmedAmount;
-	                objectStorage[1] = putOffAmount;
-	                objectStorage[2] = room.HostHere;
-	                objectStorage[3] = givenReward;
-	                screenFader.gameObject.SendMessage("WorkTheRoomReportModal", objectStorage);
-	                //Close the Window
-	                Destroy(gameObject);
-	            }
 	        }
 	    }
 
