@@ -79,13 +79,13 @@ public class CharacterSelectionController : MonoBehaviour {
         characterList.Add(new PlayerCharacter("Yvette", "A young woman from a small fishing village to the South, Yvette came to Paris with hopes of marrying in the the nobility. Charming and ambitious, she is balanced and perfect for new Players."
             + "\n\n-Balanced Character"
             + "\n-No Advantages or Disadvantages"));
-        // ---- Character 1, Yvette) ----
+        // ---- Character 1, Karoline) ----
         characterList.Add(new PlayerCharacter("Karoline", "From Northern Europe, Karoline is bubbly, insecure and prone to drink."
             + "\n\n-This Character is not yet implemented"));
-        // ---- Character 2, Yvette) ----
+        // ---- Character 2, Félicité) ----
         characterList.Add(new PlayerCharacter("Félicité", "Born in Haiti and recently arrvied in Paris, Félicité will have to contend both with mundane social challenges, but with contentions surrounding her mixed heritage. Not recommended for new players."
             + "\n\n-This Character is not yet implemented"));
-        // ---- Character 3, Yvette) ----
+        // ---- Character 3, Donatien) ----
         characterList.Add(new PlayerCharacter("Donatien", "A mysterious and handsome man, many rumors swirl around Donatien and his past, including several scandalous ones concerning his... choice of pleasures."
             + "\n\n-This Character is not yet implemented"));
     }
