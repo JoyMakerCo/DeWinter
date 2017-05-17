@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Dialog;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class EventViewMediator : DialogView, IDialog<EventVO>
 	{
@@ -15,17 +15,17 @@ namespace DeWinter
 
 		void Awake()
 	    {
-			DeWinterApp.Subscribe<EventVO>(HandleEventUpdate);
+			AmbitionApp.Subscribe<EventVO>(HandleEventUpdate);
 	    }
 
 		void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<EventVO>(HandleEventUpdate);
+			AmbitionApp.Unsubscribe<EventVO>(HandleEventUpdate);
 	    }
 
 		public void OnOpen(EventVO e)
 	    {
-			DeWinterApp.SendMessage<EventVO>(e);
+			AmbitionApp.SendMessage<EventVO>(e);
 	    }
 
  		private void HandleEventUpdate(EventVO e)
@@ -46,7 +46,7 @@ namespace DeWinter
 			if (_event.currentStage != null)
 	        {
 	        	// Inform the app
-				DeWinterApp.SendMessage<EventVO>(_event);
+				AmbitionApp.SendMessage<EventVO>(_event);
 
 				// Set descriptive text
 				descriptionText.text = _event.currentStage.Description;
@@ -54,14 +54,14 @@ namespace DeWinter
 				// Grant rewards
 				foreach(RewardVO reward in _event.currentStage.Rewards)
 				{
-					DeWinterApp.SendMessage<RewardVO>(reward);
+					AmbitionApp.SendMessage<RewardVO>(reward);
 				}
 			}
 
 			// End of event.
 			else
 			{
-				DeWinterApp.SendMessage<EventVO>(EventMessages.END_EVENT, _event);
+				AmbitionApp.SendMessage<EventVO>(EventMessages.END_EVENT, _event);
 				Close();
 			}
 	    }

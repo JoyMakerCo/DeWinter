@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class BoozeGlassTextController : MonoBehaviour {
 
@@ -11,14 +11,14 @@ public class BoozeGlassTextController : MonoBehaviour {
     // Use this for initialization
     void Awake ()
     {
-    	_model = DeWinterApp.GetModel<PartyModel>();
+    	_model = AmbitionApp.GetModel<PartyModel>();
         _text = this.GetComponent<Text>();
-		DeWinterApp.Subscribe<int>(GameConsts.DRINK, HandleGlass);
+		AmbitionApp.Subscribe<int>(GameConsts.DRINK, HandleGlass);
 	}
 
 	void OnDestroy()
     {
-		DeWinterApp.Subscribe<int>(GameConsts.DRINK, HandleGlass);
+		AmbitionApp.Subscribe<int>(GameConsts.DRINK, HandleGlass);
     }
 	
 	// Update is called once per frame

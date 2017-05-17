@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using DeWinter;
+using Ambition;
 
 public class EnemyList : MonoBehaviour {
 
-    public Enemy selectedEnemy;
+    public EnemyVO selectedEnemy;
     public GameObject enemyButtonPrefab;
 
     void Start()
@@ -17,7 +17,7 @@ public class EnemyList : MonoBehaviour {
     {
         if(EnemyInventory.enemyInventory != null)
         {
-            foreach (Enemy e in EnemyInventory.enemyInventory)
+            foreach (EnemyVO e in EnemyInventory.enemyInventory)
             {
                 GameObject button = GameObject.Instantiate(enemyButtonPrefab);
                 EnemyButton buttonStats = button.GetComponent<EnemyButton>();

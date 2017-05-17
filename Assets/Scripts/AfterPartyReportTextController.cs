@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class AfterPartyReportTextController : MonoBehaviour {
 
@@ -13,7 +13,7 @@ public class AfterPartyReportTextController : MonoBehaviour {
     void Start () {
         GameObject textObject = GameObject.Find("Text");
         myText = textObject.GetComponent<Text>();
-        _model = DeWinterApp.GetModel<PartyModel>();
+        _model = AmbitionApp.GetModel<PartyModel>();
         DisplayAfterPartyReportText();
     }
 	
@@ -74,26 +74,25 @@ public class AfterPartyReportTextController : MonoBehaviour {
         }
 
 		List<string> gossipList = new List<string>();
-        foreach (Reward reward in _model.Party.wonRewardsList)
+        foreach (RewardVO reward in _model.Rewards)
         {
-            if(reward.amount > 0)
+            if(reward.Quantity > 0)
             {
-                rewardString += "\n" + reward.Name();
+                rewardString += "\n" + reward.Name;
+                if (reward.Type == RewardConsts.GOSSIP)
+                {
+	                gossipList.Add(reward.Name);
+                }
             }
-			if (reward.Type() == "Gossip" && reward.amount > 0)
-			{
-				gossipList.Add(reward.Name());
-			}
         }
-		myText.text = rewardString;
         if (gossipList.Count > 0)
         {
-			string gossipString = "\n\nYou also picked up some juicy Gossip:\n";
+			rewardString += "\n\nYou also picked up some juicy Gossip:\n";
             foreach (string gossip in gossipList)
             {
-                gossipString += "\n" + gossip;
+                rewardString += "\n" + gossip;
             }
-			myText.text += gossipString;
         }
+		myText.text = rewardString;
     }
 }

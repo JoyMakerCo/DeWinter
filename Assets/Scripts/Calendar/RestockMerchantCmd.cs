@@ -1,13 +1,13 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RestockMerchantCmd : ICommand<DateTime>
 	{
 		public void Execute(DateTime day)
 		{
-			InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
+			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
 			Random rnd = new Random();
 			int count = model.ItemDefinitions.Length;
 			string style;

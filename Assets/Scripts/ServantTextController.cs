@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ServantTextController : MonoBehaviour {
 
@@ -16,7 +16,7 @@ namespace DeWinter
 	        textField = this.GetComponent<Text>();
 
 	        //If the Servant has been introduced then their description doesn't show up
-			if (DeWinterApp.GetModel<ServantModel>().Introduced.TryGetValue(servantType, out servants) && servants.Count > 0)
+			if (AmbitionApp.GetModel<ServantModel>().Introduced.TryGetValue(servantType, out servants) && servants.Count > 0)
 	        {
 	            textField.color = Color.white;
 	        } else

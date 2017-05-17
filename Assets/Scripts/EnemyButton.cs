@@ -2,11 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class EnemyButton : MonoBehaviour {
 
-    public Enemy enemy;
+    public EnemyVO enemy;
     Text nameText;
     Image enemyThumbnail;
     private Outline outline; // This is for highlighting buttons
@@ -52,7 +52,7 @@ public class EnemyButton : MonoBehaviour {
         }
     }
 
-    public void DisplayEnemy(Enemy e)
+    public void DisplayEnemy(EnemyVO e)
     {
         if (e != null)
         {

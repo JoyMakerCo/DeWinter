@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class MoneyTracker : MonoBehaviour
 	{
@@ -14,12 +14,12 @@ namespace DeWinter
 	    void Start()
 	    {
 	        myText = GetComponent<Text>();
-			DeWinterApp.Subscribe<int>(GameConsts.LIVRE, HandleBalanceUpdate);
+			AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleBalanceUpdate);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<int>(GameConsts.LIVRE, HandleBalanceUpdate);
+			AmbitionApp.Unsubscribe<int>(GameConsts.LIVRE, HandleBalanceUpdate);
 	    }
 
 		private void HandleBalanceUpdate(int livre)

@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class MonthSelector : MonoBehaviour
 	{
@@ -14,13 +14,13 @@ namespace DeWinter
 	    // Update is called once per frame
 	    void Start()
 	    {
-	    	_model = DeWinterApp.GetModel<CalendarModel>();
-	    	DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
+	    	_model = AmbitionApp.GetModel<CalendarModel>();
+	    	AmbitionApp.Subscribe<DateTime>(HandleCalendarDay);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<DateTime>(HandleCalendarDay);
+			AmbitionApp.Unsubscribe<DateTime>(HandleCalendarDay);
 	    }
 
 	    public void NextMonth()
@@ -55,7 +55,7 @@ namespace DeWinter
 	    private void UpdateMonth()
 	    {
 			displayMonthText.text = _model.GetMonthString(_date);
-			DeWinterApp.SendMessage<DateTime>(CalendarMessages.VIEW_MONTH, _date);
+			AmbitionApp.SendMessage<DateTime>(CalendarMessages.VIEW_MONTH, _date);
 	    }
 	}
 }

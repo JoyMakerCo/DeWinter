@@ -1,15 +1,15 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class TutorialPartyWelcomeCmd : ICommand<RoomVO>
 	{
-		public void Execute (DateTime date)
+		public void Execute (RoomVO room)
 		{
-			DeWinterApp.OpenMessageDialog("party_tutorial_welcome_dialog");
-			DeWinterApp.UnregisterCommand<TutorialPartyWelcomeCmd, RoomVO>();
-			DeWinterApp.RegisterCommand<TutorialPartyCmd, RoomVO>();
+			AmbitionApp.OpenMessageDialog("party_tutorial_welcome_dialog");
+			AmbitionApp.UnregisterCommand<TutorialPartyWelcomeCmd, RoomVO>();
+			AmbitionApp.RegisterCommand<TutorialPartyCmd, RoomVO>();
 		}
 	}
 }

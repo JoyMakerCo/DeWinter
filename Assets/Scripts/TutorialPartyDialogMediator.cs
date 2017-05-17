@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dialog;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class TutorialPartyDialogMediator : MonoBehaviour
 	{
@@ -11,8 +11,8 @@ namespace DeWinter
 
 		void OnDestroy()
 		{
-			PartyModel model = DeWinterApp.GetModel<PartyModel>();
-			DeWinterApp.SendMessage<float>(PartyMessages.START_TIMERS, model.TurnTimer);
+			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			AmbitionApp.SendMessage(PartyMessages.START_TIMERS);
 		}
 	}
 }

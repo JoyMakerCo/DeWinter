@@ -4,7 +4,7 @@ using Core;
 using Newtonsoft.Json;
 using Util;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class FactionModel : DocumentModel, IInitializable, IDisposable
 	{
@@ -27,12 +27,12 @@ namespace DeWinter
 
 		public void Initialize()
 		{
-			DeWinterApp.Subscribe<AdjustFactionVO>(HandleAdjustFaction);
+			AmbitionApp.Subscribe<AdjustFactionVO>(HandleAdjustFaction);
 		}
 
 		public void Dispose()
 		{
-			DeWinterApp.Unsubscribe<AdjustFactionVO>(HandleAdjustFaction);
+			AmbitionApp.Unsubscribe<AdjustFactionVO>(HandleAdjustFaction);
 		}
 
 		public FactionVO this[string faction]
@@ -69,8 +69,8 @@ namespace DeWinter
 			{
 				Factions[vo.Faction].Allegiance += vo.Allegiance;
 				Factions[vo.Faction].Power += vo.Power;
-				Factions[vo.Faction].ReputationLevel += vo.Reputation;
-				DeWinterApp.SendMessage<FactionVO>(Factions[vo.Faction]);
+				Factions[vo.Faction].playerReputation += vo.Reputation;
+				AmbitionApp.SendMessage<FactionVO>(Factions[vo.Faction]);
 			}
 		}
 	}

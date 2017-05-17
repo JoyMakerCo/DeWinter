@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class DevotionModel : DocumentModel, Util.IInitializable, IDisposable
 	{
@@ -29,12 +29,12 @@ namespace DeWinter
 
 		public void Initialize()
 		{
-			DeWinterApp.Subscribe<RequestAdjustValueVO<int>>(HandleDevotion);
+			AmbitionApp.Subscribe<RequestAdjustValueVO<int>>(HandleDevotion);
 		}
 
 		public void Dispose()
 		{
-			DeWinterApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleDevotion);
+			AmbitionApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleDevotion);
 		}	
 
 		private void HandleDevotion(RequestAdjustValueVO<int> vo)
@@ -44,7 +44,7 @@ namespace DeWinter
 			{
 				notable.Devotion += (int)vo.Value;
 				Notables[vo.Type] = notable;
-				DeWinterApp.SendMessage<NotableVO>(notable);
+				AmbitionApp.SendMessage<NotableVO>(notable);
 			}
 
 		}

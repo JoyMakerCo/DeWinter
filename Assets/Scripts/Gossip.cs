@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using DeWinter;
+using Ambition;
 
 public class Gossip {
 
@@ -13,7 +13,7 @@ public class Gossip {
     public float freshness;
     public string flavorText;
 
-	public Gossip(Party party) : this(party.faction) {}
+	public Gossip(PartyVO party) : this(party.faction) {}
     public Gossip(string faction=null)
     {
         Faction = faction;
@@ -32,7 +32,7 @@ public class Gossip {
 		if (faction != null && rnd.Next(2) == 0)
 			return faction;
 		
-		string[] factions = DeWinterApp.GetModel<FactionModel>().Factions.Keys.ToArray();
+		string[] factions = AmbitionApp.GetModel<FactionModel>().Factions.Keys.ToArray();
 		return factions[rnd.Next(factions.Length)];
 	}
 

@@ -1,16 +1,13 @@
 ﻿using System;
+using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class PlayerReputationVO
+	public struct PlayerReputationVO
 	{
 		public int Reputation;
+		public int ReputationMax;
 		public int Level;
-
-		public PlayerReputationVO (int reputation, int level)
-		{
-			this.Reputation = reputation;
-			this.Level = level;
-		}
+		public string Title;
 	}
 }

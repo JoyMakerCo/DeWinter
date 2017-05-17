@@ -1,16 +1,16 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class NewGameCmd : ICommand
 	{
 		public void Execute ()
 		{
-			EventModel emod = DeWinterApp.GetModel<EventModel>();
+			EventModel emod = AmbitionApp.GetModel<EventModel>();
 			emod.SelectedEvent = emod.eventInventories["intro"][0];
 
-			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
+			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
 		}
 	}
 }

@@ -102,7 +102,7 @@ namespace Core
 			}
 		}
 
-		public void Unregister<C, T>(string messageID) where C : ICommand
+		public void Unregister<C, T>(string messageID) where C : ICommand<T>
 		{
 			if (_messageAssociations.ContainsKey(messageID))
 			{

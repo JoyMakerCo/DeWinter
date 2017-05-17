@@ -3,7 +3,7 @@ using Core;
 using Dialog;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class OutOfMoneyDialogMediator : DialogView
 	{
@@ -15,9 +15,9 @@ namespace DeWinter
 
 		void Start()
 		{
-			LocalizationModel localization = DeWinterApp.GetModel<LocalizationModel>();
+			LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
 			TitleTxt.text = localization.GetString(PHRASE_ID + DialogConsts.TITLE);
-			if (DeWinterApp.GetModel<GameModel>().Reputation > 20)
+			if (AmbitionApp.GetModel<GameModel>().Reputation > 20)
 			{
 				BodyTxt.text = localization.GetString(PHRASE_ID + DialogConsts.BODY);
 				ButtonLabelTxt.text = localization.GetString(DialogConsts.CONFIRM);
@@ -31,7 +31,7 @@ namespace DeWinter
 
 		void OnDestroy()
 		{
-			DeWinterApp.Execute<BorrowMoneyCmd>();
+			AmbitionApp.Execute<BorrowMoneyCmd>();
 		}
 	}
 }

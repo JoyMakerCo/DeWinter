@@ -1,7 +1,7 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class CheckLivreCmd : ICommand<int>
 	{
@@ -9,7 +9,7 @@ namespace DeWinter
 		{
 			if (livre <= 0)
 			{
-				DeWinterApp.OpenDialog("OutOfMoneyPopUpModal");
+				AmbitionApp.OpenDialog("OutOfMoneyPopUpModal");
 			}
 		}
 	}

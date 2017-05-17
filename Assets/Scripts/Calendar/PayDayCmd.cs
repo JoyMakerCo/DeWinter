@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class PayDayCmd : ICommand<DateTime>
 	{
@@ -10,7 +10,7 @@ namespace DeWinter
 		{
 			if (day.Day%7 == 0)
 			{
-				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+				ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 				int numservants=0;
 				ServantVO servant;
 				float livre = 0;
@@ -23,12 +23,12 @@ namespace DeWinter
 
 	            if (livre > 0)
 	            {
-	            	DeWinterApp.AdjustValue(GameConsts.LIVRE, -livre);
+	            	AmbitionApp.AdjustValue(GameConsts.LIVRE, -livre);
 					Dictionary<string, string> substitutions = new Dictionary<string, string>(){
 						{"$NUMSERVANTS",numservants.ToString()},
 						{"$TOTALWAGES", livre.ToString()},
 						{"$LIVRE",GameData.moneyCount.ToString()}};
-					DeWinterApp.OpenMessageDialog(DialogConsts.PAY_DAY_DIALOG, substitutions);
+					AmbitionApp.OpenMessageDialog(DialogConsts.PAY_DAY_DIALOG, substitutions);
 				}
 			}
 		}

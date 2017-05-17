@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ButtonMessageHandler : MonoBehaviour
 	{
 		public void SendButtonMessage(string messageID)
 		{
-			DeWinterApp.SendMessage(messageID);
+			AmbitionApp.SendMessage(messageID);
 		}
 	}
 }

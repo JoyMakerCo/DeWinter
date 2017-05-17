@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using Dialog;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public static class DeWinterApp
+	public static class AmbitionApp
 	{
 		public static T RegisterModel<T>() where T:IModel, new()
 		{
@@ -55,7 +55,7 @@ namespace DeWinter
 			App.Service<CommandSvc>().Unregister<C>(messageID);
 		}
 
-		public static void UnregisterCommand<C, T>(string messageID) where C:ICommand
+		public static void UnregisterCommand<C, T>(string messageID) where C:ICommand<T>
 		{
 			App.Service<CommandSvc>().Unregister<C, T>(messageID);
 		}
@@ -153,6 +153,16 @@ namespace DeWinter
 			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY);
 			vo.Button = button;
 			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+		}
+
+		public static void CloseDialog(string dialogID)
+		{
+			App.Service<DialogSvc>().Close(dialogID);
+		}
+
+		public static void CloseDialog(GameObject dialog)
+		{
+			App.Service<DialogSvc>().Close(dialog);
 		}
 
 		// Easy shorthand for creating a request to modify a model value

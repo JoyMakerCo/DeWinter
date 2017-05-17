@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class PopUpManager : MonoBehaviour
 {
@@ -184,127 +184,10 @@ public class PopUpManager : MonoBehaviour
         bodyText.text = "What would you like me to create?";
     }
 
-    //This is used in the beginning of the Party Screen to tally up a Player's Confidence stat
-    void CreateConfidenceTallyModal(object[] objectStorage)
-    {
-    	InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
-        Outfit outfit = objectStorage[0] as Outfit;
-        ItemVO accessory = objectStorage[1] as ItemVO;
-        string partyFaction = objectStorage[2].ToString();
-        int outfitReaction = (int)objectStorage[3];
-        int outfitStyleReaction = (int)objectStorage[4];
-        int accessoryStyleReaction = (int)objectStorage[5];
-        int outfitAccessoryStyleMatch = (int)objectStorage[6];
-        int factionReaction = (int)objectStorage[7];
-        int generalRepReaction = (int)objectStorage[8];
-        int maxConfidence = (int)objectStorage[9];
-        int currentConfidence = (int)objectStorage[10];
-
-        //Make the Pop Up
-        GameObject popUp = Instantiate(confidenceTallyModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Welcome to The Party!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        string line1;
-        string line2;
-        string line3;
-        string line4;
-        string line5;
-        string line6;
-        //--- Line 1 ---
-        if (accessory != null)
-        {
-            line1 = "You wore your " + outfit.Name() + " and " + accessory.Name + " to the Party, hosted by the " + partyFaction + ".";
-        } else
-        {
-            line1 = "You wore your " + outfit.Name() + " to the Party, hosted by the " + partyFaction + ".";
-        }
-        //--- Line 2 ---
-        if (partyFaction != "Military")
-        {
-            if (outfitReaction < 50) //It's a very bad reaction
-            {
-                line2 = "\n\nThe moment you step out of your carriage you can hear snickers and angry whispers from the crowd. Oh no. This is not what the hosts wanted at all. (+" + outfitReaction + " Max Confidence)";
-
-            } else if (outfitReaction >= 75 && outfitReaction < 100) //If it's a not great reaction
-            {
-                line2 = "\n\nFrom the way a few of the more boorish guests are glaring, you can tell that may have picked the wrong Outfit for this occassion. (+" + outfitReaction + " Max Confidence)";
-            }
-            else if (outfitReaction >= 85 && outfitReaction < 115) //If it's a middle of the road reaction
-            {
-                line2 = "\n\nNobody seems to notice your Outfit. It hasn't really made an impression. You can live with that. (+" + outfitReaction + " Max Confidence)";
-            } else if (outfitReaction >= 115 && outfitReaction < 150) //It it's a somewhat positive reaction
-            {
-                line2 = "\n\nAs you enter the party venue you notice some quiet nods of approval. You have done well in preparing for this party.(+" + outfitReaction + " Max Confidence)";
-            } else //If it's a very positive reaction
-            {
-                line2 = "\n\nThe second partygoers spot your outfit they gasp. Their tiny exclamations of envy are like delicate music to your ears. (+" + outfitReaction + " Max Confidence)";
-            }
-        } else
-        {
-            line2 = "\n\nHowever, the Military doesn't know fashion so they give you a pass. (+" + outfitReaction + " Max Confidence)";
-        }
-        //--- Line 3 ---
-        //Without Accessory
-        if(accessory == null)
-        {
-            //In Style
-            if (outfitStyleReaction > 0)
-            {
-                line3 = "\n\nYour Outfit's in style with the latest in " + imod.CurrentStyle + " fashion! (+" + outfitStyleReaction + " Max Confidence)";
-            }
-            //Out of Style
-            else
-            {
-                line3 = "\n\nOh no! Your Outfit is in the " + outfit.style + " style and it appears that " + imod.CurrentStyle + " is in vogue at the moment. (+" + outfitStyleReaction + " Max Confidence)";
-            }
-        }
-        //With Accessory
-        else
-        {
-            //Outfit is in Style, so is the Accessory
-            if (outfitStyleReaction > 0 && accessoryStyleReaction > 0)
-            {
-                line3 = "\n\nWhat's this? Your Outfit doesn't just match your Accessories, it's also in style with the latest in " + imod.CurrentStyle + " fashion. Incredible! (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            }
-            //Outfit is in Style, but the Accessory is not
-            else if (outfitStyleReaction > 0 && accessoryStyleReaction == 0)
-            {
-                line3 = "\n\nAh! Your Outfit is in the " + outfit.style + " style, which is in fashion. However, is appears that your Accessory is not. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            } 
-            //Outfit is not in Style, but the Accessory is
-            else if (outfitStyleReaction == 0 && accessoryStyleReaction > 0)
-            {
-                line3 = "\n\nAh! Your Outfit is in the " + outfit.style + " style, while the " + imod.CurrentStyle + " is what's in fashion. However, your Accessory is in fashionis. Which is good, at least. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            }
-            //Neither are in Style, but they Match
-            else if (outfitStyleReaction == 0 && accessoryStyleReaction == 0 && outfitAccessoryStyleMatch > 0)
-            {
-                line3 = "\n\nHmm... Your Outfit and Accessory match, but they're in the " + outfit.style + " style and it appears that " + imod.CurrentStyle + " is in vogue at the moment. At least you're well coordinated. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            }
-            //Neither are in Style and they don't even fucking Match, what a fucking mess
-            else
-            {
-                line3 = "\n\nMon dieu! Your Outfit is in the " + outfit.style + " style, your Accessory is in the " + (string)(accessory.States[ItemConsts.STYLE]) + " and the " + imod.CurrentStyle + " is what's in Fashion! How did this happen? (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            } 
-        }
-        
-        //--- Line 4 ---
-        line4 = "\n\nThe " + partyFaction + ", of course have their opinion on you... (+" + factionReaction + " Max Confidence)";
-        //--- Line 5 ---
-        line5 = "\n\nSociety as a whole also has their opinions. (+" + generalRepReaction + " Max Confidence)";
-        //--- Line 6 ---
-        line6 = "\n\nOverall your Maximum Confidence is at " + maxConfidence + " and your Current Confidence is " + currentConfidence;
-        bodyText.text = line1 + line2 + line3 + line4 + line5 + line6;
-    }
-
     //This is used in the Party Scene for Players to choose whether they wish to engage in conversation (Work the Room) or try to avoid everyone (Move Through)
     void CreateRoomChoiceModal(int[] intStorage)
     {
-    	MapModel model = DeWinterApp.GetModel<MapModel>();
+    	MapModel model = AmbitionApp.GetModel<MapModel>();
 
         int xPos = intStorage[0];
         int yPos = intStorage[1];
@@ -370,107 +253,17 @@ public class PopUpManager : MonoBehaviour
         }
     }
 
-    //This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
-    void CreateWorkTheRoomModal(object[] objectStorage)
-    {
-        RoomVO room = objectStorage[0] as RoomVO;
-        bool isAmbush = (bool)objectStorage[1];
-        RoomManager roomManager = objectStorage[2] as RoomManager;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(workTheRoomModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Set the room and the Work The Room Manager should handle the rest.
-        EncounterViewMediator workManager = popUp.GetComponent<EncounterViewMediator>();
-        workManager.room = room;
-        workManager.isAmbush = isAmbush;
-        workManager.roomManager = roomManager;
-
-        Debug.Log("Made Work the Room. Ambush is " + isAmbush);
-    }
-
-    //This is used in the Party Scene to brings up the Conversation/Work the Host Modal where the Player combats the Host with their charms
-    void CreateWorkTheHostModal(object[] objectStorage)
-    {
-        RoomVO room = objectStorage[0] as RoomVO;
-        RoomManager roomManager = objectStorage[1] as RoomManager; ;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(workTheHostModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Set the room and the Work The Room Manager should handle the rest.
-        WorkTheHostManager workManager = popUp.GetComponent<WorkTheHostManager>();
-        workManager.room = room;
-        workManager.roomManager = roomManager;
-
-        Debug.Log("Made Work the Host");
-    }
-
-    void CreateHostRemarkModal(object[] objectStorage)
-    {
-        WorkTheHostManager workManager = objectStorage[1] as WorkTheHostManager;
-        int numberOfTargetSlots = (int)objectStorage[2];
-        //Make the Pop Up
-        GameObject popUp = Instantiate(hostRemarkModal) as GameObject;
-        popUp.transform.SetParent(workManager.gameObject.transform, false);
-        workManager.hostRemarkWindow = popUp;
-        //Set the Timer
-        workManager.hostRemarkTimer = 6.0f;
-        workManager.hostRemarkCountdownBar = popUp.transform.FindChild("CountdownBar").GetComponent<Scrollbar>();
-        workManager.StockFireBackRemarkSlotList(numberOfTargetSlots);
-        //Positioning (Fire Back Remark Slot Set Up) ------------------
-        int buttonwidth = (int)hostRemarkSlotPrefab.GetComponent<RectTransform>().rect.width;
-        int padding = 50; // Space between Target Slots  
-        int offsetFromCenterX = (numberOfTargetSlots * buttonwidth) / 2;
-        //Make the Fire Back Remark Slot Buttons ----------------------
-        //Clear out the old list
-        workManager.hostRemarkSlotButtonList.Clear();
-        //Make the Buttons themselves
-        for (int i = 0; i < numberOfTargetSlots; i++)
-        {
-            //Parenting
-            GameObject remarkSlotButton = Instantiate(hostRemarkSlotPrefab, hostRemarkSlotPrefab.transform.position, hostRemarkSlotPrefab.transform.rotation) as GameObject;
-            //Find Parent Object
-            GameObject remarkSlotHolder = popUp.transform.FindChild("RemarkSlotHolder").gameObject;
-            remarkSlotButton.transform.SetParent(remarkSlotHolder.transform, false);
-            FireBackRemarkSlotButton fireBackButton = remarkSlotButton.GetComponent<FireBackRemarkSlotButton>();
-            //Positioning (Actual)
-            remarkSlotButton.transform.localPosition = new Vector3((i * (buttonwidth + padding) - offsetFromCenterX), 0, 0);
-            //Set the Fire Back Remark that this button represents
-            fireBackButton.workManager = workManager;
-            fireBackButton.myHostRemarkSlot = workManager.hostRemarkSlotList[i];
-            workManager.hostRemarkSlotButtonList.Add(fireBackButton);
-            fireBackButton.slot = i;
-        }
-        workManager.hostRemarkActive = true;
-        Debug.Log("Made Fire Back Remark Modal");
-    }
-
-    //This Window is used to tell Players that they've failed to Move Through a Room and have been Ambushed
-    void CreateAmbushedModal(string[] stringStorage)
-    {
-        string roomName = stringStorage[0] as string;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(ambushModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Ambushed!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "You've been Ambushed in the " + roomName + " !" +
-            "\nPrepare for Conversation!";
-    }
-
     //This is used in the Estate Tab to tell Players that they were caught trading in Gossip Items
     void CreateCaughtTradingGossipModal(string faction)
     {
     	Dictionary<string,string> subs = new Dictionary<string, string>(){{"$FACTION",faction}};
     	if (GameData.factionList["Third Estate"].ReputationLevel >= 2)
     	{
-    		DeWinterApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, subs);
+    		AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, subs);
     	}
     	else
     	{
-			DeWinterApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_DIALOG, subs);
+			AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_DIALOG, subs);
     	}
     }
 
@@ -493,7 +286,7 @@ public class PopUpManager : MonoBehaviour
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction + "." +
-                "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.Name() + ". \n\nHow does that sound?";
+                "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.Name + ". \n\nHow does that sound?";
     }
 
     //This is used in the Estate Tab to confirm selling various bits of Gossip
@@ -543,12 +336,5 @@ public class PopUpManager : MonoBehaviour
         {
             bodyText.text += "\n\n The more you leak me Gossip in a single day, the harder it is for me to conceal my sources. Today, I'd guess there is currently a " + caughtChance + "% chance of you being caught. Can you acccept that risk?";
         }
-    }
-
-    //This is used in the Estate Tab to tell Players that Pierre has Redeemed their Quest
-    void CreatePierreQuestReemedModal(PierreQuest quest)
-    {
-    	Dictionary<string,string> subs = new Dictionary<string, string>(){{"$REWARD",quest.reward.Name()}};
-    	DeWinterApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
     }
 }

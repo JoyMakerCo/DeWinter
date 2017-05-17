@@ -2,13 +2,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class RoomManager : MonoBehaviour
 {
 	private const int PADDING = 5;
 
-    public PartyManager partyManager;
     public GameObject roomButtonPrefab;
     public GameObject houseOutlinePrefab; //This is used to Outline the house when it's done
     public Canvas canvas; //New Interface objects need to get parented to this in order to work
@@ -41,12 +40,11 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-		_model = DeWinterApp.GetModel<MapModel>();
-		_partyModel = DeWinterApp.GetModel<PartyModel>();
-        partyManager = this.transform.parent.GetComponent<PartyManager>();
-		DeWinterApp.SendMessage<Party>(MapMessage.GENERATE_MAP, _partyModel.Party);
-		DeWinterApp.Subscribe<Party>(PartyConstants.SHOW_DRINK_MODAL, handleDrinkModal);
-		DeWinterApp.Subscribe<RoomVO>(HandleRoom);
+		_model = AmbitionApp.GetModel<MapModel>();
+		_partyModel = AmbitionApp.GetModel<PartyModel>();
+		AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, _partyModel.Party);
+		AmbitionApp.Subscribe<PartyVO>(PartyConstants.SHOW_DRINK_MODAL, handleDrinkModal);
+		AmbitionApp.Subscribe<RoomVO>(HandleRoom);
 		DrawMap();
 		currentPlayerRoom = Map.Entrance;
     }
@@ -121,8 +119,8 @@ public class RoomManager : MonoBehaviour
     {
 		if (!currentPlayerRoom.Cleared)
         {
-			_partyModel.Party.turnsLeft--;
-			SoberUp(5);
+        	AmbitionApp.AdjustValue<int>(PartyConstants.TURNSLEFT, -1);
+			AmbitionApp.AdjustValue<int>(GameConsts.INTOXICATION, -5);
 
             //Work the Room!
             object[] objectStorage = new object[3];
@@ -141,13 +139,10 @@ public class RoomManager : MonoBehaviour
     {
         if (!currentPlayerRoom.Cleared)
         {
-			_partyModel.Party.turnsLeft--;
-			SoberUp(5);
+			AmbitionApp.AdjustValue<int>(PartyConstants.TURNSLEFT, -1);
+			AmbitionApp.AdjustValue<int>(GameConsts.INTOXICATION, -5);
             //Work the Host!
-            object[] objectStorage = new object[2];
-            objectStorage[0] = currentPlayerRoom;
-            objectStorage[1] = this;
-            screenFader.gameObject.SendMessage("CreateWorkTheHostModal", objectStorage);
+            AmbitionApp.OpenDialog(DialogConsts.HOST_ENCOUNTER, currentPlayerRoom);
         }
         else
         {
@@ -175,7 +170,7 @@ public class RoomManager : MonoBehaviour
             {
             	Dictionary<string, string> subs = new Dictionary<string, string>()
 					{{"$ROOMNAME",currentPlayerRoom.Name}};
-            	DeWinterApp.OpenMessageDialog(DialogConsts.MOVED_THROUGH_DIALOG, subs);
+            	AmbitionApp.OpenMessageDialog(DialogConsts.MOVED_THROUGH_DIALOG, subs);
             }
             else // The Player fails to Move Through and is Ambushed!
             {
@@ -193,8 +188,8 @@ public class RoomManager : MonoBehaviour
         if(!room.Cleared) //If the Room hasn't been cleared already, do all the stuff
         {
             //Standdard Turn Stuff
-			_partyModel.Party.turnsLeft--;
-            SoberUp(20);
+			AmbitionApp.AdjustValue<int>(PartyConstants.TURNSLEFT, -1);
+			AmbitionApp.AdjustValue<int>(GameConsts.INTOXICATION, -20);
             //Make the Event Happen
             screenFader.gameObject.SendMessage("CreateEventPopUp", "party");
             //Clear the Room
@@ -202,17 +197,10 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    private void SoberUp(int amount)
-    {
-		_partyModel.Party.currentPlayerIntoxication -= amount;
-		if (_partyModel.Party.currentPlayerIntoxication<0)
-			_partyModel.Party.currentPlayerIntoxication=0;
-    }
-
-    private void handleDrinkModal(Party p)
+    private void handleDrinkModal(PartyVO p)
     {
     	Dictionary<string, string> subs = new Dictionary<string, string>(){
     		{"$HOSTNAME",p.host.Name}};
-    	DeWinterApp.OpenMessageDialog(DialogConsts.REFILL_WINE_DIALOG, subs);
+    	AmbitionApp.OpenMessageDialog(DialogConsts.REFILL_WINE_DIALOG, subs);
     }
 }

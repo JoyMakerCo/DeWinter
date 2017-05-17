@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RoomManagerChoiceModal : MonoBehaviour
 	{

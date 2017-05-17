@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using Core;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class SellItemCmd : ICommand<ItemVO>
 	{
 		public void Execute (ItemVO item)
 		{
-			InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
+			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
 			if (model.Inventory.Remove(item))
 			{
-				AdjustValueVO msg = new AdjustValueVO("Livre", item.SellPrice);
-				DeWinterApp.AdjustValue<>(msg);
-				Debug.Log(item.Name + " Sold for £" + msg.Amount.ToString());
+				AmbitionApp.AdjustValue<int>(GameConsts.LIVRE, item.SellPrice);
+				item.SellPrice = 0;
+				model.Market.Add(item);
 			}
 		}
 	}

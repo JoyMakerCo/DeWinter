@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ReputationTracker : MonoBehaviour
 	{
@@ -28,32 +28,29 @@ namespace DeWinter
 	    // Use this for initialization
 	    void Awake()
 	    {
-			_gmod = DeWinterApp.GetModel<GameModel>();
+			_gmod = AmbitionApp.GetModel<GameModel>();
 	        StockReputationLevelIcons();
-			DeWinterApp.Subscribe<PlayerReputationVO>(HandlePlayerReputation);
-
-			PlayerReputationVO vo = new PlayerReputationVO(GameData.reputationCount,  GameData.playerReputationLevel);
-			HandlePlayerReputation(vo);
+			AmbitionApp.Subscribe<PlayerReputationVO>(HandlePlayerReputation);
+			_gmod.Reputation = _gmod.Reputation; // Elicit an event
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<PlayerReputationVO>(HandlePlayerReputation);
+			AmbitionApp.Unsubscribe<PlayerReputationVO>(HandlePlayerReputation);
 	    }
 
 		private void HandlePlayerReputation(PlayerReputationVO vo)
 	    {
 	    	if (vo.Reputation > -20)
 	    	{
-				int repNeeded = _gmod.ReputationLevels[vo.Level].Reputation;
-				numberText.text = vo.Reputation.ToString("#,##0") + "/" + repNeeded.ToString("#,##0");
-				levelText.text = _gmod.ReputationLevels[vo.Level].Title;
+				numberText.text = vo.Reputation.ToString("#,##0") + "/" + vo.ReputationMax.ToString("#,##0");
+				levelText.text = vo.Title;
 		        reputationIcon.sprite = reputationLevelIconArray[vo.Level];
-				reputationBar.value = (float)vo.Reputation / (float)repNeeded;
+				reputationBar.value = (float)vo.Reputation / (float)vo.ReputationMax;
 		    }
 		    else
 		    {
-				DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
+				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
 		    }
 	    }
 

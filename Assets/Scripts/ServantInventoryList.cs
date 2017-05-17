@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class ServantInventoryList : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class ServantInventoryList : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-		_model = DeWinterApp.GetModel<ServantModel>();
+		_model = AmbitionApp.GetModel<ServantModel>();
         GenerateInventoryButtons();
         selectedServant = null;
     }

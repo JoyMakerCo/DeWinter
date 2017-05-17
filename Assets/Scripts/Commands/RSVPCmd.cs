@@ -1,11 +1,11 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class RSVPCmd : ICommand<Party>
+	public class RSVPCmd : ICommand<PartyVO>
 	{
-		public void Execute (Party party)
+		public void Execute (PartyVO party)
 		{
 			if (party.RSVP > 0) // Confirming RSVP
 			{
@@ -14,9 +14,9 @@ namespace DeWinter
 			else // Denying RSVP
 			{
 				int rep = 0;
-//				int rep = (DeWinterApp.GetModel<CalendarModel>().Today == party.Date) ? 40 : 20;
-				DeWinterApp.SendMessage<AdjustFactionVO>(new AdjustFactionVO(party.faction, -rep));
-				DeWinterApp.AdjustValue<int>(GameConsts.REPUTATION, -rep);
+//				int rep = (AmbitionApp.GetModel<CalendarModel>().Today == party.Date) ? 40 : 20;
+				AmbitionApp.SendMessage<AdjustFactionVO>(new AdjustFactionVO(party.faction, -rep));
+				AmbitionApp.AdjustValue<int>(GameConsts.REPUTATION, -rep);
 			}
 		}
 	}

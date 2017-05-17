@@ -1,18 +1,18 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class GoToRoomCmd : ICommand<RoomVO>
 	{
 		public void Execute(RoomVO room)
 		{
 			// If Current Room is null, you're probably jumping into the foyer.
-			MapModel model = DeWinterApp.GetModel<MapModel>();
-			PartyModel partyModel = DeWinterApp.GetModel<PartyModel>();
+			MapModel model = AmbitionApp.GetModel<MapModel>();
+			PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
 			Random rnd = new Random();
 
-			if (partyModel.Party.turnsLeft <= 0)
+			if (partyModel.TurnsLeft <= 0)
 			{
 				UnityEngine.Debug.Log("Out of turns. Go home!");
 			}
@@ -50,7 +50,7 @@ namespace DeWinter
 	            	&& rnd.Next(0, 4) == 0)
 		        {
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
-					DeWinterApp.SendMessage<Party>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
+					AmbitionApp.SendMessage<PartyVO>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
 		        }
 			}
 

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
-using DeWinter;
+using Ambition;
 
 public class WorkTheHostManager : MonoBehaviour
 {
@@ -16,16 +16,6 @@ public class WorkTheHostManager : MonoBehaviour
 
     List<Sprite> femaleHostSpriteList = new List<Sprite>();
     List<Sprite> maleHostSpriteList = new List<Sprite>();
-
-    public GameObject playerVisual;
-    Text playerNameText;
-    Text playerConfidenceText;
-    Scrollbar playerConfidenceBar;
-    Text playerIntoxicationText;
-    Image playerImage;
-
-    public Text playerDrinkAmountText;
-    public Image drinkBoozeButtonImage;
 
     public Scrollbar turnTimerBar;
     float currentTurnTimer = 5;
@@ -44,44 +34,7 @@ public class WorkTheHostManager : MonoBehaviour
 
     float hostDispositionSwitchTimer;
 
-    public Sprite femaleHostImage0;
-    public Sprite femaleHostImage1;
-    public Sprite femaleHostImage2;
-    public Sprite femaleHostImage3;
-
-    public Sprite maleHostImage0;
-    public Sprite maleHostImage1;
-    public Sprite maleHostImage2;
-    public Sprite maleHostImage3;
-    public Sprite maleHostImage4;
-
     private List<RemarkSlot> remarkSlotList;
-
-    public GameObject remarkSlot0;
-    Image remarkSlot0TargetingImage;
-    Image remarkSlot0DispositionIcon;
-
-    public GameObject remarkSlot1;
-    Image remarkSlot1TargetingImage;
-    Image remarkSlot1DispositionIcon;
-
-    public GameObject remarkSlot2;
-    Image remarkSlot2TargetingImage;
-    Image remarkSlot2DispositionIcon;
-
-    public GameObject remarkSlot3;
-    Image remarkSlot3TargetingImage;
-    Image remarkSlot3DispositionIcon;
-
-    public GameObject remarkSlot4;
-    Image remarkSlot4TargetingImage;
-    Image remarkSlot4DispositionIcon;
-
-    public Sprite targetingProfile1;
-    public Sprite targetingProfile11;
-    public Sprite targetingProfile101;
-    public Sprite targetingProfile1001;
-    public Sprite targetingProfile1011;
 
     public bool targetingMode = false; //Are we selecting an target for a remark right now?
     int targetingRemark = -1;
@@ -92,25 +45,19 @@ public class WorkTheHostManager : MonoBehaviour
     public Text readyGoText;
 
     public GameObject hostRemarkWindow;
-    public float hostRemarkTimer; // This determines how long it is between instances of Host Remarks being fired back
     public bool hostRemarkActive = false;
     public bool hostRemarkStarted = false;
     float hostRemarkActiveTimer; //This determines how long the Player has to finish up a particular Host Remark
-    public List<FireBackRemarkSlot> hostRemarkSlotList = new List<FireBackRemarkSlot>();
-    public List<FireBackRemarkSlotButton> hostRemarkSlotButtonList = new List<FireBackRemarkSlotButton>();
-    public int hostRemarkSlotComplete = 0; //Used to determine if all the FireBackRemarkSlots have been finished or not
     public Scrollbar hostRemarkCountdownBar;
 
-    private Party party
+    private PartyVO _party
     {
-    	get { return DeWinterApp.GetModel<PartyModel>().Party; }
+    	get { return AmbitionApp.GetModel<PartyModel>().Party; }
     }
 
     // Use this for initialization
     void Start()
     {
-        screenFader = this.transform.parent.GetComponent<SceneFadeInOut>();
-
         title = this.transform.Find("TitleText").GetComponent<Text>();
         title.text = room.Name;
 
@@ -428,103 +375,6 @@ public class WorkTheHostManager : MonoBehaviour
         }
     }
 
-    void HostRemarkTargeted(int slotNumber)
-    {
-        //Wraparound is handled here
-        if (slotNumber >= hostRemarkSlotList.Count)
-        {
-            slotNumber -= hostRemarkSlotList.Count;
-        }
-        else if (slotNumber < 0)
-        {
-            slotNumber += hostRemarkSlotList.Count;
-        }
-        //Do they like the Tone?
-        if (party.playerHand[targetingRemark].tone == hostRemarkSlotList[slotNumber].disposition.like) //They like the tone
-        {
-            if (hostRemarkSlotList[slotNumber].remarkSlotLockedInState != FireBackRemarkSlot.lockedInState.Completed)
-            {
-                hostRemarkSlotComplete++;
-            }
-            hostRemarkSlotList[slotNumber].remarkSlotLockedInState = FireBackRemarkSlot.lockedInState.Completed;
-            AddRemarkToHand(); //Add a new Remark for Tone success           
-            party.currentPlayerConfidence = Mathf.Clamp(party.currentPlayerConfidence + 5, 5, party.maxPlayerConfidence); //Confidence Reward        
-        }
-        else if (party.playerHand[targetingRemark].tone == hostRemarkSlotList[slotNumber].disposition.dislike) //They dislike the tone
-        {
-            party.currentPlayerConfidence = Mathf.Clamp(party.currentPlayerConfidence - 10, 0, party.maxPlayerConfidence); //Confidence Penalty
-        }
-        else //Neutral Tone
-        {
-            hostRemarkSlotComplete++;
-            hostRemarkSlotList[slotNumber].remarkSlotLockedInState = FireBackRemarkSlot.lockedInState.Completed;
-        }
-        // Up the Remaining Timer?
-        party.host.hostRemarkCompletionTimerCurrent = Mathf.Clamp(party.host.hostRemarkCompletionTimerCurrent + 1.0f, 1.0f, party.host.hostRemarkCompletionTimerMax);
-    }
-
-    public void HostRemarkSlotHighlighting(int slotNumber)
-    {
-        if (targetingMode)
-        {
-            switch (party.playerHand[targetingRemark].targetingProfileInt)
-            {
-                case 1:
-                    //No flip necessary, it's just one target
-                        HostRemarkSlotHighlight(slotNumber);
-                    break;
-                case 11:
-                    //Flip versions
-                    if (!targetingFlipped)
-                    {
-                        HostRemarkSlotHighlight(slotNumber);
-                        HostRemarkSlotHighlight(slotNumber + 1);
-                    }
-                    else
-                    {
-                        HostRemarkSlotHighlight(slotNumber);
-                        HostRemarkSlotHighlight(slotNumber - 1);
-                    }
-                    break;
-                case 101:
-                    //Flip Versions
-                    if (!targetingFlipped)
-                    {
-                        HostRemarkSlotHighlight(slotNumber);
-                        HostRemarkSlotHighlight(slotNumber + 2);
-                    }
-                    else
-                    {
-                        HostRemarkSlotHighlight(slotNumber);
-                        HostRemarkSlotHighlight(slotNumber - 2);
-                    }
-                    break;
-                case 1011:
-                    //Flip version
-                    if (!targetingFlipped)
-                    {
-                        HostRemarkSlotHighlight(slotNumber);
-                        HostRemarkSlotHighlight(slotNumber + 2);
-                        HostRemarkSlotHighlight(slotNumber + 3);
-                    }
-                    else
-                    {
-                        HostRemarkSlotHighlight(slotNumber);
-                        HostRemarkSlotHighlight(slotNumber - 2);
-                        HostRemarkSlotHighlight(slotNumber - 3);
-                    }
-                    break;
-            }
-        }
-    }
-
-    void HostRemarkSlotHighlight(int slotNumber)
-    {
-		slotNumber %= hostRemarkSlotList.Count;
-		if (slotNumber < 0) slotNumber += hostRemarkSlotList.Count;
-		hostRemarkSlotButtonList[slotNumber].remarkSlotImage.color = HostRemarkSlotReactionColor(slotNumber);
-    }
-
     public Color ReactionColor()
     {
         if (!party.host.dispositionRevealed && party.currentPlayerIntoxication >= 50)
@@ -581,12 +431,12 @@ public class WorkTheHostManager : MonoBehaviour
 
         //Increment the Host's Interest Timer, issue Boredom Damage
         party.host.currentInterestTimer = Mathf.Clamp(party.host.currentInterestTimer - 1, 0, party.host.maxInterestTimer);
-        if (party.host.currentInterestTimer <= 0 && party.host.notableLockedInState == LockedInState.Interested)
+        if (party.host.currentInterestTimer <= 0 && party.host.notableLockedInState == GuestState.Ambivalent)
         { 
             party.host.currentOpinion = Mathf.Clamp(party.host.currentOpinion - 10, 0, party.host.maxOpinion);
             if (party.host.currentOpinion <= 0)
             {
-                party.host.notableLockedInState = LockedInState.PutOff;
+                party.host.notableLockedInState = GuestState.PutOff;
             }
         }
 
@@ -630,158 +480,6 @@ public class WorkTheHostManager : MonoBehaviour
         }
     }
 
-    public void DrinkForConfidence()
-    {
-        if (party.currentPlayerDrinkAmount > 0 && party.currentPlayerConfidence != party.maxPlayerConfidence)
-        {
-            party.currentPlayerDrinkAmount--;
-            party.currentPlayerConfidence = Mathf.Clamp(party.currentPlayerConfidence + 20, 20, party.maxPlayerConfidence);
-            int drinkStrength = party.drinkStrength;
-            //Is the Player using the Snuff Box Accessory? If so then decrease the Intoxicating Effects of Booze!
-            if (GameData.partyAccessory != null && GameData.partyAccessory.Type == "Snuff Box")
-            {
-                drinkStrength -= 5;
-            }
-            party.currentPlayerIntoxication += drinkStrength;
-            party.host.dispositionRevealed = false;
-            if (party.currentPlayerIntoxication >= party.maxPlayerIntoxication)
-            {
-                BlackOut();
-            }
-        }
-    }
-
-    void BlackOut()
-    {
-        Debug.Log("Blacking out!");
-        //Determine Random Effect
-        int effectSelection = Random.Range(1, 11);
-        string effect;
-        int effectAmount = 0;
-        switch (effectSelection)
-        {
-            case 1:
-                effect = "Reputation Loss";
-                effectAmount = Random.Range(20, 51) * -1;
-                party.wonRewardsList.Add(new Reward(party, "Reputation", effectAmount));
-                break;
-            case 2:
-                effect = "Faction Reputation Loss";
-                effectAmount = Random.Range(20, 51) * -1;
-                party.wonRewardsList.Add(new Reward(party, "Faction Reputation", party.faction, effectAmount));
-                break;
-            case 3:
-                effect = "Outfit Novelty Loss";
-                effectAmount = Random.Range(20, 51);
-				OutfitInventory.PartyOutfit.novelty = Mathf.Clamp(OutfitInventory.PartyOutfit.novelty - effectAmount, 0, 100);
-                break;
-            case 4:
-                effect = "Outfit Ruined";
-                DeWinterApp.SendMessage<Outfit>(InventoryConsts.REMOVE_ITEM, OutfitInventory.PartyOutfit);
-                break;
-            case 5:
-                effect = "Accessory Ruined";
-                if (GameData.partyAccessory != null) //If the Player actually wore and Accessory to this Party
-                {
-                	
-                }
-                else
-                {
-                    effect = "Livre Lost";
-                    effectAmount = Random.Range(30, 61) * -1;
-                    party.wonRewardsList.Add(new Reward(party, "Livre", effectAmount));
-                }
-                break;
-            case 6:
-                effect = "Livre Lost";
-                effectAmount = Random.Range(30, 61) * -1;
-                party.wonRewardsList.Add(new Reward(party, "Livre", effectAmount));
-                break;
-            case 7:
-                effect = "New Enemy";
-                EnemyInventory.AddEnemy(new Enemy(party.faction));
-                break;
-            case 8:
-                effect = "Forgot All Gossip";
-                List<Reward> gossipList = new List<Reward>();
-                foreach (Reward r in party.wonRewardsList)
-                {
-                    if (r.Type() == "Gossip")
-                    {
-                        gossipList.Add(r);
-                    }
-                }
-                if (gossipList.Count != 0) //If the Player actually has Gossip to lose
-                {
-                    foreach (Reward r in gossipList)
-                    {
-                        party.wonRewardsList.Remove(r);
-                    }
-                }
-                else //If they have no Gossip to Lose
-                {
-                    effect = "New Enemy";
-                    EnemyInventory.AddEnemy(new Enemy(party.faction));
-                }
-                break;
-            case 9:
-                effect = "No Effect";
-                break;
-            default:
-                effect = "Positive Effect";
-                break;
-        }
-        if (effect == "Positive Effect")
-        {
-            effectSelection = Random.Range(1, 6);
-            switch (effectSelection)
-            {
-                case 1:
-                    effect = "Reputation Gain";
-                    effectAmount = Random.Range(20, 51);
-                    party.wonRewardsList.Add(new Reward(party, "Reputation", effectAmount));
-                    break;
-                case 2:
-                    effect = "Faction Reputation Gain";
-                    effectAmount = Random.Range(20, 51);
-                    party.wonRewardsList.Add(new Reward(party, "Faction Reputation", party.faction, effectAmount));
-                    break;
-                case 3:
-                    effect = "Livre Gained";
-                    effectAmount = Random.Range(30, 61);
-                    party.wonRewardsList.Add(new Reward(party, "Livre", effectAmount));
-                    break;
-                case 4:
-                    effect = "New Gossip";
-                    party.wonRewardsList.Add(new Reward(party, "Gossip", 1));
-                    break;
-                default:
-                    effect = "Eliminated an Enemy";
-                    if (party.enemyList.Count == 0)
-                    {
-                        effect = "New Gossip";
-                        party.wonRewardsList.Add(new Reward(party, "Gossip", 1));
-                    }
-                    else
-                    {
-                        party.enemyList.RemoveAt(Random.Range(0, party.enemyList.Count));
-                    }
-                    break;
-            }
-        }
-        party.blackOutEffect = effect;
-        party.blackOutEffectAmount = effectAmount;
-        Debug.Log("Black Out Effect Chosen! It's " + effect);
-        //Close Window
-        Destroy(gameObject);
-
-        //Send to After Party Report Screen
-        Debug.Log("Trying to go to the After Party Report Screen!");
-        party.blackOutEnding = true;
-        roomManager.partyManager.FinishTheParty();
-        DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_AfterPartyReport");
-        Debug.Log("At the After Party Report Screen!");
-    }
 
     public Sprite VisualizeTargetingProfile(int remarkInt)
     {
@@ -800,33 +498,6 @@ public class WorkTheHostManager : MonoBehaviour
         }
     }
 
-    void ChangeHostOpinion(int amount)
-    {
-        if (party.host.notableLockedInState == LockedInState.Interested) //Is this one locked in yet?
-        {
-            party.host.currentOpinion += amount;
-        }
-        //Are they Charmed or Put Off?
-        if (party.host.currentOpinion >= party.host.maxOpinion && party.host.notableLockedInState == LockedInState.Interested) //If they're not already Charmed then Player Hand is refilled once
-        {
-            party.host.notableLockedInState = LockedInState.Charmed;
-            RefillPlayerHand();
-        }
-        else if (party.host.currentOpinion <= 0 && party.host.notableLockedInState == LockedInState.Interested) //If they're not already Put Off then Player Confidence is reduced by 10
-        {
-            party.host.notableLockedInState = LockedInState.PutOff;
-            party.currentPlayerConfidence -= 10;
-        }
-
-        if (party.host.notableLockedInState == LockedInState.Charmed) // If they're Charmed then Opinion is Maxed out
-        {
-            party.host.currentOpinion = party.host.maxOpinion;
-        }
-        else if (party.host.notableLockedInState == LockedInState.PutOff) // If they're Put Off then Opinion is 0
-        {
-            party.host.currentOpinion = 0;
-        }
-    }
 
     void AddRemarkToHand()
     {
@@ -871,11 +542,11 @@ public class WorkTheHostManager : MonoBehaviour
 
     string InterestState()
     {
-        if (party.host.notableLockedInState == LockedInState.Charmed)
+        if (party.host.notableLockedInState == GuestState.Charmed)
         {
             return "Charmed";
         }
-        else if (party.host.notableLockedInState == LockedInState.PutOff)
+        else if (party.host.notableLockedInState == GuestState.PutOff)
         {
             return "Put Off";
         }
@@ -896,11 +567,11 @@ public class WorkTheHostManager : MonoBehaviour
     	Dictionary<string, string> subs = new Dictionary<string, string>();
 		switch (party.host.notableLockedInState)
 		{
-			case LockedInState.Charmed:
+			case GuestState.Charmed:
 				dialogType = DialogConsts.CHARMED_HOST_DIALOG;
 				reward = room.Rewards[5];
 				break;
-			case LockedInState.PutOff:
+			case GuestState.PutOff:
 				dialogType = DialogConsts.FAILED_HOST_DIALOG;
 				reward = room.Rewards[5];
 				break;
@@ -912,7 +583,7 @@ public class WorkTheHostManager : MonoBehaviour
 			room.Cleared = true;
 			GameData.tonightsParty.wonRewardsList.Add(reward);
 			subs.Add("$REWARD",reward.Name());
-			DeWinterApp.OpenMessageDialog(dialogType, subs);
+			AmbitionApp.OpenMessageDialog(dialogType, subs);
 
 			if (hostRemarkWindow != null)
             {
@@ -928,7 +599,7 @@ public class WorkTheHostManager : MonoBehaviour
         if (party.currentPlayerConfidence <= 0)
         {
             //The Player loses a turn
-            party.turnsLeft--;
+			AmbitionApp.AdjustValue<int>(PartyConstants.TURNSLEFT, -1);
             //The Player has their Confidence Reset
             party.currentPlayerConfidence = party.startingPlayerConfidence / 2;
             //The Player is relocated to the Entrance
@@ -937,13 +608,13 @@ public class WorkTheHostManager : MonoBehaviour
             int reputationLoss = 25;
             int factionReputationLoss = 50;
             GameData.reputationCount -= reputationLoss;
-			DeWinterApp.AdjustValue<>(new AdjustValueVO(party.faction, -factionReputationLoss));
+			AmbitionApp.AdjustValue<>(new AdjustValueVO(party.faction, -factionReputationLoss));
             //Explanation Screen Pop Up goes here
             Dictionary<string, string> subs = new Dictionary<string, string>(){
 				{"$FACTIONREPUTATION",factionReputationLoss.ToString()},
 				{"$FACTION",party.faction},
 				{"$REPUTATION",reputationLoss.ToString()}};
-            DeWinterApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_DIALOG, subs);
+            AmbitionApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_DIALOG, subs);
 
             //The Player is pulled from the Work the Room session
             Destroy(gameObject);
@@ -951,7 +622,7 @@ public class WorkTheHostManager : MonoBehaviour
     }
     void InterestTimersDisplayCheck()
     {
-        if (party.host.notableLockedInState != LockedInState.Interested)
+        if (party.host.notableLockedInState != GuestState.Ambivalent)
         {
             hostInterestBar.image.color = Color.clear;
             hostInterestBarBackground.color = Color.clear;
@@ -1004,7 +675,7 @@ public class WorkTheHostManager : MonoBehaviour
                 objectStorage[2] = Random.Range(1, 6);
                 screenFader.gameObject.SendMessage("CreateHostRemarkModal", objectStorage);
                 Text introText = hostRemarkWindow.transform.FindChild("IntroTextPanel").Find("Text").GetComponent<Text>();
-				string[] hostRemarkIntroList = DeWinterApp.GetModel<PartyModel>().HostIntros;
+				string[] hostRemarkIntroList = AmbitionApp.GetModel<PartyModel>().HostIntros;
                 introText.text = hostRemarkIntroList[Random.Range(0, hostRemarkIntroList.Length)];
                 //So there'll be a wait before the next Host Remark
                 hostRemarkTimer = party.host.nextHostRemarkTimer;
@@ -1012,16 +683,6 @@ public class WorkTheHostManager : MonoBehaviour
                 StartCoroutine(HostRemarkTimerWait());
             }
         }      
-    }
-
-    public void StockFireBackRemarkSlotList(int slotCount)
-    {
-        hostRemarkSlotComplete = 0;
-        hostRemarkSlotList.Clear();
-        for(int i = 0; i < slotCount; i++)
-        {
-            hostRemarkSlotList.Add(new FireBackRemarkSlot());
-        }
     }
 
     public IEnumerator HostRemarkTimerWait()

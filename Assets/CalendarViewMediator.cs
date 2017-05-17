@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class CalendarViewMediator : MonoBehaviour
 	{
@@ -10,7 +10,7 @@ namespace DeWinter
 
 		void Awake()
 		{
-			_model = DeWinterApp.GetModel<CalendarModel>();
+			_model = AmbitionApp.GetModel<CalendarModel>();
 		}
 
 		// Use this for initialization

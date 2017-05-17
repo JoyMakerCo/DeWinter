@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RoomVO
 	{
@@ -11,9 +11,9 @@ namespace DeWinter
 	    public int Difficulty; //Difficulty 1-5
 	    public bool Cleared=false;
 	    public bool Revealed=false;
-		public Reward [] Rewards;
+		public RewardVO [] Rewards;
 		public GuestVO [] Guests;
-		public List<Enemy> Enemies;
+		public List<EnemyVO> Enemies;
 		public string [] Features;
 		public RoomVO [] Neighbors; // Starting North, Clockwise
 		public float TurnTimer; // Custom TurnTimer?
@@ -34,7 +34,7 @@ public bool IsEntrance=false;
 			get {
 				if (IsImpassible && !Cleared) return 0;
 				int chance = 90 - (Cleared ? 0 : Difficulty * 10);
-				InventoryModel inventory = DeWinterApp.GetModel<InventoryModel>();
+				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
 				ItemVO accessory;
 
 // TODO: Implement Item states

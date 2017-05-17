@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using DeWinter;
+using Ambition;
 
 public class BuyAndSellPopUpController : MonoBehaviour
 {
@@ -18,8 +18,8 @@ public class BuyAndSellPopUpController : MonoBehaviour
 
     void Start()
     {
-		_inventoryModel = DeWinterApp.GetModel<InventoryModel>();
-		_gameModel = DeWinterApp.GetModel<GameModel>();
+		_inventoryModel = AmbitionApp.GetModel<InventoryModel>();
+		_gameModel = AmbitionApp.GetModel<GameModel>();
 
         personalOutfitInventoryList = GameObject.Find("PlayerInventoryDisplay").transform.Find("OutfitDisplay").Find("OutfitListPanel").Find("GridWithElements").GetComponent<OutfitInventoryList>();
         merchantOutfitInventoryList = GameObject.Find("ShopDisplay").transform.Find("OutfitDisplay").Find("OutfitListPanel").Find("GridWithElements").GetComponent<OutfitInventoryList>();
@@ -74,7 +74,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
         {
             if (inventoryType == "personal") //Selling Things
             {
-	        	DeWinterApp.SendMessage<ItemVO>(InventoryConsts.SELL_ITEM, accessory);
+	        	AmbitionApp.SendMessage<ItemVO>(InventoryConsts.SELL_ITEM, accessory);
 
                 //If that item was worn last at a party then reset the Last Party Outfit ID, so an item with its ID doesn't get a wrongful double Novelty hit
                 ItemVO lastAccssory; 
@@ -85,7 +85,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
             }
             else if (inventoryType == "merchant") //Buying Things
             {
-				DeWinterApp.SendMessage<ItemVO>(InventoryConsts.BUY_ITEM, accessory);
+				AmbitionApp.SendMessage<ItemVO>(InventoryConsts.BUY_ITEM, accessory);
             }
             personalAccessoryInventoryList.selectedAccessory = null;
             merchantAccessoryInventoryList.selectedAccessory = null;

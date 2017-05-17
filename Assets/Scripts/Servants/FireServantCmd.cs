@@ -2,13 +2,13 @@
 using Core;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class FireServantCmd : ICommand<ServantVO>
 	{
 		public void Execute (ServantVO servant)
 		{
-			ServantModel model = DeWinterApp.GetModel<ServantModel>();
+			ServantModel model = AmbitionApp.GetModel<ServantModel>();
 
 			if (model.Hired.ContainsKey(servant.slot) && model.Hired[servant.slot] == servant)
 			{

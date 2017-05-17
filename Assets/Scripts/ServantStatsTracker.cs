@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class ServantStatsTracker : MonoBehaviour {
 
@@ -58,7 +58,7 @@ public class ServantStatsTracker : MonoBehaviour {
 
     public void HireServant()
     {
-		DeWinterApp.SendMessage<ServantVO>(ServantConsts.HIRE_SERVANT, servantList.selectedServant);
+		AmbitionApp.SendMessage<ServantVO>(ServantConsts.HIRE_SERVANT, servantList.selectedServant);
         servantList.ClearInventoryButtons();
         servantList.GenerateInventoryButtons();
     }
@@ -70,13 +70,13 @@ public class ServantStatsTracker : MonoBehaviour {
         {
 			if (servant.Name != "Camille")
             {
-				DeWinterApp.SendMessage<ServantVO>(ServantConsts.FIRE_SERVANT, servantList.selectedServant);
+				AmbitionApp.SendMessage<ServantVO>(ServantConsts.FIRE_SERVANT, servantList.selectedServant);
 		        servantList.ClearInventoryButtons();
 		        servantList.GenerateInventoryButtons();
             } else if (!attemptedCamilleFiring) //If the Player hasn't attempted to fire Camille yet then throw up this message bubble
             {
                 attemptedCamilleFiring = true;
-                DeWinterApp.OpenMessageDialog(DialogConsts.FIRE_CAMILLE_DIALOG);
+                AmbitionApp.OpenMessageDialog(DialogConsts.FIRE_CAMILLE_DIALOG);
             }
         }
     }

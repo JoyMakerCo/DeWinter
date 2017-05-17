@@ -1,13 +1,13 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class IntroServantCmd : ICommand<string>
 	{
 		public void Execute (string servantType)
 		{
-			ServantModel model = DeWinterApp.GetModel<ServantModel>();
+			ServantModel model = AmbitionApp.GetModel<ServantModel>();
 			ServantVO [] servants = model.GetServants(servantType);
 			servants = Array.FindAll(servants, s => !s.Hired && !s.Introduced);
 			if (servants.Length > 0)

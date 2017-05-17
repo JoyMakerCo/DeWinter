@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DeWinter
+namespace Ambition
 {
 	public static class GameMessages
 	{
@@ -12,5 +12,8 @@ namespace DeWinter
 		public static string QUIT_GAME = "QUIT_GAME";
 		public static string NEW_GAME = "NEW_GAME";
 		public static string START_TUTORIAL = "START_TUTORIAL";
+
+		public static string CREATE_ENEMY = "CREATE_ENEMY";
+
 	}
 }

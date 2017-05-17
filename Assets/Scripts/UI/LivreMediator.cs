@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class LivreMediator : MonoBehaviour
 	{
@@ -12,13 +12,13 @@ namespace DeWinter
 		void Awake ()
 		{
 			_text = GetComponent<Text>();
-			DeWinterApp.Subscribe<int>(GameConsts.LIVRE, HandleLivre);
-			HandleLivre(DeWinterApp.GetModel<GameModel>().Livre);
+			AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleLivre);
+			HandleLivre(AmbitionApp.GetModel<GameModel>().Livre);
 		}
 
 		void OnDestroy()
 		{
-			DeWinterApp.Unsubscribe<int>(GameConsts.LIVRE, HandleLivre);
+			AmbitionApp.Unsubscribe<int>(GameConsts.LIVRE, HandleLivre);
 		}
 
 		private void HandleLivre (int livre)

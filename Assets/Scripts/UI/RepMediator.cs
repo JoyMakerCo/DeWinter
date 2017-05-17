@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RepMediator : MonoBehaviour
 	{
@@ -12,16 +12,13 @@ namespace DeWinter
 		void Awake ()
 		{
 			_text = GetComponent<Text>();
-			DeWinterApp.Subscribe<PlayerReputationVO>(GameConsts.REPUTATION, HandleRep);
-
-			GameModel model = DeWinterApp.GetModel<GameModel>();
-			PlayerReputationVO vo = new PlayerReputationVO(model.Reputation, model.ReputationLevel);
-			HandleRep(vo);
+			AmbitionApp.Subscribe<PlayerReputationVO>(HandleRep);
+			_text.text = AmbitionApp.GetModel<GameModel>().Reputation.ToString("###,###");
 		}
 
 		void OnDestroy()
 		{
-			DeWinterApp.Unsubscribe<PlayerReputationVO>(GameConsts.REPUTATION, HandleRep);
+			AmbitionApp.Unsubscribe<PlayerReputationVO>(HandleRep);
 		}
 
 		private void HandleRep (PlayerReputationVO vo)

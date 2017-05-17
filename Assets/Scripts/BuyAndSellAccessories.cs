@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class BuyAndSellAccessories : MonoBehaviour {
     public GameObject screenFader; // It's for the BuyAndSell pop-up
@@ -12,7 +12,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
        
     public void createBuyAndSellPopUp()
     {
-    	InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
+    	InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
         if (inventoryType == "personal" && personalAccessoryList.selectedAccessory != null)
         {
             object[] objectStorage = new object[3];
@@ -25,7 +25,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
         {
             if (model.Inventory.Count < model.MaxSlots) // Will it fit in the Player's inventory?
             {
-                if (DeWinterApp.GetModel<GameModel>().Livre >= merchantAccessoryList.selectedAccessory.Price) // Can they afford it?
+                if (AmbitionApp.GetModel<GameModel>().Livre >= merchantAccessoryList.selectedAccessory.Price) // Can they afford it?
                 {
                     object[] objectStorage = new object[3];
                     objectStorage[0] = "merchant";
@@ -45,7 +45,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
 				Dictionary<string, string> subs = new Dictionary<string, string>()
 					{{"$ITEM",merchantAccessoryList.selectedAccessory.Name},
 					{"$CAPACITY",OutfitInventory.personalInventoryMaxSize.ToString()}};
-				DeWinterApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
+				AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
             }
         }
     }

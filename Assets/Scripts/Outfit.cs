@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class Outfit
 {
@@ -74,10 +74,10 @@ public class Outfit
     {
         float noveltyPercent = (float)novelty / 100;
         int calcPrice = (int)((Mathf.Abs(modesty) + Mathf.Abs(luxury))*noveltyPercent);
-        if(style != DeWinterApp.GetModel<InventoryModel>().CurrentStyle) //Check to see if this Outfit matches what's in Style
+        if(style != AmbitionApp.GetModel<InventoryModel>().CurrentStyle) //Check to see if this Outfit matches what's in Style
         {
 // TODO: Populated by model
-            calcPrice = (int)(calcPrice*DeWinter.DeWinterApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
+            calcPrice = (int)(calcPrice*Ambition.AmbitionApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
         }
         if (calcPrice < 10) // If the Price is less than 10 make it 10. Will Sell for 5 at most (Sell price is 50% of Buy Price)
         {
@@ -95,7 +95,7 @@ public class Outfit
         } else
         {
 // TODO: This value should be modified within the model, not the VO
-        	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+        	ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 			if (smod.Hired.ContainsKey("Seamstress") || smod.Hired.ContainsKey("Tailor"))
 			{
 				return (int)(outfitPrice * smod.SeamstressDiscount);

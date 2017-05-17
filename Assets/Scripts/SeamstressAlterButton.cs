@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class SeamstressAlterButton : MonoBehaviour {
 
@@ -16,7 +16,7 @@ public class SeamstressAlterButton : MonoBehaviour {
     {
         buttonImage = this.GetComponent<Image>();
         buttonText = this.transform.Find("Text").GetComponent<Text>();
-		_model = DeWinterApp.GetModel<ServantModel>();
+		_model = AmbitionApp.GetModel<ServantModel>();
     }
 
     void Update()
@@ -96,7 +96,7 @@ public class SeamstressAlterButton : MonoBehaviour {
         {
 			Dictionary<string, string> subs = new Dictionary<string, string>()
 				{{"$CAPACITY",OutfitInventory.personalInventoryMaxSize.ToString()}};
-			DeWinterApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
+			AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
         }
     }
 }

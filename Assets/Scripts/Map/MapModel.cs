@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class MapModel : DocumentModel
 	{
@@ -21,7 +21,7 @@ namespace DeWinter
 			set
 			{
 				_map = value;
-				DeWinterApp.SendMessage<MapVO>(_map);
+				AmbitionApp.SendMessage<MapVO>(_map);
 				Room = (_map != null) ? _map.Entrance : null;
 			}
 		}
@@ -34,7 +34,7 @@ namespace DeWinter
 			{
 				_room = value;
 				_room.Revealed = true;
-				DeWinterApp.SendMessage<RoomVO>(_room);
+				AmbitionApp.SendMessage<RoomVO>(_room);
 			}
 		}
 
@@ -104,6 +104,7 @@ namespace DeWinter
 	        Maps[map.Name] = map;
 		}
 
+		// TODO: Generate random guests on the fly upon entering the appropriate room
 		private GuestVO[] GenerateGuests(int difficulty, int numGuests)
 		{
 			int[] ranges;
@@ -131,7 +132,8 @@ namespace DeWinter
 			Random rnd = new Random();
 			for (int i=0; i<numGuests; i++)
 			{
-				guests[i] = new GuestVO(rnd.Next(ranges[0], ranges[1]), rnd.Next(ranges[2], ranges[3]));
+				guests[i] = new GuestVO();
+				guests[i].Opinion = rnd.Next(ranges[0], ranges[1]);
 			}
 			return guests;
 		}

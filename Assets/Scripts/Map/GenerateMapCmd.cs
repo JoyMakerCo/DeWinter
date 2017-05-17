@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class GenerateMapCmd : ICommand<Party>
+	public class GenerateMapCmd : ICommand<PartyVO>
 	{
 		private MapModel _model;
 		private MapVO _map;
 		private Random _rnd;
-		private Party _party;
+		private PartyVO _party;
 		private int _capacity;
 
-		public void Execute(Party party)
+		public void Execute(PartyVO party)
 		{
 			_party = party;
-			_model = DeWinterApp.GetModel<MapModel>();
+			_model = AmbitionApp.GetModel<MapModel>();
 			_rnd = new Random();
 
 			// Determine if the party uses a preset.
@@ -155,6 +155,9 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 			}
 		}
 
+		// TODO: Generate random guests on the fly upon entering the appropriate room
+		// Guest List should be prepopulated only with Enemies and Notables,
+		// and arrays already at appropriate length with null entries
 		private GuestVO[] GenerateGuests(int difficulty)
 	    {
 	        switch (difficulty)
@@ -178,29 +181,28 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 			GuestVO[] result = new GuestVO[count];
 			for (int i=0; i<count; i++)
 			{
-				result[i] = new GuestVO(_rnd.Next(opinionMin, opinionMax), _rnd.Next(interestMin, interestMax));
+				result[i] = new GuestVO();
+				result[i].Opinion = _rnd.Next(opinionMin, opinionMax);
 			}
 			return result;
 		}
 
-		private Reward [] GenerateRewards()
+		private RewardVO [] GenerateRewards()
     	{
-    		return new Reward[] {
-				new Reward(_party, "Random", 0),
-				new Reward(_party, "Random", 1),
-				new Reward(_party, "Random", 2),
-				new Reward(_party, "Random", 3),
-				new Reward(_party, "Random", 4),
-				new Reward(_party, "Random", 5),
-				new Reward(_party, "Random", 6)
-    		};
+    		List<RewardVO> rewards = new List<RewardVO>(7);
+    		for (int i=rewards.Count-1; i>=0; i--)
+    		{
+//    			rewards[i] = new RewardVO();
+// TODO: Generate random rewards
+    		}
+    		return rewards.ToArray();
 	    }
 
 	    private void PopulateEnemies()
 	    {
-			List<Enemy> enemies = EnemyInventory.enemyInventory.FindAll(e => e.Faction == GameData.tonightsParty.faction);
+			List<EnemyVO> enemies = EnemyInventory.enemyInventory.FindAll(e => e.Faction == GameData.tonightsParty.faction);
 			int X, Y;
-			foreach (Enemy e in enemies)
+			foreach (EnemyVO e in enemies)
 	        {
 				X = _rnd.Next(_map.Width);
 				Y = _rnd.Next(_map.Depth);

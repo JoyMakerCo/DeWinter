@@ -2,7 +2,7 @@
 using System.Collections;
 using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ServantVO
 	{

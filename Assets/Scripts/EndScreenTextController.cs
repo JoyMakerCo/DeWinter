@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class EndScreenTextController : MonoBehaviour {
 
@@ -11,7 +11,7 @@ namespace DeWinter
 
 	    void Start()
 	    {
-			GameModel model = DeWinterApp.GetModel<GameModel>();
+			GameModel model = AmbitionApp.GetModel<GameModel>();
 			if (model.Reputation < 0)
 			{
 				titleText.text = "Nobody Likes You!";
@@ -22,7 +22,7 @@ namespace DeWinter
 	            titleText.text = "You're Broke!";
 	            bodyText.text = "You ran our of Money and friends to give you loans. You die penniless in the streets.";
 	        }
-			else if (model.Allegiance != DeWinterApp.GetModel<FactionModel>().VictoriousPower)
+			else if (model.Allegiance != AmbitionApp.GetModel<FactionModel>().VictoriousPower)
 			{
 				titleText.text = "You Lose!";
 	            bodyText.text = "You ended up on the wrong side of history. You're executed as a traitor.";

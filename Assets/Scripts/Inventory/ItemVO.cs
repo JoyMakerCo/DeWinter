@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Util;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ItemVO : ICloneable<ItemVO>
 	{
