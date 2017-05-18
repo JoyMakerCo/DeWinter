@@ -25,7 +25,7 @@ public class RSVPDialogMediator : DialogView, IDialog<Party>
 
 		_party = party;
 		_localization = DeWinterApp.GetModel<LocalizationModel>();
-		TitleTxt.text = _localization.GetString(DialogConsts.RSVP_DIALOG + DialogConsts.TITLE);
+		TitleTxt.text = _localization.GetString("rsvp_dialog.title");
 
 		if (smod.Servants.ContainsKey(ServantConsts.SPYMASTER))
 		{
@@ -49,7 +49,8 @@ public class RSVPDialogMediator : DialogView, IDialog<Party>
 		{
 			dialogsubs.Add("$PROMPT", _localization.GetString("party_prompt"));
 		}
-		BodyTxt.text = _localization.GetString(DialogConsts.RSVP_DIALOG + DialogConsts.BODY, dialogsubs);
+
+		BodyTxt.text = _localization.GetString("rsvp_dialog.body", dialogsubs);
 	}
 
     public void RSVPAction(int decision)
