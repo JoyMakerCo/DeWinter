@@ -14,9 +14,12 @@ public class Party {
     public int modestyPreference;
     public int luxuryPreference;
     public bool tutorial=false;
+    public bool notableEvent = false; //Should this event show up in the Notable Events section of the Parties List?
     public System.DateTime Date;
 
+    public string name; // Randomly Generated Party Name (Flavor)
     public string description; // Randomly Generated Flavor Description
+    public string rsvpModalText; //The Text used in the RSVP Modal for this Party
 
     public Notable host;
 
@@ -49,30 +52,28 @@ public class Party {
     public Party(int size)
     {
 		Random rnd = new Random();
-
         partySize = size;
 		SetRandomFaction();
-		GenerateRandomDescription();
         host = new Notable(faction);
         turns = (partySize * 5) + 1;
         turnsLeft = turns;
         FillPlayerHand();
         invitationDistance = 1 + rnd.Next(8) + rnd.Next(8); //Pseudo Normalized Value
+        GenerateRandomFlavorText();
     }
 
     //Constructor that makes a Party that ISN'T the included faction
     public Party(string faction)
     {
 		Random rnd = new Random();
-
 		SetExclusiveFaction(faction);
         partySize = rnd.Next(1, 4);
         host = new Notable(faction);
-        GenerateRandomDescription();
         turns = (partySize * 5) + 1;
         turnsLeft = turns;
         FillPlayerHand();
 		invitationDistance = 1 + rnd.Next(8) + rnd.Next(8); //Pseudo Normalized Value
+        GenerateRandomFlavorText();
     }
 
     void SetRandomFaction()
@@ -96,9 +97,145 @@ public class Party {
 		luxuryPreference = fmod.Factions[faction].Luxury;
     }
     
-    void GenerateRandomDescription()
+    void GenerateRandomFlavorText()
     {
-        description = "This party is being hosted by some dude or dudette. This segment will later have randomly generated Text describing the party. It should be pretty damn funny.";
+        //----- Name Text -----
+        int randomNameInt = new Random().Next(1, 10);
+        string partyName;
+        switch (randomNameInt)
+        {
+            case 1:
+                partyName = "Party";
+                break;
+            case 2:
+                partyName = "Gala";
+                break;
+            case 3:
+                partyName = "Celebration";
+                break;
+            case 4:
+                partyName = "Ball";
+                break;
+            case 5:
+                partyName = "Banquet";
+                break;
+            case 6:
+                partyName = "Festivity";
+                break;
+            case 7:
+                partyName = "Reception";
+                break;
+            case 8:
+                partyName = "Salon";
+                break;
+            default:
+                partyName = "Soiree";
+                break;
+        }
+        name = host.Name + "'s " + SizeString() + " " + partyName;
+        //----- Description Text -----
+        string descriptionNoun1;
+        string descriptionAdjective;
+        string descriptionNoun2;
+        int descNoun1Int =  new Random().Next(1, 10);
+        switch (descNoun1Int)
+        {
+            case 1:
+                descriptionNoun1 = "circumstance";
+                break;
+            case 2:
+                descriptionNoun1 = "showing";
+                break;
+            case 3:
+                descriptionNoun1 = "time";
+                break;
+            case 4:
+                descriptionNoun1 = "presentation";
+                break;
+            case 5:
+                descriptionNoun1 = "proceeding";
+                break;
+            case 6:
+                descriptionNoun1 = "happening";
+                break;
+            case 7:
+                descriptionNoun1 = "affair";
+                break;
+            case 8:
+                descriptionNoun1 = "circumstance";
+                break;
+            default:
+                descriptionNoun1 = "gathering";
+                break;
+        }
+        int descAdjectiveInt = new Random().Next(1, 10);
+        switch (descAdjectiveInt)
+        {
+            case 1:
+                descriptionAdjective = "great";
+                break;
+            case 2:
+                descriptionAdjective = "certain";
+                break;
+            case 3:
+                descriptionAdjective = "fascinating";
+                break;
+            case 4:
+                descriptionAdjective = "unquestionable";
+                break;
+            case 5:
+                descriptionAdjective = "elegant";
+                break;
+            case 6:
+                descriptionAdjective = "gentile";
+                break;
+            case 7:
+                descriptionAdjective = "refined";
+                break;
+            case 8:
+                descriptionAdjective = "drunken";
+                break;
+            default:
+                descriptionAdjective = "magnificent";
+                break;
+        }
+
+        int descNoun2Int = new Random().Next(1, 10);
+        switch (descNoun2Int)
+        {
+            case 1:
+                descriptionNoun2 = "splendor";
+                break;
+            case 2:
+                descriptionNoun2 = "gentility";
+                break;
+            case 3:
+                descriptionNoun2 = "elegance";
+                break;
+            case 4:
+                descriptionNoun2 = "merriment";
+                break;
+            case 5:
+                descriptionNoun2 = "mirth";
+                break;
+            case 6:
+                descriptionNoun2 = "gaiety";
+                break;
+            case 7:
+                descriptionNoun2 = "exuberance";
+                break;
+            case 8:
+                descriptionNoun2 = "elation";
+                break;
+            default:
+                descriptionNoun2 = "joi de vivre";
+                break;
+        }
+        description = descriptionNoun1 + " of " + descriptionAdjective + " " + descriptionNoun2;
+
+        //----- RSVP Modal Text -----
+        string dateString = DeWinterApp.GetModel<CalendarModel>().GetMonthString(Date) + " " + Date.Day + " " + Date.Year;
+        rsvpModalText = "Requests the attendance of Yvette to " + name + " on " + dateString + ". This " + SizeString() + " " + partyName + " is sure to be a " + description + ".";
     }
 
     void GenerateTutorialDescription()
@@ -163,7 +300,7 @@ public class Party {
 
     public string Guest1()
     {
-        return "- Vis-Prince Christophe Sagnier";
+        return "- Prince Christophe Sagnier";
     }
 
     public string Guest2()
