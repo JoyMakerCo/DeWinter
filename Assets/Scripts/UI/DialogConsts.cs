@@ -37,7 +37,6 @@ namespace DeWinter
 		public const string REDEEM_QUEST_DIALOG = "redeem_quest_dialog";
 
 		public const string CANCEL_RSVP_DIALOG = "rsvp_cancel_dialog";//CancellationModal";
-		public const string RSVP_DIALOG = "rsvp_dialog";//RSVPPopUpModal";
 		public const string RSVP_CHOICE_DIALOG = "rsvp_choice_dialog";//TwoPartyRSVPdPopUpModal";
 	}
 }
