@@ -9,8 +9,6 @@ namespace Ambition
 {
 	public class RoomViewMediator : MonoBehaviour
 	{
-		public const float TURN_TIME = 0.75f;
-
 		private RemarkVO _remark=null;
 		private float _percentTimerComplete;
 
@@ -22,7 +20,6 @@ namespace Ambition
 
 		// TODO: Passive Buff system
 		private bool _fascinatorEffect=false; //The Fascinator Accessory lets the first negative comment go ignored during each Conversation
-		private bool _fanEffect;
 
 		void Awake()
 		{
@@ -56,8 +53,6 @@ namespace Ambition
 			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 			ItemVO accessory;
 
-			_turnTimer = model.TurnTimer;
-
 			if (imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory))
 			{
 				switch(accessory.Name)
@@ -67,9 +62,6 @@ namespace Ambition
 						break;
 					case "Fascinator":
 						_fascinatorEffect = true;
-						break;
-					case "Fan":
-						_fanEffect = AmbitionApp.GetModel<MapModel>().Room.HostHere;
 						break;
 				}
 			}

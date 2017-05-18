@@ -7,74 +7,9 @@ using Ambition;
 
 public class WorkTheHostManager : MonoBehaviour
 {
-    public SceneFadeInOut screenFader;
-    public RoomManager roomManager;
-
-    public RoomVO room;
-    Text title;
-    public bool isAmbush;
-
-    List<Sprite> femaleHostSpriteList = new List<Sprite>();
-    List<Sprite> maleHostSpriteList = new List<Sprite>();
-
-    public Scrollbar turnTimerBar;
-    float currentTurnTimer = 5;
-    float maxTurnTimer = 5;
-    bool turnTimerActive;
-    public Image reparteeIndicatorImage;
-
-    public GameObject hostVisual;
-    Text hostNameText;
-    Image hostImage;
-    public Text hostInterestText;
-    Scrollbar hostInterestBar;
-    Image hostInterestBarBackground;
-    Scrollbar hostOpinionBar;
-    Image hostDispositionIcon;
-
-    float hostDispositionSwitchTimer;
-
-    private List<RemarkSlot> remarkSlotList;
-
-    public bool targetingMode = false; //Are we selecting an target for a remark right now?
-    int targetingRemark = -1;
-    bool targetingFlipped = false; //Has targetting been flipped? Necessary for the Targeting Profiles
-
-    bool conversationStarted = false;
-    public Image readyGoPanel;
-    public Text readyGoText;
-
-    public GameObject hostRemarkWindow;
-    public bool hostRemarkActive = false;
-    public bool hostRemarkStarted = false;
-    float hostRemarkActiveTimer; //This determines how long the Player has to finish up a particular Host Remark
-    public Scrollbar hostRemarkCountdownBar;
-
-    private PartyVO _party
-    {
-    	get { return AmbitionApp.GetModel<PartyModel>().Party; }
-    }
-
     // Use this for initialization
     void Start()
     {
-        title = this.transform.Find("TitleText").GetComponent<Text>();
-        title.text = room.Name;
-
-        //Set Up the Player
-        playerNameText = playerVisual.transform.Find("Name").GetComponent<Text>();
-        playerNameText.text = "Yvette";
-        playerConfidenceText = playerVisual.transform.Find("ConfidenceCounter").GetComponent<Text>();
-        playerConfidenceText.text = "Confidence: " + party.currentPlayerConfidence + "/" + party.maxPlayerConfidence;
-        playerConfidenceBar = playerVisual.transform.Find("ConfidenceBar").GetComponent<Scrollbar>();
-        playerConfidenceBar.value = (float)party.currentPlayerConfidence / party.maxPlayerConfidence;
-        playerIntoxicationText = playerVisual.transform.Find("DrinkBoozeButton").Find("IntoxicationCounter").GetComponent<Text>();
-        playerIntoxicationText.text = "Intoxication: " + party.currentPlayerIntoxication + "/" + party.maxPlayerIntoxication;
-        drinkBoozeButtonImage = playerVisual.transform.Find("DrinkBoozeButton").GetComponent<Image>();
-
-        //Stock the Host Images Lists
-        StockHostImageLists();
-
         //Set Up The Host
         hostNameText = hostVisual.transform.Find("Name").GetComponent<Text>();
         hostNameText.text = party.host.Name;
@@ -85,24 +20,6 @@ public class WorkTheHostManager : MonoBehaviour
         hostOpinionBar = hostVisual.transform.Find("OpinionBar").GetComponent<Scrollbar>();
         hostDispositionIcon = hostVisual.transform.Find("DispositionIcon").GetComponent<Image>();
         hostDispositionIcon.color = HostDispositionImageColor();
-
-        //Generate the Remarks, it's not possible to be Ambushed by the Host
-        if (isAmbush)
-        {
-            if (party.playerHand.Count == 5)
-            {
-                party.playerHand.RemoveAt(4);
-            }
-            party.playerHand.Add(new RemarkVO("ambush", room.Guests.Length));
-        }
-
-        //Set Up the Remarks--------------------
-        remarkSlotList = new List<RemarkSlot>();
-        remarkSlotList.Add(remarkSlot0.GetComponent<RemarkSlot>());
-        remarkSlotList.Add(remarkSlot1.GetComponent<RemarkSlot>());
-        remarkSlotList.Add(remarkSlot2.GetComponent<RemarkSlot>());
-        remarkSlotList.Add(remarkSlot3.GetComponent<RemarkSlot>());
-        remarkSlotList.Add(remarkSlot4.GetComponent<RemarkSlot>());
 
         hostDispositionSwitchTimer = party.host.dispositionTimerSwitchMax;
         hostRemarkTimer = party.host.nextHostRemarkTimer;
@@ -226,44 +143,6 @@ public class WorkTheHostManager : MonoBehaviour
         //Victory and Defeat Checks-------------
         VictoryCheck();
         ConfidenceCheck();
-    }
-
-    public void StartTargeting(int selectedRemark)
-    {
-        if (conversationStarted || hostRemarkActive)
-        {
-            if (party.playerHand[selectedRemark] != null && !party.playerHand[selectedRemark].ambushRemark)
-            {
-                targetingMode = true;
-                targetingRemark = selectedRemark;
-                Debug.Log("Remark Tone: " + GameData.dispositionList[party.playerHand[selectedRemark].toneInt].like + " " + party.playerHand[selectedRemark].toneInt);
-            }
-            else
-            {
-                Debug.Log("No Remark to Select");
-            }
-        }
-    }
-
-    public void HostSelected()
-    {
-        if (targetingMode) //If a remark has been selected
-        {
-            HostTargeted();
-            //Deselect any remarks
-            party.playerHand.RemoveAt(targetingRemark);
-            targetingRemark = -1;
-            targetingMode = false;
-            if (party.playerHand.Count == 0)
-            {
-                SpendConfidenceGetRemark();
-            }
-            EndTurn();
-        }
-        else
-        {
-            Debug.Log("No remark selected :(");
-        }   
     }
 
     void HostTargeted()
@@ -444,31 +323,6 @@ public class WorkTheHostManager : MonoBehaviour
         turnTimerActive = false;
     }
 
-    void StockHostImageLists()
-    {
-        femaleHostSpriteList.Add(femaleHostImage0);
-        femaleHostSpriteList.Add(femaleHostImage1);
-        femaleHostSpriteList.Add(femaleHostImage2);
-        femaleHostSpriteList.Add(femaleHostImage3);
-
-        maleHostSpriteList.Add(maleHostImage0);
-        maleHostSpriteList.Add(maleHostImage1);
-        maleHostSpriteList.Add(maleHostImage2);
-        maleHostSpriteList.Add(maleHostImage3);
-        maleHostSpriteList.Add(maleHostImage4);
-    }
-
-    Sprite GenerateHostImage()
-    {
-        if (party.host.IsFemale)
-        {
-            return femaleHostSpriteList[party.host.imageInt];
-        }
-        else
-        {
-            return maleHostSpriteList[party.host.imageInt];
-        }
-    }
 
     public void SpendConfidenceGetRemark()
     {
@@ -538,26 +392,6 @@ public class WorkTheHostManager : MonoBehaviour
     float InterestTimer()
     {
         return party.host.currentInterestTimer / party.host.maxInterestTimer;
-    }
-
-    string InterestState()
-    {
-        if (party.host.notableLockedInState == GuestState.Charmed)
-        {
-            return "Charmed";
-        }
-        else if (party.host.notableLockedInState == GuestState.PutOff)
-        {
-            return "Put Off";
-        }
-        else if (party.host.currentInterestTimer == 0)
-        {
-            return "BORED!";
-        }
-        else
-        {
-            return "Interest:";
-        }
     }
 
     void VictoryCheck()
@@ -674,7 +508,7 @@ public class WorkTheHostManager : MonoBehaviour
                 objectStorage[1] = this;
                 objectStorage[2] = Random.Range(1, 6);
                 screenFader.gameObject.SendMessage("CreateHostRemarkModal", objectStorage);
-                Text introText = hostRemarkWindow.transform.FindChild("IntroTextPanel").Find("Text").GetComponent<Text>();
+                Text introText = hostRemarkWindow.transform.Find("IntroTextPanel").Find("Text").GetComponent<Text>();
 				string[] hostRemarkIntroList = AmbitionApp.GetModel<PartyModel>().HostIntros;
                 introText.text = hostRemarkIntroList[Random.Range(0, hostRemarkIntroList.Length)];
                 //So there'll be a wait before the next Host Remark
@@ -689,7 +523,7 @@ public class WorkTheHostManager : MonoBehaviour
     {
         Debug.Log("'But I have a Question' Timer Started");
         yield return new WaitForSeconds(1.0f);
-        GameObject introTextPanel = hostRemarkWindow.transform.FindChild("IntroTextPanel").gameObject;
+        GameObject introTextPanel = hostRemarkWindow.transform.Find("IntroTextPanel").gameObject;
         Destroy(introTextPanel);
         hostRemarkStarted = true;
     }

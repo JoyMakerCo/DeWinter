@@ -8,7 +8,9 @@ namespace Ambition
 	{
 		public KeyValuePair<int, Sprite>[] RemarkSprites;
 		public KeyValuePair<string, Sprite>[] TopicSprites;
-		public KeyValuePair<int, GuestSprite>[] GuestSprites;
-		public KeyValuePair<string, Sprite> HostSprites;
+		public GuestSprite[] MaleGuestSprites;
+		public GuestSprite[] FemaleGuestSprites;
+		public Sprite[] FemaleHostSprites;
+		public Sprite[] MaleHostSprites;
 	}
 }
