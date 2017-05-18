@@ -10,8 +10,6 @@ namespace DeWinter
 {
 	public class RSVPChoiceDialogMediator : DialogView, IDialog<List<Party>>
 	{
-		public const string DIALOG_ID = "TwoPartyChoicePopUpModal";
-
 		public Text BodyText;
 		public Text TitleText;
 	    private List<Party> _parties;
@@ -41,7 +39,7 @@ namespace DeWinter
 	    			{
 	    				if (_parties[i].RSVP > 0)
 	    				{
-							DeWinterApp.OpenDialog<Party>(RSVPCancelDialogMediator.DIALOG_ID, _parties[i]);
+							DeWinterApp.OpenDialog<Party>(DialogConsts.RSVPx2, _parties[i]);
 		    			}
 		    			else
 		    			{
@@ -51,7 +49,7 @@ namespace DeWinter
 		    		}
 	    			else
 	    			{
-						DeWinterApp.SendMessage<Party>(RSVPDialogMediator.DIALOG_ID, _parties[i]);
+						DeWinterApp.SendMessage<Party>(DialogConsts.RSVP, _parties[i]);
 	    			}
 	    		}
 	    	}

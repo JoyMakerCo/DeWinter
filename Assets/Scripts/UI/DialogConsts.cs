@@ -4,9 +4,16 @@ namespace DeWinter
 {
 	public static class DialogConsts
 	{
-		public const string MESSAGE = "MessagePopUpModal";
 		public const string TITLE = ".title";
 		public const string BODY = ".body";
+
+		public const string MESSAGE = "MESSAGE";
+		public const string RSVP = "RSVP";
+		public const string RSVPx2 = "RSVPx2";
+		public const string CANCEL = "CANCEL";
+		public const string NO_OUTFIT = "NO_OUTFIT";
+		public const string EVENT = "EVENT";
+
 
 		public const string INVITATION_DIALOG = "invitation_dialog";
 		public const string PARTY_TUTORIAL_DIALOG = "party_tutorial_dialog";

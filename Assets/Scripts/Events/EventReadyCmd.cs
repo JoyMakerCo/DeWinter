@@ -7,14 +7,12 @@ namespace DeWinter
 {
 	public class EventReadyCmd : ICommand<DateTime>
 	{
-		private const string EVENT_DIALOG_ID = "EventPopUpModal";
-
 		public void Execute (DateTime day)
 		{
 			EventModel emod = DeWinterApp.GetModel<EventModel>();
 			if (emod.SelectedEvent != null)
 			{
-				DeWinterApp.OpenDialog<EventVO>(EVENT_DIALOG_ID, emod.SelectedEvent);
+				DeWinterApp.OpenDialog<EventVO>(DialogConsts.EVENT, emod.SelectedEvent);
 			}
 		}
 	}
