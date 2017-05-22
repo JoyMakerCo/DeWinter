@@ -130,11 +130,6 @@ namespace Ambition
 			AmbitionApp.SendMessage<List<RemarkVO>>(_hand);
 		}
 
-		private void HandleStartTimer()
-		{
-			AmbitionApp.SendMessage<float>(PartyMessages.START_TIMERS, TurnTime);
-		}
-
 		public void Initialize()
 		{
 			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
@@ -143,7 +138,6 @@ namespace Ambition
 			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
 			AmbitionApp.Subscribe<RequestAdjustValueVO<int>>(HandleAdjustTurns);
 			AmbitionApp.Subscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
-			AmbitionApp.Subscribe(PartyMessages.START_TIMERS, HandleStartTimer);
 		}
 
 		public void Dispose()
@@ -154,7 +148,6 @@ namespace Ambition
 			AmbitionApp.Unsubscribe<RoomVO>(HandleRoom);
 			AmbitionApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleAdjustTurns);
 			AmbitionApp.Unsubscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
-			AmbitionApp.Unsubscribe(PartyMessages.START_TIMERS, HandleStartTimer);
 		}
 
 		private void HandleRoom(RoomVO room)

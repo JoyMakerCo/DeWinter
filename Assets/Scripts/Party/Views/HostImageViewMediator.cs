@@ -13,7 +13,7 @@ namespace Ambition
 		// Use this for initialization
 		void Start () {
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			NotableVO host = model.Party.host;
+			NotableVO host = model.Party.Host;
 			PartyArtLibrary lib = ArtLibrary.GetComponent<PartyArtLibrary>();
 			Image image = this.gameObject.GetComponent<Image>();
 			Sprite [] sprites = host.IsFemale ? lib.FemaleHostSprites : lib.MaleHostSprites;

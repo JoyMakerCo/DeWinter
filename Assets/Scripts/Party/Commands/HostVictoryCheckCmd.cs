@@ -11,7 +11,7 @@ namespace Ambition
 			if (room != null && room.HostHere)
 			{
 				PartyModel model = AmbitionApp.GetModel<PartyModel>();
-				switch(model.Party.host.State)
+				switch(model.Party.Host.State)
 				{
 					case GuestState.Charmed:
 					// YOU WIN!

@@ -29,7 +29,7 @@ namespace Ambition
 	        		foreach (PartyVO party in parties)
 	        		{
 	        			Dictionary<string,string> subs = new Dictionary<string, string>(){
-							{"$HOSTNAME", party.host.Name},
+							{"$HOSTNAME", party.Host.Name},
 							{"$FACTION",party.faction},
 							{"$SIZE",party.SizeString()}};
 						AmbitionApp.OpenMessageDialog(DialogConsts.INVITATION_DIALOG, subs);

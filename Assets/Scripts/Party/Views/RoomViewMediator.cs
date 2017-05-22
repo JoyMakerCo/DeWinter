@@ -9,56 +9,67 @@ namespace Ambition
 {
 	public class RoomViewMediator : MonoBehaviour
 	{
-		private RemarkVO _remark=null;
-		private float _percentTimerComplete;
-
+		// HUD
+		public Text RoomTitleText;
 		public Image reparteeIndicatorImage;
 
-	    public Image readyGoPanel;
-	    public Text readyGoText;
+		// Player
+		public Text PlayerNameText;
+		public Image PlayerPortrait;
+		public TimerView RoomTimer;
+
+		// Art
 	    public PartyArtLibrary ArtConfig;
 
+	    protected PartyModel _model;
+
+		protected PartyVO _party
+	    {
+	    	get { return _model.Party; }
+	    }
+
+		protected RemarkVO _remark
+	    {
+	    	get { return _model.Remark; }
+	    }
+
 		// TODO: Passive Buff system
-		private bool _fascinatorEffect=false; //The Fascinator Accessory lets the first negative comment go ignored during each Conversation
+		protected bool _fascinatorEffect=false; //The Fascinator Accessory lets the first negative comment go ignored during each Conversation
 
 		void Awake()
 		{
 			//This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
-			AmbitionApp.Subscribe<float>(PartyMessages.START_TIMERS, HandleTimers);
-			AmbitionApp.Subscribe<RemarkVO>(HandleRemarkSelected);
+			AmbitionApp.Subscribe(PartyMessages.START_TURN, HandleStartTimer);
 			AmbitionApp.Subscribe(PartyMessages.END_TURN, HandleEndTurn);
+			RoomTimer.Subscribe(HandleEndTimer);
 		}
 
 		void OnDestroy()
 	    {
-			AmbitionApp.Unsubscribe<float>(PartyMessages.START_TIMERS, HandleTimers);
-			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemarkSelected);
+			AmbitionApp.Subscribe(PartyMessages.START_TURN, HandleStartTimer);
 			AmbitionApp.Unsubscribe(PartyMessages.END_TURN, HandleEndTurn);
+			RoomTimer.Unsubscribe(HandleEndTimer);
 	    }
 
 		// Use this for initialization
 	    void Start()
 	    {
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			_model = AmbitionApp.GetModel<PartyModel>();
+
+			RoomTitleText.text = AmbitionApp.GetModel<MapModel>().Room.Name;
 
 			reparteeIndicatorImage.enabled = (GameData.playerReputationLevel >= 2);
-
-	        //Ready Go Text
-	        // TODO: Put all of this into the localization file
-			string[] conversationIntroList = model.ConversationIntros;
-	        readyGoText.text = conversationIntroList[new System.Random().Next(conversationIntroList.Length)];
 
 	        //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
 	        // TODO: Passive buff system
 			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 			ItemVO accessory;
-
 			if (imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory))
 			{
 				switch(accessory.Name)
 				{
 					case "Garter Flask":
-						model.MaxDrinkAmount++;
+						_model.MaxDrinkAmount++;
 						break;
 					case "Fascinator":
 						_fascinatorEffect = true;
@@ -66,7 +77,7 @@ namespace Ambition
 				}
 			}
 
-			AmbitionApp.SendMessage<PartyVO>(PartyMessages.PARTY_STARTED, model.Party);
+			AmbitionApp.SendMessage<PartyVO>(PartyMessages.PARTY_STARTED, _model.Party);
 
 			//Damage the Outfit's Novelty, how that the Confidence has already been Tallied
 			AmbitionApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, OutfitInventory.PartyOutfit);
@@ -81,7 +92,7 @@ namespace Ambition
 	        }
 	        else if (Input.GetKeyDown(KeyCode.F))
 	        {
-	        	FlipTargets();
+				AmbitionApp.SendMessage(PartyMessages.FLIP_REMARK);
 	        }
 			else if (Input.GetKeyDown(KeyCode.C))
 	        {
@@ -89,51 +100,35 @@ namespace Ambition
 	        }
 			else if (Input.GetKeyDown(KeyCode.E))
 	        {
-				AmbitionApp.SendMessage(PartyMessages.EXCHANGE_REMARK, _remark);
+				AmbitionApp.SendMessage(PartyMessages.EXCHANGE_REMARK, _model.Remark);
 	        }
         }
 
-		private void HandleRemarkSelected(RemarkVO remark)
+		virtual protected void HandleStartTimer()
 		{
-			_remark = remark;
-		}
-	
-		public void FlipTargets()
-	    {
-			int flip = _remark.Profile;
-			_remark.Profile = 0;
-	    	while (flip > 0)
-	    	{
-	    		_remark.Profile <<= 1;
-	    		_remark.Profile += (flip & 1);
-				flip >>= 1;
-	    	}
-	    	AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, null);
-	    	AmbitionApp.SendMessage<RemarkVO>(_remark);
-	    }
-
-		private void HandleTimers(float seconds)
-		{
-			StartCoroutine(TurnTimerCoroutine(seconds));
-		}
-
-		IEnumerator TurnTimerCoroutine(float seconds)
-		{
-// TODO: Add this to the Room timer view
-			for (float t=0; t < seconds; t += Time.deltaTime)
+			// TODO: Clunky as hell. NEED a buff system.
+			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
+			ItemVO accessory;
+			float t = _model.TurnTime;
+			if (imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Fan")
 			{
-				_percentTimerComplete = t/seconds;
-				yield return null;
+				t *= 1.1f;
 			}
-			_percentTimerComplete = 1.0f;
+			RoomTimer.CountDown(t);
+		}
+
+		protected void HandleEndTimer(TimerView timer)
+		{
 			AmbitionApp.SendMessage(PartyMessages.END_TURN);
 		}
 
-		void HandleEndTurn()
-	    {
-	    	StopAllCoroutines();
-			if (_percentTimerComplete < 0.5f)
-		    	AmbitionApp.SendMessage(PartyMessages.REPARTEE_BONUS);
-	    }	  
+		protected void HandleEndTurn()
+		{
+			RoomTimer.Stop();
+			if (RoomTimer.Percent <= 0.5f)
+			{
+				AmbitionApp.SendMessage(PartyMessages.REPARTEE_BONUS);
+			}
+		}
 	}
 }

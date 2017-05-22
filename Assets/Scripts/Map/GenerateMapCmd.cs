@@ -189,13 +189,14 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 
 		private RewardVO [] GenerateRewards()
     	{
-    		List<RewardVO> rewards = new List<RewardVO>(7);
-    		for (int i=rewards.Count-1; i>=0; i--)
+    		RewardVO[] rewards = new RewardVO[7];
+    		RewardVO reward;
+    		for (int i=rewards.Length-1; i>=0; i--)
     		{
-//    			rewards[i] = new RewardVO();
-// TODO: Generate random rewards
+    			reward = new RewardVO();
+    			rewards[i] = reward;
     		}
-    		return rewards.ToArray();
+    		return rewards;
 	    }
 
 	    private void PopulateEnemies()

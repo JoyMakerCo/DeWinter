@@ -200,7 +200,7 @@ public class RoomManager : MonoBehaviour
     private void handleDrinkModal(PartyVO p)
     {
     	Dictionary<string, string> subs = new Dictionary<string, string>(){
-    		{"$HOSTNAME",p.host.Name}};
+    		{"$HOSTNAME",p.Host.Name}};
     	AmbitionApp.OpenMessageDialog(DialogConsts.REFILL_WINE_DIALOG, subs);
     }
 }

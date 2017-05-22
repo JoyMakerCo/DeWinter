@@ -20,7 +20,29 @@ namespace Ambition
 	    public bool IsFemale;
 
 		[JsonProperty("Opinion")]
-		public int Opinion;
+		protected int _opinion;
+		public int Opinion
+		{
+			get { return _opinion; }
+			set
+			{
+				if (value >= 100)
+				{
+					_opinion = 100;
+					State = GuestState.Charmed;
+				}
+				else if (value <= 0)
+				{
+					_opinion = 0;
+					State = GuestState.PutOff;
+				}
+				else
+				{
+					_opinion = value;
+					State = GuestState.Interested;
+				}
+			}
+		}
 
 		public GuestVO() {}
 		public GuestVO(GuestVO guest)
@@ -32,15 +54,11 @@ namespace Ambition
 			Opinion = guest.Opinion;
 		}
 
-		public GuestState State
+		public GuestState State;
+
+		public bool IsLockedIn
 		{
-			get {
-				return (Opinion <= 0)
-					? GuestState.PutOff
-					: (Opinion >= 100)
-					? GuestState.Charmed
-					: GuestState.Ambivalent;
-			}
+			get { return State == GuestState.PutOff || State == GuestState.Charmed; }
 		}
 	}
 }

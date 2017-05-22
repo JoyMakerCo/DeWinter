@@ -11,7 +11,7 @@ public class LeaveThePartyButtonController : MonoBehaviour {
 
     void Update()
     {
-		bool enable = (!GameData.tonightsParty.tutorial || GameData.tonightsParty.host.State != GuestState.Ambivalent);
+		bool enable = (!GameData.tonightsParty.tutorial || GameData.tonightsParty.Host.IsLockedIn);
         buttonImage.enabled = enable;
         buttonText.enabled = enable;
     }

@@ -11,7 +11,7 @@ namespace Ambition
 		void Start ()
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			NotableVO host = model.Party.host;
+			NotableVO host = model.Party.Host;
 			this.gameObject.GetComponent<Text>().text = host.Name;
 		}
 	}

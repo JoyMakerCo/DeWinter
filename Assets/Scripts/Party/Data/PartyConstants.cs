@@ -15,5 +15,5 @@ namespace Ambition
 		public const string START_DANCING = "StartDancingMsg";
 	}
 
-	public enum GuestState { PutOff, Ambivalent, Charmed };
+	public enum GuestState { PutOff, Bored, Interested, Charmed };
 }

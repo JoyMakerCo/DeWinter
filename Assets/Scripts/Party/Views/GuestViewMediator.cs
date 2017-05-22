@@ -3,77 +3,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Core;
 
 namespace Ambition
 {
 	public class GuestViewMediator : MonoBehaviour
 	{
-		private const float DEFAULT_TIMER = 2.0f;
+		public int index;
+
+		public Image GuestImage;
+		public Text GuestNameText;
+		public Image GuestInterestIcon;
+		public Text guestInterestText;
+
+		public TimerView GuestOpinionBar;
+		public Text GuestOpinionText;
+
+		public PartyArtLibrary ArtConfig;
 
 		private GuestVO _guest;
-		private Image _guestImage;
 		private GuestSprite _sprite;
 		private GameObject _guestAvatar;
 		private RemarkVO _remark;
 		private bool _isIntoxicated=false;
-		private IEnumerator _timer;
 		private bool _isTargeted;
 		private PartyArtLibrary _library; 
-		public int index;
-
-		public GameObject ArtLibrary;
-
-		public Text GuestNameText;
-		public Text guestInterestText;
-
-		public Scrollbar guestInterestBar;
-		public Image guestInterestBarImage;
-
-		public Text guestOpinionText;
-		public Scrollbar guestOpinionBar;
-		public Image guestOpinionBarImage;
-		public Image guestDispositionIcon;
-		public PartyArtLibrary ArtConfig;
 
 		void Awake()
 		{
-			_guestImage = GetComponent<Image>();
-			_library = ArtLibrary.GetComponent<PartyArtLibrary>();
 			AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
-			AmbitionApp.Subscribe<float>(PartyMessages.START_TIMERS, HandleStartTimers);
 			AmbitionApp.Subscribe<GuestVO []>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
 			AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleSelected);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
+			GuestOpinionBar.Subscribe(HandleInterestTimer);
 		}
 
 		void OnDestroy()
 		{
 			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
-			AmbitionApp.Unsubscribe<float>(PartyMessages.START_TIMERS, HandleStartTimers);
 			AmbitionApp.Unsubscribe<GuestVO []>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
 			AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleSelected);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			AmbitionApp.Unsubscribe<GuestVO[]>(HandleGuests);
+			GuestOpinionBar.Unsubscribe(HandleInterestTimer);
 		}
 
-		private void HandleStartTimers(float seconds)
+
+		private void HandleInterestTimer(TimerView timer)
 		{
-			if (_timer != null)
-				StopCoroutine(_timer);
-			_timer = GuestTimer(seconds);
-			StartCoroutine(_timer);
-		}
-
-		public IEnumerator GuestTimer(float seconds)
-	    {
-			for (float t = seconds; t >=0; t-=Time.deltaTime)
+			if (!_guest.IsLockedIn && timer.Complete)
 			{
-			// TODO: Update the appearance of the timer
-				yield return null;
+				_guest.State = GuestState.Bored;
 			}
-			_timer = null;
-	    }
+		}
 
 	    void OnMouseOver()
 	    {
@@ -118,33 +101,36 @@ namespace Ambition
 			this.gameObject.SetActive(_guest != null);
 			if (_guest != null && _sprite != null)
 			{
-				bool isEnemy = (_guest is EnemyVO);
+				EnemyVO enemy = _guest as EnemyVO;
+				bool isEnemy = (enemy != null);
+				string phrase = isEnemy ? "enemy_" : "guest_";
 
 				GuestNameText.text = _guest.Name;
 				GuestNameText.color = isEnemy ? Color.red : Color.white;
-				guestInterestBar.image.color = isEnemy ? Color.red : Color.white;
 
-				_guestImage.sprite = _sprite.GetSprite(_isIntoxicated ? 50 : _guest.Opinion);
+				GuestImage.sprite = _sprite.GetSprite(_isIntoxicated ? 50 : _guest.Opinion);
 
-				bool showInterestBar = (!isEnemy && _guest.State == GuestState.Ambivalent);
-				guestInterestBar.gameObject.SetActive(showInterestBar);
-            	guestInterestBarImage.gameObject.SetActive(showInterestBar);
+				GuestOpinionBar.gameObject.SetActive(!_guest.IsLockedIn);
+				GuestOpinionBar.Percent = 0.1f*(float)_guest.Opinion;
+				if (_guest.Opinion <= 0) _guest.State = GuestState.Bored;
 
             	UpdateColor();
+
+            	if (isEnemy && enemy.attackNumber >= 0)
+            	{
+            		phrase += "attack." + enemy.attackNumber.ToString();
+            	}
+            	else
+            	{
+            		phrase += _guest.State.ToString();
+            	}
+				GuestOpinionText.text = AmbitionApp.GetModel<LocalizationModel>().GetString(phrase);
 			}
 		}
 
 		private void HandleIntoxication(int tox)
 		{
 			_isIntoxicated = (tox >= 50);
-			
-		}
-
-		private void ResetTimer()
-		{
-			// Refill Interest of the Selected
-			//Everyone loses one because of the Turn Timer
-			HandleStartTimers(DEFAULT_TIMER + 1.0f);
 		}
 
 		private void UpdateColor()
@@ -157,52 +143,7 @@ namespace Ambition
 			else if (_remark.Topic == _guest.Disike) c = Color.red;
 			else c = Color.white;
 
-			guestDispositionIcon.color = _guestImage.color = c;
+			GuestImage.color = c;
 		}
-
-		// TODO: Good candidate for Localization
-		string InterestState(GuestVO guest)
-	    {
-	    	EnemyVO enemy = guest as EnemyVO;
-	        if (enemy == null)
-	        {
-	        	switch (guest.State)
-	        	{
-					case GuestState.Charmed:
-						return "Charmed";
-					case GuestState.PutOff:
-						return "Put Off";
-				}
-				if (_timer == null)
-					return "BORED!";
-				return "Interested";
-			}
-			if (_timer != null)
-			{
-				switch (enemy.attackNumber)
-				{
-					case 0:
-	                    return "Monopolize the Conversation";
-	                case 1:
-	                    return "Rumor Monger";
-	                case 2:
-	                    return "Belittle";
-	                case 3:
-	                    return "Antagonize";
-				}
-			}
-			if (enemy.attackNumber < 0)
-			{
-				switch (enemy.State)
-				{
-					case GuestState.Charmed:
-						return "Dazed";
-					case GuestState.PutOff:
-						return "Offended";
-				}
-				return "Plotting";
-			}
-			return "Attacking!";
-	    }
 	}
 }

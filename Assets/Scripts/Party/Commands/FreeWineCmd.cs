@@ -15,7 +15,7 @@ namespace Ambition
 	        	AmbitionApp.AdjustValue<int>(GameConsts.DRINK, model.MaxDrinkAmount);
 
 	            Dictionary<string, string> substitutions = new Dictionary<string, string>()
-					{{"$HOSTNAME", model.Party.host.Name}};
+					{{"$HOSTNAME", model.Party.Host.Name}};
 	            AmbitionApp.OpenMessageDialog(DialogConsts.REPUTATION_WINE_DIALOG, substitutions);
 	        }
 		}

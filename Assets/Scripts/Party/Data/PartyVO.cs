@@ -19,7 +19,7 @@ public class PartyVO {
 
     public string description; // Randomly Generated Flavor Description
 
-    public NotableVO host;
+    public NotableVO Host;
 
     public int Turns;
 
@@ -40,7 +40,7 @@ public class PartyVO {
     public PartyVO()
     {
 		Random rnd = new Random();
-		host = new NotableVO();
+		Host = new NotableVO();
 		GenerateRandomDescription();
 		invitationDistance = 1 + rnd.Next(8) + rnd.Next(8); //Pseudo Normalized Value
     }
@@ -50,7 +50,7 @@ public class PartyVO {
     {
         partySize = size;
 		SetRandomFaction();
-        host.Faction = faction;
+        Host.Faction = faction;
         Turns = (partySize * 5) + 1;
     }
 
@@ -58,7 +58,7 @@ public class PartyVO {
     public PartyVO(string faction) : this()
     {
 		SetExclusiveFaction(faction);
-		host.Faction = faction;
+		Host.Faction = faction;
         partySize = new Random().Next(1, 4);
     }
 

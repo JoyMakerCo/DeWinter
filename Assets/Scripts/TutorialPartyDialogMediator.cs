@@ -11,8 +11,7 @@ namespace Ambition
 
 		void OnDestroy()
 		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			AmbitionApp.SendMessage(PartyMessages.START_TIMERS);
+			AmbitionApp.SendMessage(PartyMessages.START_TURN);
 		}
 	}
 }

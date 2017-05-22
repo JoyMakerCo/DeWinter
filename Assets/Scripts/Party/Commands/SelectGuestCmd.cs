@@ -8,7 +8,7 @@ namespace Ambition
 	{
 		public void Execute (GuestVO guest)
 		{
-			if (!(guest is EnemyVO) && guest.State == GuestState.Ambivalent)
+			if (!(guest is EnemyVO) && !guest.IsLockedIn)
 			{
 				PartyModel model = AmbitionApp.GetModel<PartyModel>();
 				Random rnd = new Random();

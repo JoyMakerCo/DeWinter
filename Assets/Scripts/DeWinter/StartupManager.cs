@@ -55,8 +55,10 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<DrinkForConfidenceCmd>(PartyMessages.DRINK);
 			AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
-			AmbitionApp.RegisterCommand<StartTurnCmd>(PartyMessages.START_TURN);
+			AmbitionApp.RegisterCommand<EndTurnCmd>(PartyMessages.END_TURN);
 			AmbitionApp.RegisterCommand<HostVictoryCheckCmd>(PartyMessages.END_TURN);
+			AmbitionApp.RegisterCommand<FlipRemarkCmd>(PartyMessages.FLIP_REMARK);
+
 
 			AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();

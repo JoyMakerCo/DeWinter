@@ -24,7 +24,7 @@ namespace Ambition
 
 		void Start()
 		{
-			_host = AmbitionApp.GetModel<PartyModel>().Party.host;
+			_host = AmbitionApp.GetModel<PartyModel>().Party.Host;
 			_text = gameObject.GetComponent<Text>();
 		}
 
