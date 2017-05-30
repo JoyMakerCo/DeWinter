@@ -14,28 +14,54 @@ namespace Ambition
 			int numPutOff = Array.FindAll(guests, g=>g.State == GuestState.PutOff).Length;
 			if (numCharmed + numPutOff == len)
 			{
-				MapModel mmod = AmbitionApp.GetModel<MapModel>();
-				RewardVO givenReward = mmod.Room.Rewards[numCharmed]; //Amount of Charmed Guests determines the level of Reward.
-				mmod.Room.Cleared = true;
+				MapModel map = AmbitionApp.GetModel<MapModel>();
+				RewardVO reward;
+				if (map.Room.Rewards != null)
+				{
+					int numRewards = map.Room.Rewards.Length;
+					reward = map.Room.Rewards[numCharmed < numRewards ? numCharmed : numRewards-1] ;
+				}
+				else
+				{
+					reward = GenerateRandomReward(numCharmed, model.Party.faction);
+				}
+				map.Room.Cleared = true;
 
 				//Rewards Distributed Here
-                if (givenReward.Category == RewardConsts.SERVANT)
+                if (reward.Category == RewardConsts.SERVANT)
                 {
 					ServantModel smod = AmbitionApp.GetModel<ServantModel>();
-					if (smod.Introduced.ContainsKey(givenReward.Type))
+					if (smod.Introduced.ContainsKey(reward.Type))
 					{
-                        givenReward = new RewardVO(RewardConsts.GOSSIP, model.Party.faction, 1);
+                        reward = new RewardVO(RewardConsts.GOSSIP, model.Party.faction, 1);
                     }
                 }
-                model.Rewards.Add(givenReward);
+                model.Rewards.Add(reward);
 
 	            Dictionary<string, string> subs = new Dictionary<string, string>(){
 					{"$NUMCHARMED",numCharmed.ToString()},
 					{"$NUMPUTOFF",numPutOff.ToString()},
-					{"$REWARD",givenReward.Name}};
+					{"$REWARD",reward.Name}};
 	            AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
 	            AmbitionApp.CloseDialog(DialogConsts.ENCOUNTER);
     		}
     	}
+
+    	private RewardVO GenerateRandomReward(int numCharmed, string faction)
+    	{
+    		int factor = numCharmed < 5 ? numCharmed : 6;
+			switch (new Random().Next(5))
+			{
+				case 0:
+				case 1:
+					return new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 5*factor);
+				case 2:
+				case 3:
+					return new RewardVO(RewardConsts.FACTION, faction, 10*factor);
+			}
+			return (numCharmed < 5)
+				? new RewardVO(RewardConsts.GOSSIP, faction, 1)
+				: new RewardVO(RewardConsts.SERVANT, ServantConsts.SEAMSTRESS, 1);
+		}
 	}
 }

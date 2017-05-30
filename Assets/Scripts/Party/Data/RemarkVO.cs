@@ -7,7 +7,7 @@ namespace Ambition
 	public class RemarkVO
 	{
 	    public int Profile; // int acting as an array of bits.
-	    public string Topic;
+	    public string Interest;
 
 	    public bool IsAmbush
 	    {

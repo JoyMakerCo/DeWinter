@@ -12,11 +12,11 @@ namespace Ambition
 			List<RemarkVO> remarks = model.Hand;
 			Random rnd = new Random();
 			RemarkVO remark;
-			int numGuests = model.Guests.Length;
+			int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
 			while (remarks.Count < model.MaxHandSize)
 			{
 				remark = new RemarkVO();
-				remark.Topic = model.Topics[rnd.Next(model.Topics.Length)];
+				remark.Interest = model.Interests[rnd.Next(model.Interests.Length)];
 				remarks.Add(remark);
 				remark.Profile = (1+(2*(rnd.Next((int)Math.Pow(2,numGuests-1)))));
 	        }

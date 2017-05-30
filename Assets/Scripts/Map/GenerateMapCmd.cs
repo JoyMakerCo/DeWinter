@@ -68,9 +68,6 @@ namespace Ambition
 					if (room.Guests == null)
 						room.Guests = GenerateGuests(room.Difficulty);
 
-					if (room.Rewards == null)
-						room.Rewards = GenerateRewards();
-
 					if (room.Neighbors == null)
 						FindNeighbors(room);
 				}
@@ -186,18 +183,6 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 			}
 			return result;
 		}
-
-		private RewardVO [] GenerateRewards()
-    	{
-    		RewardVO[] rewards = new RewardVO[7];
-    		RewardVO reward;
-    		for (int i=rewards.Length-1; i>=0; i--)
-    		{
-    			reward = new RewardVO();
-    			rewards[i] = reward;
-    		}
-    		return rewards;
-	    }
 
 	    private void PopulateEnemies()
 	    {

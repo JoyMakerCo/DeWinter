@@ -14,6 +14,9 @@ namespace Ambition
 		// GENERIC MESSAGE DIALOG
 		public const string MESSAGE = "MESSAGE";
 
+		// LOADING 
+		public const string EXIT_GAME = "EXIT_GAME";
+
 		// ESTATE MODALS & DIALOGS
 		public const string RSVP = "RSVP";
 		public const string RSVP_CHOICE = "RSVP_CHOICE";

@@ -33,9 +33,10 @@ namespace Ambition
 				_reputation.Reputation = value;
 				if (ReputationLevels != null)
 				{
-					for(int i=ReputationLevels.Length-1; i > 0; i--)
+					int numLevels = ReputationLevels.Length;
+					for(int i=0; i < numLevels; i++)
 					{
-						if (i < ReputationLevels[i].Reputation)
+						if (_reputation.Reputation <= ReputationLevels[i].Reputation)
 						{
 							if (_reputation.Level != i+1)
 							{

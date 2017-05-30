@@ -31,9 +31,9 @@ namespace Ambition
 	        }
 			guest.Name = name;
 
-			likeIndex = rnd.Next(0,pmod.Topics.Length);
-			guest.Like = pmod.Topics[likeIndex];
-			guest.Disike = pmod.Topics[(likeIndex + 1)%pmod.Topics.Length];
+			likeIndex = rnd.Next(0,pmod.Interests.Length);
+			guest.Like = pmod.Interests[likeIndex];
+			guest.Disike = pmod.Interests[(likeIndex + 1)%pmod.Interests.Length];
 			guest.Opinion = rnd.Next(25,51);
 			AmbitionApp.SendMessage<GuestVO>(guest);
 		}

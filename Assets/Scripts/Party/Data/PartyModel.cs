@@ -14,11 +14,11 @@ namespace Ambition
 
 		public PartyVO Party;
 
-		public GuestVO[] Guests;
-
 		public List<RewardVO> Rewards;
 
+		//TODO: Temp, until buffs are figured out
 		public bool ItemEffect;
+		public bool Repartee;
 
 		public RemarkVO Remark;
 
@@ -32,8 +32,51 @@ namespace Ambition
 			}
 		}
 
+		// Temporary Repo for buffs
+		protected Dictionary<string, List<ModifierVO>> Modifiers = new Dictionary<string, List<ModifierVO>>();
+
+		public void AddBuff(string id, string type, float multiplier, float bonus)
+		{
+			if (!Modifiers.ContainsKey(id))
+			{
+				Modifiers.Add(id, new List<ModifierVO>());
+			}
+			Modifiers[id].RemoveAll(m => m.Type == type);
+			Modifiers[id].Add(new ModifierVO(id, type, multiplier, bonus));
+		}
+
+		public void RemoveBuff(string id, string type)
+		{
+			if (Modifiers.ContainsKey(id))
+			{
+				Modifiers[id].RemoveAll(t => t.Type == type);
+			}
+		}
+
+		protected float ApplyBuffs(string id, float value)
+		{
+			List<ModifierVO> mods;
+			float result = value;
+			if (Modifiers.TryGetValue(id, out mods))
+			{
+				foreach (ModifierVO mod in mods)
+				{
+					result += value*(mod.Multiplier - 1.0f) + mod.Bonus;
+				}
+			}
+			return result; 
+		}
+
 		[JsonProperty("maxPlayerDrinkAmount")]
-		public int MaxDrinkAmount;
+		protected int _maxPlayerDrinkAmount;
+
+		public int MaxDrinkAmount
+		{
+			get
+			{
+				return (int)ApplyBuffs(GameConsts.DRINK, _maxPlayerDrinkAmount);
+			}
+		}
 
 		[JsonProperty("conversationIntroList")]
 		public string[] ConversationIntros;
@@ -42,7 +85,7 @@ namespace Ambition
 		public string[] HostIntros;
 
 		[JsonProperty("topicList")]
-		public string[] Topics;
+		public string[] Interests;
 
 		[JsonProperty("femaleTitleList")]
 		public string[] FemaleTitles;
@@ -68,7 +111,7 @@ namespace Ambition
 		[JsonProperty("confidenceCost")]
 		public int ConfidenceCost = 10;
 
-		public string LastTopic;
+		public string LastInterest;
 
 		public int MaxHandSize = 5;
 
@@ -135,7 +178,6 @@ namespace Ambition
 			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
 			AmbitionApp.Subscribe<DateTime>(HandleDay);
 			AmbitionApp.Subscribe(PartyMessages.REPARTEE_BONUS, HandleRepartee);
-			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
 			AmbitionApp.Subscribe<RequestAdjustValueVO<int>>(HandleAdjustTurns);
 			AmbitionApp.Subscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
 		}
@@ -145,15 +187,8 @@ namespace Ambition
 			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
 			AmbitionApp.Unsubscribe<DateTime>(HandleDay);
 			AmbitionApp.Unsubscribe(PartyMessages.REPARTEE_BONUS, HandleRepartee);
-			AmbitionApp.Unsubscribe<RoomVO>(HandleRoom);
 			AmbitionApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleAdjustTurns);
 			AmbitionApp.Unsubscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
-		}
-
-		private void HandleRoom(RoomVO room)
-		{
-			Guests = room.Guests;
-			AmbitionApp.SendMessage<GuestVO[]>(Guests);
 		}
 
 		private void HandleDay(DateTime date)

@@ -11,8 +11,8 @@ namespace Ambition
 			if (enemy == null) return;
 
 	        //Check for Charmed Guests, this is necessary for the Attack Check below
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-	        GuestVO[] guests = Array.FindAll(model.Guests, g => g.State == GuestState.Charmed);
+			MapModel model = AmbitionApp.GetModel<MapModel>();
+	        GuestVO[] guests = Array.FindAll(model.Room.Guests, g => g.State == GuestState.Charmed);
 	        if (guests.Length == 0) return; // Early Out
 
 			guest = guests[new Random().Next(guests.Length)];
@@ -27,7 +27,7 @@ namespace Ambition
 	                break;
 	            case 2:
 	                //2 = Rumor Monger (Lower the Opinion of all uncharmed Guests)
-	                guests = Array.FindAll(model.Guests, g => g.State != GuestState.Charmed);
+	                guests = Array.FindAll(model.Room.Guests, g => g.State != GuestState.Charmed);
 	                foreach (GuestVO g in guests)
 	                {
 	                	g.Opinion -= 10;

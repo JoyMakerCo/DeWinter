@@ -10,8 +10,6 @@ public class PopUpManager : MonoBehaviour
 // TODO: Refactor to work with Dialog Manager
     public GameObject screenFader;
 
-	public GameObject newGameModal;
-    public GameObject quitGameModal;
     public GameObject twoPartyRSVPdModal;
 	public GameObject cantAffordModal;
     public GameObject pierreQuestModal;
@@ -24,23 +22,6 @@ public class PopUpManager : MonoBehaviour
     public GameObject sewNewOutfitModal;
 
     public GameObject hostRemarkSlotPrefab;
-
-    //This is used at the very beginning when the Player is starting a new Game
-    public void CreateNewGamePopUp()
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(newGameModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-    }
-
-    //This is how Players Quit the Game
-    public void CreateQuitGamePopUp()
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(quitGameModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Modal Background Shift
-    }
 
     //This confirmation modal is used for Hiring and Firing Servants
     void CreateHireAndFireModal(ServantVO s)

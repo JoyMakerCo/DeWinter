@@ -12,7 +12,6 @@ namespace Ambition
 		// Art library prefab
 		// TODO: Test to see if carrying around references to prefabs increases memory usage
 		// TODO: Non-gameobject config files?
-		public GameObject ArtLibrary;
 
 		private PartyArtLibrary _library;
 		private Image _profileImage;
@@ -23,7 +22,7 @@ namespace Ambition
 		{
 			AmbitionApp.Subscribe<RemarkVO>(HandleRemarkSelected);
 			AmbitionApp.Subscribe<List<RemarkVO>>(HandleHandUpdated);
-			_library = ArtLibrary.GetComponent<PartyArtLibrary>();
+//			PartyArtLibrary _library = ArtLibrary.GetComponent<PartyArtLibrary>();
 			_profileImage = GetComponent<Image>();
 			_dispositionImage = GetComponentInChildren<Image>();
 		}
@@ -51,8 +50,8 @@ namespace Ambition
 			if (_remark != null)
 			{
 				_remark = hand[index];
-				_profileImage.sprite = Array.Find(_library.RemarkSprites, r => r.Key == _remark.Profile).Value;
-				_dispositionImage.sprite = Array.Find(_library.TopicSprites, d => d.Key == _remark.Topic).Value;
+//				_profileImage.sprite = Array.Find(_library.RemarkSprites, r => r.X == _remark.Profile).Y;
+//				_dispositionImage.sprite = Array.Find(_library.InterestSprites, d => d.X == _remark.Interest).Y;
 			}
 		}
 	}

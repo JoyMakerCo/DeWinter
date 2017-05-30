@@ -8,58 +8,35 @@ namespace Ambition
 {
 	public class HostViewMediator : MonoBehaviour
 	{
-		// Host
-		public GameObject HostContainer;
-		public Image HostPortrait;
-		public Text HostNameText;
-		public TimerView HostTelegraphBar;
-		public Text HostTelegraphText;
-
-		private PartyModel _model;
-
-		private NotableVO Host 
-		{
-			get { return _model.Party.Host; }
-		}
+		public Image HostImage;
+		public Text HostText;
 
 		void Awake()
 		{
-			_model = AmbitionApp.GetModel<PartyModel>();
-			HostTelegraphBar.Subscribe(HandleTimer);
 			AmbitionApp.Subscribe(PartyMessages.START_TURN, HandleStartTurn);
 		}
 
 		void OnDestroy()
 		{
-			HostTelegraphBar.Unsubscribe(HandleTimer);
 			AmbitionApp.Unsubscribe(PartyMessages.START_TURN, HandleStartTurn);
+		}
+
+		// Use this for initialization
+		void Start ()
+		{
+			PartyArtLibrary ArtLibrary = GetComponentInParent<PartyArtLibrary>();
+			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			NotableVO host = model.Party.Host;
+			PartyArtLibrary lib = ArtLibrary.GetComponent<PartyArtLibrary>();
+			Sprite [] sprites = host.IsFemale ? lib.FemaleHostSprites : lib.MaleHostSprites;
+			if (host.Variant < 0) host.Variant = new System.Random().Next(sprites.Length);
+			HostImage.sprite = sprites[host.Variant];
+			HostText.text = host.Name;
 		}
 
 		private void HandleStartTurn()
 		{
-			float telegraphTime = 2.0f;
-			HostTelegraphBar.CountUp(telegraphTime);
-		}
-
-		private void HandleTimer(TimerView timer)
-		{
-			if (timer.Complete)
-			{
-				AmbitionApp.SendMessage<GuestVO>(PartyMessages.HOST_REMARK, Host);
-			}
-		}
-
-		private void HandleStartTimer()
-		{
-			// TODO: Clunky as hell. NEED a buff system.
-			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
-			ItemVO accessory;
-			float t = _model.TurnTime;
-			if (imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Fan")
-			{
-				t *= 1.5f;
-			}
-			HostTelegraphBar.CountUp(t);
+//			AmbitionApp.SendMessage<GuestVO>(PartyMessages.HOST_REMARK, Host);
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace Ambition
 	{
 		public void Execute()
 		{
-			Application.Quit();
+			AmbitionApp.OpenDialog(DialogConsts.EXIT_GAME);
 		}
 	}
 }

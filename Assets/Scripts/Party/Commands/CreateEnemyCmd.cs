@@ -16,7 +16,7 @@ namespace Ambition
 
 			Random rnd = new Random();
 
-			e.Like = model.Topics[rnd.Next(model.Topics.Length)];
+			e.Like = model.Interests[rnd.Next(model.Interests.Length)];
 
 			e.IsFemale = (rnd.Next(2) == 0);
 			if (e.IsFemale)
