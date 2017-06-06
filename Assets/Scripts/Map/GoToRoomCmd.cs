@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 
 namespace Ambition
@@ -50,7 +51,9 @@ namespace Ambition
 	            	&& rnd.Next(0, 4) == 0)
 		        {
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
-					AmbitionApp.SendMessage<PartyVO>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
+					Dictionary<string, string> subs = new Dictionary<string, string>(){
+						{"$HOSTNAME", partyModel.Party.Host.Name}};
+					AmbitionApp.OpenMessageDialog("refill_wine_dialog", subs);
 		        }
 			}
 

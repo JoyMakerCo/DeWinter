@@ -48,7 +48,6 @@ namespace Ambition
 		public const string CANT_BUY_DIALOG = "cant_buy_dialog";
 		public const string CANT_MAKE_DIALOG = "cant_make_dialog";
 		public const string REPUTATION_WINE_DIALOG = "reputation_wine_dialog";
-		public const string REFILL_WINE_DIALOG = "refill_wine_dialog";
 		public const string MOVED_THROUGH_DIALOG = "moved_through_dialog";
 		public const string CONVERSATION_OVER_DIALOG = "conversation_over_dialog";
 		public const string CHARMED_HOST_DIALOG = "charmed_host_dialog";

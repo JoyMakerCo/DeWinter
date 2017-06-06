@@ -11,12 +11,14 @@ public class SeamstressAlterButton : MonoBehaviour {
     Image buttonImage;
     Text buttonText;
     ServantModel _model;
+    OutfitInventoryModel _outfits;
 
     void Start()
     {
         buttonImage = this.GetComponent<Image>();
         buttonText = this.transform.Find("Text").GetComponent<Text>();
 		_model = AmbitionApp.GetModel<ServantModel>();
+		_outfits = AmbitionApp.GetModel<OutfitInventoryModel>();
     }
 
     void Update()
@@ -24,7 +26,7 @@ public class SeamstressAlterButton : MonoBehaviour {
 		if (_model.Hired.ContainsKey("Seamstress")) //If the Seamstress has been hired, enable the New Outfit Ability
         {
             buttonText.text = "Seamstress - New Outfit";
-            if (OutfitInventory.personalInventory.Count < OutfitInventory.personalInventoryMaxSize) //As long as there is room to fit the new Outfit
+            if (_outfits.Inventory.Count < _outfits.Capacity) //As long as there is room to fit the new Outfit
             {
                 buttonImage.color = Color.white;
                 buttonText.color = Color.white;
@@ -87,7 +89,7 @@ public class SeamstressAlterButton : MonoBehaviour {
 
     void CreateNewOutfitWindow()
     {
-        if (OutfitInventory.personalInventory.Count < OutfitInventory.personalInventoryMaxSize) //As long as there is room for a new Outfit
+        if (_outfits.Inventory.Count < _outfits.Capacity) //As long as there is room for a new Outfit
         {
             object[] objectStorage = new object[1];
             objectStorage[0] = outfitInventoryList;
@@ -95,7 +97,7 @@ public class SeamstressAlterButton : MonoBehaviour {
         } else 
         {
 			Dictionary<string, string> subs = new Dictionary<string, string>()
-				{{"$CAPACITY",OutfitInventory.personalInventoryMaxSize.ToString()}};
+				{{"$CAPACITY", _outfits.Capacity.ToString()}};
 			AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
         }
     }

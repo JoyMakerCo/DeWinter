@@ -10,11 +10,12 @@ namespace Ambition
 		public void Execute ()
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();
 			if (model.Party == null)
 			{
 				Debug.Log("No Party! :(");
 			}
-	        else if (OutfitInventory.PartyOutfit != null)
+	        else if (omod.PartyOutfit != null)
 	        {
 	        	model.Rewards = new List<RewardVO>();
 
@@ -36,7 +37,7 @@ namespace Ambition
 				}
 
 				//Damage the Outfit's Novelty, how that the Confidence has already been Tallied
-				AmbitionApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, OutfitInventory.PartyOutfit);
+				AmbitionApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, omod.PartyOutfit);
 	            AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTY);
 	        } else
 	        {

@@ -4,27 +4,28 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
+	[Serializable]
 	public class GuestSprite
 	{
-		public Sprite PutOffSprite;
 		public Sprite BoredSprite;
-		public Sprite InterestedSprite;
-		public Sprite CharmedSprite;
+
+		public Sprite[] GuestSprites;
 
 		// Returns a Sprite corresponding to the guest's approval
 		// TODO: This may eventually be completely handled by Mecanim
 		public Sprite GetSprite(GuestState state)
 		{
+			int len = GuestSprites.Length;
 			switch(state)
 			{
 				case GuestState.Bored:
 					return BoredSprite;
 				case GuestState.Charmed:
-					return CharmedSprite;
+					return GuestSprites[len-1];
 				case GuestState.PutOff:
-					return PutOffSprite;
+					return GuestSprites[0];
 			}
-			return InterestedSprite;
+			return GuestSprites[len > 1 ? 1 : len-1];
 		}
 	}
 }

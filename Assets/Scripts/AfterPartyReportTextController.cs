@@ -20,6 +20,7 @@ public class AfterPartyReportTextController : MonoBehaviour {
 	public void DisplayAfterPartyReportText()
     {
         string rewardString;
+        Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().PartyOutfit;
         if (!_model.Party.blackOutEnding) //Did the Player end the Party regularly, or by blacking out?
         {
             rewardString = "The " + _model.Party.Name() + " is over. Here's what you got:";
@@ -35,10 +36,10 @@ public class AfterPartyReportTextController : MonoBehaviour {
 				rewardString += "\nYou said some pretty rude things about your host, which lost you " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.faction + ".";
                     break;
                 case "Outfit Novelty Loss":
-				rewardString += "\nYou spent most of the night talking to everyone about your Outfit. It may be safe to say that some were rather tired of hearing about it. Your " + OutfitInventory.PartyOutfit.Name() + " has lost " + _model.Party.blackOutEffectAmount.ToString("N0") + " Novelty";
+				rewardString += "\nYou spent most of the night talking to everyone about your Outfit. It may be safe to say that some were rather tired of hearing about it. Your " + outfit.Name + " has lost " + _model.Party.blackOutEffectAmount.ToString("N0") + " Novelty";
                     break;
                 case "Outfit Ruined":
-                    rewardString += "\nYou crashed into a waiter, who spilled wine all over you. Your " + OutfitInventory.PartyOutfit.Name() + " has been ruined!";
+                    rewardString += "\nYou crashed into a waiter, who spilled wine all over you. Your " + outfit.Name + " has been ruined!";
                     break;
                 case "Accessory Ruined":
                     rewardString += "\nYou dropped your " + GameData.partyAccessory.Name + " in a fountain and nobody was able to find it. I'm afraid it was completely lost!";

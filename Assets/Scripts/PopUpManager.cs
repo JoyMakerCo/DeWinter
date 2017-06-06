@@ -76,17 +76,19 @@ public class PopUpManager : MonoBehaviour
         //Fill in the Text
 		if (controller.outfit != null)
         {
-            if (inventoryType == "personal")
+            if (inventoryType == ItemConsts.PERSONAL)
             {
                 titleText.text = "Sell This?";
-				itemPrice = controller.outfit.OutfitPrice(inventoryType); //Items are at Half Price from the Player Inventory to the Merchant
-				bodyText.text = "Are you sure you want to sell this " + controller.outfit.Name();
+				controller.outfit.CalculatePrice(true);
+				itemPrice = controller.outfit.price; //Items are at Half Price from the Player Inventory to the Merchant
+				bodyText.text = "Are you sure you want to sell this " + controller.outfit.Name;
 			}
             else
             {
                 titleText.text = "Buy This?";
-				itemPrice = controller.outfit.OutfitPrice(inventoryType);
-				bodyText.text = "Are you sure you want to buy this " + controller.outfit.Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
+				controller.outfit.CalculatePrice(false);
+				itemPrice = controller.outfit.price;
+				bodyText.text = "Are you sure you want to buy this " + controller.outfit.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
         }
 		else if (controller.accessory != null)
@@ -128,7 +130,7 @@ public class PopUpManager : MonoBehaviour
     void CreateAlterOutfitModal(object[] objectStorage)
     {
         int inventoryNumber = (int)objectStorage[0];
-        Outfit outfit = OutfitInventory.outfitInventories["personal"][inventoryNumber];
+        Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().Inventory[inventoryNumber];
 
         //Make the Pop Up
         GameObject popUp = Instantiate(alterOutfitModal) as GameObject;
@@ -140,7 +142,7 @@ public class PopUpManager : MonoBehaviour
         titleText.text = "Alter Outfit";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "How would you like me to alter the " + outfit.Name() + "? This will cost 20 Livres."
+        bodyText.text = "How would you like me to alter the " + outfit.Name + "? This will cost 20 Livres."
             + "\nSelect One:";
         Slider modestyBar = popUp.transform.Find("ModestyText").Find("Slider").GetComponent<Slider>();
         modestyBar.value = outfit.modesty;

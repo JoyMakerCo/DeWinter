@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace Ambition
@@ -45,15 +46,19 @@ namespace Ambition
 				AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
 				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
 			}
-			else if (OutfitInventory.personalInventory.Count <= 0)
-			{
-				//You ain't got no clothes to attend the party! 
-                AmbitionApp.OpenDialog(DialogConsts.NO_OUTFIT);
-			}
 			else
 			{
-				// Go to the party
-				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT);
+				OutfitInventoryModel model = AmbitionApp.GetModel<OutfitInventoryModel>();
+				if (model.Inventory.Count > 0)
+				{
+					// Go to the party
+					AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT);
+				}
+				else 
+				{
+					//You ain't got no clothes to attend the party! 
+	                AmbitionApp.OpenDialog(DialogConsts.NO_OUTFIT);
+               	}
 			}
 		}
 	}

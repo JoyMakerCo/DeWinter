@@ -13,6 +13,7 @@ namespace Ambition
 			if (intoxication >= party.maxPlayerIntoxication)
 			{
 			        //Determine Random Effect
+			        OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();
 			        Random rnd = new Random();
 			        switch (rnd.Next(10))
 			        {
@@ -29,11 +30,11 @@ namespace Ambition
 			            case 2:
 			                party.blackOutEffect = "Outfit Novelty Loss";
 			                party.blackOutEffectAmount = -rnd.Next(20, 51);
-							OutfitInventory.PartyOutfit.novelty = UnityEngine.Mathf.Clamp(OutfitInventory.PartyOutfit.novelty - party.blackOutEffectAmount, 0, 100);
+							omod.PartyOutfit.novelty = UnityEngine.Mathf.Clamp(omod.PartyOutfit.novelty - party.blackOutEffectAmount, 0, 100);
 			                break;
 			            case 3:
 			                party.blackOutEffect = "Outfit Ruined";
-			                AmbitionApp.SendMessage<Outfit>(InventoryConsts.REMOVE_ITEM, OutfitInventory.PartyOutfit);
+			                AmbitionApp.SendMessage<Outfit>(InventoryConsts.REMOVE_ITEM, omod.PartyOutfit);
 			                break;
 			            case 4:
 			                if (GameData.partyAccessory != null) //If the Player actually wore and Accessory to this Party

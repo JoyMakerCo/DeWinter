@@ -7,11 +7,11 @@ namespace Ambition
 	{
 
 	    public SceneFadeInOut sceneFader;
-	    public RoomManager roomManager;
+	    public MapViewMediator roomManager;
 
 	    void Start()
 	    {
-	        roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
+	        roomManager = GameObject.Find("RoomManager").GetComponent<MapViewMediator>();
 	    }
 
 	    public void Dismiss()

@@ -22,6 +22,7 @@ namespace Ambition
 			AmbitionApp.RegisterModel<QuestModel>();
 			AmbitionApp.RegisterModel<MapModel>();
 			AmbitionApp.RegisterModel<LocalizationModel>();
+			AmbitionApp.RegisterModel<OutfitInventoryModel>(); // TODO: Feed this to Inventory
 
 			AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryConsts.SELL_ITEM);
 			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryConsts.BUY_ITEM);

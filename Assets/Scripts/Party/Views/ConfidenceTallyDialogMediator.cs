@@ -17,7 +17,7 @@ namespace Ambition
 	    	PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
 			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 			ItemVO accessory;
-			Outfit outfit = OutfitInventory.PartyOutfit;
+			Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().PartyOutfit;
 			string faction = pmod.Party.faction;
 
 			imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory);
@@ -45,10 +45,10 @@ namespace Ambition
 	        //--- Line 1 ---
 	        if (accessory != null)
 	        {
-	            line1 = "You wore your " + outfit.Name() + " and " + accessory.Name + " to the Party, hosted by the " + faction + ".";
+	            line1 = "You wore your " + outfit.Name + " and " + accessory.Name + " to the Party, hosted by the " + faction + ".";
 	        } else
 	        {
-	            line1 = "You wore your " + outfit.Name() + " to the Party, hosted by the " + faction + ".";
+	            line1 = "You wore your " + outfit.Name + " to the Party, hosted by the " + faction + ".";
 	        }
 
 	        //--- Line 2 ---

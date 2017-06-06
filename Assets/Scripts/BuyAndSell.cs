@@ -14,35 +14,32 @@ public class BuyAndSell : MonoBehaviour {
 
     public void createBuyAndSellPopUp()
     {
-        if (inventoryType == "personal" && personalInventoryList.selectedInventoryOutfit != null) 
+		object[] objectStorage = new object[3];
+        objectStorage[0] = inventoryType;
+        objectStorage[1] = "Outfit";
+		objectStorage[2] = inventoryType == ItemConsts.PERSONAL ? personalInventoryList.selectedInventoryOutfit : merchantInventoryList.selectedInventoryOutfit;
+
+		if (inventoryType == ItemConsts.PERSONAL && personalInventoryList.selectedInventoryOutfit != null) 
         {
-            object[] objectStorage = new object[3];
-            objectStorage[0] = "personal";
-            objectStorage[1] = "Outfit";
-            objectStorage[2] = personalInventoryList.selectedInventoryOutfit;
             screenFader.gameObject.SendMessage("CreateBuyOrSellModal", objectStorage);
-        } else if (inventoryType == "merchant" && merchantInventoryList.selectedInventoryOutfit != null)
+        } else if (inventoryType == ItemConsts.MERCHANT && merchantInventoryList.selectedInventoryOutfit != null)
         {
-            if (OutfitInventory.personalInventory.Count < OutfitInventory.personalInventoryMaxSize) // Will it fit in the Player's inventory?
+        	OutfitInventoryModel model = AmbitionApp.GetModel<OutfitInventoryModel>();
+   			if (model.Inventory.Count < model.Capacity) // Will it fit in the Player's inventory?
             {
-                if (AmbitionApp.GetModel<GameModel>().Livre >= merchantInventoryList.selectedInventoryOutfit.OutfitPrice(inventoryType)) // Can they afford it?
+                if (AmbitionApp.GetModel<GameModel>().Livre >= merchantInventoryList.selectedInventoryOutfit.price) // Can they afford it?
                 {
-                    object[] objectStorage = new object[3];
-                    objectStorage[0] = "merchant";
-                    objectStorage[1] = "Outfit";
-                    objectStorage[2] = merchantInventoryList.selectedInventoryOutfit;
                     screenFader.gameObject.SendMessage("CreateBuyOrSellModal", objectStorage);
                 } else //If the Player can't afford it give them the Can't Afford Modal
                 {
-                    object[] objectStorage = new object[1];
-                    objectStorage[0] = merchantInventoryList.selectedInventoryOutfit.Name();
+                    objectStorage[0] = merchantInventoryList.selectedInventoryOutfit.Name;
                     screenFader.gameObject.SendMessage("CreateCantAffordModal", objectStorage);
                 }
             } else // If it won't fit then give them the "Can't Fit" Modal (hurr hurr hurr)
             {
             	Dictionary<string, string> subs = new Dictionary<string, string>(){
-					{"$ITEM",merchantInventoryList.selectedInventoryOutfit.Name()},
-					{"$CAPACITY",OutfitInventory.personalInventoryMaxSize.ToString()}};
+					{"$ITEM",merchantInventoryList.selectedInventoryOutfit.Name},
+					{"$CAPACITY", model.Capacity.ToString()}};
 				AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
             }           
         }
