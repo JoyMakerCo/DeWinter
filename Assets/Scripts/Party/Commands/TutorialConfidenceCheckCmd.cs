@@ -20,7 +20,7 @@ namespace Ambition
 				AmbitionApp.OpenMessageDialog("out_of_confidence_tutorial_dialog");
 
 	            //The Player is pulled from the Work the Room session
-				AmbitionApp.CloseDialog(DialogConsts.ENCOUNTER);
+				AmbitionApp.CloseDialog(DialogConsts.ROOM);
 				AmbitionApp.CloseDialog(DialogConsts.HOST_ENCOUNTER);
 			}
 		}

@@ -108,7 +108,7 @@ namespace Ambition
 				}
 
 		        //Close Window
-		        AmbitionApp.CloseDialog(DialogConsts.ENCOUNTER);
+		        AmbitionApp.CloseDialog(DialogConsts.ROOM);
 
 		        //Send to After Party Report Screen
 		        party.blackOutEnding = true;

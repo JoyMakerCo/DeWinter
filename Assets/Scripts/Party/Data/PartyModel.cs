@@ -22,15 +22,7 @@ namespace Ambition
 
 		public RemarkVO Remark;
 
-		private int _turnsLeft;
-		public int TurnsLeft
-		{
-			get { return _turnsLeft; }
-			set {
-				_turnsLeft = value < 0 ? 0 : value > Party.Turns ? Party.Turns : value;
-				AmbitionApp.SendMessage<int>(PartyConstants.TURNSLEFT, _turnsLeft);
-			}
-		}
+		public int TurnsLeft;
 
 		// Temporary Repo for buffs
 		protected Dictionary<string, List<ModifierVO>> Modifiers = new Dictionary<string, List<ModifierVO>>();

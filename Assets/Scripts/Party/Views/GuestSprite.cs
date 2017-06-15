@@ -13,19 +13,16 @@ namespace Ambition
 
 		// Returns a Sprite corresponding to the guest's approval
 		// TODO: This may eventually be completely handled by Mecanim
-		public Sprite GetSprite(GuestState state)
+		public Sprite GetSprite(GuestVO guest)
 		{
 			int len = GuestSprites.Length;
-			switch(state)
-			{
-				case GuestState.Bored:
-					return BoredSprite;
-				case GuestState.Charmed:
-					return GuestSprites[len-1];
-				case GuestState.PutOff:
-					return GuestSprites[0];
-			}
-			return GuestSprites[len > 1 ? 1 : len-1];
+			if (guest.State == GuestState.Bored)
+				return BoredSprite;
+			if (guest.Opinion <= 1)
+				return GuestSprites[0];
+			if (guest.Opinion >= 100)
+				return GuestSprites[GuestSprites.Length-1];
+			return GuestSprites[1 + (int)((GuestSprites.Length-2)*(float)(guest.Opinion)*0.1f)];
 		}
 	}
 }

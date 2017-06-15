@@ -71,7 +71,6 @@ namespace Ambition
 
 		private void HandleGuests(GuestVO [] guests)
 		{
-			bool isActive;
 			GuestView guestView;
 			GuestVO guest;
 			EnemyVO enemy;
@@ -82,15 +81,11 @@ namespace Ambition
 
 			for (int i=GuestViews.Length-1; i>=0; i--)
 			{
-				isActive = (i < guests.Length);
 				guestView = GuestViews[i];
-				guestView.GuestImage.enabled = isActive;
-				guestView.InterestIcon.enabled = isActive;
-				guestView.NameText.enabled = isActive;
-				guestView.OpinionIndicator.gameObject.SetActive(isActive);
+				guestView.Enabled = (i < guests.Length);
 
 				// Update the art to show the current guest state`
-				if (isActive)
+				if (guestView.Enabled)
 				{
 					guest = guests[i];
 					enemy = guest as EnemyVO;
@@ -110,7 +105,14 @@ namespace Ambition
 					{
 						guest.Variant = new System.Random().Next(sprites.Length);
 					}
-					guestView.GuestImage.sprite = sprites[guest.Variant].GetSprite(_isIntoxicated ? GuestState.Interested : guest.State);
+					if (_isIntoxicated)
+					{
+						guestView.GuestImage.sprite = sprites[guest.Variant].BoredSprite;
+					}
+					else
+					{
+						guestView.GuestImage.sprite = sprites[guest.Variant].GetSprite(guest);
+					}
 				}
 			}
 		}

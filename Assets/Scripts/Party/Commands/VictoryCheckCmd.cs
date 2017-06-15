@@ -43,7 +43,7 @@ namespace Ambition
 					{"$NUMPUTOFF",numPutOff.ToString()},
 					{"$REWARD",reward.Name}};
 	            AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
-	            AmbitionApp.CloseDialog(DialogConsts.ENCOUNTER);
+	            AmbitionApp.CloseDialog(DialogConsts.ROOM);
     		}
     	}
 

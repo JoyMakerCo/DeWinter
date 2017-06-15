@@ -14,5 +14,16 @@ namespace Ambition
 		public Scrollbar OpinionIndicator;
 		public Image InterestIcon;
 		public Text NameText;
+
+		public bool Enabled
+		{
+			get { return GuestImage.enabled; }
+			set {
+				GuestImage.enabled = value;
+				OpinionIndicator.enabled = value;
+				InterestIcon.enabled = value;
+				NameText.enabled = value;
+			}
+		}
 	}
 }

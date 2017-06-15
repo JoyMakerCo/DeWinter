@@ -15,7 +15,7 @@ namespace Ambition
 			hand.Add(new RemarkVO());
 			pmod.Hand = hand;
 
-			AmbitionApp.OpenDialog<RoomVO>(DialogConsts.ENCOUNTER, room);
+			AmbitionApp.OpenDialog<RoomVO>(DialogConsts.ROOM, room);
 
 			Dictionary<string, string> subs = new Dictionary<string, string>()
 				{{"$ROOMNAME", room.Name}};

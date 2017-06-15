@@ -21,7 +21,7 @@ namespace Ambition
 
 	    private void HandleGuests(GuestVO[] guests)
 	    {
-	    	_guest = guests[Index];
+	    	_guest = (guests.Length > Index) ? guests[Index] : null;
 	    }
 
 		void OnMouseOver()

@@ -37,6 +37,7 @@ namespace Ambition
 				}
 
 				//Damage the Outfit's Novelty, how that the Confidence has already been Tallied
+				model.TurnsLeft = model.Party.Turns;
 				AmbitionApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, omod.PartyOutfit);
 	            AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTY);
 	        } else

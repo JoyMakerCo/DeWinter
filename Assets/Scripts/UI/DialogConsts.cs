@@ -38,8 +38,8 @@ namespace Ambition
 		public const string HOST = "HOST";
 		public const string CHOOSE_ROOM = "CHOOSE_ROOM";
 		public const string HOST_ENCOUNTER = "HOST_ENCOUNTER";
-		public const string ENCOUNTER = "ENCOUNTER";
-		public const string ENCOUNTER_TUTORIAL = "ENCOUNTER_TUTORIAL";
+		public const string ROOM = "ROOM";
+		public const string ROOM_TUTORIAL = "ROOM_TUTORIAL";
 
 		public const string INVITATION_DIALOG = "invitation_dialog";
 		public const string STYLE_CHANGE_DIALOG = "style_change_dialog";

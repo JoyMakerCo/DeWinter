@@ -4,11 +4,17 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using Dialog;
 
 namespace Ambition
 {
-	public class RoomInputMediator : MonoBehaviour
+	public class RoomDialogMediator : DialogView, IDialog<RoomVO>
 	{
+		public void OnOpen(RoomVO room)
+		{
+			
+		}
+
 	    // Poll for input
 	    void Update()
 	    {

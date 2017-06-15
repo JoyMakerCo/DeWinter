@@ -44,17 +44,22 @@ namespace Ambition
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
 				}
 
-				// 
+				// At a certain reputation level, the player's glass may be filled without a punchbowl
 				else if (!room.Cleared
 					&& partyModel.DrinkAmount < partyModel.MaxDrinkAmount
 	            	&& GameData.factionList[partyModel.Party.faction].ReputationLevel >= 5
 	            	&& rnd.Next(0, 4) == 0)
-		        {
+	        	{
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
 					Dictionary<string, string> subs = new Dictionary<string, string>(){
 						{"$HOSTNAME", partyModel.Party.Host.Name}};
 					AmbitionApp.OpenMessageDialog("refill_wine_dialog", subs);
 		        }
+
+			    if (!room.Cleared)
+			    {
+					AmbitionApp.OpenDialog<RoomVO>(DialogConsts.ROOM, room);
+				}
 			}
 
 			else
