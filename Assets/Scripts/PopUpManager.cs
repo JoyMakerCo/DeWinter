@@ -472,7 +472,7 @@ public class PopUpManager : MonoBehaviour
         workManager.hostRemarkWindow = popUp;
         //Set the Timer
         workManager.hostRemarkTimer = 6.0f;
-        workManager.hostRemarkCountdownBar = popUp.transform.FindChild("CountdownBar").GetComponent<Scrollbar>();
+        workManager.hostRemarkCountdownBar = popUp.transform.Find("CountdownBar").GetComponent<Scrollbar>();
         workManager.StockFireBackRemarkSlotList(numberOfTargetSlots);
         //Positioning (Fire Back Remark Slot Set Up) ------------------
         int buttonwidth = (int)hostRemarkSlotPrefab.GetComponent<RectTransform>().rect.width;
@@ -487,7 +487,7 @@ public class PopUpManager : MonoBehaviour
             //Parenting
             GameObject remarkSlotButton = Instantiate(hostRemarkSlotPrefab, hostRemarkSlotPrefab.transform.position, hostRemarkSlotPrefab.transform.rotation) as GameObject;
             //Find Parent Object
-            GameObject remarkSlotHolder = popUp.transform.FindChild("RemarkSlotHolder").gameObject;
+            GameObject remarkSlotHolder = popUp.transform.Find("RemarkSlotHolder").gameObject;
             remarkSlotButton.transform.SetParent(remarkSlotHolder.transform, false);
             FireBackRemarkSlotButton fireBackButton = remarkSlotButton.GetComponent<FireBackRemarkSlotButton>();
             //Positioning (Actual)

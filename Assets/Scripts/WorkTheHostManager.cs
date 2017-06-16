@@ -1003,7 +1003,7 @@ public class WorkTheHostManager : MonoBehaviour
                 objectStorage[1] = this;
                 objectStorage[2] = Random.Range(1, 6);
                 screenFader.gameObject.SendMessage("CreateHostRemarkModal", objectStorage);
-                Text introText = hostRemarkWindow.transform.FindChild("IntroTextPanel").Find("Text").GetComponent<Text>();
+                Text introText = hostRemarkWindow.transform.Find("IntroTextPanel").Find("Text").GetComponent<Text>();
 				string[] hostRemarkIntroList = DeWinterApp.GetModel<PartyModel>().HostIntros;
                 introText.text = hostRemarkIntroList[Random.Range(0, hostRemarkIntroList.Length)];
                 //So there'll be a wait before the next Host Remark
@@ -1028,7 +1028,7 @@ public class WorkTheHostManager : MonoBehaviour
     {
         Debug.Log("'But I have a Question' Timer Started");
         yield return new WaitForSeconds(1.0f);
-        GameObject introTextPanel = hostRemarkWindow.transform.FindChild("IntroTextPanel").gameObject;
+        GameObject introTextPanel = hostRemarkWindow.transform.Find("IntroTextPanel").gameObject;
         Destroy(introTextPanel);
         hostRemarkStarted = true;
     }
