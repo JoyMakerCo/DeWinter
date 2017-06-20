@@ -16,7 +16,7 @@ namespace Dialog
 
 	public class DialogCanvasManager : MonoBehaviour
 	{
-		public DialogBinding[] DialogPrefabs;
+		public Util.PrefabMapConfig DialogPrefabs;
 
 		protected Dictionary<GameObject, string> _dialogs;
 		protected Canvas _canvas;
@@ -31,19 +31,15 @@ namespace Dialog
 
 		public GameObject Open(string dialogID)
 		{
-			DialogBinding binding = Array.Find(DialogPrefabs, d=>d.Key == dialogID);
-			if (binding.Equals(default(DialogBinding)) || binding.Prefab == null)
-				return null; // Early out
-
-			GameObject dialog = GameObject.Instantiate<GameObject>(binding.Prefab);
-			DialogView cmp = dialog.GetComponent<DialogView>();
-			if (cmp != null)
+			GameObject dialog = DialogPrefabs.Instantiate(dialogID);
+			if (dialog != null)
 			{
-				cmp.Manager = this;
+				DialogView cmp = dialog.GetComponent<DialogView>();
+				if (cmp != null) cmp.Manager = this;
+				_dialogs.Add(dialog, dialogID);
+				dialog.transform.SetParent(_canvas.transform, false);
+				dialog.GetComponent<RectTransform>().SetAsLastSibling();
 			}
-			_dialogs.Add(dialog, dialogID);
-			dialog.transform.SetParent(_canvas.transform, false);
-			dialog.GetComponent<RectTransform>().SetAsLastSibling();
 			return dialog;
 		}
 
