@@ -1,14 +1,26 @@
 ﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace DeWinter
 {
-	public class DialogButtonHandler
+	public class DialogButtonHandler : MonoBehaviour
 	{
-		public string Key;
+		public Dialog.DialogCanvasManager canvas;
+		public GameObject DialogPrefab;
 
-		public void OpenDialog ()
+		protected Button _button;
+
+		void Start()
 		{
-			DeWinterApp.OpenDialog(Key);
+			_button = gameObject.GetComponent<Button>();
+			if (_button != null)
+				_button.onClick.AddListener(OnClick);
+		}
+
+		protected void OnClick()
+		{
+			canvas.Open(DialogPrefab);
 		}
 	}
 }

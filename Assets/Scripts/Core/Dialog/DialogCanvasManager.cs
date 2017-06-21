@@ -29,19 +29,46 @@ namespace Dialog
 			_dialogs = new List<GameObject>();
 		}
 
+		/// <summary>
+		/// Creates an instance of the specified prefab and places it on the top of the canvas.
+		/// </summary>
+		/// <param name="dialogPrefab">A prefab of a valid dialog.</param>
+		public GameObject Open(GameObject dialogPrefab)
+		{
+			if (dialogPrefab != null)
+			{
+				GameObject dialog = GameObject.Instantiate<GameObject>(dialogPrefab);
+				DialogView cmp = dialog.GetComponent<DialogView>();
+				if (cmp != null) cmp.Manager = this;
+				_dialogs.Add(dialog);
+				dialog.transform.SetParent(_canvas.transform, false);
+				dialog.GetComponent<RectTransform>().SetAsLastSibling();
+				return dialog;
+			}
+			return null;
+		}
+
+		/// <summary>
+		/// Creates an instance of the specified prefab and places it on the top of the canvas.
+		/// </summary>
+		/// <param name="dialogPrefab">A prefab of a valid dialog.</param>
+		/// <param name="vo">Value object used to initialize the dialog.</param>
+		public GameObject Open<T>(GameObject dialogPrefab, T vo)
+		{
+			GameObject dialog = Open(dialogPrefab);
+			if (dialog != null)
+			{
+				DialogView cmp = dialog.GetComponent<DialogView>();
+				if (cmp is IDialog<T>)
+					(cmp as IDialog<T>).OnOpen(vo);
+			}
+			return dialog;
+		}
+
 		public GameObject Open(string dialogID)
 		{
 			DialogBinding binding = Array.Find(DialogPrefabs, d=>d.Key == dialogID);
-			if (binding.Equals(default(DialogBinding)) || binding.Prefab == null)
-				return null; // Early out
-
-			GameObject dialog = GameObject.Instantiate<GameObject>(binding.Prefab);
-			DialogView cmp = dialog.GetComponent<DialogView>();
-			if (cmp != null) cmp.Manager = this;
-			_dialogs.Add(dialog);
-			dialog.transform.SetParent(_canvas.transform, false);
-			dialog.GetComponent<RectTransform>().SetAsLastSibling();
-			return dialog;
+			return (!binding.Equals(default(DialogBinding))) ? Open(binding.Prefab) : null;
 		}
 
 		public GameObject Open<T>(string dialogID, T vo)
