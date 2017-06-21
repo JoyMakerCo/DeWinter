@@ -1,14 +1,13 @@
 ﻿using System;
+using UnityEngine;
 
 namespace DeWinter
 {
-	public class DialogButtonHandler
+	public class DialogButtonHandler : MonoBehaviour
 	{
-		public string Key;
-
-		public void OpenDialog ()
+		public void OpenDialog (string DialogID)
 		{
-			DeWinterApp.OpenDialog(Key);
+			DeWinterApp.OpenDialog(DialogID);
 		}
 	}
 }
