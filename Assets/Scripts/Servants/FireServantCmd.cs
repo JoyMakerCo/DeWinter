@@ -2,7 +2,7 @@
 using Core;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class FireServantCmd : ICommand<ServantVO>
 	{

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class AdjustValueVO
 	{

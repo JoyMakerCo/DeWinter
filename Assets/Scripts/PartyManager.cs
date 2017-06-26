@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 // TODO: Make this part of PartyModel
-namespace DeWinter
+namespace Ambition
 {
 	public class PartyManager : MonoBehaviour
 	{

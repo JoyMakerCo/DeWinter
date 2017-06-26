@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Dialog;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class EventViewMediator : DialogView, IDialog<EventVO>
 	{

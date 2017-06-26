@@ -4,7 +4,7 @@ using Dialog;
 using UnityEngine.UI;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RSVPCancelDialogMediator : DialogView, IDialog<Party>
 	{

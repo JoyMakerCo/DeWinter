@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
 	internal struct FactionLevel
 	{

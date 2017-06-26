@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Dialog;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class NoOutfitModal : DialogView
 	{

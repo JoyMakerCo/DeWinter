@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ButtonMessage : MonoBehaviour
 	{

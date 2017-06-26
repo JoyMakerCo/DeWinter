@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DeWinter;
+using Ambition;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class Guest : PartyGoer
 	{

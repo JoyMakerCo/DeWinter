@@ -4,7 +4,7 @@ using Core;
 using Newtonsoft.Json;
 using Util;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class FactionModel : DocumentModel, IInitializable, IDisposable
 	{

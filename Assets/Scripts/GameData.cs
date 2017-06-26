@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public static class GameData
 {

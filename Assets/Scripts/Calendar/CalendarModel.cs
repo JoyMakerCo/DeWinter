@@ -5,7 +5,7 @@ using Core;
 using Newtonsoft.Json;
 using Util;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class CalendarModel : DocumentModel, IInitializable
 	{
@@ -74,7 +74,7 @@ namespace DeWinter
 			get { return _startDate.AddDays(_day); }
 			set {
 				_day = (value - _startDate).Days;
-				DeWinterApp.SendMessage<DateTime>(value);
+				Ambition.SendMessage<DateTime>(value);
 			}
 		}
 
@@ -114,7 +114,7 @@ namespace DeWinter
 			{
 				Parties[party.Date].Add(party);
 			}
-			DeWinterApp.SendMessage<Party>(party);
+			Ambition.SendMessage<Party>(party);
 		}
 
 		string dayString(int day)

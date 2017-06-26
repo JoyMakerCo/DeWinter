@@ -3,7 +3,7 @@ using Dialog;
 using UnityEngine.UI;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class LocalizedDialogView : DialogView, Util.IInitializable
 	{

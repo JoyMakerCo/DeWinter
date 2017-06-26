@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class CalendarViewMediator : MonoBehaviour
 	{

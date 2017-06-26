@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class BuyAndSellAccessories : MonoBehaviour {
     public GameObject screenFader; // It's for the BuyAndSell pop-up

@@ -58,6 +58,15 @@ namespace Dialog
 			return dialog;
 		}
 
+		public void Close (string dialogID)
+		{
+			foreach (DialogCanvasManager m in _managers)
+			{
+				if (m.Close(dialogID))
+					return;
+			}
+		}
+
 		/** Close the given dialog object. **/
 		public void Close (GameObject dialog)
 		{

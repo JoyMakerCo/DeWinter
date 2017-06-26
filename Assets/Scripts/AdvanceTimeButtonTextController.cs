@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class AdvanceTimeButtonTextController : MonoBehaviour
 	{

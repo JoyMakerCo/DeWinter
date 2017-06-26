@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Util;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class GrantRewardCmd : ICommand<RewardVO>
 	{

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class DialogButtonHandler : MonoBehaviour
 	{

@@ -4,7 +4,7 @@ using Core;
 
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class DevotionModel : DocumentModel
 	{

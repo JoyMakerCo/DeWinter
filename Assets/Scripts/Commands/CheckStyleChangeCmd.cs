@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class CheckStyleChangeCmd : ICommand<DateTime>
 	{

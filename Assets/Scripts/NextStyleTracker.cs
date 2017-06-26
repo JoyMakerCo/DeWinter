@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class NextStyleTracker : MonoBehaviour {
 

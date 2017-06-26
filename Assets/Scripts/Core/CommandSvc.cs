@@ -81,6 +81,15 @@ namespace Core
 			}
 		}
 
+		public void Execute<C>() where C : ICommand, new()
+		{
+			new C().Execute();
+		}
+
+		public void Execute<C, T>(T value) where C: ICommand<T>, new() 
+		{
+			new C().Execute(value);
+		}
 
 		public void Unregister<C, T>() where C : ICommand<T>
 		{
@@ -93,7 +102,7 @@ namespace Core
 			}
 		}
 
-		public void Unregister<C, T>(string messageID) where C : ICommand
+		public void Unregister<C, T>(string messageID) where C : ICommand<T>
 		{
 			if (_messageAssociations.ContainsKey(messageID))
 			{

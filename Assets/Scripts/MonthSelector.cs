@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class MonthSelector : MonoBehaviour
 	{

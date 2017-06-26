@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class MapVO
 	{

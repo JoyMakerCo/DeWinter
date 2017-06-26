@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
 // TODO: Servants are essentially Inventory Items. Incorporate into Inventory?
 	public class ServantModel : DocumentModel

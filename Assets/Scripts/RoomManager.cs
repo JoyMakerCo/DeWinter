@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class RoomManager : MonoBehaviour
 {
@@ -46,24 +46,9 @@ public class RoomManager : MonoBehaviour
         partyManager = this.transform.parent.GetComponent<PartyManager>();
 		DeWinterApp.SendMessage<Party>(MapMessage.GENERATE_MAP, _partyModel.Party);
 		DeWinterApp.Subscribe<Party>(PartyConstants.SHOW_DRINK_MODAL, handleDrinkModal);
-		DeWinterApp.Subscribe<RoomVO>(HandleRoom);
 		DrawMap();
 		currentPlayerRoom = Map.Entrance;
     }
-
-	private void HandleRoom(RoomVO room)
-	{
-		foreach (RoomVO mapRoom in Map.Rooms)
-		{
-			if (mapRoom != null)
-				_buttons[mapRoom].SetCurrentRoom(room);
-		}
-
-		if (room.HostHere)
-			WorkTheHostModal();
-		else
-			WorkTheRoomModal(false);
-	}
 
 	private void DrawMap()
     {
@@ -116,44 +101,6 @@ public class RoomManager : MonoBehaviour
 	        }
 	    }
    	}
-
-    public void WorkTheRoomModal(bool isAmbush)
-    {
-		if (!currentPlayerRoom.Cleared)
-        {
-			_partyModel.Party.turnsLeft--;
-			SoberUp(5);
-
-            //Work the Room!
-            object[] objectStorage = new object[3];
-            objectStorage[0] = currentPlayerRoom;
-            objectStorage[1] = isAmbush;
-            objectStorage[2] = this;
-            screenFader.gameObject.SendMessage("CreateWorkTheRoomModal", objectStorage);
-        }
-        else
-        {
-            Debug.Log("Can't Work a Cleared Room");
-        }
-    }
-
-    public void WorkTheHostModal()
-    {
-        if (!currentPlayerRoom.Cleared)
-        {
-			_partyModel.Party.turnsLeft--;
-			SoberUp(5);
-            //Work the Host!
-            object[] objectStorage = new object[2];
-            objectStorage[0] = currentPlayerRoom;
-            objectStorage[1] = this;
-            screenFader.gameObject.SendMessage("CreateWorkTheHostModal", objectStorage);
-        }
-        else
-        {
-            Debug.Log("Can't Work a Cleared Host");
-        }
-    }
 
     public void MoveThrough()
     {

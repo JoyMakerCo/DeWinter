@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class FactionInfoTextController : MonoBehaviour {
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class AdvanceDayCmd : ICommand
 	{

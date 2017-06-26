@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ServantTextController : MonoBehaviour {
 

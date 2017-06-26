@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Core;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class SellItemCmd : ICommand<ItemVO>
 	{

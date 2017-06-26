@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class LivreMediator : MonoBehaviour
 	{

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Core;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class BuyItemCmd : ICommand<ItemVO>
 	{

@@ -1,15 +1,15 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class GoToRoomCmd : ICommand<RoomVO>
 	{
 		public void Execute(RoomVO room)
 		{
 			// If Current Room is null, you're probably jumping into the foyer.
-			MapModel model = DeWinterApp.GetModel<MapModel>();
-			PartyModel partyModel = DeWinterApp.GetModel<PartyModel>();
+			MapModel model = Ambition.GetModel<MapModel>();
+			PartyModel partyModel = Ambition.GetModel<PartyModel>();
 			Random rnd = new Random();
 
 			if (partyModel.Party.turnsLeft <= 0)
@@ -50,12 +50,13 @@ namespace DeWinter
 	            	&& rnd.Next(0, 4) == 0)
 		        {
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
-					DeWinterApp.SendMessage<Party>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
+					Ambition.SendMessage<Party>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
 		        }
 			}
 
 			else
 			{
+				// Ambush???
 				// Denied! Player can't move through the room yet.
 			}
 		}

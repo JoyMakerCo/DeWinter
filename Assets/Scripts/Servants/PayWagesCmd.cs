@@ -2,7 +2,7 @@
 using Core;
 using System.Collections.Generic;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class PayWagesCmd : ICommand
 	{

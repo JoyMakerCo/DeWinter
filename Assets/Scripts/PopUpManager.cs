@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class PopUpManager : MonoBehaviour
 {
@@ -21,8 +21,6 @@ public class PopUpManager : MonoBehaviour
     public GameObject cantAffordModal;
     public GameObject confidenceTallyModal;
     public GameObject roomChoiceModal;
-    public GameObject workTheRoomModal;
-    public GameObject workTheHostModal;
     public GameObject hostRemarkModal;
     public GameObject ambushModal;
     public GameObject alterOutfitModal;
@@ -426,40 +424,6 @@ public class PopUpManager : MonoBehaviour
             workTheRoomImage.color = Color.clear;
             workTheRoomText.color = Color.clear;
         }
-    }
-
-    //This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
-    void CreateWorkTheRoomModal(object[] objectStorage)
-    {
-        RoomVO room = objectStorage[0] as RoomVO;
-        bool isAmbush = (bool)objectStorage[1];
-        RoomManager roomManager = objectStorage[2] as RoomManager;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(workTheRoomModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Set the room and the Work The Room Manager should handle the rest.
-        WorkTheRoomManager workManager = popUp.GetComponent<WorkTheRoomManager>();
-        workManager.room = room;
-        workManager.isAmbush = isAmbush;
-        workManager.roomManager = roomManager;
-
-        Debug.Log("Made Work the Room. Ambush is " + isAmbush);
-    }
-
-    //This is used in the Party Scene to brings up the Conversation/Work the Host Modal where the Player combats the Host with their charms
-    void CreateWorkTheHostModal(object[] objectStorage)
-    {
-        RoomVO room = objectStorage[0] as RoomVO;
-        RoomManager roomManager = objectStorage[1] as RoomManager; ;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(workTheHostModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Set the room and the Work The Room Manager should handle the rest.
-        WorkTheHostManager workManager = popUp.GetComponent<WorkTheHostManager>();
-        workManager.room = room;
-        workManager.roomManager = roomManager;
-
-        Debug.Log("Made Work the Host");
     }
 
     void CreateHostRemarkModal(object[] objectStorage)

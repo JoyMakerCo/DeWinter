@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using DeWinter;
+using Ambition;
 
 public class Notable : PartyGoer {
 

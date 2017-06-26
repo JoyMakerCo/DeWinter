@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class EventOptionButton : MonoBehaviour
 	{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RoomManagerChoiceModal : MonoBehaviour
 	{
@@ -17,17 +17,6 @@ namespace DeWinter
 	    public void Dismiss()
 	    {
 	        Destroy(transform.parent.gameObject);
-	    }
-
-	    public void CreateWorkTheRoomOrHostModal(bool isAmbush)
-	    {
-	        if (!roomManager.currentPlayerRoom.HostHere)
-	        {
-	            roomManager.WorkTheRoomModal(isAmbush);
-	        } else
-	        {
-	            roomManager.WorkTheHostModal();
-	        }
 	    }
 
 	    public void TryToMoveThrough()
