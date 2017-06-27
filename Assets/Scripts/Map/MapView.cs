@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class MapView : MonoBehaviour
 	{
@@ -14,8 +14,8 @@ namespace DeWinter
 
 		void Start() 
 		{
-			DeWinterApp.Subscribe<MapVO>(HandleMapReady);
-			DeWinterApp.Subscribe<RoomVO>(MapMessage.SELECT_ROOM, HandleSelectRoom);
+			AmbitionApp.Subscribe<MapVO>(HandleMapReady);
+			AmbitionApp.Subscribe<RoomVO>(MapMessage.SELECT_ROOM, HandleSelectRoom);
 		}
 
 		private void HandleMapReady(MapVO map)

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class EventOptionButton : MonoBehaviour
 	{
@@ -13,12 +13,12 @@ namespace DeWinter
 
 	    void Awake()
 	    {
-			DeWinterApp.Subscribe<EventVO>(HandleEventUpdate);
+			AmbitionApp.Subscribe<EventVO>(HandleEventUpdate);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<EventVO>(HandleEventUpdate);
+			AmbitionApp.Unsubscribe<EventVO>(HandleEventUpdate);
 	    }
 
 		private void HandleEventUpdate(EventVO e)
@@ -30,7 +30,7 @@ namespace DeWinter
 				EventOption eventOption = stage.Options[option];
 				if (show && eventOption.servantRequired != null)
 				{
-					ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+					ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 					show = smod.Hired.ContainsKey(eventOption.servantRequired);
 				}
 				if (show) myText.text = eventOption.optionButtonText;

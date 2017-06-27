@@ -1,59 +1,73 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class AdvanceTimeButtonTextController : MonoBehaviour
 	{
 	    private Text _text;
-	    private Party _party;
+	    private PartyVO _party;
 	    private DateTime _date;
+
+	    void Awake()
+	    {
+			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
+			AmbitionApp.Subscribe<DateTime>(HandleDay);
+	    }
 
 	    void Start ()
 	    {
+	    	Button btn = this.gameObject.GetComponent<Button>();
+	    	btn.onClick.RemoveAllListeners();
+	    	btn.onClick.AddListener(OnClick);
 	        _text = this.GetComponentInChildren<Text>();
-	        DeWinterApp.Subscribe<Party>(PartyMessages.RSVP, HandleRSVP);
-			DeWinterApp.Subscribe<DateTime>(HandleDay);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<Party>(PartyMessages.RSVP, HandleRSVP);
-			DeWinterApp.Unsubscribe<DateTime>(HandleDay);
+			Button btn = this.gameObject.GetComponent<Button>();
+	    	btn.onClick.RemoveAllListeners();
+			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
+			AmbitionApp.Unsubscribe<DateTime>(HandleDay);
 	    }
 
 	    private void HandleDay(DateTime date)
 	    {
-			Party p = DeWinterApp.GetModel<PartyModel>().Party;
+			PartyVO p = AmbitionApp.GetModel<PartyModel>().Party;
 	    	_date = date;
 	    	if (p != null) HandleRSVP(p);
 	    }
 
-		private void HandleRSVP (Party party)
+		private void HandleRSVP (PartyVO party)
 	    {
 			if (party.Date == _date && party.RSVP > 0) _party = party;
 			else if (party == _party && party.RSVP < 0) _party = null;
 			_text.text = (_party != null) ? "Go to the Party!" : "Next Day";
 		}
 
-		public void OnClick()
+		private void OnClick()
 		{
 			if (_party == null)
 			{
-				DeWinterApp.SendMessage(CalendarMessages.NEXT_DAY);
-				DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
-			}
-			else if (OutfitInventory.personalInventory.Count <= 0)
-			{
-				//You ain't got no clothes to attend the party! 
-                DeWinterApp.OpenDialog(DialogConsts.NO_OUTFIT);
+				AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
+				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
 			}
 			else
 			{
-				// Go to the party
-				DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT);
+				OutfitInventoryModel model = AmbitionApp.GetModel<OutfitInventoryModel>();
+				if (model.Inventory.Count > 0)
+				{
+					// Go to the party
+					AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT);
+				}
+				else 
+				{
+					//You ain't got no clothes to attend the party! 
+	                AmbitionApp.OpenDialog(DialogConsts.NO_OUTFIT);
+               	}
 			}
 		}
 	}

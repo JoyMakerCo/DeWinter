@@ -4,28 +4,28 @@ using Dialog;
 using UnityEngine.UI;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class RSVPCancelDialogMediator : DialogView, IDialog<Party>
+	public class RSVPCancelDialogMediator : DialogView, IDialog<PartyVO>
 	{
 		public Text BodyText;
 		public Text TitleText;
 
-		private Party _party;
+		private PartyVO _party;
 
-		public void OnOpen(Party p)
+		public void OnOpen(PartyVO p)
 		{
-			LocalizationModel localization = DeWinterApp.GetModel<LocalizationModel>();
+			LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
 			TitleText.text = localization.GetString("rsvp_cancel_dialog.title");
 
 			_party = p;
 
 			Dictionary<string, string> subs = new Dictionary<string, string>() {
 				{"$PARTYSIZE", p.SizeString()},
-				{"$HOSTNAME", p.host.Name},
+				{"$HOSTNAME", p.Host.Name},
 				{"$FACTION", p.faction}};
 
-			if (p.Date == DeWinterApp.GetModel<CalendarModel>().Today)
+			if (p.Date == AmbitionApp.GetModel<CalendarModel>().Today)
 			{
 				BodyText.text = localization.GetString("rsvp_cancel_dayof_dialog.title", subs);
 			}
@@ -38,7 +38,7 @@ namespace DeWinter
 		public void CancelRSVP()
 		{
 			_party.RSVP = -1;
-			DeWinterApp.SendMessage<Party>(PartyMessages.RSVP, _party);
+			AmbitionApp.SendMessage<PartyVO>(PartyMessages.RSVP, _party);
 		}
 	}
 }

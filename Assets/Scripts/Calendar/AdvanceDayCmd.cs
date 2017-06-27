@@ -1,13 +1,13 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class AdvanceDayCmd : ICommand
 	{
 		public void Execute()
 		{
-			CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
+			CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
 			cmod.Today = cmod.Today.AddDays(1);
 		}
 	}

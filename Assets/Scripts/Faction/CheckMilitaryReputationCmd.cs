@@ -1,19 +1,15 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class CheckMilitaryReputationCmd : ICommand<AdjustValueVO>
+	public class CheckMilitaryReputationCmd : ICommand<FactionVO>
 	{
-		public void Execute (AdjustValueVO vo)
+		public void Execute (FactionVO faction)
 		{
-			if (!vo.IsRequest && vo.Type == "Military")
+			if (faction.Name == "Military" && faction.ReputationLevel > 0)
 			{
-				FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
-				if (fmod["Military"].ReputationLevel >= 9)
-		        {
-					EnemyInventory.enemyInventory.RemoveAll(e => e.Faction == "Military");
-		        }
+				EnemyInventory.enemyInventory.RemoveAll(e => e.Faction == "Military");
 		    }
 		}
 	}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class JournalTabController : MonoBehaviour {
     public GameObject personalTab;

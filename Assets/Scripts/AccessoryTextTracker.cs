@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class AccessoryTextTracker : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class AccessoryTextTracker : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-		ItemVO accessory = DeWinterApp.GetModel<InventoryModel>().SelectedItem;
+		ItemVO accessory = AmbitionApp.GetModel<InventoryModel>().SelectedItem;
         myText = this.GetComponent<Text>();
         myText.text = (accessory != null)
 			? "Acessory: " + accessory.Name

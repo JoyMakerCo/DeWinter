@@ -2,7 +2,7 @@
 using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class LoadSceneCmd : ICommand<string>
 	{

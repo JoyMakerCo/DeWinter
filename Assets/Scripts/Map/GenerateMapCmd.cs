@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class GenerateMapCmd : ICommand<Party>
+	public class GenerateMapCmd : ICommand<PartyVO>
 	{
 		private MapModel _model;
 		private MapVO _map;
 		private Random _rnd;
-		private Party _party;
+		private PartyVO _party;
 		private int _capacity;
 
-		public void Execute(Party party)
+		public void Execute(PartyVO party)
 		{
 			_party = party;
-			_model = DeWinterApp.GetModel<MapModel>();
+			_model = AmbitionApp.GetModel<MapModel>();
 			_rnd = new Random();
 
 			// Determine if the party uses a preset.
@@ -49,7 +49,7 @@ namespace DeWinter
 			_map.Entrance.Cleared = true;
 			_map.Entrance.Name = "The Vestibule";
 			_map.Entrance.Features = new string[0];
-			_map.Entrance.Guests = new Guest[0];
+			_map.Entrance.Guests = new GuestVO[0];
 
 			// Fill in the blanks
 			foreach(RoomVO room in _map.Rooms)
@@ -67,9 +67,6 @@ namespace DeWinter
 
 					if (room.Guests == null)
 						room.Guests = GenerateGuests(room.Difficulty);
-
-					if (room.Rewards == null)
-						room.Rewards = GenerateRewards();
 
 					if (room.Neighbors == null)
 						FindNeighbors(room);
@@ -155,7 +152,10 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 			}
 		}
 
-		private Guest[] GenerateGuests(int difficulty)
+		// TODO: Generate random guests on the fly upon entering the appropriate room
+		// Guest List should be prepopulated only with Enemies and Notables,
+		// and arrays already at appropriate length with null entries
+		private GuestVO[] GenerateGuests(int difficulty)
 	    {
 	        switch (difficulty)
 	        {
@@ -170,37 +170,25 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 	            case 5:
 					return generateGuestList(4, 20, 31, 2, 6);
 	        }
-	        return new Guest[0];
+	        return new GuestVO[0];
 		}
 
-		private Guest[] generateGuestList(int count, int opinionMin, int opinionMax, int interestMin, int interestMax)
+		private GuestVO[] generateGuestList(int count, int opinionMin, int opinionMax, int interestMin, int interestMax)
 		{
-			Guest[] result = new Guest[count];
+			GuestVO[] result = new GuestVO[count];
 			for (int i=0; i<count; i++)
 			{
-				result[i] = new Guest(_rnd.Next(opinionMin, opinionMax), _rnd.Next(interestMin, interestMax));
+				result[i] = new GuestVO();
+				result[i].Opinion = _rnd.Next(opinionMin, opinionMax);
 			}
 			return result;
 		}
 
-		private Reward [] GenerateRewards()
-    	{
-    		return new Reward[] {
-				new Reward(_party, "Random", 0),
-				new Reward(_party, "Random", 1),
-				new Reward(_party, "Random", 2),
-				new Reward(_party, "Random", 3),
-				new Reward(_party, "Random", 4),
-				new Reward(_party, "Random", 5),
-				new Reward(_party, "Random", 6)
-    		};
-	    }
-
 	    private void PopulateEnemies()
 	    {
-			List<Enemy> enemies = EnemyInventory.enemyInventory.FindAll(e => e.Faction == GameData.tonightsParty.faction);
+			List<EnemyVO> enemies = EnemyInventory.enemyInventory.FindAll(e => e.Faction == GameData.tonightsParty.faction);
 			int X, Y;
-			foreach (Enemy e in enemies)
+			foreach (EnemyVO e in enemies)
 	        {
 				X = _rnd.Next(_map.Width);
 				Y = _rnd.Next(_map.Depth);

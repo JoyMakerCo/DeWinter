@@ -1,18 +1,18 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class RemoveEnemy : ICommand<Enemy>
+	public class RemoveEnemy : ICommand<EnemyVO>
 	{
 		private bool terminate=false;
 
-		public void Execute (Enemy enemy)
+		public void Execute (EnemyVO enemy)
 		{
-			RemoveEnemyFromRoom(DeWinterApp.GetModel<MapModel>().Room, enemy);
+			RemoveEnemyFromRoom(AmbitionApp.GetModel<MapModel>().Room, enemy);
         }
 
-        private void RemoveEnemyFromRoom(RoomVO room, Enemy enemy)
+        private void RemoveEnemyFromRoom(RoomVO room, EnemyVO enemy)
         {
         	if (!terminate)
         	{

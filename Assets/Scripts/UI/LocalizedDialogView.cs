@@ -3,7 +3,7 @@ using Dialog;
 using UnityEngine.UI;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class LocalizedDialogView : DialogView, Util.IInitializable
 	{
@@ -16,7 +16,7 @@ namespace DeWinter
 		{
 			if (!string.IsNullOrEmpty(LocalizationKey))
 			{
-				LocalizationModel lmod = DeWinterApp.GetModel<LocalizationModel>();
+				LocalizationModel lmod = AmbitionApp.GetModel<LocalizationModel>();
 				if (TitleText != null)
 					TitleText.text = lmod.GetString(LocalizationKey + DialogConsts.TITLE);
 				if (BodyText != null)

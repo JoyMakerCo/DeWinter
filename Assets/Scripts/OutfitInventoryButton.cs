@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using Ambition;
 
 public class OutfitInventoryButton : MonoBehaviour {
     public Outfit outfit;
@@ -37,15 +38,14 @@ public class OutfitInventoryButton : MonoBehaviour {
 
     public void DisplayOutfitStats(Outfit o, string inventoryType)
     {
-		myDescriptionText.text = o.Name();
-		myPriceText.text = o.OutfitPrice(inventoryType).ToString("£" + "#,##0");
+		myDescriptionText.text = o.Name;
+		o.CalculatePrice(inventoryType == "Personal");
+		myPriceText.text = o.price.ToString("£" + "#,##0");
     }
 
     public void SetInventoryItem()
     {
-        Debug.Log("Selected Inventory Item: " + outfit.Name());
         outfitInventoryList.selectedInventoryOutfit = outfit;
-        imageController.displayID = outfit.imageID;
-        OutfitInventory.PartyOutfit = outfit;
+        imageController.displayID = outfit.style;
     }
 }

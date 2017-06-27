@@ -3,25 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class LivreMediator : MonoBehaviour
 	{
 		private Text _text;
 
-		void Start ()
+		void Awake ()
 		{
 			_text = GetComponent<Text>();
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleLivre);
-
-			AdjustValueVO vo = new AdjustValueVO(GameConsts.LIVRE, DeWinterApp.GetModel<GameModel>().Livre, false);
-			HandleLivre(vo);
+			AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleLivre);
+			HandleLivre(AmbitionApp.GetModel<GameModel>().Livre);
 		}
-		
-		private void HandleLivre (AdjustValueVO vo)
+
+		void OnDestroy()
 		{
-			if (vo.Type == GameConsts.LIVRE && !vo.IsRequest)
-				_text.text = "£" + vo.Amount.ToString("### ###");
+			AmbitionApp.Unsubscribe<int>(GameConsts.LIVRE, HandleLivre);
+		}
+
+		private void HandleLivre (int livre)
+		{
+			_text.text = "£" + livre.ToString("### ###");
 		}
 	}
 }

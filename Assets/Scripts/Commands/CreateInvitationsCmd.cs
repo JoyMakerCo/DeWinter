@@ -1,29 +1,29 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class CreateInvitationsCmd : ICommand<DateTime>
 	{
 		public void Execute (DateTime day)
 		{
-			CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
+			CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
 			Random rnd = new Random();
 
 			// A social event for today
-			Party p =  new Party(new Random().Next(4));
+			PartyVO p =  new PartyVO(new Random().Next(4));
 			p.Date = day.Date;
 			p.invited = true;
 			cmod.UpdateParty(p);
-			DeWinterApp.OpenDialog<Party>(DialogConsts.RSVP, p);
+			AmbitionApp.OpenDialog<PartyVO>(DialogConsts.RSVP, p);
 
 			if (rnd.Next(3) == 0) // Chance of a random future engagement
 			{
-				p = new Party(rnd.Next(4));
+				p = new PartyVO(rnd.Next(4));
 				p.Date = cmod.DaysFromNow(rnd.Next(2,6));
 				p.invited = true;
 				cmod.UpdateParty(p);
-				DeWinterApp.OpenDialog<Party>(DialogConsts.RSVP, p);
+				AmbitionApp.OpenDialog<PartyVO>(DialogConsts.RSVP, p);
 			}
 		}
 	}

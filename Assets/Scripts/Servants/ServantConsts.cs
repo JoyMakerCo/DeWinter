@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DeWinter
+namespace Ambition
 {
 	public static class ServantConsts
 	{
@@ -9,5 +9,6 @@ namespace DeWinter
 		public const string FIRE_SERVANT = "FireServantMsg";
 
 		public const string SPYMASTER = "Spymaster";
+		public const string SEAMSTRESS = "Seamstress";
 	}
 }

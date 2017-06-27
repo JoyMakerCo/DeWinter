@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RewardVO
 	{
@@ -15,6 +15,26 @@ namespace DeWinter
 			Category = category;
 			Type = type;
 			Quantity = quantity;
+		}
+
+		// TODO: Localize
+		public string Name
+		{
+			get
+			{
+				switch (Category)
+				{
+					case RewardConsts.VALUE:
+						return Quantity.ToString() + " " + Type; 
+					case RewardConsts.FACTION:
+						return Quantity.ToString() + "Repuration with " + Type; 
+					case RewardConsts.SERVANT:
+						return "An Introduction to Hire a " + Type;
+					case RewardConsts.GOSSIP:
+						return "A tidbit of " + Type + " Gossip";
+				}
+				return "";
+			}
 		}
 	}
 }

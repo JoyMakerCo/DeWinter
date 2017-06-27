@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class SortAccessoryInventoryItems : MonoBehaviour {
 
@@ -32,7 +32,7 @@ namespace DeWinter
 	    // Use this for initialization
 	    void Start()
 	    {
-			_model = DeWinterApp.GetModel<InventoryModel>();
+			_model = AmbitionApp.GetModel<InventoryModel>();
 	        SetUpButtons();
 
 	        if (inventoryType == "personal")

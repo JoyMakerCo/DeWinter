@@ -1,5 +1,6 @@
 ﻿{
 	maxPlayerDrinkAmount:3,
+	turnTimer:5,
     conversationIntroList:[
         "Ah, have we met?",
         "And who might you be?",
@@ -14,17 +15,11 @@
         "Have you seen latest opera yet?",
         "Wherever did you get that dress?"
 	],
-    oldDispositionList:[
-        { name:"Aggressive", color:0xFF0000, like:"Boast", dislike:"Reassurance" },
-        { name:"Mysterious", color:0xFF00FF, like:"Intrigue", dislike:"Flattery" },
-        { name:"Vain", color:0x0000FF, like:"Flattery", dislike:"Boast" },
-        { name:"Infirm", color:0xFFFF00, like:"Reassurance", dislike:"Intrigue" }
-	],
-    dispositionList:[
-        { name:"Politics", color:0xFF0000, like:"Politics", dislike:"Theatre" },
-        { name:"Theatre", color:0xFF00FF, like:"Theatre", dislike:"Gossip" },
-        { name:"Gossip", color:0x0000FF, like:"Gossip", dislike:"Music" },
-        { name:"Music", color:0xFFFF00, like:"Music", dislike:"Politics" }
+    topicList:[
+		"Politics",
+		"Theatre",
+		"Gossip",
+		"Music"
 	],
     femaleTitleList:[
         "Duchess",

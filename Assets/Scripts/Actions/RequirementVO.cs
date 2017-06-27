@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RequirementVO
 	{

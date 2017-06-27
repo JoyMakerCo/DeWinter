@@ -2,9 +2,9 @@
 using System;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
-namespace DeWinter
+namespace Ambition
 {
 	[Serializable]
 	public class RoomStatusIndicator
@@ -52,7 +52,7 @@ namespace DeWinter
 
 		public void OnClick()
 		{
-			DeWinterApp.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
+			AmbitionApp.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
 		}
 
 		public void SetCurrentRoom(RoomVO currentRoom)
