@@ -32,7 +32,7 @@ namespace Ambition
 							{"$HOSTNAME", party.Host.Name},
 							{"$FACTION",party.faction},
 							{"$SIZE",party.SizeString()}};
-						AmbitionApp.OpenMessageDialog(DialogConsts.INVITATION_DIALOG, subs);
+						AmbitionApp.OpenMessageDialog("invitation_dialog", subs);
 
 	                    //Actually Inviting the Player
 	                    party.invited = true;

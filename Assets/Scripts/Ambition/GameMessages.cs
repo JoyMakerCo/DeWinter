@@ -14,6 +14,5 @@ namespace Ambition
 		public static string START_TUTORIAL = "START_TUTORIAL";
 
 		public static string CREATE_ENEMY = "CREATE_ENEMY";
-
 	}
 }

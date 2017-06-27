@@ -17,7 +17,7 @@ namespace Ambition
 
 		void OnDestroy()
 		{
-			AmbitionApp.Subscribe<RoomVO>(GoToRoom);
+			AmbitionApp.Unsubscribe<RoomVO>(GoToRoom);
 		}
 
 		void Start ()
