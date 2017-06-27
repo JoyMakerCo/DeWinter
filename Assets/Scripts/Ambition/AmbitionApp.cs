@@ -7,7 +7,7 @@ using Core;
 
 namespace Ambition
 {
-	public static class Ambition
+	public static class AmbitionApp
 	{
 		public static T RegisterModel<T>() where T:IModel, new()
 		{

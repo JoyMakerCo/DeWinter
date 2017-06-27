@@ -8,8 +8,8 @@ namespace Ambition
 		public void Execute(RoomVO room)
 		{
 			// If Current Room is null, you're probably jumping into the foyer.
-			MapModel model = Ambition.GetModel<MapModel>();
-			PartyModel partyModel = Ambition.GetModel<PartyModel>();
+			MapModel model = AmbitionApp.GetModel<MapModel>();
+			PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
 			Random rnd = new Random();
 
 			if (partyModel.Party.turnsLeft <= 0)
@@ -50,7 +50,7 @@ namespace Ambition
 	            	&& rnd.Next(0, 4) == 0)
 		        {
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
-					Ambition.SendMessage<Party>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
+					AmbitionApp.SendMessage<Party>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
 		        }
 			}
 

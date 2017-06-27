@@ -45,20 +45,20 @@ namespace Ambition
 	        defaultColor = myBlockImage.color;
 			_btn = this.GetComponent<Button>();
 			_btn.onClick.AddListener(RSVP);
-			_model = Ambition.GetModel<CalendarModel>();
-			Ambition.Subscribe<DateTime>(HandleCalendarDay);
-			Ambition.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
-			Ambition.Subscribe<Party>(HandlePartyUpdated);
-			Ambition.Subscribe<Party>(PartyMessages.RSVP, HandlePartyUpdated);
+			_model = AmbitionApp.GetModel<CalendarModel>();
+			AmbitionApp.Subscribe<DateTime>(HandleCalendarDay);
+			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
+			AmbitionApp.Subscribe<Party>(HandlePartyUpdated);
+			AmbitionApp.Subscribe<Party>(PartyMessages.RSVP, HandlePartyUpdated);
 	    }
 
 	    void OnDestroy()
 	    {
 			_btn.onClick.RemoveListener(RSVP);
-			Ambition.Unsubscribe<DateTime>(HandleCalendarDay);
-			Ambition.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
-			Ambition.Unsubscribe<Party>(HandlePartyUpdated);
-			Ambition.Unsubscribe<Party>(PartyMessages.RSVP, HandlePartyUpdated);
+			AmbitionApp.Unsubscribe<DateTime>(HandleCalendarDay);
+			AmbitionApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
+			AmbitionApp.Unsubscribe<Party>(HandlePartyUpdated);
+			AmbitionApp.Unsubscribe<Party>(PartyMessages.RSVP, HandlePartyUpdated);
 	    }
 
 		private void HandleCalendarDay(DateTime date)
@@ -129,7 +129,7 @@ namespace Ambition
 
 	    private void RSVP()
 	    {
-	    	Ambition.SendMessage<DateTime>(CalendarMessages.SELECT_DATE, _day);
+	    	AmbitionApp.SendMessage<DateTime>(CalendarMessages.SELECT_DATE, _day);
 	    }
 	}
 }

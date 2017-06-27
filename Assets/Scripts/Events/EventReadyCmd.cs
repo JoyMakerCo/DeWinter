@@ -9,10 +9,10 @@ namespace Ambition
 	{
 		public void Execute (DateTime day)
 		{
-			EventModel emod = Ambition.GetModel<EventModel>();
+			EventModel emod = AmbitionApp.GetModel<EventModel>();
 			if (emod.SelectedEvent != null)
 			{
-				Ambition.OpenDialog<EventVO>(DialogConsts.EVENT, emod.SelectedEvent);
+				AmbitionApp.OpenDialog<EventVO>(DialogConsts.EVENT, emod.SelectedEvent);
 			}
 		}
 	}

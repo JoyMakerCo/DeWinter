@@ -52,7 +52,7 @@ namespace Ambition
 
 		public void OnClick()
 		{
-			Ambition.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
+			AmbitionApp.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
 		}
 
 		public void SetCurrentRoom(RoomVO currentRoom)

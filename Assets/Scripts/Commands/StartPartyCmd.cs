@@ -8,14 +8,14 @@ namespace Ambition
 	{
 		public void Execute ()
 		{
-			PartyModel model = Ambition.GetModel<PartyModel>();
+			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			if (model.Party == null)
 			{
 				Debug.Log("No Party! :(");
 			}
 	        else if (OutfitInventory.PartyOutfit != null)
 	        {
-	            Ambition.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTY);
+	            AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTY);
 	        } else
 	        {
 	            Debug.Log("No Outfit selected :(");

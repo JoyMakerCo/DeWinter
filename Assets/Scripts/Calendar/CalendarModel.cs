@@ -74,7 +74,7 @@ namespace Ambition
 			get { return _startDate.AddDays(_day); }
 			set {
 				_day = (value - _startDate).Days;
-				Ambition.SendMessage<DateTime>(value);
+				AmbitionApp.SendMessage<DateTime>(value);
 			}
 		}
 
@@ -114,7 +114,7 @@ namespace Ambition
 			{
 				Parties[party.Date].Add(party);
 			}
-			Ambition.SendMessage<Party>(party);
+			AmbitionApp.SendMessage<Party>(party);
 		}
 
 		string dayString(int day)
