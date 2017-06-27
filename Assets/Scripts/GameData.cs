@@ -47,20 +47,10 @@ public static class GameData
 		set { AmbitionApp.GetModel<GameModel>().Reputation = value; }
 	}
 
-	public static int playerReputationLevel
-	{
-		get { return AmbitionApp.GetModel<GameModel>().ReputationLevel; }
-	}
-
 	public static string Allegiance
 	{
 		get { return AmbitionApp.GetModel<GameModel>().Allegiance; }
 		set { AmbitionApp.GetModel<GameModel>().Allegiance = value; }
-	}
-
-	public static Disposition[] dispositionList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().Dispositions; }
 	}
 
 	public static List<Gossip> gossipInventory

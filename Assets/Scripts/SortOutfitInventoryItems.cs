@@ -24,15 +24,16 @@ public class SortOutfitInventoryItems : MonoBehaviour {
     Text luxuryButtonText;
     Text modestyButtonText;
 
-    private List<Outfit> _list;
+	private OutfitInventoryModel _model;
+	private List<Outfit> _list;
 
     string sortedBy;
     bool ascendingOrder;
 
     // Use this for initialization
-    void Start () {
-		OutfitInventory.StockInventory();
-		OutfitInventory.outfitInventories.TryGetValue(inventoryType, out _list);
+    void Start ()
+    {
+		_model = AmbitionApp.GetModel<OutfitInventoryModel>();
         SetUpButtons();
         SortByNovelty();
 	}
@@ -60,6 +61,7 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "novelty") && !ascendingOrder;
 		SelectedButton("novelty");
 		sortedBy = "novelty";
+		_list = (inventoryType == ItemConsts.PERSONAL) ? _model.Inventory : _model.Merchant;
 		_list.Sort(sortByNoveltyComparer);
 	}
 
@@ -73,6 +75,7 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "luxury") && !ascendingOrder;
 		SelectedButton("luxury");
 		sortedBy = "luxury";
+		_list = (inventoryType == ItemConsts.PERSONAL) ? _model.Inventory : _model.Merchant;
 		_list.Sort(sortByLuxuryComparer);
 	}
 
@@ -83,9 +86,10 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 
     public void SortByModesty()
     {
-		ascendingOrder = (sortedBy == "luxury") && !ascendingOrder;
-		SelectedButton("luxury");
-		sortedBy = "luxury";
+		ascendingOrder = (sortedBy == "modesty") && !ascendingOrder;
+		SelectedButton("modesty");
+		sortedBy = "modesty";
+		_list = (inventoryType == ItemConsts.PERSONAL) ? _model.Inventory : _model.Merchant;
 		_list.Sort(sortByModestyComparer);
 	}
 

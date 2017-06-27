@@ -12,9 +12,9 @@ namespace Ambition
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
 			if (model.Inventory.Remove(item))
 			{
-				AdjustValueVO msg = new AdjustValueVO("Livre", item.SellPrice);
-				AmbitionApp.SendMessage<AdjustValueVO>(msg);
-				Debug.Log(item.Name + " Sold for £" + msg.Amount.ToString());
+				AmbitionApp.AdjustValue<int>(GameConsts.LIVRE, item.SellPrice);
+				item.SellPrice = 0;
+				model.Market.Add(item);
 			}
 		}
 	}

@@ -27,16 +27,12 @@ namespace Ambition
 
 		public void Initialize()
 		{
-			AmbitionApp.Subscribe<AdjustValueVO>(HandleFactionReputation);
-			AmbitionApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
-			AmbitionApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+			AmbitionApp.Subscribe<AdjustFactionVO>(HandleAdjustFaction);
 		}
 
 		public void Dispose()
 		{
-			AmbitionApp.Unsubscribe<AdjustValueVO>(HandleFactionReputation);
-			AmbitionApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
-			AmbitionApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+			AmbitionApp.Unsubscribe<AdjustFactionVO>(HandleAdjustFaction);
 		}
 
 		public FactionVO this[string faction]
@@ -66,34 +62,15 @@ namespace Ambition
 			}
 		}
 
-		private void HandleFactionReputation(AdjustValueVO vo)
+		private void HandleAdjustFaction(AdjustFactionVO vo)
 		{
-			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
+			FactionVO faction;
+			if (Factions.TryGetValue(vo.Faction, out faction))
 			{
-				_factions[vo.Type].playerReputation += (int)vo.Amount;
-				vo.IsRequest = false;
-// TODO: This is clunky. Make it a bit more clear.
-				AmbitionApp.SendMessage<AdjustValueVO>(vo);
-			}
-		}
-
-		private void HandleFactionAllegiance(AdjustValueVO vo)
-		{
-			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
-			{
-				_factions[vo.Type].Allegiance += (int)vo.Amount;
-				vo.IsRequest = false;
-				AmbitionApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
-			}
-		}
-
-		private void HandleFactionPower(AdjustValueVO vo)
-		{
-			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
-			{
-				_factions[vo.Type].Power += (int)vo.Amount;
-				vo.IsRequest = false;
-				AmbitionApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
+				Factions[vo.Faction].Allegiance += vo.Allegiance;
+				Factions[vo.Faction].Power += vo.Power;
+				Factions[vo.Faction].playerReputation += vo.Reputation;
+				AmbitionApp.SendMessage<FactionVO>(Factions[vo.Faction]);
 			}
 		}
 	}

@@ -14,27 +14,17 @@ namespace Ambition
 	    void Start()
 	    {
 	        myText = GetComponent<Text>();
-			AmbitionApp.Subscribe<AdjustValueVO>(HandleBalanceUpdate);
+			AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleBalanceUpdate);
 	    }
 
 	    void OnDestroy()
 	    {
-			AmbitionApp.Unsubscribe<AdjustValueVO>(HandleBalanceUpdate);
+			AmbitionApp.Unsubscribe<int>(GameConsts.LIVRE, HandleBalanceUpdate);
 	    }
 
-		private void HandleBalanceUpdate(AdjustValueVO vo)
+		private void HandleBalanceUpdate(int livre)
 		{
-			if (!vo.IsRequest && vo.Type == GameConsts.LIVRE)
-			{
-				myText.text = vo.Amount.ToString("£" + "#,##0");
-
-				// TODO: Commandify Out of funds
-				//If your Money drops to 0 or below then you lose (for now)
-		        if (vo.Amount <= 0d)
-		        {
-		            screenFader.gameObject.SendMessage("CreateOutOfMoneyModal");
-		        }
-		    }
+			myText.text = livre.ToString("£" + "#,##0");
 		}
 	}
 }

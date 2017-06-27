@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 namespace Ambition
@@ -11,15 +12,24 @@ namespace Ambition
 	    private PartyVO _party;
 	    private DateTime _date;
 
+	    void Awake()
+	    {
+			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
+			AmbitionApp.Subscribe<DateTime>(HandleDay);
+	    }
+
 	    void Start ()
 	    {
+	    	Button btn = this.gameObject.GetComponent<Button>();
+	    	btn.onClick.RemoveAllListeners();
+	    	btn.onClick.AddListener(OnClick);
 	        _text = this.GetComponentInChildren<Text>();
-	        AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
-			AmbitionApp.Subscribe<DateTime>(HandleDay);
 	    }
 
 	    void OnDestroy()
 	    {
+			Button btn = this.gameObject.GetComponent<Button>();
+	    	btn.onClick.RemoveAllListeners();
 			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
 			AmbitionApp.Unsubscribe<DateTime>(HandleDay);
 	    }
@@ -38,22 +48,26 @@ namespace Ambition
 			_text.text = (_party != null) ? "Go to the Party!" : "Next Day";
 		}
 
-		public void OnClick()
+		private void OnClick()
 		{
 			if (_party == null)
 			{
 				AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
 				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
 			}
-			else if (OutfitInventory.personalInventory.Count <= 0)
-			{
-				//You ain't got no clothes to attend the party! 
-                AmbitionApp.OpenDialog(DialogConsts.NO_OUTFIT);
-			}
 			else
 			{
-				// Go to the party
-				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT);
+				OutfitInventoryModel model = AmbitionApp.GetModel<OutfitInventoryModel>();
+				if (model.Inventory.Count > 0)
+				{
+					// Go to the party
+					AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT);
+				}
+				else 
+				{
+					//You ain't got no clothes to attend the party! 
+	                AmbitionApp.OpenDialog(DialogConsts.NO_OUTFIT);
+               	}
 			}
 		}
 	}

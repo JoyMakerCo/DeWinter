@@ -11,8 +11,8 @@ namespace Ambition
 	    public int Difficulty; //Difficulty 1-5
 	    public bool Cleared=false;
 	    public bool Revealed=false;
-		public Reward [] Rewards;
-		public Guest [] Guests;
+		public RewardVO [] Rewards;
+		public GuestVO [] Guests;
 		public List<EnemyVO> Enemies;
 		public string [] Features;
 		public RoomVO [] Neighbors; // Starting North, Clockwise

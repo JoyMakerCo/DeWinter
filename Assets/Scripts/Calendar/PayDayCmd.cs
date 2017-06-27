@@ -12,21 +12,21 @@ namespace Ambition
 			{
 				ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 				int numservants=0;
-				AdjustValueVO vo = new AdjustValueVO(GameConsts.LIVRE, 0);
 				ServantVO servant;
+				float livre = 0;
 				foreach (KeyValuePair<string, ServantVO[]> kvp in smod.Servants)
 	            {
 	            	servant = Array.Find(kvp.Value, s => s.Hired);
 	            	if (servant != null)
-		            	vo.Amount -= servant.Wage;
+		            	livre += servant.Wage;
 	            }
 
-	            if (vo.Amount < 0)
+	            if (livre > 0)
 	            {
-					AmbitionApp.SendMessage<AdjustValueVO>(vo);
+	            	AmbitionApp.AdjustValue(GameConsts.LIVRE, -livre);
 					Dictionary<string, string> substitutions = new Dictionary<string, string>(){
 						{"$NUMSERVANTS",numservants.ToString()},
-						{"$TOTALWAGES",(-vo.Amount).ToString()},
+						{"$TOTALWAGES", livre.ToString()},
 						{"$LIVRE",GameData.moneyCount.ToString()}};
 					AmbitionApp.OpenMessageDialog(DialogConsts.PAY_DAY_DIALOG, substitutions);
 				}

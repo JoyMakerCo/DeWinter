@@ -12,13 +12,14 @@ namespace Ambition
 			{
 				PartyModel model = AmbitionApp.GetModel<PartyModel>();
 				Random rnd = new Random();
+				int level = AmbitionApp.GetModel<GameModel>().Level;
 				float ReparteBonus = model.Repartee ? model.ReparteeBonus : 1.0f;
 	        	float opinionMod = 0.0f;
 
 		        //Do they like the Tone?
 				if (guest.Like == model.Remark.Interest) //They like the tone
 		        {
-		            if ((guest is EnemyVO) && GameData.playerReputationLevel >= 4)
+		            if ((guest is EnemyVO) && level >= 4)
 		            {
 		            	opinionMod = (float)rnd.Next(25,36) * ReparteBonus * 1.25f;
 		            }
@@ -33,7 +34,7 @@ namespace Ambition
 		        	// TODO: All of this needs to be affected by the passive bonus system
 		            if (!model.ItemEffect) //If the the Player doesn't have the Fascinator Accessory or its ability has already been used up
 		            {
-		                if ((guest is EnemyVO) && GameData.playerReputationLevel >= 4)
+		                if ((guest is EnemyVO) && level >= 4)
 		                {
 							opinionMod = (float)-rnd.Next(11,17) * ReparteBonus * 1.25f;
 		                }
@@ -46,7 +47,7 @@ namespace Ambition
 					model.ItemEffect = false;
 		        } else //Neutral Tone
 		        {
-		            if((guest is EnemyVO) && GameData.playerReputationLevel >= 4)
+		            if((guest is EnemyVO) && level >= 4)
 		            {
 						opinionMod = (float)rnd.Next(12, 18) * ReparteBonus * 1.25f;
 		            } else

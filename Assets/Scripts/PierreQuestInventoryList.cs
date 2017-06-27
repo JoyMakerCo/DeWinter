@@ -52,7 +52,7 @@ public class PierreQuestInventoryList : MonoBehaviour {
 		if (day >= _model.NextQuestDay)
         {
             //Actually Assigning the Quest
-			if (GameData.pierreQuestInventory.Count < 3 && AmbitionApp.GetModel<GameModel>().ReputationLevel > 0)
+			if (GameData.pierreQuestInventory.Count < 3 && AmbitionApp.GetModel<GameModel>().Level > 0)
             {
                 //Create the Quest
                 PierreQuest newPierreQuest = new PierreQuest();

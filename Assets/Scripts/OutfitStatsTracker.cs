@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Ambition;
 
 public class OutfitStatsTracker : MonoBehaviour {
 
@@ -48,15 +49,16 @@ public class OutfitStatsTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (inventoryType == "personal")
+        if (inventoryType == ItemConsts.PERSONAL)
         {
             if (outfitInventoryList.selectedInventoryOutfit != null)
             {
                 //Text
                 Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
-                outfitNameText.text = displayOutfit.Name();
-                outfitCostText.text = displayOutfit.OutfitPrice(inventoryType).ToString("£" + "#,##0");
-                outfitSaleButtonText.text = "Sell for " + displayOutfit.OutfitPrice(inventoryType).ToString("£" + "#,##0");
+                outfitNameText.text = displayOutfit.Name;
+                displayOutfit.CalculatePrice(true);
+                outfitCostText.text = displayOutfit.price.ToString("£" + "#,##0");
+                outfitSaleButtonText.text = "Sell for " + displayOutfit.price.ToString("£" + "#,##0");
                 //Sliders
                 modestySlider.value = displayOutfit.modesty;
                 luxurySlider.value = displayOutfit.luxury;
@@ -75,15 +77,16 @@ public class OutfitStatsTracker : MonoBehaviour {
                 luxurySliderHandle.color = Color.clear;
                 noveltySliderHandle.color = Color.clear;
             }
-        }  else if (inventoryType == "merchant")
+        }  else if (inventoryType == ItemConsts.MERCHANT)
         {
             if (outfitInventoryList.selectedInventoryOutfit != null)
             {
                 //Text
                 Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
-                outfitNameText.text = displayOutfit.Name();
-                outfitCostText.text = displayOutfit.OutfitPrice(inventoryType).ToString("£" + "#,##0");
-                outfitSaleButtonText.text = "Buy for " + displayOutfit.OutfitPrice(inventoryType).ToString("£" + "#,##0");
+                outfitNameText.text = displayOutfit.Name;
+                displayOutfit.CalculatePrice(false);
+                outfitCostText.text = displayOutfit.price.ToString("£" + "#,##0");
+                outfitSaleButtonText.text = "Buy for " + displayOutfit.price.ToString("£" + "#,##0");
                 //Sliders
                 modestySlider.value = displayOutfit.modesty;
                 luxurySlider.value = displayOutfit.luxury;
@@ -111,8 +114,9 @@ public class OutfitStatsTracker : MonoBehaviour {
             {
                 //Text
                 Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
-                outfitNameText.text = displayOutfit.Name();
-                outfitCostText.text = displayOutfit.OutfitPrice("personal").ToString("£" + "#,##0"); //Uses Personal Inventory Prices
+                outfitNameText.text = displayOutfit.Name;
+				displayOutfit.CalculatePrice(true);
+                outfitCostText.text = displayOutfit.price.ToString("£" + "#,##0"); //Uses Personal Inventory Prices
                 //Sliders
                 modestySlider.value = displayOutfit.modesty;
                 luxurySlider.value = displayOutfit.luxury;

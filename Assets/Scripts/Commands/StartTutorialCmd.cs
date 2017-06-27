@@ -11,7 +11,7 @@ namespace Ambition
 			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
 			PartyVO p = new PartyVO(1);
 			p.tutorial = true;
-			p.turns = p.turnsLeft = 10;
+			p.Turns = 10;
 			p.invited = true;
 			p.invitationDistance = 1;
 			p.Date = AmbitionApp.GetModel<CalendarModel>().Today;

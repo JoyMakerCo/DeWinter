@@ -32,35 +32,36 @@ public class BuyAndSellPopUpController : MonoBehaviour
     // TODO: COmmandify
     public void BuyOrSell()
     {
+    	OutfitInventoryModel model = AmbitionApp.GetModel<OutfitInventoryModel>();
         if (itemType == "Outfit")
         {
 // TODO: Outfits and Gossip turned into ItemVO
-            if (inventoryType == "personal") //Selling Things
+            if (inventoryType == ItemConsts.PERSONAL) //Selling Things
             {
                 //Add Money to our Account. Sold Items sell at 50% of their purchase price.
-				_gameModel.Livre += outfit.OutfitPrice(inventoryType);
-                Debug.Log("Outfit Sold for " + outfit.OutfitPrice(inventoryType));
+                outfit.CalculatePrice(true);
+				_gameModel.Livre += outfit.price;
+				Debug.Log("Outfit Sold for " + outfit.price.ToString());
 
                 //Remove the Sold Item from the Personal Inventory
-                OutfitInventory.outfitInventories[inventoryType].Remove(outfit);
+				model.Inventory.Remove(outfit);
 
                 //If that item was worn last at a party then reset the Last Party Outfit ID, so an item with its ID doesn't get a wrongful double Novelty hit
-				if (outfit == OutfitInventory.LastPartyOutfit)
+				if (outfit == model.LastPartyOutfit)
                 {
-					OutfitInventory.LastPartyOutfit = null;
+					model.LastPartyOutfit = null;
                 }
             }
-            else if (inventoryType == "merchant") //Buying Things
+            else
             {
                 //Remove Money from our account
-				_gameModel.Livre -= outfit.OutfitPrice(inventoryType);
-                Debug.Log("Outfit Bought for" + outfit.OutfitPrice(inventoryType).ToString());
+                outfit.CalculatePrice(false);
+				_gameModel.Livre -= outfit.price;
+				Debug.Log("Outfit Bought for" + outfit.price.ToString());
 
                 //Add the Sold Item to the Personal Inventory
-                OutfitInventory.outfitInventories["personal"].Add(outfit);
-
-                //Remove the Sold Item from the Merchant Inventory
-                OutfitInventory.outfitInventories[inventoryType].Remove(outfit);
+                model.Inventory.Add(outfit);
+				model.Merchant.Remove(outfit);
             }
             personalOutfitInventoryList.selectedInventoryOutfit = null;
             merchantOutfitInventoryList.selectedInventoryOutfit = null;
@@ -72,7 +73,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
         }
         else if (itemType == "Accessory")
         {
-            if (inventoryType == "personal") //Selling Things
+            if (inventoryType == ItemConsts.PERSONAL) //Selling Things
             {
 	        	AmbitionApp.SendMessage<ItemVO>(InventoryConsts.SELL_ITEM, accessory);
 
@@ -83,7 +84,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
 					_inventoryModel.LastEquipped.Remove(ItemConsts.ACCESSORY);
                 }
             }
-            else if (inventoryType == "merchant") //Buying Things
+            else
             {
 				AmbitionApp.SendMessage<ItemVO>(InventoryConsts.BUY_ITEM, accessory);
             }
@@ -97,6 +98,6 @@ public class BuyAndSellPopUpController : MonoBehaviour
 
         }
         //Reset the Displays
-        wardrobeImageController.displayID = 0;
+        wardrobeImageController.displayID = null;
     }
 }

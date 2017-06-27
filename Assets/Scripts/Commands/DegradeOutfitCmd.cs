@@ -8,11 +8,12 @@ namespace Ambition
 		public void Execute(Outfit o)
 		{
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
+			OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();
 			o.novelty -= model.NoveltyDamage;
-			if (o == OutfitInventory.LastPartyOutfit)
+			if (o == omod.LastPartyOutfit)
 				o.novelty -= model.NoveltyDamage;
 
-			OutfitInventory.LastPartyOutfit = o;
+			omod.LastPartyOutfit = o;
         }
 	}
 }

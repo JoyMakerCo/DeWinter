@@ -46,7 +46,7 @@ namespace Ambition
 		{
 			_model = AmbitionApp.GetModel<PartyModel>();
 			RoomTitleText.text = AmbitionApp.GetModel<MapModel>().Room.Name;
-			reparteeIndicatorImage.enabled = (GameData.playerReputationLevel >= 2);
+			reparteeIndicatorImage.enabled = (AmbitionApp.GetModel<GameModel>().Level >= 2);
 		}
 
 		private void HandleConfidence(int confidence)

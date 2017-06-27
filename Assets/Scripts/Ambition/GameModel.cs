@@ -8,9 +8,8 @@ namespace Ambition
 {
 	public class GameModel : DocumentModel, IInitializable, IDisposable
 	{
-		private int _reputation;
+		private PlayerReputationVO _reputation;
 		private int _livre;
-		private int _level;
 
 		public string Allegiance;
 
@@ -21,25 +20,31 @@ namespace Ambition
 			set
 			{
 				_livre = value;
-				AmbitionApp.SendMessage<AdjustValueVO>(new AdjustValueVO(GameConsts.LIVRE, _livre, false));
+				AmbitionApp.SendMessage<int>(GameConsts.LIVRE, _livre);
 			}
 		}
 
 		[JsonProperty("reputation")]
 		public int Reputation
 		{
-			get { return _reputation; }
+			get { return _reputation.Reputation; }
 			set
 			{
-				_reputation = value;
+				_reputation.Reputation = value;
 				if (ReputationLevels != null)
 				{
-					for(_level=0; _level < ReputationLevels.Length; _level++)
+					int numLevels = ReputationLevels.Length;
+					for(int i=0; i < numLevels; i++)
 					{
-						if (_reputation < ReputationLevels[_level].Reputation)
+						if (_reputation.Reputation <= ReputationLevels[i].Reputation)
 						{
-							PlayerReputationVO msg = new PlayerReputationVO(_reputation, _level);
-							AmbitionApp.SendMessage<PlayerReputationVO>(msg);
+							if (_reputation.Level != i+1)
+							{
+								_reputation.Level = i+1;
+								_reputation.ReputationMax = ReputationLevels[i].Reputation;
+								_reputation.Title = ReputationLevels[i].Title;
+							}
+							AmbitionApp.SendMessage<PlayerReputationVO>(_reputation);
 							return;
 						}
 					}
@@ -49,24 +54,24 @@ namespace Ambition
 
 		public int ConfidenceBonus
 		{
-			get { return ReputationLevels[ReputationLevel].Confidence; }
+			get { return ReputationLevels[Level].Confidence; }
 		}
 
-		public int ReputationLevel
+		public int Level
 		{
-			get { return _level+1; }
+			get { return _reputation.Level; }
 		}
 
 		public GameModel() : base("GameData") {}
 
 		public void Initialize()
 		{
-			AmbitionApp.Subscribe<AdjustValueVO>(HandleAdjustBalance);
+			AmbitionApp.Subscribe<RequestAdjustValueVO<int>>(HandleAdjustValue);
 		}
 
 		public void Dispose()
 		{
-			AmbitionApp.Unsubscribe<AdjustValueVO>(HandleAdjustBalance);
+			AmbitionApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleAdjustValue);
 		}
 
 		// TODO: Localization model would be handy here
@@ -75,7 +80,7 @@ namespace Ambition
 			get
 			{
 				string str = "";
-				for (int i=_level; i>=0; i--)
+				for (int i=_reputation.Level-1; i>=0; i--)
 				{
 					str += ReputationLevels[i].Description + "\n";
 				}
@@ -84,33 +89,26 @@ namespace Ambition
 		}
 
 		[JsonProperty("reputationLevels")]
-		public ReputationLevel[] ReputationLevels;
+		private ReputationLevel[] ReputationLevels;
 
 		public int PartyInviteImportance
 		{
 			get {
-				return ReputationLevels[ReputationLevel].PartyInviteImportance;
+				return ReputationLevels[Level].PartyInviteImportance;
 			}
 		}
 
-		private void HandleAdjustBalance(AdjustValueVO msg)
+		private void HandleAdjustValue(RequestAdjustValueVO<int> vo)
 		{
-			if (msg.IsRequest)
+			switch (vo.Type)
 			{
-				switch (msg.Type)
-				{
-					case GameConsts.LIVRE:
-						Livre += (int)(msg.Amount);
-						msg.IsRequest = false;
-						AmbitionApp.SendMessage<AdjustValueVO>(msg);
-						break;
+				case GameConsts.LIVRE:
+					Livre += vo.Value;
+					break;
 
-					case GameConsts.REPUTATION:
-						Reputation += (int)(msg.Amount);
-						msg.IsRequest = false;
-						AmbitionApp.SendMessage<AdjustValueVO>(msg);
-						break;
-				}
+				case GameConsts.REPUTATION:
+					Reputation += vo.Value;
+					break;
 			}
 		}
 	}

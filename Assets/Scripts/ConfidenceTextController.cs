@@ -14,15 +14,12 @@ namespace Ambition
 	    {
 	        myText = this.GetComponent<Text>();
 			_model = AmbitionApp.GetModel<PartyModel>();
-			AmbitionApp.Subscribe<AdjustValueVO>(HandleConfidenceUpdate);
+			AmbitionApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleConfidenceUpdate);
 	    }
 
-		private void HandleConfidenceUpdate(AdjustValueVO vo)
+		private void HandleConfidenceUpdate(int confidence)
 	    {
-	    	if (!vo.IsRequest)
-	    	{
-		        myText.text = "Confidence: " + _model.Party.currentPlayerConfidence + "/" + _model.Party.maxPlayerConfidence;
-		    }
+	        myText.text = "Confidence: " + confidence.ToString() + "/" + _model.MaxConfidence.ToString();
 	    }
 	}
 }

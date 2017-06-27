@@ -29,7 +29,7 @@ namespace Core
 			}
 		}
 
-		protected virtual void ApplyMultiplier() {}
-		protected virtual void ApplyModifier() {}
+		protected virtual void ApplyMultiplier(string MultiplierID, float factor) {}
+		protected virtual void ApplyModifier(string modifierID, T modifier) {}
 	}
 }

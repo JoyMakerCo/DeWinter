@@ -8,15 +8,20 @@ using Core;
 namespace Dialog
 {
 	[Serializable]
-	public struct DialogBinding
+	public class DialogBinding
 	{
-		public string Key;
+		public string ID;
 		public GameObject Prefab;
+
+		public GameObject Instantiate()
+		{
+			return (Prefab == null) ? null : GameObject.Instantiate<GameObject>(Prefab);
+		}
 	}
 
 	public class DialogCanvasManager : MonoBehaviour
 	{
-		public Util.PrefabMapConfig DialogPrefabs;
+		public DialogBinding [] DialogPrefabs;
 
 		protected Dictionary<GameObject, string> _dialogs;
 		protected Canvas _canvas;
@@ -31,7 +36,10 @@ namespace Dialog
 
 		public GameObject Open(string dialogID)
 		{
-			GameObject dialog = DialogPrefabs.Instantiate(dialogID);
+			DialogBinding binding = Array.Find(DialogPrefabs, p=>p.ID == dialogID);
+			if (binding == null) return null; //Early out
+
+			GameObject dialog = binding.Instantiate();
 			if (dialog != null)
 			{
 				DialogView cmp = dialog.GetComponent<DialogView>();
