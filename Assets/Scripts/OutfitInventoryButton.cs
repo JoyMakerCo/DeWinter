@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using Ambition;
 
 public class OutfitInventoryButton : MonoBehaviour {
     public Outfit outfit;
