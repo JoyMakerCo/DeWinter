@@ -40,12 +40,22 @@ namespace Ambition
 			App.Service<CommandSvc>().Register<C, T>(messageID);
 		}
 
+		public static void Execute<C>() where C:ICommand, new()
+		{
+			App.Service<CommandSvc>().Execute<C>();
+		}
+
+		public static void Execute<C, T>(T value) where C:ICommand<T>, new()
+		{
+			App.Service<CommandSvc>().Execute<C, T>(value);
+		}
+
 		public static void UnregisterCommand<C>(string messageID) where C:ICommand
 		{
 			App.Service<CommandSvc>().Unregister<C>(messageID);
 		}
 
-		public static void UnregisterCommand<C, T>(string messageID) where C:ICommand
+		public static void UnregisterCommand<C, T>(string messageID) where C:ICommand<T>
 		{
 			App.Service<CommandSvc>().Unregister<C, T>(messageID);
 		}
@@ -143,6 +153,23 @@ namespace Ambition
 			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY);
 			vo.Button = button;
 			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+		}
+
+		public static void CloseDialog(string dialogID)
+		{
+			App.Service<DialogSvc>().Close(dialogID);
+		}
+
+		public static void CloseDialog(GameObject dialog)
+		{
+			App.Service<DialogSvc>().Close(dialog);
+		}
+
+		// Easy shorthand for creating a request to modify a model value
+		public static void AdjustValue<T>(string ID, T value)
+		{
+			RequestAdjustValueVO<T> vo = new RequestAdjustValueVO<T>(ID, value);
+			App.Service<MessageSvc>().Send<RequestAdjustValueVO<T>>(vo);
 		}
 	}
 }

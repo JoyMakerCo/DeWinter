@@ -12,8 +12,6 @@ public class PopUpManager : MonoBehaviour
 
 	public GameObject newGameModal;
     public GameObject quitGameModal;
-    public GameObject workTheRoomTutorialModal;
-    public GameObject twoPartyRSVPdModal;
     public GameObject pierreQuestModal;
     public GameObject gossipSaleModal;
     public GameObject buyOrSellModal;
@@ -43,26 +41,6 @@ public class PopUpManager : MonoBehaviour
         GameObject popUp = Instantiate(quitGameModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
         //Modal Background Shift
-    }
-
-    //This is used at the beginning of the first Tutorial Conversation to teach you how Work the Room... works
-    void CreateWorkTheRoomTutorialPopUp(WorkTheRoomManager wRM)
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(workTheRoomTutorialModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Set the Pop Up's Variable
-        WorkTheRoomPopUpModalController popUpController = popUp.transform.GetComponent<WorkTheRoomPopUpModalController>();
-        popUpController.workTheRoomManager = wRM;
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Charming the Room";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "There are some Guests in front of you. Say something to them!"
-            + "\nHow? Click on your Remarks at the bottom of the screen, then click on the Guests to use the Remarks."
-            + "\nTry to match the color of your Remarks to the color of the Guests. If they like what you're about to say they'll turn green. If they don't like it they'll turn red."
-            + "\nOnce their Opinion Bar is all the way to the right then they'll be Charmed. Charm them both to finish the Conversation. Just don't make them too angry or you'll Put them Off and maybe run out of Confidence.";
     }
 
     //This confirmation modal is used for Hiring and Firing Servants

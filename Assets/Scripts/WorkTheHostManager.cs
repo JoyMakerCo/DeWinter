@@ -699,7 +699,7 @@ public class WorkTheHostManager : MonoBehaviour
                 break;
             case 7:
                 effect = "New Enemy";
-                EnemyInventory.AddEnemy(new Enemy(party.faction));
+                EnemyInventory.AddEnemy(new EnemyVO(party.faction));
                 break;
             case 8:
                 effect = "Forgot All Gossip";
@@ -721,7 +721,7 @@ public class WorkTheHostManager : MonoBehaviour
                 else //If they have no Gossip to Lose
                 {
                     effect = "New Enemy";
-                    EnemyInventory.AddEnemy(new Enemy(party.faction));
+                    EnemyInventory.AddEnemy(new EnemyVO(party.faction));
                 }
                 break;
             case 9:

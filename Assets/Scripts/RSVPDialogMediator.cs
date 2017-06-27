@@ -33,7 +33,7 @@ public class RSVPDialogMediator : DialogView, IDialog<PartyVO>
 			{
 				string enemyList = "";
 				Dictionary<string, string> subs = new Dictionary<string, string>();
-				foreach(Enemy enemy in _party.enemyList)
+				foreach(EnemyVO enemy in _party.enemyList)
 				{
 					enemyList += "\n" + enemy.Name;
 				}

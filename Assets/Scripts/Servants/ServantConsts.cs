@@ -9,5 +9,6 @@ namespace Ambition
 		public const string FIRE_SERVANT = "FireServantMsg";
 
 		public const string SPYMASTER = "Spymaster";
+		public const string SEAMSTRESS = "Seamstress";
 	}
 }

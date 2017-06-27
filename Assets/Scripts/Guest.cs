@@ -66,7 +66,7 @@ namespace Ambition
 	    }
 
 	    //Generates a Guest who is an Enemy, Enemy is the greater class tracking the Persistent Enemy, Guests with a true 'isEnemy' bool are here for the actual battles
-	    public Guest(Enemy enemy) : base()
+	    public Guest(EnemyVO enemy) : base()
 	    {
 	        dispositionInt = enemy.dispositionInt;
 	        disposition = enemy.disposition;

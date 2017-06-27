@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 
 namespace Ambition
@@ -12,7 +13,7 @@ namespace Ambition
 			PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
 			Random rnd = new Random();
 
-			if (partyModel.Party.turnsLeft <= 0)
+			if (partyModel.TurnsLeft <= 0)
 			{
 				UnityEngine.Debug.Log("Out of turns. Go home!");
 			}
@@ -43,20 +44,26 @@ namespace Ambition
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
 				}
 
-				// 
+				// At a certain reputation level, the player's glass may be filled without a punchbowl
 				else if (!room.Cleared
 					&& partyModel.DrinkAmount < partyModel.MaxDrinkAmount
 	            	&& GameData.factionList[partyModel.Party.faction].ReputationLevel >= 5
 	            	&& rnd.Next(0, 4) == 0)
-		        {
+	        	{
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
-					AmbitionApp.SendMessage<PartyVO>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
+					Dictionary<string, string> subs = new Dictionary<string, string>(){
+						{"$HOSTNAME", partyModel.Party.Host.Name}};
+					AmbitionApp.OpenMessageDialog("refill_wine_dialog", subs);
 		        }
+
+			    if (!room.Cleared)
+			    {
+					AmbitionApp.OpenDialog<RoomVO>(DialogConsts.ROOM, room);
+				}
 			}
 
 			else
 			{
-				// Ambush???
 				// Denied! Player can't move through the room yet.
 			}
 		}

@@ -8,7 +8,7 @@ using System.Linq;
 public static class EnemyInventory
 {
     // TODO: This needs a model.
-    public static List<Enemy> enemyInventory = new List<Enemy>();
+    public static List<EnemyVO> enemyInventory = new List<EnemyVO>();
 
     public static void ClearInventory()
     {
@@ -16,7 +16,7 @@ public static class EnemyInventory
     }
 
     //Adds an Enemy to the Player's Enemy Inventory then scans the calendar going forward, adding the Enemy to appropriate Parties
-    public static void AddEnemy(Enemy e)
+    public static void AddEnemy(EnemyVO e)
     {
 		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 
@@ -32,7 +32,7 @@ public static class EnemyInventory
 
     //Adds the Enemy to future Parties, used in the Add Enemy Function
 // TODO: This really needs to be determined at the start of the party.
-    private static void AdditionPartyScan(Enemy e)
+    private static void AdditionPartyScan(EnemyVO e)
     {
     	CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
 		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d > AmbitionApp.GetModel<CalendarModel>().Today);
@@ -48,7 +48,7 @@ public static class EnemyInventory
 	}
 
     //Removes the Enemy from the Player's Inventory and from any future Parties
-    public static void RemoveEnemy(Enemy e)
+    public static void RemoveEnemy(EnemyVO e)
     {
         RemovalPartyScan(e);
         enemyInventory.Remove(e);
@@ -56,7 +56,7 @@ public static class EnemyInventory
 
     //Removes the Enemy from any future Parties, used in the Remove Enemies Function
     // TODO: Populate enemies when parties start, so that this method doesn't have to exist
-    private static void RemovalPartyScan(Enemy e)
+    private static void RemovalPartyScan(EnemyVO e)
     {
 		CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
 		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d >= AmbitionApp.GetModel<CalendarModel>().Today);

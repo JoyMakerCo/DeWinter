@@ -27,7 +27,7 @@ namespace Ambition
 				}
 				else // Multiple Parties
 				{
-					AmbitionApp.OpenDialog<List<PartyVO>>(DialogConsts.RSVPx2, parties);
+					AmbitionApp.OpenDialog<List<PartyVO>>(DialogConsts.RSVP_CHOICE, parties);
 				}
 			}
 		}

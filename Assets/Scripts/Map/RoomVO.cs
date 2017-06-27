@@ -13,7 +13,7 @@ namespace Ambition
 	    public bool Revealed=false;
 		public Reward [] Rewards;
 		public Guest [] Guests;
-		public List<Enemy> Enemies;
+		public List<EnemyVO> Enemies;
 		public string [] Features;
 		public RoomVO [] Neighbors; // Starting North, Clockwise
 		public float TurnTimer; // Custom TurnTimer?

@@ -198,9 +198,9 @@ room.Shape = new UnityEngine.Vector2[]{new UnityEngine.Vector2(X,Y)};
 
 	    private void PopulateEnemies()
 	    {
-			List<Enemy> enemies = EnemyInventory.enemyInventory.FindAll(e => e.Faction == GameData.tonightsParty.faction);
+			List<EnemyVO> enemies = EnemyInventory.enemyInventory.FindAll(e => e.Faction == GameData.tonightsParty.faction);
 			int X, Y;
-			foreach (Enemy e in enemies)
+			foreach (EnemyVO e in enemies)
 	        {
 				X = _rnd.Next(_map.Width);
 				Y = _rnd.Next(_map.Depth);

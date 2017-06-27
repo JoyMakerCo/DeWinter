@@ -9,19 +9,21 @@ namespace Ambition
 	{
 		private Text _text;
 
-		void Start ()
+		void Awake ()
 		{
 			_text = GetComponent<Text>();
-			AmbitionApp.Subscribe<AdjustValueVO>(HandleRep);
-
-			AdjustValueVO vo = new AdjustValueVO(GameConsts.REPUTATION, AmbitionApp.GetModel<GameModel>().Reputation, false);
-			HandleRep(vo);
+			AmbitionApp.Subscribe<PlayerReputationVO>(HandleRep);
+			_text.text = AmbitionApp.GetModel<GameModel>().Reputation.ToString("###,###");
 		}
-		
-		private void HandleRep (AdjustValueVO vo)
+
+		void OnDestroy()
 		{
-			if (vo.Type == GameConsts.REPUTATION && !vo.IsRequest)
-				_text.text = vo.Amount.ToString("###,###");
+			AmbitionApp.Unsubscribe<PlayerReputationVO>(HandleRep);
+		}
+
+		private void HandleRep (PlayerReputationVO vo)
+		{
+			_text.text = vo.Reputation.ToString("###,###");
 		}
 	}
 }

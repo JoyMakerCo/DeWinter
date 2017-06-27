@@ -1,26 +1,14 @@
 ﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class DialogButtonHandler : MonoBehaviour
+	public class DialogButtonHandler
 	{
-		public Dialog.DialogCanvasManager canvas;
-		public GameObject DialogPrefab;
+		public string Key;
 
-		protected Button _button;
-
-		void Start()
+		public void OpenDialog ()
 		{
-			_button = gameObject.GetComponent<Button>();
-			if (_button != null)
-				_button.onClick.AddListener(OnClick);
-		}
-
-		protected void OnClick()
-		{
-			canvas.Open(DialogPrefab);
+			AmbitionApp.OpenDialog(Key);
 		}
 	}
 }
