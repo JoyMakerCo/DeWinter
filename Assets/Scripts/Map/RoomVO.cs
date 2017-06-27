@@ -34,7 +34,7 @@ public bool IsEntrance=false;
 			get {
 				if (IsImpassible && !Cleared) return 0;
 				int chance = 90 - (Cleared ? 0 : Difficulty * 10);
-				InventoryModel inventory = DeWinterApp.GetModel<InventoryModel>();
+				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
 				ItemVO accessory;
 
 // TODO: Implement Item states

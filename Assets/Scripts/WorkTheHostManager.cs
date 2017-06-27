@@ -101,9 +101,9 @@ public class WorkTheHostManager : MonoBehaviour
     public int hostRemarkSlotComplete = 0; //Used to determine if all the FireBackRemarkSlots have been finished or not
     public Scrollbar hostRemarkCountdownBar;
 
-    private Party party
+    private PartyVO party
     {
-    	get { return DeWinterApp.GetModel<PartyModel>().Party; }
+    	get { return AmbitionApp.GetModel<PartyModel>().Party; }
     }
 
     // Use this for initialization
@@ -677,7 +677,7 @@ public class WorkTheHostManager : MonoBehaviour
                 break;
             case 4:
                 effect = "Outfit Ruined";
-                DeWinterApp.SendMessage<Outfit>(InventoryConsts.REMOVE_ITEM, OutfitInventory.PartyOutfit);
+                AmbitionApp.SendMessage<Outfit>(InventoryConsts.REMOVE_ITEM, OutfitInventory.PartyOutfit);
                 break;
             case 5:
                 effect = "Accessory Ruined";
@@ -779,7 +779,7 @@ public class WorkTheHostManager : MonoBehaviour
         Debug.Log("Trying to go to the After Party Report Screen!");
         party.blackOutEnding = true;
         roomManager.partyManager.FinishTheParty();
-        DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_AfterPartyReport");
+        AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_AfterPartyReport");
         Debug.Log("At the After Party Report Screen!");
     }
 
@@ -912,7 +912,7 @@ public class WorkTheHostManager : MonoBehaviour
 			room.Cleared = true;
 			GameData.tonightsParty.wonRewardsList.Add(reward);
 			subs.Add("$REWARD",reward.Name());
-			DeWinterApp.OpenMessageDialog(dialogType, subs);
+			AmbitionApp.OpenMessageDialog(dialogType, subs);
 
 			if (hostRemarkWindow != null)
             {
@@ -937,13 +937,13 @@ public class WorkTheHostManager : MonoBehaviour
             int reputationLoss = 25;
             int factionReputationLoss = 50;
             GameData.reputationCount -= reputationLoss;
-			DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -factionReputationLoss));
+			AmbitionApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -factionReputationLoss));
             //Explanation Screen Pop Up goes here
             Dictionary<string, string> subs = new Dictionary<string, string>(){
 				{"$FACTIONREPUTATION",factionReputationLoss.ToString()},
 				{"$FACTION",party.faction},
 				{"$REPUTATION",reputationLoss.ToString()}};
-            DeWinterApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_DIALOG, subs);
+            AmbitionApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_DIALOG, subs);
 
             //The Player is pulled from the Work the Room session
             Destroy(gameObject);
@@ -1004,7 +1004,7 @@ public class WorkTheHostManager : MonoBehaviour
                 objectStorage[2] = Random.Range(1, 6);
                 screenFader.gameObject.SendMessage("CreateHostRemarkModal", objectStorage);
                 Text introText = hostRemarkWindow.transform.Find("IntroTextPanel").Find("Text").GetComponent<Text>();
-				string[] hostRemarkIntroList = DeWinterApp.GetModel<PartyModel>().HostIntros;
+				string[] hostRemarkIntroList = AmbitionApp.GetModel<PartyModel>().HostIntros;
                 introText.text = hostRemarkIntroList[Random.Range(0, hostRemarkIntroList.Length)];
                 //So there'll be a wait before the next Host Remark
                 hostRemarkTimer = party.host.nextHostRemarkTimer;

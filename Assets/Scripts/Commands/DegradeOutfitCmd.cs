@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void Execute(Outfit o)
 		{
-			InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
+			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
 			o.novelty -= model.NoveltyDamage;
 			if (o == OutfitInventory.LastPartyOutfit)
 				o.novelty -= model.NoveltyDamage;

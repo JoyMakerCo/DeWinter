@@ -38,7 +38,7 @@ namespace Ambition
 		{
 			set {
 				_currentStyle = value;
-				DeWinterApp.SendMessage<string>(InventoryConsts.STYLE, _currentStyle);
+				AmbitionApp.SendMessage<string>(InventoryConsts.STYLE, _currentStyle);
 			}
 			get { return _currentStyle; }
 		}

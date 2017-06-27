@@ -4,18 +4,18 @@ using Core;
 
 namespace Ambition
 {
-	public class GenerateMapCmd : ICommand<Party>
+	public class GenerateMapCmd : ICommand<PartyVO>
 	{
 		private MapModel _model;
 		private MapVO _map;
 		private Random _rnd;
-		private Party _party;
+		private PartyVO _party;
 		private int _capacity;
 
-		public void Execute(Party party)
+		public void Execute(PartyVO party)
 		{
 			_party = party;
-			_model = DeWinterApp.GetModel<MapModel>();
+			_model = AmbitionApp.GetModel<MapModel>();
 			_rnd = new Random();
 
 			// Determine if the party uses a preset.

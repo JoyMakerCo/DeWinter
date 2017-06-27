@@ -56,7 +56,7 @@ public class TonightsPartyInfo : MonoBehaviour {
 		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
 
-		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 		int index = (faction.Luxury < 0 ? 0 : faction.Luxury == 0 ? 1 : 2);
 		string str = (index != 1) ? fmod.Preference["Luxury"][index] : "";
 
@@ -71,7 +71,7 @@ public class TonightsPartyInfo : MonoBehaviour {
 		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
 
-		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 		int index = (faction.Luxury < 0 ? 0 : faction.Luxury == 0 ? 2 : 1);
 		string str = (index != 1) ? fmod.Preference["Luxury"][index] : "";
 

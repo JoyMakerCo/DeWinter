@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void Execute()
 		{
-			CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
+			CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
 			cmod.Today = cmod.Today.AddDays(1);
 		}
 	}

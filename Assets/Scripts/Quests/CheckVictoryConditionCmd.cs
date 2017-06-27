@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void Execute (EndScreenTextController script)
 		{
-			GameModel gameModel = DeWinterApp.GetModel<GameModel>();
+			GameModel gameModel = AmbitionApp.GetModel<GameModel>();
 
 			if (GameData.playerVictoryStatus == "Political Victory")
 	        {

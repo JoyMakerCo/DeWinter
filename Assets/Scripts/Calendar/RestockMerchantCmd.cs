@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void Execute(DateTime day)
 		{
-			InventoryModel model = DeWinterApp.GetModel<InventoryModel>();
+			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
 			Random rnd = new Random();
 			int count = model.ItemDefinitions.Length;
 			string style;

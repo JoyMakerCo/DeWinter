@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void Execute (EventVO e)
 		{
-			EventModel mod = DeWinterApp.GetModel<EventModel>();
+			EventModel mod = AmbitionApp.GetModel<EventModel>();
 			if (mod.SelectedEvent == e)
 			{
 				mod.SelectedEvent = null;

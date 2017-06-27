@@ -8,23 +8,23 @@ using Dialog;
 using Core;
 
 
-public class RSVPDialogMediator : DialogView, IDialog<Party>
+public class RSVPDialogMediator : DialogView, IDialog<PartyVO>
 {
 	public Text TitleTxt;
 	public Text BodyTxt;
 
-	private Party _party;
+	private PartyVO _party;
 	private LocalizationModel _localization;
 
 
-	public void OnOpen(Party party)
+	public void OnOpen(PartyVO party)
 	{
-		ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+		ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 		Dictionary <string, string> dialogsubs = new Dictionary<string, string>(){
 			{"$PARTYSIZE", party.SizeString()}};
 
 		_party = party;
-		_localization = DeWinterApp.GetModel<LocalizationModel>();
+		_localization = AmbitionApp.GetModel<LocalizationModel>();
 		TitleTxt.text = _localization.GetString(DialogConsts.RSVP_DIALOG + DialogConsts.TITLE);
 
 		if (smod.Servants.ContainsKey(ServantConsts.SPYMASTER))
@@ -56,6 +56,6 @@ public class RSVPDialogMediator : DialogView, IDialog<Party>
     {
         //0 means no RSVP yet, 1 means Attending and -1 means Decline
         _party.RSVP = decision;
-        DeWinterApp.SendMessage<Party>(CalendarMessages.RSVP, _party);
+        AmbitionApp.SendMessage<PartyVO>(CalendarMessages.RSVP, _party);
     }
 }

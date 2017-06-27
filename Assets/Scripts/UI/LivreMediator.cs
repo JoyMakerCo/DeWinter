@@ -12,9 +12,9 @@ namespace Ambition
 		void Start ()
 		{
 			_text = GetComponent<Text>();
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleLivre);
+			AmbitionApp.Subscribe<AdjustValueVO>(HandleLivre);
 
-			AdjustValueVO vo = new AdjustValueVO(GameConsts.LIVRE, DeWinterApp.GetModel<GameModel>().Livre, false);
+			AdjustValueVO vo = new AdjustValueVO(GameConsts.LIVRE, AmbitionApp.GetModel<GameModel>().Livre, false);
 			HandleLivre(vo);
 		}
 		

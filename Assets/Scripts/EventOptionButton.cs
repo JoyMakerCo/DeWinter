@@ -13,12 +13,12 @@ namespace Ambition
 
 	    void Awake()
 	    {
-			DeWinterApp.Subscribe<EventVO>(HandleEventUpdate);
+			AmbitionApp.Subscribe<EventVO>(HandleEventUpdate);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<EventVO>(HandleEventUpdate);
+			AmbitionApp.Unsubscribe<EventVO>(HandleEventUpdate);
 	    }
 
 		private void HandleEventUpdate(EventVO e)
@@ -30,7 +30,7 @@ namespace Ambition
 				EventOption eventOption = stage.Options[option];
 				if (show && eventOption.servantRequired != null)
 				{
-					ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+					ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 					show = smod.Hired.ContainsKey(eventOption.servantRequired);
 				}
 				if (show) myText.text = eventOption.optionButtonText;

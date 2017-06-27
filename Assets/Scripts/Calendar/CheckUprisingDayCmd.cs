@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void Execute (DateTime day)
 		{
-			CalendarModel imod = DeWinterApp.GetModel<CalendarModel>();
+			CalendarModel imod = AmbitionApp.GetModel<CalendarModel>();
 			if (day == imod.uprisingDay)
 			{
 				string victoriousPower;
@@ -64,7 +64,7 @@ namespace Ambition
 		        {
 		            GameData.playerVictoryStatus = "Political Loss";
 		        }
-		        DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
+		        AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
 	       	}
     	}		
 	}

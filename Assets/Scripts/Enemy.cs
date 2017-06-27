@@ -17,7 +17,7 @@ public class Enemy
     public Enemy(string faction, string name, bool isFemale)
     {
     	Random rnd = new Random();
-		PartyModel model = DeWinterApp.GetModel<PartyModel>();
+		PartyModel model = AmbitionApp.GetModel<PartyModel>();
 
 		disposition = model.Dispositions[rnd.Next(model.Dispositions.Length)];
         Faction = faction;
@@ -31,7 +31,7 @@ public class Enemy
 	public Enemy(string faction=null)
 	{
 		Random rnd = new Random();
-		PartyModel model = DeWinterApp.GetModel<PartyModel>();
+		PartyModel model = AmbitionApp.GetModel<PartyModel>();
 
 		disposition = model.Dispositions[rnd.Next(model.Dispositions.Length)];
         Faction = faction;
@@ -43,7 +43,7 @@ public class Enemy
 
     private string GenerateName()
     {
-    	PartyModel model = DeWinterApp.GetModel<PartyModel>();
+    	PartyModel model = AmbitionApp.GetModel<PartyModel>();
         string title;
         string firstName;
         Random rnd = new Random();

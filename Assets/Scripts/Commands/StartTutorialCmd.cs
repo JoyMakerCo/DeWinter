@@ -8,22 +8,22 @@ namespace Ambition
 		private const string TUTORIAL_MAP_ID = "Tutorial";
 		public void Execute ()
 		{
-			PartyModel pmod = DeWinterApp.GetModel<PartyModel>();
-			Party p = new Party(1);
+			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
+			PartyVO p = new PartyVO(1);
 			p.tutorial = true;
 			p.turns = p.turnsLeft = 10;
 			p.invited = true;
 			p.invitationDistance = 1;
-			p.Date = DeWinterApp.GetModel<CalendarModel>().Today;
+			p.Date = AmbitionApp.GetModel<CalendarModel>().Today;
 			pmod.Party = p;
 
-			MapModel mmod = DeWinterApp.GetModel<MapModel>();
+			MapModel mmod = AmbitionApp.GetModel<MapModel>();
 			mmod.Map = mmod.Maps[TUTORIAL_MAP_ID];
 
-			DeWinterApp.GetModel<EventModel>().SelectedEvent = null;
-			DeWinterApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			DeWinterApp.RegisterCommand<CreateInvitationsCmd, DateTime>();
-			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT); 
+			AmbitionApp.GetModel<EventModel>().SelectedEvent = null;
+			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
+			AmbitionApp.RegisterCommand<CreateInvitationsCmd, DateTime>();
+			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT); 
 		}
 	}
 }

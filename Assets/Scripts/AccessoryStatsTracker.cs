@@ -34,7 +34,7 @@ public class AccessoryStatsTracker : MonoBehaviour
 
     void Update()
     {
-    	InventoryModel m = DeWinterApp.GetModel<InventoryModel>();
+    	InventoryModel m = AmbitionApp.GetModel<InventoryModel>();
         if (inventoryType == "personal")
         {
             if (accessoryInventoryList.selectedAccessory != null)

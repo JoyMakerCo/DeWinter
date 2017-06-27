@@ -13,8 +13,8 @@ namespace Ambition
 	    void Awake () {
 	        _sceneFadeImage = this.GetComponent<Image>();
 	        _sceneFadeImage.transform.localScale = Vector3.one;
-	        DeWinterApp.Subscribe(GameMessages.FADE_IN, FadeToClear);
-			DeWinterApp.Subscribe(GameMessages.FADE_OUT, FadeToBlack);
+	        AmbitionApp.Subscribe(GameMessages.FADE_IN, FadeToClear);
+			AmbitionApp.Subscribe(GameMessages.FADE_OUT, FadeToBlack);
 	    }
 
 	    void Start()
@@ -24,8 +24,8 @@ namespace Ambition
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe(GameMessages.FADE_IN, FadeToClear);
-			DeWinterApp.Unsubscribe(GameMessages.FADE_OUT, FadeToBlack);
+			AmbitionApp.Unsubscribe(GameMessages.FADE_IN, FadeToClear);
+			AmbitionApp.Unsubscribe(GameMessages.FADE_OUT, FadeToBlack);
 	    }
 
 	    void FadeToClear()
@@ -61,7 +61,7 @@ namespace Ambition
 				_sceneFadeImage.color = Color.Lerp(c0, c1,  t / fadeSpeed);
 				yield return null;
 		    }
-			DeWinterApp.SendMessage(ToBlack ? GameMessages.FADE_OUT_COMPLETE : GameMessages.FADE_IN_COMPLETE);
+			AmbitionApp.SendMessage(ToBlack ? GameMessages.FADE_OUT_COMPLETE : GameMessages.FADE_IN_COMPLETE);
 			_sceneFadeImage.enabled = ToBlack;
 			_sceneFadeImage.color = c1;
 	    }

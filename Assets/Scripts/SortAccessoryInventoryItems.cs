@@ -32,7 +32,7 @@ namespace Ambition
 	    // Use this for initialization
 	    void Start()
 	    {
-			_model = DeWinterApp.GetModel<InventoryModel>();
+			_model = AmbitionApp.GetModel<InventoryModel>();
 	        SetUpButtons();
 
 	        if (inventoryType == "personal")

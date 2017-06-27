@@ -22,9 +22,9 @@ public class AccessoryInventoryList : MonoBehaviour
     {
 		List<ItemVO> accessories;
 		if (inventoryType == "personal")
-			accessories = DeWinterApp.GetModel<InventoryModel>().Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
+			accessories = AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
 		else
-			accessories = DeWinterApp.GetModel<InventoryModel>().Market.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
+			accessories = AmbitionApp.GetModel<InventoryModel>().Market.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
 
 		if (accessories != null)
 		{

@@ -18,7 +18,7 @@ namespace Ambition
 
 	    void Start()
 	    {
-	    	LocalizationModel localization = DeWinterApp.GetModel<LocalizationModel>();
+	    	LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
 			BodyText.text = localization.GetString(DIALOG_PHRASE + DialogConsts.BODY);
 			TitleText.text = localization.GetString(DIALOG_PHRASE + DialogConsts.TITLE);
 
@@ -27,14 +27,14 @@ namespace Ambition
 
 	    public void CreateCancellationModal()
 	    {
-	    	List<Party> parties;
-	    	CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
+	    	List<PartyVO> parties;
+	    	CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
 	    	if (cmod.Parties.TryGetValue(cmod.Today, out parties))
 	    	{
-	    		Party party = parties.Find(p => p.RSVP == 1);
+	    		PartyVO party = parties.Find(p => p.RSVP == 1);
 	    		if (party != null)
 	    		{
-					DeWinterApp.OpenDialog<Party>(DialogConsts.CANCEL, party);
+					AmbitionApp.OpenDialog<PartyVO>(DialogConsts.CANCEL, party);
 				}
 			}
 	    }

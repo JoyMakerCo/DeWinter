@@ -28,9 +28,9 @@ namespace Ambition
 	    // Use this for initialization
 	    void Awake()
 	    {
-			_gmod = DeWinterApp.GetModel<GameModel>();
+			_gmod = AmbitionApp.GetModel<GameModel>();
 	        StockReputationLevelIcons();
-			DeWinterApp.Subscribe<PlayerReputationVO>(HandlePlayerReputation);
+			AmbitionApp.Subscribe<PlayerReputationVO>(HandlePlayerReputation);
 
 			PlayerReputationVO vo = new PlayerReputationVO(GameData.reputationCount,  GameData.playerReputationLevel);
 			HandlePlayerReputation(vo);
@@ -38,7 +38,7 @@ namespace Ambition
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<PlayerReputationVO>(HandlePlayerReputation);
+			AmbitionApp.Unsubscribe<PlayerReputationVO>(HandlePlayerReputation);
 	    }
 
 		private void HandlePlayerReputation(PlayerReputationVO vo)
@@ -53,7 +53,7 @@ namespace Ambition
 		    }
 		    else
 		    {
-				DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
+				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
 		    }
 	    }
 

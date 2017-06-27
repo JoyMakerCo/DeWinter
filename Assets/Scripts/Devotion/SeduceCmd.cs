@@ -8,7 +8,7 @@ namespace Ambition
 		public void Execute (SeductionVO s)
 		{
 			NotableVO notable;
-			DevotionModel model = DeWinterApp.GetModel<DevotionModel>();
+			DevotionModel model = AmbitionApp.GetModel<DevotionModel>();
 			if (model.Notables.TryGetValue(s.Notable, out notable))
 			{
 				int seductionChance =
@@ -18,7 +18,7 @@ namespace Ambition
 
 				if ((new Random()).Next(100) < seductionChance)
 				{
-					DeWinterApp.SendMessage<NotableVO>(PartyConstants.START_DANCING, notable);
+					AmbitionApp.SendMessage<NotableVO>(PartyConstants.START_DANCING, notable);
 				}
 			}
 		}

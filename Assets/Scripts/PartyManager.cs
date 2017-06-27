@@ -20,10 +20,10 @@ namespace Ambition
 	        ConfidenceTally(); //Tally up the Player's Total Confidence
 
 	        //Damage the Outfit's Novelty, how that the Confidence has already been Tallied
-			DeWinterApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, OutfitInventory.PartyOutfit);
+			AmbitionApp.SendMessage<Outfit>(InventoryConsts.DEGRADE_OUTFIT, OutfitInventory.PartyOutfit);
 
 			ItemVO accessory;
-			InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
+			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 			if (imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Garter Flask")
 			{
 				GameData.tonightsParty.maxPlayerDrinkAmount++;
@@ -53,7 +53,7 @@ namespace Ambition
 	    {
 	        GameData.tonightsParty.maxPlayerConfidence = 0;
 	        GameData.tonightsParty.currentPlayerConfidence = 0;
-	        InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
+	        InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 	        //Calculate Confidence Values Here------------
 	        //Faction Outfit Likes (Military doesn't know anything, so they use the Average Value)
 	        float outfitReaction;
@@ -111,7 +111,7 @@ namespace Ambition
 	        }
 	        //Faction Rep
 	        int factionReaction = _faction.ConfidenceBonus;
-	        GameModel gameModel = DeWinterApp.GetModel<GameModel>();
+	        GameModel gameModel = AmbitionApp.GetModel<GameModel>();
 	        GameData.tonightsParty.maxPlayerConfidence += factionReaction;
 	        //General Rep Reaction
 			int generalRepReaction = gameModel.ConfidenceBonus;
@@ -140,7 +140,7 @@ namespace Ambition
 	    {
 	        if (GameData.tonightsParty.tutorial)
 	        {
-	        	DeWinterApp.OpenMessageDialog(DialogConsts.PARTY_TUTORIAL_DIALOG);
+	        	AmbitionApp.OpenMessageDialog(DialogConsts.PARTY_TUTORIAL_DIALOG);
 	        }
 	    }
 
@@ -153,7 +153,7 @@ namespace Ambition
 	            //Explanatory Pop Up
 	            Dictionary<string, string> substitutions = new Dictionary<string, string>()
 					{{"$HOSTNAME",GameData.tonightsParty.host.Name}};
-	            DeWinterApp.OpenMessageDialog(DialogConsts.REPUTATION_WINE_DIALOG, substitutions);
+	            AmbitionApp.OpenMessageDialog(DialogConsts.REPUTATION_WINE_DIALOG, substitutions);
 	        }
 	    }
 
@@ -178,7 +178,7 @@ namespace Ambition
 	                    case "Introduction":
 	                        if (t.amount > 0)
 	                        {
-								DeWinterApp.SendMessage<string>(ServantConsts.INTRODUCE_SERVANT, t.SubType());
+								AmbitionApp.SendMessage<string>(ServantConsts.INTRODUCE_SERVANT, t.SubType());
 	                        }
 	                        break;
 	                    case "Gossip":
@@ -194,7 +194,7 @@ namespace Ambition
 	            }
 				OutfitInventory.PartyOutfit = null;
 		        GameData.partyAccessory = null;
-				DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_AfterPartyReport");
+				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_AfterPartyReport");
 	        } else
 	        {
 	            Debug.Log("Player can't leave the Tutorial Party until they've met the Host");
@@ -204,8 +204,8 @@ namespace Ambition
 	    //If the Player is of sufficiently high General Reputation, they may change the Style of Fashion just by showing up with matching Outfit and Accessories
 	    void FashionChangeCheck()
 	    {
-	    	GameModel gm = DeWinterApp.GetModel<GameModel>();
-			InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
+	    	GameModel gm = AmbitionApp.GetModel<GameModel>();
+			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 	        //Is the Player in the wrong Style (but matching) and are they Level 8 or higher?
 	        if (OutfitInventory.PartyOutfit.style != imod.CurrentStyle
 	        	&& gm.ReputationLevel >= 8
@@ -218,7 +218,7 @@ namespace Ambition
 	                Dictionary<string, string> substitutions = new Dictionary<string, string>(){
 						{"$OLDSTYLE",imod.CurrentStyle},
 						{"$NEWSTYLE",OutfitInventory.PartyOutfit.style}};
-					DeWinterApp.OpenMessageDialog(DialogConsts.SET_TREND_DIALOG, substitutions);
+					AmbitionApp.OpenMessageDialog(DialogConsts.SET_TREND_DIALOG, substitutions);
 	            }
 	        }
 	    }

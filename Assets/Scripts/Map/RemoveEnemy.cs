@@ -9,7 +9,7 @@ namespace Ambition
 
 		public void Execute (Enemy enemy)
 		{
-			RemoveEnemyFromRoom(DeWinterApp.GetModel<MapModel>().Room, enemy);
+			RemoveEnemyFromRoom(AmbitionApp.GetModel<MapModel>().Room, enemy);
         }
 
         private void RemoveEnemyFromRoom(RoomVO room, Enemy enemy)

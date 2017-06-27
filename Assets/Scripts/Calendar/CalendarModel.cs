@@ -24,7 +24,7 @@ namespace Ambition
         	"Decembre"
         };
 
-		public Dictionary<DateTime, List<Party>> Parties = new Dictionary<DateTime, List<Party>>();
+		public Dictionary<DateTime, List<PartyVO>> Parties = new Dictionary<DateTime, List<PartyVO>>();
 
 		private DateTime _startDate;
 		private int _gameLength;
@@ -104,17 +104,17 @@ namespace Ambition
 			uprisingDay= _startDate.AddDays(new Random().Next(25, 31));
 		}
 
-		public void UpdateParty(Party party)
+		public void UpdateParty(PartyVO party)
 		{
 			if (!Parties.ContainsKey(party.Date))
 			{
-				Parties.Add(party.Date, new List<Party>{party});
+				Parties.Add(party.Date, new List<PartyVO>{party});
 			}
 			else if (!Parties[party.Date].Contains(party))
 			{
 				Parties[party.Date].Add(party);
 			}
-			AmbitionApp.SendMessage<Party>(party);
+			AmbitionApp.SendMessage<PartyVO>(party);
 		}
 
 		string dayString(int day)

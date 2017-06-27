@@ -8,7 +8,7 @@ namespace Ambition
 	{
 		public void Execute (ServantVO servant)
 		{
-			ServantModel model = DeWinterApp.GetModel<ServantModel>();
+			ServantModel model = AmbitionApp.GetModel<ServantModel>();
 
 			if (model.Hired.ContainsKey(servant.slot) && model.Hired[servant.slot] == servant)
 			{

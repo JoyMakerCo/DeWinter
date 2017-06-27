@@ -50,7 +50,7 @@ namespace Ambition
 	            	&& rnd.Next(0, 4) == 0)
 		        {
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
-					AmbitionApp.SendMessage<Party>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
+					AmbitionApp.SendMessage<PartyVO>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
 		        }
 			}
 

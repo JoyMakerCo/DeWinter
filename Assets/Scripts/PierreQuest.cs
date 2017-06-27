@@ -37,8 +37,8 @@ public class PierreQuest
 
     void GenerateDeadline()
     {
-    	CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
-    	List<Party> parties;
+    	CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
+    	List<PartyVO> parties;
     	DateTime day = model.Today;
 		for (int i=0; i<MAX_DEADLINE; i++)
 		{

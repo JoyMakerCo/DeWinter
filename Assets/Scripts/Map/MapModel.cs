@@ -21,7 +21,7 @@ namespace Ambition
 			set
 			{
 				_map = value;
-				DeWinterApp.SendMessage<MapVO>(_map);
+				AmbitionApp.SendMessage<MapVO>(_map);
 				Room = (_map != null) ? _map.Entrance : null;
 			}
 		}
@@ -34,7 +34,7 @@ namespace Ambition
 			{
 				_room = value;
 				_room.Revealed = true;
-				DeWinterApp.SendMessage<RoomVO>(_room);
+				AmbitionApp.SendMessage<RoomVO>(_room);
 			}
 		}
 

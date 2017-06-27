@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void SendButtonMessage(string messageID)
 		{
-			DeWinterApp.SendMessage(messageID);
+			AmbitionApp.SendMessage(messageID);
 		}
 	}
 }

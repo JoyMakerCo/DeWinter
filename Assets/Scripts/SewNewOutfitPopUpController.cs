@@ -62,9 +62,9 @@ public class SewNewOutfitPopUpController : MonoBehaviour {
     int CalculatePrice()
     {
         int calcPrice = (int)(Mathf.Abs(outfitModesty) + Mathf.Abs(outfitLuxury));
-        if (outfitStyle != DeWinterApp.GetModel<InventoryModel>().CurrentStyle) //Check to see if this Outfit matches what's in Style
+        if (outfitStyle != AmbitionApp.GetModel<InventoryModel>().CurrentStyle) //Check to see if this Outfit matches what's in Style
         {
-			calcPrice = (int)(calcPrice * DeWinterApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
+			calcPrice = (int)(calcPrice * AmbitionApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
         }
         if (calcPrice < 10) // If the Price is less than 10 make it 10. Will Sell for 5 at most (Sell price is 50% of Buy Price)
         {

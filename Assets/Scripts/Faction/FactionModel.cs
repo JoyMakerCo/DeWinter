@@ -27,16 +27,16 @@ namespace Ambition
 
 		public void Initialize()
 		{
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleFactionReputation);
-			DeWinterApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
-			DeWinterApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+			AmbitionApp.Subscribe<AdjustValueVO>(HandleFactionReputation);
+			AmbitionApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
+			AmbitionApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
 		}
 
 		public void Dispose()
 		{
-			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleFactionReputation);
-			DeWinterApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
-			DeWinterApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+			AmbitionApp.Unsubscribe<AdjustValueVO>(HandleFactionReputation);
+			AmbitionApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
+			AmbitionApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
 		}
 
 		public FactionVO this[string faction]
@@ -73,7 +73,7 @@ namespace Ambition
 				_factions[vo.Type].playerReputation += (int)vo.Amount;
 				vo.IsRequest = false;
 // TODO: This is clunky. Make it a bit more clear.
-				DeWinterApp.SendMessage<AdjustValueVO>(vo);
+				AmbitionApp.SendMessage<AdjustValueVO>(vo);
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Ambition
 			{
 				_factions[vo.Type].Allegiance += (int)vo.Amount;
 				vo.IsRequest = false;
-				DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
+				AmbitionApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
 			}
 		}
 
@@ -93,7 +93,7 @@ namespace Ambition
 			{
 				_factions[vo.Type].Power += (int)vo.Amount;
 				vo.IsRequest = false;
-				DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
+				AmbitionApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
 			}
 		}
 	}

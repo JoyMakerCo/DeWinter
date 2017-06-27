@@ -9,7 +9,7 @@ namespace Ambition
 	{
 		public QuestModel () : base("QuestData")
 		{
-			DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
+			AmbitionApp.Subscribe<DateTime>(HandleCalendarDay);
 		}
 
 		public List<PierreQuest> Quests = new List<PierreQuest>();

@@ -41,11 +41,11 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-		_model = DeWinterApp.GetModel<MapModel>();
-		_partyModel = DeWinterApp.GetModel<PartyModel>();
+		_model = AmbitionApp.GetModel<MapModel>();
+		_partyModel = AmbitionApp.GetModel<PartyModel>();
         partyManager = this.transform.parent.GetComponent<PartyManager>();
-		DeWinterApp.SendMessage<Party>(MapMessage.GENERATE_MAP, _partyModel.Party);
-		DeWinterApp.Subscribe<Party>(PartyConstants.SHOW_DRINK_MODAL, handleDrinkModal);
+		AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, _partyModel.Party);
+		AmbitionApp.Subscribe<PartyVO>(PartyConstants.SHOW_DRINK_MODAL, handleDrinkModal);
 		DrawMap();
 		currentPlayerRoom = Map.Entrance;
     }
@@ -122,7 +122,7 @@ public class RoomManager : MonoBehaviour
             {
             	Dictionary<string, string> subs = new Dictionary<string, string>()
 					{{"$ROOMNAME",currentPlayerRoom.Name}};
-            	DeWinterApp.OpenMessageDialog(DialogConsts.MOVED_THROUGH_DIALOG, subs);
+            	AmbitionApp.OpenMessageDialog(DialogConsts.MOVED_THROUGH_DIALOG, subs);
             }
             else // The Player fails to Move Through and is Ambushed!
             {
@@ -156,10 +156,10 @@ public class RoomManager : MonoBehaviour
 			_partyModel.Party.currentPlayerIntoxication=0;
     }
 
-    private void handleDrinkModal(Party p)
+    private void handleDrinkModal(PartyVO p)
     {
     	Dictionary<string, string> subs = new Dictionary<string, string>(){
     		{"$HOSTNAME",p.host.Name}};
-    	DeWinterApp.OpenMessageDialog(DialogConsts.REFILL_WINE_DIALOG, subs);
+    	AmbitionApp.OpenMessageDialog(DialogConsts.REFILL_WINE_DIALOG, subs);
     }
 }

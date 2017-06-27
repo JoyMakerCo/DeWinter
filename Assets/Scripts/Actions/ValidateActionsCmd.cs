@@ -9,7 +9,7 @@ namespace Ambition
 	{
 		public void Execute(string type)
 		{
-			ActionModel model = DeWinterApp.GetModel<ActionModel>();
+			ActionModel model = AmbitionApp.GetModel<ActionModel>();
 			List<ActionVO> actions;
 			if (type != null && model.Actions.TryGetValue(type, out actions))
 			{

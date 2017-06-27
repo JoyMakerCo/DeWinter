@@ -34,7 +34,7 @@ namespace Ambition
 	    private Image myBlockImage;
 	    private Color defaultColor;
 		private DateTime _day;
-		private List<Party> _parties;
+		private List<PartyVO> _parties;
 		private int _displayMonth;
 		private Button _btn;
 		private CalendarModel _model;
@@ -48,8 +48,8 @@ namespace Ambition
 			_model = AmbitionApp.GetModel<CalendarModel>();
 			AmbitionApp.Subscribe<DateTime>(HandleCalendarDay);
 			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
-			AmbitionApp.Subscribe<Party>(HandlePartyUpdated);
-			AmbitionApp.Subscribe<Party>(PartyMessages.RSVP, HandlePartyUpdated);
+			AmbitionApp.Subscribe<PartyVO>(HandlePartyUpdated);
+			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
 	    }
 
 	    void OnDestroy()
@@ -57,8 +57,8 @@ namespace Ambition
 			_btn.onClick.RemoveListener(RSVP);
 			AmbitionApp.Unsubscribe<DateTime>(HandleCalendarDay);
 			AmbitionApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
-			AmbitionApp.Unsubscribe<Party>(HandlePartyUpdated);
-			AmbitionApp.Unsubscribe<Party>(PartyMessages.RSVP, HandlePartyUpdated);
+			AmbitionApp.Unsubscribe<PartyVO>(HandlePartyUpdated);
+			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
 	    }
 
 		private void HandleCalendarDay(DateTime date)
@@ -68,7 +68,7 @@ namespace Ambition
 			_day = _day.AddDays(rowID*7 + columnID - offset);
 
 			bool isCurrentMonth = (_day.Month == date.Month);
-	        List<Party> parties;
+	        List<PartyVO> parties;
 
 			myBlockImage.color = isCurrentMonth ? defaultColor : Color.gray;
 			dateText.text = _day.Day.ToString();
@@ -79,7 +79,7 @@ namespace Ambition
 			}
 			else
 			{
-				_parties = new List<Party>();
+				_parties = new List<PartyVO>();
 			}
 
 			for (int i=partyFactionImages.Length-1; i>=0; i--)
@@ -105,7 +105,7 @@ namespace Ambition
 			pastDayXImage.enabled = (_model.Today > _day);
 		}
 
-		private void HandlePartyUpdated(Party p)
+		private void HandlePartyUpdated(PartyVO p)
 		{
 			if (p.Date == _day)
 			{

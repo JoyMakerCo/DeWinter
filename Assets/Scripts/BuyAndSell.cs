@@ -25,7 +25,7 @@ public class BuyAndSell : MonoBehaviour {
         {
             if (OutfitInventory.personalInventory.Count < OutfitInventory.personalInventoryMaxSize) // Will it fit in the Player's inventory?
             {
-                if (DeWinterApp.GetModel<GameModel>().Livre >= merchantInventoryList.selectedInventoryOutfit.OutfitPrice(inventoryType)) // Can they afford it?
+                if (AmbitionApp.GetModel<GameModel>().Livre >= merchantInventoryList.selectedInventoryOutfit.OutfitPrice(inventoryType)) // Can they afford it?
                 {
                     object[] objectStorage = new object[3];
                     objectStorage[0] = "merchant";
@@ -43,7 +43,7 @@ public class BuyAndSell : MonoBehaviour {
             	Dictionary<string, string> subs = new Dictionary<string, string>(){
 					{"$ITEM",merchantInventoryList.selectedInventoryOutfit.Name()},
 					{"$CAPACITY",OutfitInventory.personalInventoryMaxSize.ToString()}};
-				DeWinterApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
+				AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
             }           
         }
     }

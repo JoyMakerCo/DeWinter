@@ -12,7 +12,7 @@ namespace Ambition
 
 	    void Start()
 	    {
-			_cmod = DeWinterApp.GetModel<CalendarModel>();
+			_cmod = AmbitionApp.GetModel<CalendarModel>();
 	        updateDate();
 	    }
 

@@ -10,7 +10,7 @@ namespace Ambition
 		{
 			if (day.Day%7 == 0)
 			{
-				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+				ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 				int numservants=0;
 				AdjustValueVO vo = new AdjustValueVO(GameConsts.LIVRE, 0);
 				ServantVO servant;
@@ -23,12 +23,12 @@ namespace Ambition
 
 	            if (vo.Amount < 0)
 	            {
-					DeWinterApp.SendMessage<AdjustValueVO>(vo);
+					AmbitionApp.SendMessage<AdjustValueVO>(vo);
 					Dictionary<string, string> substitutions = new Dictionary<string, string>(){
 						{"$NUMSERVANTS",numservants.ToString()},
 						{"$TOTALWAGES",(-vo.Amount).ToString()},
 						{"$LIVRE",GameData.moneyCount.ToString()}};
-					DeWinterApp.OpenMessageDialog(DialogConsts.PAY_DAY_DIALOG, substitutions);
+					AmbitionApp.OpenMessageDialog(DialogConsts.PAY_DAY_DIALOG, substitutions);
 				}
 			}
 		}

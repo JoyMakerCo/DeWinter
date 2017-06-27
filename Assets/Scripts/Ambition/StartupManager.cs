@@ -28,7 +28,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<DancingCmd, NotableVO>(PartyConstants.START_DANCING);
 			AmbitionApp.RegisterCommand<GrantRewardCmd, RewardVO>();
 			AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, AdjustValueVO>();
-			AmbitionApp.RegisterCommand<GenerateMapCmd, Party>(MapMessage.GENERATE_MAP);
+			AmbitionApp.RegisterCommand<GenerateMapCmd, PartyVO>(MapMessage.GENERATE_MAP);
 			AmbitionApp.RegisterCommand<DegradeOutfitCmd, Outfit>(InventoryConsts.BUY_ITEM);
 			AmbitionApp.RegisterCommand<IntroServantCmd, string>(ServantConsts.INTRODUCE_SERVANT);
 			AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantConsts.HIRE_SERVANT);
@@ -40,7 +40,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			AmbitionApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
 			AmbitionApp.RegisterCommand<EndEventCmd, EventVO>(EventMessages.END_EVENT);
-			AmbitionApp.RegisterCommand<RSVPCmd, Party>(PartyMessages.RSVP);
+			AmbitionApp.RegisterCommand<RSVPCmd, PartyVO>(PartyMessages.RSVP);
 			AmbitionApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
 			AmbitionApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
 

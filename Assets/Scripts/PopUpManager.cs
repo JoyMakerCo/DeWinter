@@ -243,7 +243,7 @@ public class PopUpManager : MonoBehaviour
     //This is used in the beginning of the Party Screen to tally up a Player's Confidence stat
     void CreateConfidenceTallyModal(object[] objectStorage)
     {
-    	InventoryModel imod = DeWinterApp.GetModel<InventoryModel>();
+    	InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
         Outfit outfit = objectStorage[0] as Outfit;
         ItemVO accessory = objectStorage[1] as ItemVO;
         string partyFaction = objectStorage[2].ToString();
@@ -360,7 +360,7 @@ public class PopUpManager : MonoBehaviour
     //This is used in the Party Scene for Players to choose whether they wish to engage in conversation (Work the Room) or try to avoid everyone (Move Through)
     void CreateRoomChoiceModal(int[] intStorage)
     {
-    	MapModel model = DeWinterApp.GetModel<MapModel>();
+    	MapModel model = AmbitionApp.GetModel<MapModel>();
 
         int xPos = intStorage[0];
         int yPos = intStorage[1];
@@ -488,11 +488,11 @@ public class PopUpManager : MonoBehaviour
     	Dictionary<string,string> subs = new Dictionary<string, string>(){{"$FACTION",faction}};
     	if (GameData.factionList["Third Estate"].ReputationLevel >= 2)
     	{
-    		DeWinterApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, subs);
+    		AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, subs);
     	}
     	else
     	{
-			DeWinterApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_DIALOG, subs);
+			AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_DIALOG, subs);
     	}
     }
 
@@ -571,6 +571,6 @@ public class PopUpManager : MonoBehaviour
     void CreatePierreQuestReemedModal(PierreQuest quest)
     {
     	Dictionary<string,string> subs = new Dictionary<string, string>(){{"$REWARD",quest.reward.Name()}};
-    	DeWinterApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
+    	AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
     }
 }

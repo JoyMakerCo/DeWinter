@@ -10,7 +10,7 @@ namespace Ambition
 
 		void Awake()
 		{
-			_model = DeWinterApp.GetModel<CalendarModel>();
+			_model = AmbitionApp.GetModel<CalendarModel>();
 		}
 
 		// Use this for initialization

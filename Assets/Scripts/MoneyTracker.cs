@@ -14,12 +14,12 @@ namespace Ambition
 	    void Start()
 	    {
 	        myText = GetComponent<Text>();
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleBalanceUpdate);
+			AmbitionApp.Subscribe<AdjustValueVO>(HandleBalanceUpdate);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleBalanceUpdate);
+			AmbitionApp.Unsubscribe<AdjustValueVO>(HandleBalanceUpdate);
 	    }
 
 		private void HandleBalanceUpdate(AdjustValueVO vo)

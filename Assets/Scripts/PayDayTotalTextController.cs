@@ -30,7 +30,7 @@ namespace Ambition
 	            }
 	        }
 	        payDayText += "\nTotal: " + wageTotal.ToString("£" + "#,##0") + "/Week";
-	        int payDayTime = 7 - ((int)(DeWinterApp.GetModel<CalendarModel>().Today.DayOfWeek) % 7);
+	        int payDayTime = 7 - ((int)(AmbitionApp.GetModel<CalendarModel>().Today.DayOfWeek) % 7);
 	        payDayText += "\nNext Pay Day is in " + payDayTime + " Days";
 	        myText.text = payDayText;
 	    }

@@ -9,7 +9,7 @@ namespace Ambition
 		{
 			if (!vo.IsRequest && vo.Type == "Military")
 			{
-				FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+				FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 				if (fmod["Military"].ReputationLevel >= 9)
 		        {
 					EnemyInventory.enemyInventory.RemoveAll(e => e.Faction == "Military");

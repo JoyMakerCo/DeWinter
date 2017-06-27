@@ -8,26 +8,26 @@ namespace Ambition
 	{
 		public void Execute (DateTime date)
 		{
-			Dictionary<DateTime, List<Party>> calendar = DeWinterApp.GetModel<CalendarModel>().Parties;
+			Dictionary<DateTime, List<PartyVO>> calendar = AmbitionApp.GetModel<CalendarModel>().Parties;
 			if (calendar.ContainsKey(date))
 			{
-				List<Party> parties = calendar[date].FindAll(x => x.invited);
+				List<PartyVO> parties = calendar[date].FindAll(x => x.invited);
 				if (parties.Count == 0) return; // No parties!
 
 				if (parties.Count == 1) // Easy choice.
 				{
 					if (parties[0].RSVP < 1)
 					{
-						DeWinterApp.OpenDialog<Party>(DialogConsts.RSVP, parties[0]);
+						AmbitionApp.OpenDialog<PartyVO>(DialogConsts.RSVP, parties[0]);
 					}
 					else
 					{
-						DeWinterApp.OpenDialog<Party>(DialogConsts.CANCEL, parties[0]);
+						AmbitionApp.OpenDialog<PartyVO>(DialogConsts.CANCEL, parties[0]);
 					}
 				}
 				else // Multiple Parties
 				{
-					DeWinterApp.OpenDialog<List<Party>>(DialogConsts.RSVPx2, parties);
+					AmbitionApp.OpenDialog<List<PartyVO>>(DialogConsts.RSVPx2, parties);
 				}
 			}
 		}

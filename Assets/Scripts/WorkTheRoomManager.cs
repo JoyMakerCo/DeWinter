@@ -147,9 +147,9 @@ public class WorkTheRoomManager : MonoBehaviour
 
     bool fascinatorEffect; //The Fascinator Accessory lets the first negative comment go ignored during each Conversation
 
-    private Party party
+    private PartyVO party
     {
-    	get { return DeWinterApp.GetModel<PartyModel>().Party; }
+    	get { return AmbitionApp.GetModel<PartyModel>().Party; }
     }
 
     // Use this for initialization
@@ -177,7 +177,7 @@ public class WorkTheRoomManager : MonoBehaviour
         //Set Up the Guests
         SetUpGuests();
 
-		DeWinterApp.Subscribe(PartyMessages.START_TIMERS, HandleStartTimers);
+		AmbitionApp.Subscribe(PartyMessages.START_TIMERS, HandleStartTimers);
 
         //Generate the Remarks
         if (isAmbush)
@@ -214,7 +214,7 @@ public class WorkTheRoomManager : MonoBehaviour
         }
 
         //Ready Go Text
-		string[] conversationIntroList = DeWinterApp.GetModel<PartyModel>().ConversationIntros;
+		string[] conversationIntroList = AmbitionApp.GetModel<PartyModel>().ConversationIntros;
         readyGoText.text = conversationIntroList[Random.Range(0, conversationIntroList.Length)];
         //Tutorial Pop-Up? Only used in the tutorial Room
         // This can be made less hacky by registering the dialog in a command triggered by entering a room
@@ -223,7 +223,7 @@ public class WorkTheRoomManager : MonoBehaviour
             screenFader.gameObject.SendMessage("CreateWorkTheRoomTutorialPopUp", this);
         } else
         {
-        	DeWinterApp.SendMessage(PartyMessages.START_TIMERS);
+        	AmbitionApp.SendMessage(PartyMessages.START_TIMERS);
         }
 
         //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
@@ -297,7 +297,7 @@ public class WorkTheRoomManager : MonoBehaviour
 
     void OnDestroy()
     {
-		DeWinterApp.Unsubscribe(PartyMessages.START_TIMERS, HandleStartTimers);
+		AmbitionApp.Unsubscribe(PartyMessages.START_TIMERS, HandleStartTimers);
     }
 
     void SetUpGuests()
@@ -1020,7 +1020,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 effect = "Accessory Ruined";
                 if(GameData.partyAccessory != null) //If the Player actually wore and Accessory to this Party
                 {
-					DeWinterApp.SendMessage<ItemVO>(InventoryConsts.REMOVE_ITEM, GameData.partyAccessory);
+					AmbitionApp.SendMessage<ItemVO>(InventoryConsts.REMOVE_ITEM, GameData.partyAccessory);
                 } else
                 {
                     effect = "Livre Lost";
@@ -1113,7 +1113,7 @@ public class WorkTheRoomManager : MonoBehaviour
         Debug.Log("Trying to go to the After Party Report Screen!");
         party.blackOutEnding = true;
         roomManager.partyManager.FinishTheParty();
-		DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_AfterPartyReport");
+		AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_AfterPartyReport");
         Debug.Log("At the After Party Report Screen!");
     }
 
@@ -1286,7 +1286,7 @@ public class WorkTheRoomManager : MonoBehaviour
             Reward givenReward = room.Rewards[charmedAmount]; //Amount of Charmed Guests determines the level of Reward.
             if (givenReward.Type() == "Introduction")
             {
-            	ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+            	ServantModel smod = AmbitionApp.GetModel<ServantModel>();
                 foreach (Reward r in GameData.tonightsParty.wonRewardsList)
                 {
                     //If that Servant has already been Introduced or if the Reward of their Introduction has already been handed out then change the Reward to Gossip
@@ -1302,7 +1302,7 @@ public class WorkTheRoomManager : MonoBehaviour
 				{"$NUMCHARMED",charmedAmount.ToString()},
 				{"$NUMPUTOFF",putOffAmount.ToString()},
 				{"$REWARD",givenReward.Name()}};
-            DeWinterApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
+            AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
 
             //Close the Window
             Destroy(gameObject);
@@ -1326,14 +1326,14 @@ public class WorkTheRoomManager : MonoBehaviour
                 int reputationLoss = 25;
                 int factionReputationLoss = 50;
                 GameData.reputationCount -= reputationLoss;
-				DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -factionReputationLoss));
+				AmbitionApp.SendMessage<AdjustValueVO>(new AdjustValueVO(party.faction, -factionReputationLoss));
                 //Explanation Screen Pop Up goes here
 
 				Dictionary<string, string> subs = new Dictionary<string, string>(){
 				{"$FACTIONREPUTATION",factionReputationLoss.ToString()},
 				{"$FACTION",party.faction},
 				{"$REPUTATION",reputationLoss.ToString()}};
-           		DeWinterApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_DIALOG, subs);
+           		AmbitionApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_DIALOG, subs);
 
                 //The Player is pulled from the Work the Room session
                 Destroy(gameObject);
@@ -1344,7 +1344,7 @@ public class WorkTheRoomManager : MonoBehaviour
                 //The Player is relocated to the Entrance
                 roomManager.MovePlayerToEntrance();
                 //The Player's Reputation is not Punished
-	            DeWinterApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_TUTORIAL_DIALOG);
+	            AmbitionApp.OpenMessageDialog(DialogConsts.OUT_OF_CONFIDENCE_TUTORIAL_DIALOG);
                 //The Player is pulled from the Work the Room session
                 Destroy(gameObject);
             }  

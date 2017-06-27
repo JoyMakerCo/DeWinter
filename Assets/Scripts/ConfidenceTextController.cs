@@ -13,8 +13,8 @@ namespace Ambition
 	    void Start()
 	    {
 	        myText = this.GetComponent<Text>();
-			_model = DeWinterApp.GetModel<PartyModel>();
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleConfidenceUpdate);
+			_model = AmbitionApp.GetModel<PartyModel>();
+			AmbitionApp.Subscribe<AdjustValueVO>(HandleConfidenceUpdate);
 	    }
 
 		private void HandleConfidenceUpdate(AdjustValueVO vo)

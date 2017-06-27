@@ -10,8 +10,8 @@ namespace Ambition
 		public void Execute (DateTime day)
 		{
 			Random rnd = new Random();
-			CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
-			EventModel emod = DeWinterApp.GetModel<EventModel>();
+			CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
+			EventModel emod = AmbitionApp.GetModel<EventModel>();
 			if (emod.SelectedEvent == null
 				&& cmod.Today >= cmod.StartDate.AddDays(2)
 				&& (rnd.Next(100) < emod.EventChance))
@@ -24,7 +24,7 @@ namespace Ambition
 				emod.SelectedEvent = events[rnd.Next(events.Length)];
 				emod.SelectedEvent.currentStageIndex = 0;
 			}
-//			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
+//			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
 	    }
 	}
 }

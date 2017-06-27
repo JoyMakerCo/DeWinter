@@ -10,7 +10,7 @@ public class BoozeGlassTextController : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-    	_model = DeWinterApp.GetModel<PartyModel>();
+    	_model = AmbitionApp.GetModel<PartyModel>();
         myText = this.GetComponent<Text>();
     }
 	

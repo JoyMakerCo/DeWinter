@@ -18,7 +18,7 @@ public static class EnemyInventory
     //Adds an Enemy to the Player's Enemy Inventory then scans the calendar going forward, adding the Enemy to appropriate Parties
     public static void AddEnemy(Enemy e)
     {
-		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 
         if(e.Faction == "Military" && fmod["Military"].ReputationLevel >= 9)
         {
@@ -34,8 +34,8 @@ public static class EnemyInventory
 // TODO: This really needs to be determined at the start of the party.
     private static void AdditionPartyScan(Enemy e)
     {
-    	CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
-		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d > DeWinterApp.GetModel<CalendarModel>().Today);
+    	CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
+		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d > AmbitionApp.GetModel<CalendarModel>().Today);
     	System.Random rnd = new System.Random();
     	foreach(DateTime date in dates)
     	{
@@ -58,8 +58,8 @@ public static class EnemyInventory
     // TODO: Populate enemies when parties start, so that this method doesn't have to exist
     private static void RemovalPartyScan(Enemy e)
     {
-		CalendarModel cmod = DeWinterApp.GetModel<CalendarModel>();
-		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d >= DeWinterApp.GetModel<CalendarModel>().Today);
+		CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
+		List<DateTime> dates = cmod.Parties.Keys.ToList().FindAll(d => d >= AmbitionApp.GetModel<CalendarModel>().Today);
     	foreach (DateTime d in dates)
     	{
     		for (int i=cmod.Parties[d].Count-1; i>=0; i--)

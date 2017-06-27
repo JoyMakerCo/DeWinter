@@ -12,12 +12,12 @@ namespace Ambition
 		// Use this for initialization
 		void Awake()
 		{
-			DeWinterApp.Subscribe<RoomVO>(GoToRoom);
+			AmbitionApp.Subscribe<RoomVO>(GoToRoom);
 		}
 
 		void OnDestroy()
 		{
-			DeWinterApp.Subscribe<RoomVO>(GoToRoom);
+			AmbitionApp.Subscribe<RoomVO>(GoToRoom);
 		}
 
 		void Start ()

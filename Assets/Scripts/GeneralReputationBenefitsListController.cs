@@ -12,17 +12,17 @@ namespace Ambition
 	    {
 	    	
 	        _text = this.GetComponent<Text>();
-			DeWinterApp.Subscribe<PlayerReputationVO>(HandleReputation);
+			AmbitionApp.Subscribe<PlayerReputationVO>(HandleReputation);
 	    }
 
 	    void OnDestroy()
 	    {
-			DeWinterApp.Unsubscribe<PlayerReputationVO>(HandleReputation);
+			AmbitionApp.Unsubscribe<PlayerReputationVO>(HandleReputation);
 	    }
 
 	    private void HandleReputation(PlayerReputationVO rep)
 	    {
-	    	GameModel model = DeWinterApp.GetModel<GameModel>();
+	    	GameModel model = AmbitionApp.GetModel<GameModel>();
 			_text.text = "Reputation Level Benefits\n" + model.BenefitsList;
 	    }
 	}

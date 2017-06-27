@@ -21,7 +21,7 @@ namespace Ambition
 			set
 			{
 				_livre = value;
-				DeWinterApp.SendMessage<AdjustValueVO>(new AdjustValueVO(GameConsts.LIVRE, _livre, false));
+				AmbitionApp.SendMessage<AdjustValueVO>(new AdjustValueVO(GameConsts.LIVRE, _livre, false));
 			}
 		}
 
@@ -39,7 +39,7 @@ namespace Ambition
 						if (_reputation < ReputationLevels[_level].Reputation)
 						{
 							PlayerReputationVO msg = new PlayerReputationVO(_reputation, _level);
-							DeWinterApp.SendMessage<PlayerReputationVO>(msg);
+							AmbitionApp.SendMessage<PlayerReputationVO>(msg);
 							return;
 						}
 					}
@@ -61,12 +61,12 @@ namespace Ambition
 
 		public void Initialize()
 		{
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleAdjustBalance);
+			AmbitionApp.Subscribe<AdjustValueVO>(HandleAdjustBalance);
 		}
 
 		public void Dispose()
 		{
-			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleAdjustBalance);
+			AmbitionApp.Unsubscribe<AdjustValueVO>(HandleAdjustBalance);
 		}
 
 		// TODO: Localization model would be handy here
@@ -102,13 +102,13 @@ namespace Ambition
 					case GameConsts.LIVRE:
 						Livre += (int)(msg.Amount);
 						msg.IsRequest = false;
-						DeWinterApp.SendMessage<AdjustValueVO>(msg);
+						AmbitionApp.SendMessage<AdjustValueVO>(msg);
 						break;
 
 					case GameConsts.REPUTATION:
 						Reputation += (int)(msg.Amount);
 						msg.IsRequest = false;
-						DeWinterApp.SendMessage<AdjustValueVO>(msg);
+						AmbitionApp.SendMessage<AdjustValueVO>(msg);
 						break;
 				}
 			}
