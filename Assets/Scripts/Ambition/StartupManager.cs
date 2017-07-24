@@ -49,6 +49,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 			AmbitionApp.RegisterCommand<VictoryCheckCmd, GuestVO[]>();
+			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
 			AmbitionApp.RegisterCommand<BuyRemarkCmd>(PartyMessages.BUY_REMARK);
 			AmbitionApp.RegisterCommand<ExchangeRemarkCmd, RemarkVO>(PartyMessages.EXCHANGE_REMARK);
@@ -59,6 +60,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<EndTurnCmd>(PartyMessages.END_TURN);
 			AmbitionApp.RegisterCommand<HostVictoryCheckCmd>(PartyMessages.END_TURN);
 			AmbitionApp.RegisterCommand<FlipRemarkCmd>(PartyMessages.FLIP_REMARK);
+			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
 
 
 			AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();

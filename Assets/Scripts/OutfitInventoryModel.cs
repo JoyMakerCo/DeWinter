@@ -23,7 +23,16 @@ namespace Ambition
 	    //Used for seeing if the same Outfit was used twice in a row
 		public Outfit LastPartyOutfit;
 
-		public Outfit PartyOutfit;
+		private Outfit _outfit;
+		public Outfit Outfit
+		{
+			get { return _outfit; }
+			set 
+			{
+				_outfit = value;
+				AmbitionApp.SendMessage<Outfit>(_outfit);
+			}
+		}
 
 		public OutfitInventoryModel() : base(DOCUMENT_ID) {}
 	}

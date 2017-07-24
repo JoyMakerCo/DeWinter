@@ -8,7 +8,7 @@ namespace Ambition
 		public void Execute (PartyVO party)
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			FactionVO faction = AmbitionApp.GetModel<FactionModel>().Factions[party.faction];
+			FactionVO faction = AmbitionApp.GetModel<FactionModel>().Factions[party.Faction];
 			int turnsMod = 0;
 
 			//Extra Turns because of Faction Reputation Level?

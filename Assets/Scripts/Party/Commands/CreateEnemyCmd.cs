@@ -12,7 +12,7 @@ namespace Ambition
 
 			// TODO: Find Preset Enemy in model
 			e.Faction = faction;
-			EnemyInventory.AddEnemy(e);
+			EnemyInventory.enemyInventory.Add(e);
 
 			Random rnd = new Random();
 

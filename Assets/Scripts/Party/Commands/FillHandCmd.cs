@@ -9,18 +9,19 @@ namespace Ambition
 		public void Execute()
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			List<RemarkVO> remarks = model.Hand;
+			RemarkVO[] remarks = model.Remarks;
 			Random rnd = new Random();
-			RemarkVO remark;
 			int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
-			while (remarks.Count < model.MaxHandSize)
+			string interest;
+			for (int i=remarks.Length-1; i>=0; i--)
 			{
-				remark = new RemarkVO();
-				remark.Interest = model.Interests[rnd.Next(model.Interests.Length)];
-				remarks.Add(remark);
-				remark.Profile = (1+(2*(rnd.Next((int)Math.Pow(2,numGuests-1)))));
+				if (remarks[i]==null)
+				{
+					interest = model.Interests[rnd.Next(model.Interests.Length)];
+					remarks[i] = new RemarkVO(1 + rnd.Next(numGuests), interest);
+				}
 	        }
-	        model.Hand = remarks;
+	        model.Remarks = remarks;
 		}
 	}
 }

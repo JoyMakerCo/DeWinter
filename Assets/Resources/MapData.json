@@ -28,5 +28,50 @@
         "Banquet Hall",
         "Parlor",
         "Billiards Room",
-	]
+	],
+	maps:{
+		"Tutorial":{
+			rooms:[
+				{
+					name:"The Vestibule",
+					difficulty:0,
+					coords:[1,0]
+				},
+				{
+					coords:[1,1],
+					difficulty:1,
+					timer:7.5,
+					moveThroughChance:0
+				},
+				{
+					coords:[1,2],
+					difficulty:2,
+					timer:6.25,
+					moveThroughChance:0
+				},
+				{
+					coords:[0,2],
+					difficulty:2
+				},
+				{
+					coords:[2,2],
+					difficulty:3
+				},
+				{
+					name: "The Host's Quarters",
+					coords:[1,3],
+					difficulty:6,
+					features:["Host"]
+				},
+				{
+					coords:[0,3],
+					difficulty:3
+				},
+				{
+					difficulty:2,
+					coords:[2,3]
+				}
+			]
+		}
+	}
 }

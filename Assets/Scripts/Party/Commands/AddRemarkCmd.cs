@@ -9,18 +9,15 @@ namespace Ambition
 		public void Execute ()
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			RemarkVO remark = new RemarkVO();
+			Random rnd = new Random();
+			int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
+			string interest = model.Interests[rnd.Next(1, model.Interests.Length)];
 
 			// Create a topic that is exclusive of the previous topic used.
-			Random rnd = new Random();
-			remark.Interest = model.Interests[rnd.Next(1, model.Interests.Length)];
-			if (remark.Interest == model.LastInterest) remark.Interest = model.Interests[0];
-			model.LastInterest = remark.Interest;
+			if (interest == model.LastInterest) interest = model.Interests[0];
+			model.LastInterest = interest;
 
-			// Generate a targeting profile
-			// Profile is an integer acting as a bit array, which always has a leading and trailing bit
-			int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
-			remark.Profile = (1+(2*(rnd.Next((int)Math.Pow(2,numGuests-1)))));
+			RemarkVO remark = new RemarkVO(1 + rnd.Next(numGuests), interest);
 			model.AddRemark(remark);
 		}
 	}

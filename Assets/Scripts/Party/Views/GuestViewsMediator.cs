@@ -22,6 +22,11 @@ namespace Ambition
 			AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
 		}
 
+		void Start()
+		{
+			HandleGuests(AmbitionApp.GetModel<MapModel>().Room.Guests);
+		}
+
 		void OnDestroy()
 		{
 			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
@@ -95,7 +100,7 @@ namespace Ambition
 					guestView.NameText.color = isEnemy ? Color.red : Color.white;
 
 					guestView.OpinionIndicator.gameObject.SetActive(!guest.IsLockedIn);
-					guestView.OpinionIndicator.value = 0.1f*(float)guest.Interest;
+					guestView.OpinionIndicator.fillAmount = 0.1f*(float)guest.Interest;
 
 					sprites = guest.IsFemale
 						? _artLibrary.FemaleGuestSprites

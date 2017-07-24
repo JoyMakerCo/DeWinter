@@ -10,8 +10,9 @@ namespace Ambition
 	[Serializable]
 	public struct GuestView
 	{
+		public GameObject GuestObject;
 		public Image GuestImage;
-		public Scrollbar OpinionIndicator;
+		public Image OpinionIndicator;
 		public Image InterestIcon;
 		public Text NameText;
 
@@ -19,6 +20,7 @@ namespace Ambition
 		{
 			get { return GuestImage.enabled; }
 			set {
+				GuestObject.SetActive(value);
 				GuestImage.enabled = value;
 				OpinionIndicator.enabled = value;
 				InterestIcon.enabled = value;

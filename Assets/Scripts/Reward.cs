@@ -59,13 +59,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 10;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -78,13 +78,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 20;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -97,13 +97,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 30;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -116,13 +116,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 40;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -136,7 +136,7 @@ public class Reward {
                 else if (typeRandomInt == 2 || typeRandomInt == 3)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 60;
                 }
                 else
@@ -228,7 +228,7 @@ public class Reward {
             case 4:
                 return "Third Estate";
             default:
-                return party.faction;
+                return party.Faction;
         }
     }
 

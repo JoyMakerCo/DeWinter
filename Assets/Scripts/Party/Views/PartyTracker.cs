@@ -57,7 +57,7 @@ namespace Ambition
 						suffix = " Party (" + i + " Days from Now)";
 						break;
 				}
-				myText.text = nextParty.SizeString() + " " + nextParty.faction + suffix;
+				myText.text = nextParty.SizeString() + " " + nextParty.Faction + suffix;
 			}
 			else
 			{

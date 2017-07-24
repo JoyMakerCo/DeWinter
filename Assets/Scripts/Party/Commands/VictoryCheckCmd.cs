@@ -23,7 +23,7 @@ namespace Ambition
 				}
 				else
 				{
-					reward = GenerateRandomReward(numCharmed, model.Party.faction);
+					reward = GenerateRandomReward(numCharmed, model.Party.Faction);
 				}
 				map.Room.Cleared = true;
 
@@ -33,7 +33,7 @@ namespace Ambition
 					ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 					if (smod.Introduced.ContainsKey(reward.Type))
 					{
-                        reward = new RewardVO(RewardConsts.GOSSIP, model.Party.faction, 1);
+                        reward = new RewardVO(RewardConsts.GOSSIP, model.Party.Faction, 1);
                     }
                 }
                 model.Rewards.Add(reward);

@@ -12,24 +12,31 @@ namespace Ambition
 		// Use this for initialization
 		void Awake()
 		{
-			AmbitionApp.Subscribe<RoomVO>(GoToRoom);
+			AmbitionApp.Subscribe(PartyMessages.SHOW_ROOM, GoToRoom);
+			AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, GoToMap);
 		}
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<RoomVO>(GoToRoom);
+			AmbitionApp.Unsubscribe(PartyMessages.SHOW_ROOM, GoToRoom);
+			AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, GoToMap);
 		}
 
 		void Start ()
 		{
-			MapView.SetActive(true);
-			RoomView.SetActive(false);
+			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
 		}
 
-		private void GoToRoom(RoomVO room)
+		private void GoToRoom()
 		{
-			MapView.SetActive(room.Cleared);
-			RoomView.SetActive(!room.Cleared);
+			MapView.SetActive(false);
+			RoomView.SetActive(true);
+		}
+
+		private void GoToMap()
+		{
+			MapView.SetActive(true);
+			RoomView.SetActive(false);
 		}
 	}
 }

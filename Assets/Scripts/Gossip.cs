@@ -13,7 +13,7 @@ public class Gossip {
     public float freshness;
     public string flavorText;
 
-	public Gossip(PartyVO party) : this(party.faction) {}
+	public Gossip(PartyVO party) : this(party.Faction) {}
     public Gossip(string faction=null)
     {
         Faction = faction;

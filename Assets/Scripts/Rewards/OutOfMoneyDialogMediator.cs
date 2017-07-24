@@ -20,12 +20,12 @@ namespace Ambition
 			if (AmbitionApp.GetModel<GameModel>().Reputation > 20)
 			{
 				BodyTxt.text = localization.GetString(PHRASE_ID + DialogConsts.BODY);
-				ButtonLabelTxt.text = localization.GetString(DialogConsts.CONFIRM);
+				ButtonLabelTxt.text = localization.GetString(DialogConsts.OK);
 			}
 			else
 			{
 				BodyTxt.text = localization.GetString("out_of_money_and_rep_dialog" + DialogConsts.BODY);
-				ButtonLabelTxt.text = localization.GetString("out_of_money_and_rep_dialog" + DialogConsts.CONFIRM);
+				ButtonLabelTxt.text = localization.GetString("out_of_money_and_rep_dialog" + DialogConsts.OK);
 			}
 		}
 

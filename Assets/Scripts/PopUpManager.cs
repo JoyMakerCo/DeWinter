@@ -17,7 +17,6 @@ public class PopUpManager : MonoBehaviour
     public GameObject buyOrSellModal;
     public GameObject hireAndFireServantModal;
     public GameObject confidenceTallyModal;
-    public GameObject roomChoiceModal;
     public GameObject alterOutfitModal;
     public GameObject sewNewOutfitModal;
 
@@ -165,75 +164,6 @@ public class PopUpManager : MonoBehaviour
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "What would you like me to create?";
-    }
-
-    //This is used in the Party Scene for Players to choose whether they wish to engage in conversation (Work the Room) or try to avoid everyone (Move Through)
-    void CreateRoomChoiceModal(int[] intStorage)
-    {
-    	MapModel model = AmbitionApp.GetModel<MapModel>();
-
-        int xPos = intStorage[0];
-        int yPos = intStorage[1];
-
-		RoomVO room = model.Map.Rooms[xPos, yPos];
-
-        //Make the Pop Up
-        GameObject popUp = Instantiate(roomChoiceModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = GameData.tonightsParty.Name();
-        //Body Text and Buttons
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        
-        Text moveThroughText = popUp.transform.Find("MoveThroughButton").Find("Text").GetComponent<Text>();
-        Image moveThroughButtonImage = popUp.transform.Find("MoveThroughButton").GetComponent<Image>();
-
-        if (!model.Room.HostHere) //If the Host isn't here
-        {
-            if(!model.Room.IsImpassible)
-            {
-                moveThroughButtonImage.color = Color.white;
-                moveThroughText.color = Color.white;
-                int moveThroughChance = room.MoveThroughChance;
-                //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-                if (GameData.partyAccessory != null)
-                {
-					if (GameData.partyAccessory.Type == "Cane")
-                    {
-                        moveThroughChance += 10;
-                    }
-                }
-                moveThroughText.text = "Move Through (" + moveThroughChance.ToString() + "%)";
-                bodyText.text = "You've entered the " + room.Name +
-                            "\n\nWould you like to 'Work the Room' and engage the party goers in Conversation, or would you like to 'Move Through' and hope nobody notices you?";
-            } else //If the Player has entered a Room where they are not allowed to Move Through
-            {
-                moveThroughButtonImage.color = Color.clear;
-                moveThroughText.color = Color.clear;
-                bodyText.text = "You've entered the " + room.Name +
-                            "\n\nClick the button below to 'Work the Room' and engage the party goers in Conversation.";
-            }
-        } else // If the Host Is there
-        {
-            moveThroughButtonImage.color = Color.clear;
-            moveThroughText.color = Color.clear;
-            bodyText.text = "You've entered the " + room.Name +
-                       "\n\nPrepare to 'Work the Room' and engage the Host in Conversation. They may be alone but they'll be far more demanding than a regular Guest.";
-        }
-        Text workTheRoomText = popUp.transform.Find("WorkTheRoomButton").Find("Text").GetComponent<Text>();
-        Image workTheRoomImage = popUp.transform.Find("WorkTheRoomButton").GetComponent<Image>();
-        if (!room.Cleared)
-        {
-            workTheRoomImage.color = Color.white;
-            workTheRoomText.color = Color.white;
-            workTheRoomText.text = "Work the Room";
-        }
-        else
-        {
-            workTheRoomImage.color = Color.clear;
-            workTheRoomText.color = Color.clear;
-        }
     }
 
     //This is used in the Estate Tab to tell Players that they were caught trading in Gossip Items
