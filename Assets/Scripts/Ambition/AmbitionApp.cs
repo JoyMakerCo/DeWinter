@@ -121,20 +121,13 @@ namespace Ambition
 			return App.Service<DialogSvc>().Open<T>(DialogID, Data);
 		}
 
-		public static GameObject OpenMessageDialog(string dialogID, string button, Dictionary<string, string> substitutions)
-		{
-			MessageDialogVO vo = new MessageDialogVO();
-			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE, substitutions);
-			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY, substitutions);
-			vo.Button = button;
-			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
-		}
-
 		public static GameObject OpenMessageDialog(string dialogID, Dictionary<string, string> substitutions)
 		{
 			MessageDialogVO vo = new MessageDialogVO();
 			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE, substitutions);
 			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY, substitutions);
+			vo.Button = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.OK, substitutions);
+			if (vo.Button == null) vo.Button = GetModel<LocalizationModel>().GetString(DialogConsts.DEFAULT_CONFIRM);
 			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
 		}
 
@@ -143,15 +136,8 @@ namespace Ambition
 			MessageDialogVO vo = new MessageDialogVO();
 			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE);
 			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY);
-			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
-		}
-
-		public static GameObject OpenMessageDialog(string dialogID, string button)
-		{
-			MessageDialogVO vo = new MessageDialogVO();
-			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE);
-			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY);
-			vo.Button = button;
+			vo.Button = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.OK);
+			if (vo.Button == null) vo.Button = GetModel<LocalizationModel>().GetString(DialogConsts.DEFAULT_CONFIRM);
 			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
 		}
 

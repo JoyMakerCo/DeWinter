@@ -38,9 +38,9 @@ public class TonightsPartyInfo : MonoBehaviour {
 		if (GameData.tonightsParty != null)
 		{
 	        tonightsPartyText.text = GameData.tonightsParty.Name();
-	        hostedByText.text = GameData.tonightsParty.faction;
-			factionLikesText.text = GetLikes(GameData.factionList[GameData.tonightsParty.faction]);
-			factionDislikesText.text = GetDislikes(GameData.factionList[GameData.tonightsParty.faction]);
+	        hostedByText.text = GameData.tonightsParty.Faction;
+			factionLikesText.text = GetLikes(GameData.factionList[GameData.tonightsParty.Faction]);
+			factionDislikesText.text = GetDislikes(GameData.factionList[GameData.tonightsParty.Faction]);
 	        partyDescriptionText.text = GameData.tonightsParty.Description();
 	        objective1Text.text = GameData.tonightsParty.Objective1();
 	        objective2Text.text = GameData.tonightsParty.Objective2();

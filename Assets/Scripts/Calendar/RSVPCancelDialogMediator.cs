@@ -23,7 +23,7 @@ namespace Ambition
 			Dictionary<string, string> subs = new Dictionary<string, string>() {
 				{"$PARTYSIZE", p.SizeString()},
 				{"$HOSTNAME", p.Host.Name},
-				{"$FACTION", p.faction}};
+				{"$FACTION", p.Faction}};
 
 			if (p.Date == AmbitionApp.GetModel<CalendarModel>().Today)
 			{

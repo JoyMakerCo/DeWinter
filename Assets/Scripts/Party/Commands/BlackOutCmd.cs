@@ -25,16 +25,16 @@ namespace Ambition
 			            case 1:
 			                party.blackOutEffect = "Faction Reputation Loss";
 			                party.blackOutEffectAmount = -rnd.Next(20, 51);
-							model.Rewards.Add(new RewardVO(RewardConsts.FACTION, party.faction, party.blackOutEffectAmount));
+							model.Rewards.Add(new RewardVO(RewardConsts.FACTION, party.Faction, party.blackOutEffectAmount));
 			                break;
 			            case 2:
 			                party.blackOutEffect = "Outfit Novelty Loss";
 			                party.blackOutEffectAmount = -rnd.Next(20, 51);
-							omod.PartyOutfit.novelty = UnityEngine.Mathf.Clamp(omod.PartyOutfit.novelty - party.blackOutEffectAmount, 0, 100);
+							omod.Outfit.novelty = UnityEngine.Mathf.Clamp(omod.Outfit.novelty - party.blackOutEffectAmount, 0, 100);
 			                break;
 			            case 3:
 			                party.blackOutEffect = "Outfit Ruined";
-			                AmbitionApp.SendMessage<Outfit>(InventoryConsts.REMOVE_ITEM, omod.PartyOutfit);
+			                AmbitionApp.SendMessage<Outfit>(InventoryConsts.REMOVE_ITEM, omod.Outfit);
 			                break;
 			            case 4:
 			                if (GameData.partyAccessory != null) //If the Player actually wore and Accessory to this Party
@@ -56,7 +56,7 @@ namespace Ambition
 			                break;
 			            case 6:
 			                party.blackOutEffect = "New Enemy";
-			                AmbitionApp.SendMessage<string>(GameMessages.CREATE_ENEMY, party.faction);
+			                AmbitionApp.SendMessage<string>(GameMessages.CREATE_ENEMY, party.Faction);
 			                break;
 			            case 7:
 							if (model.Rewards.RemoveAll(r => r.Type == RewardConsts.GOSSIP) > 0)
@@ -66,7 +66,7 @@ namespace Ambition
 			                else //If they have no Gossip to Lose
 			                {
 			                    party.blackOutEffect = "New Enemy";
-								AmbitionApp.SendMessage<string>(GameMessages.CREATE_ENEMY, party.faction);
+								AmbitionApp.SendMessage<string>(GameMessages.CREATE_ENEMY, party.Faction);
 			                }
 			                break;
 			            case 8:
@@ -80,7 +80,7 @@ namespace Ambition
 				                case 2:
 				                    party.blackOutEffect = "Faction Reputation Gain";
 				                    party.blackOutEffectAmount = rnd.Next(20, 51);
-									model.Rewards.Add(new RewardVO(RewardConsts.FACTION, party.faction, party.blackOutEffectAmount));
+									model.Rewards.Add(new RewardVO(RewardConsts.FACTION, party.Faction, party.blackOutEffectAmount));
 				                    break;
 				                case 3:
 				                    party.blackOutEffect = "Livre Gained";
@@ -89,18 +89,19 @@ namespace Ambition
 				                    break;
 				                case 4:
 				                    party.blackOutEffect = "New Gossip";
-									model.Rewards.Add(new RewardVO(RewardConsts.GOSSIP, party.faction, party.blackOutEffectAmount));
+									model.Rewards.Add(new RewardVO(RewardConsts.GOSSIP, party.Faction, party.blackOutEffectAmount));
 				                    break;
 				                default:
-				                    if (party.enemyList.Count == 0)
+									if (party.Enemies != null && party.Enemies.Length > 0)
 				                    {
-				                        party.blackOutEffect = "New Gossip";
-										model.Rewards.Add(new RewardVO(RewardConsts.GOSSIP, party.faction, party.blackOutEffectAmount));
+										EnemyVO enemy = party.Enemies[rnd.Next(party.Enemies.Length)];
+										party.blackOutEffect = enemy.Name + " no longer an Enemy";
+										EnemyInventory.enemyInventory.Remove(enemy);
 				                    }
 				                    else
 				                    {
-										party.blackOutEffect = "Eliminated an Enemy";
-				                        party.enemyList.RemoveAt(rnd.Next(party.enemyList.Count));
+										party.blackOutEffect = "New Gossip";
+										model.Rewards.Add(new RewardVO(RewardConsts.GOSSIP, party.Faction, party.blackOutEffectAmount));
 				                    }
 				                    break;
        			            	}

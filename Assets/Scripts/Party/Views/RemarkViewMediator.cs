@@ -17,19 +17,19 @@ namespace Ambition
 	public class RemarkViewMediator : MonoBehaviour
 	{
 		public RemarkViewConfig[] Remarks;
-		private List<RemarkVO> _hand;
+		private RemarkVO[] _hand;
 		private PartyArtLibrary _library;
 
 		// Use this for initialization
 		void Awake ()
 		{
-			AmbitionApp.Subscribe<List<RemarkVO>>(HandleHand);
+			AmbitionApp.Subscribe<RemarkVO []>(HandleHand);
 			AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 		}
 		
 		void OnDestroy ()
 		{
-			AmbitionApp.Unsubscribe<List<RemarkVO>>(HandleHand);
+			AmbitionApp.Unsubscribe<RemarkVO []>(HandleHand);
 			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 		}
 
@@ -37,27 +37,32 @@ namespace Ambition
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			_library = this.gameObject.GetComponent<PartyArtLibrary>();
-			HandleHand(model.Hand);
+			HandleHand(model.Remarks);
 		}
 
-		private void HandleHand(List<RemarkVO> hand)
+		private void HandleHand(RemarkVO[] hand)
 		{
 			bool isActive;
-			RemarkMap profile;
-			InterestMap interest;
+			RemarkMap map;
 			_hand = hand;
 			for(int i=Remarks.Length-1; i>=0; i--)
 			{
-				isActive = (i<hand.Count);
-				Remarks[i].Icon.enabled = isActive;
-				Remarks[i].Profile.enabled = isActive;
+				isActive = (hand != null && hand[i] != null);
 				if (isActive)
 				{
-					profile = Array.Find(_library.RemarkSprites, r=>r.ID == hand[i].Profile);
-					Remarks[i].Profile.sprite = (default(RemarkMap).Equals(profile)) ? profile.Sprite : null;
-					interest = Array.Find(_library.InterestSprites, n=>n.ID == hand[i].Interest);
-					Remarks[i].Icon.sprite = (default(InterestMap).Equals(interest)) ? interest.Sprite : null;
+					map = Array.Find(_library.RemarkSprites, n=>n.Interest == hand[i].Interest);
+					if (default(RemarkMap).Equals(map))
+					{
+						isActive = false;
+					}
+					else
+					{
+						Remarks[i].Icon.sprite = map.InterestSprite;
+						Remarks[i].Profile.sprite = map.TargetSprites[hand[i].NumTargets];
+					}
 				}
+				Remarks[i].Icon.enabled = isActive;
+				Remarks[i].Profile.enabled = isActive;
 			}
 		}
 
@@ -66,7 +71,7 @@ namespace Ambition
 			Color c;
 			for(int i=Remarks.Length-1; i>=0; i--)
 			{
-				c = (remark == null || i >= _hand.Count || _hand[i] == remark) ? Color.white : Color.grey;
+				c = (_hand[i] == remark) ? Color.white : Color.grey;
 				Remarks[i].Profile.color = c;
 				Remarks[i].Icon.color = c;
 			}

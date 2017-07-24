@@ -20,7 +20,7 @@ public class AfterPartyReportTextController : MonoBehaviour {
 	public void DisplayAfterPartyReportText()
     {
         string rewardString;
-        Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().PartyOutfit;
+        Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().Outfit;
         if (!_model.Party.blackOutEnding) //Did the Player end the Party regularly, or by blacking out?
         {
             rewardString = "The " + _model.Party.Name() + " is over. Here's what you got:";
@@ -33,7 +33,7 @@ public class AfterPartyReportTextController : MonoBehaviour {
 				rewardString += "\nYou said some pretty embarassing things, which lost you " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation.";
                     break;
                 case "Faction Reputation Loss":
-				rewardString += "\nYou said some pretty rude things about your host, which lost you " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.faction + ".";
+				rewardString += "\nYou said some pretty rude things about your host, which lost you " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.Faction + ".";
                     break;
                 case "Outfit Novelty Loss":
 				rewardString += "\nYou spent most of the night talking to everyone about your Outfit. It may be safe to say that some were rather tired of hearing about it. Your " + outfit.Name + " has lost " + _model.Party.blackOutEffectAmount.ToString("N0") + " Novelty";
@@ -60,7 +60,7 @@ public class AfterPartyReportTextController : MonoBehaviour {
                     rewardString += "\nYou kept making all these ridiculous jokes, apparently you had everyone in stitches. You've gained " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation.";
                     break;
                 case "Faction Reputation Gain":
-				rewardString += "\nYou said some absolutely hillarious things to the host. You two seemed to get along quite well. You've gained " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.faction + ".";
+				rewardString += "\nYou said some absolutely hillarious things to the host. You two seemed to get along quite well. You've gained " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.Faction + ".";
                     break;
                 case "Livre Gained":
                     rewardString += "\nWhen you got home last night, you kept excitedly yelling about some kind of wager... I don't remember the details but I do know it involved a hot air balloon. You've gained " + _model.Party.blackOutEffectAmount.ToString("N0") + " Livres.";

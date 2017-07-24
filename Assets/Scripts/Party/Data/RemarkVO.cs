@@ -6,12 +6,19 @@ namespace Ambition
 {
 	public class RemarkVO
 	{
-	    public int Profile; // int acting as an array of bits.
+	    public int NumTargets=0; // Number of guests targeted.
 	    public string Interest;
 
 	    public bool IsAmbush
 	    {
-	    	get { return Profile == 0; }
+	    	get { return NumTargets == 0; }
+	    }
+
+		public RemarkVO() {}
+	    public RemarkVO(int numTargets, string interest)
+	    {
+			NumTargets = numTargets;
+			Interest = interest;
 	    }
 	}
 }

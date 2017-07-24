@@ -20,7 +20,7 @@ namespace Ambition
 					// Select the other targets in the profile
 					for (int i = numGuests-1; i > 0; i--)
 					{
-						if (((1 << ((i+numGuests-index)%numGuests)) & model.Remark.Profile) > 0)
+						if (((1 << ((i+numGuests-index)%numGuests)) & model.Remark.NumTargets) > 0)
 						{
 							result.Add(guests[i]);
 						}

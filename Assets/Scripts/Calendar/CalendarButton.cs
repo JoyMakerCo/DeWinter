@@ -86,7 +86,7 @@ namespace Ambition
 			{
 				partyFactionImages[i].enabled = _parties.Count > i;
 				if (partyFactionImages[i].enabled)
-					partyFactionImages[i].sprite = Array.Find(FactionSprites, s=>s.Faction == _parties[i].faction).Symbol;
+					partyFactionImages[i].sprite = Array.Find(FactionSprites, s=>s.Faction == _parties[i].Faction).Symbol;
 			}
 
 			for (int i=partyPositiveReplyImages.Length-1; i>=0; i--)
@@ -122,7 +122,7 @@ namespace Ambition
 				if (index < partyFactionImages.Length)
 				{
 					partyFactionImages[index].enabled = true;
-					partyFactionImages[index].sprite = Array.Find(FactionSprites, s=>s.Faction == _parties[index].faction).Symbol;
+					partyFactionImages[index].sprite = Array.Find(FactionSprites, s=>s.Faction == _parties[index].Faction).Symbol;
 				}
 			}
 		}

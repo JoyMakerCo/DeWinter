@@ -19,21 +19,31 @@ namespace Ambition
 	    public RoomStatusIndicator [] StatusIndicators;
 
 	    private Outline _outline;
+		private bool _isAdjacent;
+		private bool _isCurrent;
 	    private Button _button;
 
 		// Use this for initialization
-		void Awake ()
+		void Awake()
 		{
 			_outline = this.gameObject.GetComponent<Outline>();
+			_outline.enabled = false;
+
 			_button = this.gameObject.GetComponent<Button>();
 			_button.interactable = false;
-			_outline.enabled = false;
+			_button.onClick.AddListener(OnClick);
+
 			DescriptionText.enabled = false;
 
 			foreach (RoomStatusIndicator indicator in StatusIndicators)
 			{
 				indicator.Icon.enabled = false;
 			}
+		}
+
+		void OnDestroy()
+		{
+			_button.onClick.RemoveListener(OnClick);
 		}
 
 		private RoomVO _room;
@@ -50,34 +60,56 @@ namespace Ambition
 			}
 		}
 
-		public void OnClick()
+		public bool IsAdjacent
 		{
-			AmbitionApp.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
+			get { return _isAdjacent; }
+			set {
+				_isAdjacent = value;
+				if (value) _isCurrent=false;
+				UpdateDisplay();
+			}
 		}
 
-		public void SetCurrentRoom(RoomVO currentRoom)
+		public bool IsCurrent
 		{
-			
-			bool enable =
-				_room != null &&
-				currentRoom != null &&
-				(_room == currentRoom || _room.IsNeighbor(currentRoom));
+			get { return _isCurrent; }
+			set {
+				_isCurrent = value;
+				if (value) _isAdjacent=false;
+				UpdateDisplay();
+			}
+		}
 
-			_outline.enabled = enable;
-			_button.interactable = enable;
-
-			if (enable)
+		protected void UpdateDisplay()
+		{
+			bool reveal=false;
+			if (_isAdjacent)
 			{
-				_outline.effectColor = (_room == currentRoom) ? Color.white : Color.black;
-				if (!DescriptionText.enabled)
+				_outline.effectColor = Color.black;
+				reveal = true;
+			}
+			else if (_isCurrent)
+			{
+				_outline.effectColor = Color.white;
+				reveal = true;
+			}
+			_outline.enabled = reveal;
+			_room.Revealed = reveal || _room.Revealed;
+			_button.interactable = _isAdjacent;
+
+			if (!DescriptionText.enabled && reveal)
+			{
+				DescriptionText.enabled = true;
+				foreach (RoomStatusIndicator indicator in StatusIndicators)
 				{
-					DescriptionText.enabled = true;
-					foreach (RoomStatusIndicator indicator in StatusIndicators)
-					{
-						indicator.Icon.enabled = (Array.IndexOf(Room.Features, indicator.ID) >= 0);
-					}
+					indicator.Icon.enabled = (Array.IndexOf(Room.Features, indicator.ID) >= 0);
 				}
 			}
+		}
+
+		protected void OnClick()
+		{
+			AmbitionApp.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
 		}
 	}
 }

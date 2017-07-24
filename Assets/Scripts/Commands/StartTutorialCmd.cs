@@ -5,20 +5,18 @@ namespace Ambition
 {
 	public class StartTutorialCmd : ICommand
 	{
-		private const string TUTORIAL_MAP_ID = "Tutorial";
 		public void Execute ()
 		{
 			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
 			PartyVO p = new PartyVO(1);
-			p.tutorial = true;
+			p.MapID = "Tutorial";
 			p.Turns = 10;
 			p.invited = true;
 			p.invitationDistance = 1;
 			p.Date = AmbitionApp.GetModel<CalendarModel>().Today;
-			pmod.Party = p;
+			p.IntroText = "party_tutorial_welcome_dialog";
 
-			MapModel mmod = AmbitionApp.GetModel<MapModel>();
-			mmod.Map = mmod.Maps[TUTORIAL_MAP_ID];
+			pmod.Party = p;
 
 			AmbitionApp.GetModel<EventModel>().SelectedEvent = null;
 			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);

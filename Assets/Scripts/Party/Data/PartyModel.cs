@@ -16,6 +16,8 @@ namespace Ambition
 
 		public List<RewardVO> Rewards;
 
+		public bool IsAmbush=false;
+
 		//TODO: Temp, until buffs are figured out
 		public bool ItemEffect;
 		public bool Repartee;
@@ -106,6 +108,7 @@ namespace Ambition
 		public string LastInterest;
 
 		public int MaxHandSize = 5;
+		public int AmbushHandSize = 3;
 
 		private int _intoxication;
 		public int Intoxication
@@ -140,29 +143,43 @@ namespace Ambition
 			}
 		}
 
-		private List<RemarkVO> _hand;
-		public List<RemarkVO> Hand
+		private RemarkVO [] _remarks;
+		public RemarkVO [] Remarks
 		{
-			get { return _hand; }
+			get { return _remarks; }
 			set {
-				_hand = value;
-				AmbitionApp.SendMessage<List<RemarkVO>>(_hand);
+				_remarks = value;
+				AmbitionApp.SendMessage<RemarkVO []>(_remarks);
 			}
 		}
 
 		public void AddRemark(RemarkVO remark)
 		{
-			if (_hand.Count < MaxHandSize)
+			int max = IsAmbush ? AmbushHandSize : _remarks.Length;
+			for(int i=0; i<max; i++) 
 			{
-				_hand.Add(remark);
+				if (_remarks[i] == null)
+				{
+					_remarks[i] = remark;
+					AmbitionApp.SendMessage<RemarkVO []>(_remarks);
+				}
 			}
-			AmbitionApp.SendMessage<List<RemarkVO>>(_hand);
 		}
 
 		private void HandleClearRemarks()
 		{
-			_hand.Clear();
-			AmbitionApp.SendMessage<List<RemarkVO>>(_hand);
+			_remarks = new RemarkVO[MaxHandSize];
+			AmbitionApp.SendMessage<RemarkVO []>(_remarks);
+		}
+
+		private void HandleClearRemark(GuestVO guest)
+		{
+			int index = Array.IndexOf(_remarks, Remark);
+			if (index >= 0)
+			{
+				_remarks[index] = null;
+				AmbitionApp.SendMessage<RemarkVO []>(_remarks);
+			}
 		}
 
 		public void Initialize()
@@ -172,6 +189,7 @@ namespace Ambition
 			AmbitionApp.Subscribe(PartyMessages.REPARTEE_BONUS, HandleRepartee);
 			AmbitionApp.Subscribe<RequestAdjustValueVO<int>>(HandleAdjustTurns);
 			AmbitionApp.Subscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
+			AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleClearRemark);
 		}
 
 		public void Dispose()
@@ -181,6 +199,7 @@ namespace Ambition
 			AmbitionApp.Unsubscribe(PartyMessages.REPARTEE_BONUS, HandleRepartee);
 			AmbitionApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleAdjustTurns);
 			AmbitionApp.Unsubscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
+			AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleClearRemark);
 		}
 
 		private void HandleDay(DateTime date)
@@ -219,6 +238,19 @@ namespace Ambition
 		private void HandleRepartee()
 		{
 		}
+
+		private RoomVO _room;
+		public RoomVO Room
+		{
+			get { return _room; }
+			set
+			{
+				_room = value;
+				_room.Revealed = true;
+				AmbitionApp.SendMessage<RoomVO>(_room);
+			}
+		}
+
 
 		private void HandleBored()
 		{

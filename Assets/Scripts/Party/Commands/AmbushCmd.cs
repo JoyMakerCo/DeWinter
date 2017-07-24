@@ -8,12 +8,13 @@ namespace Ambition
 	{
 		public void Execute(RoomVO room)
 		{
-			// TODO: Is this how ambush works??
 			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
-			List<RemarkVO> hand = (pmod.Hand.Count > 3) ? pmod.Hand.GetRange(0,3) : pmod.Hand;
-			hand.Add(new RemarkVO()); // Uninitialized remarks are Ambush remarks!
-			hand.Add(new RemarkVO());
-			pmod.Hand = hand;
+			RemarkVO[] hand = pmod.Remarks;
+			for (int i=hand.Length-1; i>=pmod.AmbushHandSize; i--)
+			{
+				hand[i] = new RemarkVO();
+			}
+			pmod.Remarks = hand;
 
 			AmbitionApp.OpenDialog<RoomVO>(DialogConsts.ROOM, room);
 

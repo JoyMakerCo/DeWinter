@@ -15,7 +15,7 @@ namespace Ambition
 			{
 				int rep = 0;
 //				int rep = (AmbitionApp.GetModel<CalendarModel>().Today == party.Date) ? 40 : 20;
-				AmbitionApp.SendMessage<AdjustFactionVO>(new AdjustFactionVO(party.faction, -rep));
+				AmbitionApp.SendMessage<AdjustFactionVO>(new AdjustFactionVO(party.Faction, -rep));
 				AmbitionApp.AdjustValue<int>(GameConsts.REPUTATION, -rep);
 			}
 		}

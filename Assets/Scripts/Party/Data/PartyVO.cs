@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Ambition;
 
-public class PartyVO {
-
-    public string faction;
+public class PartyVO
+{
+    public string Faction;
     public int partySize;
     public bool invited=false;
     public int invitationDistance; // How many days before does the Player have to be before they get invited (if eligible)?
@@ -13,13 +13,15 @@ public class PartyVO {
     public int playerRSVPDistance = -1;
     public int modestyPreference;
     public int luxuryPreference;
-    public bool tutorial=false;
     public float MaleToFemaleRatio = 1f; //Default: 1:1
     public System.DateTime Date;
 
     public string description; // Randomly Generated Flavor Description
+    public string IntroText;
+    public string MapID;		// ID for parties with pregenerated maps
 
     public NotableVO Host;
+    public EnemyVO[] Enemies;
 
     public int Turns;
 
@@ -30,8 +32,6 @@ public class PartyVO {
 
     public List<RemarkVO> playerHand = new List<RemarkVO>();
     public string lastTone;
-
-    public List<EnemyVO> enemyList = new List<EnemyVO>();
 
     public bool blackOutEnding = false; //Did they Party end normally or via Blacking Out?
     public string blackOutEffect; // This is used for the After Party Report
@@ -50,7 +50,7 @@ public class PartyVO {
     {
         partySize = size;
 		SetRandomFaction();
-        Host.Faction = faction;
+        Host.Faction = Faction;
         Turns = (partySize * 5) + 1;
     }
 
@@ -67,9 +67,9 @@ public class PartyVO {
     	FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
     	int factionIndex = new Random().Next(fmod.Factions.Count);
 		List<string> factions = new List<string>(fmod.Factions.Keys);
-		faction = factions[factionIndex];
-		modestyPreference = fmod.Factions[faction].Modesty;
-		luxuryPreference = fmod.Factions[faction].Luxury;
+		Faction = factions[factionIndex];
+		modestyPreference = fmod.Factions[Faction].Modesty;
+		luxuryPreference = fmod.Factions[Faction].Luxury;
     }
 
     void SetExclusiveFaction(string excludeFaction)
@@ -77,10 +77,10 @@ public class PartyVO {
 		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
     	int factionIndex = new Random().Next(1, fmod.Factions.Count);
 		List<string> factions = new List<string>(fmod.Factions.Keys);
-    	faction = factions[factionIndex];
-    	if (faction == excludeFaction) faction = factions[0];
-		modestyPreference = fmod.Factions[faction].Modesty;
-		luxuryPreference = fmod.Factions[faction].Luxury;
+    	Faction = factions[factionIndex];
+    	if (Faction == excludeFaction) Faction = factions[0];
+		modestyPreference = fmod.Factions[Faction].Modesty;
+		luxuryPreference = fmod.Factions[Faction].Luxury;
     }
     
     void GenerateRandomDescription()
@@ -124,7 +124,7 @@ public class PartyVO {
     public string Name()
     {
         string name;
-        name = SizeString() + " " + faction + " Party";
+        name = SizeString() + " " + Faction + " Party";
         return name;
     }
 
@@ -161,12 +161,6 @@ public class PartyVO {
     public string Guest3()
     {
         return "- Lady Volteza ";
-    }
-
-    public void RemoveEnemy(EnemyVO enemy)
-    {
-        //Remove the Enemy from the Enemy List
-        enemyList.Remove(enemy);
     }
 
     public void InvitePlayer()

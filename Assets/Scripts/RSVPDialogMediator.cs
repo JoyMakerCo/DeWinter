@@ -29,11 +29,11 @@ public class RSVPDialogMediator : DialogView, IDialog<PartyVO>
 
 		if (smod.Servants.ContainsKey(ServantConsts.SPYMASTER))
 		{
-			if (_party.enemyList != null && _party.enemyList.Count > 0)
+			if (_party.Enemies != null && _party.Enemies.Length > 0)
 			{
 				string enemyList = "";
 				Dictionary<string, string> subs = new Dictionary<string, string>();
-				foreach(EnemyVO enemy in _party.enemyList)
+				foreach(EnemyVO enemy in _party.Enemies)
 				{
 					enemyList += "\n" + enemy.Name;
 				}

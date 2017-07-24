@@ -2,26 +2,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Ambition
 {
 	public class RoomVO
 	{
+		[JsonProperty("name")]
 		public string Name;
+
+		[JsonProperty("difficulty")]
 	    public int Difficulty; //Difficulty 1-5
+
+		[JsonProperty("moveThroughChance")]
+		public int MoveThroughChance = -1; // -1 indicates a value not yet assigned
+
+		[JsonProperty("timer")]
+		public float TurnTimer; // Custom TurnTimer?
+
 	    public bool Cleared=false;
 	    public bool Revealed=false;
+
 		public RewardVO [] Rewards;
 		public GuestVO [] Guests;
 		public List<EnemyVO> Enemies;
 		public string [] Features;
-		public RoomVO [] Neighbors; // Starting North, Clockwise
-		public float TurnTimer; // Custom TurnTimer?
-public bool IsTutorial=false; //TODO: Remove haxx
-		public bool IsImpassible=false;
 
-// TODO: The map data structure will take care of this
-public bool IsEntrance=false;
+public bool IsTutorial=false; //TODO: Remove haxx
 
 		public bool HostHere
 		{
@@ -29,33 +36,22 @@ public bool IsEntrance=false;
 				return (Features != null) && (Array.IndexOf(Features, PartyConstants.HOST) >= 0);
 			}
 		}
-		public int MoveThroughChance
-		{
-			get {
-				if (IsImpassible && !Cleared) return 0;
-				int chance = 90 - (Cleared ? 0 : Difficulty * 10);
-				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-				ItemVO accessory;
 
-// TODO: Implement Item states
-				if(inventory.Equipped.TryGetValue("accessory", out accessory)
-					&& accessory.Name == "Cane")
-		        {
-	                chance += 10;
-		        }
-
-		        return (chance < 100) ? chance : 100;
-			}
-		}
+		[JsonProperty("coords")] // Temp property until room drawing is better defined
+		public int[] Coords = new int[2];
 
 	    // Drawing instructions
 		// TODO: Expand the visual description of the room
-		public Vector2[] Shape;
+//		[JsonProperty("shape")]
+//		public Vector2[] Shape;
+
 	    public string Style;
+
+	    public RoomVO[] Neighbors;
 
 	    public bool IsNeighbor(RoomVO room)
 	    {
-	    	return (Neighbors != null) && (Array.IndexOf(Neighbors, room) >= 0);
+	    	return Neighbors != null && Array.IndexOf(Neighbors, room) >= 0;
 	    }
 	}
 }

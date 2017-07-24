@@ -34,9 +34,9 @@ namespace Ambition
 
 		public Outfit selectedInventoryOutfit
 		{
-			get { return _model.PartyOutfit; }
+			get { return _model.Outfit; }
 			set {
-				_model.PartyOutfit = value;
+				_model.Outfit = value;
 			}
 		}
 	    public void ClearInventoryButtons()

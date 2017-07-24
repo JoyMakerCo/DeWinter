@@ -10,7 +10,7 @@ namespace Ambition
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
-			if(fmod.Factions[model.Party.faction].ReputationLevel >= 2)
+			if(fmod.Factions[model.Party.Faction].ReputationLevel >= 2)
 	        {
 	        	AmbitionApp.AdjustValue<int>(GameConsts.DRINK, model.MaxDrinkAmount);
 

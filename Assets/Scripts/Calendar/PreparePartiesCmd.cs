@@ -25,12 +25,12 @@ namespace Ambition
 	        			i <= p.invitationDistance
 	        			&& !p.invited
 	        			&& p.partySize > 0
-	        			&& (p.partySize <= fmod[p.faction].LargestAllowableParty || p.partySize <= gmod.PartyInviteImportance));
+	        			&& (p.partySize <= fmod[p.Faction].LargestAllowableParty || p.partySize <= gmod.PartyInviteImportance));
 	        		foreach (PartyVO party in parties)
 	        		{
 	        			Dictionary<string,string> subs = new Dictionary<string, string>(){
 							{"$HOSTNAME", party.Host.Name},
-							{"$FACTION",party.faction},
+							{"$FACTION",party.Faction},
 							{"$SIZE",party.SizeString()}};
 						AmbitionApp.OpenMessageDialog("invitation_dialog", subs);
 
@@ -45,7 +45,7 @@ namespace Ambition
 			{
 				foreach (PartyVO party in parties)
 				{
-					if (party.RSVP == 0 && fmod[party.faction].LargestAllowableParty >= party.partySize)
+					if (party.RSVP == 0 && fmod[party.Faction].LargestAllowableParty >= party.partySize)
 					{
 						AmbitionApp.AdjustValue<int>(GameConsts.REPUTATION, -40);
 

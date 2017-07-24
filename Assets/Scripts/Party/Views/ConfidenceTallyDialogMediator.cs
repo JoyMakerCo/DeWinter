@@ -17,8 +17,8 @@ namespace Ambition
 	    	PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
 			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 			ItemVO accessory;
-			Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().PartyOutfit;
-			string faction = pmod.Party.faction;
+			Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().Outfit;
+			string faction = pmod.Party.Faction;
 
 			imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory);
 //

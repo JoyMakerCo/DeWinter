@@ -33,11 +33,11 @@ namespace Ambition
 			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
 		}
 
-		void OnDestroy()
+ 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<RoomVO>(HandleRoom);
 			_buttons.Clear();
 			_buttons = null;
+			AmbitionApp.Unsubscribe<RoomVO>(HandleRoom);
 		}
 
 	    void Start()
@@ -45,25 +45,8 @@ namespace Ambition
 			_model = AmbitionApp.GetModel<MapModel>();
 			_partyModel = AmbitionApp.GetModel<PartyModel>();
 			AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, _partyModel.Party);
-			DrawMap();
-			currentPlayerRoom = Map.Entrance;
-	    }
 
-		private void HandleRoom(RoomVO room)
-		{
-			if (_buttons != null)
-			{
-				foreach (RoomVO mapRoom in Map.Rooms)
-				{
-					if (mapRoom != null)
-						_buttons[mapRoom].SetCurrentRoom(room);
-				}
-			}
-		}
-
-		private void DrawMap()
-	    {
-	        //Make the Room Buttons ----------------------
+			//Make the Room Buttons ----------------------
 	        //Positioning (Set Up)
 			int buttonWidth = (int)roomButtonPrefab.GetComponent<RectTransform>().rect.width;
 			_buttons = new Dictionary<RoomVO, RoomButton>();
@@ -71,27 +54,46 @@ namespace Ambition
 			//Putting an Outline around the Map/House
 	        GameObject houseOutline = Instantiate<GameObject>(houseOutlinePrefab);
 	        houseOutline.transform.SetParent(gameObject.transform, false);
-			((RectTransform)houseOutline.transform).sizeDelta = new Vector2(((_model.Map.Width + PADDING)*buttonWidth), ((_model.Map.Depth + PADDING)*buttonWidth));
+			((RectTransform)houseOutline.transform).sizeDelta = new Vector2(((_model.Map.Rooms.GetLength(0) + PADDING)*buttonWidth), ((_model.Map.Rooms.GetLength(1) + PADDING)*buttonWidth));
 
 	        //Map Set Up is complete, notify the rest of the game
 			foreach (RoomVO rm in Map.Rooms)
 			{
 				DrawRoom(rm, buttonWidth);
 			}
-		}
+			currentPlayerRoom = Map.Entrance;
+	    }
 
 		private void DrawRoom(RoomVO room, int buttonWidth)
 		{
-			if (room != null && room.Shape != null)
+			if (room != null)
 			{
 				GameObject mapButton = Instantiate(roomButtonPrefab) as GameObject;
 				RoomButton roomButton = mapButton.GetComponent<RoomButton>();
 				mapButton.transform.SetParent(gameObject.transform, false);
-				mapButton.transform.localPosition = new Vector3((room.Shape[0].x-(Map.Width>>1))*(buttonWidth + PADDING), (room.Shape[0].y - (Map.Depth>>1))*(PADDING + buttonWidth), 0);
+				mapButton.transform.localPosition = new Vector3((room.Coords[0]-(Map.Rooms.GetLength(0)>>1))*(buttonWidth + PADDING), (room.Coords[1] - (Map.Rooms.GetLength(1)>>1))*(PADDING + buttonWidth), 0);
 				roomButton.Room = room;
 				_buttons.Add(room, roomButton);
 			}
 	    }
+
+		private void HandleRoom(RoomVO room)
+		{
+			if (_buttons != null)
+			{
+				foreach(KeyValuePair<RoomVO, RoomButton> kvp in _buttons)
+				{
+					if (kvp.Key == room)
+					{
+						kvp.Value.IsCurrent = true;
+					}
+					else
+					{
+						kvp.Value.IsAdjacent = kvp.Key.IsNeighbor(room);
+					}
+				}
+			}
+		}
 
 	    public void MovePlayerToEntrance()
 	    {

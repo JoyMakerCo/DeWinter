@@ -6,17 +6,19 @@ using Util;
 
 namespace Ambition
 {
+
 	[Serializable]
 	public struct RemarkMap
 	{
-		public int ID;
-		public Sprite Sprite;
+		public string Interest;
+		public Sprite InterestSprite;
+		public Sprite[] TargetSprites;
 	}
 
 	[Serializable]
 	public struct InterestMap
 	{
-		public string ID;
+		public string Interest;
 		public Sprite Sprite;
 	}
 
