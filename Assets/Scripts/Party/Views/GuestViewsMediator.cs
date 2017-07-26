@@ -24,7 +24,8 @@ namespace Ambition
 
 		void Start()
 		{
-			HandleGuests(AmbitionApp.GetModel<MapModel>().Room.Guests);
+			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
+			AmbitionApp.Execute<GenerateGuestsCmd, RoomVO>(room);
 		}
 
 		void OnDestroy()
@@ -108,7 +109,9 @@ namespace Ambition
 
 					if (guest.Variant < 0)
 					{
-						guest.Variant = new System.Random().Next(sprites.Length);
+						// Random guest variation is driven by art,
+						// as opposed to explicit values
+						guest.Variant = (new System.Random()).Next(sprites.Length);
 					}
 					if (_isIntoxicated)
 					{
@@ -118,6 +121,10 @@ namespace Ambition
 					{
 						guestView.GuestImage.sprite = sprites[guest.Variant].GetSprite(guest);
 					}
+
+					InterestMap interest = Array.Find(_artLibrary.InterestSprites, n=>n.Interest == guest.Like);
+					if (!default(InterestMap).Equals(interest))
+						guestView.InterestIcon.sprite = interest.Sprite;
 				}
 			}
 		}

@@ -35,9 +35,7 @@ namespace Ambition
 
 		void Start()
 		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			_library = this.gameObject.GetComponent<PartyArtLibrary>();
-			HandleHand(model.Remarks);
 		}
 
 		private void HandleHand(RemarkVO[] hand)

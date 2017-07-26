@@ -15,6 +15,7 @@ namespace Ambition
 			p.invitationDistance = 1;
 			p.Date = AmbitionApp.GetModel<CalendarModel>().Today;
 			p.IntroText = "party_tutorial_welcome_dialog";
+			p.description = AmbitionApp.GetModel<LocalizationModel>().GetString("tutorial_party_description");
 
 			pmod.Party = p;
 

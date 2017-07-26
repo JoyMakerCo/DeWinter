@@ -16,8 +16,8 @@ public class PartyVO
     public float MaleToFemaleRatio = 1f; //Default: 1:1
     public System.DateTime Date;
 
-    public string description; // Randomly Generated Flavor Description
-    public string IntroText;
+    public string description;	// Randomly Generated Flavor Description
+    public string IntroText;	// Localization string triggers intro text for certain parties.
     public string MapID;		// ID for parties with pregenerated maps
 
     public NotableVO Host;
@@ -86,11 +86,6 @@ public class PartyVO
     void GenerateRandomDescription()
     {
         description = "This party is being hosted by some dude or dudette. This segment will later have randomly generated Text describing the party. It should be pretty damn funny.";
-    }
-
-    void GenerateTutorialDescription()
-    {
-        description = "The Orphan's Feast is a small social gathering spot for people of every class of society, though almost everyone who comes here does so alone. ";
     }
 
     public string SizeString()

@@ -22,7 +22,7 @@ namespace Ambition
 				return GuestSprites[0];
 			if (guest.Opinion >= 100)
 				return GuestSprites[GuestSprites.Length-1];
-			return GuestSprites[1 + (int)((GuestSprites.Length-2)*(float)(guest.Opinion)*0.1f)];
+			return GuestSprites[1 + (int)((GuestSprites.Length-2)*(float)(guest.Opinion)*0.01f)];
 		}
 	}
 }
