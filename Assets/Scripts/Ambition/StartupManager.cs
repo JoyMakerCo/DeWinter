@@ -50,6 +50,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 			AmbitionApp.RegisterCommand<VictoryCheckCmd, GuestVO[]>();
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
+			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.START_ENCOUNTER);
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
 			AmbitionApp.RegisterCommand<BuyRemarkCmd>(PartyMessages.BUY_REMARK);
 			AmbitionApp.RegisterCommand<ExchangeRemarkCmd, RemarkVO>(PartyMessages.EXCHANGE_REMARK);

@@ -73,7 +73,7 @@ namespace Ambition
 
 			    if (!room.Cleared)
 			    {
-//					AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM);
+					AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM);
 				}
 			}
 		}

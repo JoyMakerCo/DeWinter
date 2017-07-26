@@ -133,38 +133,6 @@ namespace Ambition
 			return 90 - (room.Cleared ? 0 : room.Difficulty * 10);
 		}
 
-		// TODO: Generate random guests on the fly upon entering the appropriate room
-		// Guest List should be prepopulated only with Enemies and Notables,
-		// and arrays already at appropriate length with null entries
-		private GuestVO[] GenerateGuests(int difficulty)
-	    {
-	        switch (difficulty)
-	        {
-	            case 1:
-					return generateGuestList(4, 25, 51, 6, 10);
-				case 2:
-					return generateGuestList(4, 25, 46, 5, 9);
-				case 3:
-					return generateGuestList(4, 25, 41, 4, 8);
-	            case 4:
-					return generateGuestList(4, 25, 36, 3, 7);
-	            case 5:
-					return generateGuestList(4, 20, 31, 2, 6);
-	        }
-	        return new GuestVO[0];
-		}
-
-		private GuestVO[] generateGuestList(int count, int opinionMin, int opinionMax, int interestMin, int interestMax)
-		{
-			GuestVO[] result = new GuestVO[count];
-			for (int i=0; i<count; i++)
-			{
-				result[i] = new GuestVO();
-				result[i].Opinion = _rnd.Next(opinionMin, opinionMax);
-			}
-			return result;
-		}
-
 	    private EnemyVO[] PopulateEnemies(MapVO map, List<EnemyVO> enemies)
 	    {
 	    	int W = map.Rooms.GetLength(0);

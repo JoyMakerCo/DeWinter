@@ -19,7 +19,7 @@ namespace Ambition
 		[JsonProperty("IsFemale")]
 	    public bool IsFemale;
 
-	    public int Interest;
+	    public int Interest=50;
 
 		[JsonProperty("Variant")]
 	    public int Variant=-1;
