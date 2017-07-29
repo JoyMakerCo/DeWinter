@@ -23,6 +23,7 @@ namespace Ambition
 		// Use this for initialization
 		void Awake ()
 		{
+			_library = this.gameObject.GetComponent<PartyArtLibrary>();
 			AmbitionApp.Subscribe<RemarkVO []>(HandleHand);
 			AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 		}
@@ -33,11 +34,6 @@ namespace Ambition
 			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 		}
 
-		void Start()
-		{
-			_library = this.gameObject.GetComponent<PartyArtLibrary>();
-		}
-
 		private void HandleHand(RemarkVO[] hand)
 		{
 			bool isActive;
@@ -45,7 +41,7 @@ namespace Ambition
 			_hand = hand;
 			for(int i=Remarks.Length-1; i>=0; i--)
 			{
-				isActive = (hand != null && hand[i] != null);
+				isActive = (hand[i] != null);
 				if (isActive)
 				{
 					map = Array.Find(_library.RemarkSprites, n=>n.Interest == hand[i].Interest);
@@ -56,7 +52,7 @@ namespace Ambition
 					else
 					{
 						Remarks[i].Icon.sprite = map.InterestSprite;
-						Remarks[i].Profile.sprite = map.TargetSprites[hand[i].NumTargets];
+						Remarks[i].Profile.sprite = map.TargetSprites[hand[i].NumTargets-1];
 					}
 				}
 				Remarks[i].Icon.enabled = isActive;
