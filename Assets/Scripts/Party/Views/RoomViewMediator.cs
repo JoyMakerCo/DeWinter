@@ -8,11 +8,12 @@ using Dialog;
 
 namespace Ambition
 {
-	public class RoomDialogMediator : DialogView, IDialog<RoomVO>
+	public class RoomViewMediator : MonoBehaviour
 	{
-		public void OnOpen(RoomVO room)
+		void Start()
 		{
-			
+			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
+			AmbitionApp.OpenDialog(DialogConsts.READY_GO);
 		}
 
 	    // Poll for input

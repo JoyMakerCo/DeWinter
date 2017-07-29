@@ -3,25 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Util;
 using Core;
 
 namespace Dialog
 {
-	[Serializable]
-	public class DialogBinding
-	{
-		public string ID;
-		public GameObject Prefab;
-
-		public GameObject Instantiate()
-		{
-			return (Prefab == null) ? null : GameObject.Instantiate<GameObject>(Prefab);
-		}
-	}
-
 	public class DialogCanvasManager : MonoBehaviour
 	{
-		public DialogBinding [] DialogPrefabs;
+		public PrefabMapConfig DialogPrefabs;
 
 		protected Dictionary<GameObject, string> _dialogs;
 		protected Canvas _canvas;
@@ -36,10 +25,10 @@ namespace Dialog
 
 		public GameObject Open(string dialogID)
 		{
-			DialogBinding binding = Array.Find(DialogPrefabs, p=>p.ID == dialogID);
-			if (binding == null) return null; //Early out
+			PrefabMap map = Array.Find(DialogPrefabs.Prefabs, p=>p.ID == dialogID);
+			if (default(PrefabMap).Equals(map)) return null; //Early out
 
-			GameObject dialog = binding.Instantiate();
+			GameObject dialog = Instantiate<GameObject>(map.Prefab, this.gameObject.transform);
 			if (dialog != null)
 			{
 				DialogView cmp = dialog.GetComponent<DialogView>();

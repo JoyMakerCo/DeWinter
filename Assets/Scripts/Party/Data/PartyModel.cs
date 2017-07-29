@@ -107,7 +107,13 @@ namespace Ambition
 
 		public string LastInterest;
 
-		public int MaxHandSize = 5;
+		[JsonProperty("maxHandSize")]
+		public int MaxHandSize
+		{
+			set { _remarks = new RemarkVO[value]; } 
+		}
+
+		[JsonProperty("ambushHandSize")]
 		public int AmbushHandSize = 3;
 
 		private int _intoxication;
@@ -168,7 +174,7 @@ namespace Ambition
 
 		private void HandleClearRemarks()
 		{
-			_remarks = new RemarkVO[MaxHandSize];
+			_remarks = new RemarkVO[_remarks.Length];
 			AmbitionApp.SendMessage<RemarkVO []>(_remarks);
 		}
 

@@ -20,6 +20,7 @@ namespace Ambition
 
 			if (room.Guests == null)
 			{
+				// This ensures that previous guest formations stay consistent
 				room.Guests = new GuestVO[4]; // TODO: Determine how to vary this number
 			}
 			for(int i=room.Guests.Length-1; i>=0; i--)
