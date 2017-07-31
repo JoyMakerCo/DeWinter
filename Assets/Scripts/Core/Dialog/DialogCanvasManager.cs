@@ -3,22 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Util;
 using Core;
 
 namespace Dialog
 {
-	[Serializable]
-	public struct DialogBinding
-	{
-		public string Key;
-		public GameObject Prefab;
-	}
-
 	public class DialogCanvasManager : MonoBehaviour
 	{
-		public DialogBinding[] DialogPrefabs;
+		public PrefabMapConfig DialogPrefabs;
 
-		protected List<GameObject> _dialogs;
+		protected Dictionary<GameObject, string> _dialogs;
 		protected Canvas _canvas;
 
 		void Awake()
@@ -26,49 +20,24 @@ namespace Dialog
 			App.Service<DialogSvc>().RegisterManager(this);
 
 			_canvas = this.gameObject.GetComponent<Canvas>();
-			_dialogs = new List<GameObject>();
-		}
-
-		/// <summary>
-		/// Creates an instance of the specified prefab and places it on the top of the canvas.
-		/// </summary>
-		/// <param name="dialogPrefab">A prefab of a valid dialog.</param>
-		public GameObject Open(GameObject dialogPrefab)
-		{
-			if (dialogPrefab != null)
-			{
-				GameObject dialog = GameObject.Instantiate<GameObject>(dialogPrefab);
-				DialogView cmp = dialog.GetComponent<DialogView>();
-				if (cmp != null) cmp.Manager = this;
-				_dialogs.Add(dialog);
-				dialog.transform.SetParent(_canvas.transform, false);
-				dialog.GetComponent<RectTransform>().SetAsLastSibling();
-				return dialog;
-			}
-			return null;
-		}
-
-		/// <summary>
-		/// Creates an instance of the specified prefab and places it on the top of the canvas.
-		/// </summary>
-		/// <param name="dialogPrefab">A prefab of a valid dialog.</param>
-		/// <param name="vo">Value object used to initialize the dialog.</param>
-		public GameObject Open<T>(GameObject dialogPrefab, T vo)
-		{
-			GameObject dialog = Open(dialogPrefab);
-			if (dialog != null)
-			{
-				DialogView cmp = dialog.GetComponent<DialogView>();
-				if (cmp is IDialog<T>)
-					(cmp as IDialog<T>).OnOpen(vo);
-			}
-			return dialog;
+			_dialogs = new Dictionary<GameObject, string>();
 		}
 
 		public GameObject Open(string dialogID)
 		{
-			DialogBinding binding = Array.Find(DialogPrefabs, d=>d.Key == dialogID);
-			return (!binding.Equals(default(DialogBinding))) ? Open(binding.Prefab) : null;
+			PrefabMap map = Array.Find(DialogPrefabs.Prefabs, p=>p.ID == dialogID);
+			if (default(PrefabMap).Equals(map)) return null; //Early out
+
+			GameObject dialog = Instantiate<GameObject>(map.Prefab, this.gameObject.transform);
+			if (dialog != null)
+			{
+				DialogView cmp = dialog.GetComponent<DialogView>();
+				if (cmp != null) cmp.Manager = this;
+				_dialogs.Add(dialog, dialogID);
+				dialog.transform.SetParent(_canvas.transform, false);
+				dialog.GetComponent<RectTransform>().SetAsLastSibling();
+			}
+			return dialog;
 		}
 
 		public GameObject Open<T>(string dialogID, T vo)
@@ -83,27 +52,44 @@ namespace Dialog
 			return dlg;
 		}
 
+		public bool Close(string dialogID)
+		{
+			KeyValuePair<GameObject, string> dialog = _dialogs.FirstOrDefault(d => d.Value == dialogID);
+			if (dialog.Equals(default(KeyValuePair<GameObject,string>))) return false;
+
+			DialogView view = dialog.Key.GetComponent<DialogView>();
+			if (view is IDisposable)
+				(view as IDisposable).Dispose();
+
+			_dialogs.Remove(dialog.Key);
+			GameObject.Destroy(dialog.Key);
+			return true;
+		}
+
 		public bool Close(GameObject dialog)
 		{
-			int count = _dialogs.RemoveAll(d => ReferenceEquals(d, dialog));
+			bool closed = _dialogs.Remove(dialog);
 			if (dialog != null)
 			{
 				DialogView view = dialog.GetComponent<DialogView>();
 				if (view is IDisposable)
 					(view as IDisposable).Dispose();
 				GameObject.Destroy(dialog);
+				closed = true;
 			}
-			return (dialog != null && count > 0);
+			dialog = null;
+			return closed;
 		}
 
 		public void CloseAll()
 		{
-			foreach(GameObject d in _dialogs)
+			DialogView cmp;
+			foreach(KeyValuePair<GameObject, string> dialog in _dialogs)
 			{
-				DialogView v = d.GetComponent<DialogView>();
-				if (v is IDisposable)
-					(v as IDisposable).Dispose();
-				GameObject.Destroy(d);
+				cmp = dialog.Key.GetComponent<DialogView>();
+				if (cmp is IDisposable)
+					(cmp as IDisposable).Dispose();
+				GameObject.Destroy(dialog.Key);
 			}
 			_dialogs.Clear();
 		}

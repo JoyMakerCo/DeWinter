@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class TonightsPartyInfo : MonoBehaviour {
 
@@ -38,9 +38,9 @@ public class TonightsPartyInfo : MonoBehaviour {
 		if (GameData.tonightsParty != null)
 		{
 	        tonightsPartyText.text = GameData.tonightsParty.Name();
-	        hostedByText.text = GameData.tonightsParty.faction;
-			factionLikesText.text = GetLikes(GameData.factionList[GameData.tonightsParty.faction]);
-			factionDislikesText.text = GetDislikes(GameData.factionList[GameData.tonightsParty.faction]);
+	        hostedByText.text = GameData.tonightsParty.Faction;
+			factionLikesText.text = GetLikes(GameData.factionList[GameData.tonightsParty.Faction]);
+			factionDislikesText.text = GetDislikes(GameData.factionList[GameData.tonightsParty.Faction]);
 	        partyDescriptionText.text = GameData.tonightsParty.Description();
 	        objective1Text.text = GameData.tonightsParty.Objective1();
 	        objective2Text.text = GameData.tonightsParty.Objective2();
@@ -56,7 +56,7 @@ public class TonightsPartyInfo : MonoBehaviour {
 		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
 
-		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 		int index = (faction.Luxury < 0 ? 0 : faction.Luxury == 0 ? 1 : 2);
 		string str = (index != 1) ? fmod.Preference["Luxury"][index] : "";
 
@@ -71,7 +71,7 @@ public class TonightsPartyInfo : MonoBehaviour {
 		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
 
-		FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 		int index = (faction.Luxury < 0 ? 0 : faction.Luxury == 0 ? 2 : 1);
 		string str = (index != 1) ? fmod.Preference["Luxury"][index] : "";
 

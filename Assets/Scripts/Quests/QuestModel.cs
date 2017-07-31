@@ -3,13 +3,13 @@ using Core;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class QuestModel : DocumentModel
 	{
 		public QuestModel () : base("QuestData")
 		{
-			DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
+			AmbitionApp.Subscribe<DateTime>(HandleCalendarDay);
 		}
 
 		public List<PierreQuest> Quests = new List<PierreQuest>();

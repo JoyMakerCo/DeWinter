@@ -4,7 +4,7 @@ using Core;
 using Newtonsoft.Json;
 using Util;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class FactionModel : DocumentModel, IInitializable, IDisposable
 	{
@@ -27,16 +27,12 @@ namespace DeWinter
 
 		public void Initialize()
 		{
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleFactionReputation);
-			DeWinterApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
-			DeWinterApp.Subscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+			AmbitionApp.Subscribe<AdjustFactionVO>(HandleAdjustFaction);
 		}
 
 		public void Dispose()
 		{
-			DeWinterApp.Unsubscribe<AdjustValueVO>(HandleFactionReputation);
-			DeWinterApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, HandleFactionAllegiance);
-			DeWinterApp.Unsubscribe<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, HandleFactionPower);
+			AmbitionApp.Unsubscribe<AdjustFactionVO>(HandleAdjustFaction);
 		}
 
 		public FactionVO this[string faction]
@@ -66,34 +62,15 @@ namespace DeWinter
 			}
 		}
 
-		private void HandleFactionReputation(AdjustValueVO vo)
+		private void HandleAdjustFaction(AdjustFactionVO vo)
 		{
-			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
+			FactionVO faction;
+			if (Factions.TryGetValue(vo.Faction, out faction))
 			{
-				_factions[vo.Type].playerReputation += (int)vo.Amount;
-				vo.IsRequest = false;
-// TODO: This is clunky. Make it a bit more clear.
-				DeWinterApp.SendMessage<AdjustValueVO>(vo);
-			}
-		}
-
-		private void HandleFactionAllegiance(AdjustValueVO vo)
-		{
-			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
-			{
-				_factions[vo.Type].Allegiance += (int)vo.Amount;
-				vo.IsRequest = false;
-				DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_ALLEGIANCE, vo);
-			}
-		}
-
-		private void HandleFactionPower(AdjustValueVO vo)
-		{
-			if (vo.IsRequest && _factions.ContainsKey(vo.Type))
-			{
-				_factions[vo.Type].Power += (int)vo.Amount;
-				vo.IsRequest = false;
-				DeWinterApp.SendMessage<AdjustValueVO>(FactionConsts.ADJUST_FACTION_POWER, vo);
+				Factions[vo.Faction].Allegiance += vo.Allegiance;
+				Factions[vo.Faction].Power += vo.Power;
+				Factions[vo.Faction].playerReputation += vo.Reputation;
+				AmbitionApp.SendMessage<FactionVO>(Factions[vo.Faction]);
 			}
 		}
 	}

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class CheckStyleChangeCmd : ICommand<DateTime>
 	{
 		public void Execute (DateTime day)
 		{
-			CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
-			InventoryModel invModel = DeWinterApp.GetModel<InventoryModel>();
+			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
+			InventoryModel invModel = AmbitionApp.GetModel<InventoryModel>();
 
 	        // Is it Style Switch Time?
 	        // TODO: Commandify style switch
@@ -18,7 +18,7 @@ namespace DeWinter
 	        	Dictionary<string, string> subs = new Dictionary<string, string>(){
 					{"$OLDSTYLE",invModel.CurrentStyle},
 					{"$NEWSTYLE",invModel.NextStyle}};
-	        	DeWinterApp.OpenMessageDialog(DialogConsts.STYLE_CHANGE_DIALOG, subs);
+				AmbitionApp.OpenMessageDialog("style_change_dialog", subs);
 
 	            //Actually switching styles
 				invModel.CurrentStyle = invModel.NextStyle;

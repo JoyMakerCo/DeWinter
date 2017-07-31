@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class RewardConsts
 	{
@@ -10,6 +10,7 @@ namespace DeWinter
 		public const string ENEMY = "EnemyReward";
 		public const string DEVOTION = "DevotionReward";
 		public const string FACTION = "FactionReward";
+		public const string SERVANT = "ServantReward";
 		public const string MESSAGE = "InternalMessageReward";
 	}
 }

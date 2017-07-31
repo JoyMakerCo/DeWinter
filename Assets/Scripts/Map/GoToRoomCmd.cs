@@ -1,18 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class GoToRoomCmd : ICommand<RoomVO>
 	{
 		public void Execute(RoomVO room)
 		{
 			// If Current Room is null, you're probably jumping into the foyer.
-			MapModel model = DeWinterApp.GetModel<MapModel>();
-			PartyModel partyModel = DeWinterApp.GetModel<PartyModel>();
+			MapModel model = AmbitionApp.GetModel<MapModel>();
+			PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
 			Random rnd = new Random();
 
-			if (partyModel.Party.turnsLeft <= 0)
+			if (partyModel.TurnsLeft <= 0)
 			{
 				UnityEngine.Debug.Log("Out of turns. Go home!");
 			}
@@ -24,15 +25,30 @@ namespace DeWinter
 			}
 
 			// Make sure the player can move to the next room
-			else if (model.Room == null || rnd.Next(100) < model.Room.MoveThroughChance)
+			else
 			{
-				// Reveal neighboring rooms
-				foreach (RoomVO neighbor in room.Neighbors)
+				if (model.Room != null)
 				{
-					if (neighbor != null) neighbor.Revealed = true;
-				}
+					int chance = model.Room.MoveThroughChance;
+					InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+					ItemVO accessory;
+					// TODO: Implement Item states
+					if(inventory.Equipped.TryGetValue("accessory", out accessory)
+						&& accessory.Name == "Cane")
+			        {
+		                chance = ((chance < 90) ? (chance + 10) : 100);
+			        }
 
-				UnityEngine.Debug.Log("Going to " + room.Name);
+					if (rnd.Next(100) < chance)
+					{
+						UnityEngine.Debug.Log("Going to " + room.Name);
+					}
+					else
+					{
+//						AmbitionApp.SendMessage<RoomVO>(PartyMessages.AMBUSH, model.Room);						
+//						return;
+					}
+				}
 
 				// Doing this will broadcast a message.
 				model.Room = room;
@@ -43,20 +59,22 @@ namespace DeWinter
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
 				}
 
-				// 
+				// At a certain reputation level, the player's glass may be filled without a punchbowl
 				else if (!room.Cleared
 					&& partyModel.DrinkAmount < partyModel.MaxDrinkAmount
-	            	&& GameData.factionList[partyModel.Party.faction].ReputationLevel >= 5
+	            	&& GameData.factionList[partyModel.Party.Faction].ReputationLevel >= 5
 	            	&& rnd.Next(0, 4) == 0)
-		        {
+	        	{
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
-					DeWinterApp.SendMessage<Party>(PartyConstants.SHOW_DRINK_MODAL, partyModel.Party);
+					Dictionary<string, string> subs = new Dictionary<string, string>(){
+						{"$HOSTNAME", partyModel.Party.Host.Name}};
+					AmbitionApp.OpenMessageDialog("refill_wine_dialog", subs);
 		        }
-			}
 
-			else
-			{
-				// Denied! Player can't move through the room yet.
+			    if (!room.Cleared)
+			    {
+					AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM);
+				}
 			}
 		}
 	}

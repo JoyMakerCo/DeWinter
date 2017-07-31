@@ -1,22 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class BoozeGlassTextController : MonoBehaviour {
 
-    Text myText;
+    private Text _text;
     private PartyModel _model;
 
     // Use this for initialization
-    void Awake () {
-    	_model = DeWinterApp.GetModel<PartyModel>();
-        myText = this.GetComponent<Text>();
+    void Awake ()
+    {
+    	_model = AmbitionApp.GetModel<PartyModel>();
+        _text = this.GetComponent<Text>();
+		AmbitionApp.Subscribe<int>(GameConsts.DRINK, HandleGlass);
+	}
+
+	void OnDestroy()
+    {
+		AmbitionApp.Subscribe<int>(GameConsts.DRINK, HandleGlass);
     }
 	
 	// Update is called once per frame
-	void Update ()
+	void HandleGlass(int tox)
 	{
-        myText.text = "Booze Glass: " + _model.Party.currentPlayerDrinkAmount + "/" + _model.Party.maxPlayerDrinkAmount;
+        _text.text = "Booze Glass: " + tox.ToString() + "/" + _model.MaxDrinkAmount.ToString();
     }
 }

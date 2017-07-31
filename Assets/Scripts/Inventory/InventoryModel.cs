@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class InventoryModel : DocumentModel
 	{
@@ -38,7 +38,7 @@ namespace DeWinter
 		{
 			set {
 				_currentStyle = value;
-				DeWinterApp.SendMessage<string>(InventoryConsts.STYLE, _currentStyle);
+				AmbitionApp.SendMessage<string>(InventoryConsts.STYLE, _currentStyle);
 			}
 			get { return _currentStyle; }
 		}

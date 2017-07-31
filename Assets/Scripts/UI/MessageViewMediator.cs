@@ -2,7 +2,7 @@
 using Dialog;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class MessageViewMediator : DialogView, IDialog<MessageDialogVO>
 	{

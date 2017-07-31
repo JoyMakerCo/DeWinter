@@ -2,25 +2,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class DialogButtonHandler : MonoBehaviour
 	{
-		public Dialog.DialogCanvasManager canvas;
-		public GameObject DialogPrefab;
+		public string DialogID;
 
-		protected Button _button;
-
-		void Start()
+		void Start ()
 		{
-			_button = gameObject.GetComponent<Button>();
-			if (_button != null)
-				_button.onClick.AddListener(OnClick);
+			Button btn = gameObject.GetComponent<Button>();
+			if (btn) btn.onClick.AddListener(OpenDialog);
 		}
 
-		protected void OnClick()
+		protected void OpenDialog()
 		{
-			canvas.Open(DialogPrefab);
+			AmbitionApp.OpenDialog(DialogID);
 		}
 	}
 }

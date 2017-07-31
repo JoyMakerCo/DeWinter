@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class PierreQuest
 {
@@ -14,15 +13,31 @@ public class PierreQuest
     public int daysTimeLimit; //How long the Player has to complete this Quest
     public int daysLeft;
     public string Name;
-    public Reward reward;
+    public RewardVO reward;
 
     public PierreQuest()
     {
+    	System.Random rnd = new System.Random();
 		Faction = FACTIONS[new System.Random().Next(5)];
         GenerateDeadline();
         daysLeft = daysTimeLimit;
-        reward = new Reward(this);
-        Name = GenerateName();
+		Name = GenerateName();
+
+		int multiplier = 12-daysLeft;
+        switch(rnd.Next(3))
+        {
+        	case 0:
+        		reward = new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, multiplier*rnd.Next(6,16));
+        		break;
+        	case 1:
+        		string faction = FACTIONS[rnd.Next(1, FACTIONS.Length)];
+        		if (faction == Faction) faction = FACTIONS[0];
+				reward = new RewardVO(RewardConsts.FACTION, faction, multiplier * (rnd.Next(10, 21)));
+        		break;
+        	case 2:
+				reward = new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, multiplier*rnd.Next(10,21));
+        		break;
+        }
     }
 
     public bool GossipMatch(Gossip gossip)
@@ -37,8 +52,8 @@ public class PierreQuest
 
     void GenerateDeadline()
     {
-    	CalendarModel model = DeWinterApp.GetModel<CalendarModel>();
-    	List<Party> parties;
+    	CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
+    	List<PartyVO> parties;
     	DateTime day = model.Today;
 		for (int i=0; i<MAX_DEADLINE; i++)
 		{
@@ -52,6 +67,6 @@ public class PierreQuest
 
     public string FlavorText()
     {
-        return "We need Gossip concerning the " + Faction + ". Get it to me and I can get you " + reward.Name() + " for it.";
+        return "We need Gossip concerning the " + Faction + ". Get it to me and I can get you " + reward.Name + " for it.";
     }
 }

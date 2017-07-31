@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Core;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class HireServantCmd : ICommand<ServantVO>
 	{
 		public void Execute (ServantVO servant)
 		{
-			ServantModel model = DeWinterApp.GetModel<ServantModel>();
+			ServantModel model = AmbitionApp.GetModel<ServantModel>();
 			if (servant == null || !servant.Introduced)
 			{
 				Debug.Log("Can't Hire a Servant who hasn't been introduced yet");
@@ -26,8 +26,7 @@ namespace DeWinter
 			servant.Hired = true;
 			model.Introduced[servant.slot].Remove(servant);
 			model.Hired.Add(servant.slot, servant);
-			AdjustValueVO msg = new AdjustValueVO("Livre", -servant.Wage);
-			DeWinterApp.SendMessage<AdjustValueVO>(msg);
+			AmbitionApp.AdjustValue<int>(GameConsts.LIVRE, -servant.Wage);
 			Debug.Log(servant.NameAndTitle + " Hired!");
 		}
 	}

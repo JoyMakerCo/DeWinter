@@ -1,13 +1,13 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class BorrowMoneyCmd : ICommand
 	{
 		public void Execute ()
 		{
-			GameModel model = DeWinterApp.GetModel<GameModel>();
+			GameModel model = AmbitionApp.GetModel<GameModel>();
 			model.Livre += 200;
 			model.Reputation -= 20;
 		}

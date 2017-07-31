@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class FactionInfoTextController : MonoBehaviour {
 
@@ -23,13 +23,13 @@ public class FactionInfoTextController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+		ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 		availableSpymasterTestTheWaters = (smod.Hired.ContainsKey("Spymaster"));
         availableTestTheWaters = true;
 
         _allegianceTimers = new Dictionary<string, int>();
 		_powerTimers = new Dictionary<string, int>();
-		foreach(string faction in DeWinterApp.GetModel<FactionModel>().Factions.Keys)
+		foreach(string faction in AmbitionApp.GetModel<FactionModel>().Factions.Keys)
 		{
 			_powerTimers.Add(faction, 0);
 			_allegianceTimers.Add(faction, 0);
@@ -213,7 +213,7 @@ public class FactionInfoTextController : MonoBehaviour {
 // TODO: Store them in order
     private string GetPowerString(int power)
     {
-    	FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+    	FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
     	int [] values = new int[fmod.Power.Count];
     	fmod.Power.Keys.CopyTo(values, 0);
     	Array.Sort(values);
@@ -228,7 +228,7 @@ public class FactionInfoTextController : MonoBehaviour {
 // TODO: Store them in order
 	private string GetAllegianceString(int allegiance)
     {
-    	FactionModel fmod = DeWinterApp.GetModel<FactionModel>();
+    	FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
     	int [] values = new int[fmod.Allegiance.Count];
 		fmod.Allegiance.Keys.CopyTo(values, 0);
     	Array.Sort(values);

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Globalization;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class DateTracker : MonoBehaviour
 	{
@@ -12,7 +12,7 @@ namespace DeWinter
 
 	    void Start()
 	    {
-			_cmod = DeWinterApp.GetModel<CalendarModel>();
+			_cmod = AmbitionApp.GetModel<CalendarModel>();
 	        updateDate();
 	    }
 

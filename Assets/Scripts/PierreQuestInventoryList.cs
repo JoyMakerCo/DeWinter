@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
-using DeWinter;
+using Ambition;
 
 public class PierreQuestInventoryList : MonoBehaviour {
 
@@ -13,7 +13,7 @@ public class PierreQuestInventoryList : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-		_model = DeWinterApp.GetModel<QuestModel>();
+		_model = AmbitionApp.GetModel<QuestModel>();
         foreach (PierreQuest p in GameData.pierreQuestInventory)
         {
             p.daysLeft--;
@@ -24,7 +24,7 @@ public class PierreQuestInventoryList : MonoBehaviour {
         }
         GenerateInventoryButtons();
         selectedQuest = -1; // So nothing is selected at the start
-		DeWinterApp.Subscribe<DateTime>(HandleDay);
+		AmbitionApp.Subscribe<DateTime>(HandleDay);
     }
 
     public void GenerateInventoryButtons()
@@ -52,7 +52,7 @@ public class PierreQuestInventoryList : MonoBehaviour {
 		if (day >= _model.NextQuestDay)
         {
             //Actually Assigning the Quest
-			if (GameData.pierreQuestInventory.Count < 3 && DeWinterApp.GetModel<GameModel>().ReputationLevel > 0)
+			if (GameData.pierreQuestInventory.Count < 3 && AmbitionApp.GetModel<GameModel>().Level > 0)
             {
                 //Create the Quest
                 PierreQuest newPierreQuest = new PierreQuest();

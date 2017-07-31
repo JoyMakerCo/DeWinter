@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class AccessoryInventorySizeTracker : MonoBehaviour {
 	    private Text myText;
@@ -13,7 +13,7 @@ namespace DeWinter
 	    // Use this for initialization
 	    void Start()
 	    {
-	    	_model = DeWinterApp.GetModel<InventoryModel>();
+	    	_model = AmbitionApp.GetModel<InventoryModel>();
 	        myText = GetComponent<Text>();
 	    }
 

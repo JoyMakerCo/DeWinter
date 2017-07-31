@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DeWinter;
+using Ambition;
 
 public class Reward {
 
-    Party party;
+    PartyVO party;
     string type; //Reputation, Faction Rep, Faction Power, Livres, Outfit, Accessory, ServantIntro, Random or Nothing (a placeholder, essentially)
     string subtype; //Use in Faction Rep and Faction Power, will need to be used for Outfit, Accessory and ServantIntro
     public int amount;
@@ -16,7 +16,7 @@ public class Reward {
         GenerateRandomQuestReward(pQ);
     }
 
-    public Reward (Party p, string t, int a) {
+    public Reward (PartyVO p, string t, int a) {
         party = p;
         type = t;
         amount = a;
@@ -29,7 +29,7 @@ public class Reward {
         }
     }
 
-    public Reward(Party p, string t, string sT, int a)
+    public Reward(PartyVO p, string t, string sT, int a)
     {
         party = p;
         type = t;
@@ -59,13 +59,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 10;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -78,13 +78,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 20;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -97,13 +97,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 30;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -116,13 +116,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 40;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -136,7 +136,7 @@ public class Reward {
                 else if (typeRandomInt == 2 || typeRandomInt == 3)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 60;
                 }
                 else
@@ -183,7 +183,7 @@ public class Reward {
             case "Livre":
                 return amount + " Livres";
             case "Introduction":
-				ServantModel smod = DeWinterApp.GetModel<ServantModel>();
+				ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 				ServantVO[] servants = smod.GetServants(subtype);
 				ServantVO servant = Array.Find(servants, s => !s.Hired && !s.Introduced);
                 return servant != null
@@ -228,13 +228,13 @@ public class Reward {
             case 4:
                 return "Third Estate";
             default:
-                return party.faction;
+                return party.Faction;
         }
     }
 
     string RandomExclusiveFaction(string faction)
     {
-    	FactionModel model = DeWinterApp.GetModel<FactionModel>();
+    	FactionModel model = AmbitionApp.GetModel<FactionModel>();
     	List<string> factions = new List<string>(model.Factions.Keys);
     	string val = factions[new Random().Next(factions.Count-1)];
     	return (val != faction) ? val : factions[factions.Count-1];

@@ -1,29 +1,28 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class StartTutorialCmd : ICommand
 	{
-		private const string TUTORIAL_MAP_ID = "Tutorial";
 		public void Execute ()
 		{
-			PartyModel pmod = DeWinterApp.GetModel<PartyModel>();
-			Party p = new Party(1);
-			p.tutorial = true;
-			p.turns = p.turnsLeft = 10;
+			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
+			PartyVO p = new PartyVO(1);
+			p.MapID = "Tutorial";
+			p.Turns = 10;
 			p.invited = true;
 			p.invitationDistance = 1;
-			p.Date = DeWinterApp.GetModel<CalendarModel>().Today;
+			p.Date = AmbitionApp.GetModel<CalendarModel>().Today;
+			p.IntroText = "party_tutorial_welcome_dialog";
+			p.description = AmbitionApp.GetModel<LocalizationModel>().GetString("tutorial_party_description");
+
 			pmod.Party = p;
 
-			MapModel mmod = DeWinterApp.GetModel<MapModel>();
-			mmod.Map = mmod.Maps[TUTORIAL_MAP_ID];
-
-			DeWinterApp.GetModel<EventModel>().SelectedEvent = null;
-			DeWinterApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			DeWinterApp.RegisterCommand<CreateInvitationsCmd, DateTime>();
-			DeWinterApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT); 
+			AmbitionApp.GetModel<EventModel>().SelectedEvent = null;
+			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
+			AmbitionApp.RegisterCommand<CreateInvitationsCmd, DateTime>();
+			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT); 
 		}
 	}
 }

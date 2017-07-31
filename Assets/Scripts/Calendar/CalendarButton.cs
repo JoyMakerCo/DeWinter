@@ -3,9 +3,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
-namespace DeWinter
+namespace Ambition
 {
 	[Serializable]
 	public class FactionSprite
@@ -34,7 +34,7 @@ namespace DeWinter
 	    private Image myBlockImage;
 	    private Color defaultColor;
 		private DateTime _day;
-		private List<Party> _parties;
+		private List<PartyVO> _parties;
 		private int _displayMonth;
 		private Button _btn;
 		private CalendarModel _model;
@@ -45,20 +45,20 @@ namespace DeWinter
 	        defaultColor = myBlockImage.color;
 			_btn = this.GetComponent<Button>();
 			_btn.onClick.AddListener(RSVP);
-			_model = DeWinterApp.GetModel<CalendarModel>();
-			DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
-			DeWinterApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
-			DeWinterApp.Subscribe<Party>(HandlePartyUpdated);
-			DeWinterApp.Subscribe<Party>(PartyMessages.RSVP, HandlePartyUpdated);
+			_model = AmbitionApp.GetModel<CalendarModel>();
+			AmbitionApp.Subscribe<DateTime>(HandleCalendarDay);
+			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
+			AmbitionApp.Subscribe<PartyVO>(HandlePartyUpdated);
+			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
 	    }
 
 	    void OnDestroy()
 	    {
 			_btn.onClick.RemoveListener(RSVP);
-			DeWinterApp.Unsubscribe<DateTime>(HandleCalendarDay);
-			DeWinterApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
-			DeWinterApp.Unsubscribe<Party>(HandlePartyUpdated);
-			DeWinterApp.Unsubscribe<Party>(PartyMessages.RSVP, HandlePartyUpdated);
+			AmbitionApp.Unsubscribe<DateTime>(HandleCalendarDay);
+			AmbitionApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleCalendarDay);
+			AmbitionApp.Unsubscribe<PartyVO>(HandlePartyUpdated);
+			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
 	    }
 
 		private void HandleCalendarDay(DateTime date)
@@ -68,7 +68,7 @@ namespace DeWinter
 			_day = _day.AddDays(rowID*7 + columnID - offset);
 
 			bool isCurrentMonth = (_day.Month == date.Month);
-	        List<Party> parties;
+	        List<PartyVO> parties;
 
 			myBlockImage.color = isCurrentMonth ? defaultColor : Color.gray;
 			dateText.text = _day.Day.ToString();
@@ -79,14 +79,14 @@ namespace DeWinter
 			}
 			else
 			{
-				_parties = new List<Party>();
+				_parties = new List<PartyVO>();
 			}
 
 			for (int i=partyFactionImages.Length-1; i>=0; i--)
 			{
 				partyFactionImages[i].enabled = _parties.Count > i;
 				if (partyFactionImages[i].enabled)
-					partyFactionImages[i].sprite = Array.Find(FactionSprites, s=>s.Faction == _parties[i].faction).Symbol;
+					partyFactionImages[i].sprite = Array.Find(FactionSprites, s=>s.Faction == _parties[i].Faction).Symbol;
 			}
 
 			for (int i=partyPositiveReplyImages.Length-1; i>=0; i--)
@@ -105,7 +105,7 @@ namespace DeWinter
 			pastDayXImage.enabled = (_model.Today > _day);
 		}
 
-		private void HandlePartyUpdated(Party p)
+		private void HandlePartyUpdated(PartyVO p)
 		{
 			if (p.Date == _day)
 			{
@@ -122,14 +122,14 @@ namespace DeWinter
 				if (index < partyFactionImages.Length)
 				{
 					partyFactionImages[index].enabled = true;
-					partyFactionImages[index].sprite = Array.Find(FactionSprites, s=>s.Faction == _parties[index].faction).Symbol;
+					partyFactionImages[index].sprite = Array.Find(FactionSprites, s=>s.Faction == _parties[index].Faction).Symbol;
 				}
 			}
 		}
 
 	    private void RSVP()
 	    {
-	    	DeWinterApp.SendMessage<DateTime>(CalendarMessages.SELECT_DATE, _day);
+	    	AmbitionApp.SendMessage<DateTime>(CalendarMessages.SELECT_DATE, _day);
 	    }
 	}
 }

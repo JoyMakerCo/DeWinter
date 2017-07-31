@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Core;
 using Util;
 
-namespace DeWinter
+namespace Ambition
 {
 // TODO: Refactor the hell out of this
 	public class EventModel : DocumentModel, IInitializable

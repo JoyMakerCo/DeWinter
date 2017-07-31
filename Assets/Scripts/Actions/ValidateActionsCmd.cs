@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core;
-using DeWinter;
+using Ambition;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ValidateActionsCmd : ICommand<string>
 	{
 		public void Execute(string type)
 		{
-			ActionModel model = DeWinterApp.GetModel<ActionModel>();
+			ActionModel model = AmbitionApp.GetModel<ActionModel>();
 			List<ActionVO> actions;
 			if (type != null && model.Actions.TryGetValue(type, out actions))
 			{

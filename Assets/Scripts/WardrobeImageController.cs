@@ -1,36 +1,38 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class WardrobeImageController : MonoBehaviour {
-
-    public Sprite noOutfit;
-    public Sprite frankishOutfit;
-    public Sprite venezianOutfit;
-    public Sprite catalanOutfit;
-
-    public Image displayImage;
-    
-    //Eventually this will need to be a multi-dimensional list (3 dimensions) for Styles, Modesty and Luxury
-    public List<Sprite> outfitList;
-    public int displayID;
-
-	// Use this for initialization
-	void Start () {
-        StockOutfitList();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        displayImage.sprite = outfitList[displayID];
+namespace Ambition
+{
+	[Serializable]
+	public struct OutfitSprite
+	{
+		public string style;
+		public Sprite sprite;
 	}
 
-    void StockOutfitList()
-    {
-        outfitList.Add(noOutfit);
-        outfitList.Add(frankishOutfit);
-        outfitList.Add(venezianOutfit);
-        outfitList.Add(catalanOutfit);
-    }
+	public class WardrobeImageController : MonoBehaviour
+	{
+	    public Image displayImage;
+	    
+		public OutfitSprite[] OutfitSprites;
+
+	    public string displayID
+	    {
+	    	set
+	    	{
+				OutfitSprite spt = Array.Find(OutfitSprites, s => s.style == value);
+				if (!OutfitSprite.Equals(spt, default(OutfitSprite)))
+				{
+					displayImage.sprite = spt.sprite;
+				}
+				else
+				{
+					displayImage.sprite = OutfitSprites[0].sprite;
+				}
+	    	}
+	    }
+	}
 }

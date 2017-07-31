@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class AfterPartyReportTextController : MonoBehaviour {
 
@@ -13,13 +13,14 @@ public class AfterPartyReportTextController : MonoBehaviour {
     void Start () {
         GameObject textObject = GameObject.Find("Text");
         myText = textObject.GetComponent<Text>();
-        _model = DeWinterApp.GetModel<PartyModel>();
+        _model = AmbitionApp.GetModel<PartyModel>();
         DisplayAfterPartyReportText();
     }
 	
 	public void DisplayAfterPartyReportText()
     {
         string rewardString;
+        Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().Outfit;
         if (!_model.Party.blackOutEnding) //Did the Player end the Party regularly, or by blacking out?
         {
             rewardString = "The " + _model.Party.Name() + " is over. Here's what you got:";
@@ -32,13 +33,13 @@ public class AfterPartyReportTextController : MonoBehaviour {
 				rewardString += "\nYou said some pretty embarassing things, which lost you " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation.";
                     break;
                 case "Faction Reputation Loss":
-				rewardString += "\nYou said some pretty rude things about your host, which lost you " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.faction + ".";
+				rewardString += "\nYou said some pretty rude things about your host, which lost you " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.Faction + ".";
                     break;
                 case "Outfit Novelty Loss":
-				rewardString += "\nYou spent most of the night talking to everyone about your Outfit. It may be safe to say that some were rather tired of hearing about it. Your " + OutfitInventory.PartyOutfit.Name() + " has lost " + _model.Party.blackOutEffectAmount.ToString("N0") + " Novelty";
+				rewardString += "\nYou spent most of the night talking to everyone about your Outfit. It may be safe to say that some were rather tired of hearing about it. Your " + outfit.Name + " has lost " + _model.Party.blackOutEffectAmount.ToString("N0") + " Novelty";
                     break;
                 case "Outfit Ruined":
-                    rewardString += "\nYou crashed into a waiter, who spilled wine all over you. Your " + OutfitInventory.PartyOutfit.Name() + " has been ruined!";
+                    rewardString += "\nYou crashed into a waiter, who spilled wine all over you. Your " + outfit.Name + " has been ruined!";
                     break;
                 case "Accessory Ruined":
                     rewardString += "\nYou dropped your " + GameData.partyAccessory.Name + " in a fountain and nobody was able to find it. I'm afraid it was completely lost!";
@@ -59,7 +60,7 @@ public class AfterPartyReportTextController : MonoBehaviour {
                     rewardString += "\nYou kept making all these ridiculous jokes, apparently you had everyone in stitches. You've gained " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation.";
                     break;
                 case "Faction Reputation Gain":
-				rewardString += "\nYou said some absolutely hillarious things to the host. You two seemed to get along quite well. You've gained " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.faction + ".";
+				rewardString += "\nYou said some absolutely hillarious things to the host. You two seemed to get along quite well. You've gained " + _model.Party.blackOutEffectAmount.ToString("N0") + " Reputation with the " + _model.Party.Faction + ".";
                     break;
                 case "Livre Gained":
                     rewardString += "\nWhen you got home last night, you kept excitedly yelling about some kind of wager... I don't remember the details but I do know it involved a hot air balloon. You've gained " + _model.Party.blackOutEffectAmount.ToString("N0") + " Livres.";
@@ -74,26 +75,25 @@ public class AfterPartyReportTextController : MonoBehaviour {
         }
 
 		List<string> gossipList = new List<string>();
-        foreach (Reward reward in _model.Party.wonRewardsList)
+        foreach (RewardVO reward in _model.Rewards)
         {
-            if(reward.amount > 0)
+            if(reward.Quantity > 0)
             {
-                rewardString += "\n" + reward.Name();
+                rewardString += "\n" + reward.Name;
+                if (reward.Type == RewardConsts.GOSSIP)
+                {
+	                gossipList.Add(reward.Name);
+                }
             }
-			if (reward.Type() == "Gossip" && reward.amount > 0)
-			{
-				gossipList.Add(reward.Name());
-			}
         }
-		myText.text = rewardString;
         if (gossipList.Count > 0)
         {
-			string gossipString = "\n\nYou also picked up some juicy Gossip:\n";
+			rewardString += "\n\nYou also picked up some juicy Gossip:\n";
             foreach (string gossip in gossipList)
             {
-                gossipString += "\n" + gossip;
+                rewardString += "\n" + gossip;
             }
-			myText.text += gossipString;
         }
+		myText.text = rewardString;
     }
 }

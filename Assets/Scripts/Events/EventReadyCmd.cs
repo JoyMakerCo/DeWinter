@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class EventReadyCmd : ICommand<DateTime>
 	{
 		public void Execute (DateTime day)
 		{
-			EventModel emod = DeWinterApp.GetModel<EventModel>();
+			EventModel emod = AmbitionApp.GetModel<EventModel>();
 			if (emod.SelectedEvent != null)
 			{
-				DeWinterApp.OpenDialog<EventVO>(DialogConsts.EVENT, emod.SelectedEvent);
+				AmbitionApp.OpenDialog<EventVO>(DialogConsts.EVENT, emod.SelectedEvent);
 			}
 		}
 	}

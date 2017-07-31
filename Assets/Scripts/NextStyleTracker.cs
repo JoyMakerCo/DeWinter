@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine.UI;
-using DeWinter;
+using Ambition;
 
 public class NextStyleTracker : MonoBehaviour {
 
@@ -11,21 +11,21 @@ public class NextStyleTracker : MonoBehaviour {
     void Start()
     {
         myText = this.GetComponent<Text>();
-        DeWinterApp.Subscribe<DateTime>(HandleCalendarDay);
+        AmbitionApp.Subscribe<DateTime>(HandleCalendarDay);
         HandleCalendarDay(default(DateTime));
     }
 
     void OnDestroy()
     {
-		DeWinterApp.Unsubscribe<DateTime>(HandleCalendarDay);
+		AmbitionApp.Unsubscribe<DateTime>(HandleCalendarDay);
     }
 
 	private void HandleCalendarDay(DateTime day)
     {
-    	ServantModel servantModel = DeWinterApp.GetModel<ServantModel>();
+    	ServantModel servantModel = AmbitionApp.GetModel<ServantModel>();
 		if (servantModel.Servants.ContainsKey("Seamstress"))
 		{
-			myText.text = DeWinterApp.GetModel<InventoryModel>().NextStyle;
+			myText.text = AmbitionApp.GetModel<InventoryModel>().NextStyle;
 		}
 		else
 		{

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class ConfidenceTextController : MonoBehaviour
 	{
@@ -13,16 +13,13 @@ namespace DeWinter
 	    void Start()
 	    {
 	        myText = this.GetComponent<Text>();
-			_model = DeWinterApp.GetModel<PartyModel>();
-			DeWinterApp.Subscribe<AdjustValueVO>(HandleConfidenceUpdate);
+			_model = AmbitionApp.GetModel<PartyModel>();
+			AmbitionApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleConfidenceUpdate);
 	    }
 
-		private void HandleConfidenceUpdate(AdjustValueVO vo)
+		private void HandleConfidenceUpdate(int confidence)
 	    {
-	    	if (!vo.IsRequest)
-	    	{
-		        myText.text = "Confidence: " + _model.Party.currentPlayerConfidence + "/" + _model.Party.maxPlayerConfidence;
-		    }
+	        myText.text = "Confidence: " + confidence.ToString() + "/" + _model.MaxConfidence.ToString();
 	    }
 	}
 }
