@@ -15,19 +15,17 @@ namespace Ambition
 				int index = Array.IndexOf(guests, guest);
 				if (index >= 0)
 				{
-					List<GuestVO> result = new List<GuestVO>(){guest};
-					int numGuests = guests.Length;
-					// Select the other targets in the profile
-					for (int i = numGuests-1; i > 0; i--)
+					int num = model.Remark.NumTargets;
+					GuestVO[] result = new GuestVO[num];
+					for(int i=0; i<num; i++)
 					{
-						if (((1 << ((i+numGuests-index)%numGuests)) & model.Remark.NumTargets) > 0)
-						{
-							result.Add(guests[i]);
-						}
+						result[i] = guests[(index+i)%guests.Length];
 					}
-					AmbitionApp.SendMessage<GuestVO[]>(PartyMessages.GUESTS_TARGETED, result.ToArray());
+					AmbitionApp.SendMessage<GuestVO[]>(PartyMessages.GUESTS_TARGETED, result);
+					return;
 				}
 			}
+			AmbitionApp.SendMessage<GuestVO[]>(PartyMessages.GUESTS_TARGETED, null);
 		}
 	}
 }

@@ -13,6 +13,8 @@ namespace Ambition
 		void Start()
 		{
 			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
+			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
+			AmbitionApp.Execute<GenerateGuestsCmd, RoomVO>(room);
 			AmbitionApp.OpenDialog(DialogConsts.READY_GO);
 		}
 
@@ -22,10 +24,6 @@ namespace Ambition
 			if(Input.GetKeyDown(KeyCode.D))
 	        {
 	        	AmbitionApp.SendMessage(PartyMessages.DRINK);
-	        }
-	        else if (Input.GetKeyDown(KeyCode.F))
-	        {
-				AmbitionApp.SendMessage(PartyMessages.FLIP_REMARK);
 	        }
 			else if (Input.GetKeyDown(KeyCode.C))
 	        {
