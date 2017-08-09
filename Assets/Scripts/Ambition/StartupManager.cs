@@ -54,13 +54,13 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
 			AmbitionApp.RegisterCommand<BuyRemarkCmd>(PartyMessages.BUY_REMARK);
 			AmbitionApp.RegisterCommand<ExchangeRemarkCmd, RemarkVO>(PartyMessages.EXCHANGE_REMARK);
+			AmbitionApp.RegisterCommand<GuestTargetedCmd, GuestVO>(PartyMessages.GUEST_TARGETED);
 			AmbitionApp.RegisterCommand<EnemyAttackCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<DrinkForConfidenceCmd>(PartyMessages.DRINK);
 			AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<EndTurnCmd>(PartyMessages.END_TURN);
 			AmbitionApp.RegisterCommand<HostVictoryCheckCmd>(PartyMessages.END_TURN);
-			AmbitionApp.RegisterCommand<FlipRemarkCmd>(PartyMessages.FLIP_REMARK);
 			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
 
 

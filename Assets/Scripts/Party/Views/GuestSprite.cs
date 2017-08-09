@@ -8,8 +8,8 @@ namespace Ambition
 	public class GuestSprite
 	{
 		public Sprite BoredSprite;
-
 		public Sprite[] GuestSprites;
+		public bool IsFemale;
 
 		// Returns a Sprite corresponding to the guest's approval
 		// TODO: This may eventually be completely handled by Mecanim

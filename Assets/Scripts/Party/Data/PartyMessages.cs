@@ -32,6 +32,5 @@ namespace Ambition
 		public const string TELEGRAPH = "TELEGRAPH";
 		public const string GUEST_REMARK = "GUEST_REMARK";
 		public const string HOST_REMARK = "HOST_REMARK";
-		public const string FLIP_REMARK = "FLIP_REMARK";
 	}
 }

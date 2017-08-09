@@ -22,7 +22,15 @@ namespace Ambition
 		public bool ItemEffect;
 		public bool Repartee;
 
-		public RemarkVO Remark;
+		private RemarkVO _remark;
+		public RemarkVO Remark
+		{
+			get { return _remark; }
+			set {
+				_remark = value;
+				AmbitionApp.SendMessage<RemarkVO>(_remark);
+			}
+		}
 
 		public int TurnsLeft;
 
