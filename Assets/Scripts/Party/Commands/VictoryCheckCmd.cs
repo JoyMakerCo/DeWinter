@@ -36,7 +36,7 @@ namespace Ambition
                         reward = new RewardVO(RewardConsts.GOSSIP, model.Party.Faction, 1);
                     }
                 }
-                model.Rewards.Add(reward);
+                model.Party.Rewards.Add(reward);
 
 	            Dictionary<string, string> subs = new Dictionary<string, string>(){
 					{"$NUMCHARMED",numCharmed.ToString()},

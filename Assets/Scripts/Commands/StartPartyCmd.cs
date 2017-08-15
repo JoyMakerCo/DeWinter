@@ -11,7 +11,6 @@ namespace Ambition
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();
-        	model.Rewards = new List<RewardVO>();
 
 	        //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
 	        // TODO: Passive buff system

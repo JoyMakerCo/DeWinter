@@ -143,7 +143,7 @@ namespace Ambition
 	        {
 				Name = (Name != null) ? (Name + ", " + luxuryString) : luxuryString;
 	        }
-        	Name = (Name == null) ? (style + " Outfit") : (Name + " " + style + " Outfit");
+			Name = (Name + " " + style + " Outfit") ?? (style + " Outfit");
 	    }
 
 	    public void Alter(string stat, int amount)

@@ -19,7 +19,7 @@ public class EventStage
     public EventStage(string desc, RewardVO[] rewards, params EventOption[] options)
     {
         Description = desc;
-        Rewards = (rewards == null ? new RewardVO[0] : rewards);
+        Rewards = rewards ?? new RewardVO[0];
         Options = options;
     }
 

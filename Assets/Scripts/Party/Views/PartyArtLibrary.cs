@@ -6,7 +6,6 @@ using Util;
 
 namespace Ambition
 {
-
 	[Serializable]
 	public struct RemarkMap
 	{
