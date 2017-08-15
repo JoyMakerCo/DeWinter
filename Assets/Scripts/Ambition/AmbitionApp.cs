@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Dialog;
+using UFlow;
 using Core;
 
 namespace Ambition
@@ -156,6 +157,11 @@ namespace Ambition
 		{
 			RequestAdjustValueVO<T> vo = new RequestAdjustValueVO<T>(ID, value);
 			App.Service<MessageSvc>().Send<RequestAdjustValueVO<T>>(vo);
+		}
+
+		public static void RegisterState<C>(string stateID, string machineID) where C : UState, new()
+		{
+			App.Service<UFlowSvc>().RegisterState<C>(stateID, machineID);
 		}
 	}
 }

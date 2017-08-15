@@ -12,6 +12,7 @@ namespace Ambition
 		public Image OpinionIndicator;
 		public Image InterestIcon;
 		public Text NameText;
+		public Core.ICommand mb;
 
 		public GuestConfig GuestArtConfig;
 
@@ -22,7 +23,7 @@ namespace Ambition
 
 		void Awake()
 		{
-			AmbitionApp.Subscribe<GuestVO []>(HandleGuests);
+			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
 			AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
 			AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
@@ -39,6 +40,7 @@ namespace Ambition
 
 	    private void HandleGuests(GuestVO[] guests)
 	    {
+	  Debug.Log("HANDLE GUESTS");
 	    	_guest = (guests.Length > Index) ? guests[Index] : null;
 
 	    	// Shows/hides components of a guest view based on the data
@@ -62,7 +64,7 @@ namespace Ambition
 				NameText.color = isEnemy ? Color.red : Color.white;
 
 				OpinionIndicator.gameObject.SetActive(!_guest.IsLockedIn);
-				OpinionIndicator.fillAmount = 0.1f*(float)_guest.Interest;
+				OpinionIndicator.fillAmount = 0.01f*(float)_guest.Interest;
 
 				if (_guest.Variant < 0)
 				{

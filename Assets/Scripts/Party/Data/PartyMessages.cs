@@ -14,14 +14,14 @@ namespace Ambition
 		public const string START_PARTY = "START_PARTY";
 		public const string PARTY_STARTED = "PARTY_STARTED";
 		public const string END_PARTY = "LEAVE_PARTY";
-		public const string START_TURN = "START_TURN";
 		public const string START_ENCOUNTER = "START_ENCOUNTER";
+		public const string START_TURN = "START_TURN";
+		public const string END_TURN = "END_TURN";
 		public const string AMBUSH = "AMBUSH";
 		public const string GUEST_SELECTED = "GUEST_SELECTED";
 		public const string GUEST_TARGETED = "GUEST_TARGETED";
 		public const string GUESTS_TARGETED = "GUESTS_TARGETED";
 		public const string ENEMY_RESET = "ENEMY_RESET";
-		public const string END_TURN = "END_TURN";
 		public const string REPARTEE_BONUS = "REPARTEE_BONUS";
 		public const string BUY_REMARK = "BUY_REMARK";
 		public const string EXCHANGE_REMARK = "EXCHANGE_REMARK";

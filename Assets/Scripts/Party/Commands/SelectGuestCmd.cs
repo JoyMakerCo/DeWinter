@@ -71,6 +71,7 @@ namespace Ambition
             {
 				AmbitionApp.AdjustValue(GameConsts.CONFIDENCE, 10);
             }
+            AmbitionApp.SendMessage(PartyMessages.END_TURN);
 		}
 	}
 }
