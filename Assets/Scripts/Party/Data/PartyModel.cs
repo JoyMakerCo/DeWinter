@@ -14,13 +14,12 @@ namespace Ambition
 
 		public PartyVO Party;
 
-		public List<RewardVO> Rewards;
-
 		public bool IsAmbush=false;
 
 		//TODO: Temp, until buffs are figured out
 		public bool ItemEffect;
 		public bool Repartee;
+		public int InterestDecay=1;
 
 		private RemarkVO _remark;
 		public RemarkVO Remark
@@ -252,19 +251,6 @@ namespace Ambition
 		private void HandleRepartee()
 		{
 		}
-
-		private RoomVO _room;
-		public RoomVO Room
-		{
-			get { return _room; }
-			set
-			{
-				_room = value;
-				_room.Revealed = true;
-				AmbitionApp.SendMessage<RoomVO>(_room);
-			}
-		}
-
 
 		private void HandleBored()
 		{

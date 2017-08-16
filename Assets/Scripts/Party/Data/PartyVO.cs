@@ -37,6 +37,8 @@ public class PartyVO
     public string blackOutEffect; // This is used for the After Party Report
     public int blackOutEffectAmount; //This is also used for the After Party Report
 
+	public List<RewardVO> Rewards = new List<RewardVO>();
+
     public PartyVO()
     {
 		Random rnd = new Random();

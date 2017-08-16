@@ -12,7 +12,7 @@ namespace Ambition
 	    	AmbitionApp.AdjustValue<int>(PartyConstants.TURNSLEFT, -model.TurnsLeft);
 
             //Distribute the Rewards into the Player's 'Accounts' in Game Data and the appropriate Inventories
-			model.Rewards.ForEach(AmbitionApp.SendMessage<RewardVO>);
+			model.Party.Rewards.ForEach(AmbitionApp.SendMessage<RewardVO>);
 			omod.LastPartyOutfit = omod.Outfit;
 			omod.Outfit = null;
 	        GameData.partyAccessory = null;

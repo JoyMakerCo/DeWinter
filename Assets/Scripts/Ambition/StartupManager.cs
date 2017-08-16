@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,6 +48,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 			AmbitionApp.RegisterCommand<VictoryCheckCmd, GuestVO[]>();
+			AmbitionApp.RegisterCommand<HandleBoredomCmd, GuestVO[]>();
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.START_ENCOUNTER);
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
@@ -60,6 +60,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<EndTurnCmd>(PartyMessages.END_TURN);
+			AmbitionApp.RegisterCommand<BoredomCmd>(PartyMessages.END_TURN);
 			AmbitionApp.RegisterCommand<HostVictoryCheckCmd>(PartyMessages.END_TURN);
 			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
 
