@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class ConfidenceTallyDialogMediator : DialogView, IDialog<Dictionary<string, int>>
+	public class ConfidenceTallyDialogMediator : DialogView, Util.IInitializable<Dictionary<string, int>>
 	{
 		public Text TitleText;
 		public Text BodyText;
 
 		//This is used in the beginning of the Party Screen to tally up a Player's Confidence stat
 		//TODO: Implementation of this dialog is a bit of a disaster.
-	    public void OnOpen(Dictionary<string, int> parameters)
+	    public void Initialize(Dictionary<string, int> parameters)
 	    {
 	    	PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
 			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();

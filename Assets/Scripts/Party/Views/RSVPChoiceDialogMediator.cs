@@ -8,14 +8,14 @@ using Core;
 
 namespace Ambition
 {
-	public class RSVPChoiceDialogMediator : DialogView, IDialog<List<PartyVO>>
+	public class RSVPChoiceDialogMediator : DialogView, Util.IInitializable<List<PartyVO>>
 	{
 		public Text BodyText;
 		public Text TitleText;
 	    private List<PartyVO> _parties;
 
 	    // Use this for initialization
-	    public void OnOpen (List<PartyVO> parties)
+	    public void Initialize (List<PartyVO> parties)
 	    {
 	    	LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
 	    	_parties = parties;
