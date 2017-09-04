@@ -32,7 +32,11 @@ namespace Dialog
 			if (dialog != null)
 			{
 				DialogView cmp = dialog.GetComponent<DialogView>();
-				if (cmp != null) cmp.Manager = this;
+				if (cmp != null)
+				{
+					cmp.Manager = this;
+					cmp.ID = dialogID;
+				}
 				_dialogs.Add(dialog, dialogID);
 				dialog.transform.SetParent(_canvas.transform, false);
 				dialog.GetComponent<RectTransform>().SetAsLastSibling();
@@ -46,8 +50,8 @@ namespace Dialog
 			if (dlg != null)
 			{
 				DialogView cmp = dlg.GetComponent<DialogView>();
-				if (cmp is IDialog<T>)
-					(cmp as IDialog<T>).OnOpen(vo);
+				if (cmp is IInitializable<T>)
+					(cmp as IInitializable<T>).Initialize(vo);
 			}
 			return dlg;
 		}

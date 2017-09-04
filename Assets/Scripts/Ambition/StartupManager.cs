@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core;
+using UFlow;
 
 namespace Ambition
 {
@@ -48,7 +49,6 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 			AmbitionApp.RegisterCommand<VictoryCheckCmd, GuestVO[]>();
-			AmbitionApp.RegisterCommand<HandleBoredomCmd, GuestVO[]>();
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.START_ENCOUNTER);
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
@@ -59,9 +59,6 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<DrinkForConfidenceCmd>(PartyMessages.DRINK);
 			AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
-			AmbitionApp.RegisterCommand<EndTurnCmd>(PartyMessages.END_TURN);
-			AmbitionApp.RegisterCommand<BoredomCmd>(PartyMessages.END_TURN);
-			AmbitionApp.RegisterCommand<HostVictoryCheckCmd>(PartyMessages.END_TURN);
 			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
 
 
@@ -79,6 +76,17 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<TutorialPartyWelcomeCmd, RoomVO>();
 			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd, int>(GameConsts.CONFIDENCE);
 			AmbitionApp.RegisterCommand<EndTutorialCmd>(PartyMessages.END_PARTY);
+
+			// UFlow Associations
+			// In the future, this will be handled by config
+			AmbitionApp.RegisterState<InitConversationState>("ConversationController", "InitConversation", "ReadyGo");
+			AmbitionApp.RegisterState<OpenDialogState, string>("ConversationController", "ReadyGo", "WaitForCloseReadyGo", DialogConsts.READY_GO);
+			AmbitionApp.RegisterState<WaitForNextState>("ConversationController", "WaitForCloseReadyGo", "CloseReadyGo");
+			AmbitionApp.RegisterState<CloseDialogState, string>("ConversationController", "CloseReadyGo", "StartTurn", DialogConsts.READY_GO);
+			AmbitionApp.RegisterState<StartTurnState>("ConversationController", "StartTurn", "SelectRemark");
+			AmbitionApp.RegisterState<SelectRemarkState>("ConversationController", "SelectRemark", "SelectGuest");
+			AmbitionApp.RegisterState<SelectGuestState>("ConversationController", "SelectGuest", "EndTurn");
+			AmbitionApp.RegisterState<EndTurnState>("ConversationController", "EndTurn", "StartTurn");
 
 			Destroy(this.gameObject);
 		}

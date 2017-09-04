@@ -6,14 +6,14 @@ using Core;
 
 namespace Ambition
 {
-	public class RSVPCancelDialogMediator : DialogView, IDialog<PartyVO>
+	public class RSVPCancelDialogMediator : DialogView, Util.IInitializable<PartyVO>
 	{
 		public Text BodyText;
 		public Text TitleText;
 
 		private PartyVO _party;
 
-		public void OnOpen(PartyVO p)
+		public void Initialize(PartyVO p)
 		{
 			LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
 			TitleText.text = localization.GetString("rsvp_cancel_dialog.title");

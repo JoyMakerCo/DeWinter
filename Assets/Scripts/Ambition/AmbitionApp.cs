@@ -159,9 +159,14 @@ namespace Ambition
 			App.Service<MessageSvc>().Send<RequestAdjustValueVO<T>>(vo);
 		}
 
-		public static void RegisterState<C>(string stateID, string machineID) where C : UState, new()
+		public static void RegisterState<C>(string machineID, string stateID, string targetStateID) where C : UState, new()
 		{
-			App.Service<UFlowSvc>().RegisterState<C>(stateID, machineID);
+			App.Service<UFlowSvc>().RegisterState<C>(machineID, stateID, targetStateID);
+		}
+
+		public static void RegisterState<C, T>(string machineID, string stateID, string targetStateID, T arg) where C : UState, Util.IInitializable<T>, new()
+		{
+			App.Service<UFlowSvc>().RegisterState<C, T>(machineID, stateID, targetStateID, arg);
 		}
 	}
 }

@@ -6,7 +6,7 @@ using Dialog;
 
 namespace Ambition
 {
-	public class EventViewMediator : DialogView, IDialog<EventVO>
+	public class EventViewMediator : DialogView, Util.IInitializable<EventVO>
 	{
 	    public Text titleText;
 	    public Text descriptionText;
@@ -23,7 +23,7 @@ namespace Ambition
 			AmbitionApp.Unsubscribe<EventVO>(HandleEventUpdate);
 	    }
 
-		public void OnOpen(EventVO e)
+		public void Initialize(EventVO e)
 	    {
 			AmbitionApp.SendMessage<EventVO>(e);
 	    }

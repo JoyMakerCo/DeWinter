@@ -4,20 +4,24 @@ using Util;
 
 namespace Dialog
 {
-	public interface IDialog<T>
-	{
-		void OnOpen(T vo);
-	}
-
 	public class DialogView : MonoBehaviour
 	{
+		public string ID;
+
 		[HideInInspector]
 		public DialogCanvasManager Manager;
 
 		public void Close()
 		{
-			if (Manager != null)
-				Manager.Close(this.gameObject);
+			OnClose();
+			Manager.Close(this.gameObject);
+		}
+
+		public virtual void OnClose()
+		{
+			Destroy(this);
+			if (this is IDisposable)
+				((IDisposable)this).Dispose();
 		}
 	}
 }

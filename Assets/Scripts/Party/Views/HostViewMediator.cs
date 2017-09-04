@@ -11,16 +11,6 @@ namespace Ambition
 		public Image HostImage;
 		public Text HostText;
 
-		void Awake()
-		{
-			AmbitionApp.Subscribe(PartyMessages.START_TURN, HandleStartTurn);
-		}
-
-		void OnDestroy()
-		{
-			AmbitionApp.Unsubscribe(PartyMessages.START_TURN, HandleStartTurn);
-		}
-
 		// Use this for initialization
 		void Start ()
 		{
@@ -32,11 +22,6 @@ namespace Ambition
 			if (host.Variant < 0) host.Variant = new System.Random().Next(sprites.Length);
 			HostImage.sprite = sprites[host.Variant];
 			HostText.text = host.Name;
-		}
-
-		private void HandleStartTurn()
-		{
-//			AmbitionApp.SendMessage<GuestVO>(PartyMessages.HOST_REMARK, Host);
 		}
 	}
 }

@@ -12,12 +12,9 @@ namespace Ambition
 	{
 		void Start()
 		{
-			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
-			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
-			AmbitionApp.Execute<GenerateGuestsCmd, RoomVO>(room);
-			AmbitionApp.OpenDialog(DialogConsts.READY_GO);
+			Core.App.Service<UFlow.UFlowSvc>().InvokeMachine("ConversationController");
 		}
-
+	
 	    // Poll for input
 	    void Update()
 	    {

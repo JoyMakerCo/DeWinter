@@ -13,7 +13,6 @@ namespace Ambition
 			{
 				pmod.Remarks[index]=null;
 				AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
-				AmbitionApp.SendMessage(PartyMessages.END_TURN);
 			}
 		}
 	}

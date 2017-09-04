@@ -15,8 +15,6 @@ namespace Ambition
 		public const string PARTY_STARTED = "PARTY_STARTED";
 		public const string END_PARTY = "LEAVE_PARTY";
 		public const string START_ENCOUNTER = "START_ENCOUNTER";
-		public const string START_TURN = "START_TURN";
-		public const string END_TURN = "END_TURN";
 		public const string AMBUSH = "AMBUSH";
 		public const string GUEST_SELECTED = "GUEST_SELECTED";
 		public const string GUEST_TARGETED = "GUEST_TARGETED";
