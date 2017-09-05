@@ -10,11 +10,6 @@ namespace Ambition
 {
 	public class RoomViewMediator : MonoBehaviour
 	{
-		void Start()
-		{
-			Core.App.Service<UFlow.UFlowSvc>().InvokeMachine("ConversationController");
-		}
-	
 	    // Poll for input
 	    void Update()
 	    {

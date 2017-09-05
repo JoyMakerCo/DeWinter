@@ -15,7 +15,6 @@ namespace Ambition
 			int numCharmed = Array.FindAll(guests, g=>g.State == GuestState.Charmed).Length;
 			int numPutOff = Array.FindAll(guests, g=>g.State == GuestState.PutOff).Length;
 
-			model.TurnsLeft--;
 			model.Remark = null;
 
 			if (numCharmed + numPutOff == len)

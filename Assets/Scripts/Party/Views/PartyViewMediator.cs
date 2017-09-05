@@ -31,6 +31,7 @@ namespace Ambition
 		{
 			MapView.SetActive(false);
 			RoomView.SetActive(true);
+			Core.App.Service<UFlow.UFlowSvc>().InvokeMachine("ConversationController");
 		}
 
 		private void GoToMap()

@@ -61,7 +61,6 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
 
-
 			AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckUprisingDayCmd, DateTime>();
