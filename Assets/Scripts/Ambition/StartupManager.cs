@@ -47,8 +47,8 @@ namespace Ambition
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
+			AmbitionApp.RegisterCommand<GuestInterestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
-			AmbitionApp.RegisterCommand<VictoryCheckCmd, GuestVO[]>();
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.START_ENCOUNTER);
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
@@ -83,9 +83,7 @@ namespace Ambition
 			AmbitionApp.RegisterState<OpenDialogState, string>("ConversationController", "ReadyGo", "WaitForCloseReadyGo", DialogConsts.READY_GO);
 			AmbitionApp.RegisterState<WaitForNextState>("ConversationController", "WaitForCloseReadyGo", "CloseReadyGo");
 			AmbitionApp.RegisterState<CloseDialogState, string>("ConversationController", "CloseReadyGo", "StartTurn", DialogConsts.READY_GO);
-			AmbitionApp.RegisterState<StartTurnState>("ConversationController", "StartTurn", "SelectRemark");
-			AmbitionApp.RegisterState<SelectRemarkState>("ConversationController", "SelectRemark", "SelectGuest");
-			AmbitionApp.RegisterState<SelectGuestState>("ConversationController", "SelectGuest", "EndTurn");
+			AmbitionApp.RegisterState<WaitForNextState>("ConversationController", "StartTurn", "EndTurn");
 			AmbitionApp.RegisterState<EndTurnState>("ConversationController", "EndTurn", "StartTurn");
 
 			Destroy(this.gameObject);

@@ -65,7 +65,7 @@ namespace Ambition
 			Color c;
 			for(int i=Remarks.Length-1; i>=0; i--)
 			{
-				c = (_hand[i] == remark) ? Color.white : Color.grey;
+				c = (remark == null || _hand[i] == remark) ? Color.white : Color.grey;
 				Remarks[i].Profile.color = c;
 				Remarks[i].Icon.color = c;
 			}

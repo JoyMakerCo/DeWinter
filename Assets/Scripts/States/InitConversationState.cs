@@ -9,7 +9,7 @@ namespace Ambition
 		{
 			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
 			GenerateGuests();
-			End();
+			AmbitionApp.SendMessage(PartyMessages.FILL_REMARKS);
 		}
 
 		/// <summary>

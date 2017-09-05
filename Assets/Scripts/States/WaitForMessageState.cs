@@ -3,19 +3,23 @@ using UFlow;
 
 namespace Ambition
 {
-	public class WaitForMessageState : UState, Util.IInitializable<string>
+	public class WaitForMessageState : UState, IPersistentState, Util.IInitializable<string>
 	{
 		private string _messageID;
 
 		public void Initialize(string messageID)
 		{
 			_messageID = messageID;
-			AmbitionApp.Subscribe(messageID, End);
 		}
 
-		public override void OnExitState()
+		public override void OnEnterState ()
 		{
-			AmbitionApp.Unsubscribe(_messageID, End);
+			AmbitionApp.Subscribe(_messageID, EndState);
+		}
+
+		public void OnExitState()
+		{
+			AmbitionApp.Unsubscribe(_messageID, EndState);
 		}
 	}
 }

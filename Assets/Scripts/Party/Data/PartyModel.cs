@@ -19,7 +19,7 @@ namespace Ambition
 		//TODO: Temp, until buffs are figured out
 		public bool ItemEffect;
 		public bool Repartee;
-		public int InterestDecay=1;
+		public int InterestDecay=20;
 
 		private RemarkVO _remark;
 		public RemarkVO Remark

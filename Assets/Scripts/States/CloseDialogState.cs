@@ -16,7 +16,6 @@ namespace Ambition
 		public override void OnEnterState ()
 		{
 			AmbitionApp.CloseDialog(_dialogID);
-			End();
 		}
 	}
 }
