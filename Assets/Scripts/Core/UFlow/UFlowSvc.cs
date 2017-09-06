@@ -5,22 +5,11 @@ using Util;
 
 namespace UFlow
 {
-	public interface IUFlowBindings
-	{
-	}
-
-	public class UFlowSvc : IAppService, IInitializable
+	public class UFlowSvc : IAppService
 	{
 		private Dictionary<string, Func<UState>> _bindings = new Dictionary<string, Func<UState>>();
 		private Dictionary<string, List<string[]>> _states = new Dictionary<string, List<string[]>>();
 		internal Dictionary<string, UMachine> _machines = new Dictionary<string, UMachine>();
-
-		public void Initialize()
-		{
-			// TODO: Read the machine from config
-			string file;
-			IUFlowBindings bindings;
-		}
 
 		public void RegisterDecision(string machineID, string stateID, Func<bool> condition, string targetStateID)
 		{

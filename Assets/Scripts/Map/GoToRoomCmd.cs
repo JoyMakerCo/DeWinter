@@ -11,7 +11,6 @@ namespace Ambition
 			// If Current Room is null, you're probably jumping into the foyer.
 			MapModel model = AmbitionApp.GetModel<MapModel>();
 			PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
-			Random rnd = new Random();
 
 			if (partyModel.TurnsLeft <= 0)
 			{
@@ -27,6 +26,7 @@ namespace Ambition
 			// Make sure the player can move to the next room
 			else
 			{
+				Random rnd = new Random();
 				if (model.Room != null)
 				{
 					int chance = model.Room.MoveThroughChance;

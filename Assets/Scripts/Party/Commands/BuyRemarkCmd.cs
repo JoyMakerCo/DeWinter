@@ -9,13 +9,13 @@ namespace Ambition
 		public void Execute ()
 		{
 //			if (model.Confidence >= model.ConfidenceCost)
-//			{
+			{
 				int index = Array.IndexOf(model.Remarks, null);
 				if (index >= 0)
 				{
 					AmbitionApp.AdjustValue(GameConsts.CONFIDENCE, -10);
 					AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
-//				}
+				}
 			}
 		}
 	}
