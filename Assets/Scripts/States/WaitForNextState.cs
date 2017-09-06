@@ -3,16 +3,16 @@ using UFlow;
 
 namespace Ambition
 {
-	public class WaitForNextState : UState
+	public class WaitForNextState : UState, IPersistentState
 	{
 		public override void OnEnterState ()
 		{
-			AmbitionApp.Subscribe(GameMessages.NEXT_STATE, End);
+			AmbitionApp.Subscribe(GameMessages.NEXT_STATE, EndState);
 		}
 
-		public override void OnExitState ()
+		public void OnExitState ()
 		{
-			AmbitionApp.Unsubscribe(GameMessages.NEXT_STATE, End);
+			AmbitionApp.Unsubscribe(GameMessages.NEXT_STATE, EndState);
 		}
 	}
 }

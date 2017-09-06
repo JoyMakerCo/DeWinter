@@ -9,16 +9,16 @@ namespace UFlow
 	// OnEnterState and OnExitState are invoked by the UFlowSvc,
 	// and are ideal places to execute asynchronous instructions
 	// and set up delegates. The State is exited when End() is called.
-	public class UState
+	public abstract class UState
 	{
+		internal UFlowSvc _uflow;
+		protected UFlowSvc _UFlow { get { return _uflow; } }
+
 		public string ID
 		{
 			get;
 			internal set;
 		}
-
-		internal UFlowSvc _uflow;
-		protected UFlowSvc _UFlow { get { return _uflow; } }
 
 		public UMachine Machine
 		{
@@ -27,25 +27,21 @@ namespace UFlow
 		}
 
 		// Overload for instructions
-		public virtual void OnEnterState() {}
-		public virtual void OnExitState() {}
+		public abstract void OnEnterState();
 
-		public static UState operator++(UState state)
+		public void EndState()
 		{
-			return state.Machine.NextState();
-		}
-
-		public void End()
-		{
-			Machine.NextState();
+			if (this is IPersistentState)
+			{
+				((IPersistentState)this).OnExitState();
+			}
+			if (Machine != null)
+				Machine.NextState();
 		}
 	}
 
-	// Decision decorator for Decision States.
-	// The Choice string should be set in OnEnterState or a
-	// delegate within the Decision State.
-	public interface IDecision
+	public interface IPersistentState
 	{
-		string Choice { get; set; }
+		void OnExitState();
 	}
 }

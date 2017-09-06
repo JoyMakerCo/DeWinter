@@ -5,30 +5,30 @@ using Util;
 
 namespace UFlow
 {
-	public interface IUFlowBindings
-	{
-	}
-
-	public class UFlowSvc : IAppService, IInitializable
+	public class UFlowSvc : IAppService
 	{
 		private Dictionary<string, Func<UState>> _bindings = new Dictionary<string, Func<UState>>();
 		private Dictionary<string, List<string[]>> _states = new Dictionary<string, List<string[]>>();
-		private Dictionary<string, UMachine> _machines = new Dictionary<string, UMachine>();
+		internal Dictionary<string, UMachine> _machines = new Dictionary<string, UMachine>();
 
-		public void Initialize()
+		public void RegisterDecision(string machineID, string stateID, Func<bool> condition, string targetStateID)
 		{
-			// TODO: Read the machine from config
-			string file;
-			IUFlowBindings bindings;
+			if (!_bindings.ContainsKey(stateID))
+			{
+				_bindings[stateID] = (Func<UState>)(() => {
+					UDecision state = new UDecision();
+					state._uflow = this;
+					return state;
+				});
+			}
 		}
 
 		public void RegisterState<S>(string machineID, string stateID, string targetStateID) where S : UState, new()
 		{
-			UState state;
 			if (!_bindings.ContainsKey(stateID))
 			{
 				_bindings[stateID] = (Func<UState>)(() => {
-					state = new S();
+					UState state = new S();
 					if (state is IInitializable)
 						((IInitializable)state).Initialize();
 					state._uflow = this;
@@ -77,21 +77,35 @@ namespace UFlow
 			connections.Add(states);
 		}
 
-		internal UState BuildState(string stateID)
+		internal UState BuildState(string stateID, string machineID=null)
 		{
 			UState s = _bindings[stateID]();
-			if (s is UMachine)
+			UMachine mac=null;
+			if (machineID != null)
+				_machines.TryGetValue(machineID, out mac);
+			s.Machine = mac;
+			s.ID = stateID;
+			mac = s as UMachine;
+			if (mac != null)
 			{
-				_machines[stateID] = (UMachine)s;
-				((UMachine)s)._states = _states[stateID].ToArray();
+				_machines[stateID] = mac;
+				mac._states = _states[stateID].ToArray();
 			}
 			return s;
 		}
 
 		public void InvokeMachine(string machineID)
 		{
-			UState s = BuildState(machineID);
-			s.OnEnterState();
+			BuildState(machineID).OnEnterState();
+		}
+
+		public void RemoveMachine(string MachineID)
+		{
+			UMachine mac;
+			if (_machines.TryGetValue(MachineID, out mac))
+			{
+				mac.EndState();
+			}
 		}
 	}
 }

@@ -6,15 +6,16 @@ namespace Ambition
 {
 	public class OpenDialogState : UState, Util.IInitializable<string>
 	{
+		private string _dialogID;
+
 		public void Initialize (string DialogID)
 		{
-			AmbitionApp.OpenDialog(DialogID);
+			_dialogID = DialogID;
 		}
 
 		public override void OnEnterState ()
 		{
-			End();
+			AmbitionApp.OpenDialog(_dialogID);
 		}
 	}
 }
-
