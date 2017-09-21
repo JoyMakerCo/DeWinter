@@ -44,13 +44,13 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
 			AmbitionApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
 			AmbitionApp.RegisterCommand<CreateEnemyCmd, string>(GameMessages.CREATE_ENEMY);
+			AmbitionApp.RegisterCommand<AdjustFactionCmd, AdjustFactionVO>(FactionConsts.ADJUST_FACTION);
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<GuestInterestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
-			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.START_ENCOUNTER);
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
 			AmbitionApp.RegisterCommand<BuyRemarkCmd>(PartyMessages.BUY_REMARK);
 			AmbitionApp.RegisterCommand<ExchangeRemarkCmd, RemarkVO>(PartyMessages.EXCHANGE_REMARK);
@@ -78,12 +78,15 @@ namespace Ambition
 
 			// UFlow Associations
 			// In the future, this will be handled by config
-			AmbitionApp.RegisterState<InitConversationState>("ConversationController", "InitConversation", "ReadyGo");
-			AmbitionApp.RegisterState<OpenDialogState, string>("ConversationController", "ReadyGo", "WaitForCloseReadyGo", DialogConsts.READY_GO);
-			AmbitionApp.RegisterState<WaitForNextState>("ConversationController", "WaitForCloseReadyGo", "CloseReadyGo");
-			AmbitionApp.RegisterState<CloseDialogState, string>("ConversationController", "CloseReadyGo", "StartTurn", DialogConsts.READY_GO);
-			AmbitionApp.RegisterState<WaitForNextState>("ConversationController", "StartTurn", "EndTurn");
-			AmbitionApp.RegisterState<EndTurnState>("ConversationController", "EndTurn", "StartTurn");
+			AmbitionApp.RegisterState<InitConversationState>("InitConversation");
+			AmbitionApp.RegisterState<OpenDialogState, string>("ReadyGo", DialogConsts.READY_GO);
+			AmbitionApp.RegisterState<StartTurnState>("StartTurn");
+			AmbitionApp.RegisterState<EndTurnState>("EndTurn");
+
+			AmbitionApp.RegisterTransition("ConversationController", "InitConversation", "ReadyGo");
+			AmbitionApp.RegisterTransition<WaitForCloseDialogTransition>("ConversationController", "ReadyGo", "StartTurn", DialogConsts.READY_GO);
+			AmbitionApp.RegisterTransition<WaitForMessageTransition>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
+			AmbitionApp.RegisterTransition("ConversationController", "EndTurn", "StartTurn");
 
 			Destroy(this.gameObject);
 		}

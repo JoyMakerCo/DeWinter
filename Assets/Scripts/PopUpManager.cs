@@ -170,7 +170,7 @@ public class PopUpManager : MonoBehaviour
     void CreateCaughtTradingGossipModal(string faction)
     {
     	Dictionary<string,string> subs = new Dictionary<string, string>(){{"$FACTION",faction}};
-    	if (GameData.factionList["Third Estate"].ReputationLevel >= 2)
+    	if (AmbitionApp.GetModel<FactionModel>()["Third Estate"].Level >= 2)
     	{
     		AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, subs);
     	}

@@ -10,7 +10,7 @@ namespace Ambition
 			if (confidence <= 0)
 			{
 				PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
-				AmbitionApp.AdjustValue(GameConsts.CONFIDENCE, pmod.StartConfidence-confidence);
+				AmbitionApp.GetModel<PartyModel>().Confidence = pmod.StartConfidence;
 
 	            //The Player is relocated to the Entrance
 				MapModel mmod = AmbitionApp.GetModel<MapModel>();

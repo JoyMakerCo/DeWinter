@@ -35,7 +35,7 @@ namespace Ambition
 		                break;
 		            case 3:
 		                //3 = Belittle (Sap your Confidence)
-		                AmbitionApp.AdjustValue<int>(GameConsts.CONFIDENCE, -20);
+						AmbitionApp.GetModel<PartyModel>().Confidence -= 20;
 		                break;
 		            case 4:
 		                //4 = Antagonize (Uncharm a Charmed Guest, if there is one)

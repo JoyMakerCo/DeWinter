@@ -11,6 +11,8 @@ namespace Ambition
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();
+			FactionModel factionModel = AmbitionApp.GetModel<FactionModel>();
+			FactionVO faction = factionModel[model.Party.Faction];
 
 	        //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
 	        // TODO: Passive buff system
@@ -28,6 +30,12 @@ namespace Ambition
 						break;
 				}
 			}
+
+			int confidence = omod.Outfit.novelty;
+			confidence *= 200 - ((Mathf.Abs(faction.Modesty - omod.Outfit.modesty) - Mathf.Abs(faction.Luxury - omod.Outfit.luxury)) >> 1);
+			confidence += faction.ConfidenceBonus;
+			confidence += AmbitionApp.GetModel<GameModel>().ConfidenceBonus;
+			model.Confidence = model.MaxConfidence = model.StartConfidence = confidence;
 
 			//Damage the Outfit's Novelty, how that the Confidence has already been Tallied
 			model.TurnsLeft = model.Party.Turns;

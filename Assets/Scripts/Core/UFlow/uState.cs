@@ -11,16 +11,8 @@ namespace UFlow
 	// and set up delegates. The State is exited when End() is called.
 	public abstract class UState
 	{
-		internal UFlowSvc _uflow;
-		protected UFlowSvc _UFlow { get { return _uflow; } }
-
+		internal UMachine _machine;
 		public string ID
-		{
-			get;
-			internal set;
-		}
-
-		public UMachine Machine
 		{
 			get;
 			internal set;
@@ -28,20 +20,6 @@ namespace UFlow
 
 		// Overload for instructions
 		public abstract void OnEnterState();
-
-		public void EndState()
-		{
-			if (this is IPersistentState)
-			{
-				((IPersistentState)this).OnExitState();
-			}
-			if (Machine != null)
-				Machine.NextState();
-		}
-	}
-
-	public interface IPersistentState
-	{
-		void OnExitState();
+		public virtual void OnExitState() {}
 	}
 }

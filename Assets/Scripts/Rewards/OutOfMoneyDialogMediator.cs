@@ -13,25 +13,29 @@ namespace Ambition
 		public Text TitleTxt;
 		public Text ButtonLabelTxt;
 
-		void Start()
+		private GameModel _gameModel = AmbitionApp.GetModel<GameModel>();
+		private LocalizationModel _local = AmbitionApp.GetModel<LocalizationModel>();
+
+		public override void OnOpen ()
 		{
-			LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
-			TitleTxt.text = localization.GetString(PHRASE_ID + DialogConsts.TITLE);
-			if (AmbitionApp.GetModel<GameModel>().Reputation > 20)
+			base.OnOpen ();
+			TitleTxt.text = _local.GetString(PHRASE_ID + DialogConsts.TITLE);
+			if (_gameModel.Reputation > 20)
 			{
-				BodyTxt.text = localization.GetString(PHRASE_ID + DialogConsts.BODY);
-				ButtonLabelTxt.text = localization.GetString(DialogConsts.OK);
+				BodyTxt.text = _local.GetString(PHRASE_ID + DialogConsts.BODY);
+				ButtonLabelTxt.text = _local.GetString(DialogConsts.OK);
 			}
 			else
 			{
-				BodyTxt.text = localization.GetString("out_of_money_and_rep_dialog" + DialogConsts.BODY);
-				ButtonLabelTxt.text = localization.GetString("out_of_money_and_rep_dialog" + DialogConsts.OK);
+				BodyTxt.text = _local.GetString("out_of_money_and_rep_dialog" + DialogConsts.BODY);
+				ButtonLabelTxt.text = _local.GetString("out_of_money_and_rep_dialog" + DialogConsts.OK);
 			}
 		}
 
-		void OnDestroy()
+		public override void OnClose ()
 		{
 			AmbitionApp.Execute<BorrowMoneyCmd>();
+			base.OnClose ();
 		}
 	}
 }

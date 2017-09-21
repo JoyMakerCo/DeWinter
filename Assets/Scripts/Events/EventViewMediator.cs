@@ -12,20 +12,18 @@ namespace Ambition
 	    public Text descriptionText;
 
 	    private EventVO _event;
+	    private Core.MessageSvc _messageSvc = Core.App.Service<Core.MessageSvc>();
 
-		void Awake()
-	    {
-			AmbitionApp.Subscribe<EventVO>(HandleEventUpdate);
-	    }
-
-		void OnDestroy()
-	    {
-			AmbitionApp.Unsubscribe<EventVO>(HandleEventUpdate);
+		public override void OnClose ()
+		{
+			base.OnClose();
+			_messageSvc.Unsubscribe<EventVO>(HandleEventUpdate);
 	    }
 
 		public void Initialize(EventVO e)
 	    {
-			AmbitionApp.SendMessage<EventVO>(e);
+			_messageSvc.Subscribe<EventVO>(HandleEventUpdate);
+			_messageSvc.Send<EventVO>(e);
 	    }
 
  		private void HandleEventUpdate(EventVO e)

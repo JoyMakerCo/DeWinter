@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void Execute (FactionVO faction)
 		{
-			if (faction.Name == "Military" && faction.ReputationLevel > 0)
+			if (faction.Name == "Military" && faction.Level > 0)
 			{
 				EnemyInventory.enemyInventory.RemoveAll(e => e.Faction == "Military");
 		    }

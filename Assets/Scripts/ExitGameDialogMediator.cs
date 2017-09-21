@@ -10,8 +10,9 @@ namespace Ambition
 		public Button QuitBtn;
 		public Button CancelBtn;
 
-		void Start()
+		public override void OnOpen ()
 		{
+			base.OnOpen ();
 			QuitBtn.onClick.AddListener(Application.Quit);
 			CancelBtn.onClick.AddListener(Close);
 		}

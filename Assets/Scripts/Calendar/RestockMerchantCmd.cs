@@ -27,7 +27,7 @@ namespace Ambition
 			outfits.Add(new Outfit(model.CurrentStyle));
 			outfits.Add(Outfit.Create());
 			outfits.Add(Outfit.Create());
-			if (AmbitionApp.GetModel<FactionModel>().Factions["Bourgeoisie"].ReputationLevel >= 3)
+			if (AmbitionApp.GetModel<FactionModel>()["Bourgeoisie"].Level >= 3)
 			{
 				outfits.Add(Outfit.Create());
 			}

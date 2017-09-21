@@ -32,8 +32,8 @@ public class Gossip {
 		if (faction != null && rnd.Next(2) == 0)
 			return faction;
 		
-		string[] factions = AmbitionApp.GetModel<FactionModel>().Factions.Keys.ToArray();
-		return factions[rnd.Next(factions.Length)];
+		FactionVO[] factions = AmbitionApp.GetModel<FactionModel>().Factions.Keys.Cast<FactionVO>().ToArray();
+		return factions[rnd.Next(factions.Length)].Name;
 	}
 
     //Character RandomCharacter (Picks a Random active character from the Faction)

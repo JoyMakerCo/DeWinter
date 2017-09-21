@@ -5,24 +5,24 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class ScrollbarIndicatorView : MonoBehaviour
+	public class FillBarIndicatorView : MonoBehaviour
 	{
 		private const float INTERP_TIME = 0.5f;
 
-		public string Type;
+		public string ValueID;
 		public int Max=100;
 
-		private Scrollbar _scrollbar;
+		private Image _fillbar;
 
-		void Start ()
+		void Awake ()
 		{
-			_scrollbar = gameObject.GetComponent<Scrollbar>();
-			AmbitionApp.Subscribe<int>(Type, HandleValue);
+			_fillbar = gameObject.GetComponent<Image>();
+			AmbitionApp.Subscribe<int>(ValueID, HandleValue);
 		}
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<int>(Type, HandleValue);
+			AmbitionApp.Unsubscribe<int>(ValueID, HandleValue);
 		}
 
 		private void HandleValue(int value)
@@ -38,10 +38,10 @@ namespace Ambition
 			float target = (float)value/(float)Max;
 			for (float t = t0; t < t1; t+=Time.deltaTime)
 			{
-				_scrollbar.value += 0.5f*(target-_scrollbar.value);
+				_fillbar.fillAmount += 0.5f*(target-_fillbar.fillAmount);
 				yield return null;
 			}
-			_scrollbar.value = target;
+			_fillbar.fillAmount = target;
 		}
 	}
 }

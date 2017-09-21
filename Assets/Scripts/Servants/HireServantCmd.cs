@@ -26,7 +26,7 @@ namespace Ambition
 			servant.Hired = true;
 			model.Introduced[servant.slot].Remove(servant);
 			model.Hired.Add(servant.slot, servant);
-			AmbitionApp.AdjustValue<int>(GameConsts.LIVRE, -servant.Wage);
+			AmbitionApp.GetModel<GameModel>().Livre -= servant.Wage;
 			Debug.Log(servant.NameAndTitle + " Hired!");
 		}
 	}

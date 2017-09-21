@@ -7,24 +7,15 @@ namespace Ambition
 	{
 		public override void OnEnterState ()
 		{
-			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
-			GenerateGuests();
-			AmbitionApp.SendMessage(PartyMessages.FILL_REMARKS);
-		}
-
-		/// <summary>
-		/// Replaces each null occurrence within room.Guests
-		/// with an apporpriate guest.
-		/// </summary>
-		/// <param name="room">Room.</param>
-		private void GenerateGuests()
-		{
 			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
 			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
 			GuestVO guest = new GuestVO();
 			Random rnd = new Random();
 			string name;
 			int likeIndex;
+			GuestDifficultyVO stats = pmod.GuestDifficultyStats[room.Difficulty-1];
+
+			pmod.RemarksBought=0;
 
 			if (room.Guests == null)
 			{
@@ -36,24 +27,9 @@ namespace Ambition
 				if (room.Guests[i] == null)
 				{
 					guest = new GuestVO();
-					switch (room.Difficulty)
-			        {
-			            case 1:
-							guest.Opinion = rnd.Next(25,51);
-							break;
-						case 2:
-							guest.Opinion = rnd.Next(25,46);
-							break;
-						case 3:
-							guest.Opinion = rnd.Next(25,41);
-							break;
-		    	        case 4:
-							guest.Opinion = rnd.Next(25,36);
-							break;
-		    		    case 5:
-							guest.Opinion = rnd.Next(20,31);
-							break;
-					}
+					guest.Opinion = rnd.Next(stats.Opinion[0], stats.Opinion[1]);
+					guest.MaxInterest = rnd.Next(stats.MaxInterest[0], stats.MaxInterest[1]);
+					guest.Interest = rnd.Next(stats.Interest[0], stats.Interest[1]);
 
 					guest.IsFemale = rnd.Next((int)(pmod.Party.MaleToFemaleRatio*100f) + 100) >= 100*pmod.Party.MaleToFemaleRatio;
 					if (guest.IsFemale)
@@ -75,6 +51,9 @@ namespace Ambition
 				}
 			}
 			AmbitionApp.SendMessage<GuestVO[]>(room.Guests);
+			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
+			AmbitionApp.SendMessage(PartyMessages.FILL_REMARKS);
+			AmbitionApp.SendMessage<int>(pmod.Confidence);
 		}
 
 		private string GetRandomDescriptor(string [] descriptors, Random rnd)

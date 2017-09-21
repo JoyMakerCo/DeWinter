@@ -23,7 +23,7 @@ namespace Ambition
 
 	            if (livre > 0)
 	            {
-	            	AmbitionApp.AdjustValue(GameConsts.LIVRE, -livre);
+					AmbitionApp.GetModel<GameModel>().Livre-=(int)livre;
 					Dictionary<string, string> substitutions = new Dictionary<string, string>(){
 						{"$NUMSERVANTS",numservants.ToString()},
 						{"$TOTALWAGES", livre.ToString()},

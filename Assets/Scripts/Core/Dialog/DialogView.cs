@@ -8,20 +8,14 @@ namespace Dialog
 	{
 		public string ID;
 
-		[HideInInspector]
-		public DialogCanvasManager Manager;
+		internal DialogCanvasManager Manager;
 
 		public void Close()
 		{
-			OnClose();
 			Manager.Close(this.gameObject);
 		}
 
-		public virtual void OnClose()
-		{
-			Destroy(this);
-			if (this is IDisposable)
-				((IDisposable)this).Dispose();
-		}
+		public virtual void OnOpen() {}
+		public virtual void OnClose() {}
 	}
 }

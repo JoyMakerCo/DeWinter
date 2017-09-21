@@ -17,8 +17,8 @@ public class FactionBenefitsListController : MonoBehaviour {
     public void DisplayBenefits(string factionName)
     {
     	FactionModel model = AmbitionApp.GetModel<FactionModel>();
-        string str = "The " + factionName + "(Level " + model[factionName].ReputationLevel.ToString() + ")\n";
-		str += model[factionName].FactionBenefitsList;
+        string str = "The " + factionName + "(Level " + model[factionName].Level.ToString() + ")\n";
+		str += model.GetFactionBenefits(factionName);
 		text.text = str;
     }
 }
