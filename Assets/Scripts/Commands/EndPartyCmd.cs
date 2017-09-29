@@ -9,7 +9,7 @@ namespace Ambition
 	    {
 	    	PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();
-	    	AmbitionApp.AdjustValue<int>(PartyConstants.TURNSLEFT, -model.TurnsLeft);
+			model.TurnsLeft -= model.TurnsLeft;
 
             //Distribute the Rewards into the Player's 'Accounts' in Game Data and the appropriate Inventories
 			model.Party.Rewards.ForEach(AmbitionApp.SendMessage<RewardVO>);

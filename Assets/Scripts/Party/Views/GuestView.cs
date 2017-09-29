@@ -60,15 +60,15 @@ namespace Ambition
 				bool isEnemy = (enemy != null);
 
 				NameText.text = _guest.Name;
-				NameText.color = isEnemy ? Color.red : Color.white;
 
 				OpinionIndicator.gameObject.SetActive(!_guest.IsLockedIn);
-				OpinionIndicator.fillAmount = 0.01f*(float)_guest.Interest;
+				OpinionIndicator.fillAmount = (float)_guest.Interest/((float)_guest.MaxInterest);
 
 				if (_guest.Variant < 0)
 				{
-					_guest.Variant = (new System.Random()).Next(GuestArtConfig.GuestSprites.Length);
-					_guest.IsFemale = GuestArtConfig.GuestSprites[_guest.Variant].IsFemale;
+					GuestSprite [] sprites = Array.FindAll(GuestArtConfig.GuestSprites, i=>i.IsFemale == _guest.IsFemale);
+					int index = (new System.Random()).Next(sprites.Length);
+					_guest.Variant = Array.IndexOf(GuestArtConfig.GuestSprites, sprites[index]);
 				}
 
 				_image.sprite = !_isIntoxicated

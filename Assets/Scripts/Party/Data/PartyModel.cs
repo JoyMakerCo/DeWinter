@@ -31,7 +31,15 @@ namespace Ambition
 			}
 		}
 
-		public int TurnsLeft;
+		private int _turnsLeft;
+		public int TurnsLeft
+		{
+			get { return _turnsLeft; }
+			set {
+				_turnsLeft = value;
+				AmbitionApp.SendMessage<int>(PartyConstants.TURNSLEFT, _turnsLeft);
+			}
+		}
 
 		// Temporary Repo for buffs
 		protected Dictionary<string, List<ModifierVO>> Modifiers = new Dictionary<string, List<ModifierVO>>();
@@ -71,6 +79,9 @@ namespace Ambition
 		[JsonProperty("maxPlayerDrinkAmount")]
 		protected int _maxPlayerDrinkAmount;
 
+		[JsonProperty("guest_difficulty")]
+		public GuestDifficultyVO[] GuestDifficultyStats;
+
 		public int MaxDrinkAmount
 		{
 			get
@@ -106,12 +117,13 @@ namespace Ambition
 		[JsonProperty("turnTimer")]
 		public float TurnTime = 5.0f;
 
-		[JsonProperty("reparteeBonus")]
-		public float ReparteeBonus = 1.25f;
+		[JsonProperty("repartee_bonus")]
+		public float ReparteeBonus;
 
-		[JsonProperty("confidenceCost")]
-		public int ConfidenceCost = 10;
+		[JsonProperty("confidence_cost")]
+		public int[] ConfidenceCost;
 
+		public int RemarksBought=0;
 		public string LastInterest;
 
 		[JsonProperty("maxHandSize")]
@@ -199,8 +211,6 @@ namespace Ambition
 		{
 			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
 			AmbitionApp.Subscribe<DateTime>(HandleDay);
-			AmbitionApp.Subscribe(PartyMessages.REPARTEE_BONUS, HandleRepartee);
-			AmbitionApp.Subscribe<RequestAdjustValueVO<int>>(HandleAdjustTurns);
 			AmbitionApp.Subscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
 			AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleClearRemark);
 		}
@@ -209,8 +219,6 @@ namespace Ambition
 		{
 			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
 			AmbitionApp.Unsubscribe<DateTime>(HandleDay);
-			AmbitionApp.Unsubscribe(PartyMessages.REPARTEE_BONUS, HandleRepartee);
-			AmbitionApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleAdjustTurns);
 			AmbitionApp.Unsubscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
 			AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleClearRemark);
 		}
@@ -238,33 +246,6 @@ namespace Ambition
 	    	{
 	    		Party = party;
 			}
-		}
-
-		private void HandleAdjustTurns(RequestAdjustValueVO<int> turnsLeft)
-		{
-			if (turnsLeft.Type == PartyConstants.TURNSLEFT)
-			{
-				TurnsLeft = turnsLeft.Value;
-			}
-		}
-
-		private void HandleRepartee()
-		{
-		}
-
-		private void HandleBored()
-		{
-/*
-			g.currentInterestTimer = Mathf.Clamp(g.currentInterestTimer - 1, 0, g.maxInterestTimer);
-		            if (g.currentInterestTimer <= 0 && g.lockedInState == LockedInState.Interested && !g.isEnemy) //Guest must not be locked in and must not be an Enemy, Enemies don't get bored they merely wait
-		            {
-		                ChangeGuestOpinion(g, -10);
-		                if (g.currentOpinion <= 0)
-		                {
-		                    g.lockedInState = LockedInState.PutOff;
-		                }
-		            }
-*/
 		}
 	}
 }

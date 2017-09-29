@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Ambition;
 
 public class FactionInfoButton : MonoBehaviour {
 
     private Text text;
     private Image image;
 
-    public FactionInfoTextController textController;
+    public Ambition.FactionInfoTextController textController;
     public string faction;
     public enum InfoType {Allegiance, Power};
     public InfoType infoType;
@@ -25,9 +26,10 @@ public class FactionInfoButton : MonoBehaviour {
 
     void DisplayButton()
     {
+    	FactionModel model = AmbitionApp.GetModel<FactionModel>();
         if(infoType == InfoType.Allegiance)
         {
-            if (GameData.factionList[faction].ReputationLevel >= 8)
+            if (model[faction].Level >= 8)
             {
                 text.text = "";
                 image.color = Color.clear;
@@ -50,7 +52,7 @@ public class FactionInfoButton : MonoBehaviour {
             }
         } else
         {
-            if (GameData.factionList[faction].ReputationLevel >= 6)
+            if (model[faction].Level >= 6)
             {
                 text.text = "";
                 image.color = Color.clear;

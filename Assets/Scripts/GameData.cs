@@ -30,11 +30,6 @@ public static class GameData
 		}	
 	}
 
-	public static Dictionary<string, FactionVO> factionList
-	{
-		get { return AmbitionApp.GetModel<FactionModel>().Factions; }
-	}
-
 	public static int moneyCount
 	{
 		get { return AmbitionApp.GetModel<GameModel>().Livre; }

@@ -20,8 +20,12 @@ namespace Ambition
 		IEnumerator CloseDialog()
 		{
 			yield return new WaitForSeconds(3f);
-			AmbitionApp.SendMessage(GameMessages.NEXT_STATE);
 			Close();
+		}
+
+		public override void OnClose ()
+		{
+			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_CLOSED, ID);
 		}
 	}
 }

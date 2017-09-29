@@ -10,14 +10,14 @@ namespace Ambition
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			if (model.Drink > 0)
 	        {
-	        	AmbitionApp.AdjustValue(GameConsts.DRINK, -1);
-				AmbitionApp.AdjustValue(GameConsts.CONFIDENCE, 20);
+				model.Confidence+=20;
+				model.Drink--;
 
 				// TODO: Modifiers system
 	            int drinkStrength = model.Party.drinkStrength;
 
 	            //Is the Player decent friends with the Military? If so, make them more alcohol tolerant!
-	            if(AmbitionApp.GetModel<FactionModel>().Factions["Military"].ReputationLevel >= 3)
+	            if(AmbitionApp.GetModel<FactionModel>()["Military"].Level >= 3)
 	            {
 	                drinkStrength -= 3;
 	            }
@@ -29,8 +29,8 @@ namespace Ambition
 	                    drinkStrength -= 5;
 	                }
 	            }
-				AmbitionApp.AdjustValue(GameConsts.INTOXICATION, drinkStrength);
-        	}
+				AmbitionApp.GetModel<PartyModel>().Intoxication += drinkStrength;
+	    	}
         }
 	}
 }

@@ -11,7 +11,7 @@ namespace Ambition
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 	        InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 			OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();
-	        FactionVO faction = AmbitionApp.GetModel<FactionModel>().Factions[party.Faction];
+	        FactionVO faction = AmbitionApp.GetModel<FactionModel>()[party.Faction];
 	        GameModel gmod = AmbitionApp.GetModel<GameModel>();
 	        int total=0;
 

@@ -6,7 +6,7 @@ using Util;
 
 namespace Ambition
 {
-	public class GameModel : DocumentModel, IInitializable, IDisposable
+	public class GameModel : DocumentModel
 	{
 		private PlayerReputationVO _reputation;
 		private int _livre;
@@ -64,16 +64,6 @@ namespace Ambition
 
 		public GameModel() : base("GameData") {}
 
-		public void Initialize()
-		{
-			AmbitionApp.Subscribe<RequestAdjustValueVO<int>>(HandleAdjustValue);
-		}
-
-		public void Dispose()
-		{
-			AmbitionApp.Unsubscribe<RequestAdjustValueVO<int>>(HandleAdjustValue);
-		}
-
 		// TODO: Localization model would be handy here
 		public string BenefitsList
 		{
@@ -95,20 +85,6 @@ namespace Ambition
 		{
 			get {
 				return ReputationLevels[Level].PartyInviteImportance;
-			}
-		}
-
-		private void HandleAdjustValue(RequestAdjustValueVO<int> vo)
-		{
-			switch (vo.Type)
-			{
-				case GameConsts.LIVRE:
-					Livre += vo.Value;
-					break;
-
-				case GameConsts.REPUTATION:
-					Reputation += vo.Value;
-					break;
 			}
 		}
 	}

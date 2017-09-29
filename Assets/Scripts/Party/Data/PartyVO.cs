@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Ambition;
 
 public class PartyVO
@@ -11,8 +12,6 @@ public class PartyVO
     public int invitationDistance; // How many days before does the Player have to be before they get invited (if eligible)?
     public int RSVP = 0; //0 means no RSVP yet, 1 means Attending and -1 means Decline
     public int playerRSVPDistance = -1;
-    public int modestyPreference;
-    public int luxuryPreference;
     public float MaleToFemaleRatio = 1f; //Default: 1:1
     public System.DateTime Date;
 
@@ -67,22 +66,16 @@ public class PartyVO
     void SetRandomFaction()
     {
     	FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
-    	int factionIndex = new Random().Next(fmod.Factions.Count);
-		List<string> factions = new List<string>(fmod.Factions.Keys);
-		Faction = factions[factionIndex];
-		modestyPreference = fmod.Factions[Faction].Modesty;
-		luxuryPreference = fmod.Factions[Faction].Luxury;
+		string[] factions = Enumerable.ToArray(fmod.Factions.Keys);
+		Faction = factions[new Random().Next(factions.Length)];
     }
 
     void SetExclusiveFaction(string excludeFaction)
     {
 		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
-    	int factionIndex = new Random().Next(1, fmod.Factions.Count);
-		List<string> factions = new List<string>(fmod.Factions.Keys);
-    	Faction = factions[factionIndex];
-    	if (Faction == excludeFaction) Faction = factions[0];
-		modestyPreference = fmod.Factions[Faction].Modesty;
-		luxuryPreference = fmod.Factions[Faction].Luxury;
+		string[] factions = Enumerable.ToArray(fmod.Factions.Keys);
+		Faction = factions[new Random().Next(1, factions.Length)];
+		if (Faction == excludeFaction) Faction = factions[0];
     }
     
     void GenerateRandomDescription()

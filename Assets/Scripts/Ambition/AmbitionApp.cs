@@ -152,21 +152,29 @@ namespace Ambition
 			App.Service<DialogSvc>().Close(dialog);
 		}
 
-		// Easy shorthand for creating a request to modify a model value
-		public static void AdjustValue<T>(string ID, T value)
+		public static void RegisterState<C>(string stateID) where C : UState, new()
 		{
-			RequestAdjustValueVO<T> vo = new RequestAdjustValueVO<T>(ID, value);
-			App.Service<MessageSvc>().Send<RequestAdjustValueVO<T>>(vo);
+			App.Service<UFlowSvc>().RegisterState<C>(stateID);
 		}
 
-		public static void RegisterState<C>(string machineID, string stateID, string targetStateID) where C : UState, new()
+		public static void RegisterState<C, T>(string stateID, T arg) where C : UState, Util.IInitializable<T>, new()
 		{
-			App.Service<UFlowSvc>().RegisterState<C>(machineID, stateID, targetStateID);
+			App.Service<UFlowSvc>().RegisterState<C, T>(stateID, arg);
 		}
 
-		public static void RegisterState<C, T>(string machineID, string stateID, string targetStateID, T arg) where C : UState, Util.IInitializable<T>, new()
+		public static void RegisterTransition(string machineID, string originState, string targetState)
 		{
-			App.Service<UFlowSvc>().RegisterState<C, T>(machineID, stateID, targetStateID, arg);
+			App.Service<UFlowSvc>().RegisterTransition(machineID, originState, targetState);
+		}
+
+		public static void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : UTransition, new()
+		{
+			App.Service<UFlowSvc>().RegisterTransition<T>(machineID, originState, targetState, args);
+		}
+
+		public static void InvokeMachine(string MachineID)
+		{
+			App.Service<UFlowSvc>().InvokeMachine(MachineID);
 		}
 	}
 }

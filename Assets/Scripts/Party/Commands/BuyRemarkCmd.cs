@@ -8,13 +8,15 @@ namespace Ambition
 		PartyModel model = AmbitionApp.GetModel<PartyModel>();
 		public void Execute ()
 		{
-//			if (model.Confidence >= model.ConfidenceCost)
+			if (model.RemarksBought < model.ConfidenceCost.Length)
 			{
+				int cost = model.ConfidenceCost[model.RemarksBought];
 				int index = Array.IndexOf(model.Remarks, null);
-				if (index >= 0)
+				if (model.Confidence >= cost && index >= 0)
 				{
-					AmbitionApp.AdjustValue(GameConsts.CONFIDENCE, -10);
+					AmbitionApp.GetModel<PartyModel>().Confidence -= cost;
 					AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
+					model.RemarksBought++;
 				}
 			}
 		}

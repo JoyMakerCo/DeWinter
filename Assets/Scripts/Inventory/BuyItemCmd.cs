@@ -15,7 +15,7 @@ namespace Ambition
 				item.SellPrice = (int)((float)item.Price * model.SellbackMultiplier);
 				model.Inventory.Add(item);
 				model.Market.Remove(item);
-				AmbitionApp.AdjustValue<int>(GameConsts.LIVRE, -item.Price);
+				AmbitionApp.GetModel<GameModel>().Livre -= item.Price;
 			}
 		}
 	}

@@ -14,9 +14,8 @@ namespace Ambition
 				PartyVO party = pmod.Party;
 
 				// Lose a turn
-				AmbitionApp.AdjustValue<int>(PartyConstants.TURNSLEFT, -1);
-
-				AmbitionApp.AdjustValue(GameConsts.CONFIDENCE, (int)(pmod.StartConfidence-confidence)*0.5f);
+				AmbitionApp.GetModel<PartyModel>().TurnsLeft--;
+				AmbitionApp.GetModel<PartyModel>().Confidence = (pmod.StartConfidence>>1);
 
 	            //The Player is relocated to the Entrance
 				MapModel mmod = AmbitionApp.GetModel<MapModel>();
@@ -24,7 +23,7 @@ namespace Ambition
 
 				//The Player's Reputation is Punished
 				// TODO: Make these values configurable
-				AmbitionApp.AdjustValue<int>(GameConsts.REPUTATION, -25);
+				AmbitionApp.GetModel<GameModel>().Reputation -= 25;
 				AmbitionApp.SendMessage<AdjustFactionVO>(new AdjustFactionVO(party.Faction, -50));
 
 	            //Explanation Screen Pop Up goes here

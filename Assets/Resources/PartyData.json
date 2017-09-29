@@ -3,6 +3,7 @@
 	turnTimer:5,
 	maxHandSize:5,
 	ambushHandSize:3,
+	repartee_bonus:0.25,
     conversationIntroList:[
         "Ah, have we met?",
         "And who might you be?",
@@ -92,5 +93,39 @@
         "Taillefer",
         "Uzes",
         "Valois"
+	],
+	guest_difficulty: [
+		{
+			opinion:[25,50],
+			interest:[2,6],
+			max_interest:[6,9]
+		},
+		{
+			opinion:[25,45],
+			interest:[2,5],
+			max_interest:[5,9]
+		},
+		{
+			opinion:[25,40],
+			interest:[2,4],
+			max_interest:[4,7]
+		},
+		{
+			opinion:[25,35],
+			interest:[1,3],
+			max_interest:[3,6]
+		},
+		{
+			opinion:[20,30],
+			interest:[1,2],
+			max_interest:[2,5]
+		}
+	],
+	confidence_cost:[
+		5,
+		7,
+		10,
+		12,
+		15
 	]
 }

@@ -47,7 +47,7 @@ namespace Ambition
 				{
 					if (party.RSVP == 0 && fmod[party.Faction].LargestAllowableParty >= party.partySize)
 					{
-						AmbitionApp.AdjustValue<int>(GameConsts.REPUTATION, -40);
+						AmbitionApp.GetModel<GameModel>().Reputation -= 40;
 
 						Dictionary<string, string> subs = new Dictionary<string, string>(){
 							{"$PARTYNAME",party.Name()}};

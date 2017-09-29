@@ -5,15 +5,16 @@ using Core;
 
 namespace Ambition
 {
-	public class LocalizedDialogView : DialogView, Util.IInitializable
+	public class LocalizedDialogView : DialogView
 	{
 		public string LocalizationKey;
 		public Text TitleText;
 		public Text BodyText;
 //		public Text ButtonLabel;
 
-		public void Initialize()
+		public override void OnOpen()
 		{
+			base.OnOpen();
 			if (!string.IsNullOrEmpty(LocalizationKey))
 			{
 				LocalizationModel lmod = AmbitionApp.GetModel<LocalizationModel>();

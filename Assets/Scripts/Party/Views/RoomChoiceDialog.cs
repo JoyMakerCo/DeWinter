@@ -48,7 +48,7 @@ namespace Ambition
 
 		private void WorkTheRoom()
 		{
-			AmbitionApp.SendMessage(PartyMessages.START_ENCOUNTER);
+			// TODO: Enter the state machine for Conversations
 			Close();
 		}
 
