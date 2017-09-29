@@ -82,10 +82,12 @@ namespace Ambition
 			AmbitionApp.RegisterState<OpenDialogState, string>("ReadyGo", DialogConsts.READY_GO);
 			AmbitionApp.RegisterState<StartTurnState>("StartTurn");
 			AmbitionApp.RegisterState<EndTurnState>("EndTurn");
+			AmbitionApp.RegisterState<EndConversationState>("EndConversation");
 
 			AmbitionApp.RegisterTransition("ConversationController", "InitConversation", "ReadyGo");
 			AmbitionApp.RegisterTransition<WaitForCloseDialogTransition>("ConversationController", "ReadyGo", "StartTurn", DialogConsts.READY_GO);
 			AmbitionApp.RegisterTransition<WaitForMessageTransition>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
+			AmbitionApp.RegisterTransition<CheckConversationTransition>("ConversationController", "EndTurn", "EndConversation");
 			AmbitionApp.RegisterTransition("ConversationController", "EndTurn", "StartTurn");
 
 			Destroy(this.gameObject);

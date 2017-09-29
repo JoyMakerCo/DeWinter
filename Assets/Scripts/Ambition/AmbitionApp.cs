@@ -171,5 +171,10 @@ namespace Ambition
 		{
 			App.Service<UFlowSvc>().RegisterTransition<T>(machineID, originState, targetState, args);
 		}
+
+		public static void InvokeMachine(string MachineID)
+		{
+			App.Service<UFlowSvc>().InvokeMachine(MachineID);
+		}
 	}
 }

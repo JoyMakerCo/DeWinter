@@ -111,11 +111,11 @@ namespace UFlow
 
 		internal UState BuildState(string stateID, string machineID=null)
 		{
-			UMachine mac = (_transitions.ContainsKey(stateID) ? new UMachine() : null);
-			UState s = (mac == null ? _states[stateID]() : mac);
-			if (machineID != null)
-				_machines.TryGetValue(machineID, out mac);
-			s._machine = mac;
+			UState s = _transitions.ContainsKey(stateID) ? new UMachine() : _states[stateID]();
+			UMachine mac;
+			s._machine = (machineID != null && _machines.TryGetValue(machineID, out mac))
+				? mac
+				: null;
 			s.ID = stateID;
 			mac = s as UMachine;
 			if (mac != null)

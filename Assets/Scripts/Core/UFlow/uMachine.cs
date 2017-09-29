@@ -15,7 +15,7 @@ namespace UFlow
 		public string State
 		{
 			get { return _state != null ? _state.ID : null; }
-			set { SetState(_uflow.BuildState(value,ID)); }
+			set { SetState(value != null ? _uflow.BuildState(value,ID) : null); }
 		}
 
 		internal void SetState(UState state)
@@ -58,13 +58,20 @@ namespace UFlow
 			if (_state == null) return;
 
 			_transitions = _uflow.BuildTransitions(ID, _state.ID);
-			foreach(UTransition trans in _transitions)
+			if (_transitions != null)
 			{
-				if (trans.InitializeAndValidate())
+				foreach(UTransition trans in _transitions)
 				{
-					State = trans._targetState;
-					return;
+					if (trans.InitializeAndValidate())
+					{
+						State = trans._targetState;
+						return;
+					}
 				}
+			}
+			else
+			{
+				State = null;
 			}
 		}
 
