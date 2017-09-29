@@ -19,7 +19,7 @@ namespace Ambition
 		//TODO: Temp, until buffs are figured out
 		public bool ItemEffect;
 		public bool Repartee;
-		public int InterestDecay=1;
+		public int InterestDecay=20;
 
 		private RemarkVO _remark;
 		public RemarkVO Remark
@@ -169,7 +169,7 @@ namespace Ambition
 		public void AddRemark(RemarkVO remark)
 		{
 			int max = IsAmbush ? AmbushHandSize : _remarks.Length;
-			for(int i=0; i<max; i++) 
+			for(int i=0; i<max; i++)
 			{
 				if (_remarks[i] == null)
 				{

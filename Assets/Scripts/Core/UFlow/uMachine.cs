@@ -4,73 +4,52 @@ using Core;
 
 namespace UFlow
 {
-	public class UMachine : UState
+	public sealed class UMachine : UState, IPersistentState
 	{
 		private UState _state;
 		internal string[][] _states;
 
-		public UState State
+		public override void OnEnterState ()
 		{
-			get { return _state; }
-			set {
-				// Cleanup the current state
-				if (_state != null)
-				{
-					_state.OnExitState();
-					if (_state is IDisposable)
-						((IDisposable)_state).Dispose();
-				}
-				// Exit the current machine if the incoming state is null
-				if (value == null)
-				{
-					this.OnExitState();
-					Abort();
-					if (Machine != null)
-						Machine.NextState();
-				}
-				// Go to the specified state within the machine
-				else
-				{
-					_state = value;
-					_state.Machine = this;
-					_state.OnEnterState();
-					if (_state is UMachine) 
-						State = _UFlow.BuildState(((UMachine)_state)._states[0][0], _state.ID);
-				}
-			}
+			SetState(_states[0][0]);
 		}
 
-		internal UState NextState()
+		public void OnExitState ()
 		{
-			try
-			{
-				string stateID =  (_state is IDecision)
-					? ((IDecision)_state).Choice
-					: Array.Find(_states, s=>s[0]==_state.ID)[1];
-				return State = _UFlow.BuildState(ID, stateID);
-			}
-			catch(Exception e)
-			{
-				Abort();
-				throw new Exception("Invalid state for Machine \'" + ID + "\'; Aborting;", e);
-			}
-		}
-
-		public void Abort()
-		{
-			if (_state is IDisposable) ((IDisposable)_state).Dispose();
+			if (_state is IPersistentState)
+				((IPersistentState)_state).OnExitState();
+			if (_state is IDisposable)
+				((IDisposable)_state).Dispose();
 			_state = null;
-			if (this is IDisposable) ((IDisposable)this).Dispose();
+			_uflow._machines.Remove(this.ID);
 		}
 
-		public override string ToString()
+		internal void SetState(string stateID)
 		{
-			string val = "";
-			foreach (string[] state in _states)
+			// Go to the specified state within the machine
+			if (stateID != null) do
 			{
-				val += state[0] + " => " + string.Join(", ", state, 1, 100) + "\n";
+				if (_state is IDisposable)
+					((IDisposable)_state).Dispose();
+				_state = _uflow.BuildState(stateID,ID);
+				_state.OnEnterState();
+				stateID = GetNextStateID();
 			}
-			return val;
+			while (!(_state is IPersistentState) && stateID != null);
+
+			// Exit the current machine if the incoming state is null
+			else EndState();
+		}
+
+		public void NextState()
+		{
+			SetState(GetNextStateID());
+		}
+
+		private string GetNextStateID()
+		{
+			string [] result = Array.Find(_states, s=>s[0]==_state.ID);
+			return (result != null && result.Length > 1) ? result[1] : null;
 		}
 	}
 }

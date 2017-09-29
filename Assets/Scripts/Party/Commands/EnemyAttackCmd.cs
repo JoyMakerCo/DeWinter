@@ -23,7 +23,7 @@ namespace Ambition
 		            case 1:
 		                //1 = Monopolize Conversation (Lose a Turn)
 		                //TODO: Need player-facing messaging!
-		                AmbitionApp.SendMessage(PartyMessages.END_TURN);
+//		                AmbitionApp.SendMessage(PartyMessages.END_TURN);
 		                break;
 		            case 2:
 		                //2 = Rumor Monger (Lower the Opinion of all uncharmed Guests)

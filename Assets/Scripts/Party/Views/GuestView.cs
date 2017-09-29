@@ -40,7 +40,6 @@ namespace Ambition
 
 	    private void HandleGuests(GuestVO[] guests)
 	    {
-	  Debug.Log("HANDLE GUESTS");
 	    	_guest = (guests.Length > Index) ? guests[Index] : null;
 
 	    	// Shows/hides components of a guest view based on the data

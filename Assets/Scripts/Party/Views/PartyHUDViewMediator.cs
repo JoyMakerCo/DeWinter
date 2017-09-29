@@ -28,16 +28,12 @@ namespace Ambition
 		void Awake()
 		{
 			//This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
-			AmbitionApp.Subscribe(PartyMessages.START_TURN, HandleStartTurn);
-			AmbitionApp.Subscribe(PartyMessages.END_TURN, HandleEndTurn);
 			AmbitionApp.Subscribe<int>(PartyMessages.DRINK, HandleDrink);
 			AmbitionApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleConfidence);
 		}
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe(PartyMessages.START_TURN, HandleStartTurn);
-			AmbitionApp.Unsubscribe(PartyMessages.END_TURN, HandleEndTurn);
 			AmbitionApp.Unsubscribe<int>(GameConsts.CONFIDENCE, HandleConfidence);
 			AmbitionApp.Unsubscribe<int>(PartyMessages.DRINK, HandleDrink);
 		}
@@ -73,7 +69,7 @@ namespace Ambition
 			if (model.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Fan")
 			{
 				t *= 1.1f;
-			}
+			} 
 			// TODO: Reset & Start timer
 //			RoomTimer.CountDown(t);
 		}
@@ -85,7 +81,6 @@ namespace Ambition
 				_model.Repartee = (t*2 >= time);
 				yield return null;
 			}
-			AmbitionApp.SendMessage(PartyMessages.END_TURN);
 		}
 
 		protected void HandleEndTurn()

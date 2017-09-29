@@ -10,14 +10,6 @@ namespace Ambition
 {
 	public class RoomViewMediator : MonoBehaviour
 	{
-		void Start()
-		{
-			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
-			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
-			AmbitionApp.Execute<GenerateGuestsCmd, RoomVO>(room);
-			AmbitionApp.OpenDialog(DialogConsts.READY_GO);
-		}
-
 	    // Poll for input
 	    void Update()
 	    {

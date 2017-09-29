@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using Core;
+using UFlow;
 
 namespace Ambition
 {
-	public class VictoryCheckCmd : ICommand<GuestVO[]>
+	public class EndTurnState : UState
 	{
-		public void Execute(GuestVO[] guests)
+		public override void OnEnterState ()
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			MapModel map = AmbitionApp.GetModel<MapModel>();
+			GuestVO [] guests = map.Room.Guests;
 			int len = guests.Length;
 			int numCharmed = Array.FindAll(guests, g=>g.State == GuestState.Charmed).Length;
 			int numPutOff = Array.FindAll(guests, g=>g.State == GuestState.PutOff).Length;
+
+			model.Remark = null;
+
 			if (numCharmed + numPutOff == len)
 			{
-				MapModel map = AmbitionApp.GetModel<MapModel>();
 				RewardVO reward;
 				if (map.Room.Rewards != null)
 				{
@@ -43,11 +47,12 @@ namespace Ambition
 					{"$NUMPUTOFF",numPutOff.ToString()},
 					{"$REWARD",reward.Name}};
 	            AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
-	            AmbitionApp.CloseDialog(DialogConsts.ROOM);
+				AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
     		}
-    	}
+			AmbitionApp.SendMessage<GuestVO[]>(AmbitionApp.GetModel<MapModel>().Room.Guests);
+		}
 
-    	private RewardVO GenerateRandomReward(int numCharmed, string faction)
+		private RewardVO GenerateRandomReward(int numCharmed, string faction)
     	{
     		int factor = numCharmed < 5 ? numCharmed : 6;
 			switch (new Random().Next(5))

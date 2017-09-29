@@ -3,13 +3,10 @@ using UFlow;
 
 namespace Ambition
 {
-	public class StartTurnMachine : UMachine
+	public class EndConversationState : UState
 	{
 		public override void OnEnterState ()
 		{
-
-
 		}
 	}
 }
-

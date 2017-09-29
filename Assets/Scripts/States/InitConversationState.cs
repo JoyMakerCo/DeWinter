@@ -1,18 +1,26 @@
 ﻿using System;
-using Core;
+using UFlow;
 
 namespace Ambition
 {
-	public class GenerateGuestsCmd : ICommand<RoomVO>
+	public class InitConversationState : UState
 	{
+		public override void OnEnterState ()
+		{
+			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
+			GenerateGuests();
+			AmbitionApp.SendMessage(PartyMessages.FILL_REMARKS);
+		}
+
 		/// <summary>
 		/// Replaces each null occurrence within room.Guests
 		/// with an apporpriate guest.
 		/// </summary>
 		/// <param name="room">Room.</param>
-		public void Execute (RoomVO room)
+		private void GenerateGuests()
 		{
 			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
+			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
 			GuestVO guest = new GuestVO();
 			Random rnd = new Random();
 			string name;
