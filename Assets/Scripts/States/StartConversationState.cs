@@ -1,10 +1,12 @@
 ﻿using System;
+using Core;
 using UFlow;
 
 namespace Ambition
 {
 	public class StartConversationState : UState
 	{
+		private LocalizationModel _phrases;
 		public override void OnEnterState ()
 		{
 			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
@@ -14,6 +16,8 @@ namespace Ambition
 			string name;
 			int likeIndex;
 			GuestDifficultyVO stats = pmod.GuestDifficultyStats[room.Difficulty-1];
+
+			_phrases = AmbitionApp.GetModel<LocalizationModel>();
 
 			pmod.Turn = 0;
 			pmod.RemarksBought=0;
@@ -35,15 +39,15 @@ namespace Ambition
 					guest.IsFemale = rnd.Next((int)(pmod.Party.MaleToFemaleRatio*100f) + 100) >= 100*pmod.Party.MaleToFemaleRatio;
 					if (guest.IsFemale)
 			        {
-						name = GetRandomDescriptor(pmod.FemaleTitles, rnd);
-						name += " " + GetRandomDescriptor(pmod.FemaleNames, rnd);
+						name = GetRandomDescriptor("female_title", rnd);
+						name += " " + GetRandomDescriptor("female_name", rnd);
 			        }
 			        else
 			        {
-						name = GetRandomDescriptor(pmod.MaleTitles, rnd);
-						name += " " + GetRandomDescriptor(pmod.MaleNames, rnd);
+						name = GetRandomDescriptor("male_title", rnd);
+						name += " " + GetRandomDescriptor("male_name", rnd);
 			        }
-					guest.Name = name + " de " + GetRandomDescriptor(pmod.LastNames, rnd);
+					guest.Name = name + " de " + GetRandomDescriptor("last_name", rnd);
 
 					likeIndex = rnd.Next(0,pmod.Interests.Length);
 					guest.Like = pmod.Interests[likeIndex];
@@ -57,8 +61,9 @@ namespace Ambition
 			AmbitionApp.SendMessage<int>(pmod.Confidence);
 		}
 
-		private string GetRandomDescriptor(string [] descriptors, Random rnd)
+		private string GetRandomDescriptor(string phrase, Random rnd)
 		{
+			string [] descriptors = _phrases.GetList(phrase);
 			return descriptors[rnd.Next(descriptors.Length)];
 		}
 	}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
+using System.Linq;
 
 namespace Core
 {
@@ -27,6 +28,7 @@ namespace Core
 			if (file != null)
 			{
 				JsonConvert.PopulateObject(file.text, _localizations);
+
 			}
 		}
 
@@ -37,6 +39,11 @@ namespace Core
 				string value;
 				return _localizations.TryGetValue(key, out value) ? value : null;
 			}
+		}
+
+		public string[] GetList(string key)
+		{
+			return _localizations.Where(k=>k.Key.StartsWith(key)).Select(v=>v.Value).ToArray();
 		}
 
 		public string GetString(string key)

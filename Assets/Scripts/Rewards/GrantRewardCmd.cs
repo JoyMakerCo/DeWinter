@@ -53,7 +53,7 @@ namespace Ambition
 			if (imod.Inventory.Count < imod.NumSlots)
 			{
 				ItemVO[] itemz = Array.FindAll(imod.ItemDefinitions, i=>i.Type == type);
-				ItemVO item = itemz[new Random().Next(itemz.Length)].Clone();
+				ItemVO item = new ItemVO(itemz[new Random().Next(itemz.Length)]);
 				item.Quantity = quantity;
 				imod.Inventory.Add(item);
 			}

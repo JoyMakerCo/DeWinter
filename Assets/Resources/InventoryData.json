@@ -15,6 +15,7 @@
 	startingStyle:"Frankish",
 	items:[
 		{
+			id:"starting_gown",
 			name:"Modern Frankish Gown",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
@@ -27,6 +28,7 @@
 			}
 		},
 		{
+			id:"cane",
 			name:"Cane",
 			type:"Cane",
 			description:"This cane helps you delicately push your way through crowds.\n\nAdds a 10% bonus to making 'Move Through' attempts on Rooms.",
@@ -38,6 +40,7 @@
 			}
 		},
 		{
+			id:"fan",
 			name:"Fan",
 			type:"Fan",
 			description:"This fan adds an air of mystery to you. It helps make you look thoughtful, when you're really just grasping for a witty reply.\n\nGives you 50% more time to answer Host Remarks.",
@@ -49,6 +52,7 @@
 			}
 		},
 		{
+			id:"fascinator",
             name:"Fascinator",
 			type:"Fascinator",
             description:"This fascinator distracts people when you might have said the wrong thing. Look how shiny it is!\n\nFirst Negative Remark in any Conversation is Ignored.",
@@ -60,6 +64,7 @@
 			}
         },
 		{
+			id:"flask",
             name:"Garter Flask",
             type:"Flask",
             description:"This flask helps you take a little extra drink with you when you refill at the Punch Bowl.\n\nIncreases Max Booze Capacity by 1.",
@@ -71,6 +76,7 @@
 			}
         },
 		{
+			id:"snuff",
             name:"Snuff Box",
             type:"Snuff Box",
             description:"This snuff box helps keep you awake and alert, even when you've been overserved by the help.\n\nDrinking still gives you Confidence, but doesn't Intoxicate you as much.",
@@ -82,6 +88,9 @@
 			}
         }
 	],
+	inventory:{
+		starting_gown:1
+	},
 	luxury:{
 		"-100":"Vintage",
 		"-60":"Thrifty",

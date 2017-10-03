@@ -52,31 +52,6 @@ public static class GameData
 		get { return AmbitionApp.GetModel<QuestModel>().Quests; }
 	}
 
-	public static string[] femaleTitleList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().FemaleTitles; }
-	}
-
-	public static string[] maleTitleList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().MaleTitles; }
-	}
-
-	public static string[] lastNameList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().LastNames; }
-	}
-
-	public static string[] femaleFirstNameList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().FemaleNames; }
-	}
-
-	public static string[] maleFirstNameList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().MaleNames; }
-	}
-
 	public static Dictionary<string, ServantVO[]> servantDictionary
 	{
 		get { return AmbitionApp.GetModel<ServantModel>().Servants; }

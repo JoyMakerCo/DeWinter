@@ -102,29 +102,8 @@ namespace Ambition
 			}
 		}
 
-		[JsonProperty("conversationIntroList")]
-		public string[] ConversationIntros;
-
-		[JsonProperty("hostRemarkIntroList")]
-		public string[] HostIntros;
-
-		[JsonProperty("topicList")]
+		[JsonProperty("topic_list")]
 		public string[] Interests;
-
-		[JsonProperty("femaleTitleList")]
-		public string[] FemaleTitles;
-
-		[JsonProperty("maleTitleList")]
-		public string[] MaleTitles;
-
-		[JsonProperty("femaleFirstNameList")]
-		public string[] FemaleNames;
-
-		[JsonProperty("maleFirstNameList")]
-		public string[] MaleNames;
-
-		[JsonProperty("lastNameList")]
-		public string[] LastNames;	
 
 		[JsonProperty("turnTimer")]
 		public float TurnTime = 5.0f;
