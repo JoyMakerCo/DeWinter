@@ -5,10 +5,13 @@ namespace Ambition
 {
 	public class CreateEnemyCmd : ICommand<string>
 	{
+		private LocalizationModel _phrases;
+
 		public void Execute (string faction)
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			EnemyVO e = new EnemyVO();
+			_phrases = AmbitionApp.GetModel<LocalizationModel>();
 
 			// TODO: Find Preset Enemy in model
 			e.Faction = faction;
@@ -21,24 +24,25 @@ namespace Ambition
 			e.IsFemale = (rnd.Next(2) == 0);
 			if (e.IsFemale)
 			{
-				e.Name	= rndStr(model.FemaleTitles, rnd) + " "
-						+ rndStr(model.FemaleNames, rnd) + " de "
-						+ rndStr(model.LastNames, rnd);
+				e.Name	= rndStr("female_title", rnd) + " "
+						+ rndStr("female_name", rnd) + " de "
+						+ rndStr("last_name", rnd);
 			}
 			else
 			{
-				e.Name	= rndStr(model.MaleTitles, rnd) + " "
-						+ rndStr(model.MaleNames, rnd) + " de "
-						+ rndStr(model.LastNames, rnd);
+				e.Name	= rndStr("male_title", rnd) + " "
+						+ rndStr("male_name", rnd) + " de "
+						+ rndStr("last_name", rnd);
 			}
 
 			e.imageInt = rnd.Next(e.IsFemale ? 4 : 5);
 			e.FlavorText = "This person is a great big jerk";
 		}
 
-		private string rndStr(string [] strings, Random rnd)
+		private string rndStr(string phrase, Random rnd)
 		{
-			return strings[rnd.Next(strings.Length)];
+			string [] list = _phrases.GetList(phrase);
+			return list[rnd.Next(list.Length)];
 		}
 	}
 }

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using Dialog;
+using Core;
 
 namespace Ambition
 {
@@ -11,8 +12,8 @@ namespace Ambition
 		public Text dialogText;
 		void Start()
 		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			string[] conversationIntroList = model.ConversationIntros;
+			LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
+			string[] conversationIntroList = model.GetList("conversation_intro");
 			dialogText.text = conversationIntroList[new System.Random().Next(conversationIntroList.Length)];
 			StartCoroutine(CloseDialog());
 		}

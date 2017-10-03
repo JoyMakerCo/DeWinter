@@ -6,6 +6,9 @@ namespace Ambition
 {
 	public class OutfitVO : ItemVO
 	{
+		public OutfitVO() {}
+		public OutfitVO(ItemVO outfit) : base(outfit) {}
+
 	    public int Novelty
 	    {
 			get { return GetStat(InventoryConsts.NOVELTY); }
@@ -57,8 +60,6 @@ namespace Ambition
 	    }
 
 	    // Empty/Default Constructor means random outfit
-	    public OutfitVO() {}
-
 	    public static OutfitVO Create()
 	    {
 	    	OutfitVO result = new OutfitVO();

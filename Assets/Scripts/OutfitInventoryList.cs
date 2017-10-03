@@ -23,11 +23,11 @@ namespace Ambition
 	    public void GenerateInventoryButtons()
 	    {
 			List<ItemVO> outfits = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
-	        foreach (OutfitVO o in outfits)
+	        foreach (ItemVO o in outfits)
 	        {
 	            GameObject button = GameObject.Instantiate(outfitInventoryButtonPrefab);
 	            OutfitInventoryButton buttonStats = button.GetComponent<OutfitInventoryButton>();
-	            buttonStats.outfit = o;
+	            buttonStats.outfit = new OutfitVO(o);
 	            buttonStats.inventoryType = inventoryType;
 	            button.transform.SetParent(this.transform, false);
 	            buttonStats.imageController = imageController;
