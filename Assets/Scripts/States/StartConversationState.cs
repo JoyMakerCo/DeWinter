@@ -3,7 +3,7 @@ using UFlow;
 
 namespace Ambition
 {
-	public class InitConversationState : UState
+	public class StartConversationState : UState
 	{
 		public override void OnEnterState ()
 		{
@@ -15,6 +15,7 @@ namespace Ambition
 			int likeIndex;
 			GuestDifficultyVO stats = pmod.GuestDifficultyStats[room.Difficulty-1];
 
+			pmod.Turn = 0;
 			pmod.RemarksBought=0;
 
 			if (room.Guests == null)

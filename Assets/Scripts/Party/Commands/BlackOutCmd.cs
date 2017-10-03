@@ -10,7 +10,7 @@ namespace Ambition
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			PartyVO party = model.Party;
-			if (intoxication >= party.maxPlayerIntoxication)
+			if (intoxication >= party.MaxIntoxication)
 			{
 			        //Determine Random Effect
 			        OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();

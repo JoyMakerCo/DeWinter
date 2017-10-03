@@ -1,13 +1,16 @@
 ﻿using System;
 using UFlow;
+using Core;
 
 namespace Ambition
 {
 	public class StartTurnState : UState
 	{
+		private MessageSvc _messageService = App.Service<MessageSvc>();
+
 		public override void OnEnterState ()
 		{
-			// TODO: Figure out what needs to go here. See InitConversationState.cs
+			_messageService.Send(PartyMessages.START_TURN);
 		}
 	}
 }

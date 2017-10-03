@@ -48,7 +48,6 @@ namespace Ambition
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
-			AmbitionApp.RegisterCommand<GuestInterestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
@@ -78,7 +77,7 @@ namespace Ambition
 
 			// UFlow Associations
 			// In the future, this will be handled by config
-			AmbitionApp.RegisterState<InitConversationState>("InitConversation");
+			AmbitionApp.RegisterState<StartConversationState>("InitConversation");
 			AmbitionApp.RegisterState<OpenDialogState, string>("ReadyGo", DialogConsts.READY_GO);
 			AmbitionApp.RegisterState<StartTurnState>("StartTurn");
 			AmbitionApp.RegisterState<EndTurnState>("EndTurn");

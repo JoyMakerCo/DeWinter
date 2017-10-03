@@ -32,10 +32,12 @@ namespace Ambition
 			}
 
 			int confidence = omod.Outfit.novelty;
-			confidence *= 200 - ((Mathf.Abs(faction.Modesty - omod.Outfit.modesty) - Mathf.Abs(faction.Luxury - omod.Outfit.luxury)) >> 1);
+			confidence += 200 - ((Mathf.Abs(faction.Modesty - omod.Outfit.modesty) - Mathf.Abs(faction.Luxury - omod.Outfit.luxury)) >> 1);
 			confidence += faction.ConfidenceBonus;
 			confidence += AmbitionApp.GetModel<GameModel>().ConfidenceBonus;
 			model.Confidence = model.MaxConfidence = model.StartConfidence = confidence;
+			model.Drink = 0;
+			model.Intoxication = 0;
 
 			//Damage the Outfit's Novelty, how that the Confidence has already been Tallied
 			model.TurnsLeft = model.Party.Turns;

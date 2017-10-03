@@ -57,7 +57,6 @@ public class TonightsPartyInfo : MonoBehaviour {
     private string GetLikes(FactionVO faction)
     {
     	LocalizationModel phrases = AmbitionApp.GetModel<LocalizationModel>();
-		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 
 		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
@@ -75,7 +74,6 @@ public class TonightsPartyInfo : MonoBehaviour {
 	private string GetDislikes(FactionVO faction)
     {
 		LocalizationModel phrases = AmbitionApp.GetModel<LocalizationModel>();
-		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 
 		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";

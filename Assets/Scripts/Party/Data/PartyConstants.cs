@@ -8,6 +8,7 @@ namespace Ambition
 		public const string HOST = "Host";
 
 		public const string TURNSLEFT = "TURNSLEFT";
+		public const string TURN = "TURN";
 
 		public const string START_DANCING = "StartDancingMsg";
 	}

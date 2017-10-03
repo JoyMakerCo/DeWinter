@@ -5,9 +5,10 @@ namespace Ambition
 {
 	public class BuyRemarkCmd : ICommand
 	{
-		PartyModel model = AmbitionApp.GetModel<PartyModel>();
+		private ModelSvc _models = App.Service<ModelSvc>();
 		public void Execute ()
 		{
+			PartyModel model = _models.GetModel<PartyModel>();
 			if (model.RemarksBought < model.ConfidenceCost.Length)
 			{
 				int cost = model.ConfidenceCost[model.RemarksBought];
