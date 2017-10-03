@@ -57,8 +57,8 @@ namespace Ambition
 			}
 			else
 			{
-				OutfitInventoryModel model = AmbitionApp.GetModel<OutfitInventoryModel>();
-				if (model.Inventory.Count > 0)
+				InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
+				if (model.Inventory.Exists(i=>i.Type == ItemConsts.OUTFIT))
 				{
 					// Go to the party
 					AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT);

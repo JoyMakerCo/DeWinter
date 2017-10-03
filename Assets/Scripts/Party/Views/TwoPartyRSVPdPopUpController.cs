@@ -29,7 +29,7 @@ namespace Ambition
 
 	    public void SelectParty(int partyNumber)
 	    {
-			GameData.tonightsParty = _parties[partyNumber + 1];
+	    	AmbitionApp.GetModel<PartyModel>().Party = _parties[partyNumber + 1];
 	    }
 	}
 }

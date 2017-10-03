@@ -17,7 +17,7 @@ namespace Ambition
 	    	PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
 			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 			ItemVO accessory;
-			Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().Outfit;
+			OutfitVO outfit = AmbitionApp.GetModel<GameModel>().Outfit;
 			string faction = pmod.Party.Faction;
 
 			imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory);
@@ -88,7 +88,7 @@ namespace Ambition
 	            //Out of Style
 	            else
 	            {
-					line3 = "\n\nOh no! Your Outfit is in the " + outfit.style + " style and it appears that " + imod.CurrentStyle + " is in vogue at the moment. (+" + parameters["accessory"].ToString() + " Max Confidence)";
+					line3 = "\n\nOh no! Your Outfit is in the " + outfit.Style + " style and it appears that " + imod.CurrentStyle + " is in vogue at the moment. (+" + parameters["accessory"].ToString() + " Max Confidence)";
 	            }
 	        }
 	        //With Accessory
@@ -102,22 +102,22 @@ namespace Ambition
 	            //Outfit is in Style, but the Accessory is not
 	            else if (parameters["outfitStyle"] > 0 && parameters["accessory"] == 0)
 	            {
-	                line3 = "\n\nAh! Your Outfit is in the " + outfit.style + " style, which is in fashion. However, is appears that your Accessory is not. (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
+	                line3 = "\n\nAh! Your Outfit is in the " + outfit.Style + " style, which is in fashion. However, is appears that your Accessory is not. (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
 	            } 
 	            //Outfit is not in Style, but the Accessory is
 	            else if (parameters["outfitStyle"] == 0 && parameters["accessory"] > 0)
 	            {
-	                line3 = "\n\nAh! Your Outfit is in the " + outfit.style + " style, while the " + imod.CurrentStyle + " is what's in fashion. However, your Accessory is in fashionis. Which is good, at least. (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
+	                line3 = "\n\nAh! Your Outfit is in the " + outfit.Style + " style, while the " + imod.CurrentStyle + " is what's in fashion. However, your Accessory is in fashionis. Which is good, at least. (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
 	            }
 	            //Neither are in Style, but they Match
 	            else if (parameters["outfitStyle"] == 0 && parameters["accessory"] == 0 && parameters["styleMatch"] > 0)
 	            {
-	                line3 = "\n\nHmm... Your Outfit and Accessory match, but they're in the " + outfit.style + " style and it appears that " + imod.CurrentStyle + " is in vogue at the moment. At least you're well coordinated. (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
+	                line3 = "\n\nHmm... Your Outfit and Accessory match, but they're in the " + outfit.Style + " style and it appears that " + imod.CurrentStyle + " is in vogue at the moment. At least you're well coordinated. (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
 	            }
 	            //Neither are in Style and they don't even fucking Match, what a fucking mess
 	            else
 	            {
-	                line3 = "\n\nMon dieu! Your Outfit is in the " + outfit.style + " style, your Accessory is in the " + (string)(accessory.States[ItemConsts.STYLE]) + " and the " + imod.CurrentStyle + " is what's in Fashion! How did this happen? (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
+	                line3 = "\n\nMon dieu! Your Outfit is in the " + outfit.Style + " style, your Accessory is in the " + (string)(accessory.States[ItemConsts.STYLE]) + " and the " + imod.CurrentStyle + " is what's in Fashion! How did this happen? (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
 	            } 
 	        }
 	        

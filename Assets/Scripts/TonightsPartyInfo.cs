@@ -7,7 +7,7 @@ using Core;
 
 public class TonightsPartyInfo : MonoBehaviour {
 
-    Text tonightsPartyText;
+    Text partyText;
     Text hostedByText;
     Text factionLikesText;
     Text factionDislikesText;
@@ -21,7 +21,7 @@ public class TonightsPartyInfo : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	    tonightsPartyText = this.transform.Find("Tonight'sPartyText").GetComponent<Text>();
+	    partyText = this.transform.Find("Tonight'sPartyText").GetComponent<Text>();
         hostedByText = this.transform.Find("HostedByTitle").Find("HostedByText").GetComponent<Text>();
         factionLikesText = this.transform.Find("FactionLikesTitle").Find("FactionLikesText").GetComponent<Text>();
         factionDislikesText = this.transform.Find("FactionDislikesTitle").Find("FactionDislikesText").GetComponent<Text>();
@@ -36,21 +36,23 @@ public class TonightsPartyInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	// TODO: Respond to a setter
-	void Update () {
-		if (GameData.tonightsParty != null)
+	void Update ()
+	{
+		PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
+		if (party != null)
 		{
 			FactionModel model = AmbitionApp.GetModel<FactionModel>();
-	        tonightsPartyText.text = GameData.tonightsParty.Name();
-	        hostedByText.text = GameData.tonightsParty.Faction;
-			factionLikesText.text = GetLikes(model[GameData.tonightsParty.Faction]);
-			factionDislikesText.text = GetDislikes(model[GameData.tonightsParty.Faction]);
-	        partyDescriptionText.text = GameData.tonightsParty.Description();
-	        objective1Text.text = GameData.tonightsParty.Objective1();
-	        objective2Text.text = GameData.tonightsParty.Objective2();
-	        objective3Text.text = GameData.tonightsParty.Objective3();
-	        guest1Text.text = GameData.tonightsParty.Guest1();
-	        guest2Text.text = GameData.tonightsParty.Guest2();
-	        guest3Text.text = GameData.tonightsParty.Guest3();
+	        partyText.text = party.Name();
+	        hostedByText.text = party.Faction;
+			factionLikesText.text = GetLikes(model[party.Faction]);
+			factionDislikesText.text = GetDislikes(model[party.Faction]);
+	        partyDescriptionText.text = party.Description();
+	        objective1Text.text = party.Objective1();
+	        objective2Text.text = party.Objective2();
+	        objective3Text.text = party.Objective3();
+	        guest1Text.text = party.Guest1();
+	        guest2Text.text = party.Guest2();
+	        guest3Text.text = party.Guest3();
 	     }
     }
 

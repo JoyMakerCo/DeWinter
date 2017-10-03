@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Ambition;
 
 public class OutfitInventoryButton : MonoBehaviour {
-    public Outfit outfit;
+    public OutfitVO outfit;
     public string inventoryType;
     private Text myDescriptionText;
     private Text myPriceText;
@@ -36,16 +36,16 @@ public class OutfitInventoryButton : MonoBehaviour {
         }       
     }
 
-    public void DisplayOutfitStats(Outfit o, string inventoryType)
+    public void DisplayOutfitStats(OutfitVO o, string inventoryType)
     {
 		myDescriptionText.text = o.Name;
 		o.CalculatePrice(inventoryType == "Personal");
-		myPriceText.text = o.price.ToString("£" + "#,##0");
+		myPriceText.text = o.Price.ToString("£" + "#,##0");
     }
 
     public void SetInventoryItem()
     {
         outfitInventoryList.selectedInventoryOutfit = outfit;
-        imageController.displayID = outfit.style;
+        imageController.displayID = outfit.Style;
     }
 }

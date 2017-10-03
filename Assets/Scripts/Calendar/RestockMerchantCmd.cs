@@ -23,15 +23,16 @@ namespace Ambition
 				model.Market.Add(item);
 			}
 
-			List<Outfit> outfits = new List<Outfit>();
-			outfits.Add(new Outfit(model.CurrentStyle));
-			outfits.Add(Outfit.Create());
-			outfits.Add(Outfit.Create());
+			List<ItemVO> outfits = new List<ItemVO>();
+			outfits.Add(new OutfitVO(model.CurrentStyle));
+			outfits.Add(OutfitVO.Create());
+			outfits.Add(OutfitVO.Create());
 			if (AmbitionApp.GetModel<FactionModel>()["Bourgeoisie"].Level >= 3)
 			{
-				outfits.Add(Outfit.Create());
+				outfits.Add(OutfitVO.Create());
 			}
-			AmbitionApp.GetModel<OutfitInventoryModel>().Merchant = outfits; 
+			model.Market.RemoveAll(i=>i.Type == ItemConsts.OUTFIT);
+			model.Market.AddRange(outfits); 
 		} 
 	}
 }

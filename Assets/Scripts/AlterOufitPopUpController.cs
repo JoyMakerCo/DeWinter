@@ -4,7 +4,7 @@ using Ambition;
 
 public class AlterOufitPopUpController : MonoBehaviour {
 
-    public Outfit outfit;
+    public OutfitVO outfit;
 
     public void AlterModesty(int amount)
     {

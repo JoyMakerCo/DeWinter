@@ -87,5 +87,17 @@ namespace Ambition
 				return ReputationLevels[Level].PartyInviteImportance;
 			}
 		}
+
+		private OutfitVO _outfit;
+		public OutfitVO Outfit
+		{
+			get { return _outfit; }
+			set {
+				_outfit = value;
+				AmbitionApp.SendMessage<OutfitVO>(_outfit);
+			}
+		}
+
+		public OutfitVO LastOutfit;
 	}
 }
