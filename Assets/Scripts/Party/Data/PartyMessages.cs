@@ -11,6 +11,7 @@ namespace Ambition
 		public const string SHOW_ROOM = "SHOW_ROOM";
 
 		public const string PREPARE_PARTY = "PREPARE_PARTY";
+		public const string START_TURN = "START_TURN";
 		public const string START_PARTY = "START_PARTY";
 		public const string PARTY_STARTED = "PARTY_STARTED";
 		public const string END_TURN = "END_TURN";

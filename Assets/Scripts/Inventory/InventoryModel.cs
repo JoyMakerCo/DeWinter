@@ -30,6 +30,12 @@ namespace Ambition
 		[JsonProperty("maxSlots")]
 		public int MaxSlots;
 
+		[JsonProperty("num_outfits")]
+		public int NumOutfits;
+
+		[JsonProperty("max_outfits")]
+		public int MaxOutfits;
+
 		[JsonProperty("marketCapacity")]
 		public int NumMarketSlots;
 

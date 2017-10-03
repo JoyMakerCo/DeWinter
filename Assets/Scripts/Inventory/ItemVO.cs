@@ -17,7 +17,7 @@ namespace Ambition
 		public string Type;
 
 		[JsonProperty("tags")]
-		public string[] Tags;
+		public List<string> Tags;
 
 		[JsonProperty("states")]
 		public Dictionary<string, object> States = new Dictionary<string, object>();

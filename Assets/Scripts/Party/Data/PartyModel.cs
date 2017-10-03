@@ -19,7 +19,9 @@ namespace Ambition
 		//TODO: Temp, until buffs are figured out
 		public bool ItemEffect;
 		public bool Repartee;
-		public int InterestDecay=20;
+
+		[JsonProperty("free_remark_counter")]
+		public int FreeRemarkCounter;
 
 		private RemarkVO _remark;
 		public RemarkVO Remark
@@ -38,6 +40,16 @@ namespace Ambition
 			set {
 				_turnsLeft = value;
 				AmbitionApp.SendMessage<int>(PartyConstants.TURNSLEFT, _turnsLeft);
+			}
+		}
+
+		private int _turn;
+		public int Turn
+		{
+			get { return _turn; }
+			set {
+				_turn = value;
+				AmbitionApp.SendMessage<int>(PartyConstants.TURN, _turn);
 			}
 		}
 

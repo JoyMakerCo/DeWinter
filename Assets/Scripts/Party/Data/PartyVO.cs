@@ -25,7 +25,7 @@ public class PartyVO
     public int Turns;
 
     //Drinking and Intoxication
-    public int maxPlayerIntoxication = 100;
+    public int MaxIntoxication = 4;
     public int maxPlayerDrinkAmount = 3;
     public int drinkStrength = 20;
 

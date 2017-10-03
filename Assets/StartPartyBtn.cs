@@ -7,24 +7,32 @@ namespace Ambition
 {
 	public class StartPartyBtn : MonoBehaviour
 	{
-		private OutfitInventoryModel _model;
 		private Button _button;
 
-		void Start ()
+		void Awake()
 		{
-			_model = AmbitionApp.GetModel<OutfitInventoryModel>();
 			_button = gameObject.GetComponent<Button>();
-			HandleOutfit(_model.Outfit);
-			_button.onClick.AddListener(OnClick);
-			AmbitionApp.Subscribe<Outfit>(HandleOutfit);
+			AmbitionApp.Subscribe<OutfitVO>(HandleOutfit);
+			HandleOutfit(AmbitionApp.GetModel<GameModel>().Outfit);
 		}
 
-		void OnDisable ()
+		void OnEnable ()
 		{
-			AmbitionApp.Unsubscribe<Outfit>(HandleOutfit);
+			_button.onClick.AddListener(OnClick);
 		}
 
-		private void HandleOutfit(Outfit outfit)
+		void OnDisable()
+		{
+			_button.onClick.RemoveListener(OnClick);
+		}
+
+		void OnDestroy ()
+		{
+			AmbitionApp.Unsubscribe<OutfitVO>(HandleOutfit);
+			_button.onClick.RemoveListener(OnClick);
+		}
+
+		private void HandleOutfit(OutfitVO outfit)
 		{
 			_button.interactable = (outfit != null);
 		}

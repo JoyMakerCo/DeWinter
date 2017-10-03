@@ -69,7 +69,7 @@ public class PopUpManager : MonoBehaviour
         BuyAndSellPopUpController controller = popUp.GetComponent<BuyAndSellPopUpController>();
         controller.inventoryType = inventoryType;
         controller.itemType = itemType;
-		controller.outfit = objectStorage[2] as Outfit;
+		controller.outfit = objectStorage[2] as OutfitVO;
 		controller.accessory = objectStorage[2] as ItemVO;
 
         //Fill in the Text
@@ -79,14 +79,14 @@ public class PopUpManager : MonoBehaviour
             {
                 titleText.text = "Sell This?";
 				controller.outfit.CalculatePrice(true);
-				itemPrice = controller.outfit.price; //Items are at Half Price from the Player Inventory to the Merchant
+				itemPrice = controller.outfit.Price; //Items are at Half Price from the Player Inventory to the Merchant
 				bodyText.text = "Are you sure you want to sell this " + controller.outfit.Name;
 			}
             else
             {
                 titleText.text = "Buy This?";
 				controller.outfit.CalculatePrice(false);
-				itemPrice = controller.outfit.price;
+				itemPrice = controller.outfit.Price;
 				bodyText.text = "Are you sure you want to buy this " + controller.outfit.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
         }
@@ -129,7 +129,7 @@ public class PopUpManager : MonoBehaviour
     void CreateAlterOutfitModal(object[] objectStorage)
     {
         int inventoryNumber = (int)objectStorage[0];
-        Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().Inventory[inventoryNumber];
+        OutfitVO outfit = AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i=>i.Type == ItemConsts.OUTFIT)[inventoryNumber] as OutfitVO;
 
         //Make the Pop Up
         GameObject popUp = Instantiate(alterOutfitModal) as GameObject;
@@ -144,9 +144,9 @@ public class PopUpManager : MonoBehaviour
         bodyText.text = "How would you like me to alter the " + outfit.Name + "? This will cost 20 Livres."
             + "\nSelect One:";
         Slider modestyBar = popUp.transform.Find("ModestyText").Find("Slider").GetComponent<Slider>();
-        modestyBar.value = outfit.modesty;
+        modestyBar.value = outfit.Modesty;
         Slider luxuryBar = popUp.transform.Find("LuxuryText").Find("Slider").GetComponent<Slider>();
-        luxuryBar.value = outfit.luxury;
+        luxuryBar.value = outfit.Luxury;
     }
 
     //This is used in the Wardrobe Screen so Players can use the 'Sew New Outfit' function of the Seamstress Servant

@@ -7,6 +7,8 @@ namespace Ambition
 {
 	public class GuestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
+		private const float FILL_SECONDS = 0.5f;
+
 		public int Index;
 
 		public Image OpinionIndicator;
@@ -36,6 +38,7 @@ namespace Ambition
 			AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
 			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
+			StopAllCoroutines();
 	    }
 
 	    private void HandleGuests(GuestVO[] guests)
@@ -61,8 +64,7 @@ namespace Ambition
 
 				NameText.text = _guest.Name;
 
-				OpinionIndicator.gameObject.SetActive(!_guest.IsLockedIn);
-				OpinionIndicator.fillAmount = (float)_guest.Interest/((float)_guest.MaxInterest);
+				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
 				if (_guest.Variant < 0)
 				{
@@ -124,6 +126,19 @@ namespace Ambition
 				else if (_remark.Interest == _guest.Disike) _image.color = Color.red;
 				else _image.color = Color.white;
 			}
+		}
+
+		System.Collections.IEnumerator FillMeter(float percent)
+		{
+			float t = 0;
+			float startFill = OpinionIndicator.fillAmount;
+			while (t<FILL_SECONDS)
+			{
+				OpinionIndicator.fillAmount = startFill + ((percent-startFill) * t / FILL_SECONDS);
+				t += Time.deltaTime;
+				yield return null;
+			}
+			OpinionIndicator.fillAmount = percent;
 		}
 	}
 }

@@ -28,8 +28,6 @@ namespace Ambition
 		public List<EnemyVO> Enemies;
 		public string [] Features;
 
-public bool IsTutorial=false; //TODO: Remove haxx
-
 		public bool HostHere
 		{
 			get {

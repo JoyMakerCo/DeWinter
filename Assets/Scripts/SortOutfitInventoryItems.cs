@@ -24,8 +24,8 @@ public class SortOutfitInventoryItems : MonoBehaviour {
     Text luxuryButtonText;
     Text modestyButtonText;
 
-	private OutfitInventoryModel _model;
-	private List<Outfit> _list;
+	private InventoryModel _model;
+	private List<ItemVO> _list;
 
     string sortedBy;
     bool ascendingOrder;
@@ -33,7 +33,7 @@ public class SortOutfitInventoryItems : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-		_model = AmbitionApp.GetModel<OutfitInventoryModel>();
+		_model = AmbitionApp.GetModel<InventoryModel>();
         SetUpButtons();
         SortByNovelty();
 	}
@@ -61,13 +61,13 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "novelty") && !ascendingOrder;
 		SelectedButton("novelty");
 		sortedBy = "novelty";
-		_list = (inventoryType == ItemConsts.PERSONAL) ? _model.Inventory : _model.Merchant;
+		_list = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
 		_list.Sort(sortByNoveltyComparer);
 	}
 
-	private int sortByNoveltyComparer(Outfit a, Outfit b)
+	private int sortByNoveltyComparer(ItemVO a, ItemVO b)
 	{
-		return a.novelty.CompareTo(b.novelty);
+		return ((OutfitVO)a).Novelty.CompareTo(((OutfitVO)b).Novelty);
 	}
 
 	public void SortByLuxury()
@@ -75,13 +75,13 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "luxury") && !ascendingOrder;
 		SelectedButton("luxury");
 		sortedBy = "luxury";
-		_list = (inventoryType == ItemConsts.PERSONAL) ? _model.Inventory : _model.Merchant;
+		_list = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
 		_list.Sort(sortByLuxuryComparer);
 	}
 
-	private int sortByLuxuryComparer(Outfit a, Outfit b)
+	private int sortByLuxuryComparer(ItemVO a, ItemVO b)
 	{
-		return a.luxury.CompareTo(b.luxury);
+		return ((OutfitVO)a).Luxury.CompareTo(((OutfitVO)b).Luxury);
 	}
 
     public void SortByModesty()
@@ -89,13 +89,13 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "modesty") && !ascendingOrder;
 		SelectedButton("modesty");
 		sortedBy = "modesty";
-		_list = (inventoryType == ItemConsts.PERSONAL) ? _model.Inventory : _model.Merchant;
+		_list = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
 		_list.Sort(sortByModestyComparer);
 	}
 
-	private int sortByModestyComparer(Outfit a, Outfit b)
+	private int sortByModestyComparer(ItemVO a, ItemVO b)
 	{
-		return a.modesty.CompareTo(b.modesty);
+		return ((OutfitVO)a).Modesty.CompareTo(((OutfitVO)b).Modesty);
 	}
 
     void SelectedButton(string button)

@@ -48,7 +48,7 @@ public class SewNewOutfitPopUpController : MonoBehaviour {
     {
         if(GameData.moneyCount >= outfitCost)
         {
-            AmbitionApp.GetModel<OutfitInventoryModel>().Inventory.Add(new Outfit(110, outfitModesty, outfitLuxury, outfitStyle));
+            AmbitionApp.GetModel<InventoryModel>().Inventory.Add(new OutfitVO(110, outfitModesty, outfitLuxury, outfitStyle));
             GameData.moneyCount -= outfitCost;
             personalInventoryList.ClearInventoryButtons();
             personalInventoryList.GenerateInventoryButtons();

@@ -22,7 +22,6 @@ namespace Ambition
 			AmbitionApp.RegisterModel<QuestModel>();
 			AmbitionApp.RegisterModel<MapModel>();
 			AmbitionApp.RegisterModel<LocalizationModel>();
-			AmbitionApp.RegisterModel<OutfitInventoryModel>(); // TODO: Feed this to Inventory
 
 			AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryConsts.SELL_ITEM);
 			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryConsts.BUY_ITEM);
@@ -30,7 +29,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<GrantRewardCmd, RewardVO>();
 			AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
 			AmbitionApp.RegisterCommand<GenerateMapCmd, PartyVO>(MapMessage.GENERATE_MAP);
-			AmbitionApp.RegisterCommand<DegradeOutfitCmd, Outfit>(InventoryConsts.BUY_ITEM);
+			AmbitionApp.RegisterCommand<DegradeOutfitCmd, OutfitVO>(InventoryConsts.BUY_ITEM);
 			AmbitionApp.RegisterCommand<IntroServantCmd, string>(ServantConsts.INTRODUCE_SERVANT);
 			AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantConsts.HIRE_SERVANT);
 			AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantConsts.FIRE_SERVANT);
@@ -39,6 +38,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<NewGameCmd>(GameMessages.NEW_GAME);
 			AmbitionApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			AmbitionApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
+			AmbitionApp.RegisterCommand<CalculateConfidenceCmd>(PartyMessages.START_PARTY);
 			AmbitionApp.RegisterCommand<EndEventCmd, EventVO>(EventMessages.END_EVENT);
 			AmbitionApp.RegisterCommand<RSVPCmd, PartyVO>(PartyMessages.RSVP);
 			AmbitionApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
@@ -48,7 +48,6 @@ namespace Ambition
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
-			AmbitionApp.RegisterCommand<GuestInterestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
 			AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
 			AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
 			AmbitionApp.RegisterCommand<AddRemarkCmd>(PartyMessages.ADD_REMARK);
@@ -78,7 +77,7 @@ namespace Ambition
 
 			// UFlow Associations
 			// In the future, this will be handled by config
-			AmbitionApp.RegisterState<InitConversationState>("InitConversation");
+			AmbitionApp.RegisterState<StartConversationState>("InitConversation");
 			AmbitionApp.RegisterState<OpenDialogState, string>("ReadyGo", DialogConsts.READY_GO);
 			AmbitionApp.RegisterState<StartTurnState>("StartTurn");
 			AmbitionApp.RegisterState<EndTurnState>("EndTurn");

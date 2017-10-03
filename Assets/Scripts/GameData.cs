@@ -7,12 +7,6 @@ public static class GameData
 	public static string playerVictoryStatus;
 	public static bool fTEsOn;
 
-	public static PartyVO tonightsParty
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().Party; }
-		set { AmbitionApp.GetModel<PartyModel>().Party = value; }
-	}
-
 	public static ItemVO partyAccessory
 	{
 		get
@@ -90,6 +84,6 @@ public static class GameData
 
 	public static List<ItemVO> Accessories
 	{
-		get { return AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0); }
+		get { return AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY)); }
 	}
 }

@@ -24,10 +24,10 @@ public class BuyAndSell : MonoBehaviour {
             screenFader.gameObject.SendMessage("CreateBuyOrSellModal", objectStorage);
         } else if (inventoryType == ItemConsts.MERCHANT && merchantInventoryList.selectedInventoryOutfit != null)
         {
-        	OutfitInventoryModel model = AmbitionApp.GetModel<OutfitInventoryModel>();
-   			if (model.Inventory.Count < model.Capacity) // Will it fit in the Player's inventory?
+        	InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
+   			if (model.Inventory.FindAll(i=>i.Type == ItemConsts.OUTFIT).Count < model.NumOutfits) // Will it fit in the Player's inventory?
             {
-                if (AmbitionApp.GetModel<GameModel>().Livre >= merchantInventoryList.selectedInventoryOutfit.price) // Can they afford it?
+                if (AmbitionApp.GetModel<GameModel>().Livre >= merchantInventoryList.selectedInventoryOutfit.Price) // Can they afford it?
                 {
                     screenFader.gameObject.SendMessage("CreateBuyOrSellModal", objectStorage);
                 } else //If the Player can't afford it give them the Can't Afford Modal
@@ -39,7 +39,7 @@ public class BuyAndSell : MonoBehaviour {
             {
             	Dictionary<string, string> subs = new Dictionary<string, string>(){
 					{"$ITEM",merchantInventoryList.selectedInventoryOutfit.Name},
-					{"$CAPACITY", model.Capacity.ToString()}};
+					{"$CAPACITY", model.NumOutfits.ToString()}};
 				AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
             }           
         }

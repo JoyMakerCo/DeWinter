@@ -44,7 +44,7 @@ public class BuyAndSellAccessories : MonoBehaviour {
             {
 				Dictionary<string, string> subs = new Dictionary<string, string>()
 					{{"$ITEM",merchantAccessoryList.selectedAccessory.Name},
-					{"$CAPACITY",AmbitionApp.GetModel<OutfitInventoryModel>().Capacity.ToString()}};
+					{"$CAPACITY",AmbitionApp.GetModel<InventoryModel>().NumOutfits.ToString()}};
 				AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
             }
         }

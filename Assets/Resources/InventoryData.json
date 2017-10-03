@@ -4,6 +4,8 @@
 	sellbackMultiplier:0.5,
 	slots:7,
 	maxSlots:11,
+	num_outfits:5,
+	max_outfits:9,
 	marketCapacity:11,
 	styles:[
 		"Frankish",
@@ -12,6 +14,18 @@
 	],
 	startingStyle:"Frankish",
 	items:[
+		{
+			name:"Modern Frankish Gown",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"novelty":"100",
+				"style":"Frankish"
+			}
+		},
 		{
 			name:"Cane",
 			type:"Cane",
