@@ -19,7 +19,16 @@ namespace Ambition
 		void Awake()
 		{
 			_timer = GetComponent<Image>();
+		}
+
+		void OnEnable()
+		{
 			_messageService.Subscribe(PartyMessages.START_TURN, HandleTurn);
+		}
+
+		void OnDisable()
+		{
+			_messageService.Unsubscribe(PartyMessages.START_TURN, HandleTurn);
 		}
 
 		private void HandleTurn()
@@ -44,11 +53,6 @@ namespace Ambition
 			_timer.fillAmount = 0;
 			ClockHand.transform.localRotation = Quaternion.Euler(0f,0f,90f);
 			_messageService.Send(PartyMessages.END_TURN);
-		}
-
-		void OnDestroy()
-		{
-			_messageService.Unsubscribe(PartyMessages.START_TURN, HandleTurn);
 		}
 	}
 }
