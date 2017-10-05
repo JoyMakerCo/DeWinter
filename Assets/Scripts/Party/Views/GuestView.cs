@@ -25,14 +25,18 @@ namespace Ambition
 
 		void Awake()
 		{
+			_image = GetComponent<Image>();
+		}
+
+		void OnEnable()
+		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
 			AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
 			AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
-			_image = GetComponent<Image>();
 		}
 
-		void OnDestroy()
+		void OnDisable()
 	    {
 			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
 			AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);

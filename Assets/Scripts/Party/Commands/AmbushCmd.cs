@@ -8,16 +8,27 @@ namespace Ambition
 	{
 		public void Execute(RoomVO room)
 		{
-			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
-			RemarkVO[] hand = pmod.Remarks;
-			for (int i=hand.Length-1; i>=pmod.AmbushHandSize; i--)
+			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			List<RemarkVO> hand = model.Remarks;
+			string interest;
+			RemarkVO remark;
+			Random rnd = new Random();
+			int numGuests = room.Guests.Length;
+
+			if (hand.Count > model.AmbushHandSize)
+				hand.RemoveRange(model.AmbushHandSize, hand.Count - model.AmbushHandSize);
+			else while (hand.Count < model.AmbushHandSize)
 			{
-				hand[i] = new RemarkVO();
+				interest = model.Interests[rnd.Next(model.Interests.Length)];
+				remark = new RemarkVO(1 + rnd.Next(numGuests), interest);
+				hand.Add(remark);
 			}
-			pmod.Remarks = hand;
+			while(hand.Count < model.MaxHandSize)
+				hand.Add(new RemarkVO());
+
+			model.Remarks = hand;
 
 			AmbitionApp.OpenDialog<RoomVO>(DialogConsts.ROOM, room);
-
 			Dictionary<string, string> subs = new Dictionary<string, string>()
 				{{"$ROOMNAME", room.Name}};
 			AmbitionApp.OpenMessageDialog("ambush_dialog", subs);

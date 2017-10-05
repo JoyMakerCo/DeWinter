@@ -9,16 +9,21 @@ namespace Ambition
 		public void Execute ()
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			Random rnd = new Random();
-			int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
-			string interest = model.Interests[rnd.Next(1, model.Interests.Length)];
+			List<RemarkVO> hand = model.Remarks;
+			int length = model.IsAmbush ? model.AmbushHandSize : model.MaxHandSize;
+			if (hand.Count < length)
+			{
+				Random rnd = new Random();
+				int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
 
-			// Create a topic that is exclusive of the previous topic used.
-			if (interest == model.LastInterest) interest = model.Interests[0];
-			model.LastInterest = interest;
+				// Create a topic that is exclusive of the previous topic used.
+				string interest = model.Interests[rnd.Next(1, model.Interests.Length)];
+				model.LastInterest = (interest != model.LastInterest) ? interest : model.Interests[0];
 
-			RemarkVO remark = new RemarkVO(1 + rnd.Next(numGuests), interest);
-			model.AddRemark(remark);
+				RemarkVO remark = new RemarkVO(1 + rnd.Next(numGuests), interest);
+				hand.Add(remark);
+				model.Remarks=hand;
+			}
 		}
 	}
 }

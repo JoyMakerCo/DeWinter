@@ -118,10 +118,7 @@ namespace Ambition
 		public string LastInterest;
 
 		[JsonProperty("maxHandSize")]
-		public int MaxHandSize
-		{
-			set { _remarks = new RemarkVO[value]; } 
-		}
+		public int MaxHandSize = 5;
 
 		[JsonProperty("ambushHandSize")]
 		public int AmbushHandSize = 3;
@@ -159,43 +156,26 @@ namespace Ambition
 			}
 		}
 
-		private RemarkVO [] _remarks;
-		public RemarkVO [] Remarks
+		private List<RemarkVO> _remarks = new List<RemarkVO>();
+		public List<RemarkVO> Remarks
 		{
 			get { return _remarks; }
-			set {
-				_remarks = value;
-				AmbitionApp.SendMessage<RemarkVO []>(_remarks);
-			}
-		}
-
-		public void AddRemark(RemarkVO remark)
-		{
-			int max = IsAmbush ? AmbushHandSize : _remarks.Length;
-			for(int i=0; i<max; i++)
+			set
 			{
-				if (_remarks[i] == null)
-				{
-					_remarks[i] = remark;
-					AmbitionApp.SendMessage<RemarkVO []>(_remarks);
-				}
+				_remarks = value;
+				AmbitionApp.SendMessage<List<RemarkVO>>(Remarks);
 			}
 		}
 
 		private void HandleClearRemarks()
 		{
-			_remarks = new RemarkVO[_remarks.Length];
-			AmbitionApp.SendMessage<RemarkVO []>(_remarks);
+			Remarks = new List<RemarkVO>();
 		}
 
 		private void HandleClearRemark(GuestVO guest)
 		{
-			int index = Array.IndexOf(_remarks, Remark);
-			if (index >= 0)
-			{
-				_remarks[index] = null;
-				AmbitionApp.SendMessage<RemarkVO []>(_remarks);
-			}
+			Remarks.Remove(Remark);
+			AmbitionApp.SendMessage<List<RemarkVO>>(Remarks);
 		}
 
 		public void Initialize()

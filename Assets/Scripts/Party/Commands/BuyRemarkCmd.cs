@@ -9,11 +9,10 @@ namespace Ambition
 		public void Execute ()
 		{
 			PartyModel model = _models.GetModel<PartyModel>();
-			if (model.RemarksBought < model.ConfidenceCost.Length)
+			if (model.Remarks.Count < model.MaxHandSize && model.RemarksBought < model.ConfidenceCost.Length)
 			{
 				int cost = model.ConfidenceCost[model.RemarksBought];
-				int index = Array.IndexOf(model.Remarks, null);
-				if (model.Confidence >= cost && index >= 0)
+				if (model.Confidence >= cost)
 				{
 					AmbitionApp.GetModel<PartyModel>().Confidence -= cost;
 					AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
