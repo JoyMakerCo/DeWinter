@@ -14,7 +14,8 @@ namespace Ambition
 		public Image OpinionIndicator;
 		public Image InterestIcon;
 		public Text NameText;
-		public Core.ICommand mb;
+		public Image Highlight;
+		public GameObject Spotlight;
 
 		public GuestConfig GuestArtConfig;
 
@@ -115,20 +116,17 @@ namespace Ambition
 
 		private void HandleTargets(GuestVO[] guests)
 		{
-			if (_remark == null || guests == null || guests.Length == 0)
+			bool active = _remark != null && guests != null && !_isIntoxicated && Array.IndexOf(guests, _guest) >= 0;
+			Spotlight.SetActive(active);
+			if (active)
 			{
-				_image.color = Color.white;
-			}
-			else if (Array.IndexOf(guests, _guest) < 0)
-			{
-				_image.color = Color.gray;
-			}
-			else
-			{
-				if (_isIntoxicated) _image.color = Color.white;
-				else if (_remark.Interest == _guest.Like) _image.color = Color.green;
-				else if (_remark.Interest == _guest.Disike) _image.color = Color.red;
-				else _image.color = Color.white;
+				float alpha = Highlight.color.a;
+				Color c;
+				if (_remark.Interest == _guest.Like) c = Color.green;
+				else if (_remark.Interest == _guest.Disike) c = Color.red;
+				else c = Color.white;
+				c.a = alpha;
+				Highlight.color = c;
 			}
 		}
 

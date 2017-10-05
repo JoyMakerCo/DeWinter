@@ -18,7 +18,7 @@ namespace Ambition
 			while (hand.Count < model.MaxHandSize)
 			{
 				interest = model.Interests[rnd.Next(model.Interests.Length)];
-				remark = new RemarkVO(1 + rnd.Next(numGuests), interest);
+				remark = new RemarkVO(rnd.Next(1,3), interest);
 				hand.Add(remark);
 	        }
 			model.Remarks = hand;

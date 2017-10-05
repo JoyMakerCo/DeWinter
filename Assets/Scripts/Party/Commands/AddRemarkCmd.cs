@@ -20,7 +20,7 @@ namespace Ambition
 				string interest = model.Interests[rnd.Next(1, model.Interests.Length)];
 				model.LastInterest = (interest != model.LastInterest) ? interest : model.Interests[0];
 
-				RemarkVO remark = new RemarkVO(1 + rnd.Next(numGuests), interest);
+				RemarkVO remark = new RemarkVO(rnd.Next(1,3), interest);
 				hand.Add(remark);
 				model.Remarks=hand;
 			}
