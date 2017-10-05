@@ -67,7 +67,7 @@ namespace Ambition
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
 
-				NameText.text = _guest.Name;
+				NameText.text = _guest.DisplayName;
 
 				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
