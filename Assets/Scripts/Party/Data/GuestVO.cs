@@ -10,6 +10,9 @@ namespace Ambition
 		[JsonProperty("Name")]
 	    public string Name;
 
+		[JsonProperty("DisplayName")]
+	    public string DisplayName;
+
 		[JsonProperty("Like")]
 	    public string Like;
 
@@ -18,7 +21,6 @@ namespace Ambition
 
 		[JsonProperty("IsFemale")]
 	    public bool IsFemale;
-
 
 		[JsonProperty("Variant")]
 	    public int Variant=-1;
@@ -31,6 +33,7 @@ namespace Ambition
 		public GuestVO(GuestVO guest)
 		{
 			Name = guest.Name;
+			DisplayName = guest.DisplayName;
 			Like = guest.Like;
 			Disike = guest.Disike;
 			IsFemale = guest.IsFemale;

@@ -13,7 +13,9 @@ namespace Ambition
 			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
 			GuestVO guest = new GuestVO();
 			Random rnd = new Random();
+			string title;
 			string name;
+			string lname;
 			int likeIndex;
 			GuestDifficultyVO stats = pmod.GuestDifficultyStats[room.Difficulty-1];
 
@@ -39,15 +41,17 @@ namespace Ambition
 					guest.IsFemale = rnd.Next((int)(pmod.Party.MaleToFemaleRatio*100f) + 100) >= 100*pmod.Party.MaleToFemaleRatio;
 					if (guest.IsFemale)
 			        {
-						name = GetRandomDescriptor("female_title", rnd);
-						name += " " + GetRandomDescriptor("female_name", rnd);
+						title = GetRandomDescriptor("female_title", rnd);
+						name = GetRandomDescriptor("female_name", rnd);
 			        }
 			        else
 			        {
-						name = GetRandomDescriptor("male_title", rnd);
-						name += " " + GetRandomDescriptor("male_name", rnd);
+						title = GetRandomDescriptor("male_title", rnd);
+						name = GetRandomDescriptor("male_name", rnd);
 			        }
-					guest.Name = name + " de " + GetRandomDescriptor("last_name", rnd);
+					lname = "de " + GetRandomDescriptor("last_name", rnd);
+					guest.Name = title + " " + name + " " + lname;
+					guest.DisplayName = title + " " + lname;
 
 					likeIndex = rnd.Next(0,pmod.Interests.Length);
 					guest.Like = pmod.Interests[likeIndex];

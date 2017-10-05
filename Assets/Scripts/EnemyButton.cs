@@ -56,7 +56,7 @@ public class EnemyButton : MonoBehaviour {
     {
         if (e != null)
         {
-            nameText.text = e.Name;
+            nameText.text = e.DisplayName;
             if (e.IsFemale)
             {
                 enemyThumbnail.sprite = femaleSpriteList[e.imageInt];

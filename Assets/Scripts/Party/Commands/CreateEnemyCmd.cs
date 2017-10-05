@@ -18,22 +18,29 @@ namespace Ambition
 			EnemyInventory.enemyInventory.Add(e);
 
 			Random rnd = new Random();
+			string[] name;
 
 			e.Like = model.Interests[rnd.Next(model.Interests.Length)];
 
 			e.IsFemale = (rnd.Next(2) == 0);
 			if (e.IsFemale)
 			{
-				e.Name	= rndStr("female_title", rnd) + " "
-						+ rndStr("female_name", rnd) + " de "
-						+ rndStr("last_name", rnd);
+				name = new string[]{
+					rndStr("female_title", rnd),
+					rndStr("female_name", rnd),
+					"de " + rndStr("last_name", rnd)
+				};
 			}
 			else
 			{
-				e.Name	= rndStr("male_title", rnd) + " "
-						+ rndStr("male_name", rnd) + " de "
-						+ rndStr("last_name", rnd);
+				name = new string[]{
+					rndStr("male_title", rnd),
+					rndStr("male_name", rnd),
+					"de " + rndStr("last_name", rnd)
+				};
 			}
+			e.Name = string.Join(" ", name);
+			e.DisplayName = name[0] + " " + name[2];
 
 			e.imageInt = rnd.Next(e.IsFemale ? 4 : 5);
 			e.FlavorText = "This person is a great big jerk";
