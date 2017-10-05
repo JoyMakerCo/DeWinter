@@ -111,7 +111,7 @@ namespace Ambition
 		private void HandleRemark(RemarkVO remark)
 		{
 			_remark = remark;
-			_image.color = Color.white;
+			Spotlight.SetActive(false);
 		}
 
 		private void HandleTargets(GuestVO[] guests)

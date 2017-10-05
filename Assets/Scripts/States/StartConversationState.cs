@@ -9,7 +9,7 @@ namespace Ambition
 		private LocalizationModel _phrases;
 		public override void OnEnterState ()
 		{
-			PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
+			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
 			GuestVO guest = new GuestVO();
 			Random rnd = new Random();
@@ -17,12 +17,14 @@ namespace Ambition
 			string name;
 			string lname;
 			int likeIndex;
-			GuestDifficultyVO stats = pmod.GuestDifficultyStats[room.Difficulty-1];
+
+			model.Remark = null;
+			GuestDifficultyVO stats = model.GuestDifficultyStats[room.Difficulty-1];
 
 			_phrases = AmbitionApp.GetModel<LocalizationModel>();
 
-			pmod.Turn = 0;
-			pmod.RemarksBought=0;
+			model.Turn = 0;
+			model.RemarksBought=0;
 
 			if (room.Guests == null)
 			{
@@ -38,7 +40,7 @@ namespace Ambition
 					guest.MaxInterest = rnd.Next(stats.MaxInterest[0], stats.MaxInterest[1]);
 					guest.Interest = rnd.Next(stats.Interest[0], stats.Interest[1]);
 
-					guest.IsFemale = rnd.Next((int)(pmod.Party.MaleToFemaleRatio*100f) + 100) >= 100*pmod.Party.MaleToFemaleRatio;
+					guest.IsFemale = rnd.Next((int)(model.Party.MaleToFemaleRatio*100f) + 100) >= 100*model.Party.MaleToFemaleRatio;
 					if (guest.IsFemale)
 			        {
 						title = GetRandomDescriptor("female_title", rnd);
@@ -53,16 +55,16 @@ namespace Ambition
 					guest.Name = title + " " + name + " " + lname;
 					guest.DisplayName = title + " " + lname;
 
-					likeIndex = rnd.Next(0,pmod.Interests.Length);
-					guest.Like = pmod.Interests[likeIndex];
-					guest.Disike = pmod.Interests[(likeIndex + 1)%pmod.Interests.Length];
+					likeIndex = rnd.Next(0,model.Interests.Length);
+					guest.Like = model.Interests[likeIndex];
+					guest.Disike = model.Interests[(likeIndex + 1)%model.Interests.Length];
 					room.Guests[i] = guest;
 				}
 			}
 			AmbitionApp.SendMessage<GuestVO[]>(room.Guests);
 			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
 			AmbitionApp.SendMessage(PartyMessages.FILL_REMARKS);
-			AmbitionApp.SendMessage<int>(pmod.Confidence);
+			AmbitionApp.SendMessage<int>(model.Confidence);
 		}
 
 		private string GetRandomDescriptor(string phrase, Random rnd)

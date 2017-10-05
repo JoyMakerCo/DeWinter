@@ -17,20 +17,24 @@ namespace Ambition
 
 		public Text Label;
 
+		void Awake()
+		{
+			_meter = GetComponent<Slider>();
+			_model = _models.GetModel<PartyModel>();
+		}
+
 		void Start ()
 		{
-			_model = _models.GetModel<PartyModel>();
 			_meter.value = 0f;
 			Label.text = "New Remark In: " + _model.FreeRemarkCounter.ToString();
 		}
 
-		void Awake()
+		void OnEnable()
 		{
 			_messages.Subscribe<int>(PartyConstants.TURN, HandleTurn);
-			_meter = GetComponent<Slider>();
 		}
 
-		void OnDestroy()
+		void OnDisable()
 		{
 			_messages.Unsubscribe<int>(PartyConstants.TURN, HandleTurn);
 			StopAllCoroutines();

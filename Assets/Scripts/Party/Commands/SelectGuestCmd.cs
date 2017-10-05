@@ -64,7 +64,7 @@ namespace Ambition
 	            }
 				guest.Interest = guest.MaxInterest+1;
             }
-            remark = null;
+            model.Remark = null;
             AmbitionApp.SendMessage(PartyMessages.END_TURN);
 		}
 	}
