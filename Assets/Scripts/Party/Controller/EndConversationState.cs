@@ -15,7 +15,7 @@ namespace Ambition
 			PartyModel model = _models.GetModel<PartyModel>();
 			MapModel map = _models.GetModel<MapModel>();
 			int numCharmed = Array.FindAll(map.Room.Guests, g=>g.State == GuestState.Charmed).Length;
-
+			model.Remark = null;
 			if (map.Room.Rewards != null)
 			{
 				int numRewards = map.Room.Rewards.Length;
