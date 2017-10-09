@@ -17,6 +17,7 @@ namespace Ambition
 	    {
 			_model = AmbitionApp.GetModel<InventoryModel>();
 			_gameModel = AmbitionApp.GetModel<GameModel>();
+	        GenerateInventoryButtons();
 	    }
 
 	    public void GenerateInventoryButtons()
