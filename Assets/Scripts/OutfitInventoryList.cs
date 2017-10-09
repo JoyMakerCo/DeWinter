@@ -10,33 +10,34 @@ namespace Ambition
 	    public GameObject outfitInventoryButtonPrefab;
 	    public WardrobeImageController imageController;
 
-	    private OutfitInventoryModel _model;
+	    private InventoryModel _model;
+	    private GameModel _gameModel;
 
-	    // Use this for initialization
-	    void Start () {
-	    	_model = AmbitionApp.GetModel<OutfitInventoryModel>();
-	        GenerateInventoryButtons();
+	    void Awake ()
+	    {
+			_model = AmbitionApp.GetModel<InventoryModel>();
+			_gameModel = AmbitionApp.GetModel<GameModel>();
 	    }
 
 	    public void GenerateInventoryButtons()
 	    {
-			List<Outfit> outfits = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Merchant);
-	        foreach (Outfit o in outfits)
+			List<ItemVO> outfits = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
+	        foreach (ItemVO o in outfits)
 	        {
 	            GameObject button = GameObject.Instantiate(outfitInventoryButtonPrefab);
 	            OutfitInventoryButton buttonStats = button.GetComponent<OutfitInventoryButton>();
-	            buttonStats.outfit = o;
+	            buttonStats.outfit = new OutfitVO(o);
 	            buttonStats.inventoryType = inventoryType;
 	            button.transform.SetParent(this.transform, false);
 	            buttonStats.imageController = imageController;
 	        }
 	    }
 
-		public Outfit selectedInventoryOutfit
+		public OutfitVO selectedInventoryOutfit
 		{
-			get { return _model.Outfit; }
+			get { return _gameModel.Outfit; }
 			set {
-				_model.Outfit = value;
+				_gameModel.Outfit = value;
 			}
 		}
 	    public void ClearInventoryButtons()

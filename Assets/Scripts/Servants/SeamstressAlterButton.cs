@@ -11,14 +11,14 @@ public class SeamstressAlterButton : MonoBehaviour {
     Image buttonImage;
     Text buttonText;
     ServantModel _model;
-    OutfitInventoryModel _outfits;
+    InventoryModel _outfits;
 
     void Start()
     {
         buttonImage = this.GetComponent<Image>();
         buttonText = this.transform.Find("Text").GetComponent<Text>();
 		_model = AmbitionApp.GetModel<ServantModel>();
-		_outfits = AmbitionApp.GetModel<OutfitInventoryModel>();
+		_outfits = AmbitionApp.GetModel<InventoryModel>();
     }
 
     void Update()
@@ -26,7 +26,7 @@ public class SeamstressAlterButton : MonoBehaviour {
 		if (_model.Hired.ContainsKey("Seamstress")) //If the Seamstress has been hired, enable the New Outfit Ability
         {
             buttonText.text = "Seamstress - New Outfit";
-            if (_outfits.Inventory.Count < _outfits.Capacity) //As long as there is room to fit the new Outfit
+            if (_outfits.Inventory.Count < _outfits.NumOutfits) //As long as there is room to fit the new Outfit
             {
                 buttonImage.color = Color.white;
                 buttonText.color = Color.white;
@@ -41,7 +41,7 @@ public class SeamstressAlterButton : MonoBehaviour {
             buttonText.text = "Tailor - Alter (£20)";
             if (outfitInventoryList.selectedInventoryOutfit != null) //As long as an Outfit has been selected
             {
-                if (outfitInventoryList.selectedInventoryOutfit.altered || GameData.moneyCount < 20) //As long as they have the money to pay for it
+                if (outfitInventoryList.selectedInventoryOutfit.Altered || GameData.moneyCount < 20) //As long as they have the money to pay for it
                 {
                     buttonImage.color = Color.gray;
                     buttonText.color = Color.white;                    
@@ -79,7 +79,7 @@ public class SeamstressAlterButton : MonoBehaviour {
 
     void AlterationWindow()
     {
-        if (!outfitInventoryList.selectedInventoryOutfit.altered && GameData.moneyCount > 20) //If the Seamstress has been Hired and the Outfit hasn't been Altered AND you can afford it
+        if (!outfitInventoryList.selectedInventoryOutfit.Altered && GameData.moneyCount > 20) //If the Seamstress has been Hired and the Outfit hasn't been Altered AND you can afford it
         {
             object[] objectStorage = new object[1];
             objectStorage[0] = outfitInventoryList.selectedInventoryOutfit;
@@ -89,7 +89,7 @@ public class SeamstressAlterButton : MonoBehaviour {
 
     void CreateNewOutfitWindow()
     {
-        if (_outfits.Inventory.Count < _outfits.Capacity) //As long as there is room for a new Outfit
+        if (_outfits.Inventory.Count < _outfits.NumOutfits) //As long as there is room for a new Outfit
         {
             object[] objectStorage = new object[1];
             objectStorage[0] = outfitInventoryList;
@@ -97,7 +97,7 @@ public class SeamstressAlterButton : MonoBehaviour {
         } else 
         {
 			Dictionary<string, string> subs = new Dictionary<string, string>()
-				{{"$CAPACITY", _outfits.Capacity.ToString()}};
+				{{"$CAPACITY", _outfits.NumOutfits.ToString()}};
 			AmbitionApp.OpenMessageDialog(DialogConsts.CANT_BUY_DIALOG, subs);
         }
     }

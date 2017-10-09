@@ -105,8 +105,9 @@ namespace Ambition
 	        if(!room.Cleared) //If the Room hasn't been cleared already, do all the stuff
 	        {
 	            //Standdard Turn Stuff
-				AmbitionApp.AdjustValue<int>(PartyConstants.TURNSLEFT, -1);
-				AmbitionApp.AdjustValue<int>(GameConsts.INTOXICATION, -20);
+				AmbitionApp.GetModel<PartyModel>().TurnsLeft--;
+				AmbitionApp.GetModel<PartyModel>().Intoxication-=20;
+
 	            // TODO: Make the Event Happen
 //	            screenFader.gameObject.SendMessage("CreateEventPopUp", "party");
 	            //Clear the Room

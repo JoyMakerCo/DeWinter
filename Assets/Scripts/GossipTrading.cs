@@ -203,16 +203,17 @@ namespace Ambition
 	    {
 	        if (Random.Range(1,101) <= CaughtChance())
 	        {
+				FactionModel model = AmbitionApp.GetModel<FactionModel>();
 	            //Player Rep Loss
-	            if (GameData.factionList["Third Estate"].ReputationLevel >= 3)
+				if (model["Third Estate"].Level >= 3)
 	            {
 	                GameData.reputationCount -= 15;
-	                GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction].playerReputation -= 15;
+					model[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction].Reputation -= 15;
 	            }
 	            else
 	            {
 	                GameData.reputationCount -= 25;
-	                GameData.factionList[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction].playerReputation -= 25;
+					model[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction].Reputation -= 25;
 	            }
 	            //Angry Pop-Up About It
 	            screenFader.gameObject.SendMessage("CreateCaughtTradingGossipModal", GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction);

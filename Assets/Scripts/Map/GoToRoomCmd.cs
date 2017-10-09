@@ -38,16 +38,8 @@ namespace Ambition
 			        {
 		                chance = ((chance < 90) ? (chance + 10) : 100);
 			        }
-
-					if (rnd.Next(100) < chance)
-					{
-						UnityEngine.Debug.Log("Going to " + room.Name);
-					}
-					else
-					{
-//						AmbitionApp.SendMessage<RoomVO>(PartyMessages.AMBUSH, model.Room);						
-//						return;
-					}
+//TODO: MoveThrough vs Ambush
+//					if (rnd.Next(100) < chance)
 				}
 
 				// Doing this will broadcast a message.
@@ -62,7 +54,7 @@ namespace Ambition
 				// At a certain reputation level, the player's glass may be filled without a punchbowl
 				else if (!room.Cleared
 					&& partyModel.DrinkAmount < partyModel.MaxDrinkAmount
-	            	&& GameData.factionList[partyModel.Party.Faction].ReputationLevel >= 5
+	            	&& AmbitionApp.GetModel<FactionModel>()[partyModel.Party.Faction].Level >= 5
 	            	&& rnd.Next(0, 4) == 0)
 	        	{
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;

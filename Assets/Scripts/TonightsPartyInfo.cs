@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using Ambition;
+using Core;
 
 public class TonightsPartyInfo : MonoBehaviour {
 
-    Text tonightsPartyText;
+    Text partyText;
     Text hostedByText;
     Text factionLikesText;
     Text factionDislikesText;
@@ -19,7 +21,7 @@ public class TonightsPartyInfo : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	    tonightsPartyText = this.transform.Find("Tonight'sPartyText").GetComponent<Text>();
+	    partyText = this.transform.Find("Tonight'sPartyText").GetComponent<Text>();
         hostedByText = this.transform.Find("HostedByTitle").Find("HostedByText").GetComponent<Text>();
         factionLikesText = this.transform.Find("FactionLikesTitle").Find("FactionLikesText").GetComponent<Text>();
         factionDislikesText = this.transform.Find("FactionDislikesTitle").Find("FactionDislikesText").GetComponent<Text>();
@@ -34,50 +36,57 @@ public class TonightsPartyInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	// TODO: Respond to a setter
-	void Update () {
-		if (GameData.tonightsParty != null)
+	void Update ()
+	{
+		PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
+		if (party != null)
 		{
-	        tonightsPartyText.text = GameData.tonightsParty.Name();
-	        hostedByText.text = GameData.tonightsParty.Faction;
-			factionLikesText.text = GetLikes(GameData.factionList[GameData.tonightsParty.Faction]);
-			factionDislikesText.text = GetDislikes(GameData.factionList[GameData.tonightsParty.Faction]);
-	        partyDescriptionText.text = GameData.tonightsParty.Description();
-	        objective1Text.text = GameData.tonightsParty.Objective1();
-	        objective2Text.text = GameData.tonightsParty.Objective2();
-	        objective3Text.text = GameData.tonightsParty.Objective3();
-	        guest1Text.text = GameData.tonightsParty.Guest1();
-	        guest2Text.text = GameData.tonightsParty.Guest2();
-	        guest3Text.text = GameData.tonightsParty.Guest3();
+			FactionModel model = AmbitionApp.GetModel<FactionModel>();
+	        partyText.text = party.Name();
+	        hostedByText.text = party.Faction;
+			factionLikesText.text = GetLikes(model[party.Faction]);
+			factionDislikesText.text = GetDislikes(model[party.Faction]);
+	        partyDescriptionText.text = party.Description();
+	        objective1Text.text = party.Objective1();
+	        objective2Text.text = party.Objective2();
+	        objective3Text.text = party.Objective3();
+	        guest1Text.text = party.Guest1();
+	        guest2Text.text = party.Guest2();
+	        guest3Text.text = party.Guest3();
 	     }
     }
 
     private string GetLikes(FactionVO faction)
     {
+    	LocalizationModel phrases = AmbitionApp.GetModel<LocalizationModel>();
+
 		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
 
-		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
+		List<string> descriptors = new List<string>();
 		int index = (faction.Luxury < 0 ? 0 : faction.Luxury == 0 ? 1 : 2);
-		string str = (index != 1) ? fmod.Preference["Luxury"][index] : "";
+		if (index != 1) descriptors.Add(phrases.GetString("luxury." + index.ToString()));
 
 		index = (faction.Modesty < 0 ? 0 : faction.Modesty == 0 ? 1 : 2);
-		str += (index != 1) ? (", " + fmod.Preference["Modesty"][index]) : "";
+		if (index != 1) descriptors.Add(phrases.GetString("modesty." + index.ToString()));
 
-		return str + " outfits.";
+		return string.Join(", ", descriptors.ToArray()) + " outfits.";
     }
 
 	private string GetDislikes(FactionVO faction)
     {
+		LocalizationModel phrases = AmbitionApp.GetModel<LocalizationModel>();
+
 		if (faction.Modesty == 0 && faction.Luxury == 0)
 			return "They don't care about your clothes.";
 
-		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
-		int index = (faction.Luxury < 0 ? 0 : faction.Luxury == 0 ? 2 : 1);
-		string str = (index != 1) ? fmod.Preference["Luxury"][index] : "";
+		List<string> descriptors = new List<string>();
+		int index = (faction.Luxury < 0 ? 2 : faction.Luxury == 0 ? 1 : 0);
+		if (index != 1) descriptors.Add(phrases.GetString("luxury." + index.ToString()));
 
-		index = (faction.Modesty < 0 ? 0 : faction.Modesty == 0 ? 2 : 1);
-		str += (index != 1) ? (", " + fmod.Preference["Modesty"][index]) : "";
+		index = (faction.Modesty < 0 ? 2 : faction.Modesty == 0 ? 1 : 0);
+		if (index != 1) descriptors.Add(phrases.GetString("modesty." + index.ToString()));
 
-		return str + " outfits.";
+		return string.Join(", ", descriptors.ToArray()) + " outfits.";
     }
 }

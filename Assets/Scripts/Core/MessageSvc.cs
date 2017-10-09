@@ -66,6 +66,7 @@ namespace Core
 
 		public void Subscribe(string messageID, Action callback)
 		{
+			if (messageID == null) return;
 			if (!_messageHandlers.ContainsKey(messageID))
 			{
 				_messageHandlers.Add(messageID, new MessageEvent());
@@ -75,6 +76,7 @@ namespace Core
 
 		public void Subscribe<T>(string messageID, Action<T> callback)
 		{
+			if (messageID == null) return;
 			if (!_messageTypeHandlers.ContainsKey(messageID))
 			{
 				_messageTypeHandlers.Add(messageID, new Dictionary<Type, IMessageEvent>());
@@ -116,6 +118,7 @@ namespace Core
 
 		public void Unsubscribe<T>(string messageID, Action<T> callback)
 		{
+			if (messageID == null) return;
 			Type t = typeof(T);
 			if (_messageTypeHandlers.ContainsKey(messageID) && _messageTypeHandlers[messageID].ContainsKey(t))
 			{
@@ -125,6 +128,7 @@ namespace Core
 
 		public void Send(string messageID)
 		{
+			if (messageID == null) return;
 			MessageEvent e;
 			if (_messageHandlers.TryGetValue(messageID, out e))
 				e.Send();
@@ -132,6 +136,7 @@ namespace Core
 
 		public void Send<T>(string messageID, T messageData)
 		{
+			if (messageID == null) return;
 			IMessageEvent e;
 			Dictionary<Type, IMessageEvent> d;
 			Type t = typeof(T);

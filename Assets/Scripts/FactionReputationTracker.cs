@@ -11,6 +11,6 @@ public class FactionReputationTracker : MonoBehaviour {
 	}
 
 	void Update () {
-	    myText.text = "- Your Reputation Level with The " + factionTracked + " is " + GameData.factionList[factionTracked].ReputationLevel.ToString();
+		myText.text = "- Your Reputation Level with The " + factionTracked + " is " + Ambition.AmbitionApp.GetModel<Ambition.FactionModel>()[factionTracked].Level.ToString();
 	}
 }

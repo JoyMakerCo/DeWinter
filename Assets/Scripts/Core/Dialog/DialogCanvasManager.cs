@@ -36,6 +36,7 @@ namespace Dialog
 				{
 					cmp.Manager = this;
 					cmp.ID = dialogID;
+					cmp.OnOpen();
 				}
 				_dialogs.Add(dialog, dialogID);
 				dialog.transform.SetParent(_canvas.transform, false);
@@ -46,14 +47,26 @@ namespace Dialog
 
 		public GameObject Open<T>(string dialogID, T vo)
 		{
-			GameObject dlg = Open(dialogID);
-			if (dlg != null)
+			PrefabMap map = Array.Find(DialogPrefabs.Prefabs, p=>p.ID == dialogID);
+			if (default(PrefabMap).Equals(map)) return null; //Early out
+
+			GameObject dialog = Instantiate<GameObject>(map.Prefab, this.gameObject.transform);
+			if (dialog != null)
 			{
-				DialogView cmp = dlg.GetComponent<DialogView>();
-				if (cmp is IInitializable<T>)
-					(cmp as IInitializable<T>).Initialize(vo);
+				DialogView cmp = dialog.GetComponent<DialogView>();
+				if (cmp != null)
+				{
+					cmp.Manager = this;
+					cmp.ID = dialogID;
+					if (cmp is IInitializable<T>)
+						(cmp as IInitializable<T>).Initialize(vo);
+					cmp.OnOpen();
+				}
+				_dialogs.Add(dialog, dialogID);
+				dialog.transform.SetParent(_canvas.transform, false);
+				dialog.GetComponent<RectTransform>().SetAsLastSibling();
 			}
-			return dlg;
+			return dialog;
 		}
 
 		public bool Close(string dialogID)
@@ -62,8 +75,7 @@ namespace Dialog
 			if (dialog.Equals(default(KeyValuePair<GameObject,string>))) return false;
 
 			DialogView view = dialog.Key.GetComponent<DialogView>();
-			if (view is IDisposable)
-				(view as IDisposable).Dispose();
+			if (view != null) view.OnClose();
 
 			_dialogs.Remove(dialog.Key);
 			GameObject.Destroy(dialog.Key);
@@ -76,8 +88,7 @@ namespace Dialog
 			if (dialog != null)
 			{
 				DialogView view = dialog.GetComponent<DialogView>();
-				if (view is IDisposable)
-					(view as IDisposable).Dispose();
+				view.OnClose();
 				GameObject.Destroy(dialog);
 				closed = true;
 			}
@@ -91,8 +102,7 @@ namespace Dialog
 			foreach(KeyValuePair<GameObject, string> dialog in _dialogs)
 			{
 				cmp = dialog.Key.GetComponent<DialogView>();
-				if (cmp is IDisposable)
-					(cmp as IDisposable).Dispose();
+				if (cmp != null) cmp.OnClose();
 				GameObject.Destroy(dialog.Key);
 			}
 			_dialogs.Clear();

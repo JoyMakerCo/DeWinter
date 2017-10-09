@@ -7,12 +7,15 @@ namespace Ambition
 {
 	public class GuestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
+		private const float FILL_SECONDS = 0.5f;
+
 		public int Index;
 
 		public Image OpinionIndicator;
 		public Image InterestIcon;
 		public Text NameText;
-		public Core.ICommand mb;
+		public Image Highlight;
+		public GameObject Spotlight;
 
 		public GuestConfig GuestArtConfig;
 
@@ -23,19 +26,24 @@ namespace Ambition
 
 		void Awake()
 		{
+			_image = GetComponent<Image>();
+		}
+
+		void OnEnable()
+		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
 			AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
 			AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
-			_image = GetComponent<Image>();
 		}
 
-		void OnDestroy()
+		void OnDisable()
 	    {
 			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
 			AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
 			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
+			StopAllCoroutines();
 	    }
 
 	    private void HandleGuests(GuestVO[] guests)
@@ -59,16 +67,15 @@ namespace Ambition
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
 
-				NameText.text = _guest.Name;
-				NameText.color = isEnemy ? Color.red : Color.white;
+				NameText.text = _guest.DisplayName;
 
-				OpinionIndicator.gameObject.SetActive(!_guest.IsLockedIn);
-				OpinionIndicator.fillAmount = 0.01f*(float)_guest.Interest;
+				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
 				if (_guest.Variant < 0)
 				{
-					_guest.Variant = (new System.Random()).Next(GuestArtConfig.GuestSprites.Length);
-					_guest.IsFemale = GuestArtConfig.GuestSprites[_guest.Variant].IsFemale;
+					GuestSprite [] sprites = Array.FindAll(GuestArtConfig.GuestSprites, i=>i.IsFemale == _guest.IsFemale);
+					int index = (new System.Random()).Next(sprites.Length);
+					_guest.Variant = Array.IndexOf(GuestArtConfig.GuestSprites, sprites[index]);
 				}
 
 				_image.sprite = !_isIntoxicated
@@ -104,26 +111,36 @@ namespace Ambition
 		private void HandleRemark(RemarkVO remark)
 		{
 			_remark = remark;
-			_image.color = Color.white;
+			Spotlight.SetActive(false);
 		}
 
 		private void HandleTargets(GuestVO[] guests)
 		{
-			if (_remark == null || guests == null || guests.Length == 0)
+			bool active = _remark != null && guests != null && !_isIntoxicated && Array.IndexOf(guests, _guest) >= 0;
+			Spotlight.SetActive(active);
+			if (active)
 			{
-				_image.color = Color.white;
+				float alpha = Highlight.color.a;
+				Color c;
+				if (_remark.Interest == _guest.Like) c = Color.green;
+				else if (_remark.Interest == _guest.Disike) c = Color.red;
+				else c = Color.white;
+				c.a = alpha;
+				Highlight.color = c;
 			}
-			else if (Array.IndexOf(guests, _guest) < 0)
+		}
+
+		System.Collections.IEnumerator FillMeter(float percent)
+		{
+			float t = 0;
+			float startFill = OpinionIndicator.fillAmount;
+			while (t<FILL_SECONDS)
 			{
-				_image.color = Color.gray;
+				OpinionIndicator.fillAmount = startFill + ((percent-startFill) * t / FILL_SECONDS);
+				t += Time.deltaTime;
+				yield return null;
 			}
-			else
-			{
-				if (_isIntoxicated) _image.color = Color.white;
-				else if (_remark.Interest == _guest.Like) _image.color = Color.green;
-				else if (_remark.Interest == _guest.Disike) _image.color = Color.red;
-				else _image.color = Color.white;
-			}
+			OpinionIndicator.fillAmount = percent;
 		}
 	}
 }
