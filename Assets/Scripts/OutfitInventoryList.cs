@@ -13,7 +13,7 @@ namespace Ambition
 	    private InventoryModel _model;
 	    private GameModel _gameModel;
 
-	    void Start ()
+	    void Awake ()
 	    {
 			_model = AmbitionApp.GetModel<InventoryModel>();
 			_gameModel = AmbitionApp.GetModel<GameModel>();

@@ -48,7 +48,7 @@ public class OutfitStatsTracker : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void MUpdate () {
         if (inventoryType == ItemConsts.PERSONAL)
         {
             if (outfitInventoryList.selectedInventoryOutfit != null)
