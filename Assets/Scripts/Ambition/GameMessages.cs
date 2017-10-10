@@ -14,5 +14,7 @@ namespace Ambition
 		public static string START_TUTORIAL = "START_TUTORIAL";
 
 		public static string CREATE_ENEMY = "CREATE_ENEMY";
+		public static string DIALOG_OPENED = "DIALOG_OPENED";
+		public static string DIALOG_CLOSED = "DIALOG_CLOSED";
 	}
 }

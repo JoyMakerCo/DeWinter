@@ -36,9 +36,9 @@ namespace Ambition
 	        SetUpButtons();
 
 	        if (inventoryType == "personal")
-				_list = _model.Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
+				_list = _model.Inventory.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY));
 		    else
-		    	_list = _model.Market.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0);
+		    	_list = _model.Market.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY));
 
 	        SortByType();
 	    }

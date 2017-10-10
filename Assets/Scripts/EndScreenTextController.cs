@@ -22,7 +22,7 @@ namespace Ambition
 	            titleText.text = "You're Broke!";
 	            bodyText.text = "You ran our of Money and friends to give you loans. You die penniless in the streets.";
 	        }
-			else if (model.Allegiance != AmbitionApp.GetModel<FactionModel>().VictoriousPower)
+			else if (model.Allegiance != AmbitionApp.GetModel<FactionModel>().GetVictoriousPower())
 			{
 				titleText.text = "You Lose!";
 	            bodyText.text = "You ended up on the wrong side of history. You're executed as a traitor.";

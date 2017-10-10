@@ -6,4 +6,9 @@ namespace Util
 	{
 		void Initialize();
 	}
+
+	public interface IInitializable<T>
+	{
+		void Initialize(T value);
+	}
 }

@@ -20,7 +20,7 @@ public class AfterPartyReportTextController : MonoBehaviour {
 	public void DisplayAfterPartyReportText()
     {
         string rewardString;
-        Outfit outfit = AmbitionApp.GetModel<OutfitInventoryModel>().Outfit;
+        OutfitVO outfit = AmbitionApp.GetModel<GameModel>().Outfit;
         if (!_model.Party.blackOutEnding) //Did the Player end the Party regularly, or by blacking out?
         {
             rewardString = "The " + _model.Party.Name() + " is over. Here's what you got:";

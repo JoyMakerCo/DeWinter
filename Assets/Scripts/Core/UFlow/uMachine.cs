@@ -4,73 +4,83 @@ using Core;
 
 namespace UFlow
 {
-	public class UMachine : UState
+	public sealed class UMachine : UState
 	{
 		private UState _state;
-		internal string[][] _states;
 
-		public UState State
+		internal UFlowSvc _uflow;
+		internal UTransition[] _transitions;
+		internal string _initialState;
+
+		public string State
 		{
-			get { return _state; }
-			set {
-				// Cleanup the current state
-				if (_state != null)
-				{
-					_state.OnExitState();
-					if (_state is IDisposable)
-						((IDisposable)_state).Dispose();
-				}
-				// Exit the current machine if the incoming state is null
-				if (value == null)
-				{
-					this.OnExitState();
-					Abort();
-					if (Machine != null)
-						Machine.NextState();
-				}
-				// Go to the specified state within the machine
-				else
-				{
-					_state = value;
-					_state.Machine = this;
-					_state.OnEnterState();
-					if (_state is UMachine) 
-						State = _UFlow.BuildState(((UMachine)_state)._states[0][0], _state.ID);
-				}
-			}
+			get { return _state != null ? _state.ID : null; }
+			set { SetState(value != null ? _uflow.BuildState(value,ID) : null); }
 		}
 
-		internal UState NextState()
+		internal void SetState(UState state)
 		{
-			try
+			if (_state != null)
+				_state.OnExitState();
+
+			ClearTransitions();
+
+			// Go to the specified state within the machine
+			_state = state;
+
+			// If the new state is non-null, enter the new state
+			if (_state != null)
 			{
-				string stateID =  (_state is IDecision)
-					? ((IDecision)_state).Choice
-					: Array.Find(_states, s=>s[0]==_state.ID)[1];
-				return State = _UFlow.BuildState(ID, stateID);
+				_state.OnEnterState();
+				if (!(_state is UMachine))
+					BuildTransitions();
 			}
-			catch(Exception e)
-			{
-				Abort();
-				throw new Exception("Invalid state for Machine \'" + ID + "\'; Aborting;", e);
-			}
+
+			// Exit the current machine if the incoming state is null
+			else if (_machine != null)
+				_machine.BuildTransitions();
 		}
 
-		public void Abort()
+		public override void OnEnterState ()
 		{
-			if (_state is IDisposable) ((IDisposable)_state).Dispose();
+			State = _initialState;
+		}
+
+		public override void OnExitState ()
+		{
 			_state = null;
-			if (this is IDisposable) ((IDisposable)this).Dispose();
+			ClearTransitions();
+			_uflow._machines.Remove(this.ID);
 		}
 
-		public override string ToString()
+		private void BuildTransitions()
 		{
-			string val = "";
-			foreach (string[] state in _states)
+			if (_state == null) return;
+
+			_transitions = _uflow.BuildTransitions(ID, _state.ID);
+			if (_transitions != null)
 			{
-				val += state[0] + " => " + string.Join(", ", state, 1, 100) + "\n";
+				foreach(UTransition trans in _transitions)
+				{
+					if (trans.InitializeAndValidate())
+					{
+						State = trans._targetState;
+						return;
+					}
+				}
 			}
-			return val;
+			else
+			{
+				State = null;
+			}
+		}
+
+		private void ClearTransitions()
+		{
+			if (_transitions == null) return;
+			foreach(UTransition trans in _transitions)
+				trans.Dispose();
+			_transitions = null;
 		}
 	}
 }

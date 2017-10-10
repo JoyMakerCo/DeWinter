@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public void Execute (RoomVO room)
 		{
-			AmbitionApp.OpenDialog(TutorialPartyDialogMediator.DIALOG_ID);
+			AmbitionApp.OpenDialog("WORK_THE_ROOM_TUTORIAL");
 			AmbitionApp.UnregisterCommand<TutorialPartyCmd, RoomVO>();
 		}
 	}

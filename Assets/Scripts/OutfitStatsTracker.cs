@@ -48,21 +48,21 @@ public class OutfitStatsTracker : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void MUpdate () {
         if (inventoryType == ItemConsts.PERSONAL)
         {
             if (outfitInventoryList.selectedInventoryOutfit != null)
             {
                 //Text
-                Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
+                OutfitVO displayOutfit = outfitInventoryList.selectedInventoryOutfit;
                 outfitNameText.text = displayOutfit.Name;
                 displayOutfit.CalculatePrice(true);
-                outfitCostText.text = displayOutfit.price.ToString("£" + "#,##0");
-                outfitSaleButtonText.text = "Sell for " + displayOutfit.price.ToString("£" + "#,##0");
+                outfitCostText.text = displayOutfit.Price.ToString("£" + "#,##0");
+                outfitSaleButtonText.text = "Sell for " + displayOutfit.Price.ToString("£" + "#,##0");
                 //Sliders
-                modestySlider.value = displayOutfit.modesty;
-                luxurySlider.value = displayOutfit.luxury;
-                noveltySlider.value = displayOutfit.novelty;
+                modestySlider.value = displayOutfit.Modesty;
+                luxurySlider.value = displayOutfit.Luxury;
+                noveltySlider.value = displayOutfit.Novelty;
                 //Make Sure Slider Handles are Visible
                 modestySliderHandle.color = Color.white;
                 luxurySliderHandle.color = Color.white;
@@ -82,15 +82,15 @@ public class OutfitStatsTracker : MonoBehaviour {
             if (outfitInventoryList.selectedInventoryOutfit != null)
             {
                 //Text
-                Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
+                OutfitVO displayOutfit = outfitInventoryList.selectedInventoryOutfit;
                 outfitNameText.text = displayOutfit.Name;
                 displayOutfit.CalculatePrice(false);
-                outfitCostText.text = displayOutfit.price.ToString("£" + "#,##0");
-                outfitSaleButtonText.text = "Buy for " + displayOutfit.price.ToString("£" + "#,##0");
+                outfitCostText.text = displayOutfit.Price.ToString("£" + "#,##0");
+                outfitSaleButtonText.text = "Buy for " + displayOutfit.Price.ToString("£" + "#,##0");
                 //Sliders
-                modestySlider.value = displayOutfit.modesty;
-                luxurySlider.value = displayOutfit.luxury;
-                noveltySlider.value = displayOutfit.novelty;
+                modestySlider.value = displayOutfit.Modesty;
+                luxurySlider.value = displayOutfit.Luxury;
+                noveltySlider.value = displayOutfit.Novelty;
                 //Make Sure Slider Handles are Visible
                 modestySliderHandle.color = Color.white;
                 luxurySliderHandle.color = Color.white;
@@ -113,14 +113,14 @@ public class OutfitStatsTracker : MonoBehaviour {
             if (outfitInventoryList.selectedInventoryOutfit != null) //If an Outfit is Selected
             {
                 //Text
-                Outfit displayOutfit = outfitInventoryList.selectedInventoryOutfit;
+                OutfitVO displayOutfit = outfitInventoryList.selectedInventoryOutfit;
                 outfitNameText.text = displayOutfit.Name;
 				displayOutfit.CalculatePrice(true);
-                outfitCostText.text = displayOutfit.price.ToString("£" + "#,##0"); //Uses Personal Inventory Prices
+                outfitCostText.text = displayOutfit.Price.ToString("£" + "#,##0"); //Uses Personal Inventory Prices
                 //Sliders
-                modestySlider.value = displayOutfit.modesty;
-                luxurySlider.value = displayOutfit.luxury;
-                noveltySlider.value = displayOutfit.novelty;
+                modestySlider.value = displayOutfit.Modesty;
+                luxurySlider.value = displayOutfit.Luxury;
+                noveltySlider.value = displayOutfit.Novelty;
                 //Make Sure Slider Handles are Visible
                 modestySliderHandle.color = Color.white;
                 luxurySliderHandle.color = Color.white;

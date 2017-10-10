@@ -8,34 +8,35 @@ namespace Ambition
 		public void Execute (DateTime day)
 		{
 			CalendarModel imod = AmbitionApp.GetModel<CalendarModel>();
+			FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 			if (day == imod.uprisingDay)
 			{
 				string victoriousPower;
 
 		        //Establish each Faction's final Power
-		        float crownFinalPower = GameData.factionList["Crown"].Power * 100;
-		        float revolutionFinalPower = GameData.factionList["Third Estate"].Power * 100;
-		        if(GameData.factionList["Church"].Allegiance > 0)
+		        float crownFinalPower = fmod["Crown"].Power * 100;
+		        float revolutionFinalPower = fmod["Third Estate"].Power * 100;
+		        if(fmod["Church"].Allegiance > 0)
 		        {
-		            crownFinalPower += (Math.Abs((float)(GameData.factionList["Church"].Allegiance / 2)) * GameData.factionList["Church"].Power);
-		        } else if (GameData.factionList["Church"].Allegiance < 0)
+		            crownFinalPower += (Math.Abs((float)(fmod["Church"].Allegiance / 2)) * fmod["Church"].Power);
+		        } else if (fmod["Church"].Allegiance < 0)
 		        {
-		            revolutionFinalPower += (Math.Abs((float)(GameData.factionList["Church"].Allegiance / 2)) * GameData.factionList["Church"].Power);
+		            revolutionFinalPower += (Math.Abs((float)(fmod["Church"].Allegiance / 2)) * fmod["Church"].Power);
 		        }
-		        if (GameData.factionList["Military"].Allegiance > 0)
+		        if (fmod["Military"].Allegiance > 0)
 		        {
-		            crownFinalPower += (Math.Abs((float)(GameData.factionList["Military"].Allegiance / 2)) * GameData.factionList["Military"].Power);
-		        } else if (GameData.factionList["Military"].Allegiance < 0)
+		            crownFinalPower += (Math.Abs((float)(fmod["Military"].Allegiance / 2)) * fmod["Military"].Power);
+		        } else if (fmod["Military"].Allegiance < 0)
 		        {
-		            revolutionFinalPower += (Math.Abs((float)(GameData.factionList["Military"].Allegiance / 2)) * GameData.factionList["Military"].Power);
+		            revolutionFinalPower += (Math.Abs((float)(fmod["Military"].Allegiance / 2)) * fmod["Military"].Power);
 		        }
-		        if (GameData.factionList["Bourgeoisie"].Allegiance > 0)
+		        if (fmod["Bourgeoisie"].Allegiance > 0)
 		        {
-		            crownFinalPower += (Math.Abs((float)(GameData.factionList["Bourgeoisie"].Allegiance / 2)) * GameData.factionList["Bourgeoisie"].Power);
+		            crownFinalPower += (Math.Abs((float)(fmod["Bourgeoisie"].Allegiance / 2)) * fmod["Bourgeoisie"].Power);
 		        }
-		        else if (GameData.factionList["Bourgeoisie"].Allegiance < 0)
+		        else if (fmod["Bourgeoisie"].Allegiance < 0)
 		        {
-		            revolutionFinalPower += (Math.Abs((float)(GameData.factionList["Bourgeoisie"].Allegiance / 2)) * GameData.factionList["Bourgeoisie"].Power);
+		            revolutionFinalPower += (Math.Abs((float)(fmod["Bourgeoisie"].Allegiance / 2)) * fmod["Bourgeoisie"].Power);
 		        }
 
 
@@ -44,10 +45,10 @@ namespace Ambition
 		//		isDecisive = Math.Abs(crownFinalPower - revolutionFinalPower) > 50;
 				
 		        //Calculate Player Allegiance
-		        if(GameData.factionList["Crown"].playerReputation > GameData.factionList["Third Estate"].playerReputation)
+		        if(fmod["Crown"].Reputation > fmod["Third Estate"].Reputation)
 		        {
 					GameData.Allegiance = "Crown";
-		        } else if (GameData.factionList["Third Estate"].playerReputation > GameData.factionList["Crown"].playerReputation)
+		        } else if (fmod["Third Estate"].Reputation > fmod["Crown"].Reputation)
 		        {
 		            GameData.Allegiance = "Third Estate";
 		        } else // If it's equal then you get shuffled onto the losing team of History

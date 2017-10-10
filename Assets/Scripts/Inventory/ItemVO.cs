@@ -5,8 +5,11 @@ using Util;
 
 namespace Ambition
 {
-	public class ItemVO : ICloneable<ItemVO>
+	public class ItemVO
 	{
+		[JsonProperty("id")]
+		public string ID;
+
 		[JsonProperty("name")]
 		public string Name;
 
@@ -17,7 +20,7 @@ namespace Ambition
 		public string Type;
 
 		[JsonProperty("tags")]
-		public string[] Tags;
+		public List<string> Tags;
 
 		[JsonProperty("states")]
 		public Dictionary<string, object> States = new Dictionary<string, object>();
@@ -43,19 +46,18 @@ namespace Ambition
 			get { return SellPrice.ToString("£" + "#,##0"); }
 		}
 
-		public ItemVO Clone()
+		public ItemVO() {}
+		public ItemVO(ItemVO item)
 		{
-			ItemVO result = new ItemVO();
-			result.Name = this.Name;
-			result.Description = this.Description;
-			result.Type = this.Type;
-			result.Tags = this.Tags;
-			result.States = new Dictionary<string, object>(this.States);
-			result.Price = this.Price;
-			result.SellPrice = this.SellPrice;
-			result.Asset = this.Asset;
-			result.Quantity = this.Quantity;
-			return result;
+			Name = item.Name;
+			Description = item.Description;
+			Type = item.Type;
+			Tags = item.Tags;
+			States = new Dictionary<string, object>(this.States);
+			Price = item.Price;
+			SellPrice = item.SellPrice;
+			Asset = item.Asset;
+			Quantity = item.Quantity;
 		}
 	}
 }

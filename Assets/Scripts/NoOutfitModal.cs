@@ -16,8 +16,9 @@ namespace Ambition
 		public Text TitleText;
 	    private MainScreenTabsController tabsController;
 
-	    void Start()
-	    {
+	    public override void OnOpen ()
+		{
+			base.OnOpen ();
 	    	LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
 			BodyText.text = localization.GetString(DIALOG_PHRASE + DialogConsts.BODY);
 			TitleText.text = localization.GetString(DIALOG_PHRASE + DialogConsts.TITLE);

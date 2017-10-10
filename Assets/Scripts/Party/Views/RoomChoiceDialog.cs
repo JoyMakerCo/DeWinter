@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class RoomChoiceDialog : MessageViewMediator, IDisposable
+	public class RoomChoiceDialog : MessageViewMediator, Util.IInitializable<RoomVO>, IDisposable
 	{
 		public Text WorkTheRoomLabel;
 		public Button WorkTheRoomBtn;
 		public Button PassThroughBtn;
 
-		public void OnOpen(RoomVO room)
+		public void Initialize(RoomVO room)
 		{
 			LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
 			int chance = room.MoveThroughChance;
@@ -33,7 +33,7 @@ namespace Ambition
 			string body = model.GetString("move_through_dialog" + DialogConsts.BODY, substitutions);
 			string ok = model.GetString("move_through_dialog" + DialogConsts.OK, substitutions);
 			MessageDialogVO vo = new MessageDialogVO(title, body, ok);
-			base.OnOpen(vo);
+			base.Initialize(vo);
 			WorkTheRoomLabel.text = model.GetString("move_through_dialog" + DialogConsts.CANCEL);
 
 			WorkTheRoomBtn.onClick.AddListener(WorkTheRoom);
@@ -48,7 +48,7 @@ namespace Ambition
 
 		private void WorkTheRoom()
 		{
-			AmbitionApp.SendMessage(PartyMessages.START_ENCOUNTER);
+			// TODO: Enter the state machine for Conversations
 			Close();
 		}
 

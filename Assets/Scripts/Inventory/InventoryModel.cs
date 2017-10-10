@@ -30,6 +30,12 @@ namespace Ambition
 		[JsonProperty("maxSlots")]
 		public int MaxSlots;
 
+		[JsonProperty("num_outfits")]
+		public int NumOutfits;
+
+		[JsonProperty("max_outfits")]
+		public int MaxOutfits;
+
 		[JsonProperty("marketCapacity")]
 		public int NumMarketSlots;
 
@@ -61,8 +67,27 @@ public ItemVO SelectedMarketItem;
 		public Dictionary<string, ItemVO> Equipped = new Dictionary<string, ItemVO>();
 		public Dictionary<string, ItemVO> LastEquipped = new Dictionary<string, ItemVO>();
 
-		// Inventories stored by ItemVO.Type (eg, Accessory, Gossip, Outfit)
 		public List<ItemVO> Inventory = new List<ItemVO>();
+
+		// Inventories stored by ItemVO.Type (eg, Accessory, Gossip, Outfit)
+		[JsonProperty("inventory")]
+		private Dictionary<string, int> _inventory
+		{
+			set
+			{
+				ItemVO item;
+				foreach(KeyValuePair<string, int> kvp in value)
+				{
+					item = Array.Find(ItemDefinitions, i=>i.ID == kvp.Key);
+					if (item != null)
+					{
+						item = new ItemVO(item);
+						item.Quantity = kvp.Value;
+						Inventory.Add(item);
+					}
+				}
+			}
+		}
 
 		[JsonProperty("items")]
 		public ItemVO[] ItemDefinitions;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Core;
 
 namespace Ambition
 {
@@ -9,11 +10,15 @@ namespace Ambition
 		public GameObject MapView;
 		public GameObject RoomView;
 
+		// Dependency Injection
+		private MessageSvc _msg = App.Service<MessageSvc>();
+		private UFlow.UFlowSvc _uflow = App.Service<UFlow.UFlowSvc>();
+
 		// Use this for initialization
 		void Awake()
 		{
-			AmbitionApp.Subscribe(PartyMessages.SHOW_ROOM, GoToRoom);
-			AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, GoToMap);
+			_msg.Subscribe(PartyMessages.SHOW_ROOM, GoToRoom);
+			_msg.Subscribe(PartyMessages.SHOW_MAP, GoToMap);
 		}
 
 		void OnDestroy()
@@ -31,6 +36,7 @@ namespace Ambition
 		{
 			MapView.SetActive(false);
 			RoomView.SetActive(true);
+			_uflow.InvokeMachine("ConversationController");
 		}
 
 		private void GoToMap()

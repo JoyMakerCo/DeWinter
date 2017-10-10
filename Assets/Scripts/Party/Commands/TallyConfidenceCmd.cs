@@ -10,8 +10,7 @@ namespace Ambition
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 	        InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
-			OutfitInventoryModel omod = AmbitionApp.GetModel<OutfitInventoryModel>();
-	        FactionVO faction = AmbitionApp.GetModel<FactionModel>().Factions[party.Faction];
+	        FactionVO faction = AmbitionApp.GetModel<FactionModel>()[party.Faction];
 	        GameModel gmod = AmbitionApp.GetModel<GameModel>();
 	        int total=0;
 
@@ -25,9 +24,9 @@ namespace Ambition
 	        {
 	            int modestyLike = faction.Modesty;
 				int luxuryLike = faction.Luxury;
-	            int outfitModesty = omod.Outfit.modesty;
-	            int outfitLuxury = omod.Outfit.luxury;
-	            float outfitNovelty = (float)omod.Outfit.novelty * 0.01f;
+	            int outfitModesty = gmod.Outfit.Modesty;
+	            int outfitLuxury = gmod.Outfit.Luxury;
+	            float outfitNovelty = (float)gmod.Outfit.Novelty * 0.01f;
 
 	            // TODO: Fix this formula
 	            parameters.Add("outfit", (int)((((400 - (Math.Abs(modestyLike - outfitModesty) + Math.Abs(luxuryLike - outfitLuxury))))*0.5f)* outfitNovelty));
@@ -36,7 +35,7 @@ namespace Ambition
 	        }
 
 	        //Is it in Style?
-	        parameters.Add("outfitStyle",  imod.CurrentStyle == omod.Outfit.style ? 30 : 0);
+	        parameters.Add("outfitStyle",  imod.CurrentStyle == gmod.Outfit.Style ? 30 : 0);
 
 	        //Is the Accessory in Style and is there a Match?
 	        parameters.Add("accessory", 0);
@@ -48,7 +47,7 @@ namespace Ambition
 	            {
 					parameters["accessory"] = 30;
 	            }
-	            if (omod.Outfit.style == GameData.partyAccessory.States["Style"] as string)
+	            if (gmod.Outfit.Style == GameData.partyAccessory.States["Style"] as string)
 	            {
 					parameters["styleMatch"] = 30;
 	            }

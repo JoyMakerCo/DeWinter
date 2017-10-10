@@ -10,9 +10,9 @@ namespace Ambition
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
-			if(fmod.Factions[model.Party.Faction].ReputationLevel >= 2)
+			if(fmod[model.Party.Faction].Level >= 2)
 	        {
-	        	AmbitionApp.AdjustValue<int>(GameConsts.DRINK, model.MaxDrinkAmount);
+				AmbitionApp.GetModel<PartyModel>().Drink += model.MaxDrinkAmount;
 
 	            Dictionary<string, string> substitutions = new Dictionary<string, string>()
 					{{"$HOSTNAME", model.Party.Host.Name}};

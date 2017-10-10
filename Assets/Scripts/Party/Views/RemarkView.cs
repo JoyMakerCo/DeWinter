@@ -13,17 +13,18 @@ namespace Ambition
 
 		void Awake ()
 		{
-			AmbitionApp.Subscribe<RemarkVO[]>(HandleHand);
+			AmbitionApp.Subscribe<List<RemarkVO>>(HandleHand);
 		}
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<RemarkVO[]>(HandleHand);
+			AmbitionApp.Unsubscribe<List<RemarkVO>>(HandleHand);
 		}
 
-		private void HandleHand(RemarkVO[] hand)
+		private void HandleHand(List<RemarkVO> hand)
 		{
-			_remark = (Index < hand.Length) ? hand[Index] : null;
+			_remark = (Index < hand.Count) ? hand[Index] : null;
+
 		}
 
 		public void OnPointerClick(PointerEventData eventData)

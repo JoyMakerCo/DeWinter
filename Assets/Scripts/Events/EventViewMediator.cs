@@ -6,26 +6,24 @@ using Dialog;
 
 namespace Ambition
 {
-	public class EventViewMediator : DialogView, IDialog<EventVO>
+	public class EventViewMediator : DialogView, Util.IInitializable<EventVO>
 	{
 	    public Text titleText;
 	    public Text descriptionText;
 
 	    private EventVO _event;
+	    private Core.MessageSvc _messageSvc = Core.App.Service<Core.MessageSvc>();
 
-		void Awake()
-	    {
-			AmbitionApp.Subscribe<EventVO>(HandleEventUpdate);
+		public override void OnClose ()
+		{
+			base.OnClose();
+			_messageSvc.Unsubscribe<EventVO>(HandleEventUpdate);
 	    }
 
-		void OnDestroy()
+		public void Initialize(EventVO e)
 	    {
-			AmbitionApp.Unsubscribe<EventVO>(HandleEventUpdate);
-	    }
-
-		public void OnOpen(EventVO e)
-	    {
-			AmbitionApp.SendMessage<EventVO>(e);
+			_messageSvc.Subscribe<EventVO>(HandleEventUpdate);
+			_messageSvc.Send<EventVO>(e);
 	    }
 
  		private void HandleEventUpdate(EventVO e)

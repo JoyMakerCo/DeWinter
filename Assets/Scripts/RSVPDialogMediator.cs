@@ -8,7 +8,7 @@ using Dialog;
 using Core;
 
 
-public class RSVPDialogMediator : DialogView, IDialog<PartyVO>
+public class RSVPDialogMediator : DialogView, Util.IInitializable<PartyVO>
 {
 	public Text TitleTxt;
 	public Text BodyTxt;
@@ -17,7 +17,7 @@ public class RSVPDialogMediator : DialogView, IDialog<PartyVO>
 	private LocalizationModel _localization;
 
 
-	public void OnOpen(PartyVO party)
+	public void Initialize(PartyVO party)
 	{
 		ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 		Dictionary <string, string> dialogsubs = new Dictionary<string, string>(){

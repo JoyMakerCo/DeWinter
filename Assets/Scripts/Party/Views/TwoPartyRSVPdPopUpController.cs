@@ -5,11 +5,11 @@ using Dialog;
 
 namespace Ambition
 {
-	public class TwoPartyRSVPdPopUpController : MonoBehaviour, IDialog<PartyVO []>
+	public class TwoPartyRSVPdPopUpController : MonoBehaviour, Util.IInitializable<PartyVO []>
 	{
 		private PartyVO[] _parties;
 
-	    public void OnOpen(PartyVO[] parties)
+	    public void Initialize(PartyVO[] parties)
 	    {
 			//Title Text
 	        Text titleText = this.transform.Find("TitleText").GetComponent<Text>();
@@ -29,7 +29,7 @@ namespace Ambition
 
 	    public void SelectParty(int partyNumber)
 	    {
-			GameData.tonightsParty = _parties[partyNumber + 1];
+	    	AmbitionApp.GetModel<PartyModel>().Party = _parties[partyNumber + 1];
 	    }
 	}
 }

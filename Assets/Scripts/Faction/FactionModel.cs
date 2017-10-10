@@ -6,72 +6,65 @@ using Util;
 
 namespace Ambition
 {
-	public class FactionModel : DocumentModel, IInitializable, IDisposable
+	public class FactionModel : DocumentModel
 	{
-		private Dictionary<string, FactionVO> _factions;
+		public Dictionary<string, FactionVO> Factions;
 
 		[JsonProperty("factions")]
-		public Dictionary<string, FactionVO> Factions
+		private FactionVO[] _factions
 		{
-			get { return _factions; }
-			private set {
-				_factions = value;
-				foreach (KeyValuePair<string,FactionVO> kvp in _factions)
+			set {
+				Factions = new Dictionary<string, FactionVO>();
+				foreach(FactionVO faction in value)
 				{
-					_factions[kvp.Key].Name = kvp.Key;
+					Factions.Add(faction.Name, faction);
 				}
 			}
 		}
 
+		[JsonProperty("levels")]
+		public FactionLevelVO[] Levels;
+
+		[JsonProperty("power")]
+		public int [] Power;
+
+		[JsonProperty("modesty")]
+		public int [] Modesty;
+
+		[JsonProperty("luxury")]
+		public int [] Luxury;
+
+		[JsonProperty("allegiance")]
+		public int [] Allegiance;
+
 		public FactionModel () : base("FactionData") {}
-
-		public void Initialize()
-		{
-			AmbitionApp.Subscribe<AdjustFactionVO>(HandleAdjustFaction);
-		}
-
-		public void Dispose()
-		{
-			AmbitionApp.Unsubscribe<AdjustFactionVO>(HandleAdjustFaction);
-		}
 
 		public FactionVO this[string faction]
 		{
-			get
-			{
-				return _factions[faction];
-			}
+			get { return Factions[faction]; }
 		}
 
-		[JsonProperty("preference")]
-		public Dictionary<string, string[]> Preference;
-
-		[JsonProperty("power")]
-		public Dictionary<int, string> Power;
-
-		[JsonProperty("allegiance")]
-		public Dictionary<int, string> Allegiance;
-
-		public string VictoriousPower
+		public string GetVictoriousPower()
 		{
-			get
-			{
-				return _factions["Crown"].Power >= _factions["Third Estate"].Power
-					? "Crown"
-					: "Third Estate";
-			}
+			return Factions[FactionConsts.REVOLUTION].Power > Factions[FactionConsts.CROWN].Power
+				? FactionConsts.REVOLUTION
+				: FactionConsts.CROWN;
 		}
 
-		private void HandleAdjustFaction(AdjustFactionVO vo)
+		public string GetFactionBenefits(string FactionID)
 		{
+			string str = "";
 			FactionVO faction;
-			if (Factions.TryGetValue(vo.Faction, out faction))
+			if (Factions.TryGetValue(FactionID, out faction))
 			{
-				Factions[vo.Faction].Allegiance += vo.Allegiance;
-				Factions[vo.Faction].Power += vo.Power;
-				Factions[vo.Faction].playerReputation += vo.Reputation;
-				AmbitionApp.SendMessage<FactionVO>(Factions[vo.Faction]);
+				LocalizationModel phrases = AmbitionApp.GetModel<LocalizationModel>();
+				FactionID = FactionID.ToLower().Replace(' ', '_');
+				for (int i=faction.Level; i>=0; i--)
+				{
+					str += phrases.GetString(FactionID + "." + i.ToString());
+				}
 			}
+			return str;
 		}
 	}
 }

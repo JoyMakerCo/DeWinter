@@ -3,27 +3,30 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using Dialog;
+using Core;
 
 namespace Ambition
 {
 	public class ReadyGoDialogMediator : DialogView
 	{
-		private const float TOTAL_SECONDS = 3f;
-
 		public Text dialogText;
 		void Start()
 		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			string[] conversationIntroList = model.ConversationIntros;
+			LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
+			string[] conversationIntroList = model.GetList("conversation_intro");
 			dialogText.text = conversationIntroList[new System.Random().Next(conversationIntroList.Length)];
-			StartCoroutine(Countdown());
+			StartCoroutine(CloseDialog());
 		}
 
-		IEnumerator Countdown()
+		IEnumerator CloseDialog()
 		{
-			yield return new WaitForSeconds(TOTAL_SECONDS);
-			AmbitionApp.SendMessage(PartyMessages.START_ENCOUNTER);
+			yield return new WaitForSeconds(3f);
 			Close();
+		}
+
+		public override void OnClose ()
+		{
+			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_CLOSED, ID);
 		}
 	}
 }

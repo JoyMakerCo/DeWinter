@@ -235,8 +235,8 @@ public class Reward {
     string RandomExclusiveFaction(string faction)
     {
     	FactionModel model = AmbitionApp.GetModel<FactionModel>();
-    	List<string> factions = new List<string>(model.Factions.Keys);
-    	string val = factions[new Random().Next(factions.Count-1)];
-    	return (val != faction) ? val : factions[factions.Count-1];
+    	string[] factions = System.Linq.Enumerable.ToArray(model.Factions.Keys);
+    	int index = new Random().Next(1, factions.Length);
+		return factions[factions[index] == faction ? 0 : index];
     }
 }

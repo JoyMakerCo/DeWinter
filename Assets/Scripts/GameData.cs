@@ -7,12 +7,6 @@ public static class GameData
 	public static string playerVictoryStatus;
 	public static bool fTEsOn;
 
-	public static PartyVO tonightsParty
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().Party; }
-		set { AmbitionApp.GetModel<PartyModel>().Party = value; }
-	}
-
 	public static ItemVO partyAccessory
 	{
 		get
@@ -28,11 +22,6 @@ public static class GameData
 				AmbitionApp.GetModel<InventoryModel>().Equipped.Remove(ItemConsts.ACCESSORY);
 			AmbitionApp.GetModel<InventoryModel>().Equipped[ItemConsts.ACCESSORY] = value;
 		}	
-	}
-
-	public static Dictionary<string, FactionVO> factionList
-	{
-		get { return AmbitionApp.GetModel<FactionModel>().Factions; }
 	}
 
 	public static int moneyCount
@@ -63,31 +52,6 @@ public static class GameData
 		get { return AmbitionApp.GetModel<QuestModel>().Quests; }
 	}
 
-	public static string[] femaleTitleList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().FemaleTitles; }
-	}
-
-	public static string[] maleTitleList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().MaleTitles; }
-	}
-
-	public static string[] lastNameList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().LastNames; }
-	}
-
-	public static string[] femaleFirstNameList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().FemaleNames; }
-	}
-
-	public static string[] maleFirstNameList
-	{
-		get { return AmbitionApp.GetModel<PartyModel>().MaleNames; }
-	}
-
 	public static Dictionary<string, ServantVO[]> servantDictionary
 	{
 		get { return AmbitionApp.GetModel<ServantModel>().Servants; }
@@ -95,6 +59,6 @@ public static class GameData
 
 	public static List<ItemVO> Accessories
 	{
-		get { return AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i => Array.IndexOf(i.Tags, ItemConsts.ACCESSORY) >= 0); }
+		get { return AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY)); }
 	}
 }

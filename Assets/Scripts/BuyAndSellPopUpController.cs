@@ -6,7 +6,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
 {
     public string inventoryType;
     public string itemType;
-    public Outfit outfit;
+    public OutfitVO outfit;
     public ItemVO accessory;
     OutfitInventoryList personalOutfitInventoryList;
     OutfitInventoryList merchantOutfitInventoryList;
@@ -32,36 +32,37 @@ public class BuyAndSellPopUpController : MonoBehaviour
     // TODO: COmmandify
     public void BuyOrSell()
     {
-    	OutfitInventoryModel model = AmbitionApp.GetModel<OutfitInventoryModel>();
+    	InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
         if (itemType == "Outfit")
         {
 // TODO: Outfits and Gossip turned into ItemVO
             if (inventoryType == ItemConsts.PERSONAL) //Selling Things
             {
+            	GameModel gm = AmbitionApp.GetModel<GameModel>();
                 //Add Money to our Account. Sold Items sell at 50% of their purchase price.
                 outfit.CalculatePrice(true);
-				_gameModel.Livre += outfit.price;
-				Debug.Log("Outfit Sold for " + outfit.price.ToString());
+				_gameModel.Livre += outfit.Price;
+				Debug.Log("Outfit Sold for " + outfit.Price.ToString());
 
                 //Remove the Sold Item from the Personal Inventory
 				model.Inventory.Remove(outfit);
 
                 //If that item was worn last at a party then reset the Last Party Outfit ID, so an item with its ID doesn't get a wrongful double Novelty hit
-				if (outfit == model.LastPartyOutfit)
+				if (outfit == gm.LastOutfit)
                 {
-					model.LastPartyOutfit = null;
+					gm.LastOutfit = null;
                 }
             }
             else
             {
                 //Remove Money from our account
                 outfit.CalculatePrice(false);
-				_gameModel.Livre -= outfit.price;
-				Debug.Log("Outfit Bought for" + outfit.price.ToString());
+				_gameModel.Livre -= outfit.Price;
+				Debug.Log("Outfit Bought for" + outfit.Price.ToString());
 
                 //Add the Sold Item to the Personal Inventory
                 model.Inventory.Add(outfit);
-				model.Merchant.Remove(outfit);
+				model.Market.Remove(outfit);
             }
             personalOutfitInventoryList.selectedInventoryOutfit = null;
             merchantOutfitInventoryList.selectedInventoryOutfit = null;

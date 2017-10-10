@@ -12,7 +12,7 @@ namespace Ambition
 			switch(reward.Category)
 			{
 				case RewardConsts.VALUE:
-					AmbitionApp.AdjustValue<int>(reward.Type, reward.Quantity);
+					RewardValueItem(reward.Type, reward.Quantity);
 					break;
 
 				case RewardConsts.GOSSIP:
@@ -53,9 +53,22 @@ namespace Ambition
 			if (imod.Inventory.Count < imod.NumSlots)
 			{
 				ItemVO[] itemz = Array.FindAll(imod.ItemDefinitions, i=>i.Type == type);
-				ItemVO item = itemz[new Random().Next(itemz.Length)].Clone();
+				ItemVO item = new ItemVO(itemz[new Random().Next(itemz.Length)]);
 				item.Quantity = quantity;
 				imod.Inventory.Add(item);
+			}
+		}
+
+		private void RewardValueItem(string type, int quantity)
+		{
+			switch (type)
+			{
+				case GameConsts.LIVRE:
+					AmbitionApp.GetModel<GameModel>().Livre += quantity;
+					break;
+				case GameConsts.REPUTATION:
+					AmbitionApp.GetModel<GameModel>().Reputation += quantity;
+					break;
 			}
 		}
 	}

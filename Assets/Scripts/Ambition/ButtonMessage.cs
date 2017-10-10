@@ -10,15 +10,19 @@ namespace Ambition
 
 		protected Button _button;
 
-		void Start()
+		void Awake()
 		{
 			_button = gameObject.GetComponent<Button>();
-			if (_button != null) _button.onClick.AddListener(OnClick);
+		}
+
+		void OnEnable()
+		{
+			_button.onClick.AddListener(OnClick);
 		}
 
 		void OnDisable()
 		{
-			if (_button != null) _button.onClick.RemoveListener(OnClick);
+			_button.onClick.RemoveListener(OnClick);
 		}
 
 		protected virtual void OnClick()
