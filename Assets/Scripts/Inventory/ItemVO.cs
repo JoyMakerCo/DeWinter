@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Util;
 
 namespace Ambition
@@ -22,14 +23,11 @@ namespace Ambition
 		[JsonProperty("tags")]
 		public List<string> Tags;
 
-		[JsonProperty("states")]
-		public Dictionary<string, object> States = new Dictionary<string, object>();
+		[JsonProperty("state")]
+		public Dictionary<string,object> State = new Dictionary<string, object>();
 
 		[JsonProperty("Price")]
 		public int Price;
-
-		[JsonProperty("salePrice")]
-		public int SellPrice;
 
 		[JsonProperty("asset")]
 		public string Asset;
@@ -41,11 +39,6 @@ namespace Ambition
 			get { return Price.ToString("£" + "#,##0"); }
 		}
 
-		public string SellPriceString
-		{
-			get { return SellPrice.ToString("£" + "#,##0"); }
-		}
-
 		public ItemVO() {}
 		public ItemVO(ItemVO item)
 		{
@@ -53,9 +46,8 @@ namespace Ambition
 			Description = item.Description;
 			Type = item.Type;
 			Tags = item.Tags;
-			States = new Dictionary<string, object>(this.States);
+			State = new Dictionary<string, object>(item.State);
 			Price = item.Price;
-			SellPrice = item.SellPrice;
 			Asset = item.Asset;
 			Quantity = item.Quantity;
 		}

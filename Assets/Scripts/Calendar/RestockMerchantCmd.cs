@@ -11,22 +11,23 @@ namespace Ambition
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
 			Random rnd = new Random();
 			int count = model.ItemDefinitions.Length;
-			string style;
 			ItemVO item;
+			string style=null;
 
 			model.Market.Clear();
 			while (model.Market.Count < model.NumMarketSlots)
 			{
 				item = new ItemVO(model.ItemDefinitions[rnd.Next(count)]);
-				item.States[ItemConsts.STYLE] = style = model.Styles[rnd.Next(model.Styles.Length)];
+				item.State[ItemConsts.STYLE] = style = model.Styles[rnd.Next(model.Styles.Length)];
 				item.Name = style + " " + item.Name;
 				model.Market.Add(item);
 			}
 
-			List<ItemVO> outfits = new List<ItemVO>();
-			outfits.Add(new OutfitVO(model.CurrentStyle));
-			outfits.Add(OutfitVO.Create());
-			outfits.Add(OutfitVO.Create());
+			OutfitVO outfit = OutfitVO.Create();
+			outfit.Style = style;
+			outfit.GenerateName();
+
+			List<ItemVO> outfits = new List<ItemVO>() { outfit, OutfitVO.Create(), OutfitVO.Create() };
 			if (AmbitionApp.GetModel<FactionModel>()["Bourgeoisie"].Level >= 3)
 			{
 				outfits.Add(OutfitVO.Create());

@@ -16,15 +16,55 @@
 	items:[
 		{
 			id:"starting_gown",
-			name:"Modern Frankish Gown",
+			name:"Starting Gown",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
 			salePrice:40,
 			price:75,
 			tags:["Outfit"],
 			state:{
-				"novelty":"100",
+				"novelty":100,
 				"style":"Frankish"
+			}
+		},
+		{
+			id:"starting_gown2",
+			name:"Starting Gown 2",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"modesty":100,
+				"style":"Frankish",
+				"gift":"Jordan Peele"
+			}
+		},
+		{
+			id:"starting_gown3",
+			name:"Starting Gown 3",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"luxury":100,
+				"style":"Venezian"
+			}
+		},
+		{
+			id:"starting_gown4",
+			name:"Starting Gown 4",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"novelty":100,
+				"style":"Catalan"
 			}
 		},
 		{
@@ -89,7 +129,10 @@
         }
 	],
 	inventory:{
-		starting_gown:1
+		starting_gown:1,
+		starting_gown2:1,
+		starting_gown3:1,
+		starting_gown4:1,
 	},
 	luxury:{
 		"-100":"Vintage",

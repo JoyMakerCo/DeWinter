@@ -11,6 +11,12 @@ namespace Ambition
 		public const string PERSONAL = "Personal";
 		public const string MERCHANT = "Merchant";
 
-		public const string STYLE = "ITEM_STYLE";
+		public const string STYLE = "style";
+		public const string GIFT = "gift";
+
+		public const string MODESTY = "modesty";
+		public const string NOVELTY = "novelty";
+		public const string LUXURY = "luxury";
+		public const string ALTERED = "altered";
 	}
 }
