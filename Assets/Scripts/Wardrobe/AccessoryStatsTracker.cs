@@ -43,8 +43,8 @@ public class AccessoryStatsTracker : MonoBehaviour
                 ItemVO displayAccessory = m.SelectedItem;
                 accessoryNameText.text = displayAccessory.Name;
                 accessoryDescriptionText.text = displayAccessory.Description;
-                accessoryCostText.text = displayAccessory.SellPriceString; //Uses Personal Inventory Price
-                accessorySaleButtonText.text = "Sell for " + displayAccessory.SellPriceString;
+                accessoryCostText.text = displayAccessory.PriceString; //Uses Personal Inventory Price
+                accessorySaleButtonText.text = "Sell for " + displayAccessory.PriceString;
             }
             else
             {
@@ -83,7 +83,7 @@ public class AccessoryStatsTracker : MonoBehaviour
                 ItemVO displayAccessory = m.SelectedItem;
                 accessoryNameText.text = displayAccessory.Name;
                 accessoryDescriptionText.text = displayAccessory.Description;
-                accessoryCostText.text = displayAccessory.SellPriceString; //Uses Personal Inventory Prices
+                accessoryCostText.text = displayAccessory.PriceString; //Uses Personal Inventory Prices
             }
             else
             {

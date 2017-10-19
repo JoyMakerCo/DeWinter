@@ -80,12 +80,9 @@ namespace Ambition
 		private int sortByStyleComparer(ItemVO a, ItemVO b)
 		{
 			object styleA, styleB;
-			if (a.States == null || !a.States.TryGetValue(ItemConsts.STYLE, out styleA))
-				styleA = null;
-			if (b.States == null || !b.States.TryGetValue(ItemConsts.STYLE, out styleB))
-				styleB = null;
-
-			return ascendingOrder ? ((string)styleA).CompareTo((string)styleB) : ((string)styleB).CompareTo((string)styleA);
+			string cmpA= (a.State != null && a.State.TryGetValue(ItemConsts.STYLE, out styleA)) ? (string)styleA : null;
+			string cmpB= (b.State != null && b.State.TryGetValue(ItemConsts.STYLE, out styleB)) ? (string)styleB : null;
+			return ascendingOrder ? cmpA.CompareTo(cmpB) : cmpB.CompareTo(cmpA);
 		}
 
 	    void SelectedButton(string button)

@@ -11,41 +11,40 @@ namespace Ambition
 
 	    public int Novelty
 	    {
-			get { return GetStat(InventoryConsts.NOVELTY); }
-    		set { States[InventoryConsts.NOVELTY] = value; }
+			get { return GetStat(ItemConsts.NOVELTY); }
+    		set { State[ItemConsts.NOVELTY] = value.ToString(); }
 		}
 	    
 		public int Modesty
 	    {
-			get { return GetStat(InventoryConsts.MODESTY); }
-    		set { States[InventoryConsts.MODESTY] = value; }
+			get { return GetStat(ItemConsts.MODESTY); }
+    		set { State[ItemConsts.MODESTY] = value.ToString(); }
 		}
 
 		public int Luxury
 	    {
-			get { return GetStat(InventoryConsts.LUXURY); }
-    		set { States[InventoryConsts.LUXURY] = value; }
+			get { return GetStat(ItemConsts.LUXURY); }
+    		set { State[ItemConsts.LUXURY] = value.ToString(); }
 		}	    
 
 		public string Style
 	    {
 			get {
 				object result;
-				States.TryGetValue(InventoryConsts.STYLE, out result);
-				return (string)result;
+				return State.TryGetValue(ItemConsts.STYLE, out result) ? (string)result : null;
 			}
-    		set { States[InventoryConsts.STYLE] = value; }
+    		set { State[ItemConsts.STYLE] = value; }
 		}
 
 	    private int GetStat(string stat)
 	    {
 			object result;
-    		return States.TryGetValue(InventoryConsts.NOVELTY, out result) ? (int)result : 0;
+			return State.TryGetValue(ItemConsts.NOVELTY, out result) ? Convert.ToInt32(result) : 0;
 	    }
 
 	    public bool Altered
 	    {
-			get { return Tags.Contains(InventoryConsts.ALTERED); }
+			get { return Tags.Contains(ItemConsts.ALTERED); }
 	    }
 
 	    // Fully Featured Constructor
@@ -82,17 +81,6 @@ namespace Ambition
 			return result;
 	    }
 
-	    //Just Style in the string means a randomly generated item of a specific style
-	    public OutfitVO(string sty)
-	    {
-	        Novelty = 100;
-	        Modesty = GenerateRandom();
-	        Luxury = GenerateRandom();
-	        Style = sty;
-	        GenerateName();
-	        CalculatePrice();
-	    }
-
 		public void CalculatePrice(bool sell=false)
 	    {
 			Price = (int)((Math.Abs(Modesty) + Math.Abs(Luxury))*(float)Novelty*0.01f);
@@ -118,7 +106,7 @@ namespace Ambition
 			return (int)Math.Tan(0.0015608f*(new Random().Next(-1000, 1000)));
 	    }
 	    
-	    private void GenerateName()
+	    public void GenerateName()
 	    {
 	        string luxuryString=null;
 	        //Modesty Conversion
@@ -173,8 +161,8 @@ namespace Ambition
 	        	amount += GetStat(stat);
 				if (amount < -100) amount = 100;
 				else if (amount > 100) amount = 100;
-				States[stat] = amount;
-	            Tags.Add(InventoryConsts.ALTERED);
+				State[stat] = amount.ToString();
+	            Tags.Add(ItemConsts.ALTERED);
 	        }
 	    }
 	}

@@ -13,7 +13,7 @@ namespace Ambition
 	        //Is the Player in the wrong Style (but matching) and are they Level 8 or higher?
 	        if (gm.Outfit.Style != imod.CurrentStyle
 	        	&& gm.Level >= 8
-	        	&& gm.Outfit.Style == GameData.partyAccessory.States[ItemConsts.STYLE] as string)
+	        	&& gm.Outfit.Style == GameData.partyAccessory.State[ItemConsts.STYLE] as string)
 	        {
 	            //25% Chance
 	            if(new Random().Next(4) == 0)

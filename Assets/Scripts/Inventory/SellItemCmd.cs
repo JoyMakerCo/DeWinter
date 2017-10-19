@@ -12,8 +12,7 @@ namespace Ambition
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
 			if (model.Inventory.Remove(item))
 			{
-				AmbitionApp.GetModel<GameModel>().Livre += item.SellPrice;
-				item.SellPrice = 0;
+				AmbitionApp.GetModel<GameModel>().Livre += item.Price;
 				model.Market.Add(item);
 			}
 		}

@@ -44,7 +44,7 @@ namespace Ambition
 		{
 			set {
 				_currentStyle = value;
-				AmbitionApp.SendMessage<string>(InventoryConsts.STYLE, _currentStyle);
+				AmbitionApp.SendMessage<string>(ItemConsts.STYLE, _currentStyle);
 			}
 			get { return _currentStyle; }
 		}
@@ -70,7 +70,7 @@ public ItemVO SelectedMarketItem;
 		public List<ItemVO> Inventory = new List<ItemVO>();
 
 		// Inventories stored by ItemVO.Type (eg, Accessory, Gossip, Outfit)
-		[JsonProperty("inventory")]
+		[JsonProperty("inventory", Order=1)]
 		private Dictionary<string, int> _inventory
 		{
 			set
@@ -82,14 +82,14 @@ public ItemVO SelectedMarketItem;
 					if (item != null)
 					{
 						item = new ItemVO(item);
-						item.Quantity = kvp.Value;
 						Inventory.Add(item);
 					}
+					item.Quantity = kvp.Value;
 				}
 			}
 		}
 
-		[JsonProperty("items")]
+		[JsonProperty("items", Order=0)]
 		public ItemVO[] ItemDefinitions;
 
 		public List<ItemVO> Market=new List<ItemVO>();

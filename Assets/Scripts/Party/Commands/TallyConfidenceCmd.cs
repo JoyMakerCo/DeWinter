@@ -43,11 +43,11 @@ namespace Ambition
 	        ItemVO accessory;
 			if (imod.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory)) //Has an Accessory been worn at all?
 	        {
-				if (imod.CurrentStyle == accessory.States["Style"] as string)
+				if (imod.CurrentStyle == accessory.State["Style"] as string)
 	            {
 					parameters["accessory"] = 30;
 	            }
-	            if (gmod.Outfit.Style == GameData.partyAccessory.States["Style"] as string)
+	            if (gmod.Outfit.Style == GameData.partyAccessory.State["Style"] as string)
 	            {
 					parameters["styleMatch"] = 30;
 	            }

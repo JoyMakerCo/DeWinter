@@ -37,9 +37,7 @@ public class AccessoryInventoryButton : MonoBehaviour {
 		if (accessory != null)
         {
             myDescriptionText.text = accessory.Name;
-			myPriceText.text = (inventoryType == "merchant")
-				? accessory.PriceString
-				: accessory.SellPriceString;
+			myPriceText.text = accessory.PriceString;
         }
     }
 

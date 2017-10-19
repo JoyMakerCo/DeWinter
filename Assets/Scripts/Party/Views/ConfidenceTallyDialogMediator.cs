@@ -117,7 +117,7 @@ namespace Ambition
 	            //Neither are in Style and they don't even fucking Match, what a fucking mess
 	            else
 	            {
-	                line3 = "\n\nMon dieu! Your Outfit is in the " + outfit.Style + " style, your Accessory is in the " + (string)(accessory.States[ItemConsts.STYLE]) + " and the " + imod.CurrentStyle + " is what's in Fashion! How did this happen? (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
+	                line3 = "\n\nMon dieu! Your Outfit is in the " + outfit.Style + " style, your Accessory is in the " + (string)(accessory.State[ItemConsts.STYLE]) + " and the " + imod.CurrentStyle + " is what's in Fashion! How did this happen? (+" + (parameters["outfitStyle"] + parameters["accessory"] + parameters["styleMatch"]) + " Max Confidence)";
 	            } 
 	        }
 	        

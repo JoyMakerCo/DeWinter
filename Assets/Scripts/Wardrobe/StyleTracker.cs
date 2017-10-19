@@ -12,14 +12,14 @@ namespace Ambition
 
 	    void Awake()
 	    {
-			AmbitionApp.Subscribe<string>(InventoryConsts.STYLE, UpdateStyle);
+			AmbitionApp.Subscribe<string>(ItemConsts.STYLE, UpdateStyle);
 	        _text = gameObject.GetComponent<Text>();
 			UpdateStyle(AmbitionApp.GetModel<InventoryModel>().CurrentStyle);
 	    }
 
 	    void OnDestroy()
 	    {
-			AmbitionApp.Unsubscribe<string>(InventoryConsts.STYLE, UpdateStyle);
+			AmbitionApp.Unsubscribe<string>(ItemConsts.STYLE, UpdateStyle);
 	    }
 
 		private void UpdateStyle(string style)

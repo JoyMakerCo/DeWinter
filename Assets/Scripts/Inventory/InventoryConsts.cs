@@ -9,12 +9,5 @@ namespace Ambition
 		public const string DEGRADE_OUTFIT = "DEGRADE_OUTFIT";
 		public const string REMOVE_ITEM = "REMOVE_ITEM";
 		public const string REMOVE_OUTFIT = "REMOVE_OUTFIT";
-
-		public const string STYLE = "style";
-		public const string MODESTY = "modesty";
-		public const string NOVELTY = "novelty";
-		public const string LUXURY = "luxury";
-		public const string ALTERED = "ALTERED";
-
 	}
 }

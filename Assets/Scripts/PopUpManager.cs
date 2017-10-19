@@ -95,7 +95,7 @@ public class PopUpManager : MonoBehaviour
             if (inventoryType == "personal")
             {
                 titleText.text = "Sell This?";
-				itemPrice = controller.accessory.SellPrice; //Items are at Half Price from the Player Inventory to the Merchant
+				itemPrice = controller.accessory.Price; //Items are at Half Price from the Player Inventory to the Merchant
 				bodyText.text = "Are you sure you want to sell this " + controller.accessory.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
             else
