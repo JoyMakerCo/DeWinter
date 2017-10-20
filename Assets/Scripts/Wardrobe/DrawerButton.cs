@@ -21,6 +21,7 @@ namespace Ambition
 		public GameObject Note;
 		public Image Ribbon;
 
+		private ItemVO _item;
 		private Button _button;
 
 		void Awake()
@@ -28,9 +29,19 @@ namespace Ambition
 			_button = GetComponent<Button>();
 		}
 
+		void OnEnable()
+		{
+			_button.onClick.AddListener(HandleClick);
+		}
+
+		void OnDisable()
+		{
+			_button.onClick.RemoveListener(HandleClick);
+		}
+
 		public void SetItem(ItemVO item)
 		{
-			bool enabled = (item != null);
+			bool enabled = ((_item = item) != null);
 			_button.enabled = enabled;
 			ItemName.enabled = enabled;
 			Ribbon.enabled = enabled;
@@ -47,6 +58,12 @@ namespace Ambition
 				Ribbon.enabled = (Ribbon.sprite != null);
 				Note.SetActive(item.State.ContainsKey(ItemConsts.GIFT));
 			}
+		}
+
+		private void HandleClick()
+		{
+			if (_item != null)
+				AmbitionApp.GetModel<GameModel>().Outfit = new OutfitVO(_item);
 		}
 	}
 }
