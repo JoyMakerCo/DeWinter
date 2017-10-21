@@ -7,11 +7,9 @@ namespace Ambition
 	public class SortButton : MonoBehaviour
 	{
 		public bool Ascending=false;
-		public Sprite AscendingIcon;
-		public Sprite DescendingIcon;
+		public Image SortIcon;
 		public string SortOn;
 
-		private Image _icon;
 		private Button _button;
 
 		public Button.ButtonClickedEvent onClick
@@ -21,7 +19,6 @@ namespace Ambition
 
 		void Awake()
 		{
-			_icon = GetComponent<Image>();
 			_button = GetComponent<Button>();
 			_button.onClick.AddListener(HandleClick);
 		}
@@ -34,7 +31,7 @@ namespace Ambition
 		private void HandleClick()
 		{
 			Ascending = !Ascending;
-			_icon.sprite = Ascending ? AscendingIcon : DescendingIcon;
+			SortIcon.transform.localScale = new Vector3(1f, Ascending ? 1f : -1f, 1f);
 		}
 	}
 }

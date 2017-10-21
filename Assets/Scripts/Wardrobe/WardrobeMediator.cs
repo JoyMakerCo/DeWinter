@@ -53,9 +53,9 @@ namespace Ambition
 				if (!item.State.ContainsKey(SortOn))
 					item.State.Add(SortOn, 0);
 			if (Ascending)
-				items.Sort((a,b)=>((int)(a.State[SortOn])).CompareTo((int)b.State[SortOn]));
+				items.Sort((a,b)=>(Convert.ToInt32(a.State[SortOn])).CompareTo(Convert.ToInt32(b.State[SortOn])));
 			else
-				items.Sort((a,b)=>((int)(b.State[SortOn])).CompareTo((int)a.State[SortOn]));
+				items.Sort((a,b)=>(Convert.ToInt32(b.State[SortOn])).CompareTo(Convert.ToInt32(a.State[SortOn])));
 
 			for(int i=DrawerButtons.Length-1; i>=0; i--)
 			{
