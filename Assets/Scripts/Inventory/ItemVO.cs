@@ -42,6 +42,7 @@ namespace Ambition
 		public ItemVO() {}
 		public ItemVO(ItemVO item)
 		{
+			ID = item.ID;
 			Name = item.Name;
 			Description = item.Description;
 			Type = item.Type;
