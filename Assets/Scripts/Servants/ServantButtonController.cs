@@ -18,47 +18,51 @@ public class ServantButtonController : MonoBehaviour
         buttonText = transform.GetChild(0).GetComponent<Text>();
         buttonImage = this.GetComponent<Image>();
 		_model = AmbitionApp.GetModel<ServantModel>();
+		HandleServant(null);
     }
 
-    void Update()
+    void OnEnable()
     {
-		List<ServantVO> servants;
-		_servant = (_model.Introduced.TryGetValue(servantType, out servants) && servants.Count > 0) ? servants[0] : null;
-		if (_servant != null) //Don't even show the button unless they've been Introduced
-        {
-            buttonImage.color = Color.white;
-            if (!_servant.Hired)
-            {
-                if (_servant.Wage < GameData.moneyCount)
-                {
-                    buttonText.color = Color.white;
-                }
-                else
-                {
-                    buttonText.color = Color.red;
-                }
-                buttonText.text = "Hire " + _servant.Name + " for £" + _servant.Wage;
-            }
-            else
-            {
-                buttonText.color = Color.white;
-                buttonText.text = "Fire " + _servant.Name;
-            }
-        } else
-        {
-            buttonText.color = Color.clear;
-            buttonImage.color = Color.clear;
-        }
-        
+		AmbitionApp.Subscribe<ServantVO>(ServantMessages.SERVANT_FIRED, HandleServant);
+		AmbitionApp.Subscribe<ServantVO>(ServantMessages.SERVANT_HIRED, HandleServant);
     }
 
+	void OnDisable()
+    {
+		AmbitionApp.Unsubscribe<ServantVO>(ServantMessages.SERVANT_FIRED, HandleServant);
+		AmbitionApp.Unsubscribe<ServantVO>(ServantMessages.SERVANT_HIRED, HandleServant);
+    }
+
+    private void HandleServant(ServantVO servant)
+    {
+		bool enabled = _model.Introduced.Contains(servant);
+		buttonText.enabled = enabled;
+		buttonImage.enabled = enabled;
+		if (enabled)
+		{
+			_servant = servant;
+			buttonText.color = _servant.Hired ? Color.red : Color.white;
+			if (_servant.Hired)
+			{
+				buttonText.text = "Fire " + _servant.Name;
+			}
+			else
+			{
+				// button.enabled = _servant.Wage < GameData.moneyCount;
+				buttonText.text = "Hire " + _servant.Name + " for £" + _servant.Wage;
+			}
+        }
+        else _servant = null;
+    }
+
+    // TODO: This lives in the dialog
     public void HireOrFire()
     {
-        if (_servant.Introduced) //Can't hire them unless they've been Introduced
+        if (!_servant.Hired) //Can't hire them unless they've been Introduced
         {
             if (!_servant.Hired && GameData.moneyCount >= _servant.Wage) //If they are NOT Hired and you CAN afford them
             {
-            	AmbitionApp.SendMessage<ServantVO>(ServantConsts.HIRE_SERVANT, _servant);
+            	AmbitionApp.SendMessage<ServantVO>(ServantMessages.HIRE_SERVANT, _servant);
             }
             else if (!_servant.Hired && GameData.moneyCount < _servant.Wage) //If they are NOT Hired and you CAN'T afford them
             {
@@ -68,12 +72,8 @@ public class ServantButtonController : MonoBehaviour
             }
             else // If they ARE Hired, then it doesn't really matter whether or not you can afford her
             {
-				AmbitionApp.SendMessage<ServantVO>(ServantConsts.FIRE_SERVANT, _servant);
+				AmbitionApp.SendMessage<ServantVO>(ServantMessages.FIRE_SERVANT, _servant);
             }
-        } else
-        {
-            Debug.Log("No introduction? Then no hiring!");
         }
-        
     }
 }

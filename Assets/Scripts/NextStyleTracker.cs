@@ -22,8 +22,9 @@ public class NextStyleTracker : MonoBehaviour {
 
 	private void HandleCalendarDay(DateTime day)
     {
-    	ServantModel servantModel = AmbitionApp.GetModel<ServantModel>();
-		if (servantModel.Servants.ContainsKey("Seamstress"))
+		ServantModel model = AmbitionApp.GetModel<ServantModel>();
+		ServantVO seamstress;
+		if (model.Hired.TryGetValue(ServantConsts.CLOTHIER, out seamstress) && seamstress.Type == ServantConsts.SEAMSTRESS)
 		{
 			myText.text = AmbitionApp.GetModel<InventoryModel>().NextStyle;
 		}

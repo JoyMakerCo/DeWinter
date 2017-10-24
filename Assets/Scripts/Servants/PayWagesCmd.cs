@@ -8,9 +8,10 @@ namespace Ambition
 	{
 		public void Execute ()
 		{
-			ServantModel servantModel = AmbitionApp.GetModel<ServantModel>();
+			ServantModel servants = AmbitionApp.GetModel<ServantModel>();
 			GameModel model = AmbitionApp.GetModel<GameModel>();
-			foreach (ServantVO servant in servantModel.Hired.Values)
+			Dictionary<string, ServantVO>.ValueCollection hired = servants.Hired.Values;
+			foreach (ServantVO servant in hired)
 			{
 				model.Livre -= servant.Wage;
 			}

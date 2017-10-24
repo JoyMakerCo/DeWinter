@@ -30,8 +30,8 @@ namespace Ambition
 			//Rewards Distributed Here
             if (reward.Category == RewardConsts.SERVANT)
             {
-				ServantModel smod = AmbitionApp.GetModel<ServantModel>();
-				if (smod.Introduced.ContainsKey(reward.Type))
+				ServantModel servants = _models.GetModel<ServantModel>();
+				if (servants.Hired.ContainsKey(reward.Type))
 				{
                     reward = new RewardVO(RewardConsts.GOSSIP, model.Party.Faction, 1);
                 }

@@ -9,13 +9,15 @@ namespace Ambition
 		public void Execute (ServantVO servant)
 		{
 			ServantModel model = AmbitionApp.GetModel<ServantModel>();
-
-			if (model.Hired.ContainsKey(servant.slot) && model.Hired[servant.slot] == servant)
+			if (!servant.Tags.Contains(ServantConsts.PERMANENT))
 			{
-				servant.Hired = false;
-				servant.Introduced = false;
-				model.Hired.Remove(servant.slot);
-				Debug.Log(servant.NameAndTitle + " Fired!");
+				model.Hired.Remove(servant.Slot);
+				model.Introduced.Remove(servant);
+				servant.Introduced = servant.Hired = false;
+			}
+			else
+			{
+			// Pop open a window
 			}
 		}
 	}

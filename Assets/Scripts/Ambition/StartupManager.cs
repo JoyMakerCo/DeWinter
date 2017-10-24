@@ -23,16 +23,16 @@ namespace Ambition
 			AmbitionApp.RegisterModel<MapModel>();
 			AmbitionApp.RegisterModel<LocalizationModel>();
 
-			AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryConsts.SELL_ITEM);
-			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryConsts.BUY_ITEM);
+			AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryMessages.SELL_ITEM);
+			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
 			AmbitionApp.RegisterCommand<DancingCmd, NotableVO>(PartyConstants.START_DANCING);
 			AmbitionApp.RegisterCommand<GrantRewardCmd, RewardVO>();
 			AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
 			AmbitionApp.RegisterCommand<GenerateMapCmd, PartyVO>(MapMessage.GENERATE_MAP);
-			AmbitionApp.RegisterCommand<DegradeOutfitCmd, OutfitVO>(InventoryConsts.BUY_ITEM);
-			AmbitionApp.RegisterCommand<IntroServantCmd, string>(ServantConsts.INTRODUCE_SERVANT);
-			AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantConsts.HIRE_SERVANT);
-			AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantConsts.FIRE_SERVANT);
+			AmbitionApp.RegisterCommand<DegradeOutfitCmd, OutfitVO>(InventoryMessages.BUY_ITEM);
+			AmbitionApp.RegisterCommand<IntroServantCmd, ServantVO>(ServantMessages.INTRODUCE_SERVANT);
+			AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantMessages.HIRE_SERVANT);
+			AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantMessages.FIRE_SERVANT);
 			AmbitionApp.RegisterCommand<LoadSceneCmd, string>(GameMessages.LOAD_SCENE);
 			AmbitionApp.RegisterCommand<QuitCmd>(GameMessages.QUIT_GAME);
 			AmbitionApp.RegisterCommand<NewGameCmd>(GameMessages.NEW_GAME);
@@ -45,6 +45,9 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
 			AmbitionApp.RegisterCommand<CreateEnemyCmd, string>(GameMessages.CREATE_ENEMY);
 			AmbitionApp.RegisterCommand<AdjustFactionCmd, AdjustFactionVO>(FactionConsts.ADJUST_FACTION);
+			AmbitionApp.RegisterCommand<EquipItemCmd, ItemVO>(InventoryMessages.EQUIP_ITEM);
+			AmbitionApp.RegisterCommand<UnequipItemCmd, ItemVO>(InventoryMessages.UNEQUIP_ITEM);
+			AmbitionApp.RegisterCommand<UnequipSlotCmd, string>(InventoryMessages.UNEQUIP_ITEM);
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
@@ -87,6 +90,21 @@ namespace Ambition
 			AmbitionApp.RegisterTransition<WaitForMessageTransition>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
 			AmbitionApp.RegisterTransition<CheckConversationTransition>("ConversationController", "EndTurn", "EndConversation");
 			AmbitionApp.RegisterTransition("ConversationController", "EndTurn", "StartTurn");
+
+			// Estate States. This lands somewhere between confusing and annoying.
+			AmbitionApp.RegisterState<StartEstateState>("InitEstate");
+			AmbitionApp.RegisterState<StartEventState>("Event");
+			AmbitionApp.RegisterState<EnterEstateState>("Estate");
+			AmbitionApp.RegisterState<ShowInvitationsState>("Invitations");
+			AmbitionApp.RegisterState<ExitToPartyState>("ExitToParty");
+
+			AmbitionApp.RegisterTransition<CheckEventsTransition>("EstateController", "InitEstate", "Event");
+			AmbitionApp.RegisterTransition("EstateController", "InitEstate", "Estate");
+			AmbitionApp.RegisterTransition<WaitForMessageTransition>("EstateController", "Event", "ExitToParty");
+			AmbitionApp.RegisterTransition("EstateController", "Event", "Estate");
+			AmbitionApp.RegisterTransition<CheckInvitationsTransition>("EstateController", "Estate", "Invitations");
+			AmbitionApp.RegisterTransition<CheckInvitationsTransition>("EstateController", "Invitations", "Invitations");
+			AmbitionApp.RegisterTransition("EstateController", "Invitations", "Estate");
 
 			Destroy(this.gameObject);
 		}

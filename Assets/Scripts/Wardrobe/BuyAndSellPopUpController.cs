@@ -76,7 +76,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
         {
             if (inventoryType == ItemConsts.PERSONAL) //Selling Things
             {
-	        	AmbitionApp.SendMessage<ItemVO>(InventoryConsts.SELL_ITEM, accessory);
+	        	AmbitionApp.SendMessage<ItemVO>(InventoryMessages.SELL_ITEM, accessory);
 
                 //If that item was worn last at a party then reset the Last Party Outfit ID, so an item with its ID doesn't get a wrongful double Novelty hit
                 ItemVO lastAccssory; 
@@ -87,7 +87,7 @@ public class BuyAndSellPopUpController : MonoBehaviour
             }
             else
             {
-				AmbitionApp.SendMessage<ItemVO>(InventoryConsts.BUY_ITEM, accessory);
+				AmbitionApp.SendMessage<ItemVO>(InventoryMessages.BUY_ITEM, accessory);
             }
             personalAccessoryInventoryList.selectedAccessory = null;
             merchantAccessoryInventoryList.selectedAccessory = null;

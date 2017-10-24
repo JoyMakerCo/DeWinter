@@ -11,23 +11,30 @@ namespace Ambition
 	    Text myText;
 
 	    // Use this for initialization
-	    void Start()
+	    void Awake()
 	    {
 	        myText = this.GetComponent<Text>();
+		}
+
+		void OnEnable()
+	   	{
+	        AmbitionApp.Subscribe<List<ItemVO>>(HandleInventory);
 	    }
 
+	    void OnDisable()
+	   	{
+			AmbitionApp.Unsubscribe<List<ItemVO>>(HandleInventory);
+	   	}
+
 	    // Update is called once per frame
-	    void Update()
+		private void HandleInventory(List<ItemVO> inventory)
 	    {
 	        string payDayText = "Pay Day Totals:";
 	        int wageTotal = 0;
-	        foreach (ServantVO[] servants in GameData.servantDictionary.Values)
+	        List<ItemVO> servants = inventory.FindAll(i=>i.Type == ItemConsts.SERVANT);
+	        foreach (ItemVO servant in servants)
 	        {
-				ServantVO s = Array.Find(servants, x => x.Hired);
-	            if (s != null)
-	            {
-	                wageTotal += s.Wage;
-	            }
+                wageTotal += servant.Price;
 	        }
 	        payDayText += "\nTotal: " + wageTotal.ToString("£" + "#,##0") + "/Week";
 	        int payDayTime = 7 - ((int)(AmbitionApp.GetModel<CalendarModel>().Today.DayOfWeek) % 7);

@@ -42,7 +42,7 @@ namespace Core
 			Type t = typeof(T);
 			if (_models.TryGetValue(t, out m))
 			{
-				DisposeValue(m as IDisposable);
+				Dispose(m as IDisposable);
 				_models.Remove(t);
 			}
 		}
@@ -52,7 +52,7 @@ namespace Core
 		{
 			foreach (KeyValuePair<Type, IModel> kvp in _models)
 			{
-				DisposeValue(kvp.Value as IDisposable);
+				Dispose(kvp.Value as IDisposable);
 			}
 			_models.Clear();
 		}
@@ -63,7 +63,7 @@ namespace Core
 			_models = null;
 		}
 
-		protected void DisposeValue(IDisposable d)
+		protected void Dispose(IDisposable d)
 		{
 			if (d != null)
 				d.Dispose();
