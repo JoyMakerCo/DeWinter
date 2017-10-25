@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using Ambition;
 
@@ -23,15 +24,16 @@ namespace Ambition
 
 		private void HandleEventUpdate(EventVO e)
 	    {
+	    	if (e==null) return;
 			EventStage stage = e.currentStage;
 			bool show = (option < stage.Options.Length && stage.Options[option].optionButtonText != null);
 			if (show)
 			{
 				EventOption eventOption = stage.Options[option];
-				if (show && eventOption.servantRequired != null)
+				if (eventOption.servantRequired != null)
 				{
-					ServantModel smod = AmbitionApp.GetModel<ServantModel>();
-					show = smod.Hired.ContainsKey(eventOption.servantRequired);
+					ServantModel model = AmbitionApp.GetModel<ServantModel>();
+					show = model.Hired.ContainsKey(eventOption.servantRequired);
 				}
 				if (show) myText.text = eventOption.optionButtonText;
 			}

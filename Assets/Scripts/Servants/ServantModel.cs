@@ -5,41 +5,37 @@ using Newtonsoft.Json;
 
 namespace Ambition
 {
-// TODO: Servants are essentially Inventory Items. Incorporate into Inventory?
 	public class ServantModel : DocumentModel
 	{
-		private Dictionary<string, ServantVO[]> _servants;
-
 		public Dictionary<string, ServantVO> Hired = new Dictionary<string, ServantVO>();
-		public Dictionary<string, List<ServantVO>> Introduced = new Dictionary<string, List<ServantVO>>();
+		public List<ServantVO> Introduced = new List<ServantVO>();
 
 		public ServantModel () : base ("ServantData") {}
 
-		[JsonProperty("seamstressDiscount")]
-		public float SeamstressDiscount;
+		public ServantVO[] Servants
+		{
+			private set;
+			get;
+		}
 
 		[JsonProperty("servants")]
-		public Dictionary<string, ServantVO[]> Servants // Dictionary of Servants by Slot
+		private ServantVO[] _servants
 		{
-			get { return _servants; }
-			set {
-				_servants = value;
-				foreach(KeyValuePair<string, ServantVO[]> kvp in _servants)
+			set
+			{
+				Servants = value;
+				foreach(ServantVO servant in value)
 				{
-					for (int i=kvp.Value.Length-1; i>=0; i--)
+					if (servant.Introduced || servant.Hired)
 					{
-						_servants[kvp.Key][i].slot = kvp.Key;
+						Introduced.Add(servant);
+						if (servant.Hired)
+						{
+							Hired[servant.Slot] = servant;
+						}
 					}
 				}
 			}
-		}
-
-		public ServantVO[] GetServants(string slot)
-		{
-			ServantVO[] list;
-			return _servants.TryGetValue(slot, out list)
-				? list
-				: new ServantVO[0];
 		}
 	}
 }

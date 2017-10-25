@@ -93,10 +93,11 @@ namespace Ambition
 			if (sell) Price = (int)(Price*0.5f);
 			else
 			{
-	        	ServantModel smod = AmbitionApp.GetModel<ServantModel>();
-				if (smod.Hired.ContainsKey("Seamstress") || smod.Hired.ContainsKey("Tailor"))
+				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+				ItemVO item = inventory.Inventory.Find(i=>i.State.ContainsKey("outfit_cost"));
+				if (item != null)
 				{
-					Price = (int)(Price*smod.SeamstressDiscount);
+					Price = (int)(Price*Convert.ToDouble(item.State["outfit_cost"]));
 				}
 			}
 	    }

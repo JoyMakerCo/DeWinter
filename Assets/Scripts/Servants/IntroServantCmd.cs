@@ -3,16 +3,16 @@ using Core;
 
 namespace Ambition
 {
-	public class IntroServantCmd : ICommand<string>
+	public class IntroServantCmd : ICommand<ServantVO>
 	{
-		public void Execute (string servantType)
+		public void Execute (ServantVO servant)
 		{
 			ServantModel model = AmbitionApp.GetModel<ServantModel>();
-			ServantVO [] servants = model.GetServants(servantType);
-			servants = Array.FindAll(servants, s => !s.Hired && !s.Introduced);
-			if (servants.Length > 0)
+			servant = Array.Find(model.Servants, s=>s.ID == servant.ID);
+			if (servant != null)
 			{
-				servants[new Random().Next(servants.Length)].Introduced = true;
+				servant.Introduced = true;
+				if (!model.Introduced.Contains(servant)) model.Introduced.Add(servant);
 			}
 		}
 	}

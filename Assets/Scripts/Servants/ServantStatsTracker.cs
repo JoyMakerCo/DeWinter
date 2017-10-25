@@ -28,7 +28,7 @@ public class ServantStatsTracker : MonoBehaviour {
 	if (servantList.selectedServant != null)
         {
             nameText.text = servantList.selectedServant.NameAndTitle;
-            descriptionText.text = servantList.selectedServant.description;
+            descriptionText.text = servantList.selectedServant.Description;
             if(servantList.inventoryType == ServantInventoryList.InventoryType.Personal)
             {
                 if (servantList.selectedServant.Name != "Camille" || !attemptedCamilleFiring)
@@ -58,7 +58,7 @@ public class ServantStatsTracker : MonoBehaviour {
 
     public void HireServant()
     {
-		AmbitionApp.SendMessage<ServantVO>(ServantConsts.HIRE_SERVANT, servantList.selectedServant);
+		AmbitionApp.SendMessage<ServantVO>(ServantMessages.HIRE_SERVANT, servantList.selectedServant);
         servantList.ClearInventoryButtons();
         servantList.GenerateInventoryButtons();
     }
@@ -70,7 +70,7 @@ public class ServantStatsTracker : MonoBehaviour {
         {
 			if (servant.Name != "Camille")
             {
-				AmbitionApp.SendMessage<ServantVO>(ServantConsts.FIRE_SERVANT, servantList.selectedServant);
+				AmbitionApp.SendMessage<ServantVO>(ServantMessages.FIRE_SERVANT, servantList.selectedServant);
 		        servantList.ClearInventoryButtons();
 		        servantList.GenerateInventoryButtons();
             } else if (!attemptedCamilleFiring) //If the Player hasn't attempted to fire Camille yet then throw up this message bubble

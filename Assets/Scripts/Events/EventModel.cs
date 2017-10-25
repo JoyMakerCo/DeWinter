@@ -14,9 +14,9 @@ namespace Ambition
 		private const string INTRO = "intro";
 
 		public Dictionary<string, EventVO[]> eventInventories;
-		
-		public EventVO SelectedEvent;
-		
+
+		public EventVO Event;
+
 		public int EventChance=20;
 
 	    public void Initialize()

@@ -19,9 +19,8 @@ namespace Ambition
 
 			pmod.Party = p;
 
-			AmbitionApp.GetModel<EventModel>().SelectedEvent = null;
+			AmbitionApp.GetModel<EventModel>().Event = null;
 			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			AmbitionApp.RegisterCommand<CreateInvitationsCmd, DateTime>();
 			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT); 
 		}
 	}

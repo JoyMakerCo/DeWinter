@@ -27,9 +27,10 @@ namespace Ambition
 		void Start ()
 		{
 			FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
-			ServantModel smod = AmbitionApp.GetModel<ServantModel>();
+			ServantModel servants = AmbitionApp.GetModel<ServantModel>();
+			ServantVO spymaster;
 
-			availableSpymasterTestTheWaters = (smod.Hired.ContainsKey("Spymaster"));
+			availableSpymasterTestTheWaters = servants.Hired.TryGetValue(ServantConsts.SPYMASTER, out spymaster);
 	        availableTestTheWaters = true;
 
 	        _allegianceTimers = new Dictionary<string, int>();

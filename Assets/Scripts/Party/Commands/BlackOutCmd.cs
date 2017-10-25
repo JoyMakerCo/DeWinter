@@ -34,13 +34,13 @@ namespace Ambition
 			                break;
 			            case 3:
 			                party.blackOutEffect = "Outfit Ruined";
-			                AmbitionApp.SendMessage<OutfitVO>(InventoryConsts.REMOVE_ITEM, gm.Outfit);
+			                AmbitionApp.SendMessage<OutfitVO>(InventoryMessages.REMOVE_ITEM, gm.Outfit);
 			                break;
 			            case 4:
 			                if (GameData.partyAccessory != null) //If the Player actually wore and Accessory to this Party
 			                {
 								party.blackOutEffect = "Accessory Ruined";
-								AmbitionApp.SendMessage<ItemVO>(InventoryConsts.REMOVE_ITEM, GameData.partyAccessory);
+								AmbitionApp.SendMessage<ItemVO>(InventoryMessages.REMOVE_ITEM, GameData.partyAccessory);
 			                }
 			                else
 			                {

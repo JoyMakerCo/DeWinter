@@ -27,7 +27,7 @@ public class RSVPDialogMediator : DialogView, Util.IInitializable<PartyVO>
 		_localization = AmbitionApp.GetModel<LocalizationModel>();
 		TitleTxt.text = _localization.GetString(DialogConsts.RSVP_DIALOG + DialogConsts.TITLE);
 
-		if (smod.Servants.ContainsKey(ServantConsts.SPYMASTER))
+		if (smod.Hired.ContainsKey(ServantConsts.SPYMASTER))
 		{
 			if (_party.Enemies != null && _party.Enemies.Length > 0)
 			{

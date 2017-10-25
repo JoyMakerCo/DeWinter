@@ -10,24 +10,23 @@ namespace Ambition
 		{
 			if (day.Day%7 == 0)
 			{
-				ServantModel smod = AmbitionApp.GetModel<ServantModel>();
-				int numservants=0;
-				ServantVO servant;
-				float livre = 0;
-				foreach (KeyValuePair<string, ServantVO[]> kvp in smod.Servants)
+				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+				GameModel game = AmbitionApp.GetModel<GameModel>();
+				List<ItemVO> servants = inventory.Inventory.FindAll(i=>i.Type == ItemConsts.SERVANT && i.Equipped);
+				float cost = 0;
+
+				foreach (ItemVO item in servants)
 	            {
-	            	servant = Array.Find(kvp.Value, s => s.Hired);
-	            	if (servant != null)
-		            	livre += servant.Wage;
+	            	cost += item.Price;
 	            }
 
-	            if (livre > 0)
+	            if (cost > 0)
 	            {
-					AmbitionApp.GetModel<GameModel>().Livre-=(int)livre;
+					game.Livre-=(int)cost;
 					Dictionary<string, string> substitutions = new Dictionary<string, string>(){
-						{"$NUMSERVANTS",numservants.ToString()},
-						{"$TOTALWAGES", livre.ToString()},
-						{"$LIVRE",GameData.moneyCount.ToString()}};
+						{"$NUMSERVANTS",servants.Count.ToString()},
+						{"$TOTALWAGES", cost.ToString()},
+						{"$LIVRE", game.Livre.ToString()}};
 					AmbitionApp.OpenMessageDialog(DialogConsts.PAY_DAY_DIALOG, substitutions);
 				}
 			}

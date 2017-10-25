@@ -183,9 +183,8 @@ public class Reward {
             case "Livre":
                 return amount + " Livres";
             case "Introduction":
-				ServantModel smod = AmbitionApp.GetModel<ServantModel>();
-				ServantVO[] servants = smod.GetServants(subtype);
-				ServantVO servant = Array.Find(servants, s => !s.Hired && !s.Introduced);
+				ServantModel model = AmbitionApp.GetModel<ServantModel>();
+				ServantVO servant = Array.Find(model.Servants, s => !s.Hired && !s.Introduced && s.Type == type);
                 return servant != null
                 	? "An Introduction to Hire " + servant.NameAndTitle
                 	: null;

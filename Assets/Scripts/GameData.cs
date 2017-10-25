@@ -51,14 +51,4 @@ public static class GameData
 	{
 		get { return AmbitionApp.GetModel<QuestModel>().Quests; }
 	}
-
-	public static Dictionary<string, ServantVO[]> servantDictionary
-	{
-		get { return AmbitionApp.GetModel<ServantModel>().Servants; }
-	}
-
-	public static List<ItemVO> Accessories
-	{
-		get { return AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY)); }
-	}
 }

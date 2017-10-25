@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using Ambition;
 
@@ -8,10 +9,10 @@ public class ServantInventoryList : MonoBehaviour
     public GameObject gossipInventoryButtonPrefab;
     public enum InventoryType {Personal, Available};
     public InventoryType inventoryType;
-    private ServantModel _model;
+	private ServantModel _model;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
 		_model = AmbitionApp.GetModel<ServantModel>();
         GenerateInventoryButtons();
@@ -21,21 +22,11 @@ public class ServantInventoryList : MonoBehaviour
     public void GenerateInventoryButtons()
     {
     	ClearInventoryButtons();
-		List<ServantVO> servants;
-		if (inventoryType == InventoryType.Personal)
-		{
-			servants = new List<ServantVO>(_model.Hired.Values);
-		}
-		else
-		{
-			servants = new List<ServantVO>();
-			foreach(List<ServantVO> intros in _model.Introduced.Values)
-			{
-				servants.AddRange(intros);
-			}
-		}
+		ServantVO[] servants = (inventoryType == InventoryType.Personal)
+			? Array.FindAll(_model.Servants, s=>s.Hired)
+			: Array.FindAll(_model.Servants, s=>s.Introduced);
 
-		servants.ForEach(MakeButton);
+		 Array.ForEach(servants, MakeButton);
     }
 
     public void ClearInventoryButtons()
