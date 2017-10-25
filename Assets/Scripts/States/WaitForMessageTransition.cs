@@ -13,8 +13,9 @@ namespace Ambition
 			{
 				_messageID = Parameters[0] as String;
 				AmbitionApp.Subscribe(_messageID, Validate);
+				return false;
 			}
-			return false;
+			return true;
 		}
 
 		public override void Dispose ()

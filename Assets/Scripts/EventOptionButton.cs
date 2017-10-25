@@ -24,6 +24,7 @@ namespace Ambition
 
 		private void HandleEventUpdate(EventVO e)
 	    {
+	    	if (e==null) return;
 			EventStage stage = e.currentStage;
 			bool show = (option < stage.Options.Length && stage.Options[option].optionButtonText != null);
 			if (show)
@@ -33,8 +34,8 @@ namespace Ambition
 				{
 					ServantModel model = AmbitionApp.GetModel<ServantModel>();
 					show = model.Hired.ContainsKey(eventOption.servantRequired);
-					if (show) myText.text = eventOption.optionButtonText;
 				}
+				if (show) myText.text = eventOption.optionButtonText;
 			}
 			this.gameObject.SetActive(show);
 	    }

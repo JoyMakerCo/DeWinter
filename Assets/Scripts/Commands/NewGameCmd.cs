@@ -8,7 +8,7 @@ namespace Ambition
 		public void Execute ()
 		{
 			EventModel emod = AmbitionApp.GetModel<EventModel>();
-			emod.SelectedEvent = emod.eventInventories["intro"][0];
+			emod.Event = emod.eventInventories["intro"][0];
 
 			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
 		}

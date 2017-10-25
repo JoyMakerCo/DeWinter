@@ -39,7 +39,6 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			AmbitionApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
 			AmbitionApp.RegisterCommand<CalculateConfidenceCmd>(PartyMessages.START_PARTY);
-			AmbitionApp.RegisterCommand<EndEventCmd, EventVO>(EventMessages.END_EVENT);
 			AmbitionApp.RegisterCommand<RSVPCmd, PartyVO>(PartyMessages.RSVP);
 			AmbitionApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
 			AmbitionApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
@@ -65,10 +64,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckUprisingDayCmd, DateTime>();
-			AmbitionApp.RegisterCommand<CreateInvitationsCmd, DateTime>();
-			AmbitionApp.RegisterCommand<StartEventCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckStyleChangeCmd, DateTime>();
-			AmbitionApp.RegisterCommand<EventReadyCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckLivreCmd, int>(GameConsts.LIVRE);
 
 			// Initially enabled for TUTORIAL
@@ -93,19 +89,21 @@ namespace Ambition
 
 			// Estate States. This lands somewhere between confusing and annoying.
 			AmbitionApp.RegisterState<StartEstateState>("InitEstate");
-			AmbitionApp.RegisterState<StartEventState>("Event");
+			AmbitionApp.RegisterState<StartEventState>("StartEvent");
+			AmbitionApp.RegisterState<EventState>("EventStage");
+			AmbitionApp.RegisterState<EndEventState>("EndEvent");
 			AmbitionApp.RegisterState<EnterEstateState>("Estate");
 			AmbitionApp.RegisterState<ShowInvitationsState>("Invitations");
-			AmbitionApp.RegisterState<ExitToPartyState>("ExitToParty");
 
-			AmbitionApp.RegisterTransition<CheckEventsTransition>("EstateController", "InitEstate", "Event");
+			AmbitionApp.RegisterTransition<CheckEventsTransition>("EstateController", "InitEstate", "StartEvent");
 			AmbitionApp.RegisterTransition("EstateController", "InitEstate", "Estate");
-			AmbitionApp.RegisterTransition<WaitForMessageTransition>("EstateController", "Event", "ExitToParty");
-			AmbitionApp.RegisterTransition("EstateController", "Event", "Estate");
+			AmbitionApp.RegisterTransition("EstateController", "StartEvent", "EventStage");
+			AmbitionApp.RegisterTransition<WaitForEventTransition>("EstateController", "EventStage", "EventStage");
+			AmbitionApp.RegisterTransition<WaitForEndEventTransition>("EstateController", "EventStage", "EndEvent");
 			AmbitionApp.RegisterTransition<CheckInvitationsTransition>("EstateController", "Estate", "Invitations");
 			AmbitionApp.RegisterTransition<CheckInvitationsTransition>("EstateController", "Invitations", "Invitations");
 			AmbitionApp.RegisterTransition("EstateController", "Invitations", "Estate");
-
+			 
 			Destroy(this.gameObject);
 		}
 	}

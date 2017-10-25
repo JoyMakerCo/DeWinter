@@ -6,7 +6,11 @@ namespace Dialog
 {
 	public class DialogView : MonoBehaviour
 	{
-		public string ID;
+		public string ID
+		{
+			get;
+			internal set;
+		}
 
 		internal DialogCanvasManager Manager;
 
