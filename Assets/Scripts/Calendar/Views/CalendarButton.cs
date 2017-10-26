@@ -99,14 +99,19 @@ namespace Ambition
 				Party1RSVPIcon.enabled = enabled;
 				NewParty1Icon.enabled = Party1Icon.enabled && !enabled;
 				if (!enabled) party = parties[0];
+				Party1RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(party.RSVP == 1 ? "accepted" : "declined");
 				Party1Icon.sprite = CalendarSpriteConfig.GetSprite(party.Faction);
 
 				party = parties.Find(p=>p!=party);
 				enabled = party != null;
-				Party1Icon.enabled = enabled;
-				Party1RSVPIcon.enabled = enabled && party.RSVP == -1;
-				NewParty1Icon.enabled = enabled && party.RSVP == 0;
-				if (enabled) Party1Icon.sprite = CalendarSpriteConfig.GetSprite(party.Faction);
+				Party2Icon.enabled = enabled;
+				Party2RSVPIcon.enabled = enabled && party.RSVP != 0;
+				NewParty2Icon.enabled = enabled && party.RSVP == 0;
+				if (enabled)
+				{
+					Party2Icon.sprite = CalendarSpriteConfig.GetSprite(party.Faction);
+					Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(party.RSVP == 1 ? "accepted" : "declined");
+				}
 			}
 			else
 			{

@@ -80,17 +80,18 @@ namespace Ambition
 			uprisingDay= _startDate.AddDays(new Random().Next(25, 31));
 		}
 
-		public void UpdateParty(PartyVO party)
+		public void AddParty(PartyVO party)
 		{
 			if (!Parties.ContainsKey(party.Date))
 			{
 				Parties.Add(party.Date, new List<PartyVO>{party});
+				AmbitionApp.SendMessage<PartyVO>(PartyMessages.NEW_PARTY, party);
 			}
 			else if (!Parties[party.Date].Contains(party))
 			{
 				Parties[party.Date].Add(party);
+				AmbitionApp.SendMessage<PartyVO>(PartyMessages.NEW_PARTY, party);
 			}
-			AmbitionApp.SendMessage<PartyVO>(party);
 		}
 
 		string dayString(int day)
