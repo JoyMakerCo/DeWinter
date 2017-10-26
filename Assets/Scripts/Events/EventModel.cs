@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using Core;
 using Util;
 
 namespace Ambition
 {
-// TODO: Refactor the hell out of this
+// TODO: Events to be configuarble via UFlow
 	public class EventModel : DocumentModel, IInitializable
 	{
 		private const string PARTY = "party";
@@ -17,7 +18,10 @@ namespace Ambition
 
 		public EventVO Event;
 
+		[JsonProperty("event_chance")]
 		public int EventChance=20;
+
+//		public EventModel() : base("EventData") {}
 
 	    public void Initialize()
 	    {

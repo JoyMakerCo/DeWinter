@@ -9,21 +9,6 @@ namespace Ambition
 {
 	public class CalendarModel : DocumentModel, IInitializable
 	{
-		public static readonly string[] MONTHS = {
-			"Janvier",
-        	"Fevrier",
-        	"Mars",
-        	"Avril",
-        	"Mai",
-        	"Juin",
-        	"Juillet",
-        	"Aout",
-        	"Septembre",
-        	"Octobre",
-        	"Novembre",
-        	"Decembre"
-        };
-
 		public Dictionary<DateTime, List<PartyVO>> Parties = new Dictionary<DateTime, List<PartyVO>>();
 
 		private DateTime _startDate;
@@ -36,16 +21,6 @@ namespace Ambition
 			get { return _startDate; }
 		}
 
-		public string GetMonthString(DateTime date)
-		{
-			return MONTHS[date.Month-1];
-		}
-
-		public string GetMonthString()
-		{
-			return MONTHS[Today.Month - 1];
-		}
-
 		public string GetDateString()
 		{
 			return GetDateString(Today);
@@ -53,7 +28,8 @@ namespace Ambition
 
 		public string GetDateString(DateTime d)
 		{
-			return d.Day.ToString() + " " + GetMonthString(d) + ", " + d.Year.ToString();
+			LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
+			return d.Day.ToString() + " " + localization.GetList("month")[d.Month-1] + ", " + d.Year.ToString();
 		}
 
 		[JsonProperty("gameLength")]

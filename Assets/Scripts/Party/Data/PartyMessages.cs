@@ -5,7 +5,7 @@ namespace Ambition
 	public static class PartyMessages
 	{
 		public const string RSVP = "RSVP";
-		public const string ADD_PARTY = "ADD_PARTY";
+		public const string NEW_PARTY = "NEW_PARTY";
 
 		public const string SHOW_MAP = "SHOW_MAP";
 		public const string SHOW_ROOM = "SHOW_ROOM";
