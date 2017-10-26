@@ -64,12 +64,10 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckUprisingDayCmd, DateTime>();
-			AmbitionApp.RegisterCommand<CheckStyleChangeCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckLivreCmd, int>(GameConsts.LIVRE);
 
 			// Initially enabled for TUTORIAL
 			AmbitionApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			AmbitionApp.RegisterCommand<TutorialPartyWelcomeCmd, RoomVO>();
 			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd, int>(GameConsts.CONFIDENCE);
 			AmbitionApp.RegisterCommand<EndTutorialCmd>(PartyMessages.END_PARTY);
 
@@ -93,17 +91,19 @@ namespace Ambition
 			AmbitionApp.RegisterState<EventState>("EventStage");
 			AmbitionApp.RegisterState<EndEventState>("EndEvent");
 			AmbitionApp.RegisterState<EnterEstateState>("Estate");
-			AmbitionApp.RegisterState<ShowInvitationsState>("Invitations");
+			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
+			AmbitionApp.RegisterState<StyleChangeState>("StyleChange");
 
 			AmbitionApp.RegisterTransition<CheckEventsTransition>("EstateController", "InitEstate", "StartEvent");
 			AmbitionApp.RegisterTransition("EstateController", "InitEstate", "Estate");
 			AmbitionApp.RegisterTransition("EstateController", "StartEvent", "EventStage");
 			AmbitionApp.RegisterTransition<WaitForEventTransition>("EstateController", "EventStage", "EventStage");
 			AmbitionApp.RegisterTransition<WaitForEndEventTransition>("EstateController", "EventStage", "EndEvent");
-			AmbitionApp.RegisterTransition<CheckInvitationsTransition>("EstateController", "Estate", "Invitations");
-			AmbitionApp.RegisterTransition<CheckInvitationsTransition>("EstateController", "Invitations", "Invitations");
-			AmbitionApp.RegisterTransition("EstateController", "Invitations", "Estate");
-			 
+			AmbitionApp.RegisterTransition("EstateController", "EndEvent", "Estate");
+			AmbitionApp.RegisterTransition("EstateController", "Estate", "CreateInvitations");
+			AmbitionApp.RegisterTransition("EstateController", "CreateInvitations", "StyleChange");
+			AmbitionApp.RegisterTransition("EstateController", "StyleChange", "Estate");
+
 			Destroy(this.gameObject);
 		}
 	}

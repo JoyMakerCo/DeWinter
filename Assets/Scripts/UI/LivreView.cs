@@ -5,18 +5,22 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class LivreMediator : MonoBehaviour
+	public class LivreView : MonoBehaviour
 	{
 		private Text _text;
 
 		void Awake ()
 		{
 			_text = GetComponent<Text>();
+		}
+
+		void OnEnable()
+		{
 			AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleLivre);
 			HandleLivre(AmbitionApp.GetModel<GameModel>().Livre);
 		}
 
-		void OnDestroy()
+		void OnDisable()
 		{
 			AmbitionApp.Unsubscribe<int>(GameConsts.LIVRE, HandleLivre);
 		}
