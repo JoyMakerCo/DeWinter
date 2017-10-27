@@ -91,8 +91,8 @@ namespace Ambition
 			AmbitionApp.RegisterState<EventState>("EventStage");
 			AmbitionApp.RegisterState<EndEventState>("EndEvent");
 			AmbitionApp.RegisterState<EnterEstateState>("Estate");
-			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
 			AmbitionApp.RegisterState<StyleChangeState>("StyleChange");
+			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
 
 			AmbitionApp.RegisterTransition<CheckEventsTransition>("EstateController", "InitEstate", "StartEvent");
 			AmbitionApp.RegisterTransition("EstateController", "InitEstate", "Estate");
@@ -100,9 +100,8 @@ namespace Ambition
 			AmbitionApp.RegisterTransition<WaitForEventTransition>("EstateController", "EventStage", "EventStage");
 			AmbitionApp.RegisterTransition<WaitForEndEventTransition>("EstateController", "EventStage", "EndEvent");
 			AmbitionApp.RegisterTransition("EstateController", "EndEvent", "Estate");
-			AmbitionApp.RegisterTransition("EstateController", "Estate", "CreateInvitations");
-			AmbitionApp.RegisterTransition("EstateController", "CreateInvitations", "StyleChange");
-			AmbitionApp.RegisterTransition("EstateController", "StyleChange", "Estate");
+			AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
+			AmbitionApp.RegisterTransition<WaitForCloseDialogTransition>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
 
 			Destroy(this.gameObject);
 		}

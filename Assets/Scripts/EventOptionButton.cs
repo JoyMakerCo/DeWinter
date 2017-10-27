@@ -24,7 +24,7 @@ namespace Ambition
 
 		private void HandleEventUpdate(EventVO e)
 	    {
-	    	if (e==null) return;
+	    	if (e==null || e.currentStage == null) return;
 			EventStage stage = e.currentStage;
 			bool show = (option < stage.Options.Length && stage.Options[option].optionButtonText != null);
 			if (show)
