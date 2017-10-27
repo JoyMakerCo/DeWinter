@@ -16,5 +16,15 @@ namespace Ambition
 			TitleTxt.text = vo.Title;
 			ButtonLabelTxt.text = vo.Button;
 		}
+
+		public override void OnOpen ()
+		{
+			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_OPENED, ID);
+		}
+
+		public override void OnClose ()
+		{
+			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_CLOSED, ID);
+		}
 	}
 }

@@ -9,7 +9,6 @@ namespace Ambition
 {
 	public class CalendarButton : MonoBehaviour
 	{
-
 	    public int dayOffset; //Button Row
 	    public Image currentDayOutline;
 	    public Text dateText;
@@ -43,9 +42,18 @@ namespace Ambition
 
 		void OnEnable()
 		{
+			AmbitionApp.Subscribe<DateTime>(HandleViewMonth);
 			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleViewMonth);
 			AmbitionApp.Subscribe<PartyVO>(PartyMessages.NEW_PARTY, HandlePartyUpdated);
 			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
+
+			Party1Icon.enabled = false;
+	    	NewParty1Icon.enabled = false;
+	    	Party1RSVPIcon.enabled = false;
+			Party2Icon.enabled = false;
+	    	NewParty2Icon.enabled = false;
+	    	Party2RSVPIcon.enabled = false;
+
 			_currentMonth = _model.Today.Month;
 			_btn.onClick.AddListener(HandleClick);
 			HandleViewMonth(_model.Today);
@@ -53,6 +61,7 @@ namespace Ambition
 
 	    void OnDisable()
 	    {
+			AmbitionApp.Unsubscribe<DateTime>(HandleViewMonth);
 			AmbitionApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleViewMonth);
 			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.NEW_PARTY, HandlePartyUpdated);
 			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
@@ -72,7 +81,9 @@ namespace Ambition
 			bool isToday = (_day == _model.Today);
 			currentDayOutline.enabled = isToday;
 			if (isToday) this.transform.SetAsLastSibling();
-			_btn.interactable = pastDayXImage.enabled = (_model.Today > _day);
+
+			_btn.interactable = (_day >= _model.Today);
+			pastDayXImage.enabled = !_btn.interactable;
 			UpdateParties();
 		}
 
@@ -95,9 +106,9 @@ namespace Ambition
 			{
 				PartyVO party = parties.Find(p=>p.RSVP != 0);
 				bool enabled = party != null;
-				Party1Icon.enabled = enabled || parties.Count > 1;
+				Party1Icon.enabled = true;
 				Party1RSVPIcon.enabled = enabled;
-				NewParty1Icon.enabled = Party1Icon.enabled && !enabled;
+				NewParty1Icon.enabled = !enabled;
 				if (!enabled) party = parties[0];
 				Party1RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(party.RSVP == 1 ? "accepted" : "declined");
 				Party1Icon.sprite = CalendarSpriteConfig.GetSprite(party.Faction);
