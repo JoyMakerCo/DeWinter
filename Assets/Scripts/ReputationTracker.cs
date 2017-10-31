@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Core;
 
 namespace Ambition
 {
@@ -12,34 +13,27 @@ namespace Ambition
 	    public Slider reputationBar;
 	    public Sprite [] ReputationLevelIcons;
 
-	    private GameModel _gmod;
+	    private GameModel _model;
 
 	    // Use this for initialization
 	    void Awake()
 	    {
-			_gmod = AmbitionApp.GetModel<GameModel>();
-			AmbitionApp.Subscribe<PlayerReputationVO>(HandlePlayerReputation);
-			_gmod.Reputation = _gmod.Reputation; // Elicit an event
+			_model = AmbitionApp.GetModel<GameModel>();
+			AmbitionApp.Subscribe<ReputationVO>(HandlePlayerReputation);
+			_model.Reputation = _model.Reputation; // Elicit an event
 	    }
 
 	    void OnDestroy()
 	    {
-			AmbitionApp.Unsubscribe<PlayerReputationVO>(HandlePlayerReputation);
+			AmbitionApp.Unsubscribe<ReputationVO>(HandlePlayerReputation);
 	    }
 
-		private void HandlePlayerReputation(PlayerReputationVO vo)
+		private void HandlePlayerReputation(ReputationVO vo)
 	    {
-	    	if (vo.Reputation > -20)
-	    	{
-				numberText.text = vo.Reputation.ToString("#,##0") + "/" + vo.ReputationMax.ToString("#,##0");
-				levelText.text = vo.Title;
-				reputationIcon.sprite = ReputationLevelIcons[vo.Level-1];
-				reputationBar.value = (float)vo.Reputation / (float)vo.ReputationMax;
-		    }
-		    else
-		    {
-				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE,"Game_EndScreen");
-		    }
+			numberText.text = vo.Reputation.ToString("#,##0") + "/" + vo.ReputationMax.ToString("#,##0");
+			levelText.text = AmbitionApp.GetModel<LocalizationModel>().GetString("reputation." + vo.Level);
+			reputationIcon.sprite = ReputationLevelIcons[vo.Level-1];
+			reputationBar.value = (float)vo.Reputation / (float)vo.ReputationMax;
 	    }
 	}
 }

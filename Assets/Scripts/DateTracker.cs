@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 using System.Globalization;
@@ -7,18 +8,25 @@ namespace Ambition
 {
 	public class DateTracker : MonoBehaviour
 	{
-	    public Text myText;
-	    private CalendarModel _cmod;
+	    private Text _text;
+	    private CalendarModel _calendar;
 
-	    void Start()
+	    void Awake()
 	    {
-			_cmod = AmbitionApp.GetModel<CalendarModel>();
-	        updateDate();
+			_text = GetComponent<Text>();
+			_calendar = AmbitionApp.GetModel<CalendarModel>();
+			AmbitionApp.Subscribe<DateTime>(HandleDate);
+			HandleDate(_calendar.Today);
 	    }
 
-	    public void updateDate()
+	    void OnDestroy()
 	    {
-	        myText.text = _cmod.GetDateString();
+			AmbitionApp.Unsubscribe<DateTime>(HandleDate);
+	    }
+
+		public void HandleDate(DateTime date)
+	    {
+			_text.text = _calendar.GetDateString();
 	    }
 	}
 }

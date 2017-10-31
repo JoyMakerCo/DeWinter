@@ -8,12 +8,12 @@ namespace Ambition
 {
 	public class GameModel : DocumentModel
 	{
-		private PlayerReputationVO _reputation;
-		private int _livre;
+		private ReputationVO _reputation;
 
 		public string Allegiance;
 
 		[JsonProperty("livre")]
+		private int _livre;
 		public int Livre
 		{
 			get { return _livre; }
@@ -24,37 +24,32 @@ namespace Ambition
 			}
 		}
 
-		[JsonProperty("reputation")]
+		[JsonProperty("reputation", Order = 10)]
 		public int Reputation
 		{
 			get { return _reputation.Reputation; }
 			set
 			{
-				_reputation.Reputation = value;
-				if (ReputationLevels != null)
-				{
-					int numLevels = ReputationLevels.Length;
-					for(int i=0; i < numLevels; i++)
-					{
-						if (_reputation.Reputation <= ReputationLevels[i].Reputation)
-						{
-							if (_reputation.Level != i+1)
-							{
-								_reputation.Level = i+1;
-								_reputation.ReputationMax = ReputationLevels[i].Reputation;
-								_reputation.Title = ReputationLevels[i].Title;
-							}
-							AmbitionApp.SendMessage<PlayerReputationVO>(_reputation);
-							return;
-						}
-					}
-				}
+				int level = _reputation.Level = Array.FindIndex(_levels, r => r > value);
+				bool lowest = level == 0;
+				_reputation.Reputation = lowest ? value - _levels[level-1] : value;
+				_reputation.ReputationMax = lowest ? _levels[level] : _levels[level] - _levels[level-1];
+				AmbitionApp.SendMessage<ReputationVO>(_reputation);
 			}
 		}
 
+		[JsonProperty("confidence")]
+		private int[] _confidence;
 		public int ConfidenceBonus
 		{
-			get { return ReputationLevels[Level].Confidence; }
+			get { return _confidence[Level]; }
+		}
+
+		[JsonProperty("vip")]
+		private int[] _vip;
+		public int PartyInviteImportance
+		{
+			get { return _vip[Level]; }
 		}
 
 		public int Level
@@ -64,29 +59,8 @@ namespace Ambition
 
 		public GameModel() : base("GameData") {}
 
-		// TODO: Localization model would be handy here
-		public string BenefitsList
-		{
-			get
-			{
-				string str = "";
-				for (int i=_reputation.Level-1; i>=0; i--)
-				{
-					str += ReputationLevels[i].Description + "\n";
-				}
-				return str;
-			}
-		}
-
-		[JsonProperty("reputationLevels")]
-		private ReputationLevel[] ReputationLevels;
-
-		public int PartyInviteImportance
-		{
-			get {
-				return ReputationLevels[Level].PartyInviteImportance;
-			}
-		}
+		[JsonProperty("levels")]
+		private int[] _levels;
 
 		private OutfitVO _outfit;
 		public OutfitVO Outfit
