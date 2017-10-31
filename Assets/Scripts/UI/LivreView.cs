@@ -12,15 +12,11 @@ namespace Ambition
 		void Awake ()
 		{
 			_text = GetComponent<Text>();
-		}
-
-		void OnEnable()
-		{
 			AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleLivre);
 			HandleLivre(AmbitionApp.GetModel<GameModel>().Livre);
 		}
 
-		void OnDisable()
+		void OnDestroy()
 		{
 			AmbitionApp.Unsubscribe<int>(GameConsts.LIVRE, HandleLivre);
 		}

@@ -12,16 +12,16 @@ namespace Ambition
 		void Awake ()
 		{
 			_text = GetComponent<Text>();
-			AmbitionApp.Subscribe<PlayerReputationVO>(HandleRep);
+			AmbitionApp.Subscribe<ReputationVO>(HandleRep);
 			_text.text = AmbitionApp.GetModel<GameModel>().Reputation.ToString("###,###");
 		}
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<PlayerReputationVO>(HandleRep);
+			AmbitionApp.Unsubscribe<ReputationVO>(HandleRep);
 		}
 
-		private void HandleRep (PlayerReputationVO vo)
+		private void HandleRep (ReputationVO vo)
 		{
 			_text.text = vo.Reputation.ToString("###,###");
 		}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Core;
 
 namespace Ambition
 {
@@ -12,18 +13,23 @@ namespace Ambition
 	    {
 	    	
 	        _text = this.GetComponent<Text>();
-			AmbitionApp.Subscribe<PlayerReputationVO>(HandleReputation);
+			AmbitionApp.Subscribe<ReputationVO>(HandleReputation);
 	    }
 
 	    void OnDestroy()
 	    {
-			AmbitionApp.Unsubscribe<PlayerReputationVO>(HandleReputation);
+			AmbitionApp.Unsubscribe<ReputationVO>(HandleReputation);
 	    }
 
-	    private void HandleReputation(PlayerReputationVO rep)
+	    private void HandleReputation(ReputationVO rep)
 	    {
-	    	GameModel model = AmbitionApp.GetModel<GameModel>();
-			_text.text = "Reputation Level Benefits\n" + model.BenefitsList;
+			LocalizationModel phrases = AmbitionApp.GetModel<LocalizationModel>();
+			string str = "Reputation Level Benefits\n";
+			for (int i=1; i<rep.Level; i++)
+			{
+				str += phrases.GetString("reputation_text." + i.ToString() + "\n");
+			}
+			_text.text = str;
 	    }
 	}
 }
