@@ -14,11 +14,15 @@ namespace Ambition
 		void Awake()
 		{
 			_text = GetComponent<Text>();
-			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleDate);
 			HandleDate(AmbitionApp.GetModel<CalendarModel>().Today);
 		}
 
-		void OnDestroy()
+		void OnEnable()
+		{
+			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleDate);
+		}
+
+		void OnDisable()
 		{
 			AmbitionApp.Unsubscribe<DateTime>(HandleDate);
 		}
