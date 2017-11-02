@@ -176,5 +176,15 @@ namespace Ambition
 		{
 			App.Service<UFlowSvc>().InvokeMachine(MachineID);
 		}
+
+		public static string GetString(string key)
+		{
+			return App.Service<ModelSvc>().GetModel<LocalizationModel>().GetString(key);
+		}
+
+		public static string GetString(string key, Dictionary<string, string> substitutions)
+		{
+			return App.Service<ModelSvc>().GetModel<LocalizationModel>().GetString(key, substitutions);
+		}
 	}
 }

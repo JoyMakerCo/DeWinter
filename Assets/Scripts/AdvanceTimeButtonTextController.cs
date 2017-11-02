@@ -11,26 +11,21 @@ namespace Ambition
 	    private Text _text;
 	    private PartyVO _party;
 	    private DateTime _date;
+	    private Button _btn;
 
 	    void Awake()
 	    {
-			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
+			_btn = this.GetComponent<Button>();
+			_btn.onClick.AddListener(OnClick);
+			_text = this.GetComponentInChildren<Text>();
+			AmbitionApp.Subscribe<PartyVO>(HandleRSVP);
 			AmbitionApp.Subscribe<DateTime>(HandleDay);
-	    }
-
-	    void Start ()
-	    {
-	    	Button btn = this.gameObject.GetComponent<Button>();
-	    	btn.onClick.RemoveAllListeners();
-	    	btn.onClick.AddListener(OnClick);
-	        _text = this.GetComponentInChildren<Text>();
 	    }
 
 	    void OnDestroy()
 	    {
-			Button btn = this.gameObject.GetComponent<Button>();
-	    	btn.onClick.RemoveAllListeners();
-			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
+			_btn.onClick.RemoveListener(OnClick);
+			AmbitionApp.Unsubscribe<PartyVO>(HandleRSVP);
 			AmbitionApp.Unsubscribe<DateTime>(HandleDay);
 	    }
 

@@ -19,7 +19,7 @@ namespace Ambition
 			// Determine if the party uses a preset, or build a map from scratch
 			if (!model.Maps.TryGetValue(party.MapID, out map))
 			{
-				map = BuildRandomMap(party.partySize);
+				map = BuildRandomMap(party.Importance);
 			}
 
 			// Fill in the blanks

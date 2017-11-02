@@ -21,7 +21,7 @@ namespace Ambition
 			get { return _party; }
 			set {
 				_party = value;
-				PartyNameTxt.text = _party.Name();
+				PartyNameTxt.text = _party.Name;
 				FactionIcon.sprite = FactionSpriteConfig.GetSprite(_party.Faction);
 				Highlight.enabled = _party.RSVP == 1;
 				Strikethrough.enabled = _party.RSVP == -1;

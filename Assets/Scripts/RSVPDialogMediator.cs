@@ -21,7 +21,7 @@ public class RSVPDialogMediator : DialogView, Util.IInitializable<PartyVO>
 	{
 		ServantModel smod = AmbitionApp.GetModel<ServantModel>();
 		Dictionary <string, string> dialogsubs = new Dictionary<string, string>(){
-			{"$PARTYSIZE", party.SizeString()}};
+			{"$PARTYSIZE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())}};
 
 		_party = party;
 		_localization = AmbitionApp.GetModel<LocalizationModel>();
@@ -56,6 +56,6 @@ public class RSVPDialogMediator : DialogView, Util.IInitializable<PartyVO>
     {
         //0 means no RSVP yet, 1 means Attending and -1 means Decline
         _party.RSVP = decision;
-        AmbitionApp.SendMessage<PartyVO>(CalendarMessages.RSVP, _party);
+        AmbitionApp.SendMessage<PartyVO>(PartyMessages.RSVP, _party);
     }
 }

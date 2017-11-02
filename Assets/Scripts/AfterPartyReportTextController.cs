@@ -23,10 +23,10 @@ public class AfterPartyReportTextController : MonoBehaviour {
         OutfitVO outfit = AmbitionApp.GetModel<GameModel>().Outfit;
         if (!_model.Party.blackOutEnding) //Did the Player end the Party regularly, or by blacking out?
         {
-            rewardString = "The " + _model.Party.Name() + " is over. Here's what you got:";
+            rewardString = "The " + _model.Party.Name + " is over. Here's what you got:";
         } else
         {
-			rewardString = "Oh no! It appears that you had far too much to drink at the " + _model.Party.Name() + ". You might not remember this but...";
+			rewardString = "Oh no! It appears that you had far too much to drink at the " + _model.Party.Name + ". You might not remember this but...";
 			switch (_model.Party.blackOutEffect)
             {
                 case "Reputation Loss":
