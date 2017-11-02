@@ -44,8 +44,7 @@ namespace Ambition
 		{
 			AmbitionApp.Subscribe<DateTime>(HandleViewMonth);
 			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleViewMonth);
-			AmbitionApp.Subscribe<PartyVO>(PartyMessages.NEW_PARTY, HandlePartyUpdated);
-			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
+			AmbitionApp.Subscribe<PartyVO>(HandlePartyUpdated);
 
 			Party1Icon.enabled = false;
 	    	NewParty1Icon.enabled = false;
@@ -63,8 +62,7 @@ namespace Ambition
 	    {
 			AmbitionApp.Unsubscribe<DateTime>(HandleViewMonth);
 			AmbitionApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleViewMonth);
-			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.NEW_PARTY, HandlePartyUpdated);
-			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
+			AmbitionApp.Unsubscribe<PartyVO>(HandlePartyUpdated);
 			_btn.onClick.RemoveListener(HandleClick);
 	    }
 
@@ -87,16 +85,16 @@ namespace Ambition
 			UpdateParties();
 		}
 
-		private void HandlePartyUpdated(PartyVO p)
-		{
-			if (p.Date == _day)
-				UpdateParties();
-		}
-
 		private void HandleClick()
 	    {
 	    	AmbitionApp.SendMessage<DateTime>(CalendarMessages.SELECT_DATE, _day);
 	    }
+
+	    private void HandlePartyUpdated(PartyVO party)
+		{
+			if (party.Date == _day)
+				UpdateParties();
+		}
 
 	    private void UpdateParties()
 	    {

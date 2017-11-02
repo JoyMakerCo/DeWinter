@@ -133,6 +133,9 @@ namespace Ambition
 			}
 		}
 
+		[JsonProperty("parties")]
+		public PartyVO[] Parties;
+
 		public int MaxConfidence;
 		public int StartConfidence;
 

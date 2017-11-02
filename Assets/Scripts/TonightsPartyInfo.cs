@@ -42,17 +42,11 @@ public class TonightsPartyInfo : MonoBehaviour {
 		if (party != null)
 		{
 			FactionModel model = AmbitionApp.GetModel<FactionModel>();
-	        partyText.text = party.Name();
+	        partyText.text = party.Name;
 	        hostedByText.text = party.Faction;
 			factionLikesText.text = GetLikes(model[party.Faction]);
 			factionDislikesText.text = GetDislikes(model[party.Faction]);
-	        partyDescriptionText.text = party.Description();
-	        objective1Text.text = party.Objective1();
-	        objective2Text.text = party.Objective2();
-	        objective3Text.text = party.Objective3();
-	        guest1Text.text = party.Guest1();
-	        guest2Text.text = party.Guest2();
-	        guest3Text.text = party.Guest3();
+	        partyDescriptionText.text = party.Description;
 	     }
     }
 

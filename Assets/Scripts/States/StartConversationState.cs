@@ -40,7 +40,7 @@ namespace Ambition
 					guest.MaxInterest = rnd.Next(stats.MaxInterest[0], stats.MaxInterest[1]);
 					guest.Interest = rnd.Next(stats.Interest[0], stats.Interest[1]);
 
-					guest.IsFemale = rnd.Next((int)(model.Party.MaleToFemaleRatio*100f) + 100) >= 100*model.Party.MaleToFemaleRatio;
+					guest.IsFemale = rnd.Next(2) == 0;
 					if (guest.IsFemale)
 			        {
 						title = GetRandomDescriptor("female_title", rnd);

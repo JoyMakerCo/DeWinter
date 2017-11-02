@@ -24,9 +24,9 @@ namespace Ambition
 	    	BodyText.text = localization.GetString(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.BODY);
 
 	        Text party1ButtonText = this.transform.Find("Party1Button").Find("Text").GetComponent<Text>();
-	        party1ButtonText.text = _parties[0].Name();
+	        party1ButtonText.text = _parties[0].Name;
 	        Text party2ButtonText = this.transform.Find("Party2Button").Find("Text").GetComponent<Text>();
-			party2ButtonText.text = _parties[1].Name();
+			party2ButtonText.text = _parties[1].Name;
 	    }
 
 	    public void SelectParty(int partyNumber)

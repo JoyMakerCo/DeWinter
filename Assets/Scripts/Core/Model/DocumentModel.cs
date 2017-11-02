@@ -7,26 +7,27 @@ namespace Core
 {
 	public class DocumentModel : IModel
 	{
-		protected string _filename;
+		private TextAsset _file;
 
-		public DocumentModel (string File=null)
+		public DocumentModel (string filename)
 		{
-			if (File != null)
-				LoadFile(File);
+			if (filename != null) LoadFile(filename);
 		}
 
-		public bool LoadFile (string File)
+		public bool LoadFile (string filename)
 		{
-			_filename = File;
-			TextAsset file = Resources.Load<TextAsset>(_filename);
-			if (file != null)
-				JsonConvert.PopulateObject(file.text, this);
-			return file != null;
+			_file = Resources.Load<TextAsset>(filename);
+			if (_file != null)
+				JsonConvert.PopulateObject(_file.text, this);
+			return _file != null;
 		}
 
 		[OnDeserialized]
 		private void OnDeserialized(StreamingContext context)
 		{
+			if (_file != null)
+				Resources.UnloadAsset(_file);
+			_file = null;
 			OnLoadComplete();
 		}
 

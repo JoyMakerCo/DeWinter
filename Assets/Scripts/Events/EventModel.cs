@@ -21,7 +21,7 @@ namespace Ambition
 		[JsonProperty("event_chance")]
 		public int EventChance=20;
 
-//		public EventModel() : base("EventData") {}
+		public EventModel() : base("EventData") {}
 
 	    public void Initialize()
 	    {

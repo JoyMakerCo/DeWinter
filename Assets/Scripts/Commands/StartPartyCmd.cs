@@ -14,6 +14,7 @@ namespace Ambition
 	        //Is the Player using the Fascinator Accessory? If so then allow them to ignore the first negative comment!
 	        // TODO: Passive buff system
 			InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+
 			ItemVO accessory;
 			if (inventory.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory))
 			{
@@ -34,10 +35,8 @@ namespace Ambition
 			//Damage the Outfit's Novelty, how that the Confidence has already been Tallied
 			model.TurnsLeft = model.Party.Turns;
 			AmbitionApp.SendMessage<OutfitVO>(InventoryMessages.DEGRADE_OUTFIT, AmbitionApp.GetModel<GameModel>().Outfit);
-			if (!string.IsNullOrEmpty(model.Party.IntroText))
-			{
-				AmbitionApp.OpenMessageDialog(model.Party.IntroText);
-			}
+			string introText = AmbitionApp.GetString("party.intro." + model.Party.ID + ".body");
+			if (introText != null) AmbitionApp.OpenMessageDialog("party.intro." + model.Party.ID);
 		}
 	}
 }

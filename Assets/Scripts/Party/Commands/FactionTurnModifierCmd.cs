@@ -12,7 +12,7 @@ namespace Ambition
 			int turnsMod = 0;
 
 			//Extra Turns because of Faction Reputation Level?
-			switch (party.partySize)
+			switch (party.Importance)
 			{
 				case 1:
 					if (faction.Level >= 4)

@@ -29,7 +29,6 @@ namespace Ambition
 			DateTime date = day.Date;
 			List<PartyVO> parties;
 			int i;
-			string suffix;
 	    	nextParty = null;
 
 			for (i=0; nextParty == null && i<MAX_PARTY_RANGE; i++)
@@ -42,22 +41,7 @@ namespace Ambition
 
 			if (nextParty != null)
 			{
-				switch (i)
-				{
-					case 0:
-						suffix = " Party (Today)";
-						break;
-					case 1:
-						suffix = " Party (Tomorrow)";
-						break;
-					case 2:
-						suffix = " Party (The Day After Tomorrow)";
-						break;
-					default:
-						suffix = " Party (" + i + " Days from Now)";
-						break;
-				}
-				myText.text = nextParty.SizeString() + " " + nextParty.Faction + suffix;
+				myText.text = nextParty.Name + " " + model.GetDateString(nextParty.Date);
 			}
 			else
 			{

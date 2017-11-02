@@ -4,13 +4,10 @@ namespace Ambition
 {
 	public static class PartyMessages
 	{
-		public const string RSVP = "RSVP";
-		public const string NEW_PARTY = "NEW_PARTY";
-
 		public const string SHOW_MAP = "SHOW_MAP";
 		public const string SHOW_ROOM = "SHOW_ROOM";
 
-		public const string PREPARE_PARTY = "PREPARE_PARTY";
+		public const string RSVP = "REQUEST_RSVP";
 		public const string START_TURN = "START_TURN";
 		public const string START_PARTY = "START_PARTY";
 		public const string PARTY_STARTED = "PARTY_STARTED";
