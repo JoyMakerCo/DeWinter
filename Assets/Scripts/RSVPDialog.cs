@@ -8,7 +8,7 @@ using Dialog;
 using Core;
 
 
-public class RSVPDialogMediator : DialogView, Util.IInitializable<PartyVO>
+public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 {
 	public Text TitleTxt;
 	public Text BodyTxt;
