@@ -32,7 +32,6 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantMessages.FIRE_SERVANT);
 			AmbitionApp.RegisterCommand<LoadSceneCmd, string>(GameMessages.LOAD_SCENE);
 			AmbitionApp.RegisterCommand<QuitCmd>(GameMessages.QUIT_GAME);
-			AmbitionApp.RegisterCommand<NewGameCmd>(GameMessages.NEW_GAME);
 			AmbitionApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			AmbitionApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
 			AmbitionApp.RegisterCommand<CalculateConfidenceCmd>(PartyMessages.START_PARTY);
@@ -67,6 +66,40 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd, int>(GameConsts.CONFIDENCE);
 			AmbitionApp.RegisterCommand<EndTutorialCmd>(PartyMessages.END_PARTY);
+
+
+
+			// UFlow Associations
+			// In the future, this will be handled by config
+			AmbitionApp.RegisterState<StartConversationState>("InitConversation");
+			AmbitionApp.RegisterState<OpenDialogState, string>("ReadyGo", DialogConsts.READY_GO);
+			AmbitionApp.RegisterState<StartTurnState>("StartTurn");
+			AmbitionApp.RegisterState<EndTurnState>("EndTurn");
+			AmbitionApp.RegisterState<EndConversationState>("EndConversation");
+
+			AmbitionApp.RegisterTransition("ConversationController", "InitConversation", "ReadyGo");
+			AmbitionApp.RegisterTransition<WaitForCloseDialogTransition>("ConversationController", "ReadyGo", "StartTurn", DialogConsts.READY_GO);
+			AmbitionApp.RegisterTransition<WaitForMessageTransition>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
+			AmbitionApp.RegisterTransition<CheckConversationTransition>("ConversationController", "EndTurn", "EndConversation");
+			AmbitionApp.RegisterTransition("ConversationController", "EndTurn", "StartTurn");
+
+			// Estate States. This lands somewhere between confusing and annoying.
+			AmbitionApp.RegisterState<StartEstateState>("InitEstate");
+			AmbitionApp.RegisterState<StartEventState>("StartEvent");
+			AmbitionApp.RegisterState<EventState>("EventStage");
+			AmbitionApp.RegisterState<EndEventState>("EndEvent");
+			AmbitionApp.RegisterState<EnterEstateState>("Estate");
+			AmbitionApp.RegisterState<StyleChangeState>("StyleChange");
+			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
+
+			AmbitionApp.RegisterTransition<CheckEventsTransition>("EstateController", "InitEstate", "StartEvent");
+			AmbitionApp.RegisterTransition("EstateController", "InitEstate", "Estate");
+			AmbitionApp.RegisterTransition("EstateController", "StartEvent", "EventStage");
+			AmbitionApp.RegisterTransition<WaitForEventTransition>("EstateController", "EventStage", "EventStage");
+			AmbitionApp.RegisterTransition<WaitForEndEventTransition>("EstateController", "EventStage", "EndEvent");
+			AmbitionApp.RegisterTransition("EstateController", "EndEvent", "Estate");
+			AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
+			AmbitionApp.RegisterTransition<WaitForCloseDialogTransition>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
 		}
 	}
 }
