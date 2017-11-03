@@ -62,6 +62,7 @@ namespace Ambition
 
 		private void HandleClick()
 		{
+			transform.SetAsLastSibling();
 			if (_item != null)
 				AmbitionApp.GetModel<GameModel>().Outfit = new OutfitVO(_item);
 		}
