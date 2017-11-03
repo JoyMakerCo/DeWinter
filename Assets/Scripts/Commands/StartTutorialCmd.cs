@@ -12,6 +12,8 @@ namespace Ambition
 			PartyVO party = Array.Find(model.Parties, p=>p.ID == "tutorial");
 			party.invited = true;
 			party.RSVP = 1;
+			party.Name = AmbitionApp.GetString("party.name." + party.ID);
+			party.Description = AmbitionApp.GetString("party.description." + party.ID);
 			model.Party = party;
 			calendar.Parties[party.Date]=new System.Collections.Generic.List<PartyVO>(){party};
 

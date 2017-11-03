@@ -16,7 +16,7 @@
 	items:[
 		{
 			id:"starting_gown",
-			name:"Starting Gown",
+			name:"Nouveau Frankish Gown",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
 			salePrice:40,
@@ -29,7 +29,7 @@
 		},
 		{
 			id:"starting_gown2",
-			name:"Starting Gown 2",
+			name:"Modest Frankish Dress",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
 			salePrice:40,
@@ -43,7 +43,7 @@
 		},
 		{
 			id:"starting_gown3",
-			name:"Starting Gown 3",
+			name:"Luxurious Catalan Gown",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
 			salePrice:40,
@@ -51,12 +51,12 @@
 			tags:["Outfit"],
 			state:{
 				"luxury":100,
-				"style":"Venezian"
+				"style":"Catalan"
 			}
 		},
 		{
 			id:"starting_gown4",
-			name:"Starting Gown 4",
+			name:"Nouveau Catalan Dress",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
 			salePrice:40,
@@ -68,6 +68,57 @@
 			}
 		},
 		{
+			id:"starting_gown5",
+			name:"Luxurious Venezian Gown",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"luxury":100,
+				"style":"Venezian"
+			}
+		},
+		{
+			id:"starting_gown6",
+			name:"Modest Frankish Dress",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"novelty":100,
+				"style":"Frankish"
+			}
+		},
+		{
+			id:"starting_gown7",
+			name:"Racy Venezian Dress",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"luxury":100,
+				"style":"Venezian"
+			}
+		},
+		{
+			id:"starting_gown8",
+			name:"Nouveau Catalan Gown",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"novelty":100,
+				"style":"Catalan"
+			}
+		},		{
 			id:"cane",
 			name:"Cane",
 			type:"Cane",
@@ -132,7 +183,11 @@
 		starting_gown:1,
 		starting_gown2:1,
 		starting_gown3:1,
-		starting_gown4:1
+		starting_gown4:1,
+		starting_gown5:1,
+		starting_gown6:1,
+		starting_gown7:1,
+		starting_gown8:1
 	},
 	luxury:{
 		"-100":"Vintage",

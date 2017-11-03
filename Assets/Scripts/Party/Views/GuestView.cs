@@ -77,7 +77,8 @@ namespace Ambition
 					int index = (new System.Random()).Next(sprites.Length);
 					_guest.Variant = Array.IndexOf(GuestArtConfig.GuestSprites, sprites[index]);
 				}
-
+// TODO: Delete this line after demo
+_guest.Variant = Index;
 				_image.sprite = !_isIntoxicated
 					? GuestArtConfig.GuestSprites[_guest.Variant].GetSprite(_guest)
 					: GuestArtConfig.GuestSprites[_guest.Variant].BoredSprite;
