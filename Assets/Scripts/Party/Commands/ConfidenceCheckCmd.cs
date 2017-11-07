@@ -28,7 +28,7 @@ namespace Ambition
 
 	            //Explanation Screen Pop Up goes here
 	            Dictionary<string, string> subs = new Dictionary<string, string>() {
-	            {"$FACTION", party.Faction},
+	            {"$FACTION", AmbitionApp.GetString(party.Faction)},
 				{"$REPUTATION", "25"},
 				{"$FACTIONREPUTATION", "50"}};
 				AmbitionApp.OpenMessageDialog("out_of_confidence_dialog", subs);

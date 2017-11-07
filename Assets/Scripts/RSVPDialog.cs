@@ -12,9 +12,10 @@ public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 {
 	public Text TitleTxt;
 	public Text BodyTxt;
+	public Text ObjectiveText;
+	public Text HostText;
 
 	private PartyVO _party;
-	private LocalizationModel _localization;
 
 
 	public void Initialize(PartyVO party)
@@ -24,8 +25,7 @@ public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 			{"$PARTYSIZE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())}};
 
 		_party = party;
-		_localization = AmbitionApp.GetModel<LocalizationModel>();
-		TitleTxt.text = _localization.GetString(DialogConsts.RSVP_DIALOG + DialogConsts.TITLE);
+		TitleTxt.text = party.Name;
 
 		if (smod.Hired.ContainsKey(ServantConsts.SPYMASTER))
 		{
@@ -38,18 +38,25 @@ public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 					enemyList += "\n" + enemy.Name;
 				}
 				subs.Add("$ENEMYLIST", enemyList);
-				dialogsubs.Add("$PROMPT", _localization.GetString("party_enemies", subs));
+				dialogsubs.Add("$PROMPT", AmbitionApp.GetString("party_enemies", subs));
 			}
 			else
 			{
-				dialogsubs.Add("$PROMPT", _localization.GetString("party_no_enemies"));
+				dialogsubs.Add("$PROMPT", AmbitionApp.GetString("party_no_enemies"));
 			}
 		}
 		else
 		{
-			dialogsubs.Add("$PROMPT", _localization.GetString("party_prompt"));
+			dialogsubs.Add("$PROMPT", AmbitionApp.GetString("party_prompt"));
 		}
-		BodyTxt.text = _localization.GetString(DialogConsts.RSVP_DIALOG + DialogConsts.BODY, dialogsubs);
+		BodyTxt.text = party.Invitation;
+		ObjectiveText.text = AmbitionApp.GetString("party_objectives");
+		HostText.text = AmbitionApp.GetString("rsvp");
+	}
+
+	public void test(params string[][] strings)
+	{
+		Debug.Log(strings.Length.ToString() + " params.");
 	}
 
     public void RSVPAction(int decision)

@@ -7,9 +7,9 @@ namespace Ambition
 	{
 		public void Execute (SeductionVO s)
 		{
-			NotableVO notable;
-			DevotionModel model = AmbitionApp.GetModel<DevotionModel>();
-			if (model.Notables.TryGetValue(s.Notable, out notable))
+			CharacterModel model = AmbitionApp.GetModel<CharacterModel>();
+			NotableVO notable = Array.Find(model.Notables, n=>n.Name == s.Notable);
+			if (notable != null)
 			{
 				int seductionChance =
 					(!notable.IsFemale ? model.SeductionModifier : model.SeductionAltModifier) +

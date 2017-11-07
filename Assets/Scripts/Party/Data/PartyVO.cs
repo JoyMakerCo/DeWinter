@@ -40,6 +40,9 @@ public class PartyVO
 	[JsonProperty("guests")]
 	public string[] Guests;
 
+	[JsonProperty("invitation")]
+	public string Invitation;
+
     //Drinking and Intoxication
     public int MaxIntoxication = 4;
     public int maxPlayerDrinkAmount = 3;
