@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
-using UnityEditor;
+
+#if (UNITY_EDITOR)
+	using UnityEditor;
+#endif
 
 namespace Util
 {
@@ -50,10 +53,12 @@ namespace Util
 				? GameObject.Instantiate<GameObject>(map.Prefab, position, rotation, parent) : null;
 		}
 
+#if (UNITY_EDITOR)
 		[MenuItem("Assets/Create/Create Prefab Map")]
 		public static void CreatePrefabConfig()
 		{
 			Util.ScriptableObjectUtil.CreateScriptableObject<PrefabMapConfig>();
 		}
+#endif
 	}
 }
