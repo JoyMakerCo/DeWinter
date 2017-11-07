@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if (UNITY_EDITOR)
+
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -56,3 +58,5 @@ public abstract class GraphEditorWindow<T> : EditorWindow
         GUI.DragWindow();
     }
 }
+
+#endif

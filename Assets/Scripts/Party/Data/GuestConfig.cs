@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using Util;
+#if (UNITY_EDITOR)
+using UnityEditor;
+#endif
 
 namespace Ambition
 {
@@ -19,10 +21,12 @@ namespace Ambition
 		public InterestMap[] InterestSprites;
 		public GuestSprite[] GuestSprites;
 
+#if (UNITY_EDITOR)
 		[MenuItem("Assets/Create/Create Guest Config")]
 		public static void CreatePrefabConfig()
 		{
 			ScriptableObjectUtil.CreateScriptableObject<GuestConfig>();
 		}
+#endif
 	}
 }

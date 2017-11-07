@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if (UNITY_EDITOR)
+using System;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -22,3 +23,4 @@ namespace Util
 		}
 	}
 }
+#endif

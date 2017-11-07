@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using Util;
+
+#if (UNITY_EDITOR)
+using UnityEditor;
+#endif
 
 namespace Ambition
 {
@@ -30,10 +33,12 @@ namespace Ambition
 			return default(SpriteMap).Equals(map) ? null : map.ID;
 		}
 
+#if (UNITY_EDITOR)
 		[MenuItem("Assets/Create/Create Sprite Config")]
 		public static void CreatePrefabConfig()
 		{
 			ScriptableObjectUtil.CreateScriptableObject<SpriteConfig>();
 		}
+#endif
 	}
 }
