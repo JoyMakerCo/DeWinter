@@ -12,6 +12,8 @@ namespace Ambition
 
 		public string Allegiance;
 
+		public string PlayerName = "Yvette DeWinter";
+
 		[JsonProperty("livre")]
 		private int _livre;
 		public int Livre

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 using UFlow;
 
@@ -13,10 +14,8 @@ namespace Ambition
 			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
 			GuestVO guest = new GuestVO();
 			Random rnd = new Random();
-			string title;
-			string name;
-			string lname;
 			int likeIndex;
+			Dictionary<string, string> phrases = new Dictionary<string, string>();
 
 			model.Remark = null;
 			GuestDifficultyVO stats = model.GuestDifficultyStats[room.Difficulty-1];
@@ -35,6 +34,7 @@ namespace Ambition
 			{
 				if (room.Guests[i] == null)
 				{
+					
 					guest = new GuestVO();
 					guest.Opinion = rnd.Next(stats.Opinion[0], stats.Opinion[1]);
 					guest.MaxInterest = rnd.Next(stats.MaxInterest[0], stats.MaxInterest[1]);
@@ -43,17 +43,17 @@ namespace Ambition
 					guest.IsFemale = rnd.Next(2) == 0;
 					if (guest.IsFemale)
 			        {
-						title = GetRandomDescriptor("female_title", rnd);
-						name = GetRandomDescriptor("female_name", rnd);
+						phrases["$TITLE"] = GetRandomDescriptor("female_title", rnd);
+						phrases["$FNAME"] = GetRandomDescriptor("female_name", rnd);
 			        }
 			        else
 			        {
-						title = GetRandomDescriptor("male_title", rnd);
-						name = GetRandomDescriptor("male_name", rnd);
+						phrases["$TITLE"] = GetRandomDescriptor("male_title", rnd);
+						phrases["$FNAME"] = GetRandomDescriptor("male_title", rnd);
 			        }
-					lname = "de " + GetRandomDescriptor("last_name", rnd);
-					guest.Name = title + " " + name + " " + lname;
-					guest.DisplayName = title + " " + lname;
+					phrases["$LNAME"] = GetRandomDescriptor("last_name", rnd);
+					guest.Name = AmbitionApp.GetString("name", phrases);
+					guest.DisplayName = AmbitionApp.GetString("display_name", phrases);
 
 					likeIndex = rnd.Next(0,model.Interests.Length);
 					guest.Like = model.Interests[likeIndex];

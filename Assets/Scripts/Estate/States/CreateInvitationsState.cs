@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UFlow;
+using Core;
 
 namespace Ambition
 {
@@ -54,6 +55,9 @@ namespace Ambition
 		private void AddParty(PartyVO party)
 		{
 			Random rnd = new Random();
+			CharacterModel characters = AmbitionApp.GetModel<CharacterModel>();
+// TODO: More robust host system
+party.Host = characters.Notables[rnd.Next(characters.Notables.Length)];
 
 			if (party.Faction == null)
 			{
@@ -66,15 +70,27 @@ namespace Ambition
 			if (party.Turns == 0) party.Turns = (party.Importance * 5) + 1;
 
 			string str = (party.ID != null) ? AmbitionApp.GetString("party.name." + party.ID) : null;
+			string reason = GetRandomText("party_reason."+party.Faction);
 			party.Name = (str != null) ? str :  AmbitionApp.GetString("party.name.default",
 				new Dictionary<string, string>(){
-					{"%IMPORTANCE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())},
-					{"%FACTION", AmbitionApp.GetString("faction." + party.Faction)}
+					{"$HOST", party.Host.Name},
+					{"$IMPORTANCE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())},
+					{"$REASON", reason}
 				});
 
 			str = (party.ID != null) ? AmbitionApp.GetString("party.description." + party.ID) : null;
 			party.Description = (str != null) ? str :  AmbitionApp.GetString("party.description.default");
-			party.Description = str;
+			str = AmbitionApp.GetString("party_fluff", new Dictionary<string, string>(){
+				{"$INTRO",GetRandomText("party_fluff_intro")},
+				{"$ADJECTIVE",GetRandomText("party_fluff_adjective")},
+				{"$NOUN",GetRandomText("party_fluff_noun")}});
+			party.Invitation = AmbitionApp.GetString("party_invitation", new Dictionary<string, string>(){
+				{"$PLAYER", AmbitionApp.GetModel<GameModel>().PlayerName},
+				{"$PRONOUN", AmbitionApp.GetString(party.Host.IsFemale ? "her" : "his")},
+				{"$PARTY",reason},
+				{"$DATE", AmbitionApp.GetModel<CalendarModel>().GetDateString(party.Date)},
+				{"$SIZE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())},
+				{"$FLUFF", str}});
 			if (!_calendar.Parties.ContainsKey(party.Date))
 			{
 				_calendar.Parties.Add(party.Date, new List<PartyVO>{party});
@@ -85,6 +101,12 @@ namespace Ambition
 				_calendar.Parties[party.Date].Add(party);
 				AmbitionApp.SendMessage<PartyVO>(party);
 			}
+		}
+
+		private string GetRandomText(string key)
+		{
+			string [] phrases = AmbitionApp.GetPhrases(key);
+			return phrases[new Random().Next(phrases.Length)];
 		}
 	}
 }

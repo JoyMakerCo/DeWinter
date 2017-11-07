@@ -7,16 +7,14 @@ namespace Ambition
 	{
 		public void Execute (AdjustValueVO vo)
 		{
-			NotableVO notable;
-			DevotionModel model = AmbitionApp.GetModel<DevotionModel>();
-			if (vo.IsRequest && model.Notables.TryGetValue(vo.Type, out notable))
+			CharacterModel model = AmbitionApp.GetModel<CharacterModel>();
+			NotableVO notable = Array.Find(model.Notables, n=>n.Name == vo.Type);
+			if (vo.IsRequest && notable != null)
 			{
 				notable.Devotion += (int)vo.Amount;
-				model.Notables[vo.Type] = notable;
 				vo.IsRequest = false;
 				AmbitionApp.SendMessage<AdjustValueVO>(vo);
 			}
 		}
 	}
 }
-

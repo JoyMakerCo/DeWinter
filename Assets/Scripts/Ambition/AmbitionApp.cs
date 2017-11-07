@@ -186,5 +186,10 @@ namespace Ambition
 		{
 			return App.Service<ModelSvc>().GetModel<LocalizationModel>().GetString(key, substitutions);
 		}
+
+		public static string[] GetPhrases(string key)
+		{
+			return App.Service<ModelSvc>().GetModel<LocalizationModel>().GetList(key);
+		}
 	}
 }

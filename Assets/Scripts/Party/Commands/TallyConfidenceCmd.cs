@@ -20,7 +20,7 @@ namespace Ambition
 
 
 			//TODO: We can't configure this??
-	        if (party.Faction != "Military")
+	        if (party.Faction != "military")
 	        {
 	            int modestyLike = faction.Modesty;
 				int luxuryLike = faction.Luxury;

@@ -14,7 +14,7 @@ namespace Ambition
 			AmbitionApp.RegisterModel<ServantModel>();
 			AmbitionApp.RegisterModel<CalendarModel>();
 			AmbitionApp.RegisterModel<PartyModel>();
-			AmbitionApp.RegisterModel<DevotionModel>();
+			AmbitionApp.RegisterModel<CharacterModel>();
 			AmbitionApp.RegisterModel<EventModel>();
 			AmbitionApp.RegisterModel<QuestModel>();
 			AmbitionApp.RegisterModel<MapModel>();

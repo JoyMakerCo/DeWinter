@@ -5,7 +5,7 @@ using Core;
 
 namespace Ambition
 {
-	public class DevotionModel : DocumentModel
+	public class CharacterModel : DocumentModel
 	{
 		[JsonProperty("SeductionMod")]
 		public int SeductionModifier;
@@ -22,9 +22,9 @@ namespace Ambition
 		[JsonProperty("SeductionDevotion")]
 		public int SeductionDevotion;
 
-		[JsonProperty("Notables")]
-		public Dictionary <string, NotableVO> Notables;
+		[JsonProperty("characters")]
+		public NotableVO[] Notables;
 
-		public DevotionModel() : base("Devotion") {}
+		public CharacterModel() : base("CharacterData") {}
 	}
 }
