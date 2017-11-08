@@ -68,7 +68,6 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<EndTutorialCmd>(PartyMessages.END_PARTY);
 
 
-
 			// UFlow Associations
 			// In the future, this will be handled by config
 			AmbitionApp.RegisterState<StartConversationState>("InitConversation");

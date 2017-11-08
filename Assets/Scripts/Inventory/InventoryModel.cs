@@ -21,6 +21,8 @@ namespace Ambition
 		[JsonProperty("sellbackMultiplier")]
 		public float SellbackMultiplier;
 
+		private string[] _styles;
+
 		[JsonProperty("styles")]
 		public string [] Styles;
 
@@ -39,7 +41,7 @@ namespace Ambition
 		[JsonProperty("marketCapacity")]
 		public int NumMarketSlots;
 
-		[JsonProperty("startingStyle")]
+		[JsonProperty("style")]
 		public string CurrentStyle
 		{
 			set {
