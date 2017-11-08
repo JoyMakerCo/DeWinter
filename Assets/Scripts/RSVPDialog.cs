@@ -29,7 +29,7 @@ public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 			{"$PARTYSIZE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())}};
 
 		_party = party;
-		TitleTxt.text = party.Name;
+		TitleTxt.text = party.Host.Name;
 
 		if (smod.Hired.ContainsKey(ServantConsts.SPYMASTER))
 		{
