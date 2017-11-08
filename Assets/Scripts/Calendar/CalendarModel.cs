@@ -42,7 +42,10 @@ namespace Ambition
 		[JsonProperty("startDate")]
 		private string _startDateStr
 		{
-			set { _startDate = DateTime.Parse(value); }
+			set {
+				_startDate = DateTime.Parse(value);
+//				NextStyleSwitchDay = _startDate.AddDays(3);
+			}
 		}
 
 		public DateTime Today

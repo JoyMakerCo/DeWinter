@@ -10,10 +10,14 @@ using Core;
 
 public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 {
+	public SpriteConfig InvitationConfig;
+
 	public Text TitleTxt;
 	public Text BodyTxt;
 	public Text ObjectiveText;
 	public Text HostText;
+	public Image Seal;
+	public Image Stamp;
 
 	private PartyVO _party;
 
@@ -25,7 +29,7 @@ public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 			{"$PARTYSIZE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())}};
 
 		_party = party;
-		TitleTxt.text = party.Name;
+		TitleTxt.text = party.Host.Name;
 
 		if (smod.Hired.ContainsKey(ServantConsts.SPYMASTER))
 		{
@@ -52,6 +56,8 @@ public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 		BodyTxt.text = party.Invitation;
 		ObjectiveText.text = AmbitionApp.GetString("party_objectives");
 		HostText.text = AmbitionApp.GetString("rsvp");
+		Seal.sprite = InvitationConfig.GetSprite("seal." + party.Faction);
+		Stamp.sprite = InvitationConfig.GetSprite(party.Faction);
 	}
 
 	public void test(params string[][] strings)

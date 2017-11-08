@@ -11,6 +11,8 @@ public class PartyVO
     public string ID;
 
     public string Name;
+	
+	[JsonProperty("description")]
     public string Description;
 
 	[JsonProperty("faction")]

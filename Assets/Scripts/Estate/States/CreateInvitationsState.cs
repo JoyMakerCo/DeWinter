@@ -69,17 +69,17 @@ party.Host = characters.Notables[rnd.Next(characters.Notables.Length)];
 			if (party.Importance == 0) party.Importance = rnd.Next(1,4);
 			if (party.Turns == 0) party.Turns = (party.Importance * 5) + 1;
 
-			string str = (party.ID != null) ? AmbitionApp.GetString("party.name." + party.ID) : null;
-			string reason = GetRandomText("party_reason."+party.Faction);
+			string str = (party.ID != null) ? AmbitionApp.GetString("party.description." + party.ID) : null;
+			party.Description = (str != null) ? str :  GetRandomText("party_reason."+party.Faction);
+
+			str = (party.ID != null) ? AmbitionApp.GetString("party.name." + party.ID) : null;
 			party.Name = (str != null) ? str :  AmbitionApp.GetString("party.name.default",
 				new Dictionary<string, string>(){
 					{"$HOST", party.Host.Name},
 					{"$IMPORTANCE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())},
-					{"$REASON", reason}
+					{"$REASON", party.Description}
 				});
 
-			str = (party.ID != null) ? AmbitionApp.GetString("party.description." + party.ID) : null;
-			party.Description = (str != null) ? str :  AmbitionApp.GetString("party.description.default");
 			str = AmbitionApp.GetString("party_fluff", new Dictionary<string, string>(){
 				{"$INTRO",GetRandomText("party_fluff_intro")},
 				{"$ADJECTIVE",GetRandomText("party_fluff_adjective")},
@@ -87,7 +87,7 @@ party.Host = characters.Notables[rnd.Next(characters.Notables.Length)];
 			party.Invitation = AmbitionApp.GetString("party_invitation", new Dictionary<string, string>(){
 				{"$PLAYER", AmbitionApp.GetModel<GameModel>().PlayerName},
 				{"$PRONOUN", AmbitionApp.GetString(party.Host.IsFemale ? "her" : "his")},
-				{"$PARTY",reason},
+				{"$PARTY",party.Description},
 				{"$DATE", AmbitionApp.GetModel<CalendarModel>().GetDateString(party.Date)},
 				{"$SIZE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())},
 				{"$FLUFF", str}});

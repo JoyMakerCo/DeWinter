@@ -15,7 +15,6 @@ namespace Ambition
 			GuestVO guest = new GuestVO();
 			Random rnd = new Random();
 			int likeIndex;
-			Dictionary<string, string> phrases = new Dictionary<string, string>();
 
 			model.Remark = null;
 			GuestDifficultyVO stats = model.GuestDifficultyStats[room.Difficulty-1];
@@ -43,17 +42,18 @@ namespace Ambition
 					guest.IsFemale = rnd.Next(2) == 0;
 					if (guest.IsFemale)
 			        {
-						phrases["$TITLE"] = GetRandomDescriptor("female_title", rnd);
-						phrases["$FNAME"] = GetRandomDescriptor("female_name", rnd);
+						guest.Title = GetRandomDescriptor("female_title", rnd);
+						guest.FirstName = GetRandomDescriptor("female_name", rnd);
 			        }
 			        else
 			        {
-						phrases["$TITLE"] = GetRandomDescriptor("male_title", rnd);
-						phrases["$FNAME"] = GetRandomDescriptor("male_title", rnd);
+						guest.Title = GetRandomDescriptor("male_title", rnd);
+						guest.FirstName = GetRandomDescriptor("male_name", rnd);
 			        }
-					phrases["$LNAME"] = GetRandomDescriptor("last_name", rnd);
-					guest.Name = AmbitionApp.GetString("name", phrases);
-					guest.DisplayName = AmbitionApp.GetString("display_name", phrases);
+					guest.LastName = GetRandomDescriptor("last_name", rnd);
+					guest.LastName  = "aeiouAEIOU".Contains(guest.LastName.Substring(0,1))
+						? (" d'" + guest.LastName)
+						: (" de " + guest.LastName);
 
 					likeIndex = rnd.Next(0,model.Interests.Length);
 					guest.Like = model.Interests[likeIndex];

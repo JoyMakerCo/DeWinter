@@ -21,7 +21,13 @@ namespace Ambition
 			get { return _party; }
 			set {
 				_party = value;
-				PartyNameTxt.text = _party.Name;
+				string partyName = AmbitionApp.GetString("party.name." + _party.ID);
+				PartyNameTxt.text = partyName != null
+					? partyName
+					: AmbitionApp.GetString("party.name.default", new Dictionary<string, string>(){
+						{"$HOST",_party.Host.LastName},
+						{"$IMPORTANCE",AmbitionApp.GetString("party_importance."+_party.Importance.ToString())},
+						{"$REASON",_party.Description}});
 				FactionIcon.sprite = FactionSpriteConfig.GetSprite(_party.Faction);
 				Highlight.enabled = _party.RSVP == 1;
 				Strikethrough.enabled = _party.RSVP == -1;

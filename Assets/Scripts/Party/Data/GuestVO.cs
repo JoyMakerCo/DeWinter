@@ -7,11 +7,28 @@ namespace Ambition
 {
 	public class GuestVO
 	{
-		[JsonProperty("Name")]
-	    public string Name;
+	    public string Name
+	    {
+	    	get {
+	    		return Title + " " + DisplayName;
+    		}
+	    }
 
-		[JsonProperty("DisplayName")]
-	    public string DisplayName;
+		[JsonProperty("title")]
+	    public string Title;
+
+		[JsonProperty("first_name")]
+	    public string FirstName;
+
+		[JsonProperty("last_name")]
+	    public string LastName;
+
+	    public string DisplayName
+	    {
+	    	get {
+				return FirstName + " " + LastName;
+			}
+	    }
 
 		[JsonProperty("Like")]
 	    public string Like;
@@ -32,8 +49,9 @@ namespace Ambition
 		public GuestVO() {}
 		public GuestVO(GuestVO guest)
 		{
-			Name = guest.Name;
-			DisplayName = guest.DisplayName;
+			FirstName = guest.FirstName;
+			LastName = guest.LastName;
+			Title = guest.Title;
 			Like = guest.Like;
 			Disike = guest.Disike;
 			IsFemale = guest.IsFemale;
