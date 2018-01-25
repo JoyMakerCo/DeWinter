@@ -23,6 +23,9 @@ namespace Ambition
 			private set;
 		}
 
+		[JsonProperty("Baroque")] // "Baroque" is a scale between Rococo (0) and Traditional (100)
+		public int[] Baroque;
+
 		[JsonProperty("Allegiance")]
 		public int Allegiance; //-100 means the Faction is devoted to the Third Estate, 100 means they are devoted to the Crown
 
