@@ -7,15 +7,16 @@ namespace Ambition
 {
 	public class MapViewMediator : MonoBehaviour
 	{
-		private const int PADDING = 5;
+		private const int PAN_TOLERTANCE = 50;
+		private const float PAN_VELOCITY = .005f;
 
 	    public GameObject roomButtonPrefab;
-	    public GameObject houseOutlinePrefab; //This is used to Outline the house when it's done
 
 	    private Dictionary<RoomVO, RoomButton> _buttons;
 
 	    private MapModel _model;
 		private PartyModel _partyModel;
+		private RectTransform _rect;
 
 		public RoomVO currentPlayerRoom
 		{
@@ -35,65 +36,73 @@ namespace Ambition
 
  		void OnDestroy()
 		{
+			AmbitionApp.Unsubscribe<RoomVO>(HandleRoom);
 			_buttons.Clear();
 			_buttons = null;
-			AmbitionApp.Unsubscribe<RoomVO>(HandleRoom);
 		}
 
 	    void Start()
 	    {
+			_rect = GetComponent<RectTransform>();
 			_model = AmbitionApp.GetModel<MapModel>();
 			_partyModel = AmbitionApp.GetModel<PartyModel>();
 			AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, _partyModel.Party);
 
 			//Make the Room Buttons ----------------------
 	        //Positioning (Set Up)
-			int buttonWidth = (int)roomButtonPrefab.GetComponent<RectTransform>().rect.width;
 			_buttons = new Dictionary<RoomVO, RoomButton>();
 
-			//Putting an Outline around the Map/House
-	        GameObject houseOutline = Instantiate<GameObject>(houseOutlinePrefab);
-	        houseOutline.transform.SetParent(gameObject.transform, false);
-			((RectTransform)houseOutline.transform).sizeDelta = new Vector2(((_model.Map.Rooms.GetLength(0) + PADDING)*buttonWidth), ((_model.Map.Rooms.GetLength(1) + PADDING)*buttonWidth));
-
 	        //Map Set Up is complete, notify the rest of the game
-			foreach (RoomVO rm in Map.Rooms)
-			{
-				DrawRoom(rm, buttonWidth);
-			}
+	        Array.ForEach(Map.Rooms, DrawRoom);
+			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
 			currentPlayerRoom = Map.Entrance;
+			Recenter();
 	    }
 
-		private void DrawRoom(RoomVO room, int buttonWidth)
+	    void Update()
+	    {
+	    	if (Input.GetKey(KeyCode.Space))
+	    		Recenter();
+	    	else
+	    	{
+		    	Vector2 offset = _rect.pivot;
+
+		    	if (Input.mousePosition.x < PAN_TOLERTANCE)
+					offset[0] -= _model.MapScale*PAN_VELOCITY;
+				else if (Input.mousePosition.x > Screen.width-PAN_TOLERTANCE)
+					offset[0] += _model.MapScale*PAN_VELOCITY;
+
+				if (Input.mousePosition.y < PAN_TOLERTANCE)
+					offset[1] -= _model.MapScale*PAN_VELOCITY;
+				else if (Input.mousePosition.y > Screen.height-PAN_TOLERTANCE)
+					offset[1] += _model.MapScale*PAN_VELOCITY;
+
+				_rect.pivot = offset;
+			}
+	    }
+
+	    private void Recenter()
+	    {
+			Vector2 offset = new Vector2();
+/*	    	if (currentPlayerRoom != null)
+	    	{
+	    		TODO: Recenter on Player
+	    	}
+*/
+	 		_rect.pivot = offset;
+	    }
+
+		private void DrawRoom(RoomVO room)
 		{
 			if (room != null)
 			{
-				GameObject mapButton = Instantiate(roomButtonPrefab) as GameObject;
+				GameObject mapButton = Instantiate<GameObject>(roomButtonPrefab, gameObject.transform) as GameObject;
 				RoomButton roomButton = mapButton.GetComponent<RoomButton>();
-				mapButton.transform.SetParent(gameObject.transform, false);
-				mapButton.transform.localPosition = new Vector3((room.Coords[0]-(Map.Rooms.GetLength(0)>>1))*(buttonWidth + PADDING), (room.Coords[1] - (Map.Rooms.GetLength(1)>>1))*(PADDING + buttonWidth), 0);
+				mapButton.transform.SetAsFirstSibling();
 				roomButton.Room = room;
 				_buttons.Add(room, roomButton);
 			}
 	    }
-
-		private void HandleRoom(RoomVO room)
-		{
-			if (_buttons != null)
-			{
-				foreach(KeyValuePair<RoomVO, RoomButton> kvp in _buttons)
-				{
-					if (kvp.Key == room)
-					{
-						kvp.Value.IsCurrent = true;
-					}
-					else
-					{
-						kvp.Value.IsAdjacent = kvp.Key.IsNeighbor(room);
-					}
-				}
-			}
-		}
 
 	    public void MovePlayerToEntrance()
 	    {
@@ -114,5 +123,16 @@ namespace Ambition
 	            room.Cleared = true;
 	        }
 	    }
+
+		private void HandleRoom(RoomVO room)
+		{
+			if (_buttons != null)
+			{
+				foreach(KeyValuePair<RoomVO, RoomButton> kvp in _buttons)
+				{
+					kvp.Value.UpdatePlayerRoom(room);
+				}
+			}
+		}
 	}
 }

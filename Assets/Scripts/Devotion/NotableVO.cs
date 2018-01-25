@@ -8,9 +8,6 @@ namespace Ambition
 		[JsonProperty("Background")]
 		public string Background;
 
-		[JsonProperty("Title")]
-		public string Title;
-
 		[JsonProperty("Faction")]
 		public string Faction;
 

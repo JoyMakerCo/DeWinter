@@ -2,29 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core;
+using UnityEngine;
 
 namespace Ambition
 {
 	public class GenerateMapCmd : ICommand<PartyVO>
 	{
-		private Random _rnd;
+		// TODO: Make this configurable
+		private const int ENEMY_CHANCE = 50;
+		private const float PHI = 1.6f;
+		private const float PHI1 = .625f;
+		private const int MAX_ROOM_WIDTH = 16;
+		private const int MIN_ROOM_WIDTH = 4;
+
+		private System.Random _rnd;
+		private Dictionary<RoomVO, List<RoomVO>> _rooms=new Dictionary<RoomVO, List<RoomVO>>();
+		private Dictionary<int[], RoomVO[]> _walls = new Dictionary<int[], RoomVO[]>();
 
 		public void Execute(PartyVO party)
 		{
 			MapModel model;
 			MapVO map;
+			RoomVO room;
 			model = AmbitionApp.GetModel<MapModel>();
-			_rnd = new Random();
+			_rnd = new System.Random();
+
 
 			// Determine if the party uses a preset, or build a map from scratch
-			if (!model.Maps.TryGetValue(party.MapID, out map))
+			if (party.MapID == null || !model.Maps.TryGetValue(party.MapID, out map))
 			{
-				map = BuildRandomMap(party.Importance);
+				map = BuildRandomMap(party);
 			}
 
 			// Fill in the blanks
-			foreach(RoomVO room in map.Rooms)
+			for(int i=map.Rooms.Length-1; i>0; i--)
 			{
+				room = map.Rooms[i];
 				if (room != null)
 				{
 					if (string.IsNullOrEmpty(room.Name))
@@ -37,70 +50,124 @@ namespace Ambition
 						room.Difficulty = 1 + _rnd.Next(5);
 
 					room.MoveThroughChance = GenerateMoveThroughChance(room);
-
-					room.Neighbors = FindNeighbors(room, map);
-
-
-					if (room != null
-						&& map.Entrance != room
-						&& !room.HostHere
-						&& _rnd.Next(2) == 0)
-					{
-						
-					}
 				}
-
-				// Setup the Vestibule
-				map.Entrance.Difficulty = 0;
-				map.Entrance.Cleared = true;
-				if (map.Entrance.Name == null)
-					map.Entrance.Name = "The Vestibule";
-				map.Entrance.Features = new string[0];
 			}
 			party.Enemies = PopulateEnemies(map, EnemyInventory.enemyInventory.FindAll(e=>e.Faction == party.Faction));
 			model.Map = map;
 		}
 
-		private RoomVO[] FindNeighbors(RoomVO room, MapVO map)
+		private MapVO BuildRandomMap(PartyVO party)
 		{
-			List<RoomVO> result = new List<RoomVO>();
-			int[] xy = room.Coords;
-			if (ValidCoords(map.Rooms, xy[0]-1, xy[1])) result.Add(map.Rooms[xy[0]-1, xy[1]]);
-			if (ValidCoords(map.Rooms, xy[0]+1, xy[1])) result.Add(map.Rooms[xy[0]+1, xy[1]]);
-			if (ValidCoords(map.Rooms, xy[0], xy[1]-1)) result.Add(map.Rooms[xy[0], xy[1]-1]);
-			if (ValidCoords(map.Rooms, xy[0], xy[1]+1)) result.Add(map.Rooms[xy[0], xy[1]+1]);
+party.Importance = 2; //Forcing importance
 
-			return result.FindAll(r => r != null).ToArray();
-		}
-
-		private MapVO BuildRandomMap(int partySize)
-		{
 			MapVO map = new MapVO();
-			switch (partySize)
-			{
-				case 1:
-					map.Rooms = new RoomVO[3,3];
-					break;
-	            case 2:
-					map.Rooms = new RoomVO[5,3];
-	                break;
-	            case 3:
-					map.Rooms = new RoomVO[9,3];
-					break;
-			}
+			FactionVO faction = AmbitionApp.GetModel<FactionModel>().Factions[party.Faction];
 
-			// TODO: Floorplan map building
-			for (int i=map.Rooms.GetLength(0)-1; i>=0; i--)
+			// Room size is proportional to how "baroque" the structure is.
+			// Curvilinear features are a function of "modernness," which will be determined by the host.
+			// Overall size of the house will be proportional to the "Importance" of the party.
+			int hyphen = party.Importance + _rnd.Next(3); // the width of the hyphen in rooms
+			int pavilion = party.Importance + _rnd.Next(3); // length of the pavilion in rooms
+			int jut=_rnd.Next(0,2);
+			int spacing = (int)(_rnd.Next(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
+			float curve1 = .1f*_rnd.Next(6,11);
+			float delta;
+			RoomVO room;
+
+			if (spacing < MIN_ROOM_WIDTH) spacing = MIN_ROOM_WIDTH;
+			int salonX = _rnd.Next(spacing, spacing+spacing);
+			int salonY = _rnd.Next(spacing, (int)(spacing*PHI));
+			int salonH = _rnd.Next(salonY, spacing+spacing);
+			delta = 0f;//(float)((salonX - _rnd.Next(spacing, salonX)>>1));
+
+			// Make the vestibule
+			room=MakeRectRoom((int)(delta), 0, salonX - (int)(delta + delta), salonY);
+			room.Cleared = true;
+			room.Features = new string[0];
+			room.Difficulty = 0;
+			room.Name = "Vestibule";
+
+			// Make the Salon
+			room = MakeRectRoom(0, salonY, salonX, salonH);
+			room.Name = "Salon";
+
+			MakeRectRoom(salonX, salonY, spacing, salonH);
+			MakeRectRoom(-spacing, salonY, spacing, salonH);
+
+			MakeRectRoom(salonX-(int)(delta), 0, spacing+(int)(delta), salonY);
+			MakeRectRoom(-spacing, 0, spacing+(int)(delta), salonY);
+
+
+			for(int column=0; column<=hyphen; column++)
 			{
-				for (int j=map.Rooms.GetLength(1)-1; j>=0; j--)
+				delta = column == hyphen ? 1 : (float)(hyphen-column);
+				for (int numrooms = (int)Math.Ceiling(pavilion*curve1/delta)-1; numrooms>=0; numrooms--)
 				{
-					map.Rooms[i,j] = new RoomVO();
-					map.Rooms[i,j].Coords = new int[]{i,j};
+					MakeRectRoom(salonX+spacing+column*spacing, -numrooms*spacing,
+						spacing, numrooms > 0 ? spacing : salonY);
+					MakeRectRoom(-(column+2)*spacing, -numrooms*spacing,
+						spacing, numrooms > 0 ? spacing : salonY);
+				}
+				for (int numrooms = 1+(int)Math.Floor((float)(jut)/delta); numrooms>0; numrooms--)
+				{
+					MakeRectRoom(
+						salonX+spacing+column*spacing,
+						salonY+(numrooms-1)*salonH,
+						spacing, numrooms > 1 ? spacing : salonH);
+					MakeRectRoom(
+						-(column+2)*spacing,
+						salonY+(numrooms-1)*salonH,
+						spacing, numrooms > 1 ? spacing : salonH);
 				}
 			}
+
+			foreach (KeyValuePair<RoomVO, List<RoomVO>> kvp in _rooms)
+			{
+				kvp.Key.Doors = kvp.Value.Where(r=>r!=kvp.Key).ToArray();
+			}
+			map.Rooms = _rooms.Keys.ToArray();
 			return map;
 		}
 
+		private RoomVO MakeRectRoom(int X, int Y, int W, int H)
+		{
+			return MakeRoom(X, Y, X+W, Y, X+W, Y+H, X, Y+H);
+		}
+
+		private RoomVO MakeRoom(params int[] coords)
+		{
+			int len = coords.Length;
+			RoomVO Room;
+			RoomVO room = new RoomVO();
+			int[] wallCoords;
+			int[] wall;
+			_rooms[room] = new List<RoomVO>();
+			room.Vertices = coords;
+			for (int i=0; i<len; i+=2)
+			{
+				wallCoords = new int[4];
+				for (int j=0; j<4; j++)
+				{
+					wallCoords[j]=coords[(i+j)%len];
+				}
+				wall = _walls.Keys.FirstOrDefault(w=>CoordsEqual(w, wallCoords));
+				if (wall==null) _walls.Add(wallCoords, new RoomVO[]{room,null});
+				else if (_walls[wall][0] != room)
+				{
+					_walls[wall][1] = room;
+					Room = _walls[wall][0];
+					_rooms[Room].Add(room);
+					_rooms[room].Add(Room);
+				}
+			}
+			return room;
+		}
+
+		public bool CoordsEqual(int[] coords1, int[] coords2)
+		{
+			return coords1.SequenceEqual(coords2) ||
+				coords1.SequenceEqual(new int[]{coords2[2], coords2[3], coords2[0], coords2[1]});
+		}
 
 		private string GenerateRandomName(string[] adjectives, string [] names)
 	    {
@@ -135,34 +202,26 @@ namespace Ambition
 
 	    private EnemyVO[] PopulateEnemies(MapVO map, List<EnemyVO> enemies)
 	    {
-	    	int W = map.Rooms.GetLength(0);
-			int H = map.Rooms.GetLength(1);
-			RoomVO room;
+	    	// TODO: Isolate enemies appropriate to the current party
 			List<EnemyVO> result=new List<EnemyVO>();
+			if (result == null) return new EnemyVO[]{}; // No Enemies
+
+			int numRooms = map.Rooms.Length-1;
+			RoomVO room;
+	    	int i;
+
+			System.Random rnd = new System.Random();
 			foreach (EnemyVO enemy in enemies)
 			{
-				do
+				i = rnd.Next(1,numRooms);
+				room = map.Rooms[i];
+				if (!room.HostHere && rnd.Next(100) < ENEMY_CHANCE)
 				{
-					room = map.Rooms[_rnd.Next(W), _rnd.Next(H)];
-				}
-				while (room == null);
-				if (room != map.Entrance
-					&& !room.HostHere
-					&& _rnd.Next(2) == 0)
-				{
+					if (room.Enemies == null) room.Enemies = new List<EnemyVO>();
 					room.Enemies.Add(enemy);
-					result.Add(enemy);
 				}
 			}
 			return result.ToArray();
-	    }
-
-	    private bool ValidCoords(RoomVO[,] grid, int x, int y)
-	    {
-	    	return x >= 0
-	    		&& y >= 0
-	    		&& x < grid.GetLength(0)
-	    		&& y < grid.GetLength(1);
 	    }
 	}
 }

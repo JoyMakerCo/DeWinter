@@ -1,4 +1,5 @@
 ﻿{
+	scale:50.0,
 	roomAdjectiveList:[
         "Lovely",
         "Shady",
@@ -33,44 +34,100 @@
 		"Tutorial":{
 			rooms:[
 				{
-					name:"The Vestibule",
+					name:"Vestibule",
 					difficulty:0,
-					coords:[1,0]
+					vertices:[
+						8,0,
+						8,4,
+						4,4,
+						4,0,
+					]
 				},
 				{
-					coords:[1,1],
+					name:"Salon",
+					vertices:[
+						8,4,
+						8,8,
+						4,8,
+						4,4,
+					],
 					difficulty:1,
 					timer:7.5,
 					moveThroughChance:0
 				},
 				{
-					coords:[1,2],
+					name:"Middle Room",
+					vertices:[
+						8,8,
+						8,12,
+						4,12,
+						4,8,
+					],
 					difficulty:2,
 					timer:6.25,
 					moveThroughChance:0
 				},
 				{
-					coords:[0,2],
+					name:"Left Middle Room",
+					vertices:[
+						0,8,
+						0,12,
+						4,12,
+						4,8,
+					],
 					difficulty:2
 				},
 				{
-					coords:[2,2],
+					name:"Right Middle Room",
+					vertices:[
+						8,8,
+						8,12,
+						12,12,
+						12,8,
+					],
 					difficulty:3
 				},
 				{
 					name: "The Host's Quarters",
-					coords:[1,3],
+					vertices:[
+						4,12,
+						4,16,
+						8,16,
+						8,12,
+					],
 					difficulty:5,
 					features:["Host"]
 				},
 				{
-					coords:[0,3],
+					name:"Left Top Room",
+					vertices:[
+						0,12,
+						0,16,
+						4,16,
+						4,12,
+					],
 					difficulty:3
 				},
 				{
+					name:"Right Top Room",
 					difficulty:2,
-					coords:[2,3]
+					vertices:[
+						8,12,
+						8,16,
+						12,16,
+						12,12,
+					]
 				}
+			],
+			doors:[
+				[1],
+				[0,2],
+				[1,3,4,5],
+				[2,6],
+				[2,7],
+				[2,6,7],
+				[3,5],
+				[4,5]
 			]
 		}
 	}

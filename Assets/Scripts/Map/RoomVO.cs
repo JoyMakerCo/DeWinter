@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Ambition
 {
@@ -17,16 +18,13 @@ namespace Ambition
 		[JsonProperty("moveThroughChance")]
 		public int MoveThroughChance = -1; // -1 indicates a value not yet assigned
 
-		[JsonProperty("timer")]
-		public float TurnTimer; // Custom TurnTimer?
-
+		public MapVO Map;
 	    public bool Cleared=false;
-	    public bool Revealed=false;
 
 		public RewardVO [] Rewards;
 		public GuestVO [] Guests;
 		public List<EnemyVO> Enemies;
-		public string [] Features;
+		public string [] Features=new string[0];
 
 		public bool HostHere
 		{
@@ -35,21 +33,34 @@ namespace Ambition
 			}
 		}
 
-		[JsonProperty("coords")] // Temp property until room drawing is better defined
-		public int[] Coords = new int[2];
+		public bool IsAdjacentTo(RoomVO room)
+		{
+			return Array.IndexOf(Doors, room) >= 0;
+		}
 
-	    // Drawing instructions
-		// TODO: Expand the visual description of the room
-//		[JsonProperty("shape")]
-//		public Vector2[] Shape;
+		[JsonProperty("vertices")]
+		public int[] Vertices;
 
-	    public string Style;
+		// Set in the map file or map generation 
+		public RoomVO[] Doors;
 
-	    public RoomVO[] Neighbors;
+		private int[] _bounds = null;
+		internal int[] GetBounds()
+		{
+			if (_bounds == null)
+			{
+				_bounds = new int[4];
+				_bounds[0] = Vertices.Where((v,i)=>i%2==0).Min();
+				_bounds[1] = Vertices.Where((v,i)=>i%2==1).Min();
+				_bounds[2] = Vertices.Where((v,i)=>i%2==0).Max();
+				_bounds[3] = Vertices.Where((v,i)=>i%2==1).Max();
+			}
+			return _bounds;
+		}
 
-	    public bool IsNeighbor(RoomVO room)
-	    {
-	    	return Neighbors != null && Array.IndexOf(Neighbors, room) >= 0;
-	    }
+		public override string ToString ()
+		{
+			return "[RoomVO: " + Name + "]";
+		}
 	}
 }

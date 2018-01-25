@@ -10,33 +10,26 @@ namespace Ambition
 		[JsonProperty("name")]
 		public string Name;
 
-		public RoomVO Entrance;
+		public RoomVO Entrance
+		{
+			get { return Rooms!=null ? Rooms[0] : null; }
+		}
 
-		public RoomVO[,] Rooms;
+		[JsonProperty("rooms", Order=0)]
+		public RoomVO[] Rooms;
 
-		[JsonProperty("rooms")]
-		protected RoomVO[] _rooms
+		[JsonProperty("doors", Order=1)]
+		private int[][] _doors
 		{
 			set
 			{
-				int Y=0;
-				int X=0;
-				Entrance = value[0];
-
-				foreach (RoomVO room in value)
+				for (int i=value.Length-1; i>=0; i--)
 				{
-					if (room.Coords[0] > X)
-						X = room.Coords[0];
-					if (room.Coords[1] > Y)
-						Y = room.Coords[1];
-				}
-
-				Rooms = new RoomVO[X+1, Y+1];
-				foreach (RoomVO room in value)
-				{
-					X = room.Coords[0];
-					Y = room.Coords[1];
-					Rooms[X, Y] = room;
+					Rooms[i].Doors = new RoomVO[value[i].Length];
+					for(int j=value[i].Length-1; j>=0; j--)
+					{
+						Rooms[i].Doors[j] = Rooms[value[i][j]];
+					}
 				}
 			}
 		}

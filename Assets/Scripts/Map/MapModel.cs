@@ -10,6 +10,10 @@ namespace Ambition
 	{
 		public MapModel() : base("MapData") {}
 
+
+		[JsonProperty("scale")]
+		public float MapScale;
+
 		private RoomVO _room;
 		public RoomVO Room
 		{
@@ -20,11 +24,6 @@ namespace Ambition
 			}
 		}
 
-		public RoomVO Entrance
-		{
-			get { return _map != null ? _map.Entrance : null; }
-		}
-
 		protected MapVO _map;
 		public MapVO Map
 		{
@@ -32,7 +31,6 @@ namespace Ambition
 			set {
 				_map = value;
 				AmbitionApp.SendMessage<MapVO>(_map);
-				if (_map != null) Room = _map.Entrance; // Also sends a message
 			}
 		}
 

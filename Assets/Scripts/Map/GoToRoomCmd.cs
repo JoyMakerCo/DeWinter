@@ -18,7 +18,7 @@ namespace Ambition
 			}
 
 			// Make sure the destination is connected to the current room
-			else if (model.Room != null && !model.Room.IsNeighbor(room))
+			else if (model.Room != null && !model.Room.IsAdjacentTo(room))
 			{
 				UnityEngine.Debug.Log("Not an adjoined room. What the hell kind of warlock do you think you are?");
 			}

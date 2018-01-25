@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine.UI;
 using Ambition;
+using Util;
 
 namespace Ambition
 {
@@ -17,22 +19,25 @@ namespace Ambition
 	{
 	    public Text DescriptionText;
 	    public RoomStatusIndicator [] StatusIndicators;
+		public ColorConfig ColorConfig;
+		public SpriteConfig FloorTexturtes;
 
-	    private Outline _outline;
-		private bool _isAdjacent;
-		private bool _isCurrent;
 	    private Button _button;
+	    private RoomGraphic _graphic;
 
 		// Use this for initialization
 		void Awake()
 		{
-			_outline = this.gameObject.GetComponent<Outline>();
-			_outline.enabled = false;
-
+			ColorBlock cb;
 			_button = this.gameObject.GetComponent<Button>();
 			_button.interactable = false;
 			_button.onClick.AddListener(OnClick);
-
+			cb = _button.colors;
+			cb.highlightedColor = ColorConfig.GetColor("highlight");
+			cb.normalColor = ColorConfig.GetColor("adjacent");
+			cb.disabledColor = ColorConfig.GetColor("hidden");
+			_button.colors = cb;
+			_graphic = GetComponent<RoomGraphic>();
 			DescriptionText.enabled = false;
 
 			foreach (RoomStatusIndicator indicator in StatusIndicators)
@@ -52,58 +57,45 @@ namespace Ambition
 			get { return _room; }
 			set 
 			{
-				_room = value;
-				if (_room != null)
+				_graphic.Room = value;
+				gameObject.name = value.Name;
+
+				if (_room == null) // This will crash if the room has no walls.
 				{
-					DescriptionText.text = Room.Name + "\n" + new string('*', _room.Difficulty);
+					MapModel map = AmbitionApp.GetModel<MapModel>();
+					float scale = map.MapScale;
+					RectTransform xform = gameObject.GetComponent<RectTransform>();
+					int[] bounds = value.GetBounds();
+					xform.anchoredPosition = new Vector2(bounds[0]*scale, bounds[1]*scale);
+					xform.sizeDelta = new Vector2((bounds[2]-bounds[0])*scale, (bounds[3]-bounds[1])*scale);
+
+					_graphic.sprite = FloorTexturtes.Sprites[new System.Random().Next(FloorTexturtes.Sprites.Length)].Sprite;
 				}
+				_room = value;
 			}
 		}
 
-		public bool IsAdjacent
+		public void UpdatePlayerRoom(RoomVO room)
 		{
-			get { return _isAdjacent; }
-			set {
-				_isAdjacent = value;
-				if (value) _isCurrent=false;
-				UpdateDisplay();
-			}
-		}
-
-		public bool IsCurrent
-		{
-			get { return _isCurrent; }
-			set {
-				_isCurrent = value;
-				if (value) _isAdjacent=false;
-				UpdateDisplay();
-			}
-		}
-
-		protected void UpdateDisplay()
-		{
-			bool reveal=false;
-			if (_isAdjacent)
+			_button.interactable = _room.IsAdjacentTo(room);
+			if (!DescriptionText.enabled && (_button.interactable || room == _room))
 			{
-				_outline.effectColor = Color.black;
-				reveal = true;
-			}
-			else if (_isCurrent)
-			{
-				_outline.effectColor = Color.white;
-				reveal = true;
-			}
-			_outline.enabled = reveal;
-			_room.Revealed = reveal || _room.Revealed;
-			_button.interactable = _isAdjacent;
+				ColorBlock cb = _button.colors;
+				cb.disabledColor = ColorConfig.GetColor("shown");
+				_button.colors = cb;
 
-			if (!DescriptionText.enabled && reveal)
-			{
 				DescriptionText.enabled = true;
+				DescriptionText.text = _room.Name + "\n" + new string('*', _room.Difficulty);
 				foreach (RoomStatusIndicator indicator in StatusIndicators)
 				{
-					indicator.Icon.enabled = (Array.IndexOf(Room.Features, indicator.ID) >= 0);
+					indicator.Icon.enabled = (Array.IndexOf(_room.Features, indicator.ID) >= 0);
 				}
+			}
+
+			if (_room == room)
+			{
+				Color c = ColorConfig.GetColor("current");
+				_button.GetComponent<CanvasRenderer>().SetColor(c);
 			}
 		}
 

@@ -45,13 +45,13 @@ namespace Ambition
 
             // TODO: This belongs in a Party-Wide State Machine
 
-			if (AllRoomsClear(map.Map.Rooms))
+			if (Array.Exists(map.Map.Rooms,r=>!r.Cleared))
             {
-				AmbitionApp.SendMessage(PartyMessages.END_PARTY);
+				AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
             }
             else
             {
-				AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
+				AmbitionApp.SendMessage(PartyMessages.END_PARTY);
 			}
 		}
 
@@ -71,13 +71,6 @@ namespace Ambition
 			return (numCharmed < 5)
 				? new RewardVO(RewardConsts.GOSSIP, faction, 1)
 				: new RewardVO(RewardConsts.SERVANT, ServantConsts.SEAMSTRESS, 1);
-		}
-
-		private bool AllRoomsClear(RoomVO [,] rooms)
-		{
-			foreach(RoomVO room in rooms)
-				if (room != null && !room.Cleared) return false;
-			return true;
 		}
 	}
 }
