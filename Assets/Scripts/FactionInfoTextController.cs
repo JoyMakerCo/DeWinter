@@ -30,7 +30,7 @@ namespace Ambition
 			ServantModel servants = AmbitionApp.GetModel<ServantModel>();
 			ServantVO spymaster;
 
-			availableSpymasterTestTheWaters = servants.Hired.TryGetValue(ServantConsts.SPYMASTER, out spymaster);
+			availableSpymasterTestTheWaters = servants.Servants.TryGetValue(ServantConsts.SPYMASTER, out spymaster);
 	        availableTestTheWaters = true;
 
 	        _allegianceTimers = new Dictionary<string, int>();

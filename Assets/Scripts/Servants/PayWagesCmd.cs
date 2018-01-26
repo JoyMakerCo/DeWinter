@@ -10,10 +10,9 @@ namespace Ambition
 		{
 			ServantModel servants = AmbitionApp.GetModel<ServantModel>();
 			GameModel model = AmbitionApp.GetModel<GameModel>();
-			Dictionary<string, ServantVO>.ValueCollection hired = servants.Hired.Values;
-			foreach (ServantVO servant in hired)
+			foreach (KeyValuePair<string, ServantVO> servant in servants.Servants)
 			{
-				model.Livre -= servant.Wage;
+				model.Livre -= servant.Value.Wage;
 			}
 		}
 	}

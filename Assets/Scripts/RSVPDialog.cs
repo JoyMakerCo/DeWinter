@@ -31,7 +31,7 @@ public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
 		_party = party;
 		TitleTxt.text = party.Host.Name;
 
-		if (smod.Hired.ContainsKey(ServantConsts.SPYMASTER))
+		if (smod.Servants.ContainsKey(ServantConsts.SPYMASTER))
 		{
 			if (_party.Enemies != null && _party.Enemies.Length > 0)
 			{

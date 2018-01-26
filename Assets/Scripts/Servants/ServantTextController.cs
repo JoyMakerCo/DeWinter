@@ -15,7 +15,8 @@ namespace Ambition
 	        textField = this.GetComponent<Text>();
 
 	        //If the Servant has been introduced then their description doesn't show up
-			textField.enabled = (AmbitionApp.GetModel<ServantModel>().Introduced.Count > 0);
+	        // TODO: What is this for???
+//			textField.enabled = (AmbitionApp.GetModel<ServantModel>().Introduced.Count > 0);
 	    }
 	}
 }

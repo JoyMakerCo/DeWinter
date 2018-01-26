@@ -28,28 +28,13 @@ namespace Ambition
 		[JsonProperty("state")]
 		public Dictionary<string,object> State = new Dictionary<string, object>();
 
-		public bool Hired
+		[JsonProperty("status")]
+		private string _status
 		{
-			get { return Tags.Contains(ServantConsts.HIRED); }
-			set {
-				if (!value) Tags.Remove(ServantConsts.HIRED);
-				else if (!Tags.Contains(ServantConsts.HIRED))
-					Tags.Add(ServantConsts.HIRED);
-			}
+			set { Status = (ServantStatus)System.Enum.Parse(typeof(ServantStatus), value); }
 		}
 
-		public bool Introduced
-		{
-			get { return Tags.Contains(ServantConsts.INTRODUCED); }
-			set {
-				if (!value) Tags.Remove(ServantConsts.INTRODUCED);
-				else if (!Tags.Contains(ServantConsts.INTRODUCED))
-					Tags.Add(ServantConsts.INTRODUCED);
-			}
-		}
-
-		[JsonProperty("tags")]
-		public List<string> Tags = new List<string>();
+		public ServantStatus Status = ServantStatus.Unknown;
 
 	    public string NameAndTitle
 	    {
