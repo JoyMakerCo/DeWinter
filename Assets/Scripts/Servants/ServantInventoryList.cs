@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
 using Ambition;
@@ -23,8 +24,8 @@ public class ServantInventoryList : MonoBehaviour
     {
     	ClearInventoryButtons();
 		ServantVO[] servants = (inventoryType == InventoryType.Personal)
-			? Array.FindAll(_model.Servants, s=>s.Hired)
-			: Array.FindAll(_model.Servants, s=>s.Introduced);
+			? _model.Servants.Values.ToArray()
+			: (new List<ServantVO>().Concat(_model.Applicants.Values.SelectMany(x => x))).ToArray();
 
 		 Array.ForEach(servants, MakeButton);
     }

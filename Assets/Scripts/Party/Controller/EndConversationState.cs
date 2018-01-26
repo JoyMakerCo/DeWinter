@@ -31,7 +31,7 @@ namespace Ambition
             if (reward.Category == RewardConsts.SERVANT)
             {
 				ServantModel servants = _models.GetModel<ServantModel>();
-				if (servants.Hired.ContainsKey(reward.Type))
+				if (servants.Servants.ContainsKey(reward.Type))
 				{
                     reward = new RewardVO(RewardConsts.GOSSIP, model.Party.Faction, 1);
                 }

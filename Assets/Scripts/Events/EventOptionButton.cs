@@ -33,7 +33,7 @@ namespace Ambition
 				if (eventOption.servantRequired != null)
 				{
 					ServantModel model = AmbitionApp.GetModel<ServantModel>();
-					show = model.Hired.ContainsKey(eventOption.servantRequired);
+					show = model.Servants.ContainsKey(eventOption.servantRequired);
 				}
 				if (show) myText.text = eventOption.optionButtonText;
 			}

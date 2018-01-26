@@ -184,10 +184,10 @@ public class Reward {
                 return amount + " Livres";
             case "Introduction":
 				ServantModel model = AmbitionApp.GetModel<ServantModel>();
-				ServantVO servant = Array.Find(model.Servants, s => !s.Hired && !s.Introduced && s.Type == type);
-                return servant != null
-                	? "An Introduction to Hire " + servant.NameAndTitle
-                	: null;
+				List<ServantVO> servants;
+				return (model.Unknown.TryGetValue(subtype, out servants) && servants.Count > 0)
+					? servants[new Random().Next(servants.Count)].NameAndTitle
+					: type;
             case "Gossip":
                 return "A tidbit of " + SubType() + " Gossip";
         }

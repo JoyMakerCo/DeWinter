@@ -10,12 +10,17 @@ namespace Ambition
 		public void Execute (ServantVO servant)
 		{
 			ServantModel model = AmbitionApp.GetModel<ServantModel>();
-			servant = Array.Find(model.Servants, s=>s.ID == servant.ID);
-			if (servant != null)
+
+			// Block if the position is filled
+			if (!model.Servants.ContainsKey(servant.Slot))
 			{
-				servant.Introduced = servant.Hired = true;
-				if (!model.Introduced.Contains(servant)) model.Introduced.Add(servant);
-				model.Hired[servant.Slot] = servant;
+				List<ServantVO> servants;
+				model.Servants.Add(servant.Slot, servant);
+				servant.Status = ServantStatus.Hired;
+				if (model.Applicants.TryGetValue(servant.Slot, out servants))
+					servants.Remove(servant);
+				if (model.Unknown.TryGetValue(servant.Slot, out servants))
+					servants.Remove(servant);
 				AmbitionApp.GetModel<GameModel>().Livre -= servant.Wage;
 			}
 		}

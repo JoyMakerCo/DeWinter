@@ -68,7 +68,7 @@ public class ServantStatsTracker : MonoBehaviour {
 		ServantVO servant = servantList.selectedServant;
 		if(servant != null)
         {
-			if (servant.Name != "Camille")
+			if (servant.Status != ServantStatus.Permanent)
             {
 				AmbitionApp.SendMessage<ServantVO>(ServantMessages.FIRE_SERVANT, servantList.selectedServant);
 		        servantList.ClearInventoryButtons();

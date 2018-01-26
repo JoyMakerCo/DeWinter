@@ -15,7 +15,7 @@ namespace Ambition
 			AmbitionApp.Subscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoom);
 		}
 		
-		void Destroy ()
+		void OnDestroy ()
 		{
 			AmbitionApp.Unsubscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoom);
 		}

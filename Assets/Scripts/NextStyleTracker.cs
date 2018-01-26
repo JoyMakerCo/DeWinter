@@ -24,7 +24,7 @@ public class NextStyleTracker : MonoBehaviour {
     {
 		ServantModel model = AmbitionApp.GetModel<ServantModel>();
 		ServantVO seamstress;
-		if (model.Hired.TryGetValue(ServantConsts.CLOTHIER, out seamstress) && seamstress.Type == ServantConsts.SEAMSTRESS)
+		if (model.Servants.TryGetValue(ServantConsts.CLOTHIER, out seamstress) && seamstress.Type == ServantConsts.SEAMSTRESS)
 		{
 			myText.text = AmbitionApp.GetModel<InventoryModel>().NextStyle;
 		}

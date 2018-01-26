@@ -55,6 +55,8 @@ namespace Ambition
 		public const string CAUGHT_GOSSIPING_DIALOG = "caught_gossiping_dialog";
 		public const string CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG = "caught_gossiping_third_estate_dialog";
 		public const string REDEEM_QUEST_DIALOG = "redeem_quest_dialog";
+		public const string CREATE_OUTFIT_DIALOG = "create_outfit_dialog";
+		public const string ALTER_OUTFIT_DIALOG = "alter_outfit_dialog";
 
 		public const string CANCEL_RSVP_DIALOG = "rsvp_cancel_dialog";//CancellationModal";
 		public const string RSVP_DIALOG = "rsvp_dialog";//RSVPPopUpModal";

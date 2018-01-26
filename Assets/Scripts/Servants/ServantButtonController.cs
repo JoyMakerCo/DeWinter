@@ -35,36 +35,37 @@ public class ServantButtonController : MonoBehaviour
 
     private void HandleServant(ServantVO servant)
     {
-		bool enabled = _model.Introduced.Contains(servant);
-		buttonText.enabled = enabled;
+		bool enabled = servant.Status != ServantStatus.Unknown;
 		buttonImage.enabled = enabled;
-		if (enabled)
+		_servant = servant;
+
+		switch(_servant.Status)
 		{
-			_servant = servant;
-			buttonText.color = _servant.Hired ? Color.red : Color.white;
-			if (_servant.Hired)
-			{
+			case ServantStatus.Hired:
+				buttonText.color = Color.red;
 				buttonText.text = "Fire " + _servant.Name;
-			}
-			else
-			{
-				// button.enabled = _servant.Wage < GameData.moneyCount;
+				break;
+			case ServantStatus.Introduced:
+				buttonText.color = Color.white;
 				buttonText.text = "Hire " + _servant.Name + " for £" + _servant.Wage;
-			}
-        }
-        else _servant = null;
+				break;
+			default:
+				buttonText.text = "";
+				_servant = null;
+				break;
+		}
     }
 
     // TODO: This lives in the dialog
     public void HireOrFire()
     {
-        if (!_servant.Hired) //Can't hire them unless they've been Introduced
+        if (_servant.Status != ServantStatus.Hired) //Can't hire them unless they've been Introduced
         {
-            if (!_servant.Hired && GameData.moneyCount >= _servant.Wage) //If they are NOT Hired and you CAN afford them
+            if (_servant.Status != ServantStatus.Hired && GameData.moneyCount >= _servant.Wage) //If they are NOT Hired and you CAN afford them
             {
             	AmbitionApp.SendMessage<ServantVO>(ServantMessages.HIRE_SERVANT, _servant);
             }
-            else if (!_servant.Hired && GameData.moneyCount < _servant.Wage) //If they are NOT Hired and you CAN'T afford them
+            else if (_servant.Status != ServantStatus.Hired && GameData.moneyCount < _servant.Wage) //If they are NOT Hired and you CAN'T afford them
             {
                 object[] objectStorage = new object[1];
                 objectStorage[0] = _servant.NameAndTitle + "'s wages";

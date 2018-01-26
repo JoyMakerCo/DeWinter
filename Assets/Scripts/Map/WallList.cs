@@ -38,8 +38,8 @@ namespace Ambition
 			int[] verts = room.Vertices;
 			int[] wallVerts = new int[4];
 			int len = verts.Length;
-			int index;
 			int side; //0 for edges 
+			int index;
 			float[] scalars;
 			for (int i=len-2; i>=0; i-=2)
 			{

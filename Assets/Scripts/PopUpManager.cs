@@ -35,7 +35,7 @@ public class PopUpManager : MonoBehaviour
 
         //Set the Pop Up Values
         //Fill in the Text
-        if (s.Hired)
+        if (s.Status == ServantStatus.Hired)
         {
             titleText.text = "Fire + " + s.Name + "?";
             bodyText.text = "Are you sure you want fire " + s.NameAndTitle + "?";

@@ -7,15 +7,65 @@ namespace Ambition
 {
 	public class ServantModel : DocumentModel
 	{
-		public Dictionary<string, ServantVO> Hired = new Dictionary<string, ServantVO>();
-		public List<ServantVO> Introduced = new List<ServantVO>();
-
 		public ServantModel () : base ("ServantData") {}
 
-		public ServantVO[] Servants
+		public Dictionary<string, ServantVO> Servants = new Dictionary<string, ServantVO>();
+		public Dictionary<string, List<ServantVO>> Applicants = new Dictionary<string, List<ServantVO>>();
+		public Dictionary<string, List<ServantVO>> Unknown = new Dictionary<string, List<ServantVO>>();
+
+		public void Hire(ServantVO servant)
 		{
-			private set;
-			get;
+			List<ServantVO> servants;
+			UnknownUtil(servant);
+			if (Applicants.TryGetValue(servant.Slot, out servants))
+				servants.Remove(servant);
+			if (Servants.ContainsKey(servant.Slot) && Servants[servant.Slot] != servant)
+				Fire(Servants[servant.Slot]);
+			Servants[servant.Slot] = servant;
+			servant.Status = ServantStatus.Hired;
+			AmbitionApp.SendMessage<ServantVO>(ServantMessages.SERVANT_HIRED, servant);
+		}
+
+		public void Fire(ServantVO servant)
+		{
+			if (servant.Status == ServantStatus.Permanent) return;
+			List<ServantVO> servants;
+			DictionaryUtil(Applicants, servant);
+			UnknownUtil(servant);
+			if (Servants.ContainsKey(servant.Slot) && Servants[servant.Slot] == servant)
+				Servants.Remove(servant.Slot);
+			servant.Status = ServantStatus.Introduced; // Fired?
+			AmbitionApp.SendMessage<ServantVO>(ServantMessages.SERVANT_FIRED, servant);
+		}
+
+		public void Introduce(ServantVO servant)
+		{
+			List<ServantVO> servants;
+			DictionaryUtil(Applicants, servant);
+			UnknownUtil(servant);
+			if (Servants.ContainsKey(servant.Slot) && Servants[servant.Slot] == servant)
+				Servants.Remove(servant.Slot);
+			servant.Status = ServantStatus.Introduced;
+			AmbitionApp.SendMessage<ServantVO>(ServantMessages.SERVANT_INTRODUCED, servant);
+		}
+
+		private void UnknownUtil(ServantVO servant)
+		{
+			List <ServantVO> servants;
+			if (Unknown.TryGetValue(servant.Slot, out servants)
+				&& servants.Remove(servant)
+				&& servants.Count==0)
+			{
+				Unknown.Remove(servant.Slot);
+			}
+		}
+
+		private void DictionaryUtil(Dictionary<string, List<ServantVO>> table, ServantVO servant)
+		{
+			List<ServantVO> servants;
+			if (!table.TryGetValue(servant.Slot, out servants))
+				table[servant.Slot] = new List<ServantVO>(){servant};
+			else servants.Add(servant);
 		}
 
 		[JsonProperty("servants")]
@@ -23,16 +73,23 @@ namespace Ambition
 		{
 			set
 			{
-				Servants = value;
+				List<ServantVO> servants;
 				foreach(ServantVO servant in value)
 				{
-					if (servant.Introduced || servant.Hired)
+					switch(servant.Status)
 					{
-						Introduced.Add(servant);
-						if (servant.Hired)
-						{
-							Hired[servant.Slot] = servant;
-						}
+						case ServantStatus.Permanent:
+							Servants[servant.Slot] = servant;
+							break;
+						case ServantStatus.Hired:
+							Servants[servant.Slot] = servant;
+							break;
+						case ServantStatus.Introduced:
+							DictionaryUtil(Applicants, servant);
+							break;
+						default:
+							DictionaryUtil(Unknown, servant);
+							break;
 					}
 				}
 			}
