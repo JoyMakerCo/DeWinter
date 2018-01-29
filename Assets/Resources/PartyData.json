@@ -1,94 +1,57 @@
 ﻿{
-    conversationIntroList:{
-        "Ah, have we met?",
-        "And who might you be?",
-        "Charmed, I'm sure...",
-        "Oh, I've heard so much about you!",
-        "You simply must meet my friends!"
-	},
-
-    hostRemarkIntroList:{
-        "Have you enjoyed yourself so far?",
-        "What do you think of the new king?",
-        "Has the music been to your liking?",
-        "Have you seen latest opera yet?",
-        "Wherever did you get that dress?"
-	},
-
-    dispositionList:[
-        { "Aggressive", 0xFF0000, "Boast", "Reassurance" },
-        { "Mysterious", 0xFF00FF, "Intrigue", "Flattery" },
-        { "Vain", 0x0000FF, "Flattery", "Boast" },
-        { "Infirm", 0xFFFF00, "Reassurance", "Intrigue" }
-	},
-    femaleTitleList:[
-        "Duchess",
-        "Baroness",
-        "Vis-Countess",
-        "Countess",
-        "Professor"
+	maxPlayerDrinkAmount:3,
+	turnTimer:5,
+	maxHandSize:5,
+	ambushHandSize:3,
+	repartee_bonus:0.25,
+	free_remark_counter:4,
+	guest_difficulty: [
+		{
+			opinion:[25,50],
+			interest:[2,6],
+			max_interest:[6,9]
+		},
+		{
+			opinion:[25,45],
+			interest:[2,5],
+			max_interest:[5,9]
+		},
+		{
+			opinion:[25,40],
+			interest:[2,4],
+			max_interest:[4,7]
+		},
+		{
+			opinion:[25,35],
+			interest:[1,3],
+			max_interest:[3,6]
+		},
+		{
+			opinion:[20,30],
+			interest:[1,2],
+			max_interest:[2,5]
+		}
 	],
-    maleTitleList:[
-        "Duke",
-        "Baron",
-        "Vis-Count",
-        "Count",
-        "Professor"
+    topic_list:[
+		"Politics",
+		"Theatre",
+		"Gossip",
+		"Music"
 	],
-    femaleFirstNameList:[
-        "Agnes",
-        "Juliet",
-        "Audrey",
-        "Isabella",
-        "Maria",
-        "Mary",
-        "Margaret",
-        "Catherine",
-        "Jeanne",
-        "Eleanor",
-        "Joanna",
-        "Anne",
-        "Suzanne",
-        "Marie Therese",
-        "Carmen"
+	confidence_cost:[
+		5,
+		7,
+		10,
+		12,
+		15
 	],
-	maleFirstNameList:[
-        "Jean",
-        "Daniel",
-        "Henri",
-        "Pierre",
-        "Bernard",
-        "Richard",
-        "Mathieu",
-        "Jean-Pierre",
-        "Gaspard",
-        "Ferdinand",
-        "Charles",
-        "Claude",
-        "Oscar",
-        "Emile"
-	],
-	lastNameList:[
-        "Albert",
-        "Albon",
-        "Amboise",
-        "Bernadotte",
-        "Conradin",
-        "Dampierre",
-        "Evreux",
-        "Foix",
-        "Gontaut",
-        "Hottinguer",
-        "Ingelger",
-        "Lusignan",
-        "Maiziere",
-        "Montfort",
-        "Noailles",
-        "Orleans",
-        "Poitiers",
-        "Rouergue",
-        "Taillefer",
-        "Uzes",
-        "Valois"
+	parties:[
+		{
+			id:"tutorial",
+			map:"Tutorial",
+			turns:10,
+			date:"1795-01-01",
+			faction:"bourgeoisie"
+		}
 	]
 }

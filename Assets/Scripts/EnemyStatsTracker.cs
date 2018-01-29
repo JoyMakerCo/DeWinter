@@ -24,9 +24,9 @@ public class EnemyStatsTracker : MonoBehaviour {
         if (enemyList.selectedEnemy != null)
         {
             //Text
-            enemyNameText.text = enemyList.selectedEnemy.Name();
-            enemyFlavorText.text = enemyList.selectedEnemy.FlavorText();
-            enemyFactionText.text = enemyList.selectedEnemy.faction.Name;
+            enemyNameText.text = enemyList.selectedEnemy.Name;
+            enemyFlavorText.text = enemyList.selectedEnemy.FlavorText;
+            enemyFactionText.text = enemyList.selectedEnemy.Faction;
         }
         else
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Ambition;
 
 public class FactionBenefitsListController : MonoBehaviour {
 
@@ -15,11 +16,9 @@ public class FactionBenefitsListController : MonoBehaviour {
 
     public void DisplayBenefits(string factionName)
     {
-        text.text = "The " + factionName;
-        for (int i = 0; i < GameData.factionList[factionName].PlayerReputationLevel()+1; i++)
-        {
-            text.text += "\n"+GameData.factionList[factionName].benefitsList[i];
-            Debug.Log(factionName + "Level " + i + " Faction Benefits!");
-        }
+    	FactionModel model = AmbitionApp.GetModel<FactionModel>();
+        string str = "The " + factionName + "(Level " + model[factionName].Level.ToString() + ")\n";
+		str += model.GetFactionBenefits(factionName);
+		text.text = str;
     }
 }

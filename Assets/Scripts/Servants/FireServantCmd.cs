@@ -1,22 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class FireServantCmd : ICommand<ServantVO>
 	{
 		public void Execute (ServantVO servant)
 		{
-			ServantModel model = DeWinterApp.GetModel<ServantModel>();
-
-			if (model.Servants.ContainsValue(servant))
-			{
-				servant.hired = false;
-				servant.introduced = false;
-				model.Servants.Remove(servant.slot);
-				Debug.Log(servant.NameAndTitle + " Fired!");
-			}
+			ServantModel model = AmbitionApp.GetModel<ServantModel>();
+			model.Fire(servant);
 		}
 	}
 }

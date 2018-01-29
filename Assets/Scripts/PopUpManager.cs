@@ -1,119 +1,30 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Ambition;
 
-public class PopUpManager : MonoBehaviour {
-
+public class PopUpManager : MonoBehaviour
+{
+// TODO: Refactor to work with Dialog Manager
     public GameObject screenFader;
 
-    public GameObject quitGameModal;
-    public GameObject messageModal;
-    public GameObject eventModal;
-    public GameObject twoPartyChoiceModal;
     public GameObject twoPartyRSVPdModal;
-    public GameObject rSVPModal;
+	public GameObject cantAffordModal;
     public GameObject pierreQuestModal;
     public GameObject gossipSaleModal;
-    public GameObject cancellationModal;
     public GameObject buyOrSellModal;
     public GameObject hireAndFireServantModal;
-    public GameObject cantAffordModal;
     public GameObject confidenceTallyModal;
-    public GameObject roomChoiceModal;
-    public GameObject workTheRoomModal;
-    public GameObject workTheHostModal;
-    public GameObject hostRemarkModal;
-    public GameObject ambushModal;
-    public GameObject noOutfitModal;
     public GameObject alterOutfitModal;
     public GameObject sewNewOutfitModal;
 
     public GameObject hostRemarkSlotPrefab;
 
-    public GameObject eventInventory;
-
-    //This is how Players Quit the Game
-    void CreateQuitGamePopUp()
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(quitGameModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is how Events happen in both the Estate Screen and the Parties
-    void CreateEventPopUp(string eventTime)
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(eventModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        popUp.transform.SetAsLastSibling();
-        //Set the Event Time
-        EventManager eventManager = popUp.transform.GetComponent<EventManager>();
-        eventManager.eventInventory = eventInventory.GetComponent<EventInventory>();
-        eventManager.eventTime = eventTime;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is how the Players know that Styles have gone in and out of fashion
-    void CreateFashionPopUp(object[] stringStorage)
-    { 
-        string oldStyle = stringStorage[0] as string;
-        string newStyle = stringStorage[1] as string;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        popUp.transform.SetAsFirstSibling();
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Style Change!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "The " + oldStyle + " Style is now out of fashion and " +
-            "\nthe " + newStyle + " Style is now in fashion!" +
-            "\nAdjust your wardrobe accordingly!";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This tells the Players that it's Pay Day for all their Servants
-    void CreatePayDayPopUp()
-    {
-        //Set Up the Information
-        int totalWages = 0;
-        string servantsHired = "";
-        foreach (string k in GameData.servantDictionary.Keys)
-        {
-            ServantVO s = GameData.servantDictionary[k];
-            if (s.Hired())
-            {
-                totalWages += s.Wage();
-                servantsHired += s.NameAndTitle();
-            }
-        }
-        //Make the Pop up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        popUp.transform.SetAsFirstSibling();
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "It's Payday";
-        //Body Text (Update with more Servants)
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "It's time to pay the help. You're currently employing " + servantsHired + "." +
-            "\nTheir cost of employment this week is " + totalWages + "." +
-            "\nThis leaves you with " + GameData.moneyCount.ToString("£" + "#,##0");
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
     //This confirmation modal is used for Hiring and Firing Servants
     void CreateHireAndFireModal(ServantVO s)
     {
-        
         //Make the Pop up
         GameObject popUp = Instantiate(buyOrSellModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
@@ -123,193 +34,21 @@ public class PopUpManager : MonoBehaviour {
         Text dontHireFireButtonText = popUp.transform.Find("DontHireFireButton").Find("Text").GetComponent<Text>();
 
         //Set the Pop Up Values
-        HireOrFirePopUpController controller = popUp.GetComponent<HireOrFirePopUpController>();
-        controller.servant = s;
-
         //Fill in the Text
-        if (s.Hired())
+        if (s.Status == ServantStatus.Hired)
         {
-            titleText.text = "Fire Them?";
-            bodyText.text = "Are you sure you want fire " + s.NameAndTitle() + "?";
+            titleText.text = "Fire + " + s.Name + "?";
+            bodyText.text = "Are you sure you want fire " + s.NameAndTitle + "?";
             hireFireButtonText.text = "Fire";
             dontHireFireButtonText.text = "Don't Fire";
         }
         else
         {
-            titleText.text = "Fire Them?";
-            bodyText.text = "Are you sure you want to hire " + s.NameAndTitle() + " for " + s.Wage().ToString() + "?";
+			titleText.text = "Hire + " + s.Name + "?";
+            bodyText.text = "Are you sure you want to hire " + s.NameAndTitle + " for £" + s.Wage.ToString() + "?";
             hireFireButtonText.text = "Hire";
             dontHireFireButtonText.text = "Don't Hire";
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is a modal used to explain why the Player can't actually Fire Camille, the Handmaiden
-    void CreateCamilleFiringModal()
-    {
-        //Make the Pop up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        popUp.transform.SetAsFirstSibling();
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Wait a minute...";
-        //Body Text (Update with more Servants)
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "“Camille, what exactly do I pay you for?”" +
-                        "\n“Oh Madamme, why do you ask?”" +
-                        "\n“No reason, just thinking about... budget stuff.”" +
-                        "\n“Well Madamme, I clean your house, do your laundry, cook your meals, sweep your chimney, manage the household, mend your clothes -”" +
-                        "\n“Fine! Fine! Forget I asked!”";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    void CreatePartyInvitationPopUp(Party party)
-    {
-            //Make the Pop up
-            GameObject popUp = Instantiate(messageModal) as GameObject;
-            popUp.transform.SetParent(gameObject.transform, false);
-            popUp.transform.SetAsFirstSibling();
-            //Title Text
-            Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-            titleText.text = "An Invitation Has Arrived!";
-            //Body Text
-            Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-            bodyText.text = "Madamme, an invitation from " + party.host.name + " of the " + party.faction + " has arrived!" +
-                "\n\nIt says you've been invited to attend their " + party.SizeString() + " Party." +
-                "\n\nI've added the event to your Calendar.";
-            //Modal Background Shift
-            BroadcastMessage("ActiveModal");    
-    }
-
-    //This is how Players RSVP to parties
-    void CreateRSVPPopUp(Party affectedParty)
-    {
-        //Make the Pop up
-        GameObject popUp = Instantiate(rSVPModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        RSVPPopUpController popUpController = popUp.GetComponent<RSVPPopUpController>();
-        popUpController.party = affectedParty;
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "RSVP";
-        //Body Text (Update with Spymaster)
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "You've been invited to a " + affectedParty.SizeString() + " Party being held by " + affectedParty.host.name + " of the " + affectedParty.faction + ".";
-        if (GameData.servantDictionary["Spymaster"].Hired()) {
-            if(affectedParty.enemyList.Count > 0)
-            {
-                bodyText.text += "\nIt appears that some of your enemies will be in attendance:";
-                foreach (Enemy e in affectedParty.enemyList){
-                    bodyText.text += "\n-" + e.Name();
-                }
-                bodyText.text += "\nWould you still like to attend?";
-            } else
-            {
-                bodyText.text += "\nIt appears that none of your Enemies will be in attendance. Magnifique!" +
-                                 "\nWould you like to attend?";
-            }
-
-        } else {
-            bodyText.text += "\nWould you like to attend?";
-        }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    void CreateTwoPartyChoicePopUp(Day day)
-    {
-        //Make the Pop up
-        GameObject popUp = Instantiate(twoPartyChoiceModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Which Party?";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "There are two parties being held on this day." + 
-                "\nWhich party are you interested in?";
-        //Party Assignment
-        TwoPartyChoicePopUpController popUpController = popUp.GetComponent<TwoPartyChoicePopUpController>();
-        popUpController.affectedDay = day;
-        popUpController.screenFader = screenFader;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    void CreateTwoPartyRSVPdPopUp(Day day)
-    {
-        Party party1 = day.party1;
-        Party party2 = day.party2;
-        //Make the Pop up
-        GameObject popUp = Instantiate(twoPartyRSVPdModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Which Party?";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, you're currently scheduled to go to two Parties tonight." +
-                "\nWhich one will you be going to?";
-        //Party Assignment
-        TwoPartyRSVPdPopUpController popUpController = popUp.GetComponent<TwoPartyRSVPdPopUpController>();
-        popUpController.party1 = party1;
-        popUpController.party2 = party2;
-        popUpController.screenFader = screenFader;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is how Players cancel their RSVP to Parties
-    void CreateCancellationPopUp(object[] objectStorage)
-    {
-        Party affectedParty = objectStorage[0] as Party;
-        bool today = (bool)objectStorage[1];
-        //Make the Pop up
-        GameObject popUp = Instantiate(cancellationModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        RSVPPopUpController popUpController = popUp.GetComponent<RSVPPopUpController>();
-        popUpController.party = affectedParty;
-        popUpController.today = today;
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Cancel Your RSVP?";
-        //Body Text
-        if (today)
-        {
-            Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-            bodyText.text = "The " + affectedParty.SizeString() + " Party being held by " + affectedParty.host.name + " of the " + affectedParty.faction + " is tonight!" +
-                "\nCancelling the day of will seriously harm your reputation." +
-                "\nAre you sure you want to cancel last minute like this? ";
-        } else
-        {
-            Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-            bodyText.text = "You've already agreed to attend the " + affectedParty.SizeString() + " Party being held by " + affectedParty.host.name + " of the " + affectedParty.faction + "." +
-                "\nCancelling will harm your reputation." +
-                "\nWould you like cancel?";
-        }
-        
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This tells Players they can't attend a Party if they don't have any Outfits
-    void CreateNoOutfitModal()
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(noOutfitModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "You Have Nothing to Wear!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, it's not a figure of speech." +
-            "\nYou literally have nothing to wear to this party. If we check in with the Merchant she might have something, but otherwise you may have to cancel.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen to confirm buying or selling Items
@@ -318,7 +57,6 @@ public class PopUpManager : MonoBehaviour {
         //Info Is Parsed Out Here
         string inventoryType = objectStorage[0] as string;
         string itemType = objectStorage[1] as string;
-        int inventoryNumber = (int)objectStorage[2];
         int itemPrice;
 
         //Make the Pop up
@@ -331,41 +69,42 @@ public class PopUpManager : MonoBehaviour {
         BuyAndSellPopUpController controller = popUp.GetComponent<BuyAndSellPopUpController>();
         controller.inventoryType = inventoryType;
         controller.itemType = itemType;
-        controller.inventoryNumber = inventoryNumber;
+		controller.outfit = objectStorage[2] as OutfitVO;
+		controller.accessory = objectStorage[2] as ItemVO;
 
         //Fill in the Text
-        if (itemType == "Outfit")
+		if (controller.outfit != null)
+        {
+            if (inventoryType == ItemConsts.PERSONAL)
+            {
+                titleText.text = "Sell This?";
+				controller.outfit.CalculatePrice(true);
+				itemPrice = controller.outfit.Price; //Items are at Half Price from the Player Inventory to the Merchant
+				bodyText.text = "Are you sure you want to sell this " + controller.outfit.Name;
+			}
+            else
+            {
+                titleText.text = "Buy This?";
+				controller.outfit.CalculatePrice(false);
+				itemPrice = controller.outfit.Price;
+				bodyText.text = "Are you sure you want to buy this " + controller.outfit.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
+            }
+        }
+		else if (controller.accessory != null)
         {
             if (inventoryType == "personal")
             {
                 titleText.text = "Sell This?";
-                itemPrice = OutfitInventory.outfitInventories[inventoryType][inventoryNumber].OutfitPrice(inventoryType); //Items are at Half Price from the Player Inventory to the Merchant
-                bodyText.text = "Are you sure you want to sell this " + OutfitInventory.outfitInventories[inventoryType][inventoryNumber].Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
+				itemPrice = controller.accessory.Price; //Items are at Half Price from the Player Inventory to the Merchant
+				bodyText.text = "Are you sure you want to sell this " + controller.accessory.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
             else
             {
                 titleText.text = "Buy This?";
-                itemPrice = OutfitInventory.outfitInventories[inventoryType][inventoryNumber].OutfitPrice(inventoryType);
-                bodyText.text = "Are you sure you want to buy this " + OutfitInventory.outfitInventories[inventoryType][inventoryNumber].Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
+				itemPrice = controller.accessory.Price;
+				bodyText.text = "Are you sure you want to buy this " + controller.accessory.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
             }
         }
-        else if (itemType == "Accessory")
-        {
-            if (inventoryType == "personal")
-            {
-                titleText.text = "Sell This?";
-                itemPrice = AccessoryInventory.accessoryInventories[inventoryType][inventoryNumber].Price(inventoryType); //Items are at Half Price from the Player Inventory to the Merchant
-                bodyText.text = "Are you sure you want to sell this " + AccessoryInventory.accessoryInventories[inventoryType][inventoryNumber].Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
-            }
-            else
-            {
-                titleText.text = "Buy This?";
-                itemPrice = AccessoryInventory.accessoryInventories[inventoryType][inventoryNumber].Price(inventoryType);
-                bodyText.text = "Are you sure you want to buy this " + AccessoryInventory.accessoryInventories[inventoryType][inventoryNumber].Name() + " for " + itemPrice.ToString("£" + "#,##0") + "?";
-            }
-        }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen and Servant Hiring Screen to tell Players they don't have enough money to afford something
@@ -384,87 +123,13 @@ public class PopUpManager : MonoBehaviour {
         bodyText.text = "I'm sorry Madamme, but you do not have enough Livres to afford the " + objectString + "." +
                         "\n\nYou could either sell some of your existing wardrobe, or you could borrow money from your various friends." +
                         "\n\nThis will cost you 20 Reputation but it would get you 200 Livres.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    void CreateOutOfMoneyModal()
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(cantAffordModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Oh No!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        if(GameData.reputationCount > 20)
-        {
-            bodyText.text = "I'm sorry Madamme, you appear to be completely out of money." +
-                "\n\nIt looks like you'll have to borrow money from your various friends just to stay solvent." +
-                "\n\nThis will cost you 20 Reputation but it will also get get you 200 Livres.";
-        } else
-        {
-            bodyText.text = "I'm sorry Madamme, you appear to be completely out of money." +
-                "\n\nUnfortunatley, it appears that you don't have enough Reputation to actually get the loans you'd need to continue." +
-                "\n\nI'm sorry Madamme, but I think this might be the end.";
-            Text buttonText = popUp.transform.Find("BorrowMoneyButton").Find("Text").GetComponent<Text>();
-            buttonText.text = "Well... Damn";
-        }
-
-        //Make one of the buttons disappear
-        Button dismissButtonButton = popUp.transform.Find("DismissButton").GetComponent<Button>();
-        Image dismissButtonImage = popUp.transform.Find("DismissButton").GetComponent<Image>();
-        Text dismissButtonText = popUp.transform.Find("DismissButton").Find("Text").GetComponent<Text>();
-        dismissButtonButton.interactable = false;
-        dismissButtonImage.color = Color.clear;
-        dismissButtonText.color = Color.clear;
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is used in the Wardrobe Screen to tell Players they don't have enough spare room in their Wardrobe for more Outfits purchased from the Merchant
-    void CreateCantFitModal(object[] objectStorage)
-    {
-        int merchantInventoryNumber = (int)objectStorage[0];
-        int maxInventorySize = (int)objectStorage[1];
-
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Oh No!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "I'm sorry Madamme, but you do not have enough space in your wardobe to fit this " + OutfitInventory.outfitInventories["merchant"][merchantInventoryNumber].Name() + ". " +
-            "\nAt this time your Wardrobe can only hold " + OutfitInventory.personalInventoryMaxSize + " Outfits. Perhaps there is some way to expand your closet space?";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is used in the Wardrobe Screen to tell Players they don't have enough spare room in their Wardrobe for more Outfits created by the Seamstress
-    void CreateCantFitNewOutfitModal()
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Oh No!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "I'm sorry Madamme, but you do not have enough space in your wardobe to fit a new Outfit. I can't create anything when you have no room to store it." +
-            "\nAt this time your Wardrobe can only hold " + OutfitInventory.personalInventoryMaxSize + " Outfits. Perhaps there is some way to expand your closet space?";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Wardrobe Screen so Players can use the 'Alteration' function of the Tailor Servant
     void CreateAlterOutfitModal(object[] objectStorage)
     {
         int inventoryNumber = (int)objectStorage[0];
-        Outfit outfit = OutfitInventory.outfitInventories["personal"][inventoryNumber];
+        OutfitVO outfit = AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i=>i.Type == ItemConsts.OUTFIT)[inventoryNumber] as OutfitVO;
 
         //Make the Pop Up
         GameObject popUp = Instantiate(alterOutfitModal) as GameObject;
@@ -476,15 +141,12 @@ public class PopUpManager : MonoBehaviour {
         titleText.text = "Alter Outfit";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "How would you like me to alter the " + outfit.Name() + "? This will cost 20 Livres."
+        bodyText.text = "How would you like me to alter the " + outfit.Name + "? This will cost 20 Livres."
             + "\nSelect One:";
         Slider modestyBar = popUp.transform.Find("ModestyText").Find("Slider").GetComponent<Slider>();
-        modestyBar.value = outfit.modesty;
+        modestyBar.value = outfit.Modesty;
         Slider luxuryBar = popUp.transform.Find("LuxuryText").Find("Slider").GetComponent<Slider>();
-        luxuryBar.value = outfit.luxury;
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
+        luxuryBar.value = outfit.Luxury;
     }
 
     //This is used in the Wardrobe Screen so Players can use the 'Sew New Outfit' function of the Seamstress Servant
@@ -502,434 +164,20 @@ public class PopUpManager : MonoBehaviour {
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "What would you like me to create?";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is used in the beginning of the Party Screen to tally up a Player's Confidence stat
-    void CreateConfidenceTallyModal(object[] objectStorage)
-    {
-        int partyOutfitID = (int)objectStorage[0];
-        int partyAccessoryID = (int)objectStorage[1];
-        string partyFaction = objectStorage[2].ToString();
-        int outfitReaction = (int)objectStorage[3];
-        int outfitStyleReaction = (int)objectStorage[4];
-        int accessoryStyleReaction = (int)objectStorage[5];
-        int outfitAccessoryStyleMatch = (int)objectStorage[6];
-        int factionReaction = (int)objectStorage[7];
-        int generalRepReaction = (int)objectStorage[8];
-        int maxConfidence = (int)objectStorage[9];
-        int currentConfidence = (int)objectStorage[10];
-
-        //Make the Pop Up
-        GameObject popUp = Instantiate(confidenceTallyModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Welcome to The Party!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        string line1;
-        string line2;
-        string line3;
-        string line4;
-        string line5;
-        string line6;
-        //--- Line 1 ---
-        if (partyAccessoryID != -1)
-        {
-            line1 = "You wore your " + OutfitInventory.personalInventory[partyOutfitID].Name() + " and " + AccessoryInventory.personalInventory[partyAccessoryID].Name() + " to the Party, hosted by the " + partyFaction + ".";
-        } else
-        {
-            line1 = "You wore your " + OutfitInventory.personalInventory[partyOutfitID].Name() + " to the Party, hosted by the " + partyFaction + ".";
-        }
-        //--- Line 2 ---
-        if (partyFaction != "Military")
-        {
-            if (outfitReaction < 50) //It's a very bad reaction
-            {
-                line2 = "\n\nThe moment you step out of your carriage you can hear snickers and angry whispers from the crowd. Oh no. This is not what the hosts wanted at all. (+" + outfitReaction + " Max Confidence)";
-
-            } else if (outfitReaction >= 75 && outfitReaction < 100) //If it's a not great reaction
-            {
-                line2 = "\n\nFrom the way a few of the more boorish guests are glaring, you can tell that may have picked the wrong Outfit for this occassion. (+" + outfitReaction + " Max Confidence)";
-            }
-            else if (outfitReaction >= 85 && outfitReaction < 115) //If it's a middle of the road reaction
-            {
-                line2 = "\n\nNobody seems to notice your Outfit. It hasn't really made an impression. You can live with that. (+" + outfitReaction + " Max Confidence)";
-            } else if (outfitReaction >= 115 && outfitReaction < 150) //It it's a somewhat positive reaction
-            {
-                line2 = "\n\nAs you enter the party venue you notice some quiet nods of approval. You have done well in preparing for this party.(+" + outfitReaction + " Max Confidence)";
-            } else //If it's a very positive reaction
-            {
-                line2 = "\n\nThe second partygoers spot your outfit they gasp. Their tiny exclamations of envy are like delicate music to your ears. (+" + outfitReaction + " Max Confidence)";
-            }
-        } else
-        {
-            line2 = "\n\nHowever, the Military doesn't know fashion so they give you a pass. (+" + outfitReaction + " Max Confidence)";
-        }
-        //--- Line 3 ---
-        //Without Accessory
-        if(partyAccessoryID == -1)
-        {
-            //In Style
-            if (outfitStyleReaction > 0)
-            {
-                line3 = "\n\nYour Outfit's in style with the latest in " + GameData.currentStyle + " fashion! (+" + outfitStyleReaction + " Max Confidence)";
-            }
-            //Out of Style
-            else
-            {
-                line3 = "\n\nOh no! Your Outfit is in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style and it appears that " + GameData.currentStyle + " is in vogue at the moment. (+" + outfitStyleReaction + " Max Confidence)";
-            }
-        }
-        //With Accessory
-        else
-        {
-            //Outfit is in Style, so is the Accessory
-            if (outfitStyleReaction > 0 && accessoryStyleReaction > 0)
-            {
-                line3 = "\n\nWhat's this? Your Outfit doesn't just match your Accessories, it's also in style with the latest in " + GameData.currentStyle + " fashion. Incredible! (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            }
-            //Outfit is in Style, but the Accessory is not
-            else if (outfitStyleReaction > 0 && accessoryStyleReaction == 0)
-            {
-                line3 = "\n\nAh! Your Outfit is in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style, which is in fashion. However, is appears that your Accessory is not. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            } 
-            //Outfit is not in Style, but the Accessory is
-            else if (outfitStyleReaction == 0 && accessoryStyleReaction > 0)
-            {
-                line3 = "\n\nAh! Your Outfit is in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style, while the " + GameData.currentStyle + " is what's in fashion. However, your Accessory is in fashionis. Which is good, at least. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            }
-            //Neither are in Style, but they Match
-            else if (outfitStyleReaction == 0 && accessoryStyleReaction == 0 && outfitAccessoryStyleMatch > 0)
-            {
-                line3 = "\n\nHmm... Your Outfit and Accessory match, but they're in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style and it appears that " + GameData.currentStyle + " is in vogue at the moment. At least you're well coordinated. (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            }
-            //Neither are in Style and they don't even fucking Match, what a fucking mess
-            else
-            {
-                line3 = "\n\nMon dieu! Your Outfit is in the " + OutfitInventory.personalInventory[partyOutfitID].style + " style, your Accessory is in the " + AccessoryInventory.personalInventory[partyAccessoryID].Style() + " and the " + GameData.currentStyle + " is what's in Fashion! How did this happen? (+" + (outfitStyleReaction + accessoryStyleReaction + outfitAccessoryStyleMatch) + " Max Confidence)";
-            } 
-        }
-        
-        //--- Line 4 ---
-        line4 = "\n\nThe " + partyFaction + ", of course have their opinion on you... (+" + factionReaction + " Max Confidence)";
-        //--- Line 5 ---
-        line5 = "\n\nSociety as a whole also has their opinions. (+" + generalRepReaction + " Max Confidence)";
-        //--- Line 6 ---
-        line6 = "\n\nOverall your Maximum Confidence is at " + maxConfidence + " and your Current Confidence is " + currentConfidence;
-        bodyText.text = line1 + line2 + line3 + line4 + line5 + line6;
-        
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This appears at the beginning of a Party when the Player has enough Reputation with the Faction that they get their wine glass instantly filled
-    void CreateEntranceWineModal(Party p)
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        popUp.transform.SetAsFirstSibling();
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "For you, Madamme";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, thank you for joining us tonight. " + p.host.name + " asked me to make sure you were taken care of when the Party began." +
-                        "\n<Your Wineglass is now full>";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This randomly appears when the Player enters an uncleared Room during a Party and they Player has enough Reputation with the Faction that they get their wine glass filled
-    void CreateRandomWineModal(Party p)
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        popUp.transform.SetAsFirstSibling();
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Let's Top That Up";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, I noticed you were running a little low on refreshment. As per " + p.host.name + "'s request, I'll check in occassional to make sure you have enough to drink." +
-                        "\n<Your Wineglass is now full>";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is used in the Party Scene for Players to choose whether they wish to engage in conversation (Work the Room) or try to avoid everyone (Move Through)
-    void CreateRoomChoiceModal(int[] intStorage)
-    {
-        int xPos = intStorage[0];
-        int yPos = intStorage[1];
-
-        //Make the Pop Up
-        GameObject popUp = Instantiate(roomChoiceModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = GameData.tonightsParty.Name();
-        //Body Text and Buttons
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        
-        Text moveThroughText = popUp.transform.Find("MoveThroughButton").Find("Text").GetComponent<Text>();
-        Image moveThroughButtonImage = popUp.transform.Find("MoveThroughButton").GetComponent<Image>();
-        if (!GameData.tonightsParty.roomGrid[xPos, yPos].hostHere) //If the Host isn't here
-        {
-            moveThroughButtonImage.color = Color.white;
-            moveThroughText.color = Color.white;
-            int moveThroughChance = GameData.tonightsParty.roomGrid[xPos, yPos].MoveThroughChance();
-            //Is the Player using the Cane Accessory? If so then increase the chance to Move Through by 10%!
-            if(GameData.tonightsParty.playerAccessory != null)
-            {
-                if (GameData.tonightsParty.playerAccessory.Type() == "Cane")
-                {
-                    moveThroughChance += 10;
-                }
-            }
-            moveThroughText.text = "Move Through (" + moveThroughChance.ToString() + "%)";
-            bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
-                        "\n\nWould you like to 'Work the Room' and engage the party goers in Conversation, or would you like to 'Move Through' and hope nobody notices you?";
-        } else // If the Host Is there
-        {
-            moveThroughButtonImage.color = Color.clear;
-            moveThroughText.color = Color.clear;
-            bodyText.text = "You've entered the " + GameData.tonightsParty.roomGrid[xPos, yPos].name +
-                       "\n\nPrepare to 'Work the Room' and engage the Host in Conversation. They may be alone but they'll be far more demanding than a regular Guest.";
-        }
-        Text workTheRoomText = popUp.transform.Find("WorkTheRoomButton").Find("Text").GetComponent<Text>();
-        Image workTheRoomImage = popUp.transform.Find("WorkTheRoomButton").GetComponent<Image>();
-        if (!GameData.tonightsParty.roomGrid[xPos, yPos].cleared)
-        {
-            workTheRoomImage.color = Color.white;
-            workTheRoomText.color = Color.white;
-            workTheRoomText.text = "Work the Room";
-        }
-        else
-        {
-            workTheRoomImage.color = Color.clear;
-            workTheRoomText.color = Color.clear;
-        }
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
-    void CreateWorkTheRoomModal(object[] objectStorage)
-    {
-        Room room = objectStorage[0] as Room;
-        bool isAmbush = (bool)objectStorage[1];
-        RoomManager roomManager = objectStorage[2] as RoomManager;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(workTheRoomModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Set the room and the Work The Room Manager should handle the rest.
-        WorkTheRoomManager workManager = popUp.GetComponent<WorkTheRoomManager>();
-        workManager.room = room;
-        workManager.isAmbush = isAmbush;
-        workManager.roomManager = roomManager;
-
-        Debug.Log("Made Work the Room. Ambush is " + isAmbush);
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This is used in the Party Scene to brings up the Conversation/Work the Host Modal where the Player combats the Host with their charms
-    void CreateWorkTheHostModal(object[] objectStorage)
-    {
-        Room room = objectStorage[0] as Room;
-        RoomManager roomManager = objectStorage[1] as RoomManager; ;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(workTheHostModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Set the room and the Work The Room Manager should handle the rest.
-        WorkTheHostManager workManager = popUp.GetComponent<WorkTheHostManager>();
-        workManager.room = room;
-        workManager.roomManager = roomManager;
-
-        Debug.Log("Made Work the Host");
-
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    void CreateHostRemarkModal(object[] objectStorage)
-    {
-        Notable host = objectStorage[0] as Notable;
-        WorkTheHostManager workManager = objectStorage[1] as WorkTheHostManager;
-        int numberOfTargetSlots = (int)objectStorage[2];
-        //Make the Pop Up
-        GameObject popUp = Instantiate(hostRemarkModal) as GameObject;
-        popUp.transform.SetParent(workManager.gameObject.transform, false);
-        workManager.hostRemarkWindow = popUp;
-        //Set the Timer
-        workManager.hostRemarkTimer = 6.0f;
-        workManager.hostRemarkCountdownBar = popUp.transform.FindChild("CountdownBar").GetComponent<Scrollbar>();
-        workManager.StockFireBackRemarkSlotList(numberOfTargetSlots);
-        //Positioning (Fire Back Remark Slot Set Up) ------------------
-        int buttonwidth = (int)hostRemarkSlotPrefab.GetComponent<RectTransform>().rect.width;
-        int padding = 50; // Space between Target Slots  
-        int offsetFromCenterX = (numberOfTargetSlots * buttonwidth) / 2;
-        //Make the Fire Back Remark Slot Buttons ----------------------
-        //Clear out the old list
-        workManager.hostRemarkSlotButtonList.Clear();
-        //Make the Buttons themselves
-        for (int i = 0; i < numberOfTargetSlots; i++)
-        {
-            //Parenting
-            GameObject remarkSlotButton = Instantiate(hostRemarkSlotPrefab, hostRemarkSlotPrefab.transform.position, hostRemarkSlotPrefab.transform.rotation) as GameObject;
-            //Find Parent Object
-            GameObject remarkSlotHolder = popUp.transform.FindChild("RemarkSlotHolder").gameObject;
-            remarkSlotButton.transform.SetParent(remarkSlotHolder.transform, false);
-            FireBackRemarkSlotButton fireBackButton = remarkSlotButton.GetComponent<FireBackRemarkSlotButton>();
-            //Positioning (Actual)
-            remarkSlotButton.transform.localPosition = new Vector3((i * (buttonwidth + padding) - offsetFromCenterX), 0, 0);
-            //Set the Fire Back Remark that this button represents
-            fireBackButton.workManager = workManager;
-            fireBackButton.myHostRemarkSlot = workManager.hostRemarkSlotList[i];
-            workManager.hostRemarkSlotButtonList.Add(fireBackButton);
-            fireBackButton.slot = i;
-        }
-        workManager.hostRemarkActive = true;
-        Debug.Log("Made Fire Back Remark Modal");
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This Message Modal variation is used in the Party Scene to tell the Player they succesfully Moved Through a Room in a Party
-    void CreateMovedThroughModal(string[] stringStorage)
-    {
-        string roomName = stringStorage[0] as string;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Moved Through the " + roomName + "!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "You've succesfully moved through the " + roomName + " unnoticed." +
-            "\nNow you can back to your real mission uninterrupted.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This Window is used to tell Players that they've failed to Move Through a Room and have been Ambushed
-    void CreateAmbushedModal(string[] stringStorage)
-    {
-        string roomName = stringStorage[0] as string;
-        //Make the Pop Up
-        GameObject popUp = Instantiate(ambushModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Ambushed!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "You've been Ambushed in the " + roomName + " !" +
-            "\nPrepare for Conversation!";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This Window is used are Work the Room or Ambush events to tell Players what they've one in conversation combat
-    void WorkTheRoomReportModal(object[] objectStorage)
-    {
-        int guestsCharmed = (int)objectStorage[0];
-        int guestsPutOut = (int)objectStorage[1];
-        bool hostHere = (bool)objectStorage[2];
-        
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Conversation Over!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        if (!hostHere)
-        {
-            bodyText.text = "The Conversation is over, you managed to Charm " + guestsCharmed + " Guests and " + guestsPutOut + " Guests felt Put Out after speaking with you.";
-        } else
-        {
-            if(guestsCharmed == 1)
-            {
-                bodyText.text = "The Conversation is over, and you managed to Charm the Host!";
-            } else
-            {
-                bodyText.text = "The Conversation is over, but the Host was unfortunately Put Out by your behavior.";
-            }
-            
-        }
-        Reward givenReward = objectStorage[3] as Reward;
-        bodyText.text += "\n\nYour Reward for Clearing this Room is " + givenReward.Name();
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    //This Message Modal variation is used in the Party Scene to tell the Player they ran out of Confidence during the Work the Room or Host sequence and have embarassed themselves
-    void CreateFailedConfidenceModal(object[] objectStorage)
-    {
-        string faction = objectStorage[0] as string;
-        int reputationLoss = (int)objectStorage[1];
-        int factionReputationLoss = (int)objectStorage[2];
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Oh No!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "It appears that you ran out of Confidence during that Conversation. You just started stammering before suddenly leaving to 'Get Some Air'." +
-            "\n\nYou've spent an hour here in the Entrance collecting your wits but your sudden disappearance was considered quite rude." +
-            "\n\nYou've lost " + factionReputationLoss + " Repuation with the " + faction + " and " + reputationLoss + " Reputation with society in general.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
-    void CreateMissedPartyRSVPModal(Party party)
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        popUp.transform.SetAsFirstSibling();
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Missed RSVP!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "You didn't RSVP to the " + party.Name() + "." +
-            "\nThe Host is rather upset with you and you've lost Reputation";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
 
     //This is used in the Estate Tab to tell Players that they were caught trading in Gossip Items
-    void CreateCaughtTradingGossipModal(FactionVO gossipFaction)
+    void CreateCaughtTradingGossipModal(string faction)
     {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Merde!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, it appears that you've been found out. While 'Le Mecure' does its best to conceal our sources, some members of the " + gossipFaction.Name + 
-                " seem to have figured out that you were out supplier. This has damaged your Reputation both with them and with society in General.";
-        if (GameData.factionList["Revolution"].PlayerReputationLevel() >= 2)
-        {
-            bodyText.text += "\n\nThankfully your contacts in the Revolution have minimized the effects somewhat.";
-        }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
+    	Dictionary<string,string> subs = new Dictionary<string, string>(){{"$FACTION",faction}};
+    	if (AmbitionApp.GetModel<FactionModel>()["Third Estate"].Level >= 2)
+    	{
+    		AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, subs);
+    	}
+    	else
+    	{
+			AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_DIALOG, subs);
+    	}
     }
 
     //This is used in the Estate Tab to tell Players that Pierre has assigned a new Quest
@@ -950,13 +198,11 @@ public class PopUpManager : MonoBehaviour {
         titleText.text = "A Call for Gossip!";
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction().Name + "." +
-                "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.Name() + ". \n\nHow does that sound?";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
+        bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction + "." +
+                "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.Name + ". \n\nHow does that sound?";
     }
 
-    //This is used in the Estate Tab to tell Players that Pierre has assigned a new Quest
+    //This is used in the Estate Tab to confirm selling various bits of Gossip
     void CreateSellGossipModal(object[] objectStorage)
     {
         GossipTrading gossipTrader = objectStorage[0] as GossipTrading;
@@ -989,7 +235,7 @@ public class PopUpManager : MonoBehaviour {
                     bodyText.text += " in exchange for " + tradeForAmount + " Allegiance to the Crown from the " + faction + "?";
                 } else
                 {
-                    bodyText.text += " in exchange for " + tradeForAmount + " Allegiance to the Revolution from the " + faction + "?";
+                    bodyText.text += " in exchange for " + tradeForAmount + " Allegiance to the Third Estate from the " + faction + "?";
                 }
                 break;
             case "Power":
@@ -1003,25 +249,5 @@ public class PopUpManager : MonoBehaviour {
         {
             bodyText.text += "\n\n The more you leak me Gossip in a single day, the harder it is for me to conceal my sources. Today, I'd guess there is currently a " + caughtChance + "% chance of you being caught. Can you acccept that risk?";
         }
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
     }
-
-    //This is used in the Estate Tab to tell Players that Pierre has Redeemed their Quest
-    void CreatePierreQuestReemedModal(PierreQuest quest)
-    {
-        //Make the Pop Up
-        GameObject popUp = Instantiate(messageModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        //Title Text
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        titleText.text = "Gossip? C'est Magnifique!";
-        //Body Text
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        bodyText.text = "Thank you Madamme, this is exactly the kind of sallacious trash our esteemed readers require!" +
-                "\nWe'll take care of your reward of " + quest.reward.Name() + " immediately.";
-        //Modal Background Shift
-        BroadcastMessage("ActiveModal");
-    }
-
 }

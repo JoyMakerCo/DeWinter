@@ -1,30 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 using UnityEngine;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class HireServantCmd : ICommand<string>
+	public class HireServantCmd : ICommand<ServantVO>
 	{
-		public void Execute (string servantName)
+		public void Execute (ServantVO servant)
 		{
-			ServantModel model = DeWinterApp.GetModel<ServantModel>();
-			ServantVO servant = model.GetServant(servantName);
-			if (servant == null || !servant.introduced)
-			{
-				Debug.Log("Can't Hire a Servant who hasn't been introduced yet");
-				return;
-			}
+			ServantModel model = AmbitionApp.GetModel<ServantModel>();
 
-			if (model.Servants.ContainsKey(servant.slot))
+			// Block if the position is filled
+			if (!model.Servants.ContainsKey(servant.Slot))
 			{
-				Debug.Log("Can't Hire that Servant, there's someone in that slot already");
+				List<ServantVO> servants;
+				model.Servants.Add(servant.Slot, servant);
+				servant.Status = ServantStatus.Hired;
+				if (model.Applicants.TryGetValue(servant.Slot, out servants))
+					servants.Remove(servant);
+				if (model.Unknown.TryGetValue(servant.Slot, out servants))
+					servants.Remove(servant);
+				AmbitionApp.GetModel<GameModel>().Livre -= servant.Wage;
 			}
-
-			servant.hired = true;
-			model.Servants.Add(servant.slot, servant);
-			GameData.moneyCount -= servant.wage;
-			Debug.Log(servant.NameAndTitle + " Hired!");
 		}
 	}
 }

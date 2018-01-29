@@ -26,33 +26,38 @@ namespace Dialog
 			_managers.Add(manager);
 		}
 
+		public void UnregisterManager(DialogCanvasManager manager)
+		{
+			_managers.Remove(manager);
+		}
+
 		/** Open a dialog by ID on the default canvas. **/
 		public GameObject Open(string dialogID)
 		{
-			GameObject dialog;
+			GameObject dialog = null;
+			GameObject currDialog;
 			foreach (DialogCanvasManager m in _managers)
 			{
-				dialog = m.Open(dialogID);
-				if (dialog != null)
-					return dialog;
+				currDialog = m.Open(dialogID);
+				if (dialog == null) dialog = currDialog;
 			}
-			return null;
+			return dialog;
 		}
 
-		/** Open a dialog by ID on the default canvas. **/
+		/** Open a dialog by ID **/
+// TODO: Apply to Panel objects, not Canvas objects
 		public GameObject Open<T>(string dialogID, T data)
 		{
-			GameObject dialog;
+			GameObject dialog = null;
+			GameObject currDialog;
 			foreach (DialogCanvasManager m in _managers)
 			{
-				dialog = m.Open<T>(dialogID, data);
-				if (dialog != null)
-					return dialog;
+				currDialog = m.Open<T>(dialogID, data);
+				if (dialog == null) dialog = currDialog;
 			}
-			return null;
+			return dialog;
 		}
 
-		/** Close the named Dialog on every canvas. **/
 		public void Close (string dialogID)
 		{
 			foreach (DialogCanvasManager m in _managers)

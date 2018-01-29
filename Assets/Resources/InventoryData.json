@@ -1,51 +1,206 @@
 ﻿{
 	noveltyDamage:20,
 	outOfStyleMultiplier:0.75,
+	sellbackMultiplier:0.5,
+	slots:7,
+	maxSlots:11,
+	num_outfits:5,
+	max_outfits:9,
+	marketCapacity:11,
 	styles:[
 		"Frankish",
 		"Catalan",
 		"Venezian"
 	],
-	accessories:[
+	style:"Frankish",
+	items:[
 		{
-			type:"cane",
+			id:"starting_gown",
+			name:"Nouveau Frankish Gown",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"novelty":100,
+				"style":"Frankish"
+			}
+		},
+		{
+			id:"starting_gown2",
+			name:"Modest Frankish Dress",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"modesty":100,
+				"style":"Frankish",
+				"gift":"Jordan Peele"
+			}
+		},
+		{
+			id:"starting_gown3",
+			name:"Luxurious Catalan Gown",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"luxury":100,
+				"style":"Catalan"
+			}
+		},
+		{
+			id:"starting_gown4",
+			name:"Nouveau Catalan Dress",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"novelty":100,
+				"style":"Catalan"
+			}
+		},
+		{
+			id:"starting_gown5",
+			name:"Luxurious Venezian Gown",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"luxury":100,
+				"style":"Venezian"
+			}
+		},
+		{
+			id:"starting_gown6",
+			name:"Modest Frankish Dress",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"novelty":100,
+				"style":"Frankish"
+			}
+		},
+		{
+			id:"starting_gown7",
+			name:"Racy Venezian Dress",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"luxury":100,
+				"style":"Venezian"
+			}
+		},
+		{
+			id:"starting_gown8",
+			name:"Nouveau Catalan Gown",
+			type:"Outfit",
+			description:"This gown makes you feel like the belle of the ball.",
+			salePrice:40,
+			price:75,
+			tags:["Outfit"],
+			state:{
+				"novelty":100,
+				"style":"Catalan"
+			}
+		},		{
+			id:"cane",
 			name:"Cane",
-			description:"helps you delicately push your way through crowds.\n\nAdds a 10% bonus to making 'Move Through' attempts on Rooms.",
+			type:"Cane",
+			description:"This cane helps you delicately push your way through crowds.\n\nAdds a 10% bonus to making 'Move Through' attempts on Rooms.",
+			salePrice:40,
+			price:75,
+			tags:["Accessory"],
 			state:{
 				"moveThrough":"+10%"
 			}
 		},
 		{
-			type:"fan",
+			id:"fan",
 			name:"Fan",
-			description:"adds an air of mystery to you. It helps make you look thoughtful, when you're really just grasping for a witty reply.\n\nGives you 50% more time to answer Host Remarks.",
+			type:"Fan",
+			description:"This fan adds an air of mystery to you. It helps make you look thoughtful, when you're really just grasping for a witty reply.\n\nGives you 50% more time to answer Host Remarks.",
+			salePrice:40,
+			price:75,
+			tags:["Accessory"],
 			state:{
 				"responseTime":"+50%"
 			}
 		},
 		{
-			type:"fascinator",
+			id:"fascinator",
             name:"Fascinator",
-            description:"distracts people when you might have said the wrong thing. Look how shiny it is!\n\nFirst Negative Remark in any Conversation is Ignored.",
+			type:"Fascinator",
+            description:"This fascinator distracts people when you might have said the wrong thing. Look how shiny it is!\n\nFirst Negative Remark in any Conversation is Ignored.",
+			salePrice:40,
+			price:75,
+			tags:["Accessory"],
 			state:{
 				"responseTime":"+50%"
 			}
         },
 		{
-            type:"flask",
+			id:"flask",
             name:"Garter Flask",
-            description:"helps you take a little extra drink with you when you refill at the Punch Bowl.\n\nIncreases Max Booze Capacity by 1.",
+            type:"Flask",
+            description:"This flask helps you take a little extra drink with you when you refill at the Punch Bowl.\n\nIncreases Max Booze Capacity by 1.",
+			salePrice:40,
+			price:75,
+			tags:["Accessory"],
 			state:{
 				"boozeCapacity":"+1"
 			}
         },
 		{
-            type:"snuff",
+			id:"snuff",
             name:"Snuff Box",
-            description:"helps keep you awake and alert, even when you've been overserved by the help.\n\nDrinking still gives you Confidence, but doesn't Intoxicate you as much.";
+            type:"Snuff Box",
+            description:"This snuff box helps keep you awake and alert, even when you've been overserved by the help.\n\nDrinking still gives you Confidence, but doesn't Intoxicate you as much.",
+			salePrice:40,
+			price:75,
+			tags:["Accessory"],
 			state:{
 				"intoxication":"-25%"
 			}
         }
-	]
+	],
+	inventory:{
+		starting_gown:1,
+		starting_gown2:1,
+		starting_gown3:1,
+		starting_gown4:1,
+		starting_gown5:1,
+		starting_gown6:1,
+		starting_gown7:1,
+		starting_gown8:1
+	},
+	luxury:{
+		"-100":"Vintage",
+		"-60":"Thrifty",
+		"-20":"Average",
+		"20":"Pricey",
+		"60":"Luxurious"
+	},
+	modesty:{
+		"-100":"Scandalous",
+		"-60":"Racy",
+		"-20":"Average",
+		"20":"Conservative",
+		"60":"Virginal"
+	}
 }

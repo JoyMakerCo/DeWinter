@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using Ambition;
 
 public class Reward {
 
-    Party party;
+    PartyVO party;
     string type; //Reputation, Faction Rep, Faction Power, Livres, Outfit, Accessory, ServantIntro, Random or Nothing (a placeholder, essentially)
     string subtype; //Use in Faction Rep and Faction Power, will need to be used for Outfit, Accessory and ServantIntro
     public int amount;
@@ -14,7 +16,7 @@ public class Reward {
         GenerateRandomQuestReward(pQ);
     }
 
-    public Reward (Party p, string t, int a) {
+    public Reward (PartyVO p, string t, int a) {
         party = p;
         type = t;
         amount = a;
@@ -27,7 +29,7 @@ public class Reward {
         }
     }
 
-    public Reward(Party p, string t, string sT, int a)
+    public Reward(PartyVO p, string t, string sT, int a)
     {
         party = p;
         type = t;
@@ -57,13 +59,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 10;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -76,13 +78,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 20;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -95,13 +97,13 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 30;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
@@ -114,27 +116,27 @@ public class Reward {
                 else if (typeRandomInt == 3 || typeRandomInt == 4)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 40;
                 }
                 else
                 {
                     type = "Gossip";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 1;
                 }
                 break;
             case 5:
-                typeRandomInt = Random.Range(1, 6);
-                if (typeRandomInt == 1 || typeRandomInt == 2)
+                typeRandomInt = (new Random()).Next(6);
+                if (typeRandomInt == 0 || typeRandomInt == 1)
                 {
                     type = "Reputation";
                     amount = 30;
                 }
-                else if (typeRandomInt == 3 || typeRandomInt == 4)
+                else if (typeRandomInt == 2 || typeRandomInt == 3)
                 {
                     type = "Faction Reputation";
-                    subtype = party.faction;
+                    subtype = party.Faction;
                     amount = 60;
                 }
                 else
@@ -149,23 +151,24 @@ public class Reward {
 
     void GenerateRandomQuestReward(PierreQuest pQuest)
     {
-        FactionVO faction = pQuest.Faction(); 
-        int typeRandomInt = Random.Range(1, 4);
+        string faction = pQuest.Faction; 
+		Random rnd = new Random();
+        int typeRandomInt = rnd.Next(4);
         //Amount is determined Inverse to Time Limit
         int multiplier = 12 - pQuest.daysLeft;
-        if (typeRandomInt == 1)
+        if (typeRandomInt == 0)
         {
             type = "Reputation";
-            amount = multiplier * (Random.Range(6, 16));
-        } else if (typeRandomInt == 2)
+            amount = multiplier * (rnd.Next(6, 16));
+        } else if (typeRandomInt == 1)
         {
             type = "Faction Reputation";
             subtype = RandomExclusiveFaction(faction);
-            amount = multiplier * (Random.Range(10, 21));
+			amount = multiplier * (rnd.Next(10, 21));
         } else
         {
             type = "Livre";
-            amount = multiplier * (Random.Range(10, 21));
+			amount = multiplier * (rnd.Next(10, 21));
         }
     }
 
@@ -180,7 +183,11 @@ public class Reward {
             case "Livre":
                 return amount + " Livres";
             case "Introduction":
-                return "An Introduction to Hire " + GameData.servantDictionary[subtype].NameAndTitle();
+				ServantModel model = AmbitionApp.GetModel<ServantModel>();
+				List<ServantVO> servants;
+				return (model.Unknown.TryGetValue(subtype, out servants) && servants.Count > 0)
+					? servants[new Random().Next(servants.Count)].NameAndTitle
+					: type;
             case "Gossip":
                 return "A tidbit of " + SubType() + " Gossip";
         }
@@ -206,7 +213,7 @@ public class Reward {
     string PartyRandomFaction()
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
-        int factionRandom = Random.Range(0, 7);
+        int factionRandom = new Random().Next(7);
         switch (factionRandom)
         {
             case 0:
@@ -218,40 +225,17 @@ public class Reward {
             case 3:
                 return "Bourgeoisie";
             case 4:
-                return "Revolution";
+                return "Third Estate";
             default:
-                return party.faction;
+                return party.Faction;
         }
     }
 
-    string RandomExclusiveFaction(FactionVO faction)
+    string RandomExclusiveFaction(string faction)
     {
-        int factionRandom = Random.Range(0, 5);
-        FactionVO selectedFaction;
-        switch (factionRandom)
-        {
-            case 0:
-                selectedFaction = GameData.factionList["Crown"];
-                break;
-            case 1:
-                selectedFaction = GameData.factionList["Church"];
-                break;
-            case 2:
-                selectedFaction = GameData.factionList["Military"];
-                break;
-            case 3:
-                selectedFaction = GameData.factionList["Bourgeoisie"];
-                break;
-            default:
-                selectedFaction = GameData.factionList["Revolution"];
-                break;
-        }
-        if(selectedFaction != faction)
-        {
-            return selectedFaction.Name;
-        } else
-        {
-            return RandomExclusiveFaction(faction);
-        }
+    	FactionModel model = AmbitionApp.GetModel<FactionModel>();
+    	string[] factions = System.Linq.Enumerable.ToArray(model.Factions.Keys);
+    	int index = new Random().Next(1, factions.Length);
+		return factions[factions[index] == faction ? 0 : index];
     }
 }

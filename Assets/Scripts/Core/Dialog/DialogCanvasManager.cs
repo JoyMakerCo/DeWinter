@@ -1,113 +1,116 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Util;
 using Core;
 
 namespace Dialog
 {
 	public class DialogCanvasManager : MonoBehaviour
 	{
-		public GameObject[] DialogPrefabs;
+		public PrefabMapConfig DialogPrefabs;
 
-		protected Dictionary<string, GameObject> _prefabs;
-		protected Dictionary<string, GameObject> _dialogs;
+		protected Dictionary<GameObject, string> _dialogs;
 		protected Canvas _canvas;
 
-		void Start()
+		void Awake()
 		{
 			App.Service<DialogSvc>().RegisterManager(this);
 
 			_canvas = this.gameObject.GetComponent<Canvas>();
-			_prefabs = new Dictionary<string, GameObject>();
-			_dialogs = new Dictionary<string, GameObject>();
-
-			(new List<GameObject>(DialogPrefabs)).ForEach(RegisterPrefab);
-		}
-
-		protected void RegisterPrefab(GameObject prefab)
-		{
-			_prefabs[prefab.name] = prefab;
+			_dialogs = new Dictionary<GameObject, string>();
 		}
 
 		public GameObject Open(string dialogID)
 		{
-			GameObject prefab;
-			if (!_prefabs.TryGetValue(dialogID, out prefab))
-				return null;
-			
-			GameObject dialog;
-			if (!_dialogs.TryGetValue(dialogID, out dialog))
+			PrefabMap map = Array.Find(DialogPrefabs.Prefabs, p=>p.ID == dialogID);
+			if (default(PrefabMap).Equals(map)) return null; //Early out
+
+			GameObject dialog = Instantiate<GameObject>(map.Prefab, this.gameObject.transform);
+			if (dialog != null)
 			{
-				dialog = GameObject.Instantiate<GameObject>(prefab);
-				_dialogs.Add(dialogID, dialog);
+				DialogView cmp = dialog.GetComponent<DialogView>();
+				if (cmp != null)
+				{
+					cmp.Manager = this;
+					cmp.ID = dialogID;
+					cmp.OnOpen();
+				}
+				_dialogs.Add(dialog, dialogID);
 				dialog.transform.SetParent(_canvas.transform, false);
-			}
-			else
-			{
 				dialog.GetComponent<RectTransform>().SetAsLastSibling();
 			}
-
 			return dialog;
 		}
 
 		public GameObject Open<T>(string dialogID, T vo)
 		{
-			GameObject dlg = Open(dialogID);
-			if (dlg != null)
+			PrefabMap map = Array.Find(DialogPrefabs.Prefabs, p=>p.ID == dialogID);
+			if (default(PrefabMap).Equals(map)) return null; //Early out
+
+			GameObject dialog = Instantiate<GameObject>(map.Prefab, this.gameObject.transform);
+			if (dialog != null)
 			{
-				DialogView cmp = dlg.GetComponent<DialogView>();
-				if (cmp is IDialog<T>)
-					(cmp as IDialog<T>).Initialize(vo);
+				DialogView cmp = dialog.GetComponent<DialogView>();
+				if (cmp != null)
+				{
+					cmp.Manager = this;
+					cmp.ID = dialogID;
+					if (cmp is IInitializable<T>)
+						(cmp as IInitializable<T>).Initialize(vo);
+					cmp.OnOpen();
+				}
+				_dialogs.Add(dialog, dialogID);
+				dialog.transform.SetParent(_canvas.transform, false);
+				dialog.GetComponent<RectTransform>().SetAsLastSibling();
 			}
-			return dlg;
+			return dialog;
 		}
 
 		public bool Close(string dialogID)
 		{
-			GameObject dlog;
-			if (_dialogs.TryGetValue(dialogID, out dlog))
-			{
-				HandleCloseDialog(dialogID, dlog);
-				return true;
-			}
-			return false;
+			KeyValuePair<GameObject, string> dialog = _dialogs.FirstOrDefault(d => d.Value == dialogID);
+			if (dialog.Equals(default(KeyValuePair<GameObject,string>))) return false;
+
+			DialogView view = dialog.Key.GetComponent<DialogView>();
+			if (view != null) view.OnClose();
+
+			_dialogs.Remove(dialog.Key);
+			GameObject.Destroy(dialog.Key);
+			return true;
 		}
 
 		public bool Close(GameObject dialog)
 		{
-			foreach(KeyValuePair<string, GameObject> kvp in _dialogs)
+			bool closed = _dialogs.Remove(dialog);
+			if (dialog != null)
 			{
-				if (kvp.Value == dialog)
-				{
-					HandleCloseDialog(kvp.Key, kvp.Value);
-					return true;
-				}
+				DialogView view = dialog.GetComponent<DialogView>();
+				view.OnClose();
+				GameObject.Destroy(dialog);
+				closed = true;
 			}
-			return false;
-		}
-
-		protected void HandleCloseDialog(string dialogID, GameObject dlg)
-		{
-			DialogView dlgCmp = dlg.GetComponent<DialogView>();
-			if (dlgCmp != null)
-			{
-				dlgCmp.OnClose();
-				if (dlgCmp is IDisposable)
-				{
-					(dlgCmp as IDisposable).Dispose();
-				}
-			}
-			_dialogs.Remove(dialogID);
-			GameObject.Destroy(dlg);
+			dialog = null;
+			return closed;
 		}
 
 		public void CloseAll()
 		{
-			foreach(KeyValuePair<string, GameObject> kvp in _dialogs)
+			DialogView cmp;
+			foreach(KeyValuePair<GameObject, string> dialog in _dialogs)
 			{
-				GameObject.Destroy(kvp.Value);
+				cmp = dialog.Key.GetComponent<DialogView>();
+				if (cmp != null) cmp.OnClose();
+				GameObject.Destroy(dialog.Key);
 			}
 			_dialogs.Clear();
+		}
+
+		void OnDestroy()
+		{
+			App.Service<DialogSvc>().UnregisterManager(this);
 		}
 	}
 }

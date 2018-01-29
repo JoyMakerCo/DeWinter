@@ -1,40 +1,32 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using UnityEngine.UI;
 using System.Globalization;
 
-public class DateTracker : MonoBehaviour {
-    private Text myText;
+namespace Ambition
+{
+	public class DateTracker : MonoBehaviour
+	{
+	    private Text _text;
+	    private CalendarModel _calendar;
 
-    void Start()
-    {
-        myText = GetComponent<Text>();
-        updateDate();
-    }
+	    void Awake()
+	    {
+			_text = GetComponent<Text>();
+			_calendar = AmbitionApp.GetModel<CalendarModel>();
+			AmbitionApp.Subscribe<DateTime>(HandleDate);
+			HandleDate(_calendar.Today);
+	    }
 
-    public void updateDate()
-    {
-        string month = GameData.calendar.monthList[GameData.currentMonth].name;
-        string day = dayString(GameData.currentDay + 1); //Zero Indexed Days
-        myText.text = month + " " + day + ", 1795";
-    }
+	    void OnDestroy()
+	    {
+			AmbitionApp.Unsubscribe<DateTime>(HandleDate);
+	    }
 
-    string dayString(int day)
-    {
-        if (day <= 0)
-        {
-            return day.ToString();
-        }
-        switch (day % 10)
-        {
-            case 1:
-                return day + "st";
-            case 2:
-                return day + "nd";
-            case 3:
-                return day + "rd";
-            default:
-                return day + "th";
-        }
-    }
+		public void HandleDate(DateTime date)
+	    {
+			_text.text = _calendar.GetDateString();
+	    }
+	}
 }

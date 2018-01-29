@@ -1,20 +1,20 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class AdjustDevotionCmd : ICommand<AdjustBalanceVO>
+	public class AdjustDevotionCmd : ICommand<AdjustValueVO>
 	{
-		public void Execute (AdjustBalanceVO vo)
+		public void Execute (AdjustValueVO vo)
 		{
-			NotableVO notable;
-			DevotionModel model = DeWinterApp.GetModel<DevotionModel>();
-			if (model.Notables.TryGetValue(vo.Type, out notable))
+			CharacterModel model = AmbitionApp.GetModel<CharacterModel>();
+			NotableVO notable = Array.Find(model.Notables, n=>n.Name == vo.Type);
+			if (vo.IsRequest && notable != null)
 			{
 				notable.Devotion += (int)vo.Amount;
-				model.Notables[vo.Type] = notable;
+				vo.IsRequest = false;
+				AmbitionApp.SendMessage<AdjustValueVO>(vo);
 			}
 		}
 	}
 }
-

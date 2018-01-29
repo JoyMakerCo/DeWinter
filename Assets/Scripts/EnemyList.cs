@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Ambition;
 
 public class EnemyList : MonoBehaviour {
 
-    public Enemy selectedEnemy;
+    public EnemyVO selectedEnemy;
     public GameObject enemyButtonPrefab;
 
     void Start()
@@ -14,14 +15,17 @@ public class EnemyList : MonoBehaviour {
 
     public void GenerateEnemyButtons()
     {
-        foreach (Enemy e in EnemyInventory.enemyInventory)
+        if(EnemyInventory.enemyInventory != null)
         {
-            GameObject button = GameObject.Instantiate(enemyButtonPrefab);
-            EnemyButton buttonStats = button.GetComponent<EnemyButton>();
-            buttonStats.enemy = e;
-            button.transform.SetParent(this.transform, false);
-            Debug.Log("Enemy Button: " + e.Name() + " has been made!");
-        }
+            foreach (EnemyVO e in EnemyInventory.enemyInventory)
+            {
+                GameObject button = GameObject.Instantiate(enemyButtonPrefab);
+                EnemyButton buttonStats = button.GetComponent<EnemyButton>();
+                buttonStats.enemy = e;
+                button.transform.SetParent(this.transform, false);
+                Debug.Log("Enemy Button: " + e.Name + " has been made!");
+            }
+        }        
     }
 
     public void ClearInventoryButtons()

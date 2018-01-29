@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class DancingCmd : ICommand<NotableVO>
 	{

@@ -3,48 +3,103 @@ using System.Collections;
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
+using Util;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class CalendarModel : DocumentModel
+	public class CalendarModel : DocumentModel, IInitializable
 	{
-		public int Day=0;
+		public Dictionary<DateTime, List<PartyVO>> Parties = new Dictionary<DateTime, List<PartyVO>>();
+
+		private DateTime _startDate;
+		private int _gameLength;
+
+		private int _day = 0;
+
+		public DateTime StartDate
+		{
+			get { return _startDate; }
+		}
+
+		public string GetDateString()
+		{
+			return GetDateString(Today);
+		}
+
+		public string GetDateString(DateTime d)
+		{
+			LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
+			return d.Day.ToString() + " " + localization.GetList("month")[d.Month-1] + ", " + d.Year.ToString();
+		}
+
+		[JsonProperty("gameLength")]
+		public int DaysLeft
+		{
+			get { return _gameLength - _day; }
+			private set { _gameLength = value; }
+		}
 
 		[JsonProperty("startDate")]
 		private string _startDateStr
 		{
-			set { _startDate = DateTime.Parse(value); }
+			set {
+				_startDate = DateTime.Parse(value);
+//				NextStyleSwitchDay = _startDate.AddDays(3);
+			}
 		}
 
-		private DateTime _startDate;
-		public DateTime Date
+		public DateTime Today
 		{
-			get { return _startDate.AddDays(Day); }
+			get { return _startDate.AddDays(_day); }
+			set {
+				_day = (value - _startDate).Days;
+				AmbitionApp.SendMessage<DateTime>(value);
+			}
 		}
 
-		[JsonProperty("eventChance")]
-		public float EventChance;
-
-		[JsonProperty("gameLength")]
-		private int _gameLength;
-
-		public int DaysLeft
-		{
-			get { return _gameLength - Day; }
-		}
-
-		public int EndDate
+		public DateTime EndDate
 		{
 			get { return _startDate.AddDays(_gameLength); }
 		}
 
-		public int uprisingDay; //The Day of the Uprising that the Game Ends On
-
-		public int NextStyleSwitchDay;
-
-		public CalendarModel() : base("CalendarData")
+		public DateTime DaysFromNow(int days)
 		{
-			uprisingDay= (new Random()).Next(25, 31);
+			return _startDate.AddDays(days + _day);
 		}
+
+		public DateTime Yesterday
+		{
+			get { return DaysFromNow(-1); }
+		}
+
+		public DateTime uprisingDay; //The Day of the Uprising that the Game Ends On
+
+		public DateTime NextStyleSwitchDay;
+
+		public CalendarModel() : base("CalendarData") {}
+
+		public void Initialize()
+		{
+			uprisingDay= _startDate.AddDays(new Random().Next(25, 31));
+		}
+
+		string dayString(int day)
+	    {
+	        if (day <= 0)
+	        {
+	            return day.ToString();
+	        }
+	        switch (day % 10)
+	        {
+	            case 1:
+	                return day + "st";
+	            case 2:
+	                return day + "nd";
+	            case 3:
+	                return day + "rd";
+	            default:
+	                return day + "th";
+	        }
+	    }
 	}
 }

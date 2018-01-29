@@ -1,22 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Core;
 
-namespace DeWinter
+namespace Ambition
 {
-	public class ReputationTracker : MonoBehaviour {
+	public class ReputationTracker : MonoBehaviour
+	{
 	    public Text numberText;
-	    public Text toolTipText;
+	    public Text levelText;
+	    public Image reputationIcon;
+	    public Slider reputationBar;
+	    public Sprite [] ReputationLevelIcons;
+
+	    private GameModel _model;
 
 	    // Use this for initialization
-	    void Start()
+	    void Awake()
 	    {
-			DeWinterApp.Subscribe<PlayerReputationVO>(HandleReputationUpdate);
+			_model = AmbitionApp.GetModel<GameModel>();
+			AmbitionApp.Subscribe<ReputationVO>(HandlePlayerReputation);
+			_model.Reputation = _model.Reputation; // Elicit an event
 	    }
 
-		private void HandleReputationUpdate(PlayerReputationVO repData)
+	    void OnDestroy()
 	    {
-			numberText.text = repData.ReputationLevel.ToString() + " (" + repData.Reputation.ToString("#,##0") + ")";                     
+			AmbitionApp.Unsubscribe<ReputationVO>(HandlePlayerReputation);
+	    }
+
+		private void HandlePlayerReputation(ReputationVO vo)
+	    {
+			numberText.text = vo.Reputation.ToString("#,##0") + "/" + vo.ReputationMax.ToString("#,##0");
+			levelText.text = AmbitionApp.GetModel<LocalizationModel>().GetString("reputation." + vo.Level);
+			reputationIcon.sprite = ReputationLevelIcons[vo.Level-1];
+			reputationBar.value = (float)vo.Reputation / (float)vo.ReputationMax;
 	    }
 	}
 }

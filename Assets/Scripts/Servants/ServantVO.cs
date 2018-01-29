@@ -1,34 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
-public class ServantVO
+namespace Ambition
 {
-	[JsonProperty("name")]
-	public string name; //What is their given name?
-	
-	[JsonProperty("slot")]
-    public string slot; //What role do they fill? Seamstress? Spymaster? Bodyguard?
+	public class ServantVO
+	{
+		[JsonProperty("id")]
+		public string ID;
 
-	[JsonProperty("title")]
-	public string title; //Title, just used in name stuff
+		[JsonProperty("name")]
+		public string Name;
 
-	[JsonProperty("description")]
-	public string description; //What this servant can do for the Player
+		[JsonProperty("type")]
+		public string Type;
 
-	[JsonProperty("wage")]
-	public int wage; //How much they cost per week
+		[JsonProperty("description")]
+		public string Description;
 
-    public bool introduced=false; //Has this servant been introduced yet?
-    public bool hired=false; //Are you employing this Servant right now?
+		[JsonProperty("slot")]
+		public string Slot;
 
-    public string NameAndTitle
-    {
-    	get { return name + ", the " + title; }
-    }
+		[JsonProperty("wage")]
+		public int Wage; //How much they cost per week
 
-    public string RecordData
-    {
-		get { return description + "\n- Costs " + wage.ToString("£" + "#,##0") + "/Week"; }
-    }
+		[JsonProperty("state")]
+		public Dictionary<string,object> State = new Dictionary<string, object>();
+
+		[JsonProperty("status")]
+		private string _status
+		{
+			set { Status = (ServantStatus)System.Enum.Parse(typeof(ServantStatus), value); }
+		}
+
+		public ServantStatus Status = ServantStatus.Unknown;
+
+	    public string NameAndTitle
+	    {
+	    	get { return Name + ", the " + Slot; } // YOU ARE A SLOT!!
+	    }
+
+	    public string RecordData
+	    {
+			get { return Description + "\n- Costs " + Wage.ToString("£" + "#,##0") + "/Week"; }
+	    }
+	}
 }

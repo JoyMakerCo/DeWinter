@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
+using System.Linq;
+using Ambition;
 
 public class Gossip {
 
-    FactionVO faction; // The Faction this Gossip is relevant to
+    public string Faction; // The Faction this Gossip is relevant to
     //Character character The Character this Gossip is relevant to (requires the Character system to be in place)
     int livreValue;
     int factionPowerShift;
@@ -11,9 +13,10 @@ public class Gossip {
     public float freshness;
     public string flavorText;
 
-	public Gossip(Party party)
+	public Gossip(PartyVO party) : this(party.Faction) {}
+    public Gossip(string faction=null)
     {
-        faction = RandomFaction(party.faction);
+        Faction = faction;
         //character = SomethingSomething <- If the Gossip affects a specific character
         livreValue = RandomLivreValue();
         factionPowerShift = 100;
@@ -22,74 +25,36 @@ public class Gossip {
         flavorText = RandomFlavorText();
     }
 
-    public Gossip(string factionString)
+    string RandomFaction(string faction)
     {
-        faction = GameData.factionList[factionString];
-        //character = SomethingSomething <- If the Gossip affects a specific character
-        livreValue = RandomLivreValue();
-        factionPowerShift = 100;
-        factionAllegianceShift = RandomFactionAllegianceShift();
-        freshness = 11; // Starts at 11 because they lose 1 on the day they start
-        flavorText = RandomFlavorText();
-    }
-
-    FactionVO RandomFaction(string partyFaction)
-    {
+    	Random rnd = new Random();
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
-        int factionRandom = Random.Range(0, 7);
-        switch (factionRandom)
-        {
-            case 0:
-                return GameData.factionList["Crown"];
-            case 1:
-                return GameData.factionList["Church"];
-            case 2:
-                return GameData.factionList["Military"];
-            case 3:
-                return GameData.factionList["Bourgeoisie"];
-            case 4:
-                return GameData.factionList["Revolution"];
-            default:
-                return GameData.factionList[partyFaction];
-         }
-     }
+		if (faction != null && rnd.Next(2) == 0)
+			return faction;
+		
+		FactionVO[] factions = AmbitionApp.GetModel<FactionModel>().Factions.Keys.Cast<FactionVO>().ToArray();
+		return factions[rnd.Next(factions.Length)].Name;
+	}
 
     //Character RandomCharacter (Picks a Random active character from the Faction)
     
     int RandomLivreValue()
     {
-        return Random.Range(25, 101);
+        return (new Random()).Next(25, 101);
     }
 
     int RandomFactionPowerShift()
     {
-        int positiveOrNegative = Random.Range(0, 4);
-        if(positiveOrNegative == 0) //Low chance, but still possible that the Gossip will make the Faction more powerful, not less
-        {
-            return Random.Range(10, 51);
-        } else
-        {
-            return (Random.Range(10, 51) * -1);
-        }
+    	Random rnd = new Random();
+    	return rnd.Next(4) == 0 ? rnd.Next(10, 51) : -rnd.Next(10, 51);
     }
 
     int RandomFactionAllegianceShift()
     {
-        if(faction.Name == "Revolution" || faction.Name == "Crown")
-        {
-            return 0;
-        } else
-        {
-            int positiveOrNegative = Random.Range(0, 2);
-            if (positiveOrNegative == 0) // A 50/50 Chance
-            {
-                return Random.Range(10, 51);
-            }
-            else
-            {
-                return (Random.Range(10, 51) * -1);
-            }
-        }   
+		if (Faction == "Third Estate" || Faction == "Crown")
+			return 0;
+		Random rnd = new Random();
+    	return rnd.Next(1) == 0 ? rnd.Next(10, 51) : -rnd.Next(10, 51);
     }
 
     string RandomFlavorText()
@@ -99,7 +64,7 @@ public class Gossip {
 
     public string Name()
     {
-        return "A tidbit of " + faction.Name + " Gossip";
+        return "A tidbit of " + Faction + " Gossip";
     }
 
     public int LivreValue()
@@ -119,11 +84,6 @@ public class Gossip {
 
     public float FreshnessValue()
     {
-        return freshness / 10;
-    }
-
-    public FactionVO Faction()
-    {
-        return faction;
+        return freshness * 0.1f;
     }
 }

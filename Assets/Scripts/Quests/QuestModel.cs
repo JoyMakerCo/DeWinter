@@ -3,15 +3,29 @@ using Core;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class QuestModel : DocumentModel
 	{
-		public QuestModel () : base("QuestData") {}
+		public QuestModel () : base("QuestData")
+		{
+			AmbitionApp.Subscribe<DateTime>(HandleCalendarDay);
+		}
 
 		public List<PierreQuest> Quests = new List<PierreQuest>();
 
 		[JsonProperty("quests")]
 		private PierreQuest [] _quests;
+
+		public DateTime NextQuestDay;
+
+		private void HandleCalendarDay(DateTime date)
+		{
+			if (date >= NextQuestDay)
+			{
+//TODO: Send a command that updates quests
+				NextQuestDay = date.AddDays(new Random().Next(3, 6));
+			}
+		}
 	}
 }

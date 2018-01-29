@@ -2,17 +2,17 @@
 using Core;
 using System.Collections.Generic;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class PayWagesCmd : ICommand
 	{
 		public void Execute ()
 		{
-			ServantModel servantModel = DeWinterApp.GetModel<ServantModel>();
-			GameModel model = DeWinterApp.GetModel<GameModel>();
-			foreach (KeyValuePair<string, ServantVO> kvp in servantModel.Servants)
+			ServantModel servants = AmbitionApp.GetModel<ServantModel>();
+			GameModel model = AmbitionApp.GetModel<GameModel>();
+			foreach (KeyValuePair<string, ServantVO> servant in servants.Servants)
 			{
-				model.Livre -= kvp.Value.wage;
+				model.Livre -= servant.Value.Wage;
 			}
 		}
 	}

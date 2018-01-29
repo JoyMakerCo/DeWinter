@@ -1,13 +1,13 @@
 ﻿using System;
 using Core;
 
-namespace DeWinter
+namespace Ambition
 {
 	public class CheckVictoryConditionCmd : ICommand<EndScreenTextController>
 	{
 		public void Execute (EndScreenTextController script)
 		{
-			GameModel gameModel = DeWinterApp.GetModel<GameModel>();
+			GameModel gameModel = AmbitionApp.GetModel<GameModel>();
 
 			if (GameData.playerVictoryStatus == "Political Victory")
 	        {

@@ -1,39 +1,117 @@
 ﻿{
-	factionList:[
+	factions:[
 		{
-			Name:"Crown",
+			Name:"crown",
 			Modesty:100,
 			Luxury:100,
 			Allegiance:100,
-			Power:10
+			Power:10,
+			Steadfast:true,
+			Baroque:[60,100]
 		},
 		{
-			Name:"Church",
+			Name:"church",
 			Modesty:100,
 			Luxury:-100,
 			Allegiance:60,
-			Power:10
+			Power:10,
+			Baroque:[60,80]
 		},
 		{
-			Name:"Military",
+			Name:"military",
 			Modesty:0,
 			Luxury:0,
 			Allegiance:0,
-			Power:10
+			Power:10,
+			Baroque:[0,100]
 		},
 		{
-			Name:"Bourgeoisie",
+			Name:"bourgeoisie",
 			Modesty:-100,
 			Luxury:100,
 			Allegiance:-60,
-			Power:10
+			Power:10,
+			Baroque:[0,100]
 		},
 		{
-			Name:"Revolution",
+			Name:"revolution",
 			Modesty:-100,
 			Luxury:-100,
 			Allegiance:-100,
-			Power:10
+			Steadfast:true,
+			Power:10,
+			Baroque:[0,60]
 		},
+	],
+	levels:[
+		{
+			requirement:0,
+			confidence:0,
+			largestAllowableParty:0
+		},
+		{
+			requirement:20,
+			confidence:10,
+			largestAllowableParty:1
+		},
+		{
+			requirement:50,
+			confidence:20,
+			largestAllowableParty:1
+		},
+		{
+			requirement:100,
+			confidence:30,
+			largestAllowableParty:1
+		},
+		{
+			requirement:150,
+			confidence:40,
+			largestAllowableParty:2
+		},
+		{
+			requirement:200,
+			confidence:50,
+			largestAllowableParty:2
+		},
+		{
+			requirement:250,
+			confidence:60,
+			importance:1,
+			largestAllowableParty:2
+		},
+		{
+			requirement:300,
+			confidence:70,
+			importance:1,
+			largestAllowableParty:3
+		},
+		{
+			requirement:350,
+			confidence:80,
+			importance:1,
+			largestAllowableParty:3
+		},
+		{
+			requirement:400,
+			confidence:90,
+			importance:2,
+			largestAllowableParty:3
+		}
+	],
+	allegiance:[
+		-80, -50, -20, 20, 50, 80, 100
+	],
+	modesty:[
+		0,1,2
+	],
+	luxury:[
+		0,1,2
+	],
+	power:[
+		0,10,40,60,90
+	],
+	maxPartySize:[
+		0,1,1,1,2,2,2,3,3,3
 	]
 }
