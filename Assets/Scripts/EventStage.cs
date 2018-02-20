@@ -15,7 +15,6 @@ public class EventStage
 	[JsonProperty("rewards")]
     public RewardVO[] Rewards;
 
-    //TODO: Eliminate constructor in favor of JSON configuration
     public EventStage(string desc, RewardVO[] rewards, params EventOption[] options)
     {
         Description = desc;
@@ -23,7 +22,6 @@ public class EventStage
         Options = options;
     }
 
-	//TODO: Eliminate constructor in favor of JSON configuration
     public EventStage(string desc, RewardVO reward, params EventOption[] options)
     {
         Description = desc;
@@ -31,7 +29,6 @@ public class EventStage
         Options = options;
     }
 
-    //TODO: Eliminate constructor in favor of JSON configuration
     public EventStage(string desc, params EventOption[] options)
     {
         Description = desc;
