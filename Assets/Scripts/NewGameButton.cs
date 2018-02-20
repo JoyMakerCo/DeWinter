@@ -11,8 +11,12 @@ namespace Ambition
 			AmbitionApp.RegisterState<InitGameState>("InitGame");
 			AmbitionApp.RegisterState<StartGameState>("StartGame");
 			AmbitionApp.RegisterTransition("GameController", "InitGame", "StartGame");
-
 			AmbitionApp.InvokeMachine("GameController");
+			if (!Input.GetKey(KeyCode.LeftAlt))
+			{
+				EventModel emod = AmbitionApp.GetModel<EventModel>();
+				emod.Event = emod.eventInventories[EventSetting.Intro][0];
+			}
 		}
 	}
 }

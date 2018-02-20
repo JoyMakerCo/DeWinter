@@ -15,10 +15,7 @@ namespace Ambition
 				&& calendar.Today >= calendar.StartDate.AddDays(2)
 				&& (rnd.Next(100) < model.EventChance))
 			{
-				EventVO [] events = model.eventInventories["night"];
-
-//			//Select the Event
-//	        WeightedSelection();
+				EventVO [] events = model.eventInventories[EventSetting.Night];
 				model.Event = events[rnd.Next(events.Length)];
 			}
 		}

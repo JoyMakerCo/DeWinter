@@ -7,37 +7,33 @@ using Util;
 
 namespace Ambition
 {
-// TODO: Events to be configuarble via UFlow
-	public class EventModel : DocumentModel, IInitializable
-	{
-		private const string PARTY = "party";
-		private const string NIGHT = "night";
-		private const string INTRO = "intro";
+	public enum EventSetting { Party, Night, Intro };
 
-		public Dictionary<string, EventVO[]> eventInventories;
+	public class EventModel : IModel, IInitializable
+	{
+
+		private EventCollection _config;
+
+		public Dictionary<EventSetting, EventVO[]> eventInventories;
 
 		public EventVO Event;
 
-		[JsonProperty("event_chance")]
 		public int EventChance=20;
-
-		public EventModel() : base("EventData") {}
 
 	    public void Initialize()
 	    {
-			eventInventories = new Dictionary<string, EventVO[]>();
-			eventInventories.Add(PARTY, StockPartyInventory());
-			eventInventories.Add(NIGHT, StockNightInventory());
-			eventInventories.Add(INTRO, StockIntroInventory());
+			eventInventories = new Dictionary<EventSetting, EventVO[]>();
+			_config = Resources.Load<EventCollection>("Config/EventConfig");
+			eventInventories.Add(EventSetting.Intro, StockIntroInventory());
+			eventInventories.Add(EventSetting.Party, StockPartyInventory());
+			eventInventories.Add(EventSetting.Night, StockNightInventory());
 	    }
 
-	    //This is all the Intro Events (One for each Character)
-	    // Event Constructor = Priority Weight, "Event Title", Event Stage 0, Event Stage 1, etc...
-	    public EventVO[] StockIntroInventory()
-	    {
-			List<EventVO> intros = new List<EventVO>();
-	        //---- New Event----
-			intros.Add(new EventVO(1, "Yvette’s Story - The Beginning",
+		public EventVO[] StockIntroInventory()
+		{
+			List<EventVO> events = new List<EventVO>();
+			//---- Yvette's Story----
+			events.Add(new EventVO(1, "Yvette’s Story - The Beginning",
 				//Stage 0
 				new EventStage("The carriage rumbles and bounces along the cobbles as you approach the Capitol. It’s taken over a week to get here, even with what little luggage you have. You’ve already finished all of your books and Armand's letter is your only entertainment, other than staring out the window.",
 	                new EventOption("<Read Armand’s Letter>", 1),
@@ -130,9 +126,8 @@ namespace Ambition
 
                 //Stage 13 (Tutorial step)
 	            new EventStage("", new RewardVO(RewardConsts.MESSAGE, GameMessages.START_TUTORIAL))));
-	            
-	        return intros.ToArray();
-	    }
+       		return events.ToArray();
+		}
 
 	    //This is all the Party Events
 	    // Priority Weight, "Event Title", Event Stage 0, Event Stage 1, etc...
@@ -477,7 +472,7 @@ namespace Ambition
 		public EventVO[] StockNightInventory()
 	    {
 	    	List<EventVO> night = new List<EventVO>();
-	        //---- Event 1 ---- A Gift?
+			//---- Event 1 ---- A Gift?
 	        night.Add(new EventVO(1, "A Gift?",
 	            //Stage 0
 	            new EventStage("“Madamme, there's a man outside and he's very insistent about seeing you.”"

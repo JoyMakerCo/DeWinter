@@ -9,7 +9,6 @@ namespace Ambition
 	public class EventOptionButton : MonoBehaviour
 	{
 	    public int option;
-
 	    public Text myText;
 
 	    void Awake()
@@ -26,7 +25,7 @@ namespace Ambition
 	    {
 	    	if (e==null || e.currentStage == null) return;
 			EventStage stage = e.currentStage;
-			bool show = (option < stage.Options.Length && stage.Options[option].optionButtonText != null);
+			bool show = (option < stage.Options.Length && stage.Options[option].Label != null);
 			if (show)
 			{
 				EventOption eventOption = stage.Options[option];
@@ -35,7 +34,7 @@ namespace Ambition
 					ServantModel model = AmbitionApp.GetModel<ServantModel>();
 					show = model.Servants.ContainsKey(eventOption.servantRequired);
 				}
-				if (show) myText.text = eventOption.optionButtonText;
+				if (show) myText.text = eventOption.Label;
 			}
 			this.gameObject.SetActive(show);
 	    }

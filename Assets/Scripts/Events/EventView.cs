@@ -11,6 +11,12 @@ namespace Ambition
 	    public Text titleText;
 	    public Text descriptionText;
 
+	    public GameObject LeftAvatar;
+		public GameObject CenterAvatar;
+		public GameObject RightAvatar;
+
+		public Sprite Background;
+
 	    private EventModel _model;
 	    private Core.MessageSvc _messageSvc = Core.App.Service<Core.MessageSvc>();
 
@@ -38,7 +44,7 @@ namespace Ambition
 	    {
 			EventOption opt = _model.Event.currentStage.Options[option];
 			_model.Event.currentStageIndex = (opt != null)
-				? opt.ChooseNextStage()
+				? opt.NextStage[new System.Random().Next(opt.NextStage.Length)]
 				: -1;
 
 			// Advance to the next stage
