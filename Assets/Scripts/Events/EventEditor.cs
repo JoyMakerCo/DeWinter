@@ -68,13 +68,7 @@ namespace Ambition
 
 		public void OnGUI(bool selected)
 		{
-			if (selected)
-			{
-			}
-			else
-			{
-				GUI.Box(_rect, Text, );
-			}
+			GUI.Box(_rect, Text);
 		}
 	}
 

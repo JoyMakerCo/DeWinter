@@ -18,7 +18,6 @@ namespace Ambition
 		#if (UNITY_EDITOR)
 		public Vector2[] Positions;
 		#endif
-
 	}
 
 	[Serializable]
