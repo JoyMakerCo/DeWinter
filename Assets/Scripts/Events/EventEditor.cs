@@ -66,7 +66,7 @@ namespace Ambition
 			return _rect.Contains(MousePosition);
 		}
 
-		public void OnGUI(bool selected)
+		public void OnGUI()
 		{
 			GUI.Box(_rect, Text);
 		}
