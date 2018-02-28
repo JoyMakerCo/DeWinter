@@ -11,8 +11,8 @@ namespace Ambition
 		public override void OnEnterState ()
 		{
 			EventModel model = AmbitionApp.GetModel<EventModel>();
-			model.Event.currentStageIndex = 0;
 			AmbitionApp.OpenDialog(MODAL_ID);
+			model.Moment = model.Config.Moments[0];
 	    }
 	}
 }

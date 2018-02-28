@@ -1,40 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 
+// TODO: Make this RewardVO
 namespace Ambition
 {
+	[Serializable]
 	public class RewardVO
 	{
-		public string Category; // Item, Value, Faction, etc
-		public string Type; // Livre, Reputation, etc
-		public int Quantity; // Number
+		public RewardType Type;
+		public string ID;
+		public int Amount=0;
 
-		public RewardVO(string category, string type, int quantity=0)
+		public RewardVO() {}
+
+		public RewardVO (RewardType type, string id, int amount=1)
 		{
-			Category = category;
 			Type = type;
-			Quantity = quantity;
+			ID = id;
+			Amount = amount;
 		}
 
-		// TODO: Localize
-		public string Name
+		public RewardVO (RewardType type, int amount=1)
 		{
-			get
-			{
-				switch (Category)
-				{
-					case RewardConsts.VALUE:
-						return Quantity.ToString() + " " + Type; 
-					case RewardConsts.FACTION:
-						return Quantity.ToString() + "Repuration with " + Type; 
-					case RewardConsts.SERVANT:
-						return "An Introduction to Hire a " + Type;
-					case RewardConsts.GOSSIP:
-						return "A tidbit of " + Type + " Gossip";
-				}
-				return "";
-			}
+			Type = type;
+			Amount = amount;
 		}
 	}
 }

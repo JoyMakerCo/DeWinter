@@ -8,7 +8,7 @@ namespace Ambition
 		public override bool InitializeAndValidate ()
 		{
 			EventModel model = AmbitionApp.GetModel<EventModel>();
-			return model.Event != null && model.Event.currentStage != null;
+			return model.Config != null;
 		}
 	}
 }

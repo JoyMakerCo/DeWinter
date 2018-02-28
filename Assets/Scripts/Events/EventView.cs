@@ -2,12 +2,15 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using System;
 using Dialog;
 
 namespace Ambition
 {
 	public class EventView : DialogView
 	{
+		public const string DIALOG_ID = "EVENT";
 	    public Text titleText;
 	    public Text descriptionText;
 
@@ -17,38 +20,27 @@ namespace Ambition
 
 		public Sprite Background;
 
-	    private EventModel _model;
-	    private Core.MessageSvc _messageSvc = Core.App.Service<Core.MessageSvc>();
-
 	    public override void OnOpen ()
 		{
-			_model = AmbitionApp.GetModel<EventModel>();
-			_messageSvc.Subscribe<EventVO>(HandleEventUpdate);
+			EventModel model = AmbitionApp.GetModel<EventModel>();
+			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
+			model.Moment = model.Config.Moments[0];
+			titleText.text = model.Config.Name;
 		}
 
 		public override void OnClose ()
 		{
-			_messageSvc.Unsubscribe<EventVO>(HandleEventUpdate);
+			AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
 	    }
 
- 		private void HandleEventUpdate(EventVO e)
+ 		private void HandleMoment(MomentVO moment)
 		{
-			if (e != null && e.currentStage != null)
-			{
-				titleText.text = e.Name;
-				descriptionText.text = e.currentStage.Description;
-			}
+			if (moment != null) descriptionText.text = moment.Text;
 		}
 
 	    public void EventOptionSelect(int option)
 	    {
-			EventOption opt = _model.Event.currentStage.Options[option];
-			_model.Event.currentStageIndex = (opt != null)
-				? opt.NextStage[new System.Random().Next(opt.NextStage.Length)]
-				: -1;
-
-			// Advance to the next stage
-			AmbitionApp.SendMessage<EventVO>(_model.Event);
+			AmbitionApp.SendMessage<int>(EventMessages.EVENT_OPTION, option);
 		}
 	}
 }

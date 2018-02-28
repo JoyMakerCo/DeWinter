@@ -9,40 +9,44 @@ namespace Ambition
 	{
 		public void Execute(RewardVO reward)
 		{
-			switch(reward.Category)
+			switch(reward.Type)
 			{
-				case RewardConsts.VALUE:
-					RewardValueItem(reward.Type, reward.Quantity);
+				case RewardType.Livre:
+					AmbitionApp.GetModel<GameModel>().Livre += reward.Amount;
 					break;
 
-				case RewardConsts.GOSSIP:
+				case RewardType.Reputation:
+					AmbitionApp.GetModel<GameModel>().Reputation += reward.Amount;
+					break;
+
+				case RewardType.Gossip:
 					InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
-					imod.GossipItems.Add(new Gossip(reward.Type));
+					imod.GossipItems.Add(new Gossip(reward.ID));
 					break;
 
-				case RewardConsts.ITEM:
-					RewardItem(reward.Type, reward.Quantity);
+				case RewardType.Item:
+					RewardItem(reward.ID, reward.Amount);
 					break;
 
-				case RewardConsts.ENEMY:
-					AmbitionApp.SendMessage<string>(GameMessages.CREATE_ENEMY, reward.Type);
+				case RewardType.Enemy:
+					AmbitionApp.SendMessage<string>(GameMessages.CREATE_ENEMY, reward.ID);
 					break;
 
-				case RewardConsts.DEVOTION:
+				case RewardType.Devotion:
 					// TODO: Implement seduction
 					break;
 
-				case RewardConsts.FACTION:
-					AdjustFactionVO vo = new AdjustFactionVO(reward.Type, reward.Quantity);
+				case RewardType.Faction:
+					AdjustFactionVO vo = new AdjustFactionVO(reward.ID, reward.Amount);
 					AmbitionApp.SendMessage<AdjustFactionVO>(vo);
 					break;
 
-				case RewardConsts.SERVANT:
-//					AmbitionApp.SendMessage(reward.Type);
+				case RewardType.Servant:
+//					AmbitionApp.SendMessage(reward.Amount);
 					break;
 
-				case RewardConsts.MESSAGE:
-					AmbitionApp.SendMessage(reward.Type);
+				case RewardType.Message:
+					AmbitionApp.SendMessage(reward.ID);
 					break;
 			}
 		}
@@ -56,19 +60,6 @@ namespace Ambition
 				ItemVO item = new ItemVO(itemz[new Random().Next(itemz.Length)]);
 				item.Quantity = quantity;
 				imod.Inventory.Add(item);
-			}
-		}
-
-		private void RewardValueItem(string type, int quantity)
-		{
-			switch (type)
-			{
-				case GameConsts.LIVRE:
-					AmbitionApp.GetModel<GameModel>().Livre += quantity;
-					break;
-				case GameConsts.REPUTATION:
-					AmbitionApp.GetModel<GameModel>().Reputation += quantity;
-					break;
 			}
 		}
 	}
