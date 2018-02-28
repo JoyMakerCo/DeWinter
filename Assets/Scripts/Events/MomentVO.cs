@@ -10,7 +10,7 @@ namespace Ambition
 		public string Text;
 		public Sprite Background;
 
-		public EventRewardVO[] Rewards;
+		public RewardVO[] Rewards;
 
 		public MomentVO (string text)
 		{

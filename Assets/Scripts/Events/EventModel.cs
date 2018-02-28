@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Core;
@@ -16,19 +18,57 @@ namespace Ambition
 
 		public Dictionary<EventSetting, EventVO[]> eventInventories;
 
-		public EventVO Event;
+		public EventVO FindEvent(string ID)
+		{
+			if (_config != null)
+			{
+				return Array.Find(_config.Events, e=>e.Name.Contains(ID));
+			}
+			return null;
+		}
+
+		public EventVO FindEvent(string ID, EventSetting setting)
+		{
+			if (_config != null)
+			{
+				return Array.Find(_config.Events, e=>e.Setting == setting && e.Name.Contains(ID));
+			}
+			return null;
+		}
+
+
+		private EventVO _event;
+		public EventVO Config
+		{
+			get { return _event; }
+			set {
+				_event = value;
+				AmbitionApp.SendMessage<EventVO>(_event);
+			}
+		}
+
+		private MomentVO _moment;
+		public MomentVO Moment
+		{
+			get { return _moment; }
+			set {
+				_moment = value;
+				AmbitionApp.SendMessage<MomentVO>(_moment);
+				if (value == null) Config = null;
+			}
+		}
 
 		public int EventChance=20;
 
 	    public void Initialize()
 	    {
-			eventInventories = new Dictionary<EventSetting, EventVO[]>();
-			_config = Resources.Load<EventCollection>("Config/EventConfig");
-			eventInventories.Add(EventSetting.Intro, StockIntroInventory());
-			eventInventories.Add(EventSetting.Party, StockPartyInventory());
-			eventInventories.Add(EventSetting.Night, StockNightInventory());
+			_config = Resources.Load<EventCollection>("EventConfig");
+			// eventInventories = new Dictionary<EventSetting, EventVO[]>();
+			// eventInventories.Add(EventSetting.Intro, StockIntroInventory());
+			// eventInventories.Add(EventSetting.Party, StockPartyInventory());
+			// eventInventories.Add(EventSetting.Night, StockNightInventory());
 	    }
-
+/*
 		public EventVO[] StockIntroInventory()
 		{
 			List<EventVO> events = new List<EventVO>();
@@ -125,7 +165,7 @@ namespace Ambition
 		                new EventOption("<Skip the Tutorial> “I'm Sure”", -1)),
 
                 //Stage 13 (Tutorial step)
-	            new EventStage("", new RewardVO(RewardConsts.MESSAGE, GameMessages.START_TUTORIAL))));
+	            new EventStage("", new RewardVO(RewardType.Message, GameMessages.START_TUTORIAL))));
        		return events.ToArray();
 		}
 
@@ -141,7 +181,7 @@ namespace Ambition
 	                         + "\n'Out of my way!' someone yells shrilly. You turn around to find a rather intoxicated woman, freshly emptied drink still in her hands. Two of her friends are trying to guide her outside for some fresh air."
 	                         + "\nHer friends mumble some half hearted apologies about your dress before their charge interjects 'I don't see the problem. I didn't ruin anything. I would never be seen in a dress that tacky.' Her friends giggle at the remark."
 	                         + "\n\n-You have lost 25 Reputation",
-	                         new RewardVO[] { new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -25) },
+	                         new RewardVO[] { new RewardVO(RewardType.Reputation, -25) },
 
 	                new EventOption("'Then wear it next time, because I don't think anyone wants to see you either.'", 1, 2, 2, 1),
 	                new EventOption("'Haha... yes, very funny...'", 3, 4, 4, 1),
@@ -150,7 +190,7 @@ namespace Ambition
 				// Stage 1
 	            new EventStage("The other guests hush for a moment before errupting in laughter. It seems like your comment was perfectly timed. The drunk guest and her compatriots skulk away."
 	                         + "\n\n-You have gained 100 Reputation",
-							new RewardVO[] { new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 100) },
+							new RewardVO[] { new RewardVO(RewardType.Reputation, 100) },
 
 	                new EventOption("Return to the Party <End Event>", -1)),
 
@@ -159,15 +199,15 @@ namespace Ambition
 	                         + "\n'I'll remember this.' she hisses at you under her breath before stalking away, a little more composed than before, but only a little."
 	                         + "\n\n-You have a new Enemy"                       
 	                         + "\n-You have gained 50 Reputation",
-							new RewardVO[] { new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 50),
-											new RewardVO(RewardConsts.ENEMY, null, 1)},
+							new RewardVO[] { new RewardVO(RewardType.Reputation, 50),
+											new RewardVO(RewardType.Enemy, null, 1)},
 
 	                new EventOption("Return to the Party <End Event>", -1)),
 
 	             // Stage 3
 	            new EventStage("One of the friends quietly thanks you for being a good sport. The drunk guest continues her slurred tirade to nobody in particular. You walk away, searching for a damp cloth to blot your dress with."
 	                         + "\n\n-You have regained 15 Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 15),
+							new RewardVO(RewardType.Reputation, 15),
 
 	                new EventOption("Return to the Party <End Event>", -1)),
 
@@ -175,7 +215,7 @@ namespace Ambition
 	            new EventStage("One of the friends perks up. 'It is funny isn't it? Just like how it's funny that the wine actually makes your dress look better.'" 
 	                         + "\nLooking around, you notice that some of the once sympathetic faces have turned to quiet laughter. You walk away, searching for a damp cloth to blot your dress with."
 	                         + "\n\n-You have lost 15 Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -15),
+							new RewardVO(RewardType.Reputation, -15),
 
 	                new EventOption("Return to the Party <End Event>", -1)),
 
@@ -196,7 +236,7 @@ namespace Ambition
 				// Stage 1
 	            new EventStage("You work your way seamlessly into the group and provide some new fodder for their mockery, generating laughter and murmurs of approval. After a few minutes everyone in the cicle goes their seperate ways with new rumors and jabs to tell their friends." //Stage 1
 	                         + "\n\n-You have gained 50 Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 50),
+							new RewardVO(RewardType.Reputation, 50),
 	                new EventOption("Return to the Party <End Event>", -1)),
 
 				// Stage 2
@@ -212,8 +252,8 @@ namespace Ambition
 	                         + "\nThere is a slight ringing in your ears."
 	                         + "\n\n-You have a new Enemy" 
 	                         + "n-You have lost 25 Reputation",
-							new RewardVO[] { new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -25),
-											new RewardVO(RewardConsts.ENEMY, null, 1)},
+							new RewardVO[] { new RewardVO(RewardType.Reputation, -25),
+											new RewardVO(RewardType.Enemy, null, 1)},
 
 	                new EventOption("'Well, that could have gone better.' <End Event>", -1)),
 
@@ -236,7 +276,7 @@ namespace Ambition
 	            new EventStage("With a single, swift movement you scoop up the statue and covertly place it in your bag."
 	                         + "\nAnother glance about confirms that nobody was around to witness your indiscretion, though the extra weight in your bag reminds you of your new acquisition."
 	                         + "\n\nYou have gained 100 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, 100),
+							new RewardVO(RewardType.Livre, 100),
 
 	                new EventOption("Return to the Party <End Event>", -1)),
 
@@ -245,7 +285,7 @@ namespace Ambition
 	                         + "\nWhile kneeling down to retrieve your prize, you notice the shoes of a servant out of the corner of your eye. Looking up at them suddenly and manage to stammer some sort of apology and return the item to its place on the table."
 	                         + "\nThey know exactly what you were trying to do and you're sure the host will hear about this." 
 	                         + "\n\nYou've just lost 150 Reputation.",
-						new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -150),
+						new RewardVO(RewardType.Reputation, -150),
 
 	                new EventOption("Return to the Party <End Event>", -1)),
 
@@ -270,27 +310,27 @@ namespace Ambition
 				// Stage 1
 	            new EventStage("The dice turn up your way and you can't help but smile as the grumbling betters shovel the scattering of coins over to you."
 						+ "\n\nYou have gained 50 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, 50),
+							new RewardVO(RewardType.Livre, 50),
 	                new EventOption("'Thanks for the money, Gentlemen!' <End Event>", -1)),
 
 				// Stage 2
 	            new EventStage("You grimace as the dice don't turn up in your favor. One of the men at a table gives you a knowing wink as he takes your money away. "
 	                         + "'Better Luck next time, eh?'"
 							+ "\n\nYou have lost 50 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -50),
+							new RewardVO(RewardType.Livre, -50),
 	                new EventOption("'Oh well...' <End Event>", -1)),
 
 				// Stage 3
 	            new EventStage("The dice turn up your way and you can't help but smile as the grumbling betters shovel the small pile of coins over to you."
 							+ "\n\nYou have gained 100 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, 100),
+							new RewardVO(RewardType.Livre, 100),
 	                new EventOption("'Thanks for the money, Gentlemen!' <End Event>", -1)),
 
 				// Stage 4
 	            new EventStage("You grimace as the dice don't turn up in your favor. You suppress the urge to reach out for your coins as one of the men at a table takes your sizable amount of money away. "
 	                         + "\n'Better Luck next time, eh?'"
 	                         + "\n\nYou have lost 100 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -100),
+							new RewardVO(RewardType.Livre, -100),
 	                new EventOption("'Ugh!' <End Event>", -1)),
 
 				// Stage 5
@@ -330,15 +370,15 @@ namespace Ambition
 	                         + "\n'Ah, I forgot something very important... over there.' the fake Baron gestures vaguely in a direction before scurrying away. He shoots a look back at you. This isn't over." 
 	                         + "\n\n-You have gained 75 Reputation." 
 	                         + "\n-You have a new Enemy",
-	                         new RewardVO[]{ new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 75),
-											new RewardVO(RewardConsts.ENEMY, null, 1) },
+	                         new RewardVO[]{ new RewardVO(RewardType.Reputation, 75),
+											new RewardVO(RewardType.Enemy, null, 1) },
 	                new EventOption("Return to the Party <End Event>", -1)),
 
 	            //Stage 4
 	            new EventStage("He narrows his eyes at you before rummaging through his pockets, muttering some words that are truly not befitting a man of his supposed title.'"
 	                         + "\nHe drops a significant pouch of coins in your hand. 'Take this, you vulture, it's all I have.' He glances over at the crowd of social climbers you had left behind, who are growing more antsy by the second. 'Now leave me alone, I've got a room to work.'"
 	                         + "\n\n-You have gained 150 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, 150),
+							new RewardVO(RewardType.Livre, 150),
 	                new EventOption("'I'm glad we could come to an understanding' <End Event>", -1)),
 
 	            //Stage 5
@@ -365,14 +405,14 @@ namespace Ambition
 	            new EventStage("You sit down on a chair next to her and spend the next hour comforting her, giving her advice and generally trying to rebuild her confidence. It works for the most part. She still doesn't want to be here, but at least she's able to wait it out."
 	                        + "\nAs you get up to leave, you you notice a few strangers nodding approvingly."
 	                        + "\n\n-You have gained 50 Reputation.",
-						new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 50),
+						new RewardVO(RewardType.Reputation, 50),
 	            new EventOption("Return to the Party < End Event > ", -1)),
 
 	            //Stage 3
 	            new EventStage("You lean in to try comforting her but she immediately pulls away and begins sobbing harder. A few half-hearted attempts to calm her down fail and you decide to leave the girl to her feelings."
 	                        + "\nSome nearby guests gawk at you, as if they had actually planned on doing something about all this themselves."
 	                        + "\n\n-You have lost 50 Reputation.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -50),
+							new RewardVO(RewardType.Reputation, -50),
 		                new EventOption("Return to the Party <End Event>", -1)),
 
 	            //Stage 4
@@ -385,14 +425,14 @@ namespace Ambition
 	                        + "\nIt'll take some time for your wine to take effect, but the shock of the taste seems to have distracted her."
 	                        + "\nYou talk for a few more minutes and try to give her some advice on how to survive these things. When you finally walk away you notice a few strangers nodding approvingly."
 	                        + "\n\n-You have gained 50 Reputation.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 50),
+							new RewardVO(RewardType.Reputation, 50),
 		                new EventOption("Return to the Party <End Event>", -1)),
 
 	            //Stage 6
 	            new EventStage("As soon as you turn your back to her a new fit of tears begins. A few faces around you stare accusingly, as if this mess is somehow your fault."
 	                        + "\nYou hurry away quickly, before more people recognize you."
 	                        + "\n\n-You have lost 30 Reputation.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -30),
+							new RewardVO(RewardType.Reputation, -30),
 		                new EventOption("Return to the Party <End Event>", -1))));
 
 	        //---- Event 7 ---- A Pressing Concern
@@ -432,7 +472,7 @@ namespace Ambition
 	            //Stage 5
 	            new EventStage("Your comment defuses the sudden tension in the room. Shortly, everyone takes turns decrying someone who isn't there to defend themselves and they soon disperse happily, their moral duties fulfilled."
 	                        + "\n\n-You have gained 10 Reputation.",
-					new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 10),
+					new RewardVO(RewardType.Reputation, 10),
 	                new EventOption("“That was easier than I expected” <End Event>", -1)),
 
 	            //Stage 6
@@ -440,7 +480,7 @@ namespace Ambition
 	                        + "\n“Don't you see?' She asks, flush with exasperation, among other things. 'Pierre has slandered my good name.'"
 	                        + "\nThe crowd awkwardly nods in agreement and begins to disperse."
 	                        + "\n\n-You have gained a new piece of Gossip",
-					new RewardVO(RewardConsts.GOSSIP, null, 1),
+					new RewardVO(RewardType.Gossip, null, 1),
 	                new EventOption("“Let's do this again some time” <End Event>", -1)),
 
 	            //Stage 7
@@ -448,21 +488,21 @@ namespace Ambition
 	                    + "\n“Well, I guess that's true, it can't be you,' she demures, staring into her glass as she swirls it. “However, I still cannot forgive you for supporting that terrible newspaper!'"
 	                    + "She turns and suddenly leaves in a huff, her anger finally satisfied. The crowd disperses, whispering about your love for such a scandalous publication, even though they probably read it too."
 	                    + "\n\n-You have lost 10 Reputation",
-						new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -10),
+						new RewardVO(RewardType.Reputation, -10),
 	            new EventOption("“Well, that was something else...” <End Event>", -1)),
 
 	             //Stage 8
 	            new EventStage("“Well, you would know, wouldn't you?' she says icily. Without warning, she snatches a glass of water from a nearby table and throws it in your face."
 	                    + "\nBy the time you finish drying your face she is already gone, as is most of the crowd. You get the feeling that you've somehow confirmed your guilt to them, even though it wasn't specifically true."
 	                    + "\n\n-You have lost 20 Reputation",
-						new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -20),
+						new RewardVO(RewardType.Reputation, -20),
 	            new EventOption("“At least it wasn't wine. I like this outfit...” <End Event>", -1)),
 
 	            //Stage 9
 	            new EventStage("The room hisses as the crowd collectively sucks in the air between their teeth. It sounds like that particular barb struck quite deep. Without another word she spins around in a swirl of skirts and sleeves."
 	                    + "\nAs she storms off you can feel the anger radiating off of her. Doesn't matter though, you're still right and she's still a jerk. A glance around the crowd confirms that they seem to think the same."
 	                    + "\n\n-You have gained 20 Reputation",
-						new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 20),
+						new RewardVO(RewardType.Reputation, 20),
 	            new EventOption("“Yeah, I thought so!” <End Event>", -1))));
 
 	        return parties.ToArray();
@@ -485,13 +525,13 @@ namespace Ambition
 	            new EventStage("With a glance back at you, your handmaiden steps aside to let the main in. He bows before presenting a package wrapped in fine paper." 
 	                         + "\nOpening the package reveals a jeweled brooch. Before you can ask any more questions, the footman is already out your front door and heading for the street." 
 	                         + "\n\n-You have gained 100 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, 100),
+							new RewardVO(RewardType.Livre, 100),
 	                new EventOption("“Well that's nice, I wonder who this mystery admirer is...” <End Event>", -1)),
 	            //Stage 2
 	            new EventStage("Your handmaiden steps off to the side to let him in. As you step forward to take the package from his hands, you notice the grubby clothes under his footman's coat."
 	                         + "\nWithout warning the man bursts forward and shoves you to the ground. In the chaos he snatches a valuable painting from your wall and runs out the door."
 	                         + "\n\n-You have lost 50 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -50),
+							new RewardVO(RewardType.Livre, -50),
 	                new EventOption("“Looks like I need two things, a stiff drink and a bodyguard.” <End Event>", -1)),
 	            //Stage 3
 	            new EventStage("The man at the door remains extremely insistent but after a while your handmaiden manages to shoo him away." 
@@ -501,7 +541,7 @@ namespace Ambition
 	            new EventStage("Hansel approaches the footman and pats him down, searching for any sort of concealed danger. After a few moments, Hansel gives a nod of approval and lets the man inside. The footman bows before presenting a package wrapped in fine paper."
 	                     + "\nOpening the package reveals a jeweled brooch. Before you can ask any more questions, the footman is already out your front door and heading for the street."
 	                     + "\n\n-You have gained 100 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, 100),
+							new RewardVO(RewardType.Livre, 100),
 	            new EventOption("“Well that's nice, I wonder who this mystery admirer is...” <End Event>", -1)),
 	            //Stage 5
 	            new EventStage("Hansel approaches the footman, who begins to shake like a leaf. It doesn't take long for your bodyguard to reveal the grubby clothes under the footman's coat."
@@ -519,14 +559,14 @@ namespace Ambition
 	            new EventStage("A new carriage with a new driver shows up in half an hour. It's inconvenient but still safer than the alternative."
 	                         + "\nYou arrive home, safe and sound."
 	                         + "\n\n-You have lost 15 Livres.",
-						new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -15),
+						new RewardVO(RewardType.Livre, -15),
 	                new EventOption("“Finally! Off to bed.” <End Event>", -1)),
 	            //Stage 2
 	            new EventStage("You hop into your carriage and your coachman flicks the reins once, then again. Soon, you're speeding home, the horses' hooves thundering on the cobbles."
 	                         + "\nThe carriage is going much too fast when one of the wheels hits a loose set of cobbles in the road. You hold on for dear life as the carriage lurches to the side and a wheel gets caught in the gutter. You hear a series of high pitched cracks as the gilded spokes snap." 
 	                         + "\nWhen you finally come to a halt, the carriage is tilting precariously to one side. Thankfully, nobody is hurt, but it's going to cost quite a bit to fix that wheel."
 	                         + "\n\n-You have lost 50 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -50),
+							new RewardVO(RewardType.Livre, -50),
 	                new EventOption("“I feel like I should have seen this coming.” <End Event>", -1)),
 	            //Stage 3
 	            new EventStage("You don't care enough to spare the coin or the time to find another way home at this time of night. You hop in your carriage and with a flick of the coachman's reins it lurches forward."
@@ -577,13 +617,13 @@ namespace Ambition
 	            new EventStage("Camille looks up, genuinely surprised before recomposing herself. “Thank you Madamme, I assure you that you'll not reget this kindness.”"
 	                        + "\n“Is there anything else I can take care of for you?”"
 	                        + "\n\n-You have lost 50 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -50),
+							new RewardVO(RewardType.Livre, -50),
 	                new EventOption("“No, thank you Camille. You are dismissed.” <End Event>", -1)),
 	            //Stage 2
 	            new EventStage("Camille's eyes go wide like saucer plates and she opens her mouth to speak but nothing comes out for a while."
 	                        + "\n“Madamme, thank you so very much! I can't believe this. My sister will be so happy, once she sees the doctor, of course.” She pauses after a few giddy moments and recomposes herself. “Is there anything else I can do for you?”"
 	                        + "\n\n-You have lost 50 Livres.",
-							new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -50),
+							new RewardVO(RewardType.Livre, -50),
 
 	                new EventOption("“No, thank you Camille. You are dismissed.” <End Event>", -1)),
 
@@ -613,7 +653,7 @@ namespace Ambition
 	                    + "\n\nThe next morning, at breakfast, Isaac joins you in the dining room, sporting some fresh bandages. He bows awkwardly to you when he enters."
 	                    + "\n“Merci beaucoup Madamme. If it weren't for you I'd be in a jail cell right now, or worse. You're a true friend of the people and I'll make sure everyone knows it.” He bows again before leaving out the back door."
 	                    + "\n\n-You have gained 50 Reputation with the Third Estate",
-						new RewardVO(RewardConsts.FACTION, "Third Estate", 50),
+						new RewardVO(RewardType.Faction, "Third Estate", 50),
 
 	                new EventOption("“As far as mornings after go, that was pretty good.” <End Event>", -1)),
 	            //Stage 3
@@ -630,8 +670,8 @@ namespace Ambition
 	                    + "\n“Merci beaucoup Madamme, your actions helped bring this vile criminal to justice. Your King and Country extend their gratitude.” Isaac stares at you accusingly as they marshalls frog march him out the door. You have a feeling that he'll make sure everyone knows where your loyalties lie."
 	                    + "\n\n-You have gained 50 Reputation with the Crown" 
 	                    + "\n-You have lost 50 Reputation with the Third Estate",
-						new RewardVO[]{new RewardVO(RewardConsts.FACTION, "Crown", 50),
-										new RewardVO(RewardConsts.FACTION, "Third Estate", -50)},
+						new RewardVO[]{new RewardVO(RewardType.Faction, "Crown", 50),
+										new RewardVO(RewardType.Faction, "Third Estate", -50)},
 	                new EventOption("“Another victory for justice. Now, about fixing that window...” <End Event>", -1)),
 	            //Stage 5
 	            new EventStage("Hearing your words, the marshals silently ready their weapons and stalk up your stairs towards the attic."
@@ -639,8 +679,8 @@ namespace Ambition
 	                    + "\n“Madamme, your King and Country extend their gratitude,” the leader of the marchals says as he looks you up and down. He's certain you hid Isaac, but you also gave him up. Isaac stares at you accusingly before he's shoved out the door." 
 	                    + "\n\n-You have gained 30 Reputation with the Crown"
 	                    + "\n-You have lost 50 Reputation with the Third Estate",
-					new RewardVO[]{ new RewardVO(RewardConsts.FACTION, "Crown", 30),
-									new RewardVO(RewardConsts.FACTION, "Third Estate", -50)},
+					new RewardVO[]{ new RewardVO(RewardType.Faction, "Crown", 30),
+									new RewardVO(RewardType.Faction, "Third Estate", -50)},
 
 	                new EventOption("“Sorry Isaac, it was either you or me.” <End Event>.", -1)),
 	            //Stage 6
@@ -650,8 +690,8 @@ namespace Ambition
 	                    + "\n“Merci beaucoup Madamme. If it weren't for you I'd be in a jail cell right now, or worse. You're took an enormous risk to help me, I'll never forget that. All of my brothers and sisters of the Third Estate will never forget that either.” He bows again before leaving out the back door."
 	                    + "\n\n-You have gained 70 Reputation with the Third Estate"
 	                    + "\n-You have lost 50 Reputation with the Crown",
-						new RewardVO[]{ new RewardVO(RewardConsts.FACTION, "Crown", -50),
-										new RewardVO(RewardConsts.FACTION, "Third Estate", 70)},
+						new RewardVO[]{ new RewardVO(RewardType.Faction, "Crown", -50),
+										new RewardVO(RewardType.Faction, "Third Estate", 70)},
 	                new EventOption("“As far as mornings after go, that was pretty good.” <End Event>.", -1)),
 
 	            //Stage 7
@@ -663,8 +703,8 @@ namespace Ambition
 	                    + "\nIsaac suddenly interjects “She was my hostage! I forced them to hide me here!” the marshals beat him until he's quiet. The leader of the marshals looks you up and down then leaves with Isaac. His story is just plausible enough, but the marshals still suspect you. Isaac looks at you one last time before he's shoved at the door. He knows you tried to save him."
 	                    + "\n\n-You have gained 10 Reputation with the Third Estate"
 	                    + "\n-You have lost 70 Reputation with the Crown",
-						new RewardVO[]{ new RewardVO(RewardConsts.FACTION, "Crown", -70),
-										new RewardVO(RewardConsts.FACTION, "Third Estate", 10)},
+						new RewardVO[]{ new RewardVO(RewardType.Faction, "Crown", -70),
+										new RewardVO(RewardType.Faction, "Third Estate", 10)},
 	                new EventOption("<End Event>.", -1))));
 
 	        //---- Event 6 ---- This Shall Not Stand!
@@ -675,7 +715,7 @@ namespace Ambition
 	                    + "\nWorst of all, it's mostly true! The pages of 'Le Mercure' read like a list of criminal charges against you written by some disgruntled socialite."
 	                    + "\n\nIf you don't do something about this then people might start to believe that this drivel is actually true. It mostly is, but you can't have them believing it!"
 	                    + "\n\n-You have lost 15 Reputation",
-						new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -15),
+						new RewardVO(RewardType.Reputation, -15),
 
 	            new EventOption("“Camille, bring Pierre to me, now. I don't care where you find him or how you get him.”", 1),
 	            new EventOption("“I'm not going to dignify this trash with a response.”", 4),
@@ -702,38 +742,38 @@ namespace Ambition
 		        new EventStage("A person of your stature needn't concern themselves with the trivial postings of a second rate newspaper. At least, that's what you tell yourself."
 		                    + "\n\nUnfortunately, your fellow socialites aren't nearly as mature as you'd hoped them to be. It's not long before you hear of people openly discussing the distressing things being said about you in the press."
 		                    + "\n\n-You have lost 15 more Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -15),
+							new RewardVO(RewardType.Reputation, -15),
 		            new EventOption("“Ugh... children, all of them!” <End Event>", -1)),
 		        //Stage 5
 		        new EventStage("A special evening edition of 'Le Mercure' is released, including updates to the social pages, of all things. You smile as you notice Pierre attempt to highlight your various positive qualities."
 		                    + "\nIt'll be obvious to any regular reader that you're behind this sudden change of tone, but that's alright. The ability to manipulate the press has a social cachet all of its own."
 		                    + "\n\n-You have gained 45 Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 45),
+							new RewardVO(RewardType.Reputation, 45),
 		            new EventOption("“I'm glad Pierre was willing to listen to a little reason.” <End Event>", -1)),
 		        //Stage 6
 		        new EventStage("A special evening edition of 'Le Mercure' is released, including updates to the social pages, of all things. You grimace as you notice that Pierre has decided to pay homage to your virtues, with statements that are obviously lies."
 		                    + "\nPierre barely bothered to do his research. Now, in addition to being bad-mouthed by the press, they're saying positive things that can't possibly be true. This will further cement people's newfound negative opinions of you."
 		                    + "\n\n-You have lost 30 more Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -30),
+							new RewardVO(RewardType.Reputation, -30),
 		            new EventOption("“That's the last time I try being nice.” <End Event>", -1)),
 		        //Stage 7
 		        new EventStage("Camille returns from her errands with a special evening edition of 'Le Mercure', including updates to the social pages. It seems like Pierre has taken your threat to heart and retracted several things said about you, even some of the things that are true!"
 		                    + "\nIt'll be obvious to anyone that you're behind this sudden series of retractions, but that's alright. The ability to bully the press has a social cachet all of its own."
 		                    + "\n\n-You have gained 45 Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 45),
+							new RewardVO(RewardType.Reputation, 45),
 		            new EventOption("“I'm glad Pierre understands not to get on my bad side.” <End Event>", -1)),
 
 		        //Stage 8
 		        new EventStage("Camille returns from her errands with a special evening edition of 'Le Mercure', including updates to the social pages. You scowl as you read Pierre's excessively exacting retractions. Only the lies were retracted and absolutely nothing else."
 		                    + "\nNot only is it obvious that you ordered the retractions, the specificity of the retractions confirm that every other thing about you is completely true."
 		                    + "\n\n-You have lost 30 more Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, -30),
+							new RewardVO(RewardType.Reputation, -30),
 		            new EventOption("“Well, that's the last time I try bullying the press.” <End Event>.", -1)),
 		        //Stage 9
 		        new EventStage("Hansel grunts and heads out the door, his face a mask of menace. Later, Camille returns from her errands with a special evening edition of 'Le Mercure', including updates to the social pages. It seems like, whatever Hansel said, or threatened to do, to Pierre has cause a real change of heart. The Newspaper has retracted several things they said about you, even some of the things that are true!"
 		                    + "\nIt'll be obvious to anyone that you're behind this sudden series of retractions, but that's alright. The ability to bully the press has a social cachet all of its own."
 		                    + "\n\n-You have gained 45 Reputation",
-							new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 45),
+							new RewardVO(RewardType.Reputation, 45),
 		            new EventOption("“Hansel is always so good at explaining things to people.” <End Event>.", -1))));
 
 		        //---- Event 7 ---- Man of God, Feet of Clay
@@ -758,8 +798,8 @@ namespace Ambition
 		                    + "\nHe leaves much more happily than before, his bowl laden with provisions, albiet second hand ones."
 		                    + "\n\n-You have lost 15 Livres."
 		                    + "\n-You have gained 20 Reputation with the Church.",
-							new RewardVO[]{ new RewardVO(RewardConsts.FACTION, "Church", 20),
-											new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -15)},
+							new RewardVO[]{ new RewardVO(RewardType.Faction, "Church", 20),
+											new RewardVO(RewardType.Livre, -15)},
 		            new EventOption("“Thank you Father, good luck and good day!” <End Event>", -1)),
 		        //Stage 3
 		        new EventStage("The priest's eyes widen as you invite him inside to share breakfast with you. He stops to pray over his food before beginning."
@@ -767,8 +807,8 @@ namespace Ambition
 		                    + "\nFinally, he takes his leave, along with a small parcel of leftovers. “Thank you, my child. I will pray for you and ensure that others do the same.”"
 		                    + "\n\n-You have lost 25 Livres."
 		                    + "\n-You have gained 40 Reputation with the Church.", 
-							new RewardVO[]{ new RewardVO(RewardConsts.FACTION, "Church", 40),
-											new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, -25)},
+							new RewardVO[]{ new RewardVO(RewardType.Faction, "Church", 40),
+											new RewardVO(RewardType.Livre, -25)},
 		            new EventOption("“Thank you Father! Good luck and good day!” <End Event>.", -1)),
 		        //Stage 4
 		        new EventStage("The priest nods along with your reply as he stares into his empty bowl. “Thank you for your time, Madamme. I understand that we live in trying times.”"
@@ -777,5 +817,6 @@ namespace Ambition
 
 	        return night.ToArray();
 		}
+		*/
 	}
 }

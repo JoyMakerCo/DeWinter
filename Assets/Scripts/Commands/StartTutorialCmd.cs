@@ -17,7 +17,7 @@ namespace Ambition
 			model.Party = party;
 			calendar.Parties[party.Date]=new System.Collections.Generic.List<PartyVO>(){party};
 
-			AmbitionApp.GetModel<EventModel>().Event = null;
+			AmbitionApp.GetModel<EventModel>().Config = null;
 			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			AmbitionApp.RegisterCommand<WorkTheRoomTutorialCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			AmbitionApp.RegisterCommand<TutorialRailroadCommand, RoomVO>();

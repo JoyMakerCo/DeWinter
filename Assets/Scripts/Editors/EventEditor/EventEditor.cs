@@ -22,7 +22,8 @@ namespace Ambition
 		private SerializedObject _collection;
 		private SerializedProperty _config;
 		private Vector2 _scroll;
-		private Vector2 _mousePos;
+		private Rect _scrollRect;
+		private Vector2 _mousePos;		
 		private bool _dragging=false;
 		private bool _dirty=false;
 		private IGraphComponent _selected;
@@ -66,6 +67,7 @@ namespace Ambition
 	    	_editor = null;
 			_collection = null;
 			_config = null;
+			titleContent.text = "Event Editor";
 			Repaint();
 		}
 
@@ -74,9 +76,16 @@ namespace Ambition
 	    	if (_collection != null && _config != null)
 	    	{
 				_collection.Update();
-				_scroll = GUI.BeginScrollView(new Rect(0, 0, position.width, position.height), _scroll, new Rect(0, 0, 1000, 1000));
+				_scroll = GUI.BeginScrollView(new Rect(0, 0, position.width, position.height), _scroll, _scrollRect);
 				switch(Event.current.type)
 				{
+					case EventType.KeyDown:
+						if (Event.current.modifiers == EventModifiers.None)
+						{
+							EditorWindow w = GetWindow<EditorWindow>("UnityEditor.InspectorWindow");
+							if (w != null) w.Focus();
+						}
+						break;
 					case EventType.MouseDown:
 						_mousePos = Event.current.mousePosition;
 						IGraphComponent comp = _nodes.Find(m=>m.Intersect(_mousePos));
@@ -105,6 +114,7 @@ namespace Ambition
 					if (_dragging)
 					{
 						_links.FindAll(l=>l.Start == Selected || l.End == Selected).ForEach(l=>l.Redraw());
+						AdjustScrollRect(((EventNodeVO)Selected).Rect);
 					}
 					_dirty = false;
 					Reserialize();
@@ -143,7 +153,7 @@ namespace Ambition
 		private void SetCollection(SerializedObject obj)
 		{
 			EventCollection collection;
-			EventConfig config;
+			EventVO config;
 			int index;
 
 			_collection = obj;
@@ -158,13 +168,15 @@ namespace Ambition
 
 				_config = obj.FindProperty("Events").GetArrayElementAtIndex(index);
 
-				titleContent.text = config.Name;
+				titleContent.text = "Event Editor - " + config.Name;
 				_nodes = new List<EventNodeVO>();
+				_scrollRect = new Rect();
 				for (int i=0; i<count; i++)
 				{
 					node = new EventNodeVO(config.Moments[i].Text);
 					node.Position = (i < config.Positions.Length) ? config.Positions[i] : Vector2.zero;
 					_nodes.Add(node);
+					AdjustScrollRect(node.Rect);
 				}
 				_links = new List<EventLinkVO>();
 				count = config.Links.Length;
@@ -252,6 +264,14 @@ namespace Ambition
 			}
 			return link;
 	    }
+
+		private void AdjustScrollRect(Rect rect)
+		{
+			if (rect.xMin < _scrollRect.xMin) _scrollRect.xMin = rect.xMin;
+			else if (rect.xMax > _scrollRect.xMax) _scrollRect.xMax = rect.xMax;
+			if (rect.yMin < _scrollRect.yMin) _scrollRect.yMin = rect.yMin;
+			else if (rect.yMax > _scrollRect.yMax) _scrollRect.yMax = rect.yMax;
+		}
 	}
 }
   

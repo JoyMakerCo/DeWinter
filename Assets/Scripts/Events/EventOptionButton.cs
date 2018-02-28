@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -8,35 +9,35 @@ namespace Ambition
 {
 	public class EventOptionButton : MonoBehaviour
 	{
+		private EventModel _model;
+
 	    public int option;
 	    public Text myText;
 
 	    void Awake()
 	    {
-			AmbitionApp.Subscribe<EventVO>(HandleEventUpdate);
+			_model = AmbitionApp.GetModel<EventModel>();
+			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
 	    }
 
 	    void OnDestroy()
 	    {
-			AmbitionApp.Unsubscribe<EventVO>(HandleEventUpdate);
+			AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
 	    }
 
-		private void HandleEventUpdate(EventVO e)
+		private void HandleMoment(MomentVO m)
 	    {
-	    	if (e==null || e.currentStage == null) return;
-			EventStage stage = e.currentStage;
-			bool show = (option < stage.Options.Length && stage.Options[option].Label != null);
-			if (show)
+			bool show = false;
+			if (m != null && _model.Config != null)
 			{
-				EventOption eventOption = stage.Options[option];
-				if (eventOption.servantRequired != null)
-				{
-					ServantModel model = AmbitionApp.GetModel<ServantModel>();
-					show = model.Servants.ContainsKey(eventOption.servantRequired);
-				}
-				if (show) myText.text = eventOption.Label;
+				EventVO config = _model.Config;
+				int index = Array.IndexOf(config.Moments, m);
+				EventConfigLinkVO [] links = Array.FindAll(config.Links, l=>l.Index == index);
+				show = (option < links.Length);
+				if (show) myText.text = links[option].Text;
 			}
-			this.gameObject.SetActive(show);
+			if (!show && option == 0) myText.text = "<End>";
+			this.gameObject.SetActive(show || option == 0);
 	    }
 	}
 }

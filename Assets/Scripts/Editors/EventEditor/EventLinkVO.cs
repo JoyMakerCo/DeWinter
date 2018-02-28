@@ -30,9 +30,9 @@ namespace Ambition
 		{
 			Vector3 mid, dir, norm;
 			Vector3[] lines;
-			mid = (_connectionEnd + _connectionStart)*.5f;
 			dir = (_connectionEnd-_connectionStart).normalized;
 			norm = new Vector2(dir.y, -dir.x)*ARROW_SIZE;
+			mid = (_connectionEnd + _connectionStart)*.5f;
 			dir *= ARROW_SIZE;
 
 			lines = new Vector3[]{

@@ -3,23 +3,22 @@ using UFlow;
 
 namespace Ambition
 {
-	public class WaitForEventTransition : UTransition
+	public class WaitForEndEventTransition : UTransition
 	{
 		public override bool InitializeAndValidate ()
 		{
-			AmbitionApp.Subscribe<EventVO>(HandleEvent);
+			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
 			return false;
 		}
 
-		private void HandleEvent(EventVO e)
+		private void HandleMoment(MomentVO m)
 		{
-			if (e != null && e.currentStage != null)
-				Validate();
+			if (m == null) Validate();
 		}
 
 		public override void Dispose ()
 		{
-			AmbitionApp.Unsubscribe<EventVO>(HandleEvent);
+			AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
 		}
 	}
 }
