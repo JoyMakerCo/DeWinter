@@ -11,13 +11,9 @@ namespace Ambition
 		private const float NODE_WIDTH = 200f;
 		private const float NODE_HEIGHT = 50f;
 
-		public Dictionary<EventNodeVO, int> Links;
-
-		private static GUIStyle _style;
+		public string Text;
 
 		private Rect _rect=new Rect(0,0,NODE_WIDTH, NODE_HEIGHT);
-
-		public string Text;
 
 		public Rect Rect
 		{

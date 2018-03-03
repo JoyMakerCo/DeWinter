@@ -15,7 +15,7 @@ namespace Ambition
 
 		public EventNodeVO Start;
 		public EventNodeVO End;
-
+		public CommodityVO[] Rewards;
 		protected Vector2 _connectionStart;
 		protected Vector2 _connectionEnd;
 

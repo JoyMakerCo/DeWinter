@@ -5,47 +5,47 @@ using Util;
 
 namespace Ambition
 {
-	public class GrantRewardCmd : ICommand<RewardVO>
+	public class GrantRewardCmd : ICommand<CommodityVO>
 	{
-		public void Execute(RewardVO reward)
+		public void Execute(CommodityVO reward)
 		{
 			switch(reward.Type)
 			{
-				case RewardType.Livre:
+				case CommodityType.Livre:
 					AmbitionApp.GetModel<GameModel>().Livre += reward.Amount;
 					break;
 
-				case RewardType.Reputation:
+				case CommodityType.Reputation:
 					AmbitionApp.GetModel<GameModel>().Reputation += reward.Amount;
 					break;
 
-				case RewardType.Gossip:
+				case CommodityType.Gossip:
 					InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
 					imod.GossipItems.Add(new Gossip(reward.ID));
 					break;
 
-				case RewardType.Item:
+				case CommodityType.Item:
 					RewardItem(reward.ID, reward.Amount);
 					break;
 
-				case RewardType.Enemy:
+				case CommodityType.Enemy:
 					AmbitionApp.SendMessage<string>(GameMessages.CREATE_ENEMY, reward.ID);
 					break;
 
-				case RewardType.Devotion:
+				case CommodityType.Devotion:
 					// TODO: Implement seduction
 					break;
 
-				case RewardType.Faction:
+				case CommodityType.Faction:
 					AdjustFactionVO vo = new AdjustFactionVO(reward.ID, reward.Amount);
 					AmbitionApp.SendMessage<AdjustFactionVO>(vo);
 					break;
 
-				case RewardType.Servant:
+				case CommodityType.Servant:
 //					AmbitionApp.SendMessage(reward.Amount);
 					break;
 
-				case RewardType.Message:
+				case CommodityType.Message:
 					AmbitionApp.SendMessage(reward.ID);
 					break;
 			}

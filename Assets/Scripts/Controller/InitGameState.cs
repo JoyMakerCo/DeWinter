@@ -23,7 +23,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryMessages.SELL_ITEM);
 			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
 			AmbitionApp.RegisterCommand<DancingCmd, NotableVO>(PartyConstants.START_DANCING);
-			AmbitionApp.RegisterCommand<GrantRewardCmd, RewardVO>();
+			AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
 			AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
 			AmbitionApp.RegisterCommand<GenerateMapCmd, PartyVO>(MapMessage.GENERATE_MAP);
 			AmbitionApp.RegisterCommand<DegradeOutfitCmd, OutfitVO>(InventoryMessages.BUY_ITEM);

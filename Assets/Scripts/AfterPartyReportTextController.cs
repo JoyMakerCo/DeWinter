@@ -75,12 +75,12 @@ public class AfterPartyReportTextController : MonoBehaviour {
         }
 
 		List<string> gossipList = new List<string>();
-        foreach (RewardVO reward in _model.Party.Rewards)
+        foreach (CommodityVO reward in _model.Party.Rewards)
         {
             if(reward.Amount > 0)
             {
                 rewardString += "\n" + reward.ID;
-                if (reward.Type == RewardType.Gossip)
+                if (reward.Type == CommodityType.Gossip)
                 {
 	                gossipList.Add(reward.ID);
                 }

@@ -13,26 +13,26 @@ public class EventStage
     public EventOption[] Options;
 
 	[JsonProperty("rewards")]
-    public RewardVO[] Rewards;
+    public CommodityVO[] Rewards;
 
-    public EventStage(string desc, RewardVO[] rewards, params EventOption[] options)
+    public EventStage(string desc, CommodityVO[] rewards, params EventOption[] options)
     {
         Description = desc;
-        Rewards = rewards ?? new RewardVO[0];
+        Rewards = rewards ?? new CommodityVO[0];
         Options = options;
     }
 
-    public EventStage(string desc, RewardVO reward, params EventOption[] options)
+    public EventStage(string desc, CommodityVO reward, params EventOption[] options)
     {
         Description = desc;
-        Rewards = new RewardVO[]{ reward };
+        Rewards = new CommodityVO[]{ reward };
         Options = options;
     }
 
     public EventStage(string desc, params EventOption[] options)
     {
         Description = desc;
-		Rewards = new RewardVO[0];
+		Rewards = new CommodityVO[0];
         Options = options;
     }
 }

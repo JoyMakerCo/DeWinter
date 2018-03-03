@@ -4,22 +4,22 @@
 namespace Ambition
 {
 	[Serializable]
-	public class RewardVO
+	public class CommodityVO
 	{
-		public RewardType Type;
+		public CommodityType Type;
 		public string ID;
 		public int Amount=0;
 
-		public RewardVO() {}
+		public CommodityVO() {}
 
-		public RewardVO (RewardType type, string id, int amount=1)
+		public CommodityVO (CommodityType type, string id, int amount)
 		{
 			Type = type;
 			ID = id;
 			Amount = amount;
 		}
 
-		public RewardVO (RewardType type, int amount=1)
+		public CommodityVO (CommodityType type, int amount)
 		{
 			Type = type;
 			Amount = amount;

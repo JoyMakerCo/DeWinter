@@ -66,7 +66,6 @@ namespace Ambition
 	    public override void OnInspectorGUI()
 	    {
 			serializedObject.Update();
-
 			if (!DrawComponent()) _list.DoLayoutList();
         	serializedObject.ApplyModifiedProperties();
 			if (_dirty) EventEditor.InspectorUpdated();
@@ -127,6 +126,9 @@ namespace Ambition
 			SerializedProperty terewardsxt = moment.FindPropertyRelative("Rewards");
 			text.stringValue = GUILayout.TextArea(text.stringValue);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Rewards"), true);
+			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Background"), true);
+			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Characters"), true);
+			EditorGUILayout.PropertyField(moment.FindPropertyRelative("CharacterNames"), true);
 			_dirty = EditorGUI.EndChangeCheck();
 		}
 

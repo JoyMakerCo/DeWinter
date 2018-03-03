@@ -30,9 +30,9 @@ namespace Ambition
 				}
 
 				// Grant rewards
-				foreach(RewardVO reward in moment.Rewards)
+				foreach(CommodityVO reward in moment.Rewards)
 				{
-					AmbitionApp.SendMessage<RewardVO>(reward);
+					AmbitionApp.SendMessage<CommodityVO>(reward);
 				}
 
 				// foreach(RewardVO reward in link.Rewards)
