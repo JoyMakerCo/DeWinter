@@ -127,6 +127,7 @@ namespace Ambition
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Background"), true);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character1"), true);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character2"), true);
+			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Speaker"), true);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Rewards"), true);
 			_dirty = EditorGUI.EndChangeCheck();
 		}

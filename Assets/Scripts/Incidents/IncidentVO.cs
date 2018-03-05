@@ -21,10 +21,11 @@ namespace Ambition
 	}
 
 	[Serializable]
-	public struct TransitionVO
+	public class TransitionVO
 	{
 		public int Index;
 		public int Target;
 		public string Text;
+		public CommodityVO [] Rewards;
 	}
 }
