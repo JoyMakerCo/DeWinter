@@ -9,7 +9,7 @@ namespace UFlow
 		private UState _state;
 
 		internal UFlowSvc _uflow;
-		internal UTransition[] _transitions;
+		internal ULink[] _transitions;
 		internal string _initialState;
 
 		public string State
@@ -60,7 +60,7 @@ namespace UFlow
 			_transitions = _uflow.BuildTransitions(ID, _state.ID);
 			if (_transitions != null)
 			{
-				foreach(UTransition trans in _transitions)
+				foreach(ULink trans in _transitions)
 				{
 					if (trans.InitializeAndValidate())
 					{
@@ -78,7 +78,7 @@ namespace UFlow
 		private void ClearTransitions()
 		{
 			if (_transitions == null) return;
-			foreach(UTransition trans in _transitions)
+			foreach(ULink trans in _transitions)
 				trans.Dispose();
 			_transitions = null;
 		}

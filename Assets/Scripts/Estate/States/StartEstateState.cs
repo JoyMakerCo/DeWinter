@@ -9,7 +9,7 @@ namespace Ambition
 		{
 			Random rnd = new Random();
 			CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-			EventModel model = AmbitionApp.GetModel<EventModel>();
+			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			AmbitionApp.SendMessage<DateTime>(calendar.Today);
 /*			if (model.Event == null
 				&& calendar.Today >= calendar.StartDate.AddDays(2)

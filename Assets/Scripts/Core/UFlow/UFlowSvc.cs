@@ -15,13 +15,13 @@ namespace UFlow
 			TargetState = targetState;
 		}
 
-		internal virtual UTransition Create()
+		internal virtual ULink Create()
 		{
-			return new UBasicTransition(TargetState);
+			return new UBasicLink(TargetState);
 		}
 	}
 
-	internal class UTransitionMap<T>:UTransitionMap where T : UTransition, new()
+	internal class UTransitionMap<T>:UTransitionMap where T : ULink, new()
 	{
 		internal object[] Params;
 
@@ -32,7 +32,7 @@ namespace UFlow
 			Params = parms;
 		}
 
-		internal override UTransition Create()
+		internal override ULink Create()
 		{
 			T t = new T();
 			t.Parameters = Params;
@@ -81,7 +81,7 @@ namespace UFlow
 			}
 		}
 
-		public void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : UTransition, new()
+		public void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
 		{
 			List<UTransitionMap> transitions = GetTransitionList(machineID, originState);
 			UTransitionMap<T> trans = new UTransitionMap<T>(targetState, args);
@@ -127,7 +127,7 @@ namespace UFlow
 			return s;
 		}
 
-		internal UTransition[] BuildTransitions(string machineID, string originState)
+		internal ULink[] BuildTransitions(string machineID, string originState)
 		{
 			Dictionary<string, List<UTransitionMap>> stateTransitions;
 			if (!_transitions.TryGetValue(machineID, out stateTransitions)) return null;
@@ -138,8 +138,8 @@ namespace UFlow
 			List<UTransitionMap> transitionMaps;
 			if (!stateTransitions.TryGetValue(originState, out transitionMaps)) return null;
 
-			List<UTransition> transitions = new List<UTransition>();
-			UTransition trans;
+			List<ULink> transitions = new List<ULink>();
+			ULink trans;
 
 			foreach (UTransitionMap map in transitionMaps)
 			{
