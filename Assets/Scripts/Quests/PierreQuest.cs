@@ -13,7 +13,7 @@ public class PierreQuest
     public int daysTimeLimit; //How long the Player has to complete this Quest
     public int daysLeft;
     public string Name;
-    public RewardVO reward;
+    public CommodityVO reward;
 
     public PierreQuest()
     {
@@ -27,15 +27,15 @@ public class PierreQuest
         switch(rnd.Next(3))
         {
         	case 0:
-        		reward = new RewardVO(RewardType.Reputation, multiplier*rnd.Next(6,16));
+        		reward = new CommodityVO(CommodityType.Reputation, multiplier*rnd.Next(6,16));
         		break;
         	case 1:
         		string faction = FACTIONS[rnd.Next(1, FACTIONS.Length)];
         		if (faction == Faction) faction = FACTIONS[0];
-				reward = new RewardVO(RewardType.Faction, faction, multiplier * (rnd.Next(10, 21)));
+				reward = new CommodityVO(CommodityType.Faction, faction, multiplier * (rnd.Next(10, 21)));
         		break;
         	case 2:
-				reward = new RewardVO(RewardType.Livre, multiplier*rnd.Next(10,21));
+				reward = new CommodityVO(CommodityType.Livre, multiplier*rnd.Next(10,21));
         		break;
         }
     }

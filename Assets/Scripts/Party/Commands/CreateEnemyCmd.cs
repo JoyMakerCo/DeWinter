@@ -21,8 +21,8 @@ namespace Ambition
 
 			e.Like = model.Interests[rnd.Next(model.Interests.Length)];
 
-			e.IsFemale = (rnd.Next(2) == 0);
-			if (e.IsFemale)
+			e.Gender = (rnd.Next(2) == 0) ? Gender.Male : Gender.Female;
+			if (e.Gender == Gender.Female)
 			{
 				e.Title = rndStr("female_title", rnd);
 				e.FirstName = rndStr("female_name", rnd);
@@ -34,7 +34,7 @@ namespace Ambition
 			}
 
 			e.LastName = rndStr("last_name", rnd);
-			e.imageInt = rnd.Next(e.IsFemale ? 4 : 5);
+			e.imageInt = rnd.Next(e.Gender == Gender.Female ? 4 : 5);
 			e.FlavorText = "This person is a great big jerk";
 		}
 

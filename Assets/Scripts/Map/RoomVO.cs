@@ -21,7 +21,7 @@ namespace Ambition
 		public MapVO Map;
 	    public bool Cleared=false;
 
-		public RewardVO [] Rewards;
+		public CommodityVO [] Rewards;
 		public GuestVO [] Guests;
 		public List<EnemyVO> Enemies;
 		public string [] Features=new string[0];

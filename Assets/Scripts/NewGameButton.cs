@@ -14,7 +14,7 @@ namespace Ambition
 			AmbitionApp.InvokeMachine("GameController");
 			if (!Input.GetKey(KeyCode.LeftAlt))
 			{
-				EventModel emod = AmbitionApp.GetModel<EventModel>();
+				IncidentModel emod = AmbitionApp.GetModel<IncidentModel>();
 				emod.Config = emod.FindEvent("Yvette");
 			}
 		}

@@ -12,7 +12,7 @@ namespace Ambition
 			if (notable != null)
 			{
 				int seductionChance =
-					(!notable.IsFemale ? model.SeductionModifier : model.SeductionAltModifier) +
+					(notable.Gender == Gender.Female ? model.SeductionModifier : model.SeductionAltModifier) +
 					(model.SeductionTimeModifier - s.Time) -
 					(string.IsNullOrEmpty(notable.Spouse) ? model.SeductionMarriedModifier : 0);
 

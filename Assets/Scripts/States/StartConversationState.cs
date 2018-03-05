@@ -39,8 +39,8 @@ namespace Ambition
 					guest.MaxInterest = rnd.Next(stats.MaxInterest[0], stats.MaxInterest[1]);
 					guest.Interest = rnd.Next(stats.Interest[0], stats.Interest[1]);
 
-					guest.IsFemale = rnd.Next(2) == 0;
-					if (guest.IsFemale)
+					guest.Gender = rnd.Next(2) == 0 ? Gender.Male : Gender.Female;
+					if (guest.Gender == Gender.Female)
 			        {
 						guest.Title = GetRandomDescriptor("female_title", rnd);
 						guest.FirstName = GetRandomDescriptor("female_name", rnd);
