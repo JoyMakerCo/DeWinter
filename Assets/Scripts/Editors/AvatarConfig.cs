@@ -6,17 +6,17 @@ using UnityEditor;
 namespace Ambition
 {  
     [Serializable]
-    public struct AvatarMap
+    public struct PoseMap
     {
         public string Label;
         public Sprite Pose;
     }
 
     [Serializable]
-	public class AvatarVO
+	public struct AvatarVO
 	{
         public string ID;
-        public AvatarMap[] Poses;
+        public PoseMap[] Poses;
         public string Tags;
         public Gender Gender;
         public Sprite GetPose(string pose)
@@ -25,7 +25,7 @@ namespace Ambition
         }
     }
 
-    public class AvatarConfig : ScriptableObject
+    public class AvatarCollection : ScriptableObject
     {
         public AvatarVO[] Avatars;
 
@@ -34,16 +34,22 @@ namespace Ambition
             return Array.Find(Avatars, a => a.ID == ID);
         }
 
+        public Sprite GetPose(string avatarID, string pose)
+        {
+            AvatarVO config = Array.Find(Avatars, a=>a.ID == avatarID);
+            return config.GetPose(pose);
+        }
+
         public AvatarVO[] FindByTag (params string[] tags)
         {
             return Array.FindAll(Avatars, a=>Array.TrueForAll(tags, a.Tags.Contains));
         }
 
     #if (UNITY_EDITOR)
-        [MenuItem("Assets/Create/Create Avatar Config")]
+        [MenuItem("Assets/Create/Create Avatar Collection")]
         public static void CreateAvatarConfig()
         {
-            Util.ScriptableObjectUtil.CreateScriptableObject<AvatarConfig>();
+            Util.ScriptableObjectUtil.CreateScriptableObject<AvatarCollection>();
         }
 #endif
     }

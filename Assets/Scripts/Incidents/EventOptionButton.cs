@@ -10,19 +10,24 @@ namespace Ambition
 	public class EventOptionButton : MonoBehaviour
 	{
 		private IncidentModel _model;
-
-	    public int option;
-	    public Text myText;
+	    private Text _text;
+		private int _option;
+		private Button _btn;
 
 	    void Awake()
 	    {
-				_model = AmbitionApp.GetModel<IncidentModel>();
-				AmbitionApp.Subscribe<MomentVO>(HandleMoment);
+			_model = AmbitionApp.GetModel<IncidentModel>();
+			_text = GetComponentInChildren<Text>();
+			_option = gameObject.transform.GetSiblingIndex();
+			_btn = gameObject.GetComponent<Button>();
+			_btn.onClick.AddListener(OnClick);
+			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
 	    }
 
 	    void OnDestroy()
 	    {
-				AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
+			AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
+			_btn.onClick.RemoveAllListeners();
 	    }
 
 		private void HandleMoment(MomentVO m)
@@ -33,11 +38,16 @@ namespace Ambition
 				IncidentVO config = _model.Config;
 				int index = Array.IndexOf(config.Moments, m);
 				TransitionVO [] links = Array.FindAll(config.Transitions, l=>l.Index == index);
-				show = (option < links.Length);
-				if (show) myText.text = links[option].Text;
+				show = (_option < links.Length);
+				if (show) _text.text = links[_option].Text;
 			}
-			if (!show && option == 0) myText.text = "<End>";
-			this.gameObject.SetActive(show || option == 0);
+			if (!show && _option == 0) _text.text = "<End>";
+			this.gameObject.SetActive(show || _option == 0);
 	    }
+
+		private void OnClick()
+		{
+			AmbitionApp.SendMessage<int>(IncidentMessages.INCIDENT_OPTION, _option);
+		}
 	}
 }
