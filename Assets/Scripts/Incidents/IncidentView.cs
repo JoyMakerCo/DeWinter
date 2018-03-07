@@ -14,11 +14,10 @@ namespace Ambition
 	    public Text titleText;
 	    public Text descriptionText;
 
-	    public GameObject LeftAvatar;
-		public GameObject CenterAvatar;
-		public GameObject RightAvatar;
+	    public AvatarView Character1;
+		public AvatarView Character2;
 
-		public Sprite Background;
+		private Sprite _background;
 
 	    public override void OnOpen ()
 		{
@@ -26,6 +25,7 @@ namespace Ambition
 			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
 			model.Moment = model.Config.Moments[0];
 			titleText.text = model.Config.Name;
+			_background = gameObject.GetComponent<Image>().sprite;
 		}
 
 		public override void OnClose ()
@@ -36,11 +36,6 @@ namespace Ambition
  		private void HandleMoment(MomentVO moment)
 		{
 			if (moment != null) descriptionText.text = moment.Text;
-		}
-
-	    public void EventOptionSelect(int option)
-	    {
-			AmbitionApp.SendMessage<int>(IncidentMessages.INCIDENT_OPTION, option);
 		}
 	}
 }

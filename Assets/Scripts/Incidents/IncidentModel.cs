@@ -13,7 +13,6 @@ namespace Ambition
 
 	public class IncidentModel : IModel, IInitializable
 	{
-
 		private IncidentCollection _config;
 
 		public Dictionary<IncidentSetting, IncidentVO[]> eventInventories;
@@ -62,7 +61,7 @@ namespace Ambition
 
 	    public void Initialize()
 	    {
-			_config = Resources.Load<IncidentCollection>("IncidentConfig");
+			_config = Resources.Load<IncidentCollection>("IncidentCollection");
 			// eventInventories = new Dictionary<EventSetting, EventVO[]>();
 			// eventInventories.Add(EventSetting.Intro, StockIntroInventory());
 			// eventInventories.Add(EventSetting.Party, StockPartyInventory());

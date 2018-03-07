@@ -17,7 +17,7 @@ namespace Ambition
 		public Text NameText;
 		public Image Highlight;
 		public GameObject Spotlight;
-		public AvatarConfig Avatars;
+		public AvatarCollection Avatars;
 		public SpriteConfig Interests;
 
 		private GuestVO _guest;
@@ -72,7 +72,7 @@ namespace Ambition
 
 				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
-				if (_avatar == null || _avatar.ID != _guest.Avatar)
+				if (_avatar.ID != _guest.Avatar)
 				{
 					if (_guest.Avatar != null) _avatar = Avatars.GetAvatar(_guest.Avatar);
 					else
