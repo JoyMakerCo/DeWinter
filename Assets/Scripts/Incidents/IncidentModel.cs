@@ -13,7 +13,6 @@ namespace Ambition
 
 	public class IncidentModel : IModel, IInitializable
 	{
-
 		private IncidentCollection _config;
 
 		public Dictionary<IncidentSetting, IncidentVO[]> eventInventories;

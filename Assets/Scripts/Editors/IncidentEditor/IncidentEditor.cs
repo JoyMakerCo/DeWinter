@@ -40,7 +40,7 @@ namespace Ambition
 			}
 			else _editor.OnDestroy();
 		}
-
+		
 		public static void Show(IncidentCollection collection)
 	    {
 			_editor = EditorWindow.GetWindow<IncidentEditor>();
