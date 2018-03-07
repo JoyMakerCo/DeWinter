@@ -61,7 +61,7 @@ namespace Ambition
 
 	    public void Initialize()
 	    {
-			_config = Resources.Load<IncidentCollection>("IncidentCollection");
+			_config = Resources.Load<IncidentCollection>("IncidentConfig");
 			// eventInventories = new Dictionary<EventSetting, EventVO[]>();
 			// eventInventories.Add(EventSetting.Intro, StockIntroInventory());
 			// eventInventories.Add(EventSetting.Party, StockPartyInventory());
