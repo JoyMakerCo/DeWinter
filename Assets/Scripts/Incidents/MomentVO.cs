@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace Ambition
 {
 	[Serializable]
 	public struct IncidentCharacterConfig
 	{
-		public AvatarVO Avatar;
+		public string AvatarID;
+		public string Pose;
 		public string Name;
 	}
 

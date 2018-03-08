@@ -36,13 +36,14 @@ namespace Ambition
 		}
 
 
-		private IncidentVO _event;
-		public IncidentVO Config
+		private IncidentVO _incident;
+		public IncidentVO Incident
 		{
-			get { return _event; }
+			get { return _incident; }
 			set {
-				_event = value;
-				AmbitionApp.SendMessage<IncidentVO>(_event);
+				_incident = value;
+				AmbitionApp.SendMessage<IncidentVO>(_incident);
+				if (value == null && _moment != null) Moment = null;
 			}
 		}
 
@@ -53,7 +54,12 @@ namespace Ambition
 			set {
 				_moment = value;
 				AmbitionApp.SendMessage<MomentVO>(_moment);
-				if (value == null) Config = null;
+				if (value != null)
+				{
+					int index = Array.IndexOf(_incident.Moments, _moment);
+					TransitionVO[] transitions = Array.FindAll(_incident.Transitions, t=>t.Index == index);
+					AmbitionApp.SendMessage<TransitionVO[]>(transitions);
+				}
 			}
 		}
 
@@ -61,7 +67,7 @@ namespace Ambition
 
 	    public void Initialize()
 	    {
-			_config = Resources.Load<IncidentCollection>("IncidentCollection");
+			_config = Resources.Load<IncidentCollection>("IncidentConfig");
 			// eventInventories = new Dictionary<EventSetting, EventVO[]>();
 			// eventInventories.Add(EventSetting.Intro, StockIntroInventory());
 			// eventInventories.Add(EventSetting.Party, StockPartyInventory());

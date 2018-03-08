@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 // TODO: Make this RewardVO
 namespace Ambition

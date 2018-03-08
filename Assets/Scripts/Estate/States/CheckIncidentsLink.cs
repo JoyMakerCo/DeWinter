@@ -8,7 +8,7 @@ namespace Ambition
 		public override bool InitializeAndValidate ()
 		{
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-			return model.Config != null;
+			return model.Incident != null;
 		}
 	}
 }

@@ -5,6 +5,8 @@ namespace Ambition
 {
 	public class WaitForIncidentLink : ULink
 	{
+		private static float LAST_TIMESTAMP=0;
+
 		public override bool InitializeAndValidate ()
 		{
 			AmbitionApp.Subscribe<int>(IncidentMessages.INCIDENT_OPTION, HandleOption);
@@ -13,15 +15,17 @@ namespace Ambition
 
 		private void HandleOption(int option)
 		{
+			if (UnityEngine.Time.fixedTime == LAST_TIMESTAMP) return;
+			LAST_TIMESTAMP = UnityEngine.Time.fixedTime;
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			MomentVO moment = model.Moment;
-			IncidentVO config = model.Config;
+			IncidentVO config = model.Incident;
 			MomentVO target = null;
 			TransitionVO transition = null;
 			if (moment != null && config != null)
 			{
 				int index = Array.IndexOf(config.Moments, model.Moment);
-				TransitionVO[] links = Array.FindAll(model.Config.Transitions, l=>l.Index == index);
+				TransitionVO[] links = Array.FindAll(model.Incident.Transitions, l=>l.Index == index);
 				if (option < links.Length)
 				{
 					transition = links[option];
@@ -46,7 +50,7 @@ namespace Ambition
 
 			// Signal Event update
 			model.Moment = target;
-			if (target != null) Validate();
+			Validate();
 		}
 		
 		public override void Dispose ()
