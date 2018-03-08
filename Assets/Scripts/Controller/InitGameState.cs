@@ -86,7 +86,7 @@ namespace Ambition
 			AmbitionApp.RegisterState<StartEstateState>("InitEstate");
 			AmbitionApp.RegisterState<StartIncidentState>("StartEvent");
 			AmbitionApp.RegisterState<IncidentState>("EventStage");
-			AmbitionApp.RegisterState<EndIncidentState>("EndEvent");
+			AmbitionApp.RegisterState<CheckEndIncidentState>("CheckEndEvent");
 			AmbitionApp.RegisterState<EnterEstateState>("Estate");
 			AmbitionApp.RegisterState<StyleChangeState>("StyleChange");
 			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
@@ -94,9 +94,9 @@ namespace Ambition
 			AmbitionApp.RegisterTransition<CheckIncidentsLink>("EstateController", "InitEstate", "StartEvent");
 			AmbitionApp.RegisterTransition("EstateController", "InitEstate", "Estate");
 			AmbitionApp.RegisterTransition("EstateController", "StartEvent", "EventStage");
-			AmbitionApp.RegisterTransition<WaitForIncidentLink>("EstateController", "EventStage", "EventStage");
-			AmbitionApp.RegisterTransition<WaitForEndIncidentLink>("EstateController", "EventStage", "EndEvent");
-			AmbitionApp.RegisterTransition("EstateController", "EndEvent", "Estate");
+			AmbitionApp.RegisterTransition<WaitForIncidentLink>("EstateController", "EventStage", "CheckEndEvent");
+			AmbitionApp.RegisterTransition<CheckIncidentsLink>("EstateController", "CheckEndEvent", "EventStage");
+			AmbitionApp.RegisterTransition("EstateController", "CheckEndEvent", "Estate");
 			AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
 			AmbitionApp.RegisterTransition<WaitForCloseDialogLink>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
 		}

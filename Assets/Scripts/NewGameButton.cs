@@ -15,7 +15,7 @@ namespace Ambition
 			if (!Input.GetKey(KeyCode.LeftAlt))
 			{
 				IncidentModel emod = AmbitionApp.GetModel<IncidentModel>();
-				emod.Config = emod.FindEvent("Yvette");
+				emod.Incident = emod.FindEvent("Yvette");
 			}
 		}
 	}

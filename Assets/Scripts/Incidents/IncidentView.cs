@@ -23,8 +23,8 @@ namespace Ambition
 		{
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
-			model.Moment = model.Config.Moments[0];
-			titleText.text = model.Config.Name;
+			model.Moment = model.Incident.Moments[0];
+			titleText.text = model.Incident.Name;
 			_background = gameObject.GetComponent<Image>().sprite;
 		}
 
@@ -35,7 +35,11 @@ namespace Ambition
 
  		private void HandleMoment(MomentVO moment)
 		{
-			if (moment != null) descriptionText.text = moment.Text;
+			if (moment != null)
+			{
+				descriptionText.text = moment.Text;
+				if (moment.Background != null) _background=moment.Background;
+			}
 		}
 	}
 }

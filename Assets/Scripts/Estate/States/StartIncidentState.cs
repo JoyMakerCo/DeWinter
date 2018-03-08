@@ -12,7 +12,7 @@ namespace Ambition
 		{
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			AmbitionApp.OpenDialog(MODAL_ID);
-			model.Moment = model.Config.Moments[0];
+			model.Moment = model.Incident.Moments[0];
 	    }
 	}
 }
