@@ -21,7 +21,7 @@ namespace Ambition
         public Gender Gender;
         public Sprite GetPose(string pose)
         {
-            return Array.Find(Poses, p=>p.Label == pose).Pose;
+            return Poses == null ? null : Array.Find(Poses, p=>p.Label == pose).Pose;
         }
     }
 

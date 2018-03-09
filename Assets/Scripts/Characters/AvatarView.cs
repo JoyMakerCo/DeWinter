@@ -25,6 +25,7 @@ namespace Ambition
 			set {
 				_id = value;
 				_avatar = Collection.GetAvatar(_id);
+				gameObject.SetActive(!default(AvatarVO).Equals(_avatar));
 				Pose = _pose;
 			}
 		}

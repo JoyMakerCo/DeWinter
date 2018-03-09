@@ -8,7 +8,7 @@ namespace Ambition
 	public class GuestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
 		private const float FILL_SECONDS = 0.5f;
-		private readonly static string[] PROGRESSION = new string[]{"putout", "neutral", "approval", "charmed"};
+		private readonly static string[] POSES = new string[]{"putout", "neutral", "approval", "charmed"};
 
 		public int Index;
 
@@ -72,7 +72,7 @@ namespace Ambition
 
 				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
-				if (_avatar.ID != _guest.Avatar)
+				if (_avatar.ID == null || _avatar.ID != _guest.Avatar)
 				{
 					if (_guest.Avatar != null) _avatar = Avatars.GetAvatar(_guest.Avatar);
 					else
@@ -85,7 +85,7 @@ namespace Ambition
 				}
 
 				_image.sprite = _avatar.GetPose(!_isIntoxicated
-					? PROGRESSION[(int)(_guest.State)]
+					? POSES[(int)(_guest.State)]
 					: "neutral");
 
 				InterestIcon.sprite = Interests.GetSprite(_guest.Like);

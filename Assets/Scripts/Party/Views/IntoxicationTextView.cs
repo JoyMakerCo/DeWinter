@@ -6,23 +6,18 @@ namespace Ambition
 {
 	public class IntoxicationTextView : TextMessageView<int>
 	{
-		private Core.ModelSvc _models = Core.App.Service<Core.ModelSvc>();
 		private PartyModel _model;
+		public IntoxicationTextView() : base(GameConsts.INTOXICATION) {}
 
-		public IntoxicationTextView()
+		override protected void InitValue()
 		{
-			_model = _models.GetModel<PartyModel>();
-			ValueID = GameConsts.INTOXICATION;
-		}
-
-		void Start()
-		{
-			HandleValue(_model.Intoxication);
+			_model = AmbitionApp.GetModel<PartyModel>();
+			HandleValue(AmbitionApp.GetModel<PartyModel>().Intoxication);
 		}
 
 		protected override void HandleValue (int value)
 		{
-			Text = "Intoxication: " + value.ToString("N0") + "/" + _model.Party.MaxIntoxication.ToString();
+			Text = "Intoxication: " + value.ToString("N0") + (_model == null ? "" : ("/" + _model.Party.MaxIntoxication.ToString()));
 		}
 	}
 }
