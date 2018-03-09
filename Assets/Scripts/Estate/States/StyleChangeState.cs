@@ -24,8 +24,7 @@ namespace Ambition
 				Dictionary<string, string> subs = new Dictionary<string, string>(){
 					{"$OLDSTYLE",inventory.CurrentStyle},
 					{"$NEWSTYLE",nextStyle}};
-// TODO: Uncomment this when there's a better way to present it
-// AmbitionApp.OpenMessageDialog("style_change_dialog", subs);
+				AmbitionApp.OpenMessageDialog("style_change_dialog", subs);
 
 	            //Actually switching styles
 				inventory.CurrentStyle = nextStyle;
