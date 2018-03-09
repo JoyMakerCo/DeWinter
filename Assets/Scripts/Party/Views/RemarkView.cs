@@ -24,7 +24,6 @@ namespace Ambition
 		private void HandleHand(List<RemarkVO> hand)
 		{
 			_remark = (Index < hand.Count) ? hand[Index] : null;
-
 		}
 
 		public void OnPointerClick(PointerEventData eventData)

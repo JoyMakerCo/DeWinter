@@ -10,12 +10,12 @@ namespace Ambition
 		{
 			if (confidence <= 0)
 			{
-				PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
-				PartyVO party = pmod.Party;
+				PartyModel model = AmbitionApp.GetModel<PartyModel>();
+				PartyVO party = model.Party;
 
 				// Lose a turn
-				AmbitionApp.GetModel<PartyModel>().TurnsLeft--;
-				AmbitionApp.GetModel<PartyModel>().Confidence = (pmod.StartConfidence>>1);
+				model.TurnsLeft--;
+				model.Confidence = (model.StartConfidence>>1);
 
 	            //The Player is relocated to the Entrance
 				MapModel mmod = AmbitionApp.GetModel<MapModel>();

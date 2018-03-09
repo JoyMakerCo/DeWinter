@@ -17,15 +17,15 @@ namespace Ambition
 	    public AvatarView Character1;
 		public AvatarView Character2;
 
-		private Sprite _background;
+		private Image _background;
 
 	    public override void OnOpen ()
 		{
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+			_background = gameObject.GetComponent<Image>();
 			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
 			model.Moment = model.Incident.Moments[0];
 			titleText.text = model.Incident.Name;
-			_background = gameObject.GetComponent<Image>().sprite;
 		}
 
 		public override void OnClose ()
@@ -38,7 +38,11 @@ namespace Ambition
 			if (moment != null)
 			{
 				descriptionText.text = moment.Text;
-				if (moment.Background != null) _background=moment.Background;
+				if (moment.Background != null) _background.sprite=moment.Background;
+				Character1.AvatarID = moment.Character1.AvatarID;
+				Character1.Pose = moment.Character1.Pose;
+				Character2.AvatarID = moment.Character2.AvatarID;
+				Character2.Pose = moment.Character2.Pose;
 			}
 		}
 	}
