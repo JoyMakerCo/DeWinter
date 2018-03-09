@@ -97,8 +97,9 @@ namespace Ambition
 			AmbitionApp.RegisterTransition<WaitForIncidentLink>("EstateController", "EventStage", "CheckEndEvent");
 			AmbitionApp.RegisterTransition<CheckIncidentsLink>("EstateController", "CheckEndEvent", "EventStage");
 			AmbitionApp.RegisterTransition("EstateController", "CheckEndEvent", "Estate");
-			AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
-			AmbitionApp.RegisterTransition<WaitForCloseDialogLink>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
+			// AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
+			// AmbitionApp.RegisterTransition<WaitForCloseDialogLink>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
+			AmbitionApp.RegisterTransition("EstateController", "Estate", "CreateInvitations");
 		}
 	}
 }
