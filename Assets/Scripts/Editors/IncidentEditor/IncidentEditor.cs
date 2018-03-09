@@ -245,7 +245,8 @@ namespace Ambition
 				menu.AddItem(new GUIContent("Delete Moment"), false, DeleteComponent, component);
 				if (Selected is IncidentNodeVO && Selected != component)
 					menu.AddItem(new GUIContent("Transition to Moment"), false, LinkMoment, Selected);
-				menu.AddItem(new GUIContent("Delete Moment"), false, DeleteComponent, component);
+				if (_nodes.Count > 1)
+					menu.AddItem(new GUIContent("Delete Moment"), false, DeleteComponent, component);
 			}
 			else if (component is IncidentLinkVO)
 				menu.AddItem(new GUIContent("Delete Transition"), false, DeleteComponent, component);
