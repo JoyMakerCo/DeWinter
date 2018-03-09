@@ -191,6 +191,18 @@ namespace Ambition
 			Repaint();
 	    }
 
+		private void InitNode(object obj)
+		{
+			IncidentNodeVO node = obj as IncidentNodeVO;
+			if (node != null && _nodes.Count > 1)
+			{
+				IncidentNodeVO tmp = _nodes[0];
+				int index = _nodes.IndexOf(node);
+				_nodes[0] = node;
+				_nodes[index] = tmp;
+			}
+		}
+
 	    private void Reserialize()
 	    {
 			SerializedProperty moments = _config.FindPropertyRelative("Moments");
@@ -228,6 +240,9 @@ namespace Ambition
 			}
 			else if (component is IncidentNodeVO)
 			{
+				if (component != _nodes[0])
+					menu.AddItem(new GUIContent("Set as Starting Moment"), false, InitNode, component);
+				menu.AddItem(new GUIContent("Delete Moment"), false, DeleteComponent, component);
 				if (Selected is IncidentNodeVO && Selected != component)
 					menu.AddItem(new GUIContent("Transition to Moment"), false, LinkMoment, Selected);
 				menu.AddItem(new GUIContent("Delete Moment"), false, DeleteComponent, component);
