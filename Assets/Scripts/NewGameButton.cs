@@ -12,7 +12,9 @@ namespace Ambition
 			AmbitionApp.RegisterState<StartGameState>("StartGame");
 			AmbitionApp.RegisterTransition("GameController", "InitGame", "StartGame");
 			AmbitionApp.InvokeMachine("GameController");
+#if (UNITY_EDITOR)			
 			if (!Input.GetKey(KeyCode.LeftAlt))
+#endif
 			{
 				IncidentModel emod = AmbitionApp.GetModel<IncidentModel>();
 				emod.Incident = emod.FindEvent("Yvette");
