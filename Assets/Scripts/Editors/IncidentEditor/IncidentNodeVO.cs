@@ -10,11 +10,16 @@ namespace Ambition
 	{
 		private const float NODE_WIDTH = 200f;
 		private const float NODE_HEIGHT = 50f;
+		private static readonly Color NORMAL_COLOR = Color.white;
+		private static readonly Color INIT_COLOR = Color.green;
+		private static readonly Color NORMAL_BORDER = Color.black;
+		private static readonly Color SELECTED_BORDER = Color.yellow;
 
 		public string Text;
 
-		private Rect _rect=new Rect(0,0,NODE_WIDTH, NODE_HEIGHT);
+		public bool IsStart;
 
+		private Rect _rect=new Rect(0,0,NODE_WIDTH, NODE_HEIGHT);
 		public Rect Rect
 		{
 			get { return _rect; }
@@ -38,6 +43,7 @@ namespace Ambition
 
 		public void OnGUI(bool selected)
 		{
+			GUI.color = selected?Color.yellow:Color.white;
 			GUI.Box(_rect, Text);
 		}
 	}

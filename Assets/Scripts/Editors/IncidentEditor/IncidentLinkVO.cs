@@ -40,7 +40,7 @@ namespace Ambition
 				mid + dir,
 				mid - dir + norm
 			};
-			Handles.color = Color.black;
+			Handles.color = selected?Color.blue:Color.black;
 			Handles.DrawLine(_connectionStart, _connectionEnd);
 			Handles.DrawAAConvexPolygon(lines);
 		}

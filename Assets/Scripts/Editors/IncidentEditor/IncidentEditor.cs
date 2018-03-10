@@ -93,6 +93,7 @@ namespace Ambition
 						if (comp == null) comp = _links.Find(l=>l.Intersect(_mousePos));
 						else _dragging = Event.current.button == 0;
 						if (Event.current.button == 1) ShowMenu(comp);
+						if (Selected != comp) _dirty = true;
 						Selected = comp;
 						break;
 
@@ -122,6 +123,7 @@ namespace Ambition
 					Repaint();
 				}
 				_links.ForEach(l => l.OnGUI(l == Selected));
+				DrawStartOutline();
 				_nodes.ForEach(m => m.OnGUI(m == Selected));
 				_collection.ApplyModifiedProperties();
 				GUI.EndScrollView();
@@ -288,6 +290,20 @@ namespace Ambition
 			else if (rect.xMax > _scrollRect.xMax) _scrollRect.xMax = rect.xMax;
 			if (rect.yMin < _scrollRect.yMin) _scrollRect.yMin = rect.yMin;
 			else if (rect.yMax > _scrollRect.yMax) _scrollRect.yMax = rect.yMax;
+		}
+
+		private void DrawStartOutline()
+		{
+			if (_nodes.Count > 0)
+			{
+				Rect rect = _nodes[0].Rect;
+				rect.xMin-=2;
+				rect.yMin-=2;
+				rect.xMax+=2;
+				rect.yMax+=2;
+				GUI.color = Color.green;
+				GUI.Box(rect, "");
+			}
 		}
 	}
 }
