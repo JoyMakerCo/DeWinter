@@ -43,6 +43,8 @@ namespace Ambition
 		private const int SPACER = 2;
 		private const string FOCUS_ID = "FOCUS_ID";
 
+		private int _lastIndex;
+		private string _lastType;
 		private ReorderableList _list;
 		private bool _dirty=false;
 		private SerializedProperty _property;
@@ -53,27 +55,21 @@ namespace Ambition
 				serializedObject.FindProperty("Incidents"), 
                 true, true, true, true);
 			_list.drawHeaderCallback = (Rect rect) => { EditorGUI.LabelField(rect, "Incidents"); };
-			_list.drawElementCallback = DrawEventConfig;
-			_list.onSelectCallback = SelectEventConfig;
+			_list.drawElementCallback = DrawIncident;
+			_list.onSelectCallback = SelectIncident;
+			_list.onAddCallback = CreateIncident;
 
 			serializedObject.FindProperty(IncidentCollection.SELECTED_COMPONENT).intValue = -1;
-		}
-
-		void OnFocus()
-		{
 		}
 
 	    public override void OnInspectorGUI()
 	    {
 			serializedObject.Update();
-			if (!DrawComponent()) _list.DoLayoutList();
+			if (!DrawComponent()) _lastType = null;
+			if (_lastType == null) _list.DoLayoutList();
         	serializedObject.ApplyModifiedProperties();
 			if (_dirty) IncidentEditor.InspectorUpdated();
 			_dirty = false;
-
-		// 	EditorGUI.FocusTextInControl(FOCUS_ID);
-		// 	TextEditor txt = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);  
-        //    if (txt != null) txt.SelectAll();
 	    }
 
 	    private bool DrawComponent()
@@ -84,22 +80,37 @@ namespace Ambition
 
 			SerializedProperty prop = serializedObject.FindProperty("Incidents");
 			if (_list.index >= prop.arraySize) return false;
-
+			bool selectText = _lastIndex != index;
+			_lastIndex = index;
 			prop = prop.GetArrayElementAtIndex(_list.index);
 			if (serializedObject.FindProperty(IncidentCollection.IS_MOMENT).boolValue)
 			{
+				if (_lastType != "Moment") selectText = true;
+				_lastType = "Moment";
 				prop = GetProp(prop, index, "Moments", "Editing Moment");
 				if (prop != null) DrawMoment(prop);
 			}
 			else
 			{
+				if (_lastType != "Transition") selectText = true;
+				_lastType = "Transition";
 				prop = GetProp(prop, index, "Transitions", "Editing Transitions");
 				if (prop != null) DrawTransition(prop);
+			}
+			if (prop != null && selectText)
+			{
+				EditorGUI.FocusTextInControl(FOCUS_ID);
+				TextEditor txt = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);  
+				if (txt != null)
+				{
+					txt.SelectAll();
+					Array.Find(Resources.FindObjectsOfTypeAll<EditorWindow>(), w=>w.title == "Inspector").Focus();
+				}
 			}
 			return prop != null;
 	    }
 
-		private void DrawEventConfig(Rect rect, int index, bool isActive, bool isFocused)
+		private void DrawIncident(Rect rect, int index, bool isActive, bool isFocused)
 		{
 			SerializedProperty prop = _list.serializedProperty.GetArrayElementAtIndex(index);
 
@@ -110,12 +121,24 @@ namespace Ambition
 			EditorGUI.PropertyField(dLabel, prop.FindPropertyRelative("Setting"), GUIContent.none);
 		}
 
-		private void SelectEventConfig(ReorderableList list)
+		private void SelectIncident(ReorderableList list)
 		{
 			serializedObject.FindProperty(IncidentCollection.SELECTED_INCIDENT).intValue = _list.index;
 			serializedObject.FindProperty(IncidentCollection.SELECTED_COMPONENT).intValue = -1;
 			serializedObject.ApplyModifiedProperties();
 			IncidentEditor.Show(serializedObject);
+		}
+
+		private void CreateIncident(ReorderableList list)
+		{
+			SerializedProperty incidents = serializedObject.FindProperty("Incidents");
+			int index = incidents.arraySize;
+			incidents.arraySize++;
+			SerializedProperty incident = incidents.GetArrayElementAtIndex(index);
+			incident.FindPropertyRelative("Name").stringValue = "New Incident";
+			incident.FindPropertyRelative("Moments").arraySize = 0;
+			incident.FindPropertyRelative("Transitions").arraySize = 0;
+			incident.FindPropertyRelative("Positions").arraySize = 0;
 		}
 
 		private void DrawMoment(SerializedProperty moment)
