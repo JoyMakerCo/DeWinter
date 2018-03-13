@@ -7,6 +7,8 @@ namespace Ambition
 	public class OutfitStatTracker : MonoBehaviour
 	{
 		public string Stat;
+		public GameObject Minimum;
+		public GameObject Maximum;
 
 		private Slider _meter;
 
@@ -17,6 +19,12 @@ namespace Ambition
 
 		void OnEnable()
 		{
+			string factionID = AmbitionApp.GetModel<PartyModel>().Party.Faction;
+			FactionVO faction = AmbitionApp.GetModel<FactionModel>()[factionID];
+			int stat = (Stat.ToLower() == ItemConsts.LUXURY ? faction.Luxury : faction.Modesty);
+			Minimum.SetActive(stat < 0);
+			Maximum.SetActive(stat > 0);
+
 			AmbitionApp.Subscribe<OutfitVO>(HandleOutfit);
 		}
 

@@ -139,17 +139,29 @@ namespace Ambition
 	    		_collection.FindProperty(IncidentCollection.SELECTED_COMPONENT).intValue = index;
 				_collection.FindProperty(IncidentCollection.IS_MOMENT).boolValue = isMoment;
 	    		_selected = value;
+				_collection.ApplyModifiedProperties();
 	    	}
 	    }
 
 		private void DeleteComponent(object component)
 		{
-			Selected = null;
+			if (component == Selected) Selected = null;
 			_dirty = true;
 			if (!_links.Remove(component as IncidentLinkVO))
 			{
+				SerializedProperty prop = _config.FindPropertyRelative("Moments");
+				if (prop != null)
+				{
+					int index = _nodes.IndexOf(component as IncidentNodeVO);
+					if (index >= 0)
+					{
+						prop.DeleteArrayElementAtIndex(index);
+						_collection.ApplyModifiedProperties();
+					}
+				}
 				_links.RemoveAll(l=>l.Start == component || l.End == component);
 				_nodes.Remove((IncidentNodeVO)component);
+				
 			}
 		}
 
