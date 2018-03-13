@@ -7,24 +7,45 @@ namespace Core
 	public interface IMessageEvent {}
 	public class TypeEvent<T> : IMessageEvent
 	{
-		protected event Action<T> EventHandler;
+		protected Action<T> _typeMessageHandler;
+		protected event Action<T> MessageHandler
+		{
+			add
+			{
+				if (_typeMessageHandler == null || !_typeMessageHandler.GetInvocationList().Contains(value))
+				{
+					lock(typeof(T))
+					{
+						_typeMessageHandler += value;
+					}
+				}
+			}
+			remove
+			{
+				if (_typeMessageHandler != null)
+				{
+					lock(typeof(T))
+					{
+						_typeMessageHandler -= value;
+					}
+				}
+			}
+		}
 
 		public void Add(Action<T> action)
 		{
-			if (EventHandler == null || !EventHandler.GetInvocationList().Contains(action))
-				EventHandler += action;
+			MessageHandler += action;
 		}
 
 		public void Remove(Action<T> action)
 		{
-			if (EventHandler != null)
-				EventHandler -= action;
+			MessageHandler -= action;
 		}
 
 		public void Send(T data)
 		{
-			if (EventHandler != null)
-				EventHandler(data);
+			if (_typeMessageHandler != null)
+				_typeMessageHandler(data);
 		}
 	}
 
@@ -128,19 +149,17 @@ namespace Core
 
 		public void Send(string messageID)
 		{
-			if (messageID == null) return;
 			MessageEvent e;
-			if (_messageHandlers.TryGetValue(messageID, out e))
+			if (messageID != null && _messageHandlers.TryGetValue(messageID, out e))
 				e.Send();
 		}
 
 		public void Send<T>(string messageID, T messageData)
 		{
-			if (messageID == null) return;
 			IMessageEvent e;
 			Dictionary<Type, IMessageEvent> d;
 			Type t = typeof(T);
-			if (_messageTypeHandlers.TryGetValue(messageID, out d) && d.TryGetValue(t, out e))
+			if (messageID != null && _messageTypeHandlers.TryGetValue(messageID, out d) && d.TryGetValue(t, out e))
 				(e as TypeEvent<T>).Send(messageData);
 		}
 
@@ -149,7 +168,9 @@ namespace Core
 			IMessageEvent e;
 			Type t = typeof(T);
 			if (_typeHandlers.TryGetValue(t, out e))
+			{
 				(e as TypeEvent<T>).Send(messageData);
+			}
 		}
 
 		public void Dispose()

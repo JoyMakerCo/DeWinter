@@ -6,23 +6,18 @@ namespace Ambition
 {
 	public class ConfidenceTextView : TextMessageView<int>
 	{
-		private Core.ModelSvc _models = Core.App.Service<Core.ModelSvc>();
 		private PartyModel _model;
+		public ConfidenceTextView() : base(GameConsts.CONFIDENCE) {}
 
-		public ConfidenceTextView()
+		override protected void InitValue()
 		{
-			_model = _models.GetModel<PartyModel>();
-			ValueID = GameConsts.CONFIDENCE;
-		}
-
-		void Start()
-		{
+			_model = AmbitionApp.GetModel<PartyModel>();
 			HandleValue(_model.Confidence);
 		}
 
 		protected override void HandleValue (int value)
 		{
-			Text = "Confidence: " + value.ToString("N0") + "/" + _model.MaxConfidence.ToString("N0");
+			Text = "Confidence: " + value.ToString("N0") + (_model != null ? ("/" + _model.MaxConfidence.ToString("N0")) : "");
 		}
 	}
 }

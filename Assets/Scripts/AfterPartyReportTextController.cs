@@ -75,14 +75,14 @@ public class AfterPartyReportTextController : MonoBehaviour {
         }
 
 		List<string> gossipList = new List<string>();
-        foreach (RewardVO reward in _model.Party.Rewards)
+        foreach (CommodityVO reward in _model.Party.Rewards)
         {
-            if(reward.Quantity > 0)
+            if(reward.Amount > 0)
             {
-                rewardString += "\n" + reward.Name;
-                if (reward.Type == RewardConsts.GOSSIP)
+                rewardString += "\n" + reward.ID;
+                if (reward.Type == CommodityType.Gossip)
                 {
-	                gossipList.Add(reward.Name);
+	                gossipList.Add(reward.ID);
                 }
             }
         }

@@ -24,7 +24,7 @@ namespace Ambition
 		public const string CANCEL_PARTY = "CANCEL_PARTY";
 		public const string NO_OUTFIT = "NO_OUTFIT";
 		public const string MAKE_OUTFIT = "MAKE_OUTFIT";
-		public const string EVENT = "EVENT";
+		public const string INCIDENT = "INCIDENT";
 		public const string ALTER_OUTFIT = "ALTER_OUTFIT";
 		public const string BUY_OR_SELL = "BUY_OR_SELL";
 		public const string CANT_AFFORD = "CANT_AFFORD";

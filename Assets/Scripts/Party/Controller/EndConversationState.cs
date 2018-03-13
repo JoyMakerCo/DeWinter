@@ -11,7 +11,7 @@ namespace Ambition
 
 		public override void OnEnterState ()
 		{
-			RewardVO reward;
+			CommodityVO reward;
 			PartyModel model = _models.GetModel<PartyModel>();
 			MapModel map = _models.GetModel<MapModel>();
 			int numCharmed = Array.FindAll(map.Room.Guests, g=>g.State == GuestState.Charmed).Length;
@@ -28,19 +28,19 @@ namespace Ambition
 			map.Room.Cleared = true;
 
 			//Rewards Distributed Here
-            if (reward.Category == RewardConsts.SERVANT)
+            if (reward.Type == CommodityType.Servant)
             {
 				ServantModel servants = _models.GetModel<ServantModel>();
-				if (servants.Servants.ContainsKey(reward.Type))
+				if (servants.Servants.ContainsKey(reward.ID))
 				{
-                    reward = new RewardVO(RewardConsts.GOSSIP, model.Party.Faction, 1);
+                    reward = new CommodityVO(CommodityType.Gossip, model.Party.Faction, 1);
                 }
             }
             model.Party.Rewards.Add(reward);
 			Dictionary<string, string> subs = new Dictionary<string, string>(){
 				{"$NUMCHARMED",numCharmed.ToString()},
 				{"$NUMPUTOFF",(map.Room.Guests.Length - numCharmed).ToString()},
-				{"$REWARD",reward.Name}};
+				{"$REWARD",reward.ID}};
             AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
 
             // TODO: This belongs in a Party-Wide State Machine
@@ -56,21 +56,21 @@ namespace Ambition
 		}
 
 
-		private RewardVO GenerateRandomReward(int numCharmed, string faction)
+		private CommodityVO GenerateRandomReward(int numCharmed, string faction)
     	{
     		int factor = numCharmed < 5 ? numCharmed : 6;
 			switch (new Random().Next(5))
 			{
 				case 0:
 				case 1:
-					return new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, 5*factor);
+					return new CommodityVO(CommodityType.Reputation, 5*factor);
 				case 2:
 				case 3:
-					return new RewardVO(RewardConsts.FACTION, faction, 10*factor);
+					return new CommodityVO(CommodityType.Faction, faction, 10*factor);
 			}
 			return (numCharmed < 5)
-				? new RewardVO(RewardConsts.GOSSIP, faction, 1)
-				: new RewardVO(RewardConsts.SERVANT, ServantConsts.SEAMSTRESS, 1);
+				? new CommodityVO(CommodityType.Faction, faction, 1)
+				: new CommodityVO(CommodityType.Servant, ServantConsts.SEAMSTRESS, 1);
 		}
 	}
 }

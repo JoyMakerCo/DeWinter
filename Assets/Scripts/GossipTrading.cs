@@ -157,8 +157,8 @@ namespace Ambition
 			List<PierreQuest> completeList = GameData.pierreQuestInventory.FindAll(p => p.GossipMatch(g));
 	        foreach (PierreQuest q in completeList)
 	        {
-	        	AmbitionApp.SendMessage<RewardVO>(q.reward);
-				Dictionary<string,string> subs = new Dictionary<string, string>(){{"$REWARD",q.reward.Name}};
+	        	AmbitionApp.SendMessage<CommodityVO>(q.reward);
+				Dictionary<string,string> subs = new Dictionary<string, string>(){{"$REWARD",q.reward.ID}};
 		    	AmbitionApp.OpenMessageDialog(DialogConsts.REDEEM_QUEST_DIALOG, subs);
 				GameData.pierreQuestInventory.Remove(q);
 	        }

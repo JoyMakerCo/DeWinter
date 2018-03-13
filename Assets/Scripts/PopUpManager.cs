@@ -199,7 +199,7 @@ public class PopUpManager : MonoBehaviour
         //Body Text
         Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
         bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction + "." +
-                "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.Name + ". \n\nHow does that sound?";
+                "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.ID + ". \n\nHow does that sound?";
     }
 
     //This is used in the Estate Tab to confirm selling various bits of Gossip

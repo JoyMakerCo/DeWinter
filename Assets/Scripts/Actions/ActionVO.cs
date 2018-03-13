@@ -17,7 +17,7 @@ namespace Ambition
 		public Dictionary<string, object> Items;
 
 		// Reward
-		public RewardVO Reward;
+		public CommodityVO Reward;
 
 		// New Actions as a result of completing this action
 		public ActionVO[] Actions;

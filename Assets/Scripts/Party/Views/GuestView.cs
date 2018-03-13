@@ -8,6 +8,7 @@ namespace Ambition
 	public class GuestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
 		private const float FILL_SECONDS = 0.5f;
+		private readonly static string[] POSES = new string[]{"putout", "neutral", "approval", "charmed"};
 
 		public int Index;
 
@@ -16,10 +17,11 @@ namespace Ambition
 		public Text NameText;
 		public Image Highlight;
 		public GameObject Spotlight;
-
-		public GuestConfig GuestArtConfig;
+		public AvatarCollection Avatars;
+		public SpriteConfig Interests;
 
 		private GuestVO _guest;
+		private AvatarVO _avatar;
 		private RemarkVO _remark;
 		private Image _image;
 		private bool _isIntoxicated=false;
@@ -66,26 +68,27 @@ namespace Ambition
 			{
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
-
 				NameText.text = _guest.DisplayName;
 
 				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
-				if (_guest.Variant < 0)
+				if (_avatar.ID == null || _avatar.ID != _guest.Avatar)
 				{
-					GuestSprite [] sprites = Array.FindAll(GuestArtConfig.GuestSprites, i=>i.IsFemale == _guest.IsFemale);
-					int index = (new System.Random()).Next(sprites.Length);
-					_guest.Variant = Array.IndexOf(GuestArtConfig.GuestSprites, sprites[index]);
+					if (_guest.Avatar != null) _avatar = Avatars.GetAvatar(_guest.Avatar);
+					else
+					{
+						AvatarVO[] avatars = Avatars.FindByTag("party");
+						_avatar = avatars[new System.Random().Next(avatars.Length)];
+						_guest.Avatar = _avatar.ID;
+					}
+					_guest.Gender = _avatar.Gender;
 				}
-// TODO: Delete this line after demo
-_guest.Variant = Index;
-				_image.sprite = !_isIntoxicated
-					? GuestArtConfig.GuestSprites[_guest.Variant].GetSprite(_guest)
-					: GuestArtConfig.GuestSprites[_guest.Variant].BoredSprite;
 
-				InterestMap interest = Array.Find(GuestArtConfig.InterestSprites, n=>n.Interest == _guest.Like);
-				if (!default(InterestMap).Equals(interest))
-					InterestIcon.sprite = interest.Sprite;
+				_image.sprite = _avatar.GetPose(!_isIntoxicated
+					? POSES[(int)(_guest.State)]
+					: "neutral");
+
+				InterestIcon.sprite = Interests.GetSprite(_guest.Like);
 			}
 	    }
 

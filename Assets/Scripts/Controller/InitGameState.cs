@@ -15,7 +15,7 @@ namespace Ambition
 			AmbitionApp.RegisterModel<CalendarModel>();
 			AmbitionApp.RegisterModel<PartyModel>();
 			AmbitionApp.RegisterModel<CharacterModel>();
-			AmbitionApp.RegisterModel<EventModel>();
+			AmbitionApp.RegisterModel<IncidentModel>();
 			AmbitionApp.RegisterModel<QuestModel>();
 			AmbitionApp.RegisterModel<MapModel>();
 			AmbitionApp.RegisterModel<LocalizationModel>();
@@ -23,7 +23,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryMessages.SELL_ITEM);
 			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
 			AmbitionApp.RegisterCommand<DancingCmd, NotableVO>(PartyConstants.START_DANCING);
-			AmbitionApp.RegisterCommand<GrantRewardCmd, RewardVO>();
+			AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
 			AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
 			AmbitionApp.RegisterCommand<GenerateMapCmd, PartyVO>(MapMessage.GENERATE_MAP);
 			AmbitionApp.RegisterCommand<DegradeOutfitCmd, OutfitVO>(InventoryMessages.BUY_ITEM);
@@ -77,28 +77,29 @@ namespace Ambition
 			AmbitionApp.RegisterState<EndConversationState>("EndConversation");
 
 			AmbitionApp.RegisterTransition("ConversationController", "InitConversation", "ReadyGo");
-			AmbitionApp.RegisterTransition<WaitForCloseDialogTransition>("ConversationController", "ReadyGo", "StartTurn", DialogConsts.READY_GO);
-			AmbitionApp.RegisterTransition<WaitForMessageTransition>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
+			AmbitionApp.RegisterTransition<WaitForCloseDialogLink>("ConversationController", "ReadyGo", "StartTurn", DialogConsts.READY_GO);
+			AmbitionApp.RegisterTransition<WaitForMessageLink>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
 			AmbitionApp.RegisterTransition<CheckConversationTransition>("ConversationController", "EndTurn", "EndConversation");
 			AmbitionApp.RegisterTransition("ConversationController", "EndTurn", "StartTurn");
 
 			// Estate States. This lands somewhere between confusing and annoying.
 			AmbitionApp.RegisterState<StartEstateState>("InitEstate");
-			AmbitionApp.RegisterState<StartEventState>("StartEvent");
-			AmbitionApp.RegisterState<EventState>("EventStage");
-			AmbitionApp.RegisterState<EndEventState>("EndEvent");
+			AmbitionApp.RegisterState<StartIncidentState>("StartEvent");
+			AmbitionApp.RegisterState<IncidentState>("EventStage");
+			AmbitionApp.RegisterState<CheckEndIncidentState>("CheckEndEvent");
 			AmbitionApp.RegisterState<EnterEstateState>("Estate");
 			AmbitionApp.RegisterState<StyleChangeState>("StyleChange");
 			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
 
-			AmbitionApp.RegisterTransition<CheckEventsTransition>("EstateController", "InitEstate", "StartEvent");
+			AmbitionApp.RegisterTransition<CheckIncidentsLink>("EstateController", "InitEstate", "StartEvent");
 			AmbitionApp.RegisterTransition("EstateController", "InitEstate", "Estate");
 			AmbitionApp.RegisterTransition("EstateController", "StartEvent", "EventStage");
-			AmbitionApp.RegisterTransition<WaitForEventTransition>("EstateController", "EventStage", "EventStage");
-			AmbitionApp.RegisterTransition<WaitForEndEventTransition>("EstateController", "EventStage", "EndEvent");
-			AmbitionApp.RegisterTransition("EstateController", "EndEvent", "Estate");
-			AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
-			AmbitionApp.RegisterTransition<WaitForCloseDialogTransition>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
+			AmbitionApp.RegisterTransition<WaitForIncidentLink>("EstateController", "EventStage", "CheckEndEvent");
+			AmbitionApp.RegisterTransition<CheckIncidentsLink>("EstateController", "CheckEndEvent", "EventStage");
+			AmbitionApp.RegisterTransition("EstateController", "CheckEndEvent", "Estate");
+			// AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
+			// AmbitionApp.RegisterTransition<WaitForCloseDialogLink>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
+			AmbitionApp.RegisterTransition("EstateController", "Estate", "CreateInvitations");
 		}
 	}
 }

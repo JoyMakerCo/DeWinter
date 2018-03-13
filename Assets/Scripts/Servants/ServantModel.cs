@@ -29,7 +29,6 @@ namespace Ambition
 		public void Fire(ServantVO servant)
 		{
 			if (servant.Status == ServantStatus.Permanent) return;
-			List<ServantVO> servants;
 			DictionaryUtil(Applicants, servant);
 			UnknownUtil(servant);
 			if (Servants.ContainsKey(servant.Slot) && Servants[servant.Slot] == servant)
@@ -40,7 +39,6 @@ namespace Ambition
 
 		public void Introduce(ServantVO servant)
 		{
-			List<ServantVO> servants;
 			DictionaryUtil(Applicants, servant);
 			UnknownUtil(servant);
 			if (Servants.ContainsKey(servant.Slot) && Servants[servant.Slot] == servant)
@@ -73,7 +71,6 @@ namespace Ambition
 		{
 			set
 			{
-				List<ServantVO> servants;
 				foreach(ServantVO servant in value)
 				{
 					switch(servant.Status)

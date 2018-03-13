@@ -167,7 +167,7 @@ namespace Ambition
 			App.Service<UFlowSvc>().RegisterTransition(machineID, originState, targetState);
 		}
 
-		public static void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : UTransition, new()
+		public static void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
 		{
 			App.Service<UFlowSvc>().RegisterTransition<T>(machineID, originState, targetState, args);
 		}

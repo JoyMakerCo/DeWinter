@@ -86,7 +86,7 @@ party.Host = characters.Notables[rnd.Next(characters.Notables.Length)];
 				{"$NOUN",GetRandomText("party_fluff_noun")}});
 			party.Invitation = AmbitionApp.GetString("party_invitation", new Dictionary<string, string>(){
 				{"$PLAYER", AmbitionApp.GetModel<GameModel>().PlayerName},
-				{"$PRONOUN", AmbitionApp.GetString(party.Host.IsFemale ? "her" : "his")},
+				{"$PRONOUN", AmbitionApp.GetString(party.Host.Gender == Gender.Female ? "her" : "his")},
 				{"$PARTY",party.Description},
 				{"$DATE", AmbitionApp.GetModel<CalendarModel>().GetDateString(party.Date)},
 				{"$SIZE", AmbitionApp.GetString("party_importance." + party.Importance.ToString())},

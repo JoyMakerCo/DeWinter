@@ -36,11 +36,11 @@ namespace Ambition
 		[JsonProperty("Dislike")]
 		public string Disike;
 
-		[JsonProperty("IsFemale")]
-	    public bool IsFemale;
+		[JsonProperty("Gender")]
+	    public Gender Gender;
 
-		[JsonProperty("Variant")]
-	    public int Variant=-1;
+		[JsonProperty("Avatar")]
+	    public string Avatar;
 
 		public int Opinion;
 		public int MaxInterest;
@@ -54,7 +54,7 @@ namespace Ambition
 			Title = guest.Title;
 			Like = guest.Like;
 			Disike = guest.Disike;
-			IsFemale = guest.IsFemale;
+			Gender = guest.Gender;
 			Opinion = guest.Opinion;
 		}
 

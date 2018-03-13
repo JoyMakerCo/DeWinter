@@ -5,7 +5,7 @@ using UFlow;
 
 namespace Ambition
 {
-	public class CheckConversationTransition : UTransition
+	public class CheckConversationTransition : ULink
 	{
 		public override bool InitializeAndValidate ()
 		{

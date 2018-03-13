@@ -20,12 +20,12 @@ namespace Ambition
 			            case 0:
 			                party.blackOutEffect = "Reputation Loss";
 			                party.blackOutEffectAmount = -rnd.Next(20, 51);
-			                model.Party.Rewards.Add(new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, party.blackOutEffectAmount));
+			                model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, party.blackOutEffectAmount));
 			                break;
 			            case 1:
 			                party.blackOutEffect = "Faction Reputation Loss";
 			                party.blackOutEffectAmount = -rnd.Next(20, 51);
-							model.Party.Rewards.Add(new RewardVO(RewardConsts.FACTION, party.Faction, party.blackOutEffectAmount));
+							model.Party.Rewards.Add(new CommodityVO(CommodityType.Faction, party.Faction, party.blackOutEffectAmount));
 			                break;
 			            case 2:
 			                party.blackOutEffect = "Outfit Novelty Loss";
@@ -46,20 +46,20 @@ namespace Ambition
 			                {
 			                    party.blackOutEffect = "Livre Lost";
 			                    party.blackOutEffectAmount = -rnd.Next(30, 61);
-			                    model.Party.Rewards.Add(new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, party.blackOutEffectAmount));
+			                    model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, party.blackOutEffectAmount));
 			                }
 			                break;
 			            case 5:
 			                party.blackOutEffect = "Livre Lost";
 			                party.blackOutEffectAmount = -rnd.Next(30, 61);
-							model.Party.Rewards.Add(new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, party.blackOutEffectAmount));
+							model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, party.blackOutEffectAmount));
 			                break;
 			            case 6:
 			                party.blackOutEffect = "New Enemy";
 			                AmbitionApp.SendMessage<string>(GameMessages.CREATE_ENEMY, party.Faction);
 			                break;
 			            case 7:
-							if (model.Party.Rewards.RemoveAll(r => r.Type == RewardConsts.GOSSIP) > 0)
+							if (model.Party.Rewards.RemoveAll(r => r.Type == CommodityType.Gossip) > 0)
 							{
 				                party.blackOutEffect = "Forgot All Gossip";
 							}
@@ -75,21 +75,21 @@ namespace Ambition
 								case 1:
 				                    party.blackOutEffect = "Reputation Gain";
 				                    party.blackOutEffectAmount = rnd.Next(20, 51);
-									model.Party.Rewards.Add(new RewardVO(RewardConsts.VALUE, GameConsts.REPUTATION, party.blackOutEffectAmount));
+									model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, party.blackOutEffectAmount));
 				                    break;
 				                case 2:
 				                    party.blackOutEffect = "Faction Reputation Gain";
 				                    party.blackOutEffectAmount = rnd.Next(20, 51);
-									model.Party.Rewards.Add(new RewardVO(RewardConsts.FACTION, party.Faction, party.blackOutEffectAmount));
+									model.Party.Rewards.Add(new CommodityVO(CommodityType.Faction, party.Faction, party.blackOutEffectAmount));
 				                    break;
 				                case 3:
 				                    party.blackOutEffect = "Livre Gained";
 				                    party.blackOutEffectAmount = rnd.Next(30, 61);
-									model.Party.Rewards.Add(new RewardVO(RewardConsts.VALUE, GameConsts.LIVRE, party.blackOutEffectAmount));
+									model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, party.blackOutEffectAmount));
 				                    break;
 				                case 4:
 				                    party.blackOutEffect = "New Gossip";
-									model.Party.Rewards.Add(new RewardVO(RewardConsts.GOSSIP, party.Faction, party.blackOutEffectAmount));
+									model.Party.Rewards.Add(new CommodityVO(CommodityType.Gossip, party.Faction, party.blackOutEffectAmount));
 				                    break;
 				                default:
 									if (party.Enemies != null && party.Enemies.Length > 0)
@@ -101,7 +101,7 @@ namespace Ambition
 				                    else
 				                    {
 										party.blackOutEffect = "New Gossip";
-										model.Party.Rewards.Add(new RewardVO(RewardConsts.GOSSIP, party.Faction, party.blackOutEffectAmount));
+										model.Party.Rewards.Add(new CommodityVO(CommodityType.Gossip, party.Faction, party.blackOutEffectAmount));
 				                    }
 				                    break;
        			            	}

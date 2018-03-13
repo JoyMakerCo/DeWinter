@@ -18,9 +18,9 @@ namespace Ambition
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			NotableVO host = model.Party.Host;
 			PartyArtLibrary lib = ArtLibrary.GetComponent<PartyArtLibrary>();
-			Sprite [] sprites = host.IsFemale ? lib.FemaleHostSprites : lib.MaleHostSprites;
-			if (host.Variant < 0) host.Variant = new System.Random().Next(sprites.Length);
-			HostImage.sprite = sprites[host.Variant];
+			Sprite [] sprites = host.Gender == Gender.Female ? lib.FemaleHostSprites : lib.MaleHostSprites;
+			// if (host.Variant == null) host.Variant = new System.Random().Next(sprites.Length);
+			// HostImage.sprite = sprites[host.Variant];
 			HostText.text = host.Name;
 		}
 	}
