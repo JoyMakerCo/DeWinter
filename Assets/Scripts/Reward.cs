@@ -127,7 +127,7 @@ public class Reward {
                 }
                 break;
             case 5:
-                typeRandomInt = (new Random()).Next(6);
+                typeRandomInt = UnityEngine.Random.Range(0,6);
                 if (typeRandomInt == 0 || typeRandomInt == 1)
                 {
                     type = "Reputation";
@@ -152,23 +152,22 @@ public class Reward {
     void GenerateRandomQuestReward(PierreQuest pQuest)
     {
         string faction = pQuest.Faction; 
-		Random rnd = new Random();
-        int typeRandomInt = rnd.Next(4);
+        int typeRandomInt = UnityEngine.Random.Range(0,4);
         //Amount is determined Inverse to Time Limit
         int multiplier = 12 - pQuest.daysLeft;
         if (typeRandomInt == 0)
         {
             type = "Reputation";
-            amount = multiplier * (rnd.Next(6, 16));
+            amount = multiplier * (UnityEngine.Random.Range(6, 16));
         } else if (typeRandomInt == 1)
         {
             type = "Faction Reputation";
             subtype = RandomExclusiveFaction(faction);
-			amount = multiplier * (rnd.Next(10, 21));
+			amount = multiplier * (UnityEngine.Random.Range(10, 21));
         } else
         {
             type = "Livre";
-			amount = multiplier * (rnd.Next(10, 21));
+			amount = multiplier * (UnityEngine.Random.Range(10, 21));
         }
     }
 
@@ -186,7 +185,7 @@ public class Reward {
 				ServantModel model = AmbitionApp.GetModel<ServantModel>();
 				List<ServantVO> servants;
 				return (model.Unknown.TryGetValue(subtype, out servants) && servants.Count > 0)
-					? servants[new Random().Next(servants.Count)].NameAndTitle
+					? servants[UnityEngine.Random.Range(0,servants.Count)].NameAndTitle
 					: type;
             case "Gossip":
                 return "A tidbit of " + SubType() + " Gossip";
@@ -213,7 +212,7 @@ public class Reward {
     string PartyRandomFaction()
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
-        int factionRandom = new Random().Next(7);
+        int factionRandom = UnityEngine.Random.Range(0,7);
         switch (factionRandom)
         {
             case 0:
@@ -235,7 +234,7 @@ public class Reward {
     {
     	FactionModel model = AmbitionApp.GetModel<FactionModel>();
     	string[] factions = System.Linq.Enumerable.ToArray(model.Factions.Keys);
-    	int index = new Random().Next(1, factions.Length);
+    	int index = UnityEngine.Random.Range(1, factions.Length);
 		return factions[factions[index] == faction ? 0 : index];
     }
 }

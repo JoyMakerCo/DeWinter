@@ -34,6 +34,9 @@ namespace Ambition
 			}
 		}
 
+		[JsonProperty("punchbowlChance")]
+		public int PunchbowlChance;
+
 		[JsonProperty("roomAdjectiveList")]
 		public string [] RoomAdjectives;
 

@@ -11,14 +11,13 @@ namespace Ambition
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			List<RemarkVO> hand = model.Remarks;
 			RemarkVO remark;
-			Random rnd = new Random();
 
 			int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
 			string interest;
 			while (hand.Count < model.MaxHandSize)
 			{
-				interest = model.Interests[rnd.Next(model.Interests.Length)];
-				remark = new RemarkVO(rnd.Next(1,3), interest);
+				interest = model.Interests[UnityEngine.Random.Range(0, model.Interests.Length)];
+				remark = new RemarkVO(UnityEngine.Random.Range(1,3), interest);
 				hand.Add(remark);
 	        }
 			model.Remarks = hand;

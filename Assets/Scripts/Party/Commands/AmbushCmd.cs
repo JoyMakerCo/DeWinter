@@ -12,15 +12,14 @@ namespace Ambition
 			List<RemarkVO> hand = model.Remarks;
 			string interest;
 			RemarkVO remark;
-			Random rnd = new Random();
 			int numGuests = room.Guests.Length;
 
 			if (hand.Count > model.AmbushHandSize)
 				hand.RemoveRange(model.AmbushHandSize, hand.Count - model.AmbushHandSize);
 			else while (hand.Count < model.AmbushHandSize)
 			{
-				interest = model.Interests[rnd.Next(model.Interests.Length)];
-				remark = new RemarkVO(rnd.Next(1,3), interest);
+				interest = model.Interests[UnityEngine.Random.Range(0, model.Interests.Length)];
+				remark = new RemarkVO(UnityEngine.Random.Range(1,3), interest);
 				hand.Add(remark);
 			}
 			while(hand.Count < model.MaxHandSize)

@@ -17,7 +17,7 @@ namespace Ambition
 		        GuestVO[] guests = Array.FindAll(model.Room.Guests, g => g.State == GuestState.Charmed);
 		        if (guests.Length == 0) return; // Early Out
 
-				int attackNumber = new Random().Next(5);
+				int attackNumber = UnityEngine.Random.Range(0, 5);
 		        switch (attackNumber)
 		        {
 		            case 1:
@@ -41,7 +41,7 @@ namespace Ambition
 		                //4 = Antagonize (Uncharm a Charmed Guest, if there is one)
 		                if (guests.Length > 1)
 		                {
-							guest = guests[new Random().Next(1, guests.Length-1)];
+							guest = guests[UnityEngine.Random.Range(1, guests.Length-1)];
 							if (guest != enemy) guest.Opinion = 90;
 			                else guests[0].Opinion = 90;
 			            }

@@ -16,7 +16,7 @@ namespace Ambition
 					(model.SeductionTimeModifier - s.Time) -
 					(string.IsNullOrEmpty(notable.Spouse) ? model.SeductionMarriedModifier : 0);
 
-				if ((new Random()).Next(100) < seductionChance)
+				if (UnityEngine.Random.Range(0,100) < seductionChance)
 				{
 					AmbitionApp.SendMessage<NotableVO>(PartyConstants.START_DANCING, notable);
 				}

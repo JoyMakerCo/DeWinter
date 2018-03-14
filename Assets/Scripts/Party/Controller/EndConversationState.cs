@@ -59,7 +59,7 @@ namespace Ambition
 		private CommodityVO GenerateRandomReward(int numCharmed, string faction)
     	{
     		int factor = numCharmed < 5 ? numCharmed : 6;
-			switch (new Random().Next(5))
+			switch (UnityEngine.Random.Range(0,5))
 			{
 				case 0:
 				case 1:
