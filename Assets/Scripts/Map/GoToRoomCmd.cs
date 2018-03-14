@@ -26,7 +26,6 @@ namespace Ambition
 			// Make sure the player can move to the next room
 			else
 			{
-				Random rnd = new Random();
 				if (model.Room != null)
 				{
 					int chance = model.Room.MoveThroughChance;
@@ -55,7 +54,7 @@ namespace Ambition
 				else if (!room.Cleared
 					&& partyModel.DrinkAmount < partyModel.MaxDrinkAmount
 	            	&& AmbitionApp.GetModel<FactionModel>()[partyModel.Party.Faction].Level >= 5
-	            	&& rnd.Next(0, 4) == 0)
+	            	&& UnityEngine.Random.Range(0, 4) == 0)
 	        	{
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
 					Dictionary<string, string> subs = new Dictionary<string, string>(){

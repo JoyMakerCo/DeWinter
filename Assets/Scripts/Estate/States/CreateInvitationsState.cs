@@ -14,7 +14,6 @@ namespace Ambition
 			_calendar = AmbitionApp.GetModel<CalendarModel>();
 			DateTime day = _calendar.Today;
 			PartyVO[] parties = Array.FindAll(AmbitionApp.GetModel<PartyModel>().Parties, p=>p.InvitationDate == _calendar.Today);
-			Random rnd = new Random();
 
 			Array.ForEach(parties, AddParty);
 
@@ -23,9 +22,9 @@ namespace Ambition
 				CreateParty(day);
 			}
 
-			if (rnd.Next(3) == 0) // Chance of a random future engagement
+			if (UnityEngine.Random.Range(0,3) == 0) // Chance of a random future engagement
 			{
-				CreateParty(day.AddDays(rnd.Next(1,8)+rnd.Next(1,8)));
+				CreateParty(day.AddDays(UnityEngine.Random.Range(1,8)+UnityEngine.Random.Range(1,8)));
 			}
 
 	       	// Missed Parties
@@ -54,19 +53,18 @@ namespace Ambition
 
 		private void AddParty(PartyVO party)
 		{
-			Random rnd = new Random();
 			CharacterModel characters = AmbitionApp.GetModel<CharacterModel>();
 // TODO: More robust host system
-party.Host = characters.Notables[rnd.Next(characters.Notables.Length)];
+party.Host = characters.Notables[UnityEngine.Random.Range(0,characters.Notables.Length)];
 
 			if (party.Faction == null)
 			{
 				FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 				string[] factions = fmod.Factions.Keys.ToArray();
-				party.Faction = factions[new Random().Next(factions.Length)];
+				party.Faction = factions[UnityEngine.Random.Range(0,factions.Length)];
 			}
 
-			if (party.Importance == 0) party.Importance = rnd.Next(1,4);
+			if (party.Importance == 0) party.Importance = UnityEngine.Random.Range(1,4);
 			if (party.Turns == 0) party.Turns = (party.Importance * 5) + 1;
 
 			string str = (party.ID != null) ? AmbitionApp.GetString("party.description." + party.ID) : null;
@@ -106,7 +104,7 @@ party.Host = characters.Notables[rnd.Next(characters.Notables.Length)];
 		private string GetRandomText(string key)
 		{
 			string [] phrases = AmbitionApp.GetPhrases(key);
-			return phrases[new Random().Next(phrases.Length)];
+			return phrases[UnityEngine.Random.Range(0, phrases.Length)];
 		}
 	}
 }

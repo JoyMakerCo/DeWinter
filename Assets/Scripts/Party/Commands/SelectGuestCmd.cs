@@ -20,7 +20,6 @@ namespace Ambition
 				
 				if (!(guest is EnemyVO) && !guest.IsLockedIn)
 				{
-					Random rnd = new Random();
 					float levelBonus = (AmbitionApp.GetModel<GameModel>().Level >= 4 && guest is EnemyVO)
 						? 1.25f
 						: 1.0f;
@@ -30,7 +29,7 @@ namespace Ambition
 			        //Do they like the Tone?
 					if (guest.Like == remark.Interest) //They like the tone
 			        {
-						opinionMod = (float)rnd.Next(25,36) * ReparteBonus * levelBonus;
+						opinionMod = UnityEngine.Random.Range(25f,36f) * ReparteBonus * levelBonus;
 						AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
 						AmbitionApp.GetModel<PartyModel>().Confidence += 5;
 					} else if (guest.Disike == remark.Interest) //They dislike the tone
@@ -38,13 +37,13 @@ namespace Ambition
 			        	// TODO: All of this needs to be affected by the passive bonus system
 			            if (!model.ItemEffect) //If the the Player doesn't have the Fascinator Accessory or its ability has already been used up
 			            {
-							opinionMod = -(float)rnd.Next(11,17) * ReparteBonus * levelBonus;
+							opinionMod = -UnityEngine.Random.Range(11f,17f) * ReparteBonus * levelBonus;
 							AmbitionApp.GetModel<PartyModel>().Confidence -= 10;
 		            	}
 						model.ItemEffect = false;
 			        } else //Neutral Tone
 			        {
-						opinionMod = (float)rnd.Next(12, 18)*ReparteBonus*levelBonus;
+						opinionMod = UnityEngine.Random.Range(12f, 18f)*ReparteBonus*levelBonus;
 			        }
 					guest.Opinion += (int)opinionMod;
 					switch (guest.State)

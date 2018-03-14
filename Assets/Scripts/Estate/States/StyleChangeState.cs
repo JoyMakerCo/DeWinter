@@ -17,7 +17,7 @@ namespace Ambition
 
 				if (nextStyle == null)
 				{
-					nextStyle = inventory.Styles[new Random().Next(1,inventory.Styles.Length)];
+					nextStyle = inventory.Styles[UnityEngine.Random.Range(1,inventory.Styles.Length)];
 					if (nextStyle == inventory.CurrentStyle) nextStyle = inventory.Styles[0];
 				}
 
@@ -28,9 +28,9 @@ namespace Ambition
 
 	            //Actually switching styles
 				inventory.CurrentStyle = nextStyle;
-				nextStyle = inventory.Styles[new Random().Next(1,inventory.Styles.Length)];
+				nextStyle = inventory.Styles[UnityEngine.Random.Range(1,inventory.Styles.Length)];
 				inventory.NextStyle = (nextStyle == inventory.NextStyle ? inventory.Styles[0] : nextStyle);
-				calendar.NextStyleSwitchDay = calendar.Today.AddDays(new Random().Next(6, 9));
+				calendar.NextStyleSwitchDay = calendar.Today.AddDays(UnityEngine.Random.Range(6, 9));
 	        }			
 		}
 	}

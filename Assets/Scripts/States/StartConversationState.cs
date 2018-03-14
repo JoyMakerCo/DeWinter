@@ -13,7 +13,6 @@ namespace Ambition
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
 			GuestVO guest = new GuestVO();
-			Random rnd = new Random();
 			int likeIndex;
 
 			model.Remark = null;
@@ -35,27 +34,27 @@ namespace Ambition
 				{
 					
 					guest = new GuestVO();
-					guest.Opinion = rnd.Next(stats.Opinion[0], stats.Opinion[1]);
-					guest.MaxInterest = rnd.Next(stats.MaxInterest[0], stats.MaxInterest[1]);
-					guest.Interest = rnd.Next(stats.Interest[0], stats.Interest[1]);
+					guest.Opinion = UnityEngine.Random.Range(stats.Opinion[0], stats.Opinion[1]);
+					guest.MaxInterest = UnityEngine.Random.Range(stats.MaxInterest[0], stats.MaxInterest[1]);
+					guest.Interest = UnityEngine.Random.Range(stats.Interest[0], stats.Interest[1]);
 
-					guest.Gender = rnd.Next(2) == 0 ? Gender.Male : Gender.Female;
+					guest.Gender = UnityEngine.Random.Range(0,2) == 0 ? Gender.Male : Gender.Female;
 					if (guest.Gender == Gender.Female)
 			        {
-						guest.Title = GetRandomDescriptor("female_title", rnd);
-						guest.FirstName = GetRandomDescriptor("female_name", rnd);
+						guest.Title = GetRandomDescriptor("female_title");
+						guest.FirstName = GetRandomDescriptor("female_name");
 			        }
 			        else
 			        {
-						guest.Title = GetRandomDescriptor("male_title", rnd);
-						guest.FirstName = GetRandomDescriptor("male_name", rnd);
+						guest.Title = GetRandomDescriptor("male_title");
+						guest.FirstName = GetRandomDescriptor("male_name");
 			        }
-					guest.LastName = GetRandomDescriptor("last_name", rnd);
+					guest.LastName = GetRandomDescriptor("last_name");
 					guest.LastName  = "aeiouAEIOU".Contains(guest.LastName.Substring(0,1))
 						? (" d'" + guest.LastName)
 						: (" de " + guest.LastName);
 
-					likeIndex = rnd.Next(0,model.Interests.Length);
+					likeIndex = UnityEngine.Random.Range(0,model.Interests.Length);
 					guest.Like = model.Interests[likeIndex];
 					guest.Disike = model.Interests[(likeIndex + 1)%model.Interests.Length];
 					room.Guests[i] = guest;
@@ -67,10 +66,10 @@ namespace Ambition
 			AmbitionApp.SendMessage<int>(model.Confidence);
 		}
 
-		private string GetRandomDescriptor(string phrase, Random rnd)
+		private string GetRandomDescriptor(string phrase)
 		{
 			string [] descriptors = _phrases.GetList(phrase);
-			return descriptors[rnd.Next(descriptors.Length)];
+			return descriptors[UnityEngine.Random.Range(0, descriptors.Length)];
 		}
 	}
 }
