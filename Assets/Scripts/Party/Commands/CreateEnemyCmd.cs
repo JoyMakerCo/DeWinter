@@ -17,9 +17,9 @@ namespace Ambition
 			e.Faction = faction;
 			EnemyInventory.enemyInventory.Add(e);
 
-			e.Like = model.Interests[UnityEngine.Random.Range(0, model.Interests.Length)];
+			e.Like = model.Interests[Util.RNG.Generate(0, model.Interests.Length)];
 
-			e.Gender = (UnityEngine.Random.Range(0, 2) == 0) ? Gender.Male : Gender.Female;
+			e.Gender = (Util.RNG.Generate(0, 2) == 0) ? Gender.Male : Gender.Female;
 			if (e.Gender == Gender.Female)
 			{
 				e.Title = rndStr("female_title");
@@ -32,14 +32,14 @@ namespace Ambition
 			}
 
 			e.LastName = rndStr("last_name");
-			e.imageInt = UnityEngine.Random.Range(0, (e.Gender == Gender.Female ? 4 : 5));
+			e.imageInt = Util.RNG.Generate(0, (e.Gender == Gender.Female ? 4 : 5));
 			e.FlavorText = "This person is a great big jerk";
 		}
 
 		private string rndStr(string phrase)
 		{
 			string [] list = _phrases.GetList(phrase);
-			return list[UnityEngine.Random.Range(0, list.Length)];
+			return list[Util.RNG.Generate(0, list.Length)];
 		}
 	}
 }

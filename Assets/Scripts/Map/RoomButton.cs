@@ -60,7 +60,7 @@ namespace Ambition
 					xform.anchoredPosition = new Vector2(bounds[0]*scale, bounds[1]*scale);
 					xform.sizeDelta = new Vector2((bounds[2]-bounds[0])*scale, (bounds[3]-bounds[1])*scale);
 
-					_graphic.sprite = FloorTexturtes.Sprites[UnityEngine.Random.Range(0, FloorTexturtes.Sprites.Length)].Sprite;
+					_graphic.sprite = FloorTexturtes.Sprites[Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
 				}
 				_room = value;
 			}

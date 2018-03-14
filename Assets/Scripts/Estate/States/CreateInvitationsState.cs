@@ -22,9 +22,9 @@ namespace Ambition
 				CreateParty(day);
 			}
 
-			if (UnityEngine.Random.Range(0,3) == 0) // Chance of a random future engagement
+			if (Util.RNG.Generate(0,3) == 0) // Chance of a random future engagement
 			{
-				CreateParty(day.AddDays(UnityEngine.Random.Range(1,8)+UnityEngine.Random.Range(1,8)));
+				CreateParty(day.AddDays(Util.RNG.Generate(1,8)+Util.RNG.Generate(1,8)));
 			}
 
 	       	// Missed Parties
@@ -55,16 +55,16 @@ namespace Ambition
 		{
 			CharacterModel characters = AmbitionApp.GetModel<CharacterModel>();
 // TODO: More robust host system
-party.Host = characters.Notables[UnityEngine.Random.Range(0,characters.Notables.Length)];
+party.Host = characters.Notables[Util.RNG.Generate(0,characters.Notables.Length)];
 
 			if (party.Faction == null)
 			{
 				FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 				string[] factions = fmod.Factions.Keys.ToArray();
-				party.Faction = factions[UnityEngine.Random.Range(0,factions.Length)];
+				party.Faction = factions[Util.RNG.Generate(0,factions.Length)];
 			}
 
-			if (party.Importance == 0) party.Importance = UnityEngine.Random.Range(1,4);
+			if (party.Importance == 0) party.Importance = Util.RNG.Generate(1,4);
 			if (party.Turns == 0) party.Turns = (party.Importance * 5) + 1;
 
 			string str = (party.ID != null) ? AmbitionApp.GetString("party.description." + party.ID) : null;
@@ -104,7 +104,7 @@ party.Host = characters.Notables[UnityEngine.Random.Range(0,characters.Notables.
 		private string GetRandomText(string key)
 		{
 			string [] phrases = AmbitionApp.GetPhrases(key);
-			return phrases[UnityEngine.Random.Range(0, phrases.Length)];
+			return phrases[Util.RNG.Generate(0, phrases.Length)];
 		}
 	}
 }

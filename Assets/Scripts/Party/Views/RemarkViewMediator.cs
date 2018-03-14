@@ -52,7 +52,7 @@ namespace Ambition
 			RemarkMap map;
 			_hand = hand;
 			StopAllCoroutines();
-			if (!gameObject.active) return;
+			if (!gameObject.activeSelf) return;
 			for(int i=Remarks.Length-1; i>=0; i--)
 			{
 				isActive = (hand.Count > i);

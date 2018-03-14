@@ -16,7 +16,7 @@ namespace Ambition
 	        	&& gm.Outfit.Style == GameData.partyAccessory.State[ItemConsts.STYLE] as string)
 	        {
 	            //25% Chance
-	            if(UnityEngine.Random.Range(0,4) == 0)
+	            if(Util.RNG.Generate(0,4) == 0)
 	            {
 	                //Send Out a Relevant Pop-Up
 	                Dictionary<string, string> substitutions = new Dictionary<string, string>(){

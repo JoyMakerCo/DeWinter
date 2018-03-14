@@ -28,30 +28,30 @@ public class Gossip {
     string RandomFaction(string faction)
     {
         //Randomly Choose a faction, weighted towards the Faction hosting the Party
-		if (faction != null && UnityEngine.Random.Range(0,2) == 0)
+		if (faction != null && Util.RNG.Generate(0,2) == 0)
 			return faction;
 		
 		FactionVO[] factions = AmbitionApp.GetModel<FactionModel>().Factions.Keys.Cast<FactionVO>().ToArray();
-		return factions[UnityEngine.Random.Range(0,factions.Length)].Name;
+		return factions[Util.RNG.Generate(0,factions.Length)].Name;
 	}
 
     //Character RandomCharacter (Picks a Random active character from the Faction)
     
     int RandomLivreValue()
     {
-        return UnityEngine.Random.Range(25, 101);
+        return Util.RNG.Generate(25, 101);
     }
 
     int RandomFactionPowerShift()
     {
-    	return UnityEngine.Random.Range(0,4) == 0 ? UnityEngine.Random.Range(10, 51) : -UnityEngine.Random.Range(10, 51);
+    	return Util.RNG.Generate(0,4) == 0 ? Util.RNG.Generate(10, 51) : -Util.RNG.Generate(10, 51);
     }
 
     int RandomFactionAllegianceShift()
     {
 		if (Faction == "Third Estate" || Faction == "Crown")
 			return 0;
-    	return UnityEngine.Random.Range(0, 2) == 0 ? UnityEngine.Random.Range(10, 51) : -UnityEngine.Random.Range(10, 51);
+    	return Util.RNG.Generate(0, 2) == 0 ? Util.RNG.Generate(10, 51) : -Util.RNG.Generate(10, 51);
     }
 
     string RandomFlavorText()

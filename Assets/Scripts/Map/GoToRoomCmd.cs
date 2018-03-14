@@ -54,7 +54,7 @@ namespace Ambition
 				else if (!room.Cleared
 					&& partyModel.DrinkAmount < partyModel.MaxDrinkAmount
 	            	&& AmbitionApp.GetModel<FactionModel>()[partyModel.Party.Faction].Level >= 5
-	            	&& UnityEngine.Random.Range(0, 4) == 0)
+	            	&& Util.RNG.Generate(0, 4) == 0)
 	        	{
 					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
 					Dictionary<string, string> subs = new Dictionary<string, string>(){

@@ -6,11 +6,14 @@ namespace Ambition
 {
 	public class StartTurnState : UState
 	{
-		private MessageSvc _messageService = App.Service<MessageSvc>();
-
 		public override void OnEnterState ()
 		{
-			_messageService.Send(PartyMessages.START_TURN);
+			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			model.Turn++;
+            model.Remark = null;
+			model.TargetedGuests = null;
+			if (model.Turn == 1) AmbitionApp.SendMessage(PartyMessages.FILL_REMARKS);
+			AmbitionApp.SendMessage(PartyMessages.START_TURN);
 		}
 	}
 }

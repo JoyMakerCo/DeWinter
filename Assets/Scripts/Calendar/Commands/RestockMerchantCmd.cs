@@ -16,8 +16,8 @@ namespace Ambition
 			model.Market.Clear();
 			while (model.Market.Count < model.NumMarketSlots)
 			{
-				item = new ItemVO(model.ItemDefinitions[UnityEngine.Random.Range(0,count)]);
-				item.State[ItemConsts.STYLE] = style = model.Styles[UnityEngine.Random.Range(0,model.Styles.Length)];
+				item = new ItemVO(model.ItemDefinitions[Util.RNG.Generate(0,count)]);
+				item.State[ItemConsts.STYLE] = style = model.Styles[Util.RNG.Generate(0,model.Styles.Length)];
 				item.Name = style + " " + item.Name;
 				model.Market.Add(item);
 			}

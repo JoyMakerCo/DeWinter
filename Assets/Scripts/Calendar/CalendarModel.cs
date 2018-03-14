@@ -80,7 +80,7 @@ namespace Ambition
 
 		public void Initialize()
 		{
-			uprisingDay= _startDate.AddDays(UnityEngine.Random.Range(25, 31));
+			uprisingDay= _startDate.AddDays(Util.RNG.Generate(25, 31));
 		}
 
 		string dayString(int day)
