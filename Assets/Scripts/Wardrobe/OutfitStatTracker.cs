@@ -7,14 +7,15 @@ namespace Ambition
 	public class OutfitStatTracker : MonoBehaviour
 	{
 		public string Stat;
-		public GameObject Minimum;
-		public GameObject Maximum;
+		public Image Minimum;
+		public Image Maximum;
 
 		private Slider _meter;
 
 		void Awake()
 		{
 			_meter = GetComponent<Slider>();
+			AmbitionApp.Subscribe<OutfitVO>(HandleOutfit);
 		}
 
 		void OnEnable()
@@ -22,13 +23,12 @@ namespace Ambition
 			string factionID = AmbitionApp.GetModel<PartyModel>().Party.Faction;
 			FactionVO faction = AmbitionApp.GetModel<FactionModel>()[factionID];
 			int stat = (Stat.ToLower() == ItemConsts.LUXURY ? faction.Luxury : faction.Modesty);
-			Minimum.SetActive(stat < 0);
-			Maximum.SetActive(stat > 0);
+			Minimum.enabled = (stat < 0);
+			Maximum.enabled = (stat > 0);
 
-			AmbitionApp.Subscribe<OutfitVO>(HandleOutfit);
 		}
 
-		void OnDisable()
+		void OnDestroy()
 		{
 			AmbitionApp.Unsubscribe<OutfitVO>(HandleOutfit);
 		}
@@ -47,4 +47,3 @@ namespace Ambition
 		}
 	}
 }
-

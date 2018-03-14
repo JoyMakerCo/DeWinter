@@ -53,6 +53,8 @@ namespace Ambition
 			}
 		}
 
+		public GuestVO[] TargetedGuests;
+
 		// Temporary Repo for buffs
 		protected Dictionary<string, List<ModifierVO>> Modifiers = new Dictionary<string, List<ModifierVO>>();
 

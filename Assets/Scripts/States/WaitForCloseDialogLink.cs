@@ -15,6 +15,7 @@ namespace Ambition
 		{
 			if (DialogID == Parameters[0] as String)
 			{
+				AmbitionApp.Unsubscribe<string>(GameMessages.DIALOG_CLOSED, HandleDialogClosed);
 				Validate();
 			}
 		}

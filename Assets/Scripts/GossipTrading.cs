@@ -201,7 +201,7 @@ namespace Ambition
 
 	    void GetCaughtCheck()
 	    {
-	        if (Random.Range(1,101) <= CaughtChance())
+	        if (Util.RNG.Generate(1,101) <= CaughtChance())
 	        {
 				FactionModel model = AmbitionApp.GetModel<FactionModel>();
 	            //Player Rep Loss

@@ -62,7 +62,7 @@ public class PierreQuestInventoryList : MonoBehaviour {
                 objectStorage[1] = this;
                 screenFader.gameObject.SendMessage("CreateNewPierreQuestModal", objectStorage);
             }
-            _model.NextQuestDay = day.AddDays(UnityEngine.Random.Range(3, 6));
+            _model.NextQuestDay = day.AddDays(Util.RNG.Generate(3, 6));
         }       
     }
 }

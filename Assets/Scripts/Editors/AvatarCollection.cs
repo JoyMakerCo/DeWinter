@@ -43,9 +43,14 @@ namespace Ambition
             return config.GetPose(pose);
         }
 
-        public AvatarVO[] FindByTag (params string[] tags)
+        public AvatarVO[] Find (Gender gen, params string[] tags)
         {
-            return Array.FindAll(Avatars, a=>Array.TrueForAll(tags, a.Tags.Contains));
+            return Array.FindAll(Avatars, a=> (a.Gender==gen) && Array.TrueForAll(tags, a.Tags.Contains));
+        }
+
+        public AvatarVO[] Find (params string[] tags)
+        {
+            return Array.FindAll(Avatars, a=> Array.TrueForAll(tags, a.Tags.Contains));
         }
 
     #if (UNITY_EDITOR)

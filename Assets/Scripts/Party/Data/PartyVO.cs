@@ -65,7 +65,7 @@ public class PartyVO
     {
 		FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 		string[] factions = Enumerable.ToArray(fmod.Factions.Keys);
-		Faction = factions[UnityEngine.Random.Range(1, factions.Length)];
+		Faction = factions[Util.RNG.Generate(1, factions.Length)];
 		if (Faction == excludeFaction) Faction = factions[0];
     }
 }

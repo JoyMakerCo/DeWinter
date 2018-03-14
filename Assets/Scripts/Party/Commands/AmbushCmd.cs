@@ -18,8 +18,8 @@ namespace Ambition
 				hand.RemoveRange(model.AmbushHandSize, hand.Count - model.AmbushHandSize);
 			else while (hand.Count < model.AmbushHandSize)
 			{
-				interest = model.Interests[UnityEngine.Random.Range(0, model.Interests.Length)];
-				remark = new RemarkVO(UnityEngine.Random.Range(1,3), interest);
+				interest = model.Interests[Util.RNG.Generate(0, model.Interests.Length)];
+				remark = new RemarkVO(Util.RNG.Generate(1,3), interest);
 				hand.Add(remark);
 			}
 			while(hand.Count < model.MaxHandSize)
