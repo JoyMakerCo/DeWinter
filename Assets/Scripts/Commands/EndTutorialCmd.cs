@@ -9,11 +9,11 @@ namespace Ambition
 		{
 			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			AmbitionApp.UnregisterCommand<WorkTheRoomTutorialCmd, RoomVO>(MapMessage.GO_TO_ROOM);
-			AmbitionApp.UnregisterCommand<TutorialConfidenceCheckCmd, int>(GameConsts.CONFIDENCE);
+			AmbitionApp.UnregisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
 			AmbitionApp.UnregisterCommand<EndTutorialCmd>(PartyMessages.END_PARTY);
 			AmbitionApp.UnregisterCommand<TutorialRailroadCommand, RoomVO>();
 
-			AmbitionApp.RegisterCommand<ConfidenceCheckCmd, int>(GameConsts.CONFIDENCE);
+			AmbitionApp.RegisterCommand<OutOfConfidenceDialogCmd>(PartyMessages.SHOW_MAP);
 			AmbitionApp.RegisterCommand<EndPartyCmd>(PartyMessages.END_PARTY);
 		}
 	}
