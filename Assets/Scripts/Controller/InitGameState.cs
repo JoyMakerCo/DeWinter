@@ -64,7 +64,7 @@ namespace Ambition
 
 			// Initially enabled for TUTORIAL
 			AmbitionApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd, int>(GameConsts.CONFIDENCE);
+			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
 			AmbitionApp.RegisterCommand<EndTutorialCmd>(PartyMessages.END_PARTY);
 
 
@@ -75,11 +75,13 @@ namespace Ambition
 			AmbitionApp.RegisterState<StartTurnState>("StartTurn");
 			AmbitionApp.RegisterState<EndTurnState>("EndTurn");
 			AmbitionApp.RegisterState<EndConversationState>("EndConversation");
+			AmbitionApp.RegisterState<FleeConversationState>("FleeConversation");
 
 			AmbitionApp.RegisterTransition("ConversationController", "InitConversation", "ReadyGo");
 			AmbitionApp.RegisterTransition<WaitForCloseDialogLink>("ConversationController", "ReadyGo", "StartTurn", DialogConsts.READY_GO);
 			AmbitionApp.RegisterTransition<WaitForMessageLink>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
 			AmbitionApp.RegisterTransition<CheckConversationTransition>("ConversationController", "EndTurn", "EndConversation");
+			AmbitionApp.RegisterTransition<CheckConfidenceLink>("ConversationController", "EndTurn", "FleeConversation");
 			AmbitionApp.RegisterTransition("ConversationController", "EndTurn", "StartTurn");
 
 			// Estate States. This lands somewhere between confusing and annoying.

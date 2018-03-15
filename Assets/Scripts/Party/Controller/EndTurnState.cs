@@ -66,6 +66,7 @@ namespace Ambition
 					}
 				}
             }
+			if (model.TargetedGuests != null) model.Remark = null; 
 
 			if (model.Turn%model.FreeRemarkCounter == 0)
 				App.Service<MessageSvc>().Send(PartyMessages.ADD_REMARK);

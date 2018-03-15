@@ -43,16 +43,7 @@ namespace Ambition
 				{"$REWARD",reward.ID}};
             AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
 
-            // TODO: This belongs in a Party-Wide State Machine
-
-			if (Array.Exists(map.Map.Rooms,r=>!r.Cleared))
-            {
-				AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
-            }
-            else
-            {
-				AmbitionApp.SendMessage(PartyMessages.END_PARTY);
-			}
+			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
 		}
 
 

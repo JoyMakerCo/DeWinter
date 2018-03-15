@@ -16,7 +16,6 @@ namespace Ambition
 
 	    public AvatarView Character1;
 		public AvatarView Character2;
-
 		private Image _background;
 
 	    public override void OnOpen ()
