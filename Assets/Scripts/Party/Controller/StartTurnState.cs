@@ -10,7 +10,6 @@ namespace Ambition
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			model.Turn++;
-            model.Remark = null;
 			model.TargetedGuests = null;
 			if (model.Turn == 1) AmbitionApp.SendMessage(PartyMessages.FILL_REMARKS);
 			AmbitionApp.SendMessage(PartyMessages.START_TURN);
