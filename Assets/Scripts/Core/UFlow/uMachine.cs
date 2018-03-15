@@ -37,8 +37,12 @@ namespace UFlow
 			}
 
 			// Exit the current machine if the incoming state is null
-			else if (_machine != null)
-				_machine.BuildTransitions();
+			else 
+			{
+				OnExitState();
+				if (_machine != null)
+					_machine.BuildTransitions();
+			}
 		}
 
 		public override void OnEnterState ()
@@ -50,6 +54,7 @@ namespace UFlow
 		{
 			_state = null;
 			ClearTransitions();
+			_initialState = null;
 			_uflow._machines.Remove(this.ID);
 		}
 
@@ -58,21 +63,12 @@ namespace UFlow
 			if (_state == null) return;
 
 			_transitions = _uflow.BuildTransitions(ID, _state.ID);
-			if (_transitions != null)
+			if (_transitions != null && _transitions.Length > 0)
 			{
-				foreach(ULink trans in _transitions)
-				{
-					if (trans.InitializeAndValidate())
-					{
-						State = trans._targetState;
-						return;
-					}
-				}
+				ULink link = Array.Find(_transitions, t=>t.InitializeAndValidate());
+				if (link != null) State = link.TargetState;
 			}
-			else
-			{
-				State = null;
-			}
+			else State = null;
 		}
 
 		private void ClearTransitions()
