@@ -24,7 +24,7 @@ namespace Ambition
 			if (date >= NextQuestDay)
 			{
 //TODO: Send a command that updates quests
-				NextQuestDay = date.AddDays(new Random().Next(3, 6));
+				NextQuestDay = date.AddDays(Util.RNG.Generate(3, 6));
 			}
 		}
 	}

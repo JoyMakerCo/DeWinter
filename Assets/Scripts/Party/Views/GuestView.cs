@@ -77,8 +77,8 @@ namespace Ambition
 					if (_guest.Avatar != null) _avatar = Avatars.GetAvatar(_guest.Avatar);
 					else
 					{
-						AvatarVO[] avatars = Avatars.FindByTag("party");
-						_avatar = avatars[new System.Random().Next(avatars.Length)];
+						AvatarVO[] avatars = Avatars.Find(_guest.Gender, "party");
+						_avatar = avatars[Util.RNG.Generate(avatars.Length)];
 						_guest.Avatar = _avatar.ID;
 					}
 					_guest.Gender = _avatar.Gender;

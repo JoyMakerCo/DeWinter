@@ -109,7 +109,7 @@ namespace Util
 		{
 			if (_elements.Count > 0)
 			{
-				int query = new Random().Next(_totalWeight);
+				int query = Util.RNG.Generate(0,_totalWeight);
 				int value = _totalWeight;
 				for (int i=_weights.Count-1; i>0; i--)
 				{

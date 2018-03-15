@@ -65,7 +65,7 @@ namespace Ambition
 			result.Novelty = 100;
 			result.Modesty = GenerateRandom();
 			result.Luxury = GenerateRandom();
-			switch (new Random().Next(4))
+			switch (Util.RNG.Generate(0,4))
 	        {
 	            case 1:
 	                result.Style = "Frankish";
@@ -104,7 +104,7 @@ namespace Ambition
 
 	    private static int GenerateRandom()
 	    {
-			return (int)Math.Tan(0.0015608f*(new Random().Next(-1000, 1000)));
+			return (int)Math.Tan(0.0015608f*(Util.RNG.Generate(-1000, 1000)));
 	    }
 	    
 	    public void GenerateName()

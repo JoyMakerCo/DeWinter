@@ -17,31 +17,29 @@ namespace Ambition
 			e.Faction = faction;
 			EnemyInventory.enemyInventory.Add(e);
 
-			Random rnd = new Random();
+			e.Like = model.Interests[Util.RNG.Generate(0, model.Interests.Length)];
 
-			e.Like = model.Interests[rnd.Next(model.Interests.Length)];
-
-			e.Gender = (rnd.Next(2) == 0) ? Gender.Male : Gender.Female;
+			e.Gender = (Util.RNG.Generate(0, 2) == 0) ? Gender.Male : Gender.Female;
 			if (e.Gender == Gender.Female)
 			{
-				e.Title = rndStr("female_title", rnd);
-				e.FirstName = rndStr("female_name", rnd);
+				e.Title = rndStr("female_title");
+				e.FirstName = rndStr("female_name");
 			}
 			else
 			{
-				e.Title = rndStr("male_title", rnd);
-				e.FirstName = rndStr("male_name", rnd);
+				e.Title = rndStr("male_title");
+				e.FirstName = rndStr("male_name");
 			}
 
-			e.LastName = rndStr("last_name", rnd);
-			e.imageInt = rnd.Next(e.Gender == Gender.Female ? 4 : 5);
+			e.LastName = rndStr("last_name");
+			e.imageInt = Util.RNG.Generate(0, (e.Gender == Gender.Female ? 4 : 5));
 			e.FlavorText = "This person is a great big jerk";
 		}
 
-		private string rndStr(string phrase, Random rnd)
+		private string rndStr(string phrase)
 		{
 			string [] list = _phrases.GetList(phrase);
-			return list[rnd.Next(list.Length)];
+			return list[Util.RNG.Generate(0, list.Length)];
 		}
 	}
 }

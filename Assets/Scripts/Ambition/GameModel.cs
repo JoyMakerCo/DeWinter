@@ -33,9 +33,13 @@ namespace Ambition
 			set
 			{
 				int level = _reputation.Level = Array.FindIndex(_levels, r => r > value);
-				bool lowest = level == 0;
-				_reputation.Reputation = lowest ? value - _levels[level-1] : value;
-				_reputation.ReputationMax = lowest ? _levels[level] : _levels[level] - _levels[level-1];
+				_reputation.Reputation = value;
+				_reputation.ReputationMax = _levels[level];
+				if (level > 0)
+				{
+					_reputation.Reputation -= _levels[level-1];
+					_reputation.ReputationMax -= _levels[level-1];
+				}
 				AmbitionApp.SendMessage<ReputationVO>(_reputation);
 			}
 		}

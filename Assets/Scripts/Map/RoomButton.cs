@@ -9,16 +9,13 @@ using Util;
 namespace Ambition
 {
 	[Serializable]
-	public class RoomStatusIndicator
-	{
-		public string ID;
-		public Image Icon;
-	}
-
 	public class RoomButton : MonoBehaviour
 	{
 	    public Text DescriptionText;
-	    public RoomStatusIndicator [] StatusIndicators;
+	    public Image Punchbowl;
+	    public Image Host;
+		public SpriteConfig FactionIcons;
+
 		public ColorConfig ColorConfig;
 		public SpriteConfig FloorTexturtes;
 
@@ -38,12 +35,6 @@ namespace Ambition
 			cb.disabledColor = ColorConfig.GetColor("hidden");
 			_button.colors = cb;
 			_graphic = GetComponent<RoomGraphic>();
-			DescriptionText.enabled = false;
-
-			foreach (RoomStatusIndicator indicator in StatusIndicators)
-			{
-				indicator.Icon.enabled = false;
-			}
 		}
 
 		void OnDestroy()
@@ -69,7 +60,7 @@ namespace Ambition
 					xform.anchoredPosition = new Vector2(bounds[0]*scale, bounds[1]*scale);
 					xform.sizeDelta = new Vector2((bounds[2]-bounds[0])*scale, (bounds[3]-bounds[1])*scale);
 
-					_graphic.sprite = FloorTexturtes.Sprites[new System.Random().Next(FloorTexturtes.Sprites.Length)].Sprite;
+					_graphic.sprite = FloorTexturtes.Sprites[Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
 				}
 				_room = value;
 			}
@@ -85,10 +76,15 @@ namespace Ambition
 				_button.colors = cb;
 
 				DescriptionText.enabled = true;
-				DescriptionText.text = _room.Name + "\n" + new string('*', _room.Difficulty);
-				foreach (RoomStatusIndicator indicator in StatusIndicators)
+				DescriptionText.text = _room.Name + "\n";
+				for (int i=_room.Difficulty-1; i>=0; i--)
+					DescriptionText.text += '\u2605';
+				Punchbowl.enabled = (Array.IndexOf(_room.Features, PartyConstants.PUNCHBOWL) >= 0);
+				Host.enabled = (Array.IndexOf(_room.Features, PartyConstants.HOST) >= 0);
+				if (Host.enabled)
 				{
-					indicator.Icon.enabled = (Array.IndexOf(_room.Features, indicator.ID) >= 0);
+					PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
+					Host.sprite = FactionIcons.GetSprite(party.Faction);
 				}
 			}
 

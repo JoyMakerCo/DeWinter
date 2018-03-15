@@ -3,25 +3,17 @@ using Core;
 
 namespace Ambition
 {
-	public class TutorialConfidenceCheckCmd : ICommand<int>
+	public class TutorialConfidenceCheckCmd : ICommand
 	{
-		public void Execute (int confidence)
-		{
-			if (confidence <= 0)
-			{
-				PartyModel pmod = AmbitionApp.GetModel<PartyModel>();
-				AmbitionApp.GetModel<PartyModel>().Confidence = pmod.StartConfidence;
-
-	            //The Player is relocated to the Entrance
-				MapModel mmod = AmbitionApp.GetModel<MapModel>();
-	            mmod.Room = mmod.Map.Entrance;
+        public void Execute()
+        {
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            if (model.Confidence <= 0)
+            {
+				AmbitionApp.GetModel<PartyModel>().Confidence = model.StartConfidence;
 
 	            //Explanation Screen Pop Up goes here
 				AmbitionApp.OpenMessageDialog("out_of_confidence_tutorial_dialog");
-
-	            //The Player is pulled from the Work the Room session
-				AmbitionApp.CloseDialog(DialogConsts.ROOM);
-				AmbitionApp.CloseDialog(DialogConsts.HOST_ENCOUNTER);
 			}
 		}
 	}

@@ -14,22 +14,21 @@ namespace Ambition
 			{
 			        //Determine Random Effect
 					GameModel gm = AmbitionApp.GetModel<GameModel>();
-			        Random rnd = new Random();
-			        switch (rnd.Next(10))
+			        switch (Util.RNG.Generate(0, 10))
 			        {
 			            case 0:
 			                party.blackOutEffect = "Reputation Loss";
-			                party.blackOutEffectAmount = -rnd.Next(20, 51);
+			                party.blackOutEffectAmount = -Util.RNG.Generate(20, 51);
 			                model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, party.blackOutEffectAmount));
 			                break;
 			            case 1:
 			                party.blackOutEffect = "Faction Reputation Loss";
-			                party.blackOutEffectAmount = -rnd.Next(20, 51);
+			                party.blackOutEffectAmount = -Util.RNG.Generate(20, 51);
 							model.Party.Rewards.Add(new CommodityVO(CommodityType.Faction, party.Faction, party.blackOutEffectAmount));
 			                break;
 			            case 2:
 			                party.blackOutEffect = "Outfit Novelty Loss";
-			                party.blackOutEffectAmount = -rnd.Next(20, 51);
+			                party.blackOutEffectAmount = -Util.RNG.Generate(20, 51);
 							gm.Outfit.Novelty = UnityEngine.Mathf.Clamp(gm.Outfit.Novelty - party.blackOutEffectAmount, 0, 100);
 			                break;
 			            case 3:
@@ -45,13 +44,13 @@ namespace Ambition
 			                else
 			                {
 			                    party.blackOutEffect = "Livre Lost";
-			                    party.blackOutEffectAmount = -rnd.Next(30, 61);
+			                    party.blackOutEffectAmount = -Util.RNG.Generate(30, 61);
 			                    model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, party.blackOutEffectAmount));
 			                }
 			                break;
 			            case 5:
 			                party.blackOutEffect = "Livre Lost";
-			                party.blackOutEffectAmount = -rnd.Next(30, 61);
+			                party.blackOutEffectAmount = -Util.RNG.Generate(30, 61);
 							model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, party.blackOutEffectAmount));
 			                break;
 			            case 6:
@@ -70,21 +69,21 @@ namespace Ambition
 			                }
 			                break;
 			            case 8:
-			            	switch (rnd.Next(6))
+			            	switch (Util.RNG.Generate(0, 6))
 			            	{
 								case 1:
 				                    party.blackOutEffect = "Reputation Gain";
-				                    party.blackOutEffectAmount = rnd.Next(20, 51);
+				                    party.blackOutEffectAmount = Util.RNG.Generate(20, 51);
 									model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, party.blackOutEffectAmount));
 				                    break;
 				                case 2:
 				                    party.blackOutEffect = "Faction Reputation Gain";
-				                    party.blackOutEffectAmount = rnd.Next(20, 51);
+				                    party.blackOutEffectAmount = Util.RNG.Generate(20, 51);
 									model.Party.Rewards.Add(new CommodityVO(CommodityType.Faction, party.Faction, party.blackOutEffectAmount));
 				                    break;
 				                case 3:
 				                    party.blackOutEffect = "Livre Gained";
-				                    party.blackOutEffectAmount = rnd.Next(30, 61);
+				                    party.blackOutEffectAmount = Util.RNG.Generate(30, 61);
 									model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, party.blackOutEffectAmount));
 				                    break;
 				                case 4:
@@ -94,7 +93,7 @@ namespace Ambition
 				                default:
 									if (party.Enemies != null && party.Enemies.Length > 0)
 				                    {
-										EnemyVO enemy = party.Enemies[rnd.Next(party.Enemies.Length)];
+										EnemyVO enemy = party.Enemies[Util.RNG.Generate(0, party.Enemies.Length)];
 										party.blackOutEffect = enemy.Name + " no longer an Enemy";
 										EnemyInventory.enemyInventory.Remove(enemy);
 				                    }

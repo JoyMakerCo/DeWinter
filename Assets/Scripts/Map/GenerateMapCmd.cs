@@ -15,21 +15,18 @@ namespace Ambition
 		private const int MAX_ROOM_WIDTH = 16;
 		private const int MIN_ROOM_WIDTH = 4;
 
-		private System.Random _rnd;
 		private Dictionary<RoomVO, List<RoomVO>> _rooms=new Dictionary<RoomVO, List<RoomVO>>();
 		private Dictionary<int[], RoomVO[]> _walls = new Dictionary<int[], RoomVO[]>();
-
+		private MapModel _model;
 		public void Execute(PartyVO party)
 		{
-			MapModel model;
 			MapVO map;
 			RoomVO room;
-			model = AmbitionApp.GetModel<MapModel>();
-			_rnd = new System.Random();
+			_model = AmbitionApp.GetModel<MapModel>();
 
 
 			// Determine if the party uses a preset, or build a map from scratch
-			if (party.MapID == null || !model.Maps.TryGetValue(party.MapID, out map))
+			if (party.MapID == null || !_model.Maps.TryGetValue(party.MapID, out map))
 			{
 				map = BuildRandomMap(party);
 			}
@@ -41,19 +38,19 @@ namespace Ambition
 				if (room != null)
 				{
 					if (string.IsNullOrEmpty(room.Name))
-						room.Name = GenerateRandomName(model.RoomAdjectives, model.RoomNames);
+						room.Name = GenerateRandomName(_model.RoomAdjectives, _model.RoomNames);
 
 					if (room.Features == null)
 						room.Features = GetRandomFeatures();
 
 					if (room.Difficulty == 0 && room != map.Entrance)
-						room.Difficulty = 1 + _rnd.Next(5);
+						room.Difficulty = 1 + Util.RNG.Generate(0,5);
 
 					room.MoveThroughChance = GenerateMoveThroughChance(room);
 				}
 			}
 			party.Enemies = PopulateEnemies(map, EnemyInventory.enemyInventory.FindAll(e=>e.Faction == party.Faction));
-			model.Map = map;
+			_model.Map = map;
 		}
 
 		private MapVO BuildRandomMap(PartyVO party)
@@ -66,19 +63,19 @@ party.Importance = 2; //Forcing importance
 			// Room size is proportional to how "baroque" the structure is.
 			// Curvilinear features are a function of "modernness," which will be determined by the host.
 			// Overall size of the house will be proportional to the "Importance" of the party.
-			int hyphen = party.Importance + _rnd.Next(3); // the width of the hyphen in rooms
-			int pavilion = party.Importance + _rnd.Next(3); // length of the pavilion in rooms
-			int jut=_rnd.Next(0,2);
-			int spacing = (int)(_rnd.Next(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
-			float curve1 = .1f*_rnd.Next(6,11);
+			int hyphen = party.Importance + Util.RNG.Generate(0,3); // the width of the hyphen in rooms
+			int pavilion = party.Importance + Util.RNG.Generate(0,3); // length of the pavilion in rooms
+			int jut=Util.RNG.Generate(0,2);
+			int spacing = (int)(Util.RNG.Generate(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
+			float curve1 = .1f*Util.RNG.Generate(6,11);
 			float delta;
 			RoomVO room;
 
 			if (spacing < MIN_ROOM_WIDTH) spacing = MIN_ROOM_WIDTH;
-			int salonX = _rnd.Next(spacing, spacing+spacing);
-			int salonY = _rnd.Next(spacing, (int)(spacing*PHI));
-			int salonH = _rnd.Next(salonY, spacing+spacing);
-			delta = 0f;//(float)((salonX - _rnd.Next(spacing, salonX)>>1));
+			int salonX = Util.RNG.Generate(spacing, spacing+spacing);
+			int salonY = Util.RNG.Generate(spacing, (int)(spacing*PHI));
+			int salonH = Util.RNG.Generate(salonY, spacing+spacing);
+			delta = 0f;//(float)((salonX - Util.RNG.Generate(spacing, salonX)>>1));
 
 			// Make the vestibule
 			room=MakeRectRoom((int)(delta), 0, salonX - (int)(delta + delta), salonY);
@@ -178,7 +175,7 @@ party.Importance = 2; //Forcing importance
 
 	    private string GetRandomDescriptor(string[] list)
 	    {
-	    	int index = _rnd.Next(list.Length);
+	    	int index = Util.RNG.Generate(0,list.Length);
 	    	return list[index];
 	    }
 
@@ -187,8 +184,7 @@ party.Importance = 2; //Forcing importance
 	    	List<string> result = new List<string>();
 
 			//TODO: make features abstract and configurable
-	    	int punchBowlChance = 33;
-	    	if (_rnd.Next(100) < punchBowlChance)
+	    	if (Util.RNG.Generate(0,100) < _model.PunchbowlChance)
 	    		result.Add(PartyConstants.PUNCHBOWL);
 
 	    	return result.ToArray();
@@ -210,12 +206,11 @@ party.Importance = 2; //Forcing importance
 			RoomVO room;
 	    	int i;
 
-			System.Random rnd = new System.Random();
 			foreach (EnemyVO enemy in enemies)
 			{
-				i = rnd.Next(1,numRooms);
+				i = Util.RNG.Generate(1,numRooms);
 				room = map.Rooms[i];
-				if (!room.HostHere && rnd.Next(100) < ENEMY_CHANCE)
+				if (!room.HostHere && Util.RNG.Generate(0,100) < ENEMY_CHANCE)
 				{
 					if (room.Enemies == null) room.Enemies = new List<EnemyVO>();
 					room.Enemies.Add(enemy);

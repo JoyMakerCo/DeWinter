@@ -77,7 +77,6 @@ namespace Ambition
 			if (serializedObject == null || _list == null || _list.index < 0) return false;
 			int index = serializedObject.FindProperty(IncidentCollection.SELECTED_COMPONENT).intValue;
 			if (index < 0) return false;
-
 			SerializedProperty prop = serializedObject.FindProperty("Incidents");
 			if (_list.index >= prop.arraySize) return false;
 			bool selectText = _lastIndex != index;

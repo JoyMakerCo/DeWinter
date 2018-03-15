@@ -43,23 +43,14 @@ namespace Ambition
 				{"$REWARD",reward.ID}};
             AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
 
-            // TODO: This belongs in a Party-Wide State Machine
-
-			if (Array.Exists(map.Map.Rooms,r=>!r.Cleared))
-            {
-				AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
-            }
-            else
-            {
-				AmbitionApp.SendMessage(PartyMessages.END_PARTY);
-			}
+			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
 		}
 
 
 		private CommodityVO GenerateRandomReward(int numCharmed, string faction)
     	{
     		int factor = numCharmed < 5 ? numCharmed : 6;
-			switch (new Random().Next(5))
+			switch (Util.RNG.Generate(0,5))
 			{
 				case 0:
 				case 1:

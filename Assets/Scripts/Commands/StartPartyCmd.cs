@@ -32,7 +32,7 @@ namespace Ambition
 			model.Drink = 0;
 			model.Intoxication = 0;
 
-			//Damage the Outfit's Novelty, how that the Confidence has already been Tallied
+			//Damage the Outfit's Novelty, now that the Confidence has already been Tallied
 			model.TurnsLeft = model.Party.Turns;
 			AmbitionApp.SendMessage<OutfitVO>(InventoryMessages.DEGRADE_OUTFIT, AmbitionApp.GetModel<GameModel>().Outfit);
 			string introText = AmbitionApp.GetString("party.intro." + model.Party.ID + ".body");
