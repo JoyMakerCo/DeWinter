@@ -9,7 +9,7 @@ namespace Ambition
 		public void Execute(RoomVO room)
 		{
 			GameObject btn = GameObject.Find("LeaveThePartyButton");
-			if (btn != null) btn.SetActive(false);
+			if (btn != null) btn.AddComponent<LeavePartyBtn>();
 			AmbitionApp.UnregisterCommand<TutorialRailroadCommand, RoomVO>();
 		}
 	}
