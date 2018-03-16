@@ -14,15 +14,6 @@ namespace Ambition
 	}
 
 	[Serializable]
-	public struct MomentAudioConfig
-	{
-		public AudioClip Clip;
-		public bool Loop;
-		public bool FadeIn;
-		public bool FadeOut;
-	}
-
-	[Serializable]
 	public class MomentVO
 	{
 		public string Text;
@@ -31,7 +22,8 @@ namespace Ambition
 		public IncidentCharacterConfig Character2;
 		public SpeakerType Speaker;
 		public CommodityVO[] Rewards;
-		public MomentAudioConfig[] Audio;
+		public AmbientClip Music;
+		public AudioClip[] AudioClips;
 		public MomentVO (string text)
 		{
 			Text = text;

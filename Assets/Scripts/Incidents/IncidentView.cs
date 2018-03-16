@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Ambition
 	    public AvatarView Character1;
 		public AvatarView Character2;
 		private Image _background;
+		private AudioSource[] _audio;
 
 	    public override void OnOpen ()
 		{
@@ -30,6 +32,7 @@ namespace Ambition
 		public override void OnClose ()
 		{
 			AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
+			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_CLOSED, ID);
 	    }
 
  		private void HandleMoment(MomentVO moment)
@@ -42,6 +45,8 @@ namespace Ambition
 				Character1.Pose = moment.Character1.Pose;
 				Character2.AvatarID = moment.Character2.AvatarID;
 				Character2.Pose = moment.Character2.Pose;
+
+				AmbitionApp.SendMessage<AmbientClip>(AudioMessages.PLAY_MUSIC, moment.Music);
 			}
 		}
 	}
