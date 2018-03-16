@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using Core;
 
 namespace Ambition
@@ -7,14 +8,19 @@ namespace Ambition
 	{
 		public void Execute ()
 		{
-			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			AmbitionApp.UnregisterCommand<WorkTheRoomTutorialCmd, RoomVO>(MapMessage.GO_TO_ROOM);
-			AmbitionApp.UnregisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
-			AmbitionApp.UnregisterCommand<EndTutorialCmd>(PartyMessages.END_PARTY);
-			AmbitionApp.UnregisterCommand<TutorialRailroadCommand, RoomVO>();
+			if (AmbitionApp.GetModel<MapModel>().Room.HostHere)
+			{
+				AmbitionApp.OpenMessageDialog("party_tutorial_end");
 
-			AmbitionApp.RegisterCommand<OutOfConfidenceDialogCmd>(PartyMessages.SHOW_MAP);
-			AmbitionApp.RegisterCommand<EndPartyCmd>(PartyMessages.END_PARTY);
+				AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
+				AmbitionApp.UnregisterCommand<WorkTheRoomTutorialCmd, RoomVO>(MapMessage.GO_TO_ROOM);
+				AmbitionApp.UnregisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
+				AmbitionApp.UnregisterCommand<EndTutorialCmd>(PartyMessages.SHOW_MAP);
+				AmbitionApp.UnregisterCommand<TutorialRailroadCommand, RoomVO>();
+
+				AmbitionApp.RegisterCommand<OutOfConfidenceDialogCmd>(PartyMessages.SHOW_MAP);
+				AmbitionApp.SendMessage(PartyMessages.END_PARTY);
+			}
 		}
 	}
 }

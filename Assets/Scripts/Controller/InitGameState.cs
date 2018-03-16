@@ -56,6 +56,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
+			AmbitionApp.RegisterCommand<EndPartyCmd>(PartyMessages.END_PARTY);
 
 			AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
@@ -65,7 +66,7 @@ namespace Ambition
 			// Initially enabled for TUTORIAL
 			AmbitionApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
-			AmbitionApp.RegisterCommand<EndTutorialCmd>(PartyMessages.END_PARTY);
+			AmbitionApp.RegisterCommand<EndTutorialCmd>(PartyMessages.SHOW_MAP);
 
 
 			// UFlow Associations

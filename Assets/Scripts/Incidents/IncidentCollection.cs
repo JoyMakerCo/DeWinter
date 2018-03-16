@@ -162,6 +162,7 @@ namespace Ambition
 			GUI.SetNextControlName(FOCUS_ID);
 			SerializedProperty text = transition.FindPropertyRelative("Text");
 			text.stringValue = GUILayout.TextArea(text.stringValue);
+			EditorGUILayout.PropertyField(transition.FindPropertyRelative("Rewards"), true);
 			_dirty = EditorGUI.EndChangeCheck();
 		}
 
