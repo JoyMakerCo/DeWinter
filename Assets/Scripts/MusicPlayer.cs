@@ -45,13 +45,22 @@ namespace Ambition
 					StartCoroutine(FadeOut(fadeout, delay));
 				}
 				_clip = clip;
-				_src.clip = clip.Intro;
-				_src.loop = false;
-				_src.PlayDelayed(delay);
-				_swapSrc.clip = clip.Loop;
-				_swapSrc.PlayDelayed(delay + _clip.Intro.length);
-				_swapSrc.loop = true;
-				StartCoroutine(WaitToSwap());
+				if (_clip.Intro != null)
+				{
+					_src.clip = clip.Intro;
+					_src.loop = false;
+					_src.PlayDelayed(delay);
+					_swapSrc.clip = clip.Loop;
+					_swapSrc.PlayDelayed(delay + _clip.Intro.length);
+					_swapSrc.loop = true;
+					StartCoroutine(WaitToSwap());
+				}
+				else
+				{
+					_src.clip = _clip.Loop;
+					_src.loop = true;
+					_src.PlayDelayed(delay);
+				}
 			}
 		}
 

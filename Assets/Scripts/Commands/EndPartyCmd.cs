@@ -16,7 +16,6 @@ namespace Ambition
 			gm.LastOutfit = gm.Outfit;
 			gm.Outfit = null;
 	        GameData.partyAccessory = null;
-			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
 // TODO: Format actual rewards
 			AmbitionApp.OpenMessageDialog(DialogConsts.AFTER_PARTY);
 	    }

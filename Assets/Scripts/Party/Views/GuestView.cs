@@ -84,9 +84,14 @@ namespace Ambition
 					_guest.Gender = _avatar.Gender;
 				}
 
-				_image.sprite = _avatar.GetPose(!_isIntoxicated
-					? POSES[(int)(_guest.State)]
-					: "neutral");
+				_image.sprite = _avatar.GetPose(_isIntoxicated
+					? "neutral"
+					: _guest.Interest <= 0
+					? "bored"
+					: POSES[(int)(_guest.State)]);
+					
+				if (_image.sprite == null)
+					_image.sprite = _avatar.GetPose("neutral");
 
 				InterestIcon.sprite = Interests.GetSprite(_guest.Like);
 			}

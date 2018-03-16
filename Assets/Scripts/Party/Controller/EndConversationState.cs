@@ -42,6 +42,10 @@ namespace Ambition
 				{"$NUMPUTOFF",(map.Room.Guests.Length - numCharmed).ToString()},
 				{"$REWARD",reward.ID}};
             AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
+			if (map.Room.HostHere)
+			{
+				
+			}
 
 			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
 		}
