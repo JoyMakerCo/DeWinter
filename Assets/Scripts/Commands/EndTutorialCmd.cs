@@ -19,7 +19,6 @@ namespace Ambition
 				AmbitionApp.UnregisterCommand<TutorialRailroadCommand, RoomVO>();
 
 				AmbitionApp.RegisterCommand<OutOfConfidenceDialogCmd>(PartyMessages.SHOW_MAP);
-				AmbitionApp.SendMessage(PartyMessages.END_PARTY);
 			}
 		}
 	}
