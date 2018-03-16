@@ -24,7 +24,8 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<WorkTheRoomTutorialCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			AmbitionApp.RegisterCommand<TutorialRailroadCommand, RoomVO>();
 			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
-			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT); 
+
+			AmbitionApp.RegisterCommand<TutorialLoadoutCmd, string>(GameMessages.DIALOG_CLOSED);
 		}
 	}
 }
