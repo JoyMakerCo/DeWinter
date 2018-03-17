@@ -14,10 +14,18 @@ namespace Ambition
 			if (hand.Count < length)
 			{
 				int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
+				string interest;
 
 				// Create a topic that is exclusive of the previous topic used.
-				string interest = model.Interests[Util.RNG.Generate(1, model.Interests.Length)];
-				model.LastInterest = (interest != model.LastInterest) ? interest : model.Interests[0];
+				if (model.Remark != null)
+				{
+					interest = model.Interests[Util.RNG.Generate(1, model.Interests.Length)];
+					if (model.Remark.Interest == interest) interest = model.Interests[0];
+				}
+				else
+				{
+					interest = model.Interests[Util.RNG.Generate(0, model.Interests.Length)];
+				}
 
 				RemarkVO remark = new RemarkVO(Util.RNG.Generate(1,3), interest);
 				hand.Add(remark);

@@ -31,6 +31,8 @@ namespace Ambition
 
 			model.Drink = 0;
 			model.Intoxication = 0;
+// TODO: Properly calculate
+model.Confidence = model.StartConfidence = model.MaxConfidence = 120;
 
 			//Damage the Outfit's Novelty, now that the Confidence has already been Tallied
 			model.TurnsLeft = model.Party.Turns;

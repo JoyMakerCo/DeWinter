@@ -5,6 +5,7 @@ namespace Ambition
 {
 	public class MusicPlayer : MonoBehaviour
 	{
+		public AmbientClip Intro;
 		private const float DEFAULT_FADE = 1.0f;
 		private static GameObject _instance = null;
 		private AudioSource _src;
@@ -24,6 +25,7 @@ namespace Ambition
 				AmbitionApp.Subscribe<float>(AudioMessages.STOP_MUSIC, HandleStop);
 				AmbitionApp.Subscribe(AudioMessages.STOP_MUSIC, HandleStopNow);
 			}
+			if (Intro != null) HandlePlay(Intro);
 		}
 
 		void OnDestroy()
@@ -37,12 +39,10 @@ namespace Ambition
 		{
 			if (clip != null && (!_src.isPlaying || _clip != clip))
 			{
-				float delay = _src.isPlaying ? DEFAULT_FADE : 0;
-				if (_src.isPlaying)
+				float delay = _src.isPlaying ? Mathf.Min(DEFAULT_FADE, _src.clip.length - _src.time) : 0;
+				if (delay > 0)
 				{
-					AudioSource fadeout = _src;
-					_src = this.gameObject.AddComponent<AudioSource>();
-					StartCoroutine(FadeOut(fadeout, delay));
+					StartCoroutine(FadeOut(delay));
 				}
 				_clip = clip;
 				if (_clip.Intro != null)
@@ -57,9 +57,9 @@ namespace Ambition
 				}
 				else
 				{
-					_src.clip = _clip.Loop;
-					_src.loop = true;
+					_src.clip = clip.Loop;
 					_src.PlayDelayed(delay);
+					_src.loop = true;
 				}
 			}
 		}
@@ -70,25 +70,28 @@ namespace Ambition
 			else
 			{
 				StopCoroutine(WaitToSwap());
-				StartCoroutine(FadeOut(_src, fadeout));
+				StartCoroutine(FadeOut(fadeout));
 			}
 		}
 
 		private void HandleStopNow()
 		{
-			StopAllCoroutines();
+			StopCoroutine(WaitToSwap());
 			_src.Stop();
 		}
 
-		IEnumerator FadeOut(AudioSource source, float time=DEFAULT_FADE)
+		IEnumerator FadeOut(float time=DEFAULT_FADE)
 		{
-			float multiplier = source.volume/time;
-			while (source.volume > 0) {
-				source.volume -= multiplier * Time.deltaTime;
-				yield return null;
-			}
-			source.Stop();
-			if (source != _src && source != _swapSrc) Destroy(source);
+			AudioSource source = _src;
+			_src = gameObject.AddComponent<AudioSource>();
+			if (time > source.clip.length - source.time)
+				time = source.clip.length - source.time;
+				
+			for (float multiplier = source.volume/time;
+				source.volume > 0;
+				source.volume -= multiplier * Time.deltaTime)
+					yield return null;
+			Destroy(source);
 		}
 
         IEnumerator WaitToSwap()
