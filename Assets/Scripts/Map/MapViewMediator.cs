@@ -83,13 +83,16 @@ namespace Ambition
 
 	    private void Recenter()
 	    {
-			Vector2 offset = new Vector2();
-/*	    	if (currentPlayerRoom != null)
-	    	{
-	    		TODO: Recenter on Player
-	    	}
-*/
-	 		_rect.pivot = offset;
+// TODO: Figure Out why logical recenter doesn't work
+			// RoomButton btn;
+			// if (currentPlayerRoom != null && _buttons.TryGetValue(currentPlayerRoom, out btn))
+			// {
+			// 	_rect.pivot = -btn.GetComponent<RectTransform>().rect.center;
+	    	// }
+	 		// else
+			 {
+				_rect.pivot = new Vector2();
+			 }
 	    }
 
 		private void DrawRoom(RoomVO room)
