@@ -13,8 +13,11 @@ namespace Ambition
 		public int Index;
 
 		public Image OpinionIndicator;
+        public Color MinInterestColor;
+        public Color MidInterestColor;
+        public Color MaxInterestColor;
 		public Image InterestIcon;
-		public Text NameText;
+		//public Text NameText; No more guest nameplates for now
 		public Image Highlight;
 		public GameObject Spotlight;
 		public AvatarCollection Avatars;
@@ -61,14 +64,14 @@ namespace Ambition
 				_image.enabled = setEnabled;
 				OpinionIndicator.enabled = setEnabled;
 				InterestIcon.enabled = setEnabled;
-				NameText.enabled = setEnabled;
+				//NameText.enabled = setEnabled;
 			}
 
 			if (setEnabled)
 			{
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
-				NameText.text = _guest.DisplayName;
+				//NameText.text = _guest.DisplayName;
 
 				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
@@ -147,6 +150,15 @@ namespace Ambition
 			{
 				OpinionIndicator.fillAmount = startFill + ((percent-startFill) * t / FILL_SECONDS);
 				t += Time.deltaTime;
+                //This is the only way to to a three part Lerps function with colors
+                if (OpinionIndicator.fillAmount < 0.5f)
+                {
+                    OpinionIndicator.color = Color.Lerp(MinInterestColor, MidInterestColor, OpinionIndicator.fillAmount * 2);
+                }
+                else
+                {
+                    OpinionIndicator.color = Color.Lerp(MidInterestColor, MaxInterestColor, (OpinionIndicator.fillAmount-0.5f) * 2);
+                }
 				yield return null;
 			}
 			OpinionIndicator.fillAmount = percent;
