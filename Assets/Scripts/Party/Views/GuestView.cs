@@ -22,6 +22,7 @@ namespace Ambition
 		public GameObject Spotlight;
 		public AvatarCollection Avatars;
 		public SpriteConfig Interests;
+        public Animator Animator;
 
 		private GuestVO _guest;
 		private AvatarVO _avatar;
@@ -38,7 +39,8 @@ namespace Ambition
 		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
 			AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
-			AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
+            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
+            AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 		}
 
@@ -46,7 +48,8 @@ namespace Ambition
 	    {
 			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
 			AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
-			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
+            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
+            AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			StopAllCoroutines();
 	    }
@@ -118,7 +121,7 @@ namespace Ambition
 		public void OnPointerClick(PointerEventData eventData)
 	    {
 			AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
-	    }
+        }
 
 		private void HandleRemark(RemarkVO remark)
 		{
@@ -141,6 +144,17 @@ namespace Ambition
 				Highlight.color = c;
 			}
 		}
+
+        private void HandleSelected(GuestVO[] guests)
+        {
+            bool active = _remark != null && _guest != null;
+            if (active)
+            {
+                if (_remark.Interest == _guest.Like) Animator.SetTrigger("Positive Remark");
+                else if (_remark.Interest == _guest.Disike) Animator.SetTrigger("Negative Remark");
+                else Animator.SetTrigger("Neutral Remark");
+            }
+        }
 
 		System.Collections.IEnumerator FillMeter(float percent)
 		{
