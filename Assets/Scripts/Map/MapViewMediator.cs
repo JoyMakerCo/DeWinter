@@ -83,7 +83,6 @@ namespace Ambition
 
 	    private void Recenter()
 	    {
-// TODO: Figure Out why logical recenter doesn't work
 			// RoomButton btn;
 			// if (currentPlayerRoom != null && _buttons.TryGetValue(currentPlayerRoom, out btn))
 			// {
