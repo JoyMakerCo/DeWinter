@@ -8,7 +8,7 @@ namespace Ambition
 	public class MapViewMediator : MonoBehaviour
 	{
 		private const int PAN_TOLERTANCE = 50;
-		private const float PAN_VELOCITY = .005f;
+		private const int TILES_PER_SECOND = 20;
 
 	    public GameObject roomButtonPrefab;
 
@@ -16,13 +16,7 @@ namespace Ambition
 
 	    private MapModel _model;
 		private PartyModel _partyModel;
-		private RectTransform _rect;
-
-		public RoomVO currentPlayerRoom
-		{
-			get { return _model.Room; }
-			set { _model.Room = value; }
-		}
+		private Vector3 _center;
 
 		public MapVO Map
 		{
@@ -43,7 +37,6 @@ namespace Ambition
 
 	    void Start()
 	    {
-			_rect = GetComponent<RectTransform>();
 			_model = AmbitionApp.GetModel<MapModel>();
 			_partyModel = AmbitionApp.GetModel<PartyModel>();
 			AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, _partyModel.Party);
@@ -55,43 +48,36 @@ namespace Ambition
 	        //Map Set Up is complete, notify the rest of the game
 	        Array.ForEach(Map.Rooms, DrawRoom);
 			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
-			currentPlayerRoom = Map.Entrance;
-			Recenter();
+			HandleRoom(Map.Entrance);
 	    }
 
 	    void Update()
 	    {
 	    	if (Input.GetKey(KeyCode.Space))
 	    		Recenter();
-	    	else
-	    	{
-		    	Vector2 offset = _rect.pivot;
-
-		    	if (Input.mousePosition.x < PAN_TOLERTANCE)
-					offset[0] -= _model.MapScale*PAN_VELOCITY;
+			else {
+				Vector3 offset = transform.localPosition;
+				float d = _model.MapScale*Time.deltaTime*TILES_PER_SECOND;
+				if (Input.GetKey(KeyCode.UpArrow)) offset[1] -= d*.5f;
+				else if (Input.GetKey(KeyCode.DownArrow)) offset[1] += d*.5f;
+				if (Input.GetKey(KeyCode.LeftArrow)) offset[0] += d*.5f;
+				else if (Input.GetKey(KeyCode.RightArrow)) offset[0] -= d*.5f;
+				if (Input.mousePosition.x < PAN_TOLERTANCE)
+					offset[0] += d;
 				else if (Input.mousePosition.x > Screen.width-PAN_TOLERTANCE)
-					offset[0] += _model.MapScale*PAN_VELOCITY;
-
+					offset[0] -= d;
 				if (Input.mousePosition.y < PAN_TOLERTANCE)
-					offset[1] -= _model.MapScale*PAN_VELOCITY;
+					offset[1] += d;
 				else if (Input.mousePosition.y > Screen.height-PAN_TOLERTANCE)
-					offset[1] += _model.MapScale*PAN_VELOCITY;
+					offset[1] -= d;
 
-				_rect.pivot = offset;
+				transform.localPosition = offset;
 			}
-	    }
+		}
 
 	    private void Recenter()
 	    {
-			// RoomButton btn;
-			// if (currentPlayerRoom != null && _buttons.TryGetValue(currentPlayerRoom, out btn))
-			// {
-			// 	_rect.pivot = -btn.GetComponent<RectTransform>().rect.center;
-	    	// }
-	 		// else
-			 {
-				_rect.pivot = new Vector2();
-			 }
+			transform.localPosition = _center;
 	    }
 
 		private void DrawRoom(RoomVO room)
@@ -104,11 +90,6 @@ namespace Ambition
 				roomButton.Room = room;
 				_buttons.Add(room, roomButton);
 			}
-	    }
-
-	    public void MovePlayerToEntrance()
-	    {
-			currentPlayerRoom = (_model.Map != null) ? _model.Map.Entrance : null;
 	    }
 
 	    public void PartyEventModal(RoomVO room)
@@ -135,6 +116,20 @@ namespace Ambition
 					kvp.Value.UpdatePlayerRoom(room);
 				}
 			}
+
+			if (room != null)
+			{
+				int [] bounds = room.Bounds;
+				float q = -.5f*_model.MapScale;
+				_center.x = (bounds[0]+bounds[2])*q;
+				_center.y = (bounds[1]+bounds[3])*q;
+				_center.z = 0f;
+			}
+			else
+			{
+				_center = Vector3.zero;
+			}
+			Recenter();
 		}
 	}
 }

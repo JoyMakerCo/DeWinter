@@ -8,7 +8,8 @@ namespace Ambition
 	{
 		public void Execute ()
 		{
-			if (AmbitionApp.GetModel<MapModel>().Room.HostHere)
+			MapModel map = AmbitionApp.GetModel<MapModel>();
+			if (map.Room != null && map.Room.HostHere)
 			{
 				AmbitionApp.OpenMessageDialog("party_tutorial_end");
 
