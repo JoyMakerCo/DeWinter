@@ -56,7 +56,7 @@ namespace Ambition
 			LivreText.text = "£" + livre.ToString();
 		}
 
-		public override void OnClose()
+		public void Done()
 		{
 			AmbitionApp.SendMessage(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
 		}

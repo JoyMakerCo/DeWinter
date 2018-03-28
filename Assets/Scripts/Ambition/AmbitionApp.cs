@@ -162,12 +162,12 @@ namespace Ambition
 			App.Service<UFlowSvc>().RegisterState<C, T>(stateID, arg);
 		}
 
-		public static void RegisterTransition(string machineID, string originState, string targetState)
+		public static void RegisterLink(string machineID, string originState, string targetState)
 		{
 			App.Service<UFlowSvc>().RegisterTransition(machineID, originState, targetState);
 		}
 
-		public static void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
+		public static void RegisterLink<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
 		{
 			App.Service<UFlowSvc>().RegisterTransition<T>(machineID, originState, targetState, args);
 		}
@@ -175,6 +175,11 @@ namespace Ambition
 		public static void InvokeMachine(string MachineID)
 		{
 			App.Service<UFlowSvc>().InvokeMachine(MachineID);
+		}
+
+		public static bool IsActiveState(string stateID)
+		{
+			return App.Service<UFlowSvc>().IsActiveState(stateID);
 		}
 
 		public static string GetString(string key)

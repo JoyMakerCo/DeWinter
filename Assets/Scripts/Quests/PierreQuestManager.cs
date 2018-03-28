@@ -9,7 +9,6 @@ namespace Ambition
 	    Text questNameText;
 	    Text questFlavorText;
 	    public PierreQuestInventoryList pierreQuestInventoryList;
-	    public SceneFadeInOut screenFader;
 
 	    // Use this for initialization
 	    void Start () {
