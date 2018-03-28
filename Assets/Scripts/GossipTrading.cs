@@ -10,7 +10,6 @@ namespace Ambition
 	    public GossipInventoryList gossipInventoryList;
 	    public PierreQuestInventoryList questList;
 	    public string tradingFor;
-	    public SceneFadeInOut screenFader;
 	    private Text myDescriptionText;
 	    private Image myBackgroundImage;
 
@@ -107,7 +106,8 @@ namespace Ambition
 	        }        
 	        objectStorage[4] = GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction;
 	        objectStorage[5] = CaughtChance();
-	        screenFader.gameObject.SendMessage("CreateSellGossipModal", objectStorage);
+// TODO
+	        // screenFader.gameObject.SendMessage("CreateSellGossipModal", objectStorage);
 	    }
 
 		// TODO: Make this a command
@@ -216,7 +216,8 @@ namespace Ambition
 					model[GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction].Reputation -= 25;
 	            }
 	            //Angry Pop-Up About It
-	            screenFader.gameObject.SendMessage("CreateCaughtTradingGossipModal", GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction);
+// TODO
+	            // screenFader.gameObject.SendMessage("CreateCaughtTradingGossipModal", GameData.gossipInventory[gossipInventoryList.selectedGossipItem].Faction);
 	        }
 	        gossipInventoryList.gossipItemsSoldToday++;
 	    }

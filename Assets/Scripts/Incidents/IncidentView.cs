@@ -14,6 +14,7 @@ namespace Ambition
 		public const string DIALOG_ID = "INCIDENT";
 	    public Text titleText;
 	    public Text descriptionText;
+		public Text SpeakerName;
 
 	    public AvatarView Character1;
 		public AvatarView Character2;
@@ -47,6 +48,19 @@ namespace Ambition
 				Character2.Pose = moment.Character2.Pose;
 
 				AmbitionApp.SendMessage<AmbientClip>(AudioMessages.PLAY_MUSIC, moment.Music);
+				SpeakerName.enabled = (moment.Speaker != SpeakerType.None);
+				switch(moment.Speaker)
+				{
+					case SpeakerType.Player:
+						SpeakerName.text = AmbitionApp.GetModel<GameModel>().PlayerName;
+						break;
+					case SpeakerType.Character1:
+						SpeakerName.text = moment.Character1.Name;
+						break;
+					case SpeakerType.Character2:
+						SpeakerName.text = moment.Character2.Name;
+						break;
+				}
 			}
 		}
 	}

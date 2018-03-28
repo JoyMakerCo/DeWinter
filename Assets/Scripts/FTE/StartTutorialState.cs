@@ -1,12 +1,12 @@
-﻿using System;
-using Core;
+using System;
+using UFlow;
 
 namespace Ambition
 {
-	public class StartTutorialCmd : ICommand
-	{
-		public void Execute ()
-		{
+    public class StartTutorialState : UState
+    {
+        public override void OnEnterState()
+        {
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
 			PartyVO party = Array.Find(model.Parties, p=>p.ID == "tutorial");
@@ -20,12 +20,13 @@ namespace Ambition
 
 			AmbitionApp.GetModel<IncidentModel>().Incident = null;
 			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			AmbitionApp.UnregisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
+			AmbitionApp.UnregisterCommand<SkipTutorialCmd>(GameMessages.SKIP_TUTORIAL);
+			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
 			AmbitionApp.RegisterCommand<WorkTheRoomTutorialCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			AmbitionApp.RegisterCommand<TutorialRailroadCommand, RoomVO>();
 			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
 
 			AmbitionApp.RegisterCommand<TutorialLoadoutCmd, string>(GameMessages.DIALOG_CLOSED);
-		}
-	}
+        }
+    }
 }

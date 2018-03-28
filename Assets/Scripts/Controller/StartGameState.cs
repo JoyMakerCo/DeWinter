@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 using UFlow;
+using Core;
 
 namespace Ambition
 {
 	public class StartGameState : UState
 	{
-		public override void OnEnterState ()
-		{
-			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, "Game_Estate");
-		}
-	}
+        // IT DOESN'T DO ANYTHING!! LOL!!
+		public override void OnEnterState () {}
+    }
 }

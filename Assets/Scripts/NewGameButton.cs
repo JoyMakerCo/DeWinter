@@ -10,7 +10,7 @@ namespace Ambition
 		{
 			AmbitionApp.RegisterState<InitGameState>("InitGame");
 			AmbitionApp.RegisterState<StartGameState>("StartGame");
-			AmbitionApp.RegisterTransition("GameController", "InitGame", "StartGame");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("GameController", "InitGame", "StartGame", GameMessages.FADE_OUT_COMPLETE);
 			AmbitionApp.InvokeMachine("GameController");
 #if (UNITY_EDITOR)			
 			if (!Input.GetKey(KeyCode.LeftAlt))
@@ -19,6 +19,7 @@ namespace Ambition
 				IncidentModel emod = AmbitionApp.GetModel<IncidentModel>();
 				emod.Incident = emod.FindEvent("Yvette");
 			}
+			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
 		}
 	}
 }

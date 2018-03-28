@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 using Util;
@@ -21,12 +22,12 @@ namespace UFlow
 		}
 	}
 
-	internal class UTransitionMap<T>:UTransitionMap where T : ULink, new()
+	internal class ULinkMap<T>:UTransitionMap where T : ULink, new()
 	{
 		internal object[] Params;
 
-		internal UTransitionMap() {}
-		internal UTransitionMap(string targetState, params object [] parms)
+		internal ULinkMap() {}
+		internal ULinkMap(string targetState, params object [] parms)
 		{
 			TargetState = targetState;
 			Params = parms;
@@ -54,6 +55,21 @@ namespace UFlow
 		{
 			UMachine mac;
 			return _machines.TryGetValue(MachineID, out mac) ? mac : null;
+		}
+
+		public string[] GetActiveMachines()
+		{
+			return _machines.Keys.ToArray();
+		}
+
+		public bool IsActiveState(string stateID)
+		{
+			foreach(KeyValuePair<string,UMachine> kvp in _machines)
+			{
+				if (kvp.Key == stateID || kvp.Value.State == stateID)
+					return true;
+			}
+			return false;
 		}
 
 		public void RegisterState<S>(string stateID) where S : UState, new()
@@ -84,7 +100,7 @@ namespace UFlow
 		public void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
 		{
 			List<UTransitionMap> transitions = GetTransitionList(machineID, originState);
-			UTransitionMap<T> trans = new UTransitionMap<T>(targetState, args);
+			ULinkMap<T> trans = new ULinkMap<T>(targetState, args);
 			transitions.Add(trans);
 		}
 
