@@ -20,8 +20,9 @@ public class LocalizedText : MonoBehaviour
 	{
 		get { return _phrase; }
 		set {
+			string str = App.Service<ModelSvc>().GetModel<LocalizationModel>().GetString(value);
 			_phrase = value;
-			_text.text = App.Service<ModelSvc>().GetModel<LocalizationModel>().GetString(value);
+			_text.text = str == null ? _phrase : str;
 		}
 	}
 }

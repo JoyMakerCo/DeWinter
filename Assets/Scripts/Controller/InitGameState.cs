@@ -70,14 +70,14 @@ namespace Ambition
 			// UFlow Associations
 			// In the future, this will be handled by config
 			AmbitionApp.RegisterState<StartConversationState>("InitConversation");
-			AmbitionApp.RegisterState<OpenDialogState, string>("ReadyGo", DialogConsts.READY_GO);
+			AmbitionApp.RegisterState<OpenDialogState, string>("ReadyGo", ReadyGoDialogMediator.DIALOG_ID);
 			AmbitionApp.RegisterState<StartTurnState>("StartTurn");
 			AmbitionApp.RegisterState<EndTurnState>("EndTurn");
 			AmbitionApp.RegisterState<EndConversationState>("EndConversation");
 			AmbitionApp.RegisterState<FleeConversationState>("FleeConversation");
 
 			AmbitionApp.RegisterLink("ConversationController", "InitConversation", "ReadyGo");
-			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("ConversationController", "ReadyGo", "StartTurn", DialogConsts.READY_GO);
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("ConversationController", "ReadyGo", "StartTurn", ReadyGoDialogMediator.DIALOG_ID);
 			AmbitionApp.RegisterLink<WaitForMessageLink>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
 			AmbitionApp.RegisterLink<CheckConversationTransition>("ConversationController", "EndTurn", "EndConversation");
 			AmbitionApp.RegisterLink<CheckConfidenceLink>("ConversationController", "EndTurn", "FleeConversation");
@@ -104,9 +104,13 @@ namespace Ambition
 
 			// TUTORIAL STATES.
 			AmbitionApp.RegisterState<StartTutorialState>("InitTutorial");
-			// AmbitionApp.RegisterState<TutorialWardobeState, string>("ReadyGo", DialogConsts.READY_GO);
+			AmbitionApp.RegisterState("ConversationTutorial");
+			AmbitionApp.RegisterState("HostTutorial");
 			AmbitionApp.RegisterState<EndTutorialState>("EndTutorial");
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "InitTutorial", "EndTutorial", PartyMessages.LEAVE_PARTY);
+
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "InitTutorial", "ConversationTutorial", PartyMessages.SHOW_ROOM);
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "ConversationTutorial", "HostTutorial", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "HostTutorial", "EndTutorial", PartyMessages.LEAVE_PARTY);
 		}
 	}
 }
