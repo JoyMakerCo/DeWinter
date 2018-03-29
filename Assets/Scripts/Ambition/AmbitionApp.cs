@@ -157,6 +157,11 @@ namespace Ambition
 			App.Service<UFlowSvc>().RegisterState<C>(stateID);
 		}
 
+		public static void RegisterState(string stateID)
+		{
+			App.Service<UFlowSvc>().RegisterState(stateID);
+		}
+
 		public static void RegisterState<C, T>(string stateID, T arg) where C : UState, Util.IInitializable<T>, new()
 		{
 			App.Service<UFlowSvc>().RegisterState<C, T>(stateID, arg);

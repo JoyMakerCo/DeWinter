@@ -72,6 +72,16 @@ namespace UFlow
 			return false;
 		}
 
+		public void RegisterState(string stateID)
+		{
+			if (!_states.ContainsKey(stateID))
+			{
+				_states[stateID] = (Func<UState>)(() => {
+					return new UState();
+				});
+			}
+		}
+
 		public void RegisterState<S>(string stateID) where S : UState, new()
 		{
 			if (!_states.ContainsKey(stateID))
