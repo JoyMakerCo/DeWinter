@@ -56,7 +56,7 @@ namespace Ambition
 					guest.Interest = Util.RNG.Generate(stats.Interest[0], stats.Interest[1]);
 					likeIndex = Util.RNG.Generate(0,model.Interests.Length);
 					guest.Like = model.Interests[likeIndex];
-					guest.Disike = model.Interests[(likeIndex + 1)%model.Interests.Length];
+					guest.Dislike = model.Interests[(likeIndex + 1)%model.Interests.Length];
 				}
 			}
 			AmbitionApp.SendMessage<GuestVO[]>(room.Guests);

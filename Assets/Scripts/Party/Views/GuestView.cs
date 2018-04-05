@@ -135,7 +135,7 @@ namespace Ambition
             if (active)
             {
                 if (_remark.Interest == _guest.Like) Animator.SetTrigger("Positive Remark");
-                else if (_remark.Interest == _guest.Disike) Animator.SetTrigger("Negative Remark");
+                else if (_remark.Interest == _guest.Dislike) Animator.SetTrigger("Negative Remark");
                 else Animator.SetTrigger("Neutral Remark");
             }
         }

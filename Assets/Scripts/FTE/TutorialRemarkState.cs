@@ -15,7 +15,7 @@ namespace Ambition
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             MapModel map = AmbitionApp.GetModel<MapModel>();
             int index = model.Remarks.FindIndex(r=>Array.Exists(map.Room.Guests, g=>g.Like == r.Interest));
-            if (index < 0) model.Remarks.FindIndex(r=>Array.Exists(map.Room.Guests, g=>g.Disike != r.Interest));
+            if (index < 0) model.Remarks.FindIndex(r=>Array.Exists(map.Room.Guests, g=>g.Dislike != r.Interest));
             if (index < 0) index = 0;
 
             GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Dialog.DialogCanvasManager>() != null);

@@ -34,7 +34,7 @@ namespace Ambition
 	    public string Like;
 
 		[JsonProperty("Dislike")]
-		public string Disike;
+		public string Dislike;
 
 		[JsonProperty("Gender")]
 	    public Gender Gender;
@@ -53,7 +53,7 @@ namespace Ambition
 			LastName = guest.LastName;
 			Title = guest.Title;
 			Like = guest.Like;
-			Disike = guest.Disike;
+			Dislike = guest.Dislike;
 			Gender = guest.Gender;
 			Opinion = guest.Opinion;
 		}

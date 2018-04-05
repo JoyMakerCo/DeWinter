@@ -36,7 +36,7 @@ namespace Ambition
             _image.enabled = false;
             if (_remark == null) c = Colors.GetColor("Neutral");
             else if (_remark.Interest == Guest.Guest.Like) c = Colors.GetColor("Like");
-            else if (_remark.Interest == Guest.Guest.Disike) c = Colors.GetColor("Dislike");
+            else if (_remark.Interest == Guest.Guest.Dislike) c = Colors.GetColor("Dislike");
             else c = Colors.GetColor("Neutral");
             c.a = alpha;
             _image.color = c;
