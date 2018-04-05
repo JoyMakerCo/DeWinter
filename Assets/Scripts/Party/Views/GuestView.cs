@@ -13,12 +13,16 @@ namespace Ambition
 		public int Index;
 
 		public Image OpinionIndicator;
+        public Color MinInterestColor;
+        public Color MidInterestColor;
+        public Color MaxInterestColor;
 		public Image InterestIcon;
-		public Text NameText;
+		//public Text NameText; No more guest nameplates for now
 		public Image Highlight;
 		public GameObject Spotlight;
 		public AvatarCollection Avatars;
 		public SpriteConfig Interests;
+        public Animator Animator;
 
 		private GuestVO _guest;
 		private AvatarVO _avatar;
@@ -35,7 +39,8 @@ namespace Ambition
 		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
 			AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
-			AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
+            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
+            AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 		}
 
@@ -43,7 +48,8 @@ namespace Ambition
 	    {
 			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
 			AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
-			AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
+            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
+            AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			StopAllCoroutines();
 	    }
@@ -61,14 +67,14 @@ namespace Ambition
 				_image.enabled = setEnabled;
 				OpinionIndicator.enabled = setEnabled;
 				InterestIcon.enabled = setEnabled;
-				NameText.enabled = setEnabled;
+				//NameText.enabled = setEnabled;
 			}
 
 			if (setEnabled)
 			{
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
-				NameText.text = _guest.DisplayName;
+				//NameText.text = _guest.DisplayName;
 
 				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
@@ -84,9 +90,14 @@ namespace Ambition
 					_guest.Gender = _avatar.Gender;
 				}
 
-				_image.sprite = _avatar.GetPose(!_isIntoxicated
-					? POSES[(int)(_guest.State)]
-					: "neutral");
+				_image.sprite = _avatar.GetPose(_isIntoxicated
+					? "neutral"
+					: _guest.Interest <= 0
+					? "bored"
+					: POSES[(int)(_guest.State)]);
+					
+				if (_image.sprite == null)
+					_image.sprite = _avatar.GetPose("neutral");
 
 				InterestIcon.sprite = Interests.GetSprite(_guest.Like);
 			}
@@ -110,7 +121,7 @@ namespace Ambition
 		public void OnPointerClick(PointerEventData eventData)
 	    {
 			AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
-	    }
+        }
 
 		private void HandleRemark(RemarkVO remark)
 		{
@@ -134,6 +145,17 @@ namespace Ambition
 			}
 		}
 
+        private void HandleSelected(GuestVO[] guests)
+        {
+            bool active = _remark != null && _guest != null;
+            if (active)
+            {
+                if (_remark.Interest == _guest.Like) Animator.SetTrigger("Positive Remark");
+                else if (_remark.Interest == _guest.Disike) Animator.SetTrigger("Negative Remark");
+                else Animator.SetTrigger("Neutral Remark");
+            }
+        }
+
 		System.Collections.IEnumerator FillMeter(float percent)
 		{
 			float t = 0;
@@ -142,6 +164,15 @@ namespace Ambition
 			{
 				OpinionIndicator.fillAmount = startFill + ((percent-startFill) * t / FILL_SECONDS);
 				t += Time.deltaTime;
+                //This is the only way to to a three part Lerps function with colors
+                if (OpinionIndicator.fillAmount < 0.5f)
+                {
+                    OpinionIndicator.color = Color.Lerp(MinInterestColor, MidInterestColor, OpinionIndicator.fillAmount * 2);
+                }
+                else
+                {
+                    OpinionIndicator.color = Color.Lerp(MidInterestColor, MaxInterestColor, (OpinionIndicator.fillAmount-0.5f) * 2);
+                }
 				yield return null;
 			}
 			OpinionIndicator.fillAmount = percent;

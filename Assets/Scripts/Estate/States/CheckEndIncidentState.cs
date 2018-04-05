@@ -11,6 +11,7 @@ namespace Ambition
 			if (model.Moment == null)
 			{
 				model.Incident = null;
+				AmbitionApp.SendMessage<float>(AudioMessages.STOP_MUSIC, 2f);
 				AmbitionApp.CloseDialog(IncidentView.DIALOG_ID);
 			}
 	    }

@@ -151,6 +151,8 @@ namespace Ambition
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character2"), true);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Speaker"), true);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Rewards"), true);
+			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Music"), true);
+			EditorGUILayout.PropertyField(moment.FindPropertyRelative("AudioClips"), true);
 			_dirty = EditorGUI.EndChangeCheck();
 		}
 
@@ -160,6 +162,7 @@ namespace Ambition
 			GUI.SetNextControlName(FOCUS_ID);
 			SerializedProperty text = transition.FindPropertyRelative("Text");
 			text.stringValue = GUILayout.TextArea(text.stringValue);
+			EditorGUILayout.PropertyField(transition.FindPropertyRelative("Rewards"), true);
 			_dirty = EditorGUI.EndChangeCheck();
 		}
 

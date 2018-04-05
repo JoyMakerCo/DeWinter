@@ -117,7 +117,6 @@ namespace Ambition
 		public int[] ConfidenceCost;
 
 		public int RemarksBought=0;
-		public string LastInterest;
 
 		[JsonProperty("maxHandSize")]
 		public int MaxHandSize = 5;

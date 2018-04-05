@@ -52,9 +52,9 @@ namespace Ambition
 		{
 			get { return _moment; }
 			set {
-				_moment = value;
+				_moment = _incident != null ? value : null;
 				AmbitionApp.SendMessage<MomentVO>(_moment);
-				if (value != null)
+				if (_moment != null)
 				{
 					int index = Array.IndexOf(_incident.Moments, _moment);
 					TransitionVO[] transitions = Array.FindAll(_incident.Transitions, t=>t.Index == index);

@@ -112,7 +112,7 @@ namespace Ambition
 
 		        //Send to After Party Report Screen
 		        party.blackOutEnding = true;
-		        AmbitionApp.SendMessage(PartyMessages.END_PARTY);
+		        AmbitionApp.SendMessage(PartyMessages.LEAVE_PARTY);
 			}
 		}
 	}

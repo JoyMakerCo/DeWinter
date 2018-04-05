@@ -40,9 +40,7 @@ namespace Ambition
 		public const string HOST_ENCOUNTER = "HOST_ENCOUNTER";
 		public const string ROOM = "ROOM";
 		public const string ROOM_TUTORIAL = "ROOM_TUTORIAL";
-		public const string READY_GO = "READY_GO";
 
-		public const string AFTER_PARTY = "after_party_dialog";
 		public const string PAY_DAY_DIALOG = "pay_day_dialog";
 		public const string FIRE_CAMILLE_DIALOG = "fire_camille_dialog";
 		public const string CANT_BUY_DIALOG = "cant_buy_dialog";

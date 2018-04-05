@@ -7,7 +7,6 @@ public class PierreQuestInventoryList : MonoBehaviour {
 
     public int selectedQuest;
     public GameObject pierreQuestInventoryButtonPrefab;
-    public SceneFadeInOut screenFader;
     private QuestModel _model;
 
     // Use this for initialization
@@ -60,7 +59,8 @@ public class PierreQuestInventoryList : MonoBehaviour {
                 object[] objectStorage = new object[2];
                 objectStorage[0] = newPierreQuest;
                 objectStorage[1] = this;
-                screenFader.gameObject.SendMessage("CreateNewPierreQuestModal", objectStorage);
+// TODO
+                // screenFader.gameObject.SendMessage("CreateNewPierreQuestModal", objectStorage);
             }
             _model.NextQuestDay = day.AddDays(Util.RNG.Generate(3, 6));
         }       
