@@ -18,24 +18,11 @@ namespace Ambition
 			LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
 			string[] conversationIntroList = model.GetList("conversation_intro");
 			dialogText.text = conversationIntroList[Util.RNG.Generate(conversationIntroList.Length)];
-			PromptText.enabled = true;
-		}
-
-		IEnumerator Countdown()
-		{
-			dialogText.text = "3...";
-			yield return new WaitForSeconds(1f);
-			dialogText.text = "2...";
-			yield return new WaitForSeconds(1f);
-			dialogText.text = "1...";
-			yield return new WaitForSeconds(1f);
-			Close();
 		}
 
 		public void OnPointerClick(PointerEventData eventData)
 	    {
-			PromptText.enabled = false;
-			StartCoroutine(Countdown());
+			Close();
         }
 
 		public override void OnClose ()

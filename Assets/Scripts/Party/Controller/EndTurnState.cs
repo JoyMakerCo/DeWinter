@@ -42,7 +42,7 @@ namespace Ambition
 						AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
 						AmbitionApp.GetModel<PartyModel>().Confidence += 5;
 					}
-					else if (guest.Disike == remark.Interest) //They dislike the tone
+					else if (guest.Dislike == remark.Interest) //They dislike the tone
 			        {
 			        	// TODO: All of this needs to be affected by the passive bonus system
 			            if (!model.ItemEffect) //If the the Player doesn't have the Fascinator Accessory or its ability has already been used up
