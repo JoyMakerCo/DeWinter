@@ -6,6 +6,7 @@ namespace Ambition
 {
 	public class MessageViewMediator : DialogView, Util.IInitializable<MessageDialogVO>
 	{
+		public const string DIALOG_ID = "MESSAGE";
 		public Text BodyTxt;
 		public Text TitleTxt;
 		public Text ButtonLabelTxt;

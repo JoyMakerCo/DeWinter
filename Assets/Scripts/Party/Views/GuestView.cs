@@ -19,11 +19,17 @@ namespace Ambition
 		public Image InterestIcon;
 		public Image Highlight;
 		public GameObject Spotlight;
-		public AvatarCollection Avatars;
+
+        public AvatarCollection Avatars;
 		public SpriteConfig Interests;
         public Animator Animator;
 
 		private GuestVO _guest;
+		public GuestVO Guest
+		{
+			get { return _guest; }
+		}
+
 		private AvatarVO _avatar;
 		private RemarkVO _remark;
 		private Image _image;
@@ -37,8 +43,8 @@ namespace Ambition
 		void OnEnable()
 		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
+
 			AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
-            //AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 		}
@@ -47,7 +53,6 @@ namespace Ambition
 	    {
 			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
 			AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
-            //AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			StopAllCoroutines();
@@ -136,7 +141,7 @@ namespace Ambition
 				float alpha = Highlight.color.a;
 				Color c;
 				if (_remark.Interest == _guest.Like) c = Color.green;
-				else if (_remark.Interest == _guest.Disike) c = Color.red;
+				else if (_remark.Interest == _guest.Dislike) c = Color.red;
 				else c = Color.white;
 				c.a = alpha;
 				Highlight.color = c;
@@ -145,7 +150,6 @@ namespace Ambition
 
         private void HandleSelected(GuestVO guest)
         {
-            Debug.Log("Handle Selected!");
             bool active;
             if (_remark != null && _guest != null)
             {
@@ -156,9 +160,8 @@ namespace Ambition
             }
             if (active)
             {
-                Debug.Log("Remark was active!");
                 if (_remark.Interest == _guest.Like) Animator.SetTrigger("Positive Remark");
-                else if (_remark.Interest == _guest.Disike) Animator.SetTrigger("Negative Remark");
+                else if (_remark.Interest == _guest.Dislike) Animator.SetTrigger("Negative Remark");
                 else Animator.SetTrigger("Neutral Remark");
             }
         }
