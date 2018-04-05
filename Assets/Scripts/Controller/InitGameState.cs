@@ -104,12 +104,32 @@ namespace Ambition
 
 			// TUTORIAL STATES.
 			AmbitionApp.RegisterState<StartTutorialState>("InitTutorial");
-			AmbitionApp.RegisterState("ConversationTutorial");
-			AmbitionApp.RegisterState("HostTutorial");
+			AmbitionApp.RegisterState<TutorialState>("TutorialWardrobeStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialGoStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialPartyStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialFirstRoomStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialStartConversationStep");
+			AmbitionApp.RegisterState<TutorialRemarkState>("TutorialRemarkStep");
+			AmbitionApp.RegisterState<TutorialGuestState>("TutorialGuestStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialAltRemarkStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialCompleteConversationStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialPunchbowlStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialHostRoomStep");
 			AmbitionApp.RegisterState<EndTutorialState>("EndTutorial");
 
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "InitTutorial", "ConversationTutorial", PartyMessages.SHOW_ROOM);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "ConversationTutorial", "HostTutorial", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink("TutorialController", "InitTutorial", "TutorialWardrobeStep");
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialWardrobeStep", "TutorialGoStep");
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialGoStep", "TutorialPartyStep");
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("TutorialController", "TutorialPartyStep", "TutorialFirstRoomStep", MessageViewMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialFirstRoomStep", "TutorialStartConversationStep");
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("TutorialController", "TutorialStartConversationStep", "TutorialRemarkStep", ReadyGoDialogMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<TutorialRemarkLink>("TutorialController", "TutorialRemarkStep", "TutorialGuestStep");
+			AmbitionApp.RegisterLink<TutorialGuestLink>("TutorialController", "TutorialGuestStep", "TutorialCompleteConversationStep");
+			AmbitionApp.RegisterLink<TutorialRemarkLink>("TutorialController", "TutorialGuestStep", "TutorialAltRemarkStep");
+			AmbitionApp.RegisterLink("TutorialController", "TutorialAltRemarkStep", "TutorialGuestStep");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialCompleteConversationStep", "TutorialPunchbowlStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialPunchbowlStep", "TutorialHostRoomStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialHostRoomStep", "TutorialLeavePartyStep", PartyMessages.SHOW_MAP);
 			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "HostTutorial", "EndTutorial", PartyMessages.LEAVE_PARTY);
 		}
 	}

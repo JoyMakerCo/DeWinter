@@ -49,7 +49,6 @@ namespace Ambition
 			{
 				_graphic.Room = value;
 				gameObject.name = value.Name;
-
 				if (_room == null) // This will crash if the room has no walls.
 				{
 					MapModel map = AmbitionApp.GetModel<MapModel>();

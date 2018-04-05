@@ -18,13 +18,16 @@ namespace Ambition
         public Color MaxInterestColor;
 		public Image InterestIcon;
 		//public Text NameText; No more guest nameplates for now
-		public Image Highlight;
-		public GameObject Spotlight;
 		public AvatarCollection Avatars;
 		public SpriteConfig Interests;
         public Animator Animator;
 
 		private GuestVO _guest;
+		public GuestVO Guest
+		{
+			get { return _guest; }
+		}
+
 		private AvatarVO _avatar;
 		private RemarkVO _remark;
 		private Image _image;
@@ -38,7 +41,6 @@ namespace Ambition
 		void OnEnable()
 		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
-			AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
             AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
@@ -47,7 +49,6 @@ namespace Ambition
 		void OnDisable()
 	    {
 			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
-			AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargets);
             AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
@@ -126,23 +127,6 @@ namespace Ambition
 		private void HandleRemark(RemarkVO remark)
 		{
 			_remark = remark;
-			Spotlight.SetActive(false);
-		}
-
-		private void HandleTargets(GuestVO[] guests)
-		{
-			bool active = _remark != null && guests != null && !_isIntoxicated && Array.IndexOf(guests, _guest) >= 0;
-			Spotlight.SetActive(active);
-			if (active)
-			{
-				float alpha = Highlight.color.a;
-				Color c;
-				if (_remark.Interest == _guest.Like) c = Color.green;
-				else if (_remark.Interest == _guest.Disike) c = Color.red;
-				else c = Color.white;
-				c.a = alpha;
-				Highlight.color = c;
-			}
 		}
 
         private void HandleSelected(GuestVO[] guests)

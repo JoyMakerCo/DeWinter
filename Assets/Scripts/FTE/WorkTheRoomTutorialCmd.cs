@@ -1,4 +1,6 @@
 ﻿using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using Core;
 
 namespace Ambition
@@ -7,7 +9,7 @@ namespace Ambition
 	{
 		public void Execute (RoomVO room)
 		{
-			AmbitionApp.OpenMessageDialog("party_tutorial_dialog");
+			// AmbitionApp.OpenDialog<string[]>(TutorialTooltip.DIALOG_ID, new string[]{"drawer1"});
 			AmbitionApp.UnregisterCommand<WorkTheRoomTutorialCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 		}
 	}

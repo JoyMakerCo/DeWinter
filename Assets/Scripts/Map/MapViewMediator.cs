@@ -38,7 +38,6 @@ namespace Ambition
 
 	    void Start()
 	    {
-Debug.Log("SHTART");
 			_model = AmbitionApp.GetModel<MapModel>();
 			_partyModel = AmbitionApp.GetModel<PartyModel>();
 			AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, _partyModel.Party);
