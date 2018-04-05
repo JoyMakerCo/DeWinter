@@ -8,6 +8,7 @@ namespace Ambition
 	public class RemarkView : MonoBehaviour, IPointerClickHandler
 	{
 		public int Index;
+        public Animator RemarkAnimator;
 
 		private RemarkVO _remark;
 
