@@ -114,7 +114,10 @@ namespace Ambition
 			AmbitionApp.RegisterState<TutorialState>("TutorialAltRemarkStep");
 			AmbitionApp.RegisterState<TutorialState>("TutorialCompleteConversationStep");
 			AmbitionApp.RegisterState<TutorialState>("TutorialPunchbowlStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialMiddleConversationStep");
 			AmbitionApp.RegisterState<TutorialState>("TutorialHostRoomStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialHostConversationStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialLeavePartyStep");
 			AmbitionApp.RegisterState<EndTutorialState>("EndTutorial");
 
 			AmbitionApp.RegisterLink("TutorialController", "InitTutorial", "TutorialWardrobeStep");
@@ -128,9 +131,11 @@ namespace Ambition
 			AmbitionApp.RegisterLink<TutorialRemarkLink>("TutorialController", "TutorialGuestStep", "TutorialAltRemarkStep");
 			AmbitionApp.RegisterLink("TutorialController", "TutorialAltRemarkStep", "TutorialGuestStep");
 			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialCompleteConversationStep", "TutorialPunchbowlStep", PartyMessages.SHOW_MAP);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialPunchbowlStep", "TutorialHostRoomStep", PartyMessages.SHOW_MAP);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialHostRoomStep", "TutorialLeavePartyStep", PartyMessages.SHOW_MAP);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "HostTutorial", "EndTutorial", PartyMessages.LEAVE_PARTY);
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialPunchbowlStep", "TutorialMiddleConversationStep");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialMiddleConversationStep", "TutorialHostRoomStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialHostRoomStep", "TutorialHostConversationStep");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialHostConversationStep", "TutorialLeavePartyStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialLeavePartyStep", "EndTutorial", PartyMessages.LEAVE_PARTY);
 		}
 	}
 }
