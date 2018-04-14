@@ -25,6 +25,8 @@ namespace Ambition
 
 		void Awake()
 		{
+			_model = AmbitionApp.GetModel<MapModel>();
+			_partyModel = AmbitionApp.GetModel<PartyModel>();
 			_buttons = new Dictionary<RoomVO, RoomButton>();
 			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
 		}
@@ -38,10 +40,6 @@ namespace Ambition
 
 	    void Start()
 	    {
-			_model = AmbitionApp.GetModel<MapModel>();
-			_partyModel = AmbitionApp.GetModel<PartyModel>();
-			AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, _partyModel.Party);
-
 			//Make the Room Buttons ----------------------
 	        Array.ForEach(Map.Rooms, DrawRoom);
 			_bounds.xMin *= _model.MapScale;

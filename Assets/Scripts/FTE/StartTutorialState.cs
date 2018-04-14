@@ -23,10 +23,6 @@ namespace Ambition
 			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			AmbitionApp.UnregisterCommand<SkipTutorialCmd>(GameMessages.SKIP_TUTORIAL);
 			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);
-			AmbitionApp.RegisterCommand<WorkTheRoomTutorialCmd, RoomVO>(MapMessage.GO_TO_ROOM);
-			AmbitionApp.RegisterCommand<TutorialRailroadCommand, RoomVO>();
-
-			AmbitionApp.RegisterCommand<TutorialLoadoutCmd, string>(GameMessages.DIALOG_CLOSED);
         }
     }
 }

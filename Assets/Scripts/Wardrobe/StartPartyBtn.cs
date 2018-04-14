@@ -29,6 +29,7 @@ namespace Ambition
 		void OnDestroy ()
 		{
 			AmbitionApp.Unsubscribe<OutfitVO>(HandleOutfit);
+			AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOut);
 			_button.onClick.RemoveListener(OnClick);
 		}
 
@@ -39,7 +40,15 @@ namespace Ambition
 
 		private void OnClick()
 		{
-			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTY);
+			_button.interactable = false;
+			AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOut);
+			AmbitionApp.SendMessage(GameMessages.FADE_OUT);
+		}
+
+		private void HandleFadeOut()
+		{
+			AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, AmbitionApp.GetModel<PartyModel>().Party);
+			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.PARTY_SCENE);
 		}
 	}
 }
