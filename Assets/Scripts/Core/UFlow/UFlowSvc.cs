@@ -45,7 +45,7 @@ namespace UFlow
 	public class UFlowSvc : IAppService
 	{
 		private Dictionary<string, Func<UState>> _states = new Dictionary<string, Func<UState>>();
-		private Dictionary<string, Dictionary<string, List<UTransitionMap>>> _transitions = new Dictionary<string, Dictionary<string, List<UTransitionMap>>>();
+		private Dictionary<string, Dictionary<string, List<UTransitionMap>>> _links = new Dictionary<string, Dictionary<string, List<UTransitionMap>>>();
 		private Dictionary<string, string> _initialStates = new Dictionary<string, string>();
 
 		// Machines that have been instantiated.
@@ -125,10 +125,10 @@ namespace UFlow
 		{
 			Dictionary<string, List<UTransitionMap>> stateTransitions;
 			List<UTransitionMap> transitions;
-			if (!_transitions.TryGetValue(machineID, out stateTransitions))
+			if (!_links.TryGetValue(machineID, out stateTransitions))
 			{
 				_initialStates[machineID] = originState;
-				_transitions[machineID] = stateTransitions = new Dictionary<string, List<UTransitionMap>>();
+				_links[machineID] = stateTransitions = new Dictionary<string, List<UTransitionMap>>();
 			}
 			if (!stateTransitions.TryGetValue(originState, out transitions))
 				stateTransitions[originState] = transitions = new List<UTransitionMap>();
@@ -137,7 +137,7 @@ namespace UFlow
 
 		internal UState BuildState(string stateID, string machineID=null)
 		{
-			UState s = _transitions.ContainsKey(stateID) ? new UMachine() : _states[stateID]();
+			UState s = _links.ContainsKey(stateID) ? new UMachine() : _states[stateID]();
 			UMachine mac;
 			s._machine = (machineID != null && _machines.TryGetValue(machineID, out mac))
 				? mac
@@ -156,7 +156,7 @@ namespace UFlow
 		internal ULink[] BuildTransitions(string machineID, string originState)
 		{
 			Dictionary<string, List<UTransitionMap>> stateTransitions;
-			if (!_transitions.TryGetValue(machineID, out stateTransitions)) return null;
+			if (!_links.TryGetValue(machineID, out stateTransitions)) return null;
 
 			UMachine mac;
 			if (!_machines.TryGetValue(machineID, out mac)) return null;

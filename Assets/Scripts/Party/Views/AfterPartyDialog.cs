@@ -56,9 +56,20 @@ namespace Ambition
 			LivreText.text = "£" + livre.ToString();
 		}
 
+		void OnDestroy()
+		{
+			AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeout);			
+		}
+
 		public void Done()
 		{
-			AmbitionApp.SendMessage(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
+			AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeout);
+			AmbitionApp.SendMessage(GameMessages.FADE_OUT);
+		}
+
+		private void HandleFadeout()
+		{
+			AmbitionApp.InvokeMachine("EstateController");
 		}
 	}
 }

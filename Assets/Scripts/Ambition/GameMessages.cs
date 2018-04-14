@@ -5,6 +5,7 @@ namespace Ambition
 	public static class GameMessages
 	{
 		public static string LOAD_SCENE = "GotoSceneMsg";
+		public static string SCENE_LOADED = "SCENE_LOADED";
 		public static string FADE_OUT = "FadeOutMsg";
 		public static string FADE_IN = "FadeInMsg";
 		public static string FADE_OUT_COMPLETE = "FadeOutCompleteMsg";
