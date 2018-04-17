@@ -20,12 +20,20 @@ namespace Ambition
 
 		void OnEnable()
 		{
-			string factionID = AmbitionApp.GetModel<PartyModel>().Party.Faction;
-			FactionVO faction = AmbitionApp.GetModel<FactionModel>()[factionID];
-			int stat = (Stat.ToLower() == ItemConsts.LUXURY ? faction.Luxury : faction.Modesty);
-			Minimum.enabled = (stat < 0);
-			Maximum.enabled = (stat > 0);
-
+			PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
+			if (party != null)
+			{
+				string factionID = party == null ? null : party.Faction;
+				FactionVO faction = AmbitionApp.GetModel<FactionModel>()[factionID];
+				int stat = (Stat.ToLower() == ItemConsts.LUXURY ? faction.Luxury : faction.Modesty);
+				Minimum.enabled = (stat < 0);
+				Maximum.enabled = (stat > 0);
+			}
+			else
+			{
+				Minimum.enabled = false;
+				Maximum.enabled = false;
+			}
 		}
 
 		void OnDestroy()

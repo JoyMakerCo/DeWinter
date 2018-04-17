@@ -7,7 +7,8 @@ namespace Ambition
         private bool _subscribed=false;
         void OnEnable()
         {
-            if (!_subscribed)
+            if (!AmbitionApp.IsActiveState(TutorialConsts.TUTORIAL)) Destroy(this);
+            else if (!_subscribed)
             {
                 AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, HandleShowMap);
                 gameObject.SetActive(false);
@@ -17,17 +18,14 @@ namespace Ambition
         
         void OnDestroy()
         {
+            gameObject.SetActive(true);
             AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, HandleShowMap);
         }
 
         private void HandleShowMap()
         {
             RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
-            if (room.HostHere)
-            {
-                gameObject.SetActive(true);
-                Destroy(this);
-            }
+            if (room.HostHere) Destroy(this);
         }
     }
 }

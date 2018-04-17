@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace Ambition
 {
+	// todo: make a party state
 	public class StartPartyCmd : ICommand
 	{
 		public void Execute ()
