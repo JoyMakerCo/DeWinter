@@ -18,8 +18,8 @@ namespace Ambition
 	    void Awake ()
 	    {
 	    	PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
-	    	PartyNameText.text = party.Name;
-	    	PartyDescriptionText.text = party.Description;
+	    	PartyNameText.text = party == null ? "" : party.Name;
+	    	PartyDescriptionText.text = party == null ? "" : party.Description;
 			StyleText.text = AmbitionApp.GetModel<InventoryModel>().CurrentStyle;
 	    }
 	}

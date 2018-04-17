@@ -84,13 +84,13 @@ namespace Dialog
 
 		public bool Close(GameObject dialog)
 		{
-			bool closed = _dialogs.Remove(dialog);
-			if (dialog != null)
+			bool closed = (dialog != null);
+			if (closed)
 			{
+				_dialogs.Remove(dialog);
 				DialogView view = dialog.GetComponent<DialogView>();
 				view.OnClose();
 				GameObject.Destroy(dialog);
-				closed = true;
 			}
 			dialog = null;
 			return closed;

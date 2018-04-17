@@ -56,7 +56,7 @@ namespace Ambition
 				if (model.Inventory.Exists(i=>i.Type == ItemConsts.OUTFIT))
 				{
 					// Go to the party
-					AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_PARTYLOADOUT);
+					AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.LOAD_OUT_SCENE);
 				}
 				else 
 				{

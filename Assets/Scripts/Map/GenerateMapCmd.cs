@@ -50,6 +50,7 @@ namespace Ambition
 				}
 			}
 			party.Enemies = PopulateEnemies(map, EnemyInventory.enemyInventory.FindAll(e=>e.Faction == party.Faction));
+            map.Rooms[0].Cleared = true;
 			_model.Map = map;
 		}
 

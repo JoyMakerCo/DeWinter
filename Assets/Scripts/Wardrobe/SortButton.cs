@@ -14,13 +14,24 @@ namespace Ambition
 
 		public Button.ButtonClickedEvent onClick
 		{
-			get { return _button.onClick; }
+			get {
+				InitButton();
+				return _button.onClick;
+			}
 		}
 
 		void Awake()
 		{
-			_button = GetComponent<Button>();
-			_button.onClick.AddListener(HandleClick);
+			InitButton();
+		}
+
+		private void InitButton()
+		{
+			if (_button == null)
+			{
+				_button = GetComponent<Button>();
+				_button.onClick.AddListener(HandleClick);
+			}
 		}
 
 		void OnDestroy()

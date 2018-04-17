@@ -30,6 +30,7 @@ namespace Ambition
 		void Start ()
 		{
 			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
+			AmbitionApp.SendMessage(PartyMessages.START_PARTY);
 		}
 
 		private void GoToRoom()

@@ -30,7 +30,6 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<IntroServantCmd, ServantVO>(ServantMessages.INTRODUCE_SERVANT);
 			AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantMessages.HIRE_SERVANT);
 			AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantMessages.FIRE_SERVANT);
-			AmbitionApp.RegisterCommand<LoadSceneCmd, string>(GameMessages.LOAD_SCENE);
 			AmbitionApp.RegisterCommand<QuitCmd>(GameMessages.QUIT_GAME);
 			AmbitionApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
 			AmbitionApp.RegisterCommand<StartPartyCmd>(PartyMessages.START_PARTY);
@@ -84,33 +83,78 @@ namespace Ambition
 			AmbitionApp.RegisterLink("ConversationController", "EndTurn", "StartTurn");
 
 			// Estate States. This lands somewhere between confusing and annoying.
+			AmbitionApp.RegisterState<LoadSceneState, string>("LoadEstate", SceneConsts.ESTATE_SCENE);
 			AmbitionApp.RegisterState<StartEstateState>("InitEstate");
-			AmbitionApp.RegisterState<StartIncidentState>("StartEvent");
-			AmbitionApp.RegisterState<IncidentState>("EventStage");
-			AmbitionApp.RegisterState<CheckEndIncidentState>("CheckEndEvent");
-			AmbitionApp.RegisterState<EnterEstateState>("Estate");
+			AmbitionApp.RegisterState<FadeInState>("EnterEstate");
 			AmbitionApp.RegisterState<StyleChangeState>("StyleChange");
 			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
+			AmbitionApp.RegisterState("Estate");
 
-			AmbitionApp.RegisterLink<CheckIncidentsLink>("EstateController", "InitEstate", "StartEvent");
-			AmbitionApp.RegisterLink("EstateController", "InitEstate", "Estate");
-			AmbitionApp.RegisterLink("EstateController", "StartEvent", "EventStage");
-			AmbitionApp.RegisterLink<WaitForIncidentLink>("EstateController", "EventStage", "CheckEndEvent");
-			AmbitionApp.RegisterLink<CheckIncidentsLink>("EstateController", "CheckEndEvent", "EventStage");
-			AmbitionApp.RegisterLink("EstateController", "CheckEndEvent", "Estate");
+			AmbitionApp.RegisterLink("EstateController", "LoadEstate", "InitEstate");
+			AmbitionApp.RegisterLink("EstateController", "InitEstate", "EnterEstate");
+			AmbitionApp.RegisterLink("EstateController", "EnterEstate", "CreateInvitations");
 			// AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
 			// AmbitionApp.RegisterTransition<WaitForCloseDialogLink>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
-			AmbitionApp.RegisterLink("EstateController", "Estate", "CreateInvitations");
+			AmbitionApp.RegisterLink("EstateController", "CreateInvitations", "Estate");
+
+			// INCIDENT MACHINE
+			AmbitionApp.RegisterState<LoadSceneState, string>("LoadIncident", SceneConsts.INCIDENT_SCENE);
+			AmbitionApp.RegisterState<FadeInState>("EnterIncident");
+			AmbitionApp.RegisterState<StartIncidentState>("StartIncident");
+			AmbitionApp.RegisterState<MomentState>("Moment");
+			AmbitionApp.RegisterState("CheckEndIncident");
+			AmbitionApp.RegisterState<FadeOutState>("EndIncident");
+			AmbitionApp.RegisterState<InvokeMachineState, string>("InvokeEstate", "EstateController");
+
+			AmbitionApp.RegisterLink("IncidentController", "LoadIncident", "EnterIncident");
+			AmbitionApp.RegisterLink("IncidentController", "EnterIncident", "StartIncident");
+			AmbitionApp.RegisterLink("IncidentController", "StartIncident", "Moment");
+			AmbitionApp.RegisterLink<WaitForMomentLink>("IncidentController", "Moment", "CheckEndIncident");
+			AmbitionApp.RegisterLink<CheckEndIncidentLink>("IncidentController", "CheckEndIncident", "EndIncident");
+			AmbitionApp.RegisterLink("IncidentController", "CheckEndIncident", "Moment");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("IncidentController", "EndIncident", "InvokeEstate", GameMessages.FADE_OUT_COMPLETE);
+
 
 			// TUTORIAL STATES.
 			AmbitionApp.RegisterState<StartTutorialState>("InitTutorial");
-			AmbitionApp.RegisterState("ConversationTutorial");
-			AmbitionApp.RegisterState("HostTutorial");
-			AmbitionApp.RegisterState<EndTutorialState>("EndTutorial");
+			AmbitionApp.RegisterState<LoadSceneState, string>("LoadWardrobeStep", SceneConsts.LOAD_OUT_SCENE);
+			AmbitionApp.RegisterState<TutorialState>("TutorialWardrobeStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialGoStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialPartyStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialFirstRoomStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialStartConversationStep");
+			AmbitionApp.RegisterState<TutorialRemarkState>("TutorialRemarkStep");
+			AmbitionApp.RegisterState<TutorialGuestState>("TutorialGuestStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialAltRemarkStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialCompleteConversationStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialPunchbowlStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialMiddleConversationStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialHostRoomStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialHostConversationStep");
+			AmbitionApp.RegisterState<EndTutorialState>("TutorialEndHostConversationStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialLeaveButtonStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialLeavePartyStep");
 
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "InitTutorial", "ConversationTutorial", PartyMessages.SHOW_ROOM);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "ConversationTutorial", "HostTutorial", PartyMessages.SHOW_MAP);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "HostTutorial", "EndTutorial", PartyMessages.LEAVE_PARTY);
+			AmbitionApp.RegisterLink<WaitForMessageLink<string>>("TutorialController", "InitTutorial", "LoadWardrobeStep", GameMessages.SCENE_LOADED, SceneConsts.ESTATE_SCENE);
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "LoadWardrobeStep", "TutorialWardrobeStep", GameMessages.FADE_IN_COMPLETE);
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialWardrobeStep", "TutorialGoStep");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialGoStep", "TutorialPartyStep", GameMessages.FADE_IN_COMPLETE);
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("TutorialController", "TutorialPartyStep", "TutorialFirstRoomStep", MessageViewMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialFirstRoomStep", "TutorialStartConversationStep");
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("TutorialController", "TutorialStartConversationStep", "TutorialRemarkStep", ReadyGoDialogMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<TutorialRemarkLink>("TutorialController", "TutorialRemarkStep", "TutorialGuestStep");
+			AmbitionApp.RegisterLink<TutorialGuestLink>("TutorialController", "TutorialGuestStep", "TutorialCompleteConversationStep");
+			AmbitionApp.RegisterLink<TutorialRemarkLink>("TutorialController", "TutorialGuestStep", "TutorialAltRemarkStep");
+			AmbitionApp.RegisterLink("TutorialController", "TutorialAltRemarkStep", "TutorialGuestStep");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialCompleteConversationStep", "TutorialPunchbowlStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialPunchbowlStep", "TutorialMiddleConversationStep");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialMiddleConversationStep", "TutorialHostRoomStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialHostRoomStep", "TutorialHostConversationStep");
+			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialHostConversationStep", "TutorialEndHostConversationStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForMessageLink<string>>("TutorialController", "TutorialEndHostConversationStep", "TutorialLeaveButtonStep", GameMessages.DIALOG_CLOSED, MessageViewMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialLeaveButtonStep", "TutorialLeavePartyStep");
+
+			AmbitionApp.InvokeMachine(AmbitionApp.GetModel<IncidentModel>().Incident != null ? "IncidentController" : "EstateController");
 		}
 	}
 }
