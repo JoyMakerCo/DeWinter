@@ -161,9 +161,21 @@ namespace Ambition
             if (active)
             {
                 //Use Getpose to animate facial expressions?
-                if (_remark.Interest == _guest.Like) Animator.SetTrigger("Positive Remark");
-                else if (_remark.Interest == _guest.Dislike) Animator.SetTrigger("Negative Remark");
-                else Animator.SetTrigger("Neutral Remark");
+                if (_remark.Interest == _guest.Like)
+                {
+                    _image.sprite = _avatar.GetPose("positive");
+                    Animator.SetTrigger("Positive Remark");
+                }
+                else if (_remark.Interest == _guest.Dislike)
+                {
+                    _image.sprite = _avatar.GetPose("negative");
+                    Animator.SetTrigger("Negative Remark");
+                }
+                else
+                {
+                    _image.sprite = _avatar.GetPose("neutral");
+                    Animator.SetTrigger("Neutral Remark");
+                }
             }
         }
 
