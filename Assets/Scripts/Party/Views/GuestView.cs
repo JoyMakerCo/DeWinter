@@ -17,8 +17,9 @@ namespace Ambition
         public Color MidInterestColor;
         public Color MaxInterestColor;
 		public Image InterestIcon;
-		//public Text NameText; No more guest nameplates for now
-		public AvatarCollection Avatars;
+		public Image Highlight;
+
+        public AvatarCollection Avatars;
 		public SpriteConfig Interests;
         public Animator Animator;
 
@@ -41,7 +42,6 @@ namespace Ambition
 		void OnEnable()
 		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
-            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 		}
@@ -49,7 +49,6 @@ namespace Ambition
 		void OnDisable()
 	    {
 			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
-            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			StopAllCoroutines();
@@ -68,14 +67,12 @@ namespace Ambition
 				_image.enabled = setEnabled;
 				OpinionIndicator.enabled = setEnabled;
 				InterestIcon.enabled = setEnabled;
-				//NameText.enabled = setEnabled;
 			}
 
 			if (setEnabled)
 			{
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
-				//NameText.text = _guest.DisplayName;
 
 				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
@@ -121,22 +118,44 @@ namespace Ambition
 
 		public void OnPointerClick(PointerEventData eventData)
 	    {
-			AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
+            HandleSelected(_guest); //Has to be first, or remark gets set to null
+            AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
         }
 
+        
 		private void HandleRemark(RemarkVO remark)
 		{
 			_remark = remark;
 		}
 
-        private void HandleSelected(GuestVO[] guests)
+        private void HandleSelected(GuestVO guest)
         {
-            bool active = _remark != null && _guest != null;
+            bool active;
+            if (_remark != null && _guest != null)
+            {
+                active = true;
+            } else
+            {
+                active = false;
+            }
             if (active)
             {
-                if (_remark.Interest == _guest.Like) Animator.SetTrigger("Positive Remark");
-                else if (_remark.Interest == _guest.Dislike) Animator.SetTrigger("Negative Remark");
-                else Animator.SetTrigger("Neutral Remark");
+                //Use Getpose to animate facial expressions?
+                if (_remark.Interest == _guest.Like)
+                {
+                    _image.sprite = _avatar.GetPose("positive");
+                    Animator.SetTrigger("Positive Remark");
+                }
+                else if (_remark.Interest == _guest.Dislike)
+                {
+                    _image.sprite = _avatar.GetPose("negative");
+                    Animator.SetTrigger("Negative Remark");
+                }
+                else
+                {
+                    _image.sprite = _avatar.GetPose("neutral");
+                    Animator.SetTrigger("Neutral Remark");
+                }
             }
         }
 

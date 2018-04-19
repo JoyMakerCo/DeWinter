@@ -30,6 +30,7 @@ namespace Ambition
 
         private void HandleRemark(RemarkVO remark)
         {
+            Debug.Log("Spotlight Handling Remark!");
             float alpha = _image.color.a;
             Color c;
             _remark = remark;
