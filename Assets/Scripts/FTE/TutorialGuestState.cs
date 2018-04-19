@@ -17,7 +17,7 @@ namespace Ambition
             {
                 RemarkVO rem = AmbitionApp.GetModel<PartyModel>().Remark;
                 GuestVO[] guests = AmbitionApp.GetModel<MapModel>().Room.Guests;
-                SpotlightView[] spotlights = canvas.GetComponentsInChildren<SpotlightView>(false);
+                SpotlightView[] spotlights = canvas.GetComponentsInChildren<SpotlightView>(true);
                 int index = Array.FindIndex(guests, g=>g.Like == rem.Interest);
                 if (index < 0) index = Array.FindIndex(guests, g=>g.Dislike != rem.Interest);
                 if (index < 0) index = 0;

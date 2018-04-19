@@ -17,5 +17,6 @@ namespace Ambition
 		public static string CREATE_ENEMY = "CREATE_ENEMY";
 		public static string DIALOG_OPENED = "DIALOG_OPENED";
 		public static string DIALOG_CLOSED = "DIALOG_CLOSED";
+		public static string DIALOG_CONFIRM = "DIALOG_CONFIRM";
 	}
 }

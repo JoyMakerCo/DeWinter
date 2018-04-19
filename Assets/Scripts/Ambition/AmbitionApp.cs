@@ -122,24 +122,17 @@ namespace Ambition
 			return App.Service<DialogSvc>().Open<T>(DialogID, Data);
 		}
 
-		public static GameObject OpenMessageDialog(string dialogID, Dictionary<string, string> substitutions)
+		public static GameObject OpenMessageDialog(string phrase, Dictionary<string, string> substitutions)
 		{
-			MessageDialogVO vo = new MessageDialogVO();
-			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE, substitutions);
-			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY, substitutions);
-			vo.Button = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.OK, substitutions);
-			if (vo.Button == null) vo.Button = GetModel<LocalizationModel>().GetString(DialogConsts.DEFAULT_CONFIRM);
-			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+			GameObject dialog = OpenDialog<string>(DialogConsts.MESSAGE, phrase);
+			MessageViewMediator mediator = dialog.GetComponent<MessageViewMediator>();
+			if (mediator) mediator.SetPhrase(phrase, substitutions);
+			return dialog;
 		}
 
-		public static GameObject OpenMessageDialog(string dialogID)
+		public static GameObject OpenMessageDialog(string phrase)
 		{
-			MessageDialogVO vo = new MessageDialogVO();
-			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE);
-			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY);
-			vo.Button = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.OK);
-			if (vo.Button == null) vo.Button = GetModel<LocalizationModel>().GetString(DialogConsts.DEFAULT_CONFIRM);
-			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+			return OpenDialog<string>(DialogConsts.MESSAGE, phrase);
 		}
 
 		public static void CloseDialog(string dialogID)

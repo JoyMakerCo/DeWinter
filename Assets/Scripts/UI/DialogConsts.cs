@@ -8,6 +8,7 @@ namespace Ambition
 		public const string BODY = ".body";
 		public const string OK = ".ok";
 		public const string CANCEL = ".cancel";
+		public const string CONFIRM = ".confirm";
 		public const string DEFAULT_CONFIRM = "btn_confirm";
 		public const string DEFAULT_CANCEL = "btn_cancel";
 
