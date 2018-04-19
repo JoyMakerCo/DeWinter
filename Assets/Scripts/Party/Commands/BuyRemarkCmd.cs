@@ -9,7 +9,7 @@ namespace Ambition
 		public void Execute ()
 		{
 			PartyModel model = _models.GetModel<PartyModel>();
-			if (model.Remarks.Count < model.MaxHandSize && model.RemarksBought < model.ConfidenceCost.Length)
+			if (model.Remarks.Count < model.MaxHandSize)
 			{
 				int cost = model.ConfidenceCost[model.RemarksBought];
 				if (model.Confidence >= cost)

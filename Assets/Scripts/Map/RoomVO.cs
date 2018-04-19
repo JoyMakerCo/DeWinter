@@ -23,8 +23,15 @@ namespace Ambition
 
 		public CommodityVO [] Rewards;
 		public GuestVO [] Guests;
+		[JsonProperty("numGuests")]
+		private int NumGuests
+		{
+			set { Guests = new GuestVO[value]; }
+		}
+
 		public List<EnemyVO> Enemies;
 		public string [] Features=new string[0];
+
 
 		public bool HostHere
 		{

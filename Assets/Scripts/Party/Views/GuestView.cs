@@ -32,28 +32,35 @@ namespace Ambition
 		private RemarkVO _remark;
 		private Image _image;
 		private bool _isIntoxicated=false;
+		private string _pose;
 
 		void Awake()
 		{
 			_image = GetComponent<Image>();
+			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
 		}
 
 		void OnEnable()
 		{
-			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
             AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
+            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 		}
 
 		void OnDisable()
 	    {
-			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
             AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
+            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			StopAllCoroutines();
 	    }
+
+		void OnDestroy()
+		{
+			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
+		}
 
 	    private void HandleGuests(GuestVO[] guests)
 	    {
@@ -91,11 +98,12 @@ namespace Ambition
 					_guest.Gender = _avatar.Gender;
 				}
 
-				_image.sprite = _avatar.GetPose(_isIntoxicated
+				_pose = _isIntoxicated
 					? "neutral"
 					: _guest.Interest <= 0
 					? "bored"
-					: POSES[(int)(_guest.State)]);
+					: POSES[(int)(_guest.State)];
+				_image.sprite = _avatar.GetPose(_pose);
 					
 				if (_image.sprite == null)
 					_image.sprite = _avatar.GetPose("neutral");
@@ -103,6 +111,7 @@ namespace Ambition
 				InterestIcon.sprite = Interests.GetSprite(_guest.Like);
 			}
 	    }
+
 
 		private void HandleIntoxication(int tox)
 		{
@@ -139,6 +148,23 @@ namespace Ambition
                 else Animator.SetTrigger("Neutral Remark");
             }
         }
+
+		private void HandleTargeted(GuestVO [] guests)
+		{
+			if (_isIntoxicated || _remark == null || _guest == null) return;
+			if (guests != null && Array.IndexOf(guests, Guest) >= 0)
+			{
+				if (_remark.Interest == Guest.Like)
+					_image.sprite = _avatar.GetPose(POSES[POSES.Length-1]);
+				else if (_remark.Interest == Guest.Dislike)
+					_image.sprite = _avatar.GetPose(POSES[0]);
+				else _image.sprite = _avatar.GetPose("approval");
+			}
+			else
+			{
+				_image.sprite = _avatar.GetPose(_pose);
+			}
+		}
 
 		System.Collections.IEnumerator FillMeter(float percent)
 		{
