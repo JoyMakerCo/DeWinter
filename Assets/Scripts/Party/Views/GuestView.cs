@@ -17,8 +17,7 @@ namespace Ambition
         public Color MidInterestColor;
         public Color MaxInterestColor;
 		public Image InterestIcon;
-		//public Text NameText; No more guest nameplates for now
-		public AvatarCollection Avatars;
+        public AvatarCollection Avatars;
 		public SpriteConfig Interests;
         public Animator Animator;
 
@@ -42,7 +41,6 @@ namespace Ambition
 
 		void OnEnable()
 		{
-            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
@@ -50,7 +48,6 @@ namespace Ambition
 
 		void OnDisable()
 	    {
-            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
@@ -75,14 +72,12 @@ namespace Ambition
 				_image.enabled = setEnabled;
 				OpinionIndicator.enabled = setEnabled;
 				InterestIcon.enabled = setEnabled;
-				//NameText.enabled = setEnabled;
 			}
 
 			if (setEnabled)
 			{
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
-				//NameText.text = _guest.DisplayName;
 
 				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
@@ -130,24 +125,14 @@ namespace Ambition
 
 		public void OnPointerClick(PointerEventData eventData)
 	    {
-			AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
+            AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
         }
 
+        
 		private void HandleRemark(RemarkVO remark)
 		{
 			_remark = remark;
 		}
-
-        private void HandleSelected(GuestVO[] guests)
-        {
-            bool active = _remark != null && _guest != null;
-            if (active)
-            {
-                if (_remark.Interest == _guest.Like) Animator.SetTrigger("Positive Remark");
-                else if (_remark.Interest == _guest.Dislike) Animator.SetTrigger("Negative Remark");
-                else Animator.SetTrigger("Neutral Remark");
-            }
-        }
 
 		private void HandleTargeted(GuestVO [] guests)
 		{
@@ -155,10 +140,20 @@ namespace Ambition
 			if (guests != null && Array.IndexOf(guests, Guest) >= 0)
 			{
 				if (_remark.Interest == Guest.Like)
+				{
 					_image.sprite = _avatar.GetPose(POSES[POSES.Length-1]);
+					Animator.SetTrigger("Positive Remark");
+				}
 				else if (_remark.Interest == Guest.Dislike)
+				{
 					_image.sprite = _avatar.GetPose(POSES[0]);
-				else _image.sprite = _avatar.GetPose("approval");
+                    Animator.SetTrigger("Negative Remark");
+				}
+				else
+				{
+					_image.sprite = _avatar.GetPose("approval");
+                    Animator.SetTrigger("Neutral Remark");
+				}
 			}
 			else
 			{
