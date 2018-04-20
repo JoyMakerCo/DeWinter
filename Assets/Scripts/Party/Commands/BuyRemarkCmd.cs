@@ -16,7 +16,8 @@ namespace Ambition
 				{
 					AmbitionApp.GetModel<PartyModel>().Confidence -= cost;
 					AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
-					model.RemarksBought++;
+					if (model.RemarksBought < model.ConfidenceCost.Length-1)
+						model.RemarksBought++;
 				}
 			}
 		}
