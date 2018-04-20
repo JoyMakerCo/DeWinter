@@ -30,17 +30,18 @@ namespace Ambition
 
         private void HandleRemark(RemarkVO remark)
         {
-            Debug.Log("Spotlight Handling Remark!");
-            float alpha = _image.color.a;
-            Color c;
             _remark = remark;
             _image.enabled = false;
-            if (_remark == null) c = Colors.GetColor("Neutral");
-            else if (_remark.Interest == Guest.Guest.Like) c = Colors.GetColor("Like");
-            else if (_remark.Interest == Guest.Guest.Dislike) c = Colors.GetColor("Dislike");
-            else c = Colors.GetColor("Neutral");
-            c.a = alpha;
-            _image.color = c;
+            if (Guest != null && Guest.Guest != null && _remark != null)
+            {
+                Color c;
+                float alpha = _image.color.a;
+                if (_remark.Interest == Guest.Guest.Like) c = Colors.GetColor("Like");
+                else if (_remark.Interest == Guest.Guest.Dislike) c = Colors.GetColor("Dislike");
+                else c = Colors.GetColor("Neutral");
+                c.a = alpha;
+                _image.color = c;
+            }
         }
 
         private void HandleGuests(GuestVO [] guests)

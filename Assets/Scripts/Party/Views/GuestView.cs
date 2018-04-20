@@ -17,8 +17,6 @@ namespace Ambition
         public Color MidInterestColor;
         public Color MaxInterestColor;
 		public Image InterestIcon;
-		public Image Highlight;
-
         public AvatarCollection Avatars;
 		public SpriteConfig Interests;
         public Animator Animator;
@@ -33,26 +31,33 @@ namespace Ambition
 		private RemarkVO _remark;
 		private Image _image;
 		private bool _isIntoxicated=false;
+		private string _pose;
 
 		void Awake()
 		{
 			_image = GetComponent<Image>();
+			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
 		}
 
 		void OnEnable()
 		{
-			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
+            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 		}
 
 		void OnDisable()
 	    {
-			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
+            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			StopAllCoroutines();
 	    }
+
+		void OnDestroy()
+		{
+			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
+		}
 
 	    private void HandleGuests(GuestVO[] guests)
 	    {
@@ -88,11 +93,12 @@ namespace Ambition
 					_guest.Gender = _avatar.Gender;
 				}
 
-				_image.sprite = _avatar.GetPose(_isIntoxicated
+				_pose = _isIntoxicated
 					? "neutral"
 					: _guest.Interest <= 0
 					? "bored"
-					: POSES[(int)(_guest.State)]);
+					: POSES[(int)(_guest.State)];
+				_image.sprite = _avatar.GetPose(_pose);
 					
 				if (_image.sprite == null)
 					_image.sprite = _avatar.GetPose("neutral");
@@ -100,6 +106,7 @@ namespace Ambition
 				InterestIcon.sprite = Interests.GetSprite(_guest.Like);
 			}
 	    }
+
 
 		private void HandleIntoxication(int tox)
 		{
@@ -118,7 +125,6 @@ namespace Ambition
 
 		public void OnPointerClick(PointerEventData eventData)
 	    {
-            HandleSelected(_guest); //Has to be first, or remark gets set to null
             AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
         }
 
@@ -128,36 +134,32 @@ namespace Ambition
 			_remark = remark;
 		}
 
-        private void HandleSelected(GuestVO guest)
-        {
-            bool active;
-            if (_remark != null && _guest != null)
-            {
-                active = true;
-            } else
-            {
-                active = false;
-            }
-            if (active)
-            {
-                //Use Getpose to animate facial expressions?
-                if (_remark.Interest == _guest.Like)
-                {
-                    _image.sprite = _avatar.GetPose("positive");
-                    Animator.SetTrigger("Positive Remark");
-                }
-                else if (_remark.Interest == _guest.Dislike)
-                {
-                    _image.sprite = _avatar.GetPose("negative");
+		private void HandleTargeted(GuestVO [] guests)
+		{
+			if (_isIntoxicated || _remark == null || _guest == null) return;
+			if (guests != null && Array.IndexOf(guests, Guest) >= 0)
+			{
+				if (_remark.Interest == Guest.Like)
+				{
+					_image.sprite = _avatar.GetPose(POSES[POSES.Length-1]);
+					Animator.SetTrigger("Positive Remark");
+				}
+				else if (_remark.Interest == Guest.Dislike)
+				{
+					_image.sprite = _avatar.GetPose(POSES[0]);
                     Animator.SetTrigger("Negative Remark");
-                }
-                else
-                {
-                    _image.sprite = _avatar.GetPose("neutral");
+				}
+				else
+				{
+					_image.sprite = _avatar.GetPose("approval");
                     Animator.SetTrigger("Neutral Remark");
-                }
-            }
-        }
+				}
+			}
+			else
+			{
+				_image.sprite = _avatar.GetPose(_pose);
+			}
+		}
 
 		System.Collections.IEnumerator FillMeter(float percent)
 		{

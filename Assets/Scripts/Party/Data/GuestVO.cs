@@ -68,7 +68,7 @@ namespace Ambition
 				return GuestState.Interested;
 			}
 		}
-
+		
 		public bool IsLockedIn
 		{
 			get { return State == GuestState.PutOff || State == GuestState.Charmed; }

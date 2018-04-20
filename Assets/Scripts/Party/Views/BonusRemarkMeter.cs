@@ -43,10 +43,11 @@ namespace Ambition
 		private void HandleTurn(int turn)
 		{
 			int total = _model.FreeRemarkCounter;
-			int turnsLeft = total - (turn%total);
-			float fillAmount = (float)(turn%total)/(float)(total-1);
+			turn = (turn-1)%total;
+			float fillAmount = (float)(turn)/(float)(total-1);
+			Label.text = "New Remark In: " + (total - turn).ToString();
+			
 			StopAllCoroutines();
-			Label.text = "New Remark In: " + turnsLeft.ToString();
 			if (fillAmount < _meter.value) _meter.value = fillAmount;
 			else StartCoroutine(InterpValue(fillAmount));
 		}

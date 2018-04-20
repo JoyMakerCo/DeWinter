@@ -17,10 +17,11 @@ namespace Ambition
             {
                 RemarkVO rem = AmbitionApp.GetModel<PartyModel>().Remark;
                 GuestVO[] guests = AmbitionApp.GetModel<MapModel>().Room.Guests;
-                SpotlightView[] spotlights = canvas.GetComponentsInChildren<SpotlightView>(true); //Changed from false because the spotlights start as disabled and this array was coming up empty - Luther
+                SpotlightView[] spotlights = canvas.GetComponentsInChildren<SpotlightView>(true);
                 int index = Array.FindIndex(guests, g=>g.Like == rem.Interest);
                 if (index < 0) index = Array.FindIndex(guests, g=>g.Dislike != rem.Interest);
                 if (index < 0) index = 0;
+
                 GameObject obj = Array.Find(spotlights, s=>s.Guest.Guest == guests[index]).gameObject;
                 _flash = obj.AddComponent<TutorialFlashSpot>();
             }

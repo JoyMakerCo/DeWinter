@@ -58,7 +58,8 @@ namespace Ambition
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeout);			
+			AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
+			AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeout);
 		}
 
 		public void Done()
