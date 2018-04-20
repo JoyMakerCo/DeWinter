@@ -9,7 +9,8 @@ namespace Ambition
 {
 	public class CalendarButton : MonoBehaviour
 	{
-	    public int dayOffset; //Button Row
+	    public int DayIndex;
+
 	    public Image currentDayOutline;
 	    public Text dateText;
 	    public Image pastDayXImage;
@@ -69,11 +70,12 @@ namespace Ambition
 		private void HandleViewMonth(DateTime date)
 		{
 			int firstOffset = ((int)(date.DayOfWeek) + 7 - ((date.Day-1)%7))%7;
-			_day = date.AddDays(dayOffset-firstOffset);
+			_day = date.AddDays(DayIndex - firstOffset);
+			_currentMonth = date.Month;
 
-			bool isCurrentMonth = (_day.Month == _currentMonth);
-
-			myBlockImage.color = isCurrentMonth ? defaultColor : Color.gray;
+			myBlockImage.color = (_day.Month == _currentMonth)
+				? defaultColor
+				: Color.Lerp(defaultColor, Color.black, .5f);
 			dateText.text = _day.Day.ToString();
 
 			bool isToday = (_day == _model.Today);

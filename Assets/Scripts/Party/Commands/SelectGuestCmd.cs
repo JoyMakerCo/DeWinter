@@ -23,6 +23,7 @@ namespace Ambition
 				{
 					model.TargetedGuests[i] = guests[(i+index)%num];
 				}
+	            AmbitionApp.SendMessage<GuestVO[]>(PartyMessages.GUESTS_SELECTED, model.TargetedGuests);
 	            AmbitionApp.SendMessage(PartyMessages.END_TURN);
 			}
 		}
