@@ -42,6 +42,7 @@ namespace Ambition
 		void OnEnable()
 		{
             AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
+            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleSelected);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 		}
@@ -49,6 +50,7 @@ namespace Ambition
 		void OnDisable()
 	    {
             AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
+            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleSelected);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			StopAllCoroutines();
@@ -133,32 +135,50 @@ namespace Ambition
 		{
 			_remark = remark;
 		}
-
-		private void HandleTargeted(GuestVO [] guests)
+		private void HandleSelected(GuestVO [] guests)
 		{
-			if (_isIntoxicated || _remark == null || _guest == null) return;
-			if (guests != null && Array.IndexOf(guests, Guest) >= 0)
+			if (_guest != null
+				&& _remark != null
+				&& guests != null
+				&& Array.IndexOf(guests, Guest) >= 0)
 			{
 				if (_remark.Interest == Guest.Like)
 				{
-					_image.sprite = _avatar.GetPose(POSES[POSES.Length-1]);
 					Animator.SetTrigger("Positive Remark");
 				}
 				else if (_remark.Interest == Guest.Dislike)
 				{
-					_image.sprite = _avatar.GetPose(POSES[0]);
                     Animator.SetTrigger("Negative Remark");
 				}
 				else
 				{
-					_image.sprite = _avatar.GetPose("approval");
                     Animator.SetTrigger("Neutral Remark");
 				}
 			}
-			else
+		}
+		private void HandleTargeted(GuestVO [] guests)
+		{
+			string pose = _pose;
+			if (!_isIntoxicated
+				&& _remark != null
+				&& _guest != null
+				&& guests != null
+				&& Array.IndexOf(guests, Guest) >= 0)
 			{
-				_image.sprite = _avatar.GetPose(_pose);
+				if (_remark.Interest == Guest.Like)
+				{
+					pose = POSES[POSES.Length-1];
+				}
+				else if (_remark.Interest == Guest.Dislike)
+				{
+					pose = POSES[0];
+				}
+				else
+				{
+					pose = "approval";
+				}
 			}
+			_image.sprite = _avatar.GetPose(pose);
 		}
 
 		System.Collections.IEnumerator FillMeter(float percent)

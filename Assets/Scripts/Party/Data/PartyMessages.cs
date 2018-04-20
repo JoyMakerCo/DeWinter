@@ -15,6 +15,7 @@ namespace Ambition
 		public const string LEAVE_PARTY = "LEAVE_PARTY";
 		public const string AMBUSH = "AMBUSH";
 		public const string GUEST_SELECTED = "GUEST_SELECTED";
+		public const string GUESTS_SELECTED = "GUESTS_SELECTED";
 		public const string GUEST_TARGETED = "GUEST_TARGETED";
 		public const string GUESTS_TARGETED = "GUESTS_TARGETED";
 		public const string ENEMY_RESET = "ENEMY_RESET";
