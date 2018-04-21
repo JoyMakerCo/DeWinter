@@ -9,10 +9,15 @@ namespace Ambition
 		private PartyModel _model;
 		private float _max;
 
-		public ConfidenceMeterView()
+		void Awake()
 		{
 			ValueID = GameConsts.CONFIDENCE;
 			_model = AmbitionApp.GetModel<PartyModel>();
+		}
+
+		void OnEnable()
+		{
+			CalculatePercent(_model.Confidence);
 		}
 
 		protected override float CalculatePercent (int value)

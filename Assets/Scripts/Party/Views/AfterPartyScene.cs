@@ -7,7 +7,7 @@ using Dialog;
 
 namespace Ambition
 {
-	public class AfterPartyDialog : DialogView, Util.IInitializable<PartyVO>
+	public class AfterPartyScene : MonoBehaviour
 	{
 		public const string DIALOG_ID = "AFTER_PARTY_DIALOG";
 		public SpriteConfig FactionIconConfig;
@@ -22,9 +22,10 @@ namespace Ambition
 		public Text NoveltyLossText;
 		public Text PartyImportance;
 
-		public void Initialize(PartyVO party)
+		void Start ()
 		{
 	        OutfitVO outfit = AmbitionApp.GetModel<GameModel>().Outfit;
+			PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
 			PartyText.text = party.Name;
 			if (party.Host != null) PartyText.text += (" - " + party.Host.Name);
 			PartyImportance.text = party.Importance.ToString();

@@ -32,6 +32,12 @@ namespace Ambition
 			AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
 	    }
 
+		void OnEnable()
+		{
+			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+			titleText.text = model.Incident.Name;
+		}
+
  		private void HandleMoment(MomentVO moment)
 		{
 			if (moment != null)
