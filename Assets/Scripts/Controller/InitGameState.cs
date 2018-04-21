@@ -150,7 +150,7 @@ namespace Ambition
 			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialPunchbowlStep", "TutorialMiddleConversationStep");
 			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialMiddleConversationStep", "TutorialHostRoomStep", PartyMessages.SHOW_MAP);
 			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialHostRoomStep", "TutorialHostConversationStep");
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialHostConversationStep", "TutorialEndHostConversationStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<WaitForHostTutorialLink>("TutorialController", "TutorialHostConversationStep", "TutorialEndHostConversationStep", PartyMessages.SHOW_MAP);
 			AmbitionApp.RegisterLink<WaitForMessageLink<string>>("TutorialController", "TutorialEndHostConversationStep", "TutorialLeaveButtonStep", GameMessages.DIALOG_CLOSED, MessageViewMediator.DIALOG_ID);
 			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialLeaveButtonStep", "TutorialLeavePartyStep");
 

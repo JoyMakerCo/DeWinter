@@ -9,9 +9,13 @@ namespace Ambition
 		private PartyModel _model;
 		public ConfidenceTextView() : base(GameConsts.CONFIDENCE) {}
 
-		override protected void InitValue()
+		void Awake()
 		{
 			_model = AmbitionApp.GetModel<PartyModel>();
+		}
+
+		void OnEnable()
+		{
 			HandleValue(_model.Confidence);
 		}
 

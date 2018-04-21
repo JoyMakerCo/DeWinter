@@ -17,8 +17,8 @@ namespace Ambition
 
 		public string Text
 		{
-			get { return _text.text; }
-			set { _text.text = value; }
+			get { return (_text != null) ? _text.text : null; }
+			set { if (_text != null) _text.text = value; }
 		}
 
 		void Awake()
