@@ -11,15 +11,16 @@ namespace Ambition
         void OnEnable()
         {
             _model = AmbitionApp.GetModel<PartyModel>();
-            AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleConfidence);
+            AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
+            HandleIntoxication(_model.Intoxication);
         }
 
         void OnDisable()
         {
-            AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleConfidence);
+            AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
         }
 
-        private void HandleConfidence(int value)
+        private void HandleIntoxication(int value)
         {
             base.HandlePercent(((float)value)/(float)(_model.MaxIntoxication));
         }

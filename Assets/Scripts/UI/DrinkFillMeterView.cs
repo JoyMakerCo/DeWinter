@@ -12,6 +12,7 @@ namespace Ambition
         {
             _model = AmbitionApp.GetModel<PartyModel>();
             AmbitionApp.Subscribe<int>(GameConsts.DRINK, HandleDrink);
+            HandleDrink(_model.Drink);
         }
 
         void OnDisable()

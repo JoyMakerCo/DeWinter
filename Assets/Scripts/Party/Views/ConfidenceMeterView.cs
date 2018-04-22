@@ -12,6 +12,7 @@ namespace Ambition
         {
             _model = AmbitionApp.GetModel<PartyModel>();
             AmbitionApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleConfidence);
+            HandleConfidence(_model.Confidence);
         }
 
         void OnDisable()
