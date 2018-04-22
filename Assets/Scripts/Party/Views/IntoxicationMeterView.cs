@@ -1,23 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class IntoxicationMeterView : ImageFillMessageView<int>
-	{
-		private PartyModel _model;
+	public class IntoxicationMeterView : ImageFillMessageView
+    {
+        private PartyModel _model;
+        void OnEnable()
+        {
+            _model = AmbitionApp.GetModel<PartyModel>();
+            AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleConfidence);
+        }
 
-		void Start()
-		{
-			_model = AmbitionApp.GetModel<PartyModel>();
-			ValueID = GameConsts.INTOXICATION;
-			Percent = CalculatePercent(_model.Intoxication);
-		}
+        void OnDisable()
+        {
+            AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleConfidence);
+        }
 
-		protected override float CalculatePercent (int value)
-		{
-			return (float)value/(float)_model.Party.MaxIntoxication;
-		}
-	}
+        private void HandleConfidence(int value)
+        {
+            base.HandlePercent(((float)value)/(float)(_model.MaxIntoxication));
+        }
+    }
 }
