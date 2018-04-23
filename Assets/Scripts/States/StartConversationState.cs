@@ -61,6 +61,15 @@ namespace Ambition
 					g.Like = model.Interests[likeIndex];
 					g.Dislike = model.Interests[(likeIndex + 1)%model.Interests.Length];
 				}
+				// All Variety of Likes final check
+				if (Array.TrueForAll(room.Guests, g=>g.Like == room.Guests[0].Like))
+				{
+					GuestVO g = room.Guests[Util.RNG.Generate(room.Guests.Length)];
+					likeIndex = Util.RNG.Generate(1,model.Interests.Length);
+					if (model.Interests[likeIndex] == g.Like) likeIndex = 0;
+					g.Like = model.Interests[likeIndex];
+					g.Dislike = model.Interests[(likeIndex + 1)%model.Interests.Length];
+				}
 			}
 			AmbitionApp.SendMessage<GuestVO[]>(room.Guests);
 			AmbitionApp.SendMessage<int>(model.Confidence);
