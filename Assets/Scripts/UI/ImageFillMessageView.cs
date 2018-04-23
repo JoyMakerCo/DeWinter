@@ -5,78 +5,38 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public abstract class ImageFillMessageView<T> : MonoBehaviour
+	public abstract class ImageFillMessageView : MonoBehaviour
 	{
-		[SerializeField]
-		protected string _valueID;
-
-		protected float _interpolationTime = 0.5f;
-
-		private Image _fillbar;
-
-		public string ValueID
-		{
-			get { return _valueID; }
-			set {
-				AmbitionApp.Unsubscribe<T>(_valueID, HandleValue);
-				AmbitionApp.Subscribe<T>(_valueID=value, HandleValue);
-			}
-		}
-
-		protected T _value;
-		public T Value
-		{
-			get { return _value; }
-			set
-			{
-				float percent = CalculatePercent(_value = value);
-				if (isActiveAndEnabled)
-					StartCoroutine(InterpValue(percent));
-				else
-					_fillbar.fillAmount = percent;
-			}
-		}
-
-		public float Percent
-		{
-			get { return _fillbar.fillAmount; }
-			set { _fillbar.fillAmount = value; }
-		}
+		public float FillTime = 0.5f;
+		public bool AnimateFill=true;
+		public bool AnimateEmpty=true;
+		private Image _fillbar;		
 
 		void Awake ()
 		{
-			ValueID = _valueID;
 			_fillbar = gameObject.GetComponent<Image>();
 		}
 
-		void OnEnable()
-		{
-			AmbitionApp.Subscribe<T>(_valueID, HandleValue);
-		}
-
-		void OnDisable()
-		{
-			StopAllCoroutines();
-			AmbitionApp.Unsubscribe<T>(_valueID, HandleValue);
-		}
-
-		protected abstract float CalculatePercent(T value);
-
-		private void HandleValue(T value)
+		protected void HandlePercent(float percent)
 		{
 			if (isActiveAndEnabled)
 			{
+				float currPercent = _fillbar.fillAmount;
 				StopAllCoroutines();
-				Value = value;
+				if (percent > currPercent && !AnimateFill)
+					_fillbar.fillAmount = percent;
+				else if (percent < currPercent && !AnimateEmpty)
+					_fillbar.fillAmount = percent;
+				else StartCoroutine(InterpValue(percent));
 			}
 		}
 
 		IEnumerator InterpValue(float value)
 		{
 			float v0 = _fillbar.fillAmount;
-			for (float t = 0; t < _interpolationTime; t+=Time.deltaTime)
+			for (float t = 0; t < FillTime; t+=Time.deltaTime)
 			{
-				_fillbar.fillAmount = ((_interpolationTime - t)*v0 + t*value)/_interpolationTime;
+				_fillbar.fillAmount = v0 + (value - v0)*(t/FillTime);
 				yield return null;
 			}
 			_fillbar.fillAmount = value;

@@ -8,7 +8,7 @@ public class LocalizedText : MonoBehaviour
 {
 	private Text _text;
 	private string _phrase;
-
+	
 	void Awake ()
 	{
 		_text = GetComponent<Text>();

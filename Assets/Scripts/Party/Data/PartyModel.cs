@@ -133,6 +133,7 @@ namespace Ambition
 				AmbitionApp.SendMessage<int>(GameConsts.INTOXICATION, _intoxication);
 			}
 		}
+		public int MaxIntoxication = 3;
 
 		[JsonProperty("parties")]
 		public PartyVO[] Parties;
