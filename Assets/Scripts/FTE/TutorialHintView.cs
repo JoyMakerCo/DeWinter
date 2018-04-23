@@ -8,9 +8,10 @@ namespace Ambition
     // Be sure the name of this GameObject matches the name of the Tutorial Step. 
     public class TutorialHintView : MonoBehaviour, IPointerClickHandler
     {
+        public string TutorialStep;
         void Awake()
         {
-            bool isState = AmbitionApp.IsActiveState(this.gameObject.name);
+            bool isState = AmbitionApp.IsActiveState(TutorialStep);
             this.gameObject.SetActive(isState);
             if (!isState)
             {
@@ -31,13 +32,13 @@ namespace Ambition
 
         private void HandleTutorialStep(string step)
         {
-            if (step == this.gameObject.name)
+            if (step == TutorialStep)
                 this.gameObject.SetActive(true);
         }
 
         private void HandleTutorialStepComplete(string step)
         {
-            if (step == this.gameObject.name)
+            if (step == TutorialStep)
                 this.gameObject.SetActive(false);
         }
     }

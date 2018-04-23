@@ -21,6 +21,8 @@ namespace Ambition
 		public MapVO Map;
 	    public bool Cleared=false;
 
+		[JsonProperty("background")]
+		public string Background;
 		public CommodityVO [] Rewards;
 		public GuestVO [] Guests;
 		[JsonProperty("numGuests")]
