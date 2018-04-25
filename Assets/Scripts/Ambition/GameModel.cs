@@ -32,6 +32,7 @@ namespace Ambition
 			get { return _reputation.Reputation; }
 			set
 			{
+				if (value < 0) value = 0;
 				int level = _reputation.Level = Array.FindIndex(_levels, r => r > value);
 				_reputation.Reputation = value;
 				_reputation.ReputationMax = _levels[level];

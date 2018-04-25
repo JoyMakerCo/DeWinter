@@ -59,7 +59,6 @@ namespace Ambition
 
 		void OnDestroy()
 		{
-			AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
 			AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeout);
 		}
 
@@ -71,6 +70,7 @@ namespace Ambition
 
 		private void HandleFadeout()
 		{
+			AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
 			AmbitionApp.InvokeMachine("EstateController");
 		}
 	}
