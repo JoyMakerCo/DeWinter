@@ -185,43 +185,14 @@ namespace Ambition
 
 		public void Initialize()
 		{
-			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
-			AmbitionApp.Subscribe<DateTime>(HandleDay);
 			AmbitionApp.Subscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
 			AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleClearRemark);
 		}
 
 		public void Dispose()
 		{
-			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandleRSVP);
-			AmbitionApp.Unsubscribe<DateTime>(HandleDay);
 			AmbitionApp.Unsubscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
 			AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleClearRemark);
-		}
-
-		private void HandleDay(DateTime date)
-		{
-			List<PartyVO> parties;
-			if (AmbitionApp.GetModel<CalendarModel>().Parties.TryGetValue(date, out parties))
-			{
-				Party = parties.Find(p => p.RSVP == 1);
-			}
-			else
-			{
-				Party = null;
-			}
-		}
-
-		private void HandleRSVP (PartyVO party)
-	    {
-	    	if (Party == party && party.RSVP < 1)
-	    	{
-	    		Party = null;
-	    	}
-	    	else if (party.Date == AmbitionApp.GetModel<CalendarModel>().Today && party.RSVP == 1)
-	    	{
-	    		Party = party;
-			}
 		}
 	}
 }
