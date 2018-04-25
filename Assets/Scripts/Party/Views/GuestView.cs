@@ -8,7 +8,7 @@ namespace Ambition
 	public class GuestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
 		private const float FILL_SECONDS = 0.5f;
-		private readonly static string[] POSES = new string[]{"putout", "neutral", "approval", "charmed"};
+		private readonly static string[] POSES = new string[]{"putout", "disapproval", "neutral", "approval", "charmed"};
 
 		public int Index;
 
@@ -17,6 +17,7 @@ namespace Ambition
         public Color MidInterestColor;
         public Color MaxInterestColor;
 		public Image InterestIcon;
+        public Image InterestIconBorder;
         public AvatarCollection Avatars;
 		public SpriteConfig Interests;
         public Animator Animator;
@@ -74,6 +75,7 @@ namespace Ambition
 				_image.enabled = setEnabled;
 				OpinionIndicator.enabled = setEnabled;
 				InterestIcon.enabled = setEnabled;
+                InterestIconBorder.enabled = setEnabled;
 			}
 
 			if (setEnabled)
@@ -95,13 +97,13 @@ namespace Ambition
 					_guest.Gender = _avatar.Gender;
 				}
 
-				_pose = _isIntoxicated
+                _pose = _isIntoxicated
 					? "neutral"
 					: _guest.Interest <= 0
 					? "bored"
 					: POSES[(int)(_guest.State)];
 				_image.sprite = _avatar.GetPose(_pose);
-					
+
 				if (_image.sprite == null)
 					_image.sprite = _avatar.GetPose("neutral");
 
@@ -135,27 +137,36 @@ namespace Ambition
 		{
 			_remark = remark;
 		}
+
 		private void HandleSelected(GuestVO [] guests)
 		{
-			if (_guest != null
+            string pose = _pose;
+            if (_guest != null
 				&& _remark != null
 				&& guests != null
 				&& Array.IndexOf(guests, Guest) >= 0)
 			{
 				if (_remark.Interest == Guest.Like)
 				{
-					Animator.SetTrigger("Positive Remark");
+                    pose = POSES[POSES.Length - 1];
+                    _image.sprite = _avatar.GetPose(pose);
+                    Animator.SetTrigger("Positive Remark");
 				}
 				else if (_remark.Interest == Guest.Dislike)
 				{
+                    pose = "disapproval";
+                    _image.sprite = _avatar.GetPose(pose);
                     Animator.SetTrigger("Negative Remark");
 				}
 				else
 				{
+                    pose = "approval";
+                    _image.sprite = _avatar.GetPose(pose);
                     Animator.SetTrigger("Neutral Remark");
 				}
-			}
+            }
 		}
+
 		private void HandleTargeted(GuestVO [] guests)
 		{
 			string pose = _pose;
@@ -171,7 +182,7 @@ namespace Ambition
 				}
 				else if (_remark.Interest == Guest.Dislike)
 				{
-					pose = POSES[0];
+					pose = "disapproval";
 				}
 				else
 				{
