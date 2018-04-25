@@ -33,16 +33,13 @@ namespace Ambition
 		private Button _btn;
 		private CalendarModel _model;
 
-	    void Awake()
-	    {
+		void OnEnable()
+		{
 	        myBlockImage = this.GetComponent<Image>();
 	        defaultColor = myBlockImage.color;
 			_btn = this.GetComponent<Button>();
 			_model = AmbitionApp.GetModel<CalendarModel>();
-		}
 
-		void OnEnable()
-		{
 			AmbitionApp.Subscribe<DateTime>(HandleViewMonth);
 			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleViewMonth);
 			AmbitionApp.Subscribe<PartyVO>(HandlePartyUpdated);

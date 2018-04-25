@@ -9,43 +9,50 @@ namespace Ambition
 	public class AdvanceTimeButtonTextController : MonoBehaviour
 	{
 	    private Text _text;
-	    private PartyVO _party;
 	    private DateTime _date;
 	    private Button _btn;
+		private bool _goParty;
 
 	    void Awake()
 	    {
 			_btn = this.GetComponent<Button>();
 			_btn.onClick.AddListener(OnClick);
 			_text = this.GetComponentInChildren<Text>();
-			AmbitionApp.Subscribe<PartyVO>(HandleRSVP);
+			AmbitionApp.Subscribe<PartyVO>(HandleParty);
 			AmbitionApp.Subscribe<DateTime>(HandleDay);
+			_date = AmbitionApp.GetModel<CalendarModel>().Today;
+			SetMode(AmbitionApp.GetModel<PartyModel>().Party);
 	    }
 
 	    void OnDestroy()
 	    {
 			_btn.onClick.RemoveListener(OnClick);
-			AmbitionApp.Unsubscribe<PartyVO>(HandleRSVP);
+			AmbitionApp.Unsubscribe<PartyVO>(HandleParty);
 			AmbitionApp.Unsubscribe<DateTime>(HandleDay);
 	    }
 
 	    private void HandleDay(DateTime date)
 	    {
-			PartyVO p = AmbitionApp.GetModel<PartyModel>().Party;
 	    	_date = date;
-	    	if (p != null) HandleRSVP(p);
 	    }
 
-		private void HandleRSVP (PartyVO party)
+		private void HandleParty (PartyVO party)
 	    {
-			if (party.Date == _date && party.RSVP > 0) _party = party;
-			else if (party == _party && party.RSVP < 0) _party = null;
-			_text.text = (_party != null) ? "Go to the Party!" : "Next Day";
+			if (party == null || party.Date == _date)
+			{
+				SetMode(party);
+			}
+		}
+
+		private void SetMode(PartyVO party)
+		{
+			_goParty = party != null && party.Date == _date && party.RSVP > 0;
+			_text.text = _goParty ? "Go to the Party!" : "Next Day";
 		}
 
 		private void OnClick()
 		{
-			if (_party == null)
+			if (!_goParty)
 			{
 				AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
 				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
