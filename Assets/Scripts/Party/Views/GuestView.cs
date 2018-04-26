@@ -36,8 +36,8 @@ namespace Ambition
 
 		void Awake()
 		{
-			_image = GetComponent<Image>();
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
+			_image = GetComponent<Image>();
 		}
 
 		void OnEnable()
