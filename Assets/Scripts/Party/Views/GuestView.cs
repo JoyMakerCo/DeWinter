@@ -148,20 +148,20 @@ namespace Ambition
 			{
 				if (_remark.Interest == Guest.Like)
 				{
-                    pose = POSES[POSES.Length - 1];
-                    _image.sprite = _avatar.GetPose(pose);
+                    //pose = POSES[POSES.Length - 1];
+                    //_image.sprite = _avatar.GetPose(pose);
                     Animator.SetTrigger("Positive Remark");
 				}
 				else if (_remark.Interest == Guest.Dislike)
 				{
-                    pose = "disapproval";
-                    _image.sprite = _avatar.GetPose(pose);
+                    //pose = "disapproval";
+                    //_image.sprite = _avatar.GetPose(pose);
                     Animator.SetTrigger("Negative Remark");
 				}
 				else
 				{
-                    pose = "approval";
-                    _image.sprite = _avatar.GetPose(pose);
+                    //pose = "approval";
+                    //_image.sprite = _avatar.GetPose(pose);
                     Animator.SetTrigger("Neutral Remark");
 				}
             }
