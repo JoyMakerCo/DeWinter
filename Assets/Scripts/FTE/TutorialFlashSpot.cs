@@ -50,7 +50,6 @@ namespace Ambition
                 }
                 yield return null;
             }
-            _spotlight.enabled = false;
         }
     }
 }
