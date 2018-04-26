@@ -17,6 +17,7 @@ namespace Ambition
         public Color MidInterestColor;
         public Color MaxInterestColor;
 		public Image InterestIcon;
+        public Image InterestIconBorder;
         public AvatarCollection Avatars;
 		public SpriteConfig Interests;
         public Animator Animator;
@@ -74,7 +75,8 @@ namespace Ambition
 				_image.enabled = setEnabled;
 				OpinionIndicator.enabled = setEnabled;
 				InterestIcon.enabled = setEnabled;
-			}
+                InterestIconBorder.enabled = setEnabled;
+            }
 
 			if (setEnabled)
 			{
