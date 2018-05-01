@@ -16,15 +16,11 @@ namespace Ambition
 				AmbitionApp.SendMessage<AdjustFactionVO>(new AdjustFactionVO(party.Faction, -rep));
 				AmbitionApp.GetModel<GameModel>().Reputation -= rep;
 			}
-
-			if (party.Date == calendar.Today && party.RSVP == 1)
+			AmbitionApp.SendMessage<PartyVO>(PartyMessages.PARTY_UPDATE, party);
+			if (party.Date == calendar.Today)
 			{
-				model.Party = party;
+				model.Party = (party.RSVP == 1) ? party : null;
 			}
-			else if (model.Party == party && party.RSVP != 1)
-	    	{
-	    		model.Party = null;
-	    	}
 		}
 	}
 }

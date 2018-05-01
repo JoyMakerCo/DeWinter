@@ -26,21 +26,6 @@ namespace Ambition
 			{
 				CreateParty(day.AddDays(Util.RNG.Generate(1,8)+Util.RNG.Generate(1,8)));
 			}
-
-	       	// Missed Parties
-	       	// TODO: Create a new state for this
-	       	List<PartyVO> missed;
-			if (_calendar.Parties.TryGetValue(_calendar.Yesterday, out missed))
-			{
-				foreach (PartyVO party in missed)
-				{
-					AmbitionApp.GetModel<GameModel>().Reputation -= 40;
-
-					Dictionary<string, string> subs = new Dictionary<string, string>(){
-						{"$PARTYNAME",party.Name}};
-			    	AmbitionApp.OpenMessageDialog(DialogConsts.MISSED_RSVP_DIALOG, subs);
-				}
-			}
 		}
 
 		private void CreateParty(DateTime date)
@@ -92,13 +77,12 @@ party.Host = characters.Notables[Util.RNG.Generate(0,characters.Notables.Length)
 			if (!_calendar.Parties.ContainsKey(party.Date))
 			{
 				_calendar.Parties.Add(party.Date, new List<PartyVO>{party});
-				AmbitionApp.SendMessage<PartyVO>(party);
 			}
 			else if (!_calendar.Parties[party.Date].Contains(party))
 			{
 				_calendar.Parties[party.Date].Add(party);
-				AmbitionApp.SendMessage<PartyVO>(party);
 			}
+			AmbitionApp.SendMessage<PartyVO>(PartyMessages.PARTY_UPDATE, party);
 		}
 
 		private string GetRandomText(string key)

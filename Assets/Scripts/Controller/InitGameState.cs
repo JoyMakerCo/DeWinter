@@ -88,6 +88,7 @@ namespace Ambition
 			AmbitionApp.RegisterState<FadeInState>("EnterEstate");
 			AmbitionApp.RegisterState<StyleChangeState>("StyleChange");
 			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
+			AmbitionApp.RegisterState<CheckMissedPartiesState>("CheckMissedParties");
 			AmbitionApp.RegisterState("Estate");
 
 			AmbitionApp.RegisterLink("EstateController", "LoadEstate", "InitEstate");
@@ -95,7 +96,8 @@ namespace Ambition
 			AmbitionApp.RegisterLink("EstateController", "EnterEstate", "CreateInvitations");
 			// AmbitionApp.RegisterTransition("EstateController", "Estate", "StyleChange");
 			// AmbitionApp.RegisterTransition<WaitForCloseDialogLink>("EstateController", "StyleChange", "CreateInvitations", DialogConsts.MESSAGE);
-			AmbitionApp.RegisterLink("EstateController", "CreateInvitations", "Estate");
+			AmbitionApp.RegisterLink("EstateController", "CreateInvitations", "CheckMissedParties");
+			AmbitionApp.RegisterLink("EstateController", "CheckMissedParties", "Estate");
 
 			// INCIDENT MACHINE
 			AmbitionApp.RegisterState<LoadSceneState, string>("LoadIncident", SceneConsts.INCIDENT_SCENE);

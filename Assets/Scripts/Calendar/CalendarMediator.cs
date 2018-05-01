@@ -21,12 +21,12 @@ namespace Ambition
 		{
 			while (!Array.TrueForAll(Days, d=>d.isActiveAndEnabled))
 				yield return null;
-				
+			
 			_today = AmbitionApp.GetModel<CalendarModel>().Today;
 			AmbitionApp.Subscribe<DateTime>(HandleDay);
 			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleMonth);
 			AmbitionApp.Subscribe<PartyVO>(HandlePartyUpdated);
-			AmbitionApp.Subscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
+			AmbitionApp.Subscribe<PartyVO>(PartyMessages.PARTY_UPDATE, HandlePartyUpdated);
 			HandleMonth(_today);
 		}
 
@@ -35,7 +35,7 @@ namespace Ambition
 			AmbitionApp.Unsubscribe<DateTime>(HandleDay);
 			AmbitionApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleMonth);
 			AmbitionApp.Unsubscribe<PartyVO>(HandlePartyUpdated);
-			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.RSVP, HandlePartyUpdated);
+			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.PARTY_UPDATE, HandlePartyUpdated);
 		}
 
 		private void HandleDay(DateTime today)
@@ -46,9 +46,19 @@ namespace Ambition
 
 		private void HandleMonth(DateTime month)
 		{
+			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
+			List<PartyVO> parties;
+
 			_month = month.AddDays(1-month.Day);
 			UpdateDays();
-			UpdateParties();
+
+			foreach (CalendarButton day in Days)
+			{
+				if (model.Parties.TryGetValue(day.Date, out parties))
+				{
+					parties.ForEach(day.AddParty);
+				}
+			}
 		}
 
 		private void UpdateDays()
@@ -61,17 +71,10 @@ namespace Ambition
 			}
 		}
 
-		private void UpdateParties()
-		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			PartyVO [] parties = Array.FindAll(model.Parties, p=>p.Date >= Days[0].Day && p.Date <= Days[Days.Length-1].Day);
-			Array.ForEach(parties, HandlePartyUpdated);
-		}
-
 		private void HandlePartyUpdated(PartyVO party)
 		{
-			CalendarButton btn = Array.Find(Days, d=>d.Day == party.Date);
-			if (btn != null) btn.AddParty(party);
+			int index = (party.Date - Days[0].Date).Days;
+			if (index < Days.Length) Days[index].AddParty(party);
 		}
 	}
 }
