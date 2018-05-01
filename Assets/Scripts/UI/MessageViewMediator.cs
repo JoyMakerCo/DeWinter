@@ -26,11 +26,19 @@ namespace Ambition
 			BodyTxt.text = model.GetString(phrase + DialogConsts.BODY, substitutions);
 			TitleTxt.text = model.GetString(phrase + DialogConsts.TITLE, substitutions);
 
-			str=model.GetString(phrase + DialogConsts.CANCEL, substitutions);
-			if (str != null && DismissTxt != null) DismissTxt.text = str;
+			if (DismissTxt != null)
+			{
+				str=model.GetString(phrase + DialogConsts.CANCEL, substitutions);
+				if (str != null && DismissTxt != null) DismissTxt.text = str;
+				else DismissTxt.text = model.GetString(DialogConsts.DEFAULT_CANCEL);
+			}
 			
-			str=model.GetString(phrase + DialogConsts.CONFIRM, substitutions);
-			if (str != null && ConfirmTxt != null) ConfirmTxt.text = str;
+			if (ConfirmTxt != null)
+			{
+				str=model.GetString(phrase + DialogConsts.CONFIRM, substitutions);
+				if (str != null && ConfirmTxt != null) ConfirmTxt.text = str;
+				else ConfirmTxt.text = model.GetString(DialogConsts.DEFAULT_CONFIRM);
+			}
 		}
 
 		public override void OnOpen ()

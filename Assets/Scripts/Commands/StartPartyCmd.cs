@@ -18,7 +18,7 @@ namespace Ambition
 			MapModel map = AmbitionApp.GetModel<MapModel>();
 
 			ItemVO accessory;
-			if (inventory.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory))
+			if (inventory.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory != null)
 			{
 				switch(accessory.Name)
 				{

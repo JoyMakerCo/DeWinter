@@ -7,7 +7,8 @@ namespace Ambition
 		public const string SHOW_MAP = "SHOW_MAP";
 		public const string SHOW_ROOM = "SHOW_ROOM";
 
-		public const string RSVP = "REQUEST_RSVP";
+		public const string RSVP = "RSVP";
+		public const string PARTY_UPDATE = "PARTY_UPDATE";
 		public const string START_TURN = "START_TURN";
 		public const string START_PARTY = "START_PARTY";
 		public const string PARTY_STARTED = "PARTY_STARTED";

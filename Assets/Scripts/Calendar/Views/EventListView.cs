@@ -19,13 +19,13 @@ namespace Ambition
 		void OnEnable()
 		{
 			_calendar = AmbitionApp.GetModel<CalendarModel>();
-			AmbitionApp.Subscribe<PartyVO>(HandleParty);
+			AmbitionApp.Subscribe<PartyVO>(PartyMessages.PARTY_UPDATE, HandleParty);
 			UpdateParties();
 		}
 
 		void OnDisable()
 		{
-			AmbitionApp.Unsubscribe<PartyVO>(HandleParty);
+			AmbitionApp.Unsubscribe<PartyVO>(PartyMessages.PARTY_UPDATE, HandleParty);
 		}
 
 		private void HandleParty(PartyVO party)

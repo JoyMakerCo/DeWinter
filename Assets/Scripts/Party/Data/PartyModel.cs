@@ -12,7 +12,15 @@ namespace Ambition
 
 		public PartyModel(): base("PartyData") {}
 
-		public PartyVO Party;
+		private PartyVO _party;
+		public PartyVO Party
+		{
+			get { return _party; }
+			set {
+				_party = value;
+				AmbitionApp.SendMessage<PartyVO>(_party);
+			}
+		}
 
 		public bool IsAmbush=false;
 
