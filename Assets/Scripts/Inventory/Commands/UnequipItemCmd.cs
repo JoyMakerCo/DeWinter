@@ -12,7 +12,7 @@ namespace Ambition
 			if (inventory.Equipped.TryGetValue(item.Slot, out otherItem) && otherItem.ID == item.ID)
 			{
 				inventory.Equipped.Remove(item.Slot);
-				AmbitionApp.SendMessage<ItemVO>(InventoryMessages.ITEM_UNEQUIPPED, item);
+				AmbitionApp.SendMessage<ItemVO>(InventoryMessages.UNEQUIPPED, item);
 			}
 		}
 	}
@@ -26,7 +26,7 @@ namespace Ambition
 			if (inventory.Equipped.TryGetValue(slot, out item))
 			{
 				inventory.Equipped.Remove(slot);
-				AmbitionApp.SendMessage<ItemVO>(InventoryMessages.ITEM_UNEQUIPPED, item);
+				AmbitionApp.SendMessage<ItemVO>(InventoryMessages.UNEQUIPPED, item);
 			}
 		}
 	}
