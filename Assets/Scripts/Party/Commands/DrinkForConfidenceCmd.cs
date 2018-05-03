@@ -17,7 +17,7 @@ namespace Ambition
 	            int drinkStrength = model.Party.drinkStrength;
 
 	            //Is the Player decent friends with the Military? If so, make them more alcohol tolerant!
-	            if(AmbitionApp.GetModel<FactionModel>()["Military"].Level >= 3)
+	            if(AmbitionApp.GetModel<FactionModel>()[FactionConsts.MILITARY].Level >= 3)
 	            {
 	                drinkStrength -= 3;
 	            }

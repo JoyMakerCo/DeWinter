@@ -47,16 +47,16 @@ namespace Ambition
 				// Fill yer glass
 				if (Array.IndexOf(room.Features, PartyConstants.PUNCHBOWL) >= 0)
 	            {
-					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
+					partyModel.Drink = partyModel.MaxDrinkAmount;
 				}
 
 				// At a certain reputation level, the player's glass may be filled without a punchbowl
 				else if (!room.Cleared
-					&& partyModel.DrinkAmount < partyModel.MaxDrinkAmount
+					&& partyModel.Drink < partyModel.MaxDrinkAmount
 	            	&& AmbitionApp.GetModel<FactionModel>()[partyModel.Party.Faction].Level >= 5
 	            	&& Util.RNG.Generate(0, 4) == 0)
 	        	{
-					partyModel.DrinkAmount = partyModel.MaxDrinkAmount;
+					partyModel.Drink = partyModel.MaxDrinkAmount;
 					Dictionary<string, string> subs = new Dictionary<string, string>(){
 						{"$HOSTNAME", partyModel.Party.Host.Name}};
 					AmbitionApp.OpenMessageDialog("refill_wine_dialog", subs);
