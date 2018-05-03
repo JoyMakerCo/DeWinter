@@ -8,13 +8,9 @@ namespace Ambition
 		public void Execute(ItemVO item)
 		{
 			InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-			ItemVO otherItem;
-			if (inventory.Equipped.TryGetValue(item.Slot, out otherItem))
-			{
-				AmbitionApp.SendMessage<ItemVO>(InventoryMessages.ITEM_UNEQUIPPED, otherItem);
-			}
+			AmbitionApp.SendMessage<string>(InventoryMessages.UNEQUIP, item.Slot);
 			inventory.Equipped[item.Slot] = item;
-			AmbitionApp.SendMessage<ItemVO>(InventoryMessages.ITEM_EQUIPPED, otherItem);
+			AmbitionApp.SendMessage<ItemVO>(InventoryMessages.EQUIPPED, item);
 		}
 	}
 }
