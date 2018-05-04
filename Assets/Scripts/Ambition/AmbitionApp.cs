@@ -122,24 +122,17 @@ namespace Ambition
 			return App.Service<DialogSvc>().Open<T>(DialogID, Data);
 		}
 
-		public static GameObject OpenMessageDialog(string dialogID, Dictionary<string, string> substitutions)
+		public static GameObject OpenMessageDialog(string phrase, Dictionary<string, string> substitutions)
 		{
-			MessageDialogVO vo = new MessageDialogVO();
-			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE, substitutions);
-			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY, substitutions);
-			vo.Button = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.OK, substitutions);
-			if (vo.Button == null) vo.Button = GetModel<LocalizationModel>().GetString(DialogConsts.DEFAULT_CONFIRM);
-			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+			GameObject dialog = OpenDialog<string>(DialogConsts.MESSAGE, phrase);
+			MessageViewMediator mediator = dialog.GetComponent<MessageViewMediator>();
+			if (mediator) mediator.SetPhrase(phrase, substitutions);
+			return dialog;
 		}
 
-		public static GameObject OpenMessageDialog(string dialogID)
+		public static GameObject OpenMessageDialog(string phrase)
 		{
-			MessageDialogVO vo = new MessageDialogVO();
-			vo.Title = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.TITLE);
-			vo.Body = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.BODY);
-			vo.Button = GetModel<LocalizationModel>().GetString(dialogID + DialogConsts.OK);
-			if (vo.Button == null) vo.Button = GetModel<LocalizationModel>().GetString(DialogConsts.DEFAULT_CONFIRM);
-			return OpenDialog<MessageDialogVO>(DialogConsts.MESSAGE, vo);
+			return OpenDialog<string>(DialogConsts.MESSAGE, phrase);
 		}
 
 		public static void CloseDialog(string dialogID)
@@ -157,17 +150,22 @@ namespace Ambition
 			App.Service<UFlowSvc>().RegisterState<C>(stateID);
 		}
 
+		public static void RegisterState(string stateID)
+		{
+			App.Service<UFlowSvc>().RegisterState(stateID);
+		}
+
 		public static void RegisterState<C, T>(string stateID, T arg) where C : UState, Util.IInitializable<T>, new()
 		{
 			App.Service<UFlowSvc>().RegisterState<C, T>(stateID, arg);
 		}
 
-		public static void RegisterTransition(string machineID, string originState, string targetState)
+		public static void RegisterLink(string machineID, string originState, string targetState)
 		{
 			App.Service<UFlowSvc>().RegisterTransition(machineID, originState, targetState);
 		}
 
-		public static void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
+		public static void RegisterLink<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
 		{
 			App.Service<UFlowSvc>().RegisterTransition<T>(machineID, originState, targetState, args);
 		}
@@ -175,6 +173,11 @@ namespace Ambition
 		public static void InvokeMachine(string MachineID)
 		{
 			App.Service<UFlowSvc>().InvokeMachine(MachineID);
+		}
+
+		public static bool IsActiveState(string stateID)
+		{
+			return App.Service<UFlowSvc>().IsActiveState(stateID);
 		}
 
 		public static string GetString(string key)

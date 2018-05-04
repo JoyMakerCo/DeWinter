@@ -12,6 +12,10 @@ namespace UFlow
 		internal UMachine _machine;
 		internal string _targetState;
 
+		public string State
+		{
+			get { return _machine.State; }
+		}
 		public string TargetState
 		{
 			get { return _targetState; }

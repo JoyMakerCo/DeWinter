@@ -15,7 +15,7 @@ namespace Ambition
 
 		private InventoryModel _inventory;
 
-		void Awake()
+		void OnEnable()
 		{
 			foreach(SortButton b in SortButtons)
 			{
@@ -25,7 +25,7 @@ namespace Ambition
 //			AccessoriesButton.onClick.AddListener(HandleAccessory);
 		}
 
-		void OnDestroy()
+		void OnDisable()
 		{
 			foreach(SortButton b in SortButtons)
 			{

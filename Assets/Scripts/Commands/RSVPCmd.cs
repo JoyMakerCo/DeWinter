@@ -7,18 +7,20 @@ namespace Ambition
 	{
 		public void Execute (PartyVO party)
 		{
-			if (party.RSVP > 0) // Confirming RSVP
+			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+
+			if (party.RSVP == -1)
 			{
-				
-			}
-			else // Denying RSVP
-			{
-				int rep = 0;
-//				int rep = (AmbitionApp.GetModel<CalendarModel>().Today == party.Date) ? 40 : 20;
+				int rep = (AmbitionApp.GetModel<CalendarModel>().Today == party.Date) ? 40 : 20;
 				AmbitionApp.SendMessage<AdjustFactionVO>(new AdjustFactionVO(party.Faction, -rep));
 				AmbitionApp.GetModel<GameModel>().Reputation -= rep;
 			}
-			AmbitionApp.SendMessage<PartyVO>(party);
+			AmbitionApp.SendMessage<PartyVO>(PartyMessages.PARTY_UPDATE, party);
+			if (party.Date == calendar.Today)
+			{
+				model.Party = (party.RSVP == 1) ? party : null;
+			}
 		}
 	}
 }

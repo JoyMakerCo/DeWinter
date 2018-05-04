@@ -1,25 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class IncidentDialogBox : MonoBehaviour
+	public class IncidentDialogBox : MonoBehaviour, IPointerClickHandler
 	{
-		private Button _btn;
-
+		private Image _image;
 		void Awake ()
 		{
-			_btn = gameObject.GetComponent<Button>();
-			_btn.onClick.AddListener(Next);
+			_image = GetComponent<Image>();
 			AmbitionApp.Subscribe<TransitionVO[]>(HandleTransitions);
 		}
 		
 		void OnDestroy ()
 		{
 			AmbitionApp.Unsubscribe<TransitionVO[]>(HandleTransitions);
-			_btn.onClick.RemoveAllListeners();
+		}
+
+		public void OnPointerClick(PointerEventData eventData)
+		{
+			Next();
 		}
 
 		public void Next()
@@ -29,8 +32,7 @@ namespace Ambition
 
 		private void HandleTransitions(TransitionVO[] transitions)
 		{
-			_btn.interactable = transitions.Length <= 1;
+			_image.raycastTarget = transitions.Length <= 1;
 		}
 	}
 }
-

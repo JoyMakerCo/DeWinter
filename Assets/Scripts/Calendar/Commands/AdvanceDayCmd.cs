@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 
 namespace Ambition
@@ -7,8 +8,14 @@ namespace Ambition
 	{
 		public void Execute()
 		{
-			CalendarModel cmod = AmbitionApp.GetModel<CalendarModel>();
-			cmod.Today = cmod.Today.AddDays(1);
+			CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+			calendar.Today = calendar.Today.AddDays(1);
+            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
+            List<PartyVO> parties;
+			partyModel.Party = 
+				calendar.Parties.TryGetValue(calendar.Today, out parties)
+				? parties.Find(p => p.RSVP == 1)
+				: null;
 		}
 	}
 }

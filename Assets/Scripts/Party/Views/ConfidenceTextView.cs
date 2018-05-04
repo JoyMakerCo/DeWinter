@@ -1,23 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class ConfidenceTextView : TextMessageView<int>
+	public class ConfidenceTextView : MonoBehaviour
 	{
 		private PartyModel _model;
-		public ConfidenceTextView() : base(GameConsts.CONFIDENCE) {}
-
-		override protected void InitValue()
+		private Text _text;
+		void Awake()
 		{
 			_model = AmbitionApp.GetModel<PartyModel>();
+			_text = GetComponent<Text>();
+			AmbitionApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleValue);
+		}
+		void OnDestroy()
+		{
+			AmbitionApp.Unsubscribe<int>(GameConsts.CONFIDENCE, HandleValue);
+		}
+
+		void OnEnable()
+		{
 			HandleValue(_model.Confidence);
 		}
 
-		protected override void HandleValue (int value)
+		protected void HandleValue (int value)
 		{
-			Text = "Confidence: " + value.ToString("N0") + (_model != null ? ("/" + _model.MaxConfidence.ToString("N0")) : "");
+
+			_text.text = "Confidence: " + value.ToString("N0") + (_model != null ? ("/" + _model.MaxConfidence.ToString("N0")) : "");
 		}
 	}
 }

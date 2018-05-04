@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 using Util;
@@ -21,12 +22,12 @@ namespace UFlow
 		}
 	}
 
-	internal class UTransitionMap<T>:UTransitionMap where T : ULink, new()
+	internal class ULinkMap<T>:UTransitionMap where T : ULink, new()
 	{
 		internal object[] Params;
 
-		internal UTransitionMap() {}
-		internal UTransitionMap(string targetState, params object [] parms)
+		internal ULinkMap() {}
+		internal ULinkMap(string targetState, params object [] parms)
 		{
 			TargetState = targetState;
 			Params = parms;
@@ -44,7 +45,7 @@ namespace UFlow
 	public class UFlowSvc : IAppService
 	{
 		private Dictionary<string, Func<UState>> _states = new Dictionary<string, Func<UState>>();
-		private Dictionary<string, Dictionary<string, List<UTransitionMap>>> _transitions = new Dictionary<string, Dictionary<string, List<UTransitionMap>>>();
+		private Dictionary<string, Dictionary<string, List<UTransitionMap>>> _links = new Dictionary<string, Dictionary<string, List<UTransitionMap>>>();
 		private Dictionary<string, string> _initialStates = new Dictionary<string, string>();
 
 		// Machines that have been instantiated.
@@ -54,6 +55,31 @@ namespace UFlow
 		{
 			UMachine mac;
 			return _machines.TryGetValue(MachineID, out mac) ? mac : null;
+		}
+
+		public string[] GetActiveMachines()
+		{
+			return _machines.Keys.ToArray();
+		}
+
+		public bool IsActiveState(string stateID)
+		{
+			foreach(KeyValuePair<string,UMachine> kvp in _machines)
+			{
+				if (kvp.Key == stateID || kvp.Value.State == stateID)
+					return true;
+			}
+			return false;
+		}
+
+		public void RegisterState(string stateID)
+		{
+			if (!_states.ContainsKey(stateID))
+			{
+				_states[stateID] = (Func<UState>)(() => {
+					return new UState();
+				});
+			}
 		}
 
 		public void RegisterState<S>(string stateID) where S : UState, new()
@@ -84,7 +110,7 @@ namespace UFlow
 		public void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
 		{
 			List<UTransitionMap> transitions = GetTransitionList(machineID, originState);
-			UTransitionMap<T> trans = new UTransitionMap<T>(targetState, args);
+			ULinkMap<T> trans = new ULinkMap<T>(targetState, args);
 			transitions.Add(trans);
 		}
 
@@ -99,10 +125,10 @@ namespace UFlow
 		{
 			Dictionary<string, List<UTransitionMap>> stateTransitions;
 			List<UTransitionMap> transitions;
-			if (!_transitions.TryGetValue(machineID, out stateTransitions))
+			if (!_links.TryGetValue(machineID, out stateTransitions))
 			{
 				_initialStates[machineID] = originState;
-				_transitions[machineID] = stateTransitions = new Dictionary<string, List<UTransitionMap>>();
+				_links[machineID] = stateTransitions = new Dictionary<string, List<UTransitionMap>>();
 			}
 			if (!stateTransitions.TryGetValue(originState, out transitions))
 				stateTransitions[originState] = transitions = new List<UTransitionMap>();
@@ -111,7 +137,7 @@ namespace UFlow
 
 		internal UState BuildState(string stateID, string machineID=null)
 		{
-			UState s = _transitions.ContainsKey(stateID) ? new UMachine() : _states[stateID]();
+			UState s = _links.ContainsKey(stateID) ? new UMachine() : _states[stateID]();
 			UMachine mac;
 			s._machine = (machineID != null && _machines.TryGetValue(machineID, out mac))
 				? mac
@@ -130,7 +156,7 @@ namespace UFlow
 		internal ULink[] BuildTransitions(string machineID, string originState)
 		{
 			Dictionary<string, List<UTransitionMap>> stateTransitions;
-			if (!_transitions.TryGetValue(machineID, out stateTransitions)) return null;
+			if (!_links.TryGetValue(machineID, out stateTransitions)) return null;
 
 			UMachine mac;
 			if (!_machines.TryGetValue(machineID, out mac)) return null;

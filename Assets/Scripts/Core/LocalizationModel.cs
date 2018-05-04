@@ -56,8 +56,8 @@ namespace Core
 		{
 			string value;
 			_localizations.TryGetValue(key, out value);
-			if (value != null)
-			{
+			if (value != null && substitutions != null)
+			{				
 				foreach(KeyValuePair<string, string> kvp in substitutions)
 				{
 					value = value.Replace(kvp.Key, kvp.Value);

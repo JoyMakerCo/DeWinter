@@ -21,10 +21,19 @@ namespace Ambition
 		public MapVO Map;
 	    public bool Cleared=false;
 
+		[JsonProperty("background")]
+		public string Background;
 		public CommodityVO [] Rewards;
 		public GuestVO [] Guests;
+		[JsonProperty("numGuests")]
+		private int NumGuests
+		{
+			set { Guests = new GuestVO[value]; }
+		}
+
 		public List<EnemyVO> Enemies;
 		public string [] Features=new string[0];
+
 
 		public bool HostHere
 		{
@@ -38,24 +47,28 @@ namespace Ambition
 			return Array.IndexOf(Doors, room) >= 0;
 		}
 
+		public int[] _vertices;
 		[JsonProperty("vertices")]
-		public int[] Vertices;
+		public int[] Vertices
+		{
+			get { return _vertices; }
+			set {
+				_vertices = value;
+				_bounds = new int[4];
+				_bounds[0] = _vertices.Where((v,i)=>i%2==0).Min();
+				_bounds[1] = _vertices.Where((v,i)=>i%2==1).Min();
+				_bounds[2] = _vertices.Where((v,i)=>i%2==0).Max();
+				_bounds[3] = _vertices.Where((v,i)=>i%2==1).Max();
+			}
+		}
 
 		// Set in the map file or map generation 
 		public RoomVO[] Doors;
 
 		private int[] _bounds = null;
-		internal int[] GetBounds()
+		internal int[] Bounds
 		{
-			if (_bounds == null)
-			{
-				_bounds = new int[4];
-				_bounds[0] = Vertices.Where((v,i)=>i%2==0).Min();
-				_bounds[1] = Vertices.Where((v,i)=>i%2==1).Min();
-				_bounds[2] = Vertices.Where((v,i)=>i%2==0).Max();
-				_bounds[3] = Vertices.Where((v,i)=>i%2==1).Max();
-			}
-			return _bounds;
+			get { return _bounds; }
 		}
 
 		public override string ToString ()

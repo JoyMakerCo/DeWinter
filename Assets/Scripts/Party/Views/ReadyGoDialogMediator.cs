@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 using System.Collections;
@@ -7,22 +8,22 @@ using Core;
 
 namespace Ambition
 {
-	public class ReadyGoDialogMediator : DialogView
+	public class ReadyGoDialogMediator : DialogView, IPointerClickHandler
 	{
+		public const string DIALOG_ID = "READY_GO";
 		public Text dialogText;
+		public Text PromptText;
 		void Start()
 		{
 			LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
 			string[] conversationIntroList = model.GetList("conversation_intro");
-			dialogText.text = conversationIntroList[new System.Random().Next(conversationIntroList.Length)];
-			StartCoroutine(CloseDialog());
+			dialogText.text = conversationIntroList[Util.RNG.Generate(conversationIntroList.Length)];
 		}
 
-		IEnumerator CloseDialog()
-		{
-			yield return new WaitForSeconds(3f);
+		public void OnPointerClick(PointerEventData eventData)
+	    {
 			Close();
-		}
+        }
 
 		public override void OnClose ()
 		{

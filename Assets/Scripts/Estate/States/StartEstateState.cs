@@ -8,7 +8,6 @@ namespace Ambition
 		public override void OnEnterState ()
 		{
 			CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			AmbitionApp.SendMessage<DateTime>(calendar.Today);
 		}
 	}

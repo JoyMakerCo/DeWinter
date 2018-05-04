@@ -12,6 +12,7 @@ namespace Ambition
 	{
 		public Image Profile;
 		public Image Icon;
+        public Animator RemarkAnimator;
 	}
 
 	public class RemarkViewMediator : MonoBehaviour
@@ -79,11 +80,20 @@ namespace Ambition
 		private void HandleRemark(RemarkVO remark)
 		{
 			Color c;
+            bool s = false;
 			for(int i=Remarks.Length-1; i>=0; i--)
 			{
 				c = (remark == null || i >= _hand.Count || _hand[i] == remark) ? Color.white : Color.grey;
-				Remarks[i].Profile.color = c;
+                if (remark == null || i >= _hand.Count || _hand[i] != remark )
+                {
+                    s = false;
+                } else if (_hand[i] == remark)
+                {
+                    s = true;
+                }
+                Remarks[i].Profile.color = c;
 				Remarks[i].Icon.color = c;
+                Remarks[i].RemarkAnimator.SetBool("Selected", s);
 			}
 		}
 

@@ -24,7 +24,7 @@ namespace Ambition
 		    	{
 					float scale = AmbitionApp.GetModel<MapModel>().MapScale;
 					UIVertex v = UIVertex.simpleVert;
-					int[] bounds = value.GetBounds();
+					int[] bounds = value.Bounds;
 					int xMin = bounds[0];
 					int yMin = bounds[1];
 					int x;

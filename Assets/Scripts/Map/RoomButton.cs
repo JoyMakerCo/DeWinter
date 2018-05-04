@@ -22,7 +22,6 @@ namespace Ambition
 	    private Button _button;
 	    private RoomGraphic _graphic;
 
-		// Use this for initialization
 		void Awake()
 		{
 			ColorBlock cb;
@@ -50,15 +49,13 @@ namespace Ambition
 			{
 				_graphic.Room = value;
 				gameObject.name = value.Name;
-
 				if (_room == null) // This will crash if the room has no walls.
 				{
 					MapModel map = AmbitionApp.GetModel<MapModel>();
 					float scale = map.MapScale;
 					RectTransform xform = gameObject.GetComponent<RectTransform>();
-					int[] bounds = value.GetBounds();
-					xform.anchoredPosition = new Vector2(bounds[0]*scale, bounds[1]*scale);
-					xform.sizeDelta = new Vector2((bounds[2]-bounds[0])*scale, (bounds[3]-bounds[1])*scale);
+					xform.anchoredPosition = new Vector2(value.Bounds[0]*scale, value.Bounds[1]*scale);
+					xform.sizeDelta = new Vector2((value.Bounds[2]-value.Bounds[0])*scale, (value.Bounds[3]-value.Bounds[1])*scale);
 
 					_graphic.sprite = FloorTexturtes.Sprites[Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
 				}

@@ -16,47 +16,38 @@
 	items:[
 		{
 			id:"starting_gown",
-			name:"Nouveau Frankish Gown",
+			name:"Elaborate Frankish Gown",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
 			salePrice:40,
 			price:75,
 			tags:["Outfit"],
 			state:{
-				"novelty":100,
-				"style":"Frankish"
+				"novelty":75,
+				"luxury":100,
+				"modesty":-75,
+				"style":"Frankish",
+				"gift":"Baron Armand de Marbo"
 			}
 		},
 		{
 			id:"starting_gown2",
-			name:"Modest Frankish Dress",
+			name:"Striking Catalan Dress",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
 			salePrice:40,
 			price:75,
 			tags:["Outfit"],
 			state:{
-				"modesty":100,
-				"style":"Frankish",
-				"gift":"Jordan Peele"
+				"novelty":100,
+				"luxury":100,
+				"modesty":-75,
+				"style":"Catalan",
 			}
 		},
 		{
 			id:"starting_gown3",
-			name:"Luxurious Catalan Gown",
-			type:"Outfit",
-			description:"This gown makes you feel like the belle of the ball.",
-			salePrice:40,
-			price:75,
-			tags:["Outfit"],
-			state:{
-				"luxury":100,
-				"style":"Catalan"
-			}
-		},
-		{
-			id:"starting_gown4",
-			name:"Nouveau Catalan Dress",
+			name:"Humble Venezian Clothes",
 			type:"Outfit",
 			description:"This gown makes you feel like the belle of the ball.",
 			salePrice:40,
@@ -64,61 +55,12 @@
 			tags:["Outfit"],
 			state:{
 				"novelty":100,
-				"style":"Catalan"
-			}
-		},
-		{
-			id:"starting_gown5",
-			name:"Luxurious Venezian Gown",
-			type:"Outfit",
-			description:"This gown makes you feel like the belle of the ball.",
-			salePrice:40,
-			price:75,
-			tags:["Outfit"],
-			state:{
-				"luxury":100,
+				"luxury":-50,
+				"modesty":50,
 				"style":"Venezian"
 			}
 		},
 		{
-			id:"starting_gown6",
-			name:"Modest Frankish Dress",
-			type:"Outfit",
-			description:"This gown makes you feel like the belle of the ball.",
-			salePrice:40,
-			price:75,
-			tags:["Outfit"],
-			state:{
-				"novelty":100,
-				"style":"Frankish"
-			}
-		},
-		{
-			id:"starting_gown7",
-			name:"Racy Venezian Dress",
-			type:"Outfit",
-			description:"This gown makes you feel like the belle of the ball.",
-			salePrice:40,
-			price:75,
-			tags:["Outfit"],
-			state:{
-				"luxury":100,
-				"style":"Venezian"
-			}
-		},
-		{
-			id:"starting_gown8",
-			name:"Nouveau Catalan Gown",
-			type:"Outfit",
-			description:"This gown makes you feel like the belle of the ball.",
-			salePrice:40,
-			price:75,
-			tags:["Outfit"],
-			state:{
-				"novelty":100,
-				"style":"Catalan"
-			}
-		},		{
 			id:"cane",
 			name:"Cane",
 			type:"Cane",
@@ -182,12 +124,7 @@
 	inventory:{
 		starting_gown:1,
 		starting_gown2:1,
-		starting_gown3:1,
-		starting_gown4:1,
-		starting_gown5:1,
-		starting_gown6:1,
-		starting_gown7:1,
-		starting_gown8:1
+		starting_gown3:1
 	},
 	luxury:{
 		"-100":"Vintage",

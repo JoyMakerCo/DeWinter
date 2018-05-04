@@ -1,23 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class ConfidenceMeterView : ImageFillMessageView<int>
-	{
-		private PartyModel _model;
-		private float _max;
+	public class ConfidenceMeterView : ImageFillMessageView
+    {
+        private PartyModel _model;
+        void OnEnable()
+        {
+            _model = AmbitionApp.GetModel<PartyModel>();
+            AmbitionApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleConfidence);
+            HandleConfidence(_model.Confidence);
+        }
 
-		public ConfidenceMeterView()
-		{
-			ValueID = GameConsts.CONFIDENCE;
-			_model = AmbitionApp.GetModel<PartyModel>();
-		}
+        void OnDisable()
+        {
+            AmbitionApp.Unsubscribe<int>(GameConsts.CONFIDENCE, HandleConfidence);
+        }
 
-		protected override float CalculatePercent (int value)
-		{
-			return (float)value/(float)_model.MaxConfidence;
-		}
-	}
+        private void HandleConfidence(int value)
+        {
+            base.HandlePercent(((float)value)/_model.MaxConfidence);
+        }
+    }
 }

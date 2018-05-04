@@ -1,20 +1,44 @@
 ﻿using System;
+using System.Collections.Generic;
 using Dialog;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class MessageViewMediator : DialogView, Util.IInitializable<MessageDialogVO>
+	public class MessageViewMediator : DialogView, Util.IInitializable<string>
 	{
+		public const string DIALOG_ID = "MESSAGE";
 		public Text BodyTxt;
 		public Text TitleTxt;
-		public Text ButtonLabelTxt;
+		public Text DismissTxt;
+		public Text ConfirmTxt;
 
-		public void Initialize(MessageDialogVO vo)
+		public void Initialize(string phrase)
 		{
-			BodyTxt.text = vo.Body;
-			TitleTxt.text = vo.Title;
-			ButtonLabelTxt.text = vo.Button;
+			SetPhrase(phrase);
+		}
+
+		public void SetPhrase(string phrase, Dictionary<string, string> substitutions=null)
+		{
+			string str;
+			Core.LocalizationModel model = AmbitionApp.GetModel<Core.LocalizationModel>();
+			BodyTxt.text = model.GetString(phrase + DialogConsts.BODY, substitutions);
+			TitleTxt.text = model.GetString(phrase + DialogConsts.TITLE, substitutions);
+
+			if (DismissTxt != null)
+			{
+				str=model.GetString(phrase + DialogConsts.CANCEL, substitutions);
+				if (str != null && DismissTxt != null) DismissTxt.text = str;
+				else DismissTxt.text = model.GetString(DialogConsts.DEFAULT_CANCEL);
+			}
+			
+			if (ConfirmTxt != null)
+			{
+				str=model.GetString(phrase + DialogConsts.CONFIRM, substitutions);
+				if (str != null && ConfirmTxt != null) ConfirmTxt.text = str;
+				else ConfirmTxt.text = model.GetString(DialogConsts.DEFAULT_CONFIRM);
+			}
 		}
 
 		public override void OnOpen ()
@@ -25,6 +49,12 @@ namespace Ambition
 		public override void OnClose ()
 		{
 			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_CLOSED, ID);
+		}
+
+		public void Confirm ()
+		{
+			AmbitionApp.SendMessage(GameMessages.DIALOG_CONFIRM);
+			Close();
 		}
 	}
 }

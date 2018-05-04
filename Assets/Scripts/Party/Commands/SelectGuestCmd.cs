@@ -11,6 +11,7 @@ namespace Ambition
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			RemarkVO remark = model.Remark;
 			if (remark == null) return;
+			
 			MapModel map = AmbitionApp.GetModel<MapModel>();
 			GuestVO [] guests = map.Room.Guests;
 			int index = Array.IndexOf(guests, guest);
@@ -22,6 +23,7 @@ namespace Ambition
 				{
 					model.TargetedGuests[i] = guests[(i+index)%num];
 				}
+	            AmbitionApp.SendMessage<GuestVO[]>(PartyMessages.GUESTS_SELECTED, model.TargetedGuests);
 	            AmbitionApp.SendMessage(PartyMessages.END_TURN);
 			}
 		}

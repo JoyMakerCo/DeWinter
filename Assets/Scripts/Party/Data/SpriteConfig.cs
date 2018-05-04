@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Util;
 
@@ -15,6 +16,7 @@ namespace Ambition
 	{
 		public string ID;
 		public Sprite Sprite;
+		public string[] Tags;
 	}
 
 	public class SpriteConfig : ScriptableObject
@@ -31,6 +33,13 @@ namespace Ambition
 		{
 			SpriteMap map = Array.Find(Sprites, s => s.Sprite == sprite);
 			return default(SpriteMap).Equals(map) ? null : map.ID;
+		}
+
+		public Sprite[] GetSpritesByTag(params string[] tags) //Candidates must match all criteria
+		{
+			return (from s in Sprites
+				where tags.All(t => s.Tags.Contains(t))
+				select s.Sprite).ToArray();
 		}
 
 #if (UNITY_EDITOR)

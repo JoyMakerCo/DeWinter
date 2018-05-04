@@ -13,10 +13,12 @@ namespace Ambition
 		// Dependency Injection
 		private MessageSvc _msg = App.Service<MessageSvc>();
 		private UFlow.UFlowSvc _uflow = App.Service<UFlow.UFlowSvc>();
+		private GameObject _roomView;
 
 		// Use this for initialization
 		void Awake()
 		{
+			_roomView = GameObject.Instantiate(RoomView, this.transform);
 			_msg.Subscribe(PartyMessages.SHOW_ROOM, GoToRoom);
 			_msg.Subscribe(PartyMessages.SHOW_MAP, GoToMap);
 		}
@@ -30,19 +32,20 @@ namespace Ambition
 		void Start ()
 		{
 			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
+			AmbitionApp.SendMessage(PartyMessages.START_PARTY);
 		}
 
 		private void GoToRoom()
 		{
 			MapView.SetActive(false);
-			RoomView.SetActive(true);
+			_roomView.SetActive(true);
 			_uflow.InvokeMachine("ConversationController");
 		}
 
 		private void GoToMap()
 		{
 			MapView.SetActive(true);
-			RoomView.SetActive(false);
+			_roomView.SetActive(false);
 		}
 	}
 }
