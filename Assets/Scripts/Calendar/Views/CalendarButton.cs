@@ -52,7 +52,8 @@ namespace Ambition
 
 			bool isToday = (_day == today);
 			currentDayOutline.enabled = isToday;
-			// if (isToday) this.transform.SetAsLastSibling();
+            //By setting this at the last sibling in the holder parent object, the 'current day' frame doesn't get blocked by the other days around it.
+            if (isToday) this.transform.SetAsLastSibling();
 
 			_btn.interactable = (_day >= today);
 			pastDayXImage.enabled = !_btn.interactable;
