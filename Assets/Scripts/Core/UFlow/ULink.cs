@@ -3,54 +3,34 @@
 namespace UFlow
 {
 	/// <summary>
-	/// Tranisitions between UStates. Once a transition is Validated, the Machine proceeds to NextState.
+	/// Tranisitions between UStates. If the Machine's current state is State,
+	/// and receives this Link's input, this Link will be followed.
 	/// </summary>
-	public abstract class ULink : IDisposable
+
+	public class ULink
 	{
-		public object[] Parameters;
+		// Set by UFlow
+		internal UMachineState _machine;
+		internal int _targetState;
 
-		internal UMachine _machine;
-		internal string _targetState;
-
-		public string State
+		// The current State of the machine from which this link originates
+		public string Input;
+		public UState State 
 		{
-			get { return _machine.State; }
-		}
-		public string TargetState
-		{
-			get { return _targetState; }
-		}
-
+			internal set;
+			get;
+		}		
 		/// <summary>
-		/// Initialize the Transition and return true if Transition takes immediate effect
-		/// For Transitions from UMachines, this is called AFTER exiting the Machine.
+		/// Shortcut to sending this link's input to the machine.
 		/// </summary>
-		public abstract bool InitializeAndValidate();
-
-		/// <summary>
-		/// Proceed Immediately to NextState. Useful for Callbacks.
-		/// </summary>
-		public void Validate()
-		{
-			_machine.State = _targetState;
-		}
-
-		/// <summary>
-		/// Clean up allocated memory associated with this transition. Called by the Machine.
-		/// </summary>
+		public void Activate() { _machine.Input(Input); }
+		public virtual void Initialize() {}
+		public virtual bool Validate() { return false; } // Called upon instantiation
 		public virtual void Dispose() {}
 	}
 
-	public class UBasicLink : ULink
+	public abstract class ULink<T> : ULink
 	{
-		public UBasicLink(string targetState)
-		{
-			_targetState = targetState;
-		}
-
-		public override bool InitializeAndValidate ()
-		{
-			return true;
-		}
+		public T Data;
 	}
 }

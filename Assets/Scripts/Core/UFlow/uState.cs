@@ -8,18 +8,27 @@ namespace UFlow
 	// States work like commands, except they persist in memory.
 	// OnEnterState and OnExitState are invoked by the UFlowSvc,
 	// and are ideal places to execute asynchronous instructions
-	// and set up delegates. The State is exited when End() is called.
+	// and set up delegates.
 	public class UState
 	{
-		internal UMachine _machine;
-		public string ID
-		{
-			get;
-			internal set;
-		}
+		internal UMachineState _machine;
+		public string Name;
 
+		public UState() {}
+		public UState(string name) { Name = name; }
+		public UState(UState state) { Name = state.Name; }
+		
 		// Overload for instructions
 		public virtual void OnEnterState() {}
 		public virtual void OnExitState() {}
+
+		// Dispose is called independently of OnExitState().
+		// Put cleanup here.
+		public virtual void Dispose() {}
+	}
+
+	public class UState<T> : UState
+	{
+		public T Data;
 	}
 }

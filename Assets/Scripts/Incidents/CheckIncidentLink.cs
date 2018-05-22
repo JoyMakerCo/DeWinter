@@ -4,10 +4,10 @@ namespace Ambition
 {
     public class CheckIncidentLink : ULink
     {
-        override public bool InitializeAndValidate()
+        override public void Initialize()
         {
             IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-            return model.Incident != null;
+           if (model.Incident != null) Activate();
         }
     }
 }

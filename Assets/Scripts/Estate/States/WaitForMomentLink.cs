@@ -7,10 +7,9 @@ namespace Ambition
 	{
 		private static float LAST_TIMESTAMP=0;
 
-		public override bool InitializeAndValidate ()
+		override public void Initialize()
 		{
 			AmbitionApp.Subscribe<int>(IncidentMessages.INCIDENT_OPTION, HandleOption);
-			return false;
 		}
 
 		private void HandleOption(int option)
@@ -50,7 +49,7 @@ namespace Ambition
 
 			// Signal Event update
 			model.Moment = target;
-			Validate();
+			Activate();
 		}
 		
 		public override void Dispose ()

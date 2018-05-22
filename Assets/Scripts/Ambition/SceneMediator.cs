@@ -15,11 +15,6 @@ namespace Ambition
 			AmbitionApp.Subscribe<string>(GameMessages.LOAD_SCENE, HandleScene);
 		}
 
-		void Start()
-		{
-			AmbitionApp.SendMessage(GameMessages.SCENE_LOADED);
-		}
-
 		void OnDestroy()
 		{
 			AmbitionApp.Unsubscribe<string>(GameMessages.LOAD_SCENE, HandleScene);

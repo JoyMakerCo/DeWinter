@@ -9,14 +9,14 @@ namespace Ambition
 	{
 		public void OnClick ()
 		{
-			AmbitionApp.RegisterState<FadeOutState>("NewGame");
-			AmbitionApp.RegisterState<InitGameState>("InitGame");
-			AmbitionApp.RegisterState("WaitForLoad");
-			AmbitionApp.RegisterState<InvokeMachineState, string>("InvokeIncidentMachine", "IncidentController");
-			AmbitionApp.RegisterState<InvokeMachineState, string>("InvokeEstateMachine", "EstateController");
+			AmbitionApp.RegisterState<FadeOutState>("GameController", "NewGame");
+			AmbitionApp.RegisterState<InitGameState>("GameController", "InitGame");
+			AmbitionApp.RegisterState("GameController", "WaitForLoad");
+			AmbitionApp.RegisterState<InvokeMachineState, string>("GameController", "InvokeIncidentMachine", "IncidentController");
+			AmbitionApp.RegisterState<InvokeMachineState, string>("GameController", "InvokeEstateMachine", "EstateController");
 
-			AmbitionApp.RegisterLink<WaitForMessageLink>("GameController", "NewGame", "InitGame", GameMessages.FADE_OUT_COMPLETE);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("GameController", "InitGame", "WaitForLoad", GameMessages.SCENE_LOADED);
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("GameController", "NewGame", "InitGame", GameMessages.FADE_OUT_COMPLETE);
+			AmbitionApp.RegisterLink<WaitForSceneLoadedState, string>("GameController", "InitGame", "WaitForLoad", SceneConsts.ESTATE_SCENE);
 			AmbitionApp.RegisterLink<CheckIncidentLink>("GameController", "WaitForLoad", "InvokeIncidentMachine");
 			AmbitionApp.RegisterLink("GameController", "WaitForLoad", "InvokeEstateMachine");
 

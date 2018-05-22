@@ -5,28 +5,13 @@ using UFlow;
 
 namespace Ambition
 {
-	public class WaitForTutorialStepLink : ULink
+	public class WaitForTutorialStepLink : AmbitionValueLink<string>
 	{
-		override public bool InitializeAndValidate()
+		override public void Initialize()
 		{
-			
-			if (!AmbitionApp.IsActiveState(TutorialConsts.TUTORIAL)) return true;
-			AmbitionApp.Subscribe<string>(TutorialMessage.TUTORIAL_STEP_COMPLETE, HandleStepComplete);
-			return false;
-		}
-
-		private void HandleStepComplete(string step)
-		{
-			if (step == State) 
-			{
-				Dispose();
-				Validate();
-			}
-		}
-
-		override public void Dispose()
-		{
-			AmbitionApp.Unsubscribe<string>(TutorialMessage.TUTORIAL_STEP_COMPLETE, HandleStepComplete);
+			MessageID = TutorialMessage.TUTORIAL_STEP_COMPLETE;
+			ValidateOnCallback = s => { return s == Data; };
+			base.Initialize();
 		}
 	}
 }

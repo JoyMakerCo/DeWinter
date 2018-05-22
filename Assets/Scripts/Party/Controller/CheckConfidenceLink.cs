@@ -5,9 +5,10 @@ namespace Ambition
 {
 	public class CheckConfidenceLink : ULink
 	{
-		public override bool InitializeAndValidate ()
+		override public void Initialize()
 		{
-			return AmbitionApp.GetModel<PartyModel>().Confidence <= 0;
+			if (AmbitionApp.GetModel<PartyModel>().Confidence <= 0)
+				Activate();
 		}
 	}
 }

@@ -67,7 +67,7 @@ namespace Ambition
 	    	_guest = (guests.Length > Index) ? guests[Index] : null;
 
 	    	// Shows/hides components of a guest view based on the data
-			bool setEnabled = (_guest != null);
+			bool setEnabled = (_guest != null && gameObject.activeSelf);
 			// Only do this work if the state is changing.
 	    	if (setEnabled != _image.enabled)
 	    	{
