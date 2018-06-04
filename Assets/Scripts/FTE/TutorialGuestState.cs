@@ -21,9 +21,7 @@ namespace Ambition
                 int index = Array.FindIndex(guests, g=>g.Like == rem.Interest);
                 if (index < 0) index = Array.FindIndex(guests, g=>g.Dislike != rem.Interest);
                 if (index < 0) index = 0;
-
-                GameObject obj = Array.Find(spotlights, s=>s.Guest.Guest == guests[index]).gameObject;
-                _flash = obj.AddComponent<TutorialFlashSpot>();
+                _flash = spotlights[index].gameObject.AddComponent<TutorialFlashSpot>();
             }
         }
 

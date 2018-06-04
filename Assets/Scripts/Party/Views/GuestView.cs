@@ -7,19 +7,8 @@ namespace Ambition
 {
 	public class GuestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
-		private const float FILL_SECONDS = 0.5f;
 		private readonly static string[] POSES = new string[]{"putout", "neutral", "approval", "charmed"};
-
-		public int Index;
-
-		public Image OpinionIndicator;
-        public Color MinInterestColor;
-        public Color MidInterestColor;
-        public Color MaxInterestColor;
-		public Image InterestIcon;
-        public Image InterestIconBorder;
         public AvatarCollection Avatars;
-		public SpriteConfig Interests;
         public Animator Animator;
 
 		private GuestVO _guest;
@@ -33,9 +22,11 @@ namespace Ambition
 		private Image _image;
 		private bool _isIntoxicated=false;
 		private string _pose;
+		private int _index;
 
 		void Awake()
 		{
+			_index = transform.GetSiblingIndex();
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
 			_image = GetComponent<Image>();
 		}
@@ -64,7 +55,7 @@ namespace Ambition
 
 	    private void HandleGuests(GuestVO[] guests)
 	    {
-	    	_guest = (guests.Length > Index) ? guests[Index] : null;
+	    	_guest = (_index < guests.Length) ? guests[_index] : null;
 
 	    	// Shows/hides components of a guest view based on the data
 			bool setEnabled = (_guest != null);
@@ -73,17 +64,12 @@ namespace Ambition
 	    	{
 				this.gameObject.SetActive(setEnabled);
 				_image.enabled = setEnabled;
-				OpinionIndicator.enabled = setEnabled;
-				InterestIcon.enabled = setEnabled;
-                InterestIconBorder.enabled = setEnabled;
             }
 
 			if (setEnabled)
 			{
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
-
-				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
 
 				if (_avatar.ID == null || _avatar.ID != _guest.Avatar)
 				{
@@ -106,11 +92,8 @@ namespace Ambition
 					
 				if (_image.sprite == null)
 					_image.sprite = _avatar.GetPose("neutral");
-
-				InterestIcon.sprite = Interests.GetSprite(_guest.Like);
 			}
 	    }
-
 
 		private void HandleIntoxication(int tox)
 		{
@@ -181,28 +164,6 @@ namespace Ambition
 				}
 			}
 			_image.sprite = _avatar.GetPose(pose);
-		}
-
-		System.Collections.IEnumerator FillMeter(float percent)
-		{
-			float t = 0;
-			float startFill = OpinionIndicator.fillAmount;
-			while (t<FILL_SECONDS)
-			{
-				OpinionIndicator.fillAmount = startFill + ((percent-startFill) * t / FILL_SECONDS);
-				t += Time.deltaTime;
-                //This is the only way to to a three part Lerps function with colors
-                if (OpinionIndicator.fillAmount < 0.5f)
-                {
-                    OpinionIndicator.color = Color.Lerp(MinInterestColor, MidInterestColor, OpinionIndicator.fillAmount * 2);
-                }
-                else
-                {
-                    OpinionIndicator.color = Color.Lerp(MidInterestColor, MaxInterestColor, (OpinionIndicator.fillAmount-0.5f) * 2);
-                }
-				yield return null;
-			}
-			OpinionIndicator.fillAmount = percent;
 		}
 	}
 }
