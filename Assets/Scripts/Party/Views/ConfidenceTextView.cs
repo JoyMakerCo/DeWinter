@@ -7,12 +7,10 @@ namespace Ambition
 {
 	public class ConfidenceTextView : MonoBehaviour
 	{
-		private PartyModel _model;
-		private Text _text;
+		public Text ConfidenceTxt;
+		public Text ConfidenceMaxTxt;
 		void Awake()
 		{
-			_model = AmbitionApp.GetModel<PartyModel>();
-			_text = GetComponent<Text>();
 			AmbitionApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleValue);
 		}
 		void OnDestroy()
@@ -22,13 +20,14 @@ namespace Ambition
 
 		void OnEnable()
 		{
-			HandleValue(_model.Confidence);
+			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+			ConfidenceMaxTxt.text = model.MaxConfidence.ToString();
+			HandleValue(model.Confidence);
 		}
 
 		protected void HandleValue (int value)
 		{
-
-			_text.text = "Confidence: " + value.ToString("N0") + (_model != null ? ("/" + _model.MaxConfidence.ToString("N0")) : "");
+			ConfidenceTxt.text = value.ToString();
 		}
 	}
 }
