@@ -41,6 +41,7 @@ namespace Ambition
 
 		[JsonProperty("Avatar")]
 	    public string Avatar;
+		public GuestActionVO Action;
 
 		public int Opinion;
 		public int MaxInterest;

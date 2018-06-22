@@ -27,10 +27,9 @@ namespace Ambition
             }
         }
 
-        override public void OnExitState()
+        override public void Dispose()
         {
-            if (_bounz != null) GameObject.Destroy(_bounz);
-            base.OnExitState();
+            GameObject.Destroy(_bounz);
         }
     }
 }

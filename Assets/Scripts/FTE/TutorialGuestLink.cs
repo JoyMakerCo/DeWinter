@@ -5,15 +5,14 @@ namespace Ambition
 {
     public class TutorialGuestLink : ULink
     {
-        public override bool InitializeAndValidate()
+        public override void Initialize()
         {
             AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
-            return false;
         }
 
         private void HandleGuest(GuestVO guest)
         {
-            Validate();
+            Activate();
         }
 
         override public void Dispose()

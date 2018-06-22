@@ -1,82 +1,174 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
+using Util;
 
 namespace UFlow
 {
-	public sealed class UMachine : UState
+	public class UMachine : UState<string>
 	{
-		private UState _state;
+		public string MachineID { get; private set; }
+		internal UFlowSvc _uflow;	// Active UFlow Service
+		internal UMachineGraph _graph;
+		internal UState[] _states;
+		private ULink[][] _links;
+		private Queue<int> _queue = new Queue<int>();
 
-		internal UFlowSvc _uflow;
-		internal ULink[] _transitions;
-		internal string _initialState;
-
-		public string State
+		override public void SetData(string data)
 		{
-			get { return _state != null ? _state.ID : null; }
-			set { SetState(value != null ? _uflow.BuildState(value,ID) : null); }
+			MachineID = data;
 		}
 
-		internal void SetState(UState state)
+		// Current active states
+		public string[] GetActiveStates()
 		{
-			if (_state != null)
-				_state.OnExitState();
+			return (from s in _states
+				where s != null
+				select s.ID).ToArray();
+		}
 
-			ClearTransitions();
+		internal void Activate(ULink link)
+		{
+			// TODO: Aggregate links
+			_queue.Enqueue(link._target);
+			ExitState(link._origin);
+			if (_queue.Count == 1) Activate();
+		}
 
-			// Go to the specified state within the machine
-			_state = state;
-
-			// If the new state is non-null, enter the new state
-			if (_state != null)
+		private void Activate()
+		{
+			UState state;
+			ULink[] links;
+			UStateNode node;
+			int index;
+			while (_queue.Count > 0)
 			{
-				_state.OnEnterState();
-				if (!(_state is UMachine))
-					BuildTransitions();
+				index = _queue.Peek();
+				state = _states[index];
+				node = _graph.Nodes[_queue.Peek()];
+				if (state == null)
+				{
+					state = _uflow.Build<UStateNode, UState>(node);
+					state._machine = this;
+					state._node = node;
+					_states[index] = state;
+				}
+				links = _links[index];
+				if (links == null)
+				{
+					links = node is UStateNode<UMachine, string> ? new ULink[0] : BuildLinks(index);
+					_links[index] = links;
+				}
+				state.OnEnterState();
+
+// UnityEngine.Debug.Log(_uflow.ToString());
+
+				if (links.Length > 0)
+				{
+					links = Array.FindAll(links, l=>l.Validate());
+					Array.ForEach(links, Activate);
+					if (links.Length > 0) ExitState(index);
+					_queue.Dequeue();
+				}
+				// Found an Exit State!
+				// TODO: Implement Exit/persistent states
+				// else if (persistent) _queue.Dequeue();
+				else
+				{
+					ExitState(index);
+					ExitMachine();
+				}
 			}
 
-			// Exit the current machine if the incoming state is null
-			else 
+	// TODO:
+	// - In the UI, outgoing links are shown in a reorderable list where list order = priority
+	// - Default links are always resolved last (greyed out if possible)
+		}
+
+		override public void OnEnterState()
+		{
+			int length = _graph.Nodes.Length;
+			if (length > 0)
 			{
-				OnExitState();
-				if (_machine != null)
-					_machine.BuildTransitions();
+				if (_states == null) _states = new UState[length];
+				if (_links == null) _links = new ULink[length][];
+				_queue.Enqueue(0);
+				Activate();
+			}
+			else ExitMachine();
+		}
+
+		private void ExitState(int index)
+		{
+			if (_links[index] != null)
+			{
+				Array.ForEach(_links[index], l=>l.Dispose());
+				_links[index] = null;
+			}
+			if (_states[index] != null)
+			{
+				_states[index].OnExitState();
+				_states[index].Dispose();
+				_states[index] = null;
 			}
 		}
 
-		public override void OnEnterState ()
+		private void Clear()
 		{
-			State = _initialState;
+			if (_links != null)
+				foreach (ULink[] links in _links)
+					if (links != null)
+						Array.ForEach(links, l=>l.Dispose());
+			if (_states != null)
+				Array.ForEach(_states, s=>{ if (s!=null) s.Dispose(); });
+			if (_queue != null)
+				_queue.Clear();
 		}
 
-		public override void OnExitState ()
+		private void ExitMachine()
 		{
-			_state = null;
-			ClearTransitions();
-			_initialState = null;
-			_uflow._machines.Remove(this.ID);
-		}
-
-		private void BuildTransitions()
-		{
-			if (_state == null) return;
-
-			_transitions = _uflow.BuildTransitions(ID, _state.ID);
-			if (_transitions != null && _transitions.Length > 0)
+			Clear();
+			_uflow.RemoveMachine(this);
+			if (_machine != null) 
 			{
-				ULink link = Array.Find(_transitions, t=>t.InitializeAndValidate());
-				if (link != null) State = link.TargetState;
+				int index = Array.FindIndex(_machine._graph.Nodes, n=>n.ID == this.ID && n is UStateNode<UMachine, string>);
+				ULink[] links = _machine.BuildLinks(index);
+				_machine._links[index] = links;
+				links = Array.FindAll(_machine._links[index], l=>l.Validate());
+				Array.ForEach(links, _machine.Activate);
 			}
-			else State = null;
 		}
 
-		private void ClearTransitions()
+		override public void Dispose()
 		{
-			if (_transitions == null) return;
-			foreach(ULink trans in _transitions)
-				trans.Dispose();
-			_transitions = null;
+			Clear();
+			_links = null;
+			_states = null;
+			_queue = null;
+			_machine = null;				
+			_uflow.RemoveMachine(this);
+		}
+
+		private ULink[] BuildLinks(int index)
+		{
+			UGraphLink[] links = _graph.GetLinks(_graph.Nodes[index]);
+			return links.Select(link=>BuildLink(link)).ToArray();
+		}
+
+		private ULink BuildLink(UGraphLink link)
+		{
+			ULink ln = _uflow.Build<UGraphLink, ULink>(link);
+			ln._origin = link.Origin;
+			ln._target = link.Target;
+			ln._machine = this;
+			ln.Initialize();
+			return ln;
+		}
+
+		public override string ToString()
+		{
+			return "UFlow::UMachine " + MachineID + ": " + string.Join(", ", GetActiveStates());
 		}
 	}
 }
