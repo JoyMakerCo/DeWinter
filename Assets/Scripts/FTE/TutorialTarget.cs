@@ -11,7 +11,7 @@ namespace Ambition
         public string TutorialStep;
         void Awake()
         {
-            if (!AmbitionApp.IsActiveState(TutorialConsts.TUTORIAL)) Destroy(this);
+            if (!AmbitionApp.IsActiveMachine(TutorialConsts.TUTORIAL_MACHINE)) Destroy(this);
         }
 
         public void OnPointerClick(PointerEventData eventData)

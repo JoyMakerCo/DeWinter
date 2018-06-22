@@ -7,7 +7,7 @@ namespace Ambition
 {
 	public class CheckConversationTransition : ULink
 	{
-		public override bool InitializeAndValidate ()
+		public override bool Validate()
 		{
 			MapModel map = AmbitionApp.GetModel<MapModel>();
 			GuestVO [] guests = map.Room.Guests;

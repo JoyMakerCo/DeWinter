@@ -3,10 +3,10 @@ using UFlow;
 
 namespace Ambition
 {
-    public class LoadSceneState : UState, Util.IInitializable<string>
+    public class LoadSceneState : UState<string>
     {
         private string _sceneID;
-        public void Initialize(string sceneID)
+        override public void SetData(string sceneID)
         {
             _sceneID = sceneID;
         }

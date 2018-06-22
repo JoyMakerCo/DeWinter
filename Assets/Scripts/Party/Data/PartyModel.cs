@@ -108,6 +108,14 @@ namespace Ambition
 		[JsonProperty("ambushHandSize")]
 		public int AmbushHandSize = 3;
 
+		[JsonProperty("guest_actions")]
+		public GuestActionVO[] GuestActions;
+		[JsonProperty("guest_action_chance")]
+		public int[] GuestActionChance;
+		[JsonProperty("charmed_guest_action_chance")]
+		public int[] CharmedGuestActionChance;
+
+
 		private int _intoxication;
 		public int Intoxication
 		{

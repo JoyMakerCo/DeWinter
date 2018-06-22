@@ -145,39 +145,49 @@ namespace Ambition
 			App.Service<DialogSvc>().Close(dialog);
 		}
 
-		public static void RegisterState<C>(string stateID) where C : UState, new()
+		public static void RegisterState<C>(string machineID, string stateID) where C : UState, new()
 		{
-			App.Service<UFlowSvc>().RegisterState<C>(stateID);
+            App.Service<UFlow.UFlowSvc>().RegisterState<C>(machineID, stateID);
 		}
 
-		public static void RegisterState(string stateID)
+		public static void RegisterState(string machineID, string stateID)
 		{
-			App.Service<UFlowSvc>().RegisterState(stateID);
+            App.Service<UFlow.UFlowSvc>().RegisterState(machineID, stateID);
 		}
 
-		public static void RegisterState<C, T>(string stateID, T arg) where C : UState, Util.IInitializable<T>, new()
+		public static void RegisterState<C, T>(string machineID, string stateID, T arg) where C : UState<T>, new()
 		{
-			App.Service<UFlowSvc>().RegisterState<C, T>(stateID, arg);
+            App.Service<UFlow.UFlowSvc>().RegisterState<C, T>(machineID, stateID, arg);
 		}
 
 		public static void RegisterLink(string machineID, string originState, string targetState)
 		{
-			App.Service<UFlowSvc>().RegisterTransition(machineID, originState, targetState);
+            App.Service<UFlow.UFlowSvc>().RegisterLink(machineID, originState, targetState);
 		}
 
-		public static void RegisterLink<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
+		public static void RegisterLink<T>(string machineID, string originState, string targetState) where T : ULink, new()
 		{
-			App.Service<UFlowSvc>().RegisterTransition<T>(machineID, originState, targetState, args);
+            App.Service<UFlow.UFlowSvc>().RegisterLink<T>(machineID, originState, targetState);
+		}
+
+		public static void RegisterLink<T, U>(string machineID, string originState, string targetState, U data) where T : ULink<U>, new()
+		{
+            App.Service<UFlow.UFlowSvc>().RegisterLink<T, U>(machineID, originState, targetState, data);
 		}
 
 		public static void InvokeMachine(string MachineID)
 		{
-			App.Service<UFlowSvc>().InvokeMachine(MachineID);
+            App.Service<UFlow.UFlowSvc>().InvokeMachine(MachineID);
 		}
 
 		public static bool IsActiveState(string stateID)
 		{
-			return App.Service<UFlowSvc>().IsActiveState(stateID);
+			return App.Service<UFlow.UFlowSvc>().IsActiveState(stateID);
+		}
+
+		public static bool IsActiveMachine(string machineID)
+		{
+			return App.Service<UFlow.UFlowSvc>().IsActiveMachine(machineID);
 		}
 
 		public static string GetString(string key)

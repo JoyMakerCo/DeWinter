@@ -68,28 +68,28 @@ namespace Ambition
 
 			// UFlow Associations
 			// In the future, this will be handled by config
-			AmbitionApp.RegisterState<StartConversationState>("InitConversation");
-			AmbitionApp.RegisterState<OpenDialogState, string>("ReadyGo", ReadyGoDialogMediator.DIALOG_ID);
-			AmbitionApp.RegisterState<StartTurnState>("StartTurn");
-			AmbitionApp.RegisterState<EndTurnState>("EndTurn");
-			AmbitionApp.RegisterState<EndConversationState>("EndConversation");
-			AmbitionApp.RegisterState<FleeConversationState>("FleeConversation");
+			AmbitionApp.RegisterState<StartConversationState>("ConversationController", "InitConversation");
+			AmbitionApp.RegisterState<OpenDialogState, string>("ConversationController", "ReadyGo", ReadyGoDialogMediator.DIALOG_ID);
+			AmbitionApp.RegisterState<StartTurnState>("ConversationController", "StartTurn");
+			AmbitionApp.RegisterState<EndTurnState>("ConversationController", "EndTurn");
+			AmbitionApp.RegisterState<EndConversationState>("ConversationController", "EndConversation");
+			AmbitionApp.RegisterState<FleeConversationState>("ConversationController", "FleeConversation");
 
 			AmbitionApp.RegisterLink("ConversationController", "InitConversation", "ReadyGo");
-			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("ConversationController", "ReadyGo", "StartTurn", ReadyGoDialogMediator.DIALOG_ID);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink, string>("ConversationController", "ReadyGo", "StartTurn", ReadyGoDialogMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("ConversationController", "StartTurn", "EndTurn", PartyMessages.END_TURN);
 			AmbitionApp.RegisterLink<CheckConversationTransition>("ConversationController", "EndTurn", "EndConversation");
 			AmbitionApp.RegisterLink<CheckConfidenceLink>("ConversationController", "EndTurn", "FleeConversation");
 			AmbitionApp.RegisterLink("ConversationController", "EndTurn", "StartTurn");
 
 			// Estate States. This lands somewhere between confusing and annoying.
-			AmbitionApp.RegisterState<LoadSceneState, string>("LoadEstate", SceneConsts.ESTATE_SCENE);
-			AmbitionApp.RegisterState<StartEstateState>("InitEstate");
-			AmbitionApp.RegisterState<FadeInState>("EnterEstate");
-			AmbitionApp.RegisterState<StyleChangeState>("StyleChange");
-			AmbitionApp.RegisterState<CreateInvitationsState>("CreateInvitations");
-			AmbitionApp.RegisterState<CheckMissedPartiesState>("CheckMissedParties");
-			AmbitionApp.RegisterState("Estate");
+			AmbitionApp.RegisterState<LoadSceneState, string>("EstateController", "LoadEstate", SceneConsts.ESTATE_SCENE);
+			AmbitionApp.RegisterState<StartEstateState>("EstateController", "InitEstate");
+			AmbitionApp.RegisterState<FadeInState>("EstateController", "EnterEstate");
+			AmbitionApp.RegisterState<StyleChangeState>("EstateController", "StyleChange");
+			AmbitionApp.RegisterState<CreateInvitationsState>("EstateController", "CreateInvitations");
+			AmbitionApp.RegisterState<CheckMissedPartiesState>("EstateController", "CheckMissedParties");
+			AmbitionApp.RegisterState("EstateController", "Estate");
 
 			AmbitionApp.RegisterLink("EstateController", "LoadEstate", "InitEstate");
 			AmbitionApp.RegisterLink("EstateController", "InitEstate", "EnterEstate");
@@ -100,13 +100,13 @@ namespace Ambition
 			AmbitionApp.RegisterLink("EstateController", "CheckMissedParties", "Estate");
 
 			// INCIDENT MACHINE
-			AmbitionApp.RegisterState<LoadSceneState, string>("LoadIncident", SceneConsts.INCIDENT_SCENE);
-			AmbitionApp.RegisterState<FadeInState>("EnterIncident");
-			AmbitionApp.RegisterState<StartIncidentState>("StartIncident");
-			AmbitionApp.RegisterState<MomentState>("Moment");
-			AmbitionApp.RegisterState("CheckEndIncident");
-			AmbitionApp.RegisterState<FadeOutState>("EndIncident");
-			AmbitionApp.RegisterState<InvokeMachineState, string>("InvokeEstate", "EstateController");
+			AmbitionApp.RegisterState<LoadSceneState, string>("IncidentController", "LoadIncident", SceneConsts.INCIDENT_SCENE);
+			AmbitionApp.RegisterState<FadeInState>("IncidentController", "EnterIncident");
+			AmbitionApp.RegisterState<StartIncidentState>("IncidentController", "StartIncident");
+			AmbitionApp.RegisterState<MomentState>("IncidentController", "Moment");
+			AmbitionApp.RegisterState("IncidentController", "CheckEndIncident");
+			AmbitionApp.RegisterState<FadeOutState>("IncidentController", "EndIncident");
+			AmbitionApp.RegisterState<InvokeMachineState, string>("IncidentController", "InvokeEstate", "EstateController");
 
 			AmbitionApp.RegisterLink("IncidentController", "LoadIncident", "EnterIncident");
 			AmbitionApp.RegisterLink("IncidentController", "EnterIncident", "StartIncident");
@@ -114,49 +114,100 @@ namespace Ambition
 			AmbitionApp.RegisterLink<WaitForMomentLink>("IncidentController", "Moment", "CheckEndIncident");
 			AmbitionApp.RegisterLink<CheckEndIncidentLink>("IncidentController", "CheckEndIncident", "EndIncident");
 			AmbitionApp.RegisterLink("IncidentController", "CheckEndIncident", "Moment");
-			AmbitionApp.RegisterLink<WaitForMessageLink>("IncidentController", "EndIncident", "InvokeEstate", GameMessages.FADE_OUT_COMPLETE);
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("IncidentController", "EndIncident", "InvokeEstate", GameMessages.FADE_OUT_COMPLETE);
 
 
 			// TUTORIAL STATES.
-			AmbitionApp.RegisterState<StartTutorialState>("InitTutorial");
-			AmbitionApp.RegisterState<LoadSceneState, string>("LoadWardrobeStep", SceneConsts.LOAD_OUT_SCENE);
-			AmbitionApp.RegisterState<TutorialState>("TutorialWardrobeStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialGoStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialPartyStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialFirstRoomStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialStartConversationStep");
-			AmbitionApp.RegisterState<TutorialRemarkState>("TutorialRemarkStep");
-			AmbitionApp.RegisterState<TutorialGuestState>("TutorialGuestStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialAltRemarkStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialCompleteConversationStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialPunchbowlStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialMiddleConversationStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialHostRoomStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialHostConversationStep");
-			AmbitionApp.RegisterState<EndTutorialState>("TutorialEndHostConversationStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialLeaveButtonStep");
-			AmbitionApp.RegisterState<TutorialState>("TutorialLeavePartyStep");
+			AmbitionApp.RegisterState<StartTutorialState>("TutorialController", "InitTutorial");
+			AmbitionApp.RegisterState<LoadSceneState, string>("TutorialController", "LoadWardrobeStep", SceneConsts.LOAD_OUT_SCENE);
+			AmbitionApp.RegisterState<FadeInState>("TutorialController", "TutorialFadeInWardrobeStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialWardrobeStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialGoStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialPartyStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialFirstRoomStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialStartConversationStep");
+			AmbitionApp.RegisterState<TutorialRemarkState>("TutorialController", "TutorialRemarkStep");
+			AmbitionApp.RegisterState<TutorialGuestState>("TutorialController", "TutorialGuestStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialAltRemarkStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialCompleteConversationStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialPunchbowlStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialMiddleConversationStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialHostRoomStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialHostConversationStep");
+			AmbitionApp.RegisterState<EndTutorialState>("TutorialController", "TutorialEndHostConversationStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialLeaveButtonStep");
+			AmbitionApp.RegisterState<TutorialState>("TutorialController", "TutorialLeavePartyStep");
 
-			AmbitionApp.RegisterLink<WaitForMessageLink<string>>("TutorialController", "InitTutorial", "LoadWardrobeStep", GameMessages.SCENE_LOADED, SceneConsts.ESTATE_SCENE);
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "LoadWardrobeStep", "TutorialWardrobeStep", GameMessages.FADE_IN_COMPLETE);
+			AmbitionApp.RegisterLink<WaitForSceneLoadedLink, string>("TutorialController", "InitTutorial", "LoadWardrobeStep", SceneConsts.ESTATE_SCENE);
+			AmbitionApp.RegisterLink("TutorialController", "LoadWardrobeStep", "TutorialFadeInWardrobeStep");
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("TutorialController", "TutorialFadeInWardrobeStep", "TutorialWardrobeStep", GameMessages.FADE_IN_COMPLETE);
 			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialWardrobeStep", "TutorialGoStep");
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialGoStep", "TutorialPartyStep", GameMessages.FADE_IN_COMPLETE);
-			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("TutorialController", "TutorialPartyStep", "TutorialFirstRoomStep", MessageViewMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("TutorialController", "TutorialGoStep", "TutorialPartyStep", GameMessages.FADE_IN_COMPLETE);
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink, string>("TutorialController", "TutorialPartyStep", "TutorialFirstRoomStep", MessageViewMediator.DIALOG_ID);
 			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialFirstRoomStep", "TutorialStartConversationStep");
-			AmbitionApp.RegisterLink<WaitForCloseDialogLink>("TutorialController", "TutorialStartConversationStep", "TutorialRemarkStep", ReadyGoDialogMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink, string>("TutorialController", "TutorialStartConversationStep", "TutorialRemarkStep", ReadyGoDialogMediator.DIALOG_ID);
 			AmbitionApp.RegisterLink<TutorialRemarkLink>("TutorialController", "TutorialRemarkStep", "TutorialGuestStep");
 			AmbitionApp.RegisterLink<TutorialGuestLink>("TutorialController", "TutorialGuestStep", "TutorialCompleteConversationStep");
 			AmbitionApp.RegisterLink<TutorialRemarkLink>("TutorialController", "TutorialGuestStep", "TutorialAltRemarkStep");
 			AmbitionApp.RegisterLink("TutorialController", "TutorialAltRemarkStep", "TutorialGuestStep");
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialCompleteConversationStep", "TutorialPunchbowlStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("TutorialController", "TutorialCompleteConversationStep", "TutorialPunchbowlStep", PartyMessages.SHOW_MAP);
 			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialPunchbowlStep", "TutorialMiddleConversationStep");
-			AmbitionApp.RegisterLink<WaitForMessageLink>("TutorialController", "TutorialMiddleConversationStep", "TutorialHostRoomStep", PartyMessages.SHOW_MAP);
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("TutorialController", "TutorialMiddleConversationStep", "TutorialHostRoomStep", PartyMessages.SHOW_MAP);
 			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialHostRoomStep", "TutorialHostConversationStep");
-			AmbitionApp.RegisterLink<WaitForHostTutorialLink>("TutorialController", "TutorialHostConversationStep", "TutorialEndHostConversationStep", PartyMessages.SHOW_MAP);
-			AmbitionApp.RegisterLink<WaitForMessageLink<string>>("TutorialController", "TutorialEndHostConversationStep", "TutorialLeaveButtonStep", GameMessages.DIALOG_CLOSED, MessageViewMediator.DIALOG_ID);
+			AmbitionApp.RegisterLink<WaitForHostTutorialLink>("TutorialController", "TutorialHostConversationStep", "TutorialEndHostConversationStep");
+			AmbitionApp.RegisterLink<WaitForCloseDialogLink, string>("TutorialController", "TutorialEndHostConversationStep", "TutorialLeaveButtonStep", MessageViewMediator.DIALOG_ID);
 			AmbitionApp.RegisterLink<WaitForTutorialStepLink>("TutorialController", "TutorialLeaveButtonStep", "TutorialLeavePartyStep");
 
-			AmbitionApp.InvokeMachine(AmbitionApp.GetModel<IncidentModel>().Incident != null ? "IncidentController" : "EstateController");
+			AmbitionApp.RegisterState("GuestActionController", "GuestActionNone");
+			AmbitionApp.RegisterState<GuestActionInterestState>("GuestActionController", "GuestActionInterest");
+			AmbitionApp.RegisterState<SelectGuestActionState>("GuestActionController", "SelectGuestAction");
+			AmbitionApp.RegisterState<ResetGuestActionState>("GuestActionController", "ResetGuestAction");
+
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("GuestActionController", "GuestActionNone", "ResetGuestAction", PartyMessages.END_TURN);
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("GuestActionController", "GuestActionInterest", "ResetGuestAction", PartyMessages.END_TURN);
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("GuestActionController", "ResetGuestAction", "SelectGuestAction", PartyMessages.START_TURN);
+			AmbitionApp.RegisterLink<GuestActionSelectedLink, string>("GuestActionController", "SelectGuestAction", "GuestActionInterest", "Interest");
+			AmbitionApp.RegisterLink("GuestActionController", "SelectGuestAction", "GuestActionNone");
+
+
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionCommentComplete");
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionChangeInterest");
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionAside");
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionContinueAside");
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionInquiry");
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionInquiryComplete");
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionToast");
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionLead");
+			// AmbitionApp.RegisterState("GuestActionController", "GuestActionContinueLead");
+
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionSelect", "GuestActionNone");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionNone", "GuestActionSelect");
+
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionSelect", "GuestActionComment");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionComment", "GuestActionCommentComplete");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionCommentComplete", "GuestActionSelect");
+
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionSelect", "GuestActionChangeInterest");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionChangeInterest", "GuestActionSelect");
+
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionSelect", "GuestActionAside");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionAside", "GuestActionContinueAside");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionContinueAside", "GuestActionAside");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionAside", "GuestActionSelect");
+			
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionSelect", "GuestActionInquiry");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionInquiry", "GuestActionSelect");
+
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionSelect", "GuestActionToast");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionToast", "GuestActionDrink");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionDrink", "GuestActionSelect");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionToast", "GuestActionNoDrink");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionNoDrink", "GuestActionSelect");
+
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionSelect", "GuestActionLead");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionLead", "GuestActionSelect");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionLead", "GuestActionContinueLead");
+			// AmbitionApp.RegisterLink("GuestActionController", "GuestActionContinueLead", "GuestActionLead");
 		}
 	}
 }

@@ -3,54 +3,32 @@
 namespace UFlow
 {
 	/// <summary>
-	/// Tranisitions between UStates. Once a transition is Validated, the Machine proceeds to NextState.
+	/// Tranisitions between UStates. If the Machine's current state is State,
+	/// and receives this Link's input, this Link will be followed.
 	/// </summary>
-	public abstract class ULink : IDisposable
+
+	public abstract class ULink : Util.IInitializable, IDisposable
 	{
-		public object[] Parameters;
-
+		// Set by UFlow
 		internal UMachine _machine;
-		internal string _targetState;
+		internal int _target;
+		internal int _origin;
 
-		public string State
-		{
-			get { return _machine.State; }
-		}
-		public string TargetState
-		{
-			get { return _targetState; }
-		}
-
-		/// <summary>
-		/// Initialize the Transition and return true if Transition takes immediate effect
-		/// For Transitions from UMachines, this is called AFTER exiting the Machine.
-		/// </summary>
-		public abstract bool InitializeAndValidate();
-
-		/// <summary>
-		/// Proceed Immediately to NextState. Useful for Callbacks.
-		/// </summary>
-		public void Validate()
-		{
-			_machine.State = _targetState;
-		}
-
-		/// <summary>
-		/// Clean up allocated memory associated with this transition. Called by the Machine.
-		/// </summary>
+		// The current State of the machine from which this link originates
+		public UState State { get { return _machine._states[_origin]; } }		
+		public void Activate() { _machine.Activate(this); }
+		public virtual bool Validate() { return false; } // Called upon instantiation
+		public virtual void Initialize() { }
 		public virtual void Dispose() {}
 	}
 
-	public class UBasicLink : ULink
+	public sealed class UDefaultLink : ULink
 	{
-		public UBasicLink(string targetState)
-		{
-			_targetState = targetState;
-		}
-
-		public override bool InitializeAndValidate ()
-		{
-			return true;
-		}
+		public override bool Validate() { return true; } // Called upon instantiation
 	}
+
+	public abstract class ULink<T> : ULink
+	{
+		public abstract void SetValue(T data);
+	} 
 }

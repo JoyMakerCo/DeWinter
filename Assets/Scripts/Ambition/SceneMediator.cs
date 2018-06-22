@@ -9,15 +9,14 @@ namespace Ambition
 	public class SceneMediator : MonoBehaviour
 	{
 		public PrefabMap[] Scenes;
-		private string _sceneID;
+		private string _sceneID
+		{
+			set { AmbitionApp.GetModel<GameModel>().Scene = value; }
+			get { return AmbitionApp.GetModel<GameModel>().Scene; }
+		}
 		void Awake()
 		{
 			AmbitionApp.Subscribe<string>(GameMessages.LOAD_SCENE, HandleScene);
-		}
-
-		void Start()
-		{
-			AmbitionApp.SendMessage(GameMessages.SCENE_LOADED);
 		}
 
 		void OnDestroy()

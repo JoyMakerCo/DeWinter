@@ -9,8 +9,8 @@ namespace Ambition
 		public GameObject TutorialPrefab;
 		void Awake ()
 		{
-			if (TutorialPrefab != null && AmbitionApp.IsActiveState(TutorialConsts.TUTORIAL))
-				Instantiate(TutorialPrefab, this.transform);
+			if (TutorialPrefab != null && AmbitionApp.IsActiveMachine(TutorialConsts.TUTORIAL_MACHINE))
+				Instantiate(TutorialPrefab, this.transform, false);
 			Destroy(this);
 		}
 	}
