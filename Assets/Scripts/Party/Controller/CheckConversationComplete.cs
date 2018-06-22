@@ -7,14 +7,14 @@ namespace Ambition
 {
 	public class CheckConversationTransition : ULink
 	{
-		public override void Initialize ()
+		public override bool Validate()
 		{
 			MapModel map = AmbitionApp.GetModel<MapModel>();
 			GuestVO [] guests = map.Room.Guests;
 			int numCharmed = Array.FindAll(guests, g=>g.State == GuestState.Charmed).Length;
 			int numPutOff = Array.FindAll(guests, g=>g.State == GuestState.PutOff).Length;
 			
-			if (numCharmed + numPutOff == guests.Length) Activate();
+			return (numCharmed + numPutOff == guests.Length);
 		}
 	}
 }

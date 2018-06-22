@@ -9,26 +9,20 @@ namespace UFlow
 	// OnEnterState and OnExitState are invoked by the UFlowSvc,
 	// and are ideal places to execute asynchronous instructions
 	// and set up delegates.
-	public class UState
+	public class UState : IDisposable
 	{
-		internal UMachineState _machine;
-		public string Name;
+		public string ID { get { return _node.ID; } }
+		internal UMachine _machine;
+		internal UStateNode _node;
 
-		public UState() {}
-		public UState(string name) { Name = name; }
-		public UState(UState state) { Name = state.Name; }
-		
 		// Overload for instructions
 		public virtual void OnEnterState() {}
 		public virtual void OnExitState() {}
-
-		// Dispose is called independently of OnExitState().
-		// Put cleanup here.
 		public virtual void Dispose() {}
 	}
 
-	public class UState<T> : UState
+	public abstract class UState<T> : UState
 	{
-		public T Data;
+		public abstract void SetData(T node);
 	}
 }

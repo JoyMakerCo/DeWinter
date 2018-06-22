@@ -18,16 +18,10 @@ namespace Core
 		void Execute();
 	}
 
-	public interface IPersistentCommand
-	{
-		void OnCompleteCommand();
-	}
-
 	public class CommandSvc : IAppService
 	{
 		private Dictionary<string, Dictionary<Type, Delegate>> _messageAssociations;
 		private Dictionary<Type, Dictionary<Type, Delegate>> _typeAssociations;
-		private List<IPersistentCommand> _commands;
 
 		public CommandSvc()
 		{

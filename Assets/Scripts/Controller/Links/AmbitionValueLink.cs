@@ -3,32 +3,49 @@ using UFlow;
 
 namespace Ambition
 {
-    public abstract class AmbitionValueLink<T> : ULink<T>
+    public class AmbitionValueLink<T> : ULink<T>
     {
-        public Func<bool> ValidateOnInit=null;
-        public Func<T, bool> ValidateOnCallback=null;
-        public string MessageID=null;
-        override public void Initialize()
+        public string ValueID=null;
+        public T Value;
+        public bool ValidateOnInit = false;
+        public bool ValidateOnCallback = false;
+        public override void SetValue(T value) { Value = value; }
+
+        override sealed public void Initialize()
         {
-            if (ValidateOnInit != null && ValidateOnInit()) Activate();
-            else if (ValidateOnCallback != null)
+            if (ValidateOnCallback)
             {
-                if (MessageID != null)
-                    AmbitionApp.Subscribe<T>(MessageID, HandleValue);
-                else
+                if (string.IsNullOrEmpty(ValueID))
                     AmbitionApp.Subscribe<T>(HandleValue);
+                else
+                    AmbitionApp.Subscribe<T>(ValueID, HandleValue);
             }
         }
 
-        override public void Dispose()
+        override sealed public bool Validate()
         {
-            AmbitionApp.Unsubscribe<T>(MessageID, HandleValue);
+            return ValidateOnInit && Validate(GetValue());
+// TODO: Implment Value Service and then get rid of GetValue()
+            // if (!ValidateOnInit) return false;
+            // T value = (string.IsNullOrEmpty(ValueID))
+            //     ? AmbitionApp.GetValue<T>(ValueID)
+            //     : AmbitionApp.GetValue<T>();
+            // return Validate(value);
+        }
+
+		override sealed public void Dispose()
+        {
+            AmbitionApp.Unsubscribe<T>(ValueID, HandleValue);
             AmbitionApp.Unsubscribe<T>(HandleValue);
         }
-        
-        public void HandleValue(T value)
+
+        private void HandleValue(T value)
         {
-            if (ValidateOnCallback(value)) Activate();
+            if (Validate(value)) Activate();
         }
+
+        protected virtual T GetValue() { return default(T); }
+
+        protected virtual bool Validate(T value) { return value.Equals(Value); }
     }
 }

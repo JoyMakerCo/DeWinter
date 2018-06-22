@@ -5,14 +5,15 @@ namespace Ambition
 {
     public class AmbitionDelegateLink : ULink<string>
     {
-        override public void Initialize()
+        private string _event;
+        override public void SetValue(string data)
         {
-            AmbitionApp.Subscribe(Data, Activate);
+            AmbitionApp.Subscribe(_event = data, Activate);
         }
 
         override public void Dispose()
         {
-            AmbitionApp.Unsubscribe(Data, Activate);
+            AmbitionApp.Unsubscribe(_event, Activate);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Ambition
 		private ReputationVO _reputation;
 
 		public string Allegiance;
+		public string Scene;
 
 		public string PlayerName = "Yvette DeWinter";
 

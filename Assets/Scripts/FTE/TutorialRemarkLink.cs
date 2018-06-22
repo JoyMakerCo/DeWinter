@@ -3,12 +3,20 @@ using UFlow;
 
 namespace Ambition
 {
-    public class TutorialRemarkLink : AmbitionValueLink<RemarkVO>
+    public class TutorialRemarkLink : ULink
     {
-        public override void Initialize()
+        override public void Initialize()
         {
-            ValidateOnCallback = r => { return r != null; };
-            base.Initialize();
+            AmbitionApp.Subscribe<RemarkVO>(Validate);
+        }
+        protected void Validate(RemarkVO value)
+        {
+            if (value != null) Activate();
+        }
+
+        override public void Dispose()
+        {
+            AmbitionApp.Unsubscribe<RemarkVO>(Validate);
         }
     }
 }

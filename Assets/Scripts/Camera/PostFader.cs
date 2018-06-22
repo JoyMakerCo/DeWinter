@@ -31,11 +31,13 @@ namespace Ambition
         
         private void HandleFadeOut()
         {
+            StopAllCoroutines();
             StartCoroutine(FadeOut(DEFAULT_TIME));
         }
        
         private void HandleFadeIn()
         {
+            StopAllCoroutines();
             StartCoroutine(FadeIn(DEFAULT_TIME));
         }
        

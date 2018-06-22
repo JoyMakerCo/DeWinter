@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		private static float LAST_TIMESTAMP=0;
 
-		override public void Initialize()
+		public override void Initialize()
 		{
 			AmbitionApp.Subscribe<int>(IncidentMessages.INCIDENT_OPTION, HandleOption);
 		}

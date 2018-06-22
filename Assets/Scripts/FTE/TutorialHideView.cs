@@ -7,7 +7,7 @@ namespace Ambition
         public string TutorialState;
         void Awake()
         {
-            if (!AmbitionApp.IsActiveState(TutorialConsts.TUTORIAL))
+            if (!AmbitionApp.IsActiveMachine(TutorialConsts.TUTORIAL_MACHINE))
                 Destroy(this);
             this.gameObject.SetActive(false);
             AmbitionApp.Subscribe<string>(TutorialMessage.TUTORIAL_STEP, HandleStep);

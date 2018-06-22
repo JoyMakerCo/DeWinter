@@ -6,173 +6,209 @@ using Util;
 
 namespace UFlow
 {
-	internal class UTransitionMap
+	public class UFlowSvc : IAppService, IInitializable
 	{
-		internal string TargetState;
+		// Active machines.
+		private List<UMachine> _active = new List<UMachine>();
+		// Machine definitions.
+		private Dictionary<UMachine, UController> _controllers = new Dictionary<UMachine, UController>();
+		private Dictionary<string, UMachineGraph> _machines = new Dictionary<string, UMachineGraph>();
+		private Dictionary<Type, Delegate> _instantiators = new Dictionary<Type, Delegate>();
 
-		internal UTransitionMap() {}
-		internal UTransitionMap(string targetState)
+		public void Initialize()
 		{
-			TargetState = targetState;
+			Func<UStateNode, UState> ustate = n => new UState();
+			Func<UStateNode<UMachine, string>, UMachine> umachine = n => BuildMachine(n);
+			Func<UGraphLink, UDefaultLink> ulink = n => new UDefaultLink();
+			_instantiators.Add(typeof(UStateNode), ustate);
+			_instantiators.Add(typeof(UStateNode<UMachine, string>), umachine);
+			_instantiators.Add(typeof(UGraphLink), ulink);
 		}
-
-		internal virtual ULink Create()
-		{
-			return new UBasicLink(TargetState);
-		}
-	}
-
-	internal class ULinkMap<T>:UTransitionMap where T : ULink, new()
-	{
-		internal object[] Params;
-
-		internal ULinkMap() {}
-		internal ULinkMap(string targetState, params object [] parms)
-		{
-			TargetState = targetState;
-			Params = parms;
-		}
-
-		internal override ULink Create()
-		{
-			T t = new T();
-			t.Parameters = Params;
-			t._targetState = TargetState;
-			return t;
-		}
-	}
-
-	public class UFlowSvc : IAppService
-	{
-		private Dictionary<string, Func<UState>> _states = new Dictionary<string, Func<UState>>();
-		private Dictionary<string, Dictionary<string, List<UTransitionMap>>> _links = new Dictionary<string, Dictionary<string, List<UTransitionMap>>>();
-		private Dictionary<string, string> _initialStates = new Dictionary<string, string>();
-
-		// Machines that have been instantiated.
-		internal List<UMachine> _machines = new List<UMachine>();
 
 		public UMachine GetMachine(string MachineID)
 		{
-			return _machines.Find(m => m.ID == MachineID);
+			return _active.Find(m => m.MachineID == MachineID);
+		}
+
+		internal UController GetController(UMachine machine)
+		{
+			UController result;
+            while (machine._machine != null) machine = machine._machine;
+			return _controllers.TryGetValue(machine, out result) ? result : null;
 		}
 
 		public string[] GetActiveMachines()
 		{
-			return _machines.Select(m=>m.MachineID).ToArray();
+			return _active.Select(m=>m.MachineID).ToArray();
 		}
 
 		public bool IsActiveState(string stateID)
 		{
-			foreach(UMachine machine in _machines)
-			{
-				if (machine.ID == stateID || machine.State == stateID)
-					return true;
-			}
-			return false;
+			return _active.Exists(m=>m.ID == stateID || m.GetActiveStates().Contains(stateID));
 		}
 
-		public void RegisterState(string stateID)
+		public bool IsActiveMachine(string machineID)
 		{
-			if (!_states.ContainsKey(stateID))
-			{
-				_states[stateID] = (Func<UState>)(() => {
-					return new UState();
-				});
-			}
+			return _active.Exists(m=>m.MachineID == machineID);
 		}
 
-		public void RegisterState<S>(string stateID) where S : UState, new()
+		private N AddNodeToGraph<N>(N node, string nodeID, string machineID) where N:UStateNode
 		{
-			if (!_states.ContainsKey(stateID))
+			UMachineGraph graph;
+			if (!_machines.TryGetValue(machineID, out graph))
 			{
-				_states[stateID] = (Func<UState>)(() => {
-					UState state = new S();
-					if (state is IInitializable)
-						((IInitializable)state).Initialize();
-					return state;
-				});
+				graph = new UMachineGraph();
+				_machines.Add(machineID, graph);
 			}
+			node.ID = nodeID;
+			if (graph.Nodes != null)
+				graph.Nodes = graph.Nodes.Append(node).ToArray();
+			else graph.Nodes = new UStateNode[]{node};
+			return node;
 		}
 
-		public void RegisterState<S, T>(string stateID, T arg) where S : UState, IInitializable<T>, new()
+		public void RegisterState(string machineID, string stateID)
 		{
-			if (!_states.ContainsKey(stateID))
+			AddNodeToGraph(new UStateNode(), stateID, machineID);
+		}
+
+		public void RegisterState<S>(string machineID, string stateID) where S : UState, new()
+		{
+			AddNodeToGraph(new UStateNode<S>(), stateID, machineID);
+			if (!_instantiators.ContainsKey(typeof(UStateNode<S>)))
 			{
-				_states[stateID] = (Func<UState>)(() => {
-					UState state = new S();
-					((IInitializable<T>)state).Initialize(arg);
-					return state;
-				});
+				Func<UStateNode<S>, S> Create = node => new S();
+				_instantiators.Add(typeof(UStateNode<S>), Create);
 			}
 		}
 
-		public void RegisterTransition<T>(string machineID, string originState, string targetState, params object[] args) where T : ULink, new()
+		public void RegisterState<S, T>(string machineID, string stateID, T arg) where S : UState<T>, new()
 		{
-			List<UTransitionMap> transitions = GetTransitionList(machineID, originState);
-			ULinkMap<T> trans = new ULinkMap<T>(targetState, args);
-			transitions.Add(trans);
-		}
-
-		public void RegisterTransition(string machineID, string originState, string targetState)
-		{
-			List<UTransitionMap> transitions = GetTransitionList(machineID, originState);
-			UTransitionMap map = new UTransitionMap(targetState);
-			transitions.Add(map);
-		}
-
-		private List<UTransitionMap> GetTransitionList(string machineID, string originState)
-		{
-			Dictionary<string, List<UTransitionMap>> stateTransitions;
-			List<UTransitionMap> transitions;
-			if (!_links.TryGetValue(machineID, out stateTransitions))
+			UStateNode<S,T> n = AddNodeToGraph(new UStateNode<S,T>(), stateID, machineID);
+			n.Data = arg;
+			if (!_instantiators.ContainsKey(typeof(UStateNode<S,T>)))
 			{
-				_initialStates[machineID] = originState;
-				_links[machineID] = stateTransitions = new Dictionary<string, List<UTransitionMap>>();
+				Func<UStateNode<S,T>, S> Create = node =>
+				{
+					S s = new S();
+					s._node = node;
+					s.SetData(node.Data);
+					return s;
+				};
+				_instantiators.Add(typeof(UStateNode<S,T>), Create);
 			}
-			if (!stateTransitions.TryGetValue(originState, out transitions))
-				stateTransitions[originState] = transitions = new List<UTransitionMap>();
-			return transitions;
 		}
 
-
-		internal ULink[] BuildTransitions(string machineID, string originState)
+		internal U Build<G,U>(G graphData)
 		{
-			Dictionary<string, List<UTransitionMap>> stateTransitions;
-			if (!_links.TryGetValue(machineID, out stateTransitions)) return null;
+			Type t = graphData.GetType();
+			U u = (U)(_instantiators[t].DynamicInvoke(graphData));
+			return u;
+		}
 
-			List<UTransitionMap> transitionMaps;
-			if (!stateTransitions.TryGetValue(originState, out transitionMaps)) return null;
+		private L AddLinkToGraph<L>(L link, string machineID, string originState, string targetState) where L:UGraphLink
+		{
+			UMachineGraph graph;
+			if (!_machines.TryGetValue(machineID, out graph)) return null;
 
-			UMachine mac = GetMachine(machineID);
-			List<ULink> transitions = new List<ULink>();
-			ULink trans;
+			link.Origin = Array.FindIndex(graph.Nodes, n=>n.ID == originState);
+			link.Target = Array.FindIndex(graph.Nodes, n=>n.ID == targetState);
+			if (link.Origin < 0 || link.Target < 0) return null;
 
-			foreach (UTransitionMap map in transitionMaps)
+			if (graph.Links != null)
+				graph.Links = graph.Links.Append(link).ToArray();
+			else graph.Links = new UGraphLink[]{link};
+			return link;
+		}
+
+		public void RegisterLink(string machineID, string originState, string targetState)
+		{
+			AddLinkToGraph(new UGraphLink(), machineID, originState, targetState);
+		}
+
+		public void RegisterLink<T>(string machineID, string originState, string targetState) where T : ULink, new()
+		{
+			UGraphLink<T> link = AddLinkToGraph(new UGraphLink<T>(), machineID, originState, targetState);
+			if (!_instantiators.ContainsKey(typeof(UGraphLink<T>)))
 			{
-				trans = map.Create();
-				trans._machine = mac;
-				transitions.Add(trans);
+				Func<UGraphLink<T>, T> Create = l=> new T();
+				_instantiators.Add(typeof(UGraphLink<T>), Create);
 			}
-			return transitions.ToArray();
+		}
+
+		public void RegisterLink<T,D>(string machineID, string originState, string targetState, D data) where T : ULink<D>, new()
+		{
+			UGraphLink<T,D> link = AddLinkToGraph(new UGraphLink<T,D>(), machineID, originState, targetState);
+			link.Data = data;
+			if (!_instantiators.ContainsKey(typeof(UGraphLink<T,D>)))
+			{
+				Func<UGraphLink<T,D>, T> Create = l=>
+				{
+					T t = new T();
+					t._target = l.Target;
+					t.SetValue(l.Data);
+					return t;
+				};
+				_instantiators.Add(typeof(UGraphLink<T,D>), Create);
+			}
+		}
+
+		public void RegisterAggregateLinks(string machineID, string originState, params string[] targetStates)
+		{
+
 		}
 
 		public UMachine InvokeMachine(string machineID)
 		{
-			if (!_states.ContainsKey(machi))
-			UMachine result = 
-			result.MachineID = machineID;
-			if (result != null) result.OnEnterState();
-			return result;
+			UStateNode<UMachine, string> node = new UStateNode<UMachine, string>();
+			node.Data = machineID;
+			UMachine mac = BuildMachine(node);
+			if (mac != null) mac.OnEnterState();
+			return mac;
+		}
+
+		internal UMachine BuildMachine(UStateNode<UMachine, string> node)
+		{
+			UMachineGraph graph;
+			if (!_machines.TryGetValue(node.Data, out graph))
+				return null;
+			UMachine mac = new UMachine();
+			mac.SetData(node.Data);
+			mac._graph = graph;
+			mac._uflow = this;
+			mac._node = node;
+			_active.Add(mac);
+			return mac;
+		}
+
+		internal void BuildController(UController controller)
+		{
+			if (controller._machine == null)
+			{
+				UStateNode<UMachine, string> node = new UStateNode<UMachine, string>();
+				node.Data = controller.MachineID;
+				controller._machine = BuildMachine(node);
+				if (controller._machine != null)
+					_controllers.Add(controller._machine, controller);
+			}
+		}
+
+		internal void RemoveMachine(UMachine machine)
+		{
+			UController controller;
+			if (_controllers.TryGetValue(machine, out controller))
+			{
+				controller._machine = null;
+				_controllers.Remove(machine);
+			}
+			_active.Remove(machine);
 		}
 
 		override public string ToString()
 		{
 			List<string> machines = new List<string>();
-			foreach(UMachine machine in _machines)
-			{
-				machines.Add(machine.MachineID + ":" + machine.State);
-			}
-			return string.Join("; ", machines);
+			_active.ForEach(m=>{ machines.Add(m.ToString()); });
+			return string.Join("\n", machines);
 		}
 	}
 }

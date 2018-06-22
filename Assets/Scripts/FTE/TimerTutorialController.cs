@@ -7,7 +7,7 @@ namespace Ambition
     {
         void Awake()
         {
-            if (!AmbitionApp.IsActiveState("TutorialController"))
+            if (!AmbitionApp.IsActiveMachine(TutorialConsts.TUTORIAL_MACHINE))
                 Destroy(this);
             else AmbitionApp.Subscribe(PartyMessages.SHOW_ROOM, HandleTutorialRoom);
         }
