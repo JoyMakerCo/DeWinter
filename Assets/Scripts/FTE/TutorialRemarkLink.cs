@@ -5,20 +5,18 @@ namespace Ambition
 {
     public class TutorialRemarkLink : ULink
     {
-        public override bool InitializeAndValidate()
+        override public void Initialize()
         {
-            AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
-            return false;
+            AmbitionApp.Subscribe<RemarkVO>(Validate);
         }
-
-        private void HandleRemark(RemarkVO remark)
+        protected void Validate(RemarkVO value)
         {
-            if (remark != null) Validate();
+            if (value != null) Activate();
         }
 
         override public void Dispose()
         {
-            AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
+            AmbitionApp.Unsubscribe<RemarkVO>(Validate);
         }
     }
 }

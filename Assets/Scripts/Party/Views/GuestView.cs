@@ -58,15 +58,10 @@ namespace Ambition
 	    	_guest = (_index < guests.Length) ? guests[_index] : null;
 
 	    	// Shows/hides components of a guest view based on the data
-			bool setEnabled = (_guest != null);
-			// Only do this work if the state is changing.
-	    	if (setEnabled != _image.enabled)
-	    	{
-				this.gameObject.SetActive(setEnabled);
-				_image.enabled = setEnabled;
-            }
+			this.gameObject.SetActive(_guest != null);
 
-			if (setEnabled)
+			// Only do this work if the state is changing.
+			if (this.gameObject.activeSelf)
 			{
 				EnemyVO enemy = _guest as EnemyVO;
 				bool isEnemy = (enemy != null);
@@ -115,7 +110,6 @@ namespace Ambition
             AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
         }
 
-        
 		private void HandleRemark(RemarkVO remark)
 		{
 			_remark = remark;
@@ -141,6 +135,7 @@ namespace Ambition
 				}
 			}
 		}
+
 		private void HandleTargeted(GuestVO [] guests)
 		{
 			string pose = _pose;

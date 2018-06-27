@@ -7,26 +7,21 @@ namespace Ambition
 {
 	public class WaitForTutorialStepLink : ULink
 	{
-		override public bool InitializeAndValidate()
+		protected string _stepID;
+		override public void Initialize ()
 		{
-			
-			if (!AmbitionApp.IsActiveState(TutorialConsts.TUTORIAL)) return true;
-			AmbitionApp.Subscribe<string>(TutorialMessage.TUTORIAL_STEP_COMPLETE, HandleStepComplete);
-			return false;
-		}
-
-		private void HandleStepComplete(string step)
-		{
-			if (step == State) 
-			{
-				Dispose();
-				Validate();
-			}
+			_stepID = _machine._graph.Nodes[_origin].ID;
+			AmbitionApp.Subscribe<string>(TutorialMessage.TUTORIAL_STEP_COMPLETE, HandleStep);
 		}
 
 		override public void Dispose()
 		{
-			AmbitionApp.Unsubscribe<string>(TutorialMessage.TUTORIAL_STEP_COMPLETE, HandleStepComplete);
+			AmbitionApp.Unsubscribe<string>(TutorialMessage.TUTORIAL_STEP_COMPLETE, HandleStep);
+		}
+
+		private void HandleStep(string step)
+		{
+			if (step == _stepID) Activate();
 		}
 	}
 }

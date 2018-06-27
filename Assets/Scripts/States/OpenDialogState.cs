@@ -4,13 +4,12 @@ using Dialog;
 
 namespace Ambition
 {
-	public class OpenDialogState : UState, Util.IInitializable<string>
+	public class OpenDialogState : UState<string>
 	{
 		private string _dialogID;
-
-		public void Initialize (string DialogID)
+		override public void SetData(string dialogID)
 		{
-			_dialogID = DialogID;
+			_dialogID = dialogID;
 		}
 
 		public override void OnEnterState ()
