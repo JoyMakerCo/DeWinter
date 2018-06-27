@@ -144,8 +144,9 @@ namespace Ambition
 		{
 			EditorGUI.BeginChangeCheck();
 			GUI.SetNextControlName(FOCUS_ID);
+            EditorStyles.textField.wordWrap = true;
 			SerializedProperty text = moment.FindPropertyRelative("Text");
-			text.stringValue = GUILayout.TextArea(text.stringValue);
+			text.stringValue = EditorGUILayout.TextArea(text.stringValue);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Background"), true);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character1"), true);
 			EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character2"), true);
@@ -192,5 +193,5 @@ namespace Ambition
 			return null;
 		}
 #endif
-	}
+    }
 }
