@@ -17,9 +17,7 @@ namespace Ambition
             int [] chart = map.Room.Guests[index].State == GuestState.Charmed
                 ? model.CharmedGuestActionChance
                 : model.GuestActionChance;
-
-// map.Room.Guests[index].Action = model.GuestActions[0];
-// return;            
+UnityEngine.Debug.Log("SELECT ACTION");
             if (Util.RNG.Generate(chart[map.Room.Difficulty-1]) > 0)
             {
                 map.Room.Guests[index].Action = null;
@@ -30,12 +28,15 @@ namespace Ambition
             int total = actions.Select(a=>a.Chance).Sum();
             int choice = Util.RNG.Generate(total);
             foreach(GuestActionVO action in actions)
+            {
                 if (choice > action.Chance) choice--;
                 else
                 {
+UnityEngine.Debug.Log("SELECTED " + action.Type);
                     map.Room.Guests[index].Action = action;
                     return;
                 }
+            }
         }
     }
 }
