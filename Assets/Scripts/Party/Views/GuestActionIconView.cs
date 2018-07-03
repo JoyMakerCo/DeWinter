@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Ambition
 {
-    public class GuestActionIconView : MonoBehaviour
+    public abstract class GuestActionIconView : MonoBehaviour
     {
-        public virtual GuestActionVO Action
+        public abstract GuestActionVO Action
         {
             set; get;
         }

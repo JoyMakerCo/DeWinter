@@ -17,25 +17,20 @@ namespace Ambition
             int [] chart = map.Room.Guests[index].State == GuestState.Charmed
                 ? model.CharmedGuestActionChance
                 : model.GuestActionChance;
-UnityEngine.Debug.Log("SELECT ACTION");
             if (Util.RNG.Generate(chart[map.Room.Difficulty-1]) > 0)
             {
                 map.Room.Guests[index].Action = null;
-                return;
             }
-
-            GuestActionVO[] actions = Array.FindAll(model.GuestActions, a=>a.Difficuly <= map.Room.Difficulty);
-            int total = actions.Select(a=>a.Chance).Sum();
-            int choice = Util.RNG.Generate(total);
-            foreach(GuestActionVO action in actions)
+            else
             {
-                if (choice > action.Chance) choice--;
-                else
-                {
-UnityEngine.Debug.Log("SELECTED " + action.Type);
-                    map.Room.Guests[index].Action = action;
-                    return;
-                }
+                GuestActionFactory factory = (GuestActionFactory)AmbitionApp.GetFactory<string, GuestActionVO>();
+                GuestActionVO[] actions = factory.Actions.Values.ToArray();
+                actions = Array.FindAll(actions, a=>a.Difficuly <= map.Room.Difficulty);
+                int choice = actions.Select(a=>a.Chance).Sum();
+                int i=0;
+                for (choice = Util.RNG.Generate(choice); actions[i].Chance<choice; i++)
+                    choice -= actions[i].Chance;
+                map.Room.Guests[index].Action = actions[i];
             }
         }
     }

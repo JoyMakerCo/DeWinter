@@ -34,9 +34,8 @@ namespace Ambition
             _guest = (index < guests.Length) ? guests[index] : null;
             if (_guest != null)
             {
-                gameObject.SetActive(_guest.Action != null);
-                AmbitionApp.Subscribe(PartyMessages.START_TURN, HandleTurn);
                 HandleTurn();
+                AmbitionApp.Subscribe(PartyMessages.START_TURN, HandleTurn);
             }
             else gameObject.SetActive(false);
         }
@@ -46,11 +45,10 @@ namespace Ambition
             GuestActionVO action = _guest.Action;
             if (action != null)
             {
-Debug.Log(action.Type + _guest.Name);
                 GuestActionIconView icon;
                 foreach(ActionMap map in Actions)
                 {
-                    map.View.SetActive(action != null && map.ActionType == action.Type);
+                    map.View.SetActive(map.ActionType == action.Type);
                     icon = map.View.GetComponent<GuestActionIconView>();
                     if (icon != null) icon.Action = action;
                 }
