@@ -164,6 +164,7 @@ namespace Ambition
 			AmbitionApp.RegisterState("GuestActionController", "GuestActionAside");
 			AmbitionApp.RegisterState("GuestActionController", "GuestActionInquiry");
 			AmbitionApp.RegisterState("GuestActionController", "GuestActionToast");
+			AmbitionApp.RegisterState<GuestActionToastState>("GuestActionController", "GuestActionToastAccepted");
 			AmbitionApp.RegisterState("GuestActionController", "GuestActionEnd");
 			AmbitionApp.RegisterState<GuestActionLeadState>("GuestActionController", "GuestActionLead");
 			AmbitionApp.RegisterState<SelectGuestActionState>("GuestActionController", "SelectGuestAction");
@@ -173,7 +174,9 @@ namespace Ambition
 			AmbitionApp.RegisterLink("GuestActionController", "GuestActionComment", "GuestActionEnd");
 			AmbitionApp.RegisterLink("GuestActionController", "GuestActionAside", "GuestActionEnd");
 			AmbitionApp.RegisterLink("GuestActionController", "GuestActionInquiry", "GuestActionEnd");
-			AmbitionApp.RegisterLink("GuestActionController", "GuestActionToast", "GuestActionEnd");
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("GuestActionController", "GuestActionToast", "GuestActionToastAccepted", PartyMessages.DRINK);
+			AmbitionApp.RegisterLink("GuestActionController", "GuestActionToastAccepted", "GuestActionEnd");
+			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("GuestActionController", "GuestActionToast", "GuestActionEnd", PartyMessages.END_TURN);
 			AmbitionApp.RegisterLink("GuestActionController", "GuestActionLead", "GuestActionEnd");
 			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("GuestActionController", "GuestActionEnd", "SelectGuestAction", PartyMessages.START_TURN);
 			AmbitionApp.RegisterLink<GuestActionSelectedLink, string>("GuestActionController", "SelectGuestAction", "GuestActionInterest", "Interest");

@@ -108,11 +108,14 @@ namespace Ambition
 		[JsonProperty("ambushHandSize")]
 		public int AmbushHandSize = 3;
 
+		private GuestActionVO[] _guestActions;
 		[JsonProperty("guest_actions")]
-		private GuestActionVO[] _guestActions
+		public GuestActionVO[] GuestActions
 		{
+			get { return _guestActions; }
 			set
 			{
+				_guestActions = value;
 				GuestActionFactory factory = new GuestActionFactory();
 				foreach(GuestActionVO action in value)
 					factory.Actions[action.Type] = action;
