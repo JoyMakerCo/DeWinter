@@ -3,50 +3,41 @@ using System.Collections.Generic;
 
 namespace Core
 {
-	public interface IFabricator {}
-	public interface IFabricator<F,P> : IFabricator
+	public interface IFactory {}
+	public interface IFactory<Key, Product> : IFactory
 	{
-		P Create(F parms);
+		Product Create(Key key);
 	}
 
 	public class FactorySvc : IAppService
 	{
-		protected Dictionary<string, List<Delegate>> _fabricators = new Dictionary<string, List<Delegate>>();
+		// USAGE:
+		// App.Service<FactorySvc>().Register<Param, Result>(param, func);
+		// App.Service<FactorySvc>().Create<Param, Result>(param);
 
-		public void Register<Param,Product,Fabricator>() where Fabricator:IFabricator<Param,Product>, new()
+		private Dictionary<Type, IFactory> _factories = new Dictionary<Type, IFactory>();
+
+		public IFactory<Key, Product> GetFactory<Key, Product>()
 		{
-			Register<Param,Product,Fabricator>("");
+			IFactory factory;
+			_factories.TryGetValue(typeof(IFactory<Key, Product>), out factory);
+			return factory as IFactory<Key, Product>;
 		}
 
-		public void Register<Param,Product,Fabricator>(string key) where Fabricator:IFabricator<Param,Product>, new()
-		{
-			List<Delegate> delegates;
-			if (!_fabricators.TryGetValue(key, out delegates))
-			{
-				_fabricators.Add(key, new List<Delegate>());
-			}
-			else if (delegates.Find(d=>d is Func<Param,Product>) != null)
-			{
-				throw new Exception("> Fabricator already exists!");
-			}
-			Func<Param,Product> fabricator = fb=>new Fabricator().Create(fb);
-			_fabricators[key].Add(fabricator);
-		}
+		public T Create<T>() where T:new() { return new T(); }
 
-		public Product Create<Param,Product>(Param fabricationParameter)
+		public Product Create<Key, Product>(Key key)
 		{
-			return Create<Param,Product>("", fabricationParameter);
-		}
-
-		public Product Create<Param,Product>(string key, Param fabricationParameter)
-		{
-			List<Delegate> delegates;
-			if (!_fabricators.TryGetValue(key, out delegates))
-				return default(Product);
-			Func<Param,Product> del = delegates.Find(d=>d is Func<Param,Product>) as Func<Param,Product>;
-			return (del != null)
-				? del(fabricationParameter)
+			Type type = typeof(IFactory<Key, Product>);
+			IFactory factory;
+			return _factories.TryGetValue(type, out factory)
+				? ((IFactory<Key, Product>)factory).Create(key)
 				: default(Product);
+		}
+
+		public void Register<Key, Product>(IFactory<Key, Product> factory)
+		{
+			_factories[typeof(IFactory<Key, Product>)] = factory;
 		}
 	}
 }

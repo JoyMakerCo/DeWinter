@@ -3,7 +3,7 @@ using Core;
 
 namespace Ambition
 {
-	public class ItemFactory : IFabricator<string, ItemVO>
+	public class ItemFactory : IFactory<string, ItemVO>
 	{
 		public ItemVO Create (string itemID)
 		{

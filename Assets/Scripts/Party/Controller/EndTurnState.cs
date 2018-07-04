@@ -71,6 +71,7 @@ namespace Ambition
 			if (model.Turn%model.FreeRemarkCounter == 0)
 				App.Service<MessageSvc>().Send(PartyMessages.ADD_REMARK);
 			AmbitionApp.SendMessage<GuestVO[]>(map.Room.Guests);
+UnityEngine.Debug.Log("EndTurn");
 		}
 	}
 }
