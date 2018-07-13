@@ -9,7 +9,8 @@ namespace Ambition
 	public class InterestIndicatorView : MonoBehaviour
 	{
 		private const float FILL_SECONDS = 0.5f;
-		private int _guestIndex;
+		private GuestVO _guest;
+		private int _index;
 
 		public Image OpinionIndicator;		
 		public Image InterestIcon;
@@ -20,28 +21,36 @@ namespace Ambition
 		void Awake()
 		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
-			_guestIndex = transform.GetSiblingIndex();
+			AmbitionApp.Subscribe<GuestVO>(HandleGuest);
+			_index = transform.GetSiblingIndex();
+
 		}
 
 		void OnDestroy()
 		{
-			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);			
+			AmbitionApp.Unsubscribe<GuestVO[]>(HandleGuests);			
+			AmbitionApp.Unsubscribe<GuestVO>(HandleGuest);
 		}
 
 		private void HandleGuests(GuestVO [] guests)
 		{
-			bool enabled = guests != null && guests.Length > _guestIndex;
-			GuestVO guest = enabled ? guests[_guestIndex] : null;
+
+			bool enabled = guests != null && guests.Length > _index;
+			_guest = enabled ? guests[_index] : null;
 			gameObject.SetActive(enabled);
-			if (enabled)
-			{
-				StopAllCoroutines();
-				StartCoroutine(FillMeter((guest.Interest >=  guest.MaxInterest) ? 1f : (float)guest.Interest/((float)guest.MaxInterest)));
-				InterestIcon.sprite = InterestSprites.GetSprite(guest.Like);
-				InterestIconBorder.sprite = BorderSprites.GetSprite(guest.State.ToString());
-			}
+			if (enabled) HandleGuest(_guest);
 		}
 
+		private void HandleGuest(GuestVO guest)
+		{
+			if (guest == _guest)
+			{
+				StopAllCoroutines();
+				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
+				InterestIcon.sprite = InterestSprites.GetSprite(_guest.Like);
+				InterestIconBorder.sprite = BorderSprites.GetSprite(_guest.State.ToString());
+			}
+		}
 
 		IEnumerator FillMeter(float percent)
 		{

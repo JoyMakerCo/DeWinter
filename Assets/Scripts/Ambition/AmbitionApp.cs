@@ -204,5 +204,19 @@ namespace Ambition
 		{
 			return App.Service<ModelSvc>().GetModel<LocalizationModel>().GetList(key);
 		}
+
+		public static void RegisterFactory<Key, Product>(IFactory<Key, Product> factory)
+		{
+			App.Service<FactorySvc>().Register<Key, Product>(factory);
+		}
+		public static IFactory<Key, Product> GetFactory<Key, Product>()
+		{
+			return App.Service<FactorySvc>().GetFactory<Key, Product>();
+		}
+
+		public static Product Create<Key, Product>(Key key)
+		{
+			return App.Service<FactorySvc>().Create<Key, Product>(key);
+		}
 	}
 }
