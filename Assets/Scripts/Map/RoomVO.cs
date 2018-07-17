@@ -19,7 +19,8 @@ namespace Ambition
 		public int MoveThroughChance = -1; // -1 indicates a value not yet assigned
 
 		public MapVO Map;
-	    public bool Cleared=false;
+	    public bool Cleared = false;
+        public bool Revealed = false;
 
 		[JsonProperty("background")]
 		public string Background;

@@ -8,15 +8,16 @@ namespace Ambition
 	{
 		public void Execute()
 		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+            PartyModel party = AmbitionApp.GetModel<PartyModel>();
 			List<RemarkVO> hand = model.Remarks;
 			RemarkVO remark;
 
-			int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
+            int numGuests = model.Guests.Length;
 			string interest;
-			while (hand.Count < model.MaxHandSize)
+            while (hand.Count < party.MaxHandSize)
 			{
-				interest = model.Interests[Util.RNG.Generate(0, model.Interests.Length)];
+                interest = Util.RNG.TakeRandom(party.Interests);
 				remark = new RemarkVO(Util.RNG.Generate(1,3), interest);
 				hand.Add(remark);
 	        }

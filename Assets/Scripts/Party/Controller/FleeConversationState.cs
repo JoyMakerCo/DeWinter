@@ -13,7 +13,7 @@ namespace Ambition
             PartyVO party = model.Party;
 
             // Lose a turn
-            model.TurnsLeft--;
+            model.Turn++;
 
             //The Player is relocated to the Entrance
             MapModel mmod = AmbitionApp.GetModel<MapModel>();

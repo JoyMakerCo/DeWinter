@@ -4,15 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;  
 using UnityEditor;
+using Util;
 
 namespace Ambition
 {
-	public interface IGraphComponent
-	{
-		void OnGUI(bool selected);
-		bool Intersect(Vector2 MousePosition);
-	}
-
 	public class IncidentEditor : EditorWindow
 	{
 		private const int NUM_VISIBLE_LINES = 4;
@@ -89,8 +84,8 @@ namespace Ambition
 						break;
 					case EventType.MouseDown:
 						_mousePos = Event.current.mousePosition;
-						IGraphComponent comp = _nodes.Find(m=>m.Intersect(_mousePos));
-						if (comp == null) comp = _links.Find(l=>l.Intersect(_mousePos));
+						IGraphComponent comp = _nodes.Find(m=>m.Intersect(m.Position, _mousePos));
+						if (comp == null) comp = _links.Find(l=>l.Intersect(l.Start.Position, l.End.Position, _mousePos));
 						else _dragging = Event.current.button == 0;
 						if (Event.current.button == 1) ShowMenu(comp);
 						if (Selected != comp) _dirty = true;
@@ -107,24 +102,21 @@ namespace Ambition
 						break;
 
 					case EventType.MouseUp:
+						_dirty = _dragging;
 						_dragging = false;
 						_mousePos = Event.current.mousePosition;
 						break;
 				}
+				if (_dragging) AdjustScrollRect(((IncidentNodeVO)Selected).Rect);
+				_links.ForEach(l => l.OnGUI(l.Start.Position, l.End.Position, l == Selected));
+				DrawStartOutline();
+				_nodes.ForEach(m => m.OnGUI(m.Position, m == Selected));
 				if (_dirty)
 				{
-					if (_dragging)
-					{
-						_links.FindAll(l=>l.Start == Selected || l.End == Selected).ForEach(l=>l.Redraw());
-						AdjustScrollRect(((IncidentNodeVO)Selected).Rect);
-					}
-					_dirty = false;
 					Reserialize();
 					Repaint();
+					_dirty = false;
 				}
-				_links.ForEach(l => l.OnGUI(l == Selected));
-				DrawStartOutline();
-				_nodes.ForEach(m => m.OnGUI(m == Selected));
 				_collection.ApplyModifiedProperties();
 				GUI.EndScrollView();
 			}
@@ -134,35 +126,47 @@ namespace Ambition
 	    {
 	    	get { return _selected; }
 	    	set {
-				bool isMoment = value is IncidentNodeVO;
-				int index = (value == null ? -1 : isMoment ? _nodes.IndexOf(value as IncidentNodeVO) : _links.IndexOf(value as IncidentLinkVO));
+				bool isNode = value is IGraphNodeComponent;
+				int index = (value == null ? -1 : isNode ? _nodes.IndexOf(value as IncidentNodeVO) : _links.IndexOf(value as IncidentLinkVO));
 	    		_collection.FindProperty(IncidentCollection.SELECTED_COMPONENT).intValue = index;
-				_collection.FindProperty(IncidentCollection.IS_MOMENT).boolValue = isMoment;
+				_collection.FindProperty(IncidentCollection.IS_MOMENT).boolValue = true;
+				_dirty = _dirty || (_selected != value);
 	    		_selected = value;
 				_collection.ApplyModifiedProperties();
 	    	}
 	    }
 
-		private void DeleteComponent(object component)
+		private void SetAsStartNode(object nodeObj)
 		{
-			if (component == Selected) Selected = null;
-			_dirty = true;
-			if (!_links.Remove(component as IncidentLinkVO))
+			if (nodeObj is IGraphNodeComponent && _nodes.Count > 0)
 			{
-				SerializedProperty prop = _config.FindPropertyRelative("Moments");
-				if (prop != null)
+				int index = _nodes.IndexOf(nodeObj as IncidentNodeVO);
+				if (index > 0)
 				{
-					int index = _nodes.IndexOf(component as IncidentNodeVO);
-					if (index >= 0)
+					_nodes.RemoveAt(index);
+					_nodes.Insert(0, (IncidentNodeVO)Selected);
+					_dirty = true;
+				}
+			}
+		}
+
+		private void DeleteSelected()
+		{
+			if (!_links.Remove(Selected as IncidentLinkVO))
+			{
+				int index = _nodes.IndexOf(Selected as IncidentNodeVO);
+				if (_nodes.Remove(Selected as IncidentNodeVO))
+				{
+					SerializedProperty prop = _config.FindPropertyRelative("Moments");
+					if (prop != null)
 					{
 						prop.DeleteArrayElementAtIndex(index);
 						_collection.ApplyModifiedProperties();
 					}
+					_links.RemoveAll(l=>l.Start == Selected || l.End == Selected);
 				}
-				_links.RemoveAll(l=>l.Start == component || l.End == component);
-				_nodes.Remove((IncidentNodeVO)component);
-				
 			}
+			Selected = null;
 		}
 
 		private void SetCollection(SerializedObject obj)
@@ -205,18 +209,6 @@ namespace Ambition
 			Repaint();
 	    }
 
-		private void InitNode(object obj)
-		{
-			IncidentNodeVO node = obj as IncidentNodeVO;
-			if (node != null && _nodes.Count > 1)
-			{
-				IncidentNodeVO tmp = _nodes[0];
-				int index = _nodes.IndexOf(node);
-				_nodes[0] = node;
-				_nodes[index] = tmp;
-			}
-		}
-
 	    private void Reserialize()
 	    {
 			SerializedProperty moments = _config.FindPropertyRelative("Moments");
@@ -249,21 +241,17 @@ namespace Ambition
 			if (component == null)
 			{
 				menu.AddItem(new GUIContent("Create New Moment"), false, CreateNewNode, null);
-				if (Selected != null)
+				if (Selected is IGraphNodeComponent)
 					menu.AddItem(new GUIContent("Create And Transition To New Moment"), false, CreateNewNode, Selected);
 			}
-			else if (component is IncidentNodeVO)
+			else
 			{
-				if (component != _nodes[0])
-					menu.AddItem(new GUIContent("Set as Starting Moment"), false, InitNode, component);
-				menu.AddItem(new GUIContent("Delete Moment"), false, DeleteComponent, component);
-				if (Selected is IncidentNodeVO && Selected != component)
+				component.OnMenu(menu);
+				if (_nodes.IndexOf(component as IncidentNodeVO) > 0)
+					menu.AddItem(new GUIContent("Set as Starting Moment"), false, SetAsStartNode, component);
+				if (component is IncidentNodeVO && Selected != component)
 					menu.AddItem(new GUIContent("Transition to Moment"), false, LinkMoment, Selected);
-				if (_nodes.Count > 1)
-					menu.AddItem(new GUIContent("Delete Moment"), false, DeleteComponent, component);
 			}
-			else if (component is IncidentLinkVO)
-				menu.AddItem(new GUIContent("Delete Transition"), false, DeleteComponent, component);
 			menu.ShowAsContext();
 		}
 
@@ -271,6 +259,7 @@ namespace Ambition
 		{
 			IncidentNodeVO node = new IncidentNodeVO("New Moment");
 			node.Position = _mousePos;
+			node.DeleteNode = DeleteSelected;
 			_nodes.Add(node);
 			CreateLink(fromNode as IncidentNodeVO, node);
 			Selected = node; 
@@ -292,6 +281,7 @@ namespace Ambition
 				link.End = end;
 				_links.Add(link);
 				_dirty = true;
+				link.DeleteLink = DeleteSelected;
 			}
 			return link;
 	    }

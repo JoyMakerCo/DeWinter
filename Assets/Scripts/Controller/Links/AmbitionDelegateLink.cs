@@ -8,7 +8,12 @@ namespace Ambition
         private string _event;
         override public void SetValue(string data)
         {
-            AmbitionApp.Subscribe(_event = data, Activate);
+            _event = data;
+        }
+
+        public override void Initialize()
+        {
+            AmbitionApp.Subscribe(_event, Activate);
         }
 
         override public void Dispose()

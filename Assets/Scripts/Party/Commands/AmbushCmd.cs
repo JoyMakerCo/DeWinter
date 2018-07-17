@@ -8,21 +8,22 @@ namespace Ambition
 	{
 		public void Execute(RoomVO room)
 		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            PartyModel party = AmbitionApp.GetModel<PartyModel>();
+            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
 			List<RemarkVO> hand = model.Remarks;
 			string interest;
 			RemarkVO remark;
-			int numGuests = room.Guests.Length;
+            int numGuests = model.Guests.Length;
 
-			if (hand.Count > model.AmbushHandSize)
-				hand.RemoveRange(model.AmbushHandSize, hand.Count - model.AmbushHandSize);
-			else while (hand.Count < model.AmbushHandSize)
+            if (hand.Count > party.AmbushHandSize)
+                hand.RemoveRange(party.AmbushHandSize, hand.Count - party.AmbushHandSize);
+            else while (hand.Count < party.AmbushHandSize)
 			{
-				interest = model.Interests[Util.RNG.Generate(0, model.Interests.Length)];
+                interest = Util.RNG.TakeRandom(party.Interests);
 				remark = new RemarkVO(Util.RNG.Generate(1,3), interest);
 				hand.Add(remark);
 			}
-			while(hand.Count < model.MaxHandSize)
+            while(hand.Count < party.MaxHandSize)
 				hand.Add(new RemarkVO());
 
 			model.Remarks = hand;

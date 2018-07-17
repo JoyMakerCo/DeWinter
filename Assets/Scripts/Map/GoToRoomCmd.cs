@@ -47,7 +47,7 @@ namespace Ambition
 				// Fill yer glass
 				if (Array.IndexOf(room.Features, PartyConstants.PUNCHBOWL) >= 0)
 	            {
-					partyModel.Drink = partyModel.MaxDrinkAmount;
+                    AmbitionApp.SendMessage(PartyMessages.REFILL_DRINK);
 				}
 
 				// At a certain reputation level, the player's glass may be filled without a punchbowl
@@ -65,6 +65,7 @@ namespace Ambition
 			    if (!room.Cleared)
 			    {
 					AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM);
+                    AmbitionApp.GetModel<ConversationModel>().Round = 0;
 				}
 			}
 		}

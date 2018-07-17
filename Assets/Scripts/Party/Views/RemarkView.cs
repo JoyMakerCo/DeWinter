@@ -29,7 +29,7 @@ namespace Ambition
 
 		public void OnPointerClick(PointerEventData eventData)
 		{
-			AmbitionApp.GetModel<PartyModel>().Remark = _remark;
+			AmbitionApp.GetModel<ConversationModel>().Remark = _remark;
 		}
 	}
 }

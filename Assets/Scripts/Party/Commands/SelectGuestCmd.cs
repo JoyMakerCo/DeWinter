@@ -8,23 +8,21 @@ namespace Ambition
 	{
 		public void Execute (GuestVO guest)
 		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
 			RemarkVO remark = model.Remark;
 			if (remark == null) return;
 			
-			MapModel map = AmbitionApp.GetModel<MapModel>();
-			GuestVO [] guests = map.Room.Guests;
+            GuestVO [] guests = model.Guests;
 			int index = Array.IndexOf(guests, guest);
 			if (index >= 0)
 			{
 				int num = guests.Length;
-				model.TargetedGuests = new GuestVO[remark.NumTargets];
+				GuestVO[] targets = new GuestVO[remark.NumTargets];
 				for (int i=remark.NumTargets-1; i>=0; i--)
 				{
-					model.TargetedGuests[i] = guests[(i+index)%num];
+					targets[i] = guests[(i+index)%num];
 				}
-	            AmbitionApp.SendMessage<GuestVO[]>(PartyMessages.GUESTS_SELECTED, model.TargetedGuests);
-	            AmbitionApp.SendMessage(PartyMessages.END_TURN);
+	            AmbitionApp.SendMessage<GuestVO[]>(PartyMessages.GUESTS_SELECTED, targets);
 			}
 		}
 	}

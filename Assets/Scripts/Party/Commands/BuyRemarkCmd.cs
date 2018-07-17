@@ -5,19 +5,19 @@ namespace Ambition
 {
 	public class BuyRemarkCmd : ICommand
 	{
-		private ModelSvc _models = App.Service<ModelSvc>();
 		public void Execute ()
 		{
-			PartyModel model = _models.GetModel<PartyModel>();
-			if (model.Remarks.Count < model.MaxHandSize)
+            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+            PartyModel party = AmbitionApp.GetModel<PartyModel>();
+            if (model.Remarks.Count < party.MaxHandSize)
 			{
-				int cost = model.ConfidenceCost[model.RemarksBought];
+                int[] costs = party.ConfidenceCost;
+                int cost = model.RemarksBought < costs.Length ? costs[model.RemarksBought] : costs[costs.Length-1];
 				if (model.Confidence >= cost)
 				{
-					AmbitionApp.GetModel<PartyModel>().Confidence -= cost;
+					model.Confidence -= cost;
 					AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
-					if (model.RemarksBought < model.ConfidenceCost.Length-1)
-						model.RemarksBought++;
+                    model.RemarksBought++;
 				}
 			}
 		}

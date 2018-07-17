@@ -10,6 +10,7 @@ namespace Ambition
         {
             _btn = GetComponent<Button>();
             AmbitionApp.Subscribe<int>(GameConsts.DRINK, HandleDrink);
+            HandleDrink(AmbitionApp.GetModel<PartyModel>().Drink);
         }
         void OnDisable()
         {
@@ -17,7 +18,7 @@ namespace Ambition
         }
         private void HandleDrink(int amount)
         {
-            _btn.enabled = amount > 0;
+            _btn.interactable = amount > 0;
         }
 
         public void Drink()

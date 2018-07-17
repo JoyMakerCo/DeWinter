@@ -101,21 +101,6 @@ namespace Ambition
 			}
 	    }
 
-	    public void PartyEventModal(RoomVO room)
-	    {
-	        if(!room.Cleared) //If the Room hasn't been cleared already, do all the stuff
-	        {
-	            //Standdard Turn Stuff
-				AmbitionApp.GetModel<PartyModel>().TurnsLeft--;
-				AmbitionApp.GetModel<PartyModel>().Intoxication-=20;
-
-	            // TODO: Make the Event Happen
-//	            screenFader.gameObject.SendMessage("CreateEventPopUp", "party");
-	            //Clear the Room
-	            room.Cleared = true;
-	        }
-	    }
-
 		private void HandleRoom(RoomVO room)
 		{
 			foreach(KeyValuePair<RoomVO, RoomButton> kvp in _buttons)

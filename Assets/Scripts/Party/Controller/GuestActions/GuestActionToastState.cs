@@ -10,11 +10,8 @@ namespace Ambition
             MapModel map = AmbitionApp.GetModel<MapModel>();
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             GuestActionVO action = Array.Find(model.GuestActions, a=>a.Type == "Toast");
-            foreach (GuestVO guest in map.Room.Guests)
-            {
-                guest.Opinion += action.Rewards["opinion"];
-                if (guest.Opinion > 100) guest.Opinion = 100;
-            }
+            int amt = action.Values["opinion"];
+            Array.ForEach(map.Room.Guests, g=>{g.Opinion+=amt;});
         }
     }
 }

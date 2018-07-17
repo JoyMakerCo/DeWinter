@@ -10,7 +10,7 @@ namespace Ambition
 	    	PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			GameModel gm = AmbitionApp.GetModel<GameModel>();
 			
-			model.TurnsLeft -= model.TurnsLeft;
+            model.Turn = model.Turns;
 
             //Distribute the Rewards into the Player's 'Accounts' in Game Data and the appropriate Inventories
 			model.Party.Rewards.ForEach(AmbitionApp.SendMessage<CommodityVO>);

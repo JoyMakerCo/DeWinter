@@ -45,15 +45,20 @@ namespace Ambition
             GuestActionVO action = _guest.Action;
             if (action != null)
             {
-                GuestActionIconView icon;
+                GuestActionIcon icon;
                 foreach(ActionMap map in Actions)
                 {
-                    map.View.SetActive(map.ActionType == action.Type);
-                    icon = map.View.GetComponent<GuestActionIconView>();
-                    if (icon != null) icon.Action = action;
+                    if (map.ActionType == action.Type)
+                    {
+                        map.View.SetActive(true);
+                        icon = map.View.GetComponent<GuestActionIcon>();
+                        if (icon != null) icon.SetAction(action);
+                    }
+                    else map.View.SetActive(false);
                 }
+                gameObject.SetActive(true);
             }
-            gameObject.SetActive(action != null);
+            else gameObject.SetActive(false);
         }
     }
 }

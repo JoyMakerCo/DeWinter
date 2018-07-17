@@ -25,10 +25,10 @@ namespace Ambition
             {
                 GuestActionFactory factory = (GuestActionFactory)AmbitionApp.GetFactory<string, GuestActionVO>();
                 GuestActionVO[] actions = factory.Actions.Values.ToArray();
-                actions = Array.FindAll(actions, a=>a.Difficuly <= map.Room.Difficulty);
+                actions = Array.FindAll(actions, a=>a.Difficulty <= map.Room.Difficulty);
                 int choice = actions.Select(a=>a.Chance).Sum();
-                int i=0;
-                for (choice = Util.RNG.Generate(choice); actions[i].Chance<choice; i++)
+                int i=0;                
+                for (choice = Util.RNG.Generate(choice); actions[i].Chance<=choice; i++)
                     choice -= actions[i].Chance;
                 map.Room.Guests[index].Action = actions[i];
             }

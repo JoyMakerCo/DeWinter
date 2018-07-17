@@ -15,7 +15,7 @@ namespace UFlow
 
         protected void Invoke()
         {
-            UController controller = _machine._uflow.GetController(_machine);
+            //UController controller = _machine._uflow.GetController(_machine);
             // if (controller != null) controller.Invoke(ID);
         }
     }

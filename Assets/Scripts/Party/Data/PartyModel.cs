@@ -6,7 +6,7 @@ using Util;
 
 namespace Ambition
 {
-	public class PartyModel : DocumentModel, IInitializable, IDisposable
+	public class PartyModel : DocumentModel
 	{
 		public PartyModel(): base("PartyData") {}
 
@@ -22,32 +22,18 @@ namespace Ambition
 
 		public bool IsAmbush=false;
 
-		//TODO: Temp, until buffs are figured out
-		public bool ItemEffect;
-		public bool Repartee;
-
 		[JsonProperty("free_remark_counter")]
 		public int FreeRemarkCounter;
 
-		private RemarkVO _remark;
-		public RemarkVO Remark
-		{
-			get { return _remark; }
-			set {
-				_remark = value;
-				AmbitionApp.SendMessage<RemarkVO>(_remark);
-			}
-		}
+        public int Turns
+        {
+            get { return _party != null ? _party.Turns : 0; }
+        }
 
-		private int _turnsLeft;
-		public int TurnsLeft
-		{
-			get { return _turnsLeft; }
-			set {
-				_turnsLeft = value;
-				AmbitionApp.SendMessage<int>(PartyConstants.TURNSLEFT, _turnsLeft);
-			}
-		}
+        public int TurnsLeft
+        {
+            get { return Turns - _turn; }
+        }
 
 		private int _turn;
 		public int Turn
@@ -55,11 +41,10 @@ namespace Ambition
 			get { return _turn; }
 			set {
 				_turn = value;
-				AmbitionApp.SendMessage<int>(PartyConstants.TURN, _turn);
+                AmbitionApp.SendMessage<int>(PartyMessages.TURN, _turn);
+                AmbitionApp.SendMessage<int>(PartyMessages.TURNS_LEFT, Turns - _turn);
 			}
 		}
-
-		public GuestVO[] TargetedGuests;
 
 		// Temporary Repo for buffs
 		protected Dictionary<string, List<ModifierVO>> Modifiers = new Dictionary<string, List<ModifierVO>>();
@@ -92,15 +77,13 @@ namespace Ambition
 		public string[] Interests;
 
 		[JsonProperty("turnTimer")]
-		public float TurnTime = 5.0f;
+		public float RoundTime = 5.0f;
 
 		[JsonProperty("repartee_bonus")]
 		public float ReparteeBonus;
 
 		[JsonProperty("confidence_cost")]
 		public int[] ConfidenceCost;
-
-		public int RemarksBought=0;
 
 		[JsonProperty("maxHandSize")]
 		public int MaxHandSize = 5;
@@ -164,40 +147,6 @@ namespace Ambition
 				_drink = value;
 				AmbitionApp.SendMessage<int>(GameConsts.DRINK, _drink);
 			}
-		}
-
-		private List<RemarkVO> _remarks = new List<RemarkVO>();
-		public List<RemarkVO> Remarks
-		{
-			get { return _remarks; }
-			set
-			{
-				_remarks = value;
-				AmbitionApp.SendMessage<List<RemarkVO>>(Remarks);
-			}
-		}
-
-		private void HandleClearRemarks()
-		{
-			Remarks = new List<RemarkVO>();
-		}
-
-		private void HandleClearRemark(GuestVO guest)
-		{
-			Remarks.Remove(Remark);
-			AmbitionApp.SendMessage<List<RemarkVO>>(Remarks);
-		}
-
-		public void Initialize()
-		{
-			AmbitionApp.Subscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
-			AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleClearRemark);
-		}
-
-		public void Dispose()
-		{
-			AmbitionApp.Unsubscribe(PartyMessages.CLEAR_REMARKS, HandleClearRemarks);
-			AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleClearRemark);
 		}
 	}
 }

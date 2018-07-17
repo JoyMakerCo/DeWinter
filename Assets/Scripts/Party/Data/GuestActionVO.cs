@@ -9,16 +9,21 @@ namespace Ambition
         [JsonProperty("type")]
         public string Type;
         [JsonProperty("rounds")]
-        public int Rounds=0;
+        public int Rounds;
+        public int StartRound;
+        public int EndRound
+        {
+            get { return StartRound + Rounds;  }
+        }
         [JsonProperty("tags")]
         public string[] Tags;
-        [JsonProperty("rewards")]
-        public Dictionary<string, int> Rewards;
+        [JsonProperty("values")]
+        public Dictionary<string, int> Values;
 
         [JsonProperty("chance")]
         public int Chance;
         [JsonProperty("difficulty")]
-        public int Difficuly;
+        public int Difficulty;
 
         public GuestActionVO() {}
         public GuestActionVO(GuestActionVO action)
@@ -30,10 +35,10 @@ namespace Ambition
                 this.Tags = new string[action.Tags.Length];
                 Array.Copy(action.Tags, this.Tags, action.Tags.Length);
             }
-            if (action.Rewards != null)
-                this.Rewards = new Dictionary<string,int>(action.Rewards);
+            if (action.Values != null)
+                this.Values = new Dictionary<string,int>(action.Values);
             this.Chance = action.Chance;
-            this.Difficuly = action.Difficuly;
+            this.Difficulty = action.Difficulty;
         }
     }
 }
