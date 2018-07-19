@@ -16,9 +16,16 @@ namespace Ambition
 
         private GuestActionVO _action;
 
-        void Awake()
+        void OnEnable()
         {
             AmbitionApp.Subscribe<int>(PartyMessages.ROUND, HandleRound);
+        }
+
+        void OnDisable()
+        {
+            AmbitionApp.Unsubscribe<int>(PartyMessages.ROUND, HandleRound);
+            StopAllCoroutines();
+            _action = null;
         }
 
         public override void SetAction(GuestActionVO action)
@@ -34,18 +41,11 @@ namespace Ambition
 
         private void HandleRound(int round)
         {
-            if (_action != null && round < _action.Rounds)
+            StopAllCoroutines();
+            if (isActiveAndEnabled && _action != null && round < _action.Rounds)
             {
-                StopAllCoroutines();
                 StartCoroutine(NextRound(round));
             }
-        }
-
-        void OnDestroy()
-        {
-            AmbitionApp.Unsubscribe<int>(PartyMessages.ROUND, HandleRound);
-            StopAllCoroutines();
-            _action = null;
         }
 
         IEnumerator NextRound(int round)

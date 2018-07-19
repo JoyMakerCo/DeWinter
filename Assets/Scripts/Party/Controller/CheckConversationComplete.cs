@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 using UFlow;
@@ -9,12 +10,8 @@ namespace Ambition
 	{
 		public override bool Validate()
 		{
-			MapModel map = AmbitionApp.GetModel<MapModel>();
-			GuestVO [] guests = map.Room.Guests;
-			int numCharmed = Array.FindAll(guests, g=>g.State == GuestState.Charmed).Length;
-			int numPutOff = Array.FindAll(guests, g=>g.State == GuestState.PutOff).Length;
-			
-			return (numCharmed + numPutOff == guests.Length);
+            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+            return model.Guests.Count(g=>g.IsLockedIn) == model.Guests.Length;
 		}
 	}
 }

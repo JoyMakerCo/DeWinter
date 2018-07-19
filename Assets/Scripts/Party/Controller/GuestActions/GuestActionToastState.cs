@@ -7,11 +7,21 @@ namespace Ambition
     {
         override public void OnEnterState()
         {
-            MapModel map = AmbitionApp.GetModel<MapModel>();
-            PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            GuestActionVO action = Array.Find(model.GuestActions, a=>a.Type == "Toast");
-            int amt = action.Values["opinion"];
-            Array.ForEach(map.Room.Guests, g=>{g.Opinion+=amt;});
+            UController controller = _machine._uflow.GetController(_machine);
+            if (controller != null)
+            {
+                ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+                GuestVO guest = model.Guests[controller.transform.GetSiblingIndex()];
+                if (guest.Action != null && guest.Action.Values != null)
+                {
+                    int reward;
+                    int others;
+                    guest.Action.Values.TryGetValue("guest", out reward);
+                    guest.Action.Values.TryGetValue("others", out others);
+                    guest.Opinion += reward - others;
+                    Array.ForEach(model.Guests, g => g.Opinion += others);
+                }
+            }
         }
     }
 }

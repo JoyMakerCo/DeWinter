@@ -24,23 +24,23 @@ namespace Ambition
         void OnDestroy()
         {
             AmbitionApp.Unsubscribe<GuestVO[]>(HandleGuests);
-            AmbitionApp.Unsubscribe(PartyMessages.START_TURN, HandleTurn);
+            AmbitionApp.Unsubscribe(PartyMessages.START_ROUND, HandleRound);
         }
 
         private void HandleGuests(GuestVO [] guests)
         {
             int index = transform.GetSiblingIndex();
-            AmbitionApp.Unsubscribe(PartyMessages.START_TURN, HandleTurn);
+            AmbitionApp.Unsubscribe(PartyMessages.START_ROUND, HandleRound);
             _guest = (index < guests.Length) ? guests[index] : null;
             if (_guest != null)
             {
-                HandleTurn();
-                AmbitionApp.Subscribe(PartyMessages.START_TURN, HandleTurn);
+                HandleRound();
+                AmbitionApp.Subscribe(PartyMessages.START_ROUND, HandleRound);
             }
             else gameObject.SetActive(false);
         }
 
-        private void HandleTurn()
+        private void HandleRound()
         {
             GuestActionVO action = _guest.Action;
             if (action != null)

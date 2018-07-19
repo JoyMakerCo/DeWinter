@@ -16,8 +16,6 @@ namespace Ambition
             UController controller = _machine._uflow.GetController(_machine);
             int index = controller.transform.GetSiblingIndex();
             GuestVO guest = map.Room.Guests[index];
-if (guest.Action != null && guest.Action.Type == _actionType)
-UnityEngine.Debug.Log("PICKED ACTION " + _actionType);
             return (guest.Action != null && guest.Action.Type == _actionType);
         }
     }

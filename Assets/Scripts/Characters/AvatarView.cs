@@ -8,24 +8,23 @@ namespace Ambition
 	public class AvatarView : MonoBehaviour
 	{
 		public AvatarCollection Collection;
+        public AvatarVO Avatar { private set; get; }
 
-		private AvatarVO _avatar;
-		private Image _avatarImage;
+        private Image _image;
 		private string _id;
 		private string _pose;
 
 		void Awake()
 		{
-			_avatarImage = gameObject.GetComponent<Image>();
+			_image = gameObject.GetComponent<Image>();
 		}
 
-		public string AvatarID
+		public string ID
 		{
 			get { return _id; }
 			set {
 				_id = value;
-				_avatar = Collection.GetAvatar(_id);
-				gameObject.SetActive(!default(AvatarVO).Equals(_avatar));
+				Avatar = Collection.GetAvatar(_id);
 				Pose = _pose;
 			}
 		}
@@ -36,8 +35,14 @@ namespace Ambition
 			set
 			{
 				_pose = value;
-				_avatarImage.sprite = _avatar.GetPose(_pose);
+				_image.sprite = Avatar.GetPose(_pose);
+                _image.enabled = (_image.sprite != null);
 			}
 		}
+
+        public Sprite Sprite
+        {
+            get { return _image.sprite;  }
+        }
 	}
 }

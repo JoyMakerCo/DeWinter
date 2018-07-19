@@ -44,9 +44,9 @@ namespace Ambition
 			{
 				descriptionText.text = moment.Text;
 				if (moment.Background != null) _background.sprite=moment.Background;
-				Character1.AvatarID = moment.Character1.AvatarID;
+				Character1.ID = moment.Character1.AvatarID;
 				Character1.Pose = moment.Character1.Pose;
-				Character2.AvatarID = moment.Character2.AvatarID;
+				Character2.ID = moment.Character2.AvatarID;
 				Character2.Pose = moment.Character2.Pose;
 
 				AmbitionApp.SendMessage<AmbientClip>(AudioMessages.PLAY_MUSIC, moment.Music);

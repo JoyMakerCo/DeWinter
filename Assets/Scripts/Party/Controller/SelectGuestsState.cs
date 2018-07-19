@@ -61,7 +61,11 @@ namespace Ambition
                         else model.Confidence -= 30;
                     }
 				}
-                if (guest.Interest <= 0) guest.State = GuestState.Bored;
+                if (guest.Interest <= 0)
+                {
+                    guest.Interest = 0;
+                    guest.State = GuestState.Bored;
+                }
             }
         }
     }

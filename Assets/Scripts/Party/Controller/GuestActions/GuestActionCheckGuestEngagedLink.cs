@@ -19,7 +19,7 @@ namespace Ambition
         private void HandleGuests(GuestVO[] guests)
         {
             UController controller = _machine._uflow.GetController(_machine);
-            if (controller !=  null)
+            if (guests != null && controller !=  null)
             {        
                 ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
                 GuestVO guest = model.Guests[controller.transform.GetSiblingIndex()];
