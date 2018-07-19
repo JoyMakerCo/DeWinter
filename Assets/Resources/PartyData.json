@@ -34,23 +34,41 @@
 	],
 	guest_actions:[
 		{
-        	"type":"Interest",
-        	"rounds":1,
-        	"tags":[],
-        	"rewards":{},
-        	"chance":1,
+    	"type":"Interest",
+    	"rounds":1,
+    	"tags":[],
+      "values": {},
+    	"chance":1,
 			"difficulty":1
 		},
 		{
-        	"type":"Toast",
-        	"rounds":1,
-        	"tags":[],
-        	"rewards":{
-				"opinion":30
+    	"type":"Toast",
+    	"rounds":1,
+    	"tags":[],
+    	"values":{
+				"guest":30,
+        "others":10
 			},
-        	"chance":1,
+    	"chance":1,
 			"difficulty":1
-		}
+		},
+    {
+      "type": "Lead",
+      "tags": [
+        "Map", "Map",
+        "Wine", "Wine",
+        "Remarks", "Remarks",
+        "Accolade"
+      ],
+      "values": {
+        "Map": 2,
+        "Wine": 2,
+        "Remarks": 2,
+        "Accolade": 3
+      },
+      "chance": 1,
+      "difficulty": 1
+    },
 	],
 	guest_action_chance:[8,7,6,5,4],
 	charmed_guest_action_chance:[16,14,12,10,8],

@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace UFlow
 {
+    public abstract class UComponent
+    {
+
+    }
     // StateMap with instructions for initializing a simple UFlow State
     public class UStateNode
     {
@@ -16,16 +20,7 @@ namespace UFlow
     }
 
     // LinkMap with instructions for initializing a simple UFlow Link
-    public class UGraphLink : Util.DirectedGraphLink
-    {
-        public UGraphLink() {}
-        public UGraphLink(Util.DirectedGraphLink link)
-        {
-            this.Origin = link.Origin;
-            this.Target = link.Target;
-        }
-    }
-
+    public class UGraphLink {}
     public class UGraphLink<L> : UGraphLink where L:ULink, new() {}
     public class UGraphLink<L,D> : UGraphLink where L:ULink<D>, new()
     {

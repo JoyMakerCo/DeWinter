@@ -152,15 +152,23 @@ namespace UFlow
 
 		private ULink[] BuildLinks(int index)
 		{
-			UGraphLink[] links = _graph.GetLinks(_graph.Nodes[index]);
-			return links.Select(link=>BuildLink(link)).ToArray();
+			UGraphLink[] links = _graph.GetLinkData(index);
+            List<ULink> uLinks = new List<ULink>();
+            ULink link;
+            foreach(UGraphLink l in links)
+            {
+                link = BuildLink(l);
+                uLinks.Add(link);
+            }
+            return uLinks.ToArray();// .Select(link=>BuildLink(link)).ToArray();
 		}
 
 		private ULink BuildLink(UGraphLink link)
 		{
 			ULink ln = _uflow.Build<UGraphLink, ULink>(link);
-			ln._origin = link.Origin;
-			ln._target = link.Target;
+			int linkIndex = Array.IndexOf(_graph.LinkData, link);
+			ln._origin = _graph.Links[linkIndex].x;
+			ln._target = _graph.Links[linkIndex].y;
 			ln._machine = this;
 			ln.Initialize();
 			return ln;

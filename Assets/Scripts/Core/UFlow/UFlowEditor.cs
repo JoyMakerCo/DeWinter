@@ -8,15 +8,10 @@ using Util;
 
 namespace UFlow
 {
-    public class UFlowEditor : GraphEditorWindow<UMachineGraph>
+    public class UFlowEditor : GraphEditorWindow
     {
-        private Dictionary<string,UStateNode> _nodeTypes;
-        private Dictionary<string,UGraphLink> _linkTypes;
-
-        public static void Show(UMachineGraph machine)
-        {
-            // Show(machine, "UFlow Editor");
-        }
+        Dictionary<string, UStateNode> _nodeTypes;
+        Dictionary<string, UGraphLink> _linkTypes;
 
         void Awake()
         {

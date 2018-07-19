@@ -4,7 +4,7 @@ namespace Ambition
 {
     public class GuestActionSelectedLink:ULink<string>
     {
-        string _actionType;
+        private string _actionType;
         override public void SetValue(string data)
         {
             _actionType = data;

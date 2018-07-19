@@ -65,7 +65,7 @@ namespace Ambition
 			// TODO: Clunky as hell. NEED a buff system.
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
 			ItemVO accessory;
-			float t = AmbitionApp.GetModel<PartyModel>().TurnTime;
+			float t = AmbitionApp.GetModel<PartyModel>().RoundTime;
 			if (model.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Fan")
 			{
 				t *= 1.1f;
@@ -76,9 +76,10 @@ namespace Ambition
 
 		IEnumerator Timer(float time)
 		{
+            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
 			for (float t = time; t >=0; t-=Time.deltaTime)
 			{
-				_model.Repartee = (t*2 >= time);
+				model.Repartee = (t*2 >= time);
 				yield return null;
 			}
 		}

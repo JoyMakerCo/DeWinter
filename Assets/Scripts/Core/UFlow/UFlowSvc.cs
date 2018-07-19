@@ -106,18 +106,14 @@ namespace UFlow
 			return u;
 		}
 
-		private L AddLinkToGraph<L>(L link, string machineID, string originState, string targetState) where L:UGraphLink
+		private UGraphLink AddLinkToGraph(UGraphLink link, string machineID, string originState, string targetState)
 		{
 			UMachineGraph graph;
 			if (!_machines.TryGetValue(machineID, out graph)) return null;
 
-			link.Origin = Array.FindIndex(graph.Nodes, n=>n.ID == originState);
-			link.Target = Array.FindIndex(graph.Nodes, n=>n.ID == targetState);
-			if (link.Origin < 0 || link.Target < 0) return null;
-
-			if (graph.Links != null)
-				graph.Links = graph.Links.Append(link).ToArray();
-			else graph.Links = new UGraphLink[]{link};
+			int from = Array.FindIndex(graph.Nodes, n=>n.ID == originState);
+			int to = Array.FindIndex(graph.Nodes, n=>n.ID == targetState);
+			graph.Link(from, to, link);
 			return link;
 		}
 
@@ -128,7 +124,7 @@ namespace UFlow
 
 		public void RegisterLink<T>(string machineID, string originState, string targetState) where T : ULink, new()
 		{
-			UGraphLink<T> link = AddLinkToGraph(new UGraphLink<T>(), machineID, originState, targetState);
+			AddLinkToGraph(new UGraphLink<T>(), machineID, originState, targetState);
 			if (!_instantiators.ContainsKey(typeof(UGraphLink<T>)))
 			{
 				Func<UGraphLink<T>, T> Create = l=> new T();
@@ -138,14 +134,13 @@ namespace UFlow
 
 		public void RegisterLink<T,D>(string machineID, string originState, string targetState, D data) where T : ULink<D>, new()
 		{
-			UGraphLink<T,D> link = AddLinkToGraph(new UGraphLink<T,D>(), machineID, originState, targetState);
+			UGraphLink<T,D> link = ((UGraphLink<T,D>)AddLinkToGraph(new UGraphLink<T,D>(), machineID, originState, targetState));
 			link.Data = data;
 			if (!_instantiators.ContainsKey(typeof(UGraphLink<T,D>)))
 			{
 				Func<UGraphLink<T,D>, T> Create = l=>
 				{
 					T t = new T();
-					t._target = l.Target;
 					t.SetValue(l.Data);
 					return t;
 				};

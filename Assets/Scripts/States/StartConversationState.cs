@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core;
+using Util;
 using UFlow;
 
 namespace Ambition
@@ -10,75 +11,78 @@ namespace Ambition
 		private LocalizationModel _phrases;
 		public override void OnEnterState ()
 		{
-			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
+			ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
 			GuestVO guest;
+            GuestVO[] guests = model.Guests;
+            _phrases = AmbitionApp.GetModel<LocalizationModel>();
 
-			model.Turn = 0;
-			model.Remark = null;
-			_phrases = AmbitionApp.GetModel<LocalizationModel>();
-			AmbitionApp.SendMessage(PartyMessages.CLEAR_REMARKS);
+            // This ensures that previous guest formations stay consistent
+            // TODO: Determine how to vary this number
+            if (guests == null) guests = new GuestVO[4];
+            for (int i = guests.Length - 1; i >= 0; i--)
+            {
+                if (guests[i] == null)
+                {
+                    guest = new GuestVO();
+                    if (RNG.Generate(2) == 0)
+                    {
+                        guest.Gender = Gender.Female;
+                        guest.Title = GetRandomDescriptor("female_title");
+                        guest.FirstName = GetRandomDescriptor("female_name");
+                    }
+                    else
+                    {
+                        guest.Gender = Gender.Male;
+                        guest.Title = GetRandomDescriptor("male_title");
+                        guest.FirstName = GetRandomDescriptor("male_name");
+                    }
+                    guest.LastName = GetRandomDescriptor("last_name");
+                    guest.LastName = "aeiouAEIOU".Contains(guest.LastName.Substring(0, 1))
+                        ? (" d'" + guest.LastName)
+                        : (" de " + guest.LastName);
+                    guests[i] = guest;
+                }
+            }
 
-			// This ensures that previous guest formations stay consistent
-			// TODO: Determine how to vary this number
-			if (room.Guests == null) room.Guests = new GuestVO[4];
-			for (int i=room.Guests.Length-1; i>=0; i--)
-			{
-				if (room.Guests[i] == null)
-				{
-					guest = new GuestVO();
-					if (Util.RNG.Generate(2)==0)
-					{
-							guest.Gender = Gender.Female;
-							guest.Title = GetRandomDescriptor("female_title");
-							guest.FirstName = GetRandomDescriptor("female_name");
-					}
-					else
-					{
-							guest.Gender = Gender.Male;
-							guest.Title = GetRandomDescriptor("male_title");
-							guest.FirstName = GetRandomDescriptor("male_name");
-					}
-					guest.LastName = GetRandomDescriptor("last_name");
-					guest.LastName  = "aeiouAEIOU".Contains(guest.LastName.Substring(0,1))
-						? (" d'" + guest.LastName)
-						: (" de " + guest.LastName);
-					room.Guests[i] = guest;
-				}
-			}
-
+            RoomVO room = model.Room;
 			if (!room.Cleared)
 			{
 				int likeIndex;
-				GuestDifficultyVO stats = model.GuestDifficultyStats[room.Difficulty-1];
-				model.RemarksBought=0;
-				foreach (GuestVO g in room.Guests)
+                GuestDifficultyVO stats = partyModel.GuestDifficultyStats[room.Difficulty-1];
+                string[] interests = partyModel.Interests;
+                foreach (GuestVO g in guests)
 				{
-					g.Opinion = Util.RNG.Generate(stats.Opinion[0], stats.Opinion[1]);
-					g.MaxInterest = Util.RNG.Generate(stats.MaxInterest[0], stats.MaxInterest[1]);
-					g.Interest = Util.RNG.Generate(stats.Interest[0], stats.Interest[1]);
-					likeIndex = Util.RNG.Generate(0,model.Interests.Length);
-					g.Like = model.Interests[likeIndex];
-					g.Dislike = model.Interests[(likeIndex + 1)%model.Interests.Length];
+					g.Opinion = RNG.Generate(stats.Opinion[0], stats.Opinion[1]);
+					g.MaxInterest = RNG.Generate(stats.MaxInterest[0], stats.MaxInterest[1]);
+					g.Interest = RNG.Generate(stats.Interest[0], stats.Interest[1]);
+                    likeIndex = RNG.Generate(interests.Length);
+                    g.Like = interests[likeIndex];
+					g.Dislike = interests[(likeIndex + 1)%interests.Length];
 				}
 				// All Variety of Likes final check
-				if (Array.TrueForAll(room.Guests, g=>g.Like == room.Guests[0].Like))
+                if (Array.TrueForAll(guests, g=>g.Like == guests[0].Like))
 				{
-					GuestVO g = room.Guests[Util.RNG.Generate(room.Guests.Length)];
-					likeIndex = Util.RNG.Generate(1,model.Interests.Length);
-					if (model.Interests[likeIndex] == g.Like) likeIndex = 0;
-					g.Like = model.Interests[likeIndex];
-					g.Dislike = model.Interests[(likeIndex + 1)%model.Interests.Length];
+                    guest = RNG.TakeRandom(guests);
+                    likeIndex = RNG.Generate(interests.Length);
+                    guest.Like = interests[likeIndex];
+                    guest.Dislike = interests[(likeIndex + 1) % interests.Length];
 				}
 			}
-			AmbitionApp.SendMessage<GuestVO[]>(room.Guests);
-			AmbitionApp.SendMessage<int>(model.Confidence);
+            model.Guests = guests;
+            model.Round = 0;
+            model.Remark = null;
+            model.FreeRemarkCounter = partyModel.FreeRemarkCounter;
+            model.Remarks = new List<RemarkVO>();
+            model.Repartee = false;
+            model.RemarksBought = 0;
+            AmbitionApp.SendMessage<int>(GameConsts.CONFIDENCE, partyModel.Confidence);
 		}
 
-		private string GetRandomDescriptor(string phrase)
-		{
-			string [] descriptors = _phrases.GetList(phrase);
-			return descriptors[Util.RNG.Generate(0, descriptors.Length)];
-		}
+        private string GetRandomDescriptor(string phrase)
+        {
+            string[] descriptors = _phrases.GetList(phrase);
+            return RNG.TakeRandom(descriptors);
+        }
 	}
 }

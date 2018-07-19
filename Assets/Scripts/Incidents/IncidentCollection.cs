@@ -103,7 +103,7 @@ namespace Ambition
 				if (txt != null)
 				{
 					txt.SelectAll();
-					Array.Find(Resources.FindObjectsOfTypeAll<EditorWindow>(), w=>w.title == "Inspector").Focus();
+                    Array.Find(Resources.FindObjectsOfTypeAll<EditorWindow>(), w=>w.titleContent.text == "Inspector").Focus();
 				}
 			}
 			return prop != null;

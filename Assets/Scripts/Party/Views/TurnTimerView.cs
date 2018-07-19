@@ -23,17 +23,17 @@ namespace Ambition
 
 		void OnEnable()
 		{
-			_messageService.Subscribe(PartyMessages.START_TURN, HandleTurn);
+            _messageService.Subscribe(PartyMessages.START_ROUND, HandleRound);
 		}
 
 		void OnDisable()
 		{
-			_messageService.Unsubscribe(PartyMessages.START_TURN, HandleTurn);
+            _messageService.Unsubscribe(PartyMessages.START_ROUND, HandleRound);
 		}
 
-		private void HandleTurn()
+		private void HandleRound()
 		{
-			float t = _modelService.GetModel<PartyModel>().TurnTime;
+			float t = _modelService.GetModel<PartyModel>().RoundTime;
 			StopAllCoroutines();
 			StartCoroutine(CountDown(t));
 		}
@@ -52,7 +52,7 @@ namespace Ambition
 			}
 			_timer.fillAmount = 0;
 			ClockHand.transform.localRotation = Quaternion.Euler(0f,0f,90f);
-			_messageService.Send(PartyMessages.END_TURN);
+			_messageService.Send<GuestVO[]>(PartyMessages.GUESTS_SELECTED, null);
 		}
 	}
 }

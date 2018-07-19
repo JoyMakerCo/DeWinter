@@ -8,24 +8,22 @@ namespace Ambition
 	{
 		public void Execute ()
 		{
-			PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
 			List<RemarkVO> hand = model.Remarks;
-			int length = model.IsAmbush ? model.AmbushHandSize : model.MaxHandSize;
-			if (hand.Count < length)
+            if (hand.Count < AmbitionApp.GetModel<PartyModel>().MaxHandSize)
 			{
-				int numGuests = AmbitionApp.GetModel<MapModel>().Room.Guests.Length;
+                string[] interests = AmbitionApp.GetModel<PartyModel>().Interests;
 				string interest;
 
-				// Create a topic that is exclusive of the previous topic used.
-				if (model.Remark != null)
-				{
-					interest = model.Interests[Util.RNG.Generate(1, model.Interests.Length)];
-					if (model.Remark.Interest == interest) interest = model.Interests[0];
-				}
-				else
-				{
-					interest = model.Interests[Util.RNG.Generate(0, model.Interests.Length)];
-				}
+                // Create a topic that is exclusive of the previous topic used.
+                if (model.Remark != null)
+                {
+                    interest = Util.RNG.TakeRandomExcept(interests, model.Remark.Interest);
+                }
+                else
+                {
+                    interest = Util.RNG.TakeRandom(interests);
+                }
 
 				RemarkVO remark = new RemarkVO(Util.RNG.Generate(1,3), interest);
 				hand.Add(remark);

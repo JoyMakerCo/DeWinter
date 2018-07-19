@@ -57,18 +57,10 @@ namespace Ambition
 			Dislike = guest.Dislike;
 			Gender = guest.Gender;
 			Opinion = guest.Opinion;
+			State = guest.State;
 		}
 
-		public GuestState State
-		{
-			get
-			{
-				if (Interest <= 0) return GuestState.Bored;
-				if (Opinion >= 100) return GuestState.Charmed;
-				if (Opinion <= 0) return GuestState.PutOff;
-				return GuestState.Interested;
-			}
-		}
+		public GuestState State = GuestState.Interested;
 		
 		public bool IsLockedIn
 		{

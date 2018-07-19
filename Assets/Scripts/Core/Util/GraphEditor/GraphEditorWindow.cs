@@ -8,45 +8,153 @@ using Util;
 
 namespace Util
 {
-	public class GraphEditorWindow<T> : EditorWindow
+	public class GraphEditorWindow : EditorWindow
 	{
-		public Action<T, Vector2, bool> DrawNode;
-		public Func<T, Vector2, Vector2> Intersect;
-
-		protected const string DEFAULT_TITLE = "Directed Graph Editor";
-		private const float ARROW_SIZE = 5f;
-		protected DirectedGraph<T> _graph;
-		protected SerializedObject _graphObject;
-
+		protected const string DEFAULT_TITLE = "Graph Editor";
+		protected DirectedGraphObject _graphObject;
+		protected SerializedObject _serializedObject;
 		private Vector2 _scroll;
 		private Rect _scrollRect;
 		private Vector2 _mousePos;		
 		private bool _dragging=false;
-		private bool _dirty=false;
-		private T _selection;
-		private T _selectedLink;
+		protected int _selection;
+		protected bool _selectionIsNode;
 		
-		public static void Show(DirectedGraph<T> graph, string title=null)
+		public static void Show<W>(DirectedGraphObject graphObject, string title=null) where W:GraphEditorWindow
 		{
+            if (graphObject == null) return;
 			if (title == null) title=DEFAULT_TITLE;
-			EditorWindow.GetWindow<GraphEditorWindow<T>>(title).SetGraph(graph);
+			W window = EditorWindow.GetWindow<W>(title);
+			window._graphObject = graphObject;
+			window._serializedObject = new SerializedObject(graphObject);
 		}
 
-		public void SetGraph(DirectedGraph<T> graph)
+		public static void Show(DirectedGraphObject graphObject, string title=null)
 		{
-			if (graph != _graph)
+			Show<GraphEditorWindow>(graphObject, title);
+		}
+
+		protected bool Move(int nodeIndex, Vector2 offset)
+		{
+			SerializedProperty prop = GetElementAt(GetPositions(), nodeIndex);
+			if (prop != null) prop.vector2Value += offset;
+			return prop != null;
+		}
+
+		protected SerializedProperty GetGraph()
+		{
+			return _serializedObject != null
+				? _serializedObject.FindProperty("Graph")
+				: null;
+		}
+
+		protected SerializedProperty GetNodes()
+		{
+			SerializedProperty graph = GetGraph();
+if (graph == null) Debug.Log("NO GRAPH!");
+			return graph != null ? graph.FindPropertyRelative("Nodes") : null;
+		}
+
+		protected SerializedProperty GetLinks()
+		{
+			SerializedProperty graph = GetGraph();
+			return graph != null ? graph.FindPropertyRelative("Links") : null;
+		}
+
+		protected SerializedProperty GetPositions()
+		{
+			return _serializedObject != null
+				? _serializedObject.FindProperty("Positions")
+				: null;
+		}
+
+		protected SerializedProperty GetLinkData()
+		{
+			SerializedProperty graph = GetGraph();
+			return graph != null ? graph.FindPropertyRelative("LinkData") : null;
+		}
+
+		protected SerializedProperty GetElementAt(SerializedProperty list, int index)
+		{
+			return list != null && index >= 0 && index < list.arraySize
+				? list.GetArrayElementAtIndex(index)
+				: null;
+		}
+
+		protected bool DeleteNode(int nodeIndex)
+		{
+			if (!DeleteIndex(GetNodes(), nodeIndex)) return false;
+			Vector2Int offset = new Vector2Int(0,0);
+			SerializedProperty links = GetLinks();
+			SerializedProperty link;
+			if (links == null) return true;
+			for (int i=links.arraySize-1; i>=0; i--)
 			{
-				_graph = graph;
-				if (_graph != null)
+				link = links.GetArrayElementAtIndex(i);
+				if (link.vector2IntValue.x == nodeIndex
+					|| link.vector2IntValue.y == nodeIndex)
 				{
-					if (_graph.Nodes==null) _graph.Nodes = new T[0];
-					if (_graph.Links==null) _graph.Links = new DirectedGraphLink[0];
-					// List<Vector2> positions = _graph.Positions == null ? new List<Vector2>() : new List<Vector2>(_graph.Positions);
-					// positions.AddRange(new Vector2[_graph.Nodes.Length-positions.Count]);
-					// _graph.Positions = positions.ToArray();
+					DeleteLink(i);
 				}
-				// _graphObject = (_graph != null ? new SerializedObject(_graph) : null);
+				else
+				{
+					offset.x = (link.vector2IntValue.x > nodeIndex) ? 1 : 0;
+					offset.y = (link.vector2IntValue.y > nodeIndex) ? 1 : 0;
+					link.vector2IntValue -= offset;
+				}
 			}
+			return true;
+		} 
+
+		protected bool DeleteLink(int linkIndex)
+		{
+			if (!DeleteIndex(GetLinks(), linkIndex)) return false;
+			DeleteIndex(GetLinkData(), linkIndex);
+			return true;
+		}
+
+		protected SerializedProperty AddNode(Vector2 position, int fromNode = -1)
+		{
+			SerializedProperty prop = AddNewElement(GetNodes());
+			if (prop == null) return null;
+			
+			SerializedProperty pos = AddNewElement(GetPositions());
+			pos.vector2Value = position;
+			return prop;
+		}
+
+		protected SerializedProperty Link(int fromNode, int toNode)
+		{
+			SerializedProperty prop = GetNodes();
+			if (prop != null
+				&& fromNode >= 0
+				&& fromNode < prop.arraySize
+				&& toNode >= 0
+				&& toNode < prop.arraySize)
+			{
+				AddNewElement(GetLinkData());
+				prop = AddNewElement(GetLinks());
+				if (prop != null) prop.vector2IntValue = new Vector2Int(fromNode, toNode);
+			}
+			return prop;
+		}
+
+		protected SerializedProperty AddNewElement(SerializedProperty list)
+		{
+Debug.Log(list == null ? "NO LIST" : "LIST");
+			if (list == null) return null;
+			list.arraySize++;
+			list.InsertArrayElementAtIndex(list.arraySize-1);
+			return list.GetArrayElementAtIndex(list.arraySize-1);
+		}
+
+		protected bool DeleteIndex(SerializedProperty list, int index)
+		{
+			if (list == null || index >= list.arraySize) return false;
+			if (list.GetArrayElementAtIndex(index) == null)
+				list.DeleteArrayElementAtIndex(index);
+			list.DeleteArrayElementAtIndex(index);
+			return true;
 		}
 
 	    void OnSelectionChange()
@@ -56,59 +164,48 @@ namespace Util
 
 		void OnDestroy()
 		{
-			_graph = null;
+			_serializedObject = null;
 			_graphObject = null;
-			titleContent.text = DEFAULT_TITLE;
 			Repaint();
 		}
 
 		void OnGUI()
 		{
+			_scroll = GUI.BeginScrollView(new Rect(0, 0, position.width, position.height), _scroll, _scrollRect);
 			if (_graphObject != null)
 			{
-				_graphObject.Update();
-				if (DrawNode != null)
+				switch(Event.current.type)
 				{
-					for (int i=_graph.Nodes.Length-1; i>=0; i--)
-					{
-						// DrawNode(_graph.Nodes[i], _graph.Positions[i], _graph.Nodes[i].Equals(_selection));
-					}
+					case EventType.MouseDown:
+						_mousePos = Event.current.mousePosition;
+						_dragging = _graphObject.Intersect(_mousePos, out _selection, out _selectionIsNode) && _selectionIsNode && Event.current.clickCount < 2;
+						if (Event.current.button == 0 && Event.current.clickCount > 1 && _selection < 0)
+							AddNode(_mousePos);
+					break;
+					case EventType.MouseDrag:
+						if (_dragging)
+						{
+							Move(_selection, Event.current.mousePosition - _mousePos);
+							_mousePos = Event.current.mousePosition;
+						}
+						break;
+
+					case EventType.MouseUp:
+						_dragging = false;
+						_mousePos = Event.current.mousePosition;
+						break;
 				}
-				RenderLinks();
+				_serializedObject.ApplyModifiedProperties();
 			}
+			GUI.EndScrollView();
 		}
 
-		protected void RenderLinks()
+		private void AdjustScrollRect(Rect rect)
 		{
-			if (_graph != null)
-			{
-				Vector3 mid, dir, norm;
-				Vector3[] lines;
-				Vector2 head = new Vector2(), tail = new Vector2();
-				T[] links;
-				foreach(T node in _graph.Nodes)
-				{
-					// tail = _graph.GetPosition(node);
-					links = _graph.GetNeighbors(node);
-					foreach (T link in links)
-					{
-						// head = _graph.GetPosition(link);
-						dir = (head-tail).normalized;
-						norm = new Vector2(dir.y, -dir.x)*ARROW_SIZE;
-						mid = (head + tail)*.5f;
-						dir *= ARROW_SIZE;
-
-						lines = new Vector3[]{
-							mid - dir - norm,
-							mid + dir,
-							mid - dir + norm
-						};
-						Handles.color =(_selection.Equals(node) && _selectedLink.Equals(link))?Color.blue:Color.black;
-						Handles.DrawLine(head, tail);
-						Handles.DrawAAConvexPolygon(lines);
-					}
-				}
-			}
+			if (rect.xMin < _scrollRect.xMin) _scrollRect.xMin = rect.xMin;
+			else if (rect.xMax > _scrollRect.xMax) _scrollRect.xMax = rect.xMax;
+			if (rect.yMin < _scrollRect.yMin) _scrollRect.yMin = rect.yMin;
+			else if (rect.yMax > _scrollRect.yMax) _scrollRect.yMax = rect.yMax;
 		}
 	}
 }

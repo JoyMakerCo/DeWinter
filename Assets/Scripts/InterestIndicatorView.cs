@@ -63,15 +63,12 @@ namespace Ambition
 			for(float t=0f; t < FILL_SECONDS; t += Time.deltaTime)
 			{
 				fill = startFill + delta*t;
-				OpinionIndicator.fillAmount = fill;
-				if (fill < 1f)
-				{
-					fill*=colorCount;
-					colorindex = Mathf.FloorToInt(fill);
-					c0 = ColorConfig.Colors[colorindex];
-					c1 = ColorConfig.Colors[colorindex+1];
-					OpinionIndicator.color = Color.Lerp(c0.Color, c1.Color, fill%1f);
-				}
+				OpinionIndicator.fillAmount = fill = (fill > 1f ? 1f : fill < 0f ? 0f : fill);
+				fill*=colorCount;
+				colorindex = Mathf.FloorToInt(fill);
+				c0 = ColorConfig.Colors[colorindex];
+				c1 = ColorConfig.Colors[Math.Min(colorindex+1, (int)colorCount-1)];
+				OpinionIndicator.color = Color.Lerp(c0.Color, c1.Color, fill%1f);
 				yield return null;
 			}
 			OpinionIndicator.fillAmount = percent;

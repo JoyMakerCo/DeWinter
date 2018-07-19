@@ -21,10 +21,6 @@ namespace Ambition
 	        {
 				AmbitionApp.SendMessage(PartyMessages.BUY_REMARK);
 	        }
-			else if (Input.GetKeyDown(KeyCode.E))
-	        {
-				AmbitionApp.SendMessage(PartyMessages.EXCHANGE_REMARK, AmbitionApp.GetModel<PartyModel>().Remark);
-	        }
         }
 	}
 }

@@ -12,7 +12,7 @@ namespace Ambition
 			FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 			if(fmod[model.Party.Faction].Level >= 2)
 	        {
-				AmbitionApp.GetModel<PartyModel>().Drink += model.MaxDrinkAmount;
+                AmbitionApp.SendMessage(PartyMessages.REFILL_DRINK);
 
 	            Dictionary<string, string> substitutions = new Dictionary<string, string>()
 					{{"$HOSTNAME", model.Party.Host.Name}};

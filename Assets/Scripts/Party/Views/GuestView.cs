@@ -8,27 +8,23 @@ namespace Ambition
 	public class GuestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
 		private readonly static string[] POSES = new string[]{"putout", "neutral", "approval", "charmed"};
-        public AvatarCollection Avatars;
         public Animator Animator;
 
-		private GuestVO _guest;
-		public GuestVO Guest
-		{
-			get { return _guest; }
-		}
+        private GuestVO _guest;
+        public GuestVO Guest
+        {
+            get { return _guest; }
+        }
 
-		private AvatarVO _avatar;
+        private AvatarView _avatar;
 		private RemarkVO _remark;
-		private Image _image;
 		private bool _isIntoxicated=false;
-		private string _pose;
-		private int _index;
-
+        private string _pose;
+        
 		void Awake()
 		{
-			_index = transform.GetSiblingIndex();
+            _avatar = GetComponent<AvatarView>();
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
-			_image = GetComponent<Image>();
 		}
 
 		void OnEnable()
@@ -55,7 +51,8 @@ namespace Ambition
 
 	    private void HandleGuests(GuestVO[] guests)
 	    {
-	    	_guest = (_index < guests.Length) ? guests[_index] : null;
+            int index = transform.GetSiblingIndex();
+	    	_guest = (index < guests.Length) ? guests[index] : null;
 
 	    	// Shows/hides components of a guest view based on the data
 			this.gameObject.SetActive(_guest != null);
@@ -63,30 +60,25 @@ namespace Ambition
 			// Only do this work if the state is changing.
 			if (this.gameObject.activeSelf)
 			{
-				EnemyVO enemy = _guest as EnemyVO;
-				bool isEnemy = (enemy != null);
-
-				if (_avatar.ID == null || _avatar.ID != _guest.Avatar)
+                if (_avatar.ID == null || _avatar.ID != _guest.Avatar)
 				{
-					if (_guest.Avatar != null) _avatar = Avatars.GetAvatar(_guest.Avatar);
+                    if (_guest.Avatar != null) _avatar.ID = _guest.Avatar;
 					else
 					{
-						AvatarVO[] avatars = Avatars.Find(_guest.Gender, "party");
-						_avatar = avatars[Util.RNG.Generate(avatars.Length)];
-						_guest.Avatar = _avatar.ID;
+						AvatarVO[] avatars = _avatar.Collection.Find(_guest.Gender, "party");
+                        _avatar.ID = _guest.Avatar = Util.RNG.TakeRandom(avatars).ID;
 					}
-					_guest.Gender = _avatar.Gender;
+                    _guest.Gender = _avatar.Avatar.Gender;
 				}
 
-				_pose = _isIntoxicated
+                _avatar.Pose = _pose = _isIntoxicated
 					? "neutral"
 					: _guest.Interest <= 0
 					? "bored"
 					: POSES[(int)(_guest.State)];
-				_image.sprite = _avatar.GetPose(_pose);
 					
-				if (_image.sprite == null)
-					_image.sprite = _avatar.GetPose("neutral");
+                if (_avatar.Sprite == null)
+                    _avatar.Pose = _pose = "neutral";
 			}
 	    }
 
@@ -138,27 +130,26 @@ namespace Ambition
 
 		private void HandleTargeted(GuestVO [] guests)
 		{
-			string pose = _pose;
-			if (!_isIntoxicated
-				&& _remark != null
-				&& _guest != null
-				&& guests != null
-				&& Array.IndexOf(guests, Guest) >= 0)
-			{
-				if (_remark.Interest == Guest.Like)
-				{
-					pose = POSES[POSES.Length-1];
-				}
-				else if (_remark.Interest == Guest.Dislike)
-				{
-					pose = POSES[0];
-				}
-				else
-				{
-					pose = "approval";
-				}
-			}
-			_image.sprite = _avatar.GetPose(pose);
+            if (!_isIntoxicated
+                && _remark != null
+                && _guest != null
+                && guests != null
+                && Array.IndexOf(guests, Guest) >= 0)
+            {
+                if (_remark.Interest == Guest.Like)
+                {
+                    _avatar.Pose  = POSES[POSES.Length - 1];
+                }
+                else if (_remark.Interest == Guest.Dislike)
+                {
+                    _avatar.Pose = POSES[0];
+                }
+                else
+                {
+                    _avatar.Pose = "approval";
+                }
+            }
+            else _avatar.Pose = _pose;
 		}
 	}
 }

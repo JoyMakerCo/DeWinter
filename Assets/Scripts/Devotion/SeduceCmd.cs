@@ -15,11 +15,7 @@ namespace Ambition
 					(notable.Gender == Gender.Female ? model.SeductionModifier : model.SeductionAltModifier) +
 					(model.SeductionTimeModifier - s.Time) -
 					(string.IsNullOrEmpty(notable.Spouse) ? model.SeductionMarriedModifier : 0);
-
-				if (Util.RNG.Generate(0,100) < seductionChance)
-				{
-					AmbitionApp.SendMessage<NotableVO>(PartyConstants.START_DANCING, notable);
-				}
+                // TODO: Dancing?
 			}
 		}
 	}

@@ -15,8 +15,9 @@ namespace Ambition
             GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Dialog.DialogCanvasManager>() != null);
             if (canvas != null) 
             {
-                RemarkVO rem = AmbitionApp.GetModel<PartyModel>().Remark;
-                GuestVO[] guests = AmbitionApp.GetModel<MapModel>().Room.Guests;
+                ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+                RemarkVO rem = model.Remark;
+                GuestVO[] guests = model.Guests;
                 SpotlightView[] spotlights = canvas.GetComponentsInChildren<SpotlightView>(true);
                 int index = Array.FindIndex(guests, g=>g.Like == rem.Interest);
                 if (index < 0) index = Array.FindIndex(guests, g=>g.Dislike != rem.Interest);
