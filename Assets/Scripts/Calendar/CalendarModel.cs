@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
+using UnityEngine;
 using Util;
 
 namespace Ambition
@@ -11,9 +12,8 @@ namespace Ambition
 	{
 		public Dictionary<DateTime, List<PartyVO>> Parties = new Dictionary<DateTime, List<PartyVO>>();
 
-		private DateTime _startDate;
-		private int _gameLength;
-
+        private DateTime _startDate;
+        private int _gameLength;
 		private int _day = 0;
 
 		public DateTime StartDate
@@ -80,7 +80,7 @@ namespace Ambition
 
 		public void Initialize()
 		{
-			uprisingDay= _startDate.AddDays(Util.RNG.Generate(25, 31));
+            uprisingDay=_startDate.AddDays(Util.RNG.Generate(25, 31));
 		}
 
 		string dayString(int day)

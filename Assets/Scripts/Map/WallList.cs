@@ -39,7 +39,7 @@ namespace Ambition
 			int[] wallVerts = new int[4];
 			int len = verts.Length;
 			float[] scalars;
-			int index;
+            int index;
 			for (int i=len-2; i>=0; i-=2)
 			{
 				wallVerts[0] = verts[i];

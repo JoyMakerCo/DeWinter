@@ -48,7 +48,7 @@ namespace Ambition
 		private ReorderableList _list;
 		private bool _dirty=false;
 		private SerializedProperty _property;
-		
+
 		private void OnEnable()
 		{
         	_list = new ReorderableList(serializedObject, 
@@ -68,8 +68,38 @@ namespace Ambition
 			if (!DrawComponent()) _lastType = null;
 			if (_lastType == null) _list.DoLayoutList();
         	serializedObject.ApplyModifiedProperties();
-			if (_dirty) IncidentEditor.InspectorUpdated();
+			//if (_dirty) IncidentEditor.InspectorUpdated();
 			_dirty = false;
+
+            if (GUILayout.Button("Make Timeline"))
+            {
+                IncidentCollection collection = (IncidentCollection)target;
+                Timeline timeline = Util.ScriptableObjectUtil.CreateScriptableObject<Timeline>("Timeline");
+                IncidentConfig config;
+                IncidentVO incident;
+                timeline.Incidents = new IncidentConfig[collection.Incidents.Length];
+                for (int j = collection.Incidents.Length - 1; j >= 0; j--)
+                {
+                    incident = collection.Incidents[j];
+                    timeline.Incidents[j] = config = Util.ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>(incident.Name);
+                    config.Positions = new Rect[incident.Positions.Length];
+                    for (int i = incident.Positions.Length - 1; i >= 0; i--)
+                    {
+                        config.Positions[i].width = 100f;
+                        config.Positions[i].height = 20f;
+                        config.Positions[i].center = incident.Positions[i];
+                    }
+                    config.Graph = new Util.DirectedGraph<MomentVO, TransitionVO>();
+                    config.Graph.Nodes = incident.Moments;
+                    config.Graph.LinkData = incident.Transitions;
+                    config.Graph.Links = new Vector2Int[incident.Transitions.Length];
+                    for (int i = incident.LinkData.Length - 1; i >= 0; i--)
+                    {
+                        config.Graph.Links[i].x = incident.LinkData[i].Index;
+                        config.Graph.Links[i].y = incident.LinkData[i].Target;
+                    }
+                }
+            }
 	    }
 
 	    private bool DrawComponent()
@@ -77,6 +107,7 @@ namespace Ambition
 			if (serializedObject == null || _list == null || _list.index < 0) return false;
 			int index = serializedObject.FindProperty(IncidentCollection.SELECTED_COMPONENT).intValue;
 			if (index < 0) return false;
+
 			SerializedProperty prop = serializedObject.FindProperty("Incidents");
 			if (_list.index >= prop.arraySize) return false;
 			bool selectText = _lastIndex != index;
@@ -112,12 +143,7 @@ namespace Ambition
 		private void DrawIncident(Rect rect, int index, bool isActive, bool isFocused)
 		{
 			SerializedProperty prop = _list.serializedProperty.GetArrayElementAtIndex(index);
-
-			Rect rLabel = new Rect(rect.x, rect.y, rect.width-DROPDOWN_WIDTH, rect.height-SPACER);
-			Rect dLabel = new Rect(rect.x + rect.width - DROPDOWN_WIDTH + SPACER, rect.y, DROPDOWN_WIDTH-SPACER, rect.height-SPACER);
-
-			EditorGUI.PropertyField(rLabel, prop.FindPropertyRelative("Name"), GUIContent.none);
-			EditorGUI.PropertyField(dLabel, prop.FindPropertyRelative("Setting"), GUIContent.none);
+			EditorGUI.PropertyField(rect, prop.FindPropertyRelative("Name"), GUIContent.none);
 		}
 
 		private void SelectIncident(ReorderableList list)

@@ -8,7 +8,7 @@ namespace Util
 {
 	public class ScriptableObjectUtil
 	{
-		public static void CreateScriptableObject<T>(string name=null) where T : ScriptableObject
+		public static T CreateScriptableObject<T>(string name=null) where T : ScriptableObject
 		{
 			T asset = ScriptableObject.CreateInstance<T>();
 			string path = (Selection.activeObject == null) ? "Assets" : AssetDatabase.GetAssetPath(Selection.activeObject.GetInstanceID());
@@ -20,6 +20,7 @@ namespace Util
 			AssetDatabase.SaveAssets ();
 			EditorUtility.FocusProjectWindow ();
 			Selection.activeObject = asset;
+            return asset;
 		}
 	}
 }

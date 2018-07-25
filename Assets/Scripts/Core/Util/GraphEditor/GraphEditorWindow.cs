@@ -10,6 +10,8 @@ namespace Util
 {
 	public class GraphEditorWindow : EditorWindow
 	{
+        public static readonly Rect DEFAULT_RECT = new Rect(0f,0f,200f,50f);
+            
 		protected const string DEFAULT_TITLE = "Graph Editor";
 		protected DirectedGraphObject _graphObject;
 		protected SerializedObject _serializedObject;
@@ -23,10 +25,14 @@ namespace Util
 		public static void Show<W>(DirectedGraphObject graphObject, string title=null) where W:GraphEditorWindow
 		{
             if (graphObject == null) return;
-			if (title == null) title=DEFAULT_TITLE;
-			W window = EditorWindow.GetWindow<W>(title);
-			window._graphObject = graphObject;
-			window._serializedObject = new SerializedObject(graphObject);
+			W window = EditorWindow.GetWindow<W>();
+            window.titleContent = new GUIContent(title == null ? DEFAULT_TITLE : title);
+            window._serializedObject = new SerializedObject(graphObject);
+            window._graphObject = graphObject;
+
+            Debug.Log(graphObject.Positions.Length.ToString() + " Positions");
+            SerializedProperty obj = window.GetNodes();
+            if (obj != null) Debug.Log(obj.arraySize.ToString() + " Nodes");
 		}
 
 		public static void Show(DirectedGraphObject graphObject, string title=null)

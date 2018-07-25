@@ -9,7 +9,6 @@ namespace Ambition
 {
 	public class EventOptionButton : MonoBehaviour
 	{
-		private IncidentModel _model;
 	    private Text _text;
 		private int _option;
 		private Button _btn;

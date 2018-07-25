@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,7 +25,8 @@ namespace Ambition
 #endif
 			{
 				IncidentModel emod = AmbitionApp.RegisterModel<IncidentModel>();
-				emod.Incident = emod.FindEvent("Yvette");
+                emod.Incident = Array.Find(emod.Incidents, i => i.Name == "Yvette");
+                if (emod.Incident != null) emod.Incident.Active = true;
 			}
 		}
 	}
