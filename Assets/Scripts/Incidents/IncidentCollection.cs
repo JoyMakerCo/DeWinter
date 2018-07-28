@@ -82,21 +82,15 @@ namespace Ambition
                 {
                     incident = collection.Incidents[j];
                     timeline.Incidents[j] = config = Util.ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>(incident.Name);
-                    config.Positions = new Rect[incident.Positions.Length];
-                    for (int i = incident.Positions.Length - 1; i >= 0; i--)
-                    {
-                        config.Positions[i].width = 100f;
-                        config.Positions[i].height = 20f;
-                        config.Positions[i].center = incident.Positions[i];
-                    }
-                    config.Graph = new Util.DirectedGraph<MomentVO, TransitionVO>();
-                    config.Graph.Nodes = incident.Moments;
-                    config.Graph.LinkData = incident.Transitions;
-                    config.Graph.Links = new Vector2Int[incident.Transitions.Length];
+                    config.Positions = incident.Positions;
+                    config.Incident = new IncidentVO();
+                    config.Incident.Nodes = incident.Moments;
+                    config.Incident.LinkData = incident.Transitions;
+                    config.Incident.Links = new Vector2Int[incident.Transitions.Length];
                     for (int i = incident.LinkData.Length - 1; i >= 0; i--)
                     {
-                        config.Graph.Links[i].x = incident.LinkData[i].Index;
-                        config.Graph.Links[i].y = incident.LinkData[i].Target;
+                        config.Incident.Links[i].x = incident.LinkData[i].Index;
+                        config.Incident.Links[i].y = incident.LinkData[i].Target;
                     }
                 }
             }
@@ -151,7 +145,7 @@ namespace Ambition
 			serializedObject.FindProperty(IncidentCollection.SELECTED_INCIDENT).intValue = _list.index;
 			serializedObject.FindProperty(IncidentCollection.SELECTED_COMPONENT).intValue = -1;
 			serializedObject.ApplyModifiedProperties();
-			IncidentEditor.Show(serializedObject);
+            //Util.GraphEditorWindow<IncidentConfig>.Show(serializedObject.targetObject);
 		}
 
 		private void CreateIncident(ReorderableList list)

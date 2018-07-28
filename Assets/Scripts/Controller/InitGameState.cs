@@ -115,6 +115,7 @@ namespace Ambition
 			AmbitionApp.RegisterState<MomentState>("IncidentController", "Moment");
 			AmbitionApp.RegisterState("IncidentController", "CheckEndIncident");
 			AmbitionApp.RegisterState<FadeOutState>("IncidentController", "EndIncident");
+            AmbitionApp.RegisterState("IncidentController", "CheckNextIncident");
 			AmbitionApp.RegisterState<InvokeMachineState, string>("IncidentController", "InvokeEstate", "EstateController");
 
 			AmbitionApp.RegisterLink("IncidentController", "LoadIncident", "EnterIncident");
@@ -123,7 +124,9 @@ namespace Ambition
 			AmbitionApp.RegisterLink<WaitForMomentLink>("IncidentController", "Moment", "CheckEndIncident");
 			AmbitionApp.RegisterLink<CheckEndIncidentLink>("IncidentController", "CheckEndIncident", "EndIncident");
 			AmbitionApp.RegisterLink("IncidentController", "CheckEndIncident", "Moment");
-			AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("IncidentController", "EndIncident", "InvokeEstate", GameMessages.FADE_OUT_COMPLETE);
+            AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("IncidentController", "EndIncident", "CheckNextIncident", GameMessages.FADE_OUT_COMPLETE);
+            AmbitionApp.RegisterLink<CheckIncidentLink>("IncidentController", "CheckNextIncident", "EnterIncident");
+            AmbitionApp.RegisterLink("IncidentController", "CheckNextIncident", "InvokeEstate");
 
 
 			// TUTORIAL STATES.

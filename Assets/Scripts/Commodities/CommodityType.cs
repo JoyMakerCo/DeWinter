@@ -13,6 +13,7 @@ namespace Ambition
 		Devotion,	// Notable, amount
 		Faction,	// Faction name, amount
 		Servant,	// Servant id, 1 or -1
-		Message		// Message id, amount (may not matter)
+		Message,	// Message id, amount (may not matter)
+        Incident    // Incident id
 	}
 }

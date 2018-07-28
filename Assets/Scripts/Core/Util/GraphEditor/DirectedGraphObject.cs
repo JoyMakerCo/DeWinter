@@ -5,184 +5,91 @@ using UnityEditor;
 
 namespace Util
 {
-    public abstract class DirectedGraphObject : ScriptableObject
+    public interface IDirectedGraphObject
     {
-#if (UNITY_EDITOR)        
-        [UnityEditor.Callbacks.OnOpenAsset(1)]
-        public static bool OnOpenAsset(int instanceID, int line)
-        {
-            GraphEditorWindow.Show(Selection.activeObject as DirectedGraphObject);
-            return Selection.activeObject is DirectedGraphObject;
-        }
-
-        [HideInInspector]
-        public Rect[] Positions = new Rect[0];
-        public static float DefaultNodeWidth = 200f;
-        public static float DefaultNodeHeight = 50f;
-		protected const float LINK_INTERSECT_WIDTH = 5f;
-
-        public bool Intersect(Vector2 point, out int componentIndex, out bool isNode)
-        {
-            for (componentIndex = Positions.Length-1; componentIndex>=0; componentIndex--)
-            {
-                if (Positions[componentIndex].Contains(point))
-                    return (isNode = true);
-            }
-            return (isNode = false);
-        }
-
-        protected abstract void DrawNode(int index, bool selected);
-        protected abstract void DrawLink(int index, bool selected);
-
-		protected virtual void DrawLink(int fromNode, int toNode, bool selected)
-        {
-            Vector2 from = Positions[fromNode].center;
-            Vector2 to = Positions[toNode].center;
-            Vector3 dir = (to-from).normalized*LINK_INTERSECT_WIDTH;
-            Vector3 norm = new Vector2(dir.y, -dir.x)*LINK_INTERSECT_WIDTH;
-            Vector3 mid = (to+from)*.5f;
-
-            // ...AND I'LL FORM THE HEAD
-            Vector3[] head = new Vector3[]{
-                mid - dir - norm,
-                mid + dir,
-                mid - dir + norm
-            };
-            Handles.color = selected?Color.white:Color.black;
-            Handles.DrawLine(from, to);
-            Handles.DrawAAConvexPolygon(head);
-		}
-        
-        protected virtual void OnMenu(GenericMenu menu, Vector2 mousePosition) {}
-        protected virtual void OnNodeMenu(GenericMenu menu, int nodeIndex, bool selected, Vector2 mousePosition) {}
-        protected virtual void OnLinkMenu(GenericMenu menu, int linkIndex, bool selected, Vector2 mousePosition) {}
-
-        protected bool IntersectLink(Vector2 point, Vector2Int link)
-        {
-            Vector2 from = Positions[link.x].center;
-            Vector2 to = Positions[link.y].center;
-			Vector2 p = point - from;
-			float P = p.sqrMagnitude;
-            Vector2 l = (from - to);
-			float L = l.sqrMagnitude;
-			float dot = Vector2.Dot(p, l);
-			return
-				(dot >= 0) && (dot*dot/L <= L)
-				&& (Math.Abs(P - (dot*dot/L)) <= LINK_INTERSECT_WIDTH*LINK_INTERSECT_WIDTH);
-        }
+#if (UNITY_EDITOR)
+        void Select(int index, bool isNode);
+        void UpdateGraph();
+        void ApplyModifiedProperties();
+        SerializedProperty GetNodes();
+        SerializedProperty GetLinks();
+        SerializedProperty GetLinkData();
+        SerializedProperty GetPositions();
+        void InitNodeData(SerializedProperty nodeData);
+        void InitLinkData(SerializedProperty linkData);
+        GUIContent GetGUIContent(int nodeIndex);
 #endif
     }
 
-    public class DirectedGraphObject<N> : DirectedGraphObject
+    public class DirectedGraphObject : ScriptableObject, IDirectedGraphObject
     {
-        public DirectedGraph<N> Graph;
-
-        public DirectedGraphObject()
-        {
-            Graph = new DirectedGraph<N>();
-        }
+        public DirectedGraph Graph;
 
 #if (UNITY_EDITOR)
-        override protected void DrawLink(int index, bool selected)
+        [HideInInspector]
+        public int Index;
+
+        [HideInInspector]
+        public bool IsNode;
+
+        [HideInInspector]
+        public Rect[] Positions;
+
+        private SerializedObject _serializedObject;
+
+        void Awake()
         {
-            Vector2Int link = Graph.Links[index];
-            base.DrawLink(link.x, link.y, selected);
+            Graph = new DirectedGraph();
+            Positions = new Rect[0];
+            _serializedObject = new SerializedObject(this);
         }
 
-        new public bool Intersect(Vector2 point, out int componentIndex, out bool isNode)
+        public void Select(int index, bool isNode)
         {
-            isNode = false;
-            for (componentIndex = Positions.Length-1; componentIndex>=0; componentIndex--)
-            {
-                if (Positions[componentIndex].Contains(point))
-                    return (isNode = true);
-            }
-            for (componentIndex = Graph.Links.Length-1; componentIndex>=0; componentIndex--)
-            {
-                if (IntersectLink(point, Graph.Links[componentIndex]))
-                    return true;
-            }
-            return false;
+            _serializedObject.FindProperty("Index").intValue = index;
+            _serializedObject.FindProperty("IsNode").boolValue = isNode;
         }
 
-
-        override protected void DrawNode(int index, bool selected)
+        public SerializedProperty GetNodes()
         {
-            DrawNode(Graph.Nodes[index], Positions[index], selected);
-        }
-		protected virtual void DrawNode(N node, Rect rect, bool selected)
-		{
-			GUIContent content = new GUIContent(node.ToString());
-			GUIStyle style = GUI.skin.box;
-            Color c = GUI.color;
-			style.alignment = TextAnchor.MiddleCenter;
-			GUI.color = selected?Color.yellow:Color.white;
-            DrawNode(rect, content, style);
-            GUI.color = c;
-    	}
-
-        protected void DrawNode(Rect position, string text)
-        {
-            GUI.Box(position, text);
-        }
-        protected void DrawNode(Rect position, Texture image)
-        {
-            GUI.Box(position, image);
-        }
-        protected void DrawNode(Rect position, GUIContent content)
-        {
-            GUI.Box(position, content);
-        }
-        protected void DrawNode(Rect position, string text, GUIStyle style)
-        {
-            GUI.Box(position, text, style);
-        }
-        protected void DrawNode(Rect position, Texture image, GUIStyle style)
-        {
-            GUI.Box(position, image, style);
-        }
-        protected void DrawNode(Rect position, GUIContent content, GUIStyle style)
-        {
-            GUI.Box(position, content, style);
+            return _serializedObject.FindProperty("Graph").FindPropertyRelative("Nodes");
         }
 
-        override protected void OnMenu(GenericMenu menu, Vector2 mousePosition) {}
-
-        override protected void OnNodeMenu(GenericMenu menu, int nodeIndex, bool selected, Vector2 mousePosition)
+        public SerializedProperty GetLinks()
         {
-            if (Graph != null && Graph.Nodes != null && nodeIndex < Graph.Nodes.Length)
-                OnNodeMenu(menu, Graph.Nodes[nodeIndex], selected, mousePosition);
+            return _serializedObject.FindProperty("Graph").FindPropertyRelative("Links");
         }
 
-        protected virtual void OnNodeMenu(GenericMenu menu, N node, bool selected, Vector2 mousePosition) {}
-
-        override protected void OnLinkMenu(GenericMenu menu, int linkIndex, bool selected, Vector2 mousePosition)
+        public SerializedProperty GetLinkData()
         {
-            if (Graph != null && Graph.Links != null && linkIndex < Graph.Links.Length)
-            {
-                Vector2Int link = Graph.Links[linkIndex];
-                menu.AddItem(new GUIContent("Delete Link"), false, DeleteLink, linkIndex);
-                if (Graph.Nodes != null && link.x < Graph.Nodes.Length && link.y < Graph.Nodes.Length)
-                    OnLinkMenu(menu, Graph.Nodes[link.x], Graph.Nodes[link.y], selected, mousePosition);
-            }
+            return _serializedObject.FindProperty("Graph").FindPropertyRelative("LinkData");
         }
 
-        protected virtual void OnLinkMenu(GenericMenu menu, N from, N to, bool selected, Vector2 mousePosition) {}
-
-        protected void DeleteLink(object obj)
+        public SerializedProperty GetPositions()
         {
-            int index = (int)obj;
-            Graph.Links = Graph.Links.Take(index).Concat(Graph.Links.Skip(index+1)).ToArray();
+            return _serializedObject.FindProperty("Positions");
         }
-		#endif
-    }
 
-    public class DirectedGraphObject<N, L> : DirectedGraphObject<N>
-    {
-        new public DirectedGraph<N, L> Graph;
-        public DirectedGraphObject()
+        public void InitNodeData(SerializedProperty nodeData) {}
+        public void InitLinkData(SerializedProperty linkData) {}
+
+        public GUIContent GetGUIContent(int nodeIndex)
         {
-            Graph = new DirectedGraph<N, L>();
+            GUIContent result = new GUIContent("Node " + nodeIndex);
+            return result;
         }
+
+        public void UpdateGraph()
+        {
+            if (_serializedObject != null)
+                _serializedObject.Update();
+        }
+
+        public void ApplyModifiedProperties()
+        {
+            if (_serializedObject != null)
+                _serializedObject.ApplyModifiedProperties();
+        }
+#endif
     }
 }

@@ -6,17 +6,17 @@ using Util;
 
 namespace Ambition
 {
-	[Serializable]
+    [Serializable]
     public class IncidentVO : DirectedGraph<MomentVO, TransitionVO>
-	{
-		public string Name;
-        public bool Active = false;
+    {
+        public string Name;
         public DateTime Date;
 
-		public MomentVO[] Moments;
-		public TransitionVO[] Transitions;
+        public MomentVO[] Moments;
+        public TransitionVO[] Transitions;
 
         public IncidentVO() {}
+
         public IncidentVO(DirectedGraph<MomentVO, TransitionVO> graph)
         {
             this.Moments = graph.Nodes;
@@ -24,18 +24,17 @@ namespace Ambition
             this.LinkData = graph.LinkData;
         }
 
+#if (UNITY_EDITOR)
+        public Vector2[] Positions;
+#endif
+    }
 
-		#if (UNITY_EDITOR)
-		public Vector2[] Positions;
-		#endif
-	}
-
-	[Serializable]
-	public class TransitionVO
-	{
-		public int Index;
-		public int Target;
-		public string Text;
-		public CommodityVO [] Rewards;
-	}
+    [Serializable]
+    public class TransitionVO
+    {
+        public int Index;
+        public int Target;
+        public string Text;
+        public CommodityVO[] Rewards;
+    }
 }

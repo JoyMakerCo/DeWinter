@@ -25,8 +25,7 @@ namespace Ambition
 #endif
 			{
 				IncidentModel emod = AmbitionApp.RegisterModel<IncidentModel>();
-                emod.Incident = Array.Find(emod.Incidents, i => i.Name == "Yvette");
-                if (emod.Incident != null) emod.Incident.Active = true;
+                emod.Incident = emod.Incidents.Find(i => i.Name.Contains("Yvette"));
 			}
 		}
 	}

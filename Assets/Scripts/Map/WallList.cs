@@ -106,7 +106,7 @@ namespace Ambition
 		private bool IsCollinear(Vector2 vec)
 		{
 			float dot = Vector2.Dot(_line, vec.normalized);
-			return Math.Round(dot) == 1f || dot == -1f;
+            return dot*dot - 1f < .00001;
 		}
 
 		private Vector2 Vectorize(int[] line)

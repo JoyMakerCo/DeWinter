@@ -29,7 +29,6 @@ namespace Ambition
                                             true, false, true, true);
             _incidents.drawElementCallback = DrawIncident;
             _incidents.onAddCallback = CreateIncident;
-            _incidents.onSelectCallback = SelectIncident;
             //_incidents.onReorderCallback = ReorderIncident;
         }
 
@@ -40,30 +39,17 @@ namespace Ambition
 
         public void CreateIncident(ReorderableList list)
         {
-            CreateIncident();
-        }
-
-        public IncidentConfig CreateIncident()
-        {
-            IncidentConfig config = ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>("Incidents/New Incident");
             EditorUtility.SetDirty(this);
-            if (_incidents.index >= 0)
-            {
-                EditorUtility.SetDirty(config);
-                config.Date = ((IncidentConfig)_incidents.list[_incidents.index]).Date;
-            }
-            _incidents.list.Add(config);
-            return config;
-        }
-
-        private void SelectIncident(ReorderableList list)
-        {
-            int index = list.index;
-            if (index >= 0 && index < ((Timeline)target).Incidents.Length)
-            {
-                IncidentConfig config = ((Timeline)target).Incidents[index];
-                IncidentEditor.Show(config);
-            }
+            IncidentConfig config = ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>("Incidents/New Incident");
+            bool selected = (list.index >= 0);
+            SerializedProperty current = list.serializedProperty.GetArrayElementAtIndex(list.index);
+            EditorUtility.SetDirty(config);
+            config.Day = selected ? current.FindPropertyRelative("Day").intValue : 1;
+            config.Month = selected ? current.FindPropertyRelative("Month").intValue : 1;
+            config.Year = selected ? current.FindPropertyRelative("Year").intValue : 1795;
+            if (selected) list.serializedProperty.InsertArrayElementAtIndex(list.index);
+            else list.index = list.serializedProperty.arraySize++;
+            list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = config;
         }
 
         [MenuItem("Assets/Create/Create Timeline")]
@@ -75,6 +61,11 @@ namespace Ambition
         private void DrawIncident(Rect rect, int index, bool isActive, bool isFocused)
         {
             SerializedProperty prop = _incidents.serializedProperty.GetArrayElementAtIndex(index);
+
+            //EditorGUI.IntField(new Rect(0, 2, 20, rect.height-2), prop.FindPropertyRelative("Day").intValue);
+            //EditorGUI.Popup(new Rect(22, 2, 28, rect.height-2), prop.FindPropertyRelative("Month").intValue, IncidentConfig.MONTHS);
+            //EditorGUI.IntField(new Rect(52, 2, 36, rect.height - 2), prop.FindPropertyRelative("Year").intValue);
+            //EditorGUI.ObjectField(new Rect(90, 2, rect.width-88, rect.height - 2), prop, GUIContent.none);
             EditorGUI.ObjectField(rect, prop, GUIContent.none);
         }
     }
