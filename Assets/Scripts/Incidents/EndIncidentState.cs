@@ -7,9 +7,8 @@ namespace Ambition
 	{
 		public override void OnEnterState ()
 		{
-			AmbitionApp.GetModel<IncidentModel>().Incident = null;
+            AmbitionApp.GetModel<IncidentModel>().EndIncident();
 			AmbitionApp.SendMessage<float>(AudioMessages.STOP_MUSIC, 2f);
-AmbitionApp.InvokeMachine("EstateController"); // TODO: Establish submachines
 	    }
 	}
 }

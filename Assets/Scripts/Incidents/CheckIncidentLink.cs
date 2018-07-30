@@ -2,10 +2,9 @@ using UFlow;
 
 namespace Ambition
 {
-    public class CheckIncidentLink : AmbitionValueLink<IncidentVO>
+    public class CheckIncidentLink : ULink
     {
-        public CheckIncidentLink() { ValidateOnInit = true; }
-        override protected bool Validate(IncidentVO incident)
+        public override bool Validate()
         {
             return AmbitionApp.GetModel<IncidentModel>().Incident != null;
         }

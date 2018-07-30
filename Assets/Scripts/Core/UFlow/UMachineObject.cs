@@ -7,7 +7,7 @@ using Util;
 
 namespace UFlow
 {
-    public class UMachineObject : DirectedGraphObject<UStateNode, UGraphLink>
+    public class UMachineObject : DirectedGraphObject
     {
         [HideInInspector]
         public int[] Exits = new int[0];
@@ -16,23 +16,14 @@ namespace UFlow
 
         public UMachineGraph CreateMachineData()
         {
-            UMachineGraph graph = new UMachineGraph(Graph);
-            graph.Exits = Exits;
-            graph.Aggregates = Aggregates;
-            return graph;
+return null;
+            //UMachineGraph graph = new UMachineGraph(Graph);
+            //graph.Exits = Exits;
+            //graph.Aggregates = Aggregates;
+            //return graph;
         }
 
         #if (UNITY_EDITOR)
-        [UnityEditor.Callbacks.OnOpenAsset(1)]
-        new public static bool OnOpenAsset(int instanceID, int line)
-        {
-            UMachineObject obj = Selection.activeObject as UMachineObject;
-            if (obj == null) return false;
-            if (obj.Graph == null) obj.Graph = new UMachineGraph();
-            GraphEditorWindow.Show<UFlowEditor>(obj, "UFlow");
-            return true;
-        }
-
         [MenuItem("Assets/Create/Create UFlow Machine")]
         public static void CreateMachine()
         {
