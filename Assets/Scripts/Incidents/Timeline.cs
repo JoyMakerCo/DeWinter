@@ -13,6 +13,7 @@ namespace Ambition
     [Serializable]
     public class Timeline : ScriptableObject
     {
+        [HideInInspector]
         public IncidentConfig[] Incidents;
     }
 
@@ -20,21 +21,35 @@ namespace Ambition
     [CustomEditor(typeof(Timeline))]
     public class TimelineEditor : Editor
     {
-        private ReorderableList _incidents;
+        private ReorderableList _scheduledIncidents;
+        private ReorderableList _randomIncidents;
 
         private void OnEnable()
         {
-            _incidents = new ReorderableList(serializedObject,
+            _scheduledIncidents = new ReorderableList(serializedObject,
                                             serializedObject.FindProperty("Incidents"),
-                                            true, false, true, true);
-            _incidents.drawElementCallback = DrawIncident;
-            _incidents.onAddCallback = CreateIncident;
-            //_incidents.onReorderCallback = ReorderIncident;
+                                            true, true, true, true)
+            {
+                drawElementCallback = DrawIncident,
+                drawHeaderCallback = (Rect rect) => { EditorGUI.LabelField(rect, new GUIContent("Scheduled Incidents"));}
+                //_incidents.onReorderCallback = ReorderIncident;
+            };
+            /*           _randomIncidents = new ReorderableList(serializedObject,
+                                                       serializedObject.FindProperty("Incidents"),
+                                                       false, true, true, true)
+                       {
+                           drawElementCallback = DrawIncident,
+                           drawHeaderCallback = (Rect rect) => { EditorGUI.LabelField(rect, new GUIContent("Random Incidents")); }
+                       };
+           */
         }
 
         public override void OnInspectorGUI()
         {
-            _incidents.DoLayoutList();
+            serializedObject.Update();
+            DrawDefaultInspector();
+            _scheduledIncidents.DoLayoutList();
+            serializedObject.ApplyModifiedProperties();
         }
 
         public void CreateIncident(ReorderableList list)
@@ -44,12 +59,10 @@ namespace Ambition
             bool selected = (list.index >= 0);
             SerializedProperty current = list.serializedProperty.GetArrayElementAtIndex(list.index);
             EditorUtility.SetDirty(config);
-            config.Day = selected ? current.FindPropertyRelative("Day").intValue : 1;
-            config.Month = selected ? current.FindPropertyRelative("Month").intValue : 1;
-            config.Year = selected ? current.FindPropertyRelative("Year").intValue : 1795;
             if (selected) list.serializedProperty.InsertArrayElementAtIndex(list.index);
             else list.index = list.serializedProperty.arraySize++;
             list.serializedProperty.GetArrayElementAtIndex(list.index).objectReferenceValue = config;
+            serializedObject.ApplyModifiedProperties();
         }
 
         [MenuItem("Assets/Create/Create Timeline")]
@@ -60,8 +73,7 @@ namespace Ambition
 
         private void DrawIncident(Rect rect, int index, bool isActive, bool isFocused)
         {
-            SerializedProperty prop = _incidents.serializedProperty.GetArrayElementAtIndex(index);
-
+            SerializedProperty prop = _scheduledIncidents.serializedProperty.GetArrayElementAtIndex(index);
             //EditorGUI.IntField(new Rect(0, 2, 20, rect.height-2), prop.FindPropertyRelative("Day").intValue);
             //EditorGUI.Popup(new Rect(22, 2, 28, rect.height-2), prop.FindPropertyRelative("Month").intValue, IncidentConfig.MONTHS);
             //EditorGUI.IntField(new Rect(52, 2, 36, rect.height - 2), prop.FindPropertyRelative("Year").intValue);

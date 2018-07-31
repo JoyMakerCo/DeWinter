@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Core;
 using UnityEngine;
+using UnityEditor;
 
 namespace Ambition
 {
@@ -15,9 +16,10 @@ namespace Ambition
 
         public void Initialize()
         {
-            Timeline tl = Resources.Load<Timeline>("Timeline");
-            Incidents = tl.Incidents.Select(i => i.Incident).ToList();
-            Resources.UnloadAsset(tl);
+            IncidentConfig[] incidents = Resources.LoadAll<IncidentConfig>("Incidents");
+            Incidents = incidents.Select(i => i.Incident).ToList();
+            incidents = null;
+            Resources.UnloadUnusedAssets();
         }
 
         public IncidentVO Incident
@@ -61,7 +63,7 @@ namespace Ambition
             }
         }
 
-        private IncidentVO Find(string incidentID)
+        public IncidentVO Find(string incidentID)
         {
             return Incidents.Find(i => i.Name == incidentID);
         }

@@ -75,15 +75,17 @@ namespace Ambition
             {
                 IncidentCollection collection = (IncidentCollection)target;
                 Timeline timeline = Util.ScriptableObjectUtil.CreateScriptableObject<Timeline>("Timeline");
-                IncidentConfig config;
+
                 IncidentVO incident;
+                IncidentConfig config;
                 timeline.Incidents = new IncidentConfig[collection.Incidents.Length];
                 for (int j = collection.Incidents.Length - 1; j >= 0; j--)
                 {
                     incident = collection.Incidents[j];
-                    timeline.Incidents[j] = config = Util.ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>(incident.Name);
+                    config = Util.ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>(incident.Name);
                     config.Positions = incident.Positions;
                     config.Incident = new IncidentVO();
+                    config.Incident.Name = config.name;
                     config.Incident.Nodes = incident.Moments;
                     config.Incident.LinkData = incident.Transitions;
                     config.Incident.Links = new Vector2Int[incident.Transitions.Length];

@@ -9,7 +9,7 @@ namespace Ambition
 		override public void OnEnterState()
 		{
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-			if (model.Incident != null) model.Moment = model.Incident.Moments[0];
+            if (model.Incident != null) model.Moment = model.Incident.Nodes[0];
 		}
 	}
 }

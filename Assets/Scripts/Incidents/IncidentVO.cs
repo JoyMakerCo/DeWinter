@@ -16,12 +16,16 @@ namespace Ambition
         public TransitionVO[] Transitions;
 
         public IncidentVO() {}
-
-        public IncidentVO(DirectedGraph<MomentVO, TransitionVO> graph)
+        public IncidentVO(DirectedGraph<MomentVO, TransitionVO> incident)
         {
-            this.Moments = graph.Nodes;
-            this.Links = graph.Links;
-            this.LinkData = graph.LinkData;
+            Nodes = incident.Nodes;
+            Links = incident.Links;
+            LinkData = incident.LinkData;
+        }
+        public IncidentVO(IncidentVO incident) : this(incident as DirectedGraph<MomentVO, TransitionVO>)
+        {
+            this.Name = incident.Name;
+            this.Date = incident.Date;
         }
 
 #if (UNITY_EDITOR)

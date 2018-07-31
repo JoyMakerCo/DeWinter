@@ -9,17 +9,9 @@ using UnityEditor.Callbacks;
 
 namespace Ambition
 {
+    [Serializable]
     public class IncidentConfig : ScriptableObject, IDirectedGraphObject
     {
-        public static readonly string[] MONTHS =
-        {
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        };
-
-        public int Day = 1;
-        public int Month = 0;
-        public int Year = 1795;
         public IncidentVO Incident;
 
         #if (UNITY_EDITOR)
@@ -111,6 +103,12 @@ namespace Ambition
             GraphEditorWindow window = GraphEditorWindow.Show(config);
 
             return window != null;
+        }
+
+        [MenuItem("Assets/Create/Create Incident")]
+        public static void CreateIncident()
+        {
+            Util.ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>("New Incident");
         }
 #endif
     }

@@ -8,7 +8,7 @@ namespace Ambition
         public void Execute(string incidentID)
         {
             IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-            model.Incident = model.Incidents.Find(i => i.Name == incidentID);
+            model.Incident = model.Find(incidentID);
         }
     }
 }
