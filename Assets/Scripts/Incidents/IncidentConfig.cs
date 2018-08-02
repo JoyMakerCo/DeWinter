@@ -241,6 +241,29 @@ namespace Ambition
         private bool DrawMoment(SerializedProperty moment)
         {
             EditorGUI.BeginChangeCheck();
+            GUI.enabled = (moment.propertyPath != "Incident.Nodes.Array.data[0]");
+            if (GUILayout.Button("Set as Start"))
+            {
+                string[] subs = moment.propertyPath.Split('[', ']');
+                SerializedProperty list = moment.serializedObject.FindProperty("Incident.Nodes");
+                int index = int.Parse(subs[1]);
+                Vector2Int link;
+                list.MoveArrayElement(index, 0);
+                list = moment.serializedObject.FindProperty("Positions");
+                list.MoveArrayElement(index, 0);
+                list = moment.serializedObject.FindProperty("Incident.Links");
+                for (int i = list.arraySize - 1; i >= 0; i--)
+                {
+                    link = list.GetArrayElementAtIndex(i).vector2IntValue;
+                    if (link.x == index) link.x = 0;
+                    else if (link.x < index) link.x++;
+                    if (link.y == index) link.y = 0;
+                    else if (link.y < index) link.y++;
+                    list.GetArrayElementAtIndex(i).vector2IntValue = link;
+                }
+            }
+            GUI.enabled = true;
+
             GUI.SetNextControlName(FOCUS_ID);
             EditorStyles.textField.wordWrap = true;
             SerializedProperty text = moment.FindPropertyRelative("Text");
