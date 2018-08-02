@@ -41,6 +41,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<EquipItemCmd, ItemVO>(InventoryMessages.EQUIP);
 			AmbitionApp.RegisterCommand<UnequipItemCmd, ItemVO>(InventoryMessages.UNEQUIP);
 			AmbitionApp.RegisterCommand<UnequipSlotCmd, string>(InventoryMessages.UNEQUIP);
+            AmbitionApp.RegisterCommand<StartIncidentCmd, string>(IncidentMessages.START_INCIDENT);
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
@@ -57,7 +58,7 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
 			AmbitionApp.RegisterCommand<EndPartyCmd>(PartyMessages.LEAVE_PARTY);
 
-			AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
+            AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckUprisingDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckLivreCmd, int>(GameConsts.LIVRE);

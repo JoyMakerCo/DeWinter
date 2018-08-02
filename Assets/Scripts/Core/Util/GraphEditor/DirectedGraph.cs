@@ -58,6 +58,11 @@ namespace Util
             return Unlink(Array.IndexOf(Nodes, from), Array.IndexOf(Nodes, to));
         }
 
+        public int GetNodeIndex(T node)
+        {
+            return Nodes != null ? Array.IndexOf(Nodes, node) : -1;
+        }
+
 		public T[] GetNeighbors(T node)
 		{
 			int index = Array.IndexOf(Nodes, node);

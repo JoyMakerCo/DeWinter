@@ -12,6 +12,7 @@ namespace Ambition
 {
 	public class IncidentCollection : ScriptableObject
 	{
+        public IncidentVO Incident;
 		public IncidentVO[] Incidents;
 
 #if (UNITY_EDITOR)
@@ -67,33 +68,22 @@ namespace Ambition
 			serializedObject.Update();
 			if (!DrawComponent()) _lastType = null;
 			if (_lastType == null) _list.DoLayoutList();
-        	serializedObject.ApplyModifiedProperties();
-			//if (_dirty) IncidentEditor.InspectorUpdated();
-			_dirty = false;
+            serializedObject.ApplyModifiedProperties();
 
             if (GUILayout.Button("Make Timeline"))
             {
-                IncidentCollection collection = (IncidentCollection)target;
+                IncidentCollection collection = target as IncidentCollection;
                 Timeline timeline = Util.ScriptableObjectUtil.CreateScriptableObject<Timeline>("Timeline");
-                IncidentConfig config;
-                IncidentVO incident;
-                timeline.Incidents = new IncidentConfig[collection.Incidents.Length];
-                for (int j = collection.Incidents.Length - 1; j >= 0; j--)
+                IncidentConfig[] configs = new IncidentConfig[collection.Incidents.Length];
+                for (int i = configs.Length - 1; i >= 0; i--)
                 {
-                    incident = collection.Incidents[j];
-                    timeline.Incidents[j] = config = Util.ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>(incident.Name);
-                    config.Positions = incident.Positions;
-                    config.Incident = new IncidentVO();
-                    config.Incident.Nodes = incident.Moments;
-                    config.Incident.LinkData = incident.Transitions;
-                    config.Incident.Links = new Vector2Int[incident.Transitions.Length];
-                    for (int i = incident.LinkData.Length - 1; i >= 0; i--)
-                    {
-                        config.Incident.Links[i].x = incident.LinkData[i].Index;
-                        config.Incident.Links[i].y = incident.LinkData[i].Target;
-                    }
+                    configs[i] = IncidentConfig.CreateIncident(collection.Incidents[i]);
                 }
+                timeline.SetIncidentConfigs(configs);
+                AssetDatabase.SaveAssets();
             }
+
+            _dirty = false;
 	    }
 
 	    private bool DrawComponent()

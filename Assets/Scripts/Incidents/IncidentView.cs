@@ -26,7 +26,7 @@ namespace Ambition
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			_background = gameObject.GetComponent<Image>();
 			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
-			model.Moment = model.Incident.Moments[0];
+            model.Moment = model.Incident.Nodes[0];
 			titleText.text = model.Incident.Name;
 		}
 

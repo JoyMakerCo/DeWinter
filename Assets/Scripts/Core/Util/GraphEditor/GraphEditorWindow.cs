@@ -23,6 +23,7 @@ namespace Util
         private bool _isNode;
         private bool _dragLink;
 
+        private SerializedObject _serializedObject;
         private SerializedProperty _nodes;
         private SerializedProperty _links;
         private SerializedProperty _linkData;
@@ -44,9 +45,9 @@ namespace Util
 
         private void UpdateGraphEditorWindow()
         {
-            if (_graphObject != null && _selection >= 0)
+            if (_serializedObject != null && _selection >= 0)
             {
-                _graphObject.UpdateGraph();
+                _serializedObject.Update();
                 Repaint();
             }
         }
@@ -54,11 +55,12 @@ namespace Util
         private void SetObject(IDirectedGraphObject graphObject)
         {
             _graphObject = graphObject;
+            _serializedObject = new SerializedObject(graphObject as ScriptableObject);
             _scrollRect = new Rect();
-            _nodes = graphObject.GetNodes();
-            _links = graphObject.GetLinks();
-            _linkData = graphObject.GetLinkData();
-            _positions = graphObject.GetPositions();
+            _nodes = graphObject.GetNodes(_serializedObject);
+            _links = graphObject.GetLinks(_serializedObject);
+            _linkData = graphObject.GetLinkData(_serializedObject);
+            _positions = graphObject.GetPositions(_serializedObject);
             _dragLink = false;
             _selection = -1;
             if (_positions.arraySize == 0)
@@ -75,18 +77,19 @@ namespace Util
         {
             EditorApplication.update -= UpdateGraphEditorWindow;
             _graphObject = null;
+            _serializedObject = null;
             titleContent.text = "Graph Editor";
             Repaint();
         }
 
         public void OnGUI()
         {
-            if (_graphObject != null)
+            if (_serializedObject != null)
             {
                 int index;
                 Vector2Int link;
                 Vector2 pos;
-                _graphObject.UpdateGraph();
+                _serializedObject.Update();
                 _scroll = GUI.BeginScrollView(new Rect(0, 0, position.width, position.height), _scroll, _scrollRect);
                 switch (Event.current.type)
                 {
@@ -154,8 +157,9 @@ namespace Util
                         }
                         break;
                 }
-                _graphObject.Select(_selection, _isNode);
-                _graphObject.ApplyModifiedProperties();
+                if (_graphObject != null)
+                    _graphObject.Select(_serializedObject, _selection, _isNode);
+                _serializedObject.ApplyModifiedProperties();
                 if (_dragLink)
                 {
                     pos = _isNode

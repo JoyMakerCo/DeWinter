@@ -24,6 +24,7 @@ namespace Ambition
 		public CommodityVO[] Rewards;
 		public AmbientClip Music;
 		public AudioClip[] AudioClips;
+
 		public MomentVO (string text)
 		{
 			Text = text;
