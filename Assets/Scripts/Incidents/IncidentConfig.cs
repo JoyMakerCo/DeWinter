@@ -211,13 +211,13 @@ namespace Ambition
                 bool isNode = serializedObject.FindProperty("_isNode").boolValue;
                 if (isNode)
                 {
-                    //property = serializedObject.FindProperty("Incident.Nodes").GetArrayElementAtIndex(index);
-                    //DrawMoment(property);
+                    property = serializedObject.FindProperty("Incident.Nodes").GetArrayElementAtIndex(index);
+                    DrawMoment(property);
                 }
                 else
                 {
-                    //property = serializedObject.FindProperty("Incident.LinkData").GetArrayElementAtIndex(index);
-                    //DrawTransition(property);
+                    property = serializedObject.FindProperty("Incident.LinkData").GetArrayElementAtIndex(index);
+                    DrawTransition(property);
                 }
                 _index = index;
                 if (property != null && selectText)
@@ -230,10 +230,10 @@ namespace Ambition
                         Array.Find(Resources.FindObjectsOfTypeAll<EditorWindow>(), w => w.titleContent.text == "Inspector").Focus();
                     }
                 }
-                //if ((Event.current.modifiers & EventModifiers.Command) > 0 && Event.current.keyCode == KeyCode.Backspace)
-                //{
-                //    DeleteSelected(index, isNode);
-                //}
+                if ((Event.current.modifiers & EventModifiers.Command) > 0 && Event.current.keyCode == KeyCode.Backspace)
+                {
+                    DeleteSelected(index, isNode);
+                }
             }
             serializedObject.ApplyModifiedProperties();
         }
