@@ -15,6 +15,28 @@ namespace Ambition
     {
         [HideInInspector]
         public IncidentConfig[] Incidents;
+
+        private void OnEnable()
+        {
+            if (Incidents == null)
+                Incidents = new IncidentConfig[0];
+        }
+
+#if (UNITY_EDITOR)
+
+        public void SetIncidentConfigs(IncidentConfig[] configs)
+        {
+            SerializedObject obj = new SerializedObject(this);
+            obj.Update();
+            SerializedProperty incidents = obj.FindProperty("Incidents");
+            incidents.arraySize = configs.Length;
+            for (int i = configs.Length - 1; i >= 0; i--)
+            {
+                incidents.GetArrayElementAtIndex(i).objectReferenceInstanceIDValue = configs[i].GetInstanceID();
+            }
+            obj.ApplyModifiedProperties();
+        }
+#endif
     }
 
 #if (UNITY_EDITOR)
