@@ -16,7 +16,7 @@ namespace Ambition
 		{
 			if (UnityEngine.Time.fixedTime == LAST_TIMESTAMP) return;
 			LAST_TIMESTAMP = UnityEngine.Time.fixedTime;
-			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+            CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
 			MomentVO moment = model.Moment;
             IncidentVO incident = model.Incident;
 			MomentVO target = null;
