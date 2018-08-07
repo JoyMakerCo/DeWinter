@@ -60,7 +60,6 @@ namespace Ambition
 
             AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
-			AmbitionApp.RegisterCommand<CheckUprisingDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckLivreCmd, int>(GameConsts.LIVRE);
 
 			// Initially enabled for TUTORIAL

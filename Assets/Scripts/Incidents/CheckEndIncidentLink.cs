@@ -6,7 +6,7 @@ namespace Ambition
     {
         override public void Initialize()
         {
-            IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+            CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
             if (model.Moment == null) Activate();
         }
     }

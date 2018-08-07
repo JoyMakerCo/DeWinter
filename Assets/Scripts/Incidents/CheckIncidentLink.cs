@@ -1,4 +1,4 @@
-using UFlow;
+﻿using UFlow;
 
 namespace Ambition
 {
@@ -6,7 +6,7 @@ namespace Ambition
     {
         public override bool Validate()
         {
-            return AmbitionApp.GetModel<IncidentModel>().Incident != null;
+            return AmbitionApp.GetModel<CalendarModel>().Incident != null;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public override void OnEnterState ()
 		{
-            AmbitionApp.GetModel<IncidentModel>().EndIncident();
+            AmbitionApp.GetModel<CalendarModel>().EndIncident();
 			AmbitionApp.SendMessage<float>(AudioMessages.STOP_MUSIC, 2f);
 	    }
 	}

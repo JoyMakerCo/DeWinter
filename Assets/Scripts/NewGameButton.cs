@@ -25,7 +25,7 @@ namespace Ambition
 			if (!Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt))
 #endif
 			{
-                IncidentModel emod = AmbitionApp.RegisterModel<IncidentModel>();
+                CalendarModel emod = AmbitionApp.RegisterModel<CalendarModel>();
                 emod.Incident = emod.Find("Yvette's Prologue");
 			}
 
