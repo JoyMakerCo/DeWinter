@@ -73,5 +73,12 @@ namespace Ambition
 			}
 			OpinionIndicator.fillAmount = percent;
 		}
+
+		public void TriggerPositiveParticles(){
+			GetComponentsInChildren<ParticleSystem> ()[0].Play ();
+		}
+		public void TriggerNeutralParticles(){
+			GetComponentsInChildren<ParticleSystem> ()[1].Play ();
+		}
 	}
 }
