@@ -73,13 +73,11 @@ namespace Ambition
             if (GUILayout.Button("Make Timeline"))
             {
                 IncidentCollection collection = target as IncidentCollection;
-                Timeline timeline = Util.ScriptableObjectUtil.CreateScriptableObject<Timeline>("Timeline");
                 IncidentConfig[] configs = new IncidentConfig[collection.Incidents.Length];
                 for (int i = configs.Length - 1; i >= 0; i--)
                 {
                     configs[i] = IncidentConfig.CreateIncident(collection.Incidents[i]);
                 }
-                timeline.SetIncidentConfigs(configs);
                 AssetDatabase.SaveAssets();
             }
 

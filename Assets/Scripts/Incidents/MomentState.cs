@@ -7,7 +7,7 @@ namespace Ambition
 	{
 		public override void OnEnterState ()
 		{
-			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
 			MomentVO moment = model.Moment;
             int index = model.Incident.GetNodeIndex(moment);
             if (index >= 0)

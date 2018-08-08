@@ -94,7 +94,7 @@ namespace Util
                 switch (Event.current.type)
                 {
                     case EventType.KeyDown:
-                        if ((Event.current.modifiers & EventModifiers.Command) > 0 && Event.current.keyCode == KeyCode.Backspace)
+                        if ((Event.current.modifiers & (EventModifiers.Command | EventModifiers.Control)) > 0 && Event.current.keyCode == KeyCode.Backspace)
                         {
                             DeleteSelected();
                         }

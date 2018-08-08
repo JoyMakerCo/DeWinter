@@ -73,6 +73,7 @@ namespace Ambition
 
         public void InitLinkData(SerializedProperty linkData) {}
 
+
         [OnOpenAsset(1)]
         public static bool OpenIncidentConfig(int instanceID, int line)
         {
@@ -186,6 +187,10 @@ namespace Ambition
     public class IncidentConfigDrawer : Editor
     {
         private const string FOCUS_ID = "FOCUS_ID";
+        private static readonly string[] MONTHS = new string[]{
+            "January","February","March","April","May","June",
+            "July","August","September","October","November","December"
+        };
 
         private int _index=-1;
 
@@ -234,6 +239,27 @@ namespace Ambition
                 {
                     DeleteSelected(index, isNode);
                 }
+            }
+            else
+            {
+                SerializedProperty incident = serializedObject.FindProperty("Incident");
+                EditorGUILayout.BeginHorizontal();
+                bool fixedDate = EditorGUILayout.Toggle("Date", incident.FindPropertyRelative("_date").longValue >= 0);
+                if (fixedDate)
+                {
+                    long ticks = incident.FindPropertyRelative("_date").longValue;
+                    DateTime date = ticks > 0 ? DateTime.MinValue.AddTicks(ticks) : DateTime.MinValue;
+                    int day = Mathf.Clamp(EditorGUILayout.IntField(date.Day, GUILayout.MaxWidth(30f)), 1, DateTime.DaysInMonth(date.Year, date.Month));
+                    int month = EditorGUILayout.Popup(date.Month - 1, MONTHS) + 1;
+                    int year = Mathf.Clamp(EditorGUILayout.IntField(date.Year, GUILayout.MaxWidth(80f)), 1, 9999);
+                    incident.FindPropertyRelative("_date").longValue = new DateTime(year, month, day).Ticks;
+                }
+                else
+                {
+                    incident.FindPropertyRelative("_date").longValue = -1;
+                }
+                EditorGUILayout.EndHorizontal();
+                incident.FindPropertyRelative("OneShot").boolValue = EditorGUILayout.Toggle("One-Shot", incident.FindPropertyRelative("OneShot").boolValue);
             }
             serializedObject.ApplyModifiedProperties();
         }
