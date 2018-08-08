@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -15,49 +15,34 @@ MonoBehaviour:
     Links:
     - {x: 1, y: 2}
     - {x: 2, y: 3}
-    - {x: 3, y: 4}
-    - {x: 19, y: 5}
-    - {x: 19, y: 6}
+    - {x: 9, y: 5}
+    - {x: 9, y: 6}
     - {x: 7, y: 8}
-    - {x: 8, y: 9}
-    - {x: 9, y: 10}
-    - {x: 10, y: 11}
+    - {x: 4, y: 6}
+    - {x: 0, y: 9}
+    - {x: 5, y: 10}
+    - {x: 10, y: 6}
+    - {x: 6, y: 7}
+    - {x: 9, y: 1}
+    - {x: 4, y: 11}
     - {x: 11, y: 12}
     - {x: 12, y: 13}
-    - {x: 13, y: 14}
-    - {x: 12, y: 15}
-    - {x: 9, y: 16}
-    - {x: 9, y: 17}
-    - {x: 9, y: 18}
-    - {x: 4, y: 6}
-    - {x: 0, y: 19}
-    - {x: 5, y: 20}
-    - {x: 20, y: 6}
-    - {x: 6, y: 7}
-    - {x: 16, y: 10}
-    - {x: 17, y: 10}
-    - {x: 14, y: 25}
-    - {x: 15, y: 14}
-    - {x: 25, y: 22}
-    - {x: 25, y: 21}
-    - {x: 26, y: 23}
-    - {x: 26, y: 24}
-    - {x: 18, y: 26}
-    - {x: 19, y: 1}
-    - {x: 4, y: 27}
-    - {x: 27, y: 28}
-    - {x: 28, y: 29}
-    - {x: 29, y: 7}
-    - {x: 20, y: 30}
-    - {x: 30, y: 31}
-    - {x: 31, y: 32}
-    - {x: 32, y: 33}
-    - {x: 33, y: 29}
+    - {x: 13, y: 7}
+    - {x: 10, y: 14}
+    - {x: 14, y: 15}
+    - {x: 16, y: 17}
+    - {x: 17, y: 13}
+    - {x: 3, y: 18}
+    - {x: 18, y: 4}
+    - {x: 15, y: 19}
+    - {x: 19, y: 16}
+    - {x: 14, y: 21}
+    - {x: 19, y: 16}
     Nodes:
-    - Text: The carriage rumbles and bounces along the cobbles as you finally enter
-        Paris. It's taken over a week to get here, even with what little luggage you
-        have.
-      Background: {fileID: 21300000, guid: cf7b35d73a7e145479afab32b9f3942c, type: 3}
+    - Text: "March 19th, 1789\r\nThe carriage rumbles and bounces along the cobbles
+        as you approach Paris. It\u2019s taken over a week to get here, even carrying
+        just yourself and your luggage. "
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -71,21 +56,9 @@ MonoBehaviour:
       Music: {fileID: 11400000, guid: 6725691ed9b5c464797164f32b943a04, type: 2}
       AudioClips:
       - {fileID: 8300000, guid: c8a6e17f4abc66a468b85318b4f01205, type: 3}
-    - Text: 'The letter is uncharacteristically brief, which has made you puzzle over
-        it, even more than usual. Armand usually preferred to write volumes, a habit
-        you would playfully tease him over in your own letters to him.
-
-
-        ''My Dearest Yvette,
-
-
-        I know it may be sudden, but I want to invite you to live with me in Paris.''
-
-
-        When you first got the letter, you were afraid to ask your parents for their
-        approval. However, when you finally got up the nerve, they didn''t just approve,
-        they practically threw you onto the first carriage heading for Paris. You
-        couldn''t help but be a little annoyed by their eagerness to see you off.'
+    - Text: "You must have read the brief letter over a hundred times, but you always
+        found new details to puzzle over. Armand\u2019s letters were usually so long,
+        a habit would you often tease him for, in your own missives."
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -99,14 +72,13 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: "'I see our future here, in this place of new ideas. I see us having the
-        lives we wanted, not the ones we were born into.'\n\nAfter your engagement,
-        Armand had moved north to Paris to pursue his dreams of changing the country.
-        You mailed love letters soaked in perfume, he replied with envelopes overflowing
-        with pages about how much he missed you. The romance of it all helped make
-        up for the inconvenience. \n\nTo your parents, the romance was secondary.
-        Armand is a Baron, you're a commoner. The advantages this marriage would bring
-        to your family were obvious. "
+    - Text: "\u2018My Dearest Yvette, \r\n\r\n\u2018I know it may be sudden, but I
+        want to invite you to live with me in Paris.\u2019\r\nYou were engaged to
+        Armand, before he moved north to Paris to participate in the Estates General.
+        He dreamed of changing the country, and this was the political event of the
+        century. You mailed love letters soaked in perfume, he replied with volumes
+        about how much he missed you. The romance of it all helped make up for the
+        inconvenience.\r"
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -120,17 +92,12 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: '''I can''t wait for you to see it. It''s a place unlike anything back
-        home, a bustling place where anyone can be anything.
-
-
-        Je t''embrasse,
-
-
-        Armand''
-
-
-        That was something you were looking forward to. A chance to be something more.'
+    - Text: "Not that your parents cared much for the romance. At first you\u2019d
+        been afraid to tell them their youngest daughter wanted to move far away.
+        Instead, they nearly threw you onto the carriage to Paris. \r\n\r\nWhile you
+        understood the significant benefits your common family would receive from
+        your marriage into a noble one, you couldn\u2019t help but be a little annoyed
+        at their eagerness to see you off.\r"
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -144,7 +111,8 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: Baroness Yvette... it's got a ring to it.
+    - Text: "After all, \u2018Baroness Yvette de Marbo\u2019 has a certain ring to
+        it..."
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -158,13 +126,12 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: 'You crane your neck out the window to peer at Paris. So much of it is
-        exactly as Armand described it. The streets are a riot of color and energy
-        as people go about their days. Elegant persons of fashion share the streets
-        with beggars in rags.
-
-
-        It''s quite a far cry from back home.'
+    - Text: "You crane your neck out the window to peer at Paris. It\u2019s even more
+        than you imagined. The streets are a riot of color and energy as people go
+        about their days. Elegant persons of fashion strut like brilliant peacocks.
+        Students stumble under the weight of their books. Beggars alternate between
+        pleading for alms, and shouting invectives at passers-by. \n\nEverything feels
+        significant, like world\u2019s next act hinges on all of their choices. "
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -178,16 +145,11 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: 'The coachman obediently flicks the reins and you lurch back in your seat
-        as the carriage surges forward. The city blurs by as you wind your way towards
-        where Armand is staying. When you arrive at your new home you''re eager to
-        leave the carriage, as tired and rumpled as you are.
-
-
-        Armand never described his living condition much, but he''s the son of a Baron
-        and his family was always well-to-do, especially compared to your own. You''ve
-        spent a lot of time in that carriage, wondering about the home you''d spend
-        your new life in.'
+    - Text: "The coachman obediently flicks at the reins and the carriage surges forward,
+        sending you lurching back into your seat. The city blurs by as you wind your
+        way towards The Orphan\u2019s Feast, the tavern where Armand said he would
+        meet you. \n\nAs tired and rumpled as you are, you\u2019re glad that he arranged
+        to meet you in a place with ample food and wine.\r"
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -201,7 +163,24 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: Still you didn't expect this...
+    - Text: "When you arrive, the coachman helps you out of the carriage and you find
+        yourself outside a glowing, friendly looking tavern. \r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips:
+      - {fileID: 8300000, guid: 4e28349262ebb4a0184dca282aa7ad0f, type: 3}
+    - Text: The sign shows a grubby looking child, holding with a plate piled high
+        with fresh bread and roasted meats.
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -215,207 +194,8 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: Calling the house 'rustic' would imply that you were out in the country,
-        not in the center of a city. The neighborhood is nice enough, but you're worried
-        that if you breathe too hard on the building, it'll fall over. You look around
-        but Armand is nowhere to be found. A well kept woman in the attire of a maid
-        creaks opens the door and approaches you.
-      Background: {fileID: 21300000, guid: fe57e010ae179284590dac3bc54b2cf1, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: '"Ah, you must be Madame Yvette! My name is Camille. I have a message
-        for you, from Monsieur Armand. He cannot join us right now." She hands you
-        a letter.'
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: Looking down at the letter, you instantly recognize the handwriting as
-        Armand's, though it looks like it was written in a hurry.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: '''My dearest Yvette,
-
-
-        I know you were looking forward to us being together, but circumstances have
-        forced me to abandon my old life, even my name. I cannot tell you much, as
-        I do not want to endanger your life. You can stay in my old home, the rent
-        has been paid through the month, though you will still need to pay Camille
-        every week.
-
-
-        I''m sorry,
-
-
-        - Armand'''
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: You flip the letter over, looking for any other information. Nothing.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: '"I don''t know Madame. Armand packed up and left a few days ago, all
-        in a great hurry. I know he was involved in politics, but I never really asked
-        about the specifics. He seemed worried, but I''m sure he''ll be fine!" Camille''s
-        facial expression doesn''t show a lot of confidence.'
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: Camille suddenly brightens up again. "Maybe, this is the perfect time
-        to go out! Socializing in Paris is pretty different, so it might be nice to
-        go somewhere easy to practice."
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: happy
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: 'Camille shifts awkardly from foot to foot.
-
-
-        "I''m afraid not, madame. Armand packed up and left a few days ago, all in
-        a great hurry. I''ve spent the last few days preparing the house for your
-        arrival."'
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: sad
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: '"Don''t worry Madame, the building is fine. I grew up in one just like
-        it!" Camille replies cheerily, regarding the structure with some fondness.
-
-
-        Somehow you don''t find yourself particularly reassured. '
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: happy
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: '"Impossible, Madame! I''ve taken care of all the rats myself." Camille
-        replies, emphasizing her point with a playful stop of her foot.
-
-
-        Eyeing her worn shoes, you have a feeling the rats didn''t go quietly.'
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: happy
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: 'Camille stares at you, a little startled by your brusqueness.
-
-
-        "Um... Monsieur Armand isn''t here and he''s not coming back. He''s paid the
-        rent through the month. You still need to pay me every week." She shifts awkwardly
-        from foot to foot. "Since you''re alone now, perhaps you should go out and
-        get a feeling for the city. It might be good to find somewhere easy to practice
-        socializing, before you dive right in."'
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: sad
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: You've already finished all of your books and Armand's letter is your
-        only entertainment, other than staring out the window.
+    - Text: "You\u2019ve already finished all of your books and Armand's letter is
+        your only entertainment, other than staring out the window. "
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -429,7 +209,7 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: Though part of you is worried by such unfamiliar surroundings, you mostly
+    - Text: Though part of you is worried by your unfamiliar surroundings, you mostly
         feel excited. This place is to be the stage for your new life.
       Background: {fileID: 0}
       Character1:
@@ -444,106 +224,12 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: You hand your things to Camille, who goes inside to get your things unpacked.
-        Then you head inside to get cleaned up, and pick out an outfit. This tavern,
-        'The Orphan's Feast', seems as good a place as any to start.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards:
-      - Type: 9
-        ID: START_TUTORIAL
-        Amount: 1
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: You decide that your time would be better spent unpacking, and getting
-        settled in.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: 'You hand your things to Camille, who goes inside to get your things unpacked.
-        You head upstairs to get yourself cleaned up, and pick out an outfit. This
-        tavern, ''The Orphan''s Feast'', seems as good a place as any to start. '
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards:
-      - Type: 9
-        ID: START_TUTORIAL
-        Amount: 1
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: You decide that your time would be better spent unpacking, and getting
-        settled in.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: '"There''s a tavern nearby that would be perfect for that!"'
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: happy
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: '"There''s a tavern nearby that would be a good place to start."'
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music: {fileID: 0}
-      AudioClips: []
-    - Text: "You crane your neck out the window to peer at Paris. So much of it is
-        exactly as Armand described it. The streets are a riot of color and energy
-        as people go about their days. Elegant persons of fashion share the streets
-        with beggars in rags. \n\nIt's quite a far cry from back home."
+    - Text: "You crane your neck out the window to peer at Paris. It\u2019s even more
+        than you imagined. The streets are a riot of color and energy as people go
+        about their days. Elegant persons of fashion strut like brilliant peacocks.
+        Students stumble under the weight of their books. Beggars alternate between
+        pleading for alms, and shouting invectives at passers-by. \n\nEverything feels
+        significant, like world\u2019s next act hinges on all of their choices. "
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -557,7 +243,7 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: Though part of you is worred by such unfamiliar surroundings, you mostly
+    - Text: Though part of you is worried by your unfamiliar surroundings, you mostly
         feel excited. This place is to be the stage for your new life.
       Background: {fileID: 0}
       Character1:
@@ -572,13 +258,10 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: 'Before you know it, the carriage starts slowing down. You must be here!
-
-
-        Armand never described his living conditions much, but he''s the son of a
-        Baron and his family was always well-to-do, especially compared to your own.
-        You''ve spent a lot of time in that carriage, wondering about the home you''d
-        spend your new life in.'
+    - Text: "Before you know it, the carriage starts slowing down. You must be here!\n\nArmand
+        arranged to meet you at tavern named The Orphan\u2019s Feast. As tired and
+        rumpled as you are, you\u2019re glad that he planned to meet you in a place
+        with ample food and wine.\r"
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -592,21 +275,9 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: 'The letter is uncharacteristically brief, which has made you puzzle over
-        it, even more than usual. Armand usually preferred to write volumes, a habit
-        you would playfully tease him over in your own letters to him.
-
-
-        ''My Dearest Yvette,
-
-
-        I know it may be sudden, but I want to invite you to live with me in Paris.''
-
-
-        When you first got the letter, you were afraid to ask your parents for their
-        approval. However, when you finally got up the nerve, they didn''t just approve,
-        they practically threw you onto the first carriage heading for Paris. You
-        couldn''t help but be a little annoyed by their eagerness to see you off.'
+    - Text: "You must have read the brief letter over a hundred times, but you always
+        found new details to puzzle over. Armand\u2019s letters were usually so long,
+        a habit would you often tease him for, in your own missives."
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -620,14 +291,13 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: "'I see our future here, in this place of new ideas. I see us having the
-        lives we wanted, not the oens we were born into.'\n\nAfter your engagement,
-        Armand had moved north to Paris to pursue his dreams of changing the country.
-        You mailed love letters soaked in perfume, he replied with envelopes overflowing
-        with pages about how much he missed you. The romance of it all helped make
-        up for the inconvenience. \n\nTo your parents, the romance was secondary.
-        Armand is a Baron, you're a commoner. The advantages this marriage would bring
-        to your family were obvious. "
+    - Text: "\u2018My Dearest Yvette, \r\n\r\n\u2018I know it may be sudden, but I
+        want to invite you to live with me in Paris.\u2019\r\nYou were engaged to
+        Armand, before he moved north to Paris to participate in the Estates General.
+        He dreamed of changing the country, and this was the political event of the
+        century. You mailed love letters soaked in perfume, he replied with volumes
+        about how much he missed you. The romance of it all helped make up for the
+        inconvenience.\r"
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -641,9 +311,9 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: "'I can't wait for you to see it. It's a place unlike anything back home,
-        a bustling place where anyone can be anything. \n\nJe t'embrasse,\n\nArmand'\n\nThat's
-        something you were looking forward to. A chance to be something more.\n"
+    - Text: "\u2018I can\u2019t wait for you to see it. It\u2019s unlike anything
+        back home. A truly vital place, where anyone can be anything.\r\n\r\nJe t'embrasse,\r\n\r\nArmand\u2019\r\n\r\nThat
+        was something you were looking forward to. A chance to be something more. "
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -657,7 +327,72 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: After all, Baroness Yvette did have certain ring to it.
+    - Text: "After all, \u2018Baroness Yvette de Marbo\u2019 has a certain ring to
+        it..."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: "\u2018I can\u2019t wait for you to see it. It\u2019s unlike anything
+        back home. A truly vital place, where anyone can be anything.\r\n\r\nJe t'embrasse,\r\n\r\nArmand\u2019\r\n\r\nThat
+        was something you were looking forward to. A chance to be something more.
+        \r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: "Not that your parents cared much for the romance. At first you\u2019d
+        been afraid to tell them their youngest daughter wanted to move far away.
+        Instead, they nearly threw you onto the carriage to Paris. \r\n\r\nWhile you
+        understood the significant benefits your common family would receive from
+        your marriage into a noble one, you couldn\u2019t help but be a little annoyed
+        at their eagerness to see you off.\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: 
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -686,11 +421,11 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: <Look out the window>
+      Text: 
       Rewards: []
     - Index: 0
       Target: 0
-      Text: "\"Coachman, let\u2019s go! I don\u2019t have all day!\u201D"
+      Text: 
       Rewards: []
     - Index: 0
       Target: 0
@@ -702,56 +437,7 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: <Read the message>
-      Rewards: []
-    - Index: 0
-      Target: 0
       Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '"Camille, what happened to Armand? Is he alright?"'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '"This better be a joke."'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '"Are you sure this is the right building? I picture something more...
-        upright."'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '"He''s not here? Oh God, the rats in there ate him, didn''t they?"'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '"Well, this looks awful. Camille, give me the short version."'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: "\"Coachman, can we pick up the pace, please?\u201D"
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '"Coachman, can we pick up the pace, please?"'
       Rewards: []
     - Index: 0
       Target: 0
@@ -775,19 +461,7 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: '[Skip Tutorial] "No Camille, I''ll be fine by myself."'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '[Tutorial] Thank you, I''ll take all the help I can get."'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '[Tutorial] "Thank you, I''ll take all the help I can get."'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '[Skip Tutorial] "No Camille, I''ll be fine by myself."'
+      Text: 
       Rewards: []
     - Index: 0
       Target: 0
@@ -795,11 +469,7 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: '"Might as well read Armand''s letter again..."'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: <Look out the window>
+      Text: 
       Rewards: []
     - Index: 0
       Target: 0
@@ -815,7 +485,15 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: '"Might as well read Armand''s letter again..."'
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
       Rewards: []
     - Index: 0
       Target: 0
@@ -835,6 +513,7 @@ MonoBehaviour:
       Rewards: []
     Name: Yvette's Prologue
     _date: -1
+    Requirements: []
     OneShot: 1
     Moments: []
     Transitions: []
@@ -846,36 +525,24 @@ MonoBehaviour:
   _isNode: 1
   Positions:
   - {x: 462, y: 62}
-  - {x: 189, y: 140}
-  - {x: 188, y: 231}
-  - {x: 187, y: 313}
+  - {x: 187, y: 71}
+  - {x: 186, y: 150}
+  - {x: 184, y: 229}
   - {x: 184, y: 382}
   - {x: 462, y: 205}
-  - {x: 906, y: 132}
-  - {x: 909, y: 203}
-  - {x: 911, y: 285}
-  - {x: 914, y: 566}
-  - {x: 430, y: 679}
-  - {x: 430, y: 787}
-  - {x: 431, y: 877}
-  - {x: 332, y: 943}
-  - {x: 443, y: 1040}
-  - {x: 567, y: 945}
-  - {x: 694, y: 683}
-  - {x: 850, y: 802}
-  - {x: 1145, y: 733}
-  - {x: 460, y: 135}
+  - {x: 894, y: 142}
+  - {x: 914, y: 409}
+  - {x: 912, y: 513}
+  - {x: 460, y: 136}
   - {x: 464, y: 276}
-  - {x: 573, y: 1172}
-  - {x: 341, y: 1169}
-  - {x: 1019, y: 976}
-  - {x: 1238, y: 975}
-  - {x: 445, y: 1107}
-  - {x: 1139, y: 855}
   - {x: 186, y: 458}
   - {x: 186, y: 539}
   - {x: 184, y: 611}
-  - {x: 463, y: 348}
-  - {x: 463, y: 416}
-  - {x: 464, y: 482}
-  - {x: 462, y: 562}
+  - {x: 466, y: 340}
+  - {x: 466, y: 402}
+  - {x: 456, y: 534}
+  - {x: 458, y: 606}
+  - {x: 186, y: 305}
+  - {x: 460, y: 468}
+  - {x: 460, y: 468}
+  - {x: 725, y: 288}
