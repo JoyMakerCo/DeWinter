@@ -54,8 +54,7 @@ namespace Ambition
 		{
 			if (!_goParty)
 			{
-				AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
-				AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.GAME_ESTATE);
+                AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.PARIS_SCENE);
 			}
 			else
 			{
