@@ -11,6 +11,8 @@ namespace Ambition
 		private const float FILL_SECONDS = 0.5f;
 		private GuestVO _guest;
 		private int _index;
+        private Animator _animator;
+        private RemarkVO _remark;
 
 		public Image OpinionIndicator;		
 		public Image InterestIcon;
@@ -18,18 +20,26 @@ namespace Ambition
 		public Util.ColorConfig ColorConfig;
 		public SpriteConfig InterestSprites;
 		public SpriteConfig BorderSprites;
+        public ParticleSystem PositiveEffect;
+        public ParticleSystem NegativeEffect;
+        public ParticleSystem NeutralEffect;
+
 		void Awake()
 		{
 			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
+            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleSelected);
 			AmbitionApp.Subscribe<GuestVO>(HandleGuest);
+            AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			_index = transform.GetSiblingIndex();
-
+            _animator = GetComponent<Animator>();
 		}
 
 		void OnDestroy()
 		{
 			AmbitionApp.Unsubscribe<GuestVO[]>(HandleGuests);			
 			AmbitionApp.Unsubscribe<GuestVO>(HandleGuest);
+            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleSelected);
+            AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 		}
 
 		private void HandleGuests(GuestVO [] guests)
@@ -51,6 +61,36 @@ namespace Ambition
 				InterestIconBorder.sprite = BorderSprites.GetSprite(_guest.State.ToString());
 			}
 		}
+
+
+        private void HandleRemark(RemarkVO remark)
+        {
+            _remark = remark;
+        }
+
+        private void HandleSelected(GuestVO[] guests)
+        {
+            if (_animator != null
+                && _guest != null
+                && _remark != null
+                && guests != null
+                && Array.IndexOf(guests, _guest) >= 0)
+            {
+                if (_remark.Interest == _guest.Like)
+                {
+                    _animator.SetTrigger("Positive Remark");
+                }
+                else if (_remark.Interest == _guest.Dislike)
+                {
+                    _animator.SetTrigger("Negative Remark");
+                }
+                else
+                {
+                    _animator.SetTrigger("Neutral Remark");
+                }
+            }
+        }
+
 
 		IEnumerator FillMeter(float percent)
 		{
@@ -74,11 +114,22 @@ namespace Ambition
 			OpinionIndicator.fillAmount = percent;
 		}
 
-		public void TriggerPositiveParticles(){
-			GetComponentsInChildren<ParticleSystem> ()[0].Play ();
-		}
-		public void TriggerNeutralParticles(){
-			GetComponentsInChildren<ParticleSystem> ()[1].Play ();
-		}
+        public void TriggerNeutralParticles()
+        {
+            if (NeutralEffect != null)
+                NeutralEffect.Play();
+        }
+
+        public void TriggerPositiveParticles()
+        {
+            if (PositiveEffect != null)
+                PositiveEffect.Play();
+        }
+
+        public void TriggerNegativeParticles()
+        {
+            if (NegativeEffect != null)
+                NegativeEffect.Play();
+        }
 	}
 }
