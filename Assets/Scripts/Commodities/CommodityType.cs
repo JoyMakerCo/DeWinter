@@ -14,6 +14,7 @@ namespace Ambition
 		Faction,	// Faction name, amount
 		Servant,	// Servant id, 1 or -1
 		Message,	// Message id, amount (may not matter)
-        Incident    // Incident id
+        Incident,   // Incident id
+        Location    // Location Pin Name
 	}
 }

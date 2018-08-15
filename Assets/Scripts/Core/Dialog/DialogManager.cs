@@ -3,24 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using Util;
 using Core;
 
 namespace Dialog
 {
-	public class DialogCanvasManager : MonoBehaviour
+    public class DialogManager : MonoBehaviour
 	{
 		public PrefabMapConfig DialogPrefabs;
 
 		protected Dictionary<GameObject, string> _dialogs;
-		protected Canvas _canvas;
 
 		void Awake()
 		{
 			App.Service<DialogSvc>().RegisterManager(this);
-
-			_canvas = this.gameObject.GetComponent<Canvas>();
-			_dialogs = new Dictionary<GameObject, string>();
+            CanvasGroup group = gameObject.GetComponent<CanvasGroup>();
+            if (group == null) group = gameObject.AddComponent<CanvasGroup>();
+            Image image = gameObject.GetComponent<Image>();
+            if (image == null) image = gameObject.AddComponent<Image>();
+            image.color = new Color(0, 0, 0, 0);
+            this.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+            this.GetComponent<RectTransform>().anchorMax = Vector2.one;
+            group.blocksRaycasts = true;
+            group.interactable = true;
+            group.ignoreParentGroups = true;
+   			_dialogs = new Dictionary<GameObject, string>();
+            gameObject.SetActive(false);
 		}
 
 		public GameObject Open(string dialogID)
@@ -39,8 +48,10 @@ namespace Dialog
 					cmp.OnOpen();
 				}
 				_dialogs.Add(dialog, dialogID);
-				dialog.transform.SetParent(_canvas.transform, false);
+				dialog.transform.SetParent(transform, false);
 				dialog.GetComponent<RectTransform>().SetAsLastSibling();
+                transform.SetAsLastSibling();
+                gameObject.SetActive(true);
 			}
 			return dialog;
 		}
@@ -63,8 +74,10 @@ namespace Dialog
 					cmp.OnOpen();
 				}
 				_dialogs.Add(dialog, dialogID);
-				dialog.transform.SetParent(_canvas.transform, false);
+				dialog.transform.SetParent(transform, false);
 				dialog.GetComponent<RectTransform>().SetAsLastSibling();
+                transform.SetAsLastSibling();
+                gameObject.SetActive(true);
 			}
 			return dialog;
 		}
@@ -79,6 +92,8 @@ namespace Dialog
 
 			_dialogs.Remove(dialog.Key);
 			GameObject.Destroy(dialog.Key);
+
+            gameObject.SetActive(_dialogs.Count > 0);
 			return true;
 		}
 
@@ -91,6 +106,8 @@ namespace Dialog
 				DialogView view = dialog.GetComponent<DialogView>();
 				view.OnClose();
 				GameObject.Destroy(dialog);
+
+                gameObject.SetActive(_dialogs.Count > 0);
 			}
 			dialog = null;
 			return closed;
@@ -103,8 +120,9 @@ namespace Dialog
 			{
 				cmp = dialog.Key.GetComponent<DialogView>();
 				if (cmp != null) cmp.OnClose();
-				GameObject.Destroy(dialog.Key);
+				Destroy(dialog.Key);
 			}
+            gameObject.SetActive(false);
 			_dialogs.Clear();
 		}
 

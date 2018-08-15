@@ -2,23 +2,32 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEditor;
 
 namespace Ambition
 {
     public class LocationPin : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public IncidentConfig Incident = null;
+        [HideInInspector]
+        public string Incident = null;
+
         public GameObject Scene = null;
         public bool OneShot = false;
         public bool Discoverable = false;
         public GameObject Tooltip;
 
-        public LocationVO Location
+#if (UNITY_EDITOR)
+        public IncidentConfig IncidentConfig;
+
+        private void OnValidate()
         {
-            get
-            {
-                return new LocationVO(this);
-            }
+            Incident = IncidentConfig?.name;
+        }
+#endif
+
+        public LocationVO GetLocation()
+        {
+            return new LocationVO(this);
         }
 
         public void OnPointerEnter(PointerEventData data)

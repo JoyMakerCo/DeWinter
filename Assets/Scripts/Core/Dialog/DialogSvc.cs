@@ -7,11 +7,11 @@ namespace Dialog
 {
 	public class DialogSvc : IAppService
 	{
-		protected List<DialogCanvasManager> _managers;
+		protected List<DialogManager> _managers;
 
 		public DialogSvc()
 		{
-			_managers = new List<DialogCanvasManager>();
+			_managers = new List<DialogManager>();
 		}
 
 		public void Initialize() {}
@@ -21,12 +21,12 @@ namespace Dialog
 			CloseAll();
 		}
 
-		public void RegisterManager(DialogCanvasManager manager)
+		public void RegisterManager(DialogManager manager)
 		{
 			_managers.Add(manager);
 		}
 
-		public void UnregisterManager(DialogCanvasManager manager)
+		public void UnregisterManager(DialogManager manager)
 		{
 			_managers.Remove(manager);
 		}
@@ -36,7 +36,7 @@ namespace Dialog
 		{
 			GameObject dialog = null;
 			GameObject currDialog;
-			foreach (DialogCanvasManager m in _managers)
+			foreach (DialogManager m in _managers)
 			{
 				currDialog = m.Open(dialogID);
 				if (dialog == null) dialog = currDialog;
@@ -50,7 +50,7 @@ namespace Dialog
 		{
 			GameObject dialog = null;
 			GameObject currDialog;
-			foreach (DialogCanvasManager m in _managers)
+			foreach (DialogManager m in _managers)
 			{
 				currDialog = m.Open<T>(dialogID, data);
 				if (dialog == null) dialog = currDialog;
@@ -60,7 +60,7 @@ namespace Dialog
 
 		public void Close (string dialogID)
 		{
-			foreach (DialogCanvasManager m in _managers)
+			foreach (DialogManager m in _managers)
 			{
 				if (m.Close(dialogID))
 					return;
@@ -70,7 +70,7 @@ namespace Dialog
 		/** Close the given dialog object. **/
 		public void Close (GameObject dialog)
 		{
-			foreach (DialogCanvasManager m in _managers)
+			foreach (DialogManager m in _managers)
 			{
 				if (m.Close(dialog))
 					return;
@@ -80,7 +80,7 @@ namespace Dialog
 		/** Close All dialogs on all Canvases. **/
 		public void CloseAll()
 		{
-			foreach (DialogCanvasManager m in _managers)
+			foreach (DialogManager m in _managers)
 			{
 				m.CloseAll();
 			}

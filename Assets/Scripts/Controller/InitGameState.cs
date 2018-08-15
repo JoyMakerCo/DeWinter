@@ -42,6 +42,9 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<UnequipItemCmd, ItemVO>(InventoryMessages.UNEQUIP);
 			AmbitionApp.RegisterCommand<UnequipSlotCmd, string>(InventoryMessages.UNEQUIP);
             AmbitionApp.RegisterCommand<StartIncidentCmd, string>(IncidentMessages.START_INCIDENT);
+            AmbitionApp.RegisterCommand<AddLocationCmd, string>(ParisMessages.ADD_LOCATION);
+            AmbitionApp.RegisterCommand<RemoveLocationCmd, string>(ParisMessages.REMOVE_LOCATION);
+            AmbitionApp.RegisterCommand<ExploreParisCmd, LocationVO[]>(ParisMessages.EXPLORE);
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);

@@ -7,7 +7,7 @@ namespace Ambition
     {
         public string Name;
         public int ID;
-        public int IncidentID;
+        public string IncidentID;
         public string Scene;
         public bool OneShot;
         public bool Discoverable;

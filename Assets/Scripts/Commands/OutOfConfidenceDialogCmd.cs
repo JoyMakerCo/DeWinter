@@ -12,11 +12,12 @@ namespace Ambition
             {
                 AmbitionApp.GetModel<PartyModel>().Confidence = model.StartConfidence >> 1;
 
-                Dictionary<string, string> subs = new Dictionary<string, string>() {
-                {"$FACTION", AmbitionApp.GetString(model.Party.Faction)},
-                {"$REPUTATION", "25"},
-                {"$FACTIONREPUTATION", "50"}};
-                AmbitionApp.OpenMessageDialog("out_of_confidence_dialog", subs);
+                CommodityVO[] penalties = new CommodityVO[]
+                {
+                    new CommodityVO(CommodityType.Reputation, -25),
+                    new CommodityVO(CommodityType.Faction, model.Party.Faction, -50)
+                };
+                AmbitionApp.OpenDialog<CommodityVO[]>("DEFEAT", penalties);
             }
         }
     }
