@@ -15,6 +15,7 @@ namespace Ambition
 		Servant,	// Servant id, 1 or -1
 		Message,	// Message id, amount (may not matter)
         Incident,   // Incident id
-        Location    // Location Pin Name
+        Location,   // Location Pin Name
+        Date        // Amount = ticks value of Date (Requirement Only)
 	}
 }

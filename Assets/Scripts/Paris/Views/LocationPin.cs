@@ -6,7 +6,7 @@ using UnityEditor;
 
 namespace Ambition
 {
-    public class LocationPin : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class LocationPin : MonoBehaviour, IPointerClickHandler
     {
         [HideInInspector]
         public string Incident = null;
@@ -15,6 +15,21 @@ namespace Ambition
         public bool OneShot = false;
         public bool Discoverable = false;
         public GameObject Tooltip;
+        public CommodityVO[] Requirements;
+
+        private void Awake()
+        {
+            AmbitionApp.Subscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            AmbitionApp.Subscribe<string>(ParisMessages.SHOW_LOCATION, HandleShow);
+            AmbitionApp.Subscribe<string>(ParisMessages.HIDE_LOCATION, HandleHide);
+        }
+
+        private void OnDestroy()
+        {
+            AmbitionApp.Unsubscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            AmbitionApp.Unsubscribe<string>(ParisMessages.SHOW_LOCATION, HandleShow);
+            AmbitionApp.Unsubscribe<string>(ParisMessages.HIDE_LOCATION, HandleHide);
+        }
 
 #if (UNITY_EDITOR)
         public IncidentConfig IncidentConfig;
@@ -25,19 +40,31 @@ namespace Ambition
         }
 #endif
 
-        public LocationVO GetLocation()
+        public void OnPointerClick(PointerEventData data)
         {
-            return new LocationVO(this);
+            AmbitionApp.SendMessage<string>(ParisMessages.SELECT_LOCATION, this.name);
         }
 
-        public void OnPointerEnter(PointerEventData data)
+        private void HandleSelect(string location)
         {
-            Tooltip.SetActive(true);
+            Tooltip.SetActive(location == gameObject.name);
         }
 
-        public void OnPointerExit(PointerEventData data)
+        public void GoToLocation()
         {
-            Tooltip.SetActive(false);
+            AmbitionApp.SendMessage<string>(ParisMessages.GO_TO_LOCATION, this.name);
+        }
+
+        private void HandleShow(string locationID)
+        {
+            if (locationID == name)
+                gameObject.SetActive(true);
+        }
+
+        private void HandleHide(string locationID)
+        {
+            if (locationID == name)
+                gameObject.SetActive(false);
         }
     }
 }

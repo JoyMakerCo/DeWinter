@@ -19,10 +19,12 @@ namespace Ambition
 			AmbitionApp.RegisterModel<MapModel>();
             AmbitionApp.RegisterModel<ConversationModel>();
 			AmbitionApp.RegisterModel<LocalizationModel>();
+            AmbitionApp.RegisterModel<ParisModel>();
 
 			AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryMessages.SELL_ITEM);
 			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
 			AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
+            AmbitionApp.RegisterCommand<GrantRewardsCmd, CommodityVO[]>();
 			AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
 			AmbitionApp.RegisterCommand<GenerateMapCmd, PartyVO>(MapMessage.GENERATE_MAP);
 			AmbitionApp.RegisterCommand<DegradeOutfitCmd, OutfitVO>(InventoryMessages.BUY_ITEM);

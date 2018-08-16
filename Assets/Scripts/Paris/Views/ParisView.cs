@@ -1,32 +1,69 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Ambition
 {
-    public class ParisView : MonoBehaviour
+    public class ParisView : MonoBehaviour, IPointerClickHandler
     {
-        ParisModel _paris;
+        public GameObject ExplorePin;
 
-        private void Start()
+        void Awake()
         {
-            LocationPin[] pins = transform.GetComponentsInChildren<LocationPin>(true);
-            LocationVO location;
-            _paris = AmbitionApp.GetModel<ParisModel>();
-            foreach(LocationPin pin in pins)
+            AmbitionApp.Subscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
+        }
+
+        void OnDestroy()
+        {
+            AmbitionApp.Unsubscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
+        }
+
+        void Start()
+        {
+            bool active;
+            LocationPin[] locations = transform.GetComponentsInChildren<LocationPin>(true);
+            ParisModel model = AmbitionApp.GetModel<ParisModel>();
+            foreach (LocationPin pin in locations)
             {
-                location = pin.GetLocation();
-                pin.gameObject.SetActive(_paris.Locations.ContainsKey(pin.name));
-                if (pin.isActiveAndEnabled)
+                active = model.Locations.ContainsKey(name)
+                || (!pin.Discoverable
+                    && !model.VisitedLocations.ContainsKey(pin.name)
+                    && AmbitionApp.CheckRequirements(pin.Requirements));
+                pin.gameObject.SetActive(active);
+                if (active)
                 {
-                    _paris.Locations[location.Name] = location;
+                    LocationVO location = new LocationVO
+                    {
+                        Name = pin.name,
+                        ID = pin.GetInstanceID(),
+                        Scene = (pin.Scene != null) ? pin.Scene.name : null,
+                        OneShot = pin.OneShot,
+                        Discoverable = pin.Discoverable,
+                        Requirements = pin.Requirements
+                    };
+                    model.Locations[pin.name] = location;
                 }
-                //else if (CheckRequirements(location.Requirements))
-                //{
-                //    SendMessage(ParisMessages.ADD_LOCATION, location.Name);
-                //    pin.gameObject.SetActive(true);
-                //    _paris.Locations[location.Name] = location;
-                //}
             }
+        }
+
+        public void OnPointerClick(PointerEventData data)
+        {
+            if (data.pointerPressRaycast.gameObject == gameObject)
+            {
+                Vector2 pos;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), data.position, data.pressEventCamera, out pos);
+                ExplorePin.transform.localPosition = new Vector3(pos.x, pos.y, 0);
+                AmbitionApp.SendMessage(ParisMessages.SELECT_LOCATION, "");
+            }
+        }
+
+        private void HandleSelect(string location)
+        {
+            ExplorePin.SetActive(location.Length == 0);
+        }
+
+        public void Explore()
+        {
+            
         }
     }
 }
