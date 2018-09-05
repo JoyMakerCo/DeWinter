@@ -27,7 +27,11 @@ namespace Ambition
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
             LocationPin pin;
             bool active;
+<<<<<<< HEAD
             foreach (Transform child in Pins)
+=======
+            foreach (Transform child in transform)
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
             {
                 active = model.Locations.Contains(child.name);
                 child.gameObject.SetActive(active);
@@ -71,11 +75,14 @@ namespace Ambition
                     .OrderBy(p=>p.Value)
                     .Select(p => p.Key.name).ToArray();
             AmbitionApp.SendMessage(ParisMessages.EXPLORE, result);
+<<<<<<< HEAD
         }
 
         public void ReturnToCalendar()
         {
             AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.ESTATE_SCENE);
+=======
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
         }
     }
 }

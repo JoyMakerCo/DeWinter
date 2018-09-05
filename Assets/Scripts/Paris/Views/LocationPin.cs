@@ -27,6 +27,17 @@ namespace Ambition
             AmbitionApp.Unsubscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
             AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
             AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
+<<<<<<< HEAD
+=======
+        }
+
+#if (UNITY_EDITOR)
+        public IncidentConfig IncidentConfig;
+
+        private void OnValidate()
+        {
+            Incident = IncidentConfig?.name;
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
         }
 
         public void OnPointerClick(PointerEventData data)

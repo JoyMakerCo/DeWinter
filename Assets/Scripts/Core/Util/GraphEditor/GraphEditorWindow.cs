@@ -194,7 +194,11 @@ namespace Util
             }
         }
 
+<<<<<<< HEAD
         private static bool DeleteIndex(SerializedProperty graphProperty, string listID, int index)
+=======
+        private static bool DeleteIndex(SerializedProperty list, int index)
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
         {
             if (graphProperty == null) return false;
             SerializedProperty list = graphProperty.FindPropertyRelative(listID);
@@ -227,6 +231,7 @@ namespace Util
 
         private bool DeleteSelected()
         {
+<<<<<<< HEAD
             return DeleteSelected(_graphObject, _selection, _isNode);
         }
 
@@ -241,6 +246,20 @@ namespace Util
                 if (nodes == null || nodes.arraySize <= 1) return false;
                 DeleteIndex(graphProperty, "Positions", index);
                 if (!DeleteIndex(graphProperty, "Nodes", index)) return false;
+=======
+            return DeleteSelected(_serializedObject, _selection, _isNode);
+        }
+
+        public static bool DeleteSelected(SerializedObject serializedObject, int index, bool isNode)
+        {
+            if (index < 0 || serializedObject == null || !(serializedObject.targetObject is IDirectedGraphObject)) return false;
+            IDirectedGraphObject graphObject = serializedObject.targetObject as IDirectedGraphObject;
+            SerializedProperty links = graphObject.GetLinks(serializedObject);
+            if (isNode)
+            {
+                if (!DeleteIndex(graphObject.GetNodes(serializedObject), index)) return false;
+                if (!DeleteIndex(graphObject.GetPositions(serializedObject), index)) return false;
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
 
                 Vector2Int ln;
                 for (int i = links.arraySize - 1; i >= 0; i--)
@@ -248,8 +267,13 @@ namespace Util
                     ln = links.GetArrayElementAtIndex(i).vector2IntValue;
                     if (ln.x == index || ln.y == index)
                     {
+<<<<<<< HEAD
                         DeleteIndex(graphProperty, "Links", i);
                         DeleteIndex(graphProperty, "LinkData", i);
+=======
+                        DeleteIndex(links, i);
+                        DeleteIndex(graphObject.GetLinkData(serializedObject), i);
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
                     }
                     else
                     {
@@ -261,6 +285,7 @@ namespace Util
             }
             else
             {
+<<<<<<< HEAD
                 DeleteIndex(graphProperty, "LinkData", index);
                 if (!DeleteIndex(graphProperty, "Links", index)) return false;
             }
@@ -269,6 +294,16 @@ namespace Util
             window._isNode = false;
             window._selection = -1;
             graphObject.GraphObject.ApplyModifiedProperties();
+=======
+                DeleteIndex(graphObject.GetLinkData(serializedObject), index);
+                if (!DeleteIndex(links, index)) return false;
+            }
+            graphObject.Select(serializedObject, -1, false);
+            GraphEditorWindow window = GetWindow<GraphEditorWindow>(serializedObject.targetObject.name + " | Graph Editor", false);
+            window._isNode = false;
+            window._selection = -1;
+            serializedObject.ApplyModifiedProperties();
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
             return true;
         }
 

@@ -6,6 +6,7 @@ namespace Ambition
 {
 	public class ParisModel : IModel, Util.IInitializable
     {
+<<<<<<< HEAD
         private LocationPin _location;
         public LocationPin Location
         {
@@ -18,6 +19,8 @@ namespace Ambition
 
         public float ExplorelocationChance = .5f;
 
+=======
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
         public List<string> Locations;
         public List<string> Visited;
 

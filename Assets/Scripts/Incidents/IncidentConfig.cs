@@ -235,8 +235,13 @@ namespace Ambition
                     }
                 }
                 if ((Event.current.modifiers & (EventModifiers.Command | EventModifiers.Control)) > 0
+<<<<<<< HEAD
                     && Event.current.keyCode == KeyCode.Backspace
                     && GraphEditorWindow.DeleteSelected(((IDirectedGraphObject)serializedObject.targetObject), index, isNode))
+=======
+                    && (Event.current.keyCode == KeyCode.Backspace || Event.current.keyCode == KeyCode.Delete)
+                    && GraphEditorWindow.DeleteSelected(serializedObject, index, isNode))
+>>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
                 {
                     serializedObject.FindProperty("_isNode").boolValue = false;
                     serializedObject.FindProperty("_index").intValue = -1;
