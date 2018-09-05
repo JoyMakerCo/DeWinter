@@ -10,22 +10,46 @@ namespace Ambition
     public class IncidentVO : DirectedGraph<MomentVO, TransitionVO>
     {
         public string Name;
-        public DateTime Date;
+
+        [SerializeField]
+        private long _date = -1;
+
+        public bool IsScheduled
+        {
+            get { return _date > 0;  }
+        }
+
+        public DateTime Date
+        {
+            get { return _date > 0 ? DateTime.MinValue.AddTicks(_date) : DateTime.MinValue; }
+            set { _date = value.Ticks; }
+        }
+
+        public CommodityVO[] Requirements;
+
+        public bool OneShot = true;
 
         public MomentVO[] Moments;
         public TransitionVO[] Transitions;
 
         public IncidentVO() {}
-
-        public IncidentVO(DirectedGraph<MomentVO, TransitionVO> graph)
+        public IncidentVO(DirectedGraph<MomentVO, TransitionVO> incident)
         {
-            this.Moments = graph.Nodes;
-            this.Links = graph.Links;
-            this.LinkData = graph.LinkData;
+            Nodes = incident.Nodes;
+            Links = incident.Links;
+            LinkData = incident.LinkData;
+        }
+        public IncidentVO(IncidentVO incident) : this(incident as DirectedGraph<MomentVO, TransitionVO>)
+        {
+            this.Name = incident.Name;
+            this.Date = incident.Date;
         }
 
 #if (UNITY_EDITOR)
         public Vector2[] Positions;
+        public int Month = 0;
+        public int Day = 0;
+        public int Year = 0;
 #endif
     }
 

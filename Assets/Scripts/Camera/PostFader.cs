@@ -16,6 +16,8 @@ namespace Ambition
             _material = new Material(Effect);
             AmbitionApp.Subscribe(GameMessages.FADE_OUT, HandleFadeOut);
             AmbitionApp.Subscribe(GameMessages.FADE_IN, HandleFadeIn);
+            AmbitionApp.Subscribe<float>(GameMessages.FADE_OUT, HandleFadeOut);
+            AmbitionApp.Subscribe<float>(GameMessages.FADE_IN, HandleFadeIn);
         }
 
         void Start()
@@ -27,6 +29,8 @@ namespace Ambition
         {
             AmbitionApp.Unsubscribe(GameMessages.FADE_OUT, HandleFadeOut);
             AmbitionApp.Unsubscribe(GameMessages.FADE_IN, HandleFadeIn);
+            AmbitionApp.Unsubscribe<float>(GameMessages.FADE_OUT, HandleFadeOut);
+            AmbitionApp.Unsubscribe<float>(GameMessages.FADE_IN, HandleFadeIn);
         }
         
         private void HandleFadeOut()
@@ -41,7 +45,19 @@ namespace Ambition
             StartCoroutine(FadeIn(DEFAULT_TIME));
         }
        
-       IEnumerator FadeOut(float time)
+        private void HandleFadeOut(float time)
+        {
+            StopAllCoroutines();
+            StartCoroutine(FadeOut(time));
+        }
+       
+        private void HandleFadeIn(float time)
+        {
+            StopAllCoroutines();
+            StartCoroutine(FadeIn(time));
+        }
+       
+        IEnumerator FadeOut(float time)
        {
            if (_fade > 1f) _fade = 1f;
            for (float delta=_fade/time; _fade > 0f; _fade-=delta*Time.deltaTime)

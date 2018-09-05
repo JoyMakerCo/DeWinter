@@ -23,6 +23,7 @@ namespace Util
         private bool _isNode;
         private bool _dragLink;
 
+        private SerializedObject _serializedObject;
         private SerializedProperty _nodes;
         private SerializedProperty _links;
         private SerializedProperty _linkData;
@@ -44,9 +45,9 @@ namespace Util
 
         private void UpdateGraphEditorWindow()
         {
-            if (_graphObject != null && _selection >= 0)
+            if (_serializedObject != null && _selection >= 0)
             {
-                _graphObject.UpdateGraph();
+                _serializedObject.Update();
                 Repaint();
             }
         }
@@ -54,11 +55,12 @@ namespace Util
         private void SetObject(IDirectedGraphObject graphObject)
         {
             _graphObject = graphObject;
+            _serializedObject = new SerializedObject(graphObject as ScriptableObject);
             _scrollRect = new Rect();
-            _nodes = graphObject.GetNodes();
-            _links = graphObject.GetLinks();
-            _linkData = graphObject.GetLinkData();
-            _positions = graphObject.GetPositions();
+            _nodes = graphObject.GetNodes(_serializedObject);
+            _links = graphObject.GetLinks(_serializedObject);
+            _linkData = graphObject.GetLinkData(_serializedObject);
+            _positions = graphObject.GetPositions(_serializedObject);
             _dragLink = false;
             _selection = -1;
             if (_positions.arraySize == 0)
@@ -75,23 +77,25 @@ namespace Util
         {
             EditorApplication.update -= UpdateGraphEditorWindow;
             _graphObject = null;
+            _serializedObject = null;
             titleContent.text = "Graph Editor";
             Repaint();
         }
 
         public void OnGUI()
         {
-            if (_graphObject != null)
+            if (_serializedObject != null)
             {
                 int index;
                 Vector2Int link;
                 Vector2 pos;
-                _graphObject.UpdateGraph();
+                _serializedObject.Update();
                 _scroll = GUI.BeginScrollView(new Rect(0, 0, position.width, position.height), _scroll, _scrollRect);
                 switch (Event.current.type)
                 {
                     case EventType.KeyDown:
-                        if ((Event.current.modifiers & EventModifiers.Command) > 0 && Event.current.keyCode == KeyCode.Backspace)
+                        if ((Event.current.modifiers & (EventModifiers.Command | EventModifiers.Control)) > 0
+                            && (Event.current.keyCode == KeyCode.Backspace || Event.current.keyCode == KeyCode.Delete))
                         {
                             DeleteSelected();
                         }
@@ -154,8 +158,9 @@ namespace Util
                         }
                         break;
                 }
-                _graphObject.Select(_selection, _isNode);
-                _graphObject.ApplyModifiedProperties();
+                if (_graphObject != null)
+                    _graphObject.Select(_serializedObject, _selection, _isNode);
+                _serializedObject.ApplyModifiedProperties();
                 if (_dragLink)
                 {
                     pos = _isNode
@@ -192,7 +197,7 @@ namespace Util
             }
         }
 
-        private bool DeleteIndex(SerializedProperty list, int index)
+        private static bool DeleteIndex(SerializedProperty list, int index)
         {
             if (list == null || index >= list.arraySize) return false;
             list.DeleteArrayElementAtIndex(index);
@@ -221,38 +226,49 @@ namespace Util
             }
         }
 
-        private void DeleteSelected()
+        private bool DeleteSelected()
         {
-            if (_selection < 0) return;
-            if (_isNode)
+            return DeleteSelected(_serializedObject, _selection, _isNode);
+        }
+
+        public static bool DeleteSelected(SerializedObject serializedObject, int index, bool isNode)
+        {
+            if (index < 0 || serializedObject == null || !(serializedObject.targetObject is IDirectedGraphObject)) return false;
+            IDirectedGraphObject graphObject = serializedObject.targetObject as IDirectedGraphObject;
+            SerializedProperty links = graphObject.GetLinks(serializedObject);
+            if (isNode)
             {
-                DeleteIndex(_nodes, _selection);
-                DeleteIndex(_positions, _selection);
+                if (!DeleteIndex(graphObject.GetNodes(serializedObject), index)) return false;
+                if (!DeleteIndex(graphObject.GetPositions(serializedObject), index)) return false;
 
                 Vector2Int ln;
-                for (int i = _links.arraySize - 1; i >= 0; i--)
+                for (int i = links.arraySize - 1; i >= 0; i--)
                 {
-                    ln = _links.GetArrayElementAtIndex(i).vector2IntValue;
-                    if (ln.x == _selection || ln.y == _selection)
+                    ln = links.GetArrayElementAtIndex(i).vector2IntValue;
+                    if (ln.x == index || ln.y == index)
                     {
-                        DeleteIndex(_links, i);
-                        DeleteIndex(_linkData, i);
+                        DeleteIndex(links, i);
+                        DeleteIndex(graphObject.GetLinkData(serializedObject), i);
                     }
                     else
                     {
-                        if (ln.x >= _selection) ln.x -= 1;
-                        if (ln.y >= _selection) ln.y -= 1;
-                        _links.GetArrayElementAtIndex(i).vector2IntValue = ln;
+                        if (ln.x >= index) ln.x -= 1;
+                        if (ln.y >= index) ln.y -= 1;
+                        links.GetArrayElementAtIndex(i).vector2IntValue = ln;
                     }
                 }
             }
             else
             {
-                DeleteIndex(_links, _selection);
-                DeleteIndex(_linkData, _selection);
+                DeleteIndex(graphObject.GetLinkData(serializedObject), index);
+                if (!DeleteIndex(links, index)) return false;
             }
-            _selection = -1;
-            _isNode = false;
+            graphObject.Select(serializedObject, -1, false);
+            GraphEditorWindow window = GetWindow<GraphEditorWindow>(serializedObject.targetObject.name + " | Graph Editor", false);
+            window._isNode = false;
+            window._selection = -1;
+            serializedObject.ApplyModifiedProperties();
+            return true;
         }
 
         private void CreateNewNode()

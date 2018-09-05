@@ -7,13 +7,12 @@ namespace Ambition
 	{
 		public override void OnEnterState ()
 		{
-			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
 			MomentVO moment = model.Moment;
-			if (moment != null)
+            int index = model.Incident.GetNodeIndex(moment);
+            if (index >= 0)
 			{
-				int index = Array.IndexOf(model.Incident.Moments, moment);
-				TransitionVO[] transitions = Array.FindAll(model.Incident.Transitions, t=>t.Index == index);
-				AmbitionApp.SendMessage<TransitionVO[]>(transitions);
+                AmbitionApp.SendMessage<TransitionVO[]>(model.Incident.GetLinkData(index));
 			}
 		}
 	}

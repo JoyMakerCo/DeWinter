@@ -19,7 +19,7 @@ namespace Ambition
 			model.Confidence = model.StartConfidence = model.MaxConfidence = 120;
 			calendar.Parties[party.Date]=new System.Collections.Generic.List<PartyVO>(){party};
 
-			AmbitionApp.GetModel<IncidentModel>().Incident = null;
+            AmbitionApp.GetModel<CalendarModel>().Incident = null;
 			AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			AmbitionApp.UnregisterCommand<SkipTutorialCmd>(GameMessages.SKIP_TUTORIAL);
 			AmbitionApp.RegisterCommand<TutorialConfidenceCheckCmd>(PartyMessages.SHOW_MAP);

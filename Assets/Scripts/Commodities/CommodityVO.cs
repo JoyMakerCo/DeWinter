@@ -5,25 +5,24 @@ using Newtonsoft.Json;
 namespace Ambition
 {
 	[Serializable]
-	public class CommodityVO
+    public struct CommodityVO
 	{
 		public CommodityType Type;
 		public string ID;
-		public int Amount=0;
+		public int Amount;
 
-		public CommodityVO() {}
-
-		public CommodityVO (CommodityType type, string id, int amount)
+		public CommodityVO (CommodityType type, string id=null, int amount=0)
 		{
 			Type = type;
 			ID = id;
 			Amount = amount;
 		}
 
-		public CommodityVO (CommodityType type, int amount)
+		public CommodityVO (CommodityType type, int amount=0)
 		{
 			Type = type;
 			Amount = amount;
+            ID = null;
 		}
 	}
 }

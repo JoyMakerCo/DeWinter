@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
@@ -8,13 +8,17 @@ using Util;
 
 namespace Ambition
 {
-	public class CalendarModel : DocumentModel, IInitializable
+    public class CalendarModel : IModel, IInitializable
 	{
 		public Dictionary<DateTime, List<PartyVO>> Parties = new Dictionary<DateTime, List<PartyVO>>();
 
         private DateTime _startDate;
-        private int _gameLength;
 		private int _day = 0;
+        private MomentVO _moment;
+        public List<IncidentVO> Timeline;
+        public List<IncidentVO> Incidents;
+        public List<IncidentVO> PastIncidents = new List<IncidentVO>();
+        private List<IncidentVO> _queue = new List<IncidentVO>();
 
 		public DateTime StartDate
 		{
@@ -32,22 +36,6 @@ namespace Ambition
 			return d.Day.ToString() + " " + localization.GetList("month")[d.Month-1] + ", " + d.Year.ToString();
 		}
 
-		[JsonProperty("gameLength")]
-		public int DaysLeft
-		{
-			get { return _gameLength - _day; }
-			private set { _gameLength = value; }
-		}
-
-		[JsonProperty("startDate")]
-		private string _startDateStr
-		{
-			set {
-				_startDate = DateTime.Parse(value);
-//				NextStyleSwitchDay = _startDate.AddDays(3);
-			}
-		}
-
 		public DateTime Today
 		{
 			get { return _startDate.AddDays(_day); }
@@ -57,9 +45,31 @@ namespace Ambition
 			}
 		}
 
+        public IncidentVO Incident
+        {
+            get { return _queue.Count > 0 ? _queue[0] : null; }
+            set
+            {
+                if (value == null) return;
+                int index = _queue.LastIndexOf(value);
+                if (index == 0 || index == 1) return;
+                _queue.Remove(value);
+                if (_queue.Count == 0)
+                {
+                    _queue.Add(value);
+                    AmbitionApp.SendMessage<IncidentVO>(value);
+                }
+                else
+                {
+                    _queue.Insert(1, value);
+                }
+            }
+        }
+
+
 		public DateTime EndDate
 		{
-			get { return _startDate.AddDays(_gameLength); }
+            get { return Incidents.Last().Date; }
 		}
 
 		public DateTime DaysFromNow(int days)
@@ -72,34 +82,46 @@ namespace Ambition
 			get { return DaysFromNow(-1); }
 		}
 
-		public DateTime uprisingDay; //The Day of the Uprising that the Game Ends On
+        public MomentVO Moment
+        {
+            get { return _moment; }
+            set
+            {
+                _moment = value;
+                AmbitionApp.SendMessage<MomentVO>(_moment);
+            }
+        }
+
+        public IncidentVO Find(string incidentID)
+        {
+            IncidentVO incident = Incidents.Find(i => i.Name == incidentID);
+            return incident ?? Timeline.Find(i => i.Name == incidentID);
+        }
+
+        public void EndIncident()
+        {
+            if (_queue.Count > 0)
+            {
+                if (_queue[0].OneShot)
+                {
+                    PastIncidents.Add(_queue[0]);
+                }
+                _queue.RemoveAt(0);
+            }
+            if (_queue.Count > 0)
+                AmbitionApp.SendMessage<IncidentVO>(_queue[0]);
+        }
 
 		public DateTime NextStyleSwitchDay;
 
-		public CalendarModel() : base("CalendarData") {}
-
-		public void Initialize()
-		{
-            uprisingDay=_startDate.AddDays(Util.RNG.Generate(25, 31));
-		}
-
-		string dayString(int day)
-	    {
-	        if (day <= 0)
-	        {
-	            return day.ToString();
-	        }
-	        switch (day % 10)
-	        {
-	            case 1:
-	                return day + "st";
-	            case 2:
-	                return day + "nd";
-	            case 3:
-	                return day + "rd";
-	            default:
-	                return day + "th";
-	        }
-	    }
+        public void Initialize()
+        {
+            IncidentConfig[] incidents = Resources.LoadAll<IncidentConfig>("Incidents");
+            Timeline = incidents.Where(i=>i.Incident.IsScheduled).Select(i => i.Incident).OrderBy(i=>i.Date).ToList();
+            Incidents = incidents.Where(i => !i.Incident.IsScheduled).Select(i => i.Incident).ToList();
+            incidents = null;
+            _startDate = Timeline[0].Date;
+            Resources.UnloadUnusedAssets();
+        }
 	}
 }

@@ -23,10 +23,10 @@ namespace Ambition
 
 	    public override void OnOpen ()
 		{
-			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
 			_background = gameObject.GetComponent<Image>();
 			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
-			model.Moment = model.Incident.Moments[0];
+            model.Moment = model.Incident.Nodes[0];
 			titleText.text = model.Incident.Name;
 		}
 

@@ -8,6 +8,7 @@ namespace Ambition
 {
 	public class MapGraphic : Image
 	{
+
 		private const int DOOR_SIZE = 2;
 		private const float THICKNESS = 0.05f;
 

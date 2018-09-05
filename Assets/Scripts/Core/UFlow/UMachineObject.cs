@@ -7,7 +7,7 @@ using Util;
 
 namespace UFlow
 {
-    public class UMachineObject : DirectedGraphObject
+    public class UMachineObject : ScriptableObject//TODO:, IDirectedGraphObject
     {
         [HideInInspector]
         public int[] Exits = new int[0];

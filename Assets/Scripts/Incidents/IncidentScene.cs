@@ -34,7 +34,7 @@ namespace Ambition
 
 		void OnEnable()
 		{
-			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
 			titleText.text = model.Incident.Name;
 		}
 

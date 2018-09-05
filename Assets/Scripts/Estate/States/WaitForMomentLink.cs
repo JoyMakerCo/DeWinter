@@ -16,20 +16,19 @@ namespace Ambition
 		{
 			if (UnityEngine.Time.fixedTime == LAST_TIMESTAMP) return;
 			LAST_TIMESTAMP = UnityEngine.Time.fixedTime;
-			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+            CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
 			MomentVO moment = model.Moment;
-			IncidentVO config = model.Incident;
+            IncidentVO incident = model.Incident;
 			MomentVO target = null;
 			TransitionVO transition = null;
-			if (moment != null && config != null)
+			if (moment != null && incident != null)
 			{
-				int index = Array.IndexOf(config.Moments, model.Moment);
-				TransitionVO[] links = Array.FindAll(model.Incident.Transitions, l=>l.Index == index);
-				if (option < links.Length)
+                MomentVO[] neighbors = incident.GetNeighbors(moment);
+                if (option < neighbors.Length)
 				{
-					transition = links[option];
-					index = transition.Target;
-					if (index < config.Moments.Length) target = config.Moments[index];
+                    TransitionVO[] transitions = incident.GetLinkData(moment);
+                    transition = transitions[option];
+                    target = neighbors[option];
 				}
 
 				// Grant rewards
