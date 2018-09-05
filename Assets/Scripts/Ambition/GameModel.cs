@@ -75,8 +75,7 @@ namespace Ambition
 		{
 			get { return _outfit; }
 			set {
-				_outfit = value;
-				AmbitionApp.SendMessage<OutfitVO>(_outfit);
+                AmbitionApp.SendMessage(_outfit = value);
 			}
 		}
 

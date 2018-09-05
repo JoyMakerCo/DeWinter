@@ -218,5 +218,10 @@ namespace Ambition
 		{
 			return App.Service<FactorySvc>().Create<Key, Product>(key);
 		}
+
+        public static bool CheckRequirements(CommodityVO[] requirements)
+        {
+            return App.Service<RequirementSvc>().CheckRequirements(requirements);
+        }
 	}
 }

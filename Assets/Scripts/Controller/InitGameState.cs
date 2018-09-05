@@ -19,10 +19,12 @@ namespace Ambition
 			AmbitionApp.RegisterModel<MapModel>();
             AmbitionApp.RegisterModel<ConversationModel>();
 			AmbitionApp.RegisterModel<LocalizationModel>();
+            AmbitionApp.RegisterModel<ParisModel>();
 
 			AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryMessages.SELL_ITEM);
 			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
 			AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
+            AmbitionApp.RegisterCommand<GrantRewardsCmd, CommodityVO[]>();
 			AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
 			AmbitionApp.RegisterCommand<GenerateMapCmd, PartyVO>(MapMessage.GENERATE_MAP);
 			AmbitionApp.RegisterCommand<DegradeOutfitCmd, OutfitVO>(InventoryMessages.BUY_ITEM);
@@ -42,6 +44,8 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<UnequipItemCmd, ItemVO>(InventoryMessages.UNEQUIP);
 			AmbitionApp.RegisterCommand<UnequipSlotCmd, string>(InventoryMessages.UNEQUIP);
             AmbitionApp.RegisterCommand<StartIncidentCmd, string>(IncidentMessages.START_INCIDENT);
+            AmbitionApp.RegisterCommand<AddLocationCmd, string>(ParisMessages.ADD_LOCATION);
+            AmbitionApp.RegisterCommand<RemoveLocationCmd, string>(ParisMessages.REMOVE_LOCATION);
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);

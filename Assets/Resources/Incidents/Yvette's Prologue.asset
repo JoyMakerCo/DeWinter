@@ -36,13 +36,30 @@ MonoBehaviour:
     - {x: 18, y: 4}
     - {x: 15, y: 19}
     - {x: 19, y: 16}
-    - {x: 14, y: 21}
+    - {x: 19, y: 16}
+    - {x: 8, y: 21}
+    - {x: 19, y: 16}
+    - {x: 8, y: 22}
+    - {x: 19, y: 16}
+    - {x: 19, y: 16}
+    - {x: 19, y: 16}
+    - {x: 23, y: 24}
+    - {x: 19, y: 16}
+    - {x: 19, y: 16}
+    - {x: 19, y: 16}
+    - {x: 23, y: 25}
+    - {x: 19, y: 16}
+    - {x: 24, y: 26}
+    - {x: 19, y: 16}
+    - {x: 22, y: 23}
+    - {x: 19, y: 16}
+    - {x: 21, y: 23}
     - {x: 19, y: 16}
     Nodes:
     - Text: "March 19th, 1789\r\nThe carriage rumbles and bounces along the cobbles
         as you approach Paris. It\u2019s taken over a week to get here, even carrying
         just yourself and your luggage. "
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 73f3e60cbe255458c9ea7f141b45abd0, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -165,7 +182,7 @@ MonoBehaviour:
       AudioClips: []
     - Text: "When you arrive, the coachman helps you out of the carriage and you find
         yourself outside a glowing, friendly looking tavern. \r"
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -181,7 +198,7 @@ MonoBehaviour:
       - {fileID: 8300000, guid: 4e28349262ebb4a0184dca282aa7ad0f, type: 3}
     - Text: The sign shows a grubby looking child, holding with a plate piled high
         with fresh bread and roasted meats.
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -191,7 +208,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 10
+        ID: The Orphan's Feast
+        Amount: 0
       Music: {fileID: 0}
       AudioClips: []
     - Text: "You\u2019ve already finished all of your books and Armand's letter is
@@ -206,7 +226,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards: []
+      Rewards:
+      - Type: 10
+        ID: The Orphan's Feast
+        Amount: 0
       Music: {fileID: 0}
       AudioClips: []
     - Text: Though part of you is worried by your unfamiliar surroundings, you mostly
@@ -392,20 +415,109 @@ MonoBehaviour:
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
-    - Text: 
-      Background: {fileID: 0}
+    - Text: "Inside, a woman polishing a lantern looks up at you as you enter, and
+        her face breaks into a bright smile. \u201CBonjour Madame and welcome to the
+        Orphan's Feast!\u201D Her eyes linger expectantly on the door for a moment,
+        before settling on you. You\u2019re suddenly reminded of how rare it is for
+        women to travel by themselves.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music: {fileID: 0}
       AudioClips: []
+    - Text: "Inside, a woman polishing a lantern looks up at you as you enter, and
+        her face breaks into a bright smile. \u201CBonjour Madame and welcome to the
+        Orphan's Feast!\u201D Her eyes linger expectantly on the door for a moment,
+        before settling on you. You\u2019re suddenly reminded of how rare it is for
+        women to travel by themselves.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips:
+      - {fileID: 8300000, guid: ba249014a387841349fe5ae92a816783, type: 3}
+    - Text: "\u201CHow may I be of service?\u201D She asks.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips:
+      - {fileID: 8300000, guid: ba249014a387841349fe5ae92a816783, type: 3}
+    - Text: "\u201CDon\u2019t worry, while the rest of the city can be er\u2026 cutthroat,
+        the Orphan\u2019s Feast is a relaxed place for getting your feet under you.\u201D
+        The woman puts down the lantern she was polishing. \u201CTalk to the guests
+        in the different rooms, make sure you say the right things to the right people,
+        and make sure nobody gets bored. Once you charm all the people in a room,
+        you should be fine.\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips:
+      - {fileID: 8300000, guid: ba249014a387841349fe5ae92a816783, type: 3}
+    - Text: "The woman pauses to think. \u201CI haven\u2019t heard that name before,
+        but I just started working today. Perhaps he\u2019s in the back?\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips:
+      - {fileID: 8300000, guid: ba249014a387841349fe5ae92a816783, type: 3}
+    - Text: "When she puts it that way, it suddenly sounds so easy\u2026"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips:
+      - {fileID: 8300000, guid: ba249014a387841349fe5ae92a816783, type: 3}
     LinkData:
     - Index: 0
       Target: 0
@@ -417,7 +529,59 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
+      Text: '"Hmm... might as well take in the sights."'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Coachman, let''s go! I don''t have all day!"'
+      Rewards: []
+    - Index: 0
+      Target: 0
       Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Coachman, can we pick up the pace, please?"'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Coachman, can we pick up the pace, please?"'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Reading the letter one more time wouldn''t hurt..."'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: <Look out the window>
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: <Read Armand's letter>
       Rewards: []
     - Index: 0
       Target: 0
@@ -453,7 +617,18 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
+      Text: '"This must be the place!"'
+      Rewards:
+      - Type: 10
+        ID: The Orphan's Feast
+        Amount: 0
+    - Index: 0
+      Target: 0
       Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Here goes nothing..."'
       Rewards: []
     - Index: 0
       Target: 0
@@ -469,7 +644,7 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: 
+      Text: '"This is my first time here, is there anything I should know?" <Tutorial>'
       Rewards: []
     - Index: 0
       Target: 0
@@ -482,6 +657,10 @@ MonoBehaviour:
     - Index: 0
       Target: 0
       Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"I''m looking for my fiance, Baron Armand de Marbo." <No Tutorial>'
       Rewards: []
     - Index: 0
       Target: 0
@@ -512,7 +691,7 @@ MonoBehaviour:
       Text: 
       Rewards: []
     Name: Yvette's Prologue
-    _date: -1
+    _date: 564305184000000000
     Requirements: []
     OneShot: 1
     Moments: []
@@ -522,17 +701,17 @@ MonoBehaviour:
     Day: 0
     Year: 0
   _index: -1
-  _isNode: 1
+  _isNode: 0
   Positions:
-  - {x: 462, y: 62}
+  - {x: 456, y: 50}
   - {x: 187, y: 71}
   - {x: 186, y: 150}
   - {x: 184, y: 229}
   - {x: 184, y: 382}
   - {x: 462, y: 205}
-  - {x: 894, y: 142}
-  - {x: 914, y: 409}
-  - {x: 912, y: 513}
+  - {x: 803, y: 126}
+  - {x: 801, y: 217}
+  - {x: 802, y: 298}
   - {x: 460, y: 136}
   - {x: 464, y: 276}
   - {x: 186, y: 458}
@@ -545,4 +724,9 @@ MonoBehaviour:
   - {x: 186, y: 305}
   - {x: 460, y: 468}
   - {x: 460, y: 468}
-  - {x: 725, y: 288}
+  - {x: 689, y: 382}
+  - {x: 927, y: 380}
+  - {x: 803, y: 471}
+  - {x: 721, y: 579}
+  - {x: 956, y: 574}
+  - {x: 719, y: 672}

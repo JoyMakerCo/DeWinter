@@ -36,11 +36,7 @@ namespace Ambition
                 }
             }
             model.Party.Rewards.Add(reward);
-			Dictionary<string, string> subs = new Dictionary<string, string>(){
-				{"$NUMCHARMED",numCharmed.ToString()},
-				{"$NUMPUTOFF",(model.Guests.Length - numCharmed).ToString()},
-				{"$REWARD",reward.ID}};
-            AmbitionApp.OpenMessageDialog(DialogConsts.CONVERSATION_OVER_DIALOG, subs);
+            AmbitionApp.OpenDialog("END_CONVERSATION", new CommodityVO[] { reward });
 			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
 		}
 
@@ -48,7 +44,7 @@ namespace Ambition
 		private CommodityVO GenerateRandomReward(int numCharmed, string faction)
     	{
     		int factor = numCharmed < 5 ? numCharmed : 6;
-			switch (Util.RNG.Generate(0,5))
+			switch (Util.RNG.Generate(5))
 			{
 				case 0:
 				case 1:

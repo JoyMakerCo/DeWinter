@@ -12,7 +12,7 @@ namespace Dialog
 			internal set;
 		}
 
-		internal DialogCanvasManager Manager;
+		internal DialogManager Manager;
 
 		public void Close()
 		{

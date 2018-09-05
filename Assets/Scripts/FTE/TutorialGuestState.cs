@@ -12,7 +12,7 @@ namespace Ambition
         override public void OnEnterState()
         {
             base.OnEnterState();
-            GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Dialog.DialogCanvasManager>() != null);
+            GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Dialog.DialogManager>() != null);
             if (canvas != null) 
             {
                 ConversationModel model = AmbitionApp.GetModel<ConversationModel>();

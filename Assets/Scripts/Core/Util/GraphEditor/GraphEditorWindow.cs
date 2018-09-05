@@ -94,7 +94,8 @@ namespace Util
                 switch (Event.current.type)
                 {
                     case EventType.KeyDown:
-                        if ((Event.current.modifiers & (EventModifiers.Command | EventModifiers.Control)) > 0 && Event.current.keyCode == KeyCode.Backspace)
+                        if ((Event.current.modifiers & (EventModifiers.Command | EventModifiers.Control)) > 0
+                            && (Event.current.keyCode == KeyCode.Backspace || Event.current.keyCode == KeyCode.Delete))
                         {
                             DeleteSelected();
                         }
@@ -196,7 +197,7 @@ namespace Util
             }
         }
 
-        private bool DeleteIndex(SerializedProperty list, int index)
+        private static bool DeleteIndex(SerializedProperty list, int index)
         {
             if (list == null || index >= list.arraySize) return false;
             list.DeleteArrayElementAtIndex(index);
@@ -225,38 +226,49 @@ namespace Util
             }
         }
 
-        private void DeleteSelected()
+        private bool DeleteSelected()
         {
-            if (_selection < 0) return;
-            if (_isNode)
+            return DeleteSelected(_serializedObject, _selection, _isNode);
+        }
+
+        public static bool DeleteSelected(SerializedObject serializedObject, int index, bool isNode)
+        {
+            if (index < 0 || serializedObject == null || !(serializedObject.targetObject is IDirectedGraphObject)) return false;
+            IDirectedGraphObject graphObject = serializedObject.targetObject as IDirectedGraphObject;
+            SerializedProperty links = graphObject.GetLinks(serializedObject);
+            if (isNode)
             {
-                DeleteIndex(_nodes, _selection);
-                DeleteIndex(_positions, _selection);
+                if (!DeleteIndex(graphObject.GetNodes(serializedObject), index)) return false;
+                if (!DeleteIndex(graphObject.GetPositions(serializedObject), index)) return false;
 
                 Vector2Int ln;
-                for (int i = _links.arraySize - 1; i >= 0; i--)
+                for (int i = links.arraySize - 1; i >= 0; i--)
                 {
-                    ln = _links.GetArrayElementAtIndex(i).vector2IntValue;
-                    if (ln.x == _selection || ln.y == _selection)
+                    ln = links.GetArrayElementAtIndex(i).vector2IntValue;
+                    if (ln.x == index || ln.y == index)
                     {
-                        DeleteIndex(_links, i);
-                        DeleteIndex(_linkData, i);
+                        DeleteIndex(links, i);
+                        DeleteIndex(graphObject.GetLinkData(serializedObject), i);
                     }
                     else
                     {
-                        if (ln.x >= _selection) ln.x -= 1;
-                        if (ln.y >= _selection) ln.y -= 1;
-                        _links.GetArrayElementAtIndex(i).vector2IntValue = ln;
+                        if (ln.x >= index) ln.x -= 1;
+                        if (ln.y >= index) ln.y -= 1;
+                        links.GetArrayElementAtIndex(i).vector2IntValue = ln;
                     }
                 }
             }
             else
             {
-                DeleteIndex(_links, _selection);
-                DeleteIndex(_linkData, _selection);
+                DeleteIndex(graphObject.GetLinkData(serializedObject), index);
+                if (!DeleteIndex(links, index)) return false;
             }
-            _selection = -1;
-            _isNode = false;
+            graphObject.Select(serializedObject, -1, false);
+            GraphEditorWindow window = GetWindow<GraphEditorWindow>(serializedObject.targetObject.name + " | Graph Editor", false);
+            window._isNode = false;
+            window._selection = -1;
+            serializedObject.ApplyModifiedProperties();
+            return true;
         }
 
         private void CreateNewNode()

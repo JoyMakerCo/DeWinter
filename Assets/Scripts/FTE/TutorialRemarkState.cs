@@ -13,7 +13,7 @@ namespace Ambition
         {
             base.OnEnterState();
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-            GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Dialog.DialogCanvasManager>() != null);
+            GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Dialog.DialogManager>() != null);
             if (canvas != null) 
             {
                 RemarkView[] remarks = canvas.GetComponentsInChildren<RemarkView>(false);

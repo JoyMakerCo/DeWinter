@@ -51,6 +51,9 @@ namespace Ambition
                 case CommodityType.Incident:
                     AmbitionApp.SendMessage<string>(IncidentMessages.QUEUE_INCIDENT, reward.ID);
                     break;
+                case CommodityType.Location:
+                    AmbitionApp.SendMessage<string>(ParisMessages.ADD_LOCATION, reward.ID);
+                    break;
 			}
 		}
 
