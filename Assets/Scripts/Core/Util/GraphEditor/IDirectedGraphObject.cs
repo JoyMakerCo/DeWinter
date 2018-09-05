@@ -8,11 +8,9 @@ namespace Util
     public interface IDirectedGraphObject
     {
 #if (UNITY_EDITOR)
-        void Select(SerializedObject graphObject, int index, bool isNode);
-        SerializedProperty GetNodes(SerializedObject graphObject);
-        SerializedProperty GetLinks(SerializedObject graphObject);
-        SerializedProperty GetLinkData(SerializedObject graphObject);
-        SerializedProperty GetPositions(SerializedObject graphObject);
+        SerializedObject GraphObject { get;  }
+        SerializedProperty GraphProperty { get; }
+        void Select(int index, bool isNode);
         void InitNodeData(SerializedProperty nodeData);
         void InitLinkData(SerializedProperty linkData);
         GUIContent GetGUIContent(int nodeIndex);

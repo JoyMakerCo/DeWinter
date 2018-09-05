@@ -57,7 +57,7 @@ namespace Ambition
                 if (_queue.Count == 0)
                 {
                     _queue.Add(value);
-                    AmbitionApp.SendMessage<IncidentVO>(value);
+                    AmbitionApp.SendMessage(value);
                 }
                 else
                 {

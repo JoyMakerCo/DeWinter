@@ -22,8 +22,6 @@ GameObject:
   - component: {fileID: 222955236140988978}
   - component: {fileID: 114710834047935434}
   - component: {fileID: 114387634806539038}
-  - component: {fileID: 114233918277391934}
-  - component: {fileID: 225929638770214506}
   m_Layer: 5
   m_Name: IntroBanner
   m_TagString: Untagged
@@ -81,20 +79,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: What the fuck do you want?
---- !u!114 &114233918277391934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1729917941078526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97534c7c34c9c406a94daa64d9dc1bea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FadeInSeconds: 0
-  FadeOutSeconds: 0.5
-  OnStart: 1
 --- !u!114 &114387634806539038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,14 +169,3 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1935, y: 418}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &225929638770214506
-CanvasGroup:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1729917941078526}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0

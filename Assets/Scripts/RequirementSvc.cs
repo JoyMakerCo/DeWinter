@@ -32,7 +32,7 @@ namespace Ambition
                         break;
                     case CommodityType.Location:
                         ParisModel paris = AmbitionApp.GetModel<ParisModel>();
-                        if (!paris.Locations.ContainsKey(req.ID)) return false;
+                        if (!paris.Locations.Contains(req.ID)) return false;
                         break;
                     case CommodityType.Reputation:
                         if (model.Reputation < req.Amount) return false;

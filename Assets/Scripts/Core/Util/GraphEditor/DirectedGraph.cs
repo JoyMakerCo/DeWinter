@@ -32,8 +32,8 @@ namespace Util
         public int[] GetNeighbors(int node)
         {
             return (from l in Links
-                where l.x == node
-                select l.y).ToArray();
+                    where l.x == node
+                    select l.y).ToArray();
         }
 
         public int GetLinkIndex(int fromIndex, int toIndex)
@@ -41,9 +41,22 @@ namespace Util
             return Array.FindIndex(Links, l => l.x == fromIndex && l.y == toIndex);
         }
 
-        public virtual void DeleteNode(int nodeIndex) {}
+        public virtual void DeleteNode(int nodeIndex)
+        {
+        }
+//#if (UNITY_EDITOR)
+//            List<Vector2> pos = Positions.ToList();
+//            pos.RemoveAt(nodeIndex);
+//            Positions = pos.ToArray();
+//#endif
+//        }
+
+//#if (UNITY_EDITOR)
+//        public Vector2[] Positions = new Vector2[0];
+//#endif
     }
 
+    [Serializable]
     public class DirectedGraph<T> : DirectedGraph
 	{
 		public T[] Nodes = new T[0];
@@ -98,6 +111,7 @@ namespace Util
         }
     }
 
+    [Serializable]
 	public class DirectedGraph<T,U> : DirectedGraph<T>
 	{
         public U[] LinkData = new U[0];

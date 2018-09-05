@@ -16,7 +16,7 @@ namespace Ambition
 		public string PlayerName = "Yvette DeWinter";
 
 		[JsonProperty("livre")]
-		private int _livre;
+		int _livre;
 		public int Livre
 		{
 			get { return _livre; }
@@ -26,6 +26,16 @@ namespace Ambition
 				AmbitionApp.SendMessage<int>(GameConsts.LIVRE, _livre);
 			}
 		}
+
+        int _exhaustion;
+        public int Exhaustion
+        {
+            get { return _exhaustion; }
+            set {
+                _exhaustion = value > 100 ? 100 : value < 0 ? 0 : value;
+                AmbitionApp.SendMessage(GameConsts.EXHAUSTION, _exhaustion);
+            }
+        }
 
 		[JsonProperty("reputation", Order = 10)]
 		public int Reputation
@@ -47,20 +57,14 @@ namespace Ambition
 		}
 
 		[JsonProperty("confidence")]
-		private int[] _confidence;
-		public int ConfidenceBonus
-		{
-			get { return _confidence[Level]; }
-		}
+		private readonly int[] _confidence;
+        public int ConfidenceBonus => _confidence[Level];
 
-		[JsonProperty("vip")]
-		private int[] _vip;
-		public int PartyInviteImportance
-		{
-			get { return _vip[Level]; }
-		}
+        [JsonProperty("vip")]
+		private readonly int[] _vip;
+        public int PartyInviteImportance => _vip[Level];
 
-		public int Level
+        public int Level
 		{
 			get { return _reputation.Level; }
 		}

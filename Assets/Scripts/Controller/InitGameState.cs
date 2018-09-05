@@ -46,7 +46,6 @@ namespace Ambition
             AmbitionApp.RegisterCommand<StartIncidentCmd, string>(IncidentMessages.START_INCIDENT);
             AmbitionApp.RegisterCommand<AddLocationCmd, string>(ParisMessages.ADD_LOCATION);
             AmbitionApp.RegisterCommand<RemoveLocationCmd, string>(ParisMessages.REMOVE_LOCATION);
-            AmbitionApp.RegisterCommand<ExploreParisCmd, LocationVO[]>(ParisMessages.EXPLORE);
 
 			// Party
 			AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
@@ -67,8 +66,12 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
 			AmbitionApp.RegisterCommand<CheckLivreCmd, int>(GameConsts.LIVRE);
 
-			// Initially enabled for TUTORIAL
-			AmbitionApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
+            // Paris
+            AmbitionApp.RegisterCommand<RestAtHomeCmd>(ParisMessages.REST);
+            AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
+
+            // Initially enabled for TUTORIAL
+            AmbitionApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
 			AmbitionApp.RegisterCommand<SkipTutorialCmd>(GameMessages.SKIP_TUTORIAL);
 
 			// UFlow Associations
@@ -208,6 +211,27 @@ namespace Ambition
 			AmbitionApp.RegisterLink<GuestActionSelectedLink, string>("GuestActionController", "SelectGuestAction", "GuestActionToast", "Toast");
             AmbitionApp.RegisterLink<GuestActionSelectedLink, string>("GuestActionController", "SelectGuestAction", "GuestActionLead", "Lead");
 			AmbitionApp.RegisterLink("GuestActionController", "SelectGuestAction", "GuestActionNone");
-		}
+
+            
+            // PARIS STATES.
+            //AmbitionApp.RegisterState("ParisMapController", "EnterParisState");
+            //AmbitionApp.RegisterState<FadeOutState>("ParisMapController", "LeaveParisMapState");
+            //AmbitionApp.RegisterState("ParisMapController", "LoadIncidentDecisionState");
+
+            //AmbitionApp.RegisterState<LoadParisIncidentState>("ParisMapController", "LoadIncidentState");
+            //AmbitionApp.RegisterState<UMachine>("ParisMapController", "IncidentController");
+            //AmbitionApp.RegisterState<ParisLocationState>("ParisMapController", "ParisLocationState");
+
+            //AmbitionApp.RegisterState<RestAtHomeState>("ParisMapController", "RestAtHomeState");
+            //AmbitionApp.RegisterState<LoadSceneState, string>("ParisMapController", "GoHomeState", SceneConsts.ESTATE_SCENE);
+            //AmbitionApp.RegisterState<NextDayState>("ParisMapController", "NextDayState");
+
+            //AmbitionApp.RegisterLink<ChooseLocationLink>("ParisMapController", "EnterParisState", "LeaveParisMapState");
+            //AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("ParisMapController", "LeaveParisMapState", "LoadIncidentDecisionState", GameMessages.FADE_OUT_COMPLETE);
+            ////AmbitionApp.RegisterLink<ValidateParisIncidentState>("ParisMapController", "LoadIncidentDecisionState", "LoadIncidentState", GameMessages.FADE_OUT_COMPLETE);
+
+
+            //AmbitionApp.RegisterLink("ParisMapController", "LoadEstate", "NextDayState");
+        }
 	}
 }

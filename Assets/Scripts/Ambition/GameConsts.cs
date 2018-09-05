@@ -9,6 +9,7 @@ namespace Ambition
 		public const string INTOXICATION = "INTOXICATION";
 		public const string CONFIDENCE = "CONFIDENCE";
 		public const string DRINK = "DRINK";
+        public const string EXHAUSTION = "EXHAUSTION";
 
 		public const float SCENE_CHANGE_SECONDS = 2.0f;
 	}

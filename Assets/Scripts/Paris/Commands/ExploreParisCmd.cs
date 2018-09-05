@@ -1,29 +1,23 @@
-﻿using System;
+﻿using Util;
 using Core;
-using UnityEngine;
 
 namespace Ambition
 {
-    public class ExploreParisCmd : ICommand<LocationVO[]>
+    public class ExploreParisCmd : ICommand<LocationPin[]>
     {
-        private const int DISCOVER_CHANCE = 50;
-
-        public void Execute(LocationVO[] locations)
+        public void Execute(LocationPin[] locations)
         {
-            ParisModel paris = AmbitionApp.GetModel<ParisModel>();
-            foreach (LocationVO location in locations)
+            ParisModel model = AmbitionApp.GetModel<ParisModel>();
+            int chance = (int)(model.ExplorelocationChance * 100);
+            foreach(LocationPin pin in locations)
             {
-                if (!paris.VisitedLocations.ContainsKey(location.Name) && Util.RNG.Generate(100) < DISCOVER_CHANCE)
+                if (RNG.Generate(100) < chance)
                 {
-                    AmbitionApp.SendMessage<string>(ParisMessages.ADD_LOCATION, location.Name);
-                    paris.Locations.Add(location.Name, location);
-                    if (location.IncidentID != null)
-                    {
-                        AmbitionApp.SendMessage<string>(IncidentMessages.START_INCIDENT, location.IncidentID);
-                    }
+                    AmbitionApp.SendMessage(pin);
                     return;
                 }
             }
+            //AmbitionApp.SendMessage(ParisMessages.INCIDENT);
         }
     }
 }

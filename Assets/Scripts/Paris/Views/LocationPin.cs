@@ -8,37 +8,26 @@ namespace Ambition
 {
     public class LocationPin : MonoBehaviour, IPointerClickHandler
     {
-        [HideInInspector]
-        public string Incident = null;
-
-        public GameObject Scene = null;
-        public bool OneShot = false;
-        public bool Discoverable = false;
+        public IncidentConfig IncidentConfig;
+        public GameObject Scene;
+        public bool OneShot;
+        public bool Discoverable;
         public GameObject Tooltip;
         public CommodityVO[] Requirements;
 
         private void Awake()
         {
             AmbitionApp.Subscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
-            AmbitionApp.Subscribe<string>(ParisMessages.SHOW_LOCATION, HandleShow);
-            AmbitionApp.Subscribe<string>(ParisMessages.HIDE_LOCATION, HandleHide);
+            AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
+            AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
         }
 
         private void OnDestroy()
         {
             AmbitionApp.Unsubscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
-            AmbitionApp.Unsubscribe<string>(ParisMessages.SHOW_LOCATION, HandleShow);
-            AmbitionApp.Unsubscribe<string>(ParisMessages.HIDE_LOCATION, HandleHide);
+            AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
+            AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
         }
-
-#if (UNITY_EDITOR)
-        public IncidentConfig IncidentConfig;
-
-        private void OnValidate()
-        {
-            Incident = IncidentConfig?.name;
-        }
-#endif
 
         public void OnPointerClick(PointerEventData data)
         {

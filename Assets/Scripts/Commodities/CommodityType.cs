@@ -16,6 +16,7 @@ namespace Ambition
 		Message,	// Message id, amount (may not matter)
         Incident,   // Incident id
         Location,   // Location Pin Name
-        Date        // Amount = ticks value of Date (Requirement Only)
+        Date,       // Amount = ticks value of Date (Requirement Only)
+        Party       // Party ID; RSVP value
 	}
 }

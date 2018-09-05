@@ -8,8 +8,8 @@ namespace Ambition
         public void Execute(string location)
         {
             ParisModel paris = AmbitionApp.GetModel<ParisModel>();
-            if (!paris.Locations.ContainsKey(location))
-                paris.Locations.Add(location, null);
+            if (!paris.Locations.Contains(location))
+                paris.Locations.Add(location);
         }
     }
 }

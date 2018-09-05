@@ -13,7 +13,7 @@ namespace Ambition
 		public override void OnOpen ()
 		{
 			base.OnOpen ();
-			QuitBtn.onClick.AddListener(Application.Quit);
+			QuitBtn.onClick.AddListener(UnityEngine.Application.Quit);
 			CancelBtn.onClick.AddListener(Close);
 		}
 	}

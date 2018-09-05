@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
 using UFlow;
-using Core;
 
 namespace Ambition
 {
     public class FleeConversationState : UState
 	{
-		public override void OnEnterState ()
+		public override void OnEnterState()
 		{
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             PartyVO party = model.Party;
@@ -22,7 +19,7 @@ namespace Ambition
             //The Player's Reputation is Punished
             // TODO: Make these values configurable
             AmbitionApp.GetModel<GameModel>().Reputation -= 25;
-            AmbitionApp.SendMessage<AdjustFactionVO>(new AdjustFactionVO(party.Faction, -50));
+            AmbitionApp.SendMessage(new AdjustFactionVO(party.Faction, -50));
 
             AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
      	}

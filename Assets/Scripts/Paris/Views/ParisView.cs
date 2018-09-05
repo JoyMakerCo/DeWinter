@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Ambition
 {
     public class ParisView : MonoBehaviour, IPointerClickHandler
     {
+        public int ExploreRange = 20;
         public GameObject ExplorePin;
+        public Transform Pins;
 
         void Awake()
         {
@@ -19,28 +24,20 @@ namespace Ambition
 
         void Start()
         {
-            bool active;
-            LocationPin[] locations = transform.GetComponentsInChildren<LocationPin>(true);
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
-            foreach (LocationPin pin in locations)
+            LocationPin pin;
+            bool active;
+            foreach (Transform child in Pins)
             {
-                active = model.Locations.ContainsKey(name)
-                || (!pin.Discoverable
-                    && !model.VisitedLocations.ContainsKey(pin.name)
-                    && AmbitionApp.CheckRequirements(pin.Requirements));
-                pin.gameObject.SetActive(active);
-                if (active)
+                active = model.Locations.Contains(child.name);
+                child.gameObject.SetActive(active);
+                if (!active && !model.Visited.Contains(child.name))
                 {
-                    LocationVO location = new LocationVO
+                    pin = child.GetComponent<LocationPin>();
+                    if (!pin.Discoverable && AmbitionApp.CheckRequirements(pin.Requirements))
                     {
-                        Name = pin.name,
-                        ID = pin.GetInstanceID(),
-                        Scene = (pin.Scene != null) ? pin.Scene.name : null,
-                        OneShot = pin.OneShot,
-                        Discoverable = pin.Discoverable,
-                        Requirements = pin.Requirements
-                    };
-                    model.Locations[pin.name] = location;
+                        AmbitionApp.SendMessage(ParisMessages.ADD_LOCATION, pin.name);
+                    }
                 }
             }
         }
@@ -63,7 +60,22 @@ namespace Ambition
 
         public void Explore()
         {
-            
+            float range = ExploreRange * ExploreRange;
+            Vector3 pos = ExplorePin.transform.localPosition;
+            LocationPin[] pins = GetComponentsInChildren<LocationPin>(true);
+            Dictionary<LocationPin, float> mags =
+                pins.Where(p=>!p.isActiveAndEnabled && p.Discoverable)
+                    .ToDictionary(p => p, p => (p.transform.localPosition - pos).sqrMagnitude);
+            string[] result =
+                mags.Where(p => p.Value <= range)
+                    .OrderBy(p=>p.Value)
+                    .Select(p => p.Key.name).ToArray();
+            AmbitionApp.SendMessage(ParisMessages.EXPLORE, result);
+        }
+
+        public void ReturnToCalendar()
+        {
+            AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.ESTATE_SCENE);
         }
     }
 }

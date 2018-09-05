@@ -16,7 +16,7 @@ namespace Core
 
 		public LocalizationModel ()
 		{
-			_language = Application.systemLanguage.ToString();
+			_language = UnityEngine.Application.systemLanguage.ToString();
 			_localizations = new Dictionary<string, string>();
 
 			TextAsset file = Resources.Load<TextAsset>(LOCALIZATIONS_DIRECTORY + _language);
