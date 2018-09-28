@@ -79,7 +79,7 @@ MonoBehaviour:
   - {fileID: 114641024582448168}
   MasterBankRef: {fileID: 114211716736511416}
   StringsBankRef: {fileID: 114639243181152198}
-  stringsBankWriteTime: 636728835490000000
+  stringsBankWriteTime: 636736851000000000
   cacheVersion: 2
 --- !u!114 &114001968206730074
 MonoBehaviour:
@@ -210,11 +210,11 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114570597043450014}
-  - {fileID: 114646356862454934}
-  - {fileID: 114310975568209744}
-  - {fileID: 114217827657486448}
-  - {fileID: 114112768796475412}
+  - {fileID: 114761265753879352}
+  - {fileID: 114647858178835912}
+  - {fileID: 114511309029721462}
+  - {fileID: 114951821441092724}
+  - {fileID: 114287476458738842}
   MinDistance: 0
   MaxDistance: 0
   Length: 60949
@@ -237,8 +237,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114940132225217302}
-  - {fileID: 114323093716083236}
+  - {fileID: 114981937511425216}
+  - {fileID: 114650897208572312}
   MinDistance: 0
   MaxDistance: 0
   Length: 154637
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Gameplay.bank
-  lastModified: 636728835530000000
+  lastModified: 636736851340000000
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -486,6 +486,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 125589
+--- !u!114 &114185439018852690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114186010357952592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +513,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114187935037052870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -543,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/Master Bank.bank
-  lastModified: 636728835490000000
+  lastModified: 636736851000000000
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -734,6 +764,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 757
+--- !u!114 &114264497100807544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114268251610631938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,10 +831,25 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114140096998071020}
+  - {fileID: 114731860855128862}
   MinDistance: 0
   MaxDistance: 0
   Length: 66315
+--- !u!114 &114287476458738842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114296567779059154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,7 +1239,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114833377238587132}
+  - {fileID: 114559894887151836}
   MinDistance: 0
   MaxDistance: 0
   Length: 81272
@@ -1202,8 +1262,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114729249960235312}
-  - {fileID: 114815337146929042}
+  - {fileID: 114502014538812362}
+  - {fileID: 114518355213363958}
   MinDistance: 0
   MaxDistance: 0
   Length: 157358
@@ -1278,7 +1338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Reacts.bank
-  lastModified: 636728835490000000
+  lastModified: 636736851010000000
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -1296,7 +1356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_OneShot.bank
-  lastModified: 636728835490000000
+  lastModified: 636736851020000000
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -1413,6 +1473,36 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114502014538812362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114511309029721462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114516113007117410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,6 +1525,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1800
+--- !u!114 &114518355213363958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114524047551604632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,6 +1670,21 @@ MonoBehaviour:
   - Name: 
     Value: 12474
   Exists: 0
+--- !u!114 &114546174780843086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114549676936629558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,6 +1697,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114559894887151836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
   Min: 0
   Max: 1
   Default: 0
@@ -1632,8 +1767,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114964757457784580}
-  - {fileID: 114642153931114196}
+  - {fileID: 114919531055310690}
+  - {fileID: 114949163876995620}
   MinDistance: 0
   MaxDistance: 0
   Length: 140689
@@ -1738,7 +1873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets/Audio/build/Master Bank.strings.bank
-  lastModified: 636728835490000000
+  lastModified: 636736851000000000
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -1793,6 +1928,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114647858178835912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114650897208572312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -1954,8 +2119,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114168706162525996}
-  - {fileID: 114116307225200816}
+  - {fileID: 114546174780843086}
+  - {fileID: 114264497100807544}
   MinDistance: 0
   MaxDistance: 0
   Length: 136615
@@ -1978,11 +2143,26 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114716678936423814}
-  - {fileID: 114204957383736100}
+  - {fileID: 114714212034350946}
+  - {fileID: 114185439018852690}
   MinDistance: 0
   MaxDistance: 0
   Length: 79756
+--- !u!114 &114714212034350946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114716678936423814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,6 +2179,36 @@ MonoBehaviour:
   Max: 1
   Default: 0
 --- !u!114 &114729249960235312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114731860855128862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114740573752848338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2124,6 +2334,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5078
+--- !u!114 &114761265753879352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114768574889649222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2258,6 +2483,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114854743928683586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114856564808873502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,8 +2565,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114374111106761520}
-  - {fileID: 114590896614485914}
+  - {fileID: 114854743928683586}
+  - {fileID: 114740573752848338}
   MinDistance: 0
   MaxDistance: 0
   Length: 118500
@@ -2342,7 +2582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_Ambient.bank
-  lastModified: 636728835510000000
+  lastModified: 636736851110000000
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -2370,6 +2610,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 76367
+--- !u!114 &114919531055310690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114920884602485926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2404,8 +2659,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114815069117942296}
-  - {fileID: 114358558715328374}
+  - {fileID: 114187935037052870}
+  - {fileID: 114973081176022710}
   MinDistance: 0
   MaxDistance: 0
   Length: 132947
@@ -2443,6 +2698,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114949163876995620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114951821441092724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
   Min: 0
   Max: 1
   Default: 0
@@ -2513,6 +2798,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114973081176022710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114975368863259130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,6 +2835,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114981937511425216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114986532446558728
 MonoBehaviour:
   m_ObjectHideFlags: 0
