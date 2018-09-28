@@ -6,53 +6,58 @@ using UnityEditor;
 
 namespace Ambition
 {
-    public class LocationPin : MonoBehaviour, IPointerClickHandler
+    public class LocationPin : MonoBehaviour
     {
         public IncidentConfig IncidentConfig;
         public GameObject Scene;
         public bool OneShot;
         public bool Discoverable;
-        public GameObject Tooltip;
+        public string LocationWindowDescription;
+        public Sprite LocationWindowImage;
+        public GameObject Label;
+        public Text LabelText;
         public CommodityVO[] Requirements;
+
+        private string _name;
 
         private void Awake()
         {
-            AmbitionApp.Subscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            //AmbitionApp.Subscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
             AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
             AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
+            _name = LabelText.text;
         }
 
         private void OnDestroy()
         {
-            AmbitionApp.Unsubscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            //AmbitionApp.Unsubscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
             AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
             AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
-<<<<<<< HEAD
-=======
         }
 
-#if (UNITY_EDITOR)
-        public IncidentConfig IncidentConfig;
-
-        private void OnValidate()
+        public void Select()
         {
-            Incident = IncidentConfig?.name;
->>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
+            AmbitionApp.SendMessage<LocationPin>(ParisMessages.SELECT_LOCATION, this);
         }
 
-        public void OnPointerClick(PointerEventData data)
+        public void ShowLabel()
         {
-            AmbitionApp.SendMessage<string>(ParisMessages.SELECT_LOCATION, this.name);
+            Label.SetActive(true);
+        }
+
+        public void HideLabel()
+        {
+            Label.SetActive(false);
         }
 
         private void HandleSelect(string location)
         {
-            Tooltip.SetActive(location == gameObject.name);
+            //Tooltip.SetActive(location == gameObject.name);
         }
 
-        public void GoToLocation()
+        public string Name()
         {
-            AmbitionApp.SendMessage<string>(ParisMessages.GO_TO_LOCATION, this.name);
+            return _name;
         }
 
         private void HandleShow(string locationID)

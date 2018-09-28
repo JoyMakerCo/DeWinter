@@ -73,20 +73,20 @@ namespace Ambition
 				if (!_parties.Contains(party)) _parties.Add(party);
 				Party1Icon.enabled = _parties.Count > 1; // Show for more than 1 party
 				Party2Icon.enabled = true; // Show for at least 1 party
-				accept = _parties.Find(p=>p.RSVP > 0);
+                accept = _parties.Find(p=>p.RSVP == RSVP.Accepted);
 
 				// Show party 2's RSVP icon only if there's an accepted party or all declined parties
-				Party2RSVPIcon.enabled = accept!=null || _parties.TrueForAll(p=>p.RSVP < 0);
+                Party2RSVPIcon.enabled = accept!=null || _parties.TrueForAll(p=>p.RSVP == RSVP.Declined);
 				// Set the Party 2 acceptance icon
 				Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(accept!=null ? "accepted" : "declined");
-				if (accept == null) accept = _parties.Find(p=>p.RSVP==0);
+                if (accept == null) accept = _parties.Find(p=>p.RSVP == RSVP.New);
 	
 				// Set Party 2's Faction icon
 				if (accept != null) Party2Icon.sprite = CalendarSpriteConfig.GetSprite(accept.Faction);
 
 				if (Party1Icon.enabled)
 				{
-					party = _parties.Find(p=>p != accept && p.RSVP==0);
+                    party = _parties.Find(p=>p != accept && p.RSVP == RSVP.New);
 					Party1RSVPIcon.enabled = party != null;
 					if (party == null) party = _parties.Find(p=>p != accept);
 					Party1Icon.sprite = CalendarSpriteConfig.GetSprite(party.Faction);

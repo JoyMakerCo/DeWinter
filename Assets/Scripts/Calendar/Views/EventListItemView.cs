@@ -22,15 +22,14 @@ namespace Ambition
 			set {
 				_party = value;
 				string partyName = AmbitionApp.GetString("party.name." + _party.ID);
-				PartyNameTxt.text = partyName != null
-					? partyName
-					: AmbitionApp.GetString("party.name.default", new Dictionary<string, string>(){
-						{"$HOST",_party.Host.LastName},
-						{"$IMPORTANCE",AmbitionApp.GetString("party_importance."+_party.Importance.ToString())},
-						{"$REASON",_party.Description}});
+				PartyNameTxt.text = partyName
+                    ?? AmbitionApp.GetString("party.name.default", new Dictionary<string, string>(){
+                        {"$HOST",_party.Host},
+                        {"$IMPORTANCE",AmbitionApp.GetString("party_importance." + ((int)_party.Importance).ToString())},
+                        {"$REASON",_party.Description}});
 				FactionIcon.sprite = FactionSpriteConfig.GetSprite(_party.Faction);
-				Highlight.enabled = _party.RSVP == 1;
-				Strikethrough.enabled = _party.RSVP == -1;
+                Highlight.enabled = _party.RSVP == RSVP.Accepted;
+                Strikethrough.enabled = _party.RSVP == RSVP.Declined;
 			}
 		}
 

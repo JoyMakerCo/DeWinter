@@ -13,15 +13,15 @@ namespace Ambition
 			//Extra Turns because of Faction Reputation Level
 			switch (party.Importance)
 			{
-				case 1:
+                case PartySize.Trivial:
 					if (faction.Level >= 4)
                         model.Party.Turns += 2;
 					break;
-				case 2:
+                case PartySize.Decent:
 					if (faction.Level >= 7)
                         model.Party.Turns += 3;
 					break;
-				case 3:
+                case PartySize.Grand:
 					if (faction.Level >= 9)
                         model.Party.Turns += 4;
 					break;

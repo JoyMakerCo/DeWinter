@@ -21,6 +21,7 @@ namespace Ambition
             AmbitionApp.GetModel<GameModel>().Reputation -= 25;
             AmbitionApp.SendMessage(new AdjustFactionVO(party.Faction, -50));
 
+            AmbitionApp.SendMessage(PartyMessages.FLEE_CONVERSATION);
             AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
      	}
 	}

@@ -9,34 +9,37 @@ using Dialog;
 
 namespace Ambition
 {
-	public class IncidentView : DialogView
+	public class IncidentView : MonoBehaviour
 	{
-		public const string DIALOG_ID = "INCIDENT";
 	    public Text titleText;
 	    public Text descriptionText;
 		public Text SpeakerName;
+        public GameObject Header;
 
 	    public AvatarView Character1;
 		public AvatarView Character2;
 		private Image _background;
-		private AudioSource[] _audio;
 
-	    public override void OnOpen ()
+	    void Awake ()
 		{
-			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
-			_background = gameObject.GetComponent<Image>();
-			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
-            model.Moment = model.Incident.Nodes[0];
-			titleText.text = model.Incident.Name;
-		}
+            _background = gameObject.GetComponent<Image>();
+            AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
+            AmbitionApp.Subscribe<MomentVO>(HandleMoment);
+        }
 
-		public override void OnClose ()
+        void OnDestroy ()
 		{
-			AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
-			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_CLOSED, ID);
+            AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
+            AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
 	    }
 
- 		private void HandleMoment(MomentVO moment)
+
+        private void HandleIncident(IncidentVO incident)
+        {
+            if (incident != null) titleText.text = incident.Name;
+        }
+
+        private void HandleMoment(MomentVO moment)
 		{
 			if (moment != null)
 			{
@@ -47,8 +50,14 @@ namespace Ambition
 				Character2.ID = moment.Character2.AvatarID;
 				Character2.Pose = moment.Character2.Pose;
 
-				AmbitionApp.SendMessage<AmbientClip>(AudioMessages.PLAY_MUSIC, moment.Music);
-				SpeakerName.enabled = (moment.Speaker != SpeakerType.None);
+                if (moment.Music.Name.Length > 0)
+    				AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, moment.Music);
+                if (moment.AmbientSFX.Name.Length > 0)
+                    AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENTSFX, moment.AmbientSFX);
+                if (moment.OneShotSFX.Name.Length > 0)
+                    AmbitionApp.SendMessage(AudioMessages.PLAY_ONESHOTSFX, moment.OneShotSFX);
+
+                SpeakerName.enabled = (moment.Speaker != SpeakerType.None);
 				switch(moment.Speaker)
 				{
 					case SpeakerType.Player:

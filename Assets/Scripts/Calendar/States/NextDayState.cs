@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using UFlow;
 
 namespace Ambition
@@ -9,12 +11,7 @@ namespace Ambition
         {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             calendar.Today = calendar.Today.AddDays(1);
-            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
-            System.Collections.Generic.List<PartyVO> parties;
-            partyModel.Party =
-                calendar.Parties.TryGetValue(calendar.Today, out parties)
-                ? parties.Find(p => p.RSVP == 1)
-                : null;
+            AmbitionApp.GetModel<PartyModel>().Party = null;
         }
     }
 }

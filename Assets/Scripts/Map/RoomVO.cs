@@ -34,7 +34,7 @@ namespace Ambition
 
 		public List<EnemyVO> Enemies;
 		public string [] Features=new string[0];
-
+        public bool Indoors = true; //Indoors vs. outdoors rooms haven't been implemented yet, but we need this here right now
 
 		public bool HostHere
 		{

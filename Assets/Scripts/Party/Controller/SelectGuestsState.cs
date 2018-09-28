@@ -8,14 +8,23 @@ namespace Ambition
         override public void OnEnterState()
         {
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-			RemarkVO remark = model.Remark;
+            RemarkVO[] hand = model.Remarks;
+            RemarkVO remark = model.Remark;
 			float levelBonus = (AmbitionApp.GetModel<GameModel>().Level >= 4)
 				? 1.25f
 				: 1.0f;
             float ReparteBonus = 1.0f + (model.Repartee ? AmbitionApp.GetModel<PartyModel>().ReparteeBonus : 0f);
 
-            model.Remarks.Remove(model.Remark);
-            model.Remark = null;
+            int index = Array.IndexOf(hand, remark);
+            if (index >= 0)
+            {
+                while (index < hand.Length - 1)
+                {
+                    hand[index] = hand[index + 1];
+                    index++;
+                }
+                hand[index] = null;
+            }
 
             foreach (GuestVO guest in model.Guests)
 			{
@@ -28,6 +37,14 @@ namespace Ambition
                         {
                             guest.Opinion += (int)(Util.RNG.Generate(25, 36) * ReparteBonus * levelBonus);
                             AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
+                            //Is this the remark that charmed the guest? This determines whether the guest plays the charmed sound effect
+                            if (guest.Opinion >= 100 && guest.State != GuestState.Charmed)
+                            {
+                                AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_CHARMED, guest);
+                            } else
+                            {
+                                AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_POSITIVE, guest);
+                            }
                             model.Confidence += 5;
                         }
                         else if (guest.Dislike == remark.Interest) //They dislike the tone
@@ -39,10 +56,28 @@ namespace Ambition
                                 model.Confidence -= 10;
                             }
                             model.ItemEffect = false;
+                            //Is this the remark that Put Off the guest? This determines whether the guest plays the put off sound effect
+                            if (guest.Opinion <= 0 && guest.State != GuestState.PutOff)
+                            {
+                                AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_PUTOFF, guest);
+                            }
+                            else
+                            {
+                                AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_NEGATIVE, guest);
+                            }
                         }
                         else //Neutral Tone
                         {
                             guest.Opinion += (int)(Util.RNG.Generate(12, 18) * ReparteBonus * levelBonus);
+                            //Is this the remark that charmed the guest? This determines whether the guest plays the charmed sound effect
+                            if (guest.Opinion >= 100 && guest.State != GuestState.Charmed)
+                            {
+                                AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_CHARMED, guest);
+                            }
+                            else
+                            {
+                                AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_NEUTRAL, guest);
+                            }
                         }
                     }
 
@@ -65,6 +100,7 @@ namespace Ambition
                 {
                     guest.Interest = 0;
                     guest.State = GuestState.Bored;
+                    AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_BORED, guest);
                 }
             }
         }

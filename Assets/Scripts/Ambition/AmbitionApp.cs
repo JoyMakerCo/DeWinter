@@ -36,12 +36,17 @@ namespace Ambition
 			App.Service<CommandSvc>().Register<C, T>();
 		}
 
-		public static void RegisterCommand<C, T>(string messageID) where C:ICommand<T>, new()
+        public static void RegisterCommand<C, T>(string messageID) where C:ICommand<T>, new()
 		{
 			App.Service<CommandSvc>().Register<C, T>(messageID);
 		}
 
-		public static void Execute<C>() where C:ICommand, new()
+        public static void RegisterCommand<C, T>(string messageID, T data) where C : ICommand<T>, new()
+        {
+            App.Service<CommandSvc>().Register<C, T>(messageID, data);
+        }
+
+        public static void Execute<C>() where C:ICommand, new()
 		{
 			App.Service<CommandSvc>().Execute<C>();
 		}

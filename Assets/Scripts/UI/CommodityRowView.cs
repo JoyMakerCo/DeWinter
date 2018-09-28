@@ -14,7 +14,7 @@ namespace Ambition
         {
             Icon.sprite = icon;
             CommodityTF.text = commodity.ID ?? commodity.Type.ToString();
-            ValueTF.text = commodity.Amount.ToString();
+            ValueTF.text = commodity.Value.ToString();
         }
     }
 }

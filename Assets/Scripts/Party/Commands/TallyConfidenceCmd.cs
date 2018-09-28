@@ -17,25 +17,25 @@ namespace Ambition
 	        //Calculate Confidence Values Here------------
 	        //Faction Outfit Likes (Military doesn't know anything, so they use the Average Value)
 			Dictionary<string, int> parameters = new Dictionary<string, int>();
+            OutfitVO outfit = imod.Equipped[ItemConsts.OUTFIT] as OutfitVO;
 
-
-			//TODO: We can't configure this??
-	        if (party.Faction != "military")
+            //TODO: We can't configure this??
+            if (party.Faction != "military")
 	        {
 	            int modestyLike = faction.Modesty;
 				int luxuryLike = faction.Luxury;
-	            int outfitModesty = gmod.Outfit.Modesty;
-	            int outfitLuxury = gmod.Outfit.Luxury;
-	            float outfitNovelty = (float)gmod.Outfit.Novelty * 0.01f;
+	            int outfitModesty = outfit.Modesty;
+	            int outfitLuxury = outfit.Luxury;
+	            float outfitNovelty = outfit.Novelty * 0.01f;
 
-	            // TODO: Fix this formula
+	            // TODO: Fix this formula   
 	            parameters.Add("outfit", (int)((((400 - (Math.Abs(modestyLike - outfitModesty) + Math.Abs(luxuryLike - outfitLuxury))))*0.5f)* outfitNovelty));
 	        } else {
 				parameters.Add("outfit", 100);
 	        }
 
 	        //Is it in Style?
-	        parameters.Add("outfitStyle",  imod.CurrentStyle == gmod.Outfit.Style ? 30 : 0);
+	        parameters.Add("outfitStyle",  imod.CurrentStyle == outfit.Style ? 30 : 0);
 
 	        //Is the Accessory in Style and is there a Match?
 	        parameters.Add("accessory", 0);
@@ -47,7 +47,7 @@ namespace Ambition
 	            {
 					parameters["accessory"] = 30;
 	            }
-	            if (gmod.Outfit.Style == GameData.partyAccessory.State["Style"] as string)
+                if (outfit.Style == accessory.State["Style"] as string)
 	            {
 					parameters["styleMatch"] = 30;
 	            }

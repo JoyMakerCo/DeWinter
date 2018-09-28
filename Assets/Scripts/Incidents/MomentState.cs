@@ -9,11 +9,15 @@ namespace Ambition
 		{
 			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
 			MomentVO moment = model.Moment;
-            int index = model.Incident.GetNodeIndex(moment);
-            if (index >= 0)
-			{
-                AmbitionApp.SendMessage<TransitionVO[]>(model.Incident.GetLinkData(index));
-			}
-		}
+            if (moment != null)
+            {
+                int index = model.Incident.GetNodeIndex(moment);
+                AmbitionApp.SendMessage(moment.Rewards);
+                if (index >= 0)
+                {
+                    AmbitionApp.SendMessage(model.Incident.GetLinkData(index));
+                }
+            }
+        }
 	}
 }

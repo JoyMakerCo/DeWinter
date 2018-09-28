@@ -58,7 +58,7 @@ namespace Ambition
 	        	{
 					partyModel.Drink = partyModel.MaxDrinkAmount;
 					Dictionary<string, string> subs = new Dictionary<string, string>(){
-						{"$HOSTNAME", partyModel.Party.Host.Name}};
+						{"$HOSTNAME", partyModel.Party.Host}};
 					AmbitionApp.OpenMessageDialog("refill_wine_dialog", subs);
 		        }
 

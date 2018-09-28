@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using Ambition;
 
@@ -53,16 +53,16 @@ public class PierreQuest
     void GenerateDeadline()
     {
     	CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
-    	List<PartyVO> parties;
-    	DateTime day = model.Today;
-		for (int i=0; i<MAX_DEADLINE; i++)
-		{
-			if (model.Parties.TryGetValue(day.AddDays(i), out parties) && parties.Count > 0)
-			{
-				daysTimeLimit = i + new System.Random().Next(3);
-				return;
-			}
-		}
+        IEnumerable <DateTime> dates = model.Timeline.Keys.Where(k => k.Date > model.Today && k.CompareTo(model.Today.AddDays(MAX_DEADLINE)) <= 0).OrderBy(k=>k.Ticks);
+        foreach(DateTime date in dates)
+        {
+            if (model.Timeline[date].Exists(e => e is PartyVO))
+            {
+                daysTimeLimit = date.Subtract(model.Today).Days + Util.RNG.Generate(3);
+                return;
+            }
+        }
+        daysTimeLimit = MAX_DEADLINE;
     }
 
     public string FlavorText()

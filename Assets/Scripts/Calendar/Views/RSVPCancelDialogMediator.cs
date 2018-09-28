@@ -21,8 +21,8 @@ namespace Ambition
 			_party = p;
 
 			Dictionary<string, string> subs = new Dictionary<string, string>() {
-				{"$PARTYSIZE", AmbitionApp.GetString("party_importance." + p.Importance.ToString())},
-				{"$HOSTNAME", p.Host.Name},
+                {"$PARTYSIZE", AmbitionApp.GetString("party_importance." + ((int)p.Importance).ToString())},
+				{"$HOSTNAME", p.Host},
 				{"$FACTION", AmbitionApp.GetString(p.Faction)}};
 
 			if (p.Date == AmbitionApp.GetModel<CalendarModel>().Today)
@@ -37,8 +37,8 @@ namespace Ambition
 
 		public void CancelRSVP()
 		{
-			_party.RSVP = -1;
-			AmbitionApp.SendMessage<PartyVO>(PartyMessages.RSVP, _party);
+            _party.RSVP = RSVP.Declined;
+			AmbitionApp.SendMessage<PartyVO>(_party);
 		}
 	}
 }

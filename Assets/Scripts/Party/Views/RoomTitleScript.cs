@@ -22,7 +22,7 @@ namespace Ambition
 
 		private void HandleRoom(RoomVO room)
 		{
-			_titleText.text = room.Name;
+            _titleText.text = room.Name;
 		}
 	}
 }

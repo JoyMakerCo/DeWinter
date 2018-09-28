@@ -39,9 +39,8 @@ namespace Ambition
 			int[] wallVerts = new int[4];
 			int len = verts.Length;
 			float[] scalars;
-            int index;
-			for (int i=len-2; i>=0; i-=2)
-			{
+            for (int i=len-2; i>=0; i-=2)
+            {
 				wallVerts[0] = verts[i];
 				wallVerts[1] = verts[i+1];
 				wallVerts[2] = verts[(i+2)%len];
@@ -52,12 +51,10 @@ namespace Ambition
 					if (verts[i] < verts[i+2])
 					{
 						scalars = new float[]{(float)(verts[i]-_origin[0])/_line[0], (float)(verts[i+2]-_origin[0])/_line[0]};
-						index = 0;
 					}
 					else
 					{
 						scalars = new float[]{(float)(verts[i+2]-_origin[0])/_line[0], (float)(verts[i]-_origin[0])/_line[0]};
-						index = 1;
 					}
 					List<WallVO> walls = Walls.FindAll(w=>w.Scalars[1] >= scalars[0] && w.Scalars[0] <= scalars[1]);
 					WallVO wall=new WallVO(wallVerts,room);

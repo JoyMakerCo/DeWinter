@@ -22,12 +22,8 @@ namespace Ambition
 		public IncidentCharacterConfig Character2;
 		public SpeakerType Speaker;
 		public CommodityVO[] Rewards;
-		public AmbientClip Music;
-		public AudioClip[] AudioClips;
-
-		public MomentVO (string text)
-		{
-			Text = text;
-		}
+        public FMODEvent Music;
+        public FMODEvent AmbientSFX;
+        public FMODEvent OneShotSFX; // <- This handles both actual SFX (knocking on doors, etc...) and musical stings that get used once (Shocked, Reveal: Intrigue, etc...)
 	}
 }

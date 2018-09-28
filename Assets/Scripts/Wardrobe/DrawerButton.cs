@@ -41,12 +41,12 @@ namespace Ambition
 
 		public void SetItem(ItemVO item)
 		{
-			bool enabled = ((_item = item) != null);
-			_button.enabled = enabled;
-			ItemName.enabled = enabled;
-			Ribbon.enabled = enabled;
-			Note.SetActive(enabled);
-			if (enabled)
+            bool drawerEnabled = ((_item = item) != null);
+			_button.enabled = drawerEnabled;
+			ItemName.enabled = drawerEnabled;
+			Ribbon.enabled = drawerEnabled;
+			Note.SetActive(drawerEnabled);
+			if (drawerEnabled)
 			{
 				ItemName.text = item.Name;
 				if (item.State.ContainsKey(ItemConsts.STYLE))
@@ -64,7 +64,9 @@ namespace Ambition
 		{
 			transform.SetAsLastSibling();
 			if (_item != null)
-				AmbitionApp.GetModel<GameModel>().Outfit = new OutfitVO(_item);
+            {
+                AmbitionApp.SendMessage(InventoryMessages.EQUIP, new OutfitVO(_item));
+            }
 		}
 	}
 }

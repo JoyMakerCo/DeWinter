@@ -11,12 +11,10 @@ namespace Ambition
 	    public WardrobeImageController imageController;
 
 	    private InventoryModel _model;
-	    private GameModel _gameModel;
 
 	    void Awake ()
 	    {
 			_model = AmbitionApp.GetModel<InventoryModel>();
-			_gameModel = AmbitionApp.GetModel<GameModel>();
 	        GenerateInventoryButtons();
 	    }
 
@@ -25,7 +23,7 @@ namespace Ambition
 			List<ItemVO> outfits = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
 	        foreach (ItemVO o in outfits)
 	        {
-	            GameObject button = GameObject.Instantiate(outfitInventoryButtonPrefab);
+	            GameObject button = Instantiate(outfitInventoryButtonPrefab);
 	            OutfitInventoryButton buttonStats = button.GetComponent<OutfitInventoryButton>();
 	            buttonStats.outfit = new OutfitVO(o);
 	            buttonStats.inventoryType = inventoryType;
@@ -36,16 +34,19 @@ namespace Ambition
 
 		public OutfitVO selectedInventoryOutfit
 		{
-			get { return _gameModel.Outfit; }
+            get {
+                ItemVO item;
+                return _model.Equipped.TryGetValue(ItemConsts.OUTFIT, out item) ? item as OutfitVO : null;
+            }
 			set {
-				_gameModel.Outfit = value;
+                AmbitionApp.SendMessage(InventoryMessages.EQUIP, value);
 			}
 		}
 	    public void ClearInventoryButtons()
 	    {
 	        foreach (Transform child in this.transform)
 	        {
-	            GameObject.Destroy(child.gameObject);
+	            Destroy(child.gameObject);
 	        }
 	    }
 	}

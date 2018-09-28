@@ -10,21 +10,20 @@ namespace Ambition
 		{
             PartyModel party = AmbitionApp.GetModel<PartyModel>();
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-			List<RemarkVO> hand = model.Remarks;
+			RemarkVO[] hand = model.Remarks;
 			string interest;
-			RemarkVO remark;
             int numGuests = model.Guests.Length;
-
-            if (hand.Count > party.AmbushHandSize)
-                hand.RemoveRange(party.AmbushHandSize, hand.Count - party.AmbushHandSize);
-            else while (hand.Count < party.AmbushHandSize)
-			{
+            int i;
+            for (i = hand.Length-1; i >= party.AmbushHandSize-1; i--)
+            {
+                hand[i] = new RemarkVO();
+            }
+            while (hand[i] == null)
+            {
                 interest = Util.RNG.TakeRandom(party.Interests);
-				remark = new RemarkVO(Util.RNG.Generate(1,3), interest);
-				hand.Add(remark);
-			}
-            while(hand.Count < party.MaxHandSize)
-				hand.Add(new RemarkVO());
+                hand[i] = new RemarkVO(Util.RNG.Generate(1, 3), interest);
+                i--;
+            }
 
 			model.Remarks = hand;
 

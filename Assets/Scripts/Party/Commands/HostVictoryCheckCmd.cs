@@ -10,7 +10,7 @@ namespace Ambition
 			RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
 			if (room != null && room.HostHere)
 			{
-				PartyModel model = AmbitionApp.GetModel<PartyModel>();
+/*				PartyModel model = AmbitionApp.GetModel<PartyModel>();
 				switch(model.Party.Host.State)
 				{
 					case GuestState.Charmed:
@@ -21,7 +21,7 @@ namespace Ambition
 					// YOU FUCKED UP!!
 						break;
 				}
-			}
+*/			}
 		}
 	}
 }

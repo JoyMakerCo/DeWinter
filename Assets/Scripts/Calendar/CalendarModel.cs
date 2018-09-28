@@ -10,27 +10,53 @@ namespace Ambition
 {
     public class CalendarModel : IModel, IInitializable
 	{
-		public Dictionary<DateTime, List<PartyVO>> Parties = new Dictionary<DateTime, List<PartyVO>>();
+        public Dictionary<DateTime, List<ICalendarEvent>> Timeline = new Dictionary<DateTime, List<ICalendarEvent>>();
+        public List<ICalendarEvent> Unscheduled = new List<ICalendarEvent>();
+        public DateTime StartDate;
+        public DateTime EndDate;
 
-        private DateTime _startDate;
-		private int _day = 0;
+        private int _day;
         private MomentVO _moment;
-        public List<IncidentVO> Timeline;
-        public List<IncidentVO> Incidents;
-        public List<IncidentVO> PastIncidents = new List<IncidentVO>();
         private List<IncidentVO> _queue = new List<IncidentVO>();
 
-		public DateTime StartDate
-		{
-			get { return _startDate; }
-		}
 
 		public string GetDateString()
 		{
 			return GetDateString(Today);
 		}
 
-		public string GetDateString(DateTime d)
+        public void Schedule(ICalendarEvent e, DateTime date)
+        {
+            if (!Timeline.ContainsKey(date))
+            {
+                Timeline[date] = new List<ICalendarEvent>();
+                if (date < StartDate) StartDate = date;
+            }
+            e.Date = date;
+            Unscheduled.Remove(e);
+            if (!Timeline[date].Contains(e))
+                Timeline[date].Add(e);
+            AmbitionApp.SendMessage(e);
+        }
+
+        public void Schedule(ICalendarEvent e)
+        {
+            if (default(DateTime).Equals(e.Date))
+            {
+                Unscheduled.Add(e);
+            }
+            else
+            {
+                if (!Timeline.ContainsKey(e.Date))
+                {
+                    Timeline[e.Date] = new List<ICalendarEvent>();
+                    if (e.Date < StartDate) StartDate = e.Date;
+                }
+                Timeline[e.Date].Add(e);
+            }
+        }
+
+        public string GetDateString(DateTime d)
 		{
 			LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
 			return d.Day.ToString() + " " + localization.GetList("month")[d.Month-1] + ", " + d.Year.ToString();
@@ -38,9 +64,9 @@ namespace Ambition
 
 		public DateTime Today
 		{
-			get { return _startDate.AddDays(_day); }
+			get { return StartDate.AddDays(_day); }
 			set {
-				_day = (value - _startDate).Days;
+				_day = (value - StartDate).Days;
 				AmbitionApp.SendMessage<DateTime>(value);
 			}
 		}
@@ -50,10 +76,7 @@ namespace Ambition
             get { return _queue.Count > 0 ? _queue[0] : null; }
             set
             {
-                if (value == null) return;
-                int index = _queue.LastIndexOf(value);
-                if (index == 0 || index == 1) return;
-                _queue.Remove(value);
+                if (value == null || _queue.Contains(value)) return;
                 if (_queue.Count == 0)
                 {
                     _queue.Add(value);
@@ -66,15 +89,16 @@ namespace Ambition
             }
         }
 
+        public void QueueIncident(IncidentVO incident)
+        {
+            if (!_queue.Contains(incident))
+                _queue.Add(incident);
+        }
 
-		public DateTime EndDate
-		{
-            get { return Incidents.Last().Date; }
-		}
 
 		public DateTime DaysFromNow(int days)
 		{
-			return _startDate.AddDays(days + _day);
+			return StartDate.AddDays(days + _day);
 		}
 
 		public DateTime Yesterday
@@ -85,42 +109,51 @@ namespace Ambition
         public MomentVO Moment
         {
             get { return _moment; }
-            set
-            {
+            set {
                 _moment = value;
-                AmbitionApp.SendMessage<MomentVO>(_moment);
+                if (_moment != null) AmbitionApp.SendMessage(_moment = value);
+                else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, _queue[0]);
             }
         }
 
-        public IncidentVO Find(string incidentID)
+        public IncidentVO FindIncident(string incidentID)
         {
-            IncidentVO incident = Incidents.Find(i => i.Name == incidentID);
-            return incident ?? Timeline.Find(i => i.Name == incidentID);
+            return Unscheduled.Find(i => i is IncidentVO && ((IncidentVO)i).Name == incidentID) as IncidentVO;
+        }
+
+        public PartyVO FindParty(string partyID)
+        {
+            return Unscheduled.Find(i => i is PartyVO && ((PartyVO)i).Name == partyID) as PartyVO;
+        }
+
+        public T[] GetEvents<T>(DateTime date) where T:ICalendarEvent
+        {
+            List<ICalendarEvent> events;
+            return Timeline.TryGetValue(date, out events)
+               ? events.OfType<T>().ToArray()
+               : new T[0];
+        }
+
+        public T[] GetEvents<T>() where T : ICalendarEvent
+        {
+            return GetEvents<T>(Today);
         }
 
         public void EndIncident()
         {
-            if (_queue.Count > 0)
-            {
-                if (_queue[0].OneShot)
-                {
-                    PastIncidents.Add(_queue[0]);
-                }
-                _queue.RemoveAt(0);
-            }
-            if (_queue.Count > 0)
-                AmbitionApp.SendMessage<IncidentVO>(_queue[0]);
+            if (_queue.Count > 0) _queue.RemoveAt(0);
+            if (_queue.Count > 0) AmbitionApp.SendMessage(_queue[0]);
+            else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENTS);
         }
 
-		public DateTime NextStyleSwitchDay;
+        public DateTime NextStyleSwitchDay;
 
         public void Initialize()
         {
             IncidentConfig[] incidents = Resources.LoadAll<IncidentConfig>("Incidents");
-            Timeline = incidents.Where(i=>i.Incident.IsScheduled).Select(i => i.Incident).OrderBy(i=>i.Date).ToList();
-            Incidents = incidents.Where(i => !i.Incident.IsScheduled).Select(i => i.Incident).ToList();
+            StartDate = DateTime.Today;
+            Array.ForEach(incidents, i => Schedule(i.Incident));
             incidents = null;
-            _startDate = Timeline[0].Date;
             Resources.UnloadUnusedAssets();
         }
 	}

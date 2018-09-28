@@ -127,6 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224863760132080184}
   - component: {fileID: 114383380054965282}
+  - component: {fileID: 114057653059176320}
   m_Layer: 5
   m_Name: PartyScene
   m_TagString: Untagged
@@ -134,6 +135,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114057653059176320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619668371469878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a75bf00fea41814469f0c9717590f644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmbientSFXCollection: {fileID: 11400000, guid: bb5ec40aed1861b4facf770be24e3288,
+    type: 2}
+  MusicCollection: {fileID: 11400000, guid: 412e16db0fb58f2428873395d5b208ec, type: 2}
+  GuestBarkCollection: {fileID: 11400000, guid: 4e50fbb914ea1ca48813405fec327f95,
+    type: 2}
 --- !u!114 &114267668356310386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapView: {fileID: 1298222349196142}
   RoomView: {fileID: 1826534959277636, guid: 48235994bdf7c420984be9e31f31d096, type: 2}
+  SoundMediator: {fileID: 114057653059176320}
   Fader: {fileID: 114509344174671294}
 --- !u!114 &114501186428384120
 MonoBehaviour:

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 
@@ -8,31 +9,27 @@ namespace Ambition
 	{
 		public void Execute (DateTime date)
 		{
-			Dictionary<DateTime, List<PartyVO>> calendar = AmbitionApp.GetModel<CalendarModel>().Parties;
-			List<PartyVO> parties;
-			if (calendar.TryGetValue(date, out parties) && parties.Count > 0)
-			{
-				if (parties.Count == 1) // Easy choice.
-				{
-					foreach(PartyVO party in parties)
-					{
-						party.invited = true;
-					}
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            if (!calendar.Timeline.ContainsKey(date)) return;
+            List<PartyVO> parties = calendar.Timeline[date].OfType<PartyVO>().ToList();
+            switch (parties.Count)
+            {
+                case 0:
+                    break; // Don't do shit.
+                case 1: // Decide whether you're staying or going.
+                    AmbitionApp.OpenDialog(parties[0].RSVP == RSVP.Accepted
+                                           ? DialogConsts.CANCEL
+                                           : DialogConsts.RSVP, parties[0]);
+                    break;
 
-					if (parties[0].RSVP < 1)
-					{
-						AmbitionApp.OpenDialog<PartyVO>(DialogConsts.RSVP, parties[0]);
-					}
-					else
-					{
-						AmbitionApp.OpenDialog<PartyVO>(DialogConsts.CANCEL, parties[0]);
-					}
-				}
-				else // Multiple Parties
-				{
-					AmbitionApp.OpenDialog<List<PartyVO>>(DialogConsts.RSVP_CHOICE, parties);
-				}
-			}
+                // You must choose
+                // But choose wisely
+                // For while the true Party grants eternal life
+                // A false one will take it from you
+                default:
+                    AmbitionApp.OpenDialog(DialogConsts.RSVP_CHOICE, parties);
+                    break;
+            }
 		}
 	}
 }

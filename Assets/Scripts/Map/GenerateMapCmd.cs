@@ -52,20 +52,19 @@ namespace Ambition
 			party.Enemies = PopulateEnemies(map, EnemyInventory.enemyInventory.FindAll(e=>e.Faction == party.Faction));
             map.Rooms[0].Cleared = true;
 			_model.Map = map;
+            _model.Room = map.Entrance;
 		}
 
 		private MapVO BuildRandomMap(PartyVO party)
 		{
-party.Importance = 2; //Forcing importance
-
 			MapVO map = new MapVO();
 			FactionVO faction = AmbitionApp.GetModel<FactionModel>().Factions[party.Faction];
 
 			// Room size is proportional to how "baroque" the structure is.
 			// Curvilinear features are a function of "modernness," which will be determined by the host.
 			// Overall size of the house will be proportional to the "Importance" of the party.
-			int hyphen = party.Importance + Util.RNG.Generate(0,3); // the width of the hyphen in rooms
-			int pavilion = party.Importance + Util.RNG.Generate(0,3); // length of the pavilion in rooms
+			int hyphen = (int)party.Importance + Util.RNG.Generate(3); // the width of the hyphen in rooms
+			int pavilion = (int)party.Importance + Util.RNG.Generate(3); // length of the pavilion in rooms
 			int jut=Util.RNG.Generate(0,2);
 			int spacing = (int)(Util.RNG.Generate(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
 			float curve1 = .1f*Util.RNG.Generate(6,11);

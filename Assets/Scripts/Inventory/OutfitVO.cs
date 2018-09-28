@@ -6,6 +6,8 @@ namespace Ambition
 {
 	public class OutfitVO : ItemVO
 	{
+        private readonly static OutfitVO Default = new OutfitVO(0, 0, 0, "");
+
 		public OutfitVO() {}
 		public OutfitVO(ItemVO outfit) : base(outfit) {}
 
@@ -39,7 +41,7 @@ namespace Ambition
 	    private int GetStat(string stat)
 	    {
 			object result;
-			return State.TryGetValue(ItemConsts.NOVELTY, out result) ? Convert.ToInt32(result) : 0;
+            return State.TryGetValue(stat, out result) ? Convert.ToInt32(result) : 0;
 	    }
 
 	    public bool Altered

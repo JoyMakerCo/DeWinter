@@ -7,7 +7,7 @@ namespace Ambition
 {
 	public class ContinueBtn : MonoBehaviour
 	{
-		private Button _btn;
+        private Button _btn;
 		void Awake () {
 			AmbitionApp.Subscribe<TransitionVO[]>(HandleTransitions);
 			_btn = gameObject.GetComponent<Button>();
@@ -27,6 +27,7 @@ namespace Ambition
 		private void Next()
 		{
 			AmbitionApp.SendMessage<int>(IncidentMessages.INCIDENT_OPTION, 0);
-		}
+            FMODUnity.RuntimeManager.PlayOneShot("event:/One Shot SFX/Mouse_click"); //Literally only ever plays this sound. It will never need to play anything else.
+        }
 	}
 }

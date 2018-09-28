@@ -3,12 +3,11 @@ using Core;
 
 namespace Ambition
 {
-    public class StartIncidentCmd : ICommand<string>
+    public class StartIncidentCmd : ICommand<IncidentVO>
     {
-        public void Execute(string incidentID)
+        public void Execute(IncidentVO incident)
         {
-            CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
-            model.Incident = model.Find(incidentID);
+            AmbitionApp.InvokeMachine("IncidentController");
         }
     }
 }

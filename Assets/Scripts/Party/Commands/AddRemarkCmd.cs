@@ -9,8 +9,9 @@ namespace Ambition
 		public void Execute ()
 		{
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-			List<RemarkVO> hand = model.Remarks;
-            if (hand.Count < AmbitionApp.GetModel<PartyModel>().MaxHandSize)
+			RemarkVO[] hand = model.Remarks;
+            int index = Array.FindIndex(hand, r => r == null);
+            if (index >= 0)
 			{
                 string[] interests = AmbitionApp.GetModel<PartyModel>().Interests;
 				string interest;
@@ -25,8 +26,7 @@ namespace Ambition
                     interest = Util.RNG.TakeRandom(interests);
                 }
 
-				RemarkVO remark = new RemarkVO(Util.RNG.Generate(1,3), interest);
-				hand.Add(remark);
+                hand[index] = new RemarkVO(Util.RNG.Generate(1,3), interest);
 				model.Remarks=hand;
 			}
 		}

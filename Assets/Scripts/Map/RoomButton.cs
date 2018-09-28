@@ -57,7 +57,7 @@ namespace Ambition
 					MapModel map = AmbitionApp.GetModel<MapModel>();
 					float scale = map.MapScale;
 					RectTransform xform = gameObject.GetComponent<RectTransform>();
-					xform.anchoredPosition = new Vector2(value.Bounds[0]*scale, value.Bounds[1]*scale);
+                    xform.anchoredPosition = new Vector2(value.Bounds[0]*scale, value.Bounds[1]*scale);
 					xform.sizeDelta = new Vector2((value.Bounds[2]-value.Bounds[0])*scale, (value.Bounds[3]-value.Bounds[1])*scale);
 
 					_graphic.sprite = FloorTexturtes.Sprites[Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
@@ -68,20 +68,16 @@ namespace Ambition
 
 		public void UpdatePlayerRoom(RoomVO room)
 		{
-			_button.interactable = _room.IsAdjacentTo(room);
+            _button.interactable = _room.IsAdjacentTo(room);
 
-            if (_button.interactable)
+            if (_button.interactable || _room == room)
             {
-                AmbitionApp.SendMessage<RoomVO>(MapMessage.REVEAL_ROOM, _room);
+                ColorBlock cb = _button.colors;
+                AmbitionApp.SendMessage(MapMessage.REVEAL_ROOM, _room);
+                cb.disabledColor = ColorConfig.GetColor(_room == room ? "current" : "shown");
+                _button.colors = cb;
             }
-
-			if (_room == room)
-			{
-                AmbitionApp.SendMessage<RoomVO>(MapMessage.REVEAL_ROOM, _room);
-                Color c = ColorConfig.GetColor("current");
-                _button.GetComponent<CanvasRenderer>().SetColor(c);
-			}
-		}
+        }
 
         private void HandleRevealRoom(RoomVO room)
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,61 +9,75 @@ namespace Ambition
 {
     public class RemarkView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 	{
-        private const float SLIDE_TIME = 1f;
+        private const float SLIDE_TIME = .5f;
+        private const string SELECTED = "Selected";
+        private const string USE = "Use";
+        private const string REMOVE = "Remove";
+        private const string DRAW = "Draw";
+        private const string FILL_IN = "Fill";
+        private const string SACRIFICE = "Sacrifice";
 
         public Image Arrow;
         public SpriteConfig RemarksConfig;
+        public Transform[] RemarkViews;
 
         private Animator _animator;
 		private RemarkVO _remark;
+        private RemarkVO[] _hand;
         private Image _image;
-        private Vector3 _position;
+        private Vector3 _savedPosition;
+        private int _index;
 
 		void Awake ()
 		{
             _image = GetComponent<Image>();
-            _position = transform.position;
+            _index = transform.GetSiblingIndex();
             _animator = GetComponent<Animator>();
-            AmbitionApp.Subscribe<List<RemarkVO>>(HandleHand);
+            AmbitionApp.Subscribe<RemarkVO[]>(HandleHand);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
-		}
+            _savedPosition = RemarkViews[_index].localPosition;
+        }
 
-		void OnDestroy()
+        void Start()
+        {
+            gameObject.SetActive(false);
+        }
+
+        void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<List<RemarkVO>>(HandleHand);
+			AmbitionApp.Unsubscribe<RemarkVO[]>(HandleHand);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 		}
 
-		private void HandleHand(List<RemarkVO> hand)
+		private void HandleHand(RemarkVO[] hand)
 		{
-            int index = transform.GetSiblingIndex();
-            RemarkVO remark = (index < hand.Count) ? hand[index] : null;
-            bool slide = false;//(_remark == null && remark != null);
+            int altIndex = ((_remark == null || _hand == null) ? -1 : Array.IndexOf(_hand, _remark));
+            if (_hand == null) _hand = new RemarkVO[hand.Length];
+            hand.CopyTo(_hand, 0);
+            _remark = _index < hand.Length ? hand[_index] : null;
             StopAllCoroutines();
-            transform.position = _position;
-            _remark = remark;
+            transform.localPosition = _savedPosition;
             if (_remark != null)
             {
-                if (slide)
-                {
-                    Vector3 pos = _position;
-                    pos.x = Screen.width;
-                    transform.position = pos;
-                }
                 _image.sprite = RemarksConfig.GetSprite(_remark.Interest);
                 Arrow.sprite = RemarksConfig.GetSprite(_remark.Interest + "_" + _remark.NumTargets.ToString());
+                //if (altIndex < 0)
+                //{
+                //    _animator.SetTrigger(DRAW);
+                //}
+                //else if (altIndex != _index)
+                if (altIndex >= 0 && altIndex != _index)
+                {
+                    StartCoroutine(Slide(RemarkViews[altIndex].localPosition));
+                    //_animator.SetTrigger(FILL_IN);
+                }
             }
             gameObject.SetActive(_remark != null);
-            if (slide) StartCoroutine(Slide());
-		}
+        }
 
         private void HandleRemark(RemarkVO remark)
         {
-            bool selected = (remark == _remark);
-            Arrow.color = Color.white;
-            if (_remark != null)
-                _image.sprite = RemarksConfig.GetSprite(selected ? (_remark.Interest + "_Select") : _remark.Interest);
-            //_animator.SetBool("Selected", remark == _remark);
+            _animator.SetBool(SELECTED, remark == _remark);
         }
 
 		public void OnPointerClick(PointerEventData eventData)
@@ -82,19 +97,16 @@ namespace Ambition
             _image.sprite = RemarksConfig.GetSprite(_remark.Interest);
         }
 
-        IEnumerator Slide()
+        IEnumerator Slide(Vector3 pos)
         {
-            float from = transform.position.x;
-            float to = _position.x;
-            Vector3 pos = _position;
-            float k = 1f / SLIDE_TIME;
-            for (float t = 0; t < SLIDE_TIME; t += Time.deltaTime)
+            float T1 = 1f / SLIDE_TIME;
+            transform.localPosition = pos;
+            for (float t = 0f; t < SLIDE_TIME; t+=Time.deltaTime)
             {
-                pos.x = from * (1f - (t * k)) + (t * k * to);
-                transform.position = pos;
+                transform.localPosition = (pos * (SLIDE_TIME - t) + _savedPosition*t)*T1;
                 yield return null;
             }
-            transform.position = _position;
+            transform.localPosition = _savedPosition;
         }
 	}
 }

@@ -3,17 +3,16 @@ using Core;
 
 namespace Ambition
 {
-	public class DegradeOutfitCmd : ICommand<OutfitVO>
+	public class DegradeOutfitCmd : ICommand
 	{
-		public void Execute(OutfitVO o)
+		public void Execute()
 		{
-			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-			GameModel gm = AmbitionApp.GetModel<GameModel>();
-			o.Novelty -= model.NoveltyDamage;
-			if (o == gm.LastOutfit)
-				o.Novelty -= model.NoveltyDamage;
-
-			gm.LastOutfit = o;
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            ItemVO item;
+            if (inventory.Equipped.TryGetValue(ItemConsts.OUTFIT, out item) && item is OutfitVO)
+            {
+                ((OutfitVO)item).Novelty -= inventory.NoveltyDamage;
+            }
         }
 	}
 }

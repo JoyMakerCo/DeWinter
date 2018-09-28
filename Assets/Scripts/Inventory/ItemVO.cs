@@ -20,9 +20,6 @@ namespace Ambition
 		[JsonProperty("type")]
 		public string Type;
 
-		[JsonProperty("slot")]
-		public string Slot;
-
 		[JsonProperty("tags")]
 		public List<string> Tags;
 

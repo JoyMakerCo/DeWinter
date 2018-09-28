@@ -7,23 +7,6 @@ public static class GameData
 	public static string playerVictoryStatus;
 	public static bool fTEsOn;
 
-	public static ItemVO partyAccessory
-	{
-		get
-		{
-			ItemVO accessory;
-			return AmbitionApp.GetModel<InventoryModel>().Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory)
-				? accessory
-				: null;
-		}
-		set
-		{
-			if (value == null)
-				AmbitionApp.GetModel<InventoryModel>().Equipped.Remove(ItemConsts.ACCESSORY);
-			AmbitionApp.GetModel<InventoryModel>().Equipped[ItemConsts.ACCESSORY] = value;
-		}	
-	}
-
 	public static int moneyCount
 	{
 		get { return AmbitionApp.GetModel<GameModel>().Livre; }

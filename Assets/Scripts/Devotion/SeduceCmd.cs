@@ -11,10 +11,10 @@ namespace Ambition
 			NotableVO notable = Array.Find(model.Notables, n=>n.Name == s.Notable);
 			if (notable != null)
 			{
-				int seductionChance =
-					(notable.Gender == Gender.Female ? model.SeductionModifier : model.SeductionAltModifier) +
-					(model.SeductionTimeModifier - s.Time) -
-					(string.IsNullOrEmpty(notable.Spouse) ? model.SeductionMarriedModifier : 0);
+				//int seductionChance =
+					//(notable.Gender == Gender.Female ? model.SeductionModifier : model.SeductionAltModifier) +
+					//(model.SeductionTimeModifier - s.Time) -
+					//(string.IsNullOrEmpty(notable.Spouse) ? model.SeductionMarriedModifier : 0);
                 // TODO: Dancing?
 			}
 		}

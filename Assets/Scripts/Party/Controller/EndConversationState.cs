@@ -37,7 +37,7 @@ namespace Ambition
             }
             model.Party.Rewards.Add(reward);
             AmbitionApp.OpenDialog("END_CONVERSATION", new CommodityVO[] { reward });
-			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
+			AmbitionApp.SendMessage(PartyMessages.END_CONVERSATION);
 		}
 
 

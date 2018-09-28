@@ -37,14 +37,14 @@ namespace Ambition
 	    		{
 	    			if (i != partyNumber)
 	    			{
-	    				if (_parties[i].RSVP > 0)
+                        if (_parties[i].RSVP == RSVP.Accepted)
 	    				{
 							AmbitionApp.OpenDialog<PartyVO>(DialogConsts.RSVP_CHOICE, _parties[i]);
 		    			}
 		    			else
 		    			{
-		    				_parties[i].RSVP = -1;
-							AmbitionApp.SendMessage<PartyVO>(PartyMessages.RSVP, _parties[i]);
+                            _parties[i].RSVP = RSVP.Declined;
+							AmbitionApp.SendMessage<PartyVO>(_parties[i]);
 		    			}
 		    		}
 	    			else

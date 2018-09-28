@@ -1,7 +1,5 @@
 ﻿using Core;
 using System;
-using System.Collections.Generic;
-using Util;
 
 namespace Ambition
 {
@@ -12,11 +10,11 @@ namespace Ambition
             switch (reward.Type)
             {
                 case CommodityType.Livre:
-                    AmbitionApp.GetModel<GameModel>().Livre += reward.Amount;
+                    AmbitionApp.GetModel<GameModel>().Livre += reward.Value;
                     break;
 
                 case CommodityType.Reputation:
-                    AmbitionApp.GetModel<GameModel>().Reputation += reward.Amount;
+                    AmbitionApp.GetModel<GameModel>().Reputation += reward.Value;
                     break;
 
                 case CommodityType.Gossip:
@@ -31,7 +29,7 @@ namespace Ambition
                         ItemVO[] itemz = Array.FindAll(imod.ItemDefinitions, i => i.Type == reward.ID);
                         ItemVO item = new ItemVO(itemz[Util.RNG.Generate(0, itemz.Length)])
                         {
-                            Quantity = reward.Amount
+                            Quantity = reward.Value
                         };
                         imod.Inventory.Add(item);
                     }
@@ -46,7 +44,7 @@ namespace Ambition
                     break;
 
                 case CommodityType.Faction:
-                    AdjustFactionVO vo = new AdjustFactionVO(reward.ID, reward.Amount);
+                    AdjustFactionVO vo = new AdjustFactionVO(reward.ID, reward.Value);
                     AmbitionApp.SendMessage(vo);
                     break;
 
@@ -64,11 +62,21 @@ namespace Ambition
                     AmbitionApp.SendMessage<string>(ParisMessages.ADD_LOCATION, reward.ID);
                     break;
                 case CommodityType.Party:
-                    PartyVO party = Array.Find(AmbitionApp.GetModel<PartyModel>().Parties, p => p.Name == reward.ID);
+                    PartyModel model = AmbitionApp.GetModel<PartyModel>();
+                    PartyVO party = model.LoadParty(reward.ID);
                     if (party != null)
                     {
-                        party.RSVP = reward.Amount;
-                        AmbitionApp.SendMessage(PartyMessages.RSVP, party);
+                        CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+                        party.RSVP = (RSVP)reward.Value;
+                        party.InvitationDate = calendar.Today;
+
+                        if (!default(DateTime).Equals(party.Date))
+                            calendar.Schedule(party);
+
+                        if (party.RSVP == RSVP.Accepted)
+                            model.Party = party;
+                        else
+                            calendar.Schedule(party, calendar.Today);
                     }
                     break;
 			}

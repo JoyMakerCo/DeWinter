@@ -70,17 +70,6 @@ namespace Ambition
 			if (_lastType == null) _list.DoLayoutList();
             serializedObject.ApplyModifiedProperties();
 
-            if (GUILayout.Button("Make Timeline"))
-            {
-                IncidentCollection collection = target as IncidentCollection;
-                IncidentConfig[] configs = new IncidentConfig[collection.Incidents.Length];
-                for (int i = configs.Length - 1; i >= 0; i--)
-                {
-                    configs[i] = IncidentConfig.CreateIncident(collection.Incidents[i]);
-                }
-                AssetDatabase.SaveAssets();
-            }
-
             _dirty = false;
 	    }
 

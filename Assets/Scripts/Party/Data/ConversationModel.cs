@@ -25,7 +25,7 @@ namespace Ambition
             }
         }
 
-        public PartyVO Party { get { return _model.Party; } }
+        public PartyVO Party => _model.Party;
 
         public int Confidence
         {
@@ -43,21 +43,14 @@ namespace Ambition
             }
         }
 
-        private List<RemarkVO> _remarks = new List<RemarkVO>();
-        public List<RemarkVO> Remarks
+        private RemarkVO[] _remarks;
+        public RemarkVO[] Remarks
         {
             get { return _remarks; }
             set
             {
-                _remarks = value;
-                AmbitionApp.SendMessage<List<RemarkVO>>(Remarks);
+                AmbitionApp.SendMessage<RemarkVO[]>(_remarks = value);
             }
-        }
-
-        private void HandleClearRemark(GuestVO guest)
-        {
-            Remarks.Remove(Remark);
-            AmbitionApp.SendMessage<List<RemarkVO>>(Remarks);
         }
 
         public RoomVO Room
@@ -79,6 +72,7 @@ namespace Ambition
         {
             _map = AmbitionApp.GetModel<MapModel>();
             _model = AmbitionApp.GetModel<PartyModel>();
+            _remarks = new RemarkVO[_model.HandSize];
         }
     }
 }

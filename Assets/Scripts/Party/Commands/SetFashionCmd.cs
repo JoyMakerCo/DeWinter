@@ -8,23 +8,27 @@ namespace Ambition
 	{
 		public void Execute (PartyVO party)
 		{
-			GameModel gm = AmbitionApp.GetModel<GameModel>();
-			InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
-	        //Is the Player in the wrong Style (but matching) and are they Level 8 or higher?
-	        if (gm.Outfit.Style != imod.CurrentStyle
-	        	&& gm.Level >= 8
-	        	&& gm.Outfit.Style == GameData.partyAccessory.State[ItemConsts.STYLE] as string)
-	        {
-	            //25% Chance
-	            if(Util.RNG.Generate(0,4) == 0)
-	            {
-	                //Send Out a Relevant Pop-Up
-	                Dictionary<string, string> substitutions = new Dictionary<string, string>(){
-						{"$OLDSTYLE",imod.CurrentStyle},
-						{"$NEWSTYLE",gm.Outfit.Style}};
-					AmbitionApp.OpenMessageDialog("set_trend_dialog", substitutions);
-	            }
-	        }
+            if (AmbitionApp.GetModel<GameModel>().Level > 8)
+            {
+                InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+                ItemVO item;
+                if (inventory.Equipped.TryGetValue(ItemConsts.OUTFIT, out item) && item != null)
+                {
+                    string style = (item as OutfitVO).Style;
+                    if (inventory.Equipped.TryGetValue(ItemConsts.ACCESSORY, out item)
+                        && item != null && (string)item.State[ItemConsts.STYLE] == style)
+                    {
+                        if (Util.RNG.Generate(0, 4) == 0)
+                        {
+                            //Send Out a Relevant Pop-Up
+                            Dictionary<string, string> substitutions = new Dictionary<string, string>(){
+                                {"$OLDSTYLE",inventory.CurrentStyle},
+                                {"$NEWSTYLE",style}};
+                            AmbitionApp.OpenMessageDialog("set_trend_dialog", substitutions);
+                        }
+                    }
+                }
+            }
 		}
 	}
 }

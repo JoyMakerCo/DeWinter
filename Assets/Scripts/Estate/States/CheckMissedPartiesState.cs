@@ -1,5 +1,5 @@
 using UFlow;
-using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Ambition
@@ -9,17 +9,14 @@ namespace Ambition
         override public void OnEnterState()
         {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-	       	List<PartyVO> missed;
-			if (calendar.Parties.TryGetValue(calendar.Yesterday, out missed))
-			{
-                missed = missed.FindAll(p=>p.RSVP == 0);
-                AmbitionApp.GetModel<GameModel>().Reputation -= 40*missed.Count;
-				foreach (PartyVO party in missed)
-				{                    
-					Dictionary<string, string> subs = new Dictionary<string, string>()
-                    {{"$PARTYNAME",party.Name}};
-			    	AmbitionApp.OpenMessageDialog(DialogConsts.MISSED_RSVP_DIALOG, subs);
-				}
+            if (!calendar.Timeline.ContainsKey(calendar.Yesterday)) return;
+            PartyVO[] parties = calendar.Timeline[calendar.Yesterday].OfType<PartyVO>().Where(p=>p.RSVP == RSVP.New).ToArray();
+            AmbitionApp.GetModel<GameModel>().Reputation -= 40 * parties.Length;
+            foreach (PartyVO party in parties)
+			{                    
+				Dictionary<string, string> subs = new Dictionary<string, string>()
+                {{"$PARTYNAME",party.Name}};
+		    	AmbitionApp.OpenMessageDialog(DialogConsts.MISSED_RSVP_DIALOG, subs);
 			}
         }
     }

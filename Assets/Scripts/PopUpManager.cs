@@ -14,98 +14,12 @@ public class PopUpManager : MonoBehaviour
 	public GameObject cantAffordModal;
     public GameObject pierreQuestModal;
     public GameObject gossipSaleModal;
-    public GameObject buyOrSellModal;
     public GameObject hireAndFireServantModal;
     public GameObject confidenceTallyModal;
     public GameObject alterOutfitModal;
     public GameObject sewNewOutfitModal;
 
     public GameObject hostRemarkSlotPrefab;
-
-    //This confirmation modal is used for Hiring and Firing Servants
-    void CreateHireAndFireModal(ServantVO s)
-    {
-        //Make the Pop up
-        GameObject popUp = Instantiate(buyOrSellModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-        Text hireFireButtonText = popUp.transform.Find("HireFireButton").Find("Text").GetComponent<Text>();
-        Text dontHireFireButtonText = popUp.transform.Find("DontHireFireButton").Find("Text").GetComponent<Text>();
-
-        //Set the Pop Up Values
-        //Fill in the Text
-        if (s.Status == ServantStatus.Hired)
-        {
-            titleText.text = "Fire + " + s.Name + "?";
-            bodyText.text = "Are you sure you want fire " + s.NameAndTitle + "?";
-            hireFireButtonText.text = "Fire";
-            dontHireFireButtonText.text = "Don't Fire";
-        }
-        else
-        {
-			titleText.text = "Hire + " + s.Name + "?";
-            bodyText.text = "Are you sure you want to hire " + s.NameAndTitle + " for £" + s.Wage.ToString() + "?";
-            hireFireButtonText.text = "Hire";
-            dontHireFireButtonText.text = "Don't Hire";
-        }
-    }
-
-    //This is used in the Wardrobe Screen to confirm buying or selling Items
-    void CreateBuyOrSellModal(object[] objectStorage)
-    {
-        //Info Is Parsed Out Here
-        string inventoryType = objectStorage[0] as string;
-        string itemType = objectStorage[1] as string;
-        int itemPrice;
-
-        //Make the Pop up
-        GameObject popUp = Instantiate(buyOrSellModal) as GameObject;
-        popUp.transform.SetParent(gameObject.transform, false);
-        Text bodyText = popUp.transform.Find("BodyText").GetComponent<Text>();
-        Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
-
-        //Set the Pop Up Values
-        BuyAndSellPopUpController controller = popUp.GetComponent<BuyAndSellPopUpController>();
-        controller.inventoryType = inventoryType;
-        controller.itemType = itemType;
-		controller.outfit = objectStorage[2] as OutfitVO;
-		controller.accessory = objectStorage[2] as ItemVO;
-
-        //Fill in the Text
-		if (controller.outfit != null)
-        {
-            if (inventoryType == ItemConsts.PERSONAL)
-            {
-                titleText.text = "Sell This?";
-				controller.outfit.CalculatePrice(true);
-				itemPrice = controller.outfit.Price; //Items are at Half Price from the Player Inventory to the Merchant
-				bodyText.text = "Are you sure you want to sell this " + controller.outfit.Name;
-			}
-            else
-            {
-                titleText.text = "Buy This?";
-				controller.outfit.CalculatePrice(false);
-				itemPrice = controller.outfit.Price;
-				bodyText.text = "Are you sure you want to buy this " + controller.outfit.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
-            }
-        }
-		else if (controller.accessory != null)
-        {
-            if (inventoryType == "personal")
-            {
-                titleText.text = "Sell This?";
-				itemPrice = controller.accessory.Price; //Items are at Half Price from the Player Inventory to the Merchant
-				bodyText.text = "Are you sure you want to sell this " + controller.accessory.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
-            }
-            else
-            {
-                titleText.text = "Buy This?";
-				itemPrice = controller.accessory.Price;
-				bodyText.text = "Are you sure you want to buy this " + controller.accessory.Name + " for " + itemPrice.ToString("£" + "#,##0") + "?";
-            }
-        }
-    }
 
     //This is used in the Wardrobe Screen and Servant Hiring Screen to tell Players they don't have enough money to afford something
     void CreateCantAffordModal(object[] objectStorage)

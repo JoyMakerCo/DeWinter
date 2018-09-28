@@ -73,7 +73,6 @@ namespace Ambition
             model.Round = 0;
             model.Remark = null;
             model.FreeRemarkCounter = partyModel.FreeRemarkCounter;
-            model.Remarks = new List<RemarkVO>();
             model.Repartee = false;
             model.RemarksBought = 0;
             AmbitionApp.SendMessage<int>(GameConsts.CONFIDENCE, partyModel.Confidence);

@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41964d7af77470849b2989661c16be38, type: 3}
+  m_Name: PartyMusicCollection
+  m_EditorClassIdentifier: 
+  PartyMusics:
+  - Event:
+      Name: event:/Music/Bourgeoisie - Conversation A
+      Parameters:
+      - Name: WIN
+        Value: 0
+      - Name: LOSE
+        Value: 0
+    Map: 0
+    Faction: bourgeoisie
+  - Event:
+      Name: event:/Music/Bourgeoisie - Party Map
+      Parameters: []
+    Map: 1
+    Faction: bourgeoisie
+  - Event:
+      Name: event:/Music/Church - Conversation A
+      Parameters:
+      - Name: WIN
+        Value: 0
+      - Name: LOSE
+        Value: 0
+    Map: 0
+    Faction: church
+  - Event:
+      Name: event:/Music/Church - Party Map
+      Parameters: []
+    Map: 1
+    Faction: church
+  - Event:
+      Name: event:/Music/Crown - Conversation A
+      Parameters:
+      - Name: WIN
+        Value: 0
+      - Name: LOSE
+        Value: 0
+    Map: 0
+    Faction: crown
+  - Event:
+      Name: event:/Music/Crown - Party Map
+      Parameters: []
+    Map: 1
+    Faction: crown
+  - Event:
+      Name: event:/Music/Military - Conversation A
+      Parameters:
+      - Name: WIN
+        Value: 1
+      - Name: LOSE
+        Value: 0
+    Map: 0
+    Faction: military
+  - Event:
+      Name: event:/Music/Military - Party Map
+      Parameters: []
+    Map: 1
+    Faction: military
+  - Event:
+      Name: event:/Music/Orphan's Feast - Conversation A
+      Parameters:
+      - Name: WIN
+        Value: 0
+      - Name: LOSE
+        Value: 0
+    Map: 0
+    Faction: neutral
+  - Event:
+      Name: event:/Music/Orphan's Feast - Party Map
+      Parameters: []
+    Map: 1
+    Faction: neutral
+  - Event:
+      Name: event:/Music/Revolution - Conversation A
+      Parameters:
+      - Name: WIN
+        Value: 0
+      - Name: LOSE
+        Value: 0
+    Map: 0
+    Faction: revolution
+  - Event:
+      Name: event:/Music/Revolution - Conversation B
+      Parameters:
+      - Name: WIN
+        Value: 1
+      - Name: LOSE
+        Value: 0
+    Map: 0
+    Faction: revolution
+  - Event:
+      Name: event:/Music/Revolution - Party Map
+      Parameters: []
+    Map: 1
+    Faction: revolution

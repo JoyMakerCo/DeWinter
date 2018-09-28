@@ -8,14 +8,14 @@ namespace Ambition
 	public class MapViewMediator : MonoBehaviour
 	{
 		private const int PAN_TOLERTANCE = 50;
-		private const int TILES_PER_SECOND=10;
+		private const int TILES_PER_SECOND = 50;
 	    public GameObject roomButtonPrefab;
 
 	    private Dictionary<RoomVO, RoomButton> _buttons;
 
 	    private MapModel _model;
-		private PartyModel _partyModel;
         private Vector4 _bounds;
+        private Vector3 _offset;
 
 		public MapVO Map
 		{
@@ -25,7 +25,6 @@ namespace Ambition
 		void Awake()
 		{
 			_model = AmbitionApp.GetModel<MapModel>();
-			_partyModel = AmbitionApp.GetModel<PartyModel>();
 			_buttons = new Dictionary<RoomVO, RoomButton>();
 			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
             AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, Recenter);
@@ -43,11 +42,19 @@ namespace Ambition
 			_buttons = null;
 		}
 
-	    void Start()
+        void Start()
         {
-            //Make the Room Buttons ----------------------
             _bounds = Vector4.zero;
-	        Array.ForEach(Map.Rooms, DrawRoom);
+            foreach (RoomVO room in Map.Rooms)
+            {
+                if (room.Bounds[0] < _bounds[0]) _bounds[0] = room.Bounds[0];
+                if (room.Bounds[1] < _bounds[1]) _bounds[1] = room.Bounds[1];
+                if (room.Bounds[2] > _bounds[2]) _bounds[2] = room.Bounds[2];
+                if (room.Bounds[3] > _bounds[3]) _bounds[3] = room.Bounds[3];
+            }
+
+            //Make the Room Buttons ----------------------
+            Array.ForEach(Map.Rooms, DrawRoom);
 			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
 			HandleRoom(Map.Entrance);
 	    }
@@ -71,29 +78,30 @@ namespace Ambition
             else if (!float.IsNaN(transform.position.sqrMagnitude))
             {
                 Vector3 offset = Vector3.zero;
-                float d = Time.deltaTime * _model.MapScale * TILES_PER_SECOND;
+                float d = Time.deltaTime * TILES_PER_SECOND;
                 if (Input.mousePosition.x < PAN_TOLERTANCE)
                     offset.x = d;
                 else if (Input.mousePosition.x > Screen.width - PAN_TOLERTANCE)
                     offset.x = -d;
-                else if (Input.GetKey(KeyCode.LeftArrow)) offset.x = d * .5f;
-                else if (Input.GetKey(KeyCode.RightArrow)) offset.x = -d * .5f;
+                else if (Input.GetKey(KeyCode.LeftArrow)) offset.x = d;
+                else if (Input.GetKey(KeyCode.RightArrow)) offset.x = -d;
 
                 if (Input.mousePosition.y < PAN_TOLERTANCE)
                     offset.y = d;
                 else if (Input.mousePosition.y > Screen.height - PAN_TOLERTANCE)
                     offset.y = -d;
-                else if (Input.GetKey(KeyCode.UpArrow)) offset.y = -d * .5f;
-                else if (Input.GetKey(KeyCode.DownArrow)) offset.y = d * .5f;
+                else if (Input.GetKey(KeyCode.UpArrow)) offset.y = -d;
+                else if (Input.GetKey(KeyCode.DownArrow)) offset.y = d;
 
-                offset += transform.localPosition;
+                _offset += offset;
 
-                if (offset.x < _bounds[0] || offset.x > _bounds[2])
-                    offset.x = transform.localPosition.x;
-                if (offset.y < _bounds[1] || offset.y > _bounds[3])
-                    offset.y = transform.localPosition.y;
+                if (_offset.x < -_bounds[2] || _offset.x > -_bounds[0])
+                    _offset.x -= offset.x;
+                if (_offset.y < -_bounds[3] || _offset.y > -_bounds[1])
+                    _offset.y -= offset.y;
 
-                transform.localPosition = offset;
+                transform.localPosition = _offset * _model.MapScale;
+                transform.localPosition = _offset*_model.MapScale;
             }
         }
 
@@ -104,36 +112,23 @@ namespace Ambition
                 RoomVO room = _model.Room ?? Map.Entrance;
                 if (room != null)
                 {
-                    Vector3 center;
                     int[] bounds = room.Bounds;
-                    float q = -.5f * _model.MapScale;
-                    center.x = (bounds[0] + bounds[2]) * q;
-                    center.y = (bounds[1] + bounds[3]) * q;
-                    center.z = 0f;
-                    transform.localPosition = center;
+                    _offset.x = (bounds[0] + bounds[2]) * -.5f;
+                    _offset.y = (bounds[1] + bounds[3]) * -.5f;
+                    _offset.z = 0f;
+                    transform.localPosition = _offset * _model.MapScale;
                 }
             }
 	    }
 
-		private void DrawRoom(RoomVO room)
+	    private void DrawRoom(RoomVO room)
 		{
 			if (room != null)
 			{
-				GameObject mapButton = Instantiate<GameObject>(roomButtonPrefab, gameObject.transform) as GameObject;
+				GameObject mapButton = Instantiate(roomButtonPrefab, gameObject.transform);
 				RoomButton roomButton = mapButton.GetComponent<RoomButton>();
-                Vector4 bounds = new Vector4()
-                {
-                    w = room.Bounds[0] * _model.MapScale,
-                    x = room.Bounds[1] * _model.MapScale,
-                    y = room.Bounds[2] * _model.MapScale,
-                    z = room.Bounds[3] * _model.MapScale
-                };
                 mapButton.transform.SetAsFirstSibling();
 				roomButton.Room = room;
-				if (bounds[0] < _bounds[0]) _bounds[0] = bounds[0];
-				if (bounds[1] < _bounds[1]) _bounds[1] = bounds[1];
-				if (bounds[2] > _bounds[2]) _bounds[2] = bounds[2];
-				if (bounds[3] > _bounds[3]) _bounds[3] = bounds[3];
 				_buttons.Add(room, roomButton);
 			}
 

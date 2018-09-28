@@ -7,7 +7,7 @@ using Util;
 namespace Ambition
 {
     [Serializable]
-    public class IncidentVO : DirectedGraph<MomentVO, TransitionVO>
+    public class IncidentVO : DirectedGraph<MomentVO, TransitionVO>, ICalendarEvent
     {
         public string Name;
 
@@ -28,9 +28,6 @@ namespace Ambition
         public CommodityVO[] Requirements;
 
         public bool OneShot = true;
-
-        public MomentVO[] Moments;
-        public TransitionVO[] Transitions;
 
         public IncidentVO() {}
         public IncidentVO(DirectedGraph<MomentVO, TransitionVO> incident)

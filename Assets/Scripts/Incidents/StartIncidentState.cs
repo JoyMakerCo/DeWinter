@@ -9,7 +9,12 @@ namespace Ambition
 		override public void OnEnterState()
 		{
 			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
-            if (model.Incident != null) model.Moment = model.Incident.Nodes[0];
+            if (model.Incident != null)
+            {
+                AmbitionApp.SendMessage(IncidentMessages.START_INCIDENT, model.Incident);
+                model.Moment = model.Incident.Nodes[0];
+                AmbitionApp.SendMessage(model.Incident.GetLinkData(0));
+            }
 		}
 	}
 }

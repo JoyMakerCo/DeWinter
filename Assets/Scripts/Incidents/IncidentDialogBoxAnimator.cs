@@ -15,25 +15,23 @@ namespace Ambition
 		{
 			_animator = GetComponent<Animator>();
 			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
-		}
-		
-		void OnDestroy ()
-		{
-			AmbitionApp.Unsubscribe<TransitionVO[]>(HandleTransitions);
-			AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
-		}
+            AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
+        }
 
-		private void HandleTransitions(TransitionVO[] transitions)
+        void OnDestroy ()
 		{
-			_animator.SetBool(ACTIVE, transitions != null && transitions.Length > 0);
-			AmbitionApp.Unsubscribe<TransitionVO[]>(HandleTransitions);
+            AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
 		}
 
 		private void HandleMoment(MomentVO moment)
 		{
-			if (moment == null) _animator.SetBool(ACTIVE, false);
-			else if (moment.Text != null && moment.Text.Length > 0) _animator.SetBool(ACTIVE, true);
-			else AmbitionApp.Subscribe<TransitionVO[]>(HandleTransitions);
+            _animator.SetBool(ACTIVE, moment != null);
 		}
-	}
+
+        private void HandleEndIncident(IncidentVO incident)
+        {
+            _animator.SetBool(ACTIVE, false);
+        }
+    }
 }

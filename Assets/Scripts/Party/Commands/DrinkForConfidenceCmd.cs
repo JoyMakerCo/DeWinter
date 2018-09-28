@@ -10,6 +10,9 @@ namespace Ambition
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			if (model.Drink > 0)
 	        {
+                InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+                ItemVO item;
+
 				model.Confidence+=20;
 				model.Drink--;
 
@@ -22,12 +25,9 @@ namespace Ambition
 	                drinkStrength -= 3;
 	            }
 	            //Is the Player using the Snuff Box Accessory? If so, then decrease the Intoxicating Effects of Booze!
-	            if (GameData.partyAccessory != null)
-	            {
-	                if (GameData.partyAccessory.Type == "Snuff Box")
-	                {
-	                    drinkStrength -= 5;
-	                }
+                if (inventory.Equipped.TryGetValue(ItemConsts.ACCESSORY, out item) && item != null && item.Name == "Snuff Box")
+                {
+                    drinkStrength -= 5;
 	            }
 				AmbitionApp.GetModel<PartyModel>().Intoxication += drinkStrength;
 	    	}

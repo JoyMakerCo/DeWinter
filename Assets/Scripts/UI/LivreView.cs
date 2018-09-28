@@ -13,7 +13,6 @@ namespace Ambition
 		{
 			_text = GetComponent<Text>();
 			AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleLivre);
-			HandleLivre(AmbitionApp.GetModel<GameModel>().Livre);
 		}
 
 		void OnDestroy()

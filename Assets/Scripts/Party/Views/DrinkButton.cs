@@ -5,6 +5,8 @@ namespace Ambition
 {
     public class DrinkButton : MonoBehaviour
     {
+        public string DrinkFMODEvent;
+
         private Button _btn;
         void OnEnable()
         {
@@ -24,6 +26,7 @@ namespace Ambition
         public void Drink()
         {
             AmbitionApp.SendMessage(PartyMessages.DRINK);
+            FMODUnity.RuntimeManager.PlayOneShot(DrinkFMODEvent); //This is the drink sound effect
         }
     }
 }

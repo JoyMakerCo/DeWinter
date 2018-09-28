@@ -11,9 +11,12 @@ namespace Ambition
 
 		void Awake()
 		{
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            ItemVO outfit;
+            inventory.Equipped.TryGetValue(ItemConsts.OUTFIT, out outfit);
 			_button = gameObject.GetComponent<Button>();
-			AmbitionApp.Subscribe<OutfitVO>(HandleOutfit);
-			HandleOutfit(AmbitionApp.GetModel<GameModel>().Outfit);
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIPPED, HandleOutfit);
+            HandleOutfit(outfit);
 		}
 
 		void OnEnable ()
@@ -23,32 +26,16 @@ namespace Ambition
 
 		void OnDisable()
 		{
-			_button.onClick.RemoveListener(OnClick);
+            _button.onClick.RemoveAllListeners();
 		}
 
 		void OnDestroy ()
 		{
-			AmbitionApp.Unsubscribe<OutfitVO>(HandleOutfit);
-			AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOut);
-			_button.onClick.RemoveListener(OnClick);
-		}
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIPPED, HandleOutfit);
+            _button.onClick.RemoveAllListeners();
+        }
 
-		private void HandleOutfit(OutfitVO outfit)
-		{
-			_button.interactable = (outfit != null);
-		}
-
-		private void OnClick()
-		{
-			_button.interactable = false;
-			AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOut);
-			AmbitionApp.SendMessage(GameMessages.FADE_OUT);
-		}
-
-		private void HandleFadeOut()
-		{
-			AmbitionApp.SendMessage<PartyVO>(MapMessage.GENERATE_MAP, AmbitionApp.GetModel<PartyModel>().Party);
-			AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.PARTY_SCENE);
-		}
+        private void HandleOutfit(ItemVO outfit) => _button.interactable = (outfit is OutfitVO);
+		private void OnClick() => AmbitionApp.SendMessage(PartyMessages.START_PARTY);
 	}
 }

@@ -15,7 +15,7 @@ namespace Ambition
                 AmbitionApp.SendMessage(PartyMessages.REFILL_DRINK);
 
 	            Dictionary<string, string> substitutions = new Dictionary<string, string>()
-					{{"$HOSTNAME", model.Party.Host.Name}};
+					{{"$HOSTNAME", model.Party.Host}};
 	            AmbitionApp.OpenMessageDialog(DialogConsts.REPUTATION_WINE_DIALOG, substitutions);
 	        }
 		}

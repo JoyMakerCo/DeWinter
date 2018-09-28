@@ -125,7 +125,7 @@ namespace Util
 		public U[] GetLinkData(int nodeIndex)
 		{
 			List<U> result = new List<U>();
-             for (int i=0; i<Links.Length; i++)
+            for (int i=0; i<Links.Length; i++)
 			{
 				if (Links[i].x == nodeIndex)
                     result.Add(LinkData[i]);

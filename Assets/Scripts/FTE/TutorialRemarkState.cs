@@ -17,8 +17,8 @@ namespace Ambition
             if (canvas != null) 
             {
                 RemarkView[] remarks = canvas.GetComponentsInChildren<RemarkView>(false);
-                int index = model.Remarks.FindIndex(r => Array.Exists(model.Guests, g => g.Like == r.Interest));
-                if (index < 0) model.Remarks.FindIndex(r => Array.Exists(model.Guests, g => g.Dislike != r.Interest));
+                int index = Array.FindIndex(model.Remarks, r => Array.Exists(model.Guests, g => g.Like == r.Interest));
+                if (index < 0) Array.FindIndex(model.Remarks, r => Array.Exists(model.Guests, g => g.Dislike != r.Interest));
                 if (index < 0) index = 0;
 
                 GameObject obj = Array.Find(remarks, r=>r.transform.GetSiblingIndex() == index).gameObject;

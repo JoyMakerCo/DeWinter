@@ -41,11 +41,27 @@ namespace Core
 			{
 				Action<T> handleMsg = msg => new C().Execute(msg);
 				_typeAssociations[t].Add(c, handleMsg);
-				App.Service<MessageSvc>().Subscribe<T>(handleMsg);
+				App.Service<MessageSvc>().Subscribe(handleMsg);
 			}
 		}
 
-		public void Register<C>(string messageID) where C : ICommand, new()
+        public void Register<C, T>(string messageID, T data) where C : ICommand<T>, new()
+        {
+            Type t = typeof(T);
+            Type c = typeof(C);
+            if (!_typeAssociations.ContainsKey(t))
+            {
+                _typeAssociations.Add(t, new Dictionary<Type, Delegate>());
+            }
+            if (!_typeAssociations[t].ContainsKey(c))
+            {
+                Action handleMsg = delegate { new C().Execute(data);  };
+                _typeAssociations[t].Add(c, handleMsg);
+                App.Service<MessageSvc>().Subscribe(messageID, handleMsg);
+            }
+        }
+
+        public void Register<C>(string messageID) where C : ICommand, new()
 		{
 			Type c = typeof(C);
 			if (!_messageAssociations.ContainsKey(messageID))

@@ -15,8 +15,12 @@ namespace Ambition
 		{
 			get { return _party; }
 			set {
-				_party = value;
-				AmbitionApp.SendMessage<PartyVO>(_party);
+                CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+                _party = value;
+                _party.RSVP = RSVP.Accepted;
+                if (default(DateTime).Equals(_party.InvitationDate))
+                    _party.InvitationDate = calendar.Today;
+                calendar.Schedule(_party, calendar.Today);
 			}
 		}
 
@@ -67,6 +71,17 @@ namespace Ambition
 			}
 		}
 
+        public PartyVO LoadParty(string partyID)
+        {
+            PartyConfig config = UnityEngine.Resources.Load<PartyConfig>("Parties/" + partyID);
+            if (config == null) return null;
+            PartyVO party = config.Party;
+            config = null;
+            UnityEngine.Resources.UnloadUnusedAssets();
+            AmbitionApp.Execute<InitPartyCmd, PartyVO>(party);
+            return party;
+        }
+
 		[JsonProperty("guest_difficulty")]
 		public GuestDifficultyVO[] GuestDifficultyStats;
 
@@ -86,7 +101,7 @@ namespace Ambition
 		public int[] ConfidenceCost;
 
 		[JsonProperty("maxHandSize")]
-		public int MaxHandSize = 5;
+		public int HandSize = 5;
 
 		[JsonProperty("ambushHandSize")]
 		public int AmbushHandSize = 3;
@@ -122,14 +137,11 @@ namespace Ambition
 			}
 		}
 		public int MaxIntoxication = 100;
-
-		[JsonProperty("parties")]
-		public PartyVO[] Parties;
-
 		public int MaxConfidence;
 		public int StartConfidence;
+        public int BaseConfidence = 35;
 
-		private int _confidence;
+        private int _confidence;
 		public int Confidence
 		{
 			get { return _confidence; }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
-using Util;
 
 namespace Ambition
 {
@@ -13,7 +12,7 @@ namespace Ambition
 		public string Allegiance;
 		public string Scene;
 
-		public string PlayerName = "Yvette DeWinter";
+        public string PlayerName;
 
 		[JsonProperty("livre")]
 		int _livre;
@@ -52,7 +51,7 @@ namespace Ambition
 					_reputation.Reputation -= _levels[level-1];
 					_reputation.ReputationMax -= _levels[level-1];
 				}
-				AmbitionApp.SendMessage<ReputationVO>(_reputation);
+				AmbitionApp.SendMessage(_reputation);
 			}
 		}
 
@@ -72,17 +71,6 @@ namespace Ambition
 		public GameModel() : base("GameData") {}
 
 		[JsonProperty("levels")]
-		private int[] _levels;
-
-		private OutfitVO _outfit;
-		public OutfitVO Outfit
-		{
-			get { return _outfit; }
-			set {
-                AmbitionApp.SendMessage(_outfit = value);
-			}
-		}
-
-		public OutfitVO LastOutfit;
+	    private int[] _levels;
 	}
 }

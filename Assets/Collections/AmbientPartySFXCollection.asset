@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b96170670fd4b042a2df87569e14dfd, type: 3}
+  m_Name: AmbientPartySFXCollection
+  m_EditorClassIdentifier: 
+  AmbientPartySFXs:
+  - Event:
+      Name: event:/Ambient SFX/Amb_SmallParty_indoor
+      Paramaters: []
+    Indoors: 1
+    Importance: 0
+  - Event:
+      Name: event:/Ambient SFX/Amb_SmallParty_outdoor
+      Paramaters: []
+    Indoors: 0
+    Importance: 0
+  - Event:
+      Name: event:/Ambient SFX/Amb_MediumParty_indoor
+      Paramaters: []
+    Indoors: 1
+    Importance: 1
+  - Event:
+      Name: event:/Ambient SFX/Amb_MediumParty_outdoor
+      Paramaters: []
+    Indoors: 0
+    Importance: 1
+  - Event:
+      Name: event:/Ambient SFX/Amb_LargeParty_indoor
+      Paramaters: []
+    Indoors: 1
+    Importance: 2
+  - Event:
+      Name: event:/Ambient SFX/Amb_LargeParty_outdoor
+      Paramaters: []
+    Indoors: 0
+    Importance: 2

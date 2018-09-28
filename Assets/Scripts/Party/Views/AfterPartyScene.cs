@@ -24,10 +24,9 @@ namespace Ambition
 
 		void Start ()
 		{
-	        OutfitVO outfit = AmbitionApp.GetModel<GameModel>().Outfit;
 			PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
 			PartyText.text = party.Name;
-			if (party.Host != null) PartyText.text += (" - " + party.Host.Name);
+			if (party.Host != null) PartyText.text += (" - " + party.Host);
 			PartyImportance.text = party.Importance.ToString();
 			NoveltyLossText.text = "0";
 			FactionIcon.sprite = FactionIconConfig.GetSprite(party.Faction);
@@ -41,10 +40,10 @@ namespace Ambition
 						GossipText.text += "- " + reward.ID + "\n";
 						break;
 					case CommodityType.Livre:
-						livre += reward.Amount;
+						livre += reward.Value;
 						break;
 					case CommodityType.Reputation:
-						rep += reward.Amount;
+						rep += reward.Value;
 						break;
 					case CommodityType.Item:
 						RewardText.text += "- " + reward.ID + "\n";
@@ -66,12 +65,12 @@ namespace Ambition
 		{
 			AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeout);
 			AmbitionApp.SendMessage(GameMessages.FADE_OUT);
-		}
+            AmbitionApp.GetModel<PartyModel>().Party = null;
+        }
 
 		private void HandleFadeout()
 		{
-			AmbitionApp.SendMessage(CalendarMessages.NEXT_DAY);
-			AmbitionApp.InvokeMachine("EstateController");
+            AmbitionApp.SendMessage(PartyMessages.END_PARTY);
 		}
 	}
 }

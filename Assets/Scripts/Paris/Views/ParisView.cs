@@ -11,15 +11,16 @@ namespace Ambition
         public int ExploreRange = 20;
         public GameObject ExplorePin;
         public Transform Pins;
+        public LocationModal LocationModal;
 
         void Awake()
         {
-            AmbitionApp.Subscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            AmbitionApp.Subscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
         }
 
         void OnDestroy()
         {
-            AmbitionApp.Unsubscribe<string>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            AmbitionApp.Unsubscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
         }
 
         void Start()
@@ -27,11 +28,7 @@ namespace Ambition
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
             LocationPin pin;
             bool active;
-<<<<<<< HEAD
             foreach (Transform child in Pins)
-=======
-            foreach (Transform child in transform)
->>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
             {
                 active = model.Locations.Contains(child.name);
                 child.gameObject.SetActive(active);
@@ -52,14 +49,18 @@ namespace Ambition
             {
                 Vector2 pos;
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), data.position, data.pressEventCamera, out pos);
+                ExplorePin.SetActive(true);
                 ExplorePin.transform.localPosition = new Vector3(pos.x, pos.y, 0);
                 AmbitionApp.SendMessage(ParisMessages.SELECT_LOCATION, "");
             }
         }
 
-        private void HandleSelect(string location)
+        //To Do: Add in the fader (Still needs to be made)
+        private void HandleSelect(LocationPin location)
         {
-            ExplorePin.SetActive(location.Length == 0);
+            ExplorePin.SetActive(false);
+            LocationModal.Location = location;
+            LocationModal.ShowWindow();
         }
 
         public void Explore()
@@ -75,14 +76,11 @@ namespace Ambition
                     .OrderBy(p=>p.Value)
                     .Select(p => p.Key.name).ToArray();
             AmbitionApp.SendMessage(ParisMessages.EXPLORE, result);
-<<<<<<< HEAD
         }
 
         public void ReturnToCalendar()
         {
             AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.ESTATE_SCENE);
-=======
->>>>>>> 9f7f794e52eac68e41e333d01759c8bbe33fa384
         }
     }
 }

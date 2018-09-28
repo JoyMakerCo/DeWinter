@@ -66,13 +66,25 @@ namespace UFlow
 				}
 				state.OnEnterState();
 
-// UnityEngine.Debug.Log(_uflow.ToString());
-
 				if (links.Length > 0)
 				{
+                    // Find all links that are valid
 					links = Array.FindAll(links, l=>l.Validate());
-					Array.ForEach(links, Activate);
-					if (links.Length > 0) ExitState(index);
+
+                    // Activate all links if they are all default links
+                    if (Array.TrueForAll(links, l=>l is UDefaultLink))
+                    {
+                        Array.ForEach(links, Activate);
+                    }
+                    // If there's a mix of default and non-default links, only execute the non-default ones
+                    else
+                    {
+                        Array.ForEach(links, l => {
+                            if (!(l is UDefaultLink))
+                                Activate(l);
+                        });
+                    }
+                    if (links.Length > 0) ExitState(index);
 					_queue.Dequeue();
 				}
 				// Found an Exit State!

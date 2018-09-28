@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Core;
 
 namespace Ambition
 {
 	public class PartyViewMediator : MonoBehaviour
 	{
-        private const float FADE_TIME = 1f;
+        private const float FADE_TIME = 1.5f;
 
 		public GameObject MapView;
 		public GameObject RoomView;
+        public PartySoundMediator SoundMediator;
         public Image Fader;
-		GameObject _roomView;
+        GameObject _roomView;
 
-		// Use this for initialization
-		void Awake()
+        // Use this for initialization
+        void Awake()
 		{
             AmbitionApp.Subscribe(PartyMessages.SHOW_ROOM, GoToRoom);
             AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, GoToMap);
@@ -28,11 +28,9 @@ namespace Ambition
 			AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, GoToMap);
 		}
 
-		void Start ()   
+        void Start ()   
 		{
-AmbitionApp.SendMessage(GameMessages.FADE_IN);
-			AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
-			AmbitionApp.SendMessage(PartyMessages.START_PARTY);
+            AmbitionApp.SendMessage(GameMessages.FADE_IN);
 		}
 
 		private void GoToRoom()
@@ -81,5 +79,5 @@ AmbitionApp.SendMessage(GameMessages.FADE_IN);
                 Fader.enabled = false;
             }
         }
-	}
+    }
 }
