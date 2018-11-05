@@ -228,5 +228,15 @@ namespace Ambition
         {
             return App.Service<RequirementSvc>().CheckRequirements(requirements);
         }
-	}
+
+        public static void RegisterReward<T>(CommodityType type) where T : ICommand<CommodityVO>, new()
+        {
+            App.Service<RewardFactorySvc>().RegisterReward<T>(type);
+        }
+
+        public static void Reward(CommodityVO commodity)
+        {
+            App.Service<RewardFactorySvc>().Reward(commodity);
+        }
+    }
 }

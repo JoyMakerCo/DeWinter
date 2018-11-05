@@ -23,21 +23,30 @@ namespace Ambition
 	    void Awake ()
 		{
             _background = gameObject.GetComponent<Image>();
-            AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
+            //AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident); This isn't working because Start Incident is the same message that creates this modal. 
+            //It never has a chance to listen for the message, because the message already happened
             AmbitionApp.Subscribe<MomentVO>(HandleMoment);
+            SetIncidentTitle();
         }
 
         void OnDestroy ()
 		{
-            AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
+            //AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
             AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
 	    }
 
+        private void SetIncidentTitle()
+        {
+            CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
+            titleText.text = model.Incident.Name;
+        }
 
+        /*
         private void HandleIncident(IncidentVO incident)
         {
             if (incident != null) titleText.text = incident.Name;
-        }
+            print("Incident Name = " + incident.Name);
+        }*/
 
         private void HandleMoment(MomentVO moment)
 		{

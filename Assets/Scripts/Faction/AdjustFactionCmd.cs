@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Core;
 
 namespace Ambition
@@ -12,15 +13,13 @@ namespace Ambition
 			FactionVO faction = _model[vo.Faction];
 			if (faction != null)
 			{
-				FactionLevelVO[] Levels = _model.Levels;
+                FactionLevelVO[] Levels = _model.Levels;
 				faction.Allegiance = Clamp(faction.Allegiance + vo.Allegiance, -100, 100);
 				faction.Power = Clamp(faction.Power + vo.Power, 0, 100);
 				faction.Reputation += vo.Reputation;
-				faction.Level = Levels.Length-1;
-				while (faction.Reputation >= Levels[faction.Level].Requirement)
-					faction.Level--;
+                faction.Level = Array.FindAll(Levels, l => faction.Reputation > l.Requirement).Min(l=>l.Requirement);
 				faction.LargestAllowableParty = Levels[faction.Level].LargestAllowableParty;
-				faction.ConfidenceBonus = Levels[faction.Level].Confidence;
+                faction.DeckBonus = Levels[faction.Level].DeckBonus;
 				faction.Priority = Levels[faction.Level].Importance;
 				AmbitionApp.SendMessage<FactionVO>(faction);
 			}

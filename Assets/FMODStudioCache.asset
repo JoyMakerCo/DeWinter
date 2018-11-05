@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114639243181152198}
-  - {fileID: 114211716736511416}
-  - {fileID: 114452668665319160}
-  - {fileID: 114455450799698410}
-  - {fileID: 114159703306701082}
-  - {fileID: 114900368893403130}
+  - {fileID: 114184029656624718}
+  - {fileID: 114153550853772298}
+  - {fileID: 114923734231581374}
+  - {fileID: 114788729075807472}
+  - {fileID: 114434612040744420}
   EditorEvents:
   - {fileID: 114467510798149112}
   - {fileID: 114926925658534948}
@@ -77,7 +77,7 @@ MonoBehaviour:
   - {fileID: 114044671076241080}
   - {fileID: 114234539378309912}
   - {fileID: 114641024582448168}
-  MasterBankRef: {fileID: 114211716736511416}
+  MasterBankRef: {fileID: 114184029656624718}
   StringsBankRef: {fileID: 114639243181152198}
   stringsBankWriteTime: 636736851000000000
   cacheVersion: 2
@@ -95,7 +95,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_LargeParty_indoor
   guid: 67b98c4db1715446b96d276cc3d3ce09
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -103,6 +103,66 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 120000
+--- !u!114 &114002010105924290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114004504487626552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114005711819585744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114007639913118268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114008981412001650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +181,252 @@ MonoBehaviour:
   - Name: 
     Value: 30543040
   Exists: 1
+--- !u!114 &114009220268324914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114009401139120078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114009493811315498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114010034724342128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114011224673800026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Reacts.bank
+  lastModified: 636736851010000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 0
+--- !u!114 &114012434902499948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114014983390563584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114016724394098050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114024113964199410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114024953298955208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114025218738603834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_Ambient.bank
+  lastModified: 636729981457519909
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
+--- !u!114 &114025877322390208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114026326029095026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114026729612904216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114027316048118478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114027668053445636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114033329579889460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +445,117 @@ MonoBehaviour:
   - Name: 
     Value: 366112
   Exists: 1
+--- !u!114 &114034047316447466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114035428601484230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114036510606284638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_OneShot.bank
+  lastModified: 636729981333807199
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
+--- !u!114 &114036714937825864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114038497990486440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_OneShot.bank
+  lastModified: 636736851020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
+--- !u!114 &114040352586180108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114044360809050436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114044671076241080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +570,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_LargeParty_outdoor
   guid: d0492fdf2c25b64e80d3258ee74ca34f
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -161,6 +578,36 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 114723
+--- !u!114 &114049627718870144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114052342188162594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114053972253785466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +620,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114054473201461820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/Master Bank.bank
+  lastModified: 636736851000000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
+--- !u!114 &114056106605941822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114057027281871212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
   Min: 0
   Max: 1
   Default: 0
@@ -191,6 +686,54 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114058661554456522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114067283279898074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114068118433533886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_OneShot.bank
+  lastModified: 636729981333807199
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 0
 --- !u!114 &114070287718621808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,19 +748,82 @@ MonoBehaviour:
   Path: event:/Music/Prologue - Betrayal
   guid: 05701a143e7fda46a5963e45d7775d7e
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114761265753879352}
-  - {fileID: 114647858178835912}
-  - {fileID: 114511309029721462}
-  - {fileID: 114951821441092724}
-  - {fileID: 114287476458738842}
+  - {fileID: 114433690552630386}
+  - {fileID: 114632251171779584}
+  - {fileID: 114621219762563132}
+  - {fileID: 114769398707527242}
+  - {fileID: 114531406279302350}
   MinDistance: 0
   MaxDistance: 0
   Length: 60949
+--- !u!114 &114072028643933642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_Ambient.bank
+  lastModified: 636736851110000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 0
+--- !u!114 &114072139616008520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114073892116743166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114074692011025486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114077586276830234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,13 +838,13 @@ MonoBehaviour:
   Path: event:/Music/Crown - Conversation A
   guid: 1b1e8593115837489f1c514d1c89aef5
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114981937511425216}
-  - {fileID: 114650897208572312}
+  - {fileID: 114975739482304990}
+  - {fileID: 114010034724342128}
   MinDistance: 0
   MaxDistance: 0
   Length: 154637
@@ -260,6 +866,73 @@ MonoBehaviour:
   - Name: 
     Value: 410304
   Exists: 1
+--- !u!114 &114079470071871992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114080457374692072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114084055470253694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\Master
+    Bank.bank
+  lastModified: 636729981310516353
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
+--- !u!114 &114088334232013294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Gameplay.bank
+  lastModified: 636736851340000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
 --- !u!114 &114095089159595952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +947,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_ICanHelp
   guid: 6c7f588d115a9d4692df471f2c6578fd
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -282,6 +955,81 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3914
+--- !u!114 &114096828505923598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114101536327824622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114103973804971792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114105102820324080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114105868489383838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114112432535677932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +1060,52 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114114877115493420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114116307225200816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114118904470084834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114122383085866640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,6 +1135,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114130852416184628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114130862284444178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +1164,7 @@ MonoBehaviour:
   Path: event:/Music/Revolution - Party Map
   guid: 2214ef939e2c9d4abdead81e8dbc1c13
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -364,6 +1172,69 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 128999
+--- !u!114 &114133644595314626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_OneShot.bank
+  lastModified: 636736851020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
+--- !u!114 &114134520140493524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114136931306235150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114139998707909240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114140096998071020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +1250,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114142217201164042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114145974212020726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +1277,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114149719873477982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Reacts.bank
+  lastModified: 636729981311316456
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
+--- !u!114 &114153550853772298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Reacts.bank
+  lastModified: 636736851010000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
+--- !u!114 &114153851125896938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114157202519661500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
   Min: 0
   Max: 1
   Default: 0
@@ -427,6 +1379,21 @@ MonoBehaviour:
   - Name: 
     Value: 30543040
   Exists: 1
+--- !u!114 &114160248282778294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114162189926559994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +1408,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Female_bark_neutral
   guid: dedfaeaeecf3d34fa883edfb5c26e72c
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -449,6 +1416,69 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &114163233806803146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114166437897967092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114167020474302834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_OneShot.bank
+  lastModified: 636736851020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 0
+--- !u!114 &114168213813092660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114168706162525996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +1491,126 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114168921330503106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114169759700809802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114169971757081030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114173449527898000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114174288894068332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114175344953425236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114176838108135482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114180482920393548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
   Min: 0
   Max: 1
   Default: 0
@@ -478,7 +1628,7 @@ MonoBehaviour:
   Path: event:/Music/Military - Party Map
   guid: f80d8e498a58a84b856ff6541f43f767
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -486,6 +1636,39 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 125589
+--- !u!114 &114184029656624718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/Master Bank.bank
+  lastModified: 636736851000000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
+--- !u!114 &114184786801056176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114185439018852690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,7 +1699,82 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114186471687808168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114187932801676866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114187935037052870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114189628376115794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114196541962053208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114201048375579522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -546,6 +1804,36 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114205348152071490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114206760228081276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114208738791025490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +1846,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114211127393875594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -579,6 +1882,21 @@ MonoBehaviour:
   - Name: 
     Value: 12474
   Exists: 1
+--- !u!114 &114214329849006378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114217827657486448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,6 +1927,36 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114220238765689124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114229554426269240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114234539378309912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,7 +1971,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_MediumParty_indoor
   guid: d10580713082104ebe1a915f96cd4b96
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -675,7 +2023,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Male_bark_neutral
   guid: 28851d36049f314bb2b8cbc3c7a0fc0b
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -683,6 +2031,25 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &114237224688332820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\Master
+    Bank.bank
+  lastModified: 636729981310516353
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
 --- !u!114 &114239614497559022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,7 +2079,7 @@ MonoBehaviour:
   Path: event:/Music/Crown - Party Map
   guid: a61c2c797ca00c4e87e835f5bfacc445
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -720,6 +2087,66 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 137141
+--- !u!114 &114241704394941890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114249249898047526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114254547697564300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114254835433695418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114255291404725320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,7 +2161,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_ParisStreets_outside
   guid: b1e363f2eb25904b8b6518d5f664c648
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -756,7 +2183,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Female_bark_negative
   guid: 486712760aabe047aa663352c6677fb5
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -764,6 +2191,36 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 757
+--- !u!114 &114260451349575296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114263057130720416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114264497100807544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,6 +2233,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114268153409693546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -797,6 +2269,39 @@ MonoBehaviour:
   - Name: 
     Value: 12474
   Exists: 1
+--- !u!114 &114275216955578458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114275615689566066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/Master Bank.bank
+  lastModified: 636736851000000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 0
 --- !u!114 &114276823123811052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,6 +2314,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114277815635928026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114280235954722444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
   Min: 0
   Max: 1
   Default: 0
@@ -826,15 +2361,45 @@ MonoBehaviour:
   Path: event:/Music/Prologue - Paris Streets
   guid: 53ccef8b9b1a1744a48b3d36219990cd
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114731860855128862}
+  - {fileID: 114646098422679770}
   MinDistance: 0
   MaxDistance: 0
   Length: 66315
+--- !u!114 &114284406703962082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114284631485605938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114287476458738842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,6 +2412,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114292637550590192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114292887368965714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114294335814958434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -864,7 +2474,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/wine_drink
   guid: 840912524fc3f34985d1f666d882de27
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -887,6 +2497,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114302055348512490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114303344047007452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,7 +2527,40 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114309266575840768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Gameplay.bank
+  lastModified: 636736851340000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 0
 --- !u!114 &114309925983783156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114310959505378468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -932,6 +2590,69 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114312031566875570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114313576218565762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_OneShot.bank
+  lastModified: 636729981333807199
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
+--- !u!114 &114316309392676758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114316980690259222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114317484132546198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,7 +2667,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Female_bark_charmed
   guid: f9e9fecd2404f0479d850e9e471fff32
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -984,6 +2705,69 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114325993945454302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/Master Bank.bank
+  lastModified: 636736851000000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 0
+--- !u!114 &114331705756188206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114334025423939850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114335309529256702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114340423532828158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,7 +2782,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/door_latch
   guid: 2dc17e964ceac749984c4d5f00c1ef8c
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1006,6 +2790,54 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1472
+--- !u!114 &114340607963692868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114349636853288068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/Master Bank.bank
+  lastModified: 636736851000000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
+--- !u!114 &114350156368977476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114352091360109978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,7 +2852,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_RevealTwist
   guid: c34bc5fa03986940b85f47bc3bbf9e65
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1028,7 +2860,97 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3751
+--- !u!114 &114354987269089998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114356223122819720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114356732497139154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114358558715328374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114360622977374760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114364572102367492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114365681963015744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1072,7 +2994,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Mouse_inactive
   guid: e4f9ffde801d9042bb86f562b0701a1c
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1080,6 +3002,39 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114372023962172696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Gameplay.bank
+  lastModified: 636729981532379975
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
+--- !u!114 &114373492287676276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114374111106761520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,6 +3047,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114375899475669226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114376612116991770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -1109,7 +3094,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_SmallParty_indoor
   guid: 475b703a36b6914ca955552e0268f063
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1117,6 +3102,36 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 120000
+--- !u!114 &114379461269559220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114380615529273180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114382634264683426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +3161,7 @@ MonoBehaviour:
   Path: event:/Music/Main Menu
   guid: 83702467094cc140bb913560b093463e
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1168,7 +3183,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_ParisStreets_outsideWfountain
   guid: 29f6494b24ef984783d6db56fb1d0d0e
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1176,6 +3191,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 109736
+--- !u!114 &114391061987521404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114394240379611652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,7 +3220,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Mouse_hover
   guid: 30da522e9759724b867db6768d644d97
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1198,6 +3228,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114394913247673676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114400326700342540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,7 +3257,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_RevealIntrigue
   guid: a40c21898d34c84a8f42eb95a1cd67c8
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1234,15 +3279,75 @@ MonoBehaviour:
   Path: event:/Music/Prologue - Opening
   guid: 8ed9e0d787b6464997c87d91113511ff
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114559894887151836}
+  - {fileID: 114953620302308272}
   MinDistance: 0
   MaxDistance: 0
   Length: 81272
+--- !u!114 &114405883584236908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114406307797462038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114407076979275924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114407466769676358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114415302546092676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,16 +3362,109 @@ MonoBehaviour:
   Path: event:/Music/Revolution - Conversation A
   guid: 5c8dd201d943d64aa4e398f9bd10e2d3
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114502014538812362}
-  - {fileID: 114518355213363958}
+  - {fileID: 114101536327824622}
+  - {fileID: 114897161991011086}
   MinDistance: 0
   MaxDistance: 0
   Length: 157358
+--- !u!114 &114416397150278404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_Ambient.bank
+  lastModified: 636729981457519909
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 0
+--- !u!114 &114418549802476690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114423197564391152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114423402723910528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114423404773522746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114430224803057320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114431262416428826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1281,7 +3479,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_MediumParty_outdoor
   guid: 9f1993b11c01634eafa3bd87e7d3daa1
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1289,6 +3487,87 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 120000
+--- !u!114 &114431825430967636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_OneShot.bank
+  lastModified: 636736851020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
+--- !u!114 &114431863556028186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114433155316987580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114433690552630386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114434612040744420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_Ambient.bank
+  lastModified: 636736851110000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
 --- !u!114 &114438975969907078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,7 +3582,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Male_bark_charmed
   guid: 612928eec64bb5408df012501387db8b
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1311,6 +3590,102 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &114439514581118048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114440928266028808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_OneShot.bank
+  lastModified: 636736851020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 0
+--- !u!114 &114441499043735388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114442957090211268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114443301389511144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114448972140064010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_Ambient.bank
+  lastModified: 636729981457519909
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
 --- !u!114 &114449331914333986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,6 +3698,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114450989907475564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -1344,6 +3734,21 @@ MonoBehaviour:
   - Name: 
     Value: 410304
   Exists: 1
+--- !u!114 &114452708329829720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114455450799698410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,6 +3782,75 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114459020149073832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114459997999766128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Gameplay.bank
+  lastModified: 636736851340000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 0
+--- !u!114 &114461667901664270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Reacts.bank
+  lastModified: 636729981311316456
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
+--- !u!114 &114465323225082626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Reacts.bank
+  lastModified: 636736851010000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 0
 --- !u!114 &114467510798149112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,7 +3865,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_Interesting2
   guid: 1fb374ea57b1c84594ed4b1196c5271c
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1413,7 +3887,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Male_bark_negative
   guid: ddc142df73ae2f49a93454cb7bb4bd27
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1421,6 +3895,66 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &114471106109942510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114471758497441324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114472597618891856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114474388961373500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114475886865377108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,7 +3969,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Female_bark_bored
   guid: d958abf550a192428439c84a8c5e10a6
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1458,6 +3992,81 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114477293125151738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114484512879762042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114487653992053318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114489711862918120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114489898509100120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114491971560401480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,6 +4079,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114497146820919454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
   Min: 0
   Max: 1
   Default: 0
@@ -1488,6 +4112,36 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114504103121007682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114509603973993094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114511309029721462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,6 +4154,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114512732191958260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -1517,7 +4186,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/wine_pour
   guid: e7fa6532d4e39e43b060e3547f27cf30
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1526,6 +4195,36 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 1800
 --- !u!114 &114518355213363958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114519252235259172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114523022397203496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1554,7 +4253,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Female_bark_positive
   guid: 75337dd41413f44ba33517d849d8094f
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1562,6 +4261,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &114524572858162346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Gameplay.bank
+  lastModified: 636729981532379975
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
 --- !u!114 &114525413204748570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1606,7 +4323,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_TheRightPlace
   guid: 55c446a260ecb2488146bf3ecfa710ad
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1614,6 +4331,39 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 4154
+--- !u!114 &114531406279302350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114534978740566740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Reacts.bank
+  lastModified: 636736851010000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
 --- !u!114 &114535448489231782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,7 +4378,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_Interesting1
   guid: 9784b6c0f99d944991f74cd5f386f172
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1636,6 +4386,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3466
+--- !u!114 &114539117133015746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114539988945770150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1685,6 +4450,51 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114547419860706826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114548196886235288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114548346151285848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114549676936629558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1700,6 +4510,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114550866240822954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114559894887151836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,6 +4537,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114561822968659624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114564695106777870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -1733,6 +4588,24 @@ MonoBehaviour:
   - Name: 
     Value: 410304
   Exists: 0
+--- !u!114 &114568266973618652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Gameplay.bank
+  lastModified: 636729981532379975
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
 --- !u!114 &114570597043450014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,17 +4635,95 @@ MonoBehaviour:
   Path: event:/Music/Bourgeoisie - Conversation A
   guid: ef82b7927409864ca6ac7c51f7db601d
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114919531055310690}
-  - {fileID: 114949163876995620}
+  - {fileID: 114790899647582394}
+  - {fileID: 114612092921430620}
   MinDistance: 0
   MaxDistance: 0
   Length: 140689
+--- !u!114 &114578845790629350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Reacts.bank
+  lastModified: 636736851010000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
+--- !u!114 &114580407428038476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114586334847395104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114586978468666862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114587243349606188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114590116616820988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1817,6 +4768,129 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114594482844762908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114599294733727258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114606118396664992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114606240164357062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Gameplay.bank
+  lastModified: 636729981532379975
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 0
+--- !u!114 &114607850620483552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114610663433974536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114611480525775326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114612092921430620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114612197593328500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1831,7 +4905,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/door_knock_hard
   guid: e44be13ff01998469c7ad971fecc4625
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1839,6 +4913,36 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
+--- !u!114 &114612883063912630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114621219762563132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114626001605215614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,7 +4957,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/door_knock_soft
   guid: 4a22885383bade408ccba6d0eefd7aaa
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1861,6 +4965,36 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 624
+--- !u!114 &114632251171779584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114635972486321516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114639243181152198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,6 +5013,21 @@ MonoBehaviour:
   - Name: 
     Value: 3828
   Exists: 1
+--- !u!114 &114640959271762992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114641024582448168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1893,7 +5042,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_SmallParty_outdoor
   guid: e9e103c2a99cb34290274731e3cc1059
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1916,6 +5065,66 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114645057249267122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114645600036616942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114645897750730146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114646098422679770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114646356862454934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,6 +5137,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114647013683809036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
   Min: 0
   Max: 1
   Default: 0
@@ -1946,6 +5170,39 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114648913485805978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114650246910112910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_Ambient.bank
+  lastModified: 636736851110000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
 --- !u!114 &114650897208572312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1958,6 +5215,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114651436690521938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
   Min: 0
   Max: 1
   Default: 0
@@ -1975,7 +5247,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_ParisStreets_inside
   guid: 3d8852f7b81bd44a8ff52d44f20eb76f
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1998,6 +5270,39 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114658557926898678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114661786386529926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Reacts.bank
+  lastModified: 636729981311316456
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
 --- !u!114 &114664642389956684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2012,7 +5317,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Male_bark_positive
   guid: 5f9caa18effe7f4483a04b755ffe6d45
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2020,6 +5325,54 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &114667341142230012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114668666529332124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_Ambient.bank
+  lastModified: 636736851110000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
+--- !u!114 &114669926013711492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114670760653647950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,7 +5387,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/sfx_cards_flip
   guid: 4141e87581c4f444b174fdc61d0eda2b
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2042,6 +5395,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 694
+--- !u!114 &114671228465312724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/Master Bank.bank
+  lastModified: 636736851000000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
 --- !u!114 &114672733824296016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,6 +5449,111 @@ MonoBehaviour:
   - Name: 
     Value: 366112
   Exists: 0
+--- !u!114 &114676683125788424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114677378597248844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114684075972311688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114687448121369842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114687566878412722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114692068279033006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114692641174603870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114693363200031044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2092,7 +5568,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/Amb_carriagev2
   guid: 97e1bcfecec50c46b30628a8dab1cb38
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2100,6 +5576,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 67000
+--- !u!114 &114696147202469206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114698593990907092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,16 +5605,67 @@ MonoBehaviour:
   Path: event:/Music/Military - Conversation A
   guid: 4aead0369999714cb0174e81a1f8a5e8
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114546174780843086}
-  - {fileID: 114264497100807544}
+  - {fileID: 114640959271762992}
+  - {fileID: 114201048375579522}
   MinDistance: 0
   MaxDistance: 0
   Length: 136615
+--- !u!114 &114700404427202734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Gameplay.bank
+  lastModified: 636729981532379975
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
+--- !u!114 &114704865866870666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_OneShot.bank
+  lastModified: 636729981333807199
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
+--- !u!114 &114708554079464562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114710217158091622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2138,13 +5680,13 @@ MonoBehaviour:
   Path: event:/Music/Orphan's Feast - Conversation A
   guid: 2d24cb86ef4a6d4697a66bc9543b1d74
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114714212034350946}
-  - {fileID: 114185439018852690}
+  - {fileID: 114523022397203496}
+  - {fileID: 114169971757081030}
   MinDistance: 0
   MaxDistance: 0
   Length: 79756
@@ -2178,6 +5720,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114718752702905392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114729249960235312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2190,6 +5747,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114731282409449120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
   Min: 0
   Max: 1
   Default: 0
@@ -2208,6 +5780,90 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114732138451521294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114734586671448212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Gameplay.bank
+  lastModified: 636729981532379975
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
+--- !u!114 &114735967635963142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_Ambient.bank
+  lastModified: 636729981457519909
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
+--- !u!114 &114736743048760402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_Ambient.bank
+  lastModified: 636736851110000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 0
+--- !u!114 &114739381274794526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114740573752848338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2223,6 +5879,58 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114740921457368060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Gameplay.bank
+  lastModified: 636736851340000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
+--- !u!114 &114742632127973518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114745012151354602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\Master
+    Bank.bank
+  lastModified: 636729981310516353
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
 --- !u!114 &114746414973402192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2235,6 +5943,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114746767408805624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114747721571922984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
   Min: 0
   Max: 1
   Default: 0
@@ -2252,7 +5990,7 @@ MonoBehaviour:
   Path: event:/Music/Bourgeoisie - Party Map
   guid: 0829f695dde8b542bd5fecdafce174b7
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2275,6 +6013,54 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114751491440006096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114751956093226574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114752282193511590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Reacts.bank
+  lastModified: 636729981311316456
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
 --- !u!114 &114754549436837530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2289,7 +6075,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Male_bark_bored
   guid: 0f56f0c4564bcd4ab5af77d5f2ccbed1
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2297,6 +6083,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &114754978431479496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114757637105101482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2309,6 +6110,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114760040108918862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -2326,7 +6142,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_ArriveAtHost
   guid: dbb5ae89ad6f0e4d848d7c0949a4ecd3
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2349,6 +6165,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114766669921477070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114768574889649222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2361,6 +6192,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114769151650251730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114769398707527242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
   Min: 0
   Max: 1
   Default: 0
@@ -2378,7 +6239,7 @@ MonoBehaviour:
   Path: event:/Ambient SFX/_DUMMY AMBIENT
   guid: 81e4790067dda0418423d358928d2ba9
   Banks:
-  - {fileID: 114900368893403130}
+  - {fileID: 114434612040744420}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2386,6 +6247,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &114776911373062204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114777788520276462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2400,7 +6276,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_Scandalized
   guid: d70267f17f6a9249b431948eb14be870
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2408,6 +6284,162 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3586
+--- !u!114 &114777789613964648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114784904266747452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114785829276352444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114787728529834792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Reacts.bank
+  lastModified: 636729981311316456
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
+--- !u!114 &114788729075807472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Gameplay.bank
+  lastModified: 636736851340000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
+--- !u!114 &114790899647582394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114792364765909606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114797170437664346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114799192819375742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114799883488289176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114799971838543824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2420,6 +6452,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114802798217180230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114807773899494422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -2453,6 +6515,73 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114818838567888970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114827216109110714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\Master
+    Bank.bank
+  lastModified: 636729981310516353
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
+--- !u!114 &114828822039662502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114832447442528688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_OneShot.bank
+  lastModified: 636729981333807199
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
 --- !u!114 &114833377238587132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2465,6 +6594,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114835113134347006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114839756530109758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -2483,7 +6642,70 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114844966843251524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114848152037692096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_Ambient.bank
+  lastModified: 636729981457519909
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
+--- !u!114 &114850646434276902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114854743928683586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114855803777064950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2531,6 +6753,36 @@ MonoBehaviour:
   - Name: 
     Value: 9344864
   Exists: 1
+--- !u!114 &114857555841156592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114862909243036320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114866664233152098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2543,6 +6795,150 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114867719848935384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114869338493912570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114874372476785596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114878211006920952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Reacts.bank
+  lastModified: 636736851010000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 1
+--- !u!114 &114884750879032844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/MUS_Gameplay.bank
+  lastModified: 636736851340000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 30543040
+  Exists: 1
+--- !u!114 &114884787247283840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114887121569408536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114887481350227346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_Ambient.bank
+  lastModified: 636729981457519909
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
+--- !u!114 &114889105496152622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -2560,16 +6956,31 @@ MonoBehaviour:
   Path: event:/Music/Church - Conversation A
   guid: 9fddc9e1b2affb4f95e11d22c1fdff4a
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114854743928683586}
-  - {fileID: 114740573752848338}
+  - {fileID: 114952329941717910}
+  - {fileID: 114857555841156592}
   MinDistance: 0
   MaxDistance: 0
   Length: 118500
+--- !u!114 &114897161991011086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114900368893403130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2602,7 +7013,7 @@ MonoBehaviour:
   Path: event:/Music/Orphan's Feast - Party Map
   guid: 16c5da23bd1a0b4b8a9c2ebba72e1119
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2610,6 +7021,36 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 76367
+--- !u!114 &114915283728964212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114918148550736110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114919531055310690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2640,6 +7081,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114922645192779432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114923119263007406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2654,16 +7110,49 @@ MonoBehaviour:
   Path: event:/Music/Revolution - Conversation B
   guid: a20163f85294634fadf8853b89b0d944
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114187935037052870}
-  - {fileID: 114973081176022710}
+  - {fileID: 114676683125788424}
+  - {fileID: 114024113964199410}
   MinDistance: 0
   MaxDistance: 0
   Length: 132947
+--- !u!114 &114923734231581374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_OneShot.bank
+  lastModified: 636736851020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
+--- !u!114 &114923958422456840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114926925658534948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2678,7 +7167,7 @@ MonoBehaviour:
   Path: event:/One Shot Music Stings/mus_react_Shock
   guid: 2b2e3e738e37d64ba05687bcbb31bc9c
   Banks:
-  - {fileID: 114452668665319160}
+  - {fileID: 114153550853772298}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2686,7 +7175,89 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3631
+--- !u!114 &114927472125501312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\Master
+    Bank.bank
+  lastModified: 636729981310516353
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
+--- !u!114 &114929426839965208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\SFX_OneShot.bank
+  lastModified: 636729981333807199
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 366112
+  Exists: 1
+--- !u!114 &114938304053937532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114940132225217302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114942806677908720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114947449045176016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2716,6 +7287,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114951007345707402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114951821441092724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2728,6 +7314,84 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 3
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114952329941717910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114952662004418430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114953620302308272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114957180024427798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\MUS_Reacts.bank
+  lastModified: 636729981311316456
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 410304
+  Exists: 0
+--- !u!114 &114958656238737622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -2745,7 +7409,7 @@ MonoBehaviour:
   Path: event:/Music/_DUMMY MUSIC
   guid: d16102a45d17ea409c4bc057c19973d4
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2798,6 +7462,66 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114966447326436626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114967893051359406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114969134561153198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114972518532912044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114973081176022710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2827,7 +7551,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/Mouse_click
   guid: 997fa02eb20cb94785eb4d85779fcede
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2835,6 +7559,84 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114975739482304990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114976124749019386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/michaelseltzer/Projects/DeWinter/Assets/Audio/build/SFX_Ambient.bank
+  lastModified: 636736851110000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 9344864
+  Exists: 1
+--- !u!114 &114976555914632644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114979041325768618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114980412080588864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114981937511425216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2847,6 +7649,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114983017043954810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -2879,7 +7696,7 @@ MonoBehaviour:
   Path: event:/One Shot SFX/sfx_outfit_PutON
   guid: ecb7f82c56165141aa6b4961eb4253a7
   Banks:
-  - {fileID: 114455450799698410}
+  - {fileID: 114923734231581374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2887,6 +7704,40 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 850
+--- !u!114 &114993556164371726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114995860037198244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Luther\Documents\Ambition\Ambition Github\Assets\Audio\build\Master
+    Bank.bank
+  lastModified: 636729981310516353
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 0
 --- !u!114 &114996259064189444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2919,7 +7770,7 @@ MonoBehaviour:
   Path: event:/Music/Church - Party Map
   guid: 3cdcfbcadf3bd64fa4f1305b839098ff
   Banks:
-  - {fileID: 114159703306701082}
+  - {fileID: 114788729075807472}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2927,3 +7778,18 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 168256
+--- !u!114 &114997198298944354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0

@@ -1,57 +1,66 @@
 ﻿using System;
 using Core;
+using Util;
 
 namespace Ambition
 {
-	public class EnemyAttackCmd : ICommand<GuestVO>
-	{
-		public void Execute(GuestVO guest)
-		{
-			EnemyVO enemy = guest as EnemyVO;
-			if (enemy == null) return;
+    public class EnemyAttackCmd : ICommand<EnemyVO>
+    {
+        public void Execute(EnemyVO guest)
+        {
+            if (guest.IsLockedIn) return; // Don't bother if the guest is already locked in
 
-			if (enemy.State != GuestState.Charmed) // No dice if the enemy is dazed
-			{
-		        //Check for Charmed Guests, this is necessary for the Attack Check below
-				MapModel model = AmbitionApp.GetModel<MapModel>();
-		        GuestVO[] guests = Array.FindAll(model.Room.Guests, g => g.State == GuestState.Charmed);
-		        if (guests.Length == 0) return; // Early Out
+            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
+            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+            RemarkVO remark = model.Remark;
+            float levelBonus = (AmbitionApp.GetModel<GameModel>().Level >= 4)
+                ? 1.25f
+                : 1.0f;
+            float ReparteBonus = 1.0f + (model.Repartee ? AmbitionApp.GetModel<PartyModel>().ReparteeBonus : 0f);
+            // Determine reaction to remark
+            string key = remark.Interest == guest.Like
+                        ? PartyConstants.LIKE
+                        : remark.Interest == guest.Dislike
+                        ? PartyConstants.DISLIKE
+                        : PartyConstants.NEUTRAL;
 
-				int attackNumber = Util.RNG.Generate(0, 5);
-		        switch (attackNumber)
-		        {
-		            case 1:
-		                //1 = Monopolize Conversation (Lose a Turn)
-		                //TODO: Need player-facing messaging!
-//		                AmbitionApp.SendMessage(PartyMessages.END_TURN);
-		                break;
-		            case 2:
-		                //2 = Rumor Monger (Lower the Opinion of all uncharmed Guests)
-		                guests = Array.FindAll(model.Room.Guests, g => g.State != GuestState.Charmed);
-		                foreach (GuestVO g in guests)
-		                {
-		                	g.Opinion -= 10;
-		                }
-		                break;
-		            case 3:
-		                //3 = Belittle (Sap your Confidence)
-						AmbitionApp.GetModel<PartyModel>().Confidence -= 20;
-		                break;
-		            case 4:
-		                //4 = Antagonize (Uncharm a Charmed Guest, if there is one)
-		                if (guests.Length > 1)
-		                {
-							guest = guests[Util.RNG.Generate(1, guests.Length-1)];
-							if (guest != enemy) guest.Opinion = 90;
-			                else guests[0].Opinion = 90;
-			            }
-		                break;
-		        }
-		        if (attackNumber != 0)
-		        {
-		        	AmbitionApp.SendMessage<EnemyVO>(PartyMessages.ENEMY_RESET, enemy);	
-		        }
-			}
-		}
-	}
+            if (key == PartyConstants.DISLIKE && model.ItemEffect)
+            {
+                model.ItemEffect = false;
+                return;
+            }
+
+            // Adjust guest according to configued reaction
+            RemarkResult result = partyModel.RemarkResults[key];
+            guest.Opinion += (int)(((float)RNG.Generate(result.OpinionMin, result.OpinionMax)) * ReparteBonus * levelBonus);
+            if (guest.Opinion >= 100)
+            {
+                guest.Opinion = 100;
+                guest.State = GuestState.Charmed;
+                AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+                AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+                AmbitionApp.SendMessage(PartyMessages.GUEST_CHARMED, guest);
+            }
+            else if (guest.Opinion <= 0)
+            {
+                guest.Opinion = 0;
+                guest.State = GuestState.PutOff;
+                AmbitionApp.SendMessage(PartyMessages.GUEST_OFFENDED, guest);
+            }
+            else switch (key)
+            {
+                case PartyConstants.LIKE:
+                    AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_POSITIVE, guest);
+                    break;
+                case PartyConstants.DISLIKE:
+                    AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_NEGATIVE, guest);
+                    AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+                    break;
+                default:
+                    AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_NEUTRAL, guest);
+                    break;
+            }
+            // So, there's a potential that the clock won't reset? Deal with that when it's a thing
+        }
+    }
 }

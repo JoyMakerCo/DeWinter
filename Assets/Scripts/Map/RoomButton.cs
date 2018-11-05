@@ -21,6 +21,7 @@ namespace Ambition
 
 	    private Button _button;
 	    private RoomGraphic _graphic;
+        private MapModel _map;
 
 		void Awake()
 		{
@@ -34,76 +35,71 @@ namespace Ambition
 			cb.disabledColor = ColorConfig.GetColor("hidden");
 			_button.colors = cb;
 			_graphic = GetComponent<RoomGraphic>();
+            AmbitionApp.Subscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleCurrentRoom);
+        }
 
-            AmbitionApp.Subscribe<RoomVO>(MapMessage.REVEAL_ROOM, HandleRevealRoom);
-		}
-
-		void OnDestroy()
+        void OnDestroy()
 		{
 			_button.onClick.RemoveListener(OnClick);
-            AmbitionApp.Unsubscribe<RoomVO>(MapMessage.REVEAL_ROOM, HandleRevealRoom);
-		}
+            AmbitionApp.Unsubscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleCurrentRoom);
+        }
 
-		private RoomVO _room;
+        private RoomVO _room;
 		public RoomVO Room
 		{
 			get { return _room; }
 			set 
 			{
-				_graphic.Room = value;
+                MapModel map = AmbitionApp.GetModel<MapModel>();
+                _graphic.Room = value;
 				gameObject.name = value.Name;
 				if (_room == null) // This will crash if the room has no walls.
 				{
-					MapModel map = AmbitionApp.GetModel<MapModel>();
 					float scale = map.MapScale;
 					RectTransform xform = gameObject.GetComponent<RectTransform>();
                     xform.anchoredPosition = new Vector2(value.Bounds[0]*scale, value.Bounds[1]*scale);
 					xform.sizeDelta = new Vector2((value.Bounds[2]-value.Bounds[0])*scale, (value.Bounds[3]-value.Bounds[1])*scale);
-
 					_graphic.sprite = FloorTexturtes.Sprites[Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
 				}
 				_room = value;
+                HandleCurrentRoom(map.Room);
 			}
 		}
 
-		public void UpdatePlayerRoom(RoomVO room)
-		{
-            _button.interactable = _room.IsAdjacentTo(room);
-
-            if (_button.interactable || _room == room)
-            {
-                ColorBlock cb = _button.colors;
-                AmbitionApp.SendMessage(MapMessage.REVEAL_ROOM, _room);
-                cb.disabledColor = ColorConfig.GetColor(_room == room ? "current" : "shown");
-                _button.colors = cb;
-            }
-        }
-
-        private void HandleRevealRoom(RoomVO room)
+        private void HandleCurrentRoom(RoomVO currentRoom)
         {
-            if (_room == room)
+            if (_room != null)
             {
-                ColorBlock cb = _button.colors;
-                cb.disabledColor = ColorConfig.GetColor("shown");
-                _button.colors = cb;
-
-                DescriptionText.enabled = true;
-                DescriptionText.text = _room.Name + "\n";
-                for (int i = _room.Difficulty - 1; i >= 0; i--)
-                    DescriptionText.text += '\u2605';
-                Punchbowl.enabled = (Array.IndexOf(_room.Features, PartyConstants.PUNCHBOWL) >= 0);
-                Host.enabled = (Array.IndexOf(_room.Features, PartyConstants.HOST) >= 0);
-                if (Host.enabled)
+                bool current = _room == currentRoom;
+                bool adjacent = _room.IsAdjacentTo(currentRoom);
+                if (current || adjacent)
                 {
-                    PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
-                    Host.sprite = FactionIcons.GetSprite(party.Faction);
+                    if (_room.Revealed) //Had to simplify this because the rooms weren't displaying a lot of their characteristics. This is because many things reveal the rooms without this void doing it
+                    {
+                        DescriptionText.enabled = true;
+                        DescriptionText.text = _room.Name + "\n";
+                        for (int i = _room.Difficulty - 1; i >= 0; i--)
+                            DescriptionText.text += '\u2605';
+                        Punchbowl.enabled = (Array.IndexOf(_room.Features, PartyConstants.PUNCHBOWL) >= 0);
+                        Host.enabled = (Array.IndexOf(_room.Features, PartyConstants.HOST) >= 0);
+                        if (Host.enabled)
+                        {
+                            PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
+                            Host.sprite = FactionIcons.GetSprite(party.Faction);
+                        }
+                    }
+                    ColorBlock cb = _button.colors;
+                    cb.disabledColor = ColorConfig.GetColor(current ? "current" : "shown");
+                    _button.colors = cb;
                 }
+                _button.interactable = adjacent;
             }
+            else _button.interactable = false;
         }
 
-		protected void OnClick()
+        protected void OnClick()
 		{
-			AmbitionApp.SendMessage<RoomVO>(MapMessage.GO_TO_ROOM, _room);
+            AmbitionApp.SendMessage(MapMessage.GO_TO_ROOM, _room);
 		}
 	}
 }

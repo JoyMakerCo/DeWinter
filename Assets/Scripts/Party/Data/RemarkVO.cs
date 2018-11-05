@@ -7,7 +7,8 @@ namespace Ambition
 	public class RemarkVO
 	{
 		public int NumTargets=0;
-	    public string Interest;
+	    public string Interest=null;
+        public bool Free=false;
 	    public bool IsAmbush
 	    {
 	    	get { return NumTargets == 0; }

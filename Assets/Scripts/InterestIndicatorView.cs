@@ -6,11 +6,9 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class InterestIndicatorView : MonoBehaviour
+    public class InterestIndicatorView : GuestViewMediator
 	{
 		private const float FILL_SECONDS = 0.5f;
-		private GuestVO _guest;
-		private int _index;
         private Animator _animator;
         private RemarkVO _remark;
 
@@ -24,69 +22,82 @@ namespace Ambition
         public ParticleSystem NegativeEffect;
         public ParticleSystem NeutralEffect;
 
-		void Awake()
-		{
-			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
-            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleSelected);
-			AmbitionApp.Subscribe<GuestVO>(HandleGuest);
-            AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
-			_index = transform.GetSiblingIndex();
+        private void Awake()
+        {
             _animator = GetComponent<Animator>();
-		}
+            InitGuest();
+        }
 
-		void OnDestroy()
-		{
-			AmbitionApp.Unsubscribe<GuestVO[]>(HandleGuests);			
-			AmbitionApp.Unsubscribe<GuestVO>(HandleGuest);
-            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleSelected);
+        private void OnDestroy()
+        {
+            Cleanup();
+        }
+        
+        private void OnEnable()
+        {
+            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleSelect);
+            AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
+        }
+
+        private void OnDisable()
+        {
+            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleSelect);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
-		}
+        }
 
-		private void HandleGuests(GuestVO [] guests)
+        override protected void HandleGuest(GuestVO guest)
 		{
-
-			bool enabled = guests != null && guests.Length > _index;
-			_guest = enabled ? guests[_index] : null;
-			gameObject.SetActive(enabled);
-			if (enabled) HandleGuest(_guest);
-		}
-
-		private void HandleGuest(GuestVO guest)
-		{
-			if (guest == _guest)
+            if (guest != null && guest == _guest)
 			{
-				StopAllCoroutines();
-				StartCoroutine(FillMeter((_guest.Interest >=  _guest.MaxInterest) ? 1f : (float)_guest.Interest/((float)_guest.MaxInterest)));
-				InterestIcon.sprite = InterestSprites.GetSprite(_guest.Like);
-				InterestIconBorder.sprite = BorderSprites.GetSprite(_guest.State.ToString());
-			}
+                if (guest.State != GuestState.Offended)
+                {
+                    float amount = (_guest.Opinion >= 100) ? 1f : ((float)_guest.Opinion) * .01f;
+                    if (gameObject.activeInHierarchy)
+                    {
+                        StopAllCoroutines();
+                        StartCoroutine(FillMeter(amount));
+                    }
+                    else
+                    {
+                        OpinionIndicator.fillAmount = amount;
+                    }
+                    InterestIcon.sprite = InterestSprites.GetSprite(_guest.Like);
+                    InterestIconBorder.sprite = BorderSprites.GetSprite(_guest.State.ToString());
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+            }
 		}
-
 
         private void HandleRemark(RemarkVO remark)
         {
             _remark = remark;
         }
 
-        private void HandleSelected(GuestVO[] guests)
+        private void HandleSelect(GuestVO guest)
         {
-            if (_animator != null
-                && _guest != null
-                && _remark != null
-                && guests != null
-                && Array.IndexOf(guests, _guest) >= 0)
+            if (_remark != null && guest != null && guest == _guest)
             {
                 if (_remark.Interest == _guest.Like)
                 {
-                    _animator.SetTrigger("Positive Remark");
+                    if (_animator != null)
+                        _animator.SetTrigger("Positive Remark");
+                    if (PositiveEffect != null)
+                        PositiveEffect.Play();
                 }
                 else if (_remark.Interest == _guest.Dislike)
                 {
-                    _animator.SetTrigger("Negative Remark");
+                    if (_animator != null)
+                        _animator.SetTrigger("Negative Remark");
+                    if (NegativeEffect != null)
+                        NegativeEffect.Play();
                 }
                 else
                 {
-                    _animator.SetTrigger("Neutral Remark");
+                    if (_animator != null)
+                        _animator.SetTrigger("Neutral Remark");
                 }
             }
         }
@@ -112,7 +123,7 @@ namespace Ambition
 				yield return null;
 			}
 			OpinionIndicator.fillAmount = percent;
-		}
+        }
 
         public void TriggerNeutralParticles()
         {
@@ -131,5 +142,6 @@ namespace Ambition
             if (NegativeEffect != null)
                 NegativeEffect.Play();
         }
-	}
+
+    }
 }

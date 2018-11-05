@@ -1,102 +1,126 @@
 ﻿{
-	factions:[
+  factions: [
+    {
+      "Name": "Crown",
+      "Modesty": 100,
+      "Luxury": 100,
+      "Allegiance": 100,
+      "Power": 10,
+      "Steadfast": true,
+      "Baroque": [ 60, 100 ]
+    },
+    {
+      "Name": "Church",
+      "Modesty": 100,
+      "Luxury": -100,
+      "Allegiance": 60,
+      "Power": 10,
+      "Baroque": [ 60, 80 ]
+    },
+    {
+      "Name": "Military",
+      "Modesty": 0,
+      "Luxury": 0,
+      "Allegiance": 0,
+      "Power": 10,
+      "Baroque": [ 0, 100 ]
+    },
+    {
+      "Name": "Bourgeoisie",
+      "Modesty": -100,
+      "Luxury": 100,
+      "Allegiance": -60,
+      "Power": 10,
+      "Baroque": [ 0, 100 ]
+    },
+    {
+      "Name": "Revolution",
+      "Modesty": -100,
+      "Luxury": -100,
+      "Allegiance": -100,
+      "Steadfast": true,
+      "Power": 10,
+      "Baroque": [ 0, 60 ]
+    },
+    {
+      "Name": "Neutral", //Used for the tutorial parties and such
+      "Modesty": 0,
+      "Luxury": 0,
+      "Allegiance": 0,
+      "Power": 0,
+      "Baroque": [ 0, 100 ]
+    }
+  ],
+	"levels":[
+        {
+          "requirement": -9000,
+          "level": -1,
+          "deck_bonus": -1,
+          "largestAllowableParty": 0
+        },
 		{
-			Name:"crown",
-			Modesty:100,
-			Luxury:100,
-			Allegiance:100,
-			Power:10,
-			Steadfast:true,
-			Baroque:[60,100]
+          "level": 0,
+          "requirement":0,
+            "deck_bonus": 0,
+			"largestAllowableParty":0
 		},
 		{
-			Name:"church",
-			Modesty:100,
-			Luxury:-100,
-			Allegiance:60,
-			Power:10,
-			Baroque:[60,80]
+            "level": 1,
+			"requirement":20,
+            "deck_bonus": 1,
+			"largestAllowableParty":1
 		},
 		{
-			Name:"military",
-			Modesty:0,
-			Luxury:0,
-			Allegiance:0,
-			Power:10,
-			Baroque:[0,100]
+            "level": 2,
+			"requirement":50,
+            "deck_bonus": 2,
+			"largestAllowableParty":1
 		},
 		{
-			Name:"bourgeoisie",
-			Modesty:-100,
-			Luxury:100,
-			Allegiance:-60,
-			Power:10,
-			Baroque:[0,100]
+            "level": 3,
+			"requirement":100,
+            "deck_bonus": 3,
+			"largestAllowableParty":1
 		},
 		{
-			Name:"revolution",
-			Modesty:-100,
-			Luxury:-100,
-			Allegiance:-100,
-			Steadfast:true,
-			Power:10,
-			Baroque:[0,60]
-		},
-	],
-	levels:[
-		{
-			requirement:0,
-			confidence:0,
-			largestAllowableParty:0
+            "level": 4,
+			"requirement":150,
+            "deck_bonus": 4,
+			"largestAllowableParty":2
 		},
 		{
-			requirement:20,
-			confidence:10,
-			largestAllowableParty:1
+            "level": 5,
+			"requirement":200,
+            "deck_bonus": 5,
+			"largestAllowableParty":2
 		},
 		{
-			requirement:50,
-			confidence:20,
-			largestAllowableParty:1
-		},
-		{
-			requirement:100,
-			confidence:30,
-			largestAllowableParty:1
-		},
-		{
-			requirement:150,
-			confidence:40,
-			largestAllowableParty:2
-		},
-		{
-			requirement:200,
-			confidence:50,
-			largestAllowableParty:2
-		},
-		{
-			requirement:250,
-			confidence:60,
+            "level": 6,
+			"requirement":250,
+            "deck_bonus": 6,
 			importance:1,
-			largestAllowableParty:2
+			"largestAllowableParty":2
 		},
 		{
-			requirement:300,
-			confidence:70,
+            "level": 7,
+			"requirement":300,
+            "deck_bonus": 7,
 			importance:1,
-			largestAllowableParty:3
+			"largestAllowableParty":3
 		},
 		{
-			requirement:350,
-			confidence:80,
+            "level": 8,
+			"requirement":350,
+            "deck_bonus": 8,
 			importance:1,
-			largestAllowableParty:3
+			"largestAllowableParty":3
 		},
 		{
-			requirement:400,
-			confidence:90,
+            "level": 9,
+			"requirement":400,
+            "deck_bonus": 9,
 			importance:2,
-			largestAllowableParty:3
+			"largestAllowableParty":3
 		}
 	],
 	allegiance:[

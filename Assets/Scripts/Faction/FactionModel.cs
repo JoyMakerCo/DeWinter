@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
 using Util;
+using UnityEngine;
 
 namespace Ambition
 {
@@ -41,7 +43,8 @@ namespace Ambition
 
 		public FactionVO this[string faction]
 		{
-			get { return Factions[faction]; }
+            get
+            { return Factions[faction]; }
 		}
 
 		public string GetVictoriousPower()
@@ -50,6 +53,21 @@ namespace Ambition
 				? FactionConsts.REVOLUTION
 				: FactionConsts.CROWN;
 		}
+
+        public FactionVO GetRandomFactionNoNeutral() //Used for a variety of tasks, this returns a randomly selected faction that isn't the 'Neutral' faction used for certain parties
+        {
+            List<FactionVO> factionList = Factions.Values.ToList();
+            List<FactionVO> randomFactionList = new List<FactionVO>();
+            foreach (FactionVO f in factionList)
+            {
+                if(f.Name != "Neutral")
+                {
+                    randomFactionList.Add(f);
+                }
+            }
+            FactionVO randomFaction = randomFactionList[Util.RNG.Generate(0, randomFactionList.Count)];
+            return randomFaction;
+        }
 
 		public string GetFactionBenefits(string FactionID)
 		{

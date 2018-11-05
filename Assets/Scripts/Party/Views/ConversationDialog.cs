@@ -20,6 +20,7 @@ namespace Ambition
 
         public void Initialize(CommodityVO[] commodities)
         {
+            print("Initializing!");
             Commodities.SetCommodities(commodities);
         }
 

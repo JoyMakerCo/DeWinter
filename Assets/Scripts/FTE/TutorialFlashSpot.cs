@@ -17,21 +17,21 @@ namespace Ambition
         void OnEnable()
         {
             _script = GetComponent<SpotlightView>();
-            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleGuests);
+            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleGuest);
             StopAllCoroutines();
             StartCoroutine(FlashCR());
         }
 
         void OnDisable()
         {
-            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleGuests);
+            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleGuest);
             StopAllCoroutines();
             _script.On = false;
         }
         
-        private void HandleGuests(GuestVO [] guests)
+        private void HandleGuest(GuestVO guest)
         {
-            _paused = (guests != null && Array.IndexOf(guests, _script.Guest) >= 0);
+            _paused = guest != null && _script.Guest == guest;
         }
 
         IEnumerator FlashCR()

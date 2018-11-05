@@ -11,13 +11,13 @@ namespace Ambition
         void Awake()
         {
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Subscribe(IncidentMessages.END_INCIDENTS, HandleEndIncident);
+            AmbitionApp.Subscribe(IncidentMessages.END_INCIDENTS, HandleEndIncidents);
         }
 
         private void OnDestroy()
         {
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Unsubscribe(IncidentMessages.END_INCIDENTS, HandleEndIncident);
+            AmbitionApp.Unsubscribe(IncidentMessages.END_INCIDENTS, HandleEndIncidents);
         }
 
         private void HandleIncident(IncidentVO incident)
@@ -25,15 +25,15 @@ namespace Ambition
             if (incident != null && transform.childCount == 0)
             {
                 Instantiate(IncidentViewPrefab, transform);
-                AmbitionApp.SendMessage(IncidentMessages.START_INCIDENT, incident);
             }
         }
 
-        void HandleEndIncident()
+        void HandleEndIncidents()
         {
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);
+                child.SetParent(null);
             }
         }
     }

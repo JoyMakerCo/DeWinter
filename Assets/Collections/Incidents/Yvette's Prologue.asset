@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 52
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -29,32 +29,48 @@ MonoBehaviour:
     - {x: 12, y: 13}
     - {x: 13, y: 7}
     - {x: 10, y: 14}
-    - {x: 14, y: 15}
     - {x: 16, y: 17}
     - {x: 17, y: 13}
     - {x: 3, y: 18}
     - {x: 18, y: 4}
-    - {x: 15, y: 19}
-    - {x: 19, y: 16}
-    - {x: 19, y: 16}
-    - {x: 8, y: 21}
-    - {x: 19, y: 16}
-    - {x: 8, y: 22}
-    - {x: 19, y: 16}
-    - {x: 19, y: 16}
-    - {x: 19, y: 16}
-    - {x: 23, y: 24}
-    - {x: 19, y: 16}
-    - {x: 19, y: 16}
-    - {x: 19, y: 16}
-    - {x: 23, y: 25}
-    - {x: 19, y: 16}
-    - {x: 24, y: 26}
-    - {x: 19, y: 16}
-    - {x: 22, y: 23}
-    - {x: 19, y: 16}
+    - {x: 8, y: 19}
+    - {x: 8, y: 20}
+    - {x: 21, y: 22}
     - {x: 21, y: 23}
-    - {x: 19, y: 16}
+    - {x: 22, y: 24}
+    - {x: 20, y: 21}
+    - {x: 19, y: 21}
+    - {x: 15, y: 25}
+    - {x: 14, y: 15}
+    - {x: 25, y: 16}
+    - {x: 14, y: 15}
+    Positions:
+    - {x: 0, y: 0}
+    - {x: -269, y: 37}
+    - {x: -270, y: 116}
+    - {x: -272, y: 195}
+    - {x: -272, y: 348}
+    - {x: 6, y: 171}
+    - {x: 347, y: 93}
+    - {x: 345, y: 183}
+    - {x: 350, y: 272}
+    - {x: 5, y: 102}
+    - {x: 4, y: 227}
+    - {x: -270, y: 424}
+    - {x: -270, y: 505}
+    - {x: -272, y: 577}
+    - {x: 2, y: 295}
+    - {x: 17, y: 364}
+    - {x: 1, y: 504}
+    - {x: 2, y: 572}
+    - {x: -270, y: 271}
+    - {x: 260, y: 334}
+    - {x: 480, y: 337}
+    - {x: 349, y: 407}
+    - {x: 517, y: 529}
+    - {x: 255, y: 512}
+    - {x: 520, y: 608}
+    - {x: 11, y: 437}
     Nodes:
     - Text: "March 19th, 1789\r\nThe carriage rumbles and bounces along the cobbles
         as you approach Paris. It\u2019s taken over a week to get here, even carrying
@@ -70,7 +86,7 @@ MonoBehaviour:
         Name: 
       Speaker: 0
       Rewards:
-      - Type: 13
+      - Type: 10
         ID: tutorial
         Value: 1
       Music:
@@ -510,52 +526,30 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "Not that your parents cared much for the romance. At first you\u2019d
-        been afraid to tell them their youngest daughter wanted to move far away.
-        Instead, they nearly threw you onto the carriage to Paris. \r\n\r\nWhile you
-        understood the significant benefits your common family would receive from
-        your marriage into a noble one, you couldn\u2019t help but be a little annoyed
-        at their eagerness to see you off.\r"
-      Background: {fileID: 0}
+    - Text: "Inside, a woman polishing a lantern looks up at you as you enter, and
+        her face breaks into a bright smile. \u201CBonjour Madame and welcome to the
+        Orphan's Feast!\u201D Her eyes linger expectantly on the door for a moment,
+        before settling on you. You\u2019re suddenly reminded of how rare it is for
+        women to travel by themselves.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
         Parameters: []
       OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: New Moment
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: "Inside, a woman polishing a lantern looks up at you as you enter, and
         her face breaks into a bright smile. \u201CBonjour Madame and welcome to the
@@ -580,32 +574,7 @@ MonoBehaviour:
         Name: event:/Ambient SFX/Amb_SmallParty_indoor
         Parameters: []
       OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "Inside, a woman polishing a lantern looks up at you as you enter, and
-        her face breaks into a bright smile. \u201CBonjour Madame and welcome to the
-        Orphan's Feast!\u201D Her eyes linger expectantly on the door for a moment,
-        before settling on you. You\u2019re suddenly reminded of how rare it is for
-        women to travel by themselves.\r"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
-      Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Bar Maid
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_SmallParty_indoor
-        Parameters: []
-      OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: "\u201CHow may I be of service?\u201D She asks.\r"
       Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
@@ -666,7 +635,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards: []
+      Rewards:
+      - Type: 7
+        ID: SKIP_TUTORIAL
+        Value: 0
       Music:
         Name: 
         Parameters: []
@@ -688,9 +660,9 @@ MonoBehaviour:
         Name: 
       Speaker: 2
       Rewards:
-      - Type: 9
+      - Type: 7
         ID: START_TUTORIAL
-        Value: 0
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -700,32 +672,14 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "March 19th, 1789\r\nThe carriage rumbles and bounces along the cobbles
-        as you approach Paris. It\u2019s taken over a week to get here, even carrying
-        just yourself and your luggage. "
-      Background: {fileID: 21300000, guid: 73f3e60cbe255458c9ea7f141b45abd0, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: event:/Music/Prologue - Opening
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_carriagev2
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "You must have read the brief letter over a hundred times, but you always
-        found new details to puzzle over. Armand\u2019s letters were usually so long,
-        a habit would you often tease him for, in your own missives."
+    - Text: 'Not that your parents cared much for the romance. At first you''d been
+        afraid to tell them their youngest daughter wanted to move far away. Instead,
+        they nearly threw you onto the carriage to Paris.
+
+
+        While you understood the significant benefits your common family would receive
+        from your marriage to a noble one, you couldn''t help but be a little annoyed
+        at their eagerness to see you off.'
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -737,607 +691,6 @@ MonoBehaviour:
         Name: 
       Speaker: 0
       Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "\u2018My Dearest Yvette, \r\n\r\n\u2018I know it may be sudden, but I
-        want to invite you to live with me in Paris.\u2019\r\nYou were engaged to
-        Armand, before he moved north to Paris to participate in the Estates General.
-        He dreamed of changing the country, and this was the political event of the
-        century. You mailed love letters soaked in perfume, he replied with volumes
-        about how much he missed you. The romance of it all helped make up for the
-        inconvenience.\r"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "Not that your parents cared much for the romance. At first you\u2019d
-        been afraid to tell them their youngest daughter wanted to move far away.
-        Instead, they nearly threw you onto the carriage to Paris. \r\n\r\nWhile you
-        understood the significant benefits your common family would receive from
-        your marriage into a noble one, you couldn\u2019t help but be a little annoyed
-        at their eagerness to see you off.\r"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "After all, \u2018Baroness Yvette de Marbo\u2019 has a certain ring to
-        it..."
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "You crane your neck out the window to peer at Paris. It\u2019s even more
-        than you imagined. The streets are a riot of color and energy as people go
-        about their days. Elegant persons of fashion strut like brilliant peacocks.
-        Students stumble under the weight of their books. Beggars alternate between
-        pleading for alms, and shouting invectives at passers-by. \n\nEverything feels
-        significant, like world\u2019s next act hinges on all of their choices. "
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "The coachman obediently flicks at the reins and the carriage surges forward,
-        sending you lurching back into your seat. The city blurs by as you wind your
-        way towards The Orphan\u2019s Feast, the tavern where Armand said he would
-        meet you. \n\nAs tired and rumpled as you are, you\u2019re glad that he arranged
-        to meet you in a place with ample food and wine.\r"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "When you arrive, the coachman helps you out of the carriage and you find
-        yourself outside a glowing, friendly looking tavern. \r"
-      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: The sign shows a grubby looking child, holding with a plate piled high
-        with fresh bread and roasted meats.
-      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards:
-      - Type: 10
-        ID: The Orphan's Feast
-        Value: 0
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "You\u2019ve already finished all of your books and Armand's letter is
-        your only entertainment, other than staring out the window. "
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards:
-      - Type: 10
-        ID: The Orphan's Feast
-        Value: 0
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: Though part of you is worried by your unfamiliar surroundings, you mostly
-        feel excited. This place is to be the stage for your new life.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "You crane your neck out the window to peer at Paris. It\u2019s even more
-        than you imagined. The streets are a riot of color and energy as people go
-        about their days. Elegant persons of fashion strut like brilliant peacocks.
-        Students stumble under the weight of their books. Beggars alternate between
-        pleading for alms, and shouting invectives at passers-by. \n\nEverything feels
-        significant, like world\u2019s next act hinges on all of their choices. "
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: Though part of you is worried by your unfamiliar surroundings, you mostly
-        feel excited. This place is to be the stage for your new life.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "Before you know it, the carriage starts slowing down. You must be here!\n\nArmand
-        arranged to meet you at tavern named The Orphan\u2019s Feast. As tired and
-        rumpled as you are, you\u2019re glad that he planned to meet you in a place
-        with ample food and wine.\r"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "You must have read the brief letter over a hundred times, but you always
-        found new details to puzzle over. Armand\u2019s letters were usually so long,
-        a habit would you often tease him for, in your own missives."
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "\u2018My Dearest Yvette, \r\n\r\n\u2018I know it may be sudden, but I
-        want to invite you to live with me in Paris.\u2019\r\nYou were engaged to
-        Armand, before he moved north to Paris to participate in the Estates General.
-        He dreamed of changing the country, and this was the political event of the
-        century. You mailed love letters soaked in perfume, he replied with volumes
-        about how much he missed you. The romance of it all helped make up for the
-        inconvenience.\r"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "\u2018I can\u2019t wait for you to see it. It\u2019s unlike anything
-        back home. A truly vital place, where anyone can be anything.\r\n\r\nJe t'embrasse,\r\n\r\nArmand\u2019\r\n\r\nThat
-        was something you were looking forward to. A chance to be something more. "
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "After all, \u2018Baroness Yvette de Marbo\u2019 has a certain ring to
-        it..."
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "\u2018I can\u2019t wait for you to see it. It\u2019s unlike anything
-        back home. A truly vital place, where anyone can be anything.\r\n\r\nJe t'embrasse,\r\n\r\nArmand\u2019\r\n\r\nThat
-        was something you were looking forward to. A chance to be something more.
-        \r"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "Not that your parents cared much for the romance. At first you\u2019d
-        been afraid to tell them their youngest daughter wanted to move far away.
-        Instead, they nearly threw you onto the carriage to Paris. \r\n\r\nWhile you
-        understood the significant benefits your common family would receive from
-        your marriage into a noble one, you couldn\u2019t help but be a little annoyed
-        at their eagerness to see you off.\r"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: New Moment
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "Inside, a woman polishing a lantern looks up at you as you enter, and
-        her face breaks into a bright smile. \u201CBonjour Madame and welcome to the
-        Orphan's Feast!\u201D Her eyes linger expectantly on the door for a moment,
-        before settling on you. You\u2019re suddenly reminded of how rare it is for
-        women to travel by themselves.\r"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
-      Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Bar Maid
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_SmallParty_indoor
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "Inside, a woman polishing a lantern looks up at you as you enter, and
-        her face breaks into a bright smile. \u201CBonjour Madame and welcome to the
-        Orphan's Feast!\u201D Her eyes linger expectantly on the door for a moment,
-        before settling on you. You\u2019re suddenly reminded of how rare it is for
-        women to travel by themselves.\r"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
-      Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Bar Maid
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_SmallParty_indoor
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "\u201CHow may I be of service?\u201D She asks.\r"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
-      Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Bar Maid
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "\u201CDon\u2019t worry, while the rest of the city can be er\u2026 cutthroat,
-        the Orphan\u2019s Feast is a relaxed place for getting your feet under you.\u201D
-        The woman puts down the lantern she was polishing. \u201CTalk to the guests
-        in the different rooms, make sure you say the right things to the right people,
-        and make sure nobody gets bored. Once you charm all the people in a room,
-        you should be fine.\u201D"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
-      Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Bar Maid
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "The woman pauses to think. \u201CI haven\u2019t heard that name before,
-        but I just started working today. Perhaps he\u2019s in the back?\u201D"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
-      Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Bar Maid
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "When she puts it that way, it suddenly sounds so easy\u2026"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
-      Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Bar Maid
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards:
-      - Type: 9
-        ID: START_TUTORIAL
-        Value: 0
       Music:
         Name: 
         Parameters: []
@@ -1430,27 +783,7 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
       Text: '"This must be the place!"'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
       Rewards: []
     - Index: 0
       Target: 0
@@ -1458,31 +791,7 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
       Text: '"This is my first time here, is there anything I should know?" <Tutorial>'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
       Rewards: []
     - Index: 0
       Target: 0
@@ -1516,41 +825,20 @@ MonoBehaviour:
       Target: 0
       Text: 
       Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
     Name: Yvette's Prologue
     _date: 564305184000000000
     Requirements: []
     OneShot: 1
-    Positions: []
     Month: 0
     Day: 0
     Year: 0
   _index: -1
   _isNode: 1
-  Positions:
-  - {x: 456, y: 34}
-  - {x: 187, y: 71}
-  - {x: 186, y: 150}
-  - {x: 184, y: 229}
-  - {x: 184, y: 382}
-  - {x: 462, y: 205}
-  - {x: 803, y: 126}
-  - {x: 801, y: 217}
-  - {x: 806, y: 306}
-  - {x: 461, y: 136}
-  - {x: 464, y: 276}
-  - {x: 186, y: 458}
-  - {x: 186, y: 539}
-  - {x: 184, y: 611}
-  - {x: 466, y: 340}
-  - {x: 466, y: 402}
-  - {x: 456, y: 534}
-  - {x: 458, y: 606}
-  - {x: 186, y: 305}
-  - {x: 460, y: 468}
-  - {x: 460, y: 468}
-  - {x: 689, y: 382}
-  - {x: 927, y: 380}
-  - {x: 803, y: 471}
-  - {x: 721, y: 579}
-  - {x: 933, y: 574}
-  - {x: 712, y: 643}

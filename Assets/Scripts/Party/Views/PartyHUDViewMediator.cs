@@ -11,9 +11,6 @@ namespace Ambition
 		public Image reparteeIndicatorImage;
 		public GameObject RoomTimer;
 
-		public Scrollbar ConfidenceBar;
-		public Text ConfidenceText;
-
 		public GameObject DrinkBar;
 		public Text DrinkText;
 
@@ -29,12 +26,10 @@ namespace Ambition
 		{
 			//This is used in the Party Scene to brings up the Conversation/Work the Room Window where the Player combats Guests with their charms
 			AmbitionApp.Subscribe<int>(PartyMessages.DRINK, HandleDrink);
-			AmbitionApp.Subscribe<int>(GameConsts.CONFIDENCE, HandleConfidence);
 		}
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<int>(GameConsts.CONFIDENCE, HandleConfidence);
 			AmbitionApp.Unsubscribe<int>(PartyMessages.DRINK, HandleDrink);
 		}
 
@@ -43,13 +38,6 @@ namespace Ambition
 			_model = AmbitionApp.GetModel<PartyModel>();
 			RoomTitleText.text = AmbitionApp.GetModel<MapModel>().Room.Name;
 			reparteeIndicatorImage.enabled = (AmbitionApp.GetModel<GameModel>().Level >= 2);
-		}
-
-		private void HandleConfidence(int confidence)
-		{
-			ConfidenceText.text = "Confidence: " + confidence.ToString() + " / " + _model.MaxConfidence.ToString();
-			ConfidenceText.color = (confidence <= 25) ? Color.red : Color.white;
-			ConfidenceBar.value = (float)confidence/(float)_model.MaxConfidence;
 		}
 
 		private void HandleDrink(int drink)

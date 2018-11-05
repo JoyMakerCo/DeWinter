@@ -1,7 +1,8 @@
 ﻿{
 	maxPlayerDrinkAmount:3,
 	turnTimer:5,
-	maxHandSize:5,
+    "deck_size":10,
+	"hand_size":5,
 	ambushHandSize:3,
 	repartee_bonus:0.25,
 	free_remark_counter:4,
@@ -78,11 +79,25 @@
 		"Gossip",
 		"Music"
 	],
-	confidence_cost:[
-		5,
-		7,
-		10,
-		12,
-		15
-	]
+   "remark_result": {
+     "like": {
+      "opinion_min": 30,
+      "opinion_max": 30,
+      "remarks": 1,
+       "reset": true
+     },
+    "dislike": {
+      "opinion_min": -30,
+      "opinion_max": -30,
+      "remarks": -1,
+      "reset": true
+    },
+    "neutral": {
+      "opinion_min": 15,
+      "opinion_max": 15,
+      "remarks": 0,
+      "reset": true
+    }
+   },
+    "boredom_penalty":10
 }

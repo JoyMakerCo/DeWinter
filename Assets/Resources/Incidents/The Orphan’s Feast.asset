@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 52
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -17,6 +17,12 @@ MonoBehaviour:
     - {x: 1, y: 2}
     - {x: 1, y: 3}
     - {x: 2, y: 4}
+    Positions:
+    - {x: 344, y: 77}
+    - {x: 345, y: 160}
+    - {x: 207, y: 244}
+    - {x: 513, y: 296}
+    - {x: 202, y: 340}
     Nodes:
     - Text: "A woman polishing a lantern looks up at you as you enter, and her face
         breaks into a bright smile. \u201CBonjour Madame and welcome to the Orphan's
@@ -133,20 +139,29 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    LinkData: []
+    LinkData:
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
     Name: "The Orphan\u2019s Feast"
     _date: -1
     Requirements: []
     OneShot: 1
-    Positions: []
     Month: 0
     Day: 0
     Year: 0
   _index: -1
-  _isNode: 1
-  Positions:
-  - {x: 344, y: 76}
-  - {x: 345, y: 160}
-  - {x: 207, y: 244}
-  - {x: 475, y: 241}
-  - {x: 202, y: 340}
+  _isNode: 0

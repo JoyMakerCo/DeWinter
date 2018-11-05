@@ -8,11 +8,8 @@ namespace Ambition
 		public void Execute()
 		{
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            ItemVO item;
-            if (inventory.Equipped.TryGetValue(ItemConsts.OUTFIT, out item) && item is OutfitVO)
-            {
-                ((OutfitVO)item).Novelty -= inventory.NoveltyDamage;
-            }
+            OutfitVO outfit = inventory.GetEquipped(ItemConsts.OUTFIT) as OutfitVO;
+            if (outfit != null) outfit.Novelty -= inventory.NoveltyDamage;
         }
 	}
 }

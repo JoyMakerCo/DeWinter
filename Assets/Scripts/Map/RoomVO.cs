@@ -19,17 +19,26 @@ namespace Ambition
 		public int MoveThroughChance = -1; // -1 indicates a value not yet assigned
 
 		public MapVO Map;
-	    public bool Cleared = false;
-        public bool Revealed = false;
 
-		[JsonProperty("background")]
+        public bool Cleared = false;
+        public bool Revealed = false;
+        public bool Visited = false;
+
+        [JsonProperty("background")]
 		public string Background;
-		public CommodityVO [] Rewards;
-		public GuestVO [] Guests;
+
+        [JsonProperty("rewards")]
+        public CommodityVO [] Rewards; //Granted after finishing a room
+
+        [JsonProperty("actions")]
+        public CommodityVO[] Actions; //Granted when the player enters a room
+
+        public GuestVO [] Guests;
 		[JsonProperty("numGuests")]
-		private int NumGuests
+		public int NumGuests
 		{
 			set { Guests = new GuestVO[value]; }
+            get { return Guests != null ? Guests.Length : 0; }
 		}
 
 		public List<EnemyVO> Enemies;

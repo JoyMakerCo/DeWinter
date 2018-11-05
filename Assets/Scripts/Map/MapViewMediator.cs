@@ -9,7 +9,8 @@ namespace Ambition
 	{
 		private const int PAN_TOLERTANCE = 50;
 		private const int TILES_PER_SECOND = 50;
-	    public GameObject roomButtonPrefab;
+        private const float RECENTER_TIME = .5f;
+        public GameObject roomButtonPrefab;
 
 	    private Dictionary<RoomVO, RoomButton> _buttons;
 
@@ -26,16 +27,14 @@ namespace Ambition
 		{
 			_model = AmbitionApp.GetModel<MapModel>();
 			_buttons = new Dictionary<RoomVO, RoomButton>();
-			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
-            AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, Recenter);
+            AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, ShowMap);
             AmbitionApp.Subscribe(PartyMessages.SHOW_ROOM, Lock);
             AmbitionApp.Subscribe<string>(GameMessages.DIALOG_CLOSED, Unlock);
 		}
 
  		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<RoomVO>(HandleRoom);
-            AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, Recenter);
+            AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, ShowMap);
             AmbitionApp.Unsubscribe(PartyMessages.SHOW_ROOM, Lock);
             AmbitionApp.Unsubscribe<string>(GameMessages.DIALOG_CLOSED, Unlock);
 			_buttons.Clear();
@@ -55,8 +54,6 @@ namespace Ambition
 
             //Make the Room Buttons ----------------------
             Array.ForEach(Map.Rooms, DrawRoom);
-			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
-			HandleRoom(Map.Entrance);
 	    }
 
         private void Lock()
@@ -105,21 +102,26 @@ namespace Ambition
             }
         }
 
-	    private void Recenter()
+        private void ShowMap()
+        {
+            Recenter();
+        }
+
+        private void Recenter()
 	    {
             if (Map != null)
             {
                 RoomVO room = _model.Room ?? Map.Entrance;
-                if (room != null)
-                {
-                    int[] bounds = room.Bounds;
-                    _offset.x = (bounds[0] + bounds[2]) * -.5f;
-                    _offset.y = (bounds[1] + bounds[3]) * -.5f;
-                    _offset.z = 0f;
-                    transform.localPosition = _offset * _model.MapScale;
-                }
+                int[] bounds = room.Bounds;
+                Vector3 vec = transform.localPosition;
+                _offset = new Vector3(
+                    (bounds[0] + bounds[2]) * -.5f,
+                    (bounds[1] + bounds[3]) * -.5f,
+                    0f);
+                transform.localPosition = _offset* _model.MapScale;
+                //StartCoroutine(RecenterMap(_model.Room ?? Map.Entrance));
             }
-	    }
+        }
 
 	    private void DrawRoom(RoomVO room)
 		{
@@ -131,15 +133,23 @@ namespace Ambition
 				roomButton.Room = room;
 				_buttons.Add(room, roomButton);
 			}
-
 	    }
 
-		private void HandleRoom(RoomVO room)
-		{
-			foreach(KeyValuePair<RoomVO, RoomButton> kvp in _buttons)
-			{
-				kvp.Value.UpdatePlayerRoom(room);
-			}
-		}
-	}
+        IEnumerator RecenterMap(RoomVO room)
+        {
+            int[] bounds = room.Bounds;
+            Vector3 vec = transform.localPosition;
+            _offset = new Vector3(
+                (bounds[0] + bounds[2]) * -.5f,
+                (bounds[1] + bounds[3]) * -.5f,
+                0f);
+            for (float t = 0f; t < RECENTER_TIME; t+=Time.deltaTime)
+            {
+                vec = (vec * _model.MapScale + transform.localPosition) * .5f;
+                transform.localPosition = vec;
+                yield return null;
+            }
+            transform.localPosition = _offset* _model.MapScale;
+        }
+    }
 }

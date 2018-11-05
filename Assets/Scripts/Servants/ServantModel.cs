@@ -13,60 +13,91 @@ namespace Ambition
 		public Dictionary<string, List<ServantVO>> Applicants = new Dictionary<string, List<ServantVO>>();
 		public Dictionary<string, List<ServantVO>> Unknown = new Dictionary<string, List<ServantVO>>();
 
-		public void Hire(ServantVO servant)
+		public bool Hire(ServantVO servant)
 		{
-			List<ServantVO> servants;
-			UnknownUtil(servant);
-			if (Applicants.TryGetValue(servant.Slot, out servants))
-				servants.Remove(servant);
-			if (Servants.ContainsKey(servant.Slot) && Servants[servant.Slot] != servant)
-				Fire(Servants[servant.Slot]);
-			Servants[servant.Slot] = servant;
-			servant.Status = ServantStatus.Hired;
-			AmbitionApp.SendMessage<ServantVO>(ServantMessages.SERVANT_HIRED, servant);
+            if (!Servants.ContainsKey(servant.Slot) && RemoveFromDictionary(Applicants, servant))
+            {
+                servant.Status = ServantStatus.Hired;
+                Servants[servant.Slot] = servant;
+                AmbitionApp.SendMessage<ServantVO>(ServantMessages.SERVANT_HIRED, servant);
+                return true;
+            }
+            return false;
 		}
 
-		public void Fire(ServantVO servant)
+        public bool Fire(string servantType)
+        {
+            ServantVO servant;
+
+            if (Servants.TryGetValue(servantType, out servant) && servant.Status != ServantStatus.Permanent)
+            {
+                servant.Status = ServantStatus.Introduced;
+                AmbitionApp.SendMessage<ServantVO>(ServantMessages.SERVANT_FIRED, servant);
+                AddToDictionary(Applicants, servant);
+                return true;
+            }
+            return false;
+        }
+
+		public bool Fire(ServantVO servant)
 		{
-			if (servant.Status == ServantStatus.Permanent) return;
-			DictionaryUtil(Applicants, servant);
-			UnknownUtil(servant);
-			if (Servants.ContainsKey(servant.Slot) && Servants[servant.Slot] == servant)
-				Servants.Remove(servant.Slot);
-			servant.Status = ServantStatus.Introduced; // Fired?
-			AmbitionApp.SendMessage<ServantVO>(ServantMessages.SERVANT_FIRED, servant);
+            return (Servants.ContainsKey(servant.Slot)
+                    && Servants[servant.Slot] == servant)
+                    && Fire(servant.Slot);
 		}
 
-		public void Introduce(ServantVO servant)
+		public bool Introduce(ServantVO servant)
 		{
-			DictionaryUtil(Applicants, servant);
-			UnknownUtil(servant);
-			if (Servants.ContainsKey(servant.Slot) && Servants[servant.Slot] == servant)
-				Servants.Remove(servant.Slot);
-			servant.Status = ServantStatus.Introduced;
-			AmbitionApp.SendMessage<ServantVO>(ServantMessages.SERVANT_INTRODUCED, servant);
+            if (RemoveFromDictionary(Unknown, servant) && AddToDictionary(Applicants, servant))
+            {
+                servant.Status = ServantStatus.Introduced;
+                AmbitionApp.SendMessage(ServantMessages.SERVANT_INTRODUCED, servant);
+                return true;
+            }
+            return false;
 		}
 
-		private void UnknownUtil(ServantVO servant)
-		{
-			List <ServantVO> servants;
-			if (Unknown.TryGetValue(servant.Slot, out servants)
-				&& servants.Remove(servant)
-				&& servants.Count==0)
-			{
-				Unknown.Remove(servant.Slot);
-			}
-		}
+        public bool Introduce(string servantType)
+        {
+            List<ServantVO> servants;
+            if (!Unknown.TryGetValue(servantType, out servants) || servants.Count == 0)
+            {
+                return false;
+            }
+            ServantVO servant = Util.RNG.TakeRandom(servants.ToArray());
+            if (AddToDictionary(Applicants, servant))
+            {
+                Unknown[servantType].Remove(servant);
+                servant.Status = ServantStatus.Introduced;
+                AmbitionApp.SendMessage(ServantMessages.SERVANT_INTRODUCED, servant);
+                return true;
+            }
+            return false;
+        }
 
-		private void DictionaryUtil(Dictionary<string, List<ServantVO>> table, ServantVO servant)
-		{
-			List<ServantVO> servants;
-			if (!table.TryGetValue(servant.Slot, out servants))
-				table[servant.Slot] = new List<ServantVO>(){servant};
-			else servants.Add(servant);
-		}
+        private bool AddToDictionary(Dictionary<string, List<ServantVO>> dictionary, ServantVO servant)
+        {
+            if (!dictionary.ContainsKey(servant.Slot))
+            {
+                dictionary[servant.Slot] = new List<ServantVO>();
+            }
+            else if (dictionary[servant.Slot].Contains(servant))
+            {
+                return false;
+            }
+            dictionary[servant.Slot].Add(servant);
+            return true;
+        }
 
-		[JsonProperty("servants")]
+        private bool RemoveFromDictionary(Dictionary<string, List<ServantVO>> dictionary, ServantVO servant)
+        {
+            string slot = servant.Slot;
+            bool result = dictionary.ContainsKey(slot) && dictionary[slot].Remove(servant);
+            if (dictionary[slot].Count == 0) dictionary.Remove(slot);
+            return result;
+        }
+
+        [JsonProperty("servants")]
 		private ServantVO[] _servants
 		{
 			set
@@ -82,10 +113,10 @@ namespace Ambition
 							Servants[servant.Slot] = servant;
 							break;
 						case ServantStatus.Introduced:
-							DictionaryUtil(Applicants, servant);
+                            AddToDictionary(Applicants, servant);
 							break;
 						default:
-							DictionaryUtil(Unknown, servant);
+                            AddToDictionary(Unknown, servant);
 							break;
 					}
 				}

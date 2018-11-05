@@ -38,7 +38,7 @@ namespace Ambition
 	    public string knownAllegiance = "Unknown"; //Used in the 'Test the Waters' screen
 
 		public int LargestAllowableParty;
-		public int ConfidenceBonus;
 		public int Priority;
+        public int DeckBonus=0;
 	}
 }

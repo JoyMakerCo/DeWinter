@@ -16,11 +16,7 @@ namespace Ambition
             MapModel mmod = AmbitionApp.GetModel<MapModel>();
             mmod.Room = mmod.Map.Entrance;
 
-            //The Player's Reputation is Punished
-            // TODO: Make these values configurable
-            AmbitionApp.GetModel<GameModel>().Reputation -= 25;
-            AmbitionApp.SendMessage(new AdjustFactionVO(party.Faction, -50));
-
+            AmbitionApp.OpenDialog("DEFEAT");
             AmbitionApp.SendMessage(PartyMessages.FLEE_CONVERSATION);
             AmbitionApp.SendMessage(PartyMessages.SHOW_MAP);
      	}

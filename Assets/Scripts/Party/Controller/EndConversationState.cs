@@ -11,35 +11,25 @@ namespace Ambition
 
 		public override void OnEnterState ()
 		{
-			CommodityVO reward;
             ConversationModel model = _models.GetModel<ConversationModel>();
             int numCharmed = Array.FindAll(model.Guests, g=>g.State == GuestState.Charmed).Length;
 			model.Remark = null;
-            if (model.Room.Rewards != null)
-			{
-				int numRewards = model.Room.Rewards.Length;
-                reward = model.Room.Rewards[numCharmed < numRewards ? numCharmed : numRewards-1] ;
-			}
-			else
-			{
-				reward = GenerateRandomReward(numCharmed, model.Party.Faction);
-			}
             model.Room.Cleared = true;
 
-			//Rewards Distributed Here
-            if (reward.Type == CommodityType.Servant)
+            if (model.Room.Rewards != null && model.Room.Rewards.Length > 0)
             {
-				ServantModel servants = _models.GetModel<ServantModel>();
-				if (servants.Servants.ContainsKey(reward.ID))
-				{
-                    reward = new CommodityVO(CommodityType.Gossip, model.Party.Faction, 1);
-                }
+                model.Party.Rewards.AddRange(model.Room.Rewards);
+                AmbitionApp.SendMessage(model.Room.Rewards);
             }
-            model.Party.Rewards.Add(reward);
-            AmbitionApp.OpenDialog("END_CONVERSATION", new CommodityVO[] { reward });
+            else
+            {
+                model.Party.Rewards.Add(GenerateRandomReward(numCharmed, model.Party.Faction));
+            }
+            int numRemarks = (int)(model.MaxDeckSize * .1f);
+            AmbitionApp.SendMessage(PartyMessages.RESHUFFLE_REMARKS, numRemarks);
+            AmbitionApp.OpenDialog("END_CONVERSATION", model.Room.Rewards);
 			AmbitionApp.SendMessage(PartyMessages.END_CONVERSATION);
 		}
-
 
 		private CommodityVO GenerateRandomReward(int numCharmed, string faction)
     	{
@@ -51,10 +41,10 @@ namespace Ambition
 					return new CommodityVO(CommodityType.Reputation, 5*factor);
 				case 2:
 				case 3:
-					return new CommodityVO(CommodityType.Faction, faction, 10*factor);
+                    return new CommodityVO(CommodityType.Reputation, faction, 10*factor);
 			}
 			return (numCharmed < 5)
-				? new CommodityVO(CommodityType.Faction, faction, 1)
+                ? new CommodityVO(CommodityType.Reputation, faction, 1)
 				: new CommodityVO(CommodityType.Servant, ServantConsts.SEAMSTRESS, 1);
 		}
 	}

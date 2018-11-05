@@ -3,31 +3,35 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Core;
 
 namespace Ambition
 {
     public class CharacterSelectionController : MonoBehaviour
     {
-        public PlayerConfig[] Characters;
+        private const string PLAYER_BUNDLE = "PlayerConfigs";
 
         public Image Doll;
         public Text Name;
         public Text Description;
         public GameObject ButtonPrefab;
 
+        private PlayerConfig[] _characters;
         private PlayerConfig _selected;
         private float _btnHeight;
 
         public void Show()
         {
-            if (Characters.Length > 1) 
+            //App.Service<AssetBundleSvc>().Load(PLAYER_BUNDLE);
+            _characters = Resources.LoadAll<PlayerConfig>(PLAYER_BUNDLE);
+            if (_characters.Length > 1) 
             {
                 gameObject.SetActive(true);
                 _btnHeight = ButtonPrefab.GetComponent<RectTransform>().rect.height;
-                Array.ForEach(Characters, GenerateButton);
+                Array.ForEach(_characters, GenerateButton);
             }
             else {
-                _selected = Characters[0];
+                _selected = _characters[0];
                 PickCharacter();
             }
         }
@@ -36,6 +40,7 @@ namespace Ambition
         {
             Button[] buttons = GetComponentsInChildren<Button>();
             Array.ForEach(buttons, b => b.onClick.RemoveAllListeners());
+            //App.Service<Core.AssetBundleSvc>().Unload(PLAYER_BUNDLE);
         }
 
         private void GenerateButton(PlayerConfig config)

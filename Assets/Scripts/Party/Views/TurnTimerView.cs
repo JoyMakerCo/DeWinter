@@ -52,7 +52,7 @@ namespace Ambition
 			}
 			_timer.fillAmount = 0;
 			ClockHand.transform.localRotation = Quaternion.Euler(0f,0f,90f);
-			_messageService.Send<GuestVO[]>(PartyMessages.GUESTS_SELECTED, null);
+            _messageService.Send(PartyMessages.TIME_EXPIRED);
 		}
 	}
 }

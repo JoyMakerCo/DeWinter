@@ -8,24 +8,24 @@ namespace Ambition
     {
         public override void Initialize()
         {
-            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleGuests);
+            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
         }
 
         public override void Dispose()
         {
-            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleGuests);
+            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
         }
 
-        private void HandleGuests(GuestVO[] guests)
+        private void HandleGuest(GuestVO guest)
         {
             UController controller = _machine._uflow.GetController(_machine);
-            if (guests != null && controller !=  null)
+            if (guest != null && controller !=  null)
             {        
                 ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-                GuestVO guest = model.Guests[controller.transform.GetSiblingIndex()];
+                int index = controller.transform.GetSiblingIndex();
                 if (model.Remark != null
                     && model.Remark.Interest != guest.Dislike
-                    && Array.IndexOf(guests, guest) >= 0)
+                    && guest == model.Guests[index])
                     Activate();
             }
         }

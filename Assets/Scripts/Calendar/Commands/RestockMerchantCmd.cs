@@ -27,12 +27,12 @@ namespace Ambition
 			outfit.GenerateName();
 
 			List<ItemVO> outfits = new List<ItemVO>() { outfit, OutfitVO.Create(), OutfitVO.Create() };
-			if (AmbitionApp.GetModel<FactionModel>()["bourgeoisie"].Level >= 3)
+			if (AmbitionApp.GetModel<FactionModel>()["Bourgeoisie"].Level >= 3)
 			{
 				outfits.Add(OutfitVO.Create());
 			}
 			model.Market.RemoveAll(i=>i.Type == ItemConsts.OUTFIT);
-			model.Market.AddRange(outfits); 
+			model.Market.AddRange(outfits);
 		} 
 	}
 }

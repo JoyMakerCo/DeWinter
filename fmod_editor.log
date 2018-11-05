@@ -10,7 +10,7 @@
 [WRN] SystemI::init                            : Output requires a sample rate of 44100Hz, resampling will occur.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0x1109eea08 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0x1461b4a08 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,353 +18,56 @@
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 337184
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28928
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x7000025887bc
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x14ac22f9f
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x14ac2305b
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x14ac2308b
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x14ac23128
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x1452f6ac8
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='mouse_hoverv2_mono', format=2, channels=1, frequency=48000, lengthbytes=4640, lengthpcm=24000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.199799.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 337184
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28928
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x7000025887bc
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x14ac22f9f
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x14ac2305b
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x14ac2308b
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x14ac23128
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x13acde118
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='mouse_clickv2_mono', format=2, channels=1, frequency=48000, lengthbytes=4256, lengthpcm=24000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.273438.
-[LOG] SystemI::createSound                     : filename = Assets/Audio/build/SFX_Ambient.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0x13fd71d08 : node = 0x13fd71ec0
-[LOG] SystemI::createSound                     : add node to async list : head = 0x141dd8868.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x13fd71d08
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/build/SFX_Ambient.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9331296
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 13568
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x13fd71fd8
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Amb_carriagev2', format=2, channels=2, frequency=48000, lengthbytes=655744, lengthpcm=3216000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.615540.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x13fd71d08
-[LOG] SoundI::getSubSound                      : sound 0x13fd71d08.  Subsound index 0 / 1
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SoundI::release                          : Amb_carriagev2 (0x13fd71d08)
-[LOG] SoundI::release                          :     Amb_carriagev2 (0x14ff0e308)
-[LOG] SoundI::release                          :     Amb_carriagev2 (0x14ff0e498)
-[LOG] SoundI::release                          : Ambition - Main Theme - Final - Rev2 (0x141dd8438)
-[LOG] SoundI::release                          :     Ambition - Main Theme - Final - Rev2 (0x13fd3f7e8)
-[LOG] SoundI::release                          :     Ambition - Main Theme - Final - Rev2 (0x13fd3f978)
-[LOG] SystemI::createSound                     : filename = Assets/Audio/build/SFX_Ambient.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0x14ff0a768 : node = 0x14526af00
-[LOG] SystemI::createSound                     : add node to async list : head = 0x141dd8868.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x14ff0a768
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/build/SFX_Ambient.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9331296
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 13568
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x14526b018
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Amb_ParisStreets_outside', format=2, channels=1, frequency=48000, lengthbytes=953312, lengthpcm=5450653, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891265.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x14ff0a768
-[LOG] SoundI::getSubSound                      : sound 0x14ff0a768.  Subsound index 0 / 1
-[LOG] SystemI::createSound                     : filename = Assets/Audio/build/SFX_Ambient.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0x13fd74628 : node = 0x13fd747e0
-[LOG] SystemI::createSound                     : add node to async list : head = 0x141dd8868.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x13fd74628
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/build/SFX_Ambient.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9331296
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 13568
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x13fd748f8
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='amb_SmallParty_indoor', format=2, channels=1, frequency=48000, lengthbytes=958304, lengthpcm=5760000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.219130.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x13fd74628
-[LOG] SoundI::getSubSound                      : sound 0x13fd74628.  Subsound index 0 / 1
-[LOG] SoundI::release                          : Amb_ParisStreets_outside (0x14ff0a768)
-[LOG] SoundI::release                          :     Amb_ParisStreets_outside (0x14ff10218)
-[LOG] SoundI::release                          :     Amb_ParisStreets_outside (0x14ff103a8)
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SystemI::createSound                     : filename = Assets/Audio/build/MUS_Gameplay.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0x13e4eafb8 : node = 0x13e4f8f40
-[LOG] SystemI::createSound                     : add node to async list : head = 0x141dd8868.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x13e4eafb8
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/build/MUS_Gameplay.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 30478912
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 64128
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x13e4f9058
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Ambition - Prologue Opening - MIP1 - 110bpm - Loop', format=2, channels=2, frequency=48000, lengthbytes=980832, lengthpcm=3455896, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.720960.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x13e4eafb8
-[LOG] SoundI::getSubSound                      : sound 0x13e4eafb8.  Subsound index 0 / 1
-[LOG] SystemI::createSound                     : filename = Assets/Audio/build/SFX_Ambient.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0x141df33c8 : node = 0x141df3580
-[LOG] SystemI::createSound                     : add node to async list : head = 0x141dd8868.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x141df33c8
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/build/SFX_Ambient.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9331296
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 13568
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x141df3698
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='amb_MediumParty_indoor', format=2, channels=1, frequency=48000, lengthbytes=976224, lengthpcm=5787584, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.310072.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x141df33c8
-[LOG] SoundI::getSubSound                      : sound 0x141df33c8.  Subsound index 0 / 1
-[LOG] SoundI::release                          : amb_SmallParty_indoor (0x13fd74628)
-[LOG] SoundI::release                          :     amb_SmallParty_indoor (0x13fd759a8)
-[LOG] SoundI::release                          :     amb_SmallParty_indoor (0x13fd75b38)
-[LOG] SystemI::createSound                     : filename = Assets/Audio/build/MUS_Gameplay.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0x141dd8578 : node = 0x141dedd60
-[LOG] SystemI::createSound                     : add node to async list : head = 0x141dd8868.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x141dd8578
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/build/MUS_Gameplay.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 30478912
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 64128
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x141dede78
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Ambition - Bourgeoisie - Party Map - MIP1 - Loop', format=2, channels=2, frequency=48000, lengthbytes=1339552, lengthpcm=4720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.354854.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x141dd8578
-[LOG] SoundI::getSubSound                      : sound 0x141dd8578.  Subsound index 0 / 1
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
-[LOG] SoundI::release                          : Ambition - Prologue Opening - MIP1 - 110bpm - Loop (0x13e4eafb8)
-[LOG] SoundI::release                          :     Ambition - Prologue Opening - MIP1 - 110bpm - Loop (0x14ff0ecf8)
-[LOG] SoundI::release                          :     Ambition - Prologue Opening - MIP1 - 110bpm - Loop (0x14ff0ee88)
-[LOG] SoundI::release                          : Ambition - Bourgeoisie - Party Map - MIP1 - Loop (0x141dd8578)
-[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Party Map - MIP1 - Loop (0x13fd72b88)
-[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Party Map - MIP1 - Loop (0x13fd74418)
-[LOG] SystemI::createSound                     : filename = Assets/Audio/build/MUS_Gameplay.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0x116400b18 : node = 0x116400f30
-[LOG] SystemI::createSound                     : add node to async list : head = 0x141dd8868.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x116400b18
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/build/MUS_Gameplay.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 30478912
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 64128
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x116401048
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Ambition - Bourgeoisie - Conversation A - MIP3 - Loop', format=2, channels=2, frequency=48000, lengthbytes=1822880, lengthpcm=6306207, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.763721.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x116400b18
-[LOG] SoundI::getSubSound                      : sound 0x116400b18.  Subsound index 0 / 1
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 337184
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28928
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x7000025887bc
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x14ac22f9f
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x14ac2305b
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x14ac2308b
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x14ac23128
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x163e02798
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Male_bark_neutral_01', format=2, channels=1, frequency=48000, lengthbytes=3392, lengthpcm=20862, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707001.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 337184
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28928
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x7000025887bc
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x14ac22f9f
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x14ac2305b
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x14ac2308b
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x14ac23128
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x163e02798
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Male_bark_neutral_02', format=2, channels=1, frequency=48000, lengthbytes=5952, lengthpcm=30315, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707001.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 337184
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28928
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x7000025887bc
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x14ac22f9f
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x14ac2305b
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x14ac2308b
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x14ac23128
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x163e02798
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Male_bark_neutral_03', format=2, channels=1, frequency=48000, lengthbytes=4960, lengthpcm=25882, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707001.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 337184
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28928
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x7000025887bc
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x14ac22f9f
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x14ac2305b
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x14ac2308b
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x14ac23128
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x14ff16fc8
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Male_bark_charmed_01', format=2, channels=1, frequency=48000, lengthbytes=8832, lengthpcm=53126, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707001.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 337184
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28928
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x7000025887bc
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x14ac22f9f
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x14ac2305b
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x14ac2308b
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x14ac23128
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x14ff16fc8
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Male_bark_charmed_02', format=2, channels=1, frequency=48000, lengthbytes=9728, lengthpcm=55210, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707001.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 232
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 337184
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 28928
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0x7000025887bc
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 0x14ac22f9f
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 0x14ac2305b
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 0x14ac2308b
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 0x14ac23128
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0x14ff16fc8
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Male_bark_charmed_03', format=2, channels=1, frequency=48000, lengthbytes=10080, lengthpcm=59876, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707001.
-[LOG] SoundI::release                          : Ambition - Bourgeoisie - Conversation A - MIP3 - Loop (0x116400b18)
-[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Conversation A - MIP3 - Loop (0x163e018f8)
-[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Conversation A - MIP3 - Loop (0x163e01a88)
-[LOG] SoundI::release                          : amb_MediumParty_indoor (0x141df33c8)
-[LOG] SoundI::release                          :     amb_MediumParty_indoor (0x14526aee8)
-[LOG] SoundI::release                          :     amb_MediumParty_indoor (0x14ff0d888)
-[LOG] SoundI::release                          :  (0x163e00fa8)
-[LOG] SoundI::release                          :     Male_bark_neutral_01 (0x163e02c78)
-[LOG] SoundI::release                          :  (0x163e02fb8)
-[LOG] SoundI::release                          :     Male_bark_neutral_02 (0x163e03128)
-[LOG] SoundI::release                          :  (0x163e03468)
-[LOG] SoundI::release                          :     Male_bark_neutral_03 (0x163e035d8)
-[LOG] SoundI::release                          :  (0x14ff0f598)
-[LOG] SoundI::release                          :     Male_bark_charmed_01 (0x14ff185c8)
-[LOG] SoundI::release                          :  (0x14ff19bc8)
-[LOG] SoundI::release                          :     Male_bark_charmed_02 (0x14ff19d38)
-[LOG] SoundI::release                          :  (0x14ff1a078)
-[LOG] SoundI::release                          :     Male_bark_charmed_03 (0x14ff1a1e8)
-[LOG] SoundI::release                          :  (0x13acdc888)
-[LOG] SoundI::release                          :     mouse_clickv2_mono (0x13e4f0b18)
-[LOG] SoundI::release                          :  (0x1452f66c8)
-[LOG] SoundI::release                          :     mouse_hoverv2_mono (0x1452f7ed8)
-[LOG] SoundI::release                          :  (0x10ffbbbf8)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 2 (0x141db33f8)
-[LOG] SoundI::release                          :  (0x10ff54268)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 4L (0x10ffa14a8)
-[LOG] SoundI::release                          :  (0x141dd4518)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 3L (0x141dd4688)
-[LOG] SoundI::release                          :  (0x141dd23f8)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 3 (0x141dd2568)
-[LOG] SoundI::release                          :  (0x141dd6188)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 2L (0x141dd62f8)
-[LOG] SoundI::release                          :  (0x10ff53ce8)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 4 (0x10ff53e58)
-[LOG] SoundI::release                          :  (0x10ff98638)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 5 (0x10ff987a8)
-[LOG] SoundI::release                          :  (0x141dd50f8)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 1L (0x141dd5268)
-[LOG] SoundI::release                          :  (0x10ff96888)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 1 (0x10ff969f8)
-[LOG] SoundI::release                          :  (0x141dd2e98)
-[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 5L (0x141dd3008)
-[LOG] SoundI::release                          :  (0x10ff916e8)
-[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Party Map - MIP1 - Intro (0x10ff91858)
-[LOG] SoundI::release                          :  (0x141dd29e8)
-[LOG] SoundI::release                          :     Ambition - The Orphan's Feast - Party Map - 76bpm - Intro (0x141dd2b58)
-[LOG] SoundI::release                          :  (0x10ff98188)
-[LOG] SoundI::release                          :     Ambition - Revolutionary - MIP1 - Party Map - Intro (0x10ff982f8)
-[LOG] SoundI::release                          :  (0x141dd68b8)
-[LOG] SoundI::release                          :     Ambition - The Orphan's Feast - Conversation - Intro (0x141dd6a28)
-[LOG] SoundI::release                          :  (0x141dd35c8)
-[LOG] SoundI::release                          :     Ambition - Church - Party Map - MIP2 - Intro (0x141dd3738)
-[LOG] SoundI::release                          :  (0x141dd3a78)
-[LOG] SoundI::release                          :     Ambition - Paris Streets - Prologue - Intro (0x141dd3be8)
-[LOG] SoundI::release                          :  (0x141dd5cd8)
-[LOG] SoundI::release                          :     Ambition - Revolutionary - Conversation A - Rev2 - MIP2 - Intro (0x141dd5e48)
-[LOG] SoundI::release                          :  (0x141dd1f48)
-[LOG] SoundI::release                          :     Ambition - Prologue Opening - MIP1 - 110bpm - Intro (0x141dd20b8)
-[LOG] SoundI::release                          :  (0x10ff97b98)
-[LOG] SoundI::release                          :     Ambition - Church - Conversation A - MIP2 - Intro (0x10ff97d08)
-[LOG] SoundI::release                          :  (0x141dd4c48)
-[LOG] SoundI::release                          :     Ambition - Revolutionary - Conversation B - Rev1 - MIP2 - Intro (0x141dd4db8)
-[LOG] SoundI::release                          :  (0x10ff975a8)
-[LOG] SoundI::release                          :     Ambition - Revolutionary - Conversation B - Rev1 - MIP2 - END - WIN (0x10ff97718)
-[LOG] SoundI::release                          :  (0x141dd3f28)
-[LOG] SoundI::release                          :     Ambition - Revolutionary - Conversation B - Rev1 - MIP2 - END - LOSE (0x141dd4098)
-[LOG] SoundI::release                          :  (0x141dd5828)
-[LOG] SoundI::release                          :     Ambition - Crown - Party Map - MIP2 - Intro (0x141dd5998)
-[LOG] SoundI::release                          :  (0x10ff91b98)
-[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Conversation A - MIP3 - Intro (0x10ff91d08)
-[LOG] SoundI::release                          :  (0x10ff96fb8)
-[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Conversation A - MIP3 - END - WIN (0x10ff97128)
+[LOG] SoundI::release                          :  (0x1558523d8)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 2 (0x16d991798)
+[LOG] SoundI::release                          :  (0x16d993758)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 4L (0x16d9938c8)
+[LOG] SoundI::release                          :  (0x153fe2668)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 3L (0x153fe27d8)
+[LOG] SoundI::release                          :  (0x11d59efb8)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 3 (0x153fdfb68)
+[LOG] SoundI::release                          :  (0x153fe3dd8)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 2L (0x153fe3f48)
+[LOG] SoundI::release                          :  (0x16d993028)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 4 (0x16d993198)
+[LOG] SoundI::release                          :  (0x16d995c38)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 5 (0x16d995da8)
+[LOG] SoundI::release                          :  (0x153fe2fc8)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 1L (0x153fe3138)
+[LOG] SoundI::release                          :  (0x16d993e88)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 1 (0x16d993ff8)
+[LOG] SoundI::release                          :  (0x153f18cb8)
+[LOG] SoundI::release                          :     Ambition - Betrayal Tension - MIP1 - 5L (0x153fe1688)
+[LOG] SoundI::release                          :  (0x16d996368)
+[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Party Map - MIP1 - Intro (0x16d9964d8)
+[LOG] SoundI::release                          :  (0x164064128)
+[LOG] SoundI::release                          :     Ambition - The Orphan's Feast - Party Map - 76bpm - Intro (0x153fe1348)
+[LOG] SoundI::release                          :  (0x16d995788)
+[LOG] SoundI::release                          :     Ambition - Revolutionary - MIP1 - Party Map - Intro (0x16d9958f8)
+[LOG] SoundI::release                          :  (0x153fe4288)
+[LOG] SoundI::release                          :     Ambition - The Orphan's Feast - Conversation - Intro (0x153fe43f8)
+[LOG] SoundI::release                          :  (0x150ab6028)
+[LOG] SoundI::release                          :     Ambition - Church - Party Map - MIP2 - Intro (0x153fe19c8)
+[LOG] SoundI::release                          :  (0x153fe1d08)
+[LOG] SoundI::release                          :     Ambition - Paris Streets - Prologue - Intro (0x153fe1e78)
+[LOG] SoundI::release                          :  (0x153fe3928)
+[LOG] SoundI::release                          :     Ambition - Revolutionary - Conversation A - Rev2 - MIP2 - Intro (0x153fe3a98)
+[LOG] SoundI::release                          :  (0x164009fe8)
+[LOG] SoundI::release                          :     Ambition - Prologue Opening - MIP1 - 110bpm - Intro (0x16402cc18)
+[LOG] SoundI::release                          :  (0x16d995198)
+[LOG] SoundI::release                          :     Ambition - Church - Conversation A - MIP2 - Intro (0x16d995308)
+[LOG] SoundI::release                          :  (0x153fe2b18)
+[LOG] SoundI::release                          :     Ambition - Revolutionary - Conversation B - Rev1 - MIP2 - Intro (0x153fe2c88)
+[LOG] SoundI::release                          :  (0x16d994ba8)
+[LOG] SoundI::release                          :     Ambition - Revolutionary - Conversation B - Rev1 - MIP2 - END - WIN (0x16d994d18)
+[LOG] SoundI::release                          :  (0x153fe21b8)
+[LOG] SoundI::release                          :     Ambition - Revolutionary - Conversation B - Rev1 - MIP2 - END - LOSE (0x153fe2328)
+[LOG] SoundI::release                          :  (0x153fe3478)
+[LOG] SoundI::release                          :     Ambition - Crown - Party Map - MIP2 - Intro (0x153fe35e8)
+[LOG] SoundI::release                          :  (0x150a5cbb8)
+[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Conversation A - MIP3 - Intro (0x1647f5aa8)
+[LOG] SoundI::release                          :  (0x16d9945b8)
+[LOG] SoundI::release                          :     Ambition - Bourgeoisie - Conversation A - MIP3 - END - WIN (0x16d994728)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
@@ -374,4 +77,21 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Manager::readBank                        : fileversion = 100, compatVersion = 99 (oldest = 44, newest = 100)
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.

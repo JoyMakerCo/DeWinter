@@ -77,10 +77,17 @@ namespace Ambition
 
         private void HandleRemark(RemarkVO remark)
         {
-            _animator.SetBool(SELECTED, remark == _remark);
+            if (_remark != null)
+            {
+                bool isRemark = remark == _remark;
+                //_animator.SetBool(SELECTED, isRemark);
+
+                Arrow.color = Color.white;
+                _image.sprite = RemarksConfig.GetSprite(isRemark ? (_remark.Interest + "_Select") : _remark.Interest);
+            }
         }
 
-		public void OnPointerClick(PointerEventData eventData)
+        public void OnPointerClick(PointerEventData eventData)
 		{
 			AmbitionApp.GetModel<ConversationModel>().Remark = _remark;
 		}

@@ -39,11 +39,6 @@ namespace Ambition
         //Drinking and Intoxication
         public int MaxIntoxication = 4;
         public int maxPlayerDrinkAmount = 3;
-        public int drinkStrength = 20;
-
-        public bool blackOutEnding = false; //Did they Party end normally or via Blacking Out?
-        public string blackOutEffect; // This is used for the After Party Report
-        public int blackOutEffectAmount; //This is also used for the After Party Report
 
         public List<CommodityVO> Requirements = new List<CommodityVO>();
         public List<CommodityVO> Rewards = new List<CommodityVO>();

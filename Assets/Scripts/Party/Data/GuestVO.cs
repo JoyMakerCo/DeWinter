@@ -44,8 +44,6 @@ namespace Ambition
 		public GuestActionVO Action;
 
 		public int Opinion;
-		public int MaxInterest;
-		public int Interest;
 
 		public GuestVO() {}
 		public GuestVO(GuestVO guest)
@@ -64,7 +62,7 @@ namespace Ambition
 		
 		public bool IsLockedIn
 		{
-			get { return State == GuestState.PutOff || State == GuestState.Charmed; }
+            get { return State == GuestState.Offended || State == GuestState.Charmed; }
 		}
 	}
 }

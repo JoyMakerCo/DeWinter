@@ -34,17 +34,21 @@
 	maps:{
 		"Tutorial":{
 			rooms:[
-				{
-					name:"Vestibule",
-					difficulty:0,
-					background:"tavern",
-					vertices:[
-						8,0,
-						8,4,
-						4,4,
-						4,0,
-					]
-				},
+        {
+          name: "Vestibule",
+          difficulty: 0,
+          background: "tavern",
+          vertices: [
+            8,
+            0,
+            8,
+            4,
+            4,
+            4,
+            4,
+            0,
+          ]
+        },
 				{
 					name:"Lobby",
 					background:"tavern",
@@ -55,9 +59,13 @@
 						3,4,
 					],
 					rewards:[
-						{type:"Reputation", id:"null", amount:1},
+            {
+              "type": "Reputation",
+              "id": "null",
+              "value": 1
+            }
 					],
-					numGuests:2,
+          numGuests:2,
 					difficulty:1,
 					timer:7.5,
 					moveThroughChance:0
@@ -73,8 +81,12 @@
 						3,8,
 					],
 					rewards:[
-						{type:"Reputation", id:"null", amount:2},
-						{type:"Incident", id:"An Honest Inquiry", amount:1},
+						{type:"Reputation", id:"null", value:2},
+            {
+              "type": "Incident",
+              "id": "An Honest Inquiry",
+              "value": 1
+            }
 					],
 					features:["Punchbowl"],
 					difficulty:2,
@@ -92,7 +104,11 @@
 						3,12,
 					],
 					rewards:[
-						{type:"Reputation", id:"null", amount:3},
+            {
+              "type": "Reputation",
+              "id": "null",
+              "value": 3
+            }
 					],
 					difficulty:3,
 					timer:6.25,
@@ -107,13 +123,30 @@
 						9,20,
 						9,16,
 					],
-					rewards:[
-						{type:"Reputation", id:"null", amount:5},
-						{type:"Gossip", id:"null", amount:1}, //A random piece of gossip
-						{type:"Incident", id:"A Country Woman", amount:1},
+					"rewards":[
+            {
+              "type": "Reputation",
+              "id": "null",
+              "value": 5
+            },
+            {
+              "type": "Gossip", //A random piece of gossip
+              "id": "null",
+              "value": 1
+            }, 
+            {
+              "type": "Incident",
+              "id": "A Country Woman",
+              "value": 1
+            },
+            {
+              "type": "Message",
+              "id": "OBJECTIVES_COMPLETE",
+              "value": 1
+            }
 					],
 					difficulty:5,
-					features:["Host"],
+					features:["Host"]
 				},
 				{
 					name:"Side Room",
@@ -125,7 +158,11 @@
 						3,12,
 					],
 					rewards:[
-						{type:"Reputation", id:"null", amount:4},
+            {
+              "type": "Reputation",
+              "id": "null",
+              "value": 4
+            }
 					],
 					difficulty:3
 				},
@@ -140,7 +177,11 @@
 						14,12,
 					],
 					rewards:[
-						{type:"Reputation", id:"null", amount:4},
+            {
+              "type": "Reputation",
+              "id": "null",
+              "value": 4
+            }
 					],
 				}
 			],

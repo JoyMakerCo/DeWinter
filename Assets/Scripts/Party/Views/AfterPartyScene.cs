@@ -9,7 +9,10 @@ namespace Ambition
 {
 	public class AfterPartyScene : MonoBehaviour
 	{
-		public const string DIALOG_ID = "AFTER_PARTY_DIALOG";
+        Core.LocalizationModel localizationModel = AmbitionApp.GetModel<Core.LocalizationModel>();
+        InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+
+        public const string DIALOG_ID = "AFTER_PARTY_DIALOG";
 		public SpriteConfig FactionIconConfig;
 		public Text ReputationText;
 		public Text GossipText;
@@ -19,25 +22,29 @@ namespace Ambition
 		public Image RepLossIcon;
 		public Image FactionIcon;
 		public Text PartyText;
-		public Text NoveltyLossText;
-		public Text PartyImportance;
+		public Text NoveltyLossValueText;
+		public Text PartyImportanceValueText;
 
 		void Start ()
 		{
 			PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
 			PartyText.text = party.Name;
 			if (party.Host != null) PartyText.text += (" - " + party.Host);
-			PartyImportance.text = party.Importance.ToString();
-			NoveltyLossText.text = "0";
+            PartyImportanceValueText.text = party.Importance.ToString();
+            NoveltyLossValueText.text = "-" + inventory.NoveltyDamage.ToString();
 			FactionIcon.sprite = FactionIconConfig.GetSprite(party.Faction);
-			int livre=0;
+            //Setting all these values to blank to zero in order to override the placeholder stuff
+            int livre = 0;
 			int rep = 0;
-			foreach (CommodityVO reward in party.Rewards)
+            RewardText.text = "";
+            GossipText.text = "";
+            foreach (CommodityVO reward in party.Rewards)
 			{
 				switch(reward.Type)
 				{
 					case CommodityType.Gossip:
-						GossipText.text += "- " + reward.ID + "\n";
+						GossipText.text += "- " + localizationModel.GetString("commodity." + reward.Type.ToString().ToLower() + ".name") + "\n";
+                        print("Gossip Item Added!");
 						break;
 					case CommodityType.Livre:
 						livre += reward.Value;
@@ -46,31 +53,29 @@ namespace Ambition
 						rep += reward.Value;
 						break;
 					case CommodityType.Item:
-						RewardText.text += "- " + reward.ID + "\n";
+						RewardText.text += "- " + localizationModel.GetString("commodity." + reward.ID.ToLower() + ".name") + "\n";
 						break;
 				}
 			}
-			RepGainIcon.enabled = rep > 0;
+            if (GossipText.text == "") GossipText.text = localizationModel.GetString("commodity.none.name");
+            if (RewardText.text == "") RewardText.text = localizationModel.GetString("commodity.none.name");
+            RepGainIcon.enabled = rep >= 0;
 			RepLossIcon.enabled = rep < 0;
-			ReputationText.text = rep.ToString();
-			LivreText.text = "£" + livre.ToString();
-		}
-
-		void OnDestroy()
-		{
-			AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeout);
+            if(rep >= 0)
+            {
+                ReputationText.text = "+";
+            } else
+            {
+                ReputationText.text = "";
+            }
+            ReputationText.text += rep.ToString();
+			LivreText.text = "+ £" + livre.ToString();
 		}
 
 		public void Done()
 		{
-			AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeout);
-			AmbitionApp.SendMessage(GameMessages.FADE_OUT);
+			AmbitionApp.SendMessage(PartyMessages.END_PARTY);
             AmbitionApp.GetModel<PartyModel>().Party = null;
         }
-
-		private void HandleFadeout()
-		{
-            AmbitionApp.SendMessage(PartyMessages.END_PARTY);
-		}
 	}
 }

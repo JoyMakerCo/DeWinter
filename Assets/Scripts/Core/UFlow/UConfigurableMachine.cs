@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable 0414
+
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using Util;
@@ -16,7 +18,7 @@ namespace UFlow
         public UnityEvent OnExitState;
     }
 
-    public class UConfigurableMachine : ScriptableObject, IDirectedGraphObject
+    public class UConfigurableMachine : ScriptableObject, IDirectedGraphObjectConfig
     {
         [SerializeField]
         DirectedGraph<UStateObject> _machine;
@@ -25,9 +27,10 @@ namespace UFlow
         SerializedObject _obj;
 
         [SerializeField]
-        int _index;
+        private int _index = -1;
+
         [SerializeField]
-        bool _isState;
+        private bool _isState = false;
 
         [OnOpenAsset(1)]
         public static bool OpenMachineConfig(int instanceID, int line)
@@ -63,10 +66,10 @@ namespace UFlow
             
         }
 
+#endif
         public GUIContent GetGUIContent(int nodeIndex)
         {
             return new GUIContent(this.name);
         }
-#endif
     }
 }

@@ -13,13 +13,17 @@ namespace Ambition
 		{
             PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
 			ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-			GuestVO guest;
+            RoomVO room = model.Room;
+            GuestVO guest;
             GuestVO[] guests = model.Guests;
             _phrases = AmbitionApp.GetModel<LocalizationModel>();
 
             // This ensures that previous guest formations stay consistent
-            // TODO: Determine how to vary this number
-            if (guests == null) guests = new GuestVO[4];
+            if (guests == null || guests.Length == 0)
+            {
+                // TODO: Determine how to vary this number
+                guests = new GuestVO[4];
+            }
             for (int i = guests.Length - 1; i >= 0; i--)
             {
                 if (guests[i] == null)
@@ -45,17 +49,18 @@ namespace Ambition
                 }
             }
 
-            RoomVO room = model.Room;
-			if (!room.Cleared)
+ 			if (!room.Cleared)
 			{
 				int likeIndex;
                 GuestDifficultyVO stats = partyModel.GuestDifficultyStats[room.Difficulty-1];
                 string[] interests = partyModel.Interests;
+
+                if (room.Actions != null)
+                    AmbitionApp.SendMessage(room.Actions);
+
                 foreach (GuestVO g in guests)
 				{
 					g.Opinion = RNG.Generate(stats.Opinion[0], stats.Opinion[1]);
-					g.MaxInterest = RNG.Generate(stats.MaxInterest[0], stats.MaxInterest[1]);
-					g.Interest = RNG.Generate(stats.Interest[0], stats.Interest[1]);
                     likeIndex = RNG.Generate(interests.Length);
                     g.Like = interests[likeIndex];
 					g.Dislike = interests[(likeIndex + 1)%interests.Length];
@@ -75,8 +80,7 @@ namespace Ambition
             model.FreeRemarkCounter = partyModel.FreeRemarkCounter;
             model.Repartee = false;
             model.RemarksBought = 0;
-            AmbitionApp.SendMessage<int>(GameConsts.CONFIDENCE, partyModel.Confidence);
-		}
+        }
 
         private string GetRandomDescriptor(string phrase)
         {

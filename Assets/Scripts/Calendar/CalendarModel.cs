@@ -14,11 +14,10 @@ namespace Ambition
         public List<ICalendarEvent> Unscheduled = new List<ICalendarEvent>();
         public DateTime StartDate;
         public DateTime EndDate;
+        public Stack<IncidentVO> IncidentQueue = new Stack<IncidentVO>();
 
         private int _day;
         private MomentVO _moment;
-        private List<IncidentVO> _queue = new List<IncidentVO>();
-
 
 		public string GetDateString()
 		{
@@ -67,34 +66,22 @@ namespace Ambition
 			get { return StartDate.AddDays(_day); }
 			set {
 				_day = (value - StartDate).Days;
-				AmbitionApp.SendMessage<DateTime>(value);
+				AmbitionApp.SendMessage(value);
 			}
 		}
 
         public IncidentVO Incident
         {
-            get { return _queue.Count > 0 ? _queue[0] : null; }
+            get { return IncidentQueue.Count > 0 ? IncidentQueue.Peek() : null; }
             set
             {
-                if (value == null || _queue.Contains(value)) return;
-                if (_queue.Count == 0)
+                if (value != null && !IncidentQueue.Contains(value))
                 {
-                    _queue.Add(value);
+                    IncidentQueue.Push(value);
                     AmbitionApp.SendMessage(value);
-                }
-                else
-                {
-                    _queue.Insert(1, value);
                 }
             }
         }
-
-        public void QueueIncident(IncidentVO incident)
-        {
-            if (!_queue.Contains(incident))
-                _queue.Add(incident);
-        }
-
 
 		public DateTime DaysFromNow(int days)
 		{
@@ -112,7 +99,7 @@ namespace Ambition
             set {
                 _moment = value;
                 if (_moment != null) AmbitionApp.SendMessage(_moment = value);
-                else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, _queue[0]);
+                else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, Incident);
             }
         }
 
@@ -137,13 +124,6 @@ namespace Ambition
         public T[] GetEvents<T>() where T : ICalendarEvent
         {
             return GetEvents<T>(Today);
-        }
-
-        public void EndIncident()
-        {
-            if (_queue.Count > 0) _queue.RemoveAt(0);
-            if (_queue.Count > 0) AmbitionApp.SendMessage(_queue[0]);
-            else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENTS);
         }
 
         public DateTime NextStyleSwitchDay;

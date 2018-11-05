@@ -6,7 +6,7 @@ namespace Ambition
 {
 	public class StartPartyButtonTextController : MonoBehaviour {
 
-	    public OutfitInventoryList inventoryList;
+        private InventoryModel _model = AmbitionApp.GetModel<InventoryModel>();
 
 	    private Text myText;
 	    private Outline myOutline; // This is for highlighting buttons
@@ -19,7 +19,7 @@ namespace Ambition
 		
 		// Update is called once per frame
 		void Update () {
-	        if (inventoryList.selectedInventoryOutfit == null)
+	        if (_model.Equipped.Count != 0)
 	        {
 	            myOutline.effectColor = Color.clear;
 	            myText.text = "<- Select Your Outfit";

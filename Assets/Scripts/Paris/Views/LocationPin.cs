@@ -8,12 +8,13 @@ namespace Ambition
 {
     public class LocationPin : MonoBehaviour
     {
-        public IncidentConfig IncidentConfig;
+        public IncidentConfig IntroIncidentConfig;
         public GameObject Scene;
         public bool OneShot;
         public bool Discoverable;
+        public bool Visited; //Used to determine whether the intro incident should play
         public string LocationWindowDescription;
-        public Sprite LocationWindowImage;
+        public Sprite LocationModalSprite;
         public GameObject Label;
         public Text LabelText;
         public CommodityVO[] Requirements;
@@ -22,7 +23,6 @@ namespace Ambition
 
         private void Awake()
         {
-            //AmbitionApp.Subscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
             AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
             AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
             _name = LabelText.text;
@@ -30,7 +30,6 @@ namespace Ambition
 
         private void OnDestroy()
         {
-            //AmbitionApp.Unsubscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
             AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
             AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
         }

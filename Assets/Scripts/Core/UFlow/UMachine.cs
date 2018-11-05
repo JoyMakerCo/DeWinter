@@ -11,7 +11,6 @@ namespace UFlow
 
 	public class UMachine : UState<string>
 	{
-        
 		public string MachineID { get; private set; }
 		internal UFlowSvc _uflow;	// Active UFlow Service
 		internal UMachineGraph _graph;

@@ -8,11 +8,13 @@ namespace Ambition
 	public class LivreView : MonoBehaviour
 	{
 		private Text _text;
+        private GameModel _model = AmbitionApp.GetModel<GameModel>();
 
-		void Awake ()
+        void Awake ()
 		{
 			_text = GetComponent<Text>();
 			AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleLivre);
+            GetLivre(); // Gotta set those initial values
 		}
 
 		void OnDestroy()
@@ -24,5 +26,10 @@ namespace Ambition
 		{
 			_text.text = "£" + livre.ToString("### ###");
 		}
+
+        private void GetLivre()
+        {
+            _text.text = "£" + _model.Livre.ToString("### ###");
+        }
 	}
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 using Util;
 
@@ -16,7 +14,7 @@ namespace Ambition
 
         public bool IsScheduled
         {
-            get { return _date > 0;  }
+            get { return _date > 0; }
         }
 
         public DateTime Date
@@ -29,21 +27,20 @@ namespace Ambition
 
         public bool OneShot = true;
 
-        public IncidentVO() {}
-        public IncidentVO(DirectedGraph<MomentVO, TransitionVO> incident)
+        public IncidentVO() : base() {}
+        public IncidentVO(DirectedGraph<MomentVO, TransitionVO> incident) : base(incident)
         {
             Nodes = incident.Nodes;
             Links = incident.Links;
             LinkData = incident.LinkData;
         }
+
         public IncidentVO(IncidentVO incident) : this(incident as DirectedGraph<MomentVO, TransitionVO>)
         {
             this.Name = incident.Name;
             this.Date = incident.Date;
         }
-
 #if (UNITY_EDITOR)
-        public Vector2[] Positions;
         public int Month = 0;
         public int Day = 0;
         public int Year = 0;

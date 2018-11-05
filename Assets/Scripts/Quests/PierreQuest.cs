@@ -32,7 +32,7 @@ public class PierreQuest
         	case 1:
         		string faction = FACTIONS[rnd.Next(1, FACTIONS.Length)];
         		if (faction == Faction) faction = FACTIONS[0];
-				reward = new CommodityVO(CommodityType.Faction, faction, multiplier * (rnd.Next(10, 21)));
+                reward = new CommodityVO(CommodityType.Reputation, faction, multiplier * (rnd.Next(10, 21)));
         		break;
         	case 2:
 				reward = new CommodityVO(CommodityType.Livre, multiplier*rnd.Next(10,21));

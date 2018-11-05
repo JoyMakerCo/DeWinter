@@ -10,7 +10,7 @@ namespace Ambition
 		void Awake ()
 		{
 			if (TutorialPrefab != null && AmbitionApp.IsActiveMachine(TutorialConsts.TUTORIAL_MACHINE))
-				Instantiate(TutorialPrefab, this.transform, false);
+				Instantiate(TutorialPrefab, transform, false);
 			Destroy(this);
 		}
 	}

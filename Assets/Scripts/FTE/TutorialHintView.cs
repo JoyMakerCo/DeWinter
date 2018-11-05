@@ -32,13 +32,18 @@ namespace Ambition
 
         private void HandleTutorialStep(string step)
         {
-            if (step == TutorialStep) this.gameObject.SetActive(true);
+            if (step == TutorialStep)
+            {
+                this.gameObject.SetActive(true);
+            }
         }
 
         private void HandleTutorialStepComplete(string step)
         {
             if (step == TutorialStep)
+            {
                 this.gameObject.SetActive(false);
+            }
         }
     }
 }

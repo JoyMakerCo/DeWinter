@@ -39,14 +39,14 @@ namespace Ambition
             CurrentAmbientSFX.getPlaybackState(out playbackState);
             bool isPlaying = playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED;
             //If so, wind down the old SFX, then switch in the new FMOD Event
-            if (isPlaying)
+            if (string.IsNullOrEmpty(ambientSFX.Name))
             {
-                if (string.IsNullOrEmpty(ambientSFX.Name))
-                {
-                    HandleStop();
-                }
+                HandleStop();
+            }
+            else if (isPlaying)
+            {
                 //If it's not the same FMOD Event, then switch over
-                else if (GetInstantiatedEventName(CurrentAmbientSFX) != ambientSFX.Name)
+                if (GetInstantiatedEventName(CurrentAmbientSFX) != ambientSFX.Name)
                 {
                     HandleStop();
                     CurrentAmbientSFX = FMODUnity.RuntimeManager.CreateInstance(ambientSFX.Name);

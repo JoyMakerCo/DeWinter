@@ -44,9 +44,8 @@ namespace Core
 
 		public void Send(T data)
 		{
-			if (_typeMessageHandler != null)
-				_typeMessageHandler(data);
-		}
+            _typeMessageHandler?.Invoke(data);
+        }
 	}
 
 	public class MessageEvent : IMessageEvent

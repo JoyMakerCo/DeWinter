@@ -9,6 +9,7 @@ namespace Core
         private string _json;
         internal string GetLocalizationData(string language)
         {
+            _json = "";
             return _json;
         }
         void Start()

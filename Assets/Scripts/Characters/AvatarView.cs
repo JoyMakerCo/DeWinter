@@ -11,7 +11,6 @@ namespace Ambition
         public AvatarVO Avatar { private set; get; }
 
         private Image _image;
-		private string _id;
 		private string _pose;
 
 		void Awake()
@@ -21,23 +20,23 @@ namespace Ambition
 
 		public string ID
 		{
-			get { return _id; }
+            get { return Avatar.ID; }
 			set {
-				_id = value;
-				Avatar = Collection.GetAvatar(_id);
+                Avatar = Collection.GetAvatar(value);
 				Pose = _pose;
 			}
-		}
+        }
 
 		public string Pose
 		{
 			get { return _pose; }
 			set
 			{
-				_pose = value;
-				_image.sprite = Avatar.GetPose(_pose);
-                _image.enabled = (_image.sprite != null);
-			}
+                Sprite spt = Avatar.GetPose(_pose = value);
+                if (_image == null) Awake();
+                _image.enabled = (spt != null);
+                if (spt != null) _image.sprite = spt;
+            }
 		}
 
         public Sprite Sprite

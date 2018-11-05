@@ -8,6 +8,5 @@ namespace Ambition
         public const string END_INCIDENT = "END_INCIDENT";
         public const string END_INCIDENTS = "END_INCIDENTS";
         public const string INCIDENT_OPTION = "INCIDENT_OPTION";
-        public const string QUEUE_INCIDENT = "QUEUE_INCIDENT";
     }
 }

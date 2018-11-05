@@ -8,9 +8,6 @@ namespace Ambition
 		[JsonProperty("reputation")]
 		public int Reputation;
 
-		[JsonProperty("confidence")]
-		public int Confidence;
-
 		[JsonProperty("vip")]
 		public int PartyInviteImportance;
 

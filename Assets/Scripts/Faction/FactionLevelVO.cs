@@ -8,11 +8,11 @@ namespace Ambition
 		[JsonProperty("requirement")]
 		public int Requirement;
 
-		[JsonProperty("text")]
-		public string Text;
+        [JsonProperty("deck_bonus")]
+        public int DeckBonus;
 
-		[JsonProperty("confidence")]
-		public int Confidence;
+        [JsonProperty("text")]
+		public string Text;
 
 		[JsonProperty("importance")]
 		public int Importance;

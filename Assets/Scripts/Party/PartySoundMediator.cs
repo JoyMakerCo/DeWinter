@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Core;
@@ -16,6 +18,7 @@ namespace Ambition
         PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
 
         private FMODEvent _currentConversationMusic;
+        private bool _partyStarted = false;
 
         void Awake()
         {
@@ -25,11 +28,12 @@ namespace Ambition
             AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_POSITIVE, GuestPositiveReaction);
             AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_NEUTRAL, GuestNeutralReaction);
             AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_NEGATIVE, GuestNegativeReaction);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_CHARMED, GuestCharmedReaction);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_PUTOFF, GuestPutOffReaction);
+            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
+            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
             AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
             AmbitionApp.Subscribe(PartyMessages.LEAVE_PARTY, LeaveParty);
-            StartPartyMapSound(); // Because it starts on the map by default, it seems like Show Map isn't called at the very beginning, so we have to call it on Awake()
+            AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, HandleShowMap);
+            AmbitionApp.Subscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoom);
         }
 
         void OnDestroy()
@@ -40,43 +44,55 @@ namespace Ambition
             AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_POSITIVE, GuestPositiveReaction);
             AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_NEUTRAL, GuestNeutralReaction);
             AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_NEGATIVE, GuestNegativeReaction);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_CHARMED, GuestCharmedReaction);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_PUTOFF, GuestPutOffReaction);
+            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
+            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
             AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
+            AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, HandleShowMap);
+            AmbitionApp.Unsubscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoom);
         }
 
-        public void StartPartyMapSound()
+        //This is for room SFX, necessary if we have indoor and outdoor rooms that the player is traversing on the map
+        private void HandleRoom(RoomVO room)
         {
-            AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, MusicCollection.GetFMODEvent(true, partyModel.Party.Faction));
-            AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENTSFX, AmbientSFXCollection.GetFMODEvent(model.Room.Indoors, (int)partyModel.Party.Importance));
+            AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENTSFX, AmbientSFXCollection.GetFMODEvent(room.Indoors, (int)partyModel.Party.Importance));
         }
 
+        private void HandleShowMap()
+        {
+            //To Do: an If Else for queueing the track
+            if (!_partyStarted)
+            {
+                AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, MusicCollection.GetFMODEvent(true, partyModel.Party.Faction));
+                _partyStarted = true;
+            } else
+            {
+                //We have to queue the next track up, instead of an instant switch, or the map music takes over before the victory chime of the conversation track
+                AmbitionApp.SendMessage(AudioMessages.QUEUE_MUSIC, MusicCollection.GetFMODEvent(true, partyModel.Party.Faction));
+            }
+        }
+
+        //This is is for conversation music and SFX
         public void ConversationSoundStart()
         {
             _currentConversationMusic = MusicCollection.GetFMODEvent(false, partyModel.Party.Faction);
             //Set the parameters to zero, because sometimes they get stuck in the victory or lose state after the instance is completed, which fucks it up the next time that track is used
-            _currentConversationMusic.Parameters[_currentConversationMusic.GetParameterIndexByName("WIN")].Value = 0;
-            _currentConversationMusic.Parameters[_currentConversationMusic.GetParameterIndexByName("LOSE")].Value = 0;
+            SetParam(_currentConversationMusic, "WIN", 0);
+            SetParam(_currentConversationMusic, "LOSE", 0);
             AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, _currentConversationMusic);
             AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENTSFX, AmbientSFXCollection.GetFMODEvent(model.Room.Indoors, (int)partyModel.Party.Importance));
         }
 
         public void ConversationVictorySound()
         {
-            FMODEvent victoryEvent = _currentConversationMusic;
-            victoryEvent.Parameters[victoryEvent.GetParameterIndexByName("WIN")].Value = 1; //We're already in the right song, now we just need to make it end appropriately
-            AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, victoryEvent);
-            //We have to queue the next track up, instead of an instant switch, or the map music takes over before the victory chime of the conversation track
-            AmbitionApp.SendMessage(AudioMessages.QUEUE_MUSIC, MusicCollection.GetFMODEvent(true, partyModel.Party.Faction));
+            SetParam(_currentConversationMusic, "WIN", 1);
+            AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, _currentConversationMusic);
+
         }
 
         public void ConversationDefeatSound()
         {
-            FMODEvent defeatEvent = _currentConversationMusic;
-            defeatEvent.Parameters[defeatEvent.GetParameterIndexByName("LOSE")].Value = 1; //We're already in the right song, now we just need to make it end appropriately
-            AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, defeatEvent);
-            //We have to queue the next track up, instead of an instant switch, or the map music takes over before the defeat chime of the conversation track
-            AmbitionApp.SendMessage(AudioMessages.QUEUE_MUSIC, MusicCollection.GetFMODEvent(true, partyModel.Party.Faction));
+            SetParam(_currentConversationMusic, "LOSE", 1);
+            AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, _currentConversationMusic);
         }
 
         public void GuestPositiveReaction(GuestVO guest)
@@ -118,6 +134,15 @@ namespace Ambition
         public void LeaveParty()
         {
             AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);
+        }
+
+        private void SetParam(FMODEvent e, string id, int value)
+        {
+            if (e.Parameters != null)
+            {
+                int index = Array.FindIndex(e.Parameters, p => p.Name == id);
+                if (index >= 0) e.Parameters[index].Value = value;
+            }
         }
     }
 }

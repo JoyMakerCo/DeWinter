@@ -17,17 +17,23 @@ namespace Ambition
 			set {
                 CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
                 _party = value;
-                _party.RSVP = RSVP.Accepted;
-                if (default(DateTime).Equals(_party.InvitationDate))
-                    _party.InvitationDate = calendar.Today;
-                calendar.Schedule(_party, calendar.Today);
-			}
+                if (_party != null)
+                {
+                    _party.RSVP = RSVP.Accepted;
+                    if (default(DateTime).Equals(_party.InvitationDate))
+                        _party.InvitationDate = calendar.Today;
+                    calendar.Schedule(_party, calendar.Today);
+                }
+            }
 		}
 
 		public bool IsAmbush=false;
 
 		[JsonProperty("free_remark_counter")]
 		public int FreeRemarkCounter;
+
+        [JsonProperty("boredom_penalty")]
+        public int BoredomPenalty;
 
         public int Turns
         {
@@ -97,10 +103,10 @@ namespace Ambition
 		[JsonProperty("repartee_bonus")]
 		public float ReparteeBonus;
 
-		[JsonProperty("confidence_cost")]
-		public int[] ConfidenceCost;
+        [JsonProperty("deck_size")]
+        public int DeckSize;
 
-		[JsonProperty("maxHandSize")]
+        [JsonProperty("hand_size")]
 		public int HandSize = 5;
 
 		[JsonProperty("ambushHandSize")]
@@ -126,8 +132,15 @@ namespace Ambition
 		[JsonProperty("charmed_guest_action_chance")]
 		public int[] CharmedGuestActionChance;
 
+        [JsonProperty("flee_party_penalty")]
+        public int FleePartyPenalty = 25;
+        [JsonProperty("flee_faction_penalty")]
+        public int FleeFactionPenalty = 50;
 
-		private int _intoxication;
+        [JsonProperty("remark_result")]
+        public Dictionary<string, RemarkResult> RemarkResults;
+
+        private int _intoxication;
 		public int Intoxication
 		{
 			get { return _intoxication; }
@@ -137,19 +150,6 @@ namespace Ambition
 			}
 		}
 		public int MaxIntoxication = 100;
-		public int MaxConfidence;
-		public int StartConfidence;
-        public int BaseConfidence = 35;
-
-        private int _confidence;
-		public int Confidence
-		{
-			get { return _confidence; }
-			set {
-				_confidence = (value < 0 ? 0 : value > MaxConfidence ? MaxConfidence : value);
-				AmbitionApp.SendMessage<int>(GameConsts.CONFIDENCE, _confidence);
-			}
-		}
 
 		private int _drink;
 		public int Drink
@@ -161,4 +161,19 @@ namespace Ambition
 			}
 		}
 	}
+
+    public struct RemarkResult
+    {
+        [JsonProperty("opinion_min")]
+        public int OpinionMin;
+
+        [JsonProperty("opinion_max")]
+        public int OpinionMax;
+
+        [JsonProperty("remarks")]
+        public int Remarks;
+
+        [JsonProperty("reset")]
+        public bool ResetInvolvement;
+    }
 }

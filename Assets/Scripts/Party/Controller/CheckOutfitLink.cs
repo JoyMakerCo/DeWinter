@@ -6,9 +6,7 @@ namespace Ambition
     {
         public override bool Validate()
         {
-            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            ItemVO item;
-            return inventory.Equipped.TryGetValue(ItemConsts.OUTFIT, out item) && item != null;
+            return AmbitionApp.GetModel<InventoryModel>().GetEquipped(ItemConsts.OUTFIT) is OutfitVO;
         }
     }
 }

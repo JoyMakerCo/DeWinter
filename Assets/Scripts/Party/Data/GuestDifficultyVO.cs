@@ -7,11 +7,5 @@ namespace Ambition
 	{
 		[JsonProperty("opinion")]
 		public int[] Opinion;
-
-		[JsonProperty("interest")]
-		public int[] Interest;
-
-		[JsonProperty("max_interest")]
-		public int[] MaxInterest;
 	}
 }

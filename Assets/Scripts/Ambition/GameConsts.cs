@@ -7,7 +7,6 @@ namespace Ambition
 		public const string LIVRE = "LIVRE";
 		public const string REPUTATION = "REPUTATION";
 		public const string INTOXICATION = "INTOXICATION";
-		public const string CONFIDENCE = "CONFIDENCE";
 		public const string DRINK = "DRINK";
         public const string EXHAUSTION = "EXHAUSTION";
 

@@ -14,23 +14,30 @@ namespace Ambition
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             UController controller = _machine._uflow.GetController(_machine);
             int index = controller.transform.GetSiblingIndex();
-            int [] chart = map.Room.Guests[index].State == GuestState.Charmed
-                ? model.CharmedGuestActionChance
-                : model.GuestActionChance;
-            if (Util.RNG.Generate(chart[map.Room.Difficulty-1]) > 0)
+            if (index < map.Room.Guests.Length)
             {
-                map.Room.Guests[index].Action = null;
+                int[] chart = map.Room.Guests[index].State == GuestState.Charmed
+                    ? model.CharmedGuestActionChance
+                    : model.GuestActionChance;
+                if (Util.RNG.Generate(chart[map.Room.Difficulty - 1]) > 0)
+                {
+                    map.Room.Guests[index].Action = null;
+                }
+                else
+                {
+                    GuestActionFactory factory = (GuestActionFactory)AmbitionApp.GetFactory<string, GuestActionVO>();
+                    GuestActionVO[] actions = factory.Actions.Values.ToArray();
+                    actions = Array.FindAll(actions, a => a.Difficulty <= map.Room.Difficulty);
+                    int choice = actions.Select(a => a.Chance).Sum();
+                    int i = 0;
+                    for (choice = Util.RNG.Generate(choice); actions[i].Chance <= choice; i++)
+                        choice -= actions[i].Chance;
+                    map.Room.Guests[index].Action = actions[i];
+                }
             }
             else
             {
-                GuestActionFactory factory = (GuestActionFactory)AmbitionApp.GetFactory<string, GuestActionVO>();
-                GuestActionVO[] actions = factory.Actions.Values.ToArray();
-                actions = Array.FindAll(actions, a=>a.Difficulty <= map.Room.Difficulty);
-                int choice = actions.Select(a=>a.Chance).Sum();
-                int i=0;                
-                for (choice = Util.RNG.Generate(choice); actions[i].Chance<=choice; i++)
-                    choice -= actions[i].Chance;
-                map.Room.Guests[index].Action = actions[i];
+                controller.gameObject.SetActive(false);
             }
         }
     }

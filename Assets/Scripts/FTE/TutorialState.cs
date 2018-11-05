@@ -7,12 +7,12 @@ namespace Ambition
     {
         override public void OnEnterState()
         {
-            AmbitionApp.SendMessage<string>(TutorialMessage.TUTORIAL_STEP, ID);
+            AmbitionApp.SendMessage(TutorialMessage.TUTORIAL_STEP, ID);
         }
 
         override public void OnExitState()
         {
-            AmbitionApp.SendMessage<string>(TutorialMessage.TUTORIAL_STEP_COMPLETE, ID);
+            AmbitionApp.SendMessage(TutorialMessage.TUTORIAL_STEP_COMPLETE, ID);
         }
     }
 }

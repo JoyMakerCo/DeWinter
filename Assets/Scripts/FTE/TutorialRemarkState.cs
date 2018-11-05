@@ -26,9 +26,6 @@ namespace Ambition
             }
         }
 
-        override public void Dispose()
-        {
-            GameObject.Destroy(_bounz);
-        }
+        override public void Dispose() => GameObject.Destroy(_bounz);
     }
 }

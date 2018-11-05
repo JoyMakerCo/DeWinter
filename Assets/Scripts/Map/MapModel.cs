@@ -20,6 +20,7 @@ namespace Ambition
 			get { return _room; }
 			set {
 				_room = value;
+                _room.Visited = _room.Revealed = true;
 				AmbitionApp.SendMessage<RoomVO>(_room);
 			}
 		}

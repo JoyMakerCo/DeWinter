@@ -55,10 +55,6 @@ namespace Ambition
 			}
 		}
 
-		[JsonProperty("confidence")]
-		private readonly int[] _confidence;
-        public int ConfidenceBonus => _confidence[Level];
-
         [JsonProperty("vip")]
 		private readonly int[] _vip;
         public int PartyInviteImportance => _vip[Level];
@@ -72,5 +68,16 @@ namespace Ambition
 
 		[JsonProperty("levels")]
 	    private int[] _levels;
-	}
+
+        [JsonProperty("deck_bonus")]
+        private int[] _deckBonus;
+
+        public int DeckBonus
+        {
+            get
+            {
+                return _deckBonus[Level];
+            }
+        }
+    }
 }

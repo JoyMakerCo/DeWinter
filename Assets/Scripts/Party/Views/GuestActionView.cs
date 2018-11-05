@@ -3,10 +3,9 @@ using UnityEngine;
 
 namespace Ambition
 {
-    public class GuestActionView : MonoBehaviour
+    public class GuestActionView : GuestViewMediator
     {
         public ActionMap[] Actions;
-        private GuestVO _guest;
 
         [Serializable]
         public struct ActionMap
@@ -15,50 +14,32 @@ namespace Ambition
             public GameObject View;
         }
 
-        void Awake()
-        {
-            AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
-            gameObject.SetActive(false);
-        }
+        private void Awake() => InitGuest();
+        private void OnDestroy() => Cleanup();
+        private void Start() => gameObject.SetActive(false);
 
-        void OnDestroy()
+        override protected void HandleGuest(GuestVO guest)
         {
-            AmbitionApp.Unsubscribe<GuestVO[]>(HandleGuests);
-            AmbitionApp.Unsubscribe(PartyMessages.START_ROUND, HandleRound);
-        }
-
-        private void HandleGuests(GuestVO [] guests)
-        {
-            int index = transform.GetSiblingIndex();
-            AmbitionApp.Unsubscribe(PartyMessages.START_ROUND, HandleRound);
-            _guest = (index < guests.Length) ? guests[index] : null;
-            if (_guest != null)
+            if (guest != null && guest == _guest)
             {
-                HandleRound();
-                AmbitionApp.Subscribe(PartyMessages.START_ROUND, HandleRound);
-            }
-            else gameObject.SetActive(false);
-        }
-
-        private void HandleRound()
-        {
-            GuestActionVO action = _guest.Action;
-            if (action != null)
-            {
-                GuestActionIcon icon;
-                foreach(ActionMap map in Actions)
+                bool activate = guest.Action != null;
+                gameObject.SetActive(activate);
+                if (activate)
                 {
-                    if (map.ActionType == action.Type)
+                    GuestActionIcon icon;
+                    GuestActionVO action = guest.Action;
+                    foreach (ActionMap map in Actions)
                     {
-                        map.View.SetActive(true);
-                        icon = map.View.GetComponent<GuestActionIcon>();
-                        if (icon != null) icon.SetAction(action);
+                        activate = map.ActionType == action.Type;
+                        map.View.SetActive(activate);
+                        if (activate)
+                        {
+                            icon = map.View.GetComponent<GuestActionIcon>();
+                            if (icon != null) icon.SetAction(action);
+                        }
                     }
-                    else map.View.SetActive(false);
                 }
-                gameObject.SetActive(true);
             }
-            else gameObject.SetActive(false);
         }
     }
 }

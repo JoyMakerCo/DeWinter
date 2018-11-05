@@ -37,12 +37,13 @@ namespace Ambition
                                      ? events.OfType<PartyVO>().FirstOrDefault(p => p.RSVP == RSVP.Accepted)
                                      : null;
                 }
-                _text.text = _party != null ? "Go to the Party!" : "Next Day";
+                _text.text = _party != null ? "Go to the Party!" : "Explore Paris";
             }
 		}
 
         public void LeaveEstate()
         {
+            print("Trying to leave the estate!");
             AmbitionApp.SendMessage(EstateMessages.LEAVE_ESTATE);
         }
     }

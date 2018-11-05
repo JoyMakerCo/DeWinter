@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Ambition
 {
 	public class OutfitVO : ItemVO
 	{
-        private readonly static OutfitVO Default = new OutfitVO(0, 0, 0, "");
+        public readonly static OutfitVO Default = new OutfitVO(0, 0, 0, "");
 
 		public OutfitVO() {}
 		public OutfitVO(ItemVO outfit) : base(outfit) {}
@@ -57,7 +58,8 @@ namespace Ambition
 	        Luxury = lux;
 	        Style = sty;
 			GenerateName();
-	        CalculatePrice();
+            GenerateDescription();
+            CalculatePrice();
 	    }
 
 	    // Empty/Default Constructor means random outfit
@@ -80,20 +82,20 @@ namespace Ambition
 	                break;
 	        }
 			result.CalculatePrice();
-			return result;
+            result.GenerateName();
+            result.GenerateDescription();
+            return result;
 	    }
 
-		public void CalculatePrice(bool sell=false)
+		public void CalculatePrice()
 	    {
 			Price = (int)((Math.Abs(Modesty) + Math.Abs(Luxury))*(float)Novelty*0.01f);
 	        if(Style != AmbitionApp.GetModel<InventoryModel>().CurrentStyle) //Check to see if this Outfit matches what's in Style
 	        {
 				Price = (int)(Price*Ambition.AmbitionApp.GetModel<InventoryModel>().OutOfStyleMultiplier);
 	        }
-			// If the Price is less than 10 make it 10. Will Sell for 5 at most (Sell price is 50% of Buy Price)
-			if (Price < 10) Price = 10;
-			if (sell) Price = (int)(Price*0.5f);
-			else
+			if (Price < 10) Price = 10; // If the Price is less than 10 make it 10. Will Sell for 5 at most (Sell price is 50% of Buy Price)
+            else
 			{
 				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
 				ItemVO item = inventory.Inventory.Find(i=>i.State.ContainsKey("outfit_cost"));
@@ -106,56 +108,121 @@ namespace Ambition
 
 	    private static int GenerateRandom()
 	    {
-			return (int)Math.Tan(0.0015608f*(Util.RNG.Generate(-1000, 1000)));
+			return (int)((Util.RNG.Generate(-100,100) + Util.RNG.Generate(-100,100))/2);
+            //return (int)Math.Tan(0.0015608f*(Util.RNG.Generate(-1000, 1000))); //The values from this are WAY too normalized. Rarely leave the 2 to -2 range
 	    }
 	    
 	    public void GenerateName()
 	    {
-	        string luxuryString=null;
-	        //Modesty Conversion
-	        if (Modesty > 60)
-	        {
-	            Name = "Virginal";
-	        }
-			else if (Modesty > 20)
-	        {
-				Name = "Conservative";
-	        }
-			else if (Modesty < -60)
-	        {
-				Name = "Scandalous";
-	        }
-			else if (Modesty < -20)
-	        {
-				Name = "Racy";
-	        }
-	        else Name = null;
-
-	        //Luxury Conversion
-	        if (Luxury > 60)
-	        {
-	            luxuryString = "Luxurious";
-	        }
-			else if (Luxury > 20)
-	        {
-	            luxuryString = "Pricey";
-	        }
-			else if (Luxury < -60)
-	        {
-				luxuryString = "Vintage";
-	        }
-			else if (Luxury < -20)
-	        {
-				luxuryString = "Thrifty";
-	        }
-
-	        //Return Dat Shit!
-	        if (luxuryString != null)
-	        {
-				Name = (Name != null) ? (Name + ", " + luxuryString) : luxuryString;
-	        }
-			Name = (Name + " " + Style + " Outfit") ?? (Style + " Outfit");
+            if(Mathf.Abs(Luxury) > Mathf.Abs(Modesty)) //Use the most prominent of the stats for the Outfit name (Otherwise the name is too long and unweildy)
+            {
+                Name = GenerateLuxuryString() + " " + Style + " " + GenerateNoun();
+            } else
+            {
+                Name = GenerateModestyString() + " " + Style + " " + GenerateNoun();
+            }
 	    }
+
+        public string GenerateLuxuryString()
+        {
+            if (Luxury > 60)
+            {
+                return "Luxurious";
+            }
+            else if (Luxury > 20)
+            {
+                return "Pricey";
+            }
+            else if (Luxury < -60)
+            {
+                return "Vintage";
+            }
+            else if (Luxury < -20)
+            {
+                return "Thrifty";
+            } else
+            {
+                return "Average";
+            }
+        }
+
+        public string GenerateModestyString()
+        {
+            if (Modesty > 60)
+            {
+                return "Virginal";
+            }
+            else if (Modesty > 20)
+            {
+                return "Conservative";
+            }
+            else if (Modesty < -60)
+            {
+                return "Scandalous";
+            }
+            else if (Modesty < -20)
+            {
+                return "Racy";
+            }
+            else return "Average";
+        }
+
+        string GenerateNoun() //This is so the name endings aren't all the same
+        {
+            string[] nounlist = new string[4];
+            nounlist[0] = "Outfit";
+            nounlist[1] = "Gown";
+            nounlist[2] = "Dress";
+            nounlist[3] = "Ensemble";
+            return nounlist[UnityEngine.Random.Range(0,nounlist.Length)];
+        }
+
+        //To Do: Gifts and such
+        void GenerateDescription()
+        {
+            string luxurytext;
+            if (Luxury > 60)
+            {
+                luxurytext = "A gown of staggering oppulence";
+            }
+            else if (Luxury > 20)
+            {
+                luxurytext = "Richly decorated ensemble";
+            }
+            else if (Luxury < -60)
+            {
+                luxurytext = "A fine dress for someone with nothing to prove";
+            }
+            else if (Luxury < -20)
+            {
+                luxurytext = "Down to earth ensemble";
+            }
+            else
+            {
+                luxurytext = "An outfit of decent quality";
+            }
+
+            string modestytext;
+            if (Modesty > 60)
+            {
+                modestytext = "modest enough to please the most steadfast tradionalists";
+            }
+            else if (Modesty > 20)
+            {
+                modestytext = "also modest and proper";
+            }
+            else if (Modesty < -60)
+            {
+                modestytext = "revealing to the point of being scandalous";
+            }
+            else if (Modesty < -20)
+            {
+                modestytext = "designed to be provacative";
+            }
+            else modestytext = "modest, but just provacative enough to be interesting";
+
+            Description = luxurytext + " that's " + modestytext + ".";
+        }
 
 	    public void Alter(string stat, int amount)
 	    {

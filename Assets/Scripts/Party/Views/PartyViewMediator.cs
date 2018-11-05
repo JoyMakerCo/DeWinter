@@ -13,6 +13,7 @@ namespace Ambition
 		public GameObject RoomView;
         public PartySoundMediator SoundMediator;
         public Image Fader;
+        public Text TitleText;
         GameObject _roomView;
 
         // Use this for initialization
@@ -20,64 +21,75 @@ namespace Ambition
 		{
             AmbitionApp.Subscribe(PartyMessages.SHOW_ROOM, GoToRoom);
             AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, GoToMap);
+            SetTitle();
 		}
 
 		void OnDestroy()
 		{
 			AmbitionApp.Unsubscribe(PartyMessages.SHOW_ROOM, GoToRoom);
 			AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, GoToMap);
-		}
+            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, OnFadeOut);
+        }
 
-        void Start ()   
-		{
-            AmbitionApp.SendMessage(GameMessages.FADE_IN);
-		}
+        private void SetTitle()
+        {
+            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
+            TitleText.text = partyModel.Party.Name;
+        }
 
 		private void GoToRoom()
 		{
             StopAllCoroutines();
-            StartCoroutine(ChooseView(true));
+            Fader.enabled = false;
+            AmbitionApp.SendMessage(GameMessages.FADE_OUT);
+            AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, OnFadeOut);
 		}
 
-		private void GoToMap()
+        private void OnFadeOut()
+        {
+            if (_roomView == null)
+                _roomView = Instantiate(RoomView, this.transform);
+            _roomView.SetActive(true);
+            Fader.transform.SetAsLastSibling();
+            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, OnFadeOut);
+            AmbitionApp.SendMessage(GameMessages.FADE_IN);
+        }
+
+        private void GoToMap()
 		{
             StopAllCoroutines();
-            StartCoroutine(ChooseView(false));
+            if (_roomView != null && _roomView.activeSelf)
+                StartCoroutine(FadeToMap());
 		}
 
-        IEnumerator ChooseView(bool showRoom)
+        // TODO: Per user feedback, this is going to be replaced by a standard fade
+        IEnumerator FadeToMap()
         {
-            if (showRoom == MapView.activeSelf)
+            float fadeTime1 = 1f / FADE_TIME;
+            Fader.transform.SetAsLastSibling();
+            Fader.enabled = true;
+            Color color = Fader.color;
+            for (float t = FADE_TIME; t > 0; t -= Time.deltaTime)
             {
-                float fadeTime1 = 1f / FADE_TIME;
-                Fader.transform.SetAsLastSibling();
-                Fader.enabled = true;
-                Color color = Fader.color;
-                for (float t = FADE_TIME; t > 0; t -= Time.deltaTime)
-                {
-                    color.a = (FADE_TIME - t) * fadeTime1;
-                    Fader.color = color;
-                    yield return null;
-                }
-                color.a = 1f;
+                color.a = (FADE_TIME - t) * fadeTime1;
                 Fader.color = color;
-                MapView.SetActive(!showRoom);
-                if (showRoom)
-                {
-                    if (_roomView == null)
-                        _roomView = Instantiate(RoomView, this.transform);
-                    Fader.transform.SetAsLastSibling();
-                    AmbitionApp.InvokeMachine("ConversationController");
-                }
-                else Destroy(_roomView);
-                for (float t = FADE_TIME; t > 0; t -= Time.deltaTime)
-                {
-                    color.a = t * fadeTime1;
-                    Fader.color = color;
-                    yield return null;
-                }
-                Fader.enabled = false;
+                yield return null;
             }
+            color.a = 1f;
+            Fader.color = color;
+            if (_roomView != null) _roomView.SetActive(false);
+            MapView.SetActive(true);
+            AmbitionApp.SendMessage(GameMessages.FADE_OUT_COMPLETE);
+
+            Fader.transform.SetAsLastSibling();
+            for (float t = FADE_TIME; t > 0; t -= Time.deltaTime)
+            {
+                color.a = t * fadeTime1;
+                Fader.color = color;
+                yield return null;
+            }
+            AmbitionApp.SendMessage(GameMessages.FADE_IN_COMPLETE);
+            Fader.enabled = false;
         }
     }
 }

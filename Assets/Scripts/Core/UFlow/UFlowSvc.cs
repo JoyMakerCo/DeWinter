@@ -112,14 +112,20 @@ namespace UFlow
 			if (!_machines.TryGetValue(machineID, out graph)) return null;
 
 			int from = Array.FindIndex(graph.Nodes, n=>n.ID == originState);
-			int to = Array.FindIndex(graph.Nodes, n=>n.ID == targetState);
-			graph.Link(from, to, link);
+            int to = Array.FindIndex(graph.Nodes, n=>n.ID == targetState);
+            graph.Link(from, to, link);
 			return link;
 		}
 
 		public void RegisterLink(string machineID, string originState, string targetState)
 		{
-			AddLinkToGraph(new UGraphLink(), machineID, originState, targetState);
+#if (DEBUG)
+            UMachineGraph graph;
+            if (!_machines.TryGetValue(machineID, out graph)) UnityEngine.Debug.LogError("UFLOW ERROR: No Machine named \"" + machineID + "\" found!");
+            else if (!Array.Exists(graph.Nodes, n => n.ID == originState)) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + originState + "\" found in Machine \"" + machineID + "!");
+            else if (!Array.Exists(graph.Nodes, n => n.ID == targetState)) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + targetState + "\" found in Machine \"" + machineID + "!");
+#endif
+            AddLinkToGraph(new UGraphLink(), machineID, originState, targetState);
 		}
 
 		public void RegisterLink<T>(string machineID, string originState, string targetState) where T : ULink, new()

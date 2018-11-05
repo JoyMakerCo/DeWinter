@@ -17,16 +17,5 @@ namespace Ambition
         FMOD.Studio.EventInstance EventInstance;
         //These are the parameters for the FMOD Music Event (Not sure how to display them in IncidentConfig yet)
         public FMODEventParameterConfig[] Parameters;
-
-        public int GetParameterIndexByName(string findString){
-            for(int i = 0; i < Parameters.Length; i++)
-            {
-                if(Parameters[i].Name == findString)
-                {
-                    return i;
-                }
-            }
-            return 0;
-        }
     }
 }

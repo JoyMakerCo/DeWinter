@@ -4,37 +4,54 @@ using UnityEngine;
 
 public class HeaderSelectorController : MonoBehaviour {
 
-    public Animator animator;
+    public Animator ShadowAnimator;
+    public Animator HeaderAnimator;
 	
 	public void CalendarSelected()
     {
-        animator.SetBool("Wardrobe", false);
-        animator.SetBool("Estate", false);
-        animator.SetBool("Journal", false);
-        animator.SetBool("Calendar", true);
+        ShadowAnimator.SetBool("Wardrobe", false);
+        ShadowAnimator.SetBool("Estate", false);
+        ShadowAnimator.SetBool("Journal", false);
+        ShadowAnimator.SetBool("Calendar", true);
+        HeaderAnimator.SetBool("Wardrobe", false);
+        HeaderAnimator.SetBool("Estate", false);
+        HeaderAnimator.SetBool("Journal", false);
+        HeaderAnimator.SetBool("Calendar", true);
     }
 
     public void WardrobeSelected()
     {
-        animator.SetBool("Calendar", false);
-        animator.SetBool("Estate", false);
-        animator.SetBool("Journal", false);
-        animator.SetBool("Wardrobe", true);
+        ShadowAnimator.SetBool("Calendar", false);
+        ShadowAnimator.SetBool("Estate", false);
+        ShadowAnimator.SetBool("Journal", false);
+        ShadowAnimator.SetBool("Wardrobe", true);
+        HeaderAnimator.SetBool("Calendar", false);
+        HeaderAnimator.SetBool("Estate", false);
+        HeaderAnimator.SetBool("Journal", false);
+        HeaderAnimator.SetBool("Wardrobe", true);
     }
 
     public void EstateSelected()
     {
-        animator.SetBool("Calendar", false);
-        animator.SetBool("Wardrobe", false);
-        animator.SetBool("Journal", false);
-        animator.SetBool("Estate", true);
+        ShadowAnimator.SetBool("Calendar", false);
+        ShadowAnimator.SetBool("Wardrobe", false);
+        ShadowAnimator.SetBool("Journal", false);
+        ShadowAnimator.SetBool("Estate", true);
+        HeaderAnimator.SetBool("Calendar", false);
+        HeaderAnimator.SetBool("Wardrobe", false);
+        HeaderAnimator.SetBool("Journal", false);
+        HeaderAnimator.SetBool("Estate", true);
     }
 
     public void JournalSelected()
     {
-        animator.SetBool("Calendar", false);
-        animator.SetBool("Wardrobe", false);
-        animator.SetBool("Estate", false);
-        animator.SetBool("Journal", true);
+        ShadowAnimator.SetBool("Calendar", false);
+        ShadowAnimator.SetBool("Wardrobe", false);
+        ShadowAnimator.SetBool("Estate", false);
+        ShadowAnimator.SetBool("Journal", true);
+        HeaderAnimator.SetBool("Calendar", false);
+        HeaderAnimator.SetBool("Wardrobe", false);
+        HeaderAnimator.SetBool("Estate", false);
+        HeaderAnimator.SetBool("Journal", true);
     }
 }

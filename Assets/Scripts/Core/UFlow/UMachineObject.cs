@@ -1,3 +1,5 @@
+#pragma warning disable 0414
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +13,13 @@ using Util;
 namespace UFlow
 {
     [Serializable]
-    public class UMachineObject : ScriptableObject, IDirectedGraphObject
+    public class UMachineObject : ScriptableObject, IDirectedGraphObjectConfig
     {
         public int[] Exits;
         public Dictionary<int, int[]> Aggregates;
         public UMachineGraph Machine;
 
         #if (UNITY_EDITOR)
-
-        public Vector2[] Positions;
 
         [SerializeField]
         private int _index = -1;
@@ -57,14 +57,6 @@ namespace UFlow
             get { return GraphObject.FindProperty("Machine");  }
         }
 
-        public GUIContent GetGUIContent(int nodeIndex)
-        {
-            GUI.color = (nodeIndex == 0 ? Color.cyan : Color.white);
-            GUI.skin.button.alignment = TextAnchor.MiddleCenter;
-            string str = Machine.Nodes[nodeIndex].ID;
-            return new GUIContent(str);
-        }
-
         public void InitNodeData(SerializedProperty nodeData)
         {
             nodeData.FindPropertyRelative("ID").stringValue = "New State";
@@ -85,7 +77,14 @@ namespace UFlow
         {
             ScriptableObjectUtil.CreateScriptableObject<UMachineObject>("New Machine");
         }
-        #endif
+#endif
+        public GUIContent GetGUIContent(int nodeIndex)
+        {
+            GUI.color = (nodeIndex == 0 ? Color.cyan : Color.white);
+            GUI.skin.button.alignment = TextAnchor.MiddleCenter;
+            string str = Machine.Nodes[nodeIndex].ID;
+            return new GUIContent(str);
+        }
     }
 
 #if (UNITY_EDITOR)

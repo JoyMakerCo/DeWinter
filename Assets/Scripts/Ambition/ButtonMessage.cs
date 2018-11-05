@@ -8,24 +8,7 @@ namespace Ambition
 	{
 		public string Message;
 
-		protected Button _button;
-
-		void Awake()
-		{
-			_button = gameObject.GetComponent<Button>();
-		}
-
-		void OnEnable()
-		{
-			_button.onClick.AddListener(OnClick);
-		}
-
-		void OnDisable()
-		{
-			_button.onClick.RemoveListener(OnClick);
-		}
-
-		protected virtual void OnClick()
+		public void OnClick()
 		{
 			AmbitionApp.SendMessage(Message);
 		}

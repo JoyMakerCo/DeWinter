@@ -12,7 +12,27 @@ namespace Util
     [Serializable]
     public class DirectedGraph
     {
-        public Vector2Int[] Links = new Vector2Int[0];
+        public Vector2Int[] Links;
+
+#if (UNITY_EDITOR)
+        public Vector2[] Positions;
+#endif
+
+        public DirectedGraph()
+        {
+            Links = new Vector2Int[0];
+#if (UNITY_EDITOR)
+            Positions = new Vector2[0];
+#endif
+        }
+
+        public DirectedGraph(DirectedGraph graph)
+        {
+            Links = DeepCopy(graph.Links);
+#if (UNITY_EDITOR)
+            Positions = DeepCopy(graph.Positions);
+#endif
+        }
 
         public int Link(int fromIndex, int toIndex)
         {
@@ -43,23 +63,37 @@ namespace Util
 
         public virtual void DeleteNode(int nodeIndex)
         {
+#if (UNITY_EDITOR)
+            if (nodeIndex < Positions.Length)
+            {
+                Positions = Positions.Take(nodeIndex).Concat(Positions.Skip(nodeIndex + 1)).ToArray();
+            }
+#endif
         }
-//#if (UNITY_EDITOR)
-//            List<Vector2> pos = Positions.ToList();
-//            pos.RemoveAt(nodeIndex);
-//            Positions = pos.ToArray();
-//#endif
-//        }
 
-//#if (UNITY_EDITOR)
-//        public Vector2[] Positions = new Vector2[0];
-//#endif
+        protected K[] DeepCopy<K>(K[] array)
+        {
+            if (array == null) return new K[0];
+            K[] result = new K[array.Length];
+            Array.Copy(array, result, array.Length);
+            return result;
+        }
     }
 
     [Serializable]
     public class DirectedGraph<T> : DirectedGraph
 	{
-		public T[] Nodes = new T[0];
+		public T[] Nodes;
+
+        public DirectedGraph() : base()
+        {
+            Nodes = new T[0];
+        }
+        // Copy Constructor
+        public DirectedGraph(DirectedGraph<T> graph) : base (graph as DirectedGraph)
+        {
+            Nodes = DeepCopy(graph.Nodes);
+        }
 
         public int Link(T from, T to)
         {
@@ -98,6 +132,7 @@ namespace Util
                     ((IDisposable)Nodes[nodeIndex]).Dispose();
 
                 Nodes = Nodes.Where((source, index) => index != nodeIndex).ToArray();
+                base.DeleteNode(nodeIndex);
             }
         }
 
@@ -112,9 +147,19 @@ namespace Util
     }
 
     [Serializable]
-	public class DirectedGraph<T,U> : DirectedGraph<T>
-	{
-        public U[] LinkData = new U[0];
+    public class DirectedGraph<T, U> : DirectedGraph<T>
+    {
+        public U[] LinkData;
+
+        public DirectedGraph() : base()
+        {
+            LinkData = new U[0];
+        }
+
+        public DirectedGraph(DirectedGraph<T, U> graph) : base(graph as DirectedGraph<T>)
+        {
+            LinkData = DeepCopy(graph.LinkData);
+        }
 
 		public U[] GetLinkData(T node)
 		{

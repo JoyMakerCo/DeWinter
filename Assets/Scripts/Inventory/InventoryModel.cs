@@ -38,7 +38,10 @@ namespace Ambition
 		[JsonProperty("max_outfits")]
 		public int MaxOutfits;
 
-		[JsonProperty("marketCapacity")]
+        [JsonProperty("max_accessories")]
+        public int MaxAccessories;
+
+        [JsonProperty("marketCapacity")]
 		public int NumMarketSlots;
 
 		[JsonProperty("style")]
@@ -60,16 +63,22 @@ namespace Ambition
 		public string NextStyle;
 
 // TODO: These definitely need to be in the view, not the model
-public ItemVO SelectedItem;
-public ItemVO SelectedMarketItem;
+        public ItemVO SelectedItem;
+        public ItemVO SelectedMarketItem;
 
 // TODO: Use ItemVO to represent gossip
 		public List<Gossip> GossipItems = new List<Gossip>();
+        public int GossipSoldOrPeddled; //This is used in the mornings to determine if the player was caught selling gossip
 
-		public Dictionary<string, ItemVO> Equipped = new Dictionary<string, ItemVO>();
-		public Dictionary<string, ItemVO> LastEquipped = new Dictionary<string, ItemVO>();
+        public Dictionary<string, ItemVO> Equipped = new Dictionary<string, ItemVO>();
 
 		public List<ItemVO> Inventory = new List<ItemVO>();
+
+        public ItemVO GetEquipped(string type)
+        {
+            ItemVO result;
+            return Equipped.TryGetValue(type, out result) ? result : null;
+        }
 
 		// Inventories stored by ItemVO.Type (eg, Accessory, Gossip, Outfit)
 		[JsonProperty("inventory", Order=1)]

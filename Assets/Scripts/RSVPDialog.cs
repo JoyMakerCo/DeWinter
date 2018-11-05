@@ -57,7 +57,7 @@ namespace Ambition
 
             ObjectiveText.text = AmbitionApp.GetString("party_objectives");
             HostText.text = AmbitionApp.GetString("rsvp");
-            Seal.sprite = InvitationConfig.GetSprite("seal." + party.Faction.ToLower());
+            Seal.sprite = InvitationConfig.GetSprite("seal." + party.Faction);
             Stamp.sprite = InvitationConfig.GetSprite(party.Faction.ToLower());
             BodyTxt.text = party.Invitiation;
         }

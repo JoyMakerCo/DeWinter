@@ -38,6 +38,7 @@ namespace Ambition
 
         private void HandlePlay(FMODEvent music)
         {
+            if (default(FMODEvent).Equals(music)) return;
             bool instantiate = GetInstantiatedEventName(_playing) != music.Name;
             //If it's not the same FMOD Event, then switch over
             if (instantiate)
@@ -49,7 +50,7 @@ namespace Ambition
             //Handle all the parameters
             foreach (FMODEventParameterConfig param in music.Parameters)
             {
-                _playing.setParameterValue(param.Name, param.Value);
+                _playing.setParameterValue(param.Name, param.Value);        
             }
 
             //Actually start the FMOD Event
@@ -68,16 +69,12 @@ namespace Ambition
 
         private void QueueNextTrack(FMODEvent nextTrack)
         {
-            print("Queueing the next track: " + nextTrack.Name);
             _coroutine = NextTrackCheck(nextTrack);
             StartCoroutine(_coroutine); //This has to be handled in a coroutine or the check brings the whole game to a screeching halt
         }
 
         private IEnumerator NextTrackCheck(FMODEvent nextTrack)
         {
-            //TO DO: Find a way to make this actually wait for the first track to stop making sound. Unfortunately, right now, there's no way to do this through FMODs API.
-            //This means I have been reduced to the brutish simplicity of timers
-            print("Starting the coroutine!");
             //Now it's time to keep checking to see if the track has finished
             FMOD.Studio.PLAYBACK_STATE playbackState; //Have a playback state to check
             _playing.getPlaybackState(out playbackState);
@@ -86,7 +83,6 @@ namespace Ambition
                 _playing.getPlaybackState(out playbackState);
                 yield return null;
             }
-
             _playing = FMODUnity.RuntimeManager.CreateInstance(nextTrack.Name);
 
             //Handle all the parameters

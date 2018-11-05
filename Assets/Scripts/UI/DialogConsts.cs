@@ -31,11 +31,9 @@ namespace Ambition
 		public const string CANT_AFFORD = "CANT_AFFORD";
 		public const string TRADE_GOSSIP = "TRADE_GOSSIP";
 		public const string QUEST = "QUEST";
-		public const string CONFIDENCE_TALLY = "CONFIDENCE_TALLY";
 
 		// PARTY MODALS & DIALOGS
 		public const string AMBUSH = "AMBUSH";
-		public const string CONFIDENCE = "CONFIDENCE";
 		public const string HOST = "HOST";
 		public const string CHOOSE_ROOM = "CHOOSE_ROOM";
 		public const string HOST_ENCOUNTER = "HOST_ENCOUNTER";

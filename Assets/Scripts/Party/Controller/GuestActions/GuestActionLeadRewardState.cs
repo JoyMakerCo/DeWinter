@@ -21,15 +21,16 @@ namespace Ambition
                         case "Map":
                             RoomVO[] rooms = Array.FindAll(map.Map.Rooms, r => !r.Revealed);
                             RoomVO room = rooms[Util.RNG.Generate(rooms.Length)];
-                            AmbitionApp.SendMessage(MapMessage.REVEAL_ROOM, room);
+                            room.Revealed = true;
+                            AmbitionApp.SendMessage(room);
                             break;
                         case "Wine":
                             AmbitionApp.SendMessage(PartyMessages.REFILL_DRINK);
                             break;
                         case "Remarks":
-                            AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
-                            AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
-                            AmbitionApp.SendMessage(PartyMessages.ADD_REMARK);
+                            AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+                            AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+                            AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
                             break;
                         case "Accolade":
                             foreach (GuestVO g in map.Room.Guests)

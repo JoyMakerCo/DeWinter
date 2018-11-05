@@ -25,13 +25,18 @@ namespace Ambition
             }
         }
 
-        public PartyVO Party => _model.Party;
-
-        public int Confidence
+        public Queue<RemarkVO> Deck;
+        public List<RemarkVO> Discard;
+        public int MaxDeckSize
         {
-            get { return _model.Confidence; }
-            set { _model.Confidence = value; }
+            get
+            {
+                int total = Remarks == null ? 0 : Array.FindAll(Remarks, r => r != null).Length;
+                return Deck.Count + Discard.Count + total;
+            }
         }
+
+        public PartyVO Party => _model.Party;
 
         private RemarkVO _remark;
         public RemarkVO Remark
@@ -39,7 +44,7 @@ namespace Ambition
             get { return _remark;  }
             set {
                 _remark = value;
-                AmbitionApp.SendMessage<RemarkVO>(_remark);
+                AmbitionApp.SendMessage(_remark);
             }
         }
 
@@ -47,10 +52,7 @@ namespace Ambition
         public RemarkVO[] Remarks
         {
             get { return _remarks; }
-            set
-            {
-                AmbitionApp.SendMessage<RemarkVO[]>(_remarks = value);
-            }
+            set { AmbitionApp.SendMessage(_remarks = value); }
         }
 
         public RoomVO Room
@@ -58,13 +60,16 @@ namespace Ambition
             get { return _map.Room;  }
         }
 
-
         public GuestVO[] Guests
         {
-            get { return _map.Room.Guests; } 
-            set {
-                _map.Room.Guests = value;
-                AmbitionApp.SendMessage<GuestVO[]>(value);
+            get { return Room?.Guests;  }
+            set
+            {
+                if (Room != null)
+                {
+                    Room.Guests = value;
+                    AmbitionApp.SendMessage(value);
+                }
             }
         }
 

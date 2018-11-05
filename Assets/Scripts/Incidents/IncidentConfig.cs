@@ -1,8 +1,9 @@
-﻿using System;
+﻿#pragma warning disable 0414
+using UnityEngine;
+using System;
 using Util;
 
 #if (UNITY_EDITOR)
-using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 #endif
@@ -10,14 +11,13 @@ using UnityEditor.Callbacks;
 namespace Ambition
 {
     [Serializable]
-    public class IncidentConfig : ScriptableObject, IDirectedGraphObject
+    public class IncidentConfig : ScriptableObject, IDirectedGraphObjectConfig
     {
-        public IncidentVO Incident;
+        public IncidentVO Incident = new IncidentVO();
 
 #if (UNITY_EDITOR)
-
         [SerializeField]
-        int _index=-1;
+        int _index = -1;
 
         [SerializeField]
         bool _isNode;
@@ -26,25 +26,25 @@ namespace Ambition
 
         public SerializedObject GraphObject
         {
-            get {
+            get
+            {
                 if (_serializedObject == null)
                     _serializedObject = new SerializedObject(this);
                 return _serializedObject;
             }
         }
 
-        public Vector2[] Positions;
-
         public SerializedProperty GraphProperty
         {
-            get {
+            get
+            {
                 return GraphObject.FindProperty("Incident");
             }
         }
 
         private void OnEnable()
         {
-            hideFlags = HideFlags.DontSave;
+            //hideFlags = HideFlags.DontSave; TODO: This is causing build problems
             if (Incident == null) Incident = new IncidentVO();
             _serializedObject = new SerializedObject(this);
         }
@@ -55,21 +55,12 @@ namespace Ambition
             GraphObject.FindProperty("_isNode").boolValue = isNode;
         }
 
-        public GUIContent GetGUIContent(int nodeIndex)
-        {
-            GUI.color = (nodeIndex == 0 ? Color.cyan : Color.white);
-            GUI.skin.button.alignment = TextAnchor.UpperCenter;
-            GUI.skin.button.wordWrap = true;
-            string str = Incident.Nodes[nodeIndex].Text;                
-            return new GUIContent(str);
-        }
-
         public void InitNodeData(SerializedProperty nodeData)
         {
             nodeData.FindPropertyRelative("Text").stringValue = "New Moment";
         }
 
-        public void InitLinkData(SerializedProperty linkData) {}
+        public void InitLinkData(SerializedProperty linkData) { }
 
 
         [OnOpenAsset(1)]
@@ -89,6 +80,15 @@ namespace Ambition
         {
             return ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>(name);
         }
+
+        public GUIContent GetGUIContent(int nodeIndex)
+        {
+            GUI.color = (nodeIndex == 0 ? Color.cyan : Color.white);
+            GUI.skin.button.alignment = TextAnchor.UpperCenter;
+            GUI.skin.button.wordWrap = true;
+            string str = Incident.Nodes[nodeIndex].Text;
+            return new GUIContent(str);
+        }
 #endif
     }
 
@@ -103,7 +103,7 @@ namespace Ambition
 
         private const string FOCUS_ID = "FOCUS_ID";
 
-        private int _index=-1;
+        private int _index = -1;
 
         private void OnEnable()
         {
@@ -137,7 +137,7 @@ namespace Ambition
                     property.arraySize = serializedObject.FindProperty("Incident.Links").arraySize;
                     DrawTransition(property.GetArrayElementAtIndex(index));
                 }
-                _index = index; 
+                _index = index;
                 if (property != null && selectText)
                 {
                     EditorGUI.FocusTextInControl(FOCUS_ID);
@@ -162,7 +162,8 @@ namespace Ambition
                 SerializedProperty dateProperty = incident.FindPropertyRelative("_date");
                 bool fixedDate = GUILayout.Toggle(dateProperty.longValue >= 0, "Date");
                 if (!fixedDate) dateProperty.longValue = -1;
-                else {
+                else
+                {
                     EditorGUILayout.BeginHorizontal();
                     DateTime date = dateProperty.longValue > 0 ? DateTime.MinValue.AddTicks(dateProperty.longValue) : DateTime.MinValue;
                     int day = Mathf.Clamp(EditorGUILayout.IntField(date.Day, GUILayout.MaxWidth(30f)), 1, DateTime.DaysInMonth(date.Year, date.Month));
@@ -188,7 +189,7 @@ namespace Ambition
                 int index = int.Parse(subs[1]);
                 Vector2Int link;
                 list.MoveArrayElement(index, 0);
-                list = moment.serializedObject.FindProperty("Positions");
+                list = moment.serializedObject.FindProperty("Incident.Positions");
                 list.MoveArrayElement(index, 0);
                 list = moment.serializedObject.FindProperty("Incident.Links");
                 for (int i = list.arraySize - 1; i >= 0; i--)
@@ -231,5 +232,5 @@ namespace Ambition
             return EditorGUI.EndChangeCheck();
         }
     }
-    #endif
+#endif
 }

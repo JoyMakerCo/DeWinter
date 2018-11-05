@@ -15,6 +15,7 @@ namespace Ambition
             MapModel map = AmbitionApp.GetModel<MapModel>();
             UController controller = _machine._uflow.GetController(_machine);
             int index = controller.transform.GetSiblingIndex();
+            if (index >= map.Room.Guests.Length) return false;
             GuestVO guest = map.Room.Guests[index];
             return (guest.Action != null && guest.Action.Type == _actionType);
         }

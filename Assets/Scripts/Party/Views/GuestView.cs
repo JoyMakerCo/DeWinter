@@ -5,81 +5,87 @@ using UnityEngine.EventSystems;
 
 namespace Ambition
 {
-	public class GuestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class GuestView : GuestViewMediator, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 	{
-		private readonly static string[] POSES = new string[]{"putout", "neutral", "approval", "charmed"};
         public Animator Animator;
-
-        private GuestVO _guest;
-        public GuestVO Guest
-        {
-            get { return _guest; }
-        }
 
         private AvatarView _avatar;
 		private RemarkVO _remark;
 		private bool _isIntoxicated=false;
         private string _pose;
-        
-		void Awake()
-		{
-            _avatar = GetComponent<AvatarView>();
-			AmbitionApp.Subscribe<GuestVO[]>(HandleGuests);
-		}
 
-		void OnEnable()
+        private void Awake()
+        {
+            _avatar = GetComponent<AvatarView>();
+            InitGuest();
+        }
+
+        void OnEnable()
 		{
-            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
-            AmbitionApp.Subscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleSelected);
+            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleTargeted);
+            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 		}
 
-		void OnDisable()
+        void OnDisable()
 	    {
-            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_TARGETED, HandleTargeted);
-            AmbitionApp.Unsubscribe<GuestVO[]>(PartyMessages.GUESTS_SELECTED, HandleSelected);
+            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleTargeted);
+            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleSelected);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
 			AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
 			StopAllCoroutines();
 	    }
 
-		void OnDestroy()
-		{
-			AmbitionApp.Unsubscribe<GuestVO []>(HandleGuests);
-		}
+        private void OnDestroy()
+        {
+            Cleanup();
+        }
 
-	    private void HandleGuests(GuestVO[] guests)
+        protected override void HandleGuest(GuestVO guest)
 	    {
-            int index = transform.GetSiblingIndex();
-	    	_guest = (index < guests.Length) ? guests[index] : null;
+            if (guest != null && guest == Guest)
+            {
+                // Only do this work if the state is changing.
+                if (_avatar.ID == null || _avatar.ID != Guest.Avatar)
+                {
+                    if (Guest.Avatar != null) _avatar.ID = Guest.Avatar;
+                    else
+                    {
+                        AvatarVO[] avatars = _avatar.Collection.Find(Guest.Gender, "party");
+                        _avatar.ID = Guest.Avatar = Util.RNG.TakeRandom(avatars).ID;
+                    }
+                    Guest.Gender = _avatar.Avatar.Gender;
+                }
 
-	    	// Shows/hides components of a guest view based on the data
-			this.gameObject.SetActive(_guest != null);
-
-			// Only do this work if the state is changing.
-			if (this.gameObject.activeSelf)
-			{
-                if (_avatar.ID == null || _avatar.ID != _guest.Avatar)
-				{
-                    if (_guest.Avatar != null) _avatar.ID = _guest.Avatar;
-					else
-					{
-						AvatarVO[] avatars = _avatar.Collection.Find(_guest.Gender, "party");
-                        _avatar.ID = _guest.Avatar = Util.RNG.TakeRandom(avatars).ID;
-					}
-                    _guest.Gender = _avatar.Avatar.Gender;
-				}
-
-                _avatar.Pose = _pose = _isIntoxicated
-					? "neutral"
-					: _guest.Interest <= 0
-					? "bored"
-					: POSES[(int)(_guest.State)];
-					
-                if (_avatar.Sprite == null)
-                    _avatar.Pose = _pose = "neutral";
-			}
+                if (guest.State != GuestState.Offended)
+                {
+                    if (_isIntoxicated) _pose = "neutral";
+                    else switch (guest.State)
+                        {
+                            case GuestState.Bored:
+                                _pose = "bored";
+                                break;
+                            case GuestState.Charmed:
+                                _pose = "charmed";
+                                break;
+                            case GuestState.Interested:
+                                _pose = "approval";
+                                break;
+                            default:
+                                _pose = "neutral";
+                                break;
+                        }
+                    if (_pose != _avatar.Pose)
+                        _avatar.Pose = _pose;
+                    if (_avatar.Sprite == null)
+                        _avatar.Pose = _pose = "neutral";
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+            }
 	    }
 
 		private void HandleIntoxication(int tox)
@@ -89,29 +95,27 @@ namespace Ambition
 
 		public void OnPointerEnter(PointerEventData eventData)
 		{
-			AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_TARGETED, _guest);
+            AmbitionApp.SendMessage<GuestVO>(PartyMessages.TARGET_GUEST, Guest);
 		}
 
 		public void OnPointerExit(PointerEventData eventData)
 	    {
-	    	AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_TARGETED, null);
+	    	AmbitionApp.SendMessage<GuestVO>(PartyMessages.TARGET_GUEST, null);
 	    }
 
 		public void OnPointerClick(PointerEventData eventData)
 	    {
-            AmbitionApp.SendMessage<GuestVO>(PartyMessages.GUEST_SELECTED, _guest);
+            AmbitionApp.SendMessage(PartyMessages.SELECT_GUEST, Guest);
         }
 
 		private void HandleRemark(RemarkVO remark)
 		{
 			_remark = remark;
 		}
-		private void HandleSelected(GuestVO [] guests)
+
+        private void HandleSelected(GuestVO guest)
 		{
-			if (_guest != null
-				&& _remark != null
-				&& guests != null
-				&& Array.IndexOf(guests, Guest) >= 0)
+            if (_remark != null && guest != null && Guest == guest)
 			{
 				if (_remark.Interest == Guest.Like)
 				{
@@ -128,28 +132,24 @@ namespace Ambition
 			}
 		}
 
-		private void HandleTargeted(GuestVO [] guests)
+        private void HandleTargeted(GuestVO guest)
 		{
-            if (!_isIntoxicated
-                && _remark != null
-                && _guest != null
-                && guests != null
-                && Array.IndexOf(guests, Guest) >= 0)
+            if (guest == null) _avatar.Pose = _pose;
+            else if (!_isIntoxicated && _remark != null && Guest == guest)
             {
                 if (_remark.Interest == Guest.Like)
                 {
-                    _avatar.Pose  = POSES[POSES.Length - 1];
+                    _avatar.Pose  = "charmed";
                 }
                 else if (_remark.Interest == Guest.Dislike)
                 {
-                    _avatar.Pose = POSES[0];
+                    _avatar.Pose = "putout";
                 }
                 else
                 {
                     _avatar.Pose = "approval";
                 }
             }
-            else _avatar.Pose = _pose;
 		}
 	}
 }

@@ -12,9 +12,9 @@ namespace Ambition
 		{
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
             if (model.Round%model.FreeRemarkCounter == 0)
-				App.Service<MessageSvc>().Send(PartyMessages.ADD_REMARK);
+				App.Service<MessageSvc>().Send(PartyMessages.FREE_REMARK);
             model.Round++;
-            AmbitionApp.SendMessage<GuestVO[]>(model.Guests);
+            AmbitionApp.SendMessage(model.Guests);
 			AmbitionApp.SendMessage(PartyMessages.START_ROUND);
 		}
 	}

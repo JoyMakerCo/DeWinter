@@ -6,10 +6,10 @@ namespace Ambition
 {
 	public class MainScreenTabsController : MonoBehaviour
 	{
-	    public GameObject calendarTab;
-	    public GameObject wardrobeTab;
-	    public GameObject estateTab;
-	    public GameObject journalTab;
+	    public GameObject CalendarTab;
+	    public GameObject WardrobeTab;
+	    public GameObject EstateTab;
+	    public GameObject JournalTab;
 
 	    // Use this for initialization
 	    void Start ()
@@ -29,49 +29,53 @@ namespace Ambition
 
 	    public void CalendarSelected()
 	    {
-			SetTab(calendarTab);
+			SetTab(CalendarTab);
 	    }
 
 	    public void WardrobeSelected()
 	    {
-			SetTab(wardrobeTab);
+			SetTab(WardrobeTab);
 	    }
 
 	    public void EstateSelected()
 	    {
-			SetTab(estateTab);
-	    }
+            //This tab isn't ready yet, and going there causes issues and looks ugly
+            //SetTab(EstateTab);
+            AmbitionApp.OpenMessageDialog("feature_incomplete_dialog");
+        }
 
 	    public void JournalSelected()
 	    {
-			SetTab(journalTab);
-	    }
+            //This tab isn't ready yet, and going there causes issues and looks ugly
+            //SetTab(JournalTab);
+            AmbitionApp.OpenMessageDialog("feature_incomplete_dialog");
+        }
 
-		private void HandleTab(string msg)
+        private void HandleTab(string msg)
 		{
 			switch (msg)
 			{
 				case EstateConsts.CALENDAR_TAB:
-					SetTab(calendarTab);
+					SetTab(CalendarTab);
 					break;
 				case EstateConsts.WARDROBE_TAB:
-					SetTab(wardrobeTab);
+					SetTab(WardrobeTab);
 					break;
 				case EstateConsts.JOURNAL_TAB:
-					SetTab(journalTab);
+					SetTab(JournalTab);
 					break;
 				case EstateConsts.ESTATE_TAB:
-					SetTab(estateTab);
+					SetTab(EstateTab);
 					break;
 			}
 		}
 
 		private void SetTab(GameObject tab)
 		{
-			calendarTab.SetActive(tab == calendarTab);
-			wardrobeTab.SetActive(tab == wardrobeTab);
-			estateTab.SetActive(tab == estateTab);
-			journalTab.SetActive(tab == journalTab);
+			CalendarTab.SetActive(tab == CalendarTab);
+			WardrobeTab.SetActive(tab == WardrobeTab);
+			EstateTab.SetActive(tab == EstateTab);
+			JournalTab.SetActive(tab == JournalTab);
 		}
 	}
 }

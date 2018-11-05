@@ -7,9 +7,14 @@ namespace Ambition
 	[Serializable]
     public struct CommodityVO
 	{
-		public CommodityType Type;
-		public string ID;
-		public int Value;
+        [JsonProperty("type")]
+        public CommodityType Type;
+
+        [JsonProperty("id")]
+        public string ID;
+
+        [JsonProperty("value")]
+        public int Value;
 
 		public CommodityVO (CommodityType type, string id=null, int amount=0)
 		{
