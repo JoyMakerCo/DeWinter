@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: An Honest Inquiry
+  m_EditorClassIdentifier: 
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 2, y: 4}
+    - {x: 4, y: 5}
+    - {x: 3, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    Nodes:
+    - Text: As the charmed guests filter out to other parts of the tavern, you manage
+        to grab hold of one of them.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips:
+      - {fileID: 8300000, guid: ba249014a387841349fe5ae92a816783, type: 3}
+    - Text: "He studies you for a moment before asking \u201CHow may I help you?\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Guest
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: '"Oh..."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Guest
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: "The surprised man\u2019s face broadens into a happy grin. \u201CWhy Madame,
+        it appears that you\u2019ve found me! I must admit, I didn\u2019t expect you
+        to be so forward. Let me introduce myself, for I am\u2026\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: positive
+        Name: Guest
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: "The man grimaces, and suddenly becomes fascinated by the color of his
+        own shoes. \u201CI\u2019m sorry Madame, but I can\u2019t help you with that.
+        Perhaps he is... elsewhere?\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Guest
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: "Before you can inquire further, he mumbles an excuse and shuffles away.\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: '"..."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: positive
+        Name: Guest
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: "\u201C... you meant someone else, didn\u2019t you?\u201D"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Guest
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: "At the mention of Armand\u2019s name, the man\u2019s face becomes stony,
+        and his mannerisms stiff. After a long, awkward pause, he finally says \u201CI\u2019m
+        sorry Madame, but I don\u2019t think I can help you. Perhaps your fiance is\u2026
+        somewhere else.\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Guest
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    - Text: Before you can reply, he drains his wineglass and leaves to find a new
+        drink.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music: {fileID: 0}
+      AudioClips: []
+    LinkData:
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Pardonne-moi, I''m looking for Baron Armand de Marbo. Have you seen
+        him?"'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"I''m looking for a young man. He''s handsome, has black hair, and is
+        politically minded."'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    Name: An Honest Inquiry
+    _date: -1
+    Requirements: []
+    OneShot: 1
+    Moments: []
+    Transitions: []
+    Positions: []
+    Month: 0
+    Day: 0
+    Year: 0
+  _index: -1
+  _isNode: 0
+  Positions:
+  - {x: 324, y: 186}
+  - {x: 326, y: 276}
+  - {x: 206, y: 393}
+  - {x: 443, y: 394}
+  - {x: 204, y: 488}
+  - {x: 205, y: 577}
+  - {x: 450, y: 481}
+  - {x: 447, y: 578}
+  - {x: 449, y: 661}
+  - {x: 450, y: 740}

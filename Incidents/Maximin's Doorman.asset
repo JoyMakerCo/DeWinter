@@ -1,0 +1,396 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: Maximin's Doorman
+  m_EditorClassIdentifier: 
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 2, y: 4}
+    - {x: 2, y: 5}
+    - {x: 3, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 4, y: 7}
+    - {x: 5, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 4}
+    - {x: 11, y: 12}
+    - {x: 12, y: 8}
+    - {x: 12, y: 9}
+    - {x: 8, y: 13}
+    - {x: 13, y: 14}
+    - {x: 9, y: 13}
+    Nodes:
+    - Text: "Immediately upon entering the vestibule, you\u2019re greeted by a doorman
+        holding a small ledger. While he isn\u2019t physically barring your entry,
+        his manner certainly is."
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CName, Madame?\u201D he asks expectantly."
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The doorman looks perplexed at you for a moment, flipping through his
+        ledger. \u201CI do not see your name here, madame\u2026\u201D\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The valet looks shocked. \u201CBaron de Marbo? Why are you dressed-\u201D"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: afraid
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CAh, that is most unfortunate.\u201D the doorman replies, surprisingly
+        disappointed. \u201CBaron de Termin was so looking forward to seeing him tonight.
+        Please convey our deepest regrets at his absence.\u201D\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "He frowns at your irritation, but only for a moment. The doorman flips
+        back and forth between the pages of his ledger before his finds what he\u2019s
+        looking for. \u201CAh yes! You are the date to Baron Armand de Marbo. If I
+        so remember, you are his fianc\xE9e, non?\u201D\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "A moment later he composes himself. \r\u201CAh, I see, you are the Baron\u2019s
+        date. My apologies\u201D\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CIs there anything I can get you?\u201D\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CAh yes, you can find Baron de Termin in his study, a little further
+        into the house.\u201D\r\nThe doorman gives you a quick set of directions,
+        letting you know the host\u2019s exact location. It sounds like they\u2019ll
+        be there all night.\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CCertainly Madame!\u201D Turning from you, he waves imperiously
+        to another servant nearby, who hands you a freshly filled wine glass. Afterwards,
+        the servant dutifully scurries away.\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "He glances about the room expectantly. \u201CAnd\u2026 where may I find
+        the good Baron?\u201D\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The doorman\u2019s eyes widen in surprise, that was certainly not the
+        sort of answer he was expecting. \u201COh my Madame, what an unfortunate turn
+        of events.\u201D\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CYou must be quite upset, is there anything I can get you?\u201D\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Before you can ask any other questions, he bows deeply to you.\r\n\u201CPardon
+        moi, Madame. Baron de Termin instructed me specifically, to inform him as
+        soon as you had arrived. We\u2019ve heard so much about you.\u201D"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CEnjoy the party.\u201D He says with a smile, before leaving.\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData: []
+    Name: Maximin's Doorman
+    _date: -1
+    Requirements: []
+    OneShot: 1
+    Positions: []
+    Month: 0
+    Day: 0
+    Year: 0
+  _index: -1
+  _isNode: 0
+  Positions:
+  - {x: 357, y: 84}
+  - {x: 359, y: 169}
+  - {x: 178, y: 267}
+  - {x: 568, y: 264}
+  - {x: 51, y: 349}
+  - {x: 314, y: 346}
+  - {x: 569, y: 340}
+  - {x: 181, y: 565}
+  - {x: 95, y: 672}
+  - {x: 341, y: 671}
+  - {x: 316, y: 415}
+  - {x: 317, y: 481}
+  - {x: 448, y: 556}
+  - {x: 208, y: 746}
+  - {x: 211, y: 817}
