@@ -15,7 +15,6 @@ namespace Ambition
         void Awake()
         {
             AmbitionApp.Subscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
-            AmbitionApp.Subscribe<LocationPin>(ParisMessages.GO_TO_LOCATION, HandleLocation);
         }
 
         void OnDestroy()
@@ -62,27 +61,6 @@ namespace Ambition
             AmbitionApp.OpenDialog("PARIS_LOCATION", location);
         }
 
-        private void HandleLocation(LocationPin location)
-        {
-            if (location.Name() == "Home")
-            {
-                AmbitionApp.SendMessage(ParisMessages.REST);
-
-            }
-            else
-            {
-                AmbitionApp.SendMessage<GameObject>(GameMessages.LOAD_SCENE, location.Scene);
-                if (!location.Visited)
-                {
-                    location.Visited = true;
-                    CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-                    calendar.Incident = location.IntroIncidentConfig.Incident;
-                    AmbitionApp.Execute<RegisterIncidentControllerCmd>();
-                    //AmbitionApp.SendMessage<IncidentVO>(IncidentMessages.START_INCIDENT, location.IntroIncidentConfig.Incident);
-                }
-            }
-        }
-
         public void Explore()
         {
             float range = ExploreRange * ExploreRange;
@@ -96,11 +74,6 @@ namespace Ambition
                     .OrderBy(p=>p.Value)
                     .Select(p => p.Key.name).ToArray();
             AmbitionApp.SendMessage(ParisMessages.EXPLORE, result);
-        }
-
-        public void ReturnToCalendar()
-        {
-            AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, SceneConsts.ESTATE_SCENE);
         }
     }
 }

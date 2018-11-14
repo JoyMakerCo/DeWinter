@@ -13,9 +13,12 @@ namespace Ambition
         {
             base.OnEnterState();
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-            GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Dialog.DialogManager>() != null);
+            GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Canvas>() != null);
             if (canvas != null) 
             {
+                TurnTimerView[] timerViews = canvas.GetComponentsInChildren<TurnTimerView>();
+                foreach (TurnTimerView timer in timerViews) timer.enabled = false;
+
                 RemarkView[] remarks = canvas.GetComponentsInChildren<RemarkView>(false);
                 int index = Array.FindIndex(model.Remarks, r => Array.Exists(model.Guests, g => g.Like == r.Interest));
                 if (index < 0) Array.FindIndex(model.Remarks, r => Array.Exists(model.Guests, g => g.Dislike != r.Interest));

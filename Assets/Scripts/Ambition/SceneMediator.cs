@@ -52,7 +52,7 @@ namespace Ambition
 		IEnumerator ReadyCheck(GameObject scene)
 		{
 			while (!scene.activeInHierarchy) yield return null;
-			AmbitionApp.SendMessage<string>(GameMessages.SCENE_LOADED, _sceneID);
+			AmbitionApp.SendMessage(GameMessages.SCENE_LOADED, _sceneID);
 		}
 	}
 }

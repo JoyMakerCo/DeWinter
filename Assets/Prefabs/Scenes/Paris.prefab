@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 114122629612748866}
   - component: {fileID: 114666232092151518}
   - component: {fileID: 114903630296394628}
+  - component: {fileID: 114947140207836490}
   m_Layer: 5
   m_Name: Calendar Screen Button
   m_TagString: Untagged
@@ -4859,8 +4860,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114740895488808446}
-        m_MethodName: ReturnToCalendar
+      - m_Target: {fileID: 114947140207836490}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5023,8 +5024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a1ef2d747b341fe96c03fd61ac7ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntroIncidentConfig: {fileID: 11400000, guid: 556baf272dc475849a00aeccee346da3,
-    type: 2}
+  IntroIncidentConfig: {fileID: 0}
   Scene: {fileID: 0}
   OneShot: 0
   Discoverable: 1
@@ -6267,6 +6267,18 @@ MonoBehaviour:
   Label: {fileID: 1654631311403842}
   LabelText: {fileID: 114797086653622438}
   Requirements: []
+--- !u!114 &114947140207836490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288223447178988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc493978b0381486c97d543b1563cf83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: ESTATE
 --- !u!114 &114948015389538516
 MonoBehaviour:
   m_ObjectHideFlags: 1

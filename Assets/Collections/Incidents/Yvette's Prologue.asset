@@ -16,7 +16,6 @@ MonoBehaviour:
     - {x: 1, y: 2}
     - {x: 2, y: 3}
     - {x: 9, y: 5}
-    - {x: 9, y: 6}
     - {x: 7, y: 8}
     - {x: 4, y: 6}
     - {x: 0, y: 9}
@@ -43,7 +42,8 @@ MonoBehaviour:
     - {x: 15, y: 25}
     - {x: 14, y: 15}
     - {x: 25, y: 16}
-    - {x: 14, y: 15}
+    - {x: 9, y: 26}
+    - {x: 26, y: 7}
     Positions:
     - {x: 0, y: 0}
     - {x: -269, y: 37}
@@ -51,9 +51,9 @@ MonoBehaviour:
     - {x: -272, y: 195}
     - {x: -272, y: 348}
     - {x: 6, y: 171}
-    - {x: 347, y: 93}
-    - {x: 345, y: 183}
-    - {x: 350, y: 272}
+    - {x: 264, y: 117}
+    - {x: 346, y: 187}
+    - {x: 349, y: 274}
     - {x: 5, y: 102}
     - {x: 4, y: 227}
     - {x: -270, y: 424}
@@ -71,6 +71,7 @@ MonoBehaviour:
     - {x: 255, y: 512}
     - {x: 520, y: 608}
     - {x: 11, y: 437}
+    - {x: 404, y: 18}
     Nodes:
     - Text: "March 19th, 1789\r\nThe carriage rumbles and bounces along the cobbles
         as you approach Paris. It\u2019s taken over a week to get here, even carrying
@@ -222,11 +223,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "The coachman obediently flicks at the reins and the carriage surges forward,
-        sending you lurching back into your seat. The city blurs by as you wind your
-        way towards The Orphan\u2019s Feast, the tavern where Armand said he would
-        meet you. \n\nAs tired and rumpled as you are, you\u2019re glad that he arranged
-        to meet you in a place with ample food and wine.\r"
+    - Text: "After a quiet sigh, the coachman obediently flicks at the reins and the
+        horses up their pace to a brisk trot. The city blurs by as you quickly make
+        your way towards The Orphan\u2019s Feast, the tavern where Armand said he
+        would meet you. \n\nAs tired and rumpled as you are, you\u2019re glad that
+        he arranged to meet you in a place with ample food and wine.\r"
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -700,6 +701,62 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: 'With a grunt of irritation, the coachman flicks at his reins and the
+        carriage surges forward, sending you lurching back into your seat. The city
+        blurs by as you wind your way towards The Orphan''s Feast, a tavern where
+        Armand said he would meet you.
+
+
+        As tired and rumpled as you are, you''re glad that he arranged to meet you
+        in a place with ample food and wine.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Not that your parents cared much for the romance. At first you''d been
+        afraid to tell them their youngest daughter wanted to move far away. Instead,
+        they nearly threw you onto the carriage to Paris.
+
+
+        While you understood the significant benefits your common family would receive
+        from your marriage to a noble one, you couldn''t help but be a little annoyed
+        at their eagerness to see you off.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
     - Index: 0
       Target: 0
@@ -712,10 +769,6 @@ MonoBehaviour:
     - Index: 0
       Target: 0
       Text: '"Hmm... might as well take in the sights."'
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: '"Coachman, let''s go! I don''t have all day!"'
       Rewards: []
     - Index: 0
       Target: 0
@@ -823,11 +876,7 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
+      Text: '"Coachman, let''s go! I don''t have all day!"'
       Rewards: []
     - Index: 0
       Target: 0
@@ -841,4 +890,4 @@ MonoBehaviour:
     Day: 0
     Year: 0
   _index: -1
-  _isNode: 1
+  _isNode: 0

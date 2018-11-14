@@ -33,9 +33,6 @@ namespace Ambition
         [JsonProperty("turns")]
         public int Turns;
 
-        [JsonProperty("guests")]
-        public string[] Guests;
-
         //Drinking and Intoxication
         public int MaxIntoxication = 4;
         public int maxPlayerDrinkAmount = 3;

@@ -16,41 +16,67 @@ MonoBehaviour:
     - {x: 0, y: 1}
     - {x: 1, y: 2}
     - {x: 2, y: 3}
-    - {x: 4, y: 6}
+    - {x: 4, y: 5}
     - {x: 5, y: 6}
-    - {x: 6, y: 7}
+    - {x: 5, y: 7}
     - {x: 6, y: 8}
-    - {x: 7, y: 9}
+    - {x: 7, y: 8}
     - {x: 8, y: 9}
-    - {x: 9, y: 10}
-    - {x: 3, y: 11}
-    - {x: 11, y: 4}
-    - {x: 11, y: 5}
+    - {x: 3, y: 10}
+    - {x: 10, y: 4}
+    - {x: 9, y: 11}
+    - {x: 11, y: 12}
+    - {x: 12, y: 13}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 16, y: 17}
+    - {x: 17, y: 18}
+    - {x: 18, y: 19}
+    - {x: 18, y: 20}
+    - {x: 19, y: 21}
+    - {x: 20, y: 22}
+    - {x: 22, y: 23}
+    - {x: 22, y: 21}
+    - {x: 19, y: 23}
+    - {x: 21, y: 24}
+    - {x: 24, y: 25}
+    - {x: 25, y: 26}
+    - {x: 23, y: 27}
+    - {x: 27, y: 24}
+    - {x: 28, y: 5}
+    - {x: 10, y: 28}
     Positions:
     - {x: 0, y: 0}
     - {x: 1, y: 92}
     - {x: 1, y: 168}
-    - {x: 1, y: 239}
-    - {x: -117, y: 380}
-    - {x: 146, y: 377}
-    - {x: 4, y: 465}
+    - {x: 10, y: 238}
+    - {x: -129, y: 385}
+    - {x: 12, y: 461}
     - {x: -146, y: 551}
-    - {x: 144, y: 552}
+    - {x: 143, y: 543}
     - {x: 1, y: 635}
-    - {x: 0, y: 719}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
-    - {x: 1, y: 308}
+    - {x: 2, y: 720}
+    - {x: -9, y: 300}
+    - {x: 10, y: 796}
+    - {x: 10, y: 868}
+    - {x: 17, y: 935}
+    - {x: 15, y: 998}
+    - {x: 22, y: 1059}
+    - {x: 22, y: 1131}
+    - {x: 19, y: 1201}
+    - {x: 16, y: 1274}
+    - {x: -174, y: 1373}
+    - {x: 209, y: 1362}
+    - {x: -116, y: 1511}
+    - {x: 208, y: 1426}
+    - {x: 168, y: 1510}
+    - {x: 42, y: 1655}
+    - {x: 46, y: 1725}
+    - {x: 49, y: 1790}
+    - {x: 166, y: 1579}
+    - {x: 163, y: 378}
+    - {x: 163, y: 378}
     Nodes:
     - Text: "The conversation winds down, completed. The guests depart, charmed. You
         lean against a table, exhausted.\r\n\r\nWho knew getting people to like you
@@ -163,28 +189,6 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: He looks at you, glances over to the woman who you spoke with earlier,
-        then quickens his pace as he walks by.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: guest01
-        Pose: bored
-        Name: Guest
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
     - Text: "The room is emptying out even faster now. You manage to get the attention
         of another woman.\r"
       Background: {fileID: 0}
@@ -283,10 +287,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards:
-      - Type: 8
-        ID: Home, Sweet Home
-        Value: 0
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -318,10 +319,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "The conversation winds down, completed. The guests depart, charmed. You
-        lean against a table, exhausted.\r\n\r\nWho knew getting people to like you
-        was such hard work?\r"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: After waiting around for a few hours, you leave the Orphan's Feast, dragging
+        your small mountain of luggage behind you. After all, the coach was only hired
+        to take you to the tavern. Armand may not have been waiting for you like he
+        said he would, but you memorized his address from all the times you wrote
+        it on your letters to him.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -333,16 +336,22 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
-        Parameters: []
+        Name: event:/Music/Prologue - Paris Streets
+        Parameters:
+        - Name: Arrive Home
+          Value: 0
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
         Parameters: []
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "Now that you have them all warmed up, this may be your chance to finally
-        find out where Armand is. \r"
+    - Text: 'It''s the middle of the night, but the street is still teeming with life.
+        The light from the windows and the street lamps sparkle like stars. You''re
+        tired and your feet hurt, but still, you can''t help but smile.
+
+
+        This is it. This is Paris. No matter what happens, you''re still here.'
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -363,12 +372,129 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "You approach a woman who had listened intently to you earlier.\r"
+    - Text: 'For a brief moment, you''re not a country girl dragging luggage through
+        the streets. You''re the person you feel that you are, when you close your
+        eyes, alone. '
+      Background: {fileID: 21300000, guid: c429f428d083d4dbfabeb6fe459cd917, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You're overseeing a grand salon, surrounded by poets, musicians, scientists,
+        philosophers, and artists. You are elegant, sophisticated, and respected.
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest04
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You're getting close to the address. Armand never described his living
+        conditions much, but he's the son of a Baron and his family was always well-to-do,
+        especially compared to yours. You've spent a lot of time in that carriage
+        wondering about the home you'd spend your new life in.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Still, you didn't expect this...
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Paris Streets
+        Parameters:
+        - Name: Arrive Home
+          Value: 1
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Calling the house 'rustic' would imply that you were out in the country,
+        not in the center of a city. The neighborhood is nice enough, but you're worried
+        that if you breathe too hard on the building, it'll fall over. A well kept
+        woman in the attire of a maid opens the door and approaches you.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: '"Ah, <i>bonsoir</i>! You must be Madame Yvette! My name is Camille, Monsieur
+        Armand told me to expect you."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
         Pose: neutral
-        Name: Guest
+        Name: Camille
       Character2:
         AvatarID: 
         Pose: 
@@ -384,80 +510,13 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "At the mention of Armand\u2019s name she laughs nervously. She makes
-        small talk for a brief moment before excusing herself, and disappearing into
-        the crowd."
+    - Text: '"I... I was hoping he was with you." Camille replies with hesitance.
+        "I haven''t see Monsieur Armand in days."'
       Background: {fileID: 0}
       Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: He looks at you, glances over to the woman who you spoke with earlier,
-        then quickens his pace as he walks by.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: He looks at you, glances over to the woman who you spoke with earlier,
-        then quickens his pace as he walks by.
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "The room is emptying out even faster now. You manage to get the attention
-        of another woman.\r"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: guest02b
-        Pose: neutral
-        Name: Guest
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
       Character2:
         AvatarID: 
         Pose: 
@@ -473,12 +532,37 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "She doesn\u2019t even slow down before she leaves."
+    - Text: '"Impossible, Madame! I''ve taken care of all the rats myself." Camille
+        replies, emphasizing her point with a playful stomp of her foot.'
       Background: {fileID: 0}
       Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Character2:
         AvatarID: 
         Pose: 
         Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I''m sure he''s fine Madamme," Camille replies with a tone of voice
+        that doesn''t fill you with confidence. Glancing around, she seems to notice
+        your mountain of luggage for the first time. "<i>Mon Dieu</i>, Madame! Did
+        you carry this all yourself? You must be exhausted!"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
       Character2:
         AvatarID: 
         Pose: 
@@ -494,12 +578,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "She doesn\u2019t even slow down before she leaves."
+    - Text: Eyeing her worn shoes, you have a feeling the rats didn't go quietly.
       Background: {fileID: 0}
       Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
       Character2:
         AvatarID: 
         Pose: 
@@ -515,10 +599,60 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "With all the guests, you start to wonder what happened. Are you really
-        that out of place? Is there something about Armand? What is going on here?
-        \r\n\r\nStill, you check around The Orphan\u2019s Feast, one last time."
+    - Text: At this, Camille takes a deep, nervous breath. "I'm afraid to tell you
+        that you'll have to wait Madame. It's been days since I've seen Monsieur Armand.
+        I was hoping that he was with you."
       Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'She''s not wrong. You''re not certain how you''re still upright and awake
+        right now.
+
+
+        "I''ve already made up your bed Madame, please go inside and let me take care
+        of this."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You take your diary and leave the heavy lifting to Camille. The inside
+        of the house isn't much better than the outside. Camille keeps the place tidy,
+        but she can only do so much. Still, you don't care about that right now, you're
+        just happy to have a roof over your head.
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -533,17 +667,67 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
         Parameters: []
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "There\u2019s no sign of Armand, not even an open tab with the tavernkeep."
+    - Text: You flop down on a nearby couch, open your diary, and start to write.
+        You're tired, disappointed, and perhaps abandoned, but writing things down
+        always helps you make sense of a situation.
       Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 7
+        ID: LEAVE_PARTY
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: While you're still processing this latest disappointment, Camille seems
+        to notice your mountain of luggage for the first time. "<i>Mon Dieu</i>, Madame!
+        Did you carry this all yourself? You must be exhausted!"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: He looks at you, glances over to the woman who you spoke with earlier,
+        then quickens his pace as he walks by.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Guest
       Character2:
         AvatarID: 
         Pose: 
@@ -600,10 +784,6 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
-      Text: 
-      Rewards: []
-    - Index: 0
-      Target: 0
       Text: '"Excu-"'
       Rewards: []
     - Index: 0
@@ -632,6 +812,91 @@ MonoBehaviour:
       Rewards: []
     - Index: 0
       Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"<i>Merci</i> Camille, please take me to Armand."'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Is this where he lives? Oh God, the rats in there ate him, didn''t they?"'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Do you think he''s alright?"'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Fine, when I''m done, Armand is simply going to wish the rats had eaten
+        him."'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"Uh... thank you Camille. Do you think Armand''s alright?"'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: '"He has a lot of explaining to do."'
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
+      Text: 
+      Rewards: []
+    - Index: 0
+      Target: 0
       Text: '"I''m looking for my fiance, have you seen him?"'
       Rewards: []
     Name: A Country Woman
@@ -642,4 +907,4 @@ MonoBehaviour:
     Day: 0
     Year: 0
   _index: -1
-  _isNode: 1
+  _isNode: 0

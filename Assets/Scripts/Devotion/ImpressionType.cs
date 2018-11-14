@@ -10,6 +10,6 @@ namespace Ambition
 		Unacquainted=0,
 		Defeat=-1,
 		FormerSecret=-2,
-		FormerPublic=-3
+		FormerPublic=-3,
 	}
 }

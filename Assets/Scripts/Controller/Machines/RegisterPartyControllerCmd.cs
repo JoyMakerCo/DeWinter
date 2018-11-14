@@ -27,18 +27,23 @@ namespace Ambition
             AmbitionApp.RegisterState<SendMessageState, string>("PartyController", "ShowRoom", PartyMessages.SHOW_ROOM);
             AmbitionApp.RegisterState<InvokeMachineState, string>("PartyController", "Conversation", "ConversationController");
             AmbitionApp.RegisterState("PartyController", "ValidateRoom");
+            AmbitionApp.RegisterState<SendMessageState, string>("PartyController", "LeaveParty", PartyMessages.END_PARTY);
             AmbitionApp.RegisterState<SendMessageState, string>("PartyController", "EndTurn", PartyMessages.END_TURN);
+
 
             AmbitionApp.RegisterLink("PartyController", "EnterParty", "CheckIncidents");
             AmbitionApp.RegisterLink<CheckIncidentLink>("PartyController", "CheckIncidents", "Incident");
             AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("PartyController", "Incident", "PartyMap", IncidentMessages.END_INCIDENTS);
             AmbitionApp.RegisterLink("PartyController", "CheckIncidents", "PartyMap");
+            AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("PartyController", "PartyMap", "LeaveParty", PartyMessages.LEAVE_PARTY);
+            AmbitionApp.RegisterLink("PartyController", "LeaveParty", "EndTurn");
             AmbitionApp.RegisterLink<WaitForRoomLink>("PartyController", "PartyMap", "ValidateRoom");
             AmbitionApp.RegisterLink<ValidateRoomLink>("PartyController", "ValidateRoom", "ShowRoom");
             AmbitionApp.RegisterLink("PartyController", "ValidateRoom", "EndTurn");
             AmbitionApp.RegisterLink("PartyController", "ShowRoom", "Conversation");
             AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("PartyController", "Conversation", "EndTurn", PartyMessages.END_CONVERSATION);
-            AmbitionApp.RegisterLink("PartyController", "EndTurn", "PartyMap");
+            AmbitionApp.RegisterLink<CheckTurnsLink>("PartyController", "EndTurn", "PartyMap");
+
 
             // End Party
             AmbitionApp.RegisterState<LoadSceneState, string>("PartyController", "AfterPartyResults", SceneConsts.AFTER_PARTY_SCENE);

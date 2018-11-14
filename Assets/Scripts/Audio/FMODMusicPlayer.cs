@@ -12,7 +12,6 @@ namespace Ambition
     {
         private FMOD.Studio.EventInstance _playing;
         private static GameObject _instance = null;
-        private IEnumerator _coroutine;
 
         void Awake()
         {
@@ -22,7 +21,6 @@ namespace Ambition
                 _instance = this.gameObject;
                 DontDestroyOnLoad(_instance);
                 AmbitionApp.Subscribe<FMODEvent>(AudioMessages.PLAY_MUSIC, HandlePlay);
-                AmbitionApp.Subscribe<FMODEvent>(AudioMessages.QUEUE_MUSIC, QueueNextTrack);
                 AmbitionApp.Subscribe(AudioMessages.STOP_MUSIC, HandleStop);
                 AmbitionApp.Subscribe(AudioMessages.STOP_MUSIC_NOW, HandleStopNow);
             }
@@ -31,7 +29,6 @@ namespace Ambition
         void OnDestroy()
         {
             AmbitionApp.Unsubscribe<FMODEvent>(AudioMessages.PLAY_AMBIENTSFX, HandlePlay);
-            AmbitionApp.Unsubscribe<FMODEvent>(AudioMessages.QUEUE_MUSIC, QueueNextTrack);
             AmbitionApp.Unsubscribe(AudioMessages.STOP_MUSIC, HandleStop);
             AmbitionApp.Unsubscribe(AudioMessages.STOP_MUSIC_NOW, HandleStopNow);
         }
@@ -50,7 +47,7 @@ namespace Ambition
             //Handle all the parameters
             foreach (FMODEventParameterConfig param in music.Parameters)
             {
-                _playing.setParameterValue(param.Name, param.Value);        
+                _playing.setParameterValue(param.Name, param.Value);
             }
 
             //Actually start the FMOD Event
@@ -66,36 +63,7 @@ namespace Ambition
         {
             _playing.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
-
-        private void QueueNextTrack(FMODEvent nextTrack)
-        {
-            _coroutine = NextTrackCheck(nextTrack);
-            StartCoroutine(_coroutine); //This has to be handled in a coroutine or the check brings the whole game to a screeching halt
-        }
-
-        private IEnumerator NextTrackCheck(FMODEvent nextTrack)
-        {
-            //Now it's time to keep checking to see if the track has finished
-            FMOD.Studio.PLAYBACK_STATE playbackState; //Have a playback state to check
-            _playing.getPlaybackState(out playbackState);
-            while (playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED)
-            {
-                _playing.getPlaybackState(out playbackState);
-                yield return null;
-            }
-            _playing = FMODUnity.RuntimeManager.CreateInstance(nextTrack.Name);
-
-            //Handle all the parameters
-            foreach (FMODEventParameterConfig param in nextTrack.Parameters)
-            {
-                _playing.setParameterValue(param.Name, param.Value);
-            }
-
-            //Actually start the FMOD Event
-            _playing.start();
-        }
-
-
+        
         public string GetInstantiatedEventName(FMOD.Studio.EventInstance instance)
         {
             string result;

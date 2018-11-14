@@ -15,7 +15,8 @@ namespace Ambition
 
 		public override void OnEnterState ()
 		{
-			AmbitionApp.CloseDialog(_dialogID);
+            UnityEngine.Debug.Log("Close Dialog State - Entered!");
+            AmbitionApp.CloseDialog(_dialogID);
 		}
 	}
 }

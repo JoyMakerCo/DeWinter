@@ -13,10 +13,14 @@ namespace Ambition
 		void Awake ()
 		{
 			_titleText = gameObject.GetComponent<Text>();
-            HandleRoom(AmbitionApp.GetModel<MapModel>().Room);
 		}
 
-		private void HandleRoom(RoomVO room)
+        private void OnEnable()
+        {
+            HandleRoom(AmbitionApp.GetModel<MapModel>().Room);
+        }
+
+        private void HandleRoom(RoomVO room)
 		{
             _titleText.text = room.Name;
             HandleStarToggles(room.Difficulty);

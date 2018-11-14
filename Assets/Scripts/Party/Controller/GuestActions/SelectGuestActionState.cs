@@ -14,7 +14,7 @@ namespace Ambition
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             UController controller = _machine._uflow.GetController(_machine);
             int index = controller.transform.GetSiblingIndex();
-            if (index < map.Room.Guests.Length)
+            if (index < map.Room.Guests.Length && map.Room.Guests[index] != null)
             {
                 int[] chart = map.Room.Guests[index].State == GuestState.Charmed
                     ? model.CharmedGuestActionChance

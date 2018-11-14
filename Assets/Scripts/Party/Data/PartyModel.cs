@@ -27,8 +27,6 @@ namespace Ambition
             }
 		}
 
-		public bool IsAmbush=false;
-
 		[JsonProperty("free_remark_counter")]
 		public int FreeRemarkCounter;
 
@@ -38,11 +36,18 @@ namespace Ambition
         public int Turns
         {
             get { return _party != null ? _party.Turns : 0; }
+            set {
+                if (_party != null)
+                {
+                    _party.Turns = value;
+                    AmbitionApp.SendMessage(PartyMessages.TURNS_LEFT, Turns - Turn);
+                }
+            }
         }
 
         public int TurnsLeft
         {
-            get { return Turns - _turn; }
+            get { return Turns - Turn; }
         }
 
 		private int _turn;
@@ -51,42 +56,10 @@ namespace Ambition
 			get { return _turn; }
 			set {
 				_turn = value;
-                AmbitionApp.SendMessage<int>(PartyMessages.TURN, _turn);
-                AmbitionApp.SendMessage<int>(PartyMessages.TURNS_LEFT, Turns - _turn);
+                AmbitionApp.SendMessage(PartyMessages.TURN, _turn);
+                AmbitionApp.SendMessage(PartyMessages.TURNS_LEFT, Turns - _turn);
 			}
 		}
-
-		// Temporary Repo for buffs
-		protected Dictionary<string, List<ModifierVO>> Modifiers = new Dictionary<string, List<ModifierVO>>();
-
-		public void AddBuff(string id, string type, float multiplier, float bonus)
-		{
-			if (!Modifiers.ContainsKey(id))
-			{
-				Modifiers.Add(id, new List<ModifierVO>());
-			}
-			Modifiers[id].RemoveAll(m => m.Type == type);
-			Modifiers[id].Add(new ModifierVO(id, type, multiplier, bonus));
-		}
-
-		public void RemoveBuff(string id, string type)
-		{
-			if (Modifiers.ContainsKey(id))
-			{
-				Modifiers[id].RemoveAll(t => t.Type == type);
-			}
-		}
-
-        public PartyVO LoadParty(string partyID)
-        {
-            PartyConfig config = UnityEngine.Resources.Load<PartyConfig>("Parties/" + partyID);
-            if (config == null) return null;
-            PartyVO party = config.Party;
-            config = null;
-            UnityEngine.Resources.UnloadUnusedAssets();
-            AmbitionApp.Execute<InitPartyCmd, PartyVO>(party);
-            return party;
-        }
 
 		[JsonProperty("guest_difficulty")]
 		public GuestDifficultyVO[] GuestDifficultyStats;

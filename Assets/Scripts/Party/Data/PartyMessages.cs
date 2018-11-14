@@ -18,12 +18,12 @@ namespace Ambition
         public const string START_ROUND = "START_ROUND";
         public const string START_CONVERSATION = "START_CONVERSATION";
         public const string TIME_EXPIRED = "TIME_EXPIRED";  // Ran out of time in the round
+        public const string LEAVE_PARTY = "LEAVE_PARTY"; // Player explicitly leaves the party
         public const string END_PARTY = "END_PARTY";
         public const string END_ROUND = "END_ROUND";
         public const string END_CONVERSATION = "END_CONVERSATION"; //This means the player won
         public const string FLEE_CONVERSATION = "FLEE_CONVERSATION"; //This means the player lost
         public const string START_DANCING = "StartDancingMsg";
-		public const string LEAVE_PARTY = "LEAVE_PARTY";
 		public const string AMBUSH = "AMBUSH";
         public const string SELECT_GUEST = "SELECT_GUEST";
         public const string GUEST_SELECTED = "GUEST_SELECTED";

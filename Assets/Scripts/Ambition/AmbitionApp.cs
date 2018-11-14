@@ -187,12 +187,12 @@ namespace Ambition
 
 		public static bool IsActiveState(string stateID)
 		{
-			return App.Service<UFlow.UFlowSvc>().IsActiveState(stateID);
+            return App.Service<UFlow.UFlowSvc>().IsActiveState(stateID);
 		}
 
 		public static bool IsActiveMachine(string machineID)
 		{
-			return App.Service<UFlow.UFlowSvc>().IsActiveMachine(machineID);
+            return App.Service<UFlow.UFlowSvc>().IsActiveMachine(machineID);
 		}
 
 		public static string GetString(string key)

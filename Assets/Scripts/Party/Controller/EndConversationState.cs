@@ -27,7 +27,7 @@ namespace Ambition
             }
             int numRemarks = (int)(model.MaxDeckSize * .1f);
             AmbitionApp.SendMessage(PartyMessages.RESHUFFLE_REMARKS, numRemarks);
-            AmbitionApp.OpenDialog("END_CONVERSATION", model.Room.Rewards);
+            //AmbitionApp.OpenDialog("END_CONVERSATION", model.Room.Rewards);
 			AmbitionApp.SendMessage(PartyMessages.END_CONVERSATION);
 		}
 

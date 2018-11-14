@@ -20,8 +20,7 @@ namespace Ambition
             AmbitionApp.RegisterState("EstateController", "Estate");
             AmbitionApp.RegisterState("EstateController", "LeaveEstate");
             AmbitionApp.RegisterState<InvokeMachineState, string>("EstateController", "GoToParty", "PartyController");
-            AmbitionApp.RegisterState<LoadSceneState, string>("EstateController", "GoToParis", SceneConsts.PARIS_SCENE);
-
+            AmbitionApp.RegisterState<InvokeMachineState, string>("EstateController", "GoToParis", "ParisMapController");
 
             AmbitionApp.RegisterLink<AmbitionDelegateLink, string>("EstateController", "LoadEstate", "UpdateIncidents", GameMessages.FADE_OUT_COMPLETE);
             AmbitionApp.RegisterLink("EstateController", "UpdateIncidents", "CheckIncident");

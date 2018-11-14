@@ -30,7 +30,6 @@ namespace Ambition
 			AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
             AmbitionApp.RegisterCommand<GrantRewardsCmd, CommodityVO[]>();
             AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
-            AmbitionApp.RegisterCommand<DegradeOutfitCmd>(PartyMessages.END_PARTY);
 			AmbitionApp.RegisterCommand<IntroServantCmd, ServantVO>(ServantMessages.INTRODUCE_SERVANT);
 			AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantMessages.HIRE_SERVANT);
 			AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantMessages.FIRE_SERVANT);
@@ -49,6 +48,7 @@ namespace Ambition
             AmbitionApp.RegisterCommand<RemoveLocationCmd, string>(ParisMessages.REMOVE_LOCATION);
             AmbitionApp.RegisterCommand<InvokeMachineCmd, string>(IncidentMessages.START_INCIDENT, "IncidentController");
             AmbitionApp.RegisterCommand<GoToPartyCmd, PartyVO>(PartyMessages.GO_TO_PARTY);
+            AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
 
             // Party
             AmbitionApp.RegisterCommand<TargetGuestCmd, GuestVO>(PartyMessages.TARGET_GUEST);
@@ -70,7 +70,7 @@ namespace Ambition
             AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
 			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
-			AmbitionApp.RegisterCommand<EndPartyCmd>(PartyMessages.LEAVE_PARTY);
+			AmbitionApp.RegisterCommand<EndPartyCmd>(PartyMessages.END_PARTY);
 
             AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
 			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
@@ -78,7 +78,8 @@ namespace Ambition
 
             // Paris
             AmbitionApp.RegisterCommand<RestAtHomeCmd>(ParisMessages.REST);
-            AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
+            AmbitionApp.RegisterCommand<ChooseLocationCmd, LocationPin>(ParisMessages.GO_TO_LOCATION);
+            AmbitionApp.RegisterCommand<LoadLocationCmd>(ParisMessages.LOAD_LOCATION);
 
             // Initially enabled for TUTORIAL
             AmbitionApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);

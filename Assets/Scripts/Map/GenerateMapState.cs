@@ -51,7 +51,7 @@ namespace Ambition
 					room.MoveThroughChance = GenerateMoveThroughChance(room);
 				}
 			}
-			party.Enemies = PopulateEnemies(map, EnemyInventory.enemyInventory.FindAll(e=>e.Faction == party.Faction));
+			PopulateEnemies(map, EnemyInventory.enemyInventory.FindAll(e=>e.Faction == party.Faction));
             map.Entrance.Cleared = true;
             _model.Map = map;
             AmbitionApp.SendMessage(MapMessage.GO_TO_ROOM, map.Entrance);

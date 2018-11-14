@@ -14,7 +14,7 @@ namespace Ambition
 
 		public override void OnEnterState ()
 		{
-			AmbitionApp.OpenDialog(_dialogID);
+            AmbitionApp.OpenDialog(_dialogID);
 		}
 	}
 }

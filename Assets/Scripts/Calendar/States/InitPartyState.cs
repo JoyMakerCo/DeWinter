@@ -25,7 +25,7 @@ namespace Ambition
                 switch (item.Name)
                 {
                     case "Garter Flask":
-                        model.AddBuff(GameConsts.DRINK, ItemConsts.ACCESSORY, 1.0f, 1.0f);
+                        //model.AddBuff(GameConsts.DRINK, ItemConsts.ACCESSORY, 1.0f, 1.0f);
                         break;
                     case "Fascinator":
                         AmbitionApp.GetModel<ConversationModel>().ItemEffect = true;

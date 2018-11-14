@@ -7,7 +7,7 @@ namespace Ambition
 {
 	public class PartyViewMediator : MonoBehaviour
 	{
-        private const float FADE_TIME = 1.5f;
+        private const float FADE_TIME = 1.75f;
 
 		public GameObject MapView;
 		public GameObject RoomView;

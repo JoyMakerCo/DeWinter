@@ -14,7 +14,6 @@ namespace Ambition
     public struct PartyMusic
     {
         public FMODEvent Event;
-        public bool Map; //Is this the map music, or is it conversation music?
         public string Faction;
     }
 
@@ -22,12 +21,12 @@ namespace Ambition
     {
         public PartyMusic[] PartyMusics;
 
-        public FMODEvent GetFMODEvent(bool map, string faction)
+        public FMODEvent GetFMODEvent(string faction)
         {
             List<PartyMusic> factionPartyMusics = new List<PartyMusic>();
             foreach(PartyMusic p in PartyMusics)
             {
-                if(p.Map == map && p.Faction == faction)
+                if(p.Faction == faction)
                 {
                     factionPartyMusics.Add(p);
                 }

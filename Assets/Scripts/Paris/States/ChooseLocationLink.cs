@@ -7,20 +7,20 @@ namespace Ambition
     {
         public override void Initialize()
         {
-            AmbitionApp.Subscribe<LocationPin>(HandlePin);
+            AmbitionApp.Subscribe<LocationPin>(ParisMessages.GO_TO_LOCATION, HandlePin);
         }
 
         public override bool Validate() => false;
 
         public override void Dispose()
         {
-            AmbitionApp.Unsubscribe<LocationPin>(HandlePin);
+            AmbitionApp.Unsubscribe<LocationPin>(ParisMessages.GO_TO_LOCATION, HandlePin);
         }
 
         void HandlePin(LocationPin pin)
         {
             AmbitionApp.GetModel<ParisModel>().Location = pin;
-            Activate();
+            if (pin != null) Activate();
         }
     }
 }
