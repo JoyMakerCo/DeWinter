@@ -11,12 +11,12 @@ namespace Ambition
         private void Awake()
         {
             MapModel map = AmbitionApp.GetModel<MapModel>();
-            _room = Array.Find(map.Map.Rooms, r => r.Name == RoomName);
+            //_room = Array.Find(map.Map.Value.Rooms, r => r.Name == RoomName);
             if (_room != null)
             {
                 gameObject.SetActive(false);
                 AmbitionApp.Subscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoom);
-                HandleRoom(map.Room);
+                //HandleRoom(map.Room);
             }
             else Destroy(gameObject);
         }
@@ -26,13 +26,14 @@ namespace Ambition
             if (room == _room) Destroy(gameObject);
             else
             {
-                bool active = _room.IsAdjacentTo(room);
-                if (active) AmbitionApp.Subscribe(GameMessages.FADE_IN, HandleReveal);
-                else
-                {
-                    gameObject.SetActive(false);
-                    AmbitionApp.Unsubscribe(GameMessages.FADE_IN, HandleReveal);
-                }
+                //bool active = _room.IsAdjacentTo(room);
+                //if (active) 
+                AmbitionApp.Subscribe(GameMessages.FADE_IN, HandleReveal);
+                //else
+                //{
+                    //gameObject.SetActive(false);
+                    //AmbitionApp.Unsubscribe(GameMessages.FADE_IN, HandleReveal);
+                //}
             }
         }
 

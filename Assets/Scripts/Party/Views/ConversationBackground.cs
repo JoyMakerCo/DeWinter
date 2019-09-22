@@ -13,7 +13,7 @@ namespace Ambition
 		{
 			_background = GetComponent<Image>();
 			AmbitionApp.Subscribe<RoomVO>(HandleRoom);
-			HandleRoom(AmbitionApp.GetModel<MapModel>().Room);
+			//HandleRoom(AmbitionApp.GetModel<MapModel>().Room);
 		}
 		
 		void OnDestroy ()
@@ -25,15 +25,12 @@ namespace Ambition
 		{
 			if (room != null)
 			{
-				Sprite spt=null;
-				if (room.Background != null) spt = BackgroundCollection.GetSprite(room.Background);
-				if (spt == null)
+				if (room.Background == null)
 				{
 					Sprite[] sprites = BackgroundCollection.GetSpritesByTag("party");
-					spt = sprites[UnityEngine.Random.Range(0,sprites.Length)];
-					room.Background = BackgroundCollection.GetID(spt);
+                    room.Background = Util.RNG.TakeRandom(sprites);
 				}
-				_background.sprite = spt;
+				_background.sprite = room.Background;
 			}
 		}
 	}

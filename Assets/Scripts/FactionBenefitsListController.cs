@@ -11,14 +11,14 @@ public class FactionBenefitsListController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         text = this.GetComponent<Text>();
-        DisplayBenefits("Crown");
+        DisplayBenefits(FactionType.Crown);
     }
 
-    public void DisplayBenefits(string factionName)
+    public void DisplayBenefits(FactionType faction)
     {
     	FactionModel model = AmbitionApp.GetModel<FactionModel>();
-        string str = "The " + factionName + "(Level " + model[factionName].Level.ToString() + ")\n";
-		str += model.GetFactionBenefits(factionName);
+        string str = "The " + faction.ToString() + "(Level " + model[faction].Level.ToString() + ")\n";
+		str += model.GetFactionBenefits(faction);
 		text.text = str;
     }
 }

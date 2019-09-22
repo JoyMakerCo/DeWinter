@@ -6,10 +6,6 @@ namespace Ambition
 {
     public class ValidateRoomLink : ULink
     {
-        public override bool Validate()
-        {
-            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-            return model.Room != null && !model.Room.Cleared;
-        }
+        public override bool Validate() => true; //AmbitionApp.GetModel<MapModel>().Room.Value?.Cleared ?? false;
     }
 }

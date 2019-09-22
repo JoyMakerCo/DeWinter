@@ -11,13 +11,14 @@ namespace Ambition
         }
 
         override public bool Validate()
-        {
+            => false;
+/*        {
             MapModel map = AmbitionApp.GetModel<MapModel>();
-            UController controller = _machine._uflow.GetController(_machine);
+            UController controller = _machine._UFlow.GetController(_machine);
             int index = controller.transform.GetSiblingIndex();
-            if (index >= map.Room.Guests.Length) return false;
-            GuestVO guest = map.Room.Guests[index];
+            if (index >= map.Room.Value.Guests.Length) return false;
+            CharacterVO guest = map.Room.Value.Guests[index];
             return (guest.Action != null && guest.Action.Type == _actionType);
         }
-    }
+*/    }
 }

@@ -25,5 +25,10 @@ namespace Ambition
         public FMODEvent Music;
         public FMODEvent AmbientSFX;
         public FMODEvent OneShotSFX; // <- This handles both actual SFX (knocking on doors, etc...) and musical stings that get used once (Shocked, Reveal: Intrigue, etc...)
+	
+		public override string ToString()
+		{
+			return string.Format( "MomentVO: {0}", Text.Truncate( 16 ) );
+		}
 	}
 }

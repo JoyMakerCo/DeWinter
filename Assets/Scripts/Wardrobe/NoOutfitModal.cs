@@ -19,27 +19,19 @@ namespace Ambition
 	    public override void OnOpen ()
 		{
 			base.OnOpen ();
-	    	LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
-			BodyText.text = localization.GetString(DIALOG_PHRASE + DialogConsts.BODY);
-			TitleText.text = localization.GetString(DIALOG_PHRASE + DialogConsts.TITLE);
+			BodyText.text = AmbitionApp.GetString(DIALOG_PHRASE + DialogConsts.BODY);
+			TitleText.text = AmbitionApp.GetString(DIALOG_PHRASE + DialogConsts.TITLE);
 
 	        tabsController = GameObject.Find("MainScreenTabsContainer").GetComponent<MainScreenTabsController>();
 	    }
 
 	    public void CreateCancellationModal()
 	    {
-            List<ICalendarEvent> events;
 	    	CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            if (calendar.Timeline.TryGetValue(calendar.Today, out events))
-            {
-                PartyVO party = events.Find(e => e is PartyVO && ((PartyVO)e).RSVP == RSVP.Accepted) as PartyVO;
-                if (party != null) AmbitionApp.OpenDialog(DialogConsts.CANCEL, party);
-            }
+            PartyVO party = Array.Find(calendar.GetEvents<PartyVO>(), p => p.RSVP == RSVP.Accepted);
+            if (party != null) AmbitionApp.OpenDialog(DialogConsts.CANCEL, party);
 	    }
 
-        public void GoToTheMerchant()
-	    {
-	        tabsController.WardrobeSelected();
-	    }
+        public void GoToTheMerchant() => tabsController.WardrobeSelected();
 	}
 }

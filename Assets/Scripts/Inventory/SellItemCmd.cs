@@ -10,12 +10,17 @@ namespace Ambition
 		public void Execute (ItemVO item)
 		{
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-			if (model.Inventory.Remove(item))
+			if (model.Inventory.ContainsKey(item.Type) && model.Inventory[item.Type].Remove(item))
 			{
-                int price = item.Price;
-                price = (int)((float)item.Price * model.SellbackMultiplier);
-                AmbitionApp.GetModel<GameModel>().Livre += price;
-				model.Market.Add(item);
+                AmbitionApp.GetModel<GameModel>().Livre.Value += item.Price;
+                if (model.Market != null)
+                {
+                    // Buyback price will be the same, to the user can change her mind to her heart's content
+                    if (!model.Market.ContainsKey(item.Type))
+                        model.Market.Add(item.Type, new List<ItemVO>());
+                    model.Market[item.Type].Add(item);
+                }
+                model.Broadcast();
 			}
 		}
 	}

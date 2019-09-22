@@ -10,21 +10,29 @@ namespace Ambition
             if (reward.ID != null)
             {
                 PartyConfig config = UnityEngine.Resources.Load<PartyConfig>("Parties/" + reward.ID);
-                if (config != null && config.Party != null)
+                PartyVO party = config?.GetParty();
+                if (party != null)
                 {
                     CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-                    PartyVO party = config.Party;
-                    AmbitionApp.Execute<InitPartyCmd, PartyVO>(party);
                     party.RSVP = (RSVP)reward.Value;
                     party.InvitationDate = calendar.Today;
+                    party.IntroIncident = config.IntroIncident?.GetIncident();
+                    party.ExitIncident = config.ExitIncident?.GetIncident();
+                    AmbitionApp.GetModel<MapModel>().SaveMap(party, config.Map);
 
-                    if (default(DateTime) == party.Date)
-                        party.Date = calendar.Today;
+                    if (party.Date == default) party.Date = calendar.Today;
+                    AmbitionApp.SendMessage(PartyMessages.INITIALIZE_PARTY, party);
 
-                    calendar.Schedule(party);
-
-                    if (party.RSVP == RSVP.Accepted && party.Date == calendar.Today)
-                        AmbitionApp.GetModel<PartyModel>().Party = party;
+                    switch (party.RSVP)
+                    {
+                        case RSVP.Accepted:
+                        case RSVP.Required:
+                            AmbitionApp.SendMessage(PartyMessages.ACCEPT_INVITATION, party);
+                            break;
+                        case RSVP.Declined:
+                            AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
+                            break;
+                    }
                 }
                 else
                 {

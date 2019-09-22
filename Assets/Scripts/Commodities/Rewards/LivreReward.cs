@@ -5,7 +5,7 @@ namespace Ambition
     {
         public void Execute(CommodityVO reward)
         {
-            AmbitionApp.GetModel<GameModel>().Livre += reward.Value;
+            AmbitionApp.GetModel<GameModel>().Livre.Value += reward.Value;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace Ambition
 {
     public class GossipReward : Core.ICommand<CommodityVO>
@@ -6,12 +7,11 @@ namespace Ambition
         public void Execute(CommodityVO reward)
         {
             InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
-            if (reward.ID != null) imod.GossipItems.Add(new Gossip(reward.ID));
-            else
+            if (reward.ID == null || !Enum.TryParse<FactionType>(reward.ID, out FactionType faction))
             {
-                PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
-                if (partyModel.Party != null) imod.GossipItems.Add(new Gossip(partyModel.Party.Faction));
+                faction = AmbitionApp.GetModel<PartyModel>().Party?.Faction ?? FactionType.Neutral;
             }
+            AmbitionApp.SendMessage(InventoryMessages.CREATE_GOSSIP, faction);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Ambition
 	    	PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
 	    	PartyNameText.text = party == null ? "" : party.Name;
 	    	PartyDescriptionText.text = party == null ? "" : party.Description;
-			StyleText.text = AmbitionApp.GetModel<InventoryModel>().CurrentStyle;
+			StyleText.text = AmbitionApp.GetModel<InventoryModel>().Style;
 	    }
 	}
 }

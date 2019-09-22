@@ -10,9 +10,8 @@ namespace Ambition
 		public void Execute (DateTime date)
 		{
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            if (!calendar.Timeline.ContainsKey(date)) return;
-            List<PartyVO> parties = calendar.Timeline[date].OfType<PartyVO>().ToList();
-            switch (parties.Count)
+            PartyVO[] parties = calendar.GetEvents<PartyVO>(date);
+            switch (parties.Length)
             {
                 case 0:
                     break; // Don't do shit.

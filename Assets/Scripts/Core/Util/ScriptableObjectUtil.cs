@@ -18,10 +18,15 @@ namespace Util
 
 			AssetDatabase.CreateAsset (asset, path);
 			AssetDatabase.SaveAssets ();
-			EditorUtility.FocusProjectWindow ();
 			Selection.activeObject = asset;
             return asset;
 		}
-	}
+
+        public static void CreatUniqueInstance<T>(string name=null) where T: ScriptableObject
+        {
+            string[] assets = AssetDatabase.FindAssets("t:" + typeof(T));
+            if (assets.Length == 0) CreateScriptableObject<T>(name);            
+        }
+    }
 }
 #endif

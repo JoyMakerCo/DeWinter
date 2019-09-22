@@ -8,10 +8,13 @@ namespace Ambition
 {
 	public class IncidentDialogBox : MonoBehaviour, IPointerClickHandler
 	{
+        private IncidentModel _model;
 		private Image _image;
+        private TransitionVO _trans;
 		void Awake ()
 		{
-			_image = GetComponent<Image>();
+            _model = AmbitionApp.GetModel<IncidentModel>();
+            _image = GetComponent<Image>();
 			AmbitionApp.Subscribe<TransitionVO[]>(HandleTransitions);
 		}
 		
@@ -23,17 +26,20 @@ namespace Ambition
 		public void OnPointerClick(PointerEventData eventData)
 		{
 			Next();
-		}
+        }
 
 		public void Next()
 		{
-			AmbitionApp.SendMessage(IncidentMessages.INCIDENT_OPTION, 0);
+            _image.raycastTarget = false;
+            if (_trans != null) AmbitionApp.SendMessage(_trans);
+            else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, _model.Incident);
             FMODUnity.RuntimeManager.PlayOneShot("event:/One Shot SFX/Mouse_click"); //Literally only ever plays this sound. It will never need to play anything else.
         }
 
 		private void HandleTransitions(TransitionVO[] transitions)
 		{
-			_image.raycastTarget = transitions.Length <= 1;
+            _trans = transitions.Length > 0 ? transitions[0] : null;
+            _image.raycastTarget = transitions.Length <= 1;
 		}
 	}
 }

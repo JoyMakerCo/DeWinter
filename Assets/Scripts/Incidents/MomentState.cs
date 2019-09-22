@@ -1,23 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UFlow;
 
 namespace Ambition
 {
 	public class MomentState : UState
 	{
-		public override void OnEnterState ()
+		public override void OnEnterState(string[] args)
 		{
-			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
+			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			MomentVO moment = model.Moment;
-            if (moment != null)
-            {
-                int index = model.Incident.GetNodeIndex(moment);
-                AmbitionApp.SendMessage(moment.Rewards);
-                if (index >= 0)
-                {
-                    AmbitionApp.SendMessage(model.Incident.GetLinkData(index));
-                }
-            }
-        }
+			AmbitionApp.SendMessage(moment.Rewards);
+			List<TransitionVO> transitions = model.Incident.GetLinks(moment).Where(t=>AmbitionApp.CheckRequirements(t.Requirements)).ToList();
+			TransitionVO xor = transitions.Find(t => t.xor && t.Requirements != null && t.Requirements.Length > 0);
+			if (xor != null) transitions.RemoveAll(t => t != xor && t.xor);
+			AmbitionApp.SendMessage(transitions.ToArray());
+		}
 	}
 }

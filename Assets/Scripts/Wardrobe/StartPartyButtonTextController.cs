@@ -19,12 +19,12 @@ namespace Ambition
 		
 		// Update is called once per frame
 		void Update () {
-	        if (_model.Equipped.Count != 0)
-	        {
-	            myOutline.effectColor = Color.clear;
-	            myText.text = "<- Select Your Outfit";
-	        }
-	        else
+	        //if (_model.Equipped.Count != 0)
+	        //{
+	        //    myOutline.effectColor = Color.clear;
+	        //    myText.text = "<- Select Your Outfit";
+	        //}
+	        //else
 	        {
 	            myOutline.effectColor = Color.yellow;
 	            myText.text = "Start the Party!";

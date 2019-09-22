@@ -4,13 +4,36 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Maximin's Doorman
   m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 2, y: 85}
+  - {x: -179, y: 183}
+  - {x: 211, y: 180}
+  - {x: -306, y: 265}
+  - {x: -43, y: 262}
+  - {x: 213, y: 256}
+  - {x: -169, y: 506}
+  - {x: -173, y: 594}
+  - {x: 77, y: 569}
+  - {x: -39, y: 323}
+  - {x: 141, y: 406}
+  - {x: 75, y: 507}
+  - {x: -59, y: 824}
+  - {x: -61, y: 900}
+  - {x: 91, y: 688}
+  - {x: -167, y: 680}
+  - {x: 96, y: 634}
+  - {x: 85, y: 751}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -29,9 +52,13 @@ MonoBehaviour:
     - {x: 11, y: 12}
     - {x: 12, y: 8}
     - {x: 12, y: 9}
-    - {x: 8, y: 13}
     - {x: 13, y: 14}
-    - {x: 9, y: 13}
+    - {x: 8, y: 16}
+    - {x: 16, y: 13}
+    - {x: 9, y: 17}
+    - {x: 17, y: 15}
+    - {x: 15, y: 18}
+    - {x: 18, y: 13}
     Nodes:
     - Text: "Immediately upon entering the vestibule, you\u2019re greeted by a doorman
         holding a small ledger. While he isn\u2019t physically barring your entry,
@@ -48,13 +75,19 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
-        Parameters: []
+        Name: event:/Music/Revolution - Party Master
+        Parameters:
+        - Name: WIN
+          Value: 0
+        - Name: LOSE
+          Value: 0
+        - Name: Conversation Start
+          Value: 0
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: "\u201CName, Madame?\u201D he asks expectantly."
       Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
@@ -118,10 +151,10 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_negative
         Parameters: []
     - Text: "\u201CAh, that is most unfortunate.\u201D the doorman replies, surprisingly
-        disappointed. \u201CBaron de Termin was so looking forward to seeing him tonight.
+        disappointed. \u201CBaron de Termes was so looking forward to seeing him tonight.
         Please convey our deepest regrets at his absence.\u201D\r"
       Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
       Character1:
@@ -146,7 +179,7 @@ MonoBehaviour:
     - Text: "He frowns at your irritation, but only for a moment. The doorman flips
         back and forth between the pages of his ledger before his finds what he\u2019s
         looking for. \u201CAh yes! You are the date to Baron Armand de Marbo. If I
-        so remember, you are his fianc\xE9e, non?\u201D\r"
+        so remember, you are his fianc\xE9e, <i>non</i>?\u201D\r"
       Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
       Character1:
         AvatarID: Valet
@@ -210,33 +243,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "\u201CAh yes, you can find Baron de Termin in his study, a little further
-        into the house.\u201D\r\nThe doorman gives you a quick set of directions,
-        letting you know the host\u2019s exact location. It sounds like they\u2019ll
-        be there all night.\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
-      Character1:
-        AvatarID: Valet
-        Pose: neutral
-        Name: Doorman
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "\u201CCertainly Madame!\u201D Turning from you, he waves imperiously
-        to another servant nearby, who hands you a freshly filled wine glass. Afterwards,
-        the servant dutifully scurries away.\r"
+    - Text: "\u201CAh yes, absolutely madame. The Baron shall hear of it quite soon.\u201D\r\n\r\r\nYou
+        hear some murmurs from other guests in the Vestibule. Your gratitude and enthusiasm
+        seem to have made an impression on them, though the doorman seems rather unphased.\r"
       Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
       Character1:
         AvatarID: Valet
@@ -255,7 +264,33 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "With a small flourish, you present a bottle of wine you had the forethought
+        to bring earlier. It wasn\u2019t cheap, but the gesture is more important.\r\n\r\n\u201CAh,
+        <i>merci beaucoups madame</i>, I shall make sure the Baron is aware of your
+        generosity.\u201D Turning from you, the doorman waves imperiously to another
+        servant nearby, who takes the bottle from you. Afterwards, that servant dutifully
+        scurries away.\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
         Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "He glances about the room expectantly. \u201CAnd\u2026 where may I find
         the good Baron?\u201D\r"
@@ -285,7 +320,7 @@ MonoBehaviour:
       Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
       Character1:
         AvatarID: Valet
-        Pose: neutral
+        Pose: afraid
         Name: Doorman
       Character2:
         AvatarID: 
@@ -323,9 +358,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "Before you can ask any other questions, he bows deeply to you.\r\n\u201CPardon
-        moi, Madame. Baron de Termin instructed me specifically, to inform him as
-        soon as you had arrived. We\u2019ve heard so much about you.\u201D"
+    - Text: "Before you can ask any other questions, he bows deeply to you.\r\n\n\u201C<i>Pardon
+        moi, madame</i>. Baron de Termes instructed me specifically, to inform him
+        as soon as you had arrived. We\u2019ve heard so much about you.\u201D"
       Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
       Character1:
         AvatarID: Valet
@@ -367,31 +402,308 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    LinkData: []
-    Positions:
-    - {x: 357, y: 84}
-    - {x: 359, y: 169}
-    - {x: 178, y: 267}
-    - {x: 568, y: 264}
-    - {x: 51, y: 349}
-    - {x: 314, y: 346}
-    - {x: 569, y: 340}
-    - {x: 181, y: 565}
-    - {x: 95, y: 672}
-    - {x: 341, y: 671}
-    - {x: 316, y: 415}
-    - {x: 317, y: 481}
-    - {x: 448, y: 556}
-    - {x: 208, y: 746}
-    - {x: 211, y: 817}
-    Name: Maximin's Doorman
-    _date: -1
-    Requirements: []
+    - Text: "You hear some appreciative murmurs from other guests in the Vestibule.
+        Your gratitude and enthusiasm seem to have made an impression on them, eliminating
+        some of the tension in the air.\r\n\r\nSurprisingly, the doorman himself seems
+        rather unphased.\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: "(You have gained a little credibility)\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have spent 5 Livres)\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -5
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Yvette Decaux,"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Baron Armand de Marbo,"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"I am Baron Armand de Marbo''s date. He could not attend."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Well then, look harder."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Please convey my deepest gratitudes to our host, and tell him that I''m
+        eager to meet him."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\"Would you be able to take this gift to our host? I though they might
+        appreciate some wine.\x1D\x1D\""
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"That''s a good question, I wish I knew..."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"He has taken ill, but insisted that I attend in his stead."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\"\x1CPlease convey my deepest gratitudes to our host, and tell him that
+        I'm eager to meet him.\x1D\""
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Would you be able to take this gift to our host? I though they might
+        appreciate some wine."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
     OneShot: 1
-    Positions: []
-    Month: 0
-    Day: 0
-    Year: 0
-  _index: -1
-  _isNode: 0
-    
+    Chapters: 
+    Tags: []
+    Factions: 
+    LocalizationKey: 
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _localizationKey: 19018.Maximin's Doorman.
+  _nodeText:
+  - "Immediately upon entering the vestibule, you\u2019re greeted by a doorman holding
+    a small ledger. While he isn\u2019t physically barring your entry, his manner
+    certainly is."
+  - "\u201CName, Madame?\u201D he asks expectantly."
+  - "The doorman looks perplexed at you for a moment, flipping through his ledger.
+    \u201CI do not see your name here, madame\u2026\u201D\r"
+  - "The valet looks shocked. \u201CBaron de Marbo? Why are you dressed-\u201D"
+  - "\u201CAh, that is most unfortunate.\u201D the doorman replies, surprisingly disappointed.
+    \u201CBaron de Termes was so looking forward to seeing him tonight. Please convey
+    our deepest regrets at his absence.\u201D\r"
+  - "He frowns at your irritation, but only for a moment. The doorman flips back and
+    forth between the pages of his ledger before his finds what he\u2019s looking
+    for. \u201CAh yes! You are the date to Baron Armand de Marbo. If I so remember,
+    you are his fianc\xE9e, <i>non</i>?\u201D\r"
+  - "A moment later he composes himself. \r\u201CAh, I see, you are the Baron\u2019s
+    date. My apologies\u201D\r"
+  - "\u201CIs there anything I can get you?\u201D\r"
+  - "\u201CAh yes, absolutely madame. The Baron shall hear of it quite soon.\u201D\r\n\r\r\nYou
+    hear some murmurs from other guests in the Vestibule. Your gratitude and enthusiasm
+    seem to have made an impression on them, though the doorman seems rather unphased.\r"
+  - "With a small flourish, you present a bottle of wine you had the forethought to
+    bring earlier. It wasn\u2019t cheap, but the gesture is more important.\r\n\r\n\u201CAh,
+    <i>merci beaucoups madame</i>, I shall make sure the Baron is aware of your generosity.\u201D
+    Turning from you, the doorman waves imperiously to another servant nearby, who
+    takes the bottle from you. Afterwards, that servant dutifully scurries away.\r"
+  - "He glances about the room expectantly. \u201CAnd\u2026 where may I find the good
+    Baron?\u201D\r"
+  - "The doorman\u2019s eyes widen in surprise, that was certainly not the sort of
+    answer he was expecting. \u201COh my Madame, what an unfortunate turn of events.\u201D\r"
+  - "\u201CYou must be quite upset, is there anything I can get you?\u201D\r"
+  - "Before you can ask any other questions, he bows deeply to you.\r\n\n\u201C<i>Pardon
+    moi, madame</i>. Baron de Termes instructed me specifically, to inform him as
+    soon as you had arrived. We\u2019ve heard so much about you.\u201D"
+  - "\u201CEnjoy the party.\u201D He says with a smile, before leaving.\r"
+  - "You hear some appreciative murmurs from other guests in the Vestibule. Your gratitude
+    and enthusiasm seem to have made an impression on them, eliminating some of the
+    tension in the air.\r\n\r\nSurprisingly, the doorman himself seems rather unphased.\r"
+  - "(You have gained a little credibility)\r"
+  - "(You have spent 5 Livres)\r"
+  - "(You have reduced your peril)\n(You have gained a little credibility)\r"
+  _linkText:
+  - 
+  - '"Yvette Decaux,"'
+  - '"Baron Armand de Marbo,"'
+  - '"I am Baron Armand de Marbo''s date. He could not attend."'
+  - '"Well then, look harder."'
+  - 
+  - 
+  - '"Please convey my deepest gratitudes to our host, and tell him that I''m eager
+    to meet him."'
+  - "\"Would you be able to take this gift to our host? I though they might appreciate
+    some wine.\x1D\x1D\""
+  - 
+  - 
+  - '"That''s a good question, I wish I knew..."'
+  - '"He has taken ill, but insisted that I attend in his stead."'
+  - 
+  - "\"\x1CPlease convey my deepest gratitudes to our host, and tell him that I'm
+    eager to meet him.\x1D\""
+  - '"Would you be able to take this gift to our host? I though they might appreciate
+    some wine."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

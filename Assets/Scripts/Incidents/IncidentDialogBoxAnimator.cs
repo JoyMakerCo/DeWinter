@@ -14,19 +14,19 @@ namespace Ambition
 		void Awake ()
 		{
 			_animator = GetComponent<Animator>();
-			AmbitionApp.Subscribe<MomentVO>(HandleMoment);
+            AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleStartIncident);
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
         void OnDestroy ()
 		{
+            AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleStartIncident);
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
-            AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
-		}
+        }
 
-		private void HandleMoment(MomentVO moment)
+        private void HandleStartIncident(IncidentVO incident)
 		{
-            _animator.SetBool(ACTIVE, moment != null);
+            _animator.SetBool(ACTIVE, true);
 		}
 
         private void HandleEndIncident(IncidentVO incident)

@@ -8,15 +8,19 @@ namespace Ambition
 	{
 		public string DialogID;
 
-		void Start ()
+		void Awake ()
 		{
-			Button btn = gameObject.GetComponent<Button>();
-			if (btn) btn.onClick.AddListener(OpenDialog);
+			gameObject.GetComponent<Button>()?.onClick.AddListener(OpenDialog);
 		}
 
 		protected void OpenDialog()
 		{
 			AmbitionApp.OpenDialog(DialogID);
 		}
-	}
+
+        private void OnDestroy()
+        {
+            gameObject.GetComponent<Button>()?.onClick.RemoveListener(OpenDialog);
+        }
+    }
 }

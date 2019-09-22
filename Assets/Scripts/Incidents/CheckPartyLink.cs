@@ -1,11 +1,12 @@
-﻿using UFlow;
+﻿using System;
+using UFlow;
 namespace Ambition
 {
     public class CheckPartyLink : ULink
     {
         public override bool Validate()
         {
-            return AmbitionApp.GetModel<PartyModel>().Party != null;
+            return Array.Exists(AmbitionApp.GetModel<CalendarModel>().GetEvents<PartyVO>(), p => p.Attending);
         }
     }
 }

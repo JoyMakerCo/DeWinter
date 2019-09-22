@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEditor;
 using Util;
 
-namespace Util
+namespace UGraph
 {
     public sealed class GraphEditorWindow : EditorWindow
     {
@@ -15,92 +15,122 @@ namespace Util
         private const float NODE_HEIGHT = 40f;
         private const float SCROLL_PADDING = 40f;
 
-        private IDirectedGraphObjectConfig _graphObject;
+        private DirectedGraphConfig _config;
+        private SerializedObject _object;
+        private SerializedProperty _graph;
         private Vector2 _scroll;
         private Rect _scrollRect;
         private Vector2 _mousePos;
-        private Vector2 _tempPos;
         private bool _relinking;
+        private int _linking;
+        private bool _mouseDown = false;
 
-        private int _selection;
-        private bool _isNode;
+        private List<int> _selectedNodes;
+        private List<int> _selectedLinks;
 
         private SerializedProperty _nodes;
         private SerializedProperty _links;
         private SerializedProperty _linkData;
         private SerializedProperty _positions;
 
-        public static GraphEditorWindow Show(IDirectedGraphObjectConfig graphObject)
+        public static GraphEditorWindow Show(DirectedGraphConfig config)
         {
-            if (graphObject is ScriptableObject)
-            {
-                string str = (graphObject as ScriptableObject).name;
-                GraphEditorWindow window = GetWindow<GraphEditorWindow>(str + " | Graph Editor");
-                window.SetObject(graphObject);
-                EditorApplication.update -= window.UpdateGraphEditorWindow;
-                EditorApplication.update += window.UpdateGraphEditorWindow;
-                return window;
-            }
-            return null;
+            string title = (config == null ? "" : (config.name + " | ")) +  "Graph Editor";
+            GraphEditorWindow window = GetWindow<GraphEditorWindow>(title, true, typeof(SceneView));
+            window.SetObject(config);
+            EditorApplication.update -= window.UpdateGraphEditorWindow;
+            if (config != null) EditorApplication.update += window.UpdateGraphEditorWindow;
+            return window;
         }
 
         private void UpdateGraphEditorWindow()
         {
-            if (_graphObject != null && _selection >= 0)
+            if (_selectedLinks.Count + _selectedNodes.Count > 0)
             {
-                _graphObject.GraphObject.Update();
+                _object?.Update();
                 Repaint();
             }
         }
 
-        private void SetObject(IDirectedGraphObjectConfig graphObject)
+        private void SetObject(DirectedGraphConfig config)
         {
+            if (config == null || _config == config)
+            {
+                _object?.Update();
+                return;
+            }
+            _config = config;
+            _object = new SerializedObject(_config);
+            _object.Update();
+            _graph = _object.FindProperty(_config.GraphProperty);
+            if (_graph == null)
+            {
+                _object = null;
+                _config = null;
+                return;
+            }
+
             Vector2 adjust;
             Rect rect = new Rect(0f, 0f, NODE_WIDTH, NODE_HEIGHT);
-            _graphObject = graphObject;
-            _scrollRect = new Rect();
-            _graphObject.GraphObject.Update();
+            _config.InitializeEditor(_object);
+            _scrollRect = rect;
+            _nodes = _graph.FindPropertyRelative("Nodes");
+            _links = _graph.FindPropertyRelative("Links");
+            _linkData = _graph.FindPropertyRelative("LinkData");
+            _positions = _object.FindProperty("_Positions");
 
-            _nodes = _graphObject.GraphProperty.FindPropertyRelative("Nodes");
-            _links = _graphObject.GraphProperty.FindPropertyRelative("Links");
-            _linkData = _graphObject.GraphProperty.FindPropertyRelative("LinkData");
-            _positions = _graphObject.GraphProperty.FindPropertyRelative("Positions");
-
-            if (_nodes.arraySize == 0) CreateNewNode(Vector2.zero);
-            _positions.arraySize = _nodes.arraySize;
+            if ((_nodes?.arraySize ?? 0) == 0) CreateNewNode(Vector2.zero);
+            _positions.arraySize = _nodes?.arraySize ?? 1;
             adjust = _positions.GetArrayElementAtIndex(0).vector2Value;
             for (int i = _positions.arraySize - 1; i >= 0; i--)
             {
                 rect.center = _positions.GetArrayElementAtIndex(i).vector2Value -= adjust;
                 AdjustScrollRect(rect, SCROLL_PADDING);
             }
-            _graphObject.GraphObject.ApplyModifiedProperties();
-            _isNode = true;
-            _selection = -1;
+
+            _object.ApplyModifiedProperties();
+            _selectedNodes = new List<int>();
+            _selectedLinks = new List<int>();
+            _linking = -1;
+
             _scroll = new Vector2((position.width - _scrollRect.xMin)*.5f, -position.height - _scrollRect.yMin*.5f);
             Repaint();
         }
 
         void OnSelectionChange()
         {
-            OnDestroy();
+            DirectedGraphConfig config = Selection.activeObject as DirectedGraphConfig;
+            if (config == null || config != _config)
+            {
+                OnDisable();
+                Show(config);
+            }
         }
 
-        void OnDestroy()
+        void OnDisable()
         {
             EditorApplication.update -= UpdateGraphEditorWindow;
-            _graphObject = null;
+            _config?.CleanupEditor(_object);
+            _object?.ApplyModifiedProperties();
+            _config = null;
+            _object = null;
+            _graph = null;
             titleContent.text = "Graph Editor";
             Repaint();
         }
 
         public void OnGUI()
         {
-            if (_graphObject != null)
+            if (_object != null)
             {
                 int index;
-                _graphObject.GraphObject.Update();
-                _scroll = GUI.BeginScrollView(new Rect(0, 0, position.width, position.height), _scroll, _scrollRect);
+                bool shift = Event.current.shift;
+                Vector2 pos = Event.current.mousePosition;
+                Rect viewRect = position;
+                viewRect.x = viewRect.y = 0f;
+                _object.Update();
+                _scroll = GUI.BeginScrollView(viewRect, _scroll, _scrollRect);
+
                 switch (Event.current.type)
                 {
                     case EventType.KeyDown:
@@ -109,48 +139,62 @@ namespace Util
                         {
                             DeleteSelected();
                         }
-                        else if (Event.current.modifiers == EventModifiers.None && _selection >= 0)
+                        else if (Event.current.modifiers == EventModifiers.None && _selectedNodes.Count + _selectedLinks.Count > 0)
                         {
                             EditorWindow win = Array.Find(Resources.FindObjectsOfTypeAll<EditorWindow>(), w => w.titleContent.text == "Inspector");
                             if (win != null) win.Focus();
                         }
                         break;
                     case EventType.MouseDown:
+                        _mouseDown = true;
                         _mousePos = Event.current.mousePosition;
-                        _selection = IntersectNode(_mousePos);
-                        _isNode = _selection >= 0;
-                        if (!_isNode) _selection = IntersectLink(_mousePos);
+                        if (!shift)
+                        {
+                            _selectedNodes.Clear();
+                            _selectedLinks.Clear();
+                        }
+                        _linking = IntersectNode(_mousePos);
+                        if (_linking >= 0)
+                        {
+                            if (!_selectedNodes.Remove(_linking))
+                                _selectedNodes.Add(_linking);
+                        }
+                        else
+                        {
+                            _linking = IntersectLink(_mousePos);
+                            if (_linking >= 0 && !_selectedLinks.Remove(_linking))
+                            {
+                                _selectedLinks.Add(_linking);
+                            }
+                        }
+                        if (Event.current.button != 1)
+                            _linking = -1;
                         break;
 
                     case EventType.MouseDrag:
-                        if (_selection >= 0)
+                        if (_mouseDown && _selectedLinks.Count + _selectedNodes.Count > 0)
                         {
                             switch (Event.current.button)
                             {
                                 // Drag nodes with lmb
                                 case 0:
-                                    if (_isNode)
+                                    Vector2 offset = Event.current.mousePosition - _mousePos;
+                                    Rect rect = new Rect(0, 0, NODE_WIDTH, NODE_HEIGHT);
+                                    _relinking = false;
+                                    foreach(int i in _selectedNodes)
                                     {
-                                        _tempPos = _positions.GetArrayElementAtIndex(_selection).vector2Value;
-                                        _tempPos += Event.current.mousePosition - _mousePos;
-                                        _positions.GetArrayElementAtIndex(_selection).vector2Value = _tempPos;
-                                    }
-                                    else if (!_relinking)
-                                    {
-                                        _relinking = true;
-                                        _tempPos = GetLinkEnds(_selection)[0];
+                                        pos = _positions.GetArrayElementAtIndex(i).vector2Value;
+                                        pos += offset;
+                                        _positions.GetArrayElementAtIndex(i).vector2Value = pos;
+
+                                        rect.position = _positions.GetArrayElementAtIndex(i).vector2Value;
+                                        AdjustScrollRect(rect, SCROLL_PADDING);
                                     }
                                     break;
 
                                 // Reposition links/Create nodes with rmb
                                 case 1:
-                                    if (!_relinking)
-                                    {
-                                        _relinking = true;
-                                        _tempPos = _isNode
-                                            ? _positions.GetArrayElementAtIndex(_selection).vector2Value
-                                            : GetLinkEnds(_selection)[0];
-                                    }
+                                    _relinking &= _linking >= 0 && _linking < _links.arraySize;
                                     break;
                             }
                         } // else -- TODO: Marquis select multiple objects. Also support multiple selections.
@@ -158,35 +202,50 @@ namespace Util
                         break;
 
                     case EventType.MouseUp:
+                        _mouseDown = false;
                         _mousePos = Event.current.mousePosition;
-                        if (_relinking)
+                        if (_linking >= 0)
                         {
                             index = IntersectNode(_mousePos);
-                            // Create a new node if right-dragging
-                            if (index < 0 && Event.current.button == 1)
-                                index = CreateNewNode(_mousePos);
-                            if (_isNode) // Linking to a new node
-                            {
-                                Link(_selection, index);
-                                if (index >= 0) _selection = index;
-                            }
-                            else // Redirecting an existing link
-                            {
-                                // Redirecting a link to its own source deletes the link
-                                if (GetLink(_selection).x == index) DeleteSelected();
-
-                                // Redirect the Link 
-                                else RedirectLink(_selection, index);
-                            }
-                            _relinking = false;
+                            if (index < 0) index = CreateNewNode(_mousePos);
+                            if (_relinking) RedirectLink(_linking, index);
+                            else Link(_linking, index);
+                            if (_selectedNodes.Count == 1 && _selectedLinks.Count == 0)
+                                _selectedNodes[0] = index;
+                            else _selectedNodes.Add(index);
                         }
+                        _relinking = false;
+                        _linking = -1;
+                        break;
+
+                    case EventType.MouseMove:
+                        _mouseDown = false;
                         break;
                 }
-                if (_graphObject != null)
-                    _graphObject.Select(_selection, _isNode);
-                _graphObject.GraphObject.ApplyModifiedProperties();
+
+                _object.FindProperty("_Nodes").arraySize = 0;
+                _object.FindProperty("_Links").arraySize = 0;
+                for(int i=Math.Max(_selectedLinks.Count, _selectedNodes.Count)-1; i>=0; i--)
+                {
+                    if (i < _selectedNodes.Count)
+                    {
+                        _object.FindProperty("_Nodes").InsertArrayElementAtIndex(0);
+                        _object.FindProperty("_Nodes").GetArrayElementAtIndex(0).intValue = _selectedNodes[i];
+                    }
+                    if (i < _selectedLinks.Count)
+                    {
+                        _object.FindProperty("_Links").InsertArrayElementAtIndex(0);
+                        _object.FindProperty("_Links").GetArrayElementAtIndex(0).intValue = _selectedLinks[i];
+                    }
+                }
+
+                _object.ApplyModifiedProperties();
                 DrawLinks();
-                if (_relinking) DrawLink(_tempPos, _mousePos, !_isNode);
+                if (_linking >= 0)
+                {
+                    pos = _relinking ? GetLinkEnds(_linking)[0] : _positions.GetArrayElementAtIndex(_linking).vector2Value;
+                    DrawLink(pos, _mousePos, true);
+                }
                 DrawNodes();
                 GUI.EndScrollView();
                 Repaint();
@@ -200,20 +259,16 @@ namespace Util
                 return -1;
 
             SerializedProperty prop;
-            int index = _links.arraySize++;
+            int index = _links.arraySize;
             _links.InsertArrayElementAtIndex(index);
             prop = _links.GetArrayElementAtIndex(index);
             prop.vector2IntValue = new Vector2Int(start, end);
 
             if (_linkData != null)
             {
-                int size = _linkData.arraySize;
-                _linkData.arraySize = _links.arraySize;
-                for (int i = _linkData.arraySize-1; i >= size; i--)
-                {
-                    _linkData.InsertArrayElementAtIndex(i);
-                    _graphObject.InitLinkData(_linkData.GetArrayElementAtIndex(index));
-                }
+                _linkData.arraySize = _links.arraySize - 1;
+                _linkData.InsertArrayElementAtIndex(index);
+                (_config as IDirectedGraphLinkInitializer)?.InitializeLink(_linkData.GetArrayElementAtIndex(index), index, start, end);
             }
             return index;
         }
@@ -221,9 +276,9 @@ namespace Util
         // Sets the second index of the link to the new end node. Returns null if either argument is out of bounds.
         private SerializedProperty RedirectLink(int index, int endNode)
         {
-            if (index >= 0 && endNode >= 0 && index < _links.arraySize && endNode < _positions.arraySize)
+            if (_links != null && index >= 0 && endNode >= 0 && index < _links.arraySize && endNode < _positions.arraySize)
             {
-                SerializedProperty prop = _links.GetArrayElementAtIndex(_selection);
+                SerializedProperty prop = _links.GetArrayElementAtIndex(index);
                 Vector2Int link = prop.vector2IntValue;
                 link.y = endNode;
                 prop.vector2IntValue = link;
@@ -232,11 +287,10 @@ namespace Util
             return null;
         }
 
-        private static bool DeleteIndex(SerializedProperty graphProperty, string listID, int index)
+        private static bool DeleteIndex(SerializedProperty list, int index)
         {
-            if (graphProperty == null) return false;
-            SerializedProperty list = graphProperty.FindPropertyRelative(listID);
-            if (list == null || list.arraySize <= index) return false;
+            if (list == null || !list.isArray || index < 0 || index >= list.arraySize)
+                return false;
             list.DeleteArrayElementAtIndex(index);
             if (index < list.arraySize && list.GetArrayElementAtIndex(index) == null)
                 list.DeleteArrayElementAtIndex(index);
@@ -245,87 +299,79 @@ namespace Util
 
         private void AdjustScrollRect(Rect rect, float pad=0f)
         {
-            if (rect.xMin - SCROLL_PADDING < _scrollRect.xMin)
-            {
-                _scrollRect.xMin = rect.xMin - SCROLL_PADDING;
-            }
-            else if (rect.xMax + SCROLL_PADDING > _scrollRect.xMax)
-            {
-                _scrollRect.xMax = rect.xMax + SCROLL_PADDING;
-            }
-            if (rect.yMin - SCROLL_PADDING < _scrollRect.yMin)
-            {
-                _scrollRect.yMin = rect.yMin - SCROLL_PADDING;
-            }
-            else if (rect.yMax + SCROLL_PADDING > _scrollRect.yMax)
-            {
-                _scrollRect.yMax = rect.yMax + SCROLL_PADDING;
-            }
+            _scrollRect.xMin = Math.Min(_scrollRect.xMin, rect.xMin - pad);
+            _scrollRect.xMax = Math.Max(_scrollRect.xMax, rect.xMax + pad);
+            _scrollRect.yMin = Math.Min(_scrollRect.yMin, rect.yMin - pad);
+            _scrollRect.yMax = Math.Max(_scrollRect.yMax, rect.yMax + pad);
         }
 
-        private bool DeleteSelected()
+        private void DeleteSelected()
         {
-            return DeleteSelected(_graphObject, _selection, _isNode);
-        }
-
-        public static bool DeleteSelected(IDirectedGraphObjectConfig graphObject, int index, bool isNode)
-        {
-            if (index < 0 || graphObject == null || graphObject.GraphProperty == null) return false;
-            SerializedProperty links = graphObject.GraphProperty.FindPropertyRelative("Links");
-            SerializedProperty graphProperty = graphObject.GraphProperty;
-            if (isNode)
+            foreach (int link in _selectedLinks)
             {
-                SerializedProperty nodes = graphProperty.FindPropertyRelative("Nodes");
-                if (nodes == null || nodes.arraySize <= 1) return false;
-                DeleteIndex(graphProperty, "Positions", index);
-                if (!DeleteIndex(graphProperty, "Nodes", index)) return false;
+                (_config as IDirectedGraphDeleteLinkHandler)?.DeleteLink(_linkData?.GetArrayElementAtIndex(link), link);
+                DeleteIndex(_links, link);
+                DeleteIndex(_linkData, link);
+            }
+            _selectedLinks.Clear();
 
-                Vector2Int ln;
-                for (int i = links.arraySize - 1; i >= 0; i--)
+            foreach (int node in _selectedNodes)
+            {
+                (_config as IDirectedGraphDeleteNodeHandler)?.DeleteNode(_nodes?.GetArrayElementAtIndex(node), node);
+                DeleteIndex(_nodes, node);
+                DeleteIndex(_positions, node);
+                if (_links != null)
                 {
-                    ln = links.GetArrayElementAtIndex(i).vector2IntValue;
-                    if (ln.x == index || ln.y == index)
+                    Vector2Int vec;
+                    for (int i=_links.arraySize-1; i>=0; i--)
                     {
-                        DeleteIndex(graphProperty, "Links", i);
-                        DeleteIndex(graphProperty, "LinkData", i);
-                    }
-                    else
-                    {
-                        if (ln.x > index) ln.x--;
-                        if (ln.y > index) ln.y--;
-                        links.GetArrayElementAtIndex(i).vector2IntValue = ln;
+                        vec = _links.GetArrayElementAtIndex(i).vector2IntValue;
+                        if (vec.x == node || vec.y == node)
+                        {
+                            (_config as IDirectedGraphDeleteLinkHandler)?.DeleteLink(_links.GetArrayElementAtIndex(i), i);
+                            DeleteIndex(_links, i);
+                            DeleteIndex(_linkData, i);
+                            _selectedLinks.Remove(i);
+                        }
+                        else
+                        {
+                            if (vec.x >= node) vec.x--;
+                            if (vec.y >= node) vec.y--;
+                            _links.GetArrayElementAtIndex(i).vector2IntValue = vec;
+                        }
                     }
                 }
             }
-            else
-            {
-                DeleteIndex(graphProperty, "LinkData", index);
-                if (!DeleteIndex(graphProperty, "Links", index)) return false;
-            }
-            graphObject.Select(-1, false);
-            GraphEditorWindow window = GetWindow<GraphEditorWindow>(((ScriptableObject)graphObject).name + " | Graph Editor", false);
-            window._isNode = false;
-            window._selection = -1;
-            graphObject.GraphObject.ApplyModifiedProperties();
-            return true;
+            _selectedNodes.Clear();
         }
 
         private int CreateNewNode(Vector2 position)
         {
+            _nodes = _nodes ?? _graph?.FindPropertyRelative("Nodes");
+            if (_nodes == null) return -1;
             int index = _nodes.arraySize++;
+            (_config as IDirectedGraphNodeInitializer)?.InitializeNode(_nodes.GetArrayElementAtIndex(index), index);
+            if (_positions == null) return index;
             _positions.arraySize = _nodes.arraySize;
-            _nodes.InsertArrayElementAtIndex(index);
-            _graphObject.InitNodeData(_nodes.GetArrayElementAtIndex(index));
-
             _positions.GetArrayElementAtIndex(index).vector2Value = position;
             return index;
         }
 
         private void DrawNodes()
         {
-            for (int i = _positions.arraySize - 1; i >= 0; i--)
+            Rect rect = new Rect(0f, 0f, NODE_WIDTH, NODE_HEIGHT);
+            if (_config is IDirectedGraphNodeRenderer)
             {
-                DrawNode(i, _isNode && _selection == i);
+                for (int i = _positions.arraySize - 1; i >= 0; i--)
+                {
+                    rect.center = _positions.GetArrayElementAtIndex(i).vector2Value;
+                    (_config as IDirectedGraphNodeRenderer).Render(_nodes.GetArrayElementAtIndex(i), i, rect, _selectedNodes.Contains(i));
+                }
+            }
+            else for (int i = _positions.arraySize - 1; i >= 0; i--)
+            {
+                rect.center = _positions.GetArrayElementAtIndex(i).vector2Value;
+                DrawNode(rect, _selectedNodes.Contains(i));
             }
         }
 
@@ -334,21 +380,17 @@ namespace Util
             Vector2[] link;
             for (int i = _links.arraySize - 1; i >= 0; i--)
             {
-                if (!_relinking || _isNode || i != _selection)
+                if (!_relinking || i != _linking)
                 {
                     link = GetLinkEnds(i);
-                    DrawLink(link[0], link[1], !_isNode && _selection == i);
+                    DrawLink(link[0], link[1], _selectedLinks.Contains(i));
                 }
             }
         }
 
-        private bool DrawNode(int index, bool selected)
+        private bool DrawNode(Rect rect, bool selected)
         {
-            GUIContent content = _graphObject.GetGUIContent(index);
-            Rect rect = new Rect(0f, 0f, NODE_WIDTH, NODE_HEIGHT);
-            rect.center = _positions.GetArrayElementAtIndex(index).vector2Value;
-            AdjustScrollRect(rect, SCROLL_PADDING);
-            return GUI.Toggle(rect, selected, content, GUI.skin.button);
+            return GUI.Toggle(rect, selected, new GUIContent(), GUI.skin.button);
         }
 
         private void DrawLink(Vector2 from, Vector2 to, bool selected)
@@ -405,20 +447,19 @@ namespace Util
             return -1;
         }
 
-        // Returns the set of node indices that represents the link.
-        // Will throw an exception if the argument index is out of bounds.
-        private Vector2Int GetLink(int index)
-        {
-            return _links.GetArrayElementAtIndex(index).vector2IntValue;
-        }
-
         // This will throw an error if the index is invalid
         private Vector2[] GetLinkEnds(int index)
         {
-            Vector2Int ln = GetLink(index);
+            Vector2Int ln = _links.GetArrayElementAtIndex(index).vector2IntValue;
             Vector2 from = _positions.GetArrayElementAtIndex(ln.x).vector2Value;
             Vector2 to = _positions.GetArrayElementAtIndex(ln.y).vector2Value;
             return new Vector2[] { from, to };
+        }
+
+        [MenuItem("Window/Utilities/Graph Editor")]
+        private static void GraphEditorWindowMenuItem()
+        {
+            GetWindow<GraphEditorWindow>("Graph Editor", true);
         }
     }
 }

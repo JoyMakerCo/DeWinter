@@ -26,7 +26,7 @@ namespace Ambition
 
 		public void HandleDate(DateTime date)
 	    {
-			_text.text = _calendar.GetDateString();
-	    }
+            _text.text = AmbitionApp.GetModel<LocalizationModel>().Date;
+        }
 	}
 }

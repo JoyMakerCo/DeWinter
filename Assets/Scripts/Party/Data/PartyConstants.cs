@@ -14,5 +14,5 @@ namespace Ambition
     public enum GuestState { PutOff, Bored, Interested, Charmed, Offended };
 
     [Serializable]
-    public enum RSVP { Declined=-1, New, Accepted, Attended, Missed };
+    public enum RSVP { Declined=-1, New, Accepted, Required };
 }

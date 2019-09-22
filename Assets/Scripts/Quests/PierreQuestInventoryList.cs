@@ -4,8 +4,7 @@ using System.Collections;
 using Ambition;
 
 public class PierreQuestInventoryList : MonoBehaviour {
-
-    public int selectedQuest;
+    public PierreQuest quest;
     public GameObject pierreQuestInventoryButtonPrefab;
     private QuestModel _model;
 
@@ -13,28 +12,19 @@ public class PierreQuestInventoryList : MonoBehaviour {
     void Start()
     {
 		_model = AmbitionApp.GetModel<QuestModel>();
-        foreach (PierreQuest p in GameData.pierreQuestInventory)
-        {
-            p.daysLeft--;
-            if (p.daysLeft <= 0)
-            {
-                GameData.pierreQuestInventory.Remove(p);
-            }
-        }
+        _model.Quests.ForEach(q => q.daysLeft--);
+        _model.Quests.RemoveAll(q => q.daysLeft <= 0);
         GenerateInventoryButtons();
-        selectedQuest = -1; // So nothing is selected at the start
-		AmbitionApp.Subscribe<DateTime>(HandleDay);
+		//AmbitionApp.Subscribe<DateTime>(HandleDay);
     }
 
     public void GenerateInventoryButtons()
     {
-        for (int i = 0; i < GameData.pierreQuestInventory.Count; i++)
+        GameObject button;
+        foreach (PierreQuest quest in _model.Quests)
         {
-            GameObject button = GameObject.Instantiate(pierreQuestInventoryButtonPrefab);
-            PierreQuestInventoryButton buttonStats = button.GetComponent<PierreQuestInventoryButton>();
-            buttonStats.questID = i;
-            button.transform.SetParent(this.transform, false);
-            Debug.Log("Pierre Quest Button: " + i + " is made!");
+            button = GameObject.Instantiate(pierreQuestInventoryButtonPrefab, this.transform);
+            button.GetComponent<PierreQuestInventoryButton>().quest = quest;
         }
     }
 
@@ -46,23 +36,23 @@ public class PierreQuestInventoryList : MonoBehaviour {
         }
     }
 
-	private void HandleDay(DateTime day)
-	{
-		if (day >= _model.NextQuestDay)
-        {
-            //Actually Assigning the Quest
-			if (GameData.pierreQuestInventory.Count < 3 && AmbitionApp.GetModel<GameModel>().Level > 0)
-            {
-                //Create the Quest
-                PierreQuest newPierreQuest = new PierreQuest();
-                //Send Modal for accepting or rejecting the new Quest
-                object[] objectStorage = new object[2];
-                objectStorage[0] = newPierreQuest;
-                objectStorage[1] = this;
-// TODO
-                // screenFader.gameObject.SendMessage("CreateNewPierreQuestModal", objectStorage);
-            }
-            _model.NextQuestDay = day.AddDays(Util.RNG.Generate(3, 6));
-        }       
-    }
+//	private void HandleDay(DateTime day)
+//	{
+//		if (day >= _model.NextQuestDay)
+//        {
+//            //Actually Assigning the Quest
+//			if (GameData.pierreQuestInventory.Count < 3 && AmbitionApp.GetModel<GameModel>().Level > 0)
+//            {
+//                //Create the Quest
+//                PierreQuest newPierreQuest = new PierreQuest();
+//                //Send Modal for accepting or rejecting the new Quest
+//                object[] objectStorage = new object[2];
+//                objectStorage[0] = newPierreQuest;
+//                objectStorage[1] = this;
+//// TODO
+    //            // screenFader.gameObject.SendMessage("CreateNewPierreQuestModal", objectStorage);
+    //        }
+    //        _model.NextQuestDay = day.AddDays(Util.RNG.Generate(3, 6));
+    //    }       
+    //}
 }

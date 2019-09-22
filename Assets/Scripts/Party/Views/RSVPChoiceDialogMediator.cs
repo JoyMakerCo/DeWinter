@@ -1,27 +1,23 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine.UI;
 using Dialog;
 using Core;
 
 namespace Ambition
 {
-	public class RSVPChoiceDialogMediator : DialogView, Util.IInitializable<List<PartyVO>>
+	public class RSVPChoiceDialogMediator : DialogView<List<PartyVO>>
 	{
 		public Text BodyText;
 		public Text TitleText;
 	    private List<PartyVO> _parties;
 
 	    // Use this for initialization
-	    public void Initialize (List<PartyVO> parties)
+	    public override void OnOpen (List<PartyVO> parties)
 	    {
-	    	LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
 	    	_parties = parties;
 
-			TitleText.text = localization.GetString(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.TITLE);
-	    	BodyText.text = localization.GetString(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.BODY);
+			TitleText.text = AmbitionApp.GetString(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.TITLE);
+	    	BodyText.text = AmbitionApp.GetString(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.BODY);
 
 	        Text party1ButtonText = this.transform.Find("Party1Button").Find("Text").GetComponent<Text>();
 	        party1ButtonText.text = _parties[0].Name;
@@ -39,17 +35,17 @@ namespace Ambition
 	    			{
                         if (_parties[i].RSVP == RSVP.Accepted)
 	    				{
-							AmbitionApp.OpenDialog<PartyVO>(DialogConsts.RSVP_CHOICE, _parties[i]);
+							AmbitionApp.OpenDialog(DialogConsts.RSVP_CHOICE, _parties[i]);
 		    			}
 		    			else
 		    			{
                             _parties[i].RSVP = RSVP.Declined;
-							AmbitionApp.SendMessage<PartyVO>(_parties[i]);
+							AmbitionApp.SendMessage(_parties[i]);
 		    			}
 		    		}
 	    			else
 	    			{
-						AmbitionApp.SendMessage<PartyVO>(DialogConsts.RSVP, _parties[i]);
+						AmbitionApp.SendMessage(DialogConsts.RSVP, _parties[i]);
 	    			}
 	    		}
 	    	}

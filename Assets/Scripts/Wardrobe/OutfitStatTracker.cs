@@ -15,7 +15,7 @@ namespace Ambition
 		void Awake()
 		{
 			_meter = GetComponent<Slider>();
-			AmbitionApp.Subscribe<OutfitVO>(HandleOutfit);
+			AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
 		}
 
 		void OnEnable()
@@ -23,8 +23,7 @@ namespace Ambition
 			PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
 			if (party != null)
 			{
-				string factionID = party == null ? null : party.Faction;
-				FactionVO faction = AmbitionApp.GetModel<FactionModel>()[factionID];
+				FactionVO faction = AmbitionApp.GetModel<FactionModel>()[party.Faction];
 				int stat = (Stat.ToLower() == ItemConsts.LUXURY ? faction.Luxury : faction.Modesty);
 				Minimum.enabled = (stat < 0);
 				Maximum.enabled = (stat > 0);
@@ -38,20 +37,14 @@ namespace Ambition
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<OutfitVO>(HandleOutfit);
+			AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
 		}
 
-		private void HandleOutfit(OutfitVO outfit)
+		private void HandleOutfit(ItemVO outfit)
 		{
-			if (outfit != null)
-			{
-				ItemVO item = (ItemVO)outfit;
-				object value;
-				_meter.value = item.State.TryGetValue(Stat, out value)
-					? Convert.ToInt32(value)
-					: 0;
-			}
-			else _meter.value = 0;
+            _meter.value = outfit?.Type == ItemType.Outfit
+                ? OutfitWrapperVO.GetIntStat(outfit, Stat)
+                : 0;
 		}
 	}
 }

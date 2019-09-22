@@ -12,7 +12,7 @@ namespace Ambition
 			GameModel model = AmbitionApp.GetModel<GameModel>();
 			foreach (KeyValuePair<string, ServantVO> servant in servants.Servants)
 			{
-				model.Livre -= servant.Value.Wage;
+				model.Livre.Value -= servant.Value.Wage;
 			}
 		}
 	}

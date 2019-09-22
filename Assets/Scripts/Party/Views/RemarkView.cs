@@ -21,7 +21,6 @@ namespace Ambition
         public SpriteConfig RemarksConfig;
         public Transform[] RemarkViews;
 
-        private Animator _animator;
 		private RemarkVO _remark;
         private RemarkVO[] _hand;
         private Image _image;
@@ -32,10 +31,11 @@ namespace Ambition
 		{
             _image = GetComponent<Image>();
             _index = transform.GetSiblingIndex();
-            _animator = GetComponent<Animator>();
+            _savedPosition = RemarkViews[_index].localPosition;
             AmbitionApp.Subscribe<RemarkVO[]>(HandleHand);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
-            _savedPosition = RemarkViews[_index].localPosition;
+            AmbitionApp.Subscribe(PartyMessages.END_CONVERSATION, HandleEndConversation);
+            AmbitionApp.Subscribe(PartyMessages.FLEE_CONVERSATION, HandleEndConversation);
         }
 
         void Start()
@@ -47,13 +47,22 @@ namespace Ambition
 		{
 			AmbitionApp.Unsubscribe<RemarkVO[]>(HandleHand);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
-		}
+            AmbitionApp.Unsubscribe(PartyMessages.END_CONVERSATION, HandleEndConversation);
+            AmbitionApp.Unsubscribe(PartyMessages.FLEE_CONVERSATION, HandleEndConversation);
+        }
 
-		private void HandleHand(RemarkVO[] hand)
+        private void HandleEndConversation()
+        {
+            _remark = null;
+            _hand = null;
+            gameObject.SetActive(false);
+        }
+
+
+
+        private void HandleHand(RemarkVO[] hand)
 		{
-            int altIndex = ((_remark == null || _hand == null) ? -1 : Array.IndexOf(_hand, _remark));
-            if (_hand == null) _hand = new RemarkVO[hand.Length];
-            hand.CopyTo(_hand, 0);
+            _hand = (RemarkVO[])(hand.Clone());
             _remark = _index < hand.Length ? hand[_index] : null;
             StopAllCoroutines();
             transform.localPosition = _savedPosition;
@@ -61,16 +70,7 @@ namespace Ambition
             {
                 _image.sprite = RemarksConfig.GetSprite(_remark.Interest);
                 Arrow.sprite = RemarksConfig.GetSprite(_remark.Interest + "_" + _remark.NumTargets.ToString());
-                //if (altIndex < 0)
-                //{
-                //    _animator.SetTrigger(DRAW);
-                //}
-                //else if (altIndex != _index)
-                if (altIndex >= 0 && altIndex != _index)
-                {
-                    StartCoroutine(Slide(RemarkViews[altIndex].localPosition));
-                    //_animator.SetTrigger(FILL_IN);
-                }
+                _image.color = Arrow.color = Color.white;
             }
             gameObject.SetActive(_remark != null);
         }
@@ -80,10 +80,8 @@ namespace Ambition
             if (_remark != null)
             {
                 bool isRemark = remark == _remark;
-                //_animator.SetBool(SELECTED, isRemark);
-
-                Arrow.color = Color.white;
                 _image.sprite = RemarksConfig.GetSprite(isRemark ? (_remark.Interest + "_Select") : _remark.Interest);
+                _image.color = Arrow.color = (isRemark || remark == null) ? Color.white : Color.gray;
             }
         }
 
@@ -102,18 +100,6 @@ namespace Ambition
         {
             Arrow.color = Color.white;
             _image.sprite = RemarksConfig.GetSprite(_remark.Interest);
-        }
-
-        IEnumerator Slide(Vector3 pos)
-        {
-            float T1 = 1f / SLIDE_TIME;
-            transform.localPosition = pos;
-            for (float t = 0f; t < SLIDE_TIME; t+=Time.deltaTime)
-            {
-                transform.localPosition = (pos * (SLIDE_TIME - t) + _savedPosition*t)*T1;
-                yield return null;
-            }
-            transform.localPosition = _savedPosition;
         }
 	}
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using Core;
 using UFlow;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Ambition
 {
@@ -20,21 +21,20 @@ namespace Ambition
 		private Dictionary<int[], RoomVO[]> _walls = new Dictionary<int[], RoomVO[]>();
 		private MapModel _model;
 
-        public override void OnEnterState()
+        public override void OnEnterState(string[] args)
         {
-			MapVO map;
+/*			MapVO map;
 			RoomVO room;
             PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
             _model = AmbitionApp.GetModel<MapModel>();
 
-			// Determine if the party uses a preset, or build a map from scratch
-			if (party.MapID == null || !_model.Maps.TryGetValue(party.MapID, out map))
-			{
-				map = BuildRandomMap(party);
-			}
+            // Determine if the party uses a preset, or build a map from scratch
+            party.Background = party.Background ?? BuildRandomMap(party);
+            if (!_model.Maps.TryGetValue(party.MapID, out map))
+                map = DeprecatedBuildRandomMap(party);
 
-			// Fill in the blanks
-			for(int i=map.Rooms.Length-1; i>0; i--)
+            // Fill in the blanks
+            for (int i=map.Rooms.Length-1; i>0; i--)
 			{
 				room = map.Rooms[i];
 				if (room != null)
@@ -55,9 +55,16 @@ namespace Ambition
             map.Entrance.Cleared = true;
             _model.Map = map;
             AmbitionApp.SendMessage(MapMessage.GO_TO_ROOM, map.Entrance);
-		}
+*/		}
 
-		private MapVO BuildRandomMap(PartyVO party)
+        private Image BuildRandomMap(PartyVO party)
+        {
+            // TODO
+            return null;
+        }
+
+
+        private MapVO DeprecatedBuildRandomMap(PartyVO party)
 		{
 			MapVO map = new MapVO();
 			FactionVO faction = AmbitionApp.GetModel<FactionModel>().Factions[party.Faction];
@@ -65,8 +72,8 @@ namespace Ambition
 			// Room size is proportional to how "baroque" the structure is.
 			// Curvilinear features are a function of "modernness," which will be determined by the host.
 			// Overall size of the house will be proportional to the "Importance" of the party.
-			int hyphen = (int)party.Importance + Util.RNG.Generate(3); // the width of the hyphen in rooms
-			int pavilion = (int)party.Importance + Util.RNG.Generate(3); // length of the pavilion in rooms
+			int hyphen = (int)party.Size + Util.RNG.Generate(3); // the width of the hyphen in rooms
+			int pavilion = (int)party.Size + Util.RNG.Generate(3); // length of the pavilion in rooms
 			int jut=Util.RNG.Generate(0,2);
 			int spacing = (int)(Util.RNG.Generate(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
 			float curve1 = .1f*Util.RNG.Generate(6,11);
@@ -82,8 +89,8 @@ namespace Ambition
 			// Make the vestibule
 			room=MakeRectRoom((int)(delta), 0, salonX - (int)(delta + delta), salonY);
 			room.Cleared = true;
-			room.Features = new string[0];
-			room.Difficulty = 0;
+			//room.Features = new string[0];
+			//room.Difficulty = 0;
 			room.Name = "Vestibule";
 
 			// Make the Salon
@@ -122,9 +129,9 @@ namespace Ambition
 
 			foreach (KeyValuePair<RoomVO, List<RoomVO>> kvp in _rooms)
 			{
-				kvp.Key.Doors = kvp.Value.Where(r=>r!=kvp.Key).ToArray();
+				//kvp.Key.Doors = kvp.Value.Where(r=>r!=kvp.Key).ToArray();
 			}
-			map.Rooms = _rooms.Keys.ToArray();
+			//map.Rooms = _rooms.Keys.ToArray();
 			return map;
 		}
 
@@ -141,7 +148,7 @@ namespace Ambition
 			int[] wallCoords;
 			int[] wall;
 			_rooms[room] = new List<RoomVO>();
-			room.Vertices = coords;
+			//room.Vertices = coords;
 			for (int i=0; i<len; i+=2)
 			{
 				wallCoords = new int[4];
@@ -186,39 +193,17 @@ namespace Ambition
 	    	List<string> result = new List<string>();
 
 			//TODO: make features abstract and configurable
-	    	if (Util.RNG.Generate(0,100) < _model.PunchbowlChance)
-	    		result.Add(PartyConstants.PUNCHBOWL);
+	    	//if (Util.RNG.Generate(0,100) < _model.PunchbowlChance)
+	    		//result.Add(PartyConstants.PUNCHBOWL);
 
 	    	return result.ToArray();
 	    }
 
 		private int GenerateMoveThroughChance(RoomVO room)
 		{
-			if (room.MoveThroughChance >= 0 && !room.Cleared) return room.MoveThroughChance;
-			return 90 - (room.Cleared ? 0 : room.Difficulty * 10);
+            return 100;
+			//if (room.MoveThroughChance >= 0 && !room.Cleared) return room.MoveThroughChance;
+			//return 90 - (room.Cleared ? 0 : room.Difficulty * 10);
 		}
-
-	    private EnemyVO[] PopulateEnemies(MapVO map, List<EnemyVO> enemies)
-	    {
-	    	// TODO: Isolate enemies appropriate to the current party
-			List<EnemyVO> result=new List<EnemyVO>();
-			if (result == null) return new EnemyVO[]{}; // No Enemies
-
-			int numRooms = map.Rooms.Length-1;
-			RoomVO room;
-	    	int i;
-
-			foreach (EnemyVO enemy in enemies)
-			{
-				i = Util.RNG.Generate(1,numRooms);
-				room = map.Rooms[i];
-				if (!room.HostHere && Util.RNG.Generate(0,100) < ENEMY_CHANCE)
-				{
-					if (room.Enemies == null) room.Enemies = new List<EnemyVO>();
-					room.Enemies.Add(enemy);
-				}
-			}
-			return result.ToArray();
-	    }
 	}
 }

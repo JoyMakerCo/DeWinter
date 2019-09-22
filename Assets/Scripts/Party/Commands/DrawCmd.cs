@@ -7,8 +7,9 @@ namespace Ambition
     {
         public void Execute(int numcards)
         {
-            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-            RemarkVO[] hand = model.Remarks;
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            ConversationModel conversation = AmbitionApp.GetModel<ConversationModel>();
+            RemarkVO[] hand = conversation.Remarks;
             int num = Array.FindAll(hand, r => r == null).Length;
             if (num < numcards) numcards = num;
             if (model.Deck.Count < numcards) numcards = model.Deck.Count;
@@ -19,8 +20,8 @@ namespace Ambition
                 AmbitionApp.SendMessage(PartyMessages.DRAW_REMARK, hand[num]);
             }
             AmbitionApp.SendMessage(PartyMessages.DECK_SIZE, model.Deck.Count);
-            model.Remarks = hand;
-            model.Remark = null;
+            conversation.Remarks = hand;
+            conversation.Remark = null;
         }
     }
 }

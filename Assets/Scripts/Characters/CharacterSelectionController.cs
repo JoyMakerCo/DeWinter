@@ -63,10 +63,7 @@ namespace Ambition
             Doll.sprite = config.Doll;
         }
 
-        public void PickCharacter()
-        {
-            AmbitionApp.Execute<InitGameCmd, PlayerConfig>(_selected);
-        }
+        public void PickCharacter() => AmbitionApp.Execute<StartGameCmd<PlayerConfig>, PlayerConfig>(_selected);
 
         public Dictionary<string, string> StockCharacterList()
         {

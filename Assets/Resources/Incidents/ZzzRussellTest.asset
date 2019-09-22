@@ -1,0 +1,324 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: ZzzRussellTest
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 357, y: 43}
+  - {x: 218, y: 205}
+  - {x: 437, y: 206}
+  - {x: 72, y: 117}
+  - {x: 583, y: 105}
+  - {x: 557, y: 308}
+  - {x: 335, y: 294}
+  - {x: 110, y: 308}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 2, y: 4}
+    - {x: 4, y: 1}
+    - {x: 3, y: 5}
+    - {x: 5, y: 1}
+    - {x: 3, y: 6}
+    - {x: 3, y: 7}
+    - {x: 3, y: 8}
+    Nodes:
+    - Text: SUDDENLY, CHURCH!
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: But wait
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Church allegiance is suck!
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Church allegiance is high
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Church allegiance increased!
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Oh no you were too needy for the church
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Yay it worked
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Yay it worked
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Yay It Worked
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: 1
+      Requirements: []
+      Flags: []
+    - Text: Church, why won't you love me?
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: Chuch, love me!
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: Let's fix that
+      xor: 0
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: 20
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: Let's screw that up
+      xor: 0
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: -20
+      - Type: 0
+        ID: 
+        Value: 10
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: (church power greater than neutral)
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 14
+        ID: Church,Neutral
+        Value: 0
+        Operator: 2
+      Flags: []
+    - Text: (church power less than crown)
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 14
+        ID: Church,Crown
+        Value: 10
+        Operator: 1
+      Flags: []
+    - Text: (church power same as military)
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 14
+        ID: Church,Military
+        Value: 10
+        Operator: 0
+      Flags: []
+    AssetPath: 
+    OneShot: 1
+    Chapters: 
+    Tags: []
+    Factions: 
+    LocalizationKey: 
+    Requirements: []
+  _factions: 010000000100
+  _chapters: 00000000
+  _date: 564305184000000000
+  _localizationKey: -39786.ZzzRussellTest.

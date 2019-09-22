@@ -12,17 +12,13 @@ namespace Ambition
 			{
 				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
 				GameModel game = AmbitionApp.GetModel<GameModel>();
-				List<ItemVO> servants = inventory.Inventory.FindAll(i=>i.Type == ItemConsts.SERVANT && i.Equipped);
+                inventory.Inventory.TryGetValue(ItemType.Servant, out List<ItemVO> servants);
 				float cost = 0;
-
-				foreach (ItemVO item in servants)
-	            {
-	            	cost += item.Price;
-	            }
+                servants?.ForEach(s => cost += s.Price);
 
 	            if (cost > 0)
 	            {
-					game.Livre-=(int)cost;
+					game.Livre.Value-=(int)cost;
 					Dictionary<string, string> substitutions = new Dictionary<string, string>(){
 						{"$NUMSERVANTS",servants.Count.ToString()},
 						{"$TOTALWAGES", cost.ToString()},

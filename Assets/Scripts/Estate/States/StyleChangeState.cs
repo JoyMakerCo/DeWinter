@@ -6,32 +6,28 @@ namespace Ambition
 {
 	public class StyleChangeState : UState
 	{
-		public override void OnEnterState ()
-		{
+        public override void OnEnterState(string[] args)
+        {
 			CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+			InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+			string nextStyle = inventory.NextStyle;
 
-			if (calendar.Today >= calendar.NextStyleSwitchDay)
-	        {
-				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-				string nextStyle = inventory.NextStyle;
-
-				if (nextStyle == null)
-				{
-					nextStyle = inventory.Styles[Util.RNG.Generate(1,inventory.Styles.Length)];
-					if (nextStyle == inventory.CurrentStyle) nextStyle = inventory.Styles[0];
-				}
-
-				Dictionary<string, string> subs = new Dictionary<string, string>(){
-					{"$OLDSTYLE",inventory.CurrentStyle},
-					{"$NEWSTYLE",nextStyle}};
-				AmbitionApp.OpenMessageDialog("style_change_dialog", subs);
-
-	            //Actually switching styles
-				inventory.CurrentStyle = nextStyle;
+			if (nextStyle == null)
+			{
 				nextStyle = inventory.Styles[Util.RNG.Generate(1,inventory.Styles.Length)];
-				inventory.NextStyle = (nextStyle == inventory.NextStyle ? inventory.Styles[0] : nextStyle);
-				calendar.NextStyleSwitchDay = calendar.Today.AddDays(Util.RNG.Generate(6, 9));
-	        }			
+				if (nextStyle == inventory.Style) nextStyle = inventory.Styles[0];
+			}
+
+			Dictionary<string, string> subs = new Dictionary<string, string>(){
+				{"$OLDSTYLE",inventory.Style},
+				{"$NEWSTYLE",nextStyle}};
+			AmbitionApp.OpenMessageDialog("style_change_dialog", subs);
+
+            //Actually switching styles
+			inventory.Style.Value = nextStyle;
+			nextStyle = inventory.Styles[Util.RNG.Generate(1,inventory.Styles.Length)];
+			inventory.NextStyle = (nextStyle == inventory.NextStyle ? inventory.Styles[0] : nextStyle);
+			calendar.NextStyleSwitchDay = calendar.Today.AddDays(Util.RNG.Generate(6, 9));
 		}
 	}
 }

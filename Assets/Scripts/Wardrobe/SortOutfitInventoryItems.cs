@@ -61,13 +61,8 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "novelty") && !ascendingOrder;
 		SelectedButton("novelty");
 		sortedBy = "novelty";
-		_list = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
-		_list.Sort(sortByNoveltyComparer);
-	}
-
-	private int sortByNoveltyComparer(ItemVO a, ItemVO b)
-	{
-		return ((OutfitVO)a).Novelty.CompareTo(((OutfitVO)b).Novelty);
+		if((inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).TryGetValue(ItemType.Outfit, out _list))
+    		_list.Sort(sortByNoveltyComparer);
 	}
 
 	public void SortByLuxury()
@@ -75,27 +70,29 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "luxury") && !ascendingOrder;
 		SelectedButton("luxury");
 		sortedBy = "luxury";
-		_list = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
-		_list.Sort(sortByLuxuryComparer);
+		if ((inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).TryGetValue(ItemType.Outfit, out _list))
+    		_list.Sort(sortByLuxuryComparer);
 	}
 
-	private int sortByLuxuryComparer(ItemVO a, ItemVO b)
-	{
-		return ((OutfitVO)a).Luxury.CompareTo(((OutfitVO)b).Luxury);
-	}
+    private int sortByNoveltyComparer(ItemVO a, ItemVO b) => Compare(a, b, ItemConsts.NOVELTY);
+    private int sortByLuxuryComparer(ItemVO a, ItemVO b) => Compare(a, b, ItemConsts.LUXURY);
+    private int sortByModestyComparer(ItemVO a, ItemVO b) => Compare(a, b, ItemConsts.MODESTY);
+    int Compare(ItemVO a, ItemVO b, string state)
+    {
+        string str = null;
+        int ia = (a.State?.TryGetValue(state, out str) ?? false) ? int.Parse(str) : 0;
+        int ib = (b.State?.TryGetValue(state, out str) ?? false) ? int.Parse(str) : 0;
+        return ia == ib ? 0 : (ascendingOrder && ia > ib) ? 1 : -1;
+    }
+
 
     public void SortByModesty()
     {
 		ascendingOrder = (sortedBy == "modesty") && !ascendingOrder;
 		SelectedButton("modesty");
 		sortedBy = "modesty";
-		_list = (inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).FindAll(i=>i.Type == ItemConsts.OUTFIT);
-		_list.Sort(sortByModestyComparer);
-	}
-
-	private int sortByModestyComparer(ItemVO a, ItemVO b)
-	{
-		return ((OutfitVO)a).Modesty.CompareTo(((OutfitVO)b).Modesty);
+		if((inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).TryGetValue(ItemType.Outfit, out _list))
+    		_list.Sort(sortByModestyComparer);
 	}
 
     void SelectedButton(string button)

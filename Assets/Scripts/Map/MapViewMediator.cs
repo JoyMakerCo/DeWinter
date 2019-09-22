@@ -12,61 +12,59 @@ namespace Ambition
         private const float RECENTER_TIME = .5f;
         public GameObject roomButtonPrefab;
 
-	    private Dictionary<RoomVO, RoomButton> _buttons;
+	    private Dictionary<RoomVO, RoomButtonDeprecated> _buttons;
 
 	    private MapModel _model;
         private Vector4 _bounds;
         private Vector3 _offset;
 
-		public MapVO Map
-		{
-			get { return _model.Map; }
-		}
+		public MapVO Map => _model.Map;
 
 		void Awake()
 		{
 			_model = AmbitionApp.GetModel<MapModel>();
-			_buttons = new Dictionary<RoomVO, RoomButton>();
-            AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, ShowMap);
-            AmbitionApp.Subscribe(PartyMessages.SHOW_ROOM, Lock);
-            AmbitionApp.Subscribe<string>(GameMessages.DIALOG_CLOSED, Unlock);
+			_buttons = new Dictionary<RoomVO, RoomButtonDeprecated>();
+            //AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, Recenter);
+            AmbitionApp.Subscribe(GameMessages.FADE_IN_COMPLETE, Unlock);
 		}
 
  		void OnDestroy()
 		{
-            AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, ShowMap);
-            AmbitionApp.Unsubscribe(PartyMessages.SHOW_ROOM, Lock);
-            AmbitionApp.Unsubscribe<string>(GameMessages.DIALOG_CLOSED, Unlock);
-			_buttons.Clear();
+            //AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, Recenter);
+            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT, Lock);
+            AmbitionApp.Unsubscribe(GameMessages.FADE_IN_COMPLETE, Unlock);
+            _buttons.Clear();
 			_buttons = null;
 		}
 
         void Start()
         {
             _bounds = Vector4.zero;
-            foreach (RoomVO room in Map.Rooms)
+/*            foreach (RoomVO room in Map.Rooms)
             {
                 if (room.Bounds[0] < _bounds[0]) _bounds[0] = room.Bounds[0];
                 if (room.Bounds[1] < _bounds[1]) _bounds[1] = room.Bounds[1];
                 if (room.Bounds[2] > _bounds[2]) _bounds[2] = room.Bounds[2];
                 if (room.Bounds[3] > _bounds[3]) _bounds[3] = room.Bounds[3];
             }
-
+*/
             //Make the Room Buttons ----------------------
-            Array.ForEach(Map.Rooms, DrawRoom);
-	    }
+            //Array.ForEach(Map.Rooms, DrawRoom);
+            AmbitionApp.Subscribe(GameMessages.FADE_OUT, Lock);
+            Lock();
+        }
 
         private void Lock()
         {
             enabled = false;
         }
 		
-        private void Unlock(string DialogID)
+        private void Unlock()
         {
-            enabled = DialogID == "END_CONVERSATION" || DialogID == "DEFEAT";
+            enabled = gameObject.activeInHierarchy;
         }
 
-        void Update()
+/*DEPRECATED        void Update()
         {
             if (Input.GetKey(KeyCode.Space))
             {
@@ -102,11 +100,6 @@ namespace Ambition
             }
         }
 
-        private void ShowMap()
-        {
-            Recenter();
-        }
-
         private void Recenter()
 	    {
             if (Map != null)
@@ -121,20 +114,21 @@ namespace Ambition
                 transform.localPosition = _offset* _model.MapScale;
                 //StartCoroutine(RecenterMap(_model.Room ?? Map.Entrance));
             }
-        }
+         }
 
+        */
 	    private void DrawRoom(RoomVO room)
 		{
 			if (room != null)
 			{
 				GameObject mapButton = Instantiate(roomButtonPrefab, gameObject.transform);
-				RoomButton roomButton = mapButton.GetComponent<RoomButton>();
+                RoomButtonDeprecated roomButton = mapButton.GetComponent<RoomButtonDeprecated>();
                 mapButton.transform.SetAsFirstSibling();
 				roomButton.Room = room;
 				_buttons.Add(room, roomButton);
 			}
 	    }
-
+/*
         IEnumerator RecenterMap(RoomVO room)
         {
             int[] bounds = room.Bounds;
@@ -151,5 +145,6 @@ namespace Ambition
             }
             transform.localPosition = _offset* _model.MapScale;
         }
+*/
     }
 }

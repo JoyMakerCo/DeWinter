@@ -9,14 +9,8 @@ namespace Ambition
         {
             if (Rewards != null)
             {
-                //Array.ForEach(Rewards, AmbitionApp.Reward);
-                foreach (CommodityVO c in Rewards)
-                {
-                    AmbitionApp.Reward(c);
-                }
-            } 
-
-
+                Array.ForEach(Rewards, AmbitionApp.Reward);
+            }
         }
     }
 }

@@ -28,16 +28,16 @@ namespace Ambition
             AmbitionApp.Subscribe(PartyMessages.SHOW_ROOM, ConversationMusicStart);
             AmbitionApp.Subscribe(PartyMessages.END_CONVERSATION, ConversationVictorySound);
             AmbitionApp.Subscribe(PartyMessages.FLEE_CONVERSATION, ConversationDefeatSound);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_POSITIVE, GuestPositiveReaction);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_NEUTRAL, GuestNeutralReaction);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_NEGATIVE, GuestNegativeReaction);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_REACTION_POSITIVE, GuestPositiveReaction);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_REACTION_NEUTRAL, GuestNeutralReaction);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_REACTION_NEGATIVE, GuestNegativeReaction);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
             AmbitionApp.Subscribe(PartyMessages.END_PARTY, LeaveParty);
             AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, HandleShowMap);
             AmbitionApp.Subscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoomSFX);
-            _partyMusic = MusicCollection.GetFMODEvent(partyModel.Party.Faction);
+            _partyMusic = MusicCollection.GetFMODEvent(partyModel.Party.Faction.ToString());
         }
 
         void OnDestroy()
@@ -45,12 +45,12 @@ namespace Ambition
             AmbitionApp.Unsubscribe(PartyMessages.SHOW_ROOM, ConversationMusicStart);
             AmbitionApp.Unsubscribe(PartyMessages.END_CONVERSATION, ConversationVictorySound);
             AmbitionApp.Unsubscribe(PartyMessages.FLEE_CONVERSATION, ConversationDefeatSound);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_POSITIVE, GuestPositiveReaction);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_NEUTRAL, GuestNeutralReaction);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_NEGATIVE, GuestNegativeReaction);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_REACTION_POSITIVE, GuestPositiveReaction);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_REACTION_NEUTRAL, GuestNeutralReaction);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_REACTION_NEGATIVE, GuestNegativeReaction);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
             AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, HandleShowMap);
             AmbitionApp.Unsubscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoomSFX);
         }
@@ -58,7 +58,7 @@ namespace Ambition
         //This is for room SFX, necessary if we have indoor and outdoor rooms that the player is traversing on the map
         private void HandleRoomSFX(RoomVO room)
         {
-            AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENTSFX, AmbientSFXCollection.GetFMODEvent(room.Indoors, (int)partyModel.Party.Importance));
+            AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENT, AmbientSFXCollection.GetFMODEvent(/*room.Indoors*/ true, (int)partyModel.Party.Size));
         }
 
         private void HandleShowMap()
@@ -116,40 +116,40 @@ namespace Ambition
             AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, _partyMusic);
         }
 
-        public void GuestPositiveReaction(GuestVO guest)
+        public void GuestPositiveReaction(CharacterVO guest)
         {
             FMODEvent selectedBark = GuestBarkCollection.GetFMODEvent(guest.Gender, "positive"); 
-            AmbitionApp.SendMessage(AudioMessages.PLAY_ONESHOTSFX, selectedBark);
+            AmbitionApp.SendMessage(AudioMessages.PLAY, selectedBark);
         }
 
-        public void GuestNeutralReaction(GuestVO guest)
+        public void GuestNeutralReaction(CharacterVO guest)
         {
             FMODEvent selectedBark = GuestBarkCollection.GetFMODEvent(guest.Gender, "neutral");
-            AmbitionApp.SendMessage(AudioMessages.PLAY_ONESHOTSFX, selectedBark);
+            AmbitionApp.SendMessage(AudioMessages.PLAY, selectedBark);
         }
 
-        public void GuestNegativeReaction(GuestVO guest)
+        public void GuestNegativeReaction(CharacterVO guest)
         {
             FMODEvent selectedBark = GuestBarkCollection.GetFMODEvent(guest.Gender, "negative");
-            AmbitionApp.SendMessage(AudioMessages.PLAY_ONESHOTSFX, selectedBark);
+            AmbitionApp.SendMessage(AudioMessages.PLAY, selectedBark);
         }
 
-        public void GuestCharmedReaction(GuestVO guest)
+        public void GuestCharmedReaction(CharacterVO guest)
         {
             FMODEvent selectedBark = GuestBarkCollection.GetFMODEvent(guest.Gender, "charmed");
-            AmbitionApp.SendMessage(AudioMessages.PLAY_ONESHOTSFX, selectedBark);
+            AmbitionApp.SendMessage(AudioMessages.PLAY, selectedBark);
         }
 
-        public void GuestPutOffReaction(GuestVO guest)
+        public void GuestPutOffReaction(CharacterVO guest)
         {
             FMODEvent selectedBark = GuestBarkCollection.GetFMODEvent(guest.Gender, "negative"); //Still waiting on a Put Off Sound Effect
-            AmbitionApp.SendMessage(AudioMessages.PLAY_ONESHOTSFX, selectedBark);
+            AmbitionApp.SendMessage(AudioMessages.PLAY, selectedBark);
         }
 
-        public void GuestBoredReaction(GuestVO guest)
+        public void GuestBoredReaction(CharacterVO guest)
         {
             FMODEvent selectedBark = GuestBarkCollection.GetFMODEvent(guest.Gender, "bored");
-            AmbitionApp.SendMessage(AudioMessages.PLAY_ONESHOTSFX, selectedBark);
+            AmbitionApp.SendMessage(AudioMessages.PLAY, selectedBark);
         }
 
         public void LeaveParty()

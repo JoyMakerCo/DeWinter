@@ -6,74 +6,57 @@ using System.Linq;
 
 namespace Ambition
 {
-    public class ParisView : MonoBehaviour, IPointerClickHandler
+    public class ParisView : MonoBehaviour
     {
-        public int ExploreRange = 20;
-        public GameObject ExplorePin;
         public Transform Pins;
 
         void Awake()
         {
-            AmbitionApp.Subscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            ParisModel paris = AmbitionApp.GetModel<ParisModel>();
+
+            // If the model hasn't been populated yet, do that now
+            if (paris.Locations?.Count == 0)
+                InitModel(paris);
+
+            AmbitionApp.Subscribe<Pin>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleLocation);
+            AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHideLocation);
+            AmbitionApp.SendMessage<string>(GameMessages.SET_TITLE, AmbitionApp.GetString("paris"));
         }
 
         void OnDestroy()
         {
-            AmbitionApp.Unsubscribe<LocationPin>(ParisMessages.SELECT_LOCATION, HandleSelect);
-        }
-
-        void Start()
-        {
-            ParisModel model = AmbitionApp.GetModel<ParisModel>();
-            LocationPin pin;
-            bool active;
-            foreach (Transform child in Pins)
-            {
-                active = model.Locations.Contains(child.name);
-                child.gameObject.SetActive(active);
-                if (!active && !model.Visited.Contains(child.name))
-                {
-                    pin = child.GetComponent<LocationPin>();
-                    if (!pin.Discoverable && AmbitionApp.CheckRequirements(pin.Requirements))
-                    {
-                        AmbitionApp.SendMessage(ParisMessages.ADD_LOCATION, pin.name);
-                    }
-                }
-            }
-        }
-
-        public void OnPointerClick(PointerEventData data)
-        {
-            if (data.pointerPressRaycast.gameObject == gameObject)
-            {
-                Vector2 pos;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), data.position, data.pressEventCamera, out pos);
-                ExplorePin.SetActive(true);
-                ExplorePin.transform.localPosition = new Vector3(pos.x, pos.y, 0);
-                AmbitionApp.SendMessage(ParisMessages.SELECT_LOCATION, "");
-            }
+            AmbitionApp.Unsubscribe<Pin>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleLocation);
+            AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHideLocation);
         }
 
         //To Do: Add in the fader (Still needs to be made)
-        private void HandleSelect(LocationPin location)
-        {
-            ExplorePin.SetActive(false);
-            AmbitionApp.OpenDialog("PARIS_LOCATION", location);
-        }
+        private void HandleSelect(Pin location) => AmbitionApp.OpenDialog("PARIS_LOCATION", location);
+        private void HandleLocation(string location) => Pins?.Find(location)?.gameObject?.SetActive(true);
+        private void HandleHideLocation(string location) => Pins?.Find(location)?.gameObject?.SetActive(false);
 
-        public void Explore()
+
+        // Called the first time this view is opened
+        // Populates the Paris model with all Explorable and Requirements-triggered locations
+        private void InitModel(ParisModel paris)
         {
-            float range = ExploreRange * ExploreRange;
-            Vector3 pos = ExplorePin.transform.localPosition;
-            LocationPin[] pins = GetComponentsInChildren<LocationPin>(true);
-            Dictionary<LocationPin, float> mags =
-                pins.Where(p=>!p.isActiveAndEnabled && p.Discoverable)
-                    .ToDictionary(p => p, p => (p.transform.localPosition - pos).sqrMagnitude);
-            string[] result =
-                mags.Where(p => p.Value <= range)
-                    .OrderBy(p=>p.Value)
-                    .Select(p => p.Key.name).ToArray();
-            AmbitionApp.SendMessage(ParisMessages.EXPLORE, result);
+            Pin pin;
+            foreach (Transform child in Pins)
+            {
+                pin = child.GetComponent<Pin>();
+                if (pin != null)
+                {
+                    if (pin.Discoverable)
+                    {
+                        paris.Explorable[pin.name] = pin.Requirements;
+                    }
+                    else if (pin.Requirements?.Length > 0)
+                    {
+                        paris.Locations[pin.name] = pin.Requirements;
+                    }
+                }
+            }
         }
     }
 }

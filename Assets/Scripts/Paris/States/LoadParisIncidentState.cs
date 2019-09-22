@@ -1,15 +1,13 @@
-﻿using System;
-using UFlow;
-
-namespace Ambition
+﻿namespace Ambition
 {
-    public class LoadParisIncidentState : UState
+    public class LoadParisIncidentState : UFlow.UState
     {
-        public override void OnEnterState()
+        public override void OnEnterState(string[] args)
         {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             ParisModel paris = AmbitionApp.GetModel<ParisModel>();
-            calendar.Incident = paris.Location.IntroIncidentConfig.Incident;
+            if (paris.Location?.IntroIncidentConfig != null)
+                calendar.Schedule(paris.Location.IntroIncidentConfig.GetIncident(), calendar.Today);
         }
     }
 }

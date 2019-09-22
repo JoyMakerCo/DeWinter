@@ -8,7 +8,7 @@ namespace Ambition
 	{
 		public void Execute (RoomVO room)
 		{
-			if (!room.Cleared && (room.MoveThroughChance > 0) && !room.HostHere)
+			//if (!room.Cleared && (room.MoveThroughChance > 0) && !room.HostHere)
 			{
 				AmbitionApp.OpenDialog<RoomVO>(DialogConsts.CHOOSE_ROOM, room);
 			}

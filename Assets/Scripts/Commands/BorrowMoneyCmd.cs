@@ -8,7 +8,7 @@ namespace Ambition
 		public void Execute ()
 		{
 			GameModel model = AmbitionApp.GetModel<GameModel>();
-			model.Livre += 200;
+			model.Livre.Value += 200;
 			model.Reputation -= 20;
 		}
 	}

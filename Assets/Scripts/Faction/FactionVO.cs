@@ -7,10 +7,20 @@ namespace Ambition
 {
 	public class FactionVO
 	{
-		[JsonProperty("Name")]
-	    public string Name;
+        public FactionType Type;
 
-		[JsonProperty("Modesty")]
+		[JsonProperty("Name")]
+	    public string Name
+        {
+            internal set
+            {
+                if (!System.Enum.TryParse<FactionType>(value, out Type))
+                    Type = FactionType.Neutral; // Not that this makes any sense
+            }
+            get => Type.ToString();
+        }
+
+        [JsonProperty("Modesty")]
 		public int Modesty; //How modest do they like their outfits?
 
 		[JsonProperty("Luxury")]

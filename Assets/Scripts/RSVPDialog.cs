@@ -9,7 +9,7 @@ using Core;
 
 namespace Ambition
 {
-    public class RSVPDialog : DialogView, Util.IInitializable<PartyVO>
+    public class RSVPDialog : DialogView<PartyVO>
     {
         public const string DIALOG_ID = "RSVP";
         public SpriteConfig InvitationConfig;
@@ -23,15 +23,15 @@ namespace Ambition
 
         private PartyVO _party;
 
-        public void Initialize(PartyVO party)
+        public override void OnOpen(PartyVO party)
         {
             ServantModel smod = AmbitionApp.GetModel<ServantModel>();
             Dictionary<string, string> dialogsubs = new Dictionary<string, string>(){
-                {"$PARTYSIZE", AmbitionApp.GetString("party_importance." + ((int)party.Importance).ToString())}};
+                {"$PARTYSIZE", AmbitionApp.GetString("party_importance." + ((int)party.Size).ToString())}};
 
             _party = party;
             TitleTxt.text = party.Host;
-
+/*
             if (smod.Servants.ContainsKey(ServantConsts.SPYMASTER))
             {
                 if (_party.Enemies != null && _party.Enemies.Length > 0)
@@ -54,18 +54,15 @@ namespace Ambition
             {
                 dialogsubs.Add("$PROMPT", AmbitionApp.GetString("party_prompt"));
             }
-
+*/
             ObjectiveText.text = AmbitionApp.GetString("party_objectives");
             HostText.text = AmbitionApp.GetString("rsvp");
             Seal.sprite = InvitationConfig.GetSprite("seal." + party.Faction);
-            Stamp.sprite = InvitationConfig.GetSprite(party.Faction.ToLower());
-            BodyTxt.text = party.Invitiation;
+            Stamp.sprite = InvitationConfig.GetSprite(party.Faction.ToString());
+            BodyTxt.text = party.Invitation;
         }
 
-        public void RSVPAction(int decision)
-        {
-            _party.RSVP = (RSVP)decision;
-            AmbitionApp.SendMessage(_party);
-        }
+        public void RSVPAccept() => AmbitionApp.SendMessage(PartyMessages.ACCEPT_INVITATION, _party);
+        public void RSVPDecline() => AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, _party);
     }
 }

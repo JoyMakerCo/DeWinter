@@ -18,7 +18,7 @@ namespace Ambition
         {
 
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleGuestTargeted);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_TARGETED, HandleGuestTargeted);
             AmbitionApp.Subscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
             On = false;
         }
@@ -26,7 +26,7 @@ namespace Ambition
         private void OnDisable()
         {
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleGuestTargeted);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_TARGETED, HandleGuestTargeted);
             AmbitionApp.Unsubscribe<int>(GameConsts.INTOXICATION, HandleIntoxication);
         }
 
@@ -43,6 +43,7 @@ namespace Ambition
 
         private void HandleRemark(RemarkVO remark)
         {
+/*
             On = false;
             if (_guest != null && remark != null)
             {
@@ -57,9 +58,10 @@ namespace Ambition
                     image.color = c;
                 }
             }
+*/
         }
 
-        private void HandleGuestTargeted(GuestVO guest)
+        private void HandleGuestTargeted(CharacterVO guest)
         {
             if (guest == null) On = false;
             else if (guest == _guest) On = !_intoxicated;
@@ -70,6 +72,6 @@ namespace Ambition
 			_intoxicated = (tox >= 50);
 		}
 
-        protected override void HandleGuest(GuestVO guest) {}
+        protected override void HandleGuest(CharacterVO guest) {}
     }
 }

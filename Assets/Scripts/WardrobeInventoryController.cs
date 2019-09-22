@@ -26,15 +26,14 @@ namespace Ambition
         public Color EnabledTextColor;
         public Color DisabledTextColor;
 
-        InventoryModel _inventorymodel = AmbitionApp.GetModel<InventoryModel>();
-        CalendarModel _calendarmodel = AmbitionApp.GetModel<CalendarModel>();
-        private List<OutfitVO> _outfitDisplayList = new List<OutfitVO>(); //This is necessary for sorting, since not all Item VOs in the inventory are Outfits or Accessories;
-        private List<ItemVO> _accessoryDisplayList = new List<ItemVO>(); //This is necessary for sorting, since not all Item VOs in the inventory are Outfits or Accessories;
+        private List<ItemVO> _outfits = new List<ItemVO>(); //This is necessary for sorting, since not all Item VOs in the inventory are Outfits or Accessories;
+        private List<ItemVO> _accessories = new List<ItemVO>();
 
         //public bool PlayerInventory; //Set to true if it's the players. Set to false if this inventory belongs to Fatima.
         public enum InventoryType { Player, Shop, Loadout };
         public InventoryType InventoryOwner;
         private bool _noaccessories; // Used to disable the accessories menu if nothing is there.
+        private InventoryModel _inventory;
 
         public FMODUnity.StudioEventEmitter OnClick;
         public FMODUnity.StudioEventEmitter OnDisabled;
@@ -54,6 +53,7 @@ namespace Ambition
 
         private void Awake()
         {
+            _inventory = AmbitionApp.GetModel<InventoryModel>();
             AmbitionApp.Subscribe(InventoryMessages.BUY_ITEM, PopulateInventory); //Gotta wipe the slate once the item's been moved
             AmbitionApp.Subscribe(InventoryMessages.SELL_ITEM, PopulateInventory);
             AmbitionApp.Subscribe<string>(InventoryMessages.SORT_INVENTORY, SortInventory);
@@ -112,7 +112,7 @@ namespace Ambition
             {
                 print("Executing the Restock Inventory Command!");
                 RestockMerchantCmd restock = new RestockMerchantCmd();
-                restock.Execute(_calendarmodel.Today);
+                restock.Execute(AmbitionApp.GetModel<CalendarModel>().Today);
                 OutfitLimitText.text = ""; //Fatima's inventory has no limits, so these blank out
                 AccessoryLimitText.text = "";
             }
@@ -120,32 +120,18 @@ namespace Ambition
 
         void PopulateInventory()
         {
-            List<ItemVO> scanList;
-            if (InventoryOwner == InventoryType.Shop) scanList = _inventorymodel.Market; //If it's Fatima's shop
-            else scanList = _inventorymodel.Inventory;
-            //Clearing the display lists out to prevent duplicates
-            _outfitDisplayList.Clear();
-            _accessoryDisplayList.Clear();
-            foreach (ItemVO i in scanList)
-            {
-                OutfitVO outfitTest = i as OutfitVO; //This is to test if the item is an Outfit
-                if (outfitTest != null)
-                {
-                    _outfitDisplayList.Add(outfitTest);
-                }
-                else if (i.Type == "Accessory")//To Do: Make this actually populate the list, but we first need working accessories again (I mean, they used to, sort of work)
-                {
-                    _accessoryDisplayList.Add(i);
-                }
-            }
-            AccessoriesCountCheck(_accessoryDisplayList.Count);
+            Dictionary<ItemType, List<ItemVO>> collection = (InventoryOwner == InventoryType.Shop)
+                ? _inventory.Market
+                : _inventory.Inventory;
+            if (!collection.TryGetValue(ItemType.Outfit, out _outfits)) _outfits = new List<ItemVO>();
+            AccessoriesCountCheck(_outfits.Count);
             DisplayInventory();
         }
 
         void DisplayInventory()
         {
             DestroyInventoryChildren(); //Gotta start fresh
-            foreach (OutfitVO o in _outfitDisplayList)
+            foreach (ItemVO o in _outfits)
             {
                 GameObject outfitButton = Instantiate(OutfitButtonPrefab, OutfitListContent.transform);
                 OutfitButtonMediator outfitButtonMediator = outfitButton.GetComponent<OutfitButtonMediator>();
@@ -163,8 +149,9 @@ namespace Ambition
             }*/
             if (InventoryOwner == InventoryType.Player || InventoryOwner == InventoryType.Loadout)
             {
-                OutfitLimitText.text = _outfitDisplayList.Count + "/" + _inventorymodel.MaxOutfits;
-                AccessoryLimitText.text = _accessoryDisplayList.Count + "/" + _inventorymodel.MaxAccessories;
+                InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+                OutfitLimitText.text = _outfits.Count + "/" + inventory.MaxOutfits;
+                AccessoryLimitText.text = _accessories.Count + "/" + inventory.MaxAccessories;
             }
         }
 
@@ -266,28 +253,34 @@ namespace Ambition
         {
             HideOutfitSortList();
             OutfitSortText.text = sort;
-            List<OutfitVO> sortList;
             //To Do: The Part where the actual inventory list gets sorted
-            switch (sort)
+            switch(sort)
             {
-                case "Novelty":
-                    sortList = _outfitDisplayList.OrderByDescending(OutfitVO => OutfitVO.Novelty).ToList();
-                    break;
-                case "Modesty":
-                    sortList = _outfitDisplayList.OrderByDescending(OutfitVO => OutfitVO.Modesty).ToList();
-                    break;
-                case "Luxury":
-                    sortList = _outfitDisplayList.OrderByDescending(OutfitVO => OutfitVO.Luxury).ToList();
-                    break;
-                case "Style":
-                    sortList = _outfitDisplayList.OrderBy(OutfitVO => OutfitVO.Style).ToList();
+                case ItemConsts.STYLE:
+                    _outfits.Sort((a, b) => OrderByString(a, b, sort, false));
                     break;
                 default:
-                    sortList = _outfitDisplayList.OrderByDescending(OutfitVO => OutfitVO.Novelty).ToList();
+                    _outfits.Sort((a, b) => OrderByInt(a, b, sort, false));
                     break;
             }
-            _outfitDisplayList = sortList;
+
             DisplayInventory();
+        }
+
+        private int OrderByString(ItemVO a, ItemVO b, string stat, bool ascending)
+        {
+            string ba=null, bb=null;
+            if (!a.State?.TryGetValue(stat, out ba) ?? true) ba = "";
+            if (!b.State?.TryGetValue(stat, out bb) ?? true) bb = "";
+            return ascending ? ba.CompareTo(bb) : bb.CompareTo(ba);
+        }
+
+        private int OrderByInt(ItemVO a, ItemVO b, string stat, bool ascending)
+        {
+            string str = null;
+            int ia = (a.State?.TryGetValue(stat, out str) ?? false) ? int.Parse(str) : 0;
+            int ib = (b.State?.TryGetValue(stat, out str) ?? false) ? int.Parse(str) : 0;
+            return ia == ib ? 0 : (ascending && ia > ib) ? 1 : -1;
         }
     }
 }

@@ -48,25 +48,19 @@ namespace Ambition
 			Note.SetActive(drawerEnabled);
 			if (drawerEnabled)
 			{
+                string style = OutfitWrapperVO.GetStyle(item);
 				ItemName.text = item.Name;
-				if (item.State.ContainsKey(ItemConsts.STYLE))
-				{
-					RibbonMapping mapping = Array.Find(Styles, s=> s.style == (string)(item.State[ItemConsts.STYLE]));
-					Ribbon.sprite = mapping.sprite;
-				}
-				else Ribbon.sprite = null;
+                RibbonMapping mapping = Array.Find(Styles, s => s.style == style);
+                Ribbon.sprite = mapping.sprite;
 				Ribbon.enabled = (Ribbon.sprite != null);
-				Note.SetActive(item.State.ContainsKey(ItemConsts.GIFT));
+                Note.SetActive(item.State?.ContainsKey(ItemConsts.GIFT) ?? false);
 			}
 		}
 
 		private void HandleClick()
 		{
 			transform.SetAsLastSibling();
-			if (_item != null)
-            {
-                AmbitionApp.SendMessage(InventoryMessages.EQUIP, new OutfitVO(_item));
-            }
+			if (_item != null) AmbitionApp.SendMessage(InventoryMessages.EQUIP, _item);
 		}
 	}
 }

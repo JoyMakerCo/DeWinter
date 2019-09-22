@@ -1,30 +1,49 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace Ambition
 {
-	public class ParisModel : IModel, Util.IInitializable
+    [Saveable]
+    public class ParisModel : Model, IResettable
     {
-        private LocationPin _location;
-        public LocationPin Location
+        public int NumExploreLocations = 5;
+
+        [JsonIgnore]
+        public Pin Location;
+
+        [JsonProperty("location")]
+        private string _Location
         {
-            get { return _location; }
-            set {
-                _location = value;
-                AmbitionApp.SendMessage(_location);
-            }
+            get => Location?.name;
+            //set => 
+            // TODO: On Restore, load the Paris Scenefab and consume the pin Prefab
         }
 
-        public float ExplorelocationChance = .5f;
+        [JsonIgnore] // List of explorable locations and their requirements
+        public Dictionary<string, RequirementVO[]> Explorable = new Dictionary<string, RequirementVO[]>();
 
-        public List<string> Locations;
-        public List<string> Visited;
+        [JsonProperty("daily")] // Explorable locations available "Today"
+        public List<string> Daily = new List<string>();
 
-        public void Initialize()
+        [JsonIgnore]
+        // Locations that are unlocked via requirements and directly added to Known locations
+        public Dictionary<string, RequirementVO[]> Locations = new Dictionary<string, RequirementVO[]>();
+
+        [JsonProperty("known")] // Known locations
+        public List<string> Known = new List<string>();
+
+        [JsonProperty("visited")] // One-Shot locations that have been visited
+        public List<string> Visited = new List<string>();
+
+        public void Reset()
         {
-            Locations = new List<string>();
-            Visited = new List<string>();
+            Location = null;
+            Locations.Clear();
+            Visited.Clear();
+            Daily.Clear();
         }
     }
 }

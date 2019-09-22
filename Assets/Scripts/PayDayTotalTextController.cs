@@ -31,7 +31,7 @@ namespace Ambition
 	    {
 	        string payDayText = "Pay Day Totals:";
 	        int wageTotal = 0;
-	        List<ItemVO> servants = inventory.FindAll(i=>i.Type == ItemConsts.SERVANT);
+	        List<ItemVO> servants = inventory.FindAll(i=>i.Type == ItemType.Servant);
 	        foreach (ItemVO servant in servants)
 	        {
                 wageTotal += servant.Price;

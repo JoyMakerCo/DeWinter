@@ -39,9 +39,9 @@ public class PopUpManager : MonoBehaviour
     //This is used in the Wardrobe Screen so Players can use the 'Alteration' function of the Tailor Servant
     void CreateAlterOutfitModal(object[] objectStorage)
     {
+/* Deprecated
         int inventoryNumber = (int)objectStorage[0];
-        OutfitVO outfit = AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i=>i.Type == ItemConsts.OUTFIT)[inventoryNumber] as OutfitVO;
-
+        ItemVO outfit = AmbitionApp.GetModel<InventoryModel>().Inventory.FindAll(i=>i.Type == ItemType.Outfit)[inventoryNumber];
         //Make the Pop Up
         GameObject popUp = Instantiate(alterOutfitModal) as GameObject;
         popUp.transform.SetParent(gameObject.transform, false);
@@ -58,13 +58,14 @@ public class PopUpManager : MonoBehaviour
         modestyBar.value = outfit.Modesty;
         Slider luxuryBar = popUp.transform.Find("LuxuryText").Find("Slider").GetComponent<Slider>();
         luxuryBar.value = outfit.Luxury;
+*/
     }
 
     //This is used in the Estate Tab to tell Players that they were caught trading in Gossip Items
     void CreateCaughtTradingGossipModal(string faction)
     {
     	Dictionary<string,string> subs = new Dictionary<string, string>(){{"$FACTION",faction}};
-    	if (AmbitionApp.GetModel<FactionModel>()["Third Estate"].Level >= 2)
+    	if (AmbitionApp.GetModel<FactionModel>()[FactionType.Revolution].Level >= 2)
     	{
     		AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, subs);
     	}
@@ -84,9 +85,9 @@ public class PopUpManager : MonoBehaviour
         popUp.transform.SetParent(gameObject.transform, false);
         popUp.transform.SetAsFirstSibling();
         //Set the Quest and the QuestList
-        PierreQuestModal questModal = popUp.GetComponent<PierreQuestModal>();
-        questModal.quest = quest;
-        questModal.questList = questList;
+        //PierreQuestModal questModal = popUp.GetComponent<PierreQuestModal>();
+        //questModal.quest = quest;
+        //questModal.questList = questList;
         //Title Text
         Text titleText = popUp.transform.Find("TitleText").GetComponent<Text>();
         titleText.text = "A Call for Gossip!";

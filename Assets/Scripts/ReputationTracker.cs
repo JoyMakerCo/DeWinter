@@ -31,7 +31,7 @@ namespace Ambition
 		private void HandlePlayerReputation(ReputationVO vo)
 	    {
 				numberText.text = vo.Reputation.ToString("#,##0") + "/" + vo.ReputationMax.ToString("#,##0");
-				levelText.text = AmbitionApp.GetModel<LocalizationModel>().GetString("reputation." + vo.Level);
+				levelText.text = AmbitionApp.GetString("reputation." + vo.Level);
 				reputationIcon.sprite = ReputationLevelIcons[vo.Level-1];
 				reputationBar.value = (float)vo.Reputation / (float)vo.ReputationMax;
 	    }

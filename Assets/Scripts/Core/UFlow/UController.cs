@@ -12,7 +12,8 @@ namespace UFlow
         public string MachineID; // TODO: Make state configurations ScriptableObjects so that Machines can just be dropped in
         public UStateDelegateMap [] Delegates;
         public string[] Tags;
-        internal UMachine _machine;
+        internal UMachine _Machine;
+        internal UFlowSvc _UFlow;
 
         [Serializable]
         public class UStateDelegateMap
@@ -23,29 +24,24 @@ namespace UFlow
 
         void Start()
         {
-            if (_machine == null)
-            {
-                App.Service<UFlowSvc>().BuildController(this);
-    			if (_machine != null) _machine.OnEnterState();
-            }
+            _UFlow = App.Service<UFlowSvc>();
+            _UFlow.Activate(this);
+            if (_Machine != null) _Machine.Start();
+            else _Machine = _UFlow.InvokeMachine(MachineID);
         }
 
         internal void Invoke(string stateID)
         {
             UStateDelegateMap map = Array.Find(Delegates, m=>m.StateID == stateID);
-            if (map != null) map.Delegate.Invoke();
+            map?.Delegate?.Invoke();
         }
 
         internal void Invoke<T>(string stateID)
         {
             UStateDelegateMap map = Array.Find(Delegates, m=>m.StateID == stateID);
-            if (map != null) map.Delegate.Invoke();
+            map?.Delegate?.Invoke();
         }
 
-        void OnDestroy()
-        {
-            if (_machine != null) _machine.Dispose();
-            _machine = null;
-        }
+        void OnDestroy() => _UFlow?.Remove(this);
     }
 }

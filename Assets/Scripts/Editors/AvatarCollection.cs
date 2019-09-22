@@ -22,6 +22,7 @@ namespace Ambition
         public PoseMap[] Poses;
         public string Tags;
         public Gender Gender;
+        public Sprite Portrait;
         public Sprite GetPose(string pose)
         {
             return Poses == null ? null : Array.Find(Poses, p => p.Label == pose).Pose;

@@ -24,14 +24,11 @@ namespace Ambition
 
         private List<string> _sortTypes;
 
-        InventoryModel _inventorymodel = AmbitionApp.GetModel<InventoryModel>();
-
         private void Awake()
         {
             AmbitionApp.Subscribe(InventoryMessages.PEDDLE_GOSSIP, PopulateInventory); //Gotta wipe the slate once the item's been moved
             AmbitionApp.Subscribe(InventoryMessages.SELL_GOSSIP, PopulateInventory);
             AmbitionApp.Subscribe<string>(InventoryMessages.SORT_INVENTORY, SortInventory);
-            _inventorymodel.GossipSoldOrPeddled = 0; //This is used for determining if the player was caught selling gossip 
             SetSortTypes();
             HideGossipSortList();
             SortInventory("Tier"); //Contains Populate Inventory in it already
@@ -47,12 +44,14 @@ namespace Ambition
         void PopulateInventory()
         {
             DestroyInventoryChildren(); //Gotta start fresh
-            List<Gossip> gossipList = _inventorymodel.GossipItems;
-            foreach (Gossip g in gossipList)
+            if (AmbitionApp.GetModel<InventoryModel>().Inventory.TryGetValue(ItemType.Gossip, out List<ItemVO> gossip))
             {
-                GameObject gossipButton = Instantiate(GossipButtonPrefab, GossipListContent.transform);
-                GossipButtonMediator gossipButtonMediator = gossipButton.GetComponent<GossipButtonMediator>();
-                gossipButtonMediator.SetItem(g);
+                foreach (ItemVO g in gossip)
+                {
+                    GameObject gossipButton = Instantiate(GossipButtonPrefab, GossipListContent.transform);
+                    GossipButtonMediator gossipButtonMediator = gossipButton.GetComponent<GossipButtonMediator>();
+                    gossipButtonMediator.SetItem(g);
+                }
             }
         }
 
@@ -121,25 +120,26 @@ namespace Ambition
 
         void SortInventory(string sort)
         {
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
             HideGossipSortList();
             GossipSortText.text = sort;
-            List<Gossip> sortList;
-            switch (sort)
+            if (inventory.Inventory.TryGetValue(ItemType.Gossip, out List<ItemVO> gossip))
             {
-                case "Tier":
-                    sortList = _inventorymodel.GossipItems.OrderByDescending(Gossip => Gossip.Tier()).ToList();
-                    break;
-                case "Faction":
-                    sortList = _inventorymodel.GossipItems.OrderBy(Gossip => Gossip.Faction).ToList();
-                    break;
-                case "Freshness":
-                    sortList = _inventorymodel.GossipItems.OrderBy(Gossip => Gossip.Freshness).ToList();
-                    break;
-                default:
-                    sortList = _inventorymodel.GossipItems.OrderBy(Gossip => Gossip.Tier()).ToList();
-                    break;
+                switch (sort)
+                {
+                    case "Faction":
+                        gossip = gossip.OrderBy(g => g.ID).ToList();
+                        break;
+                    case "Freshness":
+                        System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
+                        gossip = gossip.OrderBy(g=>GossiptWrapperVO.GetRelevance(g)).ToList();
+                        break;
+                    default:
+                        gossip = gossip.OrderBy(g => GossiptWrapperVO.GetTier(g)).ToList();
+                        break;
+                }
+                inventory.Inventory[ItemType.Gossip] = gossip;
             }
-            _inventorymodel.GossipItems = sortList;
             PopulateInventory();
         }
     }

@@ -21,36 +21,16 @@ namespace Ambition
 			get { return _party; }
 			set {
 				_party = value;
-				string partyName = AmbitionApp.GetString("party.name." + _party.ID);
-				PartyNameTxt.text = partyName
-                    ?? AmbitionApp.GetString("party.name.default", new Dictionary<string, string>(){
-                        {"$HOST",_party.Host},
-                        {"$IMPORTANCE",AmbitionApp.GetString("party_importance." + ((int)_party.Importance).ToString())},
-                        {"$REASON",_party.Description}});
-				FactionIcon.sprite = FactionSpriteConfig.GetSprite(_party.Faction);
-                Highlight.enabled = _party.RSVP == RSVP.Accepted;
+                PartyNameTxt.text = _party.Name;
+				FactionIcon.sprite = FactionSpriteConfig.GetSprite(_party.Faction.ToString());
+                Highlight.enabled = _party.RSVP == RSVP.Accepted || _party.RSVP == RSVP.Required;
                 Strikethrough.enabled = _party.RSVP == RSVP.Declined;
 			}
 		}
 
-		void Awake()
-		{
-			_btn = GetComponent<Button>();
-		}
-
-		void OnEnable ()
-		{
-			_btn.onClick.AddListener(HandleClick);
-		}
-
-		void OnDisable ()
-		{
-			_btn.onClick.RemoveListener(HandleClick);
-		}
-
-		void HandleClick ()
-		{
-			AmbitionApp.SendMessage<System.DateTime>(CalendarMessages.SELECT_DATE, _party.Date);
-		}
+		void Awake() => _btn = GetComponent<Button>();
+		void OnEnable () => _btn.onClick.AddListener(HandleClick);
+		void OnDisable () => _btn.onClick.RemoveListener(HandleClick);
+		void HandleClick () => AmbitionApp.SendMessage(CalendarMessages.SELECT_DATE, _party.Date);
 	}
 }

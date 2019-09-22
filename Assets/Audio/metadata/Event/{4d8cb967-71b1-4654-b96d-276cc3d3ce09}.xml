@@ -92,9 +92,21 @@
     </object>
     <object class="MixerBusPanner" id="{7e8b9003-fedd-41bd-b019-636423bea192}"/>
     <object class="SingleSound" id="{332bb659-ed3c-4c4f-b906-88cd1fe87654}">
+        <property name="isAsync">
+            <value>true</value>
+        </property>
         <property name="length">
             <value>120</value>
         </property>
+        <property name="startOffset">
+            <value>49.5</value>
+        </property>
+        <property name="looping">
+            <value>true</value>
+        </property>
+        <relationship name="modulators">
+            <destination>{1888b5f9-38cf-4121-b5eb-554ae8aefe98}</destination>
+        </relationship>
         <relationship name="audioFile">
             <destination>{c64a7b5f-bbca-4dc7-a6fd-8e9d57ab0530}</destination>
         </relationship>
@@ -137,6 +149,14 @@
     </object>
     <object class="MixerBusPanner" id="{43b3a148-b4bb-4ce3-b2c6-05710e56db4b}"/>
     <object class="MixerBusFader" id="{cd395733-a678-44d5-acc5-6edb773c63a5}"/>
+    <object class="RandomizerModulator" id="{1888b5f9-38cf-4121-b5eb-554ae8aefe98}">
+        <property name="nameOfPropertyBeingModulated">
+            <value>startOffset</value>
+        </property>
+        <property name="amount">
+            <value>100</value>
+        </property>
+    </object>
     <object class="ADSRModulator" id="{f5ee111c-9cef-47dd-be2f-6cf4b6ed4fd8}">
         <property name="nameOfPropertyBeingModulated">
             <value>volume</value>

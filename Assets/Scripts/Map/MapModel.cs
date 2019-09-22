@@ -1,50 +1,77 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
 
 namespace Ambition
 {
-	public class MapModel : DocumentModel
+    [Saveable]
+	public class MapModel : Model, IDisposable, IResettable, Util.IInitializable
 	{
-		public MapModel() : base("MapData") {}
+        private const string PATH = "PartyMaps/";
 
+        public GameObject MapObject { get; private set; }
+        public Observable<MapVO> Map;
+        public MapVO[] Maps;
 
-		[JsonProperty("scale")]
-		public float MapScale;
+        private Dictionary<PartyVO, MapView> _partyMaps = new Dictionary<PartyVO, MapView>();
 
-		private RoomVO _room;
-		public RoomVO Room
-		{
-			get { return _room; }
-			set {
-				_room = value;
-                _room.Visited = _room.Revealed = true;
-				AmbitionApp.SendMessage<RoomVO>(_room);
-			}
-		}
+        public void Initialize()
+        {
+            GameObject[] maps = Resources.LoadAll<GameObject>(PATH);
+            MapView[] views = maps.Select(m => m.GetComponent<MapView>()).ToArray();
+            Maps = views.Where(v=>v!=null).Select(v => v.CreateMapVO()).ToArray();
+            Resources.UnloadUnusedAssets();
+            Map.Observe(LoadMap);
+            maps = null;
+            views = null;
+        }
 
-		protected MapVO _map;
-		public MapVO Map
-		{
-			get { return _map; }
-			set {
-				_map = value;
-				AmbitionApp.SendMessage<MapVO>(_map);
-			}
-		}
+        public void Dispose() => Map.Remove(LoadMap);
 
-		[JsonProperty("punchbowlChance")]
-		public int PunchbowlChance;
+        private void LoadMap(MapVO map)
+        {
+            if (MapObject?.name != map?.AssetID)
+            {
+                map = Array.Find(Maps, m => m.AssetID == map.AssetID);
+                MapObject = Resources.Load<GameObject>(PATH + map.AssetID);
+                if (MapObject != null) Map.Value = map;
+            }
+        }
 
-		[JsonProperty("roomAdjectiveList")]
-		public string [] RoomAdjectives;
+        public void SaveMap(PartyVO party, MapView map)
+        {
+            if (party != null) _partyMaps[party] = map;
+        }
 
-		[JsonProperty("roomNounList")]
-		public string [] RoomNames;
+        public bool LoadMap(PartyVO party)
+        {
+            if (!_partyMaps.TryGetValue(party, out MapView map))
+                return false;
 
-		[JsonProperty("maps")]
-		public Dictionary<string, MapVO> Maps = new Dictionary<string, MapVO>();
-	}
+            MapObject = map.gameObject;
+            Map.Value = map.CreateMapVO();
+            return true;
+        }
+
+        public bool Restore(string data)
+        {
+            return true;
+        }
+
+        public string Save()
+        {
+            return "";
+        }
+
+        public void Reset()
+        {
+            MapObject = null;
+            Map.Value = null;
+            _partyMaps.Clear();
+        }
+    }
 }

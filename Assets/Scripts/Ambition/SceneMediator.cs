@@ -9,16 +9,13 @@ namespace Ambition
 	public class SceneMediator : MonoBehaviour
 	{
 		public PrefabMap[] Scenes;
-		private string _sceneID
-		{
-			set { AmbitionApp.GetModel<GameModel>().Scene = value; }
-			get { return AmbitionApp.GetModel<GameModel>().Scene; }
-		}
+        private string _sceneID;
+
 		void Awake()
 		{
 			AmbitionApp.Subscribe<string>(GameMessages.LOAD_SCENE, HandleScene);
             AmbitionApp.Subscribe<GameObject>(GameMessages.LOAD_SCENE, HandleScene);
-		}
+        }
 
 		void OnDestroy()
 		{
@@ -28,28 +25,29 @@ namespace Ambition
 
 		private void HandleScene(string sceneID)
 		{
-			if (_sceneID == sceneID) return;
-			PrefabMap map = Array.Find(Scenes, s=>s.ID == sceneID);
-			if (map.Prefab != null)
-			{
-				StopAllCoroutines();
-				_sceneID = sceneID;
-				foreach(Transform child in transform)
-					Destroy(child.gameObject);
-
-				GameObject scene = Instantiate(map.Prefab, transform);
-				StartCoroutine(ReadyCheck(scene));
-			}
+			if (_sceneID != sceneID)
+            {
+                PrefabMap map = Array.Find(Scenes, s=>s.ID == sceneID);
+                HandleScene(map.Prefab, sceneID);
+            }
 		}
 
-        void HandleScene(GameObject sceneObject)
+        void HandleScene(GameObject sceneObject) => HandleScene(sceneObject, sceneObject.name);
+        private void HandleScene(GameObject prefab, string id)
         {
-            GameObject scene = Instantiate(sceneObject, transform);
-            _sceneID = sceneObject.name;
+            if (prefab == null) return;
+            _sceneID = id;
+
+            StopAllCoroutines();
+
+            foreach (Transform child in transform)
+                Destroy(child.gameObject);
+
+            GameObject scene = Instantiate(prefab, transform);
             StartCoroutine(ReadyCheck(scene));
         }
 
-		IEnumerator ReadyCheck(GameObject scene)
+        IEnumerator ReadyCheck(GameObject scene)
 		{
 			while (!scene.activeInHierarchy) yield return null;
 			AmbitionApp.SendMessage(GameMessages.SCENE_LOADED, _sceneID);

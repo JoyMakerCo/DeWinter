@@ -7,17 +7,17 @@ namespace Ambition
     {
         public override void Initialize()
         {
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
         }
 
-        private void HandleGuest(GuestVO guest)
+        private void HandleGuest(CharacterVO guest)
         {
             Activate();
         }
 
         override public void Dispose()
         {
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
         }
     }
 }

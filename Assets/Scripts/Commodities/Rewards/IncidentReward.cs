@@ -6,13 +6,14 @@ namespace Ambition
         public void Execute(CommodityVO reward)
         {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            IncidentVO incident = calendar.FindIncident(reward.ID);
+            IncidentVO incident = calendar.FindUnscheduled<IncidentVO>(reward.ID);
             if (incident != null)
             {
-                if (reward.Value > 0) calendar.Incident = incident;
-                else calendar.Schedule(incident);
+                calendar.Schedule(incident, reward.Value > 0 || !incident.IsScheduled ? calendar.Today : incident.Date);
             }
+#if (UNITY_EDITOR)
             else UnityEngine.Debug.LogWarning(">> WARNING! The requested incident " + reward.ID + " could not be found!");
+#endif
         }
     }
 }

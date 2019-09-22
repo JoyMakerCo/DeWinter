@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Core
 {
-	public class DocumentModel : IModel
+	public class DocumentModel : Model
 	{
 		private TextAsset _file;
 

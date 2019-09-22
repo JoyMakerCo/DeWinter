@@ -7,7 +7,7 @@ namespace UFlow
 	/// and receives this Link's input, this Link will be followed.
 	/// </summary>
 
-	public abstract class ULink : Util.IInitializable, IDisposable
+	public abstract class ULink : IDisposable
 	{
 		// Set by UFlow
 		internal UMachine _machine;
@@ -15,17 +15,11 @@ namespace UFlow
 		internal int _origin;
 
 		// The current State of the machine from which this link originates
-		public UState State { get { return _machine._states[_origin]; } }		
-		public void Activate() { _machine.Activate(this); }
-		public virtual bool Validate() { return false; } // Called upon instantiation
-		public virtual void Initialize() { }
+		public virtual bool Validate() => false; // Called upon instantiation
+		public virtual void Initialize() {}
 		public virtual void Dispose() {}
-	}
-
-	public sealed class UDefaultLink : ULink
-	{
-		public override bool Validate() { return true; } // Called upon instantiation
-	}
+        protected void Activate() => _machine.Activate(this);
+    }
 
 	public abstract class ULink<T> : ULink
 	{

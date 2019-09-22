@@ -9,27 +9,13 @@ namespace Ambition
 {
 	public class MonthTextView : MonoBehaviour
 	{
-		private Text _text;
-
-		void Awake()
-		{
-			_text = GetComponent<Text>();
-			HandleDate(AmbitionApp.GetModel<CalendarModel>().Today);
-		}
-
-		void OnEnable()
-		{
-			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleDate);
-		}
-
-		void OnDisable()
-		{
-			AmbitionApp.Unsubscribe<DateTime>(HandleDate);
-		}
-
+        void Awake() => AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleDate);
+		void OnDestroy() => AmbitionApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleDate);
 		private void HandleDate(DateTime t)
 		{
-			_text.text = AmbitionApp.GetModel<LocalizationModel>().GetList("month")[t.Month-1];
+            Text text = GetComponent<Text>();
+            if (text != null)
+			    text.text = AmbitionApp.GetPhrases("month")[t.Month-1];
 		}
 	}
 }

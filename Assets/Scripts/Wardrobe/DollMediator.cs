@@ -13,27 +13,28 @@ namespace Ambition
 
 		void Awake()
 		{
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
 			_dollImage = GetComponent<Image>();
+            HandleOutfit(inventory.GetEquippedItem(ItemType.Outfit));
 		}
 
 		void OnEnable()
 		{
-			AmbitionApp.Subscribe<OutfitVO>(HandleOutfit);
+			AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
 		}
 
 		void OnDisable()
 		{
-			AmbitionApp.Unsubscribe<OutfitVO>(HandleOutfit);
+			AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
 		}
 
-		private void HandleOutfit(OutfitVO outfit)
+		private void HandleOutfit(ItemVO item)
 		{
-			Sprite s = (outfit != null)
-				? DressConfig.GetSprite(outfit.Style)
-				: null;
-			_dollImage.sprite = (s != null)
-				? s
-				: DressConfig.Sprites[0].Sprite;
-		}
+            if (item.Type == ItemType.Outfit)
+            {
+                string style = OutfitWrapperVO.GetStyle(item);
+                _dollImage.sprite = DressConfig.GetSprite(style) ?? DressConfig.Sprites[0].Sprite;
+            }
+        }
 	}
 }

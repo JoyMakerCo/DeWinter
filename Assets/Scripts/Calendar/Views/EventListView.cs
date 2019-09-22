@@ -36,39 +36,34 @@ namespace Ambition
 
         private void UpdateParties()
         {
-            List<PartyVO>[] types = {
-                new List<PartyVO>(),
-                new List<PartyVO>(),
-                new List<PartyVO>(),
-                new List<PartyVO>()};
+            List<PartyVO[]> types = new List<PartyVO[]>();
 
             Vector2 xform = Headers[0].rectTransform.anchoredPosition;
-            List<PartyVO> parties;
             GameObject item;
             int itemCount = 0;
             bool show;
-            List<ICalendarEvent>[] days = _calendar.Timeline.Where(p => p.Key >= _calendar.Today).Select(p => p.Value).ToArray();
-            parties = days.Aggregate(new List<PartyVO>(), (items, list) => { items.AddRange(list.OfType<PartyVO>()); return items; });
+            IEnumerable<PartyVO> parties = _calendar.GetEvents<PartyVO>().Where(p => p.Date >= _calendar.Today);
+            int count = parties.Count();
+            types.Add(new PartyVO[0]);
+            types.Add(parties.Where(p => p.Attending).ToArray());
+            types.Add(parties.Where(p => p.RSVP == RSVP.Declined).ToArray());
+            types.Add(parties.Where(p => p.RSVP == RSVP.New).ToArray());
 
-            types[1] = parties.Where(p => p.RSVP == RSVP.Accepted).ToList();
-            types[2] = parties.Where(p => p.RSVP == RSVP.Declined).ToList();
-            types[3] = parties.Where(p => p.RSVP == RSVP.New).ToList();
-
-            for (GameObject obj; _pool.Count < parties.Count; _pool.Add(obj))
+            for (GameObject obj; _pool.Count < count; _pool.Add(obj))
             {
                 obj = Instantiate(ListItemPrefab, ListContent.transform);
             }
 
-            while (_pool.Count > parties.Count)
+            while (_pool.Count > count)
             {
                 Destroy(_pool[0]);
                 _pool.RemoveAt(0);
             }
 
-            for (int i = 0; i < types.Length; i++)
+            for (int i = 0; i < types.Count; i++)
             {
                 Headers[i].rectTransform.anchoredPosition = xform;
-                show = types[i].Count > 0;
+                show = types[i].Length > 0;
                 Headers[i].enabled = show;
                 if (show)
                 {

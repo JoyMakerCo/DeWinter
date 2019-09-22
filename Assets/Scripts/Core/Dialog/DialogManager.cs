@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,15 +8,33 @@ using Core;
 
 namespace Dialog
 {
+    public class DialogEventArgs : EventArgs
+    {
+        public string DialogID;
+        public GameObject DialogObject;
+
+        public DialogEventArgs(string dialogID, GameObject dialogObject)
+        {
+            DialogID = dialogID;
+            DialogObject = dialogObject;
+        }
+
+        public DialogEventArgs(string dialogID) : this(dialogID, null) {}
+    }
+
     public class DialogManager : MonoBehaviour
 	{
 		public PrefabMapConfig DialogPrefabs;
+        public int NumDialogs => _dialogs.Count;
+        public event EventHandler<DialogEventArgs> OnOpenDialog;
+        public event EventHandler<DialogEventArgs> OnCloseDialog;
 
-		protected Dictionary<GameObject, string> _dialogs;
+        // Store references to dialogs because adding/removing to the display list doesn't happens on frame, not immediately
+        protected List<DialogEventArgs> _dialogs; 
 
 		void Awake()
 		{
-			App.Service<DialogSvc>().RegisterManager(this);
+			App.Register<DialogSvc>().RegisterManager(this);
             CanvasGroup group = gameObject.GetComponent<CanvasGroup>();
             if (group == null) group = gameObject.AddComponent<CanvasGroup>();
             Image image = gameObject.GetComponent<Image>();
@@ -28,32 +45,35 @@ namespace Dialog
             group.blocksRaycasts = true;
             group.interactable = true;
             group.ignoreParentGroups = true;
-   			_dialogs = new Dictionary<GameObject, string>();
+            _dialogs = new List<DialogEventArgs>();
             gameObject.SetActive(false);
 		}
 
-		public GameObject Open(string dialogID)
+		public GameObject Open(string dialogID, params string[] args)
 		{
 			PrefabMap map = Array.Find(DialogPrefabs.Prefabs, p=>p.ID == dialogID);
 			if (default(PrefabMap).Equals(map)) return null; //Early out
 
-			GameObject dialog = Instantiate<GameObject>(map.Prefab, this.gameObject.transform);
+			GameObject dialog = Instantiate(map.Prefab, this.gameObject.transform);
 			if (dialog != null)
 			{
 				DialogView cmp = dialog.GetComponent<DialogView>();
+                DialogEventArgs arg = new DialogEventArgs(dialogID, dialog);
 				if (cmp != null)
 				{
 					cmp.Manager = this;
 					cmp.ID = dialogID;
 					cmp.OnOpen();
 				}
-				_dialogs.Add(dialog, dialogID);
+				_dialogs.Add(arg);
 				dialog.transform.SetParent(transform, false);
 				dialog.GetComponent<RectTransform>().SetAsLastSibling();
                 transform.SetAsLastSibling();
                 gameObject.SetActive(true);
-			}
-			return dialog;
+
+                OnOpenDialog?.Invoke(this, arg);
+            }
+            return dialog;
 		}
 
 		public GameObject Open<T>(string dialogID, T vo)
@@ -62,72 +82,75 @@ namespace Dialog
 			if (default(PrefabMap).Equals(map)) return null; //Early out
 
 			GameObject dialog = Instantiate<GameObject>(map.Prefab, this.gameObject.transform);
-			if (dialog != null)
+            if (dialog == null) return null;
+
+			DialogView cmp = dialog.GetComponent<DialogView>();
+            DialogEventArgs arg = new DialogEventArgs(dialogID, dialog);
+            if (cmp != null)
 			{
-				DialogView cmp = dialog.GetComponent<DialogView>();
-				if (cmp != null)
-				{
-					cmp.Manager = this;
-					cmp.ID = dialogID;
-					if (cmp is IInitializable<T>)
-						(cmp as IInitializable<T>).Initialize(vo);
-					cmp.OnOpen();
-				}
-				_dialogs.Add(dialog, dialogID);
-				dialog.transform.SetParent(transform, false);
-				dialog.GetComponent<RectTransform>().SetAsLastSibling();
-                transform.SetAsLastSibling();
-                gameObject.SetActive(true);
-			}
-			return dialog;
+				cmp.Manager = this;
+				cmp.ID = dialogID;
+				cmp.OnOpen();
+                (cmp as DialogView<T>)?.OnOpen(vo);
+            }
+            _dialogs.Add(arg);
+			dialog.transform.SetParent(transform, false);
+			dialog.GetComponent<RectTransform>().SetAsLastSibling();
+            transform.SetAsLastSibling();
+            gameObject.SetActive(true);
+
+            OnOpenDialog?.Invoke(this, arg);
+            return dialog;
 		}
 
-		public bool Close(string dialogID)
+        public GameObject Get(string DialogID) => _dialogs.Find(d=>d.DialogID == DialogID)?.DialogObject;
+
+        public bool Close(string dialogID)
 		{
-			KeyValuePair<GameObject, string> dialog = _dialogs.FirstOrDefault(d => d.Value == dialogID);
-			if (dialog.Equals(default(KeyValuePair<GameObject,string>))) return false;
+            DialogEventArgs arg = _dialogs.First(a => a.DialogID == dialogID);
+            if (arg == null) return false;
 
-			DialogView view = dialog.Key.GetComponent<DialogView>();
-			if (view != null) view.OnClose();
-
-			_dialogs.Remove(dialog.Key);
-			GameObject.Destroy(dialog.Key);
+            arg.DialogObject.GetComponent<DialogView>()?.OnClose();
+			_dialogs.Remove(arg);
+			Destroy(arg.DialogObject);
 
             gameObject.SetActive(_dialogs.Count > 0);
-			return true;
+            OnCloseDialog?.Invoke(this, new DialogEventArgs(dialogID));
+            return true;
 		}
 
 		public bool Close(GameObject dialog)
 		{
-			bool closed = (dialog != null);
-			if (closed)
-			{
-				_dialogs.Remove(dialog);
-				DialogView view = dialog.GetComponent<DialogView>();
-				view.OnClose();
-				GameObject.Destroy(dialog);
-
-                gameObject.SetActive(_dialogs.Count > 0);
-			}
-			dialog = null;
-			return closed;
+            if (dialog == null) return false;
+            DialogEventArgs arg = _dialogs.First(a => a.DialogObject == dialog);
+            if (arg == null) return false;
+            dialog.GetComponent<DialogView>()?.OnClose();
+			Destroy(dialog);
+            _dialogs.Remove(arg);
+            gameObject.SetActive(_dialogs.Count > 0);
+            OnCloseDialog?.Invoke(this, arg);
+            dialog = null;
+            return true;
 		}
 
 		public void CloseAll()
 		{
-			DialogView cmp;
-			foreach(KeyValuePair<GameObject, string> dialog in _dialogs)
+			foreach(DialogEventArgs arg in _dialogs)
 			{
-				cmp = dialog.Key.GetComponent<DialogView>();
-				if (cmp != null) cmp.OnClose();
-				Destroy(dialog.Key);
+                arg.DialogObject?.GetComponent<DialogView>()?.OnClose();
+                OnCloseDialog?.Invoke(this, arg);
+                if (arg.DialogObject != null) Destroy(arg.DialogObject);
 			}
+            _dialogs.Clear();
             gameObject.SetActive(false);
-			_dialogs.Clear();
 		}
 
-		void OnDestroy()
+        public GameObject[] GetOpenDialogs() => _dialogs.Select(d => d.DialogObject).ToArray();
+        public GameObject GetTopDialog() => _dialogs.Count > 0 ? _dialogs[_dialogs.Count-1].DialogObject : null;
+
+        void OnDestroy()
 		{
+            CloseAll();
 			App.Service<DialogSvc>().UnregisterManager(this);
 		}
 	}

@@ -8,7 +8,8 @@ namespace Ambition
         private const float DEFAULT_TIME = 1.0f;
         public Shader Effect;
         private Material _material;
-        private static float _fade = 1f;
+        private float _fade = 1f;
+        private bool _fadeIn;
 
         // Creates a private material used to the effect
         void Awake ()
@@ -18,11 +19,7 @@ namespace Ambition
             AmbitionApp.Subscribe(GameMessages.FADE_IN, HandleFadeIn);
             AmbitionApp.Subscribe<float>(GameMessages.FADE_OUT, HandleFadeOut);
             AmbitionApp.Subscribe<float>(GameMessages.FADE_IN, HandleFadeIn);
-        }
-
-        void Start()
-        {
-            StartCoroutine(FadeIn(DEFAULT_TIME));
+            AmbitionApp.Subscribe(GameMessages.INTERRUPT_FADE, HandleInterruptFade);
         }
 
         void OnDestroy()
@@ -31,54 +28,50 @@ namespace Ambition
             AmbitionApp.Unsubscribe(GameMessages.FADE_IN, HandleFadeIn);
             AmbitionApp.Unsubscribe<float>(GameMessages.FADE_OUT, HandleFadeOut);
             AmbitionApp.Unsubscribe<float>(GameMessages.FADE_IN, HandleFadeIn);
+            AmbitionApp.Unsubscribe(GameMessages.INTERRUPT_FADE, HandleInterruptFade);
         }
-        
-        private void HandleFadeOut()
+
+        private void HandleFadeOut() => HandleFade(false, DEFAULT_TIME);
+        private void HandleFadeIn() => HandleFade(true, DEFAULT_TIME);
+        private void HandleFadeOut(float time) => HandleFade(false, time);
+        private void HandleFadeIn(float time) => HandleFade(true, time);
+
+        private void HandleFade(bool fadeIn, float time)
         {
             StopAllCoroutines();
-            StartCoroutine(FadeOut(DEFAULT_TIME));
+            _fadeIn = fadeIn;
+            if (_fadeIn) StartCoroutine(FadeIn(time*(1f-_fade)));
+            else StartCoroutine(FadeOut(time * _fade));
         }
-       
-        private void HandleFadeIn()
-        {
-            StopAllCoroutines();
-            StartCoroutine(FadeIn(DEFAULT_TIME));
-        }
-       
-        private void HandleFadeOut(float time)
-        {
-            StopAllCoroutines();
-            StartCoroutine(FadeOut(time));
-        }
-       
-        private void HandleFadeIn(float time)
-        {
-            StopAllCoroutines();
-            StartCoroutine(FadeIn(time));
-        }
-       
-        IEnumerator FadeOut(float time)
-       {
-           if (_fade > 1f) _fade = 1f;
-           for (float delta=_fade/time; _fade > 0f; _fade-=delta*Time.deltaTime)
-           {
-                yield return null;
-           }
-           _fade = 0f;
-           AmbitionApp.SendMessage(GameMessages.FADE_OUT_COMPLETE);
-       }
 
         // Postprocess the image
-       IEnumerator FadeIn(float time)
+       IEnumerator FadeOut(float time)
        {
-           if (_fade < 0f) _fade = 0f;
-           for (float delta=(1f-_fade)/time; _fade < 1f; _fade+=delta*Time.deltaTime)
-           {
+            for (float d = _fade / time; _fade > 0f; _fade -= d*Time.deltaTime)
+            {
                 yield return null;
-           }
-           _fade = 1f;
-           AmbitionApp.SendMessage(GameMessages.FADE_IN_COMPLETE);
-       }
+            }
+            _fade = 0f;
+           AmbitionApp.SendMessage(GameMessages.FADE_OUT_COMPLETE);
+        }
+
+        // Postprocess the image
+        IEnumerator FadeIn(float time)
+        {
+            for (float d = (1f-_fade) / time; _fade < 1f; _fade += d * Time.deltaTime)
+            {
+                yield return null;
+            }
+            _fade = 1f;
+            AmbitionApp.SendMessage(GameMessages.FADE_IN_COMPLETE);
+        }
+
+        private void HandleInterruptFade()
+        {
+            StopAllCoroutines();
+            _fade = _fadeIn ? 1f : 0f;
+            AmbitionApp.SendMessage(_fadeIn ? GameMessages.FADE_IN_COMPLETE : GameMessages.FADE_OUT_COMPLETE);
+        }
 
         void OnRenderImage (RenderTexture source, RenderTexture destination)
         {

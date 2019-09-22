@@ -8,18 +8,19 @@ namespace Ambition
 		public const string BODY = ".body";
 		public const string OK = ".ok";
 		public const string CANCEL = ".cancel";
-		public const string CONFIRM = ".confirm";
+        public const string CONFIRM = ".confirm";
 		public const string DEFAULT_CONFIRM = "btn_confirm";
 		public const string DEFAULT_CANCEL = "btn_cancel";
 
 		// GENERIC MESSAGE DIALOG
 		public const string MESSAGE = "MESSAGE";
 
-		// LOADING 
-		public const string EXIT_GAME = "EXIT_GAME";
+        // LOADING 
+        public const string EXIT_GAME = "EXIT_GAME";
+        public const string GAME_MENU = "GAME_MENU";
 
-		// ESTATE MODALS & DIALOGS
-		public const string RSVP = "RSVP";
+        // ESTATE MODALS & DIALOGS
+        public const string RSVP = "RSVP";
 		public const string RSVP_CHOICE = "RSVP_CHOICE";
 		public const string CHOOSE_PARTY = "CHOOSE_PARTY";
 		public const string CANCEL_PARTY = "CANCEL_PARTY";

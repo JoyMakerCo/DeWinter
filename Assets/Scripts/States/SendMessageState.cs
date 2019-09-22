@@ -4,15 +4,21 @@ namespace Ambition
 {
     public class SendMessageState : UState<string>
     {
-        private string _message;
-        //public override void SetData(string message) => _message = message;
-        public override void SetData(string message)
+        string message;
+        public override void SetData(string data) => message = data;
+        public override void OnEnterState(string[] args)
         {
-            _message = message;
-        }
-        override public void OnEnterState()
-        {
-            AmbitionApp.SendMessage(_message);
+AmbitionApp.SendMessage(message);
+
+            if (args != null) switch (args.Length)
+            {
+                case 1:
+                    AmbitionApp.SendMessage(args[0]);
+                    break;
+                case 2:
+                    AmbitionApp.SendMessage(args[0], args[1]);
+                    break;
+            }
         }
     }
 }

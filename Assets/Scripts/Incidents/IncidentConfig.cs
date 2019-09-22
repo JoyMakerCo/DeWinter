@@ -1,191 +1,166 @@
 ﻿#pragma warning disable 0414
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using Util;
+using UGraph;
 
 #if (UNITY_EDITOR)
+using System.Linq;
 using UnityEditor;
+using UnityEngine.Serialization;
 using UnityEditor.Callbacks;
+using Newtonsoft.Json;
+using Core;
 #endif
 
 namespace Ambition
 {
     [Serializable]
-    public class IncidentConfig : ScriptableObject, IDirectedGraphObjectConfig
+    public class IncidentConfig : DirectedGraphConfig,
+        IDirectedGraphNodeRenderer,
+        IDirectedGraphNodeInitializer,
+        IDirectedGraphLinkInitializer,
+        IDirectedGraphDeleteNodeHandler,
+        IDirectedGraphDeleteLinkHandler
     {
+        public const int NUM_CHAPTERS = 4;
+
         public IncidentVO Incident = new IncidentVO();
 
-#if (UNITY_EDITOR)
         [SerializeField]
-        int _index = -1;
-
+        private bool[] _factions = new bool[Enum.GetValues(typeof(FactionType)).Length];
         [SerializeField]
-        bool _isNode;
+        private bool[] _chapters = new bool[NUM_CHAPTERS];
+        [SerializeField]
+        private long _date;
+        [SerializeField]
+        private string _localizationKey = null;
 
-        SerializedObject _serializedObject;
-
-        public SerializedObject GraphObject
+        public IncidentVO GetIncident() => new IncidentVO(Incident)
         {
-            get
+            Name = name,
+            Factions = GetFactions(),
+            Chapters = GetChapters(),
+            AssetPath = this.name,
+            Date = _date <= 0 ? default : new DateTime(_date),
+            LocalizationKey = _localizationKey
+        };
+
+        private FactionType[] GetFactions()
+        {
+            if (_factions == null || _factions.Length == 0)
+                return new FactionType[] { FactionType.Neutral };
+            List<FactionType> result = new List<FactionType>();
+            for (int i = _factions.Length - 1; i >= 0; i--)
+                if (_factions[i])
+                    result.Add((FactionType)(i));
+            return result.ToArray();
+        }
+
+        private int[] GetChapters()
+        {
+            if (_chapters == null) return new int[0];
+            List<int> chapters = new List<int>();
+            for (int i = _chapters.Length - 1; i >= 0; i--)
+                if (_chapters[i]) chapters.Add(i);
+            return chapters.ToArray();
+        }
+
+#if (UNITY_EDITOR)
+        private const string NODE_KEY = "node.";
+        private const string LINK_KEY = "link.";
+
+        private LocalizationConfig _localization;
+
+        [SerializeField]
+        private string[] _nodeText;
+
+        [SerializeField]
+        private string[] _linkText;
+
+        public override string  GraphProperty => "Incident";
+
+        public override void InitializeEditor(SerializedObject serializedObject)
+        {
+            Incident = Incident ?? new IncidentVO();
+            _localization = Resources.Load<LocalizationConfig>("Localization Config");
+            if (_localization == null)
             {
-                if (_serializedObject == null)
-                    _serializedObject = new SerializedObject(this);
-                return _serializedObject;
+                throw new Exception("Could not open Localization Config!");
+            }
+            _localizationKey = _localization.UpdateLocalizationKey(this, _localizationKey);
+            int len = _localizationKey.Length;
+            Dictionary<string, string> phrases = _localization.GetPhrases(this);
+            SerializedProperty list = serializedObject.FindProperty("_nodeText");
+            list.arraySize = Incident.Nodes.Length;
+            for (int i = Incident.Nodes.Length-1; i>=0; i--)
+            {
+                list.GetArrayElementAtIndex(i).stringValue = Incident.Nodes[i].Text;
+            }
+            list = serializedObject.FindProperty("_linkText");
+            list.arraySize = Incident.LinkData.Length;
+            for (int i = Incident.LinkData.Length - 1; i >= 0; i--)
+            {
+                list.GetArrayElementAtIndex(i).stringValue = Incident.LinkData[i].Text;
+            }
+            //_nodeText = phrases.Where(k => k.Key.StartsWith(NODE_KEY)).OrderBy(k => k.Key).Select(k => k.Value).ToList();
+            //_linkText = phrases.Where(k => k.Key.StartsWith(LINK_KEY)).OrderBy(k => k.Key).Select(k => k.Value).ToList();
+        }
+
+        public override void CleanupEditor(SerializedObject serializedObject)
+        {
+            if (_localization != null && serializedObject != null)
+            {
+                Dictionary<string, string> phrases = new Dictionary<string, string>();
+                SerializedProperty list = serializedObject.FindProperty("_nodeText");
+                for (int i=(list?.arraySize ?? 0) - 1; i>=0; i--)
+                {
+serializedObject.FindProperty("Incident").
+FindPropertyRelative("Nodes").
+GetArrayElementAtIndex(i).
+FindPropertyRelative("Text").stringValue = 
+                    phrases[NODE_KEY + i.ToString()] = list.GetArrayElementAtIndex(i).stringValue;
+                }
+                list.ClearArray();
+                list = serializedObject.FindProperty("_linkText");
+                for (int i = (list?.arraySize ?? 0) - 1; i >= 0; i--)
+                {
+serializedObject.FindProperty("Incident").
+FindPropertyRelative("LinkData").
+GetArrayElementAtIndex(i).
+FindPropertyRelative("Text").stringValue =
+                    phrases[LINK_KEY + i.ToString()] = list.GetArrayElementAtIndex(i).stringValue;
+                }
+                list.ClearArray();
+                _localization.Post(this, this.name);
+                _localization.Post(this, phrases, true);
+                _localization = null;
+                phrases = null;
             }
         }
 
-        public SerializedProperty GraphProperty
-        {
-            get
-            {
-                return GraphObject.FindProperty("Incident");
-            }
-        }
-
-        private void OnEnable()
-        {
-            //hideFlags = HideFlags.DontSave; TODO: This is causing build problems
-            if (Incident == null) Incident = new IncidentVO();
-            _serializedObject = new SerializedObject(this);
-        }
-
-        public void Select(int index, bool isNode)
-        {
-            GraphObject.FindProperty("_index").intValue = index;
-            GraphObject.FindProperty("_isNode").boolValue = isNode;
-        }
-
-        public void InitNodeData(SerializedProperty nodeData)
-        {
-            nodeData.FindPropertyRelative("Text").stringValue = "New Moment";
-        }
-
-        public void InitLinkData(SerializedProperty linkData) { }
-
-
-        [OnOpenAsset(1)]
-        public static bool OpenIncidentConfig(int instanceID, int line)
-        {
-            IncidentConfig config = EditorUtility.InstanceIDToObject(instanceID) as IncidentConfig;
-            return (config != null) && (null != GraphEditorWindow.Show(config));
-        }
-
-        [MenuItem("Assets/Create/Create Incident")]
-        public static void CreateIncident()
-        {
-            ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>("New Incident");
-        }
-
-        public static IncidentConfig CreateIncident(string name)
-        {
-            return ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>(name);
-        }
-
-        public GUIContent GetGUIContent(int nodeIndex)
-        {
-            GUI.color = (nodeIndex == 0 ? Color.cyan : Color.white);
-            GUI.skin.button.alignment = TextAnchor.UpperCenter;
-            GUI.skin.button.wordWrap = true;
-            string str = Incident.Nodes[nodeIndex].Text;
-            return new GUIContent(str);
-        }
-#endif
-    }
-
-#if (UNITY_EDITOR)
-    [CustomEditor(typeof(IncidentConfig))]
-    public class IncidentConfigDrawer : Editor
-    {
         private readonly string[] MONTHS = new string[]{
             "January","February","March","April","May","June",
             "July","August","September","October","November","December"
         };
 
-        private const string FOCUS_ID = "FOCUS_ID";
-
-        private int _index = -1;
-
         private void OnEnable()
         {
-            _index = -1;
+            //hideFlags = HideFlags.DontSave; TODO: This is causing build problems
+            if (Incident == null) Incident = new IncidentVO();
+            //new DirectedGraph<MomentVO, TransitionVO>();
         }
 
-        private void OnDisable()
+        public override void RenderNodeUI(SerializedProperty moment, int nodeIndex)
         {
-            serializedObject.FindProperty("_index").intValue = -1;
-            serializedObject.ApplyModifiedProperties();
-        }
-
-        public override void OnInspectorGUI()
-        {
-            SerializedProperty property = null;
-            serializedObject.Update();
-
-            int index = serializedObject.FindProperty("_index").intValue;
-            if (index >= 0)
-            {
-                bool selectText = _index != index;
-                bool isNode = serializedObject.FindProperty("_isNode").boolValue;
-                if (isNode)
-                {
-                    property = serializedObject.FindProperty("Incident.Nodes").GetArrayElementAtIndex(index);
-                    DrawMoment(property);
-                }
-                else
-                {
-                    property = serializedObject.FindProperty("Incident.LinkData");
-                    property.arraySize = serializedObject.FindProperty("Incident.Links").arraySize;
-                    DrawTransition(property.GetArrayElementAtIndex(index));
-                }
-                _index = index;
-                if (property != null && selectText)
-                {
-                    EditorGUI.FocusTextInControl(FOCUS_ID);
-                    TextEditor txt = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
-                    if (txt != null)
-                    {
-                        txt.SelectAll();
-                        Array.Find(Resources.FindObjectsOfTypeAll<EditorWindow>(), w => w.titleContent.text == "Inspector").Focus();
-                    }
-                }
-                if ((Event.current.modifiers & (EventModifiers.Command | EventModifiers.Control)) > 0
-                   && (Event.current.keyCode == KeyCode.Backspace || Event.current.keyCode == KeyCode.Delete)
-                    && GraphEditorWindow.DeleteSelected(serializedObject.targetObject as IncidentConfig, index, isNode))
-                {
-                    serializedObject.FindProperty("_isNode").boolValue = false;
-                    serializedObject.FindProperty("_index").intValue = -1;
-                }
-            }
-            else
-            {
-                SerializedProperty incident = serializedObject.FindProperty("Incident");
-                SerializedProperty dateProperty = incident.FindPropertyRelative("_date");
-                bool fixedDate = GUILayout.Toggle(dateProperty.longValue >= 0, "Date");
-                if (!fixedDate) dateProperty.longValue = -1;
-                else
-                {
-                    EditorGUILayout.BeginHorizontal();
-                    DateTime date = dateProperty.longValue > 0 ? DateTime.MinValue.AddTicks(dateProperty.longValue) : DateTime.MinValue;
-                    int day = Mathf.Clamp(EditorGUILayout.IntField(date.Day, GUILayout.MaxWidth(30f)), 1, DateTime.DaysInMonth(date.Year, date.Month));
-                    int month = EditorGUILayout.Popup(date.Month - 1, MONTHS) + 1;
-                    int year = Mathf.Clamp(EditorGUILayout.IntField(date.Year, GUILayout.MaxWidth(80f)), 1, 9999);
-                    dateProperty.longValue = new DateTime(year, month, day).Ticks;
-                    EditorGUILayout.EndHorizontal();
-                }
-                incident.FindPropertyRelative("OneShot").boolValue = GUILayout.Toggle(incident.FindPropertyRelative("OneShot").boolValue, "One-Shot");
-            }
-            serializedObject.ApplyModifiedProperties();
-        }
-
-        //This is where the display in the moment editor is handled
-        private bool DrawMoment(SerializedProperty moment)
-        {
+            SerializedProperty list;
             EditorGUI.BeginChangeCheck();
-            GUI.enabled = (moment.propertyPath != "Incident.Nodes.Array.data[0]");
+            GUI.enabled = (nodeIndex != 0);
             if (GUILayout.Button("Set as Start"))
             {
                 string[] subs = moment.propertyPath.Split('[', ']');
-                SerializedProperty list = moment.serializedObject.FindProperty("Incident.Nodes");
+                list = moment.serializedObject.FindProperty("Incident.Nodes");
                 int index = int.Parse(subs[1]);
                 Vector2Int link;
                 list.MoveArrayElement(index, 0);
@@ -204,10 +179,10 @@ namespace Ambition
             }
             GUI.enabled = true;
 
-            GUI.SetNextControlName(FOCUS_ID);
+            GUI.SetNextControlName("FOCUS_ID");
             EditorStyles.textField.wordWrap = true;
-            SerializedProperty text = moment.FindPropertyRelative("Text");
-            text.stringValue = GUILayout.TextArea(text.stringValue);
+            list = moment.serializedObject.FindProperty("_nodeText");
+            string momentText = GUILayout.TextArea(list != null && nodeIndex < list.arraySize ? list.GetArrayElementAtIndex(nodeIndex).stringValue : null);
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Background"), true);
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character1"), true);
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character2"), true);
@@ -216,21 +191,166 @@ namespace Ambition
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Music"), true);
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("AmbientSFX"), true);
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("OneShotSFX"), true);
-            return EditorGUI.EndChangeCheck();
+            if (EditorGUI.EndChangeCheck() && momentText != null)
+            {
+                list.GetArrayElementAtIndex(nodeIndex).stringValue = momentText;
+            }
         }
 
-        private bool DrawTransition(SerializedProperty transition)
+        public override void RenderLinkUI(SerializedProperty transition, int fromNode, int toNode)
         {
-            EditorGUI.BeginChangeCheck();
             if (transition != null)
             {
-                GUI.SetNextControlName(FOCUS_ID);
-                SerializedProperty text = transition.FindPropertyRelative("Text");
-                text.stringValue = GUILayout.TextArea(text.stringValue);
+                EditorGUI.BeginChangeCheck();
+                GUI.SetNextControlName("FOCUS_ID");
+                SerializedProperty list = transition.serializedObject.FindProperty("_linkText");
+                int index = Incident.GetLinkIndex(fromNode, toNode);
+                string linktext = GUILayout.TextArea(list != null && index < list.arraySize ? list.GetArrayElementAtIndex(index).stringValue : null);
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Rewards"), true);
+                EditorGUILayout.PropertyField(transition.FindPropertyRelative("Requirements"), true);
+                EditorGUILayout.LabelField("Links marked as XOR are mutually exclusive");
+                EditorGUILayout.PropertyField(transition.FindPropertyRelative("xor"), true);
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Flags: Type, Phrase, Value");
+                EditorGUILayout.LabelField("Specify Phrase to override default");
+                EditorGUILayout.LabelField("Specify non-zero Value to display");
+                EditorGUILayout.PropertyField(transition.FindPropertyRelative("Flags"), true);
+                if (EditorGUI.EndChangeCheck() && linktext != null)
+                {
+                    list.GetArrayElementAtIndex(index).stringValue = linktext;
+                }
             }
-            return EditorGUI.EndChangeCheck();
         }
+
+        public override void RenderConfigUI(SerializedObject serializedObject)
+        {
+            SerializedProperty incident = serializedObject.FindProperty("Incident");
+            SerializedProperty dateProperty = serializedObject.FindProperty("_date");
+            bool fixedDate = GUILayout.Toggle(dateProperty.longValue >= 0, "Date");
+            if (!fixedDate) dateProperty.longValue = -1;
+            else
+            {
+                EditorGUILayout.BeginHorizontal();
+                DateTime date = dateProperty.longValue > 0 ? DateTime.MinValue.AddTicks(dateProperty.longValue) : DateTime.MinValue;
+                int day = Mathf.Clamp(EditorGUILayout.IntField(date.Day, GUILayout.MaxWidth(30f)), 1, DateTime.DaysInMonth(date.Year, date.Month));
+                int month = EditorGUILayout.Popup(date.Month - 1, MONTHS) + 1;
+                int year = Mathf.Clamp(EditorGUILayout.IntField(date.Year, GUILayout.MaxWidth(80f)), 1, 9999);
+                dateProperty.longValue = new DateTime(year, month, day).Ticks;
+                EditorGUILayout.EndHorizontal();
+            }
+            incident.FindPropertyRelative("OneShot").boolValue = GUILayout.Toggle(incident.FindPropertyRelative("OneShot").boolValue, "One-Shot");
+            GUILayout.Space(8f);
+            SerializedProperty prop = serializedObject.FindProperty("_factions");
+            for (int i = 0; i < prop.arraySize; i++)
+            {
+                prop.GetArrayElementAtIndex(i).boolValue = GUILayout.Toggle(prop.GetArrayElementAtIndex(i).boolValue, ((FactionType)i).ToString());
+            }
+
+            GUILayout.Space(8f);
+            prop = serializedObject.FindProperty("_chapters");
+            prop.arraySize = IncidentConfig.NUM_CHAPTERS;
+            for (int i = 0; i < IncidentConfig.NUM_CHAPTERS; i++)
+            {
+                prop.GetArrayElementAtIndex(i).boolValue = GUILayout.Toggle(prop.GetArrayElementAtIndex(i).boolValue, "Chapter " + i.ToString());
+            }
+            EditorGUILayout.PropertyField(incident.FindPropertyRelative("Tags"), true);
+            EditorGUILayout.PropertyField(incident.FindPropertyRelative("Requirements"), true);
+        }
+
+        public bool Render(SerializedProperty node, int index, Rect rect, bool selected)
+        {
+            if (index >= Incident.Nodes.Length)
+            {
+                return false;
+            }
+            GUI.color = (index == 0)
+               ? (selected ? Color.blue : Color.cyan)
+               : (selected ? Color.gray : Color.white);
+            GUI.skin.button.alignment = TextAnchor.UpperCenter;
+            GUI.skin.button.wordWrap = true;
+            string str = node.serializedObject.FindProperty("_nodeText")?.GetArrayElementAtIndex(index)?.stringValue;
+            return GUI.Button(rect, str, GUI.skin.button);
+        }
+
+        public void InitializeNode(SerializedProperty nodeData, int index)
+        {
+            nodeData.FindPropertyRelative("Text").stringValue = "New Moment";
+            SerializedProperty prop = nodeData.serializedObject.FindProperty("_nodeText");
+            if (prop != null)
+            {
+                if (prop.arraySize <= index)
+                {
+                    prop.arraySize = index + 1;
+                }
+                prop.GetArrayElementAtIndex(index).stringValue = "New Moment";
+            }
+        }
+
+        public void InitializeLink(SerializedProperty link, int index, int fromNode, int toNode)
+        {
+            SerializedProperty list = link?.serializedObject?.FindProperty("_linkText");
+            if (list != null)
+            {
+                list.arraySize = Incident.Links.Length;
+                list.InsertArrayElementAtIndex(index);
+                list.GetArrayElementAtIndex(index).stringValue = "";
+            }
+            link.FindPropertyRelative("xor").boolValue = false;
+            link.FindPropertyRelative("Rewards").arraySize = 0;
+            link.FindPropertyRelative("Requirements").arraySize = 0;
+            link.FindPropertyRelative("Flags").arraySize = 0;
+        }
+
+        [MenuItem("Assets/Create/Incident")]
+        public static void CreateIncident()
+        {
+            ScriptableObjectUtil.CreateScriptableObject<IncidentConfig>("New Incident");
+        }
+
+        private void SelectFocusID()
+        {
+            EditorGUI.FocusTextInControl("FOCUS_ID");
+            TextEditor txt = (TextEditor)GUIUtility.GetStateObject(typeof(TextEditor), GUIUtility.keyboardControl);
+            if (txt != null)
+            {
+                txt.SelectAll();
+                Array.Find(Resources.FindObjectsOfTypeAll<EditorWindow>(), w => w.titleContent.text == "Inspector").Focus();
+            }
+        }
+
+        public void DeleteNode(SerializedProperty node, int index)
+        {
+            SerializedProperty list = node.serializedObject.FindProperty("_nodeText");
+            int size = list.arraySize;
+            if (index < size)
+            {
+                list.DeleteArrayElementAtIndex(index);
+                if (list.arraySize == size)
+                    list.DeleteArrayElementAtIndex(index);
+            }
+        }
+
+        public void DeleteLink(SerializedProperty link, int index)
+        {
+            SerializedProperty list = link.serializedObject.FindProperty("_linkText");
+            int size = list.arraySize;
+            if (index < size)
+            {
+                list.DeleteArrayElementAtIndex(index);
+                if (list.arraySize == size)
+                    list.DeleteArrayElementAtIndex(index);
+            }
+        }
+
+
+        [OnOpenAssetAttribute()]
+        public static bool Open(int instanceID, int line) => Open<IncidentConfig>(instanceID, line);
     }
+
+    [CustomEditor(typeof(IncidentConfig))]
+    public class IncidentConfigDrawer : Editor
+    {
+        public override void OnInspectorGUI() => ((IncidentConfig)target).OnRenderInspector(serializedObject);
 #endif
+    }
 }

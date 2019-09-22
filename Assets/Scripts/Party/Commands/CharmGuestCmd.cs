@@ -3,14 +3,17 @@ using Core;
 
 namespace Ambition
 {
-    public class CharmGuestCmd : ICommand<GuestVO>
+    public class CharmGuestCmd : ICommand<CharacterVO>
     {
-        public void Execute(GuestVO guest)
+        public void Execute(CharacterVO guest)
         {
-            guest.Opinion = 100;
-            guest.State = GuestState.Charmed;
-            AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
-            AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+            //guest.Opinion = 100;
+            //guest.State = GuestState.Charmed;
+            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
+            for (int bonusRemark = partyModel.CharmedRemarkBonus; bonusRemark > 0; bonusRemark--)
+            {
+                AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+            }
         }
     }
 }

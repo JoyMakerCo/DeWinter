@@ -15,7 +15,7 @@ namespace Ambition
 	        questNameText = this.GetComponent<Text>();
 	        questFlavorText = this.transform.Find("PierreQuestFlavorText").GetComponent<Text>();
 	    }
-
+/* TODO: Not use Update()
 	    // Update is called once per frame
 	    void Update()
 	    {
@@ -31,5 +31,6 @@ namespace Ambition
 	            questFlavorText.text = "";
 	        }
 	    }
-	}
+        */
+    }
 }

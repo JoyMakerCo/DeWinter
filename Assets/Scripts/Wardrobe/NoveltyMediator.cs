@@ -15,17 +15,20 @@ namespace Ambition
 
 		void OnEnable()
 		{
-			AmbitionApp.Subscribe<OutfitVO>(HandleOutfit);
+			AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
 		}
 
 		void OnDisable()
 		{
-			AmbitionApp.Unsubscribe<OutfitVO>(HandleOutfit);
+			AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
 		}
 
-		private void HandleOutfit(OutfitVO outfit)
+		private void HandleOutfit(ItemVO outfit)
 		{
-			_animator.SetFloat("OutfitNovelty", (float)outfit.Novelty*.01f);
+            int val = (outfit?.Type == ItemType.Outfit)
+                ? OutfitWrapperVO.GetNovelty(outfit)
+                : 0;
+            _animator.SetFloat("OutfitNovelty", .01f*(float)val);
 		}
 	}
 }

@@ -1,25 +1,20 @@
 ﻿using Core;
+using System.Collections.Generic;
 
 namespace Ambition
 {
-    public class ChooseLocationCmd : ICommand<LocationPin>
+    public class ChooseLocationCmd : ICommand<Pin>
     {
-        public void Execute(LocationPin location)
+        public void Execute(Pin location)
         {
+            if (location == null) return;
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
             model.Location = location;
-            if (location != null)
+            if (!model.Visited.Contains(location.name))
             {
-                if (location.Name() == "Home") model.Location = null;
-                else {
-                    IncidentVO incident = location.IntroIncidentConfig?.Incident;
-                    if (location != null && incident != null && (!location.Visited || !incident.OneShot))
-                    {
-                        CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-                        calendar.Incident = location.IntroIncidentConfig.Incident;
-                    }
-                    location.Visited = true;
-                }
+                CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+                calendar.Schedule(location.IntroIncidentConfig?.GetIncident(), calendar.Today);
+                model.Visited.Add(location.name);
             }
         }
     }

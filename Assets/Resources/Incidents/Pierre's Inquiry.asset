@@ -1,0 +1,663 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: Pierre's Inquiry
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 86}
+  - {x: 3, y: 86}
+  - {x: -4, y: 160}
+  - {x: -198, y: 256}
+  - {x: 21, y: 256}
+  - {x: 262, y: 255}
+  - {x: -199, y: 326}
+  - {x: -200, y: 391}
+  - {x: -202, y: 455}
+  - {x: -202, y: 455}
+  - {x: 22, y: 328}
+  - {x: 24, y: 395}
+  - {x: 26, y: 457}
+  - {x: 26, y: 457}
+  - {x: 262, y: 321}
+  - {x: 255, y: 394}
+  - {x: 262, y: 456}
+  - {x: 262, y: 456}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+    - {x: 1, y: 3}
+    - {x: 0, y: 0}
+    - {x: 3, y: 4}
+    - {x: 0, y: 0}
+    - {x: 3, y: 5}
+    - {x: 0, y: 0}
+    - {x: 3, y: 6}
+    - {x: 0, y: 0}
+    - {x: 4, y: 7}
+    - {x: 0, y: 0}
+    - {x: 7, y: 8}
+    - {x: 0, y: 0}
+    - {x: 8, y: 9}
+    - {x: 0, y: 0}
+    - {x: 5, y: 11}
+    - {x: 0, y: 0}
+    - {x: 11, y: 12}
+    - {x: 0, y: 0}
+    - {x: 12, y: 13}
+    - {x: 0, y: 0}
+    - {x: 6, y: 15}
+    - {x: 0, y: 0}
+    - {x: 15, y: 16}
+    - {x: 0, y: 0}
+    - {x: 16, y: 17}
+    - {x: 0, y: 0}
+    Nodes:
+    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
+        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
+        it\u2019s hard to tell. "
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "You spend a few moments waiting around in the entryway before Pierre
+        arrives, and he seems quite enthused by your presence. \u201CWhy, if it isn\u2019t
+        my newest confidant! Please come in! Have you come back with more delicious
+        information, or perhaps\u2026\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: happy
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
+        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
+        it\u2019s hard to tell. "
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "\u201C...you are trying to find someone, <i>non</i>?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: happy
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "\u201CMadame, my suspicions about your search were founded in your\u2026
+        newfound notoriety.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Pierre cocks an eyebrow at your response and rummages around in his snuff
+        box while he examines you more closely.
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201COh, playing your cards carefully? I admire that, madame.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: happy
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CSuspicions, which you have been so kind as to confirm for me.\u201D
+        Pierre favors you with a short and elegant bow. \u201C<i>Merci beaucoups</i>\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: happy
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CAs for your fiance\u2019s whereabouts, I don\u2019t know his exact
+        address, or I would probably be a wealthier man by now.\u201D Pierre admits,
+        pausing to examine your reaction. \u201CHowever, I happen to have some leads,
+        and I can say that I already like you more than some of the men that are looking
+        for him.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CHowever, before I lay out my terms, I must satisfy my own professional
+        curiosity. How well do you really know your beloved Armand?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Peirre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 8
+        ID: Back Then, Back Home
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
+        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
+        it\u2019s hard to tell. "
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "\u201CAh yes, the sting of desertion can certainly sour one\u2019s opinion.
+        Your Armand has been so thoughtless as to abandon you in this cruel city,
+        this den of vipers, and now you seek to chart your own course, <i>non</i>?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CI doubt anyone could blame you for wanting to seize your own destiny,
+        instead of chasing his.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "\u201CNow then, to business?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
+        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
+        it\u2019s hard to tell. "
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "\u201CI am referring to your absent fiance, the Baron Armand de Marbo.\u201D
+        He pauses to snort a small pinch of snuff, carefully examining your face for
+        any hint of reaction. "
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CEver since making your acquaintance, I knew something about you
+        was familiar, and my keen journalistic senses are never wrong! Your beloved
+        Armand was quite the social butterfly, and he mentioned you often.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CIn fact, like any good lover, he knew quite a lot about you. But
+        how much did you really know about him?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: Pierre
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards:
+      - Type: 8
+        ID: Back Then, Back Home
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
+        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
+        it\u2019s hard to tell. "
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CWhere is Armand, and how do you know that I\u2019m looking for
+        him?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CI\u2019m done trying to find Armand, he can seek me out if he cares
+        so much.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CWhat, exactly, are you talking about?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
+    OneShot: 1
+    Chapters: 
+    Tags: []
+    Factions: 
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1

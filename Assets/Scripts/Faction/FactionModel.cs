@@ -10,16 +10,16 @@ namespace Ambition
 {
 	public class FactionModel : DocumentModel
 	{
-		public Dictionary<string, FactionVO> Factions;
+		public Dictionary<FactionType, FactionVO> Factions;
 
 		[JsonProperty("factions")]
 		private FactionVO[] _factions
 		{
 			set {
-				Factions = new Dictionary<string, FactionVO>();
+				Factions = new Dictionary<FactionType, FactionVO>();
 				foreach(FactionVO faction in value)
 				{
-					Factions.Add(faction.Name, faction);
+					Factions.Add(faction.Type, faction);
 				}
 			}
 		}
@@ -41,48 +41,48 @@ namespace Ambition
 
 		public FactionModel () : base("FactionData") {}
 
-		public FactionVO this[string faction]
-		{
-            get
-            { return Factions[faction]; }
-		}
+		public FactionVO this[FactionType faction] => Factions[faction];
 
-		public string GetVictoriousPower()
+		public FactionType GetVictoriousPower()
 		{
-			return Factions[FactionConsts.REVOLUTION].Power > Factions[FactionConsts.CROWN].Power
-				? FactionConsts.REVOLUTION
-				: FactionConsts.CROWN;
+			return Factions[FactionType.Revolution].Power > Factions[FactionType.Crown].Power
+				? FactionType.Revolution
+				: FactionType.Crown;
 		}
 
         public FactionVO GetRandomFactionNoNeutral() //Used for a variety of tasks, this returns a randomly selected faction that isn't the 'Neutral' faction used for certain parties
         {
-            List<FactionVO> factionList = Factions.Values.ToList();
-            List<FactionVO> randomFactionList = new List<FactionVO>();
-            foreach (FactionVO f in factionList)
-            {
-                if(f.Name != "Neutral")
-                {
-                    randomFactionList.Add(f);
-                }
-            }
-            FactionVO randomFaction = randomFactionList[Util.RNG.Generate(0, randomFactionList.Count)];
-            return randomFaction;
+            FactionVO[] factions = Factions.Values.Where(f => f.Type != FactionType.Neutral).ToArray();
+            return Util.RNG.TakeRandom(factions);
         }
 
-		public string GetFactionBenefits(string FactionID)
+		public string GetFactionBenefits(FactionType type)
 		{
-			string str = "";
-			FactionVO faction;
-			if (Factions.TryGetValue(FactionID, out faction))
+            if (!Factions.TryGetValue(type, out FactionVO faction)) return "";
+            int level = faction.Level;
+            string[] results = new string[level];
+			for (int i=level; i>=0; i--)
 			{
-				LocalizationModel phrases = AmbitionApp.GetModel<LocalizationModel>();
-				FactionID = FactionID.ToLower().Replace(' ', '_');
-				for (int i=faction.Level; i>=0; i--)
-				{
-					str += phrases.GetString(FactionID + "." + i.ToString());
-				}
+                results[i] = AmbitionApp.GetString(faction.Name.ToLower() + "." + (level - i).ToString());
+            }
+            return string.Join("\n", results);
+        }
+
+		public FactionLevelVO GetFactionLevel( int level )
+		{
+			if (level < 0)
+			{
+				Debug.LogErrorFormat("Faction level is {0} ???",level);
+				level = 0;
 			}
-			return str;
+
+			if (level >= Levels.Length)
+			{
+				Debug.LogErrorFormat("Faction level is {0} (max {1}) ???",level,Levels.Length-1);
+				level = Levels.Length-1;
+			}
+
+			return Levels[level];
 		}
 	}
 }

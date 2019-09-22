@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,7 +37,7 @@ namespace Ambition
 		void Start ()
 		{
 			_model = AmbitionApp.GetModel<PartyModel>();
-			RoomTitleText.text = AmbitionApp.GetModel<MapModel>().Room.Name;
+			//RoomTitleText.text = AmbitionApp.GetModel<MapModel>().Room.Value?.Name;
 			reparteeIndicatorImage.enabled = (AmbitionApp.GetModel<GameModel>().Level >= 2);
 		}
 
@@ -52,14 +53,11 @@ namespace Ambition
 		{
 			// TODO: Clunky as hell. NEED a buff system.
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-			ItemVO accessory;
 			float t = AmbitionApp.GetModel<PartyModel>().RoundTime;
-			if (model.Equipped.TryGetValue(ItemConsts.ACCESSORY, out accessory) && accessory.Name == "Fan")
+            if (model.GetEquippedItem(ItemType.Accessory)?.ID == "Fan")
 			{
 				t *= 1.1f;
 			} 
-			// TODO: Reset & Start timer
-//			RoomTimer.CountDown(t);
 		}
 
 		IEnumerator Timer(float time)

@@ -35,39 +35,39 @@ namespace Ambition
         
         private void OnEnable()
         {
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleSelect);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleSelect);
             AmbitionApp.Subscribe<RemarkVO>(HandleRemark);
         }
 
         private void OnDisable()
         {
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_SELECTED, HandleSelect);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleSelect);
             AmbitionApp.Unsubscribe<RemarkVO>(HandleRemark);
         }
 
-        override protected void HandleGuest(GuestVO guest)
+        override protected void HandleGuest(CharacterVO guest)
 		{
             if (guest != null && guest == _guest)
 			{
-                if (guest.State != GuestState.Offended)
-                {
-                    float amount = (_guest.Opinion >= 100) ? 1f : ((float)_guest.Opinion) * .01f;
-                    if (gameObject.activeInHierarchy)
-                    {
-                        StopAllCoroutines();
-                        StartCoroutine(FillMeter(amount));
-                    }
-                    else
-                    {
-                        OpinionIndicator.fillAmount = amount;
-                    }
-                    InterestIcon.sprite = InterestSprites.GetSprite(_guest.Like);
-                    InterestIconBorder.sprite = BorderSprites.GetSprite(_guest.State.ToString());
-                }
-                else
-                {
-                    gameObject.SetActive(false);
-                }
+                //if (guest.State != GuestState.Offended)
+                //{
+                //    float amount = (_guest.Opinion >= 100) ? 1f : ((float)_guest.Opinion) * .01f;
+                //    if (gameObject.activeInHierarchy)
+                //    {
+                //        StopAllCoroutines();
+                //        StartCoroutine(FillMeter(amount));
+                //    }
+                //    else
+                //    {
+                //        OpinionIndicator.fillAmount = amount;
+                //    }
+                //    InterestIcon.sprite = InterestSprites.GetSprite(_guest.Like);
+                //    InterestIconBorder.sprite = BorderSprites.GetSprite(_guest.State.ToString());
+                //}
+                //else
+                //{
+                //    gameObject.SetActive(false);
+                //}
             }
 		}
 
@@ -76,29 +76,29 @@ namespace Ambition
             _remark = remark;
         }
 
-        private void HandleSelect(GuestVO guest)
+        private void HandleSelect(CharacterVO guest)
         {
             if (_remark != null && guest != null && guest == _guest)
             {
-                if (_remark.Interest == _guest.Like)
-                {
-                    if (_animator != null)
-                        _animator.SetTrigger("Positive Remark");
-                    if (PositiveEffect != null)
-                        PositiveEffect.Play();
-                }
-                else if (_remark.Interest == _guest.Dislike)
-                {
-                    if (_animator != null)
-                        _animator.SetTrigger("Negative Remark");
-                    if (NegativeEffect != null)
-                        NegativeEffect.Play();
-                }
-                else
-                {
-                    if (_animator != null)
-                        _animator.SetTrigger("Neutral Remark");
-                }
+                //if (_remark.Interest == _guest.Like)
+                //{
+                //    if (_animator != null)
+                //        _animator.SetTrigger("Positive Remark");
+                //    if (PositiveEffect != null)
+                //        PositiveEffect.Play();
+                //}
+                //else if (_remark.Interest == _guest.Dislike)
+                //{
+                //    if (_animator != null)
+                //        _animator.SetTrigger("Negative Remark");
+                //    if (NegativeEffect != null)
+                //        NegativeEffect.Play();
+                //}
+                //else
+                //{
+                //    if (_animator != null)
+                //        _animator.SetTrigger("Neutral Remark");
+                //}
             }
         }
 

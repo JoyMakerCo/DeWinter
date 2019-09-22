@@ -20,22 +20,24 @@ namespace Ambition
 	    public bool availableSpymasterTestTheWaters;
 	    public bool availableTestTheWaters;
 
-	    private Dictionary<string, int> _allegianceTimers;
-		private Dictionary<string, int> _powerTimers;
+	    private Dictionary<FactionType, int> _allegianceTimers;
+		private Dictionary<FactionType, int> _powerTimers;
+        private GameModel _model;
 
 		// Use this for initialization
 		void Start ()
 		{
 			FactionModel fmod = AmbitionApp.GetModel<FactionModel>();
 			ServantModel servants = AmbitionApp.GetModel<ServantModel>();
-			ServantVO spymaster;
+            _model = AmbitionApp.GetModel<GameModel>();
+            ServantVO spymaster;
 
 			availableSpymasterTestTheWaters = servants.Servants.TryGetValue(ServantConsts.SPYMASTER, out spymaster);
 	        availableTestTheWaters = true;
 
-	        _allegianceTimers = new Dictionary<string, int>();
-			_powerTimers = new Dictionary<string, int>();
-			foreach(string faction in fmod.Factions.Keys)
+            _allegianceTimers = new Dictionary<FactionType, int>();
+            _powerTimers = new Dictionary<FactionType, int>();
+			foreach(FactionType faction in fmod.Factions.Keys)
 			{
 				_powerTimers.Add(faction, 0);
 				_allegianceTimers.Add(faction, 0);
@@ -50,110 +52,110 @@ namespace Ambition
 			FactionModel model = AmbitionApp.GetModel<FactionModel>();
 
 	        //---- Crown Info ----
-	        if (model["Crown"].Level >= 8)
+	        if (model[FactionType.Crown].Level >= 8)
 	        {
 	            crownInfo.text = "- The Royalty and members of high ranking nobility alligned with them" +
 	                        "\n- Like Expensive but Modest Clothes" +
-					"\n- Power: " + GetPowerString(model["Crown"].Power) + " (Faction Benefit)";
-	        } else if (model["Crown"].Level >= 6)
+					"\n- Power: " + GetPowerString(model[FactionType.Crown].Power) + " (Faction Benefit)";
+	        } else if (model[FactionType.Crown].Level >= 6)
 	        {
 	            crownInfo.text = "- The Royalty and members of high ranking nobility alligned with them" +
 	                        "\n- Like Expensive but Modest Clothes" +
-					"\n- Power: " + GetPowerString(model["Crown"].Power) + " (Faction Benefit)";
+					"\n- Power: " + GetPowerString(model[FactionType.Crown].Power) + " (Faction Benefit)";
 	        } else
 	        {
 	            crownInfo.text = "- The Royalty and members of high ranking nobility alligned with them" +
 	                        "\n- Like Expensive but Modest Clothes" +
-	                        "\n- Power: " + model["Crown"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Crown"]);
+	                        "\n- Power: " + model[FactionType.Crown].knownPower + " " + ConvertKnowledgeTimer(_powerTimers[FactionType.Crown]);
 	        }
 	        //---- Church Info ----
-	        if (model["Church"].Level >= 8)
+	        if (model[FactionType.Church].Level >= 8)
 	        {
 	            churchInfo.text = "- The Clergy and those alligned with them" +
 	                        "\n- Like Vintage and Modest Clothes" +
-					"\n- Allegiance: " + GetAllegianceString(model["Church"].Allegiance) + " (Faction Benefit)" +
-					"\n- Power: " + GetPowerString(model["Church"].Power) + " (Faction Benefit)";
+					"\n- Allegiance: " + GetAllegianceString(model[FactionType.Church].Allegiance) + " (Faction Benefit)" +
+					"\n- Power: " + GetPowerString(model[FactionType.Church].Power) + " (Faction Benefit)";
 	        }
-	        else if (model["Church"].Level >= 6)
+	        else if (model[FactionType.Church].Level >= 6)
 	        {
 	            churchInfo.text = "- The Clergy and those alligned with them" +
 	                         "\n- Like Vintage and Modest Clothes" +
-	                         "\n- Allegiance: " + model["Church"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Church"]) +
-					"\n- Power: " + GetPowerString(model["Church"].Power) + " (Faction Benefit)";
+	                         "\n- Allegiance: " + model[FactionType.Church].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers[FactionType.Church]) +
+					"\n- Power: " + GetPowerString(model[FactionType.Church].Power) + " (Faction Benefit)";
 	        }
 	        else
 	        {
 	            churchInfo.text = "- The Clergy and those alligned with them" +
 	                        "\n- Like Vintage and Modest Clothes" +
-	                        "\n- Allegiance: " + model["Church"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Church"]) +
-	                        "\n- Power: " + model["Church"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Church"]);
+	                        "\n- Allegiance: " + model[FactionType.Church].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers[FactionType.Church]) +
+	                        "\n- Power: " + model[FactionType.Church].knownPower + " " + ConvertKnowledgeTimer(_powerTimers[FactionType.Church]);
 	        }
 	        //---- Military Info ----
-	        if (model["Military"].Level >= 8)
+	        if (model[FactionType.Military].Level >= 8)
 	        {
 	            militaryInfo.text = "- The Generals and Troops of the armed forces and those alligned with them" +
 	                        "\n- Couldn't care less about your clothes" +
-					"\n- Allegiance: " + GetAllegianceString(model["Military"].Allegiance) + " (Faction Benefit)" +
-					"\n- Power: " + GetPowerString(model["Military"].Power) + " (Faction Benefit)";
+					"\n- Allegiance: " + GetAllegianceString(model[FactionType.Military].Allegiance) + " (Faction Benefit)" +
+					"\n- Power: " + GetPowerString(model[FactionType.Military].Power) + " (Faction Benefit)";
 	        }
-	        else if (model["Military"].Level >= 6)
+	        else if (model[FactionType.Military].Level >= 6)
 	        {
 	            militaryInfo.text = "- The Generals and Troops of the armed forces and those alligned with them" +
 	                        "\n- Couldn't care less about your clothes" +
-	                        "\n- Allegiance: " + model["Military"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Military"]) +
-					"\n- Power: " + GetPowerString(model["Military"].Power) + " (Faction Benefit)";
+	                        "\n- Allegiance: " + model[FactionType.Military].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers[FactionType.Military]) +
+					"\n- Power: " + GetPowerString(model[FactionType.Military].Power) + " (Faction Benefit)";
 	        }
 	        else
 	        {
 	            militaryInfo.text = "- The Generals and Troops of the armed forces and those alligned with them" +
 	                        "\n- Couldn't care less about your clothes" +
-	                        "\n- Allegiance: " + model["Military"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Military"]) +
-	                        "\n- Power: " + model["Military"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Military"]);
+	                        "\n- Allegiance: " + model[FactionType.Military].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers[FactionType.Military]) +
+	                        "\n- Power: " + model[FactionType.Military].knownPower + " " + ConvertKnowledgeTimer(_powerTimers[FactionType.Military]);
 	        }
 	        //---- Bourgeoisie Info ----
-	        if (model["Bourgeoisie"].Level >= 8)
+	        if (model[FactionType.Bourgeoisie].Level >= 8)
 	        {
 	            bourgeoisieInfo.text = "- The newly wealthy Mercantile class" +
 	                        "\n- Like clothes that are Luxurious and Racy" +
-					"\n- Allegiance: " + GetAllegianceString(model["Bourgeoisie"].Allegiance) + " (Faction Benefit)" +
-					"\n- Power: " + GetPowerString(model["Bourgeoisie"].Power) + " (Faction Benefit)";
+					"\n- Allegiance: " + GetAllegianceString(model[FactionType.Bourgeoisie].Allegiance) + " (Faction Benefit)" +
+					"\n- Power: " + GetPowerString(model[FactionType.Bourgeoisie].Power) + " (Faction Benefit)";
 	        }
-	        else if (model["Bourgeoisie"].Level >= 6)
+	        else if (model[FactionType.Bourgeoisie].Level >= 6)
 	        {
 	            bourgeoisieInfo.text = "- The newly wealthy Mercantile class" +
 	                        "\n- Like clothes that are Luxurious and Racy" +
-	                        "\n- Allegiance: " + model["Bourgeoisie"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Bourgeoisie"]) +
-	                        "\n- Power: " + GetPowerString(model["Bourgeoisie"].Power) + " (Faction Benefit)";
+	                        "\n- Allegiance: " + model[FactionType.Bourgeoisie].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers[FactionType.Bourgeoisie]) +
+	                        "\n- Power: " + GetPowerString(model[FactionType.Bourgeoisie].Power) + " (Faction Benefit)";
 	        }
 	        else
 	        {
 	            bourgeoisieInfo.text = "- The newly wealthy Mercantile class" +
 	                        "\n- Like clothes that are Luxurious and Racy" +
-	                        "\n- Allegiance: " + model["Bourgeoisie"].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers["Bourgeoisie"]) +
-	                        "\n- Power: " + model["Bourgeoisie"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Bourgeoisie"]);
+	                        "\n- Allegiance: " + model[FactionType.Bourgeoisie].knownAllegiance + " " + ConvertKnowledgeTimer(_allegianceTimers[FactionType.Bourgeoisie]) +
+	                        "\n- Power: " + model[FactionType.Bourgeoisie].knownPower + " " + ConvertKnowledgeTimer(_powerTimers[FactionType.Bourgeoisie]);
 	        }
 	        //---- Third Estate Info ----
-	        if (model["Third Estate"].Level >= 8)
+	        if (model[FactionType.Revolution].Level >= 8)
 	        {
 	            revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
 	                        "\n - Like clothes that are Vintage and Racy" +
-					"\n- Power: " + GetPowerString(model["Third Estate"].Power) + " (Faction Benefit)";
+					"\n- Power: " + GetPowerString(model[FactionType.Revolution].Power) + " (Faction Benefit)";
 	        }
-	        else if (model["Third Estate"].Level >= 6)
+	        else if (model[FactionType.Revolution].Level >= 6)
 	        {
 	            revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
 	                        "\n - Like clothes that are Vintage and Racy" +
-								"\n- Power: " + GetPowerString(model["Third Estate"].Power) + " (Faction Benefit)";
+								"\n- Power: " + GetPowerString(model[FactionType.Revolution].Power) + " (Faction Benefit)";
 	        }
 	        else
 	        {
 	            revolutionInfo.text = "- The unhappy Common Man along with the Academics and Artists alligned with them" +
 	                        "\n - Like clothes that are Vintage and Racy" +
-	                        "\n- Power: " + model["Third Estate"].knownPower + " " + ConvertKnowledgeTimer(_powerTimers["Third Estate"]);
+	                        "\n- Power: " + model[FactionType.Revolution].knownPower + " " + ConvertKnowledgeTimer(_powerTimers[FactionType.Revolution]);
 	        }
 	    }
 
-	    public void TestTheWatersPower(string faction)
+	    public void TestTheWatersPower(FactionType faction)
 	    {
 			if (AmbitionApp.GetModel<FactionModel>()[faction].Level >= 6)
 	        {
@@ -165,10 +167,10 @@ namespace Ambition
 					_powerTimers[faction] = 0;
 					UpdateInfo();
 	            }
-	            else if (availableTestTheWaters && GameData.moneyCount > testTheWatersCost)
+	            else if (availableTestTheWaters && _model.Livre.Value > testTheWatersCost)
 	            {
 	                availableTestTheWaters = false;
-	                GameData.moneyCount -= testTheWatersCost;
+	                _model.Livre.Value -= testTheWatersCost;
 					_powerTimers[faction] = 0;
 	                UpdateInfo();
 	            }
@@ -179,7 +181,7 @@ namespace Ambition
 	        } 
 	    }
 
-	    public void TestTheWatersAllegiance(string faction)
+	    public void TestTheWatersAllegiance(FactionType faction)
 	    {
 			if (AmbitionApp.GetModel<FactionModel>()[faction].Level >= 8)
 	        {
@@ -193,10 +195,10 @@ namespace Ambition
 					_powerTimers[faction] = 0;
 	                UpdateInfo();
 	            }
-	            else if (availableTestTheWaters && GameData.moneyCount > testTheWatersCost)
+	            else if (availableTestTheWaters && _model.Livre.Value > testTheWatersCost)
 	            {
 	                availableTestTheWaters = false;
-	                GameData.moneyCount -= testTheWatersCost;
+	                _model.Livre.Value -= testTheWatersCost;
 	                _powerTimers[faction] = 0;
 	                UpdateInfo();
 	            }
@@ -210,8 +212,8 @@ namespace Ambition
 	    void IncrementKnowledgeTimers()
 	    {
 	        //Allegiance Timers for Crown and Third Estate aren't used
-			List<string> factions = new List<string>(_allegianceTimers.Keys);
-	        foreach (string faction in factions)
+			List<FactionType> factions = new List<FactionType>(_allegianceTimers.Keys);
+	        foreach (FactionType faction in factions)
 	        {
 	        	_allegianceTimers[faction]++;
 				_powerTimers[faction]++;
@@ -221,7 +223,7 @@ namespace Ambition
 	// TODO: Store them in order
 	    private string GetPowerString(int power)
 	    {
-			return AmbitionApp.GetModel<LocalizationModel>().GetString("power." + power.ToString());
+			return AmbitionApp.GetString("power." + power.ToString());
 	    }
 
 	// TODO: Store them in order
@@ -231,7 +233,7 @@ namespace Ambition
 			int index = fmod.Allegiance.Length-1;
 			while (index >= 0 && allegiance >= fmod.Allegiance[index])
 				index--;
-			return AmbitionApp.GetModel<LocalizationModel>().GetString("allegiance." + index.ToString());
+			return AmbitionApp.GetString("allegiance." + index.ToString());
 	    }
 
 	    string ConvertKnowledgeTimer(int timer)

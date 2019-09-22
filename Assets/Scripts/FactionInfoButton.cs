@@ -9,7 +9,7 @@ public class FactionInfoButton : MonoBehaviour {
     private Image image;
 
     public Ambition.FactionInfoTextController textController;
-    public string faction;
+    public FactionType faction;
     public enum InfoType {Allegiance, Power};
     public InfoType infoType;
 
@@ -27,7 +27,8 @@ public class FactionInfoButton : MonoBehaviour {
     void DisplayButton()
     {
     	FactionModel model = AmbitionApp.GetModel<FactionModel>();
-        if(infoType == InfoType.Allegiance)
+        GameModel game = AmbitionApp.GetModel<GameModel>();
+        if (infoType == InfoType.Allegiance)
         {
             if (model[faction].Level >= 8)
             {
@@ -40,7 +41,7 @@ public class FactionInfoButton : MonoBehaviour {
                 {
                     text.text = "Learn Current Allegiance (Spymaster - Free!)";
                     image.color = Color.white;
-                } else if (textController.availableTestTheWaters && GameData.moneyCount >= textController.testTheWatersCost)
+                } else if (textController.availableTestTheWaters && game.Livre >= textController.testTheWatersCost)
                 {
                     text.text = "Learn Current Allegiance (£" + textController.testTheWatersCost + ")";
                     image.color = Color.white;
@@ -63,7 +64,7 @@ public class FactionInfoButton : MonoBehaviour {
                 {
                     text.text = "Learn Current Power (Spymaster - Free!)";
                     image.color = Color.white;
-                } else if (textController.availableTestTheWaters && GameData.moneyCount >= textController.testTheWatersCost)
+                } else if (textController.availableTestTheWaters && game.Livre >= textController.testTheWatersCost)
                 {
                     text.text = "Learn Current Power (£" + textController.testTheWatersCost + ")";
                     image.color = Color.white;

@@ -3,61 +3,64 @@ using Core;
 
 namespace Ambition
 {
-    public class InitGameCmd : ICommand<PlayerConfig>
-	{
-        public void Execute(PlayerConfig config)
+    public class InitGameCmd : ICommand
+    {
+        public void Execute()
         {
+            App.Register<LocalizationSvc>();
+            App.Register<ModelTrackingSvc>();
+            App.Register<ModelSvc>();
+            App.Register<MessageSvc>();
+            App.Register<CommandSvc>();
+            App.Register<UFlow.UFlowSvc>();
+            App.Register<FactorySvc>();
+            App.Register<RewardFactorySvc>();
+            App.Register<RequirementsSvc>();
+            App.Register<AssetBundleSvc>();
+
             AmbitionApp.RegisterModel<LocalizationModel>();
-			AmbitionApp.RegisterModel<GameModel>();
-			AmbitionApp.RegisterModel<FactionModel>();
-			AmbitionApp.RegisterModel<InventoryModel>();
-			AmbitionApp.RegisterModel<ServantModel>();
-			AmbitionApp.RegisterModel<CalendarModel>();
-			AmbitionApp.RegisterModel<PartyModel>();
-			AmbitionApp.RegisterModel<CharacterModel>();
-			AmbitionApp.RegisterModel<QuestModel>();
-			AmbitionApp.RegisterModel<MapModel>();
-            AmbitionApp.RegisterModel<ConversationModel>();
+            AmbitionApp.RegisterModel<GameModel>();
+            AmbitionApp.RegisterModel<FactionModel>();
+            AmbitionApp.RegisterModel<InventoryModel>();
+            AmbitionApp.RegisterModel<ServantModel>();
+            AmbitionApp.RegisterModel<CalendarModel>();
+            AmbitionApp.RegisterModel<CharacterModel>();
+            AmbitionApp.RegisterModel<QuestModel>();
+            AmbitionApp.RegisterModel<MapModel>();
             AmbitionApp.RegisterModel<ParisModel>();
 
-            // Initialize Selected Player
-            AmbitionApp.GetModel<GameModel>().PlayerName = config.name;
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            Array.ForEach(config.Incidents, i => calendar.Schedule(i.Incident));
-
             AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryMessages.SELL_ITEM);
-			AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
-			AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
+            AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
+            AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
             AmbitionApp.RegisterCommand<GrantRewardsCmd, CommodityVO[]>();
             AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
-			AmbitionApp.RegisterCommand<IntroServantCmd, ServantVO>(ServantMessages.INTRODUCE_SERVANT);
-			AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantMessages.HIRE_SERVANT);
-			AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantMessages.FIRE_SERVANT);
-			AmbitionApp.RegisterCommand<QuitCmd>(GameMessages.QUIT_GAME);
-			AmbitionApp.RegisterCommand<GoToRoomCmd, RoomVO>(MapMessage.GO_TO_ROOM);
-            AmbitionApp.RegisterCommand<InvokeMachineCmd, string>(PartyMessages.START_PARTY, "PartyController");
-			AmbitionApp.RegisterCommand<UpdatePartyCmd, PartyVO>();
-			AmbitionApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
+            AmbitionApp.RegisterCommand<IntroServantCmd, ServantVO>(ServantMessages.INTRODUCE_SERVANT);
+            AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantMessages.HIRE_SERVANT);
+            AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantMessages.FIRE_SERVANT);
+            AmbitionApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
+            AmbitionApp.RegisterCommand<UpdateCalendarCmd>(CalendarMessages.UPDATE_CALENDAR);
             AmbitionApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
-            AmbitionApp.RegisterCommand<CreateEnemyCmd, string>(GameMessages.CREATE_ENEMY);
-			AmbitionApp.RegisterCommand<AdjustFactionCmd, AdjustFactionVO>(FactionConsts.ADJUST_FACTION);
-			AmbitionApp.RegisterCommand<EquipItemCmd, ItemVO>(InventoryMessages.EQUIP);
-			AmbitionApp.RegisterCommand<UnequipItemCmd, ItemVO>(InventoryMessages.UNEQUIP);
-			AmbitionApp.RegisterCommand<UnequipSlotCmd, string>(InventoryMessages.UNEQUIP);
+            AmbitionApp.RegisterCommand<AdjustFactionCmd, AdjustFactionVO>(FactionMessages.ADJUST_FACTION);
+            AmbitionApp.RegisterCommand<EquipItemCmd, ItemVO>(InventoryMessages.EQUIP);
+            AmbitionApp.RegisterCommand<GenerateOutfitCmd, ItemVO>(InventoryMessages.GENERATE_OUTFIT);
+            AmbitionApp.RegisterCommand<UnequipItemCmd, ItemVO>(InventoryMessages.UNEQUIP);
+            AmbitionApp.RegisterCommand<UnequipSlotCmd, ItemType>(InventoryMessages.UNEQUIP);
             AmbitionApp.RegisterCommand<AddLocationCmd, string>(ParisMessages.ADD_LOCATION);
             AmbitionApp.RegisterCommand<RemoveLocationCmd, string>(ParisMessages.REMOVE_LOCATION);
-            AmbitionApp.RegisterCommand<InvokeMachineCmd, string>(IncidentMessages.START_INCIDENT, "IncidentController");
             AmbitionApp.RegisterCommand<GoToPartyCmd, PartyVO>(PartyMessages.GO_TO_PARTY);
             AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
+            AmbitionApp.RegisterCommand<PerilIncidentCmd, int>(GameConsts.PERIL);
+            AmbitionApp.RegisterCommand<ResetGameCmd>(GameMessages.EXIT_MENU);
+            AmbitionApp.RegisterCommand<CreateGossipCmd, FactionType>(InventoryMessages.CREATE_GOSSIP); 
 
             // Party
-            AmbitionApp.RegisterCommand<TargetGuestCmd, GuestVO>(PartyMessages.TARGET_GUEST);
-            AmbitionApp.RegisterCommand<SelectGuestCmd, GuestVO>(PartyMessages.SELECT_GUEST);
-            AmbitionApp.RegisterCommand<EnemyAttackCmd, EnemyVO>(PartyMessages.GUEST_SELECTED);
-            AmbitionApp.RegisterCommand<GuestSelectedCmd, GuestVO>(PartyMessages.GUEST_SELECTED);
-            AmbitionApp.RegisterCommand<GuestIgnoredCmd, GuestVO>(PartyMessages.GUEST_IGNORED);
-            AmbitionApp.RegisterCommand<CharmGuestCmd, GuestVO>(PartyMessages.GUEST_CHARMED);
-            AmbitionApp.RegisterCommand<OffendGuestCmd, GuestVO>(PartyMessages.GUEST_OFFENDED);
+            AmbitionApp.RegisterCommand<InitPartyCmd, PartyVO>(PartyMessages.INITIALIZE_PARTY);
+            AmbitionApp.RegisterCommand<TargetGuestCmd, CharacterVO>(PartyMessages.TARGET_GUEST);
+            AmbitionApp.RegisterCommand<SelectGuestCmd, CharacterVO>(PartyMessages.SELECT_GUEST);
+            AmbitionApp.RegisterCommand<GuestSelectedCmd, CharacterVO>(PartyMessages.GUEST_SELECTED);
+            AmbitionApp.RegisterCommand<GuestIgnoredCmd, CharacterVO>(PartyMessages.GUEST_IGNORED);
+            AmbitionApp.RegisterCommand<CharmGuestCmd, CharacterVO>(PartyMessages.GUEST_CHARMED);
+            AmbitionApp.RegisterCommand<OffendGuestCmd, CharacterVO>(PartyMessages.GUEST_OFFENDED);
             AmbitionApp.RegisterCommand<AmbushCmd, RoomVO>(PartyMessages.AMBUSH);
             AmbitionApp.RegisterCommand<FillHandCmd>(PartyMessages.FILL_REMARKS);
             AmbitionApp.RegisterCommand<RefillDrinkCmd>(PartyMessages.REFILL_DRINK);
@@ -68,34 +71,50 @@ namespace Ambition
             AmbitionApp.RegisterCommand<DrawCmd, int>(PartyMessages.DRAW_REMARKS);
             AmbitionApp.RegisterCommand<DrawOneCmd>(PartyMessages.DRAW_REMARK);
             AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
-			AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
-			AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
-			AmbitionApp.RegisterCommand<EndPartyCmd>(PartyMessages.END_PARTY);
+            //AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
+            AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
+            //AmbitionApp.RegisterCommand<LeavePartyCmd>(PartyMessages.LEAVE_PARTY);
+            AmbitionApp.RegisterCommand<EndPartyCmd>(PartyMessages.END_PARTY);
+            AmbitionApp.RegisterCommand<ShowRoomCmd, IncidentVO>(PartyMessages.SHOW_ROOM);
 
             AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
-			AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
-			AmbitionApp.RegisterCommand<CheckLivreCmd, int>(GameConsts.LIVRE);
-
-            // Paris
-            AmbitionApp.RegisterCommand<RestAtHomeCmd>(ParisMessages.REST);
-            AmbitionApp.RegisterCommand<ChooseLocationCmd, LocationPin>(ParisMessages.GO_TO_LOCATION);
-            AmbitionApp.RegisterCommand<LoadLocationCmd>(ParisMessages.LOAD_LOCATION);
+            AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
+            AmbitionApp.RegisterCommand<CheckLivreCmd, int>(GameConsts.LIVRE);
 
             // Initially enabled for TUTORIAL
             AmbitionApp.RegisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
-			AmbitionApp.RegisterCommand<SkipTutorialCmd>(GameMessages.SKIP_TUTORIAL);
+            AmbitionApp.RegisterCommand<SkipTutorialCmd>(GameMessages.SKIP_TUTORIAL);
+
+            // Audio
+            AmbitionApp.RegisterCommand<PlaySoundCmd, FMODEvent>(AudioMessages.PLAY);
 
             // Rewards
             AmbitionApp.RegisterReward<LivreReward>(CommodityType.Livre);
             AmbitionApp.RegisterReward<RepReward>(CommodityType.Reputation);
             AmbitionApp.RegisterReward<GossipReward>(CommodityType.Gossip);
-            AmbitionApp.RegisterReward<EnemyReward>(CommodityType.Enemy);
             AmbitionApp.RegisterReward<ItemReward>(CommodityType.Item);
             AmbitionApp.RegisterReward<ServantReward>(CommodityType.Servant);
             AmbitionApp.RegisterReward<MessageReward>(CommodityType.Message);
             AmbitionApp.RegisterReward<IncidentReward>(CommodityType.Incident);
             AmbitionApp.RegisterReward<LocationReward>(CommodityType.Location);
             AmbitionApp.RegisterReward<PartyReward>(CommodityType.Party);
+            AmbitionApp.RegisterReward<CredReward>(CommodityType.Credibility);
+            AmbitionApp.RegisterReward<PerilReward>(CommodityType.Peril);
+            AmbitionApp.RegisterReward<FavorReward>(CommodityType.Favor);
+            AmbitionApp.RegisterReward<FactionAllegianceReward>(CommodityType.FactionAllegiance);
+            AmbitionApp.RegisterReward<FactionPowerReward>(CommodityType.FactionPower);
+            
+			AmbitionApp.RegisterRequirement(CommodityType.Chance, ChanceReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Livre, LivreReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Credibility, CredReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Peril, PerilReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Date, DateReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Item, ItemReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Location, LocationReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Servant, ServantReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Favor, FavorReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.FactionAllegiance, FactionAllegianceReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.FactionPower, FactionPowerReq.Check);
 
             AmbitionApp.Execute<RegisterPartyControllerCmd>();
             AmbitionApp.Execute<RegisterConversationControllerCmd>();
@@ -103,8 +122,14 @@ namespace Ambition
             AmbitionApp.Execute<RegisterIncidentControllerCmd>();
             AmbitionApp.Execute<RegisterGuestActionControllerCmd>();
             AmbitionApp.Execute<RegisterParisControllerCmd>();
+            AmbitionApp.Execute<RegisterDayFlowControllerCommand>();
 
-            AmbitionApp.InvokeMachine("EstateController");
+            //AmbitionApp.GetService<AssetBundleSvc>().Load(AssetBundleIDs.ON_LOAD, HandleLoaded);
         }
-	}
+
+        private void HandleLoaded(UnityEngine.AssetBundle bundle)
+        {
+
+        }
+    }
 }

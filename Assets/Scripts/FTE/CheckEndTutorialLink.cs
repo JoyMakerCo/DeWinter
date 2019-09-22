@@ -13,9 +13,10 @@ namespace Ambition
         private void CheckMark()
         {
             MapModel map = AmbitionApp.GetModel<MapModel>();
-            if (map.Map != null
-                && map.Map.Rooms != null
-                && Array.Exists(map.Map.Rooms, r=>r.HostHere && r.Cleared))
+            //if (map.Map != null
+                //&& map.Map.Rooms != null
+                ////&& Array.Exists(map.Map.Rooms, r=>r.HostHere && r.Cleared))
+                //)
             {
                 Activate();
             }

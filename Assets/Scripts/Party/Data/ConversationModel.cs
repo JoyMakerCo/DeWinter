@@ -4,7 +4,7 @@ using Core;
 
 namespace Ambition
 {
-    public class ConversationModel : IModel, Util.IInitializable
+    public class ConversationModel : Model
     {
         public int FreeRemarkCounter;
         //TODO: Temp, until buffs are figured out
@@ -12,8 +12,8 @@ namespace Ambition
         public bool Repartee;
         public int RemarksBought;
 
-        private MapModel _map;
         private PartyModel _model;
+        private MapModel _map;
 
         private int _round;
         public int Round
@@ -22,17 +22,6 @@ namespace Ambition
             set {
                 _round = value;
                 AmbitionApp.SendMessage<int>(PartyMessages.ROUND, _round);
-            }
-        }
-
-        public Queue<RemarkVO> Deck;
-        public List<RemarkVO> Discard;
-        public int MaxDeckSize
-        {
-            get
-            {
-                int total = Remarks == null ? 0 : Array.FindAll(Remarks, r => r != null).Length;
-                return Deck.Count + Discard.Count + total;
             }
         }
 
@@ -55,28 +44,18 @@ namespace Ambition
             set { AmbitionApp.SendMessage(_remarks = value); }
         }
 
-        public RoomVO Room
-        {
-            get { return _map.Room;  }
-        }
+        //public CharacterVO[] Guests => Room?.Guests;
+        //public RoomVO Room => _map.Room;
 
-        public GuestVO[] Guests
+        public ConversationModel()
         {
-            get { return Room?.Guests;  }
-            set
-            {
-                if (Room != null)
-                {
-                    Room.Guests = value;
-                    AmbitionApp.SendMessage(value);
-                }
-            }
-        }
-
-        public void Initialize()
-        {
-            _map = AmbitionApp.GetModel<MapModel>();
             _model = AmbitionApp.GetModel<PartyModel>();
+            _map = AmbitionApp.GetModel<MapModel>();
+            Round = 0;
+            Remark = null;
+            FreeRemarkCounter = _model.FreeRemarkCounter;
+            Repartee = false;
+            RemarksBought = 0;
             _remarks = new RemarkVO[_model.HandSize];
         }
     }

@@ -16,8 +16,6 @@ namespace Ambition
         public Text ModestyStatText;
         public Text NoveltyStatText;
 
-        public Image PaperDoll;
-
         public SpriteConfig DressCollection;
 
         void Awake()
@@ -36,24 +34,34 @@ namespace Ambition
         }
 
         //TO DO: Make this work with Accessories (when they're full implemented)
-        void HandleItemDisplay(ItemVO item)
+        void HandleItemDisplay(ItemVO outfit)
         {
-            OutfitVO outfitTest = item as OutfitVO; //This is to test if the item is an Outfit
-            if (outfitTest != null)
-            {
-                OutfitVO outfit = (OutfitVO)item;
-                ItemNameText.text = outfit.Name;
-                ItemDescriptionText.text = outfit.Description;
-                //To Do: Make the modesty and luxury sliders always work in the right direction
-                LuxurySlider.value = outfit.Luxury;
-                LuxuryStatText.text = outfit.Luxury + " (" + outfit.GenerateLuxuryString() + ")";
-                ModestySlider.value = outfit.Modesty;
-                ModestyStatText.text = outfit.Modesty + " (" + outfit.GenerateModestyString() + ")";
-                NoveltySlider.value = outfit.Novelty;
-                NoveltyStatText.text = outfit.Novelty + "/100";
-                PaperDoll.sprite = DressCollection.GetSprite(outfit.Style);
-            }
+            if (outfit?.Type != ItemType.Outfit) return;
 
+            ItemNameText.text = AmbitionApp.GetString("item." + outfit.Name + ".name");
+            ItemDescriptionText.text = AmbitionApp.GetString("item." + outfit.Name + ".description");
+
+            //To Do: Make the modesty and luxury sliders always work in the right direction
+            LuxurySlider.value = GetIntStat(outfit, ItemConsts.LUXURY);
+            LuxuryStatText.text = Map((int)(LuxurySlider.value), AmbitionApp.GetPhrases("outfit.luxury"));
+
+            ModestySlider.value = GetIntStat(outfit, ItemConsts.MODESTY);
+            ModestyStatText.text = Map((int)(ModestySlider.value), AmbitionApp.GetPhrases("outfit.modesty"));
+
+            NoveltySlider.value = GetIntStat(outfit, ItemConsts.NOVELTY);
+            string[] phrases = AmbitionApp.GetPhrases("outfit.novelty");
+            NoveltyStatText.text = phrases[(int)(phrases.Length * NoveltySlider.value * .01f)];
+
+            string style = null;
+        }
+
+        private int GetIntStat(ItemVO outfit, string stat)
+        {
+            return outfit?.State == null
+                ? 0
+                : outfit.State.TryGetValue(ItemConsts.LUXURY, out stat)
+                ? int.Parse(stat)
+                : 0;
         }
 
         void BlankStats()
@@ -63,7 +71,6 @@ namespace Ambition
             LuxurySlider.value = 0;
             ModestySlider.value = 0;
             NoveltySlider.value = 0;
-            PaperDoll.sprite = DressCollection.GetSprite("none");
             LuxuryStatText.text = "None";
             ModestyStatText.text = "None";
             NoveltyStatText.text = "None";
@@ -92,5 +99,7 @@ namespace Ambition
             ModestyStatText.gameObject.SetActive(false);
             NoveltyStatText.gameObject.SetActive(false);
         }
+
+        private string Map(int stat, string[] phrases) => phrases[(int)(phrases.Length * (.5f + stat * .005f))];
     }
 }

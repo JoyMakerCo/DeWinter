@@ -8,7 +8,7 @@ namespace Ambition
 	{
 		public void Execute(RoomVO room)
 		{
-            PartyModel party = AmbitionApp.GetModel<PartyModel>();
+/*            PartyModel party = AmbitionApp.GetModel<PartyModel>();
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
 			RemarkVO[] hand = model.Remarks;
 			string interest;
@@ -31,6 +31,7 @@ namespace Ambition
 			Dictionary<string, string> subs = new Dictionary<string, string>()
 				{{"$ROOMNAME", room.Name}};
 			AmbitionApp.OpenMessageDialog("ambush_dialog", subs);
+*/
 		}
 	}
 }

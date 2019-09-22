@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Linq;
 using Core;
 
 namespace Ambition
 {
-	public class SelectGuestCmd : ICommand<GuestVO>
+	public class SelectGuestCmd : ICommand<CharacterVO>
 	{
-		public void Execute (GuestVO guest)
+		public void Execute (CharacterVO guest)
 		{
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
 			RemarkVO remark = model.Remark;
             if (remark != null)
             {
-                GuestVO[] guests = model.Guests;
+/*                CharacterVO[] guests = model.Guests;
                 int index = Array.IndexOf(guests, guest);
                 if (index >= 0)
                 {
@@ -21,7 +22,14 @@ namespace Ambition
                          i < num;
                          i++)
                     {
-                        hand[i] = hand[i + 1];
+                        try
+                        {
+                            hand[i] = hand[i + 1];
+                        }
+                        catch (IndexOutOfRangeException e)
+                        {
+                            UnityEngine.Debug.Log(e.Message);
+                        }
                     }
                     hand[num] = null;
                     model.Remarks = hand;
@@ -42,6 +50,7 @@ namespace Ambition
                     }
                     model.Remark = null;
                 }
+*/
             }
 		}
 	}

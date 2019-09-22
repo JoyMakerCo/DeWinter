@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class MessageViewMediator : DialogView, Util.IInitializable<string>
+	public class MessageViewMediator : DialogView<string>
 	{
 		public const string DIALOG_ID = "MESSAGE";
 		public Text BodyTxt;
@@ -14,7 +14,7 @@ namespace Ambition
 		public Text DismissTxt;
 		public Text ConfirmTxt;
 
-		public void Initialize(string phrase)
+		public override void OnOpen(string phrase)
 		{
 			SetPhrase(phrase);
 		}
@@ -22,22 +22,21 @@ namespace Ambition
 		public void SetPhrase(string phrase, Dictionary<string, string> substitutions=null)
 		{
 			string str;
-			Core.LocalizationModel model = AmbitionApp.GetModel<Core.LocalizationModel>();
-			BodyTxt.text = model.GetString(phrase + DialogConsts.BODY, substitutions);
-			TitleTxt.text = model.GetString(phrase + DialogConsts.TITLE, substitutions);
+			BodyTxt.text = AmbitionApp.GetString(phrase + DialogConsts.BODY, substitutions);
+			TitleTxt.text = AmbitionApp.GetString(phrase + DialogConsts.TITLE, substitutions);
 
 			if (DismissTxt != null)
 			{
-				str=model.GetString(phrase + DialogConsts.CANCEL, substitutions);
+				str=AmbitionApp.GetString(phrase + DialogConsts.CANCEL, substitutions);
 				if (str != null && DismissTxt != null) DismissTxt.text = str;
-				else DismissTxt.text = model.GetString(DialogConsts.DEFAULT_CANCEL);
+				else DismissTxt.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CANCEL);
 			}
 			
 			if (ConfirmTxt != null)
 			{
-				str=model.GetString(phrase + DialogConsts.CONFIRM, substitutions);
+				str=AmbitionApp.GetString(phrase + DialogConsts.CONFIRM, substitutions);
 				if (str != null && ConfirmTxt != null) ConfirmTxt.text = str;
-				else ConfirmTxt.text = model.GetString(DialogConsts.DEFAULT_CONFIRM);
+				else ConfirmTxt.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CONFIRM);
 			}
 		}
 

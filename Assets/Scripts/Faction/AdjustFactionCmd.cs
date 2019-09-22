@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Core;
+using UnityEngine;
 
 namespace Ambition
 {
@@ -18,9 +19,12 @@ namespace Ambition
 				faction.Power = Clamp(faction.Power + vo.Power, 0, 100);
 				faction.Reputation += vo.Reputation;
                 faction.Level = Array.FindAll(Levels, l => faction.Reputation > l.Requirement).Min(l=>l.Requirement);
-				faction.LargestAllowableParty = Levels[faction.Level].LargestAllowableParty;
-                faction.DeckBonus = Levels[faction.Level].DeckBonus;
-				faction.Priority = Levels[faction.Level].Importance;
+
+				var levelData = _model.GetFactionLevel( faction.Level );
+				
+				faction.LargestAllowableParty = levelData.LargestAllowableParty;
+                faction.DeckBonus = levelData.DeckBonus;
+				faction.Priority = levelData.Importance;
 				AmbitionApp.SendMessage<FactionVO>(faction);
 			}
 		}

@@ -13,7 +13,10 @@ namespace Ambition
         public void SetCommodities(CommodityVO[] commodities)
         {
             Clear();
-            Array.ForEach(commodities, AddCommidity);
+            if (commodities != null)
+            {
+                Array.ForEach(commodities, AddCommidity);
+            }
         }
 
         public void AddCommidity(CommodityVO commodity)

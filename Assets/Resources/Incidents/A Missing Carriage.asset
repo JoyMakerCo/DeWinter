@@ -4,22 +4,46 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: A Missing Carriage
   m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 2, y: 174}
+  - {x: -212, y: 241}
+  - {x: 240, y: 176}
+  - {x: 5, y: 85}
+  - {x: -4, y: 453}
+  - {x: 253, y: 238}
+  - {x: 0, y: 528}
+  - {x: -1, y: 607}
+  - {x: 7, y: 674}
+  - {x: -307, y: 769}
+  - {x: -10, y: 766}
+  - {x: 267, y: 763}
+  - {x: -307, y: 860}
+  - {x: 14, y: 853}
+  - {x: 12, y: 918}
+  - {x: 270, y: 841}
+  - {x: 271, y: 920}
+  - {x: -308, y: 925}
+  - {x: 248, y: 386}
+  - {x: -220, y: 328}
+  - {x: 252, y: 307}
   Incident:
     Links:
     - {x: 1, y: 2}
     - {x: 1, y: 3}
     - {x: 0, y: 4}
     - {x: 4, y: 1}
-    - {x: 2, y: 5}
     - {x: 3, y: 6}
-    - {x: 6, y: 5}
     - {x: 5, y: 7}
     - {x: 7, y: 8}
     - {x: 8, y: 9}
@@ -27,34 +51,19 @@ MonoBehaviour:
     - {x: 9, y: 11}
     - {x: 9, y: 12}
     - {x: 10, y: 13}
-    - {x: 13, y: 14}
     - {x: 13, y: 9}
-    - {x: 11, y: 15}
-    - {x: 15, y: 16}
-    - {x: 15, y: 9}
-    - {x: 12, y: 17}
-    - {x: 17, y: 18}
-    - {x: 17, y: 9}
-    Positions:
-    - {x: 369, y: -21}
-    - {x: 371, y: 153}
-    - {x: 155, y: 259}
-    - {x: 547, y: 252}
-    - {x: 374, y: 64}
-    - {x: 365, y: 432}
-    - {x: 548, y: 337}
-    - {x: 369, y: 507}
-    - {x: 368, y: 586}
-    - {x: 365, y: 675}
-    - {x: 63, y: 748}
-    - {x: 359, y: 745}
-    - {x: 636, y: 742}
-    - {x: 64, y: 832}
-    - {x: 65, y: 904}
-    - {x: 393, y: 819}
-    - {x: 373, y: 903}
-    - {x: 638, y: 820}
-    - {x: 639, y: 899}
+    - {x: 11, y: 14}
+    - {x: 14, y: 15}
+    - {x: 14, y: 9}
+    - {x: 12, y: 16}
+    - {x: 16, y: 17}
+    - {x: 16, y: 9}
+    - {x: 13, y: 18}
+    - {x: 19, y: 5}
+    - {x: 2, y: 20}
+    - {x: 20, y: 5}
+    - {x: 6, y: 21}
+    - {x: 21, y: 19}
     Nodes:
     - Text: "Before you can reply, a valet grabs you roughly by the arm and drags
         you from the room. People like Viscountess de Foix don\u2019t need to do their
@@ -76,7 +85,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
         Parameters: []
       OneShotSFX:
         Name: 
@@ -106,8 +115,7 @@ MonoBehaviour:
         your head high, striding towards your carriage as if it was your intention
         to leave like this all along. While you make a great effort to haughtily avoid
         eye contact with all of those watching you, you can tell that some of them
-        are quite surprised by your decorum in this dire situation.\r\n(You\u2019ve
-        gained 3 Reputation)"
+        are quite surprised by your decorum in this dire situation.\r"
       Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
       Character1:
         AvatarID: 
@@ -118,10 +126,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards:
-      - Type: 2
-        ID: 
-        Value: 0
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -133,7 +138,7 @@ MonoBehaviour:
         Parameters: []
     - Text: "Boiling over with anger, you turn and rain insults upon the house, upon
         the host, even upon her dog. In fact, you consider throwing your shoe through
-        one of their windows, before you remember how much you like that shoe. It\u2019s
+        one of their windows, before you remember how much you like that shoe. \n\nIt\u2019s
         then that you notice that several of the carriages have stopped, just to watch
         your display. \r"
       Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
@@ -172,13 +177,13 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
+        Name: event:/Music/_DUMMY MUSIC
         Parameters: []
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_SmallParty_outdoor
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: "When you arrive at the place where your carriage is parked, you quickly
         find out that\u2026 it isn\u2019t. \r\n\r\nIt\u2019s gone. "
@@ -203,10 +208,9 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "Scanning the faces of your new audience, you see the glaring, unamused
-        faces of the various party guests. The coachmen and valets on the other hand,
-        think you\u2019re hilarious. \r\n\r\nYou nod to the more appreciative members
-        of your audience before leaving towards your own carriage.\n(You have lost
-        5 Crown Reputation)\r\n(You have gained 5 Revolution Reputation)\r"
+        faces of the various party guests. Your views on Marcelle, and the Crown in
+        general, have not gone unnoticed. The coachmen and valets on the other hand,
+        think you\u2019re hilarious. \r"
       Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
       Character1:
         AvatarID: 
@@ -217,13 +221,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards:
-      - Type: 7
-        ID: Crown
-        Value: 0
-      - Type: 7
-        ID: Revolution
-        Value: 0
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -234,7 +232,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "You check to make sure that you\u2019re in the right place, but to no
-        avail. The carriage you hired is simply not there. \r\n\u201CHe went home!\u201D
+        avail. The carriage you hired is simply not there. \n\n\u201CHe went home!\u201D
         a passing coachman says helpfully, while adjusting the harness on a particularly
         grumpy horse. \u201CDoorman came out about an hour ago, and told him you wanted
         the coach to leave without you. Seemed real important, so he went home.\u201D\r"
@@ -321,8 +319,12 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
-        Parameters: []
+        Name: event:/Music/Prologue - Intimate Conversation - Church
+        Parameters:
+        - Name: Select
+          Value: 0
+        - Name: Intimate
+          Value: 0
       AmbientSFX:
         Name: 
         Parameters: []
@@ -345,8 +347,12 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
-        Parameters: []
+        Name: event:/Music/Prologue - Intimate Conversation - Military
+        Parameters:
+        - Name: Select
+          Value: 0
+        - Name: Intimate
+          Value: 0
       AmbientSFX:
         Name: 
         Parameters: []
@@ -370,8 +376,12 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
-        Parameters: []
+        Name: event:/Music/Prologue - Intimate Conversation - Bourgeoise
+        Parameters:
+        - Name: Select
+          Value: 0
+        - Name: Intimate
+          Value: 0
       AmbientSFX:
         Name: 
         Parameters: []
@@ -390,28 +400,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: '[Ludovico''s Carriage]'
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 8
+        ID: The Young Priest
+        Value: 0
       Music:
         Name: 
         Parameters: []
@@ -443,7 +435,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: '[Thomas-Alexandre''s Carriage]'
+    - Text: Settled in your decision, you set out, ready to entrust your fortune to
+        an honorable stranger.
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -454,10 +447,17 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 8
+        ID: The Good Soldier
+        Value: 0
       Music:
-        Name: 
-        Parameters: []
+        Name: event:/Music/Prologue - Intimate Conversation - Military
+        Parameters:
+        - Name: Select
+          Value: 1
+        - Name: Intimate
+          Value: 0
       AmbientSFX:
         Name: 
         Parameters: []
@@ -486,7 +486,66 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: '[Honorade''s Carriage]'
+    - Text: Settled in your decision, you set out, ready to entrust your fortune to
+        a mysterious stranger.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 8
+        ID: The Wealthy Widow
+        Value: 0
+      Music:
+        Name: event:/Music/Prologue - Intimate Conversation - Bourgeoise
+        Parameters:
+        - Name: Select
+          Value: 1
+        - Name: Intimate
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Settled in your decision, you set out, ready to entrust your fortune to
+        a modest stranger.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 8
+        ID: The Lovesick Priest
+        Value: 0
+      Music:
+        Name: event:/Music/Prologue - Intimate Conversation - Church
+        Parameters:
+        - Name: Select
+          Value: 1
+        - Name: Intimate
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You nod to the more appreciative members of your audience before leaving
+        towards your own carriage.
       Background: {fileID: 0}
       Character1:
         AvatarID: 
@@ -507,13 +566,194 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    LinkData: []
-    Name: A Missing Carriage
-    _date: -1
-    Requirements: []
+    - Text: "(You\x19ve gained a little credibility)"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have lost some favor with the Elisabeth Vigee Le Brun)\r\n(You have
+        gained some favor with the Louis Antoine de Saint-Just)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: ElisabethVigeeLeBrun
+        Value: -2
+      - Type: 5
+        ID: LouisAntoinedeSaintJust
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: "*Sigh* \u201CThis has been a night. I\u2019ll just leave.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CThat\u2019s fine by me! My face was the only pretty thing in that
+        gaudy house anyway!\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Inspect the humble carriage to the left>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Inspect the bold carriage in the middle>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Inspect the extravagant carriage to the right>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CPerhaps not, I\u2019ll examine the other carriages.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CHe\u2019s a man of honor, sworn to protect France. I\u2019m the
+        next best thing to that. Let\u2019s go.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CPerhaps not, I\u2019ll examine the other carriages.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CA wealthy widow helping a lost soul in need? It works in the books.
+        Let\u2019s go.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CPerhaps not, I\u2019ll examine the other carriages.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CA priest should be willing to help a poor, innocent woman like
+        myself. Let\u2019s go.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
     OneShot: 1
-    Month: 0
-    Day: 0
-    Year: 0
-  _index: -1
-  _isNode: 0
+    Chapters: 
+    Tags: []
+    Factions: 
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1

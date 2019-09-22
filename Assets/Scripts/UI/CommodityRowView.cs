@@ -10,8 +10,6 @@ namespace Ambition
         public Text CommodityTF;
         public Text ValueTF;
 
-        Core.LocalizationModel localizationModel = AmbitionApp.GetModel<Core.LocalizationModel>();
-
         public void SetCommodity(CommodityVO commodity, Sprite icon)
         {
             Icon.sprite = icon;
@@ -22,24 +20,17 @@ namespace Ambition
         //To Do: Clean this up when CommodityVO uses RewardVO instead
         private string _commodityName(CommodityVO commodity)
         {
-            string name;
-            if(commodity.Type.ToString() == "Reputation") //Reputation is an edge case in terms of naming conventions
+
+            switch (commodity.Type.ToString())
             {
-                if (commodity.ID == "null")
-                {
-                    name = localizationModel.GetString("commodity." + commodity.Type.ToString().ToLower() + ".name");
-                } else
-                {
-                    name = localizationModel.GetString("commodity.reputation" + commodity.ID.ToLower() + ".name");
-                }
-            } else if (commodity.Type.ToString() == "Gossip") //The commodity VO doesn't let us identify the tier and the faction of the Gossip until its already been issued
-            {
-                name = localizationModel.GetString("commodity." + commodity.Type.ToString().ToLower() + ".name");
-            } else
-            {
-                name = localizationModel.GetString("commodity." + commodity.ID + ".name");
+                case "Reputation": //Reputation is an edge case in terms of naming conventions
+                    return (string.IsNullOrWhiteSpace(commodity.ID) || commodity.ID == "null")
+                        ? AmbitionApp.GetString("commodity." + commodity.Type.ToString().ToLower() + ".name")
+                        : AmbitionApp.GetString("commodity.reputation" + commodity.ID.ToLower() + ".name");
+                case "Gossip":
+                    return AmbitionApp.GetString("commodity." + commodity.Type.ToString().ToLower() + ".name");
             }
-            return name;
+            return AmbitionApp.GetString("commodity." + commodity.ID + ".name");
         }
     }
 }

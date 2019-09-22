@@ -20,7 +20,7 @@ namespace Ambition
 		public RoomVO Room
 		{
 			set {
-				if (value != null && value.Vertices != null && _polys == null)
+/*				if (value != null && value.Vertices != null && _polys == null)
 		    	{
 					float scale = AmbitionApp.GetModel<MapModel>().MapScale;
 					UIVertex v = UIVertex.simpleVert;
@@ -47,7 +47,7 @@ namespace Ambition
 		 			}
 		 		}
 				SetAllDirty();
-			}
+*/			}
 		}
 
 		protected override void OnPopulateMesh(VertexHelper vh)

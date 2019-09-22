@@ -15,7 +15,7 @@ namespace Ambition
 		private UIVertex[][] _walls;
 		private MapModel _model;
 		private float _scale;
-
+/*
 		override protected void Start()
 		{
 			base.Start();
@@ -73,6 +73,7 @@ namespace Ambition
 				Array.ForEach(_walls, vh.AddUIVertexQuad);
 			}
 	    }
+	    */
 	}
 }
 

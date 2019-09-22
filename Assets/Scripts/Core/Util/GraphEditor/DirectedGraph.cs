@@ -7,31 +7,21 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace Util  
+namespace UGraph
 {
     [Serializable]
-    public class DirectedGraph
+    public class DirectedGraph : IDisposable
     {
         public Vector2Int[] Links;
-
-#if (UNITY_EDITOR)
-        public Vector2[] Positions;
-#endif
 
         public DirectedGraph()
         {
             Links = new Vector2Int[0];
-#if (UNITY_EDITOR)
-            Positions = new Vector2[0];
-#endif
         }
 
         public DirectedGraph(DirectedGraph graph)
         {
             Links = DeepCopy(graph.Links);
-#if (UNITY_EDITOR)
-            Positions = DeepCopy(graph.Positions);
-#endif
         }
 
         public int Link(int fromIndex, int toIndex)
@@ -63,12 +53,7 @@ namespace Util
 
         public virtual void DeleteNode(int nodeIndex)
         {
-#if (UNITY_EDITOR)
-            if (nodeIndex < Positions.Length)
-            {
-                Positions = Positions.Take(nodeIndex).Concat(Positions.Skip(nodeIndex + 1)).ToArray();
-            }
-#endif
+            Links = Links?.Where(l => l.x != nodeIndex && l.y != nodeIndex).ToArray();
         }
 
         protected K[] DeepCopy<K>(K[] array)
@@ -78,17 +63,23 @@ namespace Util
             Array.Copy(array, result, array.Length);
             return result;
         }
+
+        public virtual void Dispose()
+        {
+            Links = null;
+        }
     }
 
     [Serializable]
     public class DirectedGraph<T> : DirectedGraph
 	{
-		public T[] Nodes;
+        public T[] Nodes;
 
         public DirectedGraph() : base()
         {
             Nodes = new T[0];
         }
+
         // Copy Constructor
         public DirectedGraph(DirectedGraph<T> graph) : base (graph as DirectedGraph)
         {
@@ -113,7 +104,7 @@ namespace Util
 		public T[] GetNeighbors(T node)
 		{
 			int index = Array.IndexOf(Nodes, node);
-			return index < 0 ? null : (
+			return index < 0 ? new T[0] : (
 				from l in Links
 				where l.x == index
 				select Nodes[l.y]).ToArray();
@@ -144,6 +135,20 @@ namespace Util
                 DeleteNode(index);
             }
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            if (Nodes != null)
+            {
+                foreach (T node in Nodes)
+                {
+                    if (node is IDisposable)
+                        ((IDisposable)node).Dispose();
+                }
+                Nodes = null;
+            }
+        }
     }
 
     [Serializable]
@@ -161,29 +166,13 @@ namespace Util
             LinkData = DeepCopy(graph.LinkData);
         }
 
-		public U[] GetLinkData(T node)
-		{
-			int index = Array.IndexOf(Nodes, node);
-			return GetLinkData(index);
-		}
+		public U[] GetLinks(T node) => GetLinks(Array.IndexOf(Nodes, node));
 
-		public U[] GetLinkData(int nodeIndex)
-		{
-			List<U> result = new List<U>();
-            for (int i=0; i<Links.Length; i++)
-			{
-				if (Links[i].x == nodeIndex)
-                    result.Add(LinkData[i]);
-			}
-			return result.ToArray();
-		}
+        public U[] GetLinks(int nodeIndex) => LinkData.Where((n, i) => Links[i].x == nodeIndex).ToArray();
 
-		public U GetLinkData(T from, T to)
-		{
-			return GetLinkData(Array.IndexOf(Nodes, from), Array.IndexOf(Nodes, to));
-		}
+		public U GetLink(T from, T to) => GetLink(Array.IndexOf(Nodes, from), Array.IndexOf(Nodes, to));
 
-		public U GetLinkData(int fromIndex, int toIndex)
+		public U GetLink(int fromIndex, int toIndex)
 		{
 			int index = GetLinkIndex(fromIndex, toIndex);
 			return (index >= 0) ? LinkData[index] : default(U);
@@ -194,7 +183,15 @@ namespace Util
 			return Link(Array.IndexOf(Nodes, from), Array.IndexOf(Nodes, to), linkData);
 		}
 
-		public int Link(int fromIndex, int toIndex, U linkData)
+        public T GetNextNode(U linkData)
+        {
+            if (LinkData == null || Links == null || Nodes == null) return default;
+            int index = Array.IndexOf(LinkData, linkData);
+            if (index < 0 || index >= Links.Length) return default;
+            return Links[index].y < Nodes.Length ? Nodes[Links[index].y] : default;
+        }
+
+        public int Link(int fromIndex, int toIndex, U linkData)
 		{
 			int index = GetLinkIndex(fromIndex, toIndex);
 			if (index >= 0)
@@ -203,12 +200,7 @@ namespace Util
 				return index;
 			}
 
-			if (fromIndex < 0 || fromIndex >= Nodes.Length)
-				throw new System.ArgumentException("Error: Index is out of range", nameof(fromIndex));
-			if (toIndex < 0 || toIndex >= Nodes.Length)
-				throw new System.ArgumentException("Error: Index is out of range", nameof(toIndex));
-
-			Vector2Int link = new Vector2Int(fromIndex, toIndex);
+            Vector2Int link = new Vector2Int(fromIndex, toIndex);
 			Links = Links.Append(link).ToArray();
 			LinkData = LinkData.Append(linkData).ToArray();
 			return LinkData.Length-1;
@@ -250,6 +242,17 @@ namespace Util
                 LinkData = linkData.ToArray();
             }
             base.DeleteNode(nodeIndex);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            if (LinkData != null)
+            {
+                IDisposable[] disposables = LinkData.OfType<IDisposable>().ToArray();
+                Array.ForEach(disposables, l => l.Dispose());
+                LinkData = null;
+            }
         }
     }
 }

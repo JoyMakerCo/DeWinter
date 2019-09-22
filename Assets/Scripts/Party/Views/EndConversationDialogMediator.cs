@@ -1,7 +1,8 @@
-using UnityEngine.EventSystems;
+﻿using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Dialog;
 using Core;
 
@@ -9,43 +10,63 @@ namespace Ambition
 {
     public class EndConversationDialogMediator : DialogView, IPointerClickHandler
     {
-        private ModelSvc _models = App.Service<ModelSvc>();
-
         public const string DIALOG_ID = "END_CONVERSATION";
+
         public Text TitleText;
         public Text SubText;
         public CommodityTableView Commodities;
 
-        //This is not being handled via an Initialize function because this dialog needs to be brought up via the state machine, and there's currently no way to use 'Open Dialog' and set an array of commodities at the same time
-        //While I could have made the state machine able to accept both a string and CommodityVO[] in the same state, I didn't feel comfortable making changes to something as critical as the state machine
-        public void Awake()
-        {
-            ConversationModel conversationModel = _models.GetModel<ConversationModel>();
-            Commodities.SetCommodities(conversationModel.Room.Rewards);
-        }
+        private CharacterVO[] _guests;
 
-        public void SetPhrase(string phrase)
+        public override void OnOpen()
+        {
+            //RoomVO room = AmbitionApp.GetModel<MapModel>().Room;
+            //_guests = room?.Guests;
+            //Commodities.SetCommodities(room.Rewards);
+            ////string phrase = Array.Exists(_guests, g => g.State == GuestState.Charmed) ? "success" : "failure";
+            //SetPhrase("after_conversation_dialog.success");
+        }
+            
+        protected void SetPhrase(string phrase)
         {
             TitleText.text = AmbitionApp.GetString(phrase + ".title");
-            SubText.text = AmbitionApp.GetString(phrase + ".body");
+            SubText.text = GetBodyText(phrase);
         }
-
-        public void OnPointerClick(PointerEventData data)
+    
+        protected virtual string GetBodyText(string phrase)
         {
-            AmbitionApp.SendMessage(GameMessages.DIALOG_CLOSED, ID);
-            FadeView view = GetComponent<FadeView>();
-            if (view == null) Close();
+            int charmedTally = 0;
+            int offendedTally = 0;
+            foreach (CharacterVO g in _guests)
+            {
+                //if (g.State == GuestState.Charmed)
+                //{
+                //    charmedTally++;
+                //}
+                //else if (g.State == GuestState.Offended)
+                //{
+                //    offendedTally++;
+                //}
+            }
+            if (offendedTally == 0)
+            {
+                return AmbitionApp.GetString(phrase + ".body_charmed_all");
+            }
             else
             {
-                view.FadeOut();
-                StartCoroutine(WaitToClose(view.FadeOutSeconds));
+                Dictionary<string, string> dialogSubstitutions = new Dictionary<string, string>();
+                dialogSubstitutions.Add("$CHARMEDAMOUNT", charmedTally.ToString());
+                if (charmedTally == 1) dialogSubstitutions.Add("$CHARMEDSINGULARORPLURAL", AmbitionApp.GetString("guest_was"));
+                else dialogSubstitutions.Add("$CHARMEDSINGULARORPLURAL", AmbitionApp.GetString("guests_were"));
+                dialogSubstitutions.Add("$OFFENDEDAMOUNT", offendedTally.ToString());
+                if (offendedTally == 1) dialogSubstitutions.Add("$OFFENDEDSINGULARORPLURAL", AmbitionApp.GetString("guest_was"));
+                else dialogSubstitutions.Add("$OFFENDEDSINGULARORPLURAL", AmbitionApp.GetString("guests_were"));
+                return AmbitionApp.GetString(phrase + ".body_charmed_some", dialogSubstitutions);
             }
+
         }
 
-        IEnumerator WaitToClose(float time)
-        {
-            yield return new WaitForSeconds(time);
-            Close();
-        }
+        public void OnPointerClick(PointerEventData data) => Close();
+        override public void OnClose() => AmbitionApp.SendMessage(GameMessages.DIALOG_CLOSED, ID);
     }
 }

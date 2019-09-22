@@ -4,25 +4,28 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: "The Orphan\u2019s Feast"
   m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 1, y: 83}
+  - {x: -137, y: 167}
+  - {x: 169, y: 219}
+  - {x: -142, y: 263}
   Incident:
     Links:
     - {x: 0, y: 1}
     - {x: 1, y: 2}
     - {x: 1, y: 3}
     - {x: 2, y: 4}
-    Positions:
-    - {x: 344, y: 77}
-    - {x: 345, y: 160}
-    - {x: 207, y: 244}
-    - {x: 513, y: 296}
-    - {x: 202, y: 340}
     Nodes:
     - Text: "A woman polishing a lantern looks up at you as you enter, and her face
         breaks into a bright smile. \u201CBonjour Madame and welcome to the Orphan's
@@ -140,28 +143,32 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Index: 0
-      Target: 0
-      Text: 
+    - Text: 
+      xor: 0
       Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
       Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
       Rewards: []
-    - Index: 0
-      Target: 0
-      Text: 
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
       Rewards: []
-    Name: "The Orphan\u2019s Feast"
-    _date: -1
-    Requirements: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
     OneShot: 1
-    Month: 0
-    Day: 0
-    Year: 0
-  _index: -1
-  _isNode: 0
+    Chapters: 
+    Tags: []
+    Factions: 
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1

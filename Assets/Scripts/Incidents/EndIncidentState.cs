@@ -5,14 +5,12 @@ namespace Ambition
 {
 	public class EndIncidentState : UState
 	{
-		public override void OnEnterState ()
-		{
+        public override void OnEnterState(string[] args)
+        {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            if (calendar.Incident != null) calendar.IncidentQueue.Pop();
-
-            if (calendar.Incident != null) AmbitionApp.SendMessage(calendar.Incident);
-            else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENTS);
+            IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+            calendar.Complete(model.Incident);
             AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC, 2f);
-	    }
-	}
+        }
+    }
 }

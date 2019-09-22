@@ -8,7 +8,7 @@ namespace Ambition
         override public void Initialize()
         {
             MapModel model = AmbitionApp.GetModel<MapModel>();
-            _room = Array.Find(model.Map.Rooms, r=>r.HostHere);
+            //_room = model.Room;//Array.Find(model.Map.Rooms, r=>r.HostHere);
             AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, HandleMap);
             HandleMap();
         }

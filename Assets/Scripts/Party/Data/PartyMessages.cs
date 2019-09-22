@@ -7,6 +7,10 @@ namespace Ambition
 		public const string SHOW_MAP = "SHOW_MAP";
 		public const string SHOW_ROOM = "SHOW_ROOM";
 
+        public const string SELECT_INCIDENTS = "SELECT_INCIDENTS";
+        public const string INITIALIZE_PARTY = "INITIALIZE_PARTY";
+        public const string ACCEPT_INVITATION = "ACCEPT_INVITATION";
+        public const string DECLINE_INVITATION = "DECLINE_INVITATION";
         public const string GO_TO_PARTY = "GO_TO_PARTY";
         public const string START_PARTY = "START_PARTY";
         public const string PARTY_STARTED = "PARTY_STARTED";
@@ -16,13 +20,16 @@ namespace Ambition
         public const string END_TURN = "END_TURN";  // Turns for Party
         public const string ROUND = "ROUND";        // Rounds for Conversation
         public const string START_ROUND = "START_ROUND";
+        public const string INIT_CONVERSATION = "INIT_CONVERSATION";
         public const string START_CONVERSATION = "START_CONVERSATION";
         public const string TIME_EXPIRED = "TIME_EXPIRED";  // Ran out of time in the round
         public const string LEAVE_PARTY = "LEAVE_PARTY"; // Player explicitly leaves the party
         public const string END_PARTY = "END_PARTY";
         public const string END_ROUND = "END_ROUND";
         public const string END_CONVERSATION = "END_CONVERSATION"; //This means the player won
+        public const string EXIT_CONVERSATION = "EXIT_CONVERSATION"; //Message sent when exiting the conversation machine
         public const string FLEE_CONVERSATION = "FLEE_CONVERSATION"; //This means the player lost
+        public const string FLEE_PENALTIES = "FLEE_PENALTIES";
         public const string START_DANCING = "StartDancingMsg";
 		public const string AMBUSH = "AMBUSH";
         public const string SELECT_GUEST = "SELECT_GUEST";
@@ -33,8 +40,10 @@ namespace Ambition
         public const string GUEST_REACTION_POSITIVE = "GUEST_REACTION_POSITIVE";
         public const string GUEST_REACTION_NEUTRAL = "GUEST_REACTION_NEUTRAL";
         public const string GUEST_REACTION_NEGATIVE = "GUEST_REACTION_NEGATIVE";
+        public const string GUEST_REACTION_ALREADYCHARMED = "GUEST_REACTION_ALREADYCHARMED";
         public const string GUEST_CHARMED = "GUEST_CHARMED";
-        public const string GUEST_OFFENDED = "GUEST_OFFENDED";
+        public const string GUEST_OFFENDED = "GUEST_OFFENDED"; //Used when a guest is put off
+        public const string GUEST_LEFT = "GUEST_LEFT"; //Used when a guest actually leaves the conversation
         public const string GUEST_REACTION_BORED = "GUEST_REACTION_BORED";
         public const string ENEMY_RESET = "ENEMY_RESET";
 		public const string REPARTEE_BONUS = "REPARTEE_BONUS";

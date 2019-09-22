@@ -6,13 +6,15 @@ namespace Ambition
     public class GuestActionCheckRoundsLink : ULink
     {
         public override bool Validate()
-        {
-            UController controller = _machine._uflow.GetController(_machine);
+            => false;
+/*        {
+            UController controller = _machine._UFlow.GetController(_machine);
             if (controller == null) return false;
 
             MapModel map = AmbitionApp.GetModel<MapModel>();
-            GuestVO guest = map.Room.Guests[controller.transform.GetSiblingIndex()];
+            CharacterVO guest = map.Room.Value.Guests[controller.transform.GetSiblingIndex()];
             return guest.Action != null && guest.Action.Rounds > 0;
         }
+*/
     }
 }

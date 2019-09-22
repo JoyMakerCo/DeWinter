@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 #if (UNITY_EDITOR)
@@ -10,20 +11,66 @@ namespace Ambition
     [Serializable]
     public class PartyConfig : ScriptableObject
     {
-        [SerializeField]
-        private PartyVO _party;
+        public string Description;
+        public IncidentConfig IntroIncident;
+        public IncidentConfig ExitIncident;
+        public string LocalizationKey;
+        public string Invitation;
+        public Sprite EstablishingShot;
+        public string[] Guests;
 
         [SerializeField]
         private long _date = -1;
-        public PartyVO Party
+        public PartyVO GetParty() => new PartyVO()
         {
-            get
-            {
-                _party.Date = (_date > 0)
-                    ? DateTime.MinValue.AddTicks(_date)
-                    : default(DateTime);
-                return _party;
-            }
+            Name = name,
+            Date = (_date > 0
+                ? DateTime.MinValue.AddTicks(_date)
+                : default),
+            LocalizationKey = this.LocalizationKey,
+            Description = this.Description,
+            Invitation = this.Invitation,
+            Faction = this.Faction,
+            RSVP = this.RSVP,
+            Size = GetSize(),
+//            Guests = Guests.Select(g=>AmbitionApp.GetModel<CharacterModel>().Characters.First(c=>c.Name == g)).ToArray(),
+            IntroIncident = this.IntroIncident?.GetIncident(),
+            ExitIncident = this.ExitIncident?.GetIncident(),
+            Host = this.Host,
+            RequiredIncidents = GetRequiredIncidents(),
+            SupplementalIncidents = this.SupplementalIncidents?.Select(i => i.GetIncident()).ToArray(),
+            Requirements = this.Requirements?.ToArray() ?? new CommodityVO[0],
+            Rewards = this.Rewards?.ToList() ?? new System.Collections.Generic.List<CommodityVO>(),
+            Map = Map?.CreateMapVO()
+        };
+
+        public FactionType Faction;
+        public PartySize Size;
+        public RSVP RSVP;
+        public string Host;
+        public int Turns;
+        public MapView Map;
+        public IncidentConfig[] RequiredIncidents;
+        public IncidentConfig[] SupplementalIncidents;
+        public CommodityVO[] Requirements;
+        public CommodityVO[] Rewards;
+
+        private PartySize GetSize()
+        {
+            int count = RequiredIncidents?.Length ?? 0;
+            if ((int)Size > count) return Size;
+            return (count <= (int)(PartySize.Trivial)) ? PartySize.Trivial
+                : (count >= (int)(PartySize.Grand)) ? PartySize.Grand
+                : PartySize.Decent;
+        }
+
+        private IncidentVO[] GetRequiredIncidents()
+        {
+            if (RequiredIncidents == null) return new IncidentVO[0];
+            IncidentVO[] result = new IncidentVO[RequiredIncidents.Length];
+            for (int i = RequiredIncidents.Length - 1; i >= 0; i--)
+                result[i] = RequiredIncidents[i]?.GetIncident();
+            return result;
         }
 
 #if (UNITY_EDITOR)
@@ -45,7 +92,6 @@ namespace Ambition
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            SerializedProperty party = serializedObject.FindProperty("_party");
 
             SerializedProperty dateProperty = serializedObject.FindProperty("_date");
             bool fixedDate = GUILayout.Toggle(dateProperty.longValue >= 0, "Fixed Date?");
@@ -61,15 +107,23 @@ namespace Ambition
                 EditorGUILayout.EndHorizontal();
             }
 
-            EditorGUILayout.PropertyField(party.FindPropertyRelative("Faction"), true);
-            EditorGUILayout.PropertyField(party.FindPropertyRelative("Importance"), true);
-            party.FindPropertyRelative("RSVP").enumValueIndex =
-                     EditorGUILayout.Toggle("Immediate", party.FindPropertyRelative("RSVP").enumValueIndex == (int)RSVP.Accepted)
-                     ? (int)RSVP.Accepted : (int)RSVP.New;
-            EditorGUILayout.PropertyField(party.FindPropertyRelative("MapID"), true);
-            EditorGUILayout.PropertyField(party.FindPropertyRelative("Turns"), true);
-            EditorGUILayout.PropertyField(party.FindPropertyRelative("Requirements"), true);
-            EditorGUILayout.PropertyField(party.FindPropertyRelative("Rewards"), true);
+            EditorGUILayout.LabelField("Invitation Text (Leave Blank to auto-generate)");
+            SerializedProperty text = serializedObject.FindProperty("Invitation");
+            text.stringValue = GUILayout.TextArea(text.stringValue);
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Host"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("IntroIncident"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("ExitIncident"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("RequiredIncidents"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("SupplementalIncidents"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Faction"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Size"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("RSVP"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("LocalizationKey"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Map"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("EstablishingShot"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Requirements"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Rewards"), true);
             serializedObject.ApplyModifiedProperties();
         }
 #endif

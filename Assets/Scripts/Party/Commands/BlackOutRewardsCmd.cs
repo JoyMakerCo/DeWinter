@@ -9,8 +9,7 @@ namespace Ambition
 		public void Execute (int intoxication)
 		{
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
-			PartyVO party = model.Party;
-			if (intoxication >= party.MaxIntoxication)
+			if (intoxication >= model.Party.MaxIntoxication)
 			{
                 InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
                 ItemVO item;
@@ -21,33 +20,26 @@ namespace Ambition
 		                model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, -Util.RNG.Generate(20, 51)));
 		                break;
 		            case 1:
-                        model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, party.Faction, -Util.RNG.Generate(20, 51)));
+                        model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, model.Party.Faction.ToString(), -Util.RNG.Generate(20, 51)));
 		                break;
                     // Outfit penalized
 		            case 2:
-                        item = inventory.GetEquipped(ItemConsts.OUTFIT);
-                        if (item is OutfitVO)
+                        item = inventory.GetEquippedItem(ItemType.Outfit);
+                        if (item != null && item.State != null)
                         {
-                            ((OutfitVO)item).Novelty -= Util.RNG.Generate(20, 51);
+                            int novelty = OutfitWrapperVO.GetNovelty(item) - Util.RNG.Generate(20, 51);
+                            item.State[ItemConsts.NOVELTY] = (novelty < 0 ? 0 : novelty).ToString();
                         }
 		                break;
                     // Outfit Ruined
 		            case 3:
-                        item = inventory.GetEquipped(ItemConsts.OUTFIT);
-                        if (item is OutfitVO)
-                        {
-                            model.Party.Rewards.Add(new CommodityVO(CommodityType.Item, item.Name, -1));
-                        }
+                        item = inventory.GetEquippedItem(ItemType.Outfit);
+                        if (item != null) AmbitionApp.SendMessage(InventoryMessages.REMOVE_ITEM, item);
 		                break;
                     // Accessory Lost
 		            case 4:
-                        item = inventory.GetEquipped(ItemConsts.ACCESSORY);
-                        if (item != null)
-		                {
-                            model.Party.Rewards.Add(new CommodityVO(CommodityType.Item, item.Name, -1));
-                        }
-                        else
-		                {
+                        if (!inventory.Remove(inventory.GetEquippedItem(ItemType.Accessory)))
+                        {
 		                    model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, -Util.RNG.Generate(30, 61)));
 		                }
 		                break;
@@ -55,17 +47,6 @@ namespace Ambition
                     case 5:
 						model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, -Util.RNG.Generate(30, 61)));
 		                break;
-                    // Enemy made
-		            case 6:
-                        model.Party.Rewards.Add(new CommodityVO(CommodityType.Enemy, party.Faction));
-                        break;
-                   // Forgot gossip
-		            case 7:
-                        model.Party.Rewards.RemoveAll(r => r.Type == CommodityType.Gossip);
-						{
-                            model.Party.Rewards.Add(new CommodityVO(CommodityType.Enemy, party.Faction));
-                        }
-                        break;
 		            case 8:
 		            	switch (Util.RNG.Generate(0, 6))
 		            	{
@@ -73,20 +54,13 @@ namespace Ambition
 								model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, Util.RNG.Generate(20, 51)));
 			                    break;
 			                case 2:
-                                model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, party.Faction, Util.RNG.Generate(20, 51)));
+                                model.Party.Rewards.Add(new CommodityVO(CommodityType.Reputation, model.Party.Faction.ToString(), Util.RNG.Generate(20, 51)));
 			                    break;
 			                case 3:
 								model.Party.Rewards.Add(new CommodityVO(CommodityType.Livre, Util.RNG.Generate(30, 61)));
 			                    break;
-			                case 4:
-								model.Party.Rewards.Add(new CommodityVO(CommodityType.Gossip, party.Faction, 1));
-			                    break;
 			                default:
-                                EnemyVO enemy = Util.RNG.TakeRandom(party.Enemies);
-                                if (enemy != null)
-                                    model.Party.Rewards.Add(new CommodityVO(CommodityType.Enemy, enemy.Name, -1));
-                                else
-                                    model.Party.Rewards.Add(new CommodityVO(CommodityType.Gossip, party.Faction, 1));
+                                model.Party.Rewards.Add(new CommodityVO(CommodityType.Gossip, model.Party.Faction.ToString(), 1));
 			                    break;
    			            	}
 			                break;

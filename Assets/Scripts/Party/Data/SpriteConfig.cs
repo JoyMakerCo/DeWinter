@@ -25,8 +25,8 @@ namespace Ambition
 
 		public Sprite GetSprite(string ID)
 		{
-			SpriteMap map = Array.Find(Sprites, s => s.ID == ID);
-			return default(SpriteMap).Equals(map) ? null : map.Sprite;
+            int index = Array.FindIndex(Sprites, s => s.ID == ID);
+            return index < 0 ? null : Sprites[index].Sprite;
 		}
 
 		public string GetID(Sprite sprite)

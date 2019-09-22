@@ -6,22 +6,23 @@ namespace Ambition
 {
     public class SelectGuestActionState : UState
     {
-        override public void OnEnterState()
+        public override void OnEnterState(string[] args)
         {
             // Using Sibling Index is hacky as fuck, but this should work for our purposes FRN.
             // VERY dependent on the view.
-            MapModel map = AmbitionApp.GetModel<MapModel>();
+/*DEPRECATED         MapModel map = AmbitionApp.GetModel<MapModel>();
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            UController controller = _machine._uflow.GetController(_machine);
+            UController controller = _UFlow.GetController(_Machine);
             int index = controller.transform.GetSiblingIndex();
-            if (index < map.Room.Guests.Length && map.Room.Guests[index] != null)
+            GuestVO guest = index < map.Room.Guests.Length ? map.Room.Guests[index] : null;
+            if (guest != null && guest.State != GuestState.Offended)
             {
-                int[] chart = map.Room.Guests[index].State == GuestState.Charmed
+                int[] chart = guest.State == GuestState.Charmed
                     ? model.CharmedGuestActionChance
                     : model.GuestActionChance;
                 if (Util.RNG.Generate(chart[map.Room.Difficulty - 1]) > 0)
                 {
-                    map.Room.Guests[index].Action = null;
+                    guest.Action = null;
                 }
                 else
                 {
@@ -32,13 +33,13 @@ namespace Ambition
                     int i = 0;
                     for (choice = Util.RNG.Generate(choice); actions[i].Chance <= choice; i++)
                         choice -= actions[i].Chance;
-                    map.Room.Guests[index].Action = actions[i];
+                    guest.Action = actions[i];
                 }
             }
             else
             {
                 controller.gameObject.SetActive(false);
             }
-        }
+   */     }
     }
 }

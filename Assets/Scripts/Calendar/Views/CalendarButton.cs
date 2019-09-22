@@ -1,14 +1,13 @@
 ﻿using System;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UI;
-using Ambition;
 
 namespace Ambition
 {
 	public class CalendarButton : MonoBehaviour
 	{
+
 	    public Image currentDayOutline;
 	    public Text dateText;
 	    public Image pastDayXImage;
@@ -24,88 +23,66 @@ namespace Ambition
 	    public Image NewParty2Icon;
 	    public Image Party2RSVPIcon;
 
-	    private Image myBlockImage;
-	    private Color defaultColor;
-		private DateTime _day;
+	    private Image _image;
+	    private Color _defaultColor;
 		private Button _btn;
-		private List<PartyVO> _parties;
 
-		public void SetDay(DateTime day, DateTime today, DateTime currentMonth)
+        public DateTime Date { get; private set; }
+
+        void Awake()
+        {
+            _image = GetComponent<Image>();
+            _defaultColor = _image.color;
+            _btn = GetComponent<Button>();
+            _btn.onClick.AddListener(HandleClick);
+            Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite("declined");
+            Party1RSVPIcon.enabled = false;
+            Party2RSVPIcon.enabled = false;
+        }
+
+        public void SetDay(DateTime day, DateTime today, int viewMonth)
 		{
-			if (day != _day)
-			{
-				if (_parties != null) _parties.Clear();
-				Party1Icon.enabled = false;
-				NewParty1Icon.enabled = false;
-				Party1RSVPIcon.enabled = false;
-				Party2Icon.enabled = false;
-				NewParty2Icon.enabled = false;
-				Party2RSVPIcon.enabled = false;
-			}
-			
-			_day = day;
+            Date = day;
+			Party1Icon.enabled = false;
+			NewParty1Icon.enabled = false;
+			Party1RSVPIcon.enabled = false;
+			Party2Icon.enabled = false;
+			NewParty2Icon.enabled = false;
+			Party2RSVPIcon.enabled = false;
 
-			myBlockImage.color = (_day.Month == currentMonth.Month)
-				? defaultColor
-				: Color.Lerp(defaultColor, Color.black, .5f);
-			dateText.text = _day.Day.ToString();
+			_image.color = (day.Month == viewMonth)
+				? _defaultColor
+				: Color.Lerp(_defaultColor, Color.black, .5f);
+			dateText.text = day.Day.ToString();
 
-			bool isToday = (_day == today);
-			currentDayOutline.enabled = isToday;
-            //By setting this at the last sibling in the holder parent object, the 'current day' frame doesn't get blocked by the other days around it.
-            if (isToday) this.transform.SetAsLastSibling();
+			currentDayOutline.enabled = (day == today);
+            // By setting this at the last sibling in the holder parent object, the 'current day' frame doesn't get blocked by the other days around it.
+            if (day == today) transform.SetAsLastSibling();
 
-			_btn.interactable = (_day >= today);
-			pastDayXImage.enabled = !_btn.interactable;
+			_btn.interactable = (day >= today);
+			pastDayXImage.enabled = day < today;
 		}
 
-		public DateTime Date
+		public void SetParties(PartyVO[] parties)
 		{
-			get { return _day; }
+            PartyVO party1 = null;
+            PartyVO party2 = null;
+            if (parties != null && parties.Length > 0)
+            {
+                party1 = Array.Find(parties, p => p.Attending || p.RSVP != RSVP.Declined) ?? parties[0];
+                party2 = Array.Find(parties, p => p != party1 && !p.Attending);
+            }
+
+            Party2Icon.enabled = party1 != null;
+            Party2Icon.sprite = CalendarSpriteConfig.GetSprite(party1?.Faction.ToString());
+            Party2RSVPIcon.enabled = party1?.Attending ?? false;
+            Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(party1?.RSVP == RSVP.Declined ? "declined" : "accepted");
+
+            Party1Icon.enabled = party2 != null;
+            Party1Icon.sprite = CalendarSpriteConfig.GetSprite(party2?.Faction.ToString());
+            Party1RSVPIcon.enabled = party2?.RSVP == RSVP.Declined;
 		}
 
-		public void AddParty(PartyVO party)
-		{
-			if (party != null && _day == party.Date)
-			{
-				PartyVO accept;
-				if (_parties == null) _parties = new List<PartyVO>();
-				if (!_parties.Contains(party)) _parties.Add(party);
-				Party1Icon.enabled = _parties.Count > 1; // Show for more than 1 party
-				Party2Icon.enabled = true; // Show for at least 1 party
-                accept = _parties.Find(p=>p.RSVP == RSVP.Accepted);
-
-				// Show party 2's RSVP icon only if there's an accepted party or all declined parties
-                Party2RSVPIcon.enabled = accept!=null || _parties.TrueForAll(p=>p.RSVP == RSVP.Declined);
-				// Set the Party 2 acceptance icon
-				Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(accept!=null ? "accepted" : "declined");
-                if (accept == null) accept = _parties.Find(p=>p.RSVP == RSVP.New);
-	
-				// Set Party 2's Faction icon
-				if (accept != null) Party2Icon.sprite = CalendarSpriteConfig.GetSprite(accept.Faction);
-
-				if (Party1Icon.enabled)
-				{
-                    party = _parties.Find(p=>p != accept && p.RSVP == RSVP.New);
-					Party1RSVPIcon.enabled = party != null;
-					if (party == null) party = _parties.Find(p=>p != accept);
-					Party1Icon.sprite = CalendarSpriteConfig.GetSprite(party.Faction);
-				}
-			}
-		}
-
-		void Awake()
-		{
-	        myBlockImage = this.GetComponent<Image>();
-	        defaultColor = myBlockImage.color;
-			_btn = this.GetComponent<Button>();
-			_btn.onClick.AddListener(HandleClick);
-			Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite("declined");
-	    }
-
-		private void HandleClick()
-	    {
-	    	AmbitionApp.SendMessage<DateTime>(CalendarMessages.SELECT_DATE, _day);
-	    }
+		private void HandleClick() => AmbitionApp.SendMessage(CalendarMessages.SELECT_DATE, Date);
 	}
 }

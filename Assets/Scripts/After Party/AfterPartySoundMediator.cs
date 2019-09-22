@@ -11,7 +11,7 @@ namespace Ambition
         // Use this for initialization
         void Awake()
         {
-            AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENTSFX, AmbientSFX);
+            AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENT, AmbientSFX);
             AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);
         }
     }

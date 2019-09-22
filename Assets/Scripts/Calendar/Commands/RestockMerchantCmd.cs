@@ -8,31 +8,19 @@ namespace Ambition
 	{
 		public void Execute(DateTime day)
 		{
-			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-			int count = model.ItemDefinitions.Length;
-			ItemVO item;
-			string style=null;
-
-			model.Market.Clear();
-			while (model.Market.Count < model.NumMarketSlots)
-			{
-				item = new ItemVO(model.ItemDefinitions[Util.RNG.Generate(0,count)]);
-				item.State[ItemConsts.STYLE] = style = model.Styles[Util.RNG.Generate(0,model.Styles.Length)];
-				item.Name = style + " " + item.Name;
-				model.Market.Add(item);
-			}
-
-			OutfitVO outfit = OutfitVO.Create();
-			outfit.Style = style;
-			outfit.GenerateName();
-
-			List<ItemVO> outfits = new List<ItemVO>() { outfit, OutfitVO.Create(), OutfitVO.Create() };
-			if (AmbitionApp.GetModel<FactionModel>()["Bourgeoisie"].Level >= 3)
-			{
-				outfits.Add(OutfitVO.Create());
-			}
-			model.Market.RemoveAll(i=>i.Type == ItemConsts.OUTFIT);
-			model.Market.AddRange(outfits);
+			//InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
+			//int count = model.Items.Length;
+   //         FactionVO bourgeoisie = AmbitionApp.GetModel<FactionModel>()[FactionType.Bourgeoisie];
+   //         ItemVO item;
+   //         if (model.Market != null) model.Market.Clear();
+   //         else model.Market = new Dictionary<ItemType, List<ItemVO>>();
+   //         model.Market.Add(ItemType.Outfit, new List<ItemVO>());
+			//for (int i= model.NumMarketSlots - model.Market.Count + (bourgeoisie.Level >= 3 ? 1 : 0); i>=0; i--)
+			//{
+   //             item = new ItemVO();
+   //             AmbitionApp.SendMessage(InventoryMessages.GENERATE_OUTFIT, item);
+			//	model.Market[ItemType.Outfit].Add(item);
+			//}
 		} 
 	}
 }

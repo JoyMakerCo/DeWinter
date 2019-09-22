@@ -7,9 +7,9 @@ namespace Ambition
 {
     public class GuestActionLeadRewardState : UState
     {
-        override public void OnEnterState()
+        public override void OnEnterState(string[] args)
         {
-            UController controller = _machine._uflow.GetController(_machine);
+/*            UController controller = _Machine._UFlow.GetController(_Machine);
             if (controller !=  null)
             {                
                 MapModel map = AmbitionApp.GetModel<MapModel>();
@@ -46,6 +46,6 @@ namespace Ambition
                     }
                 }
             }
-        }
+*/        }
     }
 }

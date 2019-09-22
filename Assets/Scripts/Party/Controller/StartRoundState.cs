@@ -8,13 +8,13 @@ namespace Ambition
 {
 	public class StartRoundState : UState
 	{
-		public override void OnEnterState ()
-		{
+        public override void OnEnterState(string[] args)
+        {
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
             if (model.Round%model.FreeRemarkCounter == 0)
 				App.Service<MessageSvc>().Send(PartyMessages.FREE_REMARK);
             model.Round++;
-            AmbitionApp.SendMessage(model.Guests);
+            //AmbitionApp.SendMessage(model.Guests);
 			AmbitionApp.SendMessage(PartyMessages.START_ROUND);
 		}
 	}

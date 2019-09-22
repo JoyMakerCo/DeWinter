@@ -5,21 +5,12 @@ namespace Ambition
 {
     public class ChooseLocationLink : ULink
     {
-        public override void Initialize()
-        {
-            AmbitionApp.Subscribe<LocationPin>(ParisMessages.GO_TO_LOCATION, HandlePin);
-        }
-
+        public override void Initialize() => AmbitionApp.Subscribe<Pin>(ParisMessages.GO_TO_LOCATION, HandlePin);
         public override bool Validate() => false;
+        public override void Dispose() => AmbitionApp.Unsubscribe<Pin>(ParisMessages.GO_TO_LOCATION, HandlePin);
 
-        public override void Dispose()
+        void HandlePin(Pin pin)
         {
-            AmbitionApp.Unsubscribe<LocationPin>(ParisMessages.GO_TO_LOCATION, HandlePin);
-        }
-
-        void HandlePin(LocationPin pin)
-        {
-            AmbitionApp.GetModel<ParisModel>().Location = pin;
             if (pin != null) Activate();
         }
     }

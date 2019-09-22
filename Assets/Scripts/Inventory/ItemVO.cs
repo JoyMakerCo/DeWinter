@@ -6,53 +6,47 @@ using Util;
 
 namespace Ambition
 {
-	public class ItemVO
-	{
-		[JsonProperty("id")]
-		public string ID;
+    [Serializable]
+    public class ItemVO
+    {
+        [JsonProperty("name")]
+        public string Name;
 
-		[JsonProperty("name")]
-		public string Name;
+        [JsonProperty("id")]
+        public string ID; // The id of the item's definition
 
-		[JsonProperty("description")]
-		public string Description;
+        [JsonProperty("type")]
+        public ItemType Type; // The category of item (outfit, gossip, etc)
 
-		[JsonProperty("type")]
-		public string Type;
+        [JsonProperty("Price")]
+        public int Price; // Price to buy from market OR the sellback price
 
-		[JsonProperty("tags")]
-		public List<string> Tags;
+        [JsonProperty("state")]
+        public Dictionary<string, string> State = new Dictionary<string, string>(); // Unique state of this item instance
 
-		[JsonProperty("state")]
-		public Dictionary<string,object> State = new Dictionary<string, object>();
+        [JsonProperty("equipped")]
+        public bool Equipped = false;
 
-		[JsonProperty("Price")]
-		public int Price;
+        [JsonIgnore]
+        public DateTime Created;
 
-		[JsonProperty("asset")]
-		public string Asset;
+        [JsonProperty("created")]
+        private long _created
+        {
+            set => Created = new DateTime(value);
+            get => Created.Ticks;
+        }
 
-		public int Quantity;
-
-		public bool Equipped;
-
-		public string PriceString
-		{
-			get { return Price.ToString("£" + "#,##0"); }
-		}
-
-		public ItemVO() {}
-		public ItemVO(ItemVO item)
-		{
-			ID = item.ID;
-			Name = item.Name;
-			Description = item.Description;
-			Type = item.Type;
-			Tags = item.Tags;
-			State = new Dictionary<string, object>(item.State);
-			Price = item.Price;
-			Asset = item.Asset;
-			Quantity = item.Quantity;
-		}
-	}
+        public ItemVO() {}
+        public ItemVO(ItemVO item) : this(item, item.State) {}
+        public ItemVO(ItemVO item, Dictionary<string, string> state)
+        {
+            Name = item.Name;
+            Type = item.Type;
+            Equipped = item.Equipped;
+            State = new Dictionary<string, string>(state);
+            Price = item.Price;
+            Created = item.Created;
+        }
+    }
 }

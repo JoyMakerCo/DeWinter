@@ -17,19 +17,21 @@ namespace Ambition
         void OnEnable()
         {
             _script = GetComponent<SpotlightView>();
-            AmbitionApp.Subscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleGuest);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_TARGETED, HandleGuest);
+            AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleGuestSelected);
             StopAllCoroutines();
             StartCoroutine(FlashCR());
         }
 
         void OnDisable()
         {
-            AmbitionApp.Unsubscribe<GuestVO>(PartyMessages.GUEST_TARGETED, HandleGuest);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_TARGETED, HandleGuest);
+            AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleGuestSelected);
             StopAllCoroutines();
             _script.On = false;
         }
         
-        private void HandleGuest(GuestVO guest)
+        private void HandleGuest(CharacterVO guest)
         {
             _paused = guest != null && _script.Guest == guest;
         }
@@ -48,6 +50,11 @@ namespace Ambition
                 }
                 yield return null;
             }
+        }
+
+        void HandleGuestSelected(CharacterVO guest)
+        {
+            if (guest != null) Destroy(this);
         }
     }
 }

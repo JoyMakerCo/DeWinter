@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using Util;
 
 namespace Core {
-	public interface IAppService {}
+	public interface IAppService : IDisposable { }
 
 	public static class App
 	{
 		private static Dictionary<Type, IAppService> _services = new Dictionary<Type, IAppService>();
 
-		public static T Service<T>() where T:IAppService, new()
-		{
-			Type t = typeof(T);
-			IAppService svc;
-			if (!_services.TryGetValue(t, out svc))
-			{
-				svc = new T();
-				_services[t] = svc;
-				if (svc is IInitializable)
-					(svc as IInitializable).Initialize();
-			}
-			return (T)svc;
-		}
+        public static T Register<T>() where T:IAppService, new()
+        {
+            T svc = Service<T>();
+            if (svc == null) _services.Add(typeof(T), svc = new T());
+            return svc;
+        }
+
+        public static bool Unregister<T>() where T:IAppService
+        {
+            Type t = typeof(T);
+            if (!_services.TryGetValue(t, out IAppService svc)) return false;
+            svc.Dispose();
+            return true;
+        }
+
+        public static T Service<T>() where T : IAppService => _services.TryGetValue(typeof(T), out IAppService svc) ? (T)svc : default;
 	}
 }

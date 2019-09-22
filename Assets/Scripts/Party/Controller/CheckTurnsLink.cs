@@ -1,12 +1,8 @@
-﻿using UFlow;
+﻿using System;
 namespace Ambition
 {
-    public class CheckTurnsLink : ULink
+    public class CheckTurnsLink : UFlow.ULink
     {
-        public override bool Validate()
-        {
-            PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            return model.Turn < model.Turns;
-        }
+        public override bool Validate() => AmbitionApp.GetModel<PartyModel>().TurnsLeft > 0;
     }
 }

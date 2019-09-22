@@ -23,9 +23,9 @@ namespace Ambition
         // Use this for initialization
         void Start()
         {
-            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
             HandleDeck(model.Deck.Count);
-            RemarksMaxDeckSizeTf.text = (model.Deck.Count + model.Discard.Count + Array.FindAll(model.Remarks, r=>r!=null).Length).ToString();
+            RemarksMaxDeckSizeTf.text = model.MaxDeckSize.ToString();
         }
 
         private void HandleDeck(int deckSize)

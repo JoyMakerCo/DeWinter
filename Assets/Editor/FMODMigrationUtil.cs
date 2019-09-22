@@ -110,7 +110,7 @@ namespace FMODUnity
 
             Settings settings = Settings.Instance;
 
-            var prefKey = "FMODStudioProjectPath_" + Application.dataPath;
+            var prefKey = "FMODStudioProjectPath_" + UnityEngine.Application.dataPath;
             var prefValue = EditorPrefs.GetString(prefKey);
             if (prefValue != null)
             {

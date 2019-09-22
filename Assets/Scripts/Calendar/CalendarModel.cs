@@ -1,140 +1,174 @@
-﻿using System;
-using System.Linq;
+﻿using Core;
+using System;
 using System.Collections.Generic;
-using Core;
-using Newtonsoft.Json;
+using System.Linq;
 using UnityEngine;
+using Newtonsoft.Json;
 using Util;
 
 namespace Ambition
 {
-    public class CalendarModel : IModel, IInitializable
-	{
-        public Dictionary<DateTime, List<ICalendarEvent>> Timeline = new Dictionary<DateTime, List<ICalendarEvent>>();
-        public List<ICalendarEvent> Unscheduled = new List<ICalendarEvent>();
+    [Saveable]
+    public class CalendarModel : Model, IResettable, IInitializable
+    {
+        [JsonIgnore]
         public DateTime StartDate;
-        public DateTime EndDate;
-        public Stack<IncidentVO> IncidentQueue = new Stack<IncidentVO>();
 
-        private int _day;
-        private MomentVO _moment;
+        [JsonIgnore]
+        public Dictionary<DateTime, List<ICalendarEvent>> Timeline = new Dictionary<DateTime, List<ICalendarEvent>>();
 
-		public string GetDateString()
-		{
-			return GetDateString(Today);
-		}
+        [JsonIgnore]
+        public List<ICalendarEvent> Unscheduled = new List<ICalendarEvent>();
 
-        public void Schedule(ICalendarEvent e, DateTime date)
+        [JsonProperty("timeline")]
+        private List<ICalendarEvent> _events
         {
-            if (!Timeline.ContainsKey(date))
+            set
             {
-                Timeline[date] = new List<ICalendarEvent>();
-                if (date < StartDate) StartDate = date;
+                Timeline.Clear();
+                Unscheduled.Clear();
+                foreach(ICalendarEvent e in value)
+                {
+                    if (e.Date == default) Unscheduled.Add(e);
+                    else
+                    {
+                        if (!Timeline.ContainsKey(e.Date))
+                            Timeline.Add(e.Date, new List<ICalendarEvent>());
+                        Timeline[e.Date].Add(e);
+                    }
+                }
             }
+            get
+            {
+                List<ICalendarEvent> events = new List<ICalendarEvent>(Unscheduled);
+                foreach (List<ICalendarEvent> scheduled in Timeline.Values)
+                    events.AddRange(scheduled);
+                return events;
+            }
+        }
+
+        [JsonProperty("day")]
+        private int _day;
+
+        [JsonIgnore]
+        public DateTime NextStyleSwitchDay;
+
+        [JsonIgnore]
+        public int Day
+        {
+            get { return _day; }
+            set
+            {
+                _day = value;
+                AmbitionApp.SendMessage(Today);
+            }
+        }
+
+        public void Schedule<T>(T e, DateTime date) where T : ICalendarEvent
+        {
+            if (e == null) return;
             e.Date = date;
+            if (!Timeline.ContainsKey(date)) Timeline[date] = new List<ICalendarEvent>();
+            Timeline[date].Add(e);
             Unscheduled.Remove(e);
-            if (!Timeline[date].Contains(e))
-                Timeline[date].Add(e);
+            AmbitionApp.SendMessage(CalendarMessages.SCHEDULED, e);
             AmbitionApp.SendMessage(e);
         }
 
-        public void Schedule(ICalendarEvent e)
+        public void Schedule<T>(T e) where T : ICalendarEvent => Schedule(e, (e == default || e.Date == DateTime.MinValue) ? Today : e.Date);
+
+        public bool Delete(ICalendarEvent e)
         {
-            if (default(DateTime).Equals(e.Date))
-            {
-                Unscheduled.Add(e);
-            }
-            else
-            {
-                if (!Timeline.ContainsKey(e.Date))
-                {
-                    Timeline[e.Date] = new List<ICalendarEvent>();
-                    if (e.Date < StartDate) StartDate = e.Date;
-                }
-                Timeline[e.Date].Add(e);
-            }
+            bool result = Unscheduled.Remove(e);
+            return (Timeline.TryGetValue(e.Date, out List<ICalendarEvent> events) && events.Remove(e)) || result;
         }
 
-        public string GetDateString(DateTime d)
-		{
-			LocalizationModel localization = AmbitionApp.GetModel<LocalizationModel>();
-			return d.Day.ToString() + " " + localization.GetList("month")[d.Month-1] + ", " + d.Year.ToString();
-		}
-
-		public DateTime Today
-		{
-			get { return StartDate.AddDays(_day); }
-			set {
-				_day = (value - StartDate).Days;
-				AmbitionApp.SendMessage(value);
-			}
-		}
-
-        public IncidentVO Incident
+        public bool Unschedule(ICalendarEvent e)
         {
-            get { return IncidentQueue.Count > 0 ? IncidentQueue.Peek() : null; }
-            set
-            {
-                if (value != null && !IncidentQueue.Contains(value))
-                {
-                    IncidentQueue.Push(value);
-                    AmbitionApp.SendMessage(value);
-                }
-            }
+            return Timeline.ContainsKey(e.Date) && Timeline[e.Date].Remove(e);
         }
 
-		public DateTime DaysFromNow(int days)
-		{
-			return StartDate.AddDays(days + _day);
-		}
-
-		public DateTime Yesterday
-		{
-			get { return DaysFromNow(-1); }
-		}
-
-        public MomentVO Moment
+        [JsonIgnore]
+        public DateTime Today
         {
-            get { return _moment; }
+            get => StartDate.AddDays(_day);
             set {
-                _moment = value;
-                if (_moment != null) AmbitionApp.SendMessage(_moment = value);
-                else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, Incident);
+                _day = (value - StartDate).Days;
+                AmbitionApp.SendMessage(value);
             }
         }
 
-        public IncidentVO FindIncident(string incidentID)
+        public DateTime DaysFromNow(int days) => StartDate.AddDays(days + _day);
+
+        [JsonIgnore]
+        public DateTime Yesterday => DaysFromNow(-1);
+
+        public T FindUnscheduled<T>(string eventID) where T:ICalendarEvent
         {
-            return Unscheduled.Find(i => i is IncidentVO && ((IncidentVO)i).Name == incidentID) as IncidentVO;
+            return Unscheduled.OfType<T>().FirstOrDefault(e => e.Name == eventID);
         }
 
-        public PartyVO FindParty(string partyID)
+        public T[] FindUnscheduled<T>(Func<T, bool> predicate) => Unscheduled.OfType<T>().Where(predicate).ToArray();
+
+        public ICalendarEvent Find(string EventID) => Unscheduled.FirstOrDefault(e => e.Name == EventID);
+
+        public T[] GetEvents<T>(DateTime date) where T : ICalendarEvent
         {
-            return Unscheduled.Find(i => i is PartyVO && ((PartyVO)i).Name == partyID) as PartyVO;
+            if (!Timeline.TryGetValue(date, out List<ICalendarEvent> events)) return new T[0];
+            if (date < Today) return events.OfType<T>().ToArray();
+            return events.OfType<T>().Where(e => !e.IsComplete).ToArray();
         }
 
-        public T[] GetEvents<T>(DateTime date) where T:ICalendarEvent
+        public T GetEvent<T>(DateTime date) where T : class, ICalendarEvent
         {
-            List<ICalendarEvent> events;
-            return Timeline.TryGetValue(date, out events)
-               ? events.OfType<T>().ToArray()
-               : new T[0];
+            return (Timeline.TryGetValue(date, out List<ICalendarEvent> items))
+                ? items.OfType<T>().FirstOrDefault()
+                : null;
         }
 
-        public T[] GetEvents<T>() where T : ICalendarEvent
-        {
-            return GetEvents<T>(Today);
-        }
-
-        public DateTime NextStyleSwitchDay;
+        public T GetEvent<T>() where T : class, ICalendarEvent => GetEvent<T>(Today);
+        public T[] GetEvents<T>() where T : class, ICalendarEvent => GetEvents<T>(Today);
+        public T[] GetUnscheduledEvents<T>() where T : ICalendarEvent => Unscheduled.OfType<T>().ToArray();
 
         public void Initialize()
         {
             IncidentConfig[] incidents = Resources.LoadAll<IncidentConfig>("Incidents");
             StartDate = DateTime.Today;
-            Array.ForEach(incidents, i => Schedule(i.Incident));
+            IncidentVO incident;
+            foreach (IncidentConfig config in incidents)
+            {
+                incident = new IncidentVO(config.Incident);
+                if (incident.IsScheduled)
+                {
+                    Schedule(incident);
+                    if (incident.Date < StartDate)
+                    {
+                        StartDate = incident.Date;
+                    }
+                }
+                else Unscheduled.Add(incident);
+            }
             incidents = null;
             Resources.UnloadUnusedAssets();
         }
-	}
+
+        public void Complete<T>(T e) where T : ICalendarEvent
+        {
+            if (!IsComplete(e))
+            {
+                e.IsComplete = true;
+                Unscheduled.Remove(e);
+                AmbitionApp.SendMessage(CalendarMessages.CALENDAR_EVENT_COMPLETED, e);
+            }
+        }
+
+        public bool IsComplete(ICalendarEvent e) => e == null || e.IsComplete || e.Date < Today;
+
+        public void Reset()
+        {
+            Timeline.Clear();
+            _day = 0;
+            StartDate = default;
+        }
+    }
 }

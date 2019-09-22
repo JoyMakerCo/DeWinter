@@ -1,38 +1,46 @@
 ﻿using System;
 using System.Collections;
 
-public class Observable<T>
+public struct Observable<T>
 {
-	protected T _value;
+    private Action<T> _notifyHandler;
+	private event Action<T> _notifier
+    {
+        add => _notifyHandler += value;
+        remove => _notifyHandler -= value;
+    }
 
-	protected event Action<T> _notifier;
+    public Observable(T t)
+    {
+        _notifyHandler = delegate { };
+        _value = t;
+    }
 
-	public Observable() {}
-	public Observable(T t)
+	public static implicit operator T (Observable<T> t) => t._value;
+
+    private T _value;
+    public T Value
 	{
-		Set(t);
-	}
-
-	public static implicit operator T (Observable<T> t)
-	{
-		return t._value;
-	}
-
-	public T Set(T Value)
-	{
-		_value = Value;
-		_notifier.Invoke(_value);
-		return _value;
-	}
+        get => _value;
+        set
+        {
+            _value = value;
+            _notifyHandler?.Invoke(_value);
+        }
+    }
 
 	public void Observe(Action<T> listener)
 	{
-		_notifier += listener;
-		listener(_value);
+        if (listener != null)
+        {
+            _notifier += listener;
+            listener(_value);
+        }
 	}
 
 	public void Remove(Action<T> listener)
 	{
-		_notifier -= listener;
+        if (listener != null)
+    		_notifier -= listener;
 	}
 }

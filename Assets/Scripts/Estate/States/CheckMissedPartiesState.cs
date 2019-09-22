@@ -6,11 +6,10 @@ namespace Ambition
 {
     public class CheckMissedPartiesState : UState
     {
-        override public void OnEnterState()
+        public override void OnEnterState(string[] args)
         {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            if (!calendar.Timeline.ContainsKey(calendar.Yesterday)) return;
-            PartyVO[] parties = calendar.Timeline[calendar.Yesterday].OfType<PartyVO>().Where(p=>p.RSVP == RSVP.New).ToArray();
+            PartyVO[] parties = calendar.GetEvents<PartyVO>(calendar.Yesterday).Where(p=>p.RSVP == RSVP.New).ToArray();
             AmbitionApp.GetModel<GameModel>().Reputation -= 40 * parties.Length;
             foreach (PartyVO party in parties)
 			{                    

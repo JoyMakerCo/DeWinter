@@ -53,7 +53,7 @@ namespace Ambition
 
         private void HandleTab(string msg)
 		{
-			switch (msg)
+            switch (msg)
 			{
 				case EstateConsts.CALENDAR_TAB:
 					SetTab(CalendarTab);

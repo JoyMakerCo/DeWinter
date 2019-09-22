@@ -14,7 +14,7 @@ namespace Ambition
 	    {
 			AmbitionApp.Subscribe<string>(ItemConsts.STYLE, UpdateStyle);
 	        _text = gameObject.GetComponent<Text>();
-			UpdateStyle(AmbitionApp.GetModel<InventoryModel>().CurrentStyle);
+			UpdateStyle(AmbitionApp.GetModel<InventoryModel>().Style);
 	    }
 
 	    void OnDestroy()

@@ -3,6 +3,8 @@ namespace Ambition
 {
     public interface ICalendarEvent
     {
-        DateTime Date { set; get; }
+        DateTime Date { set;  get; }
+        string Name { get; }
+        bool IsComplete { set; get; }
     }
 }

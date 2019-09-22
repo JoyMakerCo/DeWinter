@@ -34,7 +34,7 @@ namespace Ambition
 		// TODO: Stop checking collinearity. Form a room graph and build the rooms around it.
 		public bool AddRoom(RoomVO room)
 		{
-			Vector2 vec;
+/*			Vector2 vec;
 			int[] verts = room.Vertices;
 			int[] wallVerts = new int[4];
 			int len = verts.Length;
@@ -72,32 +72,32 @@ namespace Ambition
 
 						wall.Rooms[1] = walls[0].Rooms[0];
 
-//						Walls.Insert(Walls.in, wall);
-//						w.Scalars[1] = scalars[0];
-//						w.Vertices[2] = (int)Math.Round(_origin[0] + _line[0]*w.Scalars[1]);
-//						w.Vertices[3] = (int)Math.Round(_origin[1] + _line[1]*w.Scalars[1]);
-//						index = Walls.IndexOf(w);
+						Walls.Insert(Walls.in, wall);
+						w.Scalars[1] = scalars[0];
+						w.Vertices[2] = (int)Math.Round(_origin[0] + _line[0]*w.Scalars[1]);
+						w.Vertices[3] = (int)Math.Round(_origin[1] + _line[1]*w.Scalars[1]);
+						index = Walls.IndexOf(w);
 					}
-//					if (walls[walls.Length-1].Scalars[1] > scalars[1])
-//					{
-//						// Copy logic from above
-//					}
-//					for (int i=walls.Count-1; i>=0; i--)
-//					{
-//						w.Rooms[1] = room;
-//					}
-//					 = Walls.Find(w=>w.Scalars[0]==scalars[0]);
-//					if (wall == null)
-//					{
-//						wall
-//						index = Walls.FindIndex(w=>w.Scalars[0] > scalars[0]);
-//						if (index < 0) Walls.Add(wall);
-//						else Walls.Insert(index, wall);
-//					}
+					if (walls[walls.Length-1].Scalars[1] > scalars[1])
+					{
+						// Copy logic from above
+					}
+					for (int i=walls.Count-1; i>=0; i--)
+					{
+						w.Rooms[1] = room;
+					}
+					 = Walls.Find(w=>w.Scalars[0]==scalars[0]);
+					if (wall == null)
+					{
+						wall
+						index = Walls.FindIndex(w=>w.Scalars[0] > scalars[0]);
+						if (index < 0) Walls.Add(wall);
+						else Walls.Insert(index, wall);
+					}
 					return true;
 				}
 			}
-			return false;
+*/			return false;
 		}
 
 		private bool IsCollinear(Vector2 vec)

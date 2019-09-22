@@ -1,63 +1,51 @@
-﻿using Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Core
 {
-    public class AssetBundleSvc : IAppService, IInitializable, IDisposable
+    //TODO: Android and WebGL use UnityWebRequest instead of StreamingAssetsPath.
+    public class AssetBundleSvc : IAppService
     {
-        const string DIRECTORY_ID = "AssetBundles";
-        private Dictionary<string, AssetBundle> _loaded;
+        protected Dictionary<string, AssetBundle> _bundles = new Dictionary<string, AssetBundle>();
 
-        public void Initialize()
+        public void Load(string assetBundleID, Action<AssetBundle> OnLoaded)
         {
-            _loaded = new Dictionary<string, AssetBundle>();
+            if (_bundles.TryGetValue(System.IO.Path.Combine(UnityEngine.Application.streamingAssetsPath, assetBundleID), out AssetBundle bundle))
+                OnLoaded(bundle);
+            else
+            {
+                bundle = AssetBundle.LoadFromFile(Path.Combine(UnityEngine.Application.streamingAssetsPath, assetBundleID));
+                _bundles.Add(assetBundleID, bundle);
+
+                // TODO: Start a thread that invokes the callback when loading is complete
+            }
         }
 
-        public AssetBundle Load(string assetBundleID)
+        public bool Unload(string assetBundle)
         {
-            AssetBundle bundle;
-            if (_loaded.TryGetValue(assetBundleID, out bundle)) return bundle;
-            bundle = AssetBundle.LoadFromFile(System.IO.Path.Combine(Application.streamingAssetsPath, assetBundleID));
-            if (bundle != null) _loaded[assetBundleID] = bundle;
-            return bundle;
-        }
-
-        public bool Unload(string assetBundleID)
-        {
-            AssetBundle bundle;
-            if (!_loaded.TryGetValue(assetBundleID, out bundle))
-                return false;
-            bundle.Unload(true);
-            _loaded.Remove(assetBundleID);
+            if (!_bundles.TryGetValue(assetBundle, out AssetBundle bundle)) return false;
+            bundle.Unload(false);
             return true;
         }
 
-        public bool IsLoaded(string assetBundleID) => _loaded.ContainsKey(assetBundleID);
-
         public void Dispose()
         {
-            foreach(KeyValuePair<string, AssetBundle> bundle in _loaded)
-            {
-                bundle.Value.Unload(true);
-            }
-            _loaded.Clear();
-            _loaded = null;
+            AssetBundle.UnloadAllAssetBundles(false);
+            _bundles.Clear();
         }
 
-#if (UNITY_EDITOR)
-        //[UnityEditor.MenuItem("Assets/Build AssetBundles")]
-        public static void AssetBundleBuilder()
+#if UNITY_EDITOR
+        [MenuItem("Assets/Build AssetBundles")]
+        static void BuildAllAssetBundles()
         {
-            string assetBundleDirectory = "Assets/" + DIRECTORY_ID;
-            if (!UnityEngine.Windows.Directory.Exists(assetBundleDirectory))
-            {
-                UnityEngine.Windows.Directory.CreateDirectory(assetBundleDirectory);
-            }
-            UnityEditor.BuildPipeline.BuildAssetBundles(assetBundleDirectory, UnityEditor.BuildAssetBundleOptions.None, UnityEditor.BuildTarget.StandaloneOSX);
+            BuildPipeline.BuildAssetBundles(UnityEngine.Application.streamingAssetsPath, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
         }
 #endif
-
     }
 }

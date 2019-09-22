@@ -4,14 +4,14 @@ using Util;
 
 namespace Ambition
 {
-    public class GuestSelectedCmd : ICommand<GuestVO>
+    public class GuestSelectedCmd : ICommand<CharacterVO>
     {
-        public void Execute(GuestVO guest)
+        public void Execute(CharacterVO guest)
         {
-            if (guest.IsLockedIn) return; // Don't bother if the guest is already locked in
-
-            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
+/*            if (guest.State == GuestState.Offended) return; //If a guest has already left, there's nothing you can do, just move on
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+            if (model == null) return;
+            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
             RemarkVO remark = model.Remark;
             float levelBonus = (AmbitionApp.GetModel<GameModel>().Level >= 4)
                 ? 1.25f
@@ -33,28 +33,47 @@ namespace Ambition
             // Adjust guest according to configued reaction
             RemarkResult result = partyModel.RemarkResults[key];
             int opinionDelta = (int)(((float)RNG.Generate(result.OpinionMin, result.OpinionMax)) * ReparteBonus * levelBonus);
-            guest.Opinion += opinionDelta;
-            if (guest.Opinion >= 100) AmbitionApp.SendMessage(PartyMessages.GUEST_CHARMED, guest);
-            else if (guest.Opinion <= 0) AmbitionApp.SendMessage(PartyMessages.GUEST_OFFENDED, guest);
-            else switch(key)
+            if (guest.State != GuestState.Charmed) guest.Opinion += opinionDelta;
+            switch(key)
             {
                 case PartyConstants.LIKE:
-                    guest.State = GuestState.Interested;
-                    AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_POSITIVE, guest);
-                    AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+                    if (guest.State == GuestState.Charmed) AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_ALREADYCHARMED, guest);
+                    else
+                    {
+                        if (guest.Opinion >= 100) AmbitionApp.SendMessage(PartyMessages.GUEST_CHARMED, guest);
+                        else
+                        {
+                            guest.State = GuestState.Interested;
+                            AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_POSITIVE, guest);
+                            AmbitionApp.SendMessage(PartyMessages.FREE_REMARK);
+                        }
+                    }
                     break;
                 case PartyConstants.DISLIKE:
-                    AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_NEGATIVE, guest);
-                    guest.State = GuestState.Bored;
+                    if(guest.State == GuestState.Interested) guest.State = GuestState.Bored;
+                    if (guest.Opinion <= 0) AmbitionApp.SendMessage(PartyMessages.GUEST_OFFENDED, guest);
+                    else AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_NEGATIVE, guest);
                     break;
                 default:
-                    guest.State = GuestState.Interested;
-                    AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_NEUTRAL, guest);
+                    if (guest.State == GuestState.Charmed) AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_ALREADYCHARMED, guest);
+                    else
+                    {
+                        if (guest.Opinion >= 100)
+                        {
+                            AmbitionApp.SendMessage(PartyMessages.GUEST_CHARMED, guest);
+                        }
+                        else
+                        {
+                            guest.State = GuestState.Interested;
+                            AmbitionApp.SendMessage(PartyMessages.GUEST_REACTION_NEUTRAL, guest);
+                        }
+                    }
                     break;
             }
 
             // So, there's a potential that the clock won't reset? Deal with that when it's a thing
             AmbitionApp.SendMessage(result.Remarks < 0 ? PartyMessages.BURN_REMARKS : PartyMessages.RESHUFFLE_REMARKS, Math.Abs(result.Remarks));
+*/
         }
     }
 }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Ambition
 {
 	[Serializable]
-    public struct CommodityVO
+    public class CommodityVO
 	{
         [JsonProperty("type")]
         public CommodityType Type;
@@ -16,18 +16,26 @@ namespace Ambition
         [JsonProperty("value")]
         public int Value;
 
-		public CommodityVO (CommodityType type, string id=null, int amount=0)
+        public CommodityVO() { }
+        public CommodityVO(CommodityVO commodity) : this(commodity.Type, commodity.ID, commodity.Value) { }
+
+        public CommodityVO(CommodityType type)
+        {
+            Type = type;
+        }
+
+        public CommodityVO(CommodityType type, int amount = 0)
+        {
+            Type = type;
+            Value = amount;
+            ID = null;
+        }
+
+        public CommodityVO (CommodityType type, string id=null, int value=0)
 		{
 			Type = type;
 			ID = id;
-			Value = amount;
-		}
-
-		public CommodityVO (CommodityType type, int amount=0)
-		{
-			Type = type;
-			Value = amount;
-            ID = null;
+			Value = value;
 		}
 	}
 }

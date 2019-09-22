@@ -18,26 +18,26 @@ namespace Ambition
         private void OnDestroy() => Cleanup();
         private void Start() => gameObject.SetActive(false);
 
-        override protected void HandleGuest(GuestVO guest)
+        override protected void HandleGuest(CharacterVO guest)
         {
             if (guest != null && guest == _guest)
             {
-                bool activate = guest.Action != null;
+                bool activate = false; //guest.Action != null;
                 gameObject.SetActive(activate);
                 if (activate)
                 {
                     GuestActionIcon icon;
-                    GuestActionVO action = guest.Action;
-                    foreach (ActionMap map in Actions)
-                    {
-                        activate = map.ActionType == action.Type;
-                        map.View.SetActive(activate);
-                        if (activate)
-                        {
-                            icon = map.View.GetComponent<GuestActionIcon>();
-                            if (icon != null) icon.SetAction(action);
-                        }
-                    }
+                    //GuestActionVO action = guest.Action;
+                    //foreach (ActionMap map in Actions)
+                    //{
+                    //    activate = map.ActionType == action.Type;
+                    //    map.View.SetActive(activate);
+                    //    if (activate)
+                    //    {
+                    //        icon = map.View.GetComponent<GuestActionIcon>();
+                    //        if (icon != null) icon.SetAction(action);
+                    //    }
+                    //}
                 }
             }
         }

@@ -9,62 +9,72 @@ namespace Ambition
 	{
 		public CalendarButton[] Days;
 
-		private DateTime _month;
+		private int _month;
 		private CalendarModel _model;
 
-        private void Awake()
-        {
-            _model = AmbitionApp.GetModel<CalendarModel>();
-        }
+        private void Awake() => _model = AmbitionApp.GetModel<CalendarModel>();
 
         private DateTime Today => _model.Today;
 
         void Start()
 		{
-			AmbitionApp.Subscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleMonth);
+            AmbitionApp.Subscribe(CalendarMessages.PREV_MONTH, HandlePrevMonth);
+            AmbitionApp.Subscribe(CalendarMessages.NEXT_MONTH, HandleNextMonth);
+            AmbitionApp.Subscribe(CalendarMessages.CURRENT_MONTH, HandleCurrentMonth);
 			AmbitionApp.Subscribe<PartyVO>(HandlePartyUpdated);
-			HandleMonth(Today);
+			ViewMonth(Today.Month);
 		}
 
 		void OnDestroy()
 		{
-			AmbitionApp.Unsubscribe<DateTime>(CalendarMessages.VIEW_MONTH, HandleMonth);
-			AmbitionApp.Unsubscribe<PartyVO>(HandlePartyUpdated);
+            AmbitionApp.Unsubscribe(CalendarMessages.PREV_MONTH, HandlePrevMonth);
+            AmbitionApp.Unsubscribe(CalendarMessages.NEXT_MONTH, HandleNextMonth);
+            AmbitionApp.Unsubscribe(CalendarMessages.CURRENT_MONTH, HandleCurrentMonth);
+            AmbitionApp.Unsubscribe<PartyVO>(HandlePartyUpdated);
 		}
 
-		private void HandleMonth(DateTime month)
+        private void HandleCurrentMonth()
+        {
+            ViewMonth(Today.Month);
+        }
+
+        private void HandlePrevMonth()
+        {
+            if (_month > 1)
+                ViewMonth(_month - 1);
+        }
+
+        private void HandleNextMonth()
+        {
+            if (_month < 7)
+                ViewMonth(_month + 1);
+        }
+
+
+        private void ViewMonth(int month)
 		{
-			CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
-            List<ICalendarEvent> events;
+            PartyVO[] parties;
+            CalendarButton btn;
+            _month = month;
+            DateTime date = new DateTime(Today.Year, _month, 1);
+            DateTime startDate = date.AddDays(-(int)(date.DayOfWeek));
 
-			_month = month.AddDays(1-month.Day);
-			UpdateDays();
-
-			foreach (CalendarButton day in Days)
-			{
-                if (model.Timeline.TryGetValue(day.Date, out events))
-				{
-                    foreach (ICalendarEvent e in events)
-                        day.AddParty(e as PartyVO);
-				}
-			}
-		}
-
-		private void UpdateDays()
-		{
-			DateTime startDate = _month.AddDays(-(int)(_month.DayOfWeek));
 			for (int i = Days.Length-1; i>=0; i--)
 			{
-				Days[i].SetDay(startDate.AddDays(i), Today, _month);
-			}
-		}
+                btn = Days[i];
+				btn.SetDay(startDate.AddDays(i-1), Today, _month);
+                parties = _model.GetEvents<PartyVO>(btn.Date);
+                btn.SetParties(parties);
+            }
+            AmbitionApp.SendMessage(CalendarMessages.VIEW_MONTH, date);
+        }
 
-		private void HandlePartyUpdated(PartyVO party)
+        private void HandlePartyUpdated(PartyVO party)
 		{
             if (party != null)
             {
-                int index = (party.Date - Days[0].Date).Days;
-                if (index >= 0 && index < Days.Length) Days[index].AddParty(party);
+                CalendarButton btn = Array.Find(Days, d => d.Date == party.Date);
+                btn?.SetParties(_model.GetEvents<PartyVO>(party.Date));
             }
         }
 	}

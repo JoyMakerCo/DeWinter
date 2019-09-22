@@ -7,8 +7,6 @@ namespace Ambition
 {
     public class BuyAndSellItems : MonoBehaviour
     {
-        private InventoryModel _inventorymodel = AmbitionApp.GetModel<InventoryModel>();
-
         public Text ItemCostText; //Switches between 'Cost' and 'Value', depending on whether the player is buying or selling
         public Text ItemPriceText;
         public Text BuyOrSellItemText;
@@ -36,27 +34,21 @@ namespace Ambition
 
         void HandleItemDisplay(ItemVO item)
         {
+            if (item?.Type != ItemType.Outfit) return;
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            List<ItemVO> items;
             _item = item;
-            OutfitVO outfitTest = _item as OutfitVO; //This is to test if the item is an Outfit
-            if (outfitTest != null)
+            if (inventory.Market.TryGetValue(_item.Type, out items) && items.Contains(_item)) //If the item is in Fatima's shop
             {
-                OutfitVO outfit = (OutfitVO)_item;
-                int displayPrice;
-                            
-                if (_inventorymodel.Market.Contains(_item)) //If the item is in Fatima's shop
-                {
-                    ItemCostText.text = CostString;
-                    BuyOrSellItemText.text = BuyOutfitString;
-                    displayPrice = outfit.Price;
-                } else //If the item is not in Fatima's shop
-                {
-                    ItemCostText.text = ValueString;
-                    BuyOrSellItemText.text = SellOutfitString;
-                    displayPrice = (int)(outfit.Price * _inventorymodel.SellbackMultiplier);
-                }
-                ItemPriceText.text = "£" + displayPrice.ToString("### ###");
+                ItemCostText.text = CostString;
+                BuyOrSellItemText.text = BuyOutfitString;
+                ItemPriceText.text = _item.Price.ToString("£" + "#,##0");
+            } else //If the item is not in Fatima's shop
+            {
+                ItemCostText.text = ValueString;
+                BuyOrSellItemText.text = SellOutfitString;
+                ItemPriceText.text = (_item.Price*inventory.SellbackMultiplier).ToString("£" + "#,##0");
             }
-
         }
 
         void BlankStats()
@@ -68,7 +60,9 @@ namespace Ambition
 
         public void BuyOrSellItem()
         {
-            if (_inventorymodel.Market.Contains(_item)) //If buying the item
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            List<ItemVO> items;
+            if (inventory.Market.TryGetValue(_item.Type, out items) && items.Contains(_item)) //If buying the item
             {
                 AmbitionApp.SendMessage(InventoryMessages.BUY_ITEM, _item); // Some methods require the Item VO, some don't
                 AmbitionApp.SendMessage(InventoryMessages.BUY_ITEM); //This felt cleaner than making methods that took unnecessary variables just to satisfy the message conditions

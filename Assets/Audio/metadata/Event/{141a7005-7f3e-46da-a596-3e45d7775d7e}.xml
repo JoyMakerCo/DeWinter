@@ -29,6 +29,7 @@
         <relationship name="groupTracks">
             <destination>{7df115c4-3288-4ff2-b4ac-3cdedf6bf45d}</destination>
             <destination>{cb684bfc-94b5-402d-887c-85ce57bfca93}</destination>
+            <destination>{335a8de2-34af-4804-bb15-81b22dd3a4ab}</destination>
         </relationship>
         <relationship name="timeline">
             <destination>{62509f88-e40c-4324-8191-344adcc6b20c}</destination>
@@ -86,6 +87,19 @@
             <destination>{df0a4613-bc61-4717-b745-c110cc9b7974}</destination>
         </relationship>
     </object>
+    <object class="GroupTrack" id="{335a8de2-34af-4804-bb15-81b22dd3a4ab}">
+        <relationship name="modules">
+            <destination>{cde52654-3ecd-4197-a9fe-0954ccf0cde0}</destination>
+            <destination>{a2e7c707-f362-46ae-83c8-8418e687ea62}</destination>
+            <destination>{479906b9-3afb-4d7d-a70e-646b6a7c8a59}</destination>
+            <destination>{5eeb66c9-b39f-4f39-820d-d95fb5ae8bae}</destination>
+            <destination>{45a8b668-d1d3-4f5c-94ce-2fba417b41a5}</destination>
+            <destination>{225777fe-965e-4d4c-b181-7e0be039445b}</destination>
+        </relationship>
+        <relationship name="mixerGroup">
+            <destination>{237ee96d-810b-40e1-8f61-debf88b7fef1}</destination>
+        </relationship>
+    </object>
     <object class="Timeline" id="{62509f88-e40c-4324-8191-344adcc6b20c}">
         <relationship name="modules">
             <destination>{e4c7fbe2-6d67-4c51-a1ee-f33142a53d43}</destination>
@@ -99,6 +113,12 @@
             <destination>{50b5f9b2-6cc6-4470-9222-05168934c940}</destination>
             <destination>{d1ab73f1-5d51-467e-9141-2170ffc1131b}</destination>
             <destination>{67300728-4184-4c79-ba62-802c2cf80258}</destination>
+            <destination>{cde52654-3ecd-4197-a9fe-0954ccf0cde0}</destination>
+            <destination>{a2e7c707-f362-46ae-83c8-8418e687ea62}</destination>
+            <destination>{479906b9-3afb-4d7d-a70e-646b6a7c8a59}</destination>
+            <destination>{5eeb66c9-b39f-4f39-820d-d95fb5ae8bae}</destination>
+            <destination>{45a8b668-d1d3-4f5c-94ce-2fba417b41a5}</destination>
+            <destination>{225777fe-965e-4d4c-b181-7e0be039445b}</destination>
         </relationship>
         <relationship name="markers">
             <destination>{1f762c54-e9c8-4d39-9e3c-25c0e9692863}</destination>
@@ -280,6 +300,125 @@
         </relationship>
         <relationship name="panner">
             <destination>{b30a5e92-bf84-4d65-a470-173c61fd3d01}</destination>
+        </relationship>
+        <relationship name="output">
+            <destination>{2993c519-5973-4678-8183-819134467cc2}</destination>
+        </relationship>
+    </object>
+    <object class="EventSound" id="{cde52654-3ecd-4197-a9fe-0954ccf0cde0}">
+        <property name="start">
+            <value>3.870967741935484</value>
+        </property>
+        <property name="length">
+            <value>0.967741935483871</value>
+        </property>
+        <property name="voiceStealing">
+            <value>3</value>
+        </property>
+        <property name="maxVoices">
+            <value>1</value>
+        </property>
+        <property name="name">
+            <value>Oboe Stage 1</value>
+        </property>
+        <relationship name="event">
+            <destination>{18d27556-87b3-474e-9f28-0b994131c56e}</destination>
+        </relationship>
+    </object>
+    <object class="EventSound" id="{a2e7c707-f362-46ae-83c8-8418e687ea62}">
+        <property name="start">
+            <value>11.612903225806452</value>
+        </property>
+        <property name="length">
+            <value>0.96774193548387011</value>
+        </property>
+        <property name="voiceStealing">
+            <value>3</value>
+        </property>
+        <property name="maxVoices">
+            <value>1</value>
+        </property>
+        <property name="name">
+            <value>Oboe Stage 2</value>
+        </property>
+        <relationship name="event">
+            <destination>{900dc9e7-2733-4dda-bb74-655566cba037}</destination>
+        </relationship>
+    </object>
+    <object class="EventSound" id="{479906b9-3afb-4d7d-a70e-646b6a7c8a59}">
+        <property name="start">
+            <value>21.29032258064516</value>
+        </property>
+        <property name="length">
+            <value>0.96774193548387366</value>
+        </property>
+        <property name="voiceStealing">
+            <value>3</value>
+        </property>
+        <property name="maxVoices">
+            <value>1</value>
+        </property>
+        <property name="name">
+            <value>Oboe Stage 3</value>
+        </property>
+        <relationship name="event">
+            <destination>{4eb5ad5b-f490-44b2-9509-213d5dec4e48}</destination>
+        </relationship>
+    </object>
+    <object class="EventSound" id="{5eeb66c9-b39f-4f39-820d-d95fb5ae8bae}">
+        <property name="start">
+            <value>30</value>
+        </property>
+        <property name="length">
+            <value>0.96774193548387011</value>
+        </property>
+        <property name="voiceStealing">
+            <value>3</value>
+        </property>
+        <property name="maxVoices">
+            <value>1</value>
+        </property>
+        <relationship name="event">
+            <destination>{f9e372d9-71ca-4d39-bd09-556bc9e5ce8e}</destination>
+        </relationship>
+    </object>
+    <object class="EventSound" id="{45a8b668-d1d3-4f5c-94ce-2fba417b41a5}">
+        <property name="start">
+            <value>38.70967741935484</value>
+        </property>
+        <property name="length">
+            <value>3.8709677419354858</value>
+        </property>
+        <property name="voiceStealing">
+            <value>3</value>
+        </property>
+        <property name="maxVoices">
+            <value>1</value>
+        </property>
+        <relationship name="event">
+            <destination>{ad05ef9d-89e3-4d2a-a81b-48fa709ad4a3}</destination>
+        </relationship>
+    </object>
+    <object class="SingleSound" id="{225777fe-965e-4d4c-b181-7e0be039445b}">
+        <property name="start">
+            <value>48.387096774193552</value>
+        </property>
+        <property name="length">
+            <value>9.9249791666666667</value>
+        </property>
+        <relationship name="audioFile">
+            <destination>{0e30eb6a-0bc6-4af3-a592-d3d557a1559c}</destination>
+        </relationship>
+    </object>
+    <object class="EventMixerGroup" id="{237ee96d-810b-40e1-8f61-debf88b7fef1}">
+        <property name="name">
+            <value>OBOE</value>
+        </property>
+        <relationship name="effectChain">
+            <destination>{c60fe6f6-440d-43a0-b8ad-56b9042bff83}</destination>
+        </relationship>
+        <relationship name="panner">
+            <destination>{ba752b16-84f8-4864-9928-a45fd9c0cf62}</destination>
         </relationship>
         <relationship name="output">
             <destination>{2993c519-5973-4678-8183-819134467cc2}</destination>
@@ -586,6 +725,13 @@
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{b30a5e92-bf84-4d65-a470-173c61fd3d01}"/>
+    <object class="MixerBusEffectChain" id="{c60fe6f6-440d-43a0-b8ad-56b9042bff83}">
+        <relationship name="effects">
+            <destination>{254fa35a-4c50-4372-be63-0bd65cc71027}</destination>
+            <destination>{2fe4ba46-fbc7-42bf-9e07-9053ea237272}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusPanner" id="{ba752b16-84f8-4864-9928-a45fd9c0cf62}"/>
     <object class="ParameterCondition" id="{accd86f6-92b1-4d4b-a204-43d209532508}">
         <property name="minimum">
             <value>1</value>
@@ -650,6 +796,12 @@
     </object>
     <object class="MixerBusFader" id="{defbadfb-0d4d-4ada-a228-73fef6477efd}"/>
     <object class="SFXReverbEffect" id="{ef6f1b33-511d-4b46-b50c-7c7c4da862c7}">
+        <property name="wetLevel">
+            <value>-8</value>
+        </property>
+    </object>
+    <object class="MixerBusFader" id="{254fa35a-4c50-4372-be63-0bd65cc71027}"/>
+    <object class="SFXReverbEffect" id="{2fe4ba46-fbc7-42bf-9e07-9053ea237272}">
         <property name="wetLevel">
             <value>-8</value>
         </property>

@@ -1,14 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 
 namespace Ambition
 {
+    // Ends the current party and nullifies the reference in the model.
 	public class EndPartyCmd : ICommand
 	{
 	    public void Execute()
 	    {
 	    	PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            model.Turns = model.Turn;
-	    }
-	}
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            Array.ForEach(calendar.GetEvents<PartyVO>(), calendar.Complete);
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            //if (inventory.Equipped.TryGetValue(ItemType.Outfit, out List<ItemVO> outfits))
+            //{
+            //    model.LastOutfit = outfits.Count > 0 ? outfits[0] : null;
+            //}
+            //else model.LastOutfit = null;
+            AmbitionApp.UnregisterModel<PartyModel>();
+        }
+    }
 }

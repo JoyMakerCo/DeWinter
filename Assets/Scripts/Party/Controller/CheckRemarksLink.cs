@@ -7,7 +7,9 @@ namespace Ambition
         public override bool Validate()
         {
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-            return model.Deck.Count == 0 && (model.Remarks == null || Array.TrueForAll(model.Remarks, r => r == null));
+            return AmbitionApp.GetModel<PartyModel>().Deck.Count > 0
+                || (model.Remarks != null
+                && Array.Exists(model.Remarks, r => r != null));
         }
     }
 }

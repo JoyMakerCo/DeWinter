@@ -6,53 +6,44 @@ using Core;
 
 namespace Ambition
 {
-	public class TurnTimerView : MonoBehaviour
-	{
-		private const float GRACE_TIME = .5f;
-		
-		public GameObject ClockHand;
+    public class TurnTimerView : MonoBehaviour
+    {
+        public Sprite TurnImg;
+        public Sprite NoTurnImg;
 
-		private ModelSvc _modelService = App.Service<ModelSvc>();
-		private MessageSvc _messageService = App.Service<MessageSvc>();
-		private Image _timer;
+        public Image[] TurnsLeft;
+        public Text TurnsTxt;
+        public Text TotalTurnsTxt;
 
-		void Awake()
-		{
-			_timer = GetComponent<Image>();
-		}
+        private PartyModel _model;
 
-		void OnEnable()
-		{
-            _messageService.Subscribe(PartyMessages.START_ROUND, HandleRound);
-		}
+        void Awake()
+        {
+            AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, HandleMap);
+            AmbitionApp.Subscribe(GameMessages.SHOW_HEADER, OnShow);
+            AmbitionApp.Subscribe(GameMessages.HIDE_HEADER, OnShow);
+            gameObject.SetActive(false);
+        }
 
-		void OnDisable()
-		{
-            _messageService.Unsubscribe(PartyMessages.START_ROUND, HandleRound);
-		}
+        void OnDestroy()
+        {
+            AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, HandleMap);
+            AmbitionApp.Unsubscribe(GameMessages.SHOW_HEADER, OnShow);
+            AmbitionApp.Unsubscribe(GameMessages.HIDE_HEADER, OnShow);
+        }
 
-		private void HandleRound()
-		{
-			float t = _modelService.GetModel<PartyModel>().RoundTime;
-			StopAllCoroutines();
-			StartCoroutine(CountDown(t));
-		}
+        private void HandleMap()
+        {
+            if (_model == null) _model = AmbitionApp.GetModel<PartyModel>();
+            gameObject.SetActive(true);
+            TotalTurnsTxt.text = _model.Turns.ToString();
+            TurnsTxt.text = _model.TurnsLeft.ToString();
+            for (int i=TurnsLeft.Length-1; i>=0; i--)
+            {
+                TurnsLeft[i].sprite = _model.TurnsLeft > i ? TurnImg : NoTurnImg;
+            }
+        }
 
-		IEnumerator CountDown (float time)
-		{
-			float t = 0;
-			float ratio;
-			while (t < time)
-			{
-				ratio = t < GRACE_TIME ? 0 : ((t-GRACE_TIME)/(time-GRACE_TIME));
-				_timer.fillAmount = ratio;
-				t+=Time.deltaTime;
-				ClockHand.transform.localRotation = Quaternion.Euler(0f,0f,90f-(360f*ratio));
-				yield return null;
-			}
-			_timer.fillAmount = 0;
-			ClockHand.transform.localRotation = Quaternion.Euler(0f,0f,90f);
-            _messageService.Send(PartyMessages.TIME_EXPIRED);
-		}
-	}
+        private void OnShow() => gameObject.SetActive(false);
+    }
 }

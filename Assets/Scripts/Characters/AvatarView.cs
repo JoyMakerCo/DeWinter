@@ -11,37 +11,36 @@ namespace Ambition
         public AvatarVO Avatar { private set; get; }
 
         private Image _image;
+        private Vector3 _scale;
 		private string _pose;
 
-		void Awake()
-		{
-			_image = gameObject.GetComponent<Image>();
-		}
+        void Awake()
+        {
+            _image = gameObject.GetComponent<Image>();
+            _scale = _image.rectTransform.localScale;
+        }
 
 		public string ID
 		{
-            get { return Avatar.ID; }
+            get => Avatar.ID;
 			set {
                 Avatar = Collection.GetAvatar(value);
 				Pose = _pose;
-			}
+            }
         }
 
 		public string Pose
 		{
-			get { return _pose; }
+			get => _pose;
 			set
 			{
                 Sprite spt = Avatar.GetPose(_pose = value);
                 if (_image == null) Awake();
                 _image.enabled = (spt != null);
-                if (spt != null) _image.sprite = spt;
+                if (spt != null) _image.overrideSprite = spt;
             }
 		}
 
-        public Sprite Sprite
-        {
-            get { return _image.sprite;  }
-        }
+        public Sprite Sprite => _image?.overrideSprite;
 	}
 }

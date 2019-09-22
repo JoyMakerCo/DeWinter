@@ -34,11 +34,11 @@ namespace Ambition
 	    {
 			_model = AmbitionApp.GetModel<InventoryModel>();
 	        SetUpButtons();
-
-	        if (inventoryType == "personal")
-				_list = _model.Inventory.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY));
-		    else
-		    	_list = _model.Market.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY));
+            // TODO when accessories become relevant again
+	   //     if (inventoryType == "personal")
+				//_list = _model.Inventory.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY));
+		    //else
+		    	//_list = _model.Market.FindAll(i => i.Tags.Contains(ItemConsts.ACCESSORY));
 
 	        SortByType();
 	    }
@@ -77,13 +77,12 @@ namespace Ambition
  			_list.Sort(sortByStyleComparer);
  		}
 
-		private int sortByStyleComparer(ItemVO a, ItemVO b)
-		{
-			object styleA, styleB;
-			string cmpA= (a.State != null && a.State.TryGetValue(ItemConsts.STYLE, out styleA)) ? (string)styleA : null;
-			string cmpB= (b.State != null && b.State.TryGetValue(ItemConsts.STYLE, out styleB)) ? (string)styleB : null;
-			return ascendingOrder ? cmpA.CompareTo(cmpB) : cmpB.CompareTo(cmpA);
-		}
+        private int sortByStyleComparer(ItemVO a, ItemVO b) => 0;
+        //{
+        //    string sa = a.GetState(ItemConsts.STYLE) ?? "";
+        //    string sb = b.GetState(ItemConsts.STYLE) ?? "";
+        //    return ascendingOrder ? sa.CompareTo(sb) : sb.CompareTo(sa);
+        //}
 
 	    void SelectedButton(string button)
 	    {

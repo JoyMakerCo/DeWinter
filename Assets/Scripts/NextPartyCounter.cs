@@ -1,73 +1,46 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Core;
 
-public class NextPartyCounter : MonoBehaviour {
-
-    GameObject PartyCounter;
-
-    public Image FactionSymbol;
-    public Sprite CrownSymbol;
-    public Sprite ChurchSymbol;
-    public Sprite MilitarySymbol;
-    public Sprite BourgeoisieSymbol;
-    public Sprite RevolutionSymbol;
-
-    public GameObject Tooltip;
-    //public Text TooltipText;
-    public LocalizedText TooltipText;
-
-    public Dictionary<string, Sprite> FactionSymbolList;
-
-    private string _partyFaction;
-
-    // Use this for initialization
-    private void Awake()
+namespace Ambition
+{
+    public class NextPartyCounter : MonoBehaviour
     {
-        SetUpDictionary();
-        HideTooltip();
-        _partyFaction = _checkFuturePartyFaction();
-        if (_partyFaction != "")
+        public SpriteConfig FactionSymbols;
+        public Image FactionSymbol;
+        public AmbitionLocalizedText TooltipText;
+
+        private List<PartyVO> _parties;
+        private int _index;
+
+        private void Start()
         {
-            DisplayPartyFaction(_partyFaction);
-        } else
-        {
-            PartyCounter.SetActive(false);
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            DateTime endDate = new DateTime(calendar.Today.Year, 7, 14);
+            IEnumerable<PartyVO> parties;
+            _parties = new List<PartyVO>();
+            _index = -1;
+            for (DateTime date = calendar.Today; date < endDate; date = date.AddDays(1))
+            {
+                parties = calendar.GetEvents<PartyVO>(date);
+                parties = parties.Where(p => p.Attending && FactionSymbols.GetSprite(p.Faction.ToString()) != null);
+                _parties.AddRange(parties);
+            }
+            bool show = _parties.Count > 0;
+            gameObject.SetActive(show);
+            if (show) ShowNextParty();
         }
-    }
 
-    private void SetUpDictionary()
-    {
-        FactionSymbolList = new Dictionary<string, Sprite>();
-        FactionSymbolList.Add("Crown", CrownSymbol);
-        FactionSymbolList.Add("Church", ChurchSymbol);
-        FactionSymbolList.Add("Military", MilitarySymbol);
-        FactionSymbolList.Add("Bourgeoisie", BourgeoisieSymbol);
-        FactionSymbolList.Add("Revolution", RevolutionSymbol);
-    }
-
-    //To Do: Make this use the stuff in CheckInvitationState.cs, whenever it is available. Does it actually exist?
-    private string _checkFuturePartyFaction()
-    {
-        return "Church"; 
-    }
-
-    private void DisplayPartyFaction(string faction)
-    {
-        Sprite symbolsprite;
-        FactionSymbolList.TryGetValue(faction, out symbolsprite);
-        FactionSymbol.sprite = symbolsprite;
-    }
-
-    public void DisplayTooltip()
-    {
-        Tooltip.SetActive(true);
-        TooltipText.Phrase = "party_" + _partyFaction + "_likes_and_dislikes"; //This is to reference a string in Default.json
-    }
-
-    public void HideTooltip()
-    {
-        Tooltip.SetActive(false);
+        public void ShowNextParty()
+        {
+            _index = (_index + 1) % _parties.Count;
+            FactionType faction = _parties[_index].Faction;
+            TooltipText.Localize("party_" + faction.ToString().ToLower() + "_likes_and_dislikes");
+            FactionSymbol.sprite = FactionSymbols.GetSprite(faction.ToString());
+        }
     }
 }

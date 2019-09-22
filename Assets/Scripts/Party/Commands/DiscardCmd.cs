@@ -7,16 +7,17 @@ namespace Ambition
         public void Execute(RemarkVO remark)
         {
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+            PartyModel party = AmbitionApp.GetModel<PartyModel>();
             if (model.Remarks != null && remark != null)
             {
                 int index = Array.IndexOf(model.Remarks, remark);
                 if (index >= 0)
                 {
                     model.Remarks[index] = null;
-                    if (!remark.Free) model.Discard.Add(remark);
+                    if (!remark.Free) party.Discard.Add(remark);
                 }
             }
-            AmbitionApp.SendMessage(PartyMessages.DECK_SIZE, model.Deck.Count);
+            AmbitionApp.SendMessage(PartyMessages.DECK_SIZE, party.Deck.Count);
         }
     }
 }

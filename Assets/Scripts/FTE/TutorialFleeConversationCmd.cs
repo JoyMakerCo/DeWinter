@@ -7,8 +7,16 @@ namespace Ambition
     {
         public void Execute()
         {
-            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+/*DEPRECATED            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            CommodityVO[] penalties = {
+                new CommodityVO(CommodityType.Reputation, null, -model.FleePartyPenalty),
+                new CommodityVO(CommodityType.Reputation, model.Party.Faction, -model.FleeFactionPenalty)
+            };
+            AmbitionApp.SendMessage(PartyMessages.FLEE_PENALTIES, penalties);
             model.DeckSize = 20;
-        }
+
+            MapModel map = AmbitionApp.GetModel<MapModel>();
+            AmbitionApp.SendMessage(MapMessage.GO_TO_ROOM, map.Map.Entrance);
+ */       }
     }
 }

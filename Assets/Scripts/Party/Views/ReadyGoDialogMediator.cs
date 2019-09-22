@@ -14,8 +14,7 @@ namespace Ambition
         public Text DialogText;
 		void Start()
 		{
-			LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
-			string[] conversationIntroList = model.GetList("conversation_intro");
+			string[] conversationIntroList = AmbitionApp.GetPhrases("conversation_intro");
 			DialogText.text = conversationIntroList[Util.RNG.Generate(conversationIntroList.Length)];
 		}
 

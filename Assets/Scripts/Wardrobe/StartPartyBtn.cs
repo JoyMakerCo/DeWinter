@@ -12,30 +12,28 @@ namespace Ambition
 		void Awake()
 		{
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            ItemVO outfit;
-            inventory.Equipped.TryGetValue(ItemConsts.OUTFIT, out outfit);
-			_button = gameObject.GetComponent<Button>();
-            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIPPED, HandleOutfit);
-            HandleOutfit(outfit);
-		}
-
-		void OnEnable ()
-		{
-			_button.onClick.AddListener(OnClick);
-		}
-
-		void OnDisable()
-		{
-            _button.onClick.RemoveAllListeners();
+            _button = gameObject.GetComponent<Button>();
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIP, HandleEquip);
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.UNEQUIP, HandleUnequip);
+            HandleEquip(inventory.GetEquippedItem(ItemType.Outfit));
 		}
 
 		void OnDestroy ()
 		{
-            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIPPED, HandleOutfit);
-            _button.onClick.RemoveAllListeners();
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIP, HandleEquip);
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.UNEQUIP, HandleUnequip);
         }
 
-        private void HandleOutfit(ItemVO outfit) => _button.interactable = (outfit is OutfitVO);
-		private void OnClick() => AmbitionApp.SendMessage(PartyMessages.START_PARTY);
-	}
+        private void HandleEquip(ItemVO item)
+        {
+            if (_button != null)
+                _button.interactable = item?.Type == ItemType.Outfit;
+        }
+
+        private void HandleUnequip(ItemVO item)
+        {
+            if (_button != null && item?.Type == ItemType.Outfit)
+                _button.interactable = false;
+        }
+    }
 }

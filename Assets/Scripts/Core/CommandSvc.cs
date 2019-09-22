@@ -134,5 +134,11 @@ namespace Core
 				_messageAssociations[messageID].Remove(c);
 			}
 		}
-	}
+
+        public void Dispose()
+        {
+            _messageAssociations.Clear();
+            _typeAssociations.Clear();
+        }
+    }
 }

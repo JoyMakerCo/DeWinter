@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 
-public class PierreQuestInventoryButton : MonoBehaviour {
-    public int questID;
+public class PierreQuestInventoryButton : MonoBehaviour
+{
+    public PierreQuest quest;
     private Text myDescriptionText;
     private Text myTimeRemainingText;
     private Outline myOutline; // This is for highlighting buttons
@@ -20,31 +21,14 @@ public class PierreQuestInventoryButton : MonoBehaviour {
         pierreQuestInventoryList = this.transform.parent.GetComponent<PierreQuestInventoryList>();
     }
 
-    void Update()
+    private void SelectQuest(PierreQuest quest)
     {
-        DisplayQuestStats(questID);
-        if (pierreQuestInventoryList.selectedQuest == questID)
-        {
-            myOutline.effectColor = Color.yellow;
-        }
-        else
-        {
-            myOutline.effectColor = Color.clear;
-        }
+        myDescriptionText.text = quest?.Name;
+        myTimeRemainingText.text = (quest?.daysLeft ?? '0') + "/" + (quest?.daysTimeLimit ?? '0');
+        myOutline.effectColor = (pierreQuestInventoryList.quest == quest)
+            ? Color.yellow
+            : Color.clear;
     }
 
-    public void DisplayQuestStats(int qID)
-    {
-        if (GameData.pierreQuestInventory.ElementAtOrDefault(qID) != null)
-        {
-            myDescriptionText.text = GameData.pierreQuestInventory[qID].Name;
-            myTimeRemainingText.text = GameData.pierreQuestInventory[qID].daysLeft + "/" + GameData.pierreQuestInventory[qID].daysTimeLimit;
-        }
-    }
-
-    public void SetInventoryItem()
-    {
-        Debug.Log("Selected Pierre Quest: " + questID.ToString());
-        pierreQuestInventoryList.selectedQuest = questID;
-    }
+    public void SetInventoryItem() => pierreQuestInventoryList.quest = quest;
 }

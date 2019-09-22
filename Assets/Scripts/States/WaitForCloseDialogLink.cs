@@ -3,13 +3,16 @@ using UFlow;
 
 namespace Ambition
 {
-	public class WaitForCloseDialogLink : AmbitionValueLink<string>
+	public class WaitForCloseDialogLink : ULink<string>
 	{
-		override public void SetValue(string data)
-		{
-			ValueID = GameMessages.DIALOG_CLOSED;
-			ValidateOnCallback = true;
-			Value = data;
-		}
-	}
+        private string _dialogID;
+        override public void SetValue(string dialogID) => _dialogID = dialogID;
+        public override bool Validate() => false;
+        public override void Initialize() => AmbitionApp.Subscribe<string>(GameMessages.DIALOG_CLOSED, Handler);
+        public override void Dispose() => AmbitionApp.Unsubscribe<string>(GameMessages.DIALOG_CLOSED, Handler);
+        private void Handler(string dialogID)
+        {
+            if (dialogID == _dialogID) Activate();
+        }
+    }
 }

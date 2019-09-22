@@ -1,63 +1,63 @@
 ﻿{
-	maxPlayerDrinkAmount:3,
-	turnTimer:5,
-    "deck_size":10,
-	"hand_size":5,
-	ambushHandSize:3,
-	repartee_bonus:0.25,
-	free_remark_counter:4,
-	guest_difficulty: [
-		{
-			opinion:[25,50],
-			interest:[2,6],
-			max_interest:[6,9]
-		},
-		{
-			opinion:[25,45],
-			interest:[2,5],
-			max_interest:[5,9]
-		},
-		{
-			opinion:[25,40],
-			interest:[2,4],
-			max_interest:[4,7]
-		},
-		{
-			opinion:[25,35],
-			interest:[1,3],
-			max_interest:[3,6]
-		},
-		{
-			opinion:[20,30],
-			interest:[1,2],
-			max_interest:[2,5]
-		}
-	],
-	guest_actions:[
-		{
-    	"type":"Interest",
-    	"rounds":1,
-    	"tags":[],
+  "maxPlayerDrinkAmount": 3,
+  "turnTimer": 5,
+  "deck_size": 10,
+  "hand_size": 5,
+  "ambushHandSize": 3,
+  "repartee_bonus": 0.25,
+  "free_remark_counter": 4,
+  "guest_difficulty": [
+    {
+      "opinion": [ 25, 50 ],
+      "interest": [ 2, 6 ],
+      "max_interest": [ 6, 9 ]
+    },
+    {
+      "opinion": [ 25, 45 ],
+      "interest": [ 2, 5 ],
+      "max_interest": [ 5, 9 ]
+    },
+    {
+      "opinion": [ 25, 40 ],
+      "interest": [ 2, 4 ],
+      "max_interest": [ 4, 7 ]
+    },
+    {
+      "opinion": [ 25, 35 ],
+      "interest": [ 1, 3 ],
+      "max_interest": [ 3, 6 ]
+    },
+    {
+      "opinion": [ 20, 30 ],
+      "interest": [ 1, 2 ],
+      "max_interest": [ 2, 5 ]
+    }
+  ],
+  "guest_actions": [
+    {
+      "type": "Interest",
+      "rounds": 1,
+      "tags": [],
       "values": {},
-    	"chance":1,
-			"difficulty":1
-		}
-	],
-	guest_action_chance:[8,7,6,5,4],
-	charmed_guest_action_chance:[16,14,12,10,8],
-    topic_list:[
-		"Politics",
-		"Theatre",
-		"Gossip",
-		"Music"
-	],
-   "remark_result": {
-     "like": {
+      "chance": 1,
+      "difficulty": 1
+    }
+  ],
+  "guest_action_chance": [ 8, 7, 6, 5, 4 ],
+  "charmed_guest_action_chance": [ 16, 14, 12, 10, 8 ],
+  "topic_list": [
+    "Politics",
+    "Theatre",
+    "Gossip",
+    "Music"
+  ],
+  "remark_result": {
+    "like": {
       "opinion_min": 30,
       "opinion_max": 30,
       "remarks": 1,
-       "reset": true
-     },
+      "reset": true
+    },
     "dislike": {
       "opinion_min": -30,
       "opinion_max": -30,
@@ -70,6 +70,9 @@
       "remarks": 0,
       "reset": true
     }
-   },
-    "boredom_penalty":10
+  },
+  "charmed_remark_bonus": 2,
+  "boredom_penalty": 10,
+  "boredom_remark_penalty": 1,
+  "offended_remark_penalty": 5
 }

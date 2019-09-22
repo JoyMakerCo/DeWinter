@@ -6,60 +6,40 @@ using Util;
 
 namespace Ambition
 {
-	public class PartyModel : DocumentModel
-	{
-		public PartyModel(): base("PartyData") {}
+//    [Saveable]
+    public class PartyModel : DocumentModel
+    {
+        public PartyModel() : base("PartyData") { }
+        public PartyVO Party;
 
-		private PartyVO _party;
-		public PartyVO Party
-		{
-			get { return _party; }
-			set {
-                CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-                _party = value;
-                if (_party != null)
-                {
-                    _party.RSVP = RSVP.Accepted;
-                    if (default(DateTime).Equals(_party.InvitationDate))
-                        _party.InvitationDate = calendar.Today;
-                    calendar.Schedule(_party, calendar.Today);
-                }
-            }
-		}
+        public int Turns;
+        public int Turn = 0;
+        public int TurnsLeft => Turns - Turn;
+        public int IncidentIndex = 0;
+        public IncidentVO[] Incidents;
+        public IncidentVO Incident;
+        public IncidentVO RequiredIncident => ((Party?.RequiredIncidents?.Length ?? 0) > IncidentIndex)
+            ? Party.RequiredIncidents[IncidentIndex]
+            : null;
 
-		[JsonProperty("free_remark_counter")]
+        public ItemVO LastOutfit;
+
+        [JsonProperty("charmed_remark_bonus")]
+        public int CharmedRemarkBonus;
+
+        [JsonProperty("free_remark_counter")]
 		public int FreeRemarkCounter;
 
         [JsonProperty("boredom_penalty")]
         public int BoredomPenalty;
 
-        public int Turns
-        {
-            get { return _party != null ? _party.Turns : 0; }
-            set {
-                if (_party != null)
-                {
-                    _party.Turns = value;
-                    AmbitionApp.SendMessage(PartyMessages.TURNS_LEFT, Turns - Turn);
-                }
-            }
-        }
+        [JsonProperty("boredom_remark_penalty")]
+        public int BoredomRemarkPenalty;
 
-        public int TurnsLeft
-        {
-            get { return Turns - Turn; }
-        }
+        [JsonProperty("offended_remark_penalty")]
+        public int OffendedRemarkPenalty;
 
-		private int _turn;
-		public int Turn
-		{
-			get { return _turn; }
-			set {
-				_turn = value;
-                AmbitionApp.SendMessage(PartyMessages.TURN, _turn);
-                AmbitionApp.SendMessage(PartyMessages.TURNS_LEFT, Turns - _turn);
-			}
-		}
+        public bool Complete => Party?.IsComplete ?? true;
 
 		[JsonProperty("guest_difficulty")]
 		public GuestDifficultyVO[] GuestDifficultyStats;
@@ -96,7 +76,7 @@ namespace Ambition
 				GuestActionFactory factory = new GuestActionFactory();
 				foreach(GuestActionVO action in value)
 					factory.Actions[action.Type] = action;
-				AmbitionApp.RegisterFactory<string, GuestActionVO>(factory);
+				AmbitionApp.RegisterFactory(factory);
 			}
 		}
 
@@ -112,6 +92,10 @@ namespace Ambition
 
         [JsonProperty("remark_result")]
         public Dictionary<string, RemarkResult> RemarkResults;
+
+        public Queue<RemarkVO> Deck;
+        public List<RemarkVO> Discard;
+        public int MaxDeckSize => Deck.Count + Discard.Count;
 
         private int _intoxication;
 		public int Intoxication

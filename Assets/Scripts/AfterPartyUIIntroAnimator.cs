@@ -15,12 +15,6 @@ namespace Ambition
         {
             _animator = GetComponent<Animator>();
             HandleIntroAnimation();
-            AmbitionApp.Subscribe(PartyMessages.END_PARTY, HandleEndParty);
-        }
-
-        void OnDestroy()
-        {
-            AmbitionApp.Unsubscribe(PartyMessages.END_PARTY, HandleEndParty);
         }
 
         private void HandleIntroAnimation()
@@ -28,7 +22,7 @@ namespace Ambition
             _animator.SetBool(ACTIVE, true);
         }
 
-        private void HandleEndParty()
+        public void ExitAnimation()
         {
             _animator.SetBool(ACTIVE, false);
         }

@@ -9,10 +9,10 @@ namespace Ambition
     public class TutorialGuestState : TutorialState
     {
         private TutorialFlashSpot _flash=null;
-        override public void OnEnterState()
+        public override void OnEnterState(string[] args)
         {
-            base.OnEnterState();
-            Dispose();
+            base.OnEnterState(args);
+            if (_flash != null) GameObject.Destroy(_flash);
             GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Canvas>() != null);
             if (canvas != null)
             {
@@ -20,19 +20,20 @@ namespace Ambition
                 RemarkVO rem = model.Remark;
                 if (rem != null)
                 {
-                    GuestVO[] guests = model.Guests;
+                    //CharacterVO[] guests = model.Guests;
                     SpotlightView[] spotlights = canvas.GetComponentsInChildren<SpotlightView>(true);
-                    int index = Array.FindIndex(guests, g => g.Like == rem.Interest);
-                    if (index < 0) index = Array.FindIndex(guests, g => g.Dislike != rem.Interest);
-                    if (index < 0) index = 0;
-                    _flash = spotlights[index].gameObject.AddComponent<TutorialFlashSpot>();
+                    //int index = Array.FindIndex(guests, g => g.Like == rem.Interest);
+                    //if (index < 0) index = Array.FindIndex(guests, g => g.Dislike != rem.Interest);
+                    //if (index < 0) index = 0;
+                    //_flash = spotlights[index].gameObject.AddComponent<TutorialFlashSpot>();
                 }
             }
         }
 
-        override public void Dispose()
+        override public void Cleanup()
         {
             if (_flash != null) GameObject.Destroy(_flash);
+            base.Cleanup();
         }
     }
 }

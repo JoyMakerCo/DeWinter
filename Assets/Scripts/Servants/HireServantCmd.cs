@@ -21,7 +21,7 @@ namespace Ambition
 					servants.Remove(servant);
 				if (model.Unknown.TryGetValue(servant.Slot, out servants))
 					servants.Remove(servant);
-				AmbitionApp.GetModel<GameModel>().Livre -= servant.Wage;
+				AmbitionApp.GetModel<GameModel>().Livre.Value -= servant.Wage;
 			}
 		}
 	}

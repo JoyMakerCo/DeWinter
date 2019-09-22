@@ -6,20 +6,15 @@ namespace Dialog
 {
 	public class DialogView : MonoBehaviour
 	{
-		public string ID
-		{
-			get;
-			internal set;
-		}
-
-		internal DialogManager Manager;
-
-		public void Close()
-		{
-			Manager.Close(this.gameObject);
-		}
-
+        internal DialogManager Manager;
+        public string ID { get; internal set; }
+		public void Close() => Manager.Close(this.gameObject);
 		public virtual void OnOpen() {}
 		public virtual void OnClose() {}
 	}
+
+    public abstract class DialogView<T> : DialogView
+    {
+        public virtual void OnOpen(T param) {}
+    }
 }

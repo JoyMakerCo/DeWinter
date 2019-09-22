@@ -39,5 +39,7 @@ namespace Core
 		{
 			_factories[typeof(IFactory<Key, Product>)] = factory;
 		}
-	}
+
+        public void Dispose() => _factories.Clear();
+    }
 }

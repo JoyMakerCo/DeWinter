@@ -23,11 +23,10 @@ namespace Ambition
 
 	    private void HandleReputation(ReputationVO rep)
 	    {
-			LocalizationModel phrases = AmbitionApp.GetModel<LocalizationModel>();
 			string str = "Reputation Level Benefits\n";
 			for (int i=1; i<rep.Level; i++)
 			{
-				str += phrases.GetString("reputation_text." + i.ToString() + "\n");
+				str += AmbitionApp.GetString("reputation_text." + i.ToString() + "\n");
 			}
 			_text.text = str;
 	    }

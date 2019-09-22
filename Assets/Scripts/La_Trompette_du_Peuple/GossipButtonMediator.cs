@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ambition;
@@ -21,7 +22,7 @@ public class GossipButtonMediator: MonoBehaviour {
 
     private Dictionary<string, Sprite> _factionSymbolList;
 
-    private Gossip _gossip;
+    private ItemVO _gossip;
 
     void Awake()
     {
@@ -45,14 +46,24 @@ public class GossipButtonMediator: MonoBehaviour {
         AmbitionApp.SendMessage(InventoryMessages.DISPLAY_GOSSIP, _gossip);
     }
 
-    public void SetItem(Gossip gossip)
+    public void SetItem(ItemVO gossip)
     {
         _gossip = gossip;
-        GossipNameText.text = gossip.Name();
-        GossipRelevanceText.text = "- " + gossip.FreshnessString() + " (" + gossip.Freshness + " days left)";       
+        System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
+        GossipNameText.text = gossip.Name;
+        GossipRelevanceText.text = "- " + AmbitionApp.GetString("gossip_relevance_" + GetRelevance(gossip, today) + " days left");       
         Sprite factionSprite;
-        _factionSymbolList.TryGetValue(gossip.Faction, out factionSprite);
+        _factionSymbolList.TryGetValue(gossip.ID, out factionSprite);
         GossipIcon.sprite = factionSprite;
+    }
+
+    private int GetRelevance(ItemVO gossip, DateTime today)
+    {
+        int result = (today - gossip.Created).Days;
+        if (result > 12) return 0;
+        if (result > 9) return 1;
+        if (result > 6) return 2;
+        return 3;
     }
 
     private void SetUpDictionary()

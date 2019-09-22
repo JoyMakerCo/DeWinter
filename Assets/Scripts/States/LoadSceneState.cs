@@ -7,9 +7,11 @@ namespace Ambition
     {
         string _sceneID;
 
-        public override void SetData(string sceneID) => _sceneID = sceneID;
-        override public void OnEnterState()
+        public override void SetData(string data) => _sceneID = data;
+
+        public override void OnEnterState(string[] args)
         {
+            //_sceneID = args[0];
             AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOutComplete);
             AmbitionApp.SendMessage(GameMessages.FADE_OUT);
         }

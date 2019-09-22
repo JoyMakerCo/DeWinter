@@ -80,5 +80,6 @@ namespace Core
     public class ValueSvc : IAppService
     {
         private Dictionary<string, ICompositeValue> _valueHandlers = new Dictionary<string, ICompositeValue>();
+        public void Dispose() { }
     }
 }

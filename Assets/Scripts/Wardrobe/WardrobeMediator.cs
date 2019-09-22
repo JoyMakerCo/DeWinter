@@ -14,8 +14,9 @@ namespace Ambition
 		public DrawerButton[] DrawerButtons;
 
 		private InventoryModel _inventory;
+        private List<ItemVO> _items;
 
-		void OnEnable()
+        void OnEnable()
 		{
 			foreach(SortButton b in SortButtons)
 			{
@@ -38,29 +39,37 @@ namespace Ambition
 		void Start()
 		{
 			_inventory = AmbitionApp.GetModel<InventoryModel>();
-//			Sort(SortButtons[0].SortOn, SortButtons[0].Ascending); 
-			for(int i=DrawerButtons.Length-1; i>=0; i--)
-			{
-				DrawerButtons[i].SetItem(i < _inventory.Inventory.Count ? _inventory.Inventory[i] : null);
-			}	
-		}
+            if (_inventory.Inventory.TryGetValue(ItemType.Outfit, out _items))
+                Sort(ItemConsts.NOVELTY, false);
+            else Array.ForEach(DrawerButtons, b => b.SetItem(null));
+        }
 
 		private void Sort(string SortOn, bool Ascending)
 		{
-			List<ItemVO> items = _inventory.Inventory.FindAll(i=>i.Type == ItemConsts.OUTFIT);
-			int count = items.Count;
-			foreach (ItemVO item in items)
-				if (!item.State.ContainsKey(SortOn))
-					item.State.Add(SortOn, 0);
-			if (Ascending)
-				items.Sort((a,b)=>(Convert.ToInt32(a.State[SortOn])).CompareTo(Convert.ToInt32(b.State[SortOn])));
-			else
-				items.Sort((a,b)=>(Convert.ToInt32(b.State[SortOn])).CompareTo(Convert.ToInt32(a.State[SortOn])));
-
-			for(int i=DrawerButtons.Length-1; i>=0; i--)
+			int count = _items.Count;
+            if (SortOn == ItemConsts.STYLE)
+                _items.Sort((a,b)=>StrCmp(a,b,SortOn,Ascending));
+            else _items.Sort((a, b) => IntCmp(a, b, SortOn, Ascending));
+            for (int i=DrawerButtons.Length-1; i>=0; i--)
 			{
-				DrawerButtons[i].SetItem(i < count ? items[i] : null);
+				DrawerButtons[i].SetItem(i < count ? _items[i] : null);
 			}
 		}
-	}
+
+        private int IntCmp(ItemVO a, ItemVO b, string stat, bool ascending)
+        {
+            string str = null;
+            int ia = (a.State?.TryGetValue(stat, out str) ?? false) ? int.Parse(str) : 0;
+            int ib = (b.State?.TryGetValue(stat, out str) ?? false) ? int.Parse(str) : 0;
+            return ia == ib ? 0 : (ascending && ia > ib) ? 1 : -1;
+        }
+
+        private int StrCmp(ItemVO a, ItemVO b, string stat, bool ascending)
+        {
+            string sa = null, sb = null;
+            if (!a.State?.TryGetValue(stat, out sa) ?? false) sa = "";
+            if (!b.State?.TryGetValue(stat, out sb) ?? false) sb = "";
+            return (ascending?sa:sb).CompareTo(ascending?sb:sa);
+        }
+    }
 }

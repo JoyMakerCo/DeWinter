@@ -10,7 +10,7 @@ namespace Ambition
     {
         public void Execute(int numCards)
         {
-            ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
             int index;
             for (int i = (model.Discard.Count < numCards) ? model.Discard.Count : numCards; i > 0; i--)
             {

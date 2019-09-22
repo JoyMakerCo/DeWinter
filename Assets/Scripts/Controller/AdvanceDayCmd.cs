@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 namespace Ambition
 {
     public class AdvanceDayCmd : Core.ICommand
     {
         public void Execute()
         {
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            calendar.Today = calendar.DaysFromNow(1);
+            AmbitionApp.GetModel<CalendarModel>().Day++;
+            AmbitionApp.GetModel<ParisModel>().Location = null;
+            AmbitionApp.SendMessage(GameMessages.FADE_OUT, 3f);
         }
     }
 }
