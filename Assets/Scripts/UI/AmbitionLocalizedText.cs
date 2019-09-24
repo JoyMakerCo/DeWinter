@@ -28,7 +28,7 @@ namespace Ambition
         private Dictionary<string, string> _substitutions;
 
 #if UNITY_EDITOR
-        private Core.LocalizationConfig _config;
+        private LocalizationConfig _config;
 #endif
 
         private void Awake()
@@ -49,7 +49,7 @@ namespace Ambition
             _config = _config ?? Resources.Load<LocalizationConfig>("Localization Config");
             string key = UseTextAsKey
                 ? _text.text
-                : _config.GenerateLocalizationKey(gameObject);
+                : _config.GenerateLocalizationKey(this);
 
             _config.MoveKey(_localizationKey, key);
             _localizationKey = key;

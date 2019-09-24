@@ -20,8 +20,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 4108080453263101462}
-  - {fileID: 8720062692493811193}
+  - {fileID: 3841544919793735650}
+  - {fileID: -5032688161218725493}
   MinDistance: 0
   MaxDistance: 0
   Length: 144000
@@ -77,6 +77,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Select
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-9029181137007716455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -202,8 +218,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -5906741361079350186}
-  - {fileID: 5730286232750507016}
+  - {fileID: 835338108126290030}
+  - {fileID: -4656498696515728087}
   MinDistance: 0
   MaxDistance: 0
   Length: 139655
@@ -276,22 +292,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 120000
---- !u!114 &-8601203727660387934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Select
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-8501843662573603041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &-8340558301686377400
+--- !u!114 &-8441915871636921761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,7 +320,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: WIN
+  Name: Conversation Start
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-8424708802985333180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 2
   Min: 0
   Max: 1
   Default: 0
@@ -376,22 +392,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &-8235063118896067631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Conversation Start
   Min: 0
   Max: 1
   Default: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 4085178909763952479}
+  - {fileID: -437369259655985828}
   MinDistance: 0
   MaxDistance: 0
   Length: 81272
@@ -734,7 +734,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &-7019969320014971763
+--- !u!114 &-6974197408088636171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: LOSE
+  Name: Hard Stop
   Min: 0
   Max: 1
   Default: 0
@@ -770,11 +770,43 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 4863943855019465920}
+  - {fileID: -4857559477743424048}
   MinDistance: 0
   MaxDistance: 0
   Length: 66315
 --- !u!114 &-6890640684847138008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-6867418884940498630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-6750308629528870159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -881,8 +913,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 4373787063378726787}
-  - {fileID: 7992285456852581085}
+  - {fileID: 3400843177432782446}
+  - {fileID: -5427925634597921212}
   MinDistance: 0
   MaxDistance: 0
   Length: 144000
@@ -960,23 +992,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &-5906741361079350186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &-5897268147036871651
+--- !u!114 &-5937474916667187722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1009,6 +1025,22 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-5865179287727558153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-5836219152621737228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1239,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
---- !u!114 &-5435074938573237803
+--- !u!114 &-5427925634597921212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1219,7 +1251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: WIN
+  Name: Intimate
   Min: 0
   Max: 1
   Default: 0
@@ -1236,6 +1268,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Conversation Start
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-5341744965114390336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -1262,6 +1310,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 694
+--- !u!114 &-5275868360922407775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-5189501094509832396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,6 +1410,38 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &-5032688161218725493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Intimate
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-4961876219995014621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 5
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-4882560863429183919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1465,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &-4857559477743424048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive Home
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-4785579002503640671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1410,7 +1522,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &-4577398076641585054
+--- !u!114 &-4656498696515728087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1422,7 +1534,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Stage 2
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-4640171234987012412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Conversation Start
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-4583380702809485935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -1481,22 +1625,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3631
---- !u!114 &-4402595585373587414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Hard Stop
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-4334346642203829686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,6 +1648,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
+--- !u!114 &-4332826898997367356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-4293705244032398233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1543,38 +1687,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
---- !u!114 &-4224871225341900713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Hard Stop
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &-4178261732893397658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-4155406231999677791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,6 +1742,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 128999
+--- !u!114 &-4131849548166860138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Hard Stop
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-4062759026890056674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,22 +1843,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 113555
---- !u!114 &-3705106457666209031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-3682651028326106103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1835,22 +1947,6 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &-3360891801550483983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Conversation Start
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-3328041766140135853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1937,22 +2033,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 252000
---- !u!114 &-3104601636782284791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Stage 3
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-3097927353627545604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1969,6 +2049,22 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &-2987378309316518943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-2983219376296840316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,6 +2078,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-2954765358721040541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Conversation Start
   Min: 0
   Max: 1
   Default: 0
@@ -2038,8 +2150,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 4400971866989828121}
-  - {fileID: -5897268147036871651}
+  - {fileID: -6750308629528870159}
+  - {fileID: 8358983134893425653}
   MinDistance: 0
   MaxDistance: 0
   Length: 116500
@@ -2109,10 +2221,10 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -4224871225341900713}
-  - {fileID: -4178261732893397658}
-  - {fileID: 5921610691944331095}
-  - {fileID: 6305907580483156686}
+  - {fileID: -4131849548166860138}
+  - {fileID: 7663966620140143064}
+  - {fileID: 5768982031380682911}
+  - {fileID: 3798300673308383607}
   MinDistance: 0
   MaxDistance: 0
   Length: 511323
@@ -2190,22 +2302,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 120000
---- !u!114 &-2491015128457020129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-2447313670039058423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,30 +2361,14 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 3651801539794604804}
-  - {fileID: -4577398076641585054}
-  - {fileID: -320873213345036195}
-  - {fileID: -3104601636782284791}
-  - {fileID: 7399416892591785584}
+  - {fileID: 1384061737111922541}
+  - {fileID: -8424708802985333180}
+  - {fileID: 5875374285686907797}
+  - {fileID: 4826480299766051879}
+  - {fileID: -4961876219995014621}
   MinDistance: 0
   MaxDistance: 0
   Length: 60949
---- !u!114 &-2337146725540068025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-2203764730164841024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2434,8 +2514,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -2491015128457020129}
-  - {fileID: -353085111950832484}
+  - {fileID: -80569283166951364}
+  - {fileID: 2469668141080194846}
   MinDistance: 0
   MaxDistance: 0
   Length: 153962
@@ -2459,13 +2539,29 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -3360891801550483983}
-  - {fileID: 5192829976397640950}
-  - {fileID: 6804909280853782870}
-  - {fileID: -4402595585373587414}
+  - {fileID: -2954765358721040541}
+  - {fileID: -948813530219474726}
+  - {fileID: 8816429979697451992}
+  - {fileID: -6974197408088636171}
   MinDistance: 0
   MaxDistance: 0
   Length: 452409
+--- !u!114 &-1745234976472164773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Select
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-1720921273743882717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,38 +2618,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 114723
---- !u!114 &-1465311905199142480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &-1376927019146135535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &-1370958476848567902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2680,6 +2744,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1472
+--- !u!114 &-948813530219474726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &-888914793738694070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2813,8 +2893,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 5044509687003425823}
-  - {fileID: 4960725230589037362}
+  - {fileID: 8857853334959655894}
+  - {fileID: -4583380702809485935}
   MinDistance: 0
   MaxDistance: 0
   Length: 76829
@@ -2841,7 +2921,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
---- !u!114 &-353085111950832484
+--- !u!114 &-437369259655985828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Arrive
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-422660077797358799
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2857,7 +2953,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &-320873213345036195
+--- !u!114 &-392145850022991715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2869,11 +2965,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Stage 4
+  Name: Conversation Start
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &-123502910149123457
+--- !u!114 &-161186178729980484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2885,7 +2981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: LOSE
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -2925,6 +3021,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Select
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &-80569283166951364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -2978,38 +3090,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 252000
---- !u!114 &-6594490078695069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &-6457179167854256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Intimate
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3157,9 +3237,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 4429260179462745543}
-  - {fileID: 2301798982586623550}
-  - {fileID: -8340558301686377400}
+  - {fileID: -5341744965114390336}
+  - {fileID: -392145850022991715}
+  - {fileID: 2654079824251331330}
   MinDistance: 0
   MaxDistance: 0
   Length: 246480
@@ -3187,22 +3267,6 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 67000
 --- !u!114 &238786095295025125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &334360884194324800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3270,22 +3334,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Intimate
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &510112734574116604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -3392,6 +3440,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &835338108126290030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &909235468991374685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3516,6 +3580,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &1384061737111922541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 1
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &1466678215479003686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3616,9 +3696,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -5435074938573237803}
-  - {fileID: -8235063118896067631}
-  - {fileID: 334360884194324800}
+  - {fileID: -9029181137007716455}
+  - {fileID: -4640171234987012412}
+  - {fileID: -4332826898997367356}
   MinDistance: 0
   MaxDistance: 0
   Length: 404456
@@ -3645,6 +3725,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 4154
+--- !u!114 &1846092207580685198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &2279744848431305472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3684,7 +3780,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &2301798982586623550
+--- !u!114 &2433594566294677995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3696,7 +3792,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Conversation Start
+  Name: LOSE
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &2469668141080194846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -3739,7 +3851,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &2611774604016799585
+--- !u!114 &2654079824251331330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3751,7 +3863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: LOSE
+  Name: WIN
   Min: 0
   Max: 1
   Default: 0
@@ -3936,6 +4048,22 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &3400843177432782446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Select
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &3531264308743226988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3997,22 +4125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &3651801539794604804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Stage 1
   Min: 0
   Max: 1
   Default: 0
@@ -4096,6 +4208,22 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &3798300673308383607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Conversation Start
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &3831336109835331185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4119,7 +4247,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 120000
---- !u!114 &3910617960556971181
+--- !u!114 &3841544919793735650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4131,7 +4259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Conversation Start
+  Name: Select
   Min: 0
   Max: 1
   Default: 0
@@ -4148,38 +4276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stage 4
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &4085178909763952479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Arrive
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &4108080453263101462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Select
   Min: 0
   Max: 1
   Default: 0
@@ -4268,38 +4364,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 76367
---- !u!114 &4373787063378726787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Select
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &4400971866989828121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &4414466976853213077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4323,22 +4387,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3466
---- !u!114 &4429260179462745543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &4447993634742134178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4463,8 +4511,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -1465311905199142480}
-  - {fileID: -6594490078695069}
+  - {fileID: -2987378309316518943}
+  - {fileID: 2433594566294677995}
   MinDistance: 0
   MaxDistance: 0
   Length: 135692
@@ -4481,6 +4529,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &4826480299766051879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 3
   Min: 0
   Max: 1
   Default: 0
@@ -4507,22 +4571,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
---- !u!114 &4863943855019465920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Arrive Home
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &4884893439289335755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4536,22 +4584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &4960725230589037362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -4617,22 +4649,6 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &5044509687003425823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &5138668350638842039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4656,22 +4672,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
---- !u!114 &5192829976397640950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &5241621491176346494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4718,6 +4718,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 113555
+--- !u!114 &5322980630766743885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Conversation Start
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &5504631594167002067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4741,6 +4757,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3631
+--- !u!114 &5564514473230263614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Intimate
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &5574073763870218186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4796,7 +4828,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5078
---- !u!114 &5730286232750507016
+--- !u!114 &5768982031380682911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4878,11 +4910,27 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -123502910149123457}
-  - {fileID: -3705106457666209031}
+  - {fileID: -6867418884940498630}
+  - {fileID: -5937474916667187722}
   MinDistance: 0
   MaxDistance: 0
   Length: 154637
+--- !u!114 &5875374285686907797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stage 4
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &5893961107963887869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4906,22 +4954,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 125589
---- !u!114 &5921610691944331095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: LOSE
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &6068448536192591548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4968,7 +5000,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1000
---- !u!114 &6305907580483156686
+--- !u!114 &6196959097709578212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4980,7 +5012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Conversation Start
+  Name: LOSE
   Min: 0
   Max: 1
   Default: 0
@@ -5059,8 +5091,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -6457179167854256}
-  - {fileID: -8601203727660387934}
+  - {fileID: 5564514473230263614}
+  - {fileID: -1745234976472164773}
   MinDistance: 0
   MaxDistance: 0
   Length: 106000
@@ -5107,9 +5139,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 3910617960556971181}
-  - {fileID: 2611774604016799585}
-  - {fileID: 7714180425031455362}
+  - {fileID: 5322980630766743885}
+  - {fileID: -5275868360922407775}
+  - {fileID: -161186178729980484}
   MinDistance: 0
   MaxDistance: 0
   Length: 448389
@@ -5159,38 +5191,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2000
---- !u!114 &6785568290910528956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Conversation Start
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &6804909280853782870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: WIN
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &6996427807622996625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5317,22 +5317,6 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &7399416892591785584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Stage 5
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &7454602436078130684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5398,7 +5382,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &7714180425031455362
+--- !u!114 &7663966620140143064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5460,22 +5444,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
---- !u!114 &7992285456852581085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Intimate
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &8031616766925118255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5565,11 +5533,27 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -2337146725540068025}
-  - {fileID: 510112734574116604}
+  - {fileID: -422660077797358799}
+  - {fileID: 1846092207580685198}
   MinDistance: 0
   MaxDistance: 0
   Length: 123473
+--- !u!114 &8358983134893425653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &8431395811871902554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5713,22 +5697,6 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 113555
---- !u!114 &8720062692493811193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Intimate
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &8787168404202400758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5754,6 +5722,38 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 106000
+--- !u!114 &8816429979697451992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &8857853334959655894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WIN
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &8857903782437077724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5774,9 +5774,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -7019969320014971763}
-  - {fileID: 6785568290910528956}
-  - {fileID: -1376927019146135535}
+  - {fileID: 6196959097709578212}
+  - {fileID: -8441915871636921761}
+  - {fileID: -5865179287727558153}
   MinDistance: 0
   MaxDistance: 0
   Length: 344827

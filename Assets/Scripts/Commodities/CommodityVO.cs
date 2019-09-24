@@ -37,5 +37,10 @@ namespace Ambition
 			ID = id;
 			Value = value;
 		}
+
+        public override string ToString()
+        {
+            return string.Format("CommodityVO( {0} {1} {2} )", Type, ID, Value );
+        }
 	}
 }

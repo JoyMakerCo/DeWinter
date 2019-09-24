@@ -18,6 +18,8 @@ namespace Ambition
             }
             else
             {
+                // fire rewards on transition
+                AmbitionApp.SendMessage(transition.Rewards);
                 model.Moment = model.Incident?.GetNextNode(transition);
                 Activate();
             }

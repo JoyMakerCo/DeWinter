@@ -70,14 +70,18 @@ namespace Ambition
 #if (UNITY_EDITOR)
         private const string NODE_KEY = "node.";
         private const string LINK_KEY = "link.";
+        private const string LOCALIZATION_KEY_KEY = "_localizationKey";
 
         private LocalizationConfig _localization;
+        private SerializedProperty _localizationProp;
 
         [SerializeField]
         private string[] _nodeText;
+        private SerializedProperty _nodelist;
 
         [SerializeField]
         private string[] _linkText;
+        private SerializedProperty _linklist;
 
         public override string  GraphProperty => "Incident";
 
@@ -90,22 +94,24 @@ namespace Ambition
                 throw new Exception("Could not open Localization Config!");
             }
             _localizationKey = _localization.UpdateLocalizationKey(this, _localizationKey);
-            int len = _localizationKey.Length;
+            _localizationProp = serializedObject.FindProperty(LOCALIZATION_KEY_KEY);
+            _localizationProp.stringValue = _localizationKey;
             Dictionary<string, string> phrases = _localization.GetPhrases(this);
-            SerializedProperty list = serializedObject.FindProperty("_nodeText");
-            list.arraySize = Incident.Nodes.Length;
-            for (int i = Incident.Nodes.Length-1; i>=0; i--)
+            _nodelist = serializedObject.FindProperty("_nodeText");
+            KeyValuePair<string, string>[] pairs = phrases.Where(k => k.Key.StartsWith(NODE_KEY)).ToArray();
+            int index;
+            foreach (KeyValuePair<string, string> kvp in pairs)
             {
-                list.GetArrayElementAtIndex(i).stringValue = Incident.Nodes[i].Text;
+                index = int.Parse(kvp.Key.Substring(kvp.Key.LastIndexOf('.') + 1));
+                SetListItem(_nodelist, index, kvp.Value);
             }
-            list = serializedObject.FindProperty("_linkText");
-            list.arraySize = Incident.LinkData.Length;
-            for (int i = Incident.LinkData.Length - 1; i >= 0; i--)
+            _linklist = serializedObject.FindProperty("_linkText");
+            pairs = phrases.Where(k => k.Key.StartsWith(LINK_KEY)).ToArray();
+            foreach (KeyValuePair<string, string> kvp in pairs)
             {
-                list.GetArrayElementAtIndex(i).stringValue = Incident.LinkData[i].Text;
+                index = int.Parse(kvp.Key.Substring(kvp.Key.LastIndexOf('.') + 1));
+                SetListItem(_linklist, index, kvp.Value);
             }
-            //_nodeText = phrases.Where(k => k.Key.StartsWith(NODE_KEY)).OrderBy(k => k.Key).Select(k => k.Value).ToList();
-            //_linkText = phrases.Where(k => k.Key.StartsWith(LINK_KEY)).OrderBy(k => k.Key).Select(k => k.Value).ToList();
         }
 
         public override void CleanupEditor(SerializedObject serializedObject)
@@ -113,26 +119,23 @@ namespace Ambition
             if (_localization != null && serializedObject != null)
             {
                 Dictionary<string, string> phrases = new Dictionary<string, string>();
-                SerializedProperty list = serializedObject.FindProperty("_nodeText");
-                for (int i=(list?.arraySize ?? 0) - 1; i>=0; i--)
+                string key = _localization.GenerateLocalizationKey(this);
+                _localizationKey = _localizationProp?.stringValue ?? _localizationKey;
+                if (_localizationKey != key)
                 {
-serializedObject.FindProperty("Incident").
-FindPropertyRelative("Nodes").
-GetArrayElementAtIndex(i).
-FindPropertyRelative("Text").stringValue = 
-                    phrases[NODE_KEY + i.ToString()] = list.GetArrayElementAtIndex(i).stringValue;
+                    _localization.RemovePhrases(_localizationKey);
                 }
-                list.ClearArray();
-                list = serializedObject.FindProperty("_linkText");
-                for (int i = (list?.arraySize ?? 0) - 1; i >= 0; i--)
+                _localizationProp.stringValue = key;
+                for (int i=(_nodelist?.arraySize ?? 0) - 1; i>=0; i--)
                 {
-serializedObject.FindProperty("Incident").
-FindPropertyRelative("LinkData").
-GetArrayElementAtIndex(i).
-FindPropertyRelative("Text").stringValue =
-                    phrases[LINK_KEY + i.ToString()] = list.GetArrayElementAtIndex(i).stringValue;
+                    phrases[NODE_KEY + i.ToString()] = _nodelist.GetArrayElementAtIndex(i).stringValue;
                 }
-                list.ClearArray();
+                _nodelist.ClearArray();
+                for (int i = (_linklist?.arraySize ?? 0) - 1; i >= 0; i--)
+                {
+                    phrases[LINK_KEY + i.ToString()] = _linklist.GetArrayElementAtIndex(i).stringValue;
+                }
+                _linklist.ClearArray();
                 _localization.Post(this, this.name);
                 _localization.Post(this, phrases, true);
                 _localization = null;
@@ -193,7 +196,7 @@ FindPropertyRelative("Text").stringValue =
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("OneShotSFX"), true);
             if (EditorGUI.EndChangeCheck() && momentText != null)
             {
-                list.GetArrayElementAtIndex(nodeIndex).stringValue = momentText;
+                SetListItem(list, nodeIndex, momentText);
             }
         }
 
@@ -217,7 +220,7 @@ FindPropertyRelative("Text").stringValue =
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Flags"), true);
                 if (EditorGUI.EndChangeCheck() && linktext != null)
                 {
-                    list.GetArrayElementAtIndex(index).stringValue = linktext;
+                    SetListItem(list, index, linktext);
                 }
             }
         }
@@ -259,7 +262,8 @@ FindPropertyRelative("Text").stringValue =
 
         public bool Render(SerializedProperty node, int index, Rect rect, bool selected)
         {
-            if (index >= Incident.Nodes.Length)
+            SerializedProperty list = node?.serializedObject?.FindProperty("_nodeText");
+            if (list == null || !list.isArray || index >= list.arraySize)
             {
                 return false;
             }
@@ -268,33 +272,19 @@ FindPropertyRelative("Text").stringValue =
                : (selected ? Color.gray : Color.white);
             GUI.skin.button.alignment = TextAnchor.UpperCenter;
             GUI.skin.button.wordWrap = true;
-            string str = node.serializedObject.FindProperty("_nodeText")?.GetArrayElementAtIndex(index)?.stringValue;
+            string str = node.serializedObject.FindProperty("_nodeText").GetArrayElementAtIndex(index).stringValue;
             return GUI.Button(rect, str, GUI.skin.button);
         }
 
         public void InitializeNode(SerializedProperty nodeData, int index)
         {
             nodeData.FindPropertyRelative("Text").stringValue = "New Moment";
-            SerializedProperty prop = nodeData.serializedObject.FindProperty("_nodeText");
-            if (prop != null)
-            {
-                if (prop.arraySize <= index)
-                {
-                    prop.arraySize = index + 1;
-                }
-                prop.GetArrayElementAtIndex(index).stringValue = "New Moment";
-            }
+            SetListItem(_nodelist, index, "New Moment");
         }
 
         public void InitializeLink(SerializedProperty link, int index, int fromNode, int toNode)
         {
-            SerializedProperty list = link?.serializedObject?.FindProperty("_linkText");
-            if (list != null)
-            {
-                list.arraySize = Incident.Links.Length;
-                list.InsertArrayElementAtIndex(index);
-                list.GetArrayElementAtIndex(index).stringValue = "";
-            }
+            SetListItem(_linklist, index, "");
             link.FindPropertyRelative("xor").boolValue = false;
             link.FindPropertyRelative("Rewards").arraySize = 0;
             link.FindPropertyRelative("Requirements").arraySize = 0;
@@ -316,6 +306,19 @@ FindPropertyRelative("Text").stringValue =
                 txt.SelectAll();
                 Array.Find(Resources.FindObjectsOfTypeAll<EditorWindow>(), w => w.titleContent.text == "Inspector").Focus();
             }
+        }
+
+        private SerializedProperty SetListItem(SerializedObject serializedObject, string key, int index, string value)
+        {
+            return SetListItem(serializedObject?.FindProperty(key), index, value);
+        }
+
+        private SerializedProperty SetListItem(SerializedProperty list, int index, string value)
+        {
+            if (list == null || !list.isArray) return null;
+            if (list.arraySize <= index) list.arraySize = index + 1;
+            list.GetArrayElementAtIndex(index).stringValue = value;
+            return list;
         }
 
         public void DeleteNode(SerializedProperty node, int index)
