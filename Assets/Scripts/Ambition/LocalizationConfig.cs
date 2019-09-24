@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEditor;
 
-namespace Core
+namespace Ambition
 {
     public class LocalizationConfig : ScriptableObject
     {
@@ -25,12 +25,15 @@ namespace Core
             return _phrases != null;
         }
 
-        public string GenerateLocalizationKey(UnityEngine.Object obj) => ( obj.GetInstanceID() + "."  + obj.name + "." );
+        public string GenerateLocalizationKey(ScriptableObject obj) => AssetDatabase.GetAssetPath(obj) + ".";
+        public string GenerateLocalizationKey(MonoBehaviour obj) => obj.GetInstanceID() + obj.name + ".";
 
         public bool Post(UnityEngine.Object obj, Dictionary<string, string> phrases, bool removeUnused = false)
         {
-            if (!Pull() || phrases == null) return false;
-            string key = GenerateLocalizationKey(obj);
+            if (phrases == null || !Pull()) return false;
+            string key = (obj is MonoBehaviour)
+                ? GenerateLocalizationKey(obj as MonoBehaviour)
+                : GenerateLocalizationKey(obj as ScriptableObject);
             if (removeUnused)
             {
                 Dictionary<string, string> currPhrases = GetPhrases(obj);
@@ -38,7 +41,9 @@ namespace Core
                 foreach (string current in currPhrases.Keys)
                 {
                     if (!phrases.ContainsKey(current))
-                        _phrases.Remove(key+current);
+                    {
+                        _phrases.Remove(key + current);
+                    }
                 }
             }
             foreach (KeyValuePair<string, string> k in phrases)
@@ -56,14 +61,31 @@ namespace Core
         public bool Post(UnityEngine.Object obj, string phrase)
         {
             if (!Pull()) return false;
-            _phrases[GenerateLocalizationKey(obj)] = phrase;
+            string key = obj is MonoBehaviour
+                ? GenerateLocalizationKey(obj as MonoBehaviour)
+                : GenerateLocalizationKey(obj as ScriptableObject);
+            _phrases[key] = phrase;
             return true;
+        }
+
+        public void RemovePhrases(string localizationKey)
+        {
+            if (Pull())
+            {
+                string[] keys = _phrases.Keys.Where(k => k.StartsWith(localizationKey)).ToArray();
+                foreach (string key in keys)
+                {
+                    _phrases.Remove(key);
+                }
+            }
         }
 
         public Dictionary<string, string> GetPhrases(UnityEngine.Object obj)
         {
             if (!Pull()) return null;
-            string key = GenerateLocalizationKey(obj);
+            string key = obj is MonoBehaviour
+                ? GenerateLocalizationKey(obj as MonoBehaviour)
+                : GenerateLocalizationKey(obj as ScriptableObject);
             int count = key.Length;
             return _phrases.Where(k => k.Key.StartsWith(key)).ToDictionary(k => k.Key.Substring(count), k => k.Value);
         }
@@ -71,7 +93,9 @@ namespace Core
         public string GetPhrase(UnityEngine.Object obj)
         {
             if (!Pull()) return null;
-            string key = GenerateLocalizationKey(obj);
+            string key = obj is MonoBehaviour
+                ? GenerateLocalizationKey(obj as MonoBehaviour)
+                : GenerateLocalizationKey(obj as ScriptableObject);
             _phrases.TryGetValue(key, out string phrase);
             return phrase?.Substring(key.Length);
         }
@@ -100,19 +124,11 @@ namespace Core
 
         public string UpdateLocalizationKey(UnityEngine.Object obj, string previousKey)
         {
-            string key = GenerateLocalizationKey(obj);
+            string key = obj is MonoBehaviour
+                ? GenerateLocalizationKey(obj as MonoBehaviour)
+                : GenerateLocalizationKey(obj as ScriptableObject);
             MoveKey(previousKey, key);
             return key;
-        }
-
-        public void UpdateFile()
-        {
-            if (_phrases != null && DefaultLocalizationFile != null)
-            {
-                string fileText = JsonConvert.SerializeObject(_phrases, Formatting.Indented);
-                string path = AssetDatabase.GetAssetPath(DefaultLocalizationFile);
-                File.WriteAllText(path, fileText);
-            }
         }
 
         [UnityEditor.MenuItem("Assets/Create/Localization Config")]
@@ -121,17 +137,20 @@ namespace Core
             Util.ScriptableObjectUtil.CreatUniqueInstance<LocalizationConfig>("Localization Config");
         }
 
-    }
-
-    [CustomEditor(typeof(LocalizationConfig))]
-    public class LocalizationConfigInspector : Editor
-    {
-        public override void OnInspectorGUI()
+        [UnityEditor.MenuItem("Ambition/Localization/Update Localization File")]
+        public static void UpdateLocalizationFile()
         {
-            DrawDefaultInspector();
-            if (GUILayout.Button("Update File"))
+            string[] assets = AssetDatabase.FindAssets("t:" + typeof(LocalizationConfig).ToString());
+            foreach (string asset in assets)
             {
-                (target as LocalizationConfig)?.UpdateFile();
+                string path = AssetDatabase.GUIDToAssetPath(asset);
+                LocalizationConfig config = AssetDatabase.LoadAssetAtPath<LocalizationConfig>(path);
+                if (config?._phrases != null && config.DefaultLocalizationFile != null)
+                {
+                    string fileText = JsonConvert.SerializeObject(config._phrases, Formatting.Indented);
+                    path = AssetDatabase.GetAssetPath(config.DefaultLocalizationFile);
+                    File.WriteAllText(path, fileText);
+                }
             }
         }
     }

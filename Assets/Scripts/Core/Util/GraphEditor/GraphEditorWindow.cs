@@ -111,7 +111,7 @@ namespace UGraph
         {
             EditorApplication.update -= UpdateGraphEditorWindow;
             _config?.CleanupEditor(_object);
-            _object?.ApplyModifiedProperties();
+            _object?.ApplyModifiedPropertiesWithoutUndo();
             _config = null;
             _object = null;
             _graph = null;
