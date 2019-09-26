@@ -79,9 +79,13 @@ namespace UGraph
             _linkData = _graph.FindPropertyRelative("LinkData");
             _positions = _object.FindProperty("_Positions");
 
-            if ((_nodes?.arraySize ?? 0) == 0) CreateNewNode(Vector2.zero);
-            _positions.arraySize = _nodes?.arraySize ?? 1;
+            if ((_nodes?.arraySize ?? 0) == 0)
+            {
+                CreateNewNode(Vector2.zero);
+            }
+            _positions.arraySize = _nodes.arraySize;
             adjust = _positions.GetArrayElementAtIndex(0).vector2Value;
+
             for (int i = _positions.arraySize - 1; i >= 0; i--)
             {
                 rect.center = _positions.GetArrayElementAtIndex(i).vector2Value -= adjust;
@@ -111,7 +115,7 @@ namespace UGraph
         {
             EditorApplication.update -= UpdateGraphEditorWindow;
             _config?.CleanupEditor(_object);
-            _object?.ApplyModifiedPropertiesWithoutUndo();
+            _object?.ApplyModifiedProperties();
             _config = null;
             _object = null;
             _graph = null;
@@ -223,18 +227,16 @@ namespace UGraph
                         break;
                 }
 
-                _object.FindProperty("_Nodes").arraySize = 0;
-                _object.FindProperty("_Links").arraySize = 0;
+                _object.FindProperty("_Nodes").arraySize = _selectedNodes.Count;
+                _object.FindProperty("_Links").arraySize = _selectedLinks.Count;
                 for(int i=Math.Max(_selectedLinks.Count, _selectedNodes.Count)-1; i>=0; i--)
                 {
                     if (i < _selectedNodes.Count)
                     {
-                        _object.FindProperty("_Nodes").InsertArrayElementAtIndex(0);
                         _object.FindProperty("_Nodes").GetArrayElementAtIndex(0).intValue = _selectedNodes[i];
                     }
                     if (i < _selectedLinks.Count)
                     {
-                        _object.FindProperty("_Links").InsertArrayElementAtIndex(0);
                         _object.FindProperty("_Links").GetArrayElementAtIndex(0).intValue = _selectedLinks[i];
                     }
                 }
@@ -360,6 +362,7 @@ namespace UGraph
         private void DrawNodes()
         {
             Rect rect = new Rect(0f, 0f, NODE_WIDTH, NODE_HEIGHT);
+            _positions.arraySize = _nodes.arraySize;
             if (_config is IDirectedGraphNodeRenderer)
             {
                 for (int i = _positions.arraySize - 1; i >= 0; i--)

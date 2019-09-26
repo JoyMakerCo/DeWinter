@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using Util;
 using UGraph;
 using Newtonsoft.Json;
@@ -64,6 +65,30 @@ namespace Ambition
             this.Date = incident.Date;
             this.OneShot = incident.OneShot;
         }
+
+        public string[] Dump()
+        {
+            //return new string[] { "incident " + Name };
+
+            var chapz = (Chapters == null) ? "null" : (string.Join(", ", Chapters.Select( x => x.ToString() ).ToArray() ));
+            var tagz = Tags == null ? "null" : string.Join(", ", Tags );
+            var fax = Factions == null ? "null" : string.Join(", ", Factions.Select( x => x.ToString() ).ToArray() );
+            var charz = string.Join(", ", GetCharacters() );
+            return new string[] 
+            {
+                "incident "+Name,
+                "characters "+charz,
+                "chapters "+ chapz,
+                "tags "+ tagz ,
+                "factions "+ fax,
+                "scheduled "+ (IsScheduled ? Date.ToString() : "false"),
+                "oneshot "+ (OneShot ? "true" : "false"),
+                "complete "+ (IsComplete ? "true" : "false")
+            };
+
+            // TODO dump requirements, characters...?
+        }
+
     }
 
     [Serializable]

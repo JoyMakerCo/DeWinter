@@ -36,5 +36,8 @@ namespace Ambition
         public static string INIT_CHARACTER = "INIT_CHARACTER";
         public static string TIMER_COMPLETE = "TIMER_COMPLETE";
         public static string INHIBIT_MENU = "INHIBIT_MENU"; // Disable the game menu until the next fade in
+
+
+        public static string TOGGLE_CONSOLE = "TOGGLE_CONSOLE";
     }
 }

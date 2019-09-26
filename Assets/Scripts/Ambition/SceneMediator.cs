@@ -43,6 +43,7 @@ namespace Ambition
             foreach (Transform child in transform)
                 Destroy(child.gameObject);
 
+            Debug.LogFormat( "instantiating prefab {0}", prefab.name);
             GameObject scene = Instantiate(prefab, transform);
             StartCoroutine(ReadyCheck(scene));
         }

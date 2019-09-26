@@ -69,6 +69,40 @@ namespace UGraph
             obj.FindProperty("_Nodes").arraySize = 0;
             obj.FindProperty("_Links").arraySize = 0;
         }
+
+        protected SerializedProperty GetLinkData(SerializedProperty graph)
+        {
+            return graph?.FindPropertyRelative("LinkData");
+        }
+
+        protected SerializedProperty GetLinks(SerializedProperty graph)
+        {
+            return graph?.FindPropertyRelative("Links");
+        }
+
+        protected SerializedProperty GetLinkData(SerializedProperty graph, int fromNode, int toNode)
+        {
+            SerializedProperty linkData = GetLinkData(graph);
+            SerializedProperty links = GetLinks(graph);
+            if (linkData == null || links == null) return null;
+
+            SerializedProperty link;
+            Vector2Int ends;
+            for (int i=Math.Min(links.arraySize, linkData.arraySize)-1; i>=0; i--)
+            {
+                link = links.GetArrayElementAtIndex(i);
+                if (link != null)
+                {
+                    ends = link.vector2IntValue;
+                    if (ends.x == fromNode && ends.y == toNode)
+                    {
+                        return linkData.GetArrayElementAtIndex(i);
+                    }
+                }
+            }
+            return null;
+
+        }
 #endif
     }
 

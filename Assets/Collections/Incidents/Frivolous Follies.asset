@@ -18,10 +18,11 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: -2, y: 76}
   - {x: -2, y: 143}
-  - {x: 2, y: 267}
-  - {x: -127, y: 366}
-  - {x: 145, y: 363}
-  - {x: 0, y: 204}
+  - {x: -3, y: 354}
+  - {x: -123, y: 433}
+  - {x: 144, y: 431}
+  - {x: 2, y: 204}
+  - {x: 7, y: 278}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -29,7 +30,8 @@ MonoBehaviour:
     - {x: 3, y: 4}
     - {x: 3, y: 5}
     - {x: 2, y: 6}
-    - {x: 6, y: 3}
+    - {x: 6, y: 7}
+    - {x: 7, y: 3}
     Nodes:
     - Text: Travelling the northern section of the 8th <i>arrondisement</i>, the sky
         is clear and the sun is shining. The crowds in this part of the city are picking
@@ -196,6 +198,30 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Parc Monceau
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
     - Text: 
       xor: 0
@@ -227,6 +253,11 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - Text: '"I hate this"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
@@ -234,7 +265,7 @@ MonoBehaviour:
     Factions: 00000000
     LocalizationKey: 
     Requirements: []
-  _factions: 010000000000
+  _factions: 000000000000
   _chapters: 00000000
   _date: -1
   _localizationKey: Assets/Collections/Incidents/Frivolous Follies.asset.

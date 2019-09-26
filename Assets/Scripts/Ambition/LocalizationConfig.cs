@@ -36,14 +36,11 @@ namespace Ambition
                 : GenerateLocalizationKey(obj as ScriptableObject);
             if (removeUnused)
             {
-                Dictionary<string, string> currPhrases = GetPhrases(obj);
                 int len = key.Length;
-                foreach (string current in currPhrases.Keys)
+                string[] keys = _phrases.Keys.Where(k => k.StartsWith(key) && !phrases.ContainsKey(k.Substring(len))).ToArray();
+                foreach(string lkey in keys)
                 {
-                    if (!phrases.ContainsKey(current))
-                    {
-                        _phrases.Remove(key + current);
-                    }
+                    _phrases.Remove(lkey);
                 }
             }
             foreach (KeyValuePair<string, string> k in phrases)
@@ -131,26 +128,30 @@ namespace Ambition
             return key;
         }
 
+        public void SerializeAll()
+        {
+            if (_phrases != null && DefaultLocalizationFile != null)
+            {
+                string fileText = JsonConvert.SerializeObject(_phrases, Formatting.Indented);
+                string path = AssetDatabase.GetAssetPath(DefaultLocalizationFile);
+                File.WriteAllText(path, fileText);
+            }
+        }
+
         [UnityEditor.MenuItem("Assets/Create/Localization Config")]
         public static void CreateLocalizationConfig()
         {
             Util.ScriptableObjectUtil.CreatUniqueInstance<LocalizationConfig>("Localization Config");
         }
 
-        [UnityEditor.MenuItem("Ambition/Localization/Update Localization File")]
+
         public static void UpdateLocalizationFile()
         {
             string[] assets = AssetDatabase.FindAssets("t:" + typeof(LocalizationConfig).ToString());
             foreach (string asset in assets)
             {
                 string path = AssetDatabase.GUIDToAssetPath(asset);
-                LocalizationConfig config = AssetDatabase.LoadAssetAtPath<LocalizationConfig>(path);
-                if (config?._phrases != null && config.DefaultLocalizationFile != null)
-                {
-                    string fileText = JsonConvert.SerializeObject(config._phrases, Formatting.Indented);
-                    path = AssetDatabase.GetAssetPath(config.DefaultLocalizationFile);
-                    File.WriteAllText(path, fileText);
-                }
+                AssetDatabase.LoadAssetAtPath<LocalizationConfig>(path)?.SerializeAll();
             }
         }
     }

@@ -72,13 +72,13 @@ namespace Ambition
 		{
 			if (level < 0)
 			{
-				Debug.LogErrorFormat("Faction level is {0} ???",level);
+				Debug.LogWarningFormat("Faction level is {0} ???",level);
 				level = 0;
 			}
 
 			if (level >= Levels.Length)
 			{
-				Debug.LogErrorFormat("Faction level is {0} (max {1}) ???",level,Levels.Length-1);
+				Debug.LogWarningFormat("Faction level is {0} (max {1}) ???",level,Levels.Length-1);
 				level = Levels.Length-1;
 			}
 
