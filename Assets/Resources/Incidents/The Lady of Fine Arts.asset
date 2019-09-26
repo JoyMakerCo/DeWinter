@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
-  m_Name: La Madame des Beaux Arts
+  m_Name: The Lady of Fine Arts
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 1d000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -51,11 +51,11 @@ MonoBehaviour:
   - {x: 26, y: 1364}
   - {x: 27, y: 1430}
   - {x: 29, y: 1548}
-  - {x: -224, y: 1454}
+  - {x: -227, y: 1422}
   - {x: 258, y: 1546}
-  - {x: -219, y: 1626}
+  - {x: -216, y: 1581}
   - {x: 258, y: 1609}
-  - {x: 260, y: 1669}
+  - {x: 256, y: 1729}
   - {x: -219, y: 1734}
   - {x: 27, y: 1820}
   - {x: 25, y: 1890}
@@ -81,14 +81,18 @@ MonoBehaviour:
   - {x: 471, y: 1788}
   - {x: 551, y: 1590}
   - {x: 26, y: 1498}
-  - {x: 258, y: 1736}
-  - {x: -223, y: 1570}
-  - {x: -220, y: 1513}
+  - {x: 249, y: 1793}
+  - {x: -222, y: 1526}
+  - {x: -221, y: 1478}
   - {x: -218, y: 1683}
-  - {x: -356, y: 1934}
-  - {x: -445, y: 1867}
-  - {x: -228, y: 1796}
+  - {x: -616, y: 1953}
+  - {x: -337, y: 1877}
+  - {x: -444, y: 1809}
   - {x: 303, y: 1869}
+  - {x: -223, y: 1633}
+  - {x: -223, y: 1787}
+  - {x: -326, y: 1946}
+  - {x: 255, y: 1667}
   Incident:
     Links:
     - {x: 1, y: 2}
@@ -128,7 +132,6 @@ MonoBehaviour:
     - {x: 35, y: 36}
     - {x: 35, y: 37}
     - {x: 37, y: 39}
-    - {x: 39, y: 40}
     - {x: 42, y: 43}
     - {x: 43, y: 44}
     - {x: 44, y: 45}
@@ -169,15 +172,20 @@ MonoBehaviour:
     - {x: 67, y: 38}
     - {x: 36, y: 68}
     - {x: 68, y: 67}
-    - {x: 38, y: 69}
     - {x: 69, y: 41}
-    - {x: 70, y: 42}
     - {x: 71, y: 42}
-    - {x: 41, y: 72}
     - {x: 72, y: 71}
     - {x: 72, y: 70}
     - {x: 63, y: 73}
     - {x: 73, y: 43}
+    - {x: 38, y: 74}
+    - {x: 74, y: 69}
+    - {x: 41, y: 75}
+    - {x: 75, y: 72}
+    - {x: 70, y: 76}
+    - {x: 76, y: 42}
+    - {x: 39, y: 77}
+    - {x: 77, y: 40}
     Nodes:
     - Text: After your rendezvous, Elisabeth offers to walk you home. She's walking
         closer to you than usual, and generally seems more upbeat.
@@ -1104,10 +1112,7 @@ MonoBehaviour:
         Pose: neutral
         Name: Elisabeth
       Speaker: 0
-      Rewards:
-      - Type: 5
-        ID: Elisabeth
-        Value: 2
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -1115,7 +1120,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: An older man staggers by, watching you with the glazed over, uncomprehending
         expression of a man who's drank beyond his limits. He makes no attempt to
@@ -1723,10 +1728,7 @@ MonoBehaviour:
         Pose: happy
         Name: Elisabeth
       Speaker: 3
-      Rewards:
-      - Type: 12
-        ID: 
-        Value: 3
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -1827,21 +1829,15 @@ MonoBehaviour:
         Name: 
       Character2:
         AvatarID: ElisabethLeBrun
-        Pose: happy
+        Pose: neutral
         Name: Elisabeth
       Speaker: 0
-      Rewards:
-      - Type: 12
-        ID: 
-        Value: 3
-      - Type: 11
-        ID: 
-        Value: 3
+      Rewards: []
       Music:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_negative
         Parameters: []
       OneShotSFX:
         Name: 
@@ -1858,10 +1854,7 @@ MonoBehaviour:
         Pose: neutral
         Name: Elisabeth
       Speaker: 0
-      Rewards:
-      - Type: 12
-        ID: 
-        Value: 3
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -1904,6 +1897,105 @@ MonoBehaviour:
         Name: 
       Speaker: 0
       Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 4
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: Elisabeth
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: Elisabeth
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: Elisabeth
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 2
       Music:
         Name: 
         Parameters: []
@@ -2093,11 +2185,6 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: '"That''s really sweet, but I don''t think we should risk it."'
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -2317,22 +2404,50 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
     - Text: <Look away>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Stare back> <Peril Icon>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: <Stare back> <Peril Icon>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Stare back> <Peril Icon>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Stare back> <Peril Icon>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Stare back> <Peril Icon>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Stare back> <Peril Icon>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Stare back> <Peril Icon>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: <Stare back> <Peril Icon>
       xor: 0
       Rewards: []
       Requirements: []
@@ -2361,7 +2476,7 @@ MonoBehaviour:
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
-  _date: 0
-  _localizationKey: Assets/Resources/Incidents/La Madame des Beaux Arts.asset.
+  _date: -1
+  _localizationKey: Assets/Resources/Incidents/The Lady of Fine Arts.asset.
   _nodeText: []
   _linkText: []

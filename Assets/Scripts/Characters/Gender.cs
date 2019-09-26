@@ -6,6 +6,7 @@ namespace Ambition
 	{
 		Unknown,
 		Male,
-		Female
+		Female,
+		NonBinary
 	}
 }

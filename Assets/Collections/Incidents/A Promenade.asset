@@ -12,24 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: A Promenade
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 03000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
   - {x: -2, y: 81}
   - {x: -2, y: 163}
-  - {x: -1, y: 240}
+  - {x: -1, y: 229}
   - {x: -116, y: 427}
   - {x: 140, y: 422}
-  - {x: -5, y: 309}
+  - {x: -5, y: 350}
+  - {x: 8, y: 289}
   Incident:
     Links:
     - {x: 0, y: 1}
     - {x: 1, y: 2}
     - {x: 2, y: 3}
-    - {x: 3, y: 6}
     - {x: 6, y: 4}
     - {x: 6, y: 5}
+    - {x: 3, y: 7}
+    - {x: 7, y: 6}
     Nodes:
     - Text: 'Deciding to explore the 5th <i>arrondisement</i> today, you stroll along
         the southern banks of the river Seine. Barges sail up and down the river,
@@ -197,6 +199,30 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Jardin Des Plantes
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
     - Text: 
       xor: 0
@@ -213,12 +239,17 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - Text: '"It''s nice to get a break from Paris sometimes."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"It''s nice to get a break from Paris sometimes."'
+    - Text: '"Walking in circles doesn''t feel like my idea of a fun evening."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Walking in circles doesn''t feel like my idea of a fun evening."'
       xor: 0
       Rewards: []
       Requirements: []

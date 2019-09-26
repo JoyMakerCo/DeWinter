@@ -12,24 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: The Limits of Taste
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 07000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
   - {x: -1, y: 88}
   - {x: 0, y: 163}
-  - {x: 5, y: 237}
-  - {x: -234, y: 398}
-  - {x: 3, y: 313}
-  - {x: 168, y: 390}
+  - {x: 4, y: 237}
+  - {x: -153, y: 466}
+  - {x: 15, y: 387}
+  - {x: 169, y: 459}
+  - {x: 11, y: 307}
   Incident:
     Links:
     - {x: 0, y: 1}
     - {x: 1, y: 2}
     - {x: 2, y: 3}
-    - {x: 3, y: 5}
     - {x: 5, y: 4}
     - {x: 5, y: 6}
+    - {x: 3, y: 7}
+    - {x: 7, y: 5}
     Nodes:
     - Text: Today, you decide to explore the <i>Boulevard du Temple</i> between the
         11th and 3rd <i>arrondisments</i>. It's the place in the city best known for
@@ -58,7 +60,7 @@ MonoBehaviour:
         looking for. \n\n<i>Les Grands-Danseurs du Roi</i>. It's the best known theater
         in the city, specializing two things: comedies, and skirting the absolute
         limits of good taste. "
-      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -112,7 +114,7 @@ MonoBehaviour:
 
 
         (<i>Les Grands-Danseurs du Roi</i> is now an available rendezvous location)'
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -161,7 +163,7 @@ MonoBehaviour:
     - Text: This feels like the perfect place to visit with someone that loves to
         laugh. Someone that isn't afraid of liking things that are a little bawdy
         or lowbrow.
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -186,7 +188,7 @@ MonoBehaviour:
 
 
         Probably not. '
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -206,6 +208,30 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Les Grands-Danseurs du Roi
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
     - Text: 
       xor: 0
@@ -222,12 +248,17 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - Text: '"This is absolutely delightful. I can''t wait to see it in full swing."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"This is absolutely delightful. I can''t wait to see it in full swing."'
+    - Text: '"This just feels like vulgarity for the sake of it. I''d rather not."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"This just feels like vulgarity for the sake of it. I''d rather not."'
       xor: 0
       Rewards: []
       Requirements: []

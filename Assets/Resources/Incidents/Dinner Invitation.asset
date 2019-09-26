@@ -10,38 +10,57 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
-  m_Name: "The Orphan\u2019s Feast"
+  m_Name: Dinner Invitation
   m_EditorClassIdentifier: 
   _Nodes: 
   _Links: 
   _Positions:
   - {x: 0, y: 0}
-  - {x: 1, y: 83}
-  - {x: -137, y: 167}
-  - {x: 169, y: 219}
-  - {x: -142, y: 263}
+  - {x: 1, y: 80}
+  - {x: -1, y: 150}
+  - {x: -1, y: 216}
+  - {x: 1, y: 380}
+  - {x: 1, y: 288}
   Incident:
     Links:
     - {x: 0, y: 1}
     - {x: 1, y: 2}
-    - {x: 1, y: 3}
-    - {x: 2, y: 4}
+    - {x: 2, y: 3}
+    - {x: 3, y: 5}
+    - {x: 5, y: 4}
     Nodes:
-    - Text: "A woman polishing a lantern looks up at you as you enter, and her face
-        breaks into a bright smile. \u201CBonjour Madame and welcome to the Orphan's
-        Feast!\u201D Her eyes linger expectantly on the door for a moment, before
-        settling on you. You\u2019re suddenly reminded of how rare it is for women
-        to travel by themselves.\r"
-      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Barmaid
+        AvatarID: 
+        Pose: 
+        Name: 
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -52,17 +71,17 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "\u201CHow may I be of service?\u201D She asks."
+    - Text: New Moment
       Background: {fileID: 0}
       Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Barmaid
+        AvatarID: 
+        Pose: 
+        Name: 
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -73,22 +92,41 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "\u201CDon\u2019t worry, while the rest of the city can be er\u2026 cutthroat,
-        the Orphan\u2019s Feast is a relaxed place for getting your feet under you.\u201D
-        The woman puts down the lantern she was polishing. \u201CTalk to the guests
-        in the different rooms, make sure you say the right things to the right people,
-        and make sure nobody gets bored. Once you charm all the people in a room,
-        you should be fine.\u201D\r"
+    - Text: New Moment
       Background: {fileID: 0}
       Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Barmaid
+        AvatarID: 
+        Pose: 
+        Name: 
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: The Archangel
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -99,39 +137,17 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "The woman pauses to think. \u201CI haven\u2019t heard that name before,
-        but I just started working today. Perhaps he\u2019s in the back?\u201D"
+    - Text: New Moment
       Background: {fileID: 0}
       Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Barmaid
+        AvatarID: 
+        Pose: 
+        Name: 
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "When she puts it that way, it suddenly sounds so easy\u2026"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Chambermaid
-        Pose: neutral
-        Name: Barmaid
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -163,6 +179,11 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
@@ -173,6 +194,6 @@ MonoBehaviour:
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: "Assets/Resources/Incidents/The Orphan\u2019s Feast.asset."
+  _localizationKey: Assets/Resources/Incidents/Dinner Invitation.asset.
   _nodeText: []
   _linkText: []

@@ -14,7 +14,7 @@ namespace Core
 		public string LanguageCode;
 		protected Dictionary<string, string> _localizations;
 
-		public LocalizationSvc ()
+		public LocalizationSvc()
 		{
 			LanguageCode = UnityEngine.Application.systemLanguage.ToString();
 			_localizations = new Dictionary<string, string>();
@@ -39,7 +39,7 @@ namespace Core
 				return _localizations.TryGetValue(key, out value) ? value : null;
 			}
 		}
-
+            
 		public string[] GetList(string key)
 		{
 			return _localizations.Where(k=>k.Key.StartsWith(key)).Select(v=>v.Value).ToArray();

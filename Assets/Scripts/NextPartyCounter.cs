@@ -38,8 +38,18 @@ namespace Ambition
         public void ShowNextParty()
         {
             _index = (_index + 1) % _parties.Count;
-            FactionType faction = _parties[_index].Faction;
-            TooltipText.Localize("party_" + faction.ToString().ToLower() + "_likes_and_dislikes");
+
+            var party = _parties[_index];
+            //Debug.LogFormat("Party index {0} -> {1}", _index, party);
+            FactionType faction = party.Faction;
+            if (TooltipText == null)
+            {
+                Debug.LogWarning("Missing TooltipText in NextPartyCounter");
+            }
+            else
+            {
+                TooltipText.Localize("party_" + faction.ToString().ToLower() + "_likes_and_dislikes");
+            }
             FactionSymbol.sprite = FactionSymbols.GetSprite(faction.ToString());
         }
     }

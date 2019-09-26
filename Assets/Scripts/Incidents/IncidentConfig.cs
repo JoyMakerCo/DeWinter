@@ -93,6 +93,7 @@ namespace Ambition
             {
                 throw new Exception("Could not open Localization Config!");
             }
+
             _localizationKey = _localization.UpdateLocalizationKey(this, _localizationKey);
             _localizationProp = serializedObject.FindProperty(LOCALIZATION_KEY_KEY);
             _localizationProp.stringValue = _localizationKey;
@@ -116,7 +117,12 @@ namespace Ambition
 
         public override void CleanupEditor(SerializedObject serializedObject)
         {
-            if (_localization != null && serializedObject != null)
+            PublishLocalizations();
+        }
+
+        public void PublishLocalizations()
+        {
+            if (_localization != null)
             {
                 Dictionary<string, string> phrases = new Dictionary<string, string>();
                 string key = _localization.GenerateLocalizationKey(this);
@@ -125,19 +131,22 @@ namespace Ambition
                 {
                     _localization.RemovePhrases(_localizationKey);
                 }
-                _localizationProp.stringValue = key;
-                for (int i=(_nodelist?.arraySize ?? 0) - 1; i>=0; i--)
+                if (_localizationProp != null)
+                {
+                    _localizationProp.stringValue = key;
+                }
+                for (int i = (_nodelist?.arraySize ?? 0) - 1; i >= 0; i--)
                 {
                     phrases[NODE_KEY + i.ToString()] = _nodelist.GetArrayElementAtIndex(i).stringValue;
                 }
-                _nodelist.ClearArray();
                 for (int i = (_linklist?.arraySize ?? 0) - 1; i >= 0; i--)
                 {
                     phrases[LINK_KEY + i.ToString()] = _linklist.GetArrayElementAtIndex(i).stringValue;
                 }
-                _linklist.ClearArray();
-                _localization.Post(this, this.name);
-                _localization.Post(this, phrases, true);
+                _nodelist?.ClearArray();
+                _linklist?.ClearArray();
+                _localization?.Post(this, this.name);
+                _localization?.Post(this, phrases, true);
                 _localization = null;
                 phrases = null;
             }
@@ -157,35 +166,37 @@ namespace Ambition
 
         public override void RenderNodeUI(SerializedProperty moment, int nodeIndex)
         {
-            SerializedProperty list;
+            if (moment == null) return;
             EditorGUI.BeginChangeCheck();
-            GUI.enabled = (nodeIndex != 0);
+            GUI.SetNextControlName("FOCUS_ID");
+            GUI.enabled = (nodeIndex > 0);
             if (GUILayout.Button("Set as Start"))
             {
-                string[] subs = moment.propertyPath.Split('[', ']');
-                list = moment.serializedObject.FindProperty("Incident.Nodes");
-                int index = int.Parse(subs[1]);
+                SerializedObject config = moment.serializedObject;
+                SerializedProperty incident = moment.serializedObject.FindProperty("Incident");
                 Vector2Int link;
-                list.MoveArrayElement(index, 0);
-                list = moment.serializedObject.FindProperty("Incident.Positions");
-                list.MoveArrayElement(index, 0);
-                list = moment.serializedObject.FindProperty("Incident.Links");
+                SerializedProperty list = incident.FindPropertyRelative("Nodes");
+                _nodelist.MoveArrayElement(nodeIndex, 0);
+                list.MoveArrayElement(nodeIndex, 0);
+                list = config.FindProperty("_Positions");
+                list.MoveArrayElement(nodeIndex, 0);
+                list = incident.FindPropertyRelative("Links");
                 for (int i = list.arraySize - 1; i >= 0; i--)
                 {
                     link = list.GetArrayElementAtIndex(i).vector2IntValue;
-                    if (link.x == index) link.x = 0;
-                    else if (link.x < index) link.x++;
-                    if (link.y == index) link.y = 0;
-                    else if (link.y < index) link.y++;
+                    if (link.x == nodeIndex) link.x = 0;
+                    else if (link.x < nodeIndex) link.x++;
+                    if (link.y == nodeIndex) link.y = 0;
+                    else if (link.y < nodeIndex) link.y++;
                     list.GetArrayElementAtIndex(i).vector2IntValue = link;
                 }
+                nodeIndex = 0;
             }
             GUI.enabled = true;
 
-            GUI.SetNextControlName("FOCUS_ID");
-            EditorStyles.textField.wordWrap = true;
-            list = moment.serializedObject.FindProperty("_nodeText");
-            string momentText = GUILayout.TextArea(list != null && nodeIndex < list.arraySize ? list.GetArrayElementAtIndex(nodeIndex).stringValue : null);
+            string momentText = (_nodelist != null && nodeIndex < _nodelist.arraySize )
+                ? EditorGUILayout.TextArea(_nodelist.GetArrayElementAtIndex(nodeIndex).stringValue)
+                : null;
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Background"), true);
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character1"), true);
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character2"), true);
@@ -196,7 +207,8 @@ namespace Ambition
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("OneShotSFX"), true);
             if (EditorGUI.EndChangeCheck() && momentText != null)
             {
-                SetListItem(list, nodeIndex, momentText);
+                SetListItem(_nodelist, nodeIndex, momentText);
+                _nodelist.serializedObject.ApplyModifiedProperties();
             }
         }
 
@@ -206,9 +218,10 @@ namespace Ambition
             {
                 EditorGUI.BeginChangeCheck();
                 GUI.SetNextControlName("FOCUS_ID");
-                SerializedProperty list = transition.serializedObject.FindProperty("_linkText");
                 int index = Incident.GetLinkIndex(fromNode, toNode);
-                string linktext = GUILayout.TextArea(list != null && index < list.arraySize ? list.GetArrayElementAtIndex(index).stringValue : null);
+                string linktext = (_linklist != null && index < _linklist.arraySize)
+                    ? EditorGUILayout.TextArea(_linklist.GetArrayElementAtIndex(index).stringValue)
+                    : null;
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Rewards"), true);
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Requirements"), true);
                 EditorGUILayout.LabelField("Links marked as XOR are mutually exclusive");
@@ -220,7 +233,8 @@ namespace Ambition
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Flags"), true);
                 if (EditorGUI.EndChangeCheck() && linktext != null)
                 {
-                    SetListItem(list, index, linktext);
+                    SetListItem(_linklist, index, linktext);
+                    _linklist.serializedObject.ApplyModifiedProperties();
                 }
             }
         }
@@ -278,7 +292,6 @@ namespace Ambition
 
         public void InitializeNode(SerializedProperty nodeData, int index)
         {
-            nodeData.FindPropertyRelative("Text").stringValue = "New Moment";
             SetListItem(_nodelist, index, "New Moment");
         }
 
@@ -323,28 +336,23 @@ namespace Ambition
 
         public void DeleteNode(SerializedProperty node, int index)
         {
-            SerializedProperty list = node.serializedObject.FindProperty("_nodeText");
-            int size = list.arraySize;
-            if (index < size)
-            {
-                list.DeleteArrayElementAtIndex(index);
-                if (list.arraySize == size)
-                    list.DeleteArrayElementAtIndex(index);
-            }
+            DeleteIndex(_nodelist, index);
         }
 
         public void DeleteLink(SerializedProperty link, int index)
         {
-            SerializedProperty list = link.serializedObject.FindProperty("_linkText");
-            int size = list.arraySize;
-            if (index < size)
-            {
-                list.DeleteArrayElementAtIndex(index);
-                if (list.arraySize == size)
-                    list.DeleteArrayElementAtIndex(index);
-            }
+            DeleteIndex(_linklist, index);
         }
 
+        private bool DeleteIndex(SerializedProperty list, int index)
+        {
+            if (list == null || !list.isArray || index < 0 || index >= list.arraySize)
+                return false;
+            list.DeleteArrayElementAtIndex(index);
+            if (index < list.arraySize && list.GetArrayElementAtIndex(index) == null)
+                list.DeleteArrayElementAtIndex(index);
+            return true;
+        }
 
         [OnOpenAssetAttribute()]
         public static bool Open(int instanceID, int line) => Open<IncidentConfig>(instanceID, line);

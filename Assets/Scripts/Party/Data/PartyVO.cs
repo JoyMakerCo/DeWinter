@@ -68,5 +68,10 @@ namespace Ambition
             Requirements = this.Requirements?.ToArray();
             Rewards = this.Rewards?.ToList();
         }
+
+        public override string ToString()
+        {
+            return string.Format( "PartyVO: {0} [{1}]", Name, Faction );
+        }
     }
 }

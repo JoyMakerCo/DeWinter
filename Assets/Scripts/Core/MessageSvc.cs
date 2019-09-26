@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Core
 {
@@ -148,6 +149,7 @@ namespace Core
 
 		public void Send(string messageID)
 		{
+			Debug.LogFormat( "MessageSvc.Send {0}", messageID);
 			MessageEvent e;
 			if (messageID != null && _messageHandlers.TryGetValue(messageID, out e))
 				e.Send();
@@ -155,6 +157,8 @@ namespace Core
 
 		public void Send<T>(string messageID, T messageData)
 		{
+			Debug.LogFormat( "MessageSvc.Send {0} <{1}>", messageID, typeof(T).ToString() );
+
 			IMessageEvent e;
 			Dictionary<Type, IMessageEvent> d;
 			Type t = typeof(T);
@@ -164,6 +168,8 @@ namespace Core
 
 		public void Send<T>(T messageData)
 		{
+			Debug.LogFormat( "MessageSvc.Send <{0}>", typeof(T).ToString() );
+
 			IMessageEvent e;
 			Type t = typeof(T);
 			if (_typeHandlers.TryGetValue(t, out e))
