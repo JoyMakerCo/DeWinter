@@ -76,7 +76,7 @@ namespace Ambition
             var charz = string.Join(", ", GetCharacters() );
             return new string[] 
             {
-                "incident "+Name,
+                "Incident "+Name+":",
                 "characters "+charz,
                 "chapters "+ chapz,
                 "tags "+ tagz ,

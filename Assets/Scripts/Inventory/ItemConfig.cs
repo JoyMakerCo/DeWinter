@@ -23,7 +23,8 @@ namespace Ambition
             {
                 Type = this.Type,
                 Price = this.Price,
-                State = new Dictionary<string, string>()
+                State = new Dictionary<string, string>(),
+                Asset = Asset
             };
             if (State != null)
             {
@@ -32,6 +33,7 @@ namespace Ambition
             return item;
         }
 
+        public Sprite Asset;
         public ItemType Type;
         public int Price;
         public ItemState[] State;

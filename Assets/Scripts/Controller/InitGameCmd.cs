@@ -20,6 +20,8 @@ namespace Ambition
 
             AmbitionApp.RegisterModel<LocalizationModel>();
             AmbitionApp.RegisterModel<GameModel>();
+            // Crashes if you do this before GameModel is up.
+            AmbitionApp.GetModel<LocalizationModel>().SetPlayerName();
             AmbitionApp.RegisterModel<FactionModel>();
             AmbitionApp.RegisterModel<InventoryModel>();
             AmbitionApp.RegisterModel<ServantModel>();
@@ -40,6 +42,7 @@ namespace Ambition
             AmbitionApp.RegisterCommand<FireServantCmd, ServantVO>(ServantMessages.FIRE_SERVANT);
             AmbitionApp.RegisterCommand<SelectDateCmd, DateTime>(CalendarMessages.SELECT_DATE);
             AmbitionApp.RegisterCommand<UpdateCalendarCmd>(CalendarMessages.UPDATE_CALENDAR);
+            AmbitionApp.RegisterCommand<DelayRandomInvitationsCmd>(CalendarMessages.BEGIN_RANDOM_INVITATIONS);
             AmbitionApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
             AmbitionApp.RegisterCommand<AdjustFactionCmd, AdjustFactionVO>(FactionMessages.ADJUST_FACTION);
             AmbitionApp.RegisterCommand<EquipItemCmd, ItemVO>(InventoryMessages.EQUIP);
@@ -49,10 +52,10 @@ namespace Ambition
             AmbitionApp.RegisterCommand<AddLocationCmd, string>(ParisMessages.ADD_LOCATION);
             AmbitionApp.RegisterCommand<RemoveLocationCmd, string>(ParisMessages.REMOVE_LOCATION);
             AmbitionApp.RegisterCommand<GoToPartyCmd, PartyVO>(PartyMessages.GO_TO_PARTY);
-            AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
             AmbitionApp.RegisterCommand<PerilIncidentCmd, int>(GameConsts.PERIL);
             AmbitionApp.RegisterCommand<ResetGameCmd>(GameMessages.EXIT_MENU);
-            AmbitionApp.RegisterCommand<CreateGossipCmd, FactionType>(InventoryMessages.CREATE_GOSSIP); 
+            AmbitionApp.RegisterCommand<CreateGossipCmd, FactionType>(InventoryMessages.CREATE_GOSSIP);
+            AmbitionApp.RegisterCommand<RestockMerchantCmd>(InventoryMessages.RESTOCK_MERCHANT);
 
             // Party
             AmbitionApp.RegisterCommand<InitPartyCmd, PartyVO>(PartyMessages.INITIALIZE_PARTY);
@@ -79,7 +82,6 @@ namespace Ambition
             AmbitionApp.RegisterCommand<ShowRoomCmd, IncidentVO>(PartyMessages.SHOW_ROOM);
 
             AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
-            AmbitionApp.RegisterCommand<RestockMerchantCmd, DateTime>();
             AmbitionApp.RegisterCommand<CheckLivreCmd, int>(GameConsts.LIVRE);
 
             // Initially enabled for TUTORIAL

@@ -7,7 +7,7 @@ namespace Ambition
         public void Execute(CommodityVO reward)
         {
             InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
-            if (reward.ID == null || !Enum.TryParse<FactionType>(reward.ID, out FactionType faction))
+            if (reward.ID == null || !Enum.TryParse<FactionType>(reward.ID, ignoreCase:true, out FactionType faction))
             {
                 faction = AmbitionApp.GetModel<PartyModel>().Party?.Faction ?? FactionType.Neutral;
             }

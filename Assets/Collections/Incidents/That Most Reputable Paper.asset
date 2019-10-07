@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: That Most Reputable Paper
   m_EditorClassIdentifier: 
   _Nodes: 
-  _Links: 
+  _Links: 08000000
   _Positions:
   - {x: 0, y: 0}
   - {x: 0, y: 73}
@@ -32,6 +32,7 @@ MonoBehaviour:
   - {x: 2, y: 435}
   - {x: 280, y: 743}
   - {x: 280, y: 821}
+  - {x: -29, y: 826}
   Incident:
     Links:
     - {x: 6, y: 7}
@@ -51,6 +52,7 @@ MonoBehaviour:
     - {x: 4, y: 5}
     - {x: 5, y: 14}
     - {x: 14, y: 6}
+    - {x: 11, y: 17}
     Nodes:
     - Text: "You walk through the city, following Camille's directions. Eventually,
         you find yourself threading through narrower and narrower streets. The alleys,
@@ -193,7 +195,7 @@ MonoBehaviour:
         nod and a smile that attempts to be ingratiating. <i>\u201CBonjour madame.\u201D</i>"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -216,8 +218,8 @@ MonoBehaviour:
         damme</i>! My name is Pierre Renaudot.\r"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
-        Pose: approval
+        AvatarID: PierreRenaudot
+        Pose: happy
         Name: Pierre
       Character2:
         AvatarID: 
@@ -232,7 +234,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "The stranger\u2019s smile sours and he marches out of the fountain.\r\n\n\u201CI
         shall have you know, that fundraising is far more difficult than it appears.
@@ -240,8 +242,8 @@ MonoBehaviour:
         things.\u201D"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
-        Pose: negative
+        AvatarID: PierreRenaudot
+        Pose: angry
         Name: Pierre
       Character2:
         AvatarID: 
@@ -256,13 +258,13 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_bored
         Parameters: []
     - Text: "\u201CHow may I be of service?\u201D"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
-        Pose: approval
+        AvatarID: PierreRenaudot
+        Pose: happy
         Name: Pierre
       Character2:
         AvatarID: 
@@ -284,8 +286,8 @@ MonoBehaviour:
         are always willing to pay for such valuable\u2026 information.\u201D"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
-        Pose: charmed
+        AvatarID: PierreRenaudot
+        Pose: happy
         Name: Pierre
       Character2:
         AvatarID: 
@@ -306,8 +308,8 @@ MonoBehaviour:
         worry, it\u2019s much easier than you think.\u201D"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
-        Pose: approval
+        AvatarID: PierreRenaudot
+        Pose: happy
         Name: Pierre
       Character2:
         AvatarID: 
@@ -328,7 +330,7 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: guest01
-        Pose: negative
+        Pose: angry
         Name: Pierre
       Character2:
         AvatarID: 
@@ -349,7 +351,7 @@ MonoBehaviour:
         do hope that coins are an acceptable form of payment...\u201D\r"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -373,7 +375,7 @@ MonoBehaviour:
         his other hand. "
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -396,8 +398,8 @@ MonoBehaviour:
         I\u2019m not wasting my money on fabrications.\u201D"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
-        Pose: negative
+        AvatarID: PierreRenaudot
+        Pose: angry
         Name: Pierre
       Character2:
         AvatarID: 
@@ -418,8 +420,30 @@ MonoBehaviour:
         box.\r\n\n\u201CYou take coins, right?\u201D\r"
       Background: {fileID: 0}
       Character1:
-        AvatarID: guest01
+        AvatarID: PierreRenaudot
         Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Maintaining his look of indignity, he glances into his dripping wet snuff
+        box.\r\n\n\u201CYou take coins, right?\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
         Name: Pierre
       Character2:
         AvatarID: 
@@ -479,6 +503,11 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: "\u201CIf I wanted to sell some gossip, how would that work?\u201D <Tutorial>"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []

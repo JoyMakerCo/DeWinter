@@ -4,6 +4,10 @@ namespace Ambition
 {
     public class CheckLocationLink : ULink
     {
-        override public bool Validate() => AmbitionApp.GetModel<ParisModel>().Location != null;
+        override public bool Validate()
+        {
+            ParisModel paris = AmbitionApp.GetModel<ParisModel>();
+            return paris.Location != null;
+        }
     }
 }

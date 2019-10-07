@@ -16,14 +16,14 @@ MonoBehaviour:
   _Links: 
   _Positions:
   - {x: 0, y: 0}
-  - {x: 2, y: 101}
+  - {x: 2, y: 102}
   - {x: -4, y: 180}
   - {x: -200, y: 256}
   - {x: 242, y: 192}
-  - {x: -12, y: 473}
+  - {x: -9, y: 439}
   - {x: 246, y: 267}
-  - {x: -11, y: 554}
-  - {x: -14, y: 628}
+  - {x: -5, y: 544}
+  - {x: -9, y: 652}
   - {x: -11, y: 704}
   - {x: -292, y: 788}
   - {x: -8, y: 789}
@@ -33,10 +33,12 @@ MonoBehaviour:
   - {x: 17, y: 862}
   - {x: 20, y: 936}
   - {x: 293, y: 858}
-  - {x: 299, y: 935}
+  - {x: 300, y: 935}
   - {x: 249, y: 414}
   - {x: 248, y: 338}
   - {x: -178, y: 321}
+  - {x: -5, y: 493}
+  - {x: -17, y: 596}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -44,8 +46,6 @@ MonoBehaviour:
     - {x: 2, y: 3}
     - {x: 2, y: 4}
     - {x: 4, y: 6}
-    - {x: 5, y: 7}
-    - {x: 7, y: 8}
     - {x: 8, y: 9}
     - {x: 9, y: 10}
     - {x: 9, y: 11}
@@ -64,13 +64,17 @@ MonoBehaviour:
     - {x: 20, y: 19}
     - {x: 3, y: 21}
     - {x: 21, y: 5}
+    - {x: 5, y: 22}
+    - {x: 22, y: 7}
+    - {x: 7, y: 23}
+    - {x: 23, y: 8}
     Nodes:
     - Text: "Before you can reply, a valet grabs you roughly by the arm and drags
         you from the study. People like your loathsome host don\u2019t need to do
         their own dirty work, they have servants for that. It takes far longer than
         you\u2019d like to get outside, as the entryway is crowded with guests preparing
         to leave.\r\n \r\nYou can feel their eyes weighing heavily on you. \r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -614,6 +618,48 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: "(You\x19ve gained some credibility)\r"
+      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You\x19ve gained some credibility)\r"
+      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: Coachman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
     - Text: 
       xor: 0
@@ -632,16 +678,6 @@ MonoBehaviour:
       Flags: []
     - Text: '"That''s some big talk about titles, from a man who can''t even do his
         own dirty work!"'
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -724,6 +760,26 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: '"Perhaps not, I''ll examine the other carriages."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []

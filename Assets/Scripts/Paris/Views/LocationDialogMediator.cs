@@ -19,6 +19,13 @@ namespace Ambition
             LocationImage.sprite = _location.LocationModalSprite;
         }
 
-        public void GoToLocation() => AmbitionApp.SendMessage(ParisMessages.GO_TO_LOCATION, _location);
+        public void GoToLocation()
+        {
+            LocationVO location = _location?.GetLocation();
+            if (location != null)
+            {
+                AmbitionApp.SendMessage(ParisMessages.GO_TO_LOCATION, location);
+            }
+        }
     }
 }

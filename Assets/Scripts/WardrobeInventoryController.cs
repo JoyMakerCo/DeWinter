@@ -111,8 +111,7 @@ namespace Ambition
             if (InventoryOwner == InventoryType.Shop)
             {
                 print("Executing the Restock Inventory Command!");
-                RestockMerchantCmd restock = new RestockMerchantCmd();
-                restock.Execute(AmbitionApp.GetModel<CalendarModel>().Today);
+                AmbitionApp.SendMessage(InventoryMessages.RESTOCK_MERCHANT);
                 OutfitLimitText.text = ""; //Fatima's inventory has no limits, so these blank out
                 AccessoryLimitText.text = "";
             }
@@ -254,15 +253,7 @@ namespace Ambition
             HideOutfitSortList();
             OutfitSortText.text = sort;
             //To Do: The Part where the actual inventory list gets sorted
-            switch(sort)
-            {
-                case ItemConsts.STYLE:
-                    _outfits.Sort((a, b) => OrderByString(a, b, sort, false));
-                    break;
-                default:
-                    _outfits.Sort((a, b) => OrderByInt(a, b, sort, false));
-                    break;
-            }
+            _outfits.Sort((a, b) => OrderByInt(a, b, sort, false));
 
             DisplayInventory();
         }

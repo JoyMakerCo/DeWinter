@@ -22,23 +22,28 @@ MonoBehaviour:
   - {x: 6, y: 278}
   - {x: 3, y: 341}
   - {x: 5, y: 402}
-  - {x: -160, y: 474}
-  - {x: 142, y: 472}
-  - {x: -170, y: 549}
+  - {x: -215, y: 435}
+  - {x: 232, y: 455}
+  - {x: -220, y: 603}
   - {x: -5, y: 618}
-  - {x: 152, y: 540}
+  - {x: 236, y: 526}
   - {x: -2, y: 679}
   - {x: -3, y: 739}
   - {x: -1, y: 807}
   - {x: -158, y: 878}
-  - {x: 241, y: 806}
+  - {x: 260, y: 804}
   - {x: -153, y: 939}
   - {x: 19, y: 1054}
-  - {x: 247, y: 871}
-  - {x: 247, y: 936}
-  - {x: 248, y: 1004}
+  - {x: 262, y: 863}
+  - {x: 268, y: 926}
+  - {x: 275, y: 1047}
   - {x: 21, y: 1120}
   - {x: 23, y: 1181}
+  - {x: 240, y: 590}
+  - {x: -227, y: 518}
+  - {x: 274, y: 990}
+  - {x: 23, y: 1240}
+  - {x: 24, y: 1307}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -49,10 +54,8 @@ MonoBehaviour:
     - {x: 5, y: 6}
     - {x: 6, y: 7}
     - {x: 6, y: 8}
-    - {x: 7, y: 9}
     - {x: 9, y: 10}
     - {x: 8, y: 11}
-    - {x: 11, y: 10}
     - {x: 10, y: 12}
     - {x: 12, y: 13}
     - {x: 13, y: 14}
@@ -62,10 +65,17 @@ MonoBehaviour:
     - {x: 17, y: 18}
     - {x: 16, y: 19}
     - {x: 19, y: 20}
-    - {x: 20, y: 21}
     - {x: 21, y: 18}
     - {x: 18, y: 22}
     - {x: 22, y: 23}
+    - {x: 11, y: 24}
+    - {x: 24, y: 10}
+    - {x: 7, y: 25}
+    - {x: 25, y: 9}
+    - {x: 20, y: 26}
+    - {x: 26, y: 21}
+    - {x: 23, y: 27}
+    - {x: 27, y: 28}
     Nodes:
     - Text: "You leave the house earlier than usual that morning, uncertain of how
         long it\u2019ll take you to walk to the fountain that Ludovico mentioned in
@@ -247,7 +257,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CThat\u2026\u201D"
       Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
@@ -337,7 +347,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_bored
         Parameters: []
     - Text: "\u201CWith that in mind I started asking around about him, seeing if
         his revolutionary righteousness was real, or a mere facade.\u201D He favors
@@ -432,7 +442,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: "Ludovico leans in close and whispers in your ear, his voice barely audible.
         \u201CMadame, Rome chose me as their eyes and ears in France. You didn\u2019t
@@ -545,7 +555,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CHonestly, it\u2019s been a nice change of pace, normally I just
         spend a lot of time listening to bishops and writing letters back to the Vatican.
@@ -595,6 +605,133 @@ MonoBehaviour:
         left Maximin\u2019s employment suddenly, and under murky circumstances. It
         seems fruitful, but you\u2019ll have to dig deeper first."
       Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. A mystery servant, who
+        left Maximin\u2019s employment suddenly, and under murky circumstances. It
+        seems fruitful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: sad
+        Name: Ludovico
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Ludovico
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. A mystery servant, who
+        left Maximin\u2019s employment suddenly, and under murky circumstances. It
+        seems fruitful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Ludovico
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. A mystery servant, who
+        left Maximin\u2019s employment suddenly, and under murky circumstances. It
+        seems fruitful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Ludovico
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. A mystery servant, who
+        left Maximin\u2019s employment suddenly, and under murky circumstances. It
+        seems fruitful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Researching Maximin
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. A mystery servant, who
+        left Maximin\u2019s employment suddenly, and under murky circumstances. It
+        seems fruitful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -682,22 +819,47 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
     - Text: "\u201C<i>Merci</i> Ludovico, your help means a lot to me.\u201D"
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
     - Text: "\u201CYou\u2019re a lot more devious than I expected you to be.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []

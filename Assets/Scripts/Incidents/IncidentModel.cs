@@ -28,7 +28,9 @@ namespace Ambition
                 _moment = value == null ? -1 : (Incident?.GetNodeIndex(value) ?? -1);
                 if (_moment >= 0) AmbitionApp.SendMessage(value);
             }
-            get => Incident?.Nodes[_moment];
+            get => Incident?.Nodes != null && _moment >= 0 && _moment < Incident.Nodes.Length
+                ? Incident.Nodes[_moment]
+                : null;
         }
 
         public void Reset()

@@ -16,8 +16,10 @@ namespace Ambition
         public const string DISPLAY_GOSSIP = "DISPLAY_GOSSIP"; //Gossip items aren't part of the Item VO, and have some truly unique behaviors, so it feels like they need their own message set
         public const string SELL_GOSSIP = "SELL_GOSSIP";
         public const string PEDDLE_GOSSIP = "PEDDLE_GOSSIP";
+        public const string RESTOCK_MERCHANT = "RESTOCK_MERCHANT";
 
-		public const string EQUIP = "EQUIP";
+
+        public const string EQUIP = "EQUIP";
 		public const string UNEQUIP = "UNEQUIP";
         public const string ITEM_DELETED = "ITEM_DELETED";
     }

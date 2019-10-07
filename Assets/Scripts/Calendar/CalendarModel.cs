@@ -9,7 +9,7 @@ using Util;
 namespace Ambition
 {
     [Saveable]
-    public class CalendarModel : Model, IResettable, IInitializable
+    public class CalendarModel : Model, IResettable, IInitializable, IConsoleEntity
     {
         [JsonIgnore]
         public DateTime StartDate;
@@ -137,7 +137,7 @@ namespace Ambition
             IncidentVO incident;
             foreach (IncidentConfig config in incidents)
             {
-                incident = new IncidentVO(config.Incident);
+                incident = config.GetIncident();
                 if (incident.IsScheduled)
                 {
                     Schedule(incident);
@@ -170,5 +170,40 @@ namespace Ambition
             _day = 0;
             StartDate = default;
         }
+
+        public string[] Dump()
+        {
+            var dateFormat = "MMMM d, yyyy";
+
+            var lines = new List<string>()
+            {
+                "CalendarModel:",
+                string.Format( "Today {0} (day {1})", Today.ToString(dateFormat), Day ),
+                "Started: " + StartDate.ToString(dateFormat),
+                "Next Style Switch: " + NextStyleSwitchDay.ToString(dateFormat),
+            };
+
+            lines.Add( "Unscheduled Events: " + Unscheduled.Count.ToString() );
+            foreach (var ev in Unscheduled)
+            {
+                lines.Add( string.Format( "  {0}", ev.Name ));
+            }
+        
+            lines.Add( "Timeline Events: " + Timeline.Count.ToString() );
+            foreach (var eventList in Timeline.OrderBy(kv => kv.Key).Select(kv => kv.Value))
+            {
+                foreach (var ev in eventList)
+                {
+                    lines.Add( string.Format( "  {0}: {1}", ev.Date.ToString(dateFormat), ev.Name ));
+                }
+            }
+
+            return lines.ToArray();
+        }
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("CalendarModel has no invocation.");
+        }    
     }
 }

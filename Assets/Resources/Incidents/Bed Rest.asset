@@ -1,0 +1,379 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: Bed Rest
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -8, y: 109}
+  - {x: -213, y: 190}
+  - {x: 0, y: 196}
+  - {x: 239, y: 191}
+  - {x: 9, y: 420}
+  - {x: 12, y: 474}
+  - {x: 18, y: 565}
+  - {x: -122, y: 659}
+  - {x: 127, y: 652}
+  - {x: 11, y: 356}
+  - {x: 9, y: 276}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 1, y: 4}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 10, y: 5}
+    - {x: 2, y: 11}
+    - {x: 11, y: 10}
+    - {x: 3, y: 11}
+    - {x: 4, y: 11}
+    - {x: 0, y: 1}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: 'sad '
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Rest at Home
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
+    OneShot: 1
+    Chapters: 
+    Tags: []
+    Factions: 
+    LocalizationKey: 
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: 564310368000000000
+  _localizationKey: Assets/Resources/Incidents/Bed Rest.asset.
+  _nodeText: []
+  _linkText: []

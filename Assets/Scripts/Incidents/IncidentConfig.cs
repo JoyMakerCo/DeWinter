@@ -126,6 +126,7 @@ namespace Ambition
             {
                 Dictionary<string, string> phrases = new Dictionary<string, string>();
                 string key = _localization.GenerateLocalizationKey(this);
+                string phrase;
                 _localizationKey = _localizationProp?.stringValue ?? _localizationKey;
                 if (_localizationKey != key)
                 {
@@ -137,11 +138,19 @@ namespace Ambition
                 }
                 for (int i = (_nodelist?.arraySize ?? 0) - 1; i >= 0; i--)
                 {
-                    phrases[NODE_KEY + i.ToString()] = _nodelist.GetArrayElementAtIndex(i).stringValue;
+                    phrase = _nodelist.GetArrayElementAtIndex(i).stringValue;
+                    if (!string.IsNullOrEmpty(phrase))
+                    {
+                       phrases[NODE_KEY + i.ToString()] = phrase;
+                    }
                 }
                 for (int i = (_linklist?.arraySize ?? 0) - 1; i >= 0; i--)
                 {
-                    phrases[LINK_KEY + i.ToString()] = _linklist.GetArrayElementAtIndex(i).stringValue;
+                    phrase = _linklist.GetArrayElementAtIndex(i).stringValue;
+                    if (!string.IsNullOrEmpty(phrase))
+                    {
+                        phrases[LINK_KEY + i.ToString()] = phrase;
+                    }
                 }
                 _nodelist?.ClearArray();
                 _linklist?.ClearArray();
@@ -150,6 +159,11 @@ namespace Ambition
                 _localization = null;
                 phrases = null;
             }
+        }
+
+        public string UpdateLocalizationKey()
+        {
+            return _localization?.UpdateLocalizationKey(this, _localizationKey) ?? _localizationKey;
         }
 
         private readonly string[] MONTHS = new string[]{
@@ -361,7 +375,12 @@ namespace Ambition
     [CustomEditor(typeof(IncidentConfig))]
     public class IncidentConfigDrawer : Editor
     {
-        public override void OnInspectorGUI() => ((IncidentConfig)target).OnRenderInspector(serializedObject);
+        public override void OnInspectorGUI()
+        {
+            IncidentConfig config = target as IncidentConfig;
+            config.OnRenderInspector(serializedObject);
+            serializedObject.FindProperty("_localizationKey").stringValue = config.UpdateLocalizationKey();
+        }
 #endif
     }
 }

@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace Ambition
 {
     [Saveable]
-    public class GameModel : DocumentModel, IDisposable
+    public class GameModel : DocumentModel, IDisposable, IConsoleEntity
     {
         [JsonProperty("allegiance")]
         public FactionType Allegiance;
@@ -130,5 +130,28 @@ namespace Ambition
                 : Exhaustion.Value < _exhaustionPenalty.Length
                 ? _exhaustionPenalty[Exhaustion.Value]
                 : _exhaustionPenalty[_exhaustionPenalty.Length - 1];
+
+        public string[] Dump()
+        {
+            return new string[]
+            {
+                "GameModel:",
+                "Allegiance: " + Allegiance.ToString(),
+                "Player: " + PlayerName,
+                "Chapter: " + Chapter,
+                "Livre: " + Livre.Value.ToString(),
+                "Exhaustion: " + Exhaustion.Value.ToString(),
+                "Credibility: " + Credibility.Value.ToString(),
+                "Peril: " + Peril.Value.ToString(),
+                "Reputation: " + Reputation.ToString(),
+                "Level: " + Level.ToString(),
+            };
+        }
+
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("GameModel has no invocation.");
+        }
     }
 }

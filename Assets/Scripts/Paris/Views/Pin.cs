@@ -10,7 +10,7 @@ namespace Ambition
     public class Pin : MonoBehaviour
     {
         public IncidentConfig IntroIncidentConfig;
-        public GameObject Scene;
+        public string SceneID;
         public bool OneShot;
         public string LocationWindowDescription;
         public Sprite LocationModalSprite;
@@ -18,6 +18,21 @@ namespace Ambition
         public bool Discoverable;
         public Text LabelText;
         public RequirementVO[] Requirements;
+
+        public LocationVO GetLocation()
+        {
+            RequirementVO[] requirements = new RequirementVO[Requirements.Length];
+            Array.Copy(Requirements, requirements, requirements.Length);
+            return new LocationVO()
+            {
+                LocationID = name,
+                Incident = IntroIncidentConfig.GetIncident(),
+                SceneID = SceneID,
+                OneShot = OneShot,
+                Discoverable = Discoverable,
+                Requirements = requirements
+            };
+        }
 
         private void Awake()
         {

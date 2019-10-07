@@ -5,10 +5,13 @@ using Core;
 using Util;
 using UGraph;
 
+
+using UnityEngine;
+
 namespace UFlow
 {
     [Serializable]
-	public sealed class UMachine
+	public sealed class UMachine : IConsoleEntity
 	{
 		public string MachineID { get; private set; }
         internal UMachineState _State;
@@ -193,5 +196,29 @@ UnityEngine.Debug.Log(MachineID + "(" + _UFlow.GetActiveMachines().Count(m=>m==M
 			ln.Initialize();
 			return ln;
 		}
+
+
+        public string[] Dump()
+        {
+            var stateId = "null";
+            if (_State != null)
+            {
+                stateId = _State.ID;
+            }
+
+            var lines = new List<string>()
+            {
+                "UMachine "+MachineID+":",
+                "state: "+stateId
+            };
+
+            return lines.ToArray();
+        }
+
+        
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("UMachine has no invocation.");
+        }  
 	}
 }

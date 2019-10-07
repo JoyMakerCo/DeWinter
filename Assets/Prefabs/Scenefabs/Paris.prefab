@@ -256,7 +256,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Le Petit Mogul
+  m_Text: Le Petit Mogol
 --- !u!114 &114183186593369518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 0}
-  Scene: {fileID: 0}
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'A coffee house frequented by philosophers, artists and
     academics. Get coffee, test the political waters, and speak your mind. '
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: fc67e03194391d7419a362652b77d8c3,
     type: 2}
-  Scene: {fileID: 1322629131161042, guid: f3f136c9faba7e448a1f0f8ac198e543, type: 3}
+  SceneID: LE_PETIT_MOGOL
   OneShot: 0
   LocationWindowDescription: A small shop run by the dressmaker Fatima Shenna. Spend
     your day here to buy and sell wardrobe items.
@@ -1447,11 +1447,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: db5d06c047909af47aaed69be52876ac,
     type: 2}
-  Scene: {fileID: 0}
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: Out in the suburbs of Paris, Guingette Paradis is a perfect
     spot for drinking, dancing, and cabaret entertainments.
-  LocationModalSprite: {fileID: 21300000, guid: f2c66087255ef4e469d3c6cf5f7bb209,
+  LocationModalSprite: {fileID: 21300000, guid: fa0a7901fcce546acb6de00ad641fc4d,
     type: 3}
   Label: {fileID: 1819929516821616}
   Discoverable: 1
@@ -1589,7 +1589,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301918836101392}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &114940530891147232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,8 +1602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a1ef2d747b341fe96c03fd61ac7ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntroIncidentConfig: {fileID: 0}
-  Scene: {fileID: 0}
+  IntroIncidentConfig: {fileID: 11400000, guid: 4b737911cedfc4bf9ad106b86c401f84,
+    type: 2}
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'Spend the day resting at home. This will remove all
     levels of exhaustion, if you have any. '
@@ -1612,7 +1613,11 @@ MonoBehaviour:
   Label: {fileID: 1654631311403842}
   Discoverable: 0
   LabelText: {fileID: 114797086653622438}
-  Requirements: []
+  Requirements:
+  - Type: 15
+    ID: January
+    Value: 1
+    Operator: 4
 --- !u!1 &1330188479931974
 GameObject:
   m_ObjectHideFlags: 0
@@ -3401,7 +3406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: 0be96f5877e61c34993e5e43c8ab4faf,
     type: 2}
-  Scene: {fileID: 1935741580273956, guid: 1a6b275d35d21354391b1ca36f182890, type: 3}
+  SceneID: LA_TROMPETTE
   OneShot: 0
   LocationWindowDescription: A popular, if unscrupulous newspaper. Spend the day here
     to sell gossip and manipulate public opinion.
@@ -4798,11 +4803,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: cb72e81bea7cb214c940ca971dbe1e76,
     type: 2}
-  Scene: {fileID: 1265684544818456, guid: b12b1c36b8a76d8498193e6145c95fd5, type: 3}
+  SceneID: LA_PLACE_ROYALE
   OneShot: 0
   LocationWindowDescription: "A great square where great and powerful socialize. Here,
     you\u2019ll spend the day trawling for gossip."
-  LocationModalSprite: {fileID: 21300000, guid: 54b0ec29e16439b408d57add78f97707,
+  LocationModalSprite: {fileID: 21300000, guid: a4fb2eae9eb3f47f484d0ef867fbed73,
     type: 3}
   Label: {fileID: 1576983516447964}
   Discoverable: 1
@@ -6288,7 +6293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: a9d6698b65088294ea4837bc3bd668b8,
     type: 2}
-  Scene: {fileID: 0}
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'Relax and promenade with your liaison in these popular
     gardens in order to see and be seen. '
@@ -7542,7 +7547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: 7a97732d60414964488c95e51c794a06,
     type: 2}
-  Scene: {fileID: 0}
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'A luxurious restaurant serving some of the finest food
     in Paris. Try the lamb! '
@@ -7692,7 +7697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: 7db5316b7cbb21a40907fafaa16a0c01,
     type: 2}
-  Scene: {fileID: 0}
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: "Created by the infamous libertine, Louis Philippe d'Orl\xE9ans,
     these bustling gardens are filled with strange and exotic attractions."
@@ -7960,7 +7965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: bc0f68689b6f7c64685f187f4972f7b7,
     type: 2}
-  Scene: {fileID: 0}
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'The premiere theater in Paris, Les Grands-Danseurs du
     Roi is known for its coarse, but lively comedies. '

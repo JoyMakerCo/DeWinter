@@ -3,18 +3,19 @@ using System.Collections.Generic;
 
 namespace Ambition
 {
-    public class ChooseLocationCmd : ICommand<Pin>
+    public class ChooseLocationCmd : ICommand<LocationVO>
     {
-        public void Execute(Pin location)
+        public void Execute(LocationVO location)
         {
             if (location == null) return;
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
             model.Location = location;
-            if (!model.Visited.Contains(location.name))
+            AmbitionApp.GetModel<LocalizationModel>().SetLocation(location.LocationID);
+            if (!model.Visited.Contains(location.LocationID))
             {
                 CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-                calendar.Schedule(location.IntroIncidentConfig?.GetIncident(), calendar.Today);
-                model.Visited.Add(location.name);
+                calendar.Schedule(location.Incident, calendar.Today);
+                model.Visited.Add(location.LocationID);
             }
         }
     }

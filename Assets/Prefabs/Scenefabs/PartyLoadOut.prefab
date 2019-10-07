@@ -172,7 +172,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Novelty
@@ -486,7 +486,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Modesty
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 224793949982282544}
   - component: {fileID: 222480454843146658}
   - component: {fileID: 114439342563710696}
-  - component: {fileID: 9023600012131716571}
+  - component: {fileID: 5013175230624692867}
   m_Layer: 5
   m_Name: YvettePaperDoll
   m_TagString: Untagged
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9023600012131716571
+--- !u!114 &5013175230624692867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -845,7 +845,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947c2962be9664c0c83d0909531b3913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DressConfig: {fileID: 11400000, guid: 0e51a123bf2be44d391d80d5b3f8b26a, type: 2}
+  OutfitConfig: {fileID: 11400000, guid: 5f1f8c74112074f1fa8472f34419b8ac, type: 2}
+  Doll: {fileID: 114439342563710696}
 --- !u!1 &1074370867239112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1443,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Luxury
@@ -3633,7 +3634,7 @@ MonoBehaviour:
   LuxuryStatText: {fileID: 114363397238489064}
   ModestyStatText: {fileID: 114778693978006716}
   NoveltyStatText: {fileID: 114699734642935496}
-  DressCollection: {fileID: 11400000, guid: 0e51a123bf2be44d391d80d5b3f8b26a, type: 2}
+  DressCollection: {fileID: 0}
 --- !u!1 &1671282751607862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,7 +3728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FactionSymbols: {fileID: 11400000, guid: 40dcf6421b6bc4e8b909a0099a4063c6, type: 2}
   FactionSymbol: {fileID: 114488595989005222}
-  TooltipText: {fileID: 114598277098791932}
+  TooltipText: {fileID: 0}
 --- !u!1 &1676218252831890
 GameObject:
   m_ObjectHideFlags: 0
@@ -5715,7 +5716,6 @@ GameObject:
   - component: {fileID: 222307319078762280}
   - component: {fileID: 114555719019475662}
   - component: {fileID: 114410469724726372}
-  - component: {fileID: 114598277098791932}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5799,18 +5799,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &114598277098791932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898857451744414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb45b82374044427ab05e67885ed5d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1902904343935398
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using Dialog;
 using UFlow;
@@ -232,7 +231,14 @@ namespace Ambition
 		public static string GetString(string key, Dictionary<string, string> substitutions)
 		{
             LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
-            return App.Service<LocalizationSvc>().GetString(key, substitutions.Concat(model.Substitutions).GroupBy(k=>k.Key).ToDictionary(k=>k.Key, k=>k.First().Value));
+            foreach (KeyValuePair<string, string> kvp in model.Substitutions)
+            {
+                if (!substitutions.ContainsKey(kvp.Key))
+                {
+                    substitutions[kvp.Key] = kvp.Value;
+                }
+            }
+            return App.Service<LocalizationSvc>().GetString(key, substitutions);
 		}
 
 		public static string[] GetPhrases(string key)

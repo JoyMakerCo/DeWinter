@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Ambition
 {
-	public class FactionModel : DocumentModel
+	public class FactionModel : DocumentModel, IConsoleEntity
 	{
 		public Dictionary<FactionType, FactionVO> Factions;
 
@@ -84,5 +84,33 @@ namespace Ambition
 
 			return Levels[level];
 		}
+
+        public string[] Dump()
+        {
+            var lines = new List<string>()
+            {
+                "FactionModel:",
+            };
+
+			foreach (var kv in Factions)
+			{
+				var fac = kv.Value;
+				lines.Add( "  Faction: "+fac.Name);
+				lines.Add( "    modesty: " + fac.Modesty.ToString());
+				lines.Add( "    luxury: " + fac.Luxury.ToString());
+				lines.Add( "    steadfast: " + fac.Steadfast.ToString());
+				lines.Add( "    baroque: " + fac.Baroque[0].ToString() + "-" +fac.Baroque[1].ToString());
+				lines.Add( "    allegiance: " + fac.Allegiance.ToString());
+				lines.Add( "    power: " + fac.Power.ToString());
+				lines.Add( "    level: " + fac.Level.ToString());
+				lines.Add( "    reputation: " + fac.Reputation.ToString());
+			}
+			return lines.ToArray();
+        }
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("FactionModel has no invocation.");
+        }		
 	}
 }

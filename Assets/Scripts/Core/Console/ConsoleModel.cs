@@ -4,25 +4,62 @@ using System.Linq;
 using UnityEngine;
 
 using Ambition;
+using UFlow;
 
 namespace Core
 {
+	public enum ConsoleStyle
+	{
+		Log,
+		Warning,
+		Error,
+		Input	
+	};
+
 	public class ConsoleModel : Model
 	{
+		private static ConsoleModel _instance; // shady
 		ConsoleView _view;
 
 		Dictionary<string, ConsoleCommand> _commands;
+		// relatively static entities
 		Dictionary<string, IConsoleEntity> _entities;
+
+		Dictionary<string, IConsoleEntity> ActiveEntities()
+		{
+			var transientEntities = _entities.ToDictionary(entry => entry.Key,
+                                               entry => entry.Value);
+
+			// Add entities that are likely to change here, like currently active UFlow machines
+
+			var ufs = AmbitionApp.GetService<UFlowSvc>();
+
+			foreach (var machine in ufs.GetAllMachines())
+			{
+				if (machine != null)
+				{
+					transientEntities[ "machine."+machine.MachineID ] = machine;
+				}
+			}
+
+			return transientEntities;
+		}
 
 		public ConsoleModel ()
 		{
+			_instance = this;
 			Debug.Log("ConsoleModel()");
          	ConsoleView[] views = GameObject.FindObjectsOfType(typeof(ConsoleView)) as ConsoleView[];
 			if ((views != null) && (views.Length > 0))
 			{
 				_view = views[0];
 				configureView();
-				_view.Add("Version "+ ConfigurationModel.Config.Version.ToString() );
+				// Force scroll view to fill so version appears at bottom instead of in the middle :P
+				for (int i = 0; i < 60; i++)
+				{
+					log("");
+				}
+				log("Version "+ ConfigurationModel.Config.Version.ToString() );
 			}
 			else
 			{
@@ -34,10 +71,11 @@ namespace Core
 
 			NewCommand( "invoke", InvokeEntity, "trigger an entity" );
 			NewCommand( "incident", StartIncident, "start an incident", CollectIncidents );
-			NewCommand( "list", ListEntities, "list known entities" );
+			NewCommand( "list", ListEntities, "list known entities", CollectEntities );
 			NewCommand( "dump", DumpEntity, "display information about an entity" );
 			NewCommand( "help", Help, "get information on commands" );
 			NewCommand( "send", SendMessage, "send message" );
+			NewCommand( "reward", GrantReward, "grant a reward" );
 		}
 
 		void configureView()
@@ -45,18 +83,50 @@ namespace Core
 			_view.Configure();
 		}
 
-		public void log( string text )
+		public static void log( string text )
 		{
-			_view?.Add(text);
+			_instance._view?.Add(text);
 		}
 
-		public void log(string format, params object[] args)
+		public static void log(string format, params object[] args)
 		{
 			log(string.Format(format,args));
 		}
 
+		public static void warn( string text )
+		{
+			_instance._view?.Add(text,ConsoleStyle.Warning);
+		}
+
+		public static void warn(string format, params object[] args)
+		{
+			warn(string.Format(format,args));
+		}
+
+		public static void error( string text )
+		{
+			_instance._view?.Add(text,ConsoleStyle.Error);
+		}
+
+		public static void error(string format, params object[] args)
+		{
+			error(string.Format(format,args));
+		}
+
+		public static void logInput( string text )
+		{
+			_instance._view?.Add(text,ConsoleStyle.Input);
+		}
+
+		public static void logInput(string format, params object[] args)
+		{
+			logInput(string.Format(format,args));
+		}
+
 		public void ParseInput(string input)
 		{
+			logInput("> " +input);
+
 			// tokenize into command and parameters
 			var sep = new char[] { ',',' ' };
 
@@ -66,12 +136,12 @@ namespace Core
 			var matchingCommands = Lookup<ConsoleCommand>( commandPrefix, _commands );
 			if (matchingCommands.Count == 0)
 			{
-				log("Unrecognized command '{0}'.", commandPrefix );
+				error("Unrecognized command '{0}'.", commandPrefix );
 				return;
 			}
 			if (matchingCommands.Count > 1)
 			{
-				log("Ambiguous command '{0}'. Potential matches:", commandPrefix);
+				warn("Ambiguous command '{0}'. Potential matches:", commandPrefix);
 				foreach (var mc in matchingCommands)
 				{
 					log("  "+mc);
@@ -132,25 +202,47 @@ namespace Core
 				}
 
 			}
+			else if (args.Length == 2)
+			{
+				var matchingCommands = Lookup<ConsoleCommand>( args[1], _commands );
+				if (matchingCommands.Count == 0)
+				{
+					error("Unrecognized command '{0}'.", args[1] );
+					return;
+				}
+				if (matchingCommands.Count > 1)
+				{
+					warn("Ambiguous command '{0}'. Potential matches:", args[1]);
+					foreach (var mc in matchingCommands)
+					{
+						log("  "+mc);
+					}
+					return;
+				}
+
+				// handle command
+				log( _commands[matchingCommands[0]].help );
+			}
 		}
 
 		void InvokeEntity( string[] args )
 		{
 			if (args.Length < 2)
 			{
-				log( "Error: invoke <target>");
+				error( "Error: invoke <target>");
 			}
 			else
 			{
-				var matchingEnts = Lookup<IConsoleEntity>( args[1], _entities );
+				var ents = ActiveEntities();
+				var matchingEnts = Lookup<IConsoleEntity>( args[1], ents );
 				if (matchingEnts.Count == 0)
 				{
-					log("Unrecognized entity '{0}'.", args[1] );
+					error("Unrecognized entity '{0}'.", args[1] );
 					return;
 				}
 				if (matchingEnts.Count > 1)
 				{
-					log("Ambiguous entity '{0}'. Potential invokable matches:", args[1]);
+					warn("Ambiguous entity '{0}'. Potential invokable matches:", args[1]);
 					foreach (var me in matchingEnts)
 					{
 						log("  "+me);
@@ -158,7 +250,7 @@ namespace Core
 					return;
 				}
 					
-				_entities[matchingEnts[0]].Invoke( args );
+				ents[matchingEnts[0]].Invoke( args );
 			}
 		}
 
@@ -182,9 +274,32 @@ namespace Core
 			}
 		}
 
+		void CollectEntities()
+		{
+			// Incidents already taken care of
+			
+			_entities["game"] = AmbitionApp.GetModel<GameModel>();
+			_entities["calendar"] = AmbitionApp.GetModel<CalendarModel>();
+			_entities["inventory"] = AmbitionApp.GetModel<InventoryModel>();
+
+			var factionModel = AmbitionApp.GetModel<FactionModel>();
+			_entities["factions"] = factionModel;
+
+			foreach (var faction in factionModel.Factions.Values)
+			{
+				var localFaction = faction;
+				var id = "faction."+localFaction.Name;
+				_entities[id] =
+					new ConsoleEntity( id, (args) => { InvokeFaction(localFaction,args); }, () => { return DumpFaction(localFaction); } );
+			}
+
+			_entities["uflow"] = AmbitionApp.GetService<UFlowSvc>();
+
+		}
+
 		void InvokeIncident( string name, string[] args )
 		{
-			log("NYI invoke incident {0}", name);
+			warn("NYI invoke incident {0}", name);
 		}
 
 		string[] DumpIncident( string name )
@@ -192,18 +307,38 @@ namespace Core
 			var ic = UnityEngine.Resources.Load("Incidents/"+name) as IncidentConfig;
 			if (ic == null)
 			{
-				log("Error: couldn't load resource '{0}' as an IncidentConfig", name );
+				error("Error: couldn't load resource '{0}' as an IncidentConfig", name );
 				return new string[] {};
 			}
 			//IncidentVO ivo = new IncidentVO(ic.Incident);
 			return ic.GetIncident().Dump();
 		}
 
+		void InvokeFaction( FactionVO fac, string[] args )
+		{
+			warn("NYI invoke faction {0}", fac.Name);
+		}
+
+		string[] DumpFaction( FactionVO fac )
+		{
+			return new string[] {
+				"Faction "+fac.Name+":",
+				"  modesty: " + fac.Modesty.ToString(),
+				"  luxury: " + fac.Luxury.ToString(),
+				"  steadfast: " + fac.Steadfast.ToString(),
+				"  baroque: " + fac.Baroque[0].ToString() + "-" +fac.Baroque[1].ToString(),
+				"  allegiance: " + fac.Allegiance.ToString(),
+				"  power: " + fac.Power.ToString(),
+				"  level: " + fac.Level.ToString(),
+				"  reputation: " + fac.Reputation.ToString()
+			};
+		}
+
 		void StartIncident( string[] args )
 		{
 			if (args.Length < 2)
 			{
-				log( "Error: incident <incident id>");
+				error( "Error: incident <incident id>");
 			}
 			else
 			{
@@ -213,8 +348,15 @@ namespace Core
 
 		void ListEntities( string[] args )
 		{
-			// merge invokable, dumpable and list them
-			var ordered = _entities.Keys.OrderBy( k => k );
+			// TODO prefix restriction
+			var ents = ActiveEntities();
+
+			var matchingEnts = ents.Select( k => k.Key );
+			if (args.Length == 2)
+			{
+				matchingEnts = Lookup<IConsoleEntity>( args[1], ents );
+			}
+			var ordered = matchingEnts.OrderBy( k => k );
 			log( "Known entities: ");
 	
 			foreach (var eid in ordered)
@@ -227,19 +369,20 @@ namespace Core
 		{
 			if (args.Length < 2)
 			{
-				log( "Error: dump <target>");
+				error( "Error: dump <target>");
 			}
 			else
 			{
-				var matchingEnts = Lookup<IConsoleEntity>( args[1], _entities );
+				var ents = ActiveEntities();
+				var matchingEnts = Lookup<IConsoleEntity>( args[1], ents );
 				if (matchingEnts.Count == 0)
 				{
-					log("Unrecognized entity '{0}'.", args[1] );
+					error("Unrecognized entity '{0}'.", args[1] );
 					return;
 				}
 				if (matchingEnts.Count > 1)
 				{
-					log("Ambiguous entity '{0}'. Potential matches:", args[1]);
+					warn("Ambiguous entity '{0}'. Potential matches:", args[1]);
 					foreach (var me in matchingEnts)
 					{
 						log("  "+me);
@@ -249,12 +392,54 @@ namespace Core
 
 				log("entity '{0}':", matchingEnts[0]);
 
-				foreach (var line in _entities[matchingEnts[0]].Dump())
+				foreach (var line in ents[matchingEnts[0]].Dump())
 				{
 					log(line);
 				}
 				log("");
 			}
+		}
+
+
+		void GrantReward( string[] args )
+		{
+			CommodityType cType = CommodityType.Livre;
+			int val = 0;
+			string id = "";
+
+			if (args.Length > 1)
+			{
+				if (!Enum.TryParse<CommodityType>(args[1], ignoreCase:true, out cType))
+				{
+					error("Can't interpret {0} as a CommodityType.", args[1]);
+				}
+			}
+
+			if (args.Length == 3)
+			{
+				// "reward CommodityType value"
+				if (!int.TryParse(args[2], out val))
+				{
+					error("Can't interpret {0} as a number.", args[2]);
+				}
+
+			}
+			else if (args.Length == 4)
+			{
+				id = args[2];
+				// "reward CommodityType ID value"
+				if (!int.TryParse(args[3], out val))
+				{
+					error("Can't interpret {0} as a number.", args[3]);
+				}
+			}
+			else
+			{
+				error("'reward' requires either type and value, or type, ID, and value.");
+				return;
+			}
+
+			AmbitionApp.SendMessage( new CommodityVO( cType, id, val ));
 		}
 
 		void SendMessage( string[] args )
@@ -280,14 +465,25 @@ namespace Core
 			}
 			else if (args.Length > 2)
 			{
-				// TODO can we deduce type of arg 2+?
-				AmbitionApp.SendMessage(args[1],args[2]);
+				int intArg;
+				// TODO - infer the type of arg 2. 
+				// If it parses as int, send it as int, otherwise as string
+				if (int.TryParse(args[2],out intArg))
+				{
+					AmbitionApp.SendMessage(args[1],intArg);
+
+				}
+				else
+				{
+					AmbitionApp.SendMessage(args[1],args[2]);
+				}
 			}
 			else
 			{
-				log("'send' requires a message ID.");
+				error("'send' requires a message ID.");
 			}
 		}
+
 	}
 
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: The Good Soldier
   m_EditorClassIdentifier: 
-  _Nodes: b7000000
+  _Nodes: 
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -440,7 +440,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: Thomas-AlexandreCarriage
+        Value: 1
       Music:
         Name: event:/Music/Prologue - Intimate Conversation - Military
         Parameters:
@@ -564,7 +567,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_bored
         Parameters: []
     - Text: Corporal Dumas holds out his hand, and helps you into the carriage.
       Background: {fileID: 0}
@@ -610,7 +613,7 @@ MonoBehaviour:
         Parameters: []
     - Text: "The second you\u2019re seated, the carriage takes off, working its way
         towards the main road. The pace is fast and purposeful.\r"
-      Background: {fileID: 21300000, guid: db7f5ac67fe45804a938b164b0638fbb, type: 3}
+      Background: {fileID: 21300000, guid: 14eb3d2b4ab374fb89ce583fa14f85a6, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
@@ -878,10 +881,10 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/One Shot SFX/Male_bark_positive
+        Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CDisgusting,\u201D Corporal Dumas replies, his lips curling into
         a sneer. \u201CI have no idea what our host was thinking, doing something
@@ -904,7 +907,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_negative
         Parameters: []
     - Text: "\u201CHow\u2019d you find yourself to be without a way home?\u201D"
       Background: {fileID: 0}
@@ -945,10 +948,10 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/One Shot SFX/Male_bark_positive
+        Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CHmm, yes\u2026 it\u2019s as people say\u2026\u201D he stumbles
         for a moment, as the words evade him. \u201CGood help is so hard to find these
@@ -971,7 +974,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_bored
         Parameters: []
     - Text: "\u201CIs there anything else you\u2019d like to know?\u201D"
       Background: {fileID: 0}
@@ -1370,7 +1373,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: "\u201CWhen I wear these colors, I represent the Queen herself. I could
         never turn down a woman in need.\u201D He straightens up in his seat, looking
@@ -1394,7 +1397,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CDespite my considerable talents, I think they\u2019re really just
         inviting my father\u2019s memory, not me. Still, I attend because I\u2019d
@@ -3842,7 +3845,7 @@ MonoBehaviour:
         down, Corporal Dumas looks out the door at your home and whistles to himself.
         \r\n\r\n\u201CYou\u2019ve chosen quite the place to live. Well, if nothing
         else, the rent will be cheap.\u201D\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -3857,7 +3860,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -3865,7 +3868,7 @@ MonoBehaviour:
     - Text: "\u201CUntil we meet again, madame!\u201D He calls from carriage with
         a quick bow, as they drive off into the night. \r\n\r\nYou turn to your home
         and see that Camille is already there, holding the door open for you."
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -3889,7 +3892,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "\u201CWho was that?\u201D she asks."
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -3915,7 +3918,7 @@ MonoBehaviour:
     - Text: You step inside and head upstairs, your mind still reeling from the day's
         events. Slowly, you get undressed and open your journal to record exactly
         what transpired tonight.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -3930,7 +3933,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -3938,7 +3941,7 @@ MonoBehaviour:
     - Text: Your mind brimming with new possibilities, you step inside and head upstairs.
         Slowly, you get undressed and open your journal to record exactly what transpired
         tonight.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -3953,7 +3956,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -3986,7 +3989,7 @@ MonoBehaviour:
         \u201CAfter braving all manners of danger, we have arrived at your home, safe
         and sound. The Queen\u2019s Dragoons are proud to add another great victory
         to their name.\u201D "
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -4004,13 +4007,13 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CAnd while we accept no payment, I must ask of you a favor, madame.\u201D"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -4033,7 +4036,7 @@ MonoBehaviour:
     - Text: "\u201CThe next time that we meet, please call me Thomas-Alexandre,\u201D
         He pauses to stare into your eyes, \u201COr simply Alexandre, if you like.\u201D\r\n\n(You've
         gained some favor with Alexandre)"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -4055,7 +4058,7 @@ MonoBehaviour:
         Parameters: []
     - Text: "\u201CThe next time that we meet, please call me Thomas-Alexandre,\u201D
         He pauses to stare into your eyes, \u201COr simply Alexandre, if you like.\u201D\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -4081,7 +4084,7 @@ MonoBehaviour:
 
         You turn to your home and see that Camille is already there, holding the door
         open for you.'
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -6160,10 +6163,9 @@ MonoBehaviour:
     Queen\u2019s Dragoons are proud to add another great victory to their name.\u201D "
   - "\u201CAnd while we accept no payment, I must ask of you a favor, madame.\u201D"
   - "\u201CThe next time that we meet, please call me Thomas-Alexandre,\u201D He pauses
-    to stare into your eyes, \u201COr simply Alexandre, if you like.\u201D\r\n\n(You've
-    gained some favor with Alexandre)"
+    to stare into your eyes, \u201COr simply Alex if you like.\u201D\r"
   - "\u201CThe next time that we meet, please call me Thomas-Alexandre,\u201D He pauses
-    to stare into your eyes, \u201COr simply Alexandre, if you like.\u201D\r"
+    to stare into your eyes, \u201COr simply Alex, if you like.\u201D\r"
   - 'Before you can reply, he has already bounded onto his carriage and sailed off
     into the night.
 

@@ -22,21 +22,22 @@ MonoBehaviour:
   - {x: -238, y: 322}
   - {x: 85, y: 332}
   - {x: 415, y: 263}
-  - {x: -493, y: 398}
-  - {x: -242, y: 409}
+  - {x: -486, y: 321}
+  - {x: -242, y: 408}
   - {x: -487, y: 564}
   - {x: -484, y: 648}
   - {x: -246, y: 499}
   - {x: -238, y: 654}
   - {x: 83, y: 408}
-  - {x: 91, y: 532}
+  - {x: 90, y: 532}
   - {x: 96, y: 598}
-  - {x: 109, y: 659}
+  - {x: 109, y: 660}
   - {x: 123, y: 781}
   - {x: 88, y: 464}
   - {x: 112, y: 720}
   - {x: -238, y: 572}
-  - {x: -494, y: 485}
+  - {x: -495, y: 485}
+  - {x: -484, y: 408}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -58,8 +59,9 @@ MonoBehaviour:
     - {x: 19, y: 17}
     - {x: 11, y: 20}
     - {x: 20, y: 12}
-    - {x: 7, y: 21}
     - {x: 21, y: 9}
+    - {x: 7, y: 22}
+    - {x: 22, y: 21}
     Nodes:
     - Text: "You approach a pair of women who are already in the midst of conversation,
         speaking quickly in low voices. They don\u2019t seem to have noticed you."
@@ -335,10 +337,7 @@ MonoBehaviour:
         Pose: negative
         Name: Aristocrat
       Speaker: 3
-      Rewards:
-      - Type: 11
-        ID: 
-        Value: -5
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -384,10 +383,7 @@ MonoBehaviour:
         Pose: neutral
         Name: Aristocrat
       Speaker: 0
-      Rewards:
-      - Type: 2
-        ID: crown
-        Value: 1
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -500,7 +496,7 @@ MonoBehaviour:
       Speaker: 0
       Rewards:
       - Type: 2
-        ID: crown
+        ID: Crown
         Value: 1
       Music:
         Name: 
@@ -525,7 +521,7 @@ MonoBehaviour:
       Rewards:
       - Type: 12
         ID: 
-        Value: 5
+        Value: 10
       Music:
         Name: 
         Parameters: []
@@ -573,8 +569,30 @@ MonoBehaviour:
       Speaker: 0
       Rewards:
       - Type: 2
-        ID: crown
+        ID: Crown
         Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(A new piece of gossip has been added to your inventory. You\x19'll be
+        able to use this later.)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: guest02b
+        Pose: approval
+        Name: Courtier
+      Character2:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Aristocrat
+      Speaker: 0
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -608,7 +626,7 @@ MonoBehaviour:
       Flags:
       - Type: 2
         Phrase: incidents.transitions.credibilitycheck.easytooltip
-        Value: 0
+        Value: 1
     - Text: <Eavesdrop>
       xor: 0
       Rewards: []
@@ -701,6 +719,11 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
@@ -708,8 +731,8 @@ MonoBehaviour:
     Factions: 
     LocalizationKey: 
     Requirements: []
-  _factions: 000000000000
-  _chapters: 00000000
+  _factions: 000100000000
+  _chapters: 01010000
   _date: -1
   _localizationKey: Assets/Resources/Incidents/The Royal Household.asset.
   _nodeText: []

@@ -36,6 +36,7 @@ namespace Ambition
         //TO DO: Make this work with Accessories (when they're full implemented)
         void HandleItemDisplay(ItemVO outfit)
         {
+            Debug.Log("WardrobeItemStatsMediator.HandleItemDisplay");
             if (outfit?.Type != ItemType.Outfit) return;
 
             ItemNameText.text = AmbitionApp.GetString("item." + outfit.Name + ".name");
@@ -100,6 +101,6 @@ namespace Ambition
             NoveltyStatText.gameObject.SetActive(false);
         }
 
-        private string Map(int stat, string[] phrases) => phrases[(int)(phrases.Length * (.5f + stat * .005f))];
+        private string Map(int stat, string[] phrases) => phrases[(int)(phrases.Length * (.5f + stat * .00499f))]; 
     }
 }

@@ -1,0 +1,1015 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: Researching Maximin
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 2, y: 87}
+  - {x: 5, y: 168}
+  - {x: -164, y: 249}
+  - {x: 277, y: 243}
+  - {x: -164, y: 314}
+  - {x: -159, y: 386}
+  - {x: -139, y: 461}
+  - {x: 48, y: 296}
+  - {x: 278, y: 310}
+  - {x: 273, y: 368}
+  - {x: 142, y: 435}
+  - {x: 374, y: 433}
+  - {x: 140, y: 504}
+  - {x: 104, y: 579}
+  - {x: 400, y: 506}
+  - {x: 393, y: 576}
+  - {x: 340, y: 684}
+  - {x: 547, y: 729}
+  - {x: 74, y: 654}
+  - {x: 52, y: 732}
+  - {x: 43, y: 815}
+  - {x: -79, y: 882}
+  - {x: 339, y: 936}
+  - {x: 128, y: 872}
+  - {x: 320, y: 998}
+  - {x: 296, y: 1066}
+  - {x: -2, y: 1073}
+  - {x: -56, y: 1186}
+  - {x: -269, y: 709}
+  - {x: -52, y: 1256}
+  - {x: -59, y: 1321}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 2, y: 4}
+    - {x: 3, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 4, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 11, y: 13}
+    - {x: 13, y: 14}
+    - {x: 13, y: 12}
+    - {x: 12, y: 15}
+    - {x: 15, y: 16}
+    - {x: 16, y: 17}
+    - {x: 16, y: 18}
+    - {x: 14, y: 19}
+    - {x: 19, y: 12}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 21, y: 22}
+    - {x: 17, y: 23}
+    - {x: 18, y: 23}
+    - {x: 21, y: 24}
+    - {x: 24, y: 23}
+    - {x: 22, y: 23}
+    - {x: 23, y: 25}
+    - {x: 25, y: 26}
+    - {x: 26, y: 27}
+    - {x: 26, y: 28}
+    - {x: 27, y: 29}
+    - {x: 29, y: 3}
+    - {x: 28, y: 30}
+    - {x: 30, y: 31}
+    - {x: 8, y: 9}
+    - {x: 6, y: 28}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: MarketClue
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: putoff
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards:
+      - Type: 5
+        ID: CrierClue
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Crier
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 1
+        Operator: 4
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 1
+        Operator: 4
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 1
+        Operator: 4
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: CrierClue
+        Value: 1
+        Operator: 4
+      - Type: 5
+        ID: MarketClue
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: CrierClue
+        Value: 1
+        Operator: 4
+      - Type: 5
+        ID: MarketClue
+        Value: 1
+        Operator: 4
+      Flags: []
+    AssetPath: 
+    OneShot: 1
+    Chapters: 
+    Tags: []
+    Factions: 
+    LocalizationKey: 
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _localizationKey: Assets/Resources/Incidents/Researching Maximin.asset.
+  _nodeText: []
+  _linkText: []

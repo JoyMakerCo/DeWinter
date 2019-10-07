@@ -14,7 +14,7 @@ namespace Ambition
         {
             internal set
             {
-                if (!System.Enum.TryParse<FactionType>(value, out Type))
+                if (!System.Enum.TryParse<FactionType>(value, ignoreCase:true, out Type))
                     Type = FactionType.Neutral; // Not that this makes any sense
             }
             get => Type.ToString();

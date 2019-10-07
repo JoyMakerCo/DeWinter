@@ -12,12 +12,12 @@ namespace Ambition
         public int NumExploreLocations = 5;
 
         [JsonIgnore]
-        public Pin Location;
+        public LocationVO Location;
 
         [JsonProperty("location")]
         private string _Location
         {
-            get => Location?.name;
+            get => Location?.LocationID;
             //set => 
             // TODO: On Restore, load the Paris Scenefab and consume the pin Prefab
         }
@@ -35,7 +35,7 @@ namespace Ambition
         [JsonProperty("known")] // Known locations
         public List<string> Known = new List<string>();
 
-        [JsonProperty("visited")] // One-Shot locations that have been visited
+        [JsonProperty("visited")] // Locations that have been visited.
         public List<string> Visited = new List<string>();
 
         public void Reset()

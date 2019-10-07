@@ -13,6 +13,7 @@ namespace Ambition
 			MomentVO moment = model.Moment;
 			AmbitionApp.SendMessage(moment.Rewards);
 			List<TransitionVO> transitions = model.Incident.GetLinks(moment).Where(t=>AmbitionApp.CheckRequirements(t.Requirements)).ToList();
+            AmbitionApp.GetModel<LocalizationModel>().SetMoment(moment);
 			TransitionVO xor = transitions.Find(t => t.xor && t.Requirements != null && t.Requirements.Length > 0);
 			if (xor != null) transitions.RemoveAll(t => t != xor && t.xor);
 			AmbitionApp.SendMessage(transitions.ToArray());

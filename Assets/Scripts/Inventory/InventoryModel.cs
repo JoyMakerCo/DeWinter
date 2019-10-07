@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace Ambition
 {
     [Saveable]
-	public class InventoryModel : DocumentModel
+	public class InventoryModel : DocumentModel, IConsoleEntity
 	{
 		public InventoryModel() : base ("InventoryData") {}
 
@@ -20,9 +20,6 @@ namespace Ambition
 
 		[JsonProperty("sellbackMultiplier")]
 		public float SellbackMultiplier;
-
-		[JsonProperty("styles")]
-		public string [] Styles;
 
 		[JsonProperty("slots")]
 		public int NumSlots;
@@ -42,13 +39,6 @@ namespace Ambition
         [JsonProperty("marketCapacity")]
 		public int NumMarketSlots;
 
-        [JsonProperty("style")]
-        private string _style
-        {
-            set => Style.Value = value;
-        }
-        public Observable<string> Style;
-
 		[JsonProperty("luxury")]
 		public Dictionary<int, string> Luxury;
 
@@ -57,9 +47,6 @@ namespace Ambition
 
         [JsonProperty("items")]
         public ItemVO[] Items; // Base Item Definitions, used for instantiation.
-
-        [JsonProperty("next_style")]
-        public string NextStyle;
 
         [JsonIgnore]
         // Items owned by the player. Contains customized instances from the Items list.
@@ -190,10 +177,87 @@ namespace Ambition
                 : -1;
         }
 
-        private void BroadcastStyle(string style) => AmbitionApp.SendMessage<string>(ItemConsts.STYLE, Style.Value);
-        protected override void OnLoadComplete()
+        public string[] Dump()
         {
-            Style.Observe(BroadcastStyle);
+            var lines = new List<string>
+            {
+                "InventoryModel:",
+                "Novelty Damage: " + NoveltyDamage.ToString(),
+                "Out of Style Mult: " + OutOfStyleMultiplier.ToString("0.00"),
+                "Sellback Mult: " + SellbackMultiplier.ToString("0.00"),
+                string.Format( "Slots: {0}/{1}", NumSlots, MaxSlots ),
+                string.Format( "Outfits: {0}/{1}", NumOutfits, MaxOutfits ),
+                "Max Accessories: " + MaxAccessories.ToString(),
+                "Market Slots: " + NumMarketSlots.ToString(),
+            };
+
+			// base items
+            if (Items == null)
+            {
+                lines.Add( "Base Items (null) ");
+            }
+            else
+            {
+                lines.Add( "Base Items: ");
+
+                foreach (var ivo in Items)
+                {
+                    lines.Add( "  " +ivo.ToString() );
+                }
+            }
+
+			// player inventory
+            if (Inventory == null)
+            {
+                lines.Add( "Inventory Items (null) ");
+			}
+			else
+			{
+				lines.Add( "Inventory Items: ");
+
+				foreach (var kv in Inventory)
+				{
+					lines.Add( string.Format( "[{0}]", kv.Key ) );
+					for ( int i = 0; i < kv.Value.Count; i++)
+					{
+						string equipt = "  ";
+						if (Equipped != null)
+						{
+							if (Equipped[kv.Key] == i)
+							{
+								equipt = " >";
+							}
+						}
+						lines.Add( equipt + kv.Value[i].ToString() );
+					}
+				}
+			}
+
+			// market inventory
+            if (Market == null)
+            {
+                lines.Add( "Market Items (null) ");
+			}
+			else
+			{
+				lines.Add( "Market Items: ");
+
+				foreach (var kv in Market)
+				{
+					lines.Add( string.Format( "[{0}]", kv.Key ) );
+					for ( int i = 0; i < kv.Value.Count; i++)
+					{
+						lines.Add( "  " + kv.Value[i].ToString() );
+					}
+				}
+			}
+
+            return lines.ToArray();
+        }
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("InventoryModel has no invocation.");
         }
     }
 }

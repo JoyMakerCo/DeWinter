@@ -15,10 +15,26 @@ namespace Ambition
             Substitutions[LocalizationConsts.PLAYER_NAME] = AmbitionApp.GetModel<GameModel>().PlayerName;
         }
 
-        public string Speaker
+        public void SetMoment(MomentVO moment)
         {
-            get => Substitutions[LocalizationConsts.CHARACTER];
-            set => Substitutions[LocalizationConsts.CHARACTER] = value;
+            Substitutions[LocalizationConsts.CHARACTER_1] = moment?.Character1.Name;
+            Substitutions[LocalizationConsts.CHARACTER_2] = moment?.Character2.Name;
+            switch(moment?.Speaker)
+            {
+                case SpeakerType.Character1:
+                    Substitutions[LocalizationConsts.SPEAKER] = moment.Character1.Name;
+                    break;
+                case SpeakerType.Character2:
+                    Substitutions[LocalizationConsts.SPEAKER] = moment.Character1.Name;
+                    break;
+                case SpeakerType.Player:
+                    Substitutions[LocalizationConsts.SPEAKER] = AmbitionApp.GetModel<GameModel>().PlayerName;
+                    break;
+                default:
+                    Substitutions[LocalizationConsts.SPEAKER] = "";
+                    break;
+            }
+
         }
 
         public string SetDate(DateTime date)
@@ -35,9 +51,9 @@ namespace Ambition
         public string Date => Substitutions[LocalizationConsts.DATE];
         public string ShortDate => Substitutions[LocalizationConsts.SHORT_DATE];
 
-        public string SetLocation(Pin location)
+        public string SetLocation(string locationID)
         {
-            return Substitutions[LocalizationConsts.LOCATION] = location.Name;
+            return Substitutions[LocalizationConsts.LOCATION] = "location." + locationID;
         }
     }
 }

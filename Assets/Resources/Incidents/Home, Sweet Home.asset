@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Home, Sweet Home
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 0e000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
         - Name: Arrive Home
           Value: 0
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -210,7 +210,7 @@ MonoBehaviour:
         but you\u2019re worried that if you breathe too hard on the building, it\u2019ll
         fall over. A well kept woman in the attire of a maid opens the door and approaches
         you.\r"
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -391,7 +391,7 @@ MonoBehaviour:
         of the house isn\u2019t much better than the outside. Camille keeps the place
         tidy, but she can only do such much. Still, you don\u2019t care about that
         right now, you\u2019re just happy to have a roof over your head."
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -406,7 +406,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch

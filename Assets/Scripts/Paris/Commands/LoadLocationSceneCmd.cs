@@ -6,7 +6,8 @@ namespace Ambition
         public void Execute()
         {
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
-            AmbitionApp.SendMessage(GameMessages.LOAD_SCENE, model.Location?.Scene);
+            AmbitionApp.SendMessage(GameMessages.LOAD_SCENE, model.Location?.SceneID);
+            AmbitionApp.GetModel<LocalizationModel>().SetLocation(model.Location.LocationID);
         }
     }
 }

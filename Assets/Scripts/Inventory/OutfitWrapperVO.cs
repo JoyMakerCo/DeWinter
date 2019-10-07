@@ -7,7 +7,6 @@ namespace Ambition
         public static int GetNovelty(ItemVO item) => GetIntStat(item, ItemConsts.NOVELTY);
         public static int GetLuxury(ItemVO item) => GetIntStat(item, ItemConsts.LUXURY);
         public static int GetModesty(ItemVO item) => GetIntStat(item, ItemConsts.MODESTY);
-        public static string GetStyle(ItemVO item) => GetStat(item, ItemConsts.STYLE);
 
         public static string GetStat(ItemVO item, string stat)
         {

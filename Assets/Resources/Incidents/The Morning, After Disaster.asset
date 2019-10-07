@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: The Morning, After Disaster
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 13000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -25,16 +25,17 @@ MonoBehaviour:
   - {x: 1, y: 342}
   - {x: 12, y: 432}
   - {x: -209, y: 432}
-  - {x: -96, y: 559}
+  - {x: -96, y: 558}
   - {x: 143, y: 559}
   - {x: 147, y: 635}
   - {x: 20, y: 710}
   - {x: 21, y: 786}
   - {x: 23, y: 850}
-  - {x: 20, y: 923}
-  - {x: -100, y: 1004}
+  - {x: 27, y: 1008}
+  - {x: -110, y: 1084}
   - {x: -7, y: 57}
-  - {x: 149, y: 1000}
+  - {x: 165, y: 1080}
+  - {x: 26, y: 923}
   Incident:
     Links:
     - {x: 1, y: 2}
@@ -56,11 +57,12 @@ MonoBehaviour:
     - {x: 10, y: 13}
     - {x: 13, y: 14}
     - {x: 14, y: 15}
-    - {x: 15, y: 16}
     - {x: 16, y: 17}
     - {x: 0, y: 18}
     - {x: 18, y: 1}
     - {x: 16, y: 19}
+    - {x: 15, y: 20}
+    - {x: 20, y: 16}
     Nodes:
     - Text: 'You awaken the next morning, in a bed that still feels unfamiliar. In
         the process of waking up, you start to recall the last nights humiliations,
@@ -300,7 +302,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards: []
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 0
       Music:
         Name: 
         Parameters: []
@@ -308,7 +313,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/wine_drink
         Parameters: []
     - Text: "A few minutes later, Camille returns with a decanter of red wine and
         the least chipped wine glass in the house. \u201CPor vous, Madame.\u201D She
@@ -331,7 +336,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/wine_pour
         Parameters: []
     - Text: "You drink the wine slowly, taking in the aroma between sips. Armand was
         always the sort to keep a few, particularly nice bottles on hand to impress
@@ -356,7 +361,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/wine_drink
         Parameters: []
     - Text: "You take a few moments to finish your drink in silence and collect your
         thoughts. Something that keeps coming to mind is all the gossip you\u2019ve
@@ -420,10 +425,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards:
-      - Type: 9
-        ID: La Trompette du Peuple
-        Value: 1
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -510,6 +512,30 @@ MonoBehaviour:
         Name: 
       Speaker: 2
       Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: With that, your day begins.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards:
+      - Type: 9
+        ID: La Trompette du Peuple
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -619,11 +645,6 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
     - Text: '"<i>Merci</i>, Camille. I think I''ll do just that."'
       xor: 0
       Rewards: []
@@ -644,6 +665,16 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - Text: '"I''ve gone from Baroness-to-be, to gossip monger. Great. Just great."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"I''ve gone from Baroness-to-be, to gossip monger. Great. Just great."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
@@ -653,7 +684,7 @@ MonoBehaviour:
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
-  _date: -1
+  _date: 564308640000000000
   _localizationKey: Assets/Resources/Incidents/The Morning, After Disaster.asset.
   _nodeText: []
   _linkText: []

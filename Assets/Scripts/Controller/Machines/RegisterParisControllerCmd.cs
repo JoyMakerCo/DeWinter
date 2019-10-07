@@ -9,7 +9,7 @@ namespace Ambition
         public void Execute()
         {
             AmbitionApp.RegisterCommand<ChooseExploreLocationsCmd>(CalendarMessages.UPDATE_CALENDAR);
-            AmbitionApp.RegisterCommand<ChooseLocationCmd, Pin>(ParisMessages.GO_TO_LOCATION);
+            AmbitionApp.RegisterCommand<ChooseLocationCmd, LocationVO>(ParisMessages.GO_TO_LOCATION);
             AmbitionApp.RegisterCommand<LoadLocationSceneCmd>(ParisMessages.LOAD_LOCATION);
             AmbitionApp.RegisterCommand<PopulateParisCmd>(ParisMessages.POPULATE_LOCATIONS);
 
@@ -32,7 +32,9 @@ namespace Ambition
             AmbitionApp.RegisterLink<RestAtHomeLink>("ParisMapController", "CheckRest", "Rest");
             AmbitionApp.RegisterLink<FadeOutLink>("ParisMapController", "CheckRest", "Incident");
             AmbitionApp.RegisterLink("ParisMapController", "Rest", "Leave");
-            AmbitionApp.RegisterLink("ParisMapController", "Incident", "EnterLocation");
+            AmbitionApp.RegisterLink<CheckLocationSceneLink>("ParisMapController", "Incident", "EnterLocation");
+            AmbitionApp.RegisterLink("ParisMapController", "Incident", "ExitMap");
+
             AmbitionApp.RegisterLink<FadeInLink>("ParisMapController", "EnterLocation", "BeginScene");
             AmbitionApp.RegisterLink<MessageLink, string>("ParisMapController", "BeginScene", "Leave", ParisMessages.LEAVE_LOCATION);
             AmbitionApp.RegisterLink<FadeOutLink>("ParisMapController", "Leave", "ExitMap");

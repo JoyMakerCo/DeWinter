@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Util;
+using UnityEngine;
 
 namespace Ambition
 {
@@ -37,6 +38,9 @@ namespace Ambition
             get => Created.Ticks;
         }
 
+        [JsonProperty("Asset")]
+        public Sprite Asset;
+
         public ItemVO() {}
         public ItemVO(ItemVO item) : this(item, item.State) {}
         public ItemVO(ItemVO item, Dictionary<string, string> state)
@@ -47,6 +51,11 @@ namespace Ambition
             State = new Dictionary<string, string>(state);
             Price = item.Price;
             Created = item.Created;
+        }
+
+        public override string ToString()
+        {
+            return string.Format( "ItemVO {0} {1} {2} £{3}", Name, Type, Equipped?"equipped":"not equipped", Price);
         }
     }
 }

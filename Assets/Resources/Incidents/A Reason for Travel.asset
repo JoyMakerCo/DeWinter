@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: A Reason for Travel
   m_EditorClassIdentifier: 
-  _Nodes: 21000000
-  _Links: 
+  _Nodes: 
+  _Links: 12000000
   _Positions:
   - {x: 0, y: 0}
   - {x: 0, y: 84}
@@ -104,6 +104,7 @@ MonoBehaviour:
     - {x: 37, y: 19}
     - {x: 18, y: 38}
     - {x: 38, y: 20}
+    - {x: 18, y: 38}
     Nodes:
     - Text: "You approach a man standing by himself. His wig is slightly dishevelled,
         and he has fresh mud on his boots.\r"
@@ -1260,6 +1261,11 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
@@ -1271,5 +1277,142 @@ MonoBehaviour:
   _chapters: 00000000
   _date: -1
   _localizationKey: Assets/Resources/Incidents/A Reason for Travel.asset.
-  _nodeText: []
-  _linkText: []
+  _nodeText:
+  - "You approach a man standing by himself. His wig is slightly dishevelled, and
+    he has fresh mud on his boots.\r"
+  - "\u201CAh, <i>bonjour</i> madame! You must have just arrived in Paris as well.\u201D
+    He says affably."
+  - "\u201CWhere did you journey from?\u201D \r"
+  - "\u201CDo not worry madame, I\u2019m sure you\u2019ll be able to return there
+    soon enough!\u201D He replies with a warm laugh. \u201CI myself came a few months
+    ago from similar, idyllic surroundings in Brittany.\u201D \r"
+  - "\u201CWell, madame you are in luck, for you have arrived in the most significant
+    city in all the world.\u201D"
+  - '"The Baron de Marbo?" He pauses to think, scratching his chin. "Why does that
+    name sound so familiar?"'
+  - "\u201CBut of course, the harvest has not been so good this year, which is what
+    brings me to Paris. I\u2019m searching for a way to revitalize our estate. Back
+    home, I tried new farming techniques, imported tools, and I even built a shrine
+    to Saint Isidore himself! Yet, it was to no avail. So I am here, in search of
+    a solution.\u201D\r"
+  - "\u201C<i>Et vous, madame</i>? What has brought you to Paris, so far from home?\u201D"
+  - "\"You've travelled all the way here for your fiance? Such love and devotion remind
+    me of when I was your age.\" His eyes have a far off look for a moment. \n\n\"Never
+    let yourself lose sight of such things.\""
+  - '"Ambition, advancement, and glory? Such things are not easy for a commoner like
+    yourself. However, you are correct, Paris is the place best for those looking
+    to raise their station."'
+  - "\u201CSeeking the finer things in life? Well, you\u2019re in the right place
+    for it. Fashion is a way of life here.\"  He gestures around the tavern and you
+    can see that even the people of more humble means have chosen their attire carefully."
+  - "\u201CAnd what has brought you to this bustling metropolis?\u201D"
+  - "\"I think you'll fit in well with the merchants, lawyers, and physicians of the
+    Bourgeoisie.\" \n\n(You've gained a little favor with members of the Bourgeoisie)"
+  - '"Sorry, madame. I simply... haven''t been here long enough to know enough about
+    him." '
+  - '"Are you here in the city alone?"'
+  - "\"Allow me to suggest that you take some time to speak with members of the army,
+    and their supporters. They come from backgrounds both high and low, yet they're
+    all willing to sacrifice so much to raise their station just a little.\" \n\n(You've
+    gained a little favor with members of the Military)"
+  - '"If that is why you are here, you might want to seek out those associated with
+    the church. Love and tradition are very much on their minds."
+
+
+'
+  - '"I''m sorry madame, I must go. I have an urgent appointment." He says very brusquely. '
+  - '"Thank you for your understanding madame." He says with a polite nod before he
+    drains his wineglass. "Now it appears that, I must go. I have an urgent appointment."'
+  - Without another word, he drains his wineglass and leaves.
+  - He departs, leaving you with your thoughts, and more questions.
+  - '"So, this Armand of yours, what brought him to Paris?"'
+  - 'He nods his head affably. "My apologies madame, I didn''t mean to pry. Discretion
+    is such a rare virtue in this day and age, that I''d almost forgotten it entirely."
+
+
+    (You have gained a little credibility)'
+  - 'The two of you spend the next few minutes exchanging small talk and pleasant
+    travel stories. It''s nice to talk with another person again, even if it''s about
+    nothing in particular. '
+  - 'Eventually he excuses himself, as he needs to make it to some sort of appointment.
+
+
+    A pleasant diversion, but you''re no closer to finding Armand than when you started.'
+  - 'The traveller startles at your sudden forwardness, and you can feel the weight
+    of eyes in the tavern watching the next moments. "Madame, please understand that
+    I cannot say much more. Your fiance has made some powerful enemies, and if you
+    don''t know how he did that, then you might want to reconsider him entirely."
+
+
+    (You have gained a little peril)'
+  - While you may have learned something, you feel like you still have more questions
+    than answers. You should be able to clear all of this up when you find Armand.
+  - His eyes go wide for a moment before settling into an expression of discomfort.
+    Gathering up his things, he starts preparing to leave.
+  - Without another word, he pulls free of your grasp, drains his wineglass and leaves.
+  - He sighs and looks from side to side, obviously torn on what to do.
+  - Getting close to you, he whispers. "If you must know madame, your fiance has made
+    some powerful enemies, and if you don't know how he did that, then you might want
+    to reconsider him entirely."
+  - Without another word, he drains his wineglass and leaves.
+  - (You've gained a little favor with members of the Church)
+  - (You've gained a little favor with members of the Military)
+  - (You've gained a little favor with members of the Bourgeoisie)
+  - (You've gained a little favor with members of the Church)
+  - (You've gained a little favor with members of the Church)
+  - (You've lost some credibility)
+  - (You've gained a little credibility)
+  _linkText:
+  - 
+  - 
+  - "\u201CAn idyllic farming town to the south, I\u2019m a little sorry I left it
+    behind.\u201D"
+  - "\u201CIt was nowhere significant, I\u2019m happier to be here.\u201D"
+  - '"I''m actually looking for someone. Do you know where I could find the Baron
+    de Marbo?"'
+  - 
+  - 
+  - "\u201CI\u2019m here because my fiance, Armand, is here. I'd follow him anywhere.\u201D"
+  - "\u201CThis is the only place where I can achieve the status that I deserve.\u201D"
+  - "\u201CParis is a hub of trade, wealth, and craftsmen. It\u2019s where I can get
+    the lifestyle I want.\u201D"
+  - 
+  - "\"\x1CI'\x19m in Paris because my fiance, Armand, is here.\""
+  - "\u201CParis is a hub of trade, wealth, and craftsmen. It\u2019s where I can get
+    the lifestyle I want.\u201D"
+  - "\u201CThis is the only place where I can achieve the status that I deserve.\u201D"
+  - 
+  - 
+  - 
+  - 
+  - '"I see... very well."'
+  - '"That''s understandable."'
+  - 
+  - 
+  - '"His business isn''t mine to discuss."'
+  - '"Well, he''s the Baron de Marbo, and he''s here for the Estates General."'
+  - '"No, I''m here to see my fiance, the Baron de Marbo."'
+  - 
+  - 
+  - '"I''m not, but I''d like to keep some business to myself."'
+  - <Grab his wrist> "Please monsieur, you have to tell me where he is."
+  - 
+  - 
+  - 
+  - 
+  - '"Are you sure you can''t remember anything?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

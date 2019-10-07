@@ -9,7 +9,7 @@ namespace Ambition
             //Debug.LogFormat("FactionAllegianceReq check");
             FactionModel factions = AmbitionApp.GetModel<FactionModel>();
             int allegiance = 0;
-            if (Enum.TryParse(req.ID, out FactionType factionID))
+            if (Enum.TryParse(req.ID, ignoreCase:true, out FactionType factionID))
             {
                 allegiance = factions.Factions.TryGetValue(factionID, out FactionVO faction)
                     ? faction.Allegiance : 0;

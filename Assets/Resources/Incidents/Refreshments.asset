@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Refreshments
   m_EditorClassIdentifier: 
-  _Nodes: 27000000
-  _Links: 
+  _Nodes: 
+  _Links: 04000000
   _Positions:
   - {x: 0, y: 0}
   - {x: -1, y: 74}
@@ -35,7 +35,7 @@ MonoBehaviour:
   - {x: -696, y: 391}
   - {x: -705, y: 468}
   - {x: -708, y: 545}
-  - {x: -481, y: 454}
+  - {x: -481, y: 453}
   - {x: -484, y: 526}
   - {x: -490, y: 598}
   - {x: 375, y: 952}
@@ -190,7 +190,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: 
@@ -236,7 +236,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/wine_pour
@@ -672,10 +672,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards:
-      - Type: 12
-        ID: 
-        Value: 3
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -879,10 +876,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards:
-      - Type: 11
-        ID: 
-        Value: 5
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -890,7 +884,7 @@ MonoBehaviour:
         Name: event:/Ambient SFX/Amb_MediumParty_indoor
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/wine_drink
         Parameters: []
     - Text: With a shaky sigh, she picks up the note she gave you before, and starts
         scribbling.
@@ -918,7 +912,7 @@ MonoBehaviour:
       Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
-        Pose: afraid
+        Pose: neutral
         Name: Barmaid
       Character2:
         AvatarID: 
@@ -933,7 +927,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: 
@@ -1052,11 +1046,7 @@ MonoBehaviour:
     - Text: '"Actually, could you help me find my fiance? He''s supposed to be here."'
       xor: 0
       Rewards: []
-      Requirements:
-      - Type: 0
-        ID: 
-        Value: 0
-        Operator: 0
+      Requirements: []
       Flags: []
     - Text: '"He''s intelligent, wears a blue coat, and always has a book or pamphlet
         with him."'
@@ -1161,7 +1151,7 @@ MonoBehaviour:
       Flags:
       - Type: 2
         Phrase: incidents.transitions.credibilitycheck.easytooltip
-        Value: 0
+        Value: 1
     - Text: 
       xor: 1
       Rewards: []
