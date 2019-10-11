@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A Lively Place
   m_EditorClassIdentifier: 
   _Nodes: 
-  _Links: 06000000
+  _Links: 
   _Positions:
   - {x: 0, y: 0}
   - {x: 4, y: 77}
@@ -33,10 +33,7 @@ MonoBehaviour:
     - {x: 3, y: 7}
     - {x: 7, y: 5}
     Nodes:
-    - Text: Feeling like you could use some fresh air, you decide to take your travels
-        to the edge of the Paris. As much as you like the city, the change of pace
-        is appreciated.
-      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -56,9 +53,7 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: Passing through a checkpoint at the city's outer wall, you hear the sounds
-        of music and raucous laughter.
-      Background: {fileID: 0}
+    - Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -78,10 +73,7 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: 'Turning a corner you stumble upon an idyllic looking establishment named
-        <i>''Guinguette Paradis''</i>. A band plays music, while the patrons drink
-        wine and dance. '
-      Background: {fileID: 21300000, guid: 6608eece59829498aa0a0c044ed2cff3, type: 3}
+    - Background: {fileID: 21300000, guid: 6608eece59829498aa0a0c044ed2cff3, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -101,12 +93,7 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: 'Sitting down at one of the rustic tables, you note down the guinguette
-        in your journal.
-
-
-        (<i>Guinguette Paradis</i> is now an available rendezvous location)'
-      Background: {fileID: 0}
+    - Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -126,10 +113,7 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: After a spending a few hours taking in the crowds and bobbing in time
-        with the lively music, you decide to head home, but you have a feeling you'll
-        be back there soon.
-      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -149,9 +133,7 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: The entertainment may be on the coarse side for some, but it's perfect
-        for those that just want to relax and have fun.
-      Background: {fileID: 0}
+    - Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -171,10 +153,7 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: With a shake of your head you turn and start the long walk home. The music
-        fades into the distance and you welcome the hustle, bustle, and sophistication
-        at the heart of Paris.
-      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -194,8 +173,7 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: New Moment
-      Background: {fileID: 0}
+    - Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -219,42 +197,31 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
-      xor: 0
+    - xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
+    - xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
+    - xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Everyone here seems to be having a great time, and I can''t blame them.
-        This is a lot of fun."'
-      xor: 0
+    - xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
-        back in the village."'
-      xor: 0
+    - xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
-        back in the village."'
-      xor: 0
+    - xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
-        back in the village."'
-      xor: 0
+    - xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -263,11 +230,38 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: 
+    LocalizationKey: Assets/Collections/Incidents/A Lively Place.asset
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: Assets/Collections/Incidents/A Lively Place.asset.
-  _nodeText: []
-  _linkText: []
+  _localizationKey: 
+  _nodeText:
+  - Feeling like you could use some fresh air, you decide to take your travels to
+    the edge of the Paris. As much as you like the city, the change of pace is appreciated.
+  - Passing through a checkpoint at the city's outer wall, you hear the sounds of
+    music and raucous laughter.
+  - 'Turning a corner you stumble upon an idyllic looking establishment named <i>''Guinguette
+    Paradis''</i>. A band plays music, while the patrons drink wine and dance. '
+  - Sitting down at one of the rustic tables, you note down the guinguette in your
+    journal.
+  - After a spending a few hours taking in the crowds and bobbing in time with the
+    lively music, you decide to head home, but you have a feeling you'll be back there
+    soon.
+  - The entertainment may be on the coarse side for some, but it's perfect for those
+    that just want to relax and have fun.
+  - With a shake of your head you turn and start the long walk home. The music fades
+    into the distance and you welcome the hustle, bustle, and sophistication at the
+    heart of Paris.
+  - (<i>Guinguette Paradis</i> is now an available rendezvous location)
+  _linkText:
+  - 
+  - 
+  - 
+  - '"Everyone here seems to be having a great time, and I can''t blame them. This
+    is a lot of fun."'
+  - '"If I wanted drunk strangers and rustic music, then I would have stayed back
+    in the village."'
+  - '"If I wanted drunk strangers and rustic music, then I would have stayed back
+    in the village."'
+  - 

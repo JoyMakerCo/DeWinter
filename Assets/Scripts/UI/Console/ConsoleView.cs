@@ -88,6 +88,7 @@ namespace Core
 		{
 			yield return new WaitForEndOfFrame();
 			scrollRect.verticalNormalizedPosition = 0f;      
+			scrollRect.horizontalNormalizedPosition = 0f;      
 		}
 
 		void ToggleConsole()

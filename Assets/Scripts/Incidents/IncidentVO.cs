@@ -51,11 +51,6 @@ namespace Ambition
             return result.ToArray();
         }
 
-        private string CharName(IncidentCharacterConfig config)
-        {
-            return string.IsNullOrWhiteSpace(config.Name) ? null : config.Name;
-        }
-
         public IncidentVO() : base() {}
         public IncidentVO(DirectedGraph<MomentVO, TransitionVO> graph) : base(graph) { }
 
@@ -76,7 +71,7 @@ namespace Ambition
             var charz = string.Join(", ", GetCharacters() );
             return new string[] 
             {
-                "Incident "+Name+":",
+                "Incident: "+Name+":",
                 "characters "+charz,
                 "chapters "+ chapz,
                 "tags "+ tagz ,
@@ -89,11 +84,17 @@ namespace Ambition
             // TODO dump requirements, characters...?
         }
 
+        public override string ToString()
+        {
+            return "Incident: "+Name;
+        }
+
     }
 
     [Serializable]
     public class TransitionVO
     {
+        [NonSerialized]
         public string Text;
         public bool xor=false;
         public CommodityVO[] Rewards;

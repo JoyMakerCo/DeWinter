@@ -34,17 +34,16 @@ namespace Ambition
         private bool[] _chapters = new bool[NUM_CHAPTERS];
         [SerializeField]
         private long _date;
-        [SerializeField]
-        private string _localizationKey = null;
+
+[SerializeField]
+private string _localizationKey;
+
 
         public IncidentVO GetIncident() => new IncidentVO(Incident)
         {
             Name = name,
             Factions = GetFactions(),
-            Chapters = GetChapters(),
-            AssetPath = this.name,
-            Date = _date <= 0 ? default : new DateTime(_date),
-            LocalizationKey = _localizationKey
+            Chapters = GetChapters()
         };
 
         private FactionType[] GetFactions()
@@ -70,49 +69,55 @@ namespace Ambition
 #if (UNITY_EDITOR)
         private const string NODE_KEY = "node.";
         private const string LINK_KEY = "link.";
-        private const string LOCALIZATION_KEY_KEY = "_localizationKey";
-
-        private LocalizationConfig _localization;
-        private SerializedProperty _localizationProp;
 
         [SerializeField]
         private string[] _nodeText;
-        private SerializedProperty _nodelist;
+        private SerializedProperty _nodeTextProp;
 
         [SerializeField]
         private string[] _linkText;
-        private SerializedProperty _linklist;
+        private SerializedProperty _linkTextProp;
 
         public override string  GraphProperty => "Incident";
 
         public override void InitializeEditor(SerializedObject serializedObject)
         {
             Incident = Incident ?? new IncidentVO();
-            _localization = Resources.Load<LocalizationConfig>("Localization Config");
-            if (_localization == null)
-            {
-                throw new Exception("Could not open Localization Config!");
-            }
+            _nodeTextProp = serializedObject.FindProperty("_nodeText");
+            _linkTextProp = serializedObject.FindProperty("_linkText");
 
-            _localizationKey = _localization.UpdateLocalizationKey(this, _localizationKey);
-            _localizationProp = serializedObject.FindProperty(LOCALIZATION_KEY_KEY);
-            _localizationProp.stringValue = _localizationKey;
-            Dictionary<string, string> phrases = _localization.GetPhrases(this);
-            _nodelist = serializedObject.FindProperty("_nodeText");
-            KeyValuePair<string, string>[] pairs = phrases.Where(k => k.Key.StartsWith(NODE_KEY)).ToArray();
-            int index;
-            foreach (KeyValuePair<string, string> kvp in pairs)
-            {
-                index = int.Parse(kvp.Key.Substring(kvp.Key.LastIndexOf('.') + 1));
-                SetListItem(_nodelist, index, kvp.Value);
-            }
-            _linklist = serializedObject.FindProperty("_linkText");
-            pairs = phrases.Where(k => k.Key.StartsWith(LINK_KEY)).ToArray();
-            foreach (KeyValuePair<string, string> kvp in pairs)
-            {
-                index = int.Parse(kvp.Key.Substring(kvp.Key.LastIndexOf('.') + 1));
-                SetListItem(_linklist, index, kvp.Value);
-            }
+// TODO: Move all of the english text back into IncidentConfig, save all, then delete the localization portion of this method
+LocalizationConfig localizationConfig = Resources.Load<LocalizationConfig>("Localization Config");
+if (localizationConfig == null)
+{
+    throw new Exception(">> ERROR: Could not open localization config!");
+}
+int index;
+int subst = NODE_KEY.Length;
+SerializedProperty property;
+Dictionary<string, string> phrases = localizationConfig.GetPhrases(_localizationKey ?? "");
+if ((phrases?.Count ?? 0) == 0) phrases = localizationConfig.GetPhrases(this);
+if (phrases != null)
+{
+    foreach (KeyValuePair<string, string> kvp in phrases)
+    {
+        property = kvp.Key.StartsWith(NODE_KEY)
+                    ? _nodeTextProp
+                    : kvp.Key.StartsWith(LINK_KEY)
+                    ? _linkTextProp
+                    : null;
+        if (property != null)
+        {
+            index = int.Parse(kvp.Key.Substring(subst));
+            if (property.arraySize <= index)
+                property.arraySize = index + 1;
+            property.GetArrayElementAtIndex(index).stringValue = kvp.Value;
+        }
+    }
+}
+localizationConfig.RemovePhrases(_localizationKey);
+serializedObject.FindProperty("Incident.LocalizationKey").stringValue = localizationConfig.GenerateLocalizationKey(this);
+serializedObject.ApplyModifiedProperties();
         }
 
         public override void CleanupEditor(SerializedObject serializedObject)
@@ -122,49 +127,37 @@ namespace Ambition
 
         public void PublishLocalizations()
         {
-            if (_localization != null)
+/*            LocalizationConfig localizationConfig = Resources.Load<LocalizationConfig>("Localization Config");
+            if (localizationConfig == null)
             {
-                Dictionary<string, string> phrases = new Dictionary<string, string>();
-                string key = _localization.GenerateLocalizationKey(this);
-                string phrase;
-                _localizationKey = _localizationProp?.stringValue ?? _localizationKey;
-                if (_localizationKey != key)
-                {
-                    _localization.RemovePhrases(_localizationKey);
-                }
-                if (_localizationProp != null)
-                {
-                    _localizationProp.stringValue = key;
-                }
-                for (int i = (_nodelist?.arraySize ?? 0) - 1; i >= 0; i--)
-                {
-                    phrase = _nodelist.GetArrayElementAtIndex(i).stringValue;
-                    if (!string.IsNullOrEmpty(phrase))
-                    {
-                       phrases[NODE_KEY + i.ToString()] = phrase;
-                    }
-                }
-                for (int i = (_linklist?.arraySize ?? 0) - 1; i >= 0; i--)
-                {
-                    phrase = _linklist.GetArrayElementAtIndex(i).stringValue;
-                    if (!string.IsNullOrEmpty(phrase))
-                    {
-                        phrases[LINK_KEY + i.ToString()] = phrase;
-                    }
-                }
-                _nodelist?.ClearArray();
-                _linklist?.ClearArray();
-                _localization?.Post(this, this.name);
-                _localization?.Post(this, phrases, true);
-                _localization = null;
-                phrases = null;
+                throw new Exception(">> ERROR: Could not open localization config!");
             }
-        }
+            Dictionary<string, string> phrases = new Dictionary<string, string>();
+            SerializedObject obj = new SerializedObject(this);
+            localizationConfig.RemovePhrases(Incident.LocalizationKey);
 
-        public string UpdateLocalizationKey()
-        {
-            return _localization?.UpdateLocalizationKey(this, _localizationKey) ?? _localizationKey;
-        }
+            obj.FindProperty("Incident.LocalizationKey").stringValue = localizationConfig.GenerateLocalizationKey(this);
+            obj.ApplyModifiedProperties();
+
+            for (int i = _nodeText.Length - 1; i>=0; i--)
+            {
+                if (!string.IsNullOrEmpty(_nodeText[i]))
+                {
+                   phrases[NODE_KEY + i.ToString()] = _nodeText[i];
+                }
+            }
+            for (int i = _linkText.Length - 1; i >= 0; i--)
+            {
+                if (!string.IsNullOrEmpty(_linkText[i]))
+                {
+                    phrases[LINK_KEY + i.ToString()] = _linkText[i];
+                }
+            }
+            localizationConfig.Post(this, this.name);
+            localizationConfig.Post(this, phrases, true);
+            localizationConfig = null;
+            phrases = null;
+ */       }
 
         private readonly string[] MONTHS = new string[]{
             "January","February","March","April","May","June",
@@ -190,7 +183,7 @@ namespace Ambition
                 SerializedProperty incident = moment.serializedObject.FindProperty("Incident");
                 Vector2Int link;
                 SerializedProperty list = incident.FindPropertyRelative("Nodes");
-                _nodelist.MoveArrayElement(nodeIndex, 0);
+                _nodeTextProp.MoveArrayElement(nodeIndex, 0);
                 list.MoveArrayElement(nodeIndex, 0);
                 list = config.FindProperty("_Positions");
                 list.MoveArrayElement(nodeIndex, 0);
@@ -208,8 +201,11 @@ namespace Ambition
             }
             GUI.enabled = true;
 
-            string momentText = (_nodelist != null && nodeIndex < _nodelist.arraySize )
-                ? EditorGUILayout.TextArea(_nodelist.GetArrayElementAtIndex(nodeIndex).stringValue)
+            GUIStyle wrappedStyle = new GUIStyle(EditorStyles.textArea);
+            wrappedStyle.wordWrap = true;
+
+            string momentText = (_nodeTextProp != null && nodeIndex < _nodeTextProp.arraySize )
+                ? EditorGUILayout.TextArea(_nodeTextProp.GetArrayElementAtIndex(nodeIndex).stringValue, wrappedStyle)
                 : null;
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Background"), true);
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("Character1"), true);
@@ -221,8 +217,8 @@ namespace Ambition
             EditorGUILayout.PropertyField(moment.FindPropertyRelative("OneShotSFX"), true);
             if (EditorGUI.EndChangeCheck() && momentText != null)
             {
-                SetListItem(_nodelist, nodeIndex, momentText);
-                _nodelist.serializedObject.ApplyModifiedProperties();
+                SetListItem(_nodeTextProp, nodeIndex, momentText);
+                _nodeTextProp.serializedObject.ApplyModifiedProperties();
             }
         }
 
@@ -233,8 +229,8 @@ namespace Ambition
                 EditorGUI.BeginChangeCheck();
                 GUI.SetNextControlName("FOCUS_ID");
                 int index = Incident.GetLinkIndex(fromNode, toNode);
-                string linktext = (_linklist != null && index < _linklist.arraySize)
-                    ? EditorGUILayout.TextArea(_linklist.GetArrayElementAtIndex(index).stringValue)
+                string linktext = (_linkTextProp != null && index < _linkTextProp.arraySize)
+                    ? EditorGUILayout.TextArea(_linkTextProp.GetArrayElementAtIndex(index).stringValue)
                     : null;
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Rewards"), true);
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Requirements"), true);
@@ -247,8 +243,8 @@ namespace Ambition
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Flags"), true);
                 if (EditorGUI.EndChangeCheck() && linktext != null)
                 {
-                    SetListItem(_linklist, index, linktext);
-                    _linklist.serializedObject.ApplyModifiedProperties();
+                    SetListItem(_linkTextProp, index, linktext);
+                    _linkTextProp.serializedObject.ApplyModifiedProperties();
                 }
             }
         }
@@ -306,12 +302,12 @@ namespace Ambition
 
         public void InitializeNode(SerializedProperty nodeData, int index)
         {
-            SetListItem(_nodelist, index, "New Moment");
+            SetListItem(_nodeTextProp, index, "New Moment");
         }
 
         public void InitializeLink(SerializedProperty link, int index, int fromNode, int toNode)
         {
-            SetListItem(_linklist, index, "");
+            SetListItem(_linkTextProp, index, "");
             link.FindPropertyRelative("xor").boolValue = false;
             link.FindPropertyRelative("Rewards").arraySize = 0;
             link.FindPropertyRelative("Requirements").arraySize = 0;
@@ -350,12 +346,12 @@ namespace Ambition
 
         public void DeleteNode(SerializedProperty node, int index)
         {
-            DeleteIndex(_nodelist, index);
+            DeleteIndex(_nodeTextProp, index);
         }
 
         public void DeleteLink(SerializedProperty link, int index)
         {
-            DeleteIndex(_linklist, index);
+            DeleteIndex(_linkTextProp, index);
         }
 
         private bool DeleteIndex(SerializedProperty list, int index)
@@ -375,12 +371,7 @@ namespace Ambition
     [CustomEditor(typeof(IncidentConfig))]
     public class IncidentConfigDrawer : Editor
     {
-        public override void OnInspectorGUI()
-        {
-            IncidentConfig config = target as IncidentConfig;
-            config.OnRenderInspector(serializedObject);
-            serializedObject.FindProperty("_localizationKey").stringValue = config.UpdateLocalizationKey();
-        }
+        public override void OnInspectorGUI() => (target as IncidentConfig)?.OnRenderInspector(serializedObject);
 #endif
     }
 }

@@ -16,6 +16,7 @@ namespace Ambition
 	[Serializable]
 	public class MomentVO
 	{
+        [NonSerialized]
 		public string Text;
 		public Sprite Background;
 		public IncidentCharacterConfig Character1;

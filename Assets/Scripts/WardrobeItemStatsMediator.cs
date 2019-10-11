@@ -52,8 +52,6 @@ namespace Ambition
             NoveltySlider.value = GetIntStat(outfit, ItemConsts.NOVELTY);
             string[] phrases = AmbitionApp.GetPhrases("outfit.novelty");
             NoveltyStatText.text = phrases[(int)(phrases.Length * NoveltySlider.value * .01f)];
-
-            string style = null;
         }
 
         private int GetIntStat(ItemVO outfit, string stat)

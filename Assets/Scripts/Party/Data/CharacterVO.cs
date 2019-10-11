@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+using Core;
+
 namespace Ambition
 {
-	public class CharacterVO
+	public class CharacterVO : IConsoleEntity
 	{
         private string _name = null;
         public string Name
@@ -83,6 +85,32 @@ namespace Ambition
         {
             Name = name;
             this.Avatar = avatar;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("CharacterVO: {0}", Name );
+        }
+
+        public string[] Dump()
+        {
+			return new string[]
+			{
+				"CharacterVO: " + Name,
+				"Title: " + Title,
+				"Gender: " + Gender.ToString(),
+				"Spouse: " + Spouse,
+				"Reputation: " + Reputation,
+				"Background: " + Background,
+				"Favor: " + Favor.ToString(),
+				"Wealth: " + Wealth.ToString(),
+				"Celibate: " + (Celibate?"true":"false")	
+			};
+        }
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("CharacterVO has no invocation.");
         }
     }
 }

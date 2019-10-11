@@ -223,10 +223,13 @@ namespace Ambition
 						string equipt = "  ";
 						if (Equipped != null)
 						{
-							if (Equipped[kv.Key] == i)
-							{
-								equipt = " >";
-							}
+                            if (Equipped.ContainsKey(kv.Key))
+                            {
+							    if (Equipped[kv.Key] == i)
+							    {
+								    equipt = " >";
+							    }
+                            }
 						}
 						lines.Add( equipt + kv.Value[i].ToString() );
 					}

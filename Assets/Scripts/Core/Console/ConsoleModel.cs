@@ -25,25 +25,10 @@ namespace Core
 		// relatively static entities
 		Dictionary<string, IConsoleEntity> _entities;
 
-		Dictionary<string, IConsoleEntity> ActiveEntities()
-		{
-			var transientEntities = _entities.ToDictionary(entry => entry.Key,
-                                               entry => entry.Value);
-
-			// Add entities that are likely to change here, like currently active UFlow machines
-
-			var ufs = AmbitionApp.GetService<UFlowSvc>();
-
-			foreach (var machine in ufs.GetAllMachines())
-			{
-				if (machine != null)
-				{
-					transientEntities[ "machine."+machine.MachineID ] = machine;
-				}
-			}
-
-			return transientEntities;
-		}
+		// After each entity matching attempt, we populate a table of
+		// aliases, e.g. "@" matches the last single hit, "@0-@9" matches 
+		// previous multi hits, etc.
+		Dictionary<string,string> _aliases;
 
 		public ConsoleModel ()
 		{
@@ -59,7 +44,7 @@ namespace Core
 				{
 					log("");
 				}
-				log("Version "+ ConfigurationModel.Config.Version.ToString() );
+				log("Version "+ ConfigurationModel.Config.Version.ToString() + "                              " );
 			}
 			else
 			{
@@ -68,6 +53,7 @@ namespace Core
 
 			_commands = new Dictionary<string,ConsoleCommand>();
 			_entities = new Dictionary<string,IConsoleEntity>();
+			_aliases = new Dictionary<string,string>();
 
 			NewCommand( "invoke", InvokeEntity, "trigger an entity" );
 			NewCommand( "incident", StartIncident, "start an incident", CollectIncidents );
@@ -76,6 +62,10 @@ namespace Core
 			NewCommand( "help", Help, "get information on commands" );
 			NewCommand( "send", SendMessage, "send message" );
 			NewCommand( "reward", GrantReward, "grant a reward" );
+			NewCommand( "set", SetCommodity, "set a commodity value" );
+			NewCommand( "shortcuts", ListShortcuts, "show current shortcut table" );
+
+			ConsoleUtilities.TestLookup();
 		}
 
 		void configureView()
@@ -123,6 +113,47 @@ namespace Core
 			logInput(string.Format(format,args));
 		}
 
+		Dictionary<string, IConsoleEntity> ActiveEntities()
+		{
+			var transientEntities = _entities.ToDictionary(entry => entry.Key,
+                                               entry => entry.Value);
+
+			// Add entities that are likely to change here, like currently active UFlow machines
+
+			// Live UFlow machines
+			var ufs = AmbitionApp.GetService<UFlowSvc>();
+			foreach (var machine in ufs.GetAllMachines())
+			{
+				if (machine != null)
+				{
+					transientEntities[ "machine."+machine.MachineID ] = machine;
+				}
+			}
+
+			// Servants, on staff or otherwise
+			foreach (var servant in AmbitionApp.GetModel<ServantModel>().GetAllServants())
+			{
+				///transientEntities[ "servant."+servant.Name ] = servant;
+				transientEntities[ servant.ID ] = servant;
+			}
+
+			// Characters
+
+			foreach (var ckv in AmbitionApp.GetModel<CharacterModel>().Characters)
+			{
+				transientEntities["character."+ckv.Value.Name] = ckv.Value;
+			}
+
+			// party, if live
+			var pm = AmbitionApp.GetModel<PartyModel>();
+			if (pm != null)
+			{
+				transientEntities["party"] = pm;
+			}
+
+			return transientEntities;
+		}
+
 		public void ParseInput(string input)
 		{
 			logInput("> " +input);
@@ -133,13 +164,13 @@ namespace Core
             var tokens = input.Split( sep );
 			var commandPrefix = tokens[0].ToLower();
 			// look up command
-			var matchingCommands = Lookup<ConsoleCommand>( commandPrefix, _commands );
-			if (matchingCommands.Count == 0)
+			var matchingCommands = ConsoleUtilities.Lookup( commandPrefix, _commands );
+			if (matchingCommands.Length == 0)
 			{
 				error("Unrecognized command '{0}'.", commandPrefix );
 				return;
 			}
-			if (matchingCommands.Count > 1)
+			if (matchingCommands.Length > 1)
 			{
 				warn("Ambiguous command '{0}'. Potential matches:", commandPrefix);
 				foreach (var mc in matchingCommands)
@@ -152,26 +183,6 @@ namespace Core
 			// handle command
 			_commands[matchingCommands[0]].handler(tokens);
 		}
-
-		bool PrefixMatch( string prefix, string candidate )
-		{
-			return candidate.ToLower().StartsWith( prefix.ToLower() );
-		}
-
-		List<string> Lookup<T>( string commandPrefix, Dictionary<string,T> source )
-		{
-			List<string> result = new List<string>();
-			foreach (var kv in source)
-			{
-				if (PrefixMatch(commandPrefix,kv.Key))
-				{
-					result.Add(kv.Key);
-				}
-			}
-
-			return result;
-		}
-
 
 		void NewCommand( string n, ConsoleCommandHandler cch, string help, Action setup = null )
 		{
@@ -204,13 +215,13 @@ namespace Core
 			}
 			else if (args.Length == 2)
 			{
-				var matchingCommands = Lookup<ConsoleCommand>( args[1], _commands );
-				if (matchingCommands.Count == 0)
+				var matchingCommands = ConsoleUtilities.Lookup( args[1], _commands );
+				if (matchingCommands.Length == 0)
 				{
 					error("Unrecognized command '{0}'.", args[1] );
 					return;
 				}
-				if (matchingCommands.Count > 1)
+				if (matchingCommands.Length > 1)
 				{
 					warn("Ambiguous command '{0}'. Potential matches:", args[1]);
 					foreach (var mc in matchingCommands)
@@ -225,6 +236,59 @@ namespace Core
 			}
 		}
 
+		class EntityMatch
+		{
+			public string Ident;
+			public IConsoleEntity Entity;
+
+			public EntityMatch( string ident, IConsoleEntity entity )
+			{
+				Ident = ident;
+				Entity = entity;
+			}
+		};
+
+		EntityMatch SingleActiveEntity( string ident )
+		{
+			var ents = ActiveEntities();
+
+			if (_aliases.ContainsKey(ident))
+			{
+				return new EntityMatch( _aliases[ident], ents[_aliases[ident]] );
+			}
+
+			var matchingEnts = ConsoleUtilities.Lookup( ident, ents );
+
+			if (matchingEnts.Length == 0)
+			{
+				error("Unrecognized entity '{0}'.", ident );
+				return null;
+			}
+
+			UpdateAliases(matchingEnts);
+
+			if (matchingEnts.Length > 1)
+			{
+				warn("Ambiguous entity '{0}'. Potential invokable matches:", ident);
+				foreach (var me in matchingEnts)
+				{
+					log("  "+me);
+				}
+				return null;
+			}
+				
+			var e = ents[matchingEnts[0]];
+			if (e != null)
+			{
+				return new EntityMatch(matchingEnts[0],e);
+			}
+			else
+			{
+				warn("Entity '{0}' is null",matchingEnts[0]);
+			}			
+			return null;
+		}
+
 		void InvokeEntity( string[] args )
 		{
 			if (args.Length < 2)
@@ -233,31 +297,14 @@ namespace Core
 			}
 			else
 			{
-				var ents = ActiveEntities();
-				var matchingEnts = Lookup<IConsoleEntity>( args[1], ents );
-				if (matchingEnts.Count == 0)
+				var match = SingleActiveEntity(args[1]);
+				if (match != null)
 				{
-					error("Unrecognized entity '{0}'.", args[1] );
-					return;
+					match.Entity.Invoke( args );
 				}
-				if (matchingEnts.Count > 1)
-				{
-					warn("Ambiguous entity '{0}'. Potential invokable matches:", args[1]);
-					foreach (var me in matchingEnts)
-					{
-						log("  "+me);
-					}
-					return;
-				}
-					
-				ents[matchingEnts[0]].Invoke( args );
 			}
 		}
 
-		string EntityKey( string name )
-		{
-			return name.Replace(" ","_");
-		}
 		void CollectIncidents()
 		{
 			log("Loading incidents...");
@@ -268,7 +315,7 @@ namespace Core
 			{
 				var localName = ic.name;
 				// TODO deal with identical entity keys?
-				var id = "incident." + EntityKey(localName);
+				var id = "incident." + localName;
 				var ie = new ConsoleEntity( id, (args) => { InvokeIncident(localName,args); }, () => { return DumpIncident(localName); } );
 				_entities[id] = ie;
 			}
@@ -294,7 +341,8 @@ namespace Core
 			}
 
 			_entities["uflow"] = AmbitionApp.GetService<UFlowSvc>();
-
+			_entities["servants"] = AmbitionApp.GetModel<ServantModel>();
+			_entities["characters"] = AmbitionApp.GetModel<CharacterModel>();
 		}
 
 		void InvokeIncident( string name, string[] args )
@@ -346,22 +394,48 @@ namespace Core
 			}
 		}
 
+		void UpdateAliases( string[] matches )
+		{
+			// Update shortcuts dict with result of this match
+			if (matches.Length == 1)
+			{
+				_aliases["@"] = matches[0];
+			}
+			if (matches.Length > 1)
+			{
+				_aliases = new Dictionary<string, string>();
+				for (int i = 0; i < matches.Length; i++)
+				{
+					_aliases["@"+i] = matches[i];
+				}
+			}
+		}
+
 		void ListEntities( string[] args )
 		{
 			// TODO prefix restriction
 			var ents = ActiveEntities();
 
-			var matchingEnts = ents.Select( k => k.Key );
+			var matchingEnts = ents.Select( k => k.Key ).ToArray();
 			if (args.Length == 2)
 			{
-				matchingEnts = Lookup<IConsoleEntity>( args[1], ents );
+				matchingEnts = ConsoleUtilities.Lookup( args[1], ents );
 			}
-			var ordered = matchingEnts.OrderBy( k => k );
+
+			UpdateAliases( matchingEnts );
+
 			log( "Known entities: ");
-	
-			foreach (var eid in ordered)
+			foreach (var eid in matchingEnts)
 			{
 				log("  "+eid);
+			}
+		}
+
+		void ListShortcuts( string[] args )
+		{
+			foreach (var k in _aliases.Keys)
+			{
+				log( "{0}: {1}", k, _aliases[k] );
 			}
 		}
 
@@ -373,30 +447,17 @@ namespace Core
 			}
 			else
 			{
-				var ents = ActiveEntities();
-				var matchingEnts = Lookup<IConsoleEntity>( args[1], ents );
-				if (matchingEnts.Count == 0)
+				var match = SingleActiveEntity(args[1]);
+				if (match != null)
 				{
-					error("Unrecognized entity '{0}'.", args[1] );
-					return;
-				}
-				if (matchingEnts.Count > 1)
-				{
-					warn("Ambiguous entity '{0}'. Potential matches:", args[1]);
-					foreach (var me in matchingEnts)
+					log("entity '{0}':", match.Ident);
+
+					foreach (var line in match.Entity.Dump())
 					{
-						log("  "+me);
+						log(line);
 					}
-					return;
+					log("");
 				}
-
-				log("entity '{0}':", matchingEnts[0]);
-
-				foreach (var line in ents[matchingEnts[0]].Dump())
-				{
-					log(line);
-				}
-				log("");
 			}
 		}
 
@@ -439,7 +500,58 @@ namespace Core
 				return;
 			}
 
+			// HACKHACK for favor, try matching character ID
+			if (cType == CommodityType.Favor)
+			{
+				var hits = AmbitionApp.GetModel<CharacterModel>().GetCharacters( id );
+				if (hits.Length == 1)
+				{
+					id = hits[0].Name;
+				}
+			}
+
 			AmbitionApp.SendMessage( new CommodityVO( cType, id, val ));
+		}
+
+		void SetCommodity( string[] args )
+		{
+			CommodityType cType = CommodityType.Livre;
+			int val = 0;
+			string id = "";
+
+			if (args.Length > 1)
+			{
+				if (!Enum.TryParse<CommodityType>(args[1], ignoreCase:true, out cType))
+				{
+					error("Can't interpret {0} as a CommodityType.", args[1]);
+				}
+			}
+
+			if (args.Length == 3)
+			{
+				// "reward CommodityType value"
+				if (!int.TryParse(args[2], out val))
+				{
+					error("Can't interpret {0} as a number.", args[2]);
+				}
+
+			}
+			else if (args.Length == 4)
+			{
+				id = args[2];
+				// "reward CommodityType ID value"
+				if (!int.TryParse(args[3], out val))
+				{
+					error("Can't interpret {0} as a number.", args[3]);
+				}
+			}
+			else
+			{
+				error("'set' requires either type and value, or type, ID, and value.");
+				return;
+			}
+
+			AmbitionApp.SendMessage( CommodityMessages.SET_COMMODITY, new CommodityVO( cType, id, val ));
 		}
 
 		void SendMessage( string[] args )

@@ -1,5 +1,7 @@
 ﻿using System;
 using Core;
+using UnityEngine;
+
 namespace Ambition
 {
     public class FavorReward : ICommand<CommodityVO>
@@ -9,6 +11,8 @@ namespace Ambition
             CharacterModel model = AmbitionApp.GetModel<CharacterModel>();
             if (!model.Characters.TryGetValue(favor.ID, out CharacterVO character))
             {
+                Debug.LogWarningFormat("FavorReward.Execute: unrecognized character ID '{0}', inventing that character now", favor.ID);
+
                 model.Characters.Add(favor.ID, character = new CharacterVO(favor.ID, new AvatarVO()));
             }
             character.Favor += favor.Value;

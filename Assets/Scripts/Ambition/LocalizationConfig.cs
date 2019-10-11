@@ -16,7 +16,7 @@ namespace Ambition
         [SerializeField, HideInInspector]
         private Dictionary<string, string> _phrases = null;
 
-        private bool Pull(bool overwrite = false)
+        public bool Pull(bool overwrite = false)
         {
             if (DefaultLocalizationFile != null && (overwrite || _phrases == null))
             {
@@ -25,8 +25,8 @@ namespace Ambition
             return _phrases != null;
         }
 
-        public string GenerateLocalizationKey(ScriptableObject obj) => AssetDatabase.GetAssetPath(obj) + ".";
-        public string GenerateLocalizationKey(MonoBehaviour obj) => obj.GetInstanceID() + obj.name + ".";
+        public string GenerateLocalizationKey(ScriptableObject obj) => AssetDatabase.GetAssetPath(obj);
+        public string GenerateLocalizationKey(MonoBehaviour obj) => obj.GetInstanceID() + obj.name;
 
         public bool Post(UnityEngine.Object obj, Dictionary<string, string> phrases, bool removeUnused = false)
         {
@@ -44,7 +44,7 @@ namespace Ambition
                 }
             }
             foreach (KeyValuePair<string, string> k in phrases)
-                _phrases[key + k.Key.ToString()] = k.Value;
+                _phrases[key + "." + k.Key.ToString()] = k.Value;
             return true;
         }
 
@@ -77,14 +77,28 @@ namespace Ambition
             }
         }
 
-        public Dictionary<string, string> GetPhrases(UnityEngine.Object obj)
+        public string GetPhrase (string key)
+        {
+            return !Pull()
+                ? null
+                : _phrases.TryGetValue(key, out string phrase)
+                ? phrase
+                : null;
+        }
+
+        public Dictionary<string, string> GetPhrases(string key)
         {
             if (!Pull()) return null;
+            int count = key.Length;
+            return _phrases.Where(k => k.Key.StartsWith(key)).ToDictionary(k => k.Key.Substring(count), k => k.Value);
+        }
+
+        public Dictionary<string, string> GetPhrases(UnityEngine.Object obj)
+        {
             string key = obj is MonoBehaviour
                 ? GenerateLocalizationKey(obj as MonoBehaviour)
                 : GenerateLocalizationKey(obj as ScriptableObject);
-            int count = key.Length;
-            return _phrases.Where(k => k.Key.StartsWith(key)).ToDictionary(k => k.Key.Substring(count), k => k.Value);
+            return GetPhrases(key);
         }
 
         public string GetPhrase(UnityEngine.Object obj)
@@ -152,6 +166,22 @@ namespace Ambition
             {
                 string path = AssetDatabase.GUIDToAssetPath(asset);
                 AssetDatabase.LoadAssetAtPath<LocalizationConfig>(path)?.SerializeAll();
+            }
+        }
+    }
+
+[CustomEditor(typeof(LocalizationConfig))]
+[CanEditMultipleObjects]
+    public class LookAtPointEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
+            DrawDefaultInspector();
+            if (GUILayout.Button("Reload Localization File"))
+            {
+                ((LocalizationConfig)target).Pull(true);
+                serializedObject.ApplyModifiedProperties();
             }
         }
     }

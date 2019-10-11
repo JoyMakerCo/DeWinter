@@ -7,7 +7,7 @@ using Util;
 namespace Ambition
 {
 //    [Saveable]
-    public class PartyModel : DocumentModel
+    public class PartyModel : DocumentModel, IConsoleEntity
     {
         public PartyModel() : base("PartyData") { }
         public PartyVO Party;
@@ -117,6 +117,50 @@ namespace Ambition
 				AmbitionApp.SendMessage<int>(GameConsts.DRINK, _drink);
 			}
 		}
+
+
+/* 
+        public int Turns;
+        public int Turn = 0;
+        public int TurnsLeft => Turns - Turn;
+        public int IncidentIndex = 0;
+        public IncidentVO[] Incidents;
+        public IncidentVO Incident;
+        public IncidentVO RequiredIncident => ((Party?.RequiredIncidents?.Length ?? 0) > IncidentIndex)
+            ? Party.RequiredIncidents[IncidentIndex]
+            : null;
+
+        public ItemVO LastOutfit;
+*/
+		public string[] Dump()
+		{
+
+			var lines = new List<string>();
+			lines.Add( "PartyModel:");
+			lines.Add(string.Format("Turn: {0}/{1}", Turn,Turns ));
+			lines.Add("Incidents: ");
+			for (int i = 0; i < Incidents.Length; i++)
+			{
+				string prefix = (i == IncidentIndex) ? "> " : "  ";
+				lines.Add( prefix + Incidents[i].ToString() );
+			}
+
+
+			lines.Add( "Party: " + Party.ToString() );
+			var outfit = "null";
+			if (LastOutfit != null)
+			{
+				outfit = LastOutfit.ToString();
+			}
+			lines.Add( "Last Outfit: " + outfit );
+			
+			return lines.ToArray();
+		}
+
+		public void Invoke( string[] args )
+		{
+		ConsoleModel.warn("PartyModel has no invocation.");
+		}  
 	}
 
     public struct RemarkResult
@@ -133,4 +177,5 @@ namespace Ambition
         [JsonProperty("reset")]
         public bool ResetInvolvement;
     }
+
 }

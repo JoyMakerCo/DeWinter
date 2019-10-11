@@ -10,16 +10,21 @@ namespace Ambition
         public void Execute(FactionType faction)
         {
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            ItemVO gossip = null;
             if (inventory.Items == null)
             {
                 Debug.LogError("CreateGossipCmd: 'Items' is null in inventory");
-                return;
             }
-            ItemVO gossip = Array.Find(inventory.Items, i => i.Type == ItemType.Gossip && i.ID == faction.ToString());
+            else
+            {
+                gossip = Array.Find(inventory.Items, i => i.Type == ItemType.Gossip && i.ID == faction.ToString());
+            }
             if (gossip == null)
             {
-                Debug.LogErrorFormat("No gossip item found for faction {0}", faction.ToString() );
-                return;
+                Debug.LogErrorFormat("No gossip item found for faction {0}, making one up", faction.ToString() );
+                gossip = new ItemVO();
+                gossip.Type = ItemType.Gossip;
+                gossip.ID = faction.ToString();
             }
             bool isPowershift = (faction == FactionType.Crown || faction == FactionType.Revolution || 0 == Util.RNG.Generate(0, 2));
             gossip = new ItemVO(gossip);

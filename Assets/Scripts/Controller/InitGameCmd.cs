@@ -36,6 +36,7 @@ namespace Ambition
             AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
             AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
             AmbitionApp.RegisterCommand<GrantRewardsCmd, CommodityVO[]>();
+            AmbitionApp.RegisterCommand<SetCommodityCmd, CommodityVO>(CommodityMessages.SET_COMMODITY);
             AmbitionApp.RegisterCommand<CheckMilitaryReputationCmd, FactionVO>();
             AmbitionApp.RegisterCommand<IntroServantCmd, ServantVO>(ServantMessages.INTRODUCE_SERVANT);
             AmbitionApp.RegisterCommand<HireServantCmd, ServantVO>(ServantMessages.HIRE_SERVANT);
@@ -45,6 +46,7 @@ namespace Ambition
             AmbitionApp.RegisterCommand<DelayRandomInvitationsCmd>(CalendarMessages.BEGIN_RANDOM_INVITATIONS);
             AmbitionApp.RegisterCommand<AdvanceDayCmd>(CalendarMessages.NEXT_DAY);
             AmbitionApp.RegisterCommand<AdjustFactionCmd, AdjustFactionVO>(FactionMessages.ADJUST_FACTION);
+            AmbitionApp.RegisterCommand<SetFactionValuesCmd, AdjustFactionVO>(FactionMessages.SET_FACTION);
             AmbitionApp.RegisterCommand<EquipItemCmd, ItemVO>(InventoryMessages.EQUIP);
             AmbitionApp.RegisterCommand<GenerateOutfitCmd, ItemVO>(InventoryMessages.GENERATE_OUTFIT);
             AmbitionApp.RegisterCommand<UnequipItemCmd, ItemVO>(InventoryMessages.UNEQUIP);
@@ -118,6 +120,7 @@ namespace Ambition
             AmbitionApp.RegisterRequirement(CommodityType.Favor, FavorReq.Check);
             AmbitionApp.RegisterRequirement(CommodityType.FactionAllegiance, FactionAllegianceReq.Check);
             AmbitionApp.RegisterRequirement(CommodityType.FactionPower, FactionPowerReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Exhaustion, ExhaustionReq.Check);
 
             AmbitionApp.Execute<RegisterPartyControllerCmd>();
             AmbitionApp.Execute<RegisterConversationControllerCmd>();
