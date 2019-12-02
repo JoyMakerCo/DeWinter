@@ -123,6 +123,8 @@ MonoBehaviour:
   - {x: 1046, y: 1056}
   - {x: 1258, y: 1061}
   - {x: 1466, y: 1065}
+  - {x: 1736, y: 364}
+  - {x: 1716, y: 448}
   Incident:
     Links:
     - {x: 1, y: 2}
@@ -182,7 +184,6 @@ MonoBehaviour:
     - {x: 48, y: 55}
     - {x: 55, y: 56}
     - {x: 56, y: 57}
-    - {x: 57, y: 58}
     - {x: 39, y: 47}
     - {x: 39, y: 48}
     - {x: 38, y: 43}
@@ -258,8 +259,16 @@ MonoBehaviour:
     - {x: 102, y: 105}
     - {x: 103, y: 106}
     - {x: 104, y: 107}
+    - {x: 57, y: 108}
+    - {x: 108, y: 109}
+    - {x: 109, y: 58}
     Nodes:
-    - Background: {fileID: 0}
+    - Text: The front of the building is the painting studio, the floors spattered
+        with pigments, and still littered with the scraps of various art supplies.
+        An ornate desk sits in the front of the room, near the door, with papers scattered
+        all around it. A few finished canvases still remain on the walls, though it
+        looks like a lot of the others were either seized or destroyed.
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -279,7 +288,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: Tugging on the edges of your hood to make sure your face is hidden from
+        view, you glance down again at the hastily scribbled address Pierre gave you
+        in his office. In addition to your regular traveling clothes, you have a small
+        bag hanging off of your shoulder, and a portable lantern with a flint.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -299,7 +312,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: You waited for sunset before you headed out, as it feels like these sort
+        of things are better done under the cover of darkness. However, everything
+        still feels too bright. Every hanging lantern, every candle-lit window, feels
+        like an eye staring down at you.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -319,7 +336,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Winding your way through the streets of the 7th Arrondissement, you can\u2019t
+        help but think about how out of the way this place would have been for Armand.
+        Yet, Pierre said that he was still a regular visitor. Despite yourself, you
+        find your heart beating faster and faster as you get closer to the abandoned
+        studio."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -339,7 +361,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Rounding a corner, you find yourself on an empty street, looking across
+        the road at the studio. The windows of the small, two storey building have
+        been boarded up, and there\u2019s a charred hole in the roof. A sign nailed
+        to the door reads \u2018Closed! On orders of the King.\u2019"
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -359,7 +385,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Rounding a corner, you find yourself on an empty street, looking across
+        the road at the studio. The windows of the small, two storey building have
+        been boarded up, and there\u2019s a charred hole in the roof. A sign nailed
+        to the door reads \u2018Closed! On orders of the King.\u2019"
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -379,7 +409,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: Before you can step any further towards the closed building, Hansel steps
+        in front of you.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -399,7 +431,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Glancing around, you don\u2019t see anyone at all, as if the King\u2019s
+        notice somehow closed the entire street. "
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -419,7 +453,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: Rather than stand around in the middle of a dark street, you hike up your
+        skirts and hurry across the road to the studio.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -439,7 +475,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "You immediately notice that the door\u2019s been nailed shut."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -459,7 +496,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Putting down your unlit lantern, you start checking the boards on the
+        windows, seeing if any of them are loose. On the third window, you find one
+        set of boards easily gives way, like it\u2019s been pulled out before.\n\nSomeone
+        else has been here."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -479,7 +520,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Leaning back and craning your neck to examine the roof, you see there\u2019s
+        a hole big enough for you to enter the building through, but you don\u2019t
+        have a ladder, or any way to get up there. For a moment you consider trying
+        to enter the building next door, so you can drop down onto the roof, but it\u2019s
+        better to do this as quickly as possible."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -499,7 +545,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Gingerly, you take down each of the boards, leaving them in a neat pile
+        by the window to be put back later. Secrets are easier to uncover when nobody
+        knows that you\u2019re looking at all."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -519,7 +568,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "You carefully ease yourself through the window, making sure none of your
+        clothes get caught on any exposed nails. Once inside, you close your eyes
+        for a few moments, so they\u2019ll adjust to the darkness faster."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -539,7 +591,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Inside, the studio is even darker than you would have guessed. Between
+        the boards on the windows, and the lack of lighting in the surrounding street,
+        it\u2019s nearly impossible to pick out any detail smaller than the walls
+        and doors.\n\nYou carefully use a flint stowed in the base of your lantern
+        to light it, then muffle most of the light with the hem of your cloak. "
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -559,67 +616,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: Hansel
-        Pose: neutral
-        Name: Hansel
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "\u201CMadame, I\u2019d like to inspect the building first. You never
+        know who\u2019s taken up residence in empty places like this.\u201D "
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -639,7 +638,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: Crouching as low as his sizeable frame will allow, Hansel advances towards
+        the building with his hand firmly on the grip of his sabre. He glances inside
+        the windows and tries the door, which appears to be have been nailed shut.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -659,7 +661,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: Eventually, he finds that some of the boards covering one of the windows
+        are loose, quietly pries them off, and easily hops through the window into
+        the building inside. You catch glimpses of him through some of the other windows
+        as he scouts out the darkened interior.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -679,787 +685,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: Hansel
-        Pose: neutral
-        Name: Hansel
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: Hansel
-        Pose: neutral
-        Name: Hansel
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: Hansel
-        Pose: neutral
-        Name: Hansel
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "Hansel gazes warily at the building before turning back to you. For a
+        moment he looks like he\u2019s about to object, but your mind is obviously
+        made up. \n\n\u201CUnderstood, madame. We go together.\u201D"
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -1479,7 +708,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: After what feels like an eternity, you see his hand emerge from the opened
+        window and motion for you to approach. You hike up your skirts and quietly
+        hurry across the street towards him.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1499,7 +731,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "When you get to the window, Hansel\u2019s hands emerge from the darkness
+        and grab you by the waist, easily helping you into the building."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1519,27 +753,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 0}
+    - Text: The mercenary crouches down and places his hand on the grip of his sabre.
+        You hike up your skirts, and get ready to follow him. On his signal, you quietly
+        dash across the street together, watching for any movement in the windows
+        as your approach.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -1559,7 +777,997 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "Now that you\u2019re closer, you can see that the door has been nailed
+        shut. Wordlessly, you and Hansel start checking the boards on the windows,
+        seeing if any of them are loose. On the third window, you find one of boards
+        easily gives way, like it\u2019s been pulled out before.\n\nSomeone else has
+        been here."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You get Hansel\u2019s attention, and he quietly takes down the boards,
+        leaving them in a neat pile by the window to be put back later."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'He enters the building first, his face frozen in a grim expression that
+        almost makes you feel bad for any dangerous persons you might encounter.
+
+
+        Almost.'
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: From your position outside, you peer into the gloom and watch Hansel examine
+        the room for a few moments before he gives a satisfied nod, dropping his hand
+        from his weapon. Returning to the window, he grabs you by the waist, and easily
+        helps you into the building.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Now that you have a little more light, you can see that most of the furniture
+        inside is broken, and enough things are missing to make you wonder how much
+        the Guet Royal seized during their raid. It\u2019s also only a matter of time
+        before someone spots you and comes to investigate."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Your time is limited, where do you plan on searching for clues?
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The entrance to the back room isn\u2019t obvious and if Pierre hadn\u2019t
+        told you about it earlier, you might have mistaken it for a closet door. When
+        you go to open the door, you notice that the latch has been torn off. Probably
+        a casualty of the raid."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: The stairs creak underneath your feet as you make your way to the second
+        floor. The long table and scattered cutlery suggests that it was used as a
+        dining area. A small fireplace occupies one side of the room, with a wide
+        swath of ash spilling out of the fireplace and onto the floor. Above the fireplace
+        itself, a painting hangs on the mantle.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Inside, the studio is even darker than you would have guessed. Between
+        the boards on the windows, and the lack of lighting in the surrounding street,
+        it\u2019s nearly impossible to pick out any detail smaller than the walls
+        and doors.\n\nYou carefully use a flint stowed in the base of your lantern
+        to light it, then muffle most of the light with the hem of your cloak. "
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Now that you have a little more light, you can see that most of the furniture
+        inside is broken, and enough things are missing to make you wonder how much
+        the Guet Royal seized during their raid.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Hansel steps in front of you and whispers. \u201CNow that we have a light
+        in here, it\u2019s only a matter of time before someone spots us. I recommend
+        we move quickly, madame.\u201D"
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CWhere should we look?\u201D"
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Scanning the room, you try to determine what you\u2019ll investigate."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: The desk by the door is so beautiful that it seems to clash with the rough
+        practicality of the other furniture in the room. All of the drawers have been
+        flung open, and papers have been scattered everywhere.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The paintings on the wall are all traditional historical pieces, exactly
+        the sort of thing <i>L\u2019Academie</i> exalts as \u2018true art\u2019. Judging
+        by the stern faces and repeated images, you\u2019re sure that the paintings
+        are all meant to be some kind of political allegory, but you can\u2019t really
+        tell what of."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Inside, the back room is cramped, mostly occupied by a circular table
+        with some small chairs. Various notes are pinned to the wall, and as you shine
+        your lantern about, you notice a slight glimmer under the table.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: What are you going to investigate?
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You scan the room, deciding what to investigate.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You rummage through the papers, but it seems like everything useful has
+        already been taken.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Looking at the paintings, you feel like you\u2019ve learned something
+        about the artists here, but nothing useful about Armand. You\u2019ll have
+        to search somewhere he would have spent a lot of time in. "
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You feel like you\u2019ve learned everything you can from the paintings
+        in this room."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You lean close to the notes on the wall, and squint to read them. None
+        of them make any sense, as if they were written in another language, or some
+        kind of code.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You bend down to investigate under the table, trying to find what caught
+        the light of your lantern and glimmered at you from the dark.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You find a small scattering of coins. It appears that, at some point
+        in the chaos, someone must have dropped their coin purse, and nobody noticed
+        it. It doesn\u2019t bring you closer to Armand, but you\u2019ll never turn
+        down free coin.\n\n(You\u2019ve gained +6 Livre!)"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "No. Wait. It\u2019s just terrible handwriting."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You bend down carefully, making sure you don\u2019t kneel in the large
+        swath of ashes in front of the fireplace. A cold breeze blows at your back
+        and you look up at the charred hole in the roof of the building. This fire
+        must have gotten large enough to set a portion of the ceiling ablaze. It\u2019s
+        a miracle this building is still standing at all.\n\nWhoever started this
+        fire didn\u2019t have time to do things properly, they just needed something
+        burned."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Stepping over the ash in front of the fireplace, you gingerly take the
+        painting off of its hook and examine it closely. It\u2019s not as carefully
+        detailed as some of the others in the building, but there\u2019s a certain
+        joyful energy to it. Whoever painted this genuinely enjoyed making it."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Eventually, you can deduce a meaning from the scratchings. All the notes
+        are suggested readings, various books and pamphlets. They seem to cover a
+        broad range of texts related to religious or political theory. The authors
+        extend from France to the rest of the continent, and even the Americas.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "While you\u2019re sure this reading list is insightful, it won\u2019t
+        bring you closer to finding Armand."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You find nothing else of value under the circular table.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You pick through the ashes, finding fragments of leather and scraps of
+        unburned paper. The writing on the paper is handwritten, not printed. It looks
+        like a list of names. A membership list?\n\nThat\u2019s when you spot it."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u2018-and de Marbo\u2019, written in familiar handwriting on a fragment
+        of paper. Armand was here, perhaps in this very room. Maybe there\u2019s something
+        else connected to him nearby. "
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: The rest of the unburned scraps look too small or unclear to provide you
+        with any additional information.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "It\u2019s a dining scene, done in a reflected perspective intended to
+        make the actual room feel larger than it really is. All the men and women
+        in the picture are laughing, clinking glasses and looking merry. \n\nEven
+        Armand."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Armand\u2019s smiling face is looking back at you from the picture, a
+        glass raised in mid toast, and a quill in his free hand. On one side of him
+        is a man you remember from your last night together with Armand. The man is
+        named Isaac. On the other side of him, is a young woman, with strawberry blonde
+        hair, who you\u2019ve never seen before. Her hand is on his shoulder. "
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You turn the painting back and forth looking for more details, until
+        you hear something metallic shift. Flipping the painting over, you find a
+        note tucked into the frame on the back of painting, along with a key. You
+        don\u2019t recognize the handwriting, but decide against taking the time to
+        read the note now, while illegally trespassing in a condemned building. You
+        carefully fold the note around the key and secret it under your stays."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: happy
@@ -1579,7 +1787,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: happy
@@ -1599,7 +1809,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1619,7 +1831,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1642,7 +1856,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1662,7 +1878,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1688,7 +1906,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1714,7 +1934,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1734,7 +1956,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1760,7 +1984,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1780,7 +2006,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1806,7 +2034,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1826,7 +2056,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1852,7 +2084,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1872,7 +2106,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1892,7 +2128,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1915,7 +2153,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1935,7 +2175,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: angry
@@ -1955,7 +2197,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1975,7 +2219,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: angry
@@ -1995,7 +2241,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -2015,7 +2263,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -2035,7 +2285,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2055,7 +2307,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -2075,7 +2329,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -2095,7 +2351,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2115,7 +2373,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2135,7 +2395,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2155,7 +2417,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2178,7 +2442,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -2198,7 +2464,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: Hansel
         Pose: neutral
@@ -2218,7 +2486,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2238,7 +2508,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2258,7 +2530,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2278,7 +2552,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2298,7 +2574,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2318,7 +2596,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: GuetRoyalSergeant
         Pose: angry
@@ -2338,7 +2618,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: GuetRoyalSergeant
         Pose: neutral
@@ -2358,7 +2640,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: GuetRoyalSergeant
         Pose: neutral
@@ -2378,7 +2662,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: GuetRoyalSergeant
         Pose: angry
@@ -2398,7 +2684,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: GuetRoyalSergeant
         Pose: neutral
@@ -2421,7 +2709,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: GuetRoyalSergeant
         Pose: neutral
@@ -2444,7 +2734,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
       Character1:
         AvatarID: GuetRoyalSergeant
         Pose: neutral
@@ -2457,6 +2749,53 @@ MonoBehaviour:
       Rewards:
       - Type: 8
         ID: Apprehended
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You can\u2019t help but grin with satisfaction. This is the lead you
+        were looking for."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Stranger and Stranger
         Value: 1
       Music:
         Name: 
@@ -2468,19 +2807,23 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 6
@@ -2488,99 +2831,123 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: <Check the windows for loose boards>
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "<See if there\u2019s a way through the hole in the roof>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CThat\u2019s a good idea. Proceed, Hansel.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CI\u2019d rather stay close to you. We go in together.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: <Look in the painting studio>
+      xor: 0
       Rewards: []
       Requirements:
       - Type: 5
@@ -2592,51 +2959,63 @@ MonoBehaviour:
         Value: 1
         Operator: 1
       Flags: []
-    - xor: 0
+    - Text: <Go to the backroom>
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: <Examine the upstairs>
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CLet\u2019s look in the painting studio.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CFollow me, we\u2019ll check the backroom.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CThere might be something useful upstairs.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: <Investigate the ornate desk>
+      xor: 0
       Rewards: []
       Requirements:
       - Type: 5
@@ -2647,7 +3026,8 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - xor: 0
+    - Text: <Investigate the paintings>
+      xor: 0
       Rewards: []
       Requirements:
       - Type: 5
@@ -2658,75 +3038,88 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: <Study the painting hanging above the mantle>
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements:
       - Type: 5
@@ -2737,14 +3130,16 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements:
       - Type: 5
@@ -2755,7 +3150,8 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements:
       - Type: 5
@@ -2766,11 +3162,13 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 6
@@ -2778,51 +3176,63 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -2830,11 +3240,13 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -2842,15 +3254,18 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -2858,15 +3273,18 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -2874,15 +3292,18 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -2890,7 +3311,8 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 5
@@ -2906,11 +3328,13 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 5
@@ -2926,7 +3350,8 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 5
@@ -2942,7 +3367,8 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 5
@@ -2958,11 +3384,13 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -2978,7 +3406,8 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -2994,7 +3423,8 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -3010,7 +3440,8 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -3026,7 +3457,8 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -3042,11 +3474,13 @@ MonoBehaviour:
         Value: 100
         Operator: 1
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 6
@@ -3054,87 +3488,108 @@ MonoBehaviour:
         Value: 1
         Operator: 0
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -3146,7 +3601,8 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -3158,7 +3614,8 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -3170,7 +3627,8 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -3182,7 +3640,8 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 12
@@ -3194,35 +3653,58 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -3232,11 +3714,11 @@ MonoBehaviour:
     Tags: []
     Factions: 
     LocalizationKey: Assets/Resources/Incidents/The Abandoned Studio.asset
+    _date: -1
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: Assets/Resources/Incidents/The Abandoned Studio.asset.
   _nodeText:
   - The front of the building is the painting studio, the floors spattered with pigments,
     and still littered with the scraps of various art supplies. An ornate desk sits
@@ -3392,8 +3874,9 @@ MonoBehaviour:
     it. Whoever painted this genuinely enjoyed making it."
   - Eventually, you can deduce a meaning from the scratchings. All the notes are suggested
     readings, various books and pamphlets. They seem to cover a broad range of texts
-    related to religious or political theory. The authors extend from France to the
-    rest of the continent, and even the Americas.
+    related to history and political theory. While some of the authors are French,
+    you notice that most of them are from elsewhere in the continent, especially in
+    central Europe.
   - "While you\u2019re sure this reading list is insightful, it won\u2019t bring you
     closer to finding Armand."
   - You find nothing else of value under the circular table.
@@ -3413,12 +3896,9 @@ MonoBehaviour:
     from your last night together with Armand. The man is named Isaac. On the other
     side of him, is a young woman, with strawberry blonde hair, who you\u2019ve never
     seen before. Her hand is on his shoulder. "
-  - "You turn the painting back and forth looking for more details, until you hear
+  - You turn the painting back and forth looking for more details, until you hear
     something metallic shift. Flipping the painting over, you find a note tucked into
-    the frame on the back of painting, along with a key. You don\u2019t recognize
-    the handwriting, but decide against taking the time to read the note now, while
-    illegally trespassing in a condemned building. You carefully fold the note around
-    the key and secret it under your stays."
+    the frame on the back of painting, along with a key.
   - "You can\u2019t help but grin with satisfaction. This is the lead you were looking
     for."
   - Quickly and quietly, you skulk to the window you entered the building through.
@@ -3524,6 +4004,11 @@ MonoBehaviour:
   - "\u201CCome with me, we\u2019re going to the watch post, and you\u2019ll have
     plenty of time to come up with a better excuse as to why we found you in building
     ordered closed by the King.\u201D"
+  - "You don'\x19t recognize the handwriting, but decide against taking the time to
+    read the note now, while illegally trespassing in a condemned building. You carefully
+    fold the note around the key and secret it under your stays.\n\nYou'll be able
+    to investigate it later."
+  - (Stranger and Stranger is now available for you to investigate on the Paris map)
   _linkText:
   - 
   - 
@@ -3570,7 +4055,6 @@ MonoBehaviour:
   - 
   - 
   - <Study the painting hanging above the mantle>
-  - 
   - 
   - 
   - 
@@ -3655,6 +4139,9 @@ MonoBehaviour:
   - "\u201CWell, as you can tell, I\u2019m terribly lost.\u201D"
   - "\u201CMonsieur, I\u2019m looking for my fiance.\u201D"
   - "\u201CThis isn\u2019t what it looks like.\u201D"
+  - 
+  - 
+  - 
   - 
   - 
   - 

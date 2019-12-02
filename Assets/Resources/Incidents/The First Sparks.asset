@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: The First Sparks
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 51000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -101,9 +101,9 @@ MonoBehaviour:
   - {x: 339, y: 2313}
   - {x: 328, y: 2372}
   - {x: 329, y: 2443}
-  - {x: 375, y: 2517}
-  - {x: 400, y: 2577}
-  - {x: 485, y: 2642}
+  - {x: 394, y: 2545}
+  - {x: 446, y: 2598}
+  - {x: 498, y: 2652}
   - {x: 343, y: 2725}
   - {x: 518, y: 2727}
   - {x: 727, y: 2721}
@@ -123,6 +123,7 @@ MonoBehaviour:
   - {x: 979, y: 1332}
   - {x: 982, y: 1397}
   - {x: 979, y: 1451}
+  - {x: 357, y: 2494}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -215,7 +216,6 @@ MonoBehaviour:
     - {x: 80, y: 83}
     - {x: 83, y: 84}
     - {x: 84, y: 85}
-    - {x: 85, y: 86}
     - {x: 86, y: 87}
     - {x: 87, y: 88}
     - {x: 88, y: 89}
@@ -245,8 +245,11 @@ MonoBehaviour:
     - {x: 104, y: 105}
     - {x: 105, y: 106}
     - {x: 106, y: 107}
+    - {x: 85, y: 108}
+    - {x: 108, y: 86}
     Nodes:
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -266,7 +269,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -286,7 +290,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -306,7 +311,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -326,7 +332,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -346,7 +353,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -366,7 +374,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -389,7 +398,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -409,7 +419,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -429,7 +440,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -449,7 +461,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -459,7 +472,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: Martial Law
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -469,7 +485,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -492,7 +509,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -512,7 +530,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -535,7 +554,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -555,7 +575,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -578,7 +599,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -598,7 +620,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -618,7 +641,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -638,7 +662,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -661,7 +686,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -681,7 +707,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -701,7 +728,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -724,7 +752,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -744,7 +773,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -767,7 +797,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -787,7 +818,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -807,7 +839,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -830,7 +863,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -850,7 +884,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -870,7 +905,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -890,7 +926,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -910,7 +947,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -930,7 +968,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -950,7 +989,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -970,7 +1010,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_knock_soft
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -993,7 +1034,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1013,7 +1055,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1039,7 +1082,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1059,7 +1103,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1079,7 +1124,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1102,7 +1148,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1122,7 +1169,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1145,7 +1193,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1165,7 +1214,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_knock_hard
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -1185,11 +1235,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -1205,7 +1256,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -1225,7 +1277,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -1245,7 +1298,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -1265,7 +1319,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: sad
@@ -1285,7 +1340,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: sad
@@ -1305,7 +1361,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: sad
@@ -1325,7 +1382,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1345,7 +1403,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1368,7 +1427,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1388,7 +1448,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1408,7 +1469,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1428,11 +1490,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -1448,11 +1511,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -1468,11 +1532,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -1488,11 +1553,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_negative
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -1508,7 +1574,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1528,7 +1595,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1548,7 +1616,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1568,7 +1637,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1588,7 +1658,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1608,7 +1679,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1628,7 +1700,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1648,7 +1721,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1668,7 +1742,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
@@ -1688,7 +1763,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
@@ -1708,7 +1784,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
@@ -1728,7 +1805,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
@@ -1748,7 +1826,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1768,7 +1847,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
@@ -1788,7 +1868,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
@@ -1808,7 +1889,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1828,7 +1910,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1848,7 +1931,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1868,7 +1952,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1888,7 +1973,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1908,7 +1994,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1928,7 +2015,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
@@ -1948,7 +2036,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -1971,7 +2060,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: dying
@@ -1991,7 +2081,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: dying
@@ -2000,7 +2091,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -2011,7 +2102,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: dead
@@ -2031,7 +2123,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: dead
@@ -2051,7 +2144,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2071,7 +2165,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2091,7 +2186,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2111,7 +2207,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2131,7 +2228,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -2151,7 +2249,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
@@ -2174,7 +2273,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: dying
@@ -2194,7 +2294,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: dying
@@ -2217,7 +2318,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: dying
@@ -2237,7 +2339,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2257,7 +2360,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2277,7 +2381,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2300,11 +2405,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -2320,11 +2426,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -2340,11 +2447,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -2360,11 +2468,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: neutral
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -2380,11 +2489,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: angry
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -2400,11 +2510,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: angry
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -2420,11 +2531,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_negative
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Dragoon
         Pose: angry
-        Name: Dragoon
+        Name: Corporal d'Auvergne
       Character2:
         AvatarID: 
         Pose: 
@@ -2443,7 +2555,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2463,12 +2576,35 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: dying
+        Name: Alex
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 14
@@ -2476,11 +2612,13 @@ MonoBehaviour:
         Value: 20
         Operator: 4
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 14
@@ -2488,123 +2626,153 @@ MonoBehaviour:
         Value: 20
         Operator: 4
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 5
@@ -2612,19 +2780,23 @@ MonoBehaviour:
         Value: 10
         Operator: 4
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 13
@@ -2632,349 +2804,451 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags:
-      - Type: 1
-        Phrase: incidents.transitions.perilgain.mediumtooltip
-        Value: 1
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags:
       - Type: 1
         Phrase: incidents.transitions.perilgain.mediumtooltip
         Value: 1
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags:
       - Type: 1
         Phrase: incidents.transitions.perilgain.mediumtooltip
         Value: 1
-    - xor: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags:
       - Type: 1
         Phrase: incidents.transitions.perilgain.mediumtooltip
         Value: 1
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags:
       - Type: 1
         Phrase: incidents.transitions.perilgain.mediumtooltip
         Value: 1
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 1
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags:
       - Type: 1
         Phrase: incidents.transitions.perilgain.mediumtooltip
         Value: 0
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -2984,11 +3258,11 @@ MonoBehaviour:
     Tags: []
     Factions: 
     LocalizationKey: Assets/Resources/Incidents/The First Sparks.asset
+    _date: 564338880000000000
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: 564338880000000000
-  _localizationKey: Assets/Resources/Incidents/The First Sparks.asset.
   _nodeText:
   - "A week ago, a wallpaper manufacturer named Jean-Baptiste R\xE9veillon made a
     speech demanding bread prices to be lowered to something workers could afford.
@@ -3093,7 +3367,8 @@ MonoBehaviour:
   - "\u201C<i>Oui</i>, Madame! You hear Camille call from the kitchen, and hear her
     walk to the front door downstairs.\r\n\r\nYou can make out the muffled noises
     of a frantic conversation. Camille gasps, dropping something.\r"
-  - New Moment
+  - You head downstairs at let the man standing at the door inside. He's wearing the
+    uniform of a dragoon, and he stenches of gunpowder.
   - "Camille rushes into your room, her eyes wide with shock.\r\n\r\n\u201CMadame,
     Corporal Dumas has been shot.\u201D\r"
   - "\u201CThe man downstairs is asking for you to come with him. He looks worried.\u201D"
@@ -3144,8 +3419,8 @@ MonoBehaviour:
     man sent to retrieve you. Faces are stained black with smoke, and uniforms are
     spattered with mud... and what you sincerely hope is only more mud.
   - "You are led into a tent to find a large group of men milling about aimlessly,
-    in front of a cot. The moment they notice you, you\u2019re immediately pushed
-    to the front. "
+    in front of a canvas cot. The moment they notice you, you\u2019re immediately
+    pushed to the front. "
   - "At the sight of you, Thomas-Alexandre sits up in his cot, and forces himself
     to stand, an act so laborious that it hurts just to watch.\r"
   - "\u201CMy comrades, please!\u201D He calls out to the room, his strong and mirthful
@@ -3190,13 +3465,13 @@ MonoBehaviour:
     near it.\r"
   - "\u201CI\u2019m sorry, but fortune seems to have made other plans.\u201D He gestures
     to the wound in his chest. The bloodstain on his clothes is spreading, and that\u2019s
-    only what you can see. \r\n\r\nHe looks up at you, eyes straining to focus on
-    your face. \r"
+    only the parts that you can see. \r\n\r\nHe looks up at you, eyes straining to
+    focus on your face. \r"
   - (You have gained some favor with Alex)
   - "His vibrant face has slowly faded to an ashen color, and his lips start to shake.
     \u201CI\u2019m sorry Yvette\u2026 I wish I had more time\u2026\u201D\r"
   - "Everything inside him seems to slow down, like a candle fading in the dark. His
-    words are barely above a whisper. \r\n\r\n\u201CI lo\u2026\u201D\r"
+    next words are barely above a whisper. \r"
   - '"..."'
   - He's gone.
   - "You carefully lay him down on the bed, and shut his eyes.\r"
@@ -3243,6 +3518,7 @@ MonoBehaviour:
     the paint off a house.\r"
   - (You have lost a decent amount of favor with the Military)
   - You return to your morning preparations.
+  - "\"\x1CI lo...\""
   _linkText:
   - 
   - 
@@ -3352,7 +3628,6 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
   - "\u201CI\u2019m not sure if I should...\u201D"
   - 
   - "\u201CI\u2019ll get my things, let\u2019s go!\u201D"
@@ -3361,6 +3636,8 @@ MonoBehaviour:
   - "\u201CI\u2019ll get my things, let\u2019s go!\u201D"
   - "\u201CI\u2019m sorry, she\u2019s simply not here.\u201D"
   - "\u201CI\u2019m sorry, you have the wrong woman.\u201D"
+  - 
+  - 
   - 
   - 
   - 

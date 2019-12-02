@@ -13,7 +13,7 @@ namespace Ambition
             {
                 Debug.LogWarningFormat("FavorReward.Execute: unrecognized character ID '{0}', inventing that character now", favor.ID);
 
-                model.Characters.Add(favor.ID, character = new CharacterVO(favor.ID, new AvatarVO()));
+                model.Characters.Add(favor.ID, character = new CharacterVO(favor.ID, default));
             }
             character.Favor += favor.Value;
             if (character.Favor < 0) character.Favor = 0;

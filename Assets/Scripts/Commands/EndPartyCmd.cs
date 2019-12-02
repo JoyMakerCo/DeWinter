@@ -18,6 +18,11 @@ namespace Ambition
             //    model.LastOutfit = outfits.Count > 0 ? outfits[0] : null;
             //}
             //else model.LastOutfit = null;
+            
+            // Add exhaustion
+            GameModel game = AmbitionApp.GetModel<GameModel>();
+            game.Exhaustion.Value = game.Exhaustion.Value+1;
+
             AmbitionApp.UnregisterModel<PartyModel>();
         }
     }

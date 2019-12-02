@@ -26,13 +26,20 @@ namespace Ambition
         public string LocalizationKey;
 
         [JsonIgnore]
-        public bool IsScheduled => Date > default(DateTime);
+        public bool IsScheduled => Date > DateTime.MinValue;
 
         [JsonProperty("complete")]
         public bool IsComplete { set; get; }
 
         [JsonIgnore]
-        public DateTime Date { set; get; }
+        public DateTime Date
+        {
+            set => _date = value.Ticks;
+            get => _date > 0 ? new DateTime(_date) : default;
+        }
+
+        [JsonProperty("Date"), SerializeField]
+        private long _date;
 
         public RequirementVO[] Requirements;
 
@@ -59,6 +66,7 @@ namespace Ambition
             this.Name = incident.Name;
             this.Date = incident.Date;
             this.OneShot = incident.OneShot;
+            this.LocalizationKey = incident.LocalizationKey;
         }
 
         public string[] Dump()
@@ -94,7 +102,7 @@ namespace Ambition
     [Serializable]
     public class TransitionVO
     {
-        [NonSerialized]
+        public int index;
         public string Text;
         public bool xor=false;
         public CommodityVO[] Rewards;

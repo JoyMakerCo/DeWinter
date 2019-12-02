@@ -222,11 +222,18 @@ namespace Ambition
             return App.Service<UFlowSvc>().IsActiveMachine(machineID);
 		}
 
-        public static string GetString(string key)
+        public static string Localize(string key)
 		{
             LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
-			return App.Service<LocalizationSvc>().GetString(key, model.Substitutions);
-		}
+			string result = App.Service<LocalizationSvc>().GetString(key, model.Substitutions);
+#if DEBUG
+            if (string.IsNullOrEmpty(result))
+            {
+                Debug.LogWarning("Warning: No localizations found for key \"" + key + "\"");
+            }
+#endif
+            return result;
+        }
 
 		public static string GetString(string key, Dictionary<string, string> substitutions)
 		{

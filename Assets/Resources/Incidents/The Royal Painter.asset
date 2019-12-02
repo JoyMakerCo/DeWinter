@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: The Royal Painter
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 05000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -38,7 +38,7 @@ MonoBehaviour:
   - {x: -179, y: 544}
   - {x: -408, y: 599}
   - {x: 35, y: 616}
-  - {x: 261, y: 664}
+  - {x: 262, y: 664}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -65,7 +65,12 @@ MonoBehaviour:
     - {x: 18, y: 23}
     - {x: 23, y: 19}
     Nodes:
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "In one corner of the party, you find two guests clustered around a painting
+        hanging on the wall. They\u2019re talking in low voices to themselves.\r\n\r\nYou
+        pause to examine the painting yourself. It\u2019s a beautiful piece that show
+        the hostess standing in a field, posing with her dog. The eyes and lips, in
+        particular, look marvelously lifelike. \r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -85,7 +90,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "\u201CDo you have any idea how Marcelle managed to get this?\u201D A
+        man asks, his face the picture of shock, not taking his eyes off the painting
+        for a moment. He must know the Viscountess de Foix very well in order to use
+        her first name so freely."
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -105,7 +114,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "\u201CI have no idea.\u201D the woman replies, glancing furtively around
+        the room. \u201CEver since Madame Le Brun started painting portraits of the
+        Queen herself, she seems to feel that\u2019s she\u2019s above normal social
+        niceties. It must have cost a fortune just to make an opening in Madame Le
+        Brun\u2019s schedule.\u201D "
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -125,7 +139,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "\u201CYou assume that Madame Le Brun knew much about social niceties
+        to begin with,\u201D the man quips, and the two of them share a sly chuckle
+        at the absent artist\u2019s expense. \u201CYou\u2019d think that someone who
+        worked on commision would care a little more about what others thought of
+        her.\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -145,7 +164,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "The woman turns and asks you furtively \u201CAh! What do you think of
+        Madame Le Brun and her\u2026 eccentricities?\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -165,7 +186,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "Surprised, the man turns to you with a cocked eyebrow. \"\x1COh? You
+        really think making beautiful work can justify her transgressions?\""
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -185,7 +208,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: Your surprising forwardness leaves the room quiet for a few moments. The
+        man and the woman both glance back and forth between each other for a while,
+        trying to figure out what to say.
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: negative
@@ -205,7 +231,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "\u201CHaha, yes, I think we\u2019ll all see that soon enough.\u201D The
+        woman titters, trying to laugh behind her hand.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: charmed
@@ -225,7 +253,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: The once snide guests stand quiet for a while, considering your point.
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -245,7 +274,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "Slowly they nod, and their faces break into polite smiles. \u201CMy,
+        my, I didn\u2019t realize we had such a fan in our midst. I suppose one can
+        forgive an artist for being so eccentric, as long as their work remains beautiful.\u201D\r\n\r\nThat
+        qualifier at the end of her statement feels unnecessary, but it\u2019s an
+        improvement."
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -265,7 +299,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "With an exchange of polite nods, you part ways with these guests in order
+        to explore the rest of the party.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -285,7 +321,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "\"She's alright because she makes pretty pictures? What an insightful
+        defense!\u201D the woman replies with such fluid sarcasm that you almost mistake
+        it for a genuine compliment."
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: bored
@@ -305,7 +344,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_charmed
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "After a period of awkward silence, the guests depart to explore the rest
+        of the party. As they leave, you watch them whisper to each other and glance
+        back at you, pointedly.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -328,7 +370,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "Finally, the man manages to say, \u201CAh, I see that Madame Le Brun
+        has quite the fan. I must concede that there are few portrait painters who
+        have so superbly captured the image of the Queen, God preserve her. I suppose
+        that-\u201D \r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: negative
@@ -348,7 +394,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "\u201CWe should go.\u201D The woman interrupts, taking her friend gently
+        by the elbow and leading him away.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: negative
@@ -368,7 +416,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_negative
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "The two of them hurry away to another part of the party. While that certainly
+        didn\u2019t make you any friends, you know that Madame Le Brun is a far more
+        important person to be on the good side of, than two random hangers-on at
+        a party."
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -388,7 +440,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "\u201CThe real question is, if she falls out of favor, would she even
+        notice?\u201D Her friend asks with an arched eyebrow. \r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: charmed
@@ -408,7 +462,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "For a moment you feel close to these strangers, as you all laugh together
+        at the expense of someone who isn\x19t here. It is a joy as old as time.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: charmed
@@ -428,7 +484,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: You spend a few minutes with these guests, slyly passing judgement on
+        various prominent members of high society.
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: charmed
@@ -454,7 +512,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "After a few minutes, with an exchange of polite nods, you part ways with
+        your erstwhile friends in order to explore the rest of the party.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -474,7 +534,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "(You have lost some credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: bored
@@ -497,7 +558,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "(You have gained a little favor with Madame Le Brun)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -509,7 +571,7 @@ MonoBehaviour:
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: ElisabethVigeeLeBrun
+        ID: Elisabeth
         Value: 1
       Music:
         Name: 
@@ -520,7 +582,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "(You have gained a little favor with Madame Le Brun)\r\n(You have gained
+        a little peril)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: negative
@@ -532,7 +596,7 @@ MonoBehaviour:
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: ElisabethVigeeLeBrun
+        ID: Elisabeth
         Value: 1
       - Type: 12
         ID: 
@@ -546,7 +610,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+    - Text: "(You have gained a little credibility)\r\n(You have lost a little favor
+        with Madame Le Brun)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: charmed
@@ -558,7 +624,7 @@ MonoBehaviour:
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: ElisabethVigeeLeBrun
+        ID: Elisabeth
         Value: -1
       - Type: 11
         ID: 
@@ -573,69 +639,87 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CPersonally, I'\x19ve always admired her willingness to strain against
+        convention.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags:
       - Type: 2
         Phrase: incidents.transitions.credibilitycheck.easytooltip
         Value: 0
-    - xor: 0
+    - Text: "\u201CI think Madame Le Brun can be as rude as she pleases. Her skills
+        speak for themselves.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 0
-    - xor: 0
+    - Text: "\u201CNobody is above the consequences of society, not even great painters.
+        Le Brun will have hers yet.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 11
@@ -643,35 +727,43 @@ MonoBehaviour:
         Value: 50
         Operator: 4
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -681,11 +773,11 @@ MonoBehaviour:
     Tags: []
     Factions: 
     LocalizationKey: Assets/Resources/Incidents/The Royal Painter.asset
+    _date: -1
     Requirements: []
   _factions: 000100000000
   _chapters: 00010101
   _date: -1
-  _localizationKey: Assets/Resources/Incidents/The Royal Painter.asset.
   _nodeText:
   - "In one corner of the party, you find two guests clustered around a painting hanging
     on the wall. They\u2019re talking in low voices to themselves.\r\n\r\nYou pause

@@ -8,7 +8,7 @@ namespace Ambition
         public override void SetData(string data) => message = data;
         public override void OnEnterState(string[] args)
         {
-AmbitionApp.SendMessage(message);
+            AmbitionApp.SendMessage(message);
 
             if (args != null) switch (args.Length)
             {

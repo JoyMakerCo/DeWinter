@@ -27,13 +27,22 @@ namespace Ambition
 
         private void HandleEquip(ItemVO item)
         {
-            _button.interactable = item?.Type == ItemType.Outfit;
+            Debug.LogFormat("StartPartyBtn.HandleEquip( {0} )", item );
+            if (item == null)
+            {
+                _button.interactable = false;
+            }
+            else
+            {
+                _button.interactable = item.Type == ItemType.Outfit;
+            }
         }
 
         private void HandleUnequip(ItemVO item)
         {
-            if (item?.Type == ItemType.Outfit)
-                _button.interactable = false;
+            Debug.LogFormat("StartPartyBtn.HandleUnequip( {0} )", item );
+
+            _button.interactable = false;
         }
     }
 }

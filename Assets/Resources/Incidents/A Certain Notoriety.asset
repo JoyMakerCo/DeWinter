@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A Certain Notoriety
   m_EditorClassIdentifier: 
   _Nodes: 
-  _Links: 
+  _Links: 06000000
   _Positions:
   - {x: 0, y: 0}
   - {x: 1, y: 73}
@@ -70,7 +70,9 @@ MonoBehaviour:
     - {x: 15, y: 23}
     - {x: 23, y: 9}
     Nodes:
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "You wake up the next morning to a polite knock on your bedroom\u2019s
+        door frame."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -90,7 +92,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_knock_soft
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "Camille enters, carrying a small armload of letters.\n\n\u201CUh\u2026
+        madame.\u201D Camille starts, both confused and hesitant."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -110,7 +114,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CThey\u2019re for you, madame! Every single one!\u201D Camille beams."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: happy
@@ -130,7 +135,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "You\u2019re don\u2019t think that\u2019s exactly how it happened, but
+        decide against fretting over the details."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -150,7 +157,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "Camille starts to talk faster and faster. \u201CThen, when all was lost,
+        you were saved by a beautiful stranger who escorted you home in the moonlit
+        night! It\u2019s so romantic, <i>non</i>?\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: happy
@@ -170,7 +180,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201COh, the rumors are already running rampant! Why, just in the market
+        the other day I heard someone say that you\u2019ve taken a liking to-\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: happy
@@ -190,7 +202,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "Camille stops, stares into space, and blushes. \u201CActually, nevermind
+        that.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -210,27 +224,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: event:/One Shot SFX/Female_bark_neutral
-        Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201C...it\u2019s just rumors from the marketplace madame, nothing you
+        should dignify.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -250,7 +246,30 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CConsider it... un-minded, madame.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: "\u201CIn fact, I\u2019m sure that anyone who really judges you fairly
+        is going to love you.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -270,7 +289,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: '[No Tutorial]'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -290,7 +310,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: '[Tutorial]'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -310,7 +331,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CThere\u2019s a lot of letters for you here.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -330,7 +352,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "The letter, written in elaborate calligraphy and sealed in stamped wax,
+        appears to be an invitation to a party. The other letters cradled in Camille\u2019s
+        arms appear to be the same."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -350,7 +375,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CWell madame, you\u2019re a little famous right now,\u201D Camille
+        replies. \u201CEveryone\u2019s heard about your run-in with that dreadful
+        party host a few days ago. How they preyed upon your honor, and spirited away
+        your carriage driver, leaving you trapped and alone.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -370,7 +399,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CIn any case, this is your chance to meet people in the city who
+        don\u2019t hate you and Armand.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -390,7 +421,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CWell, yes madame. These could go badly,\u201D Camille admits. \u201CNot
+        everyone in the city is particularly honest. In fact, most people of your
+        station tend to have a lot of enemies.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: sad
@@ -410,7 +444,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_bored
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CHowever...\u201D she continues. \u201CThat dreadful host must have
+        enemies too!\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -430,7 +466,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CAll these invitations must come from people who hate that vile
+        person as much as we do!\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: happy
@@ -450,7 +488,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CI\u2019m certain of it, madame. This is your chance to meet people
+        in the city who don\u2019t hate you and Armand.\u201D \r"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -470,7 +510,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CMadame, you\u2019re the mistress of this house,\u201D Camille states
+        matter of factly. \u201CI can\u2019t allow any insult against your honor to
+        go unchallenged.\u201D\r"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -490,7 +533,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201CI know that you hate them, so I hate them as well. In fact, I have
+        already sworn to never speak their name again!\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -510,7 +555,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201C... but I\u2019m getting off topic, madame. I think that these
+        invitations are your chance to meet good people in the city who don\u2019t
+        hate you and Armand.\u201D \r"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -530,7 +578,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: "\u201C... but I\u2019m getting off topic, madame. I think that these
+        invitations are your chance to meet good people in the city who don\u2019t
+        hate you and Armand.\u201D \r"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -554,115 +605,175 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CNever mind what?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: "\u201CYes, let us never mind that. Never mind it again.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: "\u201C<i>Merci</i> Camille, I really hope that\u2019s true.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"That''s all well and good, but how does any of this work?" <Tutorial>'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CWhy would anyone invite me to a party?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"That''s all well and good, but how does any of this work?" <Tutorial>'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: <Take a letter>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: "\u201CAre they for me, or are they for Armand?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: "\u201CWhy would anyone invite me to a party?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201COh great, more chances to be humiliated by someone I don\u2019t
+        even know.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: "\u201COh great, more chances to be humiliated by someone I don\u2019t
+        even know.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CI think you\u2019re right.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: "\u201CYes! Wait\u2026 we?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -672,11 +783,11 @@ MonoBehaviour:
     Tags: []
     Factions: 
     LocalizationKey: Assets/Resources/Incidents/A Certain Notoriety.asset
+    _date: 564309504000000000
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: 564309504000000000
-  _localizationKey: Assets/Resources/Incidents/A Certain Notoriety.asset.
   _nodeText:
   - "You wake up the next morning to a polite knock on your bedroom\u2019s door frame."
   - "Camille enters, carrying a small armload of letters.\n\n\u201CUh\u2026 madame.\u201D

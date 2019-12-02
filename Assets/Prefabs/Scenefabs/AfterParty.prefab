@@ -1008,6 +1008,7 @@ GameObject:
   - component: {fileID: 95460713461178748}
   - component: {fileID: 114960782489735744}
   - component: {fileID: 4474776142920209714}
+  - component: {fileID: 6057538815987304396}
   m_Layer: 5
   m_Name: AfterParty
   m_TagString: Untagged
@@ -1159,6 +1160,31 @@ MonoBehaviour:
   Music:
     Name: 
     Parameters: []
+--- !u!114 &6057538815987304396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375144807633314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText:
+  - TextField: {fileID: 114019977890689322}
+    LocalizationKey: commodity.reputation.name
+  - TextField: {fileID: 114341890398857778}
+    LocalizationKey: afterparty.party_importance
+  - TextField: {fileID: 114857330497614108}
+    LocalizationKey: afterparty.novelty_lost
+  - TextField: {fileID: 114341571702578616}
+    LocalizationKey: afterparty.rewards
+  - TextField: {fileID: 114783519730477774}
+    LocalizationKey: gossip
+  - TextField: {fileID: 114778355603482274}
+    LocalizationKey: btn_continue
 --- !u!1 &1451158123443340
 GameObject:
   m_ObjectHideFlags: 0

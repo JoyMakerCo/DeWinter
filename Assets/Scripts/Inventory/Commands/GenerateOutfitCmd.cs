@@ -9,15 +9,15 @@ namespace Ambition
         {
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
             string style = RNG.TakeRandom(AmbitionApp.GetPhrases("outfit.style"));
-            int modesty = RNG.Generate(101);
-            int luxury = RNG.Generate(101);
+
+            int modesty = (int)RNG.Tangential(-100.0f,100.0f);
+            int luxury = (int)RNG.Tangential(-100.0f,100.0f);
 
             OutfitWrapperVO.SetState(item, ItemConsts.NOVELTY, 100);
             OutfitWrapperVO.SetState(item, ItemConsts.MODESTY, modesty);
             OutfitWrapperVO.SetState(item, ItemConsts.LUXURY, luxury);
 
             item.Price = Math.Abs(modesty) + Math.Abs(luxury);
-
             item.Type = ItemType.Outfit;
 
             var luxuryAdjective = Map(luxury, AmbitionApp.GetPhrases("outfit.luxury"));

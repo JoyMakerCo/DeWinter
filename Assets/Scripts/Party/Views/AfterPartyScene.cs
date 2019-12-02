@@ -39,7 +39,7 @@ namespace Ambition
 				switch(reward.Type)
 				{
 					case CommodityType.Gossip:
-						GossipText.text += "- " + AmbitionApp.GetString("commodity." + reward.Type.ToString().ToLower() + ".name") + "\n";
+						GossipText.text += "- " + AmbitionApp.Localize("commodity." + reward.Type.ToString().ToLower() + ".name") + "\n";
                         print("Gossip Item Added!");
 						break;
 					case CommodityType.Livre:
@@ -49,12 +49,12 @@ namespace Ambition
 						rep += reward.Value;
 						break;
 					case CommodityType.Item:
-						RewardText.text += "- " + AmbitionApp.GetString("commodity." + reward.ID.ToLower() + ".name") + "\n";
+						RewardText.text += "- " + AmbitionApp.Localize("commodity." + reward.ID.ToLower() + ".name") + "\n";
 						break;
 				}
 			}
-            if (GossipText.text == "") GossipText.text = AmbitionApp.GetString("commodity.none.name");
-            if (RewardText.text == "") RewardText.text = AmbitionApp.GetString("commodity.none.name");
+            if (GossipText.text == "") GossipText.text = AmbitionApp.Localize("commodity.none.name");
+            if (RewardText.text == "") RewardText.text = AmbitionApp.Localize("commodity.none.name");
             RepGainIcon.enabled = rep >= 0;
 			RepLossIcon.enabled = rep < 0;
             if(rep >= 0)

@@ -48,7 +48,7 @@ public class OutfitButtonMediator : MonoBehaviour
 
     public void SetItem(ItemVO item)
     {
-        Debug.LogFormat("OutfitButtonMediator.SetItem: {0}",item.ToString());
+        Debug.LogFormat("OutfitButtonMediator.SetItem: {0}",string.Join("\n",item.Dump()));
         _item = item;
         ItemName.text = item.Name;
         GiftIndicator.SetActive(false); //Gifts aren't a thing yet

@@ -10,22 +10,19 @@ namespace Ambition
     {
         public PortraitView[] PortraitsEven;
         public PortraitView[] PortraitsOdd;
-        public Button RoomButton;
+        public Text ButtonText;
 
-        private PartyModel _model;
         private IncidentVO _incident;
+        private MapScene _mapView;
 
         [SerializeField]
         private AvatarCollection avatarCollection;
 
         void Awake()
         {
-            int[] counts = new int[2];
-            _model = AmbitionApp.GetModel<PartyModel>();
+            _mapView = GetComponentInParent<MapScene>();
+            ButtonText.text = AmbitionApp.Localize("party.btn.room");
         }
-
-        private void OnEnable() => RoomButton?.onClick.AddListener(OnClick);
-        private void OnDisable() => RoomButton?.onClick.RemoveListener(OnClick);
 
         public void SetIncident(IncidentVO incident)
         {
@@ -60,7 +57,12 @@ namespace Ambition
                 if (characters.Count == max) break;
             }
             portraits = characters.Count % 2 == 0 ? PortraitsEven : PortraitsOdd;
-            characters.ForEach(c => portraits[i++].Character = c);
+            foreach(CharacterVO character in characters)
+            {
+                portraits[i].Tooltip = character.FullName;
+                portraits[i].Portrait.sprite = _mapView.GetPortrait(character.AvatarID);
+                i++;
+            }
             while (i<portraits.Length)
             {
                 portraits[i++].gameObject.SetActive(false);
@@ -69,6 +71,6 @@ namespace Ambition
             Array.ForEach(portraits, p => p.gameObject.SetActive(false));
         }
 
-        private void OnClick() => AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM, _incident);
+        public void ShowRoom() => AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM, _incident);
     }
 }

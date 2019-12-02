@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 407123281329140615}
   - component: {fileID: 4589176402336758290}
   - component: {fileID: 6451386772516616784}
-  - component: {fileID: 5855117281891784592}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -96,21 +95,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.6862745}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &5855117281891784592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355556396020163132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseTextAsKey: 1
-  Substitutions: []
-  _localizationKey: 
 --- !u!1 &691758557548506187
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +381,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2071b779dfcbf8444aa1111165f0c9ff, type: 3}
   RestedIcon: {fileID: 21300000, guid: 8f84e948c76e8d846ba712d1df481e54, type: 3}
   Indicator: {fileID: 1768759932544345354}
-  Tooltip: {fileID: 2773906612822458185}
+  Tooltip: {fileID: 3508125713624282426}
 --- !u!1 &1933789676741650162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,6 +1991,7 @@ GameObject:
   - component: {fileID: 3287388403514212674}
   - component: {fileID: 3287388403514212677}
   - component: {fileID: 3287388403514212676}
+  - component: {fileID: 3334035490309977351}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -2089,6 +2074,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TitleText: {fileID: 3174143836690541037}
+--- !u!114 &3334035490309977351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3287388403514212675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText:
+  - TextField: {fileID: 3873462711185284964}
+    LocalizationKey: remaining_turns
+  - TextField: {fileID: 4589176402336758290}
+    LocalizationKey: stat.peril.name
+  - TextField: {fileID: 2214909737688189483}
+    LocalizationKey: stat.credibility.name
 --- !u!1 &3287426637094908569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,7 +2255,6 @@ GameObject:
   - component: {fileID: 2599012646183458208}
   - component: {fileID: 2214909737688189483}
   - component: {fileID: 250771637417943577}
-  - component: {fileID: 6232434684407306294}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2335,21 +2338,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.6862745}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &6232434684407306294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3534460338369862257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseTextAsKey: 1
-  Substitutions: []
-  _localizationKey: 
 --- !u!1 &4029010781613569873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2397,7 +2385,6 @@ GameObject:
   - component: {fileID: 1895883708700194289}
   - component: {fileID: 3628887871310090637}
   - component: {fileID: 3873462711185284964}
-  - component: {fileID: 1942457711188606121}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2466,21 +2453,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Remaining Turns
---- !u!114 &1942457711188606121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4158931210631511481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseTextAsKey: 1
-  Substitutions: []
-  _localizationKey: 
 --- !u!1 &4853000326919862015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,10 +3079,9 @@ GameObject:
   - component: {fileID: 2695046394859870370}
   - component: {fileID: 4849548075466589799}
   - component: {fileID: 3508125713624282426}
-  - component: {fileID: 2773906612822458185}
   - component: {fileID: 3241770971460160731}
   m_Layer: 5
-  m_Name: LocalizedText
+  m_Name: TooltipText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3130,9 +3101,9 @@ RectTransform:
   m_Father: {fileID: 5428250803705798436}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 117, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 20, y: -33}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4849548075466589799
@@ -3177,21 +3148,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: exhaustion_level_1
---- !u!114 &2773906612822458185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7751439225605974936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseTextAsKey: 1
-  Substitutions: []
-  _localizationKey: 
 --- !u!114 &3241770971460160731
 MonoBehaviour:
   m_ObjectHideFlags: 0

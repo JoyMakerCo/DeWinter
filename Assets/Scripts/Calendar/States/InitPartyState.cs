@@ -11,6 +11,7 @@ namespace Ambition
 	{
         public override void OnEnterState(string[] args)
         {
+            Debug.LogFormat("InitPartyState.OnEnterState");
             PartyModel model = AmbitionApp.RegisterModel<PartyModel>();
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             PartyVO party = Array.Find(calendar.GetEvents<PartyVO>(), p => p.Attending);
@@ -34,6 +35,8 @@ namespace Ambition
 
             //Damage the Outfit's Novelty, now that the Confidence has already been Tallied
             AmbitionApp.SendMessage(InventoryMessages.DEGRADE_OUTFIT, outfit);
+
+            Debug.LogFormat("Scheduling intro incident: {0}",party.IntroIncident?.ToString());
             calendar.Schedule(party.IntroIncident, calendar.Today);
         }
     }

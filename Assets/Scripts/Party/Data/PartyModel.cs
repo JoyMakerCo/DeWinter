@@ -118,20 +118,6 @@ namespace Ambition
 			}
 		}
 
-
-/* 
-        public int Turns;
-        public int Turn = 0;
-        public int TurnsLeft => Turns - Turn;
-        public int IncidentIndex = 0;
-        public IncidentVO[] Incidents;
-        public IncidentVO Incident;
-        public IncidentVO RequiredIncident => ((Party?.RequiredIncidents?.Length ?? 0) > IncidentIndex)
-            ? Party.RequiredIncidents[IncidentIndex]
-            : null;
-
-        public ItemVO LastOutfit;
-*/
 		public string[] Dump()
 		{
 

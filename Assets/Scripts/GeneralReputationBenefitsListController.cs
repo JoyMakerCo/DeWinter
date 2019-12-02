@@ -26,7 +26,7 @@ namespace Ambition
 			string str = "Reputation Level Benefits\n";
 			for (int i=1; i<rep.Level; i++)
 			{
-				str += AmbitionApp.GetString("reputation_text." + i.ToString() + "\n");
+				str += AmbitionApp.Localize("reputation_text." + i.ToString() + "\n");
 			}
 			_text.text = str;
 	    }

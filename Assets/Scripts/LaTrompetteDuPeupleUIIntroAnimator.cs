@@ -16,6 +16,7 @@ namespace Ambition
             _animator = GetComponent<Animator>();
             HandleIntroAnimation();
             AmbitionApp.Subscribe(CalendarMessages.NEXT_DAY, HandleLeaveLocation);
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER);
         }
 
         void OnDestroy()

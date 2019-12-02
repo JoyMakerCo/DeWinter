@@ -6,8 +6,8 @@
         {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             ParisModel paris = AmbitionApp.GetModel<ParisModel>();
-            if (paris.Location?.Incident != null)
-                calendar.Schedule(paris.Location.Incident, calendar.Today);
+            if (paris.Location?.IntroIncident != null)
+                calendar.Schedule(paris.Location.IntroIncident, calendar.Today);
         }
     }
 }

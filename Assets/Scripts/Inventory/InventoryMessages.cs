@@ -9,7 +9,7 @@ namespace Ambition
         public const string DISPLAY_ITEM = "DISPLAY_ITEM"; // This is used in the store, wardrobe and party loadout screens to show whatever is being chosen
         public const string GENERATE_OUTFIT = "GENERATE_OUTFIT";
         public const string DEGRADE_OUTFIT = "DEGRADE_OUTFIT";
-		public const string REMOVE_ITEM = "REMOVE_ITEM";
+		public const string DELETE_ITEM = "DELETE_ITEM";
 		public const string INVENTORY = "INVENTORY";
         public const string SORT_INVENTORY = "SORT_INVENTORY"; //Used in conjunction with a string to sort whatever inventories are on screen at the moment
         public const string CREATE_GOSSIP = "CREATE_GOSSIP"; 

@@ -6,20 +6,20 @@ using Core;
 
 namespace Ambition
 {
-	public class CharacterVO : IConsoleEntity
-	{
-        private string _name = null;
-        public string Name
-        {
-            get => _name ?? (FirstName + " " + LastName);
-            set => _name = value;
-        }
+    public class CharacterVO : IConsoleEntity
+    {
 
-        [JsonProperty("first_name")]
-        public string FirstName;
+        [JsonProperty("display_name")]
+        public string Name;
 
-        [JsonProperty("last_name")]
-        public string LastName;
+        [JsonProperty("id")]
+        public string ID;
+
+        [JsonProperty("full_name")]
+        public string FullName;
+
+        [JsonProperty("formal_name")]
+        public string FormalName;
 
         [JsonProperty("faction")]
         public FactionType Faction = FactionType.Neutral;
@@ -29,29 +29,7 @@ namespace Ambition
 
         public int Favor;
 
-        private string _title = null;
-        public string Title
-        {
-            set => _title = value;
-            get => !string.IsNullOrWhiteSpace(_title)
-            ? _title
-            : (Gender == Gender.Male
-            ? "Monsieur"
-            : Spouse != null
-            ? "Madame"
-            : "Mademoiselle");
-        }
-
-        public string ShortTitle => !string.IsNullOrWhiteSpace(_title)
-            ? ""
-            : Gender == Gender.Male
-            ? "M"
-            : Spouse != null
-            ? "Mme"
-            : "Mlle";
-
-
-        public AvatarVO Avatar;
+        public string AvatarID;
 
         [JsonProperty("Reputation")]
         public int Reputation;
@@ -72,8 +50,10 @@ namespace Ambition
 		public CharacterVO(CharacterVO character)
 		{
 			Name = character.Name;
-			_title = character._title;
-			Gender = character.Gender;
+            ID = character.ID;
+            FullName = character.FullName;
+            FormalName = character.FormalName;
+            Gender = character.Gender;
             Spouse = character.Spouse;
             Reputation = character.Reputation;
             Background = character.Background;
@@ -84,7 +64,7 @@ namespace Ambition
         public CharacterVO(string name, AvatarVO avatar)
         {
             Name = name;
-            this.Avatar = avatar;
+            this.AvatarID = avatar.ID;
         }
 
         public override string ToString()
@@ -96,9 +76,11 @@ namespace Ambition
         {
 			return new string[]
 			{
-				"CharacterVO: " + Name,
-				"Title: " + Title,
-				"Gender: " + Gender.ToString(),
+				"CharacterVO: " + ID,
+                "Display Name: " + Name,
+                "FullName: " + FullName,
+                "FormalName: " + FormalName,
+                "Gender: " + Gender.ToString(),
 				"Spouse: " + Spouse,
 				"Reputation: " + Reputation,
 				"Background: " + Background,

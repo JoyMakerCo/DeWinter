@@ -63,7 +63,7 @@ namespace Ambition
             string[] results = new string[level];
 			for (int i=level; i>=0; i--)
 			{
-                results[i] = AmbitionApp.GetString(faction.Name.ToLower() + "." + (level - i).ToString());
+                results[i] = AmbitionApp.Localize(faction.Name.ToLower() + "." + (level - i).ToString());
             }
             return string.Join("\n", results);
         }

@@ -11,6 +11,7 @@ namespace Ambition
 
 		public void Execute(AdjustFactionVO vo)
 		{
+			Debug.LogFormat("AdjustFactionCmd.Execute: {0}", vo.ToString() );
 			FactionVO faction = _model[vo.Faction];
 			if (faction != null)
 			{

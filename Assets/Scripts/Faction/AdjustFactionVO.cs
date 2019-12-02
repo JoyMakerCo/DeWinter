@@ -33,5 +33,9 @@ namespace Ambition
 			return new AdjustFactionVO(faction, 0, 0, allegiance);
 		}
 
+		public override string ToString()
+		{
+			return string.Format( "AdjustFactionVO {0} A {1:+0;-#} R {2:+0;-#} P {3:+0;-#}", Faction, Allegiance, Reputation, Power);
+		}
 	}
 }

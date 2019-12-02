@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 52
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -471,7 +471,34 @@ MonoBehaviour:
     - {x: 81, y: 164}
     - {x: 164, y: 94}
     Nodes:
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: Strolling through the 6th arrondissement, you weave your way through crowds
+        of excited students, pontificating intellectuals, and agitated artists. It
+        feels like every corner is home to another gallery, or part of the various
+        academies strewn throughout the district.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Paris Map
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Your nose picks up the scent of fine coffee and you find yourself subconsciously
+        gravitating towards the origin of this delightful smell. The closer you get
+        to the source of the scent, the thicker the crowds become.\r"
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -491,7 +518,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: "Eventually, you arrive at a bustling coffee house with large glass windows.
+        The sign outside reads '<i>Cafe Principe</i>'. Your heart sinks at the site
+        of the massive crowd of students milling around outside the cafe. It doesn\u2019t
+        look like you\u2019ll be able to get in at all.\r\n"
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -511,7 +542,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: "However, before you can give up on this venture, a woman in a coffee
+        stained apron emerges from the door. She loudly asks if any of the students
+        are actually interested in buying anything, or if they\u2019re just hanging
+        around to look important."
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -531,7 +566,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: 'Sensing the hostility in this rhetorical question, the students quickly
+        dissipate. Satisfied, the woman in the apron heads back inside. With the doorway
+        cleared, you happily enter <i>Cafe Principe</i>. '
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -551,27 +589,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'Inside, the coffee house is packed with customers engaged in animate
+        conversation and gesticulating wildly with cups of steaming coffee. Growing
+        up, you were often told that religion and politics made for poor conversation,
+        but it appears that none of these people got the same message. '
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -591,7 +613,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Finding a seat at an empty table, you\u2019re approached by the woman
+        from before.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -611,7 +635,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201C<i>Bonjour</i> madame, my name is Anne and let me be the first
+        to welcome you to <i>Cafe Principe</i>!\u201D "
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -631,7 +657,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201CWhat can I get you?\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -651,7 +678,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201COh, certainly madame!\u201D she replies happily.\n\n(You have spent
+        3 Livres)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -674,7 +703,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201C...\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -694,7 +724,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "You gesture around the cafe as you ask the question, and the woman follows
+        your gesture as it accidentally points towards a portly older man surrounded
+        by a group of politely giggling young women. \u201COh, that?\u201D she asks.
+        \u201CThat man is Monsieur Boehmer, he\u2019s a regular.\u201D "
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -714,7 +748,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'She gives you a quick curtsey before she checks in with another table,
+        taking their order as well. You sigh deeply and take in the cafe around you.
+        The whole place hums with excitement. Voices ebb and flow likes the waves
+        of the ocean as patrons make new pronouncements and trade verbal barbs with
+        their compatriots. '
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -734,7 +773,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "She returns with your coffee, steaming and hot. The porcelain cup clinks
+        lightly as she sets it down, along with containers of sugar and milk. \r\n\r\r\n\u201CEnjoy,
+        madame!\u201D she says before curtseying again and leaving to attend to the
+        other customers.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -754,7 +797,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Before you mix in anything, you decide to taste the coffee by itself.
+        It\u2019s bitter and acidic, but also full and potent. Very potent. You now
+        understand why the customers are all so energetic.\r\n\n(You have lost one
+        level of exhaustion!)\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -774,7 +821,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201CIf you insist, madame, I\u2019ll leave you to your refreshments.\u201D\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -794,7 +842,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201C<i>Oui</i>, madame. I shall fetch you free water, while you occupy
+        a table in our busy cafe.\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -814,7 +864,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201CIs there anything else I can get you?\u201D\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -834,7 +885,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: With a scowl, she skulks away to attend to the other customers, while
+        you applaud yourself for your thriftiness. She shortly returns with your water,
+        which is surprisingly cool and refreshing.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -854,7 +908,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Instantly, the woman is all smiles, once again. \u201COh yes, an excellent
+        choice madame!\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -874,7 +930,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "As for the women, they are... prostitutes.\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -894,7 +951,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At the sound of fresh giggling from Monsieur Boehmer\u2019s table she
+        leans in close to you and whispers behind her hand \u201CHe\u2019s not actually
+        that funny, the laughing is just good for business.\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -914,7 +974,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201CIs there anything else you\u2019d like to know about?\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -934,7 +995,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201COh, the cafe!\u201D the woman exclaims, suddenly understanding
+        your point. \u201CDon\u2019t worry, everything here is pretty simple, I\u2019ve
+        watched it play out with our patrons the same way everyday, for the last few
+        years.\u201D\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -954,7 +1019,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201CFirst you come in and sit down, and order something. While we can\u2019t
+        make you order anything, we would strongly prefer that you order some coffee.\u201D
+        She stops to stare at you significantly for a moment. \n\n\u201CThe coffee
+        also perks you up, and makes you less exhausted, if you\u2019re feeling tired.
+        It\u2019s no substitute for sleep, but it\u2019s a start!\u201D\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -974,7 +1044,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201CAfter you get your drink, you can settle in and listen to our patrons
+        here. Everyone here is obsessed with politics, so it\u2019s a great place
+        to find out who among the high and mighty is doing particularly well at the
+        moment. Everything is always shifting in Paris, so it\u2019s nice to come
+        in regularly and stay on top of things.\u201D\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -994,7 +1069,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201COnce you\u2019ve listened for a while, you\u2019ll probably get
+        dragged into one of the debates. Be carefully with your answer, as news travels
+        fast. Depending on who you support in the debate, you can earn some favor
+        with one faction, and lose some reputation with another.\u201D\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -1014,7 +1093,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201CAfter that? You head home with a little more energy, a little more
+        knowledge, and hopefully you\u2019re a little more well liked. That\u2019s
+        all there is, really!\u201D\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -1034,7 +1116,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "\u201CNow, if you can excuse me madame, I must get back to my other tables.\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
         Pose: neutral
@@ -1054,7 +1137,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "She favors you with a quick curtsey before leaving. You sip at your drink
+        and get settled in. It feels familiar in a way, like a louder and livelier
+        version of <i>\u2018Le Cygne\u2019</i>, the tavern you used to frequent back
+        home"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1074,7 +1161,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "She favors you with a quick curtsey before leaving. You sip at your drink
+        and get settled in. It feels familiar in a way, like a louder and livelier
+        version of \u2018Le Cygne\u2019, a tavern you used to frequent back home."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1094,7 +1184,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Taking out your journal and a traveler\u2019s pencil, you close your
+        eyes and relax, just focusing on listening to the whole bustling cafe. Not
+        focusing on one individual conversation, but just letting the sum total of
+        the room flow into your ears, and then assessing it all together. Occasionally,
+        you open your eyes to jot down a quick note.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1114,7 +1209,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "It doesn\u2019t take long to realize that the Crown isn\u2019t just more
+        powerful than the Revolution, but that the difference in power is massive.
+        The nationalists in the Third Estate have quite a fight ahead of them if they
+        want to make the Crown give into their demands. \r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1134,7 +1233,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "After a few minutes, it becomes obvious that the Crown is significantly
+        more powerful than the Revolution. While it might be possible for the Revolution
+        to make the Crown give into their demands, they would have to build strong
+        alliances with the other factions in order to do so. \r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1154,7 +1257,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "It takes a while before you come to the conclusion that the Crown is
+        more powerful than the Revolution. The difference in power, however, is not
+        that large. In fact, it wouldn\u2019t take a great reversal of fortune for
+        the Crown to find themselves on their back foot. Maintaining strong alliances
+        from the other factions will be important to their success.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1174,7 +1282,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "You listen for what feels like an hour and you still can\u2019t draw
+        any solid conclusions. It seems like the Crown and the Revolution are so evenly
+        matched that you can\u2019t determine which one would prevail in any sort
+        of conflict. The victor would most certainly be determined by the strength
+        of their alliances.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1194,7 +1307,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Opening your eyes, you switch your focus to something more specific.
+        You scan the room, looking at the way everyone is dressed, and at their body
+        language. You\u2019re looking for more subtle hints about where everyone\u2019s
+        allegiances lie. More notes quickly scratched into your journal.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1214,7 +1331,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "It takes a while before you come to the conclusion that the Revolution
+        is more powerful than the Crown. The difference in power, however, is not
+        that large. In fact, it wouldn\u2019t take a great reversal of fortune for
+        the Revolution to find themselves on their back foot. Maintaining strong alliances
+        from the other factions will be important to their success."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1234,7 +1356,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "After a few minutes, it becomes obvious that the Revolution is significantly
+        more powerful than the Crown. While it might be possible for the Crown to
+        resist the Revolution\u2019s demands, they would have to build strong alliances
+        with the other factions in order to do so. \r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1254,7 +1380,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "It doesn\u2019t take long to realize that the Revolution isn\u2019t just
+        more powerful than the Crown, but that the difference in power is massive.
+        The royal family and their loyal aristocrats have quite a fight ahead of them
+        if they want to resist the Revolution\u2019s demands. \r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1274,7 +1404,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Opening your eyes, you switch your focus to something more specific.
+        You scan the room, looking at the way everyone is dressed, and at their body
+        language. You\u2019re looking for more subtle hints about where everyone\u2019s
+        allegiances lie. More notes quickly scratched into your journal.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1294,7 +1428,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Opening your eyes, you switch your focus to something more specific.
+        You scan the room, looking at the way everyone is dressed, and at their body
+        language. You\u2019re looking for more subtle hints about where everyone\u2019s
+        allegiances lie. More notes quickly scratched into your journal.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1314,7 +1452,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Having reasoned that the Church is the most powerful of the minor factions
+        in Paris, you glance over your notes and instantly come to the conclusion
+        that they\u2019ve put their entire support behind the King and the aristocracy."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1334,7 +1475,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Quickly scanning over your meticulous notes, you\u2019re quite certain
+        that the Church is the most powerful of all the minor factions in Paris. Additionally,
+        it seems that they strongly support the Royal family."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1354,7 +1498,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "After some consideration, you deduce that the Church is the most powerful
+        minor faction in Paris. They support the Crown for now, but it wouldn\u2019t
+        take much to swing the balance."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1374,7 +1521,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: While you can easily conclude that the Church is the most powerful minor
+        faction in Paris, you have a hard time determining whether they support the
+        Crown or the Revolution more. It seems that their allegiance is currently
+        up for grabs by either party.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1394,7 +1545,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "After some consideration, you deduce that the Church is the most powerful
+        minor faction in Paris. They support the Revolution for now, but it wouldn\u2019t
+        take much to swing the balance."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1414,7 +1568,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Quickly scanning over your meticulous notes, you\u2019re quite certain
+        that the Church is the most powerful of all the minor factions in Paris. Additionally,
+        it seems that they strongly support the common people of the Revolution."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1434,7 +1591,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Having reasoned that the Church is the most powerful of the minor factions
+        in Paris, you glance over your notes and instantly come to the conclusion
+        that they\u2019ve put their entire support behind the Revolution and their
+        nationalists."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1454,7 +1615,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Having reasoned that the Military is the most powerful of the minor factions
+        in Paris, you glance over your notes and instantly come to the conclusion
+        that they\u2019ve put their entire support behind the King and the aristocracy."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1474,7 +1638,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Quickly scanning over your meticulous notes, you\u2019re quite certain
+        that the Military is the most powerful of all the minor factions in Paris.
+        Additionally, it seems that they strongly support the Royal family."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1494,7 +1661,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "After some consideration, you deduce that the Military is the most powerful
+        minor faction in Paris. They support the Crown for now, but it wouldn\u2019t
+        take much to swing the balance."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1514,7 +1684,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: While you can easily conclude that the Military is the most powerful minor
+        faction in Paris, you have a hard time determining whether they support the
+        Crown or the Revolution more. It seems that their allegiance is currently
+        up for grabs by either party.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1534,7 +1708,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "After some consideration, you deduce that the Military is the most powerful
+        minor faction in Paris. They support the Revolution for now, but it wouldn\u2019t
+        take much to swing the balance."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1554,7 +1731,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Quickly scanning over your meticulous notes, you\u2019re quite certain
+        that the Military is the most powerful of all the minor factions in Paris.
+        Additionally, it seems that they strongly support the common people of the
+        Revolution."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1574,7 +1755,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Having reasoned that the Military is the most powerful of the minor factions
+        in Paris, you glance over your notes and instantly come to the conclusion
+        that they\u2019ve put their entire support behind the Revolution and their
+        nationalists."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1594,7 +1779,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Having reasoned that the Bourgeoisie is the most powerful of the minor
+        factions in Paris, you glance over your notes and instantly come to the conclusion
+        that they\u2019ve put their entire support behind the King and the aristocracy."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1614,7 +1802,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Quickly scanning over your meticulous notes, you\u2019re quite certain
+        that the Bourgeoisie is the most powerful of all the minor factions in Paris.
+        Additionally, it seems that they strongly support the Royal family."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1634,7 +1825,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "After some consideration, you deduce that the Bourgeoisie is the most
+        powerful minor faction in Paris. They support the Crown for now, but it wouldn\u2019t
+        take much to swing the balance."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1654,7 +1848,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: While you can easily conclude that the Bourgeoisie is the most powerful
+        minor faction in Paris, you have a hard time determining whether they support
+        the Crown or the Revolution more. It seems that their allegiance is currently
+        up for grabs by either party.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1674,7 +1872,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "After some consideration, you deduce that the Bourgeoisie is the most
+        powerful minor faction in Paris. They support the Revolution for now, but
+        it wouldn\u2019t take much to swing the balance."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1694,7 +1895,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Quickly scanning over your meticulous notes, you\u2019re quite certain
+        that the Bourgeoisie is the most powerful of all the minor factions in Paris.
+        Additionally, it seems that they strongly support the common people of the
+        Revolution."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1714,7 +1919,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Having reasoned that the Bourgeoisie is the most powerful of the minor
+        factions in Paris, you glance over your notes and instantly come to the conclusion
+        that they\u2019ve put their entire support behind the Revolution and their
+        nationalists."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1734,7 +1943,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Opening your eyes, you switch your focus to something more specific.
+        You scan the room, looking at the way everyone is dressed, and at their body
+        language. You\u2019re looking for more subtle hints about where everyone\u2019s
+        allegiances lie. More notes quickly scratched into your journal.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1754,7 +1967,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Opening your eyes, you switch your focus to something more specific.
+        You scan the room, looking at the way everyone is dressed, and at their body
+        language. You\x19re looking for more subtle hints about where everyone\x19s
+        allegiances lie. More notes quickly scratched into your journal.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1774,7 +1991,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Opening your eyes, you switch your focus to something more specific.
+        You scan the room, looking at the way everyone is dressed, and at their body
+        language. You\u2019re looking for more subtle hints about where everyone\u2019s
+        allegiances lie. More notes quickly scratched into your journal.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1794,7 +2015,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Opening your eyes, you switch your focus to something more specific.
+        You scan the room, looking at the way everyone is dressed, and at their body
+        language. You\u2019re looking for more subtle hints about where everyone\u2019s
+        allegiances lie. More notes quickly scratched into your journal.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1814,7 +2039,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Glancing through your notes, you note that the Church and Military are
+        the most powerful of the minor factions in Paris. Not only that, they\u2019re
+        both loyal to the Crown. While you can\u2019t determine anything more specific
+        than that, it\u2019s still valuable information."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1834,7 +2063,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Glancing through your notes, you note that the Church and Military are
+        the most powerful of the minor factions in Paris. Not only that, they\u2019re
+        both on the side of the Revolution. While you can\u2019t determine anything
+        more specific than that, it\u2019s still valuable information."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1854,7 +2087,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Examining your notes more thoroughly, you can tell that the Church and
+        Military are the most powerful of the minor factions in Paris. You can even
+        tell that one of them is loyal to the Crown, while the other is siding with
+        the Revolution. Unfortunately, you can\u2019t figure out which is which. Too
+        much noise."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1874,7 +2112,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Glancing through your notes, you note that the Church and Bourgeoisie
+        are the most powerful of the minor factions in Paris. Not only that, they\u2019re
+        both loyal to the Crown. While you can\u2019t determine anything more specific
+        than that, it\u2019s still valuable information."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1894,7 +2136,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Glancing through your notes, you note that the Church and Bourgeoisie
+        are the most powerful of the minor factions in Paris. Not only that, they\u2019re
+        both on the side of the Revolution. While you can\u2019t determine anything
+        more specific than that, it\u2019s still valuable information."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1914,7 +2160,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Examining your notes more thoroughly, you can tell that the Church and
+        Bourgeoisie are the most powerful of the minor factions in Paris. You can
+        even tell that one of them is loyal to the Crown, while the other is siding
+        with the Revolution. Unfortunately, you can\u2019t figure out which is which.
+        Too much noise."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1934,7 +2185,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Glancing through your notes, you note that the Military and Bourgeoisie
+        are the most powerful of the minor factions in Paris. Not only that, they\u2019re
+        both loyal to the Crown. While you can\u2019t determine anything more specific
+        than that, it\u2019s still valuable information."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1954,7 +2209,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Glancing through your notes, you note that the Military and Bourgeoisie
+        are the most powerful of the minor factions in Paris. Not only that, they\u2019re
+        both on the side of the Revolution. While you can\u2019t determine anything
+        more specific than that, it\u2019s still valuable information."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1974,7 +2233,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Examining your notes more thoroughly, you can tell that the Military
+        and Bourgeoisie are the most powerful of the minor factions in Paris. You
+        can even tell that one of them is loyal to the Crown, while the other is siding
+        with the Revolution. Unfortunately, you can\u2019t figure out which is which.
+        Too much noise."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1994,7 +2258,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: Now that you have your bearings, politically, you start becoming a little
+        more involved with your fellow patrons.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2014,7 +2280,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "Frowning in irritation, you look down at your notes and realize that
+        there\x19s no clear pattern in anything you\x19ve seen. It seems like the
+        minor factions of the city are all equal in power, and this jumble makes it
+        difficult to discern any additional information about them."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2034,7 +2304,15 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'The cafe is bustling, with discussions swirling around you in a everflowing
+        morass. Chairs scrape the floor as patrons get up to switch seats in order
+        to be better positioned in their current debate.
+
+
+        Someone is reading loudly from a pamphlet extolling the virtues of the king
+        as the surrogate father of the nation, but nobody''s really paying attention
+        to him. '
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2054,7 +2332,15 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'The cafe is bustling, with discussions swirling around you in a everflowing
+        morass. Chairs scrape the floor as patrons get up to switch seats in order
+        to be better positioned in their current debate.
+
+
+        A man in the corner keeps trying to use verses from the Bible to justify the
+        Church''s right to avoid taxation, but it''s hard to hear him over the sound
+        of jeering patrons.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2074,7 +2360,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: You get drawn into a conversation about the Church and the Crown. Some
+        aristocrats are angry that the first estate is allowed to send priests that
+        weren't born in France as representatives to the Estates General.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01
         Pose: neutral
@@ -2094,7 +2383,14 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'The cafe is bustling, with discussions swirling around you in a everflowing
+        morass. Chairs scrape the floor as patrons get up to switch seats in order
+        to be better positioned in their current debate.
+
+
+        A disheveled woman is banging her fist on her table, claiming that officials
+        who fail to pay the army''s wages on time are actually theives.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2114,7 +2410,14 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'The cafe is bustling, with discussions swirling around you in a everflowing
+        morass. Chairs scrape the floor as patrons get up to switch seats in order
+        to be better positioned in their current debate.
+
+
+        A lawyer is trying to convince people that taxes should be reformed according
+        to ''natural law'', but nobody seems able to agree on what natural law is.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2134,7 +2437,14 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'The cafe is bustling, with discussions swirling around you in a everflowing
+        morass. Chairs scrape the floor as patrons get up to switch seats in order
+        to be better positioned in their current debate.
+
+
+        A young woman is flitting between tables, discreetly distributing revolutionary
+        flyers. The owner is pretending not to see her do this.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2154,7 +2464,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: You get drawn into a conversation about the Church and the Crown. Some
+        aristocrats are angry that the first estate is allowed to send priests that
+        weren't born in France as representatives to the Estates General.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01
         Pose: neutral
@@ -2174,7 +2487,14 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'You get drawn into a conversation about the Military and the Crown. Aristocratic
+        officers are currently lobbying the king for the right to dress as they please
+        at court, instead of wearing their uniforms. They feel that being forced to
+        wear military livery casts them as servants, instead of leaders.
+
+
+        The generals are obviously unhappy about this.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -2194,7 +2514,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02a
         Pose: neutral
@@ -2214,7 +2535,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02b
         Pose: negative
@@ -2234,7 +2556,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01a
         Pose: neutral
@@ -2254,7 +2577,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: neutral
@@ -2274,7 +2598,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: neutral
@@ -2294,7 +2619,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -2314,7 +2640,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01a
         Pose: neutral
@@ -2334,7 +2661,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -2354,7 +2682,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03b
         Pose: neutral
@@ -2374,7 +2703,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02a
         Pose: neutral
@@ -2394,7 +2724,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: neutral
@@ -2414,7 +2745,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -2434,7 +2766,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: neutral
@@ -2454,7 +2787,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02b
         Pose: negative
@@ -2474,7 +2808,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: neutral
@@ -2494,7 +2829,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03b
         Pose: neutral
@@ -2514,7 +2850,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: neutral
@@ -2534,7 +2871,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Crown)\n(You have lost a
+        little favor with the Revolution)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02b
         Pose: putout
@@ -2560,7 +2902,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Revolution)\n(You have lost
+        a little favor with the Crown)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02b
         Pose: charmed
@@ -2586,7 +2933,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Crown)\n(You have lost a
+        little favor with the Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02a
         Pose: approval
@@ -2612,7 +2964,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Bourgeoisie)\n(You have lost
+        a little favor with the Crown)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02a
         Pose: negative
@@ -2638,7 +2995,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Crown)\n(You have lost a
+        little favor with the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -2664,7 +3026,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Military)\n(You have lost
+        a little favor with the Crown)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: negative
@@ -2690,7 +3057,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Crown)\n(You have lost a
+        little favor with the Church)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01
         Pose: approval
@@ -2716,7 +3088,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Church)\n(You have lost a
+        little favor with the Crown)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01
         Pose: negative
@@ -2742,7 +3119,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: It's now late in the day, and while you're certain the conversations here
+        will carry on long into the night, you feel like you've done what you came
+        here to do.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2762,7 +3142,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Church)\n(You have lost a
+        little favor with the Crown)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01
         Pose: negative
@@ -2788,7 +3173,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Crown)\n(You have lost a
+        little favor with the Church)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01
         Pose: approval
@@ -2814,7 +3204,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Church)\n(You have lost a
+        little favor with the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01a
         Pose: negative
@@ -2840,7 +3235,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Military)\n(You have lost
+        a little favor with the Church)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01a
         Pose: approval
@@ -2866,7 +3266,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Church)\n(You have lost a
+        little favor with the Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: approval
@@ -2892,7 +3297,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Bourgeoisie)\n(You have lost
+        a little favor with the Church)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: negative
@@ -2918,7 +3328,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Revolution)\n(You have lost
+        a little favor with the Church)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: negative
@@ -2944,7 +3359,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Church)\n(You have lost a
+        little favor with the Revolution)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: approval
@@ -2970,7 +3390,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Military)\n(You have lost
+        a little favor with the Crown)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: negative
@@ -2996,7 +3421,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Crown)\n(You have lost a
+        little favor with the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -3022,7 +3452,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Military)\n(You have lost
+        a little favor with the Church)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01a
         Pose: approval
@@ -3048,7 +3483,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Church)\n(You have lost a
+        little favor with the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest01a
         Pose: negative
@@ -3074,7 +3514,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Military)\n(You have lost
+        a little favor with the Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -3100,7 +3545,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Bourgeoisie)\n(You have lost
+        a little favor with the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: negative
@@ -3126,7 +3576,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Revolution)\n(You have lost
+        a little favor with the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03b
         Pose: approval
@@ -3152,7 +3607,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Military)\n(You have lost
+        a little favor with the Revolution)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03b
         Pose: negative
@@ -3178,7 +3638,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Bourgeoisie)\n(You have lost
+        a little favor with the Crown)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02a
         Pose: negative
@@ -3204,7 +3669,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Crown)\n(You have lost a
+        little favor with the Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02a
         Pose: approval
@@ -3230,7 +3700,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Bourgeoisie)\n(You have lost
+        a little favor with the Church)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: negative
@@ -3256,7 +3731,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Church)\n(You have lost a
+        little favor with the Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: approval
@@ -3282,7 +3762,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Bourgeoisie)\n(You have lost
+        a little favor with the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: negative
@@ -3308,7 +3793,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Military)\n(You have lost
+        a little favor with the Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: approval
@@ -3334,7 +3824,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Bourgeoisie)\n(You have lost
+        a little favor with the Revolution)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: approval
@@ -3360,7 +3855,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Revolution)\n(You have lost
+        a little favor with the Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: negative
@@ -3386,7 +3886,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Revolution)\n(You have lost
+        a little favor with the Crown)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02b
         Pose: charmed
@@ -3412,7 +3917,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Crown)\n(You have lost a
+        little favor with the Revolution)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest02b
         Pose: putout
@@ -3438,7 +3948,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Revolution)\n(You have lost
+        a little favor with the Church)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: approval
@@ -3464,7 +3979,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Church)\n(You have lost a
+        little favor with the Revolution)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: negative
@@ -3490,7 +4010,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Revolution)\n(You have lost
+        a little favor with the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03b
         Pose: approval
@@ -3516,7 +4041,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Military)\n(You have lost
+        a little favor with the Revolution)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest03b
         Pose: negative
@@ -3542,7 +4072,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Revolution)\n(You have lost
+        a little favor with the Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: negative
@@ -3568,7 +4103,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "At least one of the people in the discussion feels satisfied with that
+        answer, but not everyone seems pleased. You're certain that your opinions
+        will be known by nearly everyone in Paris by the time the next morning comes
+        around. \n\n(You have gained some favor with the Bourgeoisie)\n(You have lost
+        a little favor with the Revolution)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: approval
@@ -3594,7 +4134,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You say your goodbyes to the various patrons of the cafe and head home,
+        with a little more knowledge than you had before.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -3614,7 +4156,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest01
         Pose: neutral
@@ -3634,7 +4177,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest01
         Pose: neutral
@@ -3654,7 +4198,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: '"What say you?" One of the patrons asks you, suddenly.'
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -3674,7 +4219,14 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: 'You get drawn into a conversation about the Military and the Crown. Aristocratic
+        officers are currently lobbying the king for the right to dress as they please
+        at court, instead of wearing their uniforms. They feel that being forced to
+        wear military livery casts them as servants, instead of leaders.
+
+
+        The generals are obviously unhappy about this.'
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -3694,7 +4246,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into a conversation about the Bourgeoisie and the Crown.
+        Merchants in France want the taxes to be simplified, to make it easier to
+        move goods around the country. The aristocrats say that the current system
+        keeps the economy stable.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest02a
         Pose: neutral
@@ -3714,7 +4270,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into a conversation about the Bourgeoisie and the Crown.
+        Merchants in France want the taxes to be simplified, to make it easier to
+        move goods around the country. The aristocrats say that the current system
+        keeps the economy stable.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest02a
         Pose: neutral
@@ -3734,7 +4294,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into an argument between supporters of the Revolution and
+        the Crown. Nationalists want to move France towards a constitutional government,
+        but monarchists claim that France is in too tumultuous a state for such a
+        radical transition.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest02b
         Pose: negative
@@ -3754,7 +4318,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into an argument between supporters of the Revolution and
+        the Crown. Nationalists want to move France towards a constitutional government,
+        but monarchists claim that France is in too tumultuous a state for such a
+        radical transition.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest02b
         Pose: negative
@@ -3774,7 +4342,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: 'You get drawn into a conversation about the Church and the Bourgeoisie.
+        Members of the Bourgeoisie are saying the Church should no longer be exempt
+        from taxation. '
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: neutral
@@ -3794,7 +4365,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: 'You get drawn into a conversation about the Church and the Bourgeoisie.
+        Members of the Bourgeoisie are saying the Church should no longer be exempt
+        from taxation. '
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest04a
         Pose: neutral
@@ -3814,7 +4388,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: "You get drawn into a conversation about the Military and the Bourgeoisie.
+        Apparently, due to skipped wages, soldiers have become notoriously delinquent
+        on their debts, and some have even reacted violently when asked to pay. This
+        has led to some shop owners refusing to do business with soldiers at all.
+        \n\nNobody's certain if that's right, or even legal."
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -3834,7 +4413,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: "You get drawn into a conversation about the Military and the Bourgeoisie.
+        Apparently, due to skipped wages, soldiers have become notoriously delinquent
+        on their debts, and some have even reacted violently when asked to pay. This
+        has led to some shop owners refusing to do business with soldiers at all.
+        \n\nNobody's certain if that's right, or even legal."
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest03a
         Pose: neutral
@@ -3854,7 +4438,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into a conversation about the Revolution and the Church.
+        Nationalists are objecting to the Catholic Church being the only member of
+        the first estate, as not all French citizens are Catholic. The believes they're
+        justified because the offiical state religion of France is Catholocism.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: neutral
@@ -3874,7 +4462,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into a conversation about the Revolution and the Church.
+        Nationalists are objecting to the Catholic Church being the only member of
+        the first estate, as not all French citizens are Catholic. The believes they're
+        justified because the offiical state religion of France is Catholocism.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: neutral
@@ -3894,7 +4486,13 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: 'You get drawn into a conversation about the Military and the Church.
+        Given the rising tensions, patriotically minded people are asking where the
+        loyalties of French priests lie. After all, the Catholic Church is a foreign
+        government with its own laws. More pious citizens are saying that even asking
+        that question is blasphemy, and that a priest''s first duty is always to the
+        people of thier parish. '
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest01a
         Pose: neutral
@@ -3914,7 +4512,13 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: 'You get drawn into a conversation about the Military and the Church.
+        Given the rising tensions, patriotically minded people are asking where the
+        loyalties of French priests lie. After all, the Catholic Church is a foreign
+        government with its own laws. More pious citizens are saying that even asking
+        that question is blasphemy, and that a priest''s first duty is always to the
+        people of thier parish. '
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest01a
         Pose: neutral
@@ -3934,7 +4538,13 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into a conversation about the Bourgeoisie and the Revolution.
+        Times have been hard for the poorest people of Paris and some believe that
+        the richest members of the common people have a duty to provide food and other
+        assistance to the poor. Others are saying that without the nobility or the
+        church paying taxes, the wealthiest commoners are already paying the lion's
+        share of taxes and can't afford to keep giving away their money.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: neutral
@@ -3954,7 +4564,13 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into a conversation about the Bourgeoisie and the Revolution.
+        Times have been hard for the poorest people of Paris and some believe that
+        the richest members of the common people have a duty to provide food and other
+        assistance to the poor. Others are saying that without the nobility or the
+        church paying taxes, the wealthiest commoners are already paying the lion's
+        share of taxes and can't afford to keep giving away their money.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest04b
         Pose: neutral
@@ -3974,7 +4590,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into a conversation about the Revolution and the Military.
+        Nationalists are upset that the military has been disbursing protests and
+        other political gatherings. Soldiers claim they following their orders from
+        the king, as required by law.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest03b
         Pose: neutral
@@ -3994,7 +4614,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: You get drawn into a conversation about the Revolution and the Military.
+        Nationalists are upset that the military has been disbursing protests and
+        other political gatherings. Soldiers claim they following their orders from
+        the king, as required by law.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: guest03b
         Pose: neutral
@@ -4015,1155 +4639,1492 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201COne house coffee please.\u201D (-3 Livre)"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CMay I just have some water, please?\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CWhat\u2019s going on here?\u201D <Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CNo, the water should be fine.\u201D"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201C... I would also like some coffee?\u201D (-3 Livres)"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CI meant the Cafe, how do things work here?\u201D <Actually Start
+        The Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CYou know what? It\u2019s fine. I can figure this out myself.\u201D
+        <No Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CYou know what? It\u2019s fine. I can figure this out myself.\u201D
+        <No Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CYou know what? It\u2019s fine. I can figure this out myself.\u201D
+        <No Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CYou know what? It\u2019s fine. I can figure this out myself.\u201D
+        <No Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CYou know what? It\u2019s fine. I can figure this out myself.\u201D
+        <No Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CYou know what? It\u2019s fine. I can figure this out myself.\u201D
+        <No Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: "\u201CYou know what? It\u2019s fine. I can figure this out myself.\u201D
+        <No Tutorial>"
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Crown is right. A constitution would take power from the king. The
+        king needs that power to keep France from tragedy."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Crown is right. Loosening the rules could make it possible for the
+        economy to fly out of control."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Bourgeoisie is right, easy trade makes a healthier economy. That
+        means a wealthier France."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Revolution is right. If the people can''t make changes exactly when
+        they need them, then when?"'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Church is right, that kind of talk is just paranoia. The priests
+        only act on behalf of their parishes."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right to be wary. Priests will never refuse the Pope''s
+        orders, even if they aren''t in our people''s best interests."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Church is right. Their mission is to God and the poor, taxes aren''t
+        their responsibility."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Bourgeoisie is right. If the Church wants to be able to own land,
+        they should had to pay taxes."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Revolution is right. The different faiths should be granted equal
+        representation in the First Estate."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I must side with the Church. This is a Catholic nation, which means
+        the Catholic church should be allowed to take priority."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right. Titles don''t place one above the rules. They
+        should be proud to wear the King''s uniform."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Crown is right. The nobility should have the privelege to maintain
+        their dignity at official functions."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right to be wary. Priests will never refuse the Pope''s
+        orders, even if they aren''t in our people''s best interests."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Church is right, that kind of talk is just paranoia. The priests
+        only act on behalf of their parishes."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I support the Military. The soldiers aren''t responsible for their late
+        wages. What are they supposed to do, starve?"'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I support the Bourgeoisie. They have every right to only do business
+        with the customers they trust."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Revolution''s right to be angry. Soldiers should protect the people
+        from foreign tyrants, not assist local ones."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right. If you don''t like how they act, in accordance
+        with the law, then focus on changing the laws."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Bourgeoisie is right, easy trade makes a healthier economy. That
+        means a wealthier France."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Crown is right. Loosening the rules could make it possible for the
+        economy to fly out of control."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Bourgeoisie is right. If the Church wants to be able to own land,
+        they should had to pay taxes."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Church is right. Their mission is to God and the poor, taxes aren''t
+        their responsibility."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I support the Bourgeoisie. They have every right to only do business
+        with the customers they trust."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I support the Military. The soldiers aren''t responsible for their late
+        wages. What are they supposed to do, starve?"'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"It''s as the Bourgeoisie say. This just lays more burden on the same
+        people, instead of fighting the real problem."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Revolution is right. Lives are worth more than money, and the wealthiest
+        in France have a duty to the poor."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Revolution is right. If the people can''t make changes exactly when
+        they need them, then when?"'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Crown is right. A constitution would take power from the king. The
+        king needs that power to keep France from tragedy."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Revolution is right. The different faiths should be granted equal
+        representation in the First Estate."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I must side with the Church. This is a Catholic nation, which means
+        the Catholic church should be allowed to take priority."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Revolution''s right to be angry. Soldiers should protect the people
+        from foreign tyrants, not assist local ones."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right. If you don''t like how they act, in accordance
+        with the law, then focus on changing the laws."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Revolution is right. Lives are worth more than money, and the wealthiest
+        in France have a duty to the poor."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"It''s as the Bourgeoisie say. This just lays more burden on the same
+        people, instead of fighting the real problem."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Crown is right. Only the French should decide the fate of France."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Church is right. They should send whoever they think is best suited
+        for the task."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Church is right. They should send whoever they think is best suited
+        for the task."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Crown is right. Only the French should decide the fate of France."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Crown is right. The nobility should have the privelege to maintain
+        their dignity at official functions."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right. Titles don''t place one above the rules. They
+        should be proud to wear the King''s uniform."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right. Titles don''t place one above the rules. They
+        should be proud to wear the King''s uniform."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right. Titles don''t place one above the rules. They
+        should be proud to wear the King''s uniform."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"The Military is right. Titles don''t place one above the rules. They
+        should be proud to wear the King''s uniform."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -5173,11 +6134,11 @@ MonoBehaviour:
     Tags: []
     Factions: 00000000
     LocalizationKey: Assets/Collections/Incidents/Coffee and Conversation.asset
+    _date: -1
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: 
   _nodeText:
   - Strolling through the 6th arrondissement, you weave your way through crowds of
     excited students, pontificating intellectuals, and agitated artists. It feels

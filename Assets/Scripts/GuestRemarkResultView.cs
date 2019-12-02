@@ -206,7 +206,7 @@ namespace Ambition
         {
             string str = AmbitionApp.GetString(dialogString, dictionary);
             if (str != null && Text != null) return str;
-            else return AmbitionApp.GetString(dialogString);
+            else return AmbitionApp.Localize(dialogString);
         }
     }
 }

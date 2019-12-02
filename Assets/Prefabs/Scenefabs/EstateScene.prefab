@@ -957,6 +957,7 @@ GameObject:
   - component: {fileID: 222976733407776116}
   - component: {fileID: 114678396543385232}
   - component: {fileID: 114767799596055352}
+  - component: {fileID: 2655451799672698023}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -1054,6 +1055,31 @@ MonoBehaviour:
   EstateTextShadow: {fileID: 114323452187787606}
   DarkColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   LightColor: {r: 1, g: 0.95686275, b: 0.78431374, a: 1}
+--- !u!114 &2655451799672698023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011579839504476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText:
+  - TextField: {fileID: 114290982447898546}
+    LocalizationKey: commodity.reputation.name
+  - TextField: {fileID: 114731247348707106}
+    LocalizationKey: commodity.livre.name
+  - TextField: {fileID: 114454219972863686}
+    LocalizationKey: estate.tab.calendar
+  - TextField: {fileID: 114284346584408554}
+    LocalizationKey: estate.tab.wardrobe
+  - TextField: {fileID: 114112196893978186}
+    LocalizationKey: estate.tab.estate
+  - TextField: {fileID: 114498589541957814}
+    LocalizationKey: estate.tab.journal
 --- !u!1 &1013851951745414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,7 +3414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -75}
+  m_AnchoredPosition: {x: 175, y: 0}
   m_SizeDelta: {x: 338.8, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &222955497971968652
@@ -41250,7 +41276,7 @@ MonoBehaviour:
   LuxuryStatText: {fileID: 114770091330474210}
   ModestyStatText: {fileID: 114326927811834240}
   NoveltyStatText: {fileID: 114000036553878674}
-  DressCollection: {fileID: 11400000, guid: 0e51a123bf2be44d391d80d5b3f8b26a, type: 2}
+  DressCollection: {fileID: 0}
 --- !u!222 &222206007723024698
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63714,7 +63740,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114219777478343184}
   m_HandleRect: {fileID: 224184956069848556}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -70970,7 +70996,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -150}
+  m_AnchoredPosition: {x: 175, y: 0}
   m_SizeDelta: {x: 339, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &222280142529768774
@@ -74961,7 +74987,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a2e7e0ed7ceae4215801803c760c3824, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80f6a6b52cc44674cb4042b979077412, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -79754,6 +79780,7 @@ GameObject:
   - component: {fileID: 222425133348662878}
   - component: {fileID: 114920174744962740}
   - component: {fileID: 114500529972791410}
+  - component: {fileID: 4556906247385349607}
   m_Layer: 5
   m_Name: CalendarTab
   m_TagString: Untagged
@@ -79893,6 +79920,31 @@ MonoBehaviour:
   - {fileID: 114696178084850428}
   - {fileID: 114462146435461198}
   - {fileID: 114843822803222826}
+--- !u!114 &4556906247385349607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958670506461336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText:
+  - TextField: {fileID: 114547590409187944}
+    LocalizationKey: calendar.eventlist.title
+  - TextField: {fileID: 114475049164379874}
+    LocalizationKey: calendar.eventlist.accepted
+  - TextField: {fileID: 114684955946339326}
+    LocalizationKey: calendar.eventlist.declined
+  - TextField: {fileID: 114218880931179516}
+    LocalizationKey: calendar.eventlist.pending
+  - TextField: {fileID: 114878096278272022}
+    LocalizationKey: calendar.btn.current
+  - TextField: {fileID: 114430290940170374}
+    LocalizationKey: calendar.btn.paris
 --- !u!1 &1960391627147592
 GameObject:
   m_ObjectHideFlags: 0
@@ -80319,7 +80371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -150}
+  m_AnchoredPosition: {x: 175, y: 0}
   m_SizeDelta: {x: 339, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &222359677990135168
@@ -82170,7 +82222,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224648987395844526}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

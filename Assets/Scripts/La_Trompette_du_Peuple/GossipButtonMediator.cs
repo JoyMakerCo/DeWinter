@@ -51,19 +51,12 @@ public class GossipButtonMediator: MonoBehaviour {
         _gossip = gossip;
         System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
         GossipNameText.text = gossip.Name;
-        GossipRelevanceText.text = "- " + AmbitionApp.GetString("gossip_relevance_" + GetRelevance(gossip, today) + " days left");       
+
+        var relevance = GossipWrapperVO.GetRelevance(gossip);
+        GossipRelevanceText.text = "- " + AmbitionApp.Localize("gossip_relevance_" + relevance); // + " days left");       
         Sprite factionSprite;
         _factionSymbolList.TryGetValue(gossip.ID, out factionSprite);
         GossipIcon.sprite = factionSprite;
-    }
-
-    private int GetRelevance(ItemVO gossip, DateTime today)
-    {
-        int result = (today - gossip.Created).Days;
-        if (result > 12) return 0;
-        if (result > 9) return 1;
-        if (result > 6) return 2;
-        return 3;
     }
 
     private void SetUpDictionary()

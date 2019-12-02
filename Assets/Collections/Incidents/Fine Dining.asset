@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Fine Dining
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 00000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
-  - {x: -1, y: 53}
+  - {x: 0, y: 53}
   - {x: 1, y: 101}
-  - {x: 3, y: 157}
+  - {x: 1, y: 157}
   - {x: 4, y: 224}
   - {x: -118, y: 457}
   - {x: -3, y: 383}
@@ -35,7 +35,9 @@ MonoBehaviour:
     - {x: 4, y: 8}
     - {x: 8, y: 6}
     Nodes:
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: Deciding to spend the day exploring Paris, your wanderings take you to
+        the 12th <i>arrondisement</i>.
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -47,7 +49,7 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
+        Name: event:/Music/Paris Map
         Parameters: []
       AmbientSFX:
         Name: event:/Ambient SFX/Amb_ParisStreets_outside
@@ -55,7 +57,13 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: 'Just as you feel you''ve become used to the city''s myriad smells, your
+        nose manages to pick up a new, suprising scent. Flavorful, yet subtle. Layered,
+        but restrained.
+
+
+        You''ve smelled good food before, but this is something else entirely.'
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -75,7 +83,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+    - Text: 'Quickening your pace, you find a sign that reads <i>''La GrandeTaverne
+        de Londres''</i>. This is slightly puzzling, as it looks nothing like the
+        rustic taverns you''ve seen elsewhere in France. '
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -95,7 +106,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: 'Inside, you find a dining room brightly lit by crystal chandeliers, and
+        furnished with mahogany tables draped in fine linen tablecloths. A few aristocrats
+        look up from their table at you, and you suddenly feel rather underdressed
+        in your day clothes. '
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -115,7 +130,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+    - Text: "You pull out your journal and jot the address down. \n\n(<i>La Grande
+        Taverne de Londres</i> is now an available rendezvous location)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -135,7 +152,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: You spend a few minutes chatting with the staff and perusing the menu
+        before you head home, visions of a feast dancing in your head. Perhaps you'll
+        be able to return, sometime soon.
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -155,7 +175,9 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: 'This feels like the perfect place to visit with someone who cares about
+        fine food, and prefers a formal setting. '
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -175,7 +197,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: Without even so much as a <i>'bonjour'</i> to the proprietor, you decide
+        to head home. Already, you're looking forward to one of Camille's home cooked
+        meals, which you can eat however you like.
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -195,7 +220,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -219,35 +245,44 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"Exquisite food and an elegant atmosphere. This is exactly what I was
+        looking for."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I''m sure the food is good, but this is a little too stuffy for my tastes."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I''m sure the food is good, but this is a little too stuffy for my tastes."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: '"I''m sure the food is good, but this is a little too stuffy for my tastes."'
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -257,11 +292,11 @@ MonoBehaviour:
     Tags: []
     Factions: 00000000
     LocalizationKey: Assets/Collections/Incidents/Fine Dining.asset
+    _date: -1
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: 
   _nodeText:
   - Deciding to spend the day exploring Paris, your wanderings take you to the 12th
     <i>arrondisement</i>.
@@ -288,12 +323,16 @@ MonoBehaviour:
   - Without even so much as a <i>'bonjour'</i> to the proprietor, you decide to head
     home. Already, you're looking forward to one of Camille's home cooked meals, which
     you can eat however you like.
+  - Without even so much as a <i>'bonjour'</i> to the proprietor, you decide to head
+    home. Already, you're looking forward to one of Camille's home cooked meals, which
+    you can eat however you like.
   _linkText:
-  - 
-  - 
+  - Blah 1
+  - Norg 2
   - 
   - 
   - 
   - '"Exquisite food and an elegant atmosphere. This is exactly what I was looking
     for."'
+  - 
   - '"I''m sure the food is good, but this is a little too stuffy for my tastes."'

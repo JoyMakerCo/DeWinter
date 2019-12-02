@@ -157,7 +157,7 @@ namespace Core
 
 		public void Send<T>(string messageID, T messageData)
 		{
-			Debug.LogFormat( "MessageSvc.Send {0} <{1}>", messageID, typeof(T).ToString() );
+			Debug.LogFormat( "MessageSvc.Send {0} <{1}: {2}>", messageID, typeof(T).ToString(), messageData.ToString() );
 
 			IMessageEvent e;
 			Dictionary<Type, IMessageEvent> d;
@@ -168,7 +168,7 @@ namespace Core
 
 		public void Send<T>(T messageData)
 		{
-			Debug.LogFormat( "MessageSvc.Send <{0}>", typeof(T).ToString() );
+			Debug.LogFormat( "MessageSvc.Send <{0}: {1}>", typeof(T).ToString(), messageData.ToString() );
 
 			IMessageEvent e;
 			Type t = typeof(T);

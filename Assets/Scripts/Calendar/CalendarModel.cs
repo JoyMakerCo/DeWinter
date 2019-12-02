@@ -154,15 +154,19 @@ namespace Ambition
 
         public void Complete<T>(T e) where T : ICalendarEvent
         {
+            Debug.Log("CalendarModel completing event");
             if (!IsComplete(e))
             {
                 e.IsComplete = true;
                 Unscheduled.Remove(e);
+
+                Debug.Log("CalendarModel sending CALENDAR_EVENT_COMPLETED");
+
                 AmbitionApp.SendMessage(CalendarMessages.CALENDAR_EVENT_COMPLETED, e);
             }
         }
 
-        public bool IsComplete(ICalendarEvent e) => e == null || e.IsComplete || e.Date < Today;
+        public bool IsComplete(ICalendarEvent e) => e == null || e.IsComplete || ((e.Date > DateTime.MinValue) && (e.Date < Today));
 
         public void Reset()
         {

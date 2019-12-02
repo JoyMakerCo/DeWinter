@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
+
 namespace Ambition
 {
     public static class OutfitWrapperVO
@@ -8,6 +10,32 @@ namespace Ambition
         public static int GetLuxury(ItemVO item) => GetIntStat(item, ItemConsts.LUXURY);
         public static int GetModesty(ItemVO item) => GetIntStat(item, ItemConsts.MODESTY);
 
+        public static string GetNoveltyText(ItemVO item )
+        {
+            string[] phrases = AmbitionApp.GetPhrases("outfit.novelty");
+            int value = GetIntStat(item, ItemConsts.NOVELTY);
+            int index = Mathf.Clamp( (int)(phrases.Length * value * .01f), 0, phrases.Length-1 );
+
+            return phrases[index];
+        }
+
+        public static string GetLuxuryText(ItemVO item )
+        {
+            string[] phrases = AmbitionApp.GetPhrases("outfit.luxury");
+            int value = GetIntStat(item, ItemConsts.LUXURY);
+            int index = Mathf.Clamp( (int)(phrases.Length * (0.5f + (value * .005f))), 0, phrases.Length-1 );
+
+            return phrases[index];
+        }
+
+        public static string GetModestyText(ItemVO item )
+        {
+            string[] phrases = AmbitionApp.GetPhrases("outfit.modesty");
+            int value = GetIntStat(item, ItemConsts.MODESTY);
+            int index = Mathf.Clamp( (int)(phrases.Length * (0.5f + (value * .005f))), 0, phrases.Length-1 );
+
+            return phrases[index];
+        }
         public static string GetStat(ItemVO item, string stat)
         {
             string str = null;
@@ -27,6 +55,15 @@ namespace Ambition
             outfit.State = outfit.State ?? new Dictionary<string, string>();
             outfit.State[stat] = value;
             return true;
+        }
+
+        public static string GetDescription(ItemVO outfit)
+        {
+            int modestyIndex = 1+(int)(5 * (.5f + GetModesty(outfit) * .00499f));
+            int luxuryIndex = 1+(int)(5 * (.5f + GetLuxury(outfit) * .00499f));
+
+            var locDescriptionKey = string.Format( "outfit.description.{0}.{1}", modestyIndex, luxuryIndex );
+            return AmbitionApp.Localize( locDescriptionKey );
         }
     }
 }

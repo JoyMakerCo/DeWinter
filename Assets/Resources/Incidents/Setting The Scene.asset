@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Setting The Scene
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 11000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -32,7 +32,7 @@ MonoBehaviour:
   - {x: 84, y: 876}
   - {x: 128, y: 379}
   - {x: 186, y: 483}
-  - {x: -316, y: 267}
+  - {x: 183, y: 561}
   - {x: -145, y: 948}
   - {x: -50, y: 1041}
   - {x: -42, y: 1101}
@@ -100,7 +100,8 @@ MonoBehaviour:
     - {x: 37, y: 38}
     - {x: 38, y: 34}
     Nodes:
-    - Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -120,7 +121,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -140,7 +142,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -160,7 +163,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -180,7 +184,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -200,7 +205,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -220,7 +226,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -240,7 +247,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -260,7 +268,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -280,7 +289,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -300,7 +310,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -320,27 +331,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
-      Character1:
-        AvatarID: Valet
-        Pose: neutral
-        Name: Doorman
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_MediumParty_indoor
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -360,7 +352,29 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -380,7 +394,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_bored
         Parameters: []
-    - Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -400,7 +415,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -420,7 +436,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -440,7 +457,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
       Character1:
         AvatarID: Camille
         Pose: happy
@@ -460,7 +478,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_charmed
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -480,7 +499,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sleazy
@@ -500,7 +520,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sleazy
@@ -520,7 +541,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_bored
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sleazy
@@ -540,7 +562,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sleazy
@@ -560,7 +583,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sleazy
@@ -580,7 +604,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: afraid
@@ -600,7 +625,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: afraid
@@ -620,7 +646,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: afraid
@@ -640,7 +667,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -660,7 +688,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -680,7 +709,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -700,7 +730,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -720,7 +751,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -740,7 +772,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -760,7 +793,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -780,7 +814,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -800,7 +835,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -820,7 +856,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -840,7 +877,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -860,7 +898,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -881,123 +920,153 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 5
@@ -1005,7 +1074,8 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 5
@@ -1013,7 +1083,8 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 1
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements:
       - Type: 5
@@ -1021,47 +1092,58 @@ MonoBehaviour:
         Value: 1
         Operator: 4
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -1071,11 +1153,11 @@ MonoBehaviour:
     Tags: []
     Factions: 
     LocalizationKey: Assets/Resources/Incidents/Setting The Scene.asset
+    _date: -1
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: Assets/Resources/Incidents/Setting The Scene.asset.
   _nodeText:
   - "After going over the plan with Camille one more time, you step down from your
     carriage a few blocks away from the salon. A few passers by slow down to gawk

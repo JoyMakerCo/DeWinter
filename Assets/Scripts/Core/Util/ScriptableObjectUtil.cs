@@ -22,10 +22,12 @@ namespace Util
             return asset;
 		}
 
-        public static void CreatUniqueInstance<T>(string name=null) where T: ScriptableObject
+        public static T GetUniqueInstance<T>(string name=null) where T: ScriptableObject
         {
             string[] assets = AssetDatabase.FindAssets("t:" + typeof(T));
-            if (assets.Length == 0) CreateScriptableObject<T>(name);            
+            return (assets.Length == 0)
+                ? CreateScriptableObject<T>(name)
+                : AssetDatabase.LoadAssetAtPath<T>(assets[0]);
         }
     }
 }

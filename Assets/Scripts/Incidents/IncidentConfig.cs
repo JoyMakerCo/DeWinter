@@ -22,7 +22,8 @@ namespace Ambition
         IDirectedGraphNodeInitializer,
         IDirectedGraphLinkInitializer,
         IDirectedGraphDeleteNodeHandler,
-        IDirectedGraphDeleteLinkHandler
+        IDirectedGraphDeleteLinkHandler,
+        AmbitionEditor.ILocalizedAsset
     {
         public const int NUM_CHAPTERS = 4;
 
@@ -34,10 +35,6 @@ namespace Ambition
         private bool[] _chapters = new bool[NUM_CHAPTERS];
         [SerializeField]
         private long _date;
-
-[SerializeField]
-private string _localizationKey;
-
 
         public IncidentVO GetIncident() => new IncidentVO(Incident)
         {
@@ -78,6 +75,9 @@ private string _localizationKey;
         private string[] _linkText;
         private SerializedProperty _linkTextProp;
 
+        [SerializeField]
+        private SerializedProperty _incident;
+
         public override string  GraphProperty => "Incident";
 
         public override void InitializeEditor(SerializedObject serializedObject)
@@ -86,78 +86,45 @@ private string _localizationKey;
             _nodeTextProp = serializedObject.FindProperty("_nodeText");
             _linkTextProp = serializedObject.FindProperty("_linkText");
 
-// TODO: Move all of the english text back into IncidentConfig, save all, then delete the localization portion of this method
-LocalizationConfig localizationConfig = Resources.Load<LocalizationConfig>("Localization Config");
-if (localizationConfig == null)
-{
-    throw new Exception(">> ERROR: Could not open localization config!");
-}
-int index;
-int subst = NODE_KEY.Length;
-SerializedProperty property;
-Dictionary<string, string> phrases = localizationConfig.GetPhrases(_localizationKey ?? "");
-if ((phrases?.Count ?? 0) == 0) phrases = localizationConfig.GetPhrases(this);
-if (phrases != null)
-{
-    foreach (KeyValuePair<string, string> kvp in phrases)
-    {
-        property = kvp.Key.StartsWith(NODE_KEY)
-                    ? _nodeTextProp
-                    : kvp.Key.StartsWith(LINK_KEY)
-                    ? _linkTextProp
-                    : null;
-        if (property != null)
-        {
-            index = int.Parse(kvp.Key.Substring(subst));
-            if (property.arraySize <= index)
-                property.arraySize = index + 1;
-            property.GetArrayElementAtIndex(index).stringValue = kvp.Value;
-        }
-    }
-}
-localizationConfig.RemovePhrases(_localizationKey);
-serializedObject.FindProperty("Incident.LocalizationKey").stringValue = localizationConfig.GenerateLocalizationKey(this);
-serializedObject.ApplyModifiedProperties();
+            _incident = serializedObject.FindProperty("Incident");
         }
 
-        public override void CleanupEditor(SerializedObject serializedObject)
-        {
-            PublishLocalizations();
-        }
+        public override void CleanupEditor(SerializedObject serializedObject) { }
 
-        public void PublishLocalizations()
+        public string LocalizationKey
         {
-/*            LocalizationConfig localizationConfig = Resources.Load<LocalizationConfig>("Localization Config");
-            if (localizationConfig == null)
+            get => Incident?.LocalizationKey;
+            set
             {
-                throw new Exception(">> ERROR: Could not open localization config!");
+#if UNITY_EDITOR
+                SerializedObject obj = new SerializedObject(this);
+                obj.FindProperty("Incident.LocalizationKey").stringValue = value;
+                obj.ApplyModifiedProperties();
+#endif
             }
+        }
+
+#if UNITY_EDITOR
+        public Dictionary<string, string> Localize()
+        {
             Dictionary<string, string> phrases = new Dictionary<string, string>();
-            SerializedObject obj = new SerializedObject(this);
-            localizationConfig.RemovePhrases(Incident.LocalizationKey);
-
-            obj.FindProperty("Incident.LocalizationKey").stringValue = localizationConfig.GenerateLocalizationKey(this);
-            obj.ApplyModifiedProperties();
-
-            for (int i = _nodeText.Length - 1; i>=0; i--)
+            for (int i = _nodeText.Length - 1; i >= 0; i--)
             {
-                if (!string.IsNullOrEmpty(_nodeText[i]))
+                if (!string.IsNullOrWhiteSpace(_nodeText[i]))
                 {
-                   phrases[NODE_KEY + i.ToString()] = _nodeText[i];
+                    phrases[NODE_KEY + i] = _nodeText[i];
                 }
             }
             for (int i = _linkText.Length - 1; i >= 0; i--)
             {
-                if (!string.IsNullOrEmpty(_linkText[i]))
+                if (!string.IsNullOrWhiteSpace(_linkText[i]))
                 {
-                    phrases[LINK_KEY + i.ToString()] = _linkText[i];
+                    phrases[LINK_KEY + i] = _linkText[i];
                 }
             }
-            localizationConfig.Post(this, this.name);
-            localizationConfig.Post(this, phrases, true);
-            localizationConfig = null;
-            phrases = null;
- */       }
+            return phrases;
+        }
+#endif
 
         private readonly string[] MONTHS = new string[]{
             "January","February","March","April","May","June",
@@ -181,24 +148,35 @@ serializedObject.ApplyModifiedProperties();
             {
                 SerializedObject config = moment.serializedObject;
                 SerializedProperty incident = moment.serializedObject.FindProperty("Incident");
-                Vector2Int link;
+                SerializedProperty link;
+                Vector2Int ends;
                 SerializedProperty list = incident.FindPropertyRelative("Nodes");
-                _nodeTextProp.MoveArrayElement(nodeIndex, 0);
+                config.FindProperty("_nodeText")?.MoveArrayElement(nodeIndex, 0);
                 list.MoveArrayElement(nodeIndex, 0);
-                list = config.FindProperty("_Positions");
-                list.MoveArrayElement(nodeIndex, 0);
+                config.FindProperty("_Positions")?.MoveArrayElement(nodeIndex, 0);
+
                 list = incident.FindPropertyRelative("Links");
-                for (int i = list.arraySize - 1; i >= 0; i--)
+                for (int i=list.arraySize-1; i>=0; i--)
                 {
-                    link = list.GetArrayElementAtIndex(i).vector2IntValue;
-                    if (link.x == nodeIndex) link.x = 0;
-                    else if (link.x < nodeIndex) link.x++;
-                    if (link.y == nodeIndex) link.y = 0;
-                    else if (link.y < nodeIndex) link.y++;
-                    list.GetArrayElementAtIndex(i).vector2IntValue = link;
+                    link = list.GetArrayElementAtIndex(i);
+                    if (link != null)
+                    {
+                        ends = link.vector2IntValue;
+                        if (ends.x == nodeIndex) ends.x = 0;
+                        else if (ends.x == 0) ends.x = nodeIndex;
+                        if (ends.y == nodeIndex) ends.y = 0;
+                        else if (ends.y == 0) ends.y = nodeIndex;
+                        link.vector2IntValue = ends;
+                    }
                 }
                 nodeIndex = 0;
-            }
+                list = config.FindProperty("_Nodes");
+                if (list != null)
+                {
+                    list.arraySize = 1;
+                    list.GetArrayElementAtIndex(0).intValue = 0;
+                }
+            }   
             GUI.enabled = true;
 
             GUIStyle wrappedStyle = new GUIStyle(EditorStyles.textArea);
@@ -229,9 +207,11 @@ serializedObject.ApplyModifiedProperties();
                 EditorGUI.BeginChangeCheck();
                 GUI.SetNextControlName("FOCUS_ID");
                 int index = Incident.GetLinkIndex(fromNode, toNode);
-                string linktext = (_linkTextProp != null && index < _linkTextProp.arraySize)
-                    ? EditorGUILayout.TextArea(_linkTextProp.GetArrayElementAtIndex(index).stringValue)
-                    : null;
+                if (_linkTextProp != null && index >= _linkTextProp.arraySize)
+                {
+                    _linkTextProp.arraySize = index + 1;
+                }
+                string linktext = EditorGUILayout.TextArea(_linkTextProp?.GetArrayElementAtIndex(index).stringValue ?? string.Empty);
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Rewards"), true);
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Requirements"), true);
                 EditorGUILayout.LabelField("Links marked as XOR are mutually exclusive");
@@ -241,7 +221,7 @@ serializedObject.ApplyModifiedProperties();
                 EditorGUILayout.LabelField("Specify Phrase to override default");
                 EditorGUILayout.LabelField("Specify non-zero Value to display");
                 EditorGUILayout.PropertyField(transition.FindPropertyRelative("Flags"), true);
-                if (EditorGUI.EndChangeCheck() && linktext != null)
+                if (EditorGUI.EndChangeCheck())
                 {
                     SetListItem(_linkTextProp, index, linktext);
                     _linkTextProp.serializedObject.ApplyModifiedProperties();
@@ -252,7 +232,56 @@ serializedObject.ApplyModifiedProperties();
         public override void RenderConfigUI(SerializedObject serializedObject)
         {
             SerializedProperty incident = serializedObject.FindProperty("Incident");
-            SerializedProperty dateProperty = serializedObject.FindProperty("_date");
+            SerializedProperty dateProperty = incident.FindPropertyRelative("_date");
+            SerializedProperty nodeprop = serializedObject.FindProperty("_nodeText");
+            SerializedProperty linkprop = serializedObject.FindProperty("_linkText");
+
+            if (GUILayout.Button("Text from graph"))
+            {
+                SerializedProperty graphlist = _incident.FindPropertyRelative("Nodes");
+                nodeprop.arraySize = graphlist.arraySize;
+                for (int i= nodeprop.arraySize-1; i>=0; i--)
+                {
+                    nodeprop.GetArrayElementAtIndex(i).stringValue = graphlist.GetArrayElementAtIndex(i).FindPropertyRelative("Text").stringValue;
+                }
+                linkprop.arraySize = incident.FindPropertyRelative("LinkData").arraySize;
+                for (int i = linkprop.arraySize - 1; i >= 0; i--)
+                {
+                    linkprop.GetArrayElementAtIndex(i).stringValue = incident.FindPropertyRelative("LinkData").GetArrayElementAtIndex(i).FindPropertyRelative("Text")?.stringValue;
+                }
+            }
+            if (GUILayout.Button("Text from File"))
+            {
+                string key = incident.FindPropertyRelative("LocalizationKey").stringValue + "."; 
+                Dictionary<string, string> phrases = LocalizationConfig.GetPhrases(key);
+                if (phrases == null)
+                {
+                    throw new Exception(">> ERROR: Could not open localization config!");
+                }
+
+                nodeprop.arraySize = 0;
+                linkprop.arraySize = 0;
+                int len = key.Length + NODE_KEY.Length;
+                int index;
+                foreach(KeyValuePair<string, string> kvp in phrases)
+                {
+                    if (kvp.Key.StartsWith(key+NODE_KEY))
+                    {
+                        index = int.Parse(kvp.Key.Substring(len));
+                        if (nodeprop.arraySize <= index)
+                            nodeprop.arraySize = index + 1;
+                        nodeprop.GetArrayElementAtIndex(index).stringValue = kvp.Value;
+                    }
+                    else if (kvp.Key.StartsWith(key+LINK_KEY))
+                    {
+                        index = int.Parse(kvp.Key.Substring(len));
+                        if (linkprop.arraySize <= index)
+                            linkprop.arraySize = index + 1;
+                        linkprop.GetArrayElementAtIndex(index).stringValue = kvp.Value;
+                    }
+                }
+            }
+
             bool fixedDate = GUILayout.Toggle(dateProperty.longValue >= 0, "Date");
             if (!fixedDate) dateProperty.longValue = -1;
             else
@@ -287,16 +316,29 @@ serializedObject.ApplyModifiedProperties();
         public bool Render(SerializedProperty node, int index, Rect rect, bool selected)
         {
             SerializedProperty list = node?.serializedObject?.FindProperty("_nodeText");
-            if (list == null || !list.isArray || index >= list.arraySize)
+            if (list == null
+                || !list.isArray
+                || index >= node.serializedObject.FindProperty("_Positions")?.arraySize)
             {
                 return false;
             }
+
+            if (index > list.arraySize)
+            {
+                list.arraySize = index + 1;
+            }
+
+            if (index >= list.arraySize)
+            {
+                list.arraySize = index + 1;
+            }
+
             GUI.color = (index == 0)
                ? (selected ? Color.blue : Color.cyan)
                : (selected ? Color.gray : Color.white);
             GUI.skin.button.alignment = TextAnchor.UpperCenter;
             GUI.skin.button.wordWrap = true;
-            string str = node.serializedObject.FindProperty("_nodeText").GetArrayElementAtIndex(index).stringValue;
+            string str = list.GetArrayElementAtIndex(index).stringValue;
             return GUI.Button(rect, str, GUI.skin.button);
         }
 

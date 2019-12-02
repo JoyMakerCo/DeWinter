@@ -21,7 +21,7 @@ namespace Ambition
             AmbitionApp.Subscribe<Pin>(ParisMessages.SELECT_LOCATION, HandleSelect);
             AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleLocation);
             AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHideLocation);
-            AmbitionApp.SendMessage<string>(GameMessages.SET_TITLE, AmbitionApp.GetString("paris"));
+            AmbitionApp.SendMessage<string>(GameMessages.SET_TITLE, AmbitionApp.Localize("paris"));
         }
 
         void OnDestroy()

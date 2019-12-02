@@ -55,7 +55,7 @@ namespace Core
 			_entities = new Dictionary<string,IConsoleEntity>();
 			_aliases = new Dictionary<string,string>();
 
-			NewCommand( "invoke", InvokeEntity, "trigger an entity" );
+			NewCommand( "voke", InvokeEntity, "trigger an entity" );
 			NewCommand( "incident", StartIncident, "start an incident", CollectIncidents );
 			NewCommand( "list", ListEntities, "list known entities", CollectEntities );
 			NewCommand( "dump", DumpEntity, "display information about an entity" );
@@ -64,6 +64,11 @@ namespace Core
 			NewCommand( "reward", GrantReward, "grant a reward" );
 			NewCommand( "set", SetCommodity, "set a commodity value" );
 			NewCommand( "shortcuts", ListShortcuts, "show current shortcut table" );
+			NewCommand( "dialog", OpenDialog, "open a popup dialog by ID" );
+
+			// handy quick use tools
+			NewCommand( "inventory", DumpInventory, "dump inventory" );
+			NewCommand( "gossip", UnlockGossip, "unlock gossip features for testing" );
 
 			ConsoleUtilities.TestLookup();
 		}
@@ -293,7 +298,7 @@ namespace Core
 		{
 			if (args.Length < 2)
 			{
-				error( "Error: invoke <target>");
+				error( "Error: voke <target>");
 			}
 			else
 			{
@@ -328,6 +333,7 @@ namespace Core
 			_entities["game"] = AmbitionApp.GetModel<GameModel>();
 			_entities["calendar"] = AmbitionApp.GetModel<CalendarModel>();
 			_entities["inventory"] = AmbitionApp.GetModel<InventoryModel>();
+			_entities["quest"] = AmbitionApp.GetModel<QuestModel>();
 
 			var factionModel = AmbitionApp.GetModel<FactionModel>();
 			_entities["factions"] = factionModel;
@@ -596,6 +602,34 @@ namespace Core
 			}
 		}
 
+		// inventory shortcut
+		void DumpInventory( string[] args )
+		{
+			DumpEntity( new string[] {"dump", "inventory"} );
+		}
+
+		void UnlockGossip( string[] args )
+		{
+			AmbitionApp.SendMessage( new CommodityVO( CommodityType.Location, "La Trompette du Peuple", 1 ));
+
+			int count = 3;
+			if (args.Length > 1)
+			{
+				int.TryParse(args[1], out count);
+			}
+			for (int i = 0; i < count; i++)
+			{
+				var fac = Util.RNG.Choice( new string [] { "Crown", "Church", "Military", "Bourgeoisie", "Revolution" });
+				AmbitionApp.SendMessage( new CommodityVO( CommodityType.Gossip, fac, i%3 ));
+			}
+		}
+
+		void OpenDialog( string[] args )
+		{	                    
+			AmbitionApp.OpenDialog(args[1]);
+		}
 	}
+
+
 
 }

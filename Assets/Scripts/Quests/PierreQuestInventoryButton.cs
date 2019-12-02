@@ -23,8 +23,12 @@ public class PierreQuestInventoryButton : MonoBehaviour
 
     private void SelectQuest(PierreQuest quest)
     {
-        myDescriptionText.text = quest?.Name;
-        myTimeRemainingText.text = (quest?.daysLeft ?? '0') + "/" + (quest?.daysTimeLimit ?? '0');
+        if (quest == null)
+        {
+            return;
+        }
+        myDescriptionText.text = quest.Name;
+        myTimeRemainingText.text = (quest.daysLeft) + "/" + (quest.daysTimeLimit);
         myOutline.effectColor = (pierreQuestInventoryList.quest == quest)
             ? Color.yellow
             : Color.clear;

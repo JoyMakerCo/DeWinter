@@ -33,7 +33,11 @@ namespace Ambition
             AmbitionApp.RegisterModel<ConsoleModel>();
 
             AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryMessages.SELL_ITEM);
+            AmbitionApp.RegisterCommand<SellGossipCmd, ItemVO>(InventoryMessages.SELL_GOSSIP);
+            AmbitionApp.RegisterCommand<PeddleGossipCmd, ItemVO>(InventoryMessages.PEDDLE_GOSSIP);
             AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
+            AmbitionApp.RegisterCommand<DeleteItemCmd, ItemVO>(InventoryMessages.DELETE_ITEM);
+
             AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
             AmbitionApp.RegisterCommand<GrantRewardsCmd, CommodityVO[]>();
             AmbitionApp.RegisterCommand<SetCommodityCmd, CommodityVO>(CommodityMessages.SET_COMMODITY);
@@ -56,7 +60,7 @@ namespace Ambition
             AmbitionApp.RegisterCommand<GoToPartyCmd, PartyVO>(PartyMessages.GO_TO_PARTY);
             AmbitionApp.RegisterCommand<PerilIncidentCmd, int>(GameConsts.PERIL);
             AmbitionApp.RegisterCommand<ResetGameCmd>(GameMessages.EXIT_MENU);
-            AmbitionApp.RegisterCommand<CreateGossipCmd, FactionType>(InventoryMessages.CREATE_GOSSIP);
+            AmbitionApp.RegisterCommand<CreateGossipCmd, GossipRewardSpec>(InventoryMessages.CREATE_GOSSIP);
             AmbitionApp.RegisterCommand<RestockMerchantCmd>(InventoryMessages.RESTOCK_MERCHANT);
 
             // Party
@@ -108,7 +112,8 @@ namespace Ambition
             AmbitionApp.RegisterReward<FavorReward>(CommodityType.Favor);
             AmbitionApp.RegisterReward<FactionAllegianceReward>(CommodityType.FactionAllegiance);
             AmbitionApp.RegisterReward<FactionPowerReward>(CommodityType.FactionPower);
-            
+            AmbitionApp.RegisterReward<ActiveQuestReward>(CommodityType.ActiveQuest);
+
 			AmbitionApp.RegisterRequirement(CommodityType.Chance, ChanceReq.Check);
             AmbitionApp.RegisterRequirement(CommodityType.Livre, LivreReq.Check);
             AmbitionApp.RegisterRequirement(CommodityType.Credibility, CredReq.Check);
@@ -121,6 +126,9 @@ namespace Ambition
             AmbitionApp.RegisterRequirement(CommodityType.FactionAllegiance, FactionAllegianceReq.Check);
             AmbitionApp.RegisterRequirement(CommodityType.FactionPower, FactionPowerReq.Check);
             AmbitionApp.RegisterRequirement(CommodityType.Exhaustion, ExhaustionReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.ActiveQuest, ActiveQuestReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.Incident, IncidentReq.Check);
+            AmbitionApp.RegisterRequirement(CommodityType.OutfitReaction, OutfitReactionReq.Check);
 
             AmbitionApp.Execute<RegisterPartyControllerCmd>();
             AmbitionApp.Execute<RegisterConversationControllerCmd>();

@@ -43,7 +43,8 @@ MonoBehaviour:
     - {x: 4, y: 11}
     - {x: 0, y: 1}
     Nodes:
-    - Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+    - Text: 
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -63,7 +64,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -83,7 +85,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: happy
@@ -103,7 +106,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: happy
@@ -123,10 +127,11 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
-        Pose: 'sad '
+        Pose: sad
         Name: Camille
       Character2:
         AvatarID: 
@@ -143,7 +148,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -163,7 +169,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -186,7 +193,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -206,7 +214,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: happy
@@ -226,7 +235,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -246,7 +256,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -266,7 +277,8 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Background: {fileID: 0}
+    - Text: 
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -287,55 +299,83 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - xor: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - xor: 0
+    - Text: 
+      xor: 0
       Rewards: []
       Requirements: []
       Flags: []
@@ -345,11 +385,11 @@ MonoBehaviour:
     Tags: []
     Factions: 
     LocalizationKey: Assets/Resources/Incidents/Bed Rest.asset
+    _date: 564310368000000000
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: 564310368000000000
-  _localizationKey: Assets/Resources/Incidents/Bed Rest.asset.
   _nodeText:
   - The next morning, you wake up from a long night's rest feeling pretty much the
     same as you did last night. Now that you think about it, you've been feeling tired

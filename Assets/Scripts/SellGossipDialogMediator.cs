@@ -29,8 +29,9 @@ namespace Ambition
             //Setting up the dictionary for the necessary substitutions
             Dictionary<string, string> dialogSubstitutions = new Dictionary<string, string>();
             dialogSubstitutions.Add("$GOSSIPNAME", _gossip.Name);
-            dialogSubstitutions.Add("$GOSSIPPRICE", "£" + _gossip.Price.ToString("### ###"));
-            //dialogSubstitutions.Add("$CAUGHTODDS", AmbitionApp.GetString("gossip_caught_odds." + (int)(Mathf.Clamp(AmbitionApp.GetModel<InventoryModel>().GossipSoldOrPeddled,0,9))));
+            dialogSubstitutions.Add("$GOSSIPPRICE", "£ " + GossipWrapperVO.GetValue(_gossip).ToString("### ###"));
+            var activity = Mathf.Clamp(AmbitionApp.GetModel<InventoryModel>().GossipActivity,0,9);
+            dialogSubstitutions.Add("$CAUGHTODDS", AmbitionApp.Localize("gossip_caught_odds." + activity.ToString() ) );
             
             //Performing the substitutions themselves
             BodyText.text = AmbitionApp.GetString(phrase + DialogConsts.BODY, dialogSubstitutions);
@@ -40,18 +41,21 @@ namespace Ambition
             {
                 str = AmbitionApp.GetString(phrase + DialogConsts.CANCEL, dialogSubstitutions);
                 if (str != null && DismissText != null) DismissText.text = str;
-                else DismissText.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CANCEL);
+                else DismissText.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CANCEL);
             }
 
             if (SellText != null)
             {
                 str = AmbitionApp.GetString(phrase + DialogConsts.CONFIRM, dialogSubstitutions);
                 if (str != null && SellText != null) SellText.text = str;
-                else SellText.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CONFIRM);
+                else SellText.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);
             }
         }
 
-        public void SellGossip() => AmbitionApp.SendMessage(InventoryMessages.SELL_ITEM, _gossip);
+        public void SellGossip()
+        {
+            AmbitionApp.SendMessage(InventoryMessages.SELL_GOSSIP, _gossip);
+        }
 
         public override void OnOpen()
         {

@@ -16,8 +16,8 @@ namespace Ambition
 	    {
 	    	_parties = parties;
 
-			TitleText.text = AmbitionApp.GetString(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.TITLE);
-	    	BodyText.text = AmbitionApp.GetString(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.BODY);
+			TitleText.text = AmbitionApp.Localize(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.TITLE);
+	    	BodyText.text = AmbitionApp.Localize(DialogConsts.RSVP_CHOICE_DIALOG + DialogConsts.BODY);
 
 	        Text party1ButtonText = this.transform.Find("Party1Button").Find("Text").GetComponent<Text>();
 	        party1ButtonText.text = _parties[0].Name;

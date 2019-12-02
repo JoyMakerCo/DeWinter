@@ -3352,6 +3352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224228714540193760}
   - component: {fileID: 222424115031423564}
+  - component: {fileID: 3410875830914675957}
   m_Layer: 5
   m_Name: PartyLoadOut
   m_TagString: Untagged
@@ -3395,6 +3396,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522327123172190}
   m_CullTransparentMesh: 0
+--- !u!114 &3410875830914675957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522327123172190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText:
+  - TextField: {fileID: 114333357804493272}
+    LocalizationKey: wardrobe.go_to_party
+  - TextField: {fileID: 114202741490571446}
+    LocalizationKey: wardrobe.outfits
+  - TextField: {fileID: 114712335786714984}
+    LocalizationKey: wardrobe.accessories
+  - TextField: {fileID: 114543794899940950}
+    LocalizationKey: wardrobe.sort_by
+  - TextField: {fileID: 114678956465849826}
+    LocalizationKey: luxury
+  - TextField: {fileID: 114896910634922942}
+    LocalizationKey: modesty
+  - TextField: {fileID: 114758701411357118}
+    LocalizationKey: novelty
+  - TextField: {fileID: 114736898186625060}
+    LocalizationKey: wardrobe.tonights_party
 --- !u!1 &1598387275275044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,6 +3757,7 @@ GameObject:
   - component: {fileID: 222519942850285604}
   - component: {fileID: 114333357804493272}
   - component: {fileID: 114387568727550410}
+  - component: {fileID: 3737349358119860596}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3810,6 +3841,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.95686275, b: 0.78431374, a: 0.5882353}
   m_EffectDistance: {x: 1, y: -0.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &3737349358119860596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676218252831890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText: []
 --- !u!1 &1677780789314138
 GameObject:
   m_ObjectHideFlags: 0

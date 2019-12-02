@@ -17,5 +17,19 @@ namespace Ambition
         public const string SHORT_DATE = "%SHORTDATE%"; // The Current Date without year
         public const string WEEKDAY = "%WEEKDAY%";      // The Current Weekday
         public const string LOCATION = "%LOCATION%";    // The current Paris Location or Party Title
+
+        public const string QUESTGOSSIPFACTION = "%QUESTGOSSIPFACTION%";    // Faction of the current gossip quest
+        public const string QUESTTIME = "%QUESTTIME%";                      // Time limit of the current gossip quest
+        public const string QUESTREWARD = "%QUESTREWARD%";                  // Reward description of the current gossip quest
+
+        public const string OUTFITNAME = "$OUTFITNAME";
+        public const string OUTFITTITLE = "$OUTFITTITLE";
+        public const string OUTFITMODESTY = "$OUTFITMODESTY";
+        public const string OUTFITLUXURY = "$OUTFITLUXURY";
+
+        public const string PARTYFACTION = "$PARTYFACTIONNAME";
+        public const string PARTYFACTIONMODESTY = "$PARTYFACTIONMODESTYPREFERENCE";
+        public const string PARTYFACTIONLUXURY = "$PARTYFACTIONLUXURYPREFERENCE";
+
     }
 }

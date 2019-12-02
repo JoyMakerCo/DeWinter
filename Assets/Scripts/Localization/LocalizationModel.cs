@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using UnityEngine;
+
 
 namespace Ambition
 {
@@ -34,7 +36,79 @@ namespace Ambition
                     Substitutions[LocalizationConsts.SPEAKER] = "";
                     break;
             }
+        }
 
+        public void SetCurrentQuest( PierreQuest quest )
+        {
+            Substitutions[LocalizationConsts.QUESTGOSSIPFACTION] = AmbitionApp.Localize(quest.Faction.ToString().ToLower());
+            Substitutions[LocalizationConsts.QUESTREWARD] = AmbitionApp.Localize(quest.RewardKey);
+            Substitutions[LocalizationConsts.QUESTTIME] = quest.daysTimeLimit.ToString();
+        }
+
+        public void SetPartyFaction( FactionType faction )
+        {
+            FactionVO fvo = AmbitionApp.GetModel<FactionModel>()[faction];
+
+            Substitutions[LocalizationConsts.PARTYFACTION] = AmbitionApp.Localize( faction.ToString().ToLower() );
+
+            // map -100 to +100 to 0,1,2.
+            int modIndex = 0;
+            if (fvo.Modesty < -33)
+            {
+                modIndex = 0;
+            }
+            else if (fvo.Modesty < 33)
+            {
+                modIndex = 1;
+            }
+            else
+            {
+                modIndex = 2;
+            }
+
+            int luxIndex = 0;
+            if (fvo.Luxury < -33)
+            {
+                luxIndex = 0;
+            }
+            else if (fvo.Luxury < 33)
+            {
+                luxIndex = 1;
+            }
+            else
+            {
+                luxIndex = 2;
+            }
+            Substitutions[LocalizationConsts.PARTYFACTIONMODESTY] = AmbitionApp.Localize( string.Format("modesty.{0}", modIndex) );
+            Substitutions[LocalizationConsts.PARTYFACTIONLUXURY] = AmbitionApp.Localize( string.Format("luxury.{0}", luxIndex) );
+
+            Debug.LogFormat( "SetPartyFaction fac {0} name {1} mod {2} lux {3}",
+                faction.ToString(),
+                Substitutions[LocalizationConsts.PARTYFACTION],
+                Substitutions[LocalizationConsts.PARTYFACTIONMODESTY],
+                Substitutions[LocalizationConsts.PARTYFACTIONLUXURY]
+                );
+        }
+
+        public void SetPartyOutfit( ItemVO outfit )
+        {
+            if (outfit == null)
+            {
+                Debug.LogError("Going into party but no outfit is equipped!");
+                return;
+            }
+
+            Substitutions[LocalizationConsts.OUTFITNAME] = outfit.Name.ToLower();
+            Substitutions[LocalizationConsts.OUTFITTITLE] = outfit.Name;
+            Substitutions[LocalizationConsts.OUTFITMODESTY] = OutfitWrapperVO.GetModestyText(outfit);
+            Substitutions[LocalizationConsts.OUTFITLUXURY] = OutfitWrapperVO.GetLuxuryText(outfit);
+
+            Debug.LogFormat( "SetPartyOutfit name {0} mod {1} lux {2}",
+                Substitutions[LocalizationConsts.OUTFITNAME],
+                Substitutions[LocalizationConsts.OUTFITMODESTY],
+                Substitutions[LocalizationConsts.OUTFITLUXURY]
+                );
+            
         }
 
         public string SetDate(DateTime date)

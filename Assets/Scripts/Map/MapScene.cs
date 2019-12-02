@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Ambition
 {
     public class MapScene : MonoBehaviour
     {
+        public AvatarCollection Avatars;
+
         private MapModel _map;
         private MapView _loadedMap;
+
+        public Sprite GetPortrait(string avatarID) => Avatars?.GetAvatar(avatarID).Portrait;
 
         private void OnEnable()
         {

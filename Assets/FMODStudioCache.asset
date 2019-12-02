@@ -465,7 +465,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 1472
+  Length: 2200
 --- !u!114 &-7760914641954348297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2389,7 +2389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets/Audio/Build/Desktop/Master Bank.strings.bank
-  lastModified: 637057268640000000
+  lastModified: 637092341520000000
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -2707,7 +2707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: /Users/michaelseltzer/Projects/Ambition/Assets/Audio/Build/Desktop/SFX_OneShot.bank
-  lastModified: 637057268700000000
+  lastModified: 637092341540000000
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -3546,9 +3546,12 @@ MonoBehaviour:
   - {fileID: 7674099117277398110}
   - {fileID: 5433116797098154802}
   - {fileID: 5477093792225605314}
+  - {fileID: 3341466553535935244}
+  - {fileID: 5079919994999601917}
+  - {fileID: 5785614804940746187}
   MasterBankRef: {fileID: -7421829716907241239}
   StringsBankRef: {fileID: -2844036495396086541}
-  stringsBankWriteTime: 637057268640000000
+  stringsBankWriteTime: 637092341520000000
   cacheVersion: 2
 --- !u!114 &88501670040903819
 MonoBehaviour:
@@ -4596,6 +4599,29 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &3341466553535935244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/One Shot SFX/Crowd_bark_whispers
+  guid: 158d7f249733354daaff75f17a39477b
+  Banks:
+  - {fileID: -2072223963791909603}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3312
 --- !u!114 &3400843177432782446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5261,6 +5287,29 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &5079919994999601917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/One Shot SFX/Male_bark_gasp
+  guid: 73232deb0f46914b9e6325f31ca9dcfb
+  Banks:
+  - {fileID: -2072223963791909603}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
 --- !u!114 &5138668350638842039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5566,6 +5615,29 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &5785614804940746187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/One Shot SFX/Female_bark_gasp
+  guid: 73c0fa0fff1dd945950158c89dd66453
+  Banks:
+  - {fileID: -2072223963791909603}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
 --- !u!114 &5822390798090000917
 MonoBehaviour:
   m_ObjectHideFlags: 0

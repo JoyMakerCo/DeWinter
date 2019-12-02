@@ -15,14 +15,14 @@ namespace Ambition
 
 		public override void OnOpen(PartyVO p)
 		{
-			TitleText.text = AmbitionApp.GetString("rsvp_cancel_dialog.title");
+			TitleText.text = AmbitionApp.Localize("rsvp_cancel_dialog.title");
 
 			_party = p;
 
 			Dictionary<string, string> subs = new Dictionary<string, string>() {
-                {"$PARTYSIZE", AmbitionApp.GetString("party_importance." + ((int)p.Size).ToString())},
+                {"$PARTYSIZE", AmbitionApp.Localize("party_importance." + ((int)p.Size).ToString())},
 				{"$HOSTNAME", p.Host},
-				{"$FACTION", AmbitionApp.GetString(p.Faction.ToString())}};
+				{"$FACTION", AmbitionApp.Localize(p.Faction.ToString())}};
 
 			if (p.Date == AmbitionApp.GetModel<CalendarModel>().Today)
 			{
