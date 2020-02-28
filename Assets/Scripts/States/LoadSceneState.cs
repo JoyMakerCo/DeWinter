@@ -1,26 +1,30 @@
-using System;
+﻿using System;
 using UFlow;
 
 namespace Ambition
 {
-    public class LoadSceneState : UState<string>
+    public class LoadSceneState : UInputState
     {
-        string _sceneID;
+        private string _sceneID;
 
-        public override void SetData(string data) => _sceneID = data;
-
-        public override void OnEnterState(string[] args)
+        public override void Initialize(params object[] parameters) => _sceneID = parameters[0] as string;
+        public override void OnEnterState()
         {
-            //_sceneID = args[0];
-            AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOutComplete);
+            AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFade);
             AmbitionApp.SendMessage(GameMessages.FADE_OUT);
         }
 
-        private void HandleFadeOutComplete()
+        public override void Dispose()
         {
-            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOutComplete);
-            AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, _sceneID);
+            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFade);
+        }
+
+        private void HandleFade()
+        {
+            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFade);
+            AmbitionApp.SendMessage(GameMessages.LOAD_SCENE, _sceneID);
             AmbitionApp.SendMessage(GameMessages.FADE_IN);
+            Activate();
         }
     }
 }

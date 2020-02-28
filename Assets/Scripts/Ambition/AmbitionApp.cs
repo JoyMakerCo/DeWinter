@@ -166,36 +166,25 @@ namespace Ambition
             App.Service<DialogSvc>().CloseAll();
         }
 
-        public static void RegisterState<C>(string machineID, string stateID) where C : UState, new()
+        public static void RegisterState<C>(string machineID, string stateID, params object[] parameters) where C : UState, new()
         {
-            App.Service<UFlowSvc>().RegisterState<C>(machineID, stateID);
+            App.Service<UFlowSvc>().RegisterState<C>(machineID, stateID, parameters);
         }
 
-        public static void RegisterState(string machineID, string stateID)
+        public static void RegisterState(string machineID, string stateID, params object[] parameters)
         {
-            App.Service<UFlowSvc>().RegisterState(machineID, stateID);
-        }
-
-        public static void RegisterState<C, T>(string machineID, string stateID, T arg) where C : UState<T>, new()
-        {
-            App.Service<UFlowSvc>().RegisterState<C, T>(machineID, stateID, arg);
+            App.Service<UFlowSvc>().RegisterState(machineID, stateID, parameters);
         }
 
         // Binds an existing state to a new node type
-        public static void BindState<T>(string machineID, string stateID) where T:UNode, new()
+        public static void BindState<T>(string machineID, string stateID, params object[] parameters) where T:UState, new()
         {
-            App.Service<UFlowSvc>().BindState<T>(machineID, stateID);
+            App.Service<UFlowSvc>().BindState<T>(machineID, stateID, parameters);
         }
 
-        // Temp method for binding a state to a sub-machine
-        public static void BindMachineState(string machineID, string stateID, string subMachineID)
+        public static void BindLink<T>(string machineID, string originState, string targetState, params object[] parameters) where T : ULink, new()
         {
-            App.Service<UFlowSvc>().BindMachineState(machineID, stateID, subMachineID);
-        }
-
-        public static void RegisterMachineState(string machineID, string stateID, string newMachineID)
-        {
-            App.Service<UFlowSvc>().RegisterMachineState(machineID, stateID, newMachineID);
+            App.Service<UFlowSvc>().BindLink<T>(machineID, originState, targetState, parameters);
         }
 
         public static void RegisterLink(string machineID, string originState, string targetState)
@@ -206,11 +195,6 @@ namespace Ambition
 		public static void RegisterLink<T>(string machineID, string originState, string targetState) where T : ULink, new()
 		{
             App.Service<UFlowSvc>().RegisterLink<T>(machineID, originState, targetState);
-		}
-
-		public static void RegisterLink<T, U>(string machineID, string originState, string targetState, U data) where T : ULink<U>, new()
-		{
-            App.Service<UFlowSvc>().RegisterLink<T, U>(machineID, originState, targetState, data);
 		}
 
         public static bool IsActiveState(string stateID)

@@ -5,7 +5,7 @@ namespace Ambition
 {
     public class RoundExpiredState : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
             //CharacterVO[] guests = Array.FindAll(model.Guests, g => !g.IsLockedIn && g.State != GuestState.Bored);

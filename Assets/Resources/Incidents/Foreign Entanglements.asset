@@ -1,0 +1,3806 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: Foreign Entanglements
+  m_EditorClassIdentifier: 
+  _Nodes: 5f000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -1, y: 88}
+  - {x: 4, y: 159}
+  - {x: 0, y: 242}
+  - {x: 5, y: 315}
+  - {x: -138, y: 407}
+  - {x: 147, y: 399}
+  - {x: -9, y: 487}
+  - {x: -161, y: 567}
+  - {x: 122, y: 565}
+  - {x: -3, y: 643}
+  - {x: -253, y: 722}
+  - {x: -1, y: 717}
+  - {x: 239, y: 726}
+  - {x: 482, y: 718}
+  - {x: 487, y: 782}
+  - {x: 240, y: 783}
+  - {x: 343, y: 860}
+  - {x: 284, y: 974}
+  - {x: 10, y: 967}
+  - {x: 27, y: 1076}
+  - {x: 3, y: 831}
+  - {x: -248, y: 843}
+  - {x: 25, y: 1139}
+  - {x: 30, y: 1199}
+  - {x: 32, y: 1259}
+  - {x: -259, y: 1333}
+  - {x: 29, y: 1336}
+  - {x: 366, y: 1328}
+  - {x: 365, y: 1396}
+  - {x: 256, y: 1479}
+  - {x: 498, y: 1473}
+  - {x: 517, y: 1566}
+  - {x: 264, y: 1539}
+  - {x: -6, y: 1419}
+  - {x: -11, y: 1525}
+  - {x: -262, y: 1421}
+  - {x: -243, y: 1546}
+  - {x: 7, y: 1636}
+  - {x: 339, y: 1628}
+  - {x: 7, y: 1689}
+  - {x: 8, y: 1788}
+  - {x: 9, y: 1849}
+  - {x: -280, y: 1924}
+  - {x: 8, y: 1914}
+  - {x: 236, y: 1914}
+  - {x: -3, y: 2009}
+  - {x: -521, y: 2007}
+  - {x: -271, y: 2017}
+  - {x: -268, y: 2099}
+  - {x: -222, y: 2186}
+  - {x: -171, y: 2264}
+  - {x: -507, y: 2091}
+  - {x: -88, y: 2341}
+  - {x: -478, y: 2201}
+  - {x: -437, y: 2265}
+  - {x: -381, y: 2347}
+  - {x: -48, y: 2401}
+  - {x: -9, y: 2086}
+  - {x: 20, y: 2140}
+  - {x: 55, y: 2196}
+  - {x: 94, y: 2249}
+  - {x: 117, y: 2302}
+  - {x: -45, y: 2468}
+  - {x: -42, y: 2534}
+  - {x: 7, y: 1742}
+  - {x: -32, y: 2592}
+  - {x: -37, y: 2654}
+  - {x: -34, y: 2710}
+  - {x: -30, y: 2783}
+  - {x: -337, y: 2835}
+  - {x: -15, y: 2856}
+  - {x: 250, y: 2841}
+  - {x: -2, y: 2916}
+  - {x: -11, y: 2983}
+  - {x: -13, y: 3056}
+  - {x: -6, y: 3118}
+  - {x: -10, y: 3178}
+  - {x: -14, y: 3242}
+  - {x: -18, y: 3317}
+  - {x: -18, y: 3386}
+  - {x: -21, y: 3457}
+  - {x: -20, y: 3519}
+  - {x: -315, y: 2986}
+  - {x: -334, y: 3060}
+  - {x: -335, y: 3128}
+  - {x: -336, y: 3195}
+  - {x: -330, y: 3261}
+  - {x: -565, y: 2907}
+  - {x: -316, y: 2915}
+  - {x: -577, y: 2991}
+  - {x: -19, y: 3579}
+  - {x: -26, y: 3641}
+  - {x: -24, y: 3703}
+  - {x: -28, y: 3765}
+  - {x: -29, y: 3832}
+  - {x: -25, y: 3891}
+  - {x: -27, y: 3956}
+  - {x: -30, y: 4021}
+  - {x: -293, y: 4092}
+  - {x: -32, y: 4104}
+  - {x: 208, y: 4082}
+  - {x: 206, y: 4160}
+  - {x: 202, y: 4228}
+  - {x: -40, y: 4292}
+  - {x: -34, y: 4370}
+  - {x: -35, y: 4450}
+  - {x: -27, y: 4521}
+  - {x: -32, y: 4583}
+  - {x: -28, y: 4198}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 4, y: 6}
+    - {x: 5, y: 7}
+    - {x: 7, y: 8}
+    - {x: 6, y: 7}
+    - {x: 7, y: 9}
+    - {x: 9, y: 10}
+    - {x: 8, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 10, y: 13}
+    - {x: 10, y: 14}
+    - {x: 14, y: 15}
+    - {x: 13, y: 16}
+    - {x: 16, y: 17}
+    - {x: 15, y: 17}
+    - {x: 17, y: 18}
+    - {x: 19, y: 20}
+    - {x: 12, y: 21}
+    - {x: 21, y: 19}
+    - {x: 11, y: 22}
+    - {x: 22, y: 20}
+    - {x: 20, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 25, y: 26}
+    - {x: 25, y: 27}
+    - {x: 25, y: 28}
+    - {x: 28, y: 29}
+    - {x: 29, y: 30}
+    - {x: 29, y: 31}
+    - {x: 31, y: 32}
+    - {x: 30, y: 33}
+    - {x: 27, y: 34}
+    - {x: 34, y: 35}
+    - {x: 26, y: 36}
+    - {x: 36, y: 37}
+    - {x: 37, y: 38}
+    - {x: 35, y: 38}
+    - {x: 18, y: 20}
+    - {x: 32, y: 39}
+    - {x: 33, y: 39}
+    - {x: 39, y: 38}
+    - {x: 38, y: 40}
+    - {x: 41, y: 42}
+    - {x: 42, y: 43}
+    - {x: 42, y: 44}
+    - {x: 42, y: 45}
+    - {x: 44, y: 46}
+    - {x: 43, y: 47}
+    - {x: 43, y: 48}
+    - {x: 48, y: 49}
+    - {x: 49, y: 50}
+    - {x: 50, y: 51}
+    - {x: 47, y: 52}
+    - {x: 51, y: 53}
+    - {x: 52, y: 54}
+    - {x: 54, y: 55}
+    - {x: 55, y: 56}
+    - {x: 56, y: 57}
+    - {x: 53, y: 57}
+    - {x: 46, y: 58}
+    - {x: 58, y: 59}
+    - {x: 59, y: 60}
+    - {x: 60, y: 61}
+    - {x: 61, y: 62}
+    - {x: 62, y: 56}
+    - {x: 57, y: 63}
+    - {x: 63, y: 64}
+    - {x: 40, y: 65}
+    - {x: 65, y: 41}
+    - {x: 45, y: 49}
+    - {x: 64, y: 66}
+    - {x: 66, y: 67}
+    - {x: 67, y: 68}
+    - {x: 68, y: 69}
+    - {x: 69, y: 70}
+    - {x: 69, y: 71}
+    - {x: 69, y: 72}
+    - {x: 71, y: 73}
+    - {x: 73, y: 74}
+    - {x: 74, y: 75}
+    - {x: 75, y: 76}
+    - {x: 76, y: 77}
+    - {x: 77, y: 78}
+    - {x: 78, y: 79}
+    - {x: 79, y: 80}
+    - {x: 80, y: 81}
+    - {x: 81, y: 82}
+    - {x: 72, y: 83}
+    - {x: 83, y: 84}
+    - {x: 84, y: 85}
+    - {x: 85, y: 86}
+    - {x: 86, y: 87}
+    - {x: 87, y: 81}
+    - {x: 70, y: 88}
+    - {x: 70, y: 89}
+    - {x: 89, y: 83}
+    - {x: 88, y: 90}
+    - {x: 90, y: 76}
+    - {x: 82, y: 91}
+    - {x: 91, y: 92}
+    - {x: 92, y: 93}
+    - {x: 93, y: 94}
+    - {x: 94, y: 95}
+    - {x: 95, y: 96}
+    - {x: 96, y: 97}
+    - {x: 97, y: 98}
+    - {x: 98, y: 99}
+    - {x: 98, y: 100}
+    - {x: 98, y: 101}
+    - {x: 101, y: 102}
+    - {x: 102, y: 103}
+    - {x: 104, y: 105}
+    - {x: 105, y: 106}
+    - {x: 106, y: 107}
+    - {x: 107, y: 108}
+    - {x: 100, y: 109}
+    - {x: 109, y: 104}
+    - {x: 103, y: 109}
+    - {x: 99, y: 109}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_knock_soft
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: ???
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: ???
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: ???
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: angry
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: afraid
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: afraid
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: angry
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      - Type: 12
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: "J\xE9r\xF4me"
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: sad
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: sad
+        Name: Armand
+      Speaker: 3
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 3
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Curious Nobleman
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: CuriousNobleman
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: CuriousNobleman
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Curious Nobleman
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: charmed
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: -2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Curious Nobleman
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: charmed
+        Name: Curious Nobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: CuriousNobleman
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interested Judge
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interested Judge
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interested Judge
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: putout
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: -2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: approval
+        Name: Interested Judge
+      Speaker: 2
+      Rewards:
+      - Type: 5
+        ID: Armand
+        Value: -2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interested Judge
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: guest03b
+        Pose: approval
+        Name: Interested Judge
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: happy
+        Name: Johanna
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: angry
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: JohannavonHolbein
+        Pose: angry
+        Name: Johanna
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: angry
+        Name: Armand
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: angry
+        Name: Armand
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Foreign Powers
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Maximin
+        Value: -1
+        Operator: 3
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Marcelle
+        Value: -1
+        Operator: 3
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Maximin
+        Value: -1
+        Operator: 3
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
+    OneShot: 1
+    Chapters: 
+    Tags: []
+    Factions: 
+    LocalizationKey: Foreign Entanglements.asset.459f038b339f8a540a267251e2a3ed1e
+    Political: 0
+    _date: -1
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: 0
+  _nodeText:
+  - It's not a long walk to the address that Armand provided in his letter, but you
+    wait until nighttime before you head out. He said that these notable persons are
+    in Paris attending the Estates General, which means that they'd only be free later
+    in the day, when they were out of session.
+  - When you find the address, you see that it's a tavern, but you see very little
+    light coming from inside. The front door is shut, along with a sign on it that
+    reads 'Closed for a private event'.
+  - You reach out and knock on the door.
+  - A slot in the top of the door snaps open, and a pair of skeptical eyes glare out
+    at you from the opening. Through the open slot, you can hear the sound of multiple
+    people speaking in low voices.
+  - '"Who are you and what do you want?" A man asks from behind the door.'
+  - '"I see." Muses the voice as the eyes squint at you. "Please, come in."'
+  - '"As much as I would hate to admit it, you''re right. I would know that arrogance
+    anywhere." The voice replies.'
+  - The slot slams shut, the door opens, and you step inside. It takes a few seconds
+    for your eyes to adjust to the darkened interior.
+  - You turn around to examine the person guarding the door, and come face to face
+    with... Maximin's doorman?
+  - You turn around to examine the person guarding the door, and come face to face
+    with... Marcelle's doorman?
+  - '"<i>Bonsoir</i>, madame..." He says, shifting awkwardly from foot to foot.'
+  - '"Ah! Right this way!" He replies, pointing you in Armand''s direction. Armand
+    looks up from his current conversation and starts heading over, a giant grin on
+    his face.'
+  - '"The devil with your impatience..." He mutters to himself as you stride past
+    him, but his words have no weight without the power of his employer. You can feel
+    him glaring daggers into your back, but it only helps invigorate you for the evening''s
+    festivities.'
+  - '"She does," the valet admits, pausing for a moment to look awkwardly at his own
+    shoes. "I''ve been secretly working for the Frankish Hapsburgian Society for over
+    a year now, and I thought she''d like the idea of speaking with another monarchist
+    cause. In fact, I was the one who facilitated your Armand''s introduction to her
+    in the first place."'
+  - '"She does," the valet admits, pausing for a moment to look awkwardly at his own
+    shoes. "I''ve been secretly working for the Frankish Hapsburgian Society for over
+    a year now, and I thought he''d like the idea of speaking with another cause that
+    aimed to disempower the King. In fact, I was the one who facilitated your Armand''s
+    introduction to her in the first place."'
+  - '"Unfortunately, he saw it as another threat to the liberty of the people. When
+    I made that introduction, I thought he was going to reward me, but instead I was
+    one wrong move away from being given over to the archers. So, I simply let him
+    hurl his fury at someone else, and let him forget about my personal invovlement."'
+  - '"Unfortunately, she saw it as a threat to her power. When I made that introduction,
+    I thought she was going to reward me, but instead I was one wrong move away from
+    being imprisoned in the Bastille. So, I simply let her continue to be angry at
+    someone else, and let her forget about my personal invovlement."'
+  - '"Surely, we have no hard feelings between us, <i>non</i>?"'
+  - Before you can summon up a suitably cutting remark, Armand steps up beside you
+    to defuse the situation. "Oh Yvette, it's fantastic to see you!"
+  - You quickly find Armand amongst the growing crowd. The moment he notices you,
+    he politely exits his current conversation and joins you.
+  - His hand placed lightly on your elbow, he steers you into a secluded corner of
+    the venue.
+  - '(You have gained a little credibility)
+
+    (You have gained a little peril)'
+  - "\"Thank you, \rJ\xE9r\xF4me! I'll take it from here.\""
+  - '"Ah, thank you so much for coming!" He says while he hugs you close.'
+  - '"Here are our plans tonight." He continues while gesturing out to the crowd behind
+    you. "We have all of these guests who are in Paris for the Esates General who
+    are representing the various estates. While they know the general agenda of our
+    society, they naturally have their reservations about joining us."'
+  - '"I''ve been called into a special meeting tonight, but Johanna is going to be
+    helping you, alright?"'
+  - '"You have no idea how happy I am to hear that!" He replies. "You''ll be able
+    to find Johanna over there, and she''ll take you to speak with our first prospective
+    member."'
+  - '"Yvette, can you please not fight me about this? I really need your help. I was
+    supposed to be the one helping Johanna tonight, but I was pulled into this meeting
+    instead."'
+  - '"Oh, but it is!" Armand replies, before dropping his voice to a low whisper.
+    "While I can''t name any names, it''s someone on the King''s privy council. Someone
+    who speaks with His Majesty regularly. While we obviously need all the support
+    we can get, someone like this could change our fortunes overnight."'
+  - He exhales sharply. "Do I look nervous? I feel like I look nervous."
+  - "\"You're right.\" He agrees, and pauses to steady his breathing. \"I'll focus
+    on steadying my nerves. Thank you, <i>ma ch\xE9rie</i>.\""
+  - '"<i>Mon dieu</i>, you''re absolutely right! What am I worrying about?" He asks,
+    straightening up and puffing out his chest heroically. "I must be off, there''s
+    work to be done!"'
+  - (You have gained some favor with Armand)
+  - (You have gained a little favor with Armand)
+  - (You have lost a little favor with Armand)
+  - Begrudgingly, you take your leave and search for Johanna. However, when you do
+    find her, she already appears to have started to work without you.
+  - (You have gained some favor with Armand)
+  - Filled with both enery and purpose, you leave to find Johanna and that guest Armand
+    mentioned. However, when you do locate her, it appears that she's already started
+    the conversation without you.
+  - '"-as a man representng the second estate, from such a traditional and storied
+    lineage, I understand that this must be difficult for you." Johanna says, her
+    words flowing like honey.'
+  - Armand departs, and you head off in search of Johanna and that guest Armand mentioned.
+    However, when you do locate her, it appears that she's already started the conversation
+    without you.
+  - '"Yes, well my family has proudly served all the strongest kings of France. However,
+    His Majesty does not appear to be cut from the same cloth. He vacillates, issuing
+    stern decrees in the morning, then retracting them at the first sign of resistance
+    by suppertime."'
+  - '"Well, I can assure you monsieur, that bringing France under the wing of Austria
+    would strengthen France, the monarchy, and the nobility as whole. Joseph II is
+    a strong Emperor working to consolidate power, not let it disperse to underserving
+    inferiors."'
+  - '"Well madame, if this Emperor is consolidating power, how would I benefit at
+    all?"'
+  - 'He steps aside to make room for you in the conversation. "Our power extends from
+    our lord?" '
+  - '"Are you suggesting that if I didn''t stand with you, then you''d stand against
+    me?" He asks, watching you with a suddenly cold and unfeeling gaze.'
+  - '"If I wanted to hear such base talk I would listen to the revolutionaries. In
+    case you were unaware, they don''t have an interest in helping men in my position.
+    In fact, if they had their way, my entire lineage wouldn''t eixst at all."'
+  - (You have gained quite a bit of peril)
+  - He chuckles drolly "You sound like the tutors from my childhood, but your point
+    is well made. It's exactly what's been going wrong with this country. We're at
+    a point of crisis, and all attempts to look to His Majesty for leadership have
+    left us wanting. We need a strong ruler, wherever we can find it."
+  - '"Do not presume to tell me where my power does and does not come from." He replies,
+    his voice suddenly as cold as ice'
+  - (You have lost quite a bit of credibility)
+  - 'He storms away from the both of you, his displeasure as palpable as a bucket
+    of cold water thrown in your face. '
+  - '"I am simply amazed at how poorly you manged to handle that." Johanna hisses
+    at you. "Armand will certainly hear of this."'
+  - He turns to Johanna. "Madame du Jardin, you have my support. I'll send a lackey
+    to your address tomorrow morning to arrange a personal meeting, where we can discuss
+    details."
+  - (You have lost some favor with Armand)
+  - He leaves, a cheery expression on his face. Johanna's, on the other hand, is one
+    of barely concealed shock.
+  - '"That was certainly a deft maneuver." She manages. "It appears that Armand was
+    right about you."'
+  - (You have gained some favor with Armand)
+  - Without another word, Johanna strides over to the next guest. Refusing to be outdone,
+    you hurry after her, trying to keep pace.
+  - Johanna leans in, her words even sweeter than before. "What my associate means,
+    is that if we work to lessen the King's impact, and elevate Her Majesty, we can
+    work to suborn suborn France to Emperor Joseph II. Should that happen, the Holy
+    Roman Emperor will remember who aided him and who did not. A just ruler rewards
+    their subjects appropriately.
+  - He ceases his glaring to consider your combined points. "Your point is well taken.
+    Given His Majesty's lackluster performance over these recent years, I simply cannot
+    imagine him being able to stand up to a direct confrontation with a more powerful
+    monarch."
+  - He turns to Johanna. "Madame du Jardin, you have my support. I'll send a lackey
+    to your address tomorrow morning to arrange a personal meeting, where we can discuss
+    details."
+  - He leaves, a thoughtful expression on his face. Johanna's, on the other hand,
+    is one of barely concealed shock.
+  - '"That was a daring maneuver." She manages. "It appears that Armand was right
+    about you."'
+  - This guest is younger, and carries the sober bearing of a representative of the
+    third estate. He's highly agitated, and aggressively serious, in equal measure.
+  - Johanna unfolds her fan and whispers to you behind it. "Just follow my example,
+    and we'll have this done quickly."
+  - '"It''s embarassing. Whatever happened to the days of ''I am the state''?"'
+  - '"<i>Bonsoir</i>, monsieur. I''m Johanna du Jardin, and I''ve been told that you''re
+    a well respected judge from <i>Hainaut</i>, bordering the Austrian Netherlands.
+    Is this why you''ve been so gracious as to show an interest in our humble society?"'
+  - '"You''re very well informed," he admits. "Additionally, my family extends beyond
+    France, to the other side of the border, and this has been a source of some of
+    my interest."'
+  - '"However, I am still deeply concerned about the future. By all accounts I agree
+    with Joseph II, especially his edicts of religious tolerance. It always sounds
+    good to let a good man take on more power, but what about the man who will, some
+    day, come after him?"'
+  - '"What guarantee do we have of the next man''s ability and good intentions?"'
+  - '"A choice of kings?" He asks, almost confused by your point.'
+  - '"What the devil did you just say, madame?" He asks, shocked at your utter glibness.'
+  - '"Such thinking may be good enough for you. Not for me."'
+  - (You have gained quite a bit of peril)
+  - Johanna steps in, using the gentlest possible voice. "What my associate means,
+    is that we intend a continuous process to guide France to a more stable future.
+    However, we must focus on the crises at our door, not fret about what could or
+    couldn't happen twenty to thirty years from now."
+  - '"I suppose your point is well taken." He grumbles to you.'
+  - He shakes his head to clear it. "I must take my leave, as I'm needed early tomorrow.
+    However, I will reach out to you, Madame du Jardin, and we can discuss details.
+    You can also bet your life that I will be part of your 'continuous process'."
+  - '"Oh, I would only be satisfied with your continued, enthusiastic involvement!'
+  - He leaves, stern but obviously energized.
+  - Johanna eyes you. "I can't tell if that was bravery, or a complete lack of caution,
+    but it certainly worked for now. I suppose Armand should know how well you've
+    done."
+  - (You have gained some favor with Armand)
+  - Afterwards, the two of you mill around together, concerned only with observing
+    the gathering as other members of the Frankish Hapsburgian Society does their
+    work. You and Johanna make utterly worthless small talk with eachother while waiting
+    for some issue or crisis to unfold. Thankfully, none does.
+  - Around an hour and a half later, the event is starting to wind down, and Armand
+    bounds over to the both of you.
+  - (You have lost quite a bit of credibility)
+  - He shakes his head dismissively. "I shall take my leave. Perhaps I'll be able
+    to find someone to entrust our future to who manages to think of consequences
+    that extend further than their own noses."
+  - He pushes by you to leave, his face frozen in a stern mask. Johanna doesn't even
+    look at you, but your can feel the anger radiating off of her.
+  - '"Pray tell me, Yvette, what part of ''follow my lead'' was unclear to you?" She
+    asks, before muttering under her breath. "I can''t believe I let Armand convince
+    me that you were useful. He should know better."'
+  - (You have lost some favor with Armand)
+  - '"It''s certainly a unique opportunity," he admits. "One that would allow us to
+    have the stability of an established ruler, but to cast off the weights of a failing
+    regime".'
+  - "\"<i>\rPardonne-moi</i> madame, but I would prefer to break this cycle altogether.
+    I am done bowing my head to men born into power. A choice of a new monarch is
+    no choice at all, it's just begging to be ruled by another tyrant!\""
+  - Johanna chimes in. "Of course, we don't intend to stop here. There should certainly
+    be a continuous process to guide France to a more stable future."
+  - '"I come bearing spectacular news! Our special guest from His Majesty''s privy
+    council understands us completely. He has already sworn to  make sure that Her
+    Majesty attends every privy council meeting, and will urge her to reach out to
+    her family in Austria! This couldn''t possible have gone better for us."'
+  - '"Oh Armand, that''s wonderful news! I''m so glad I picked you for this. You and
+    I should go out to celebrate our victory!"'
+  - Armand hesitates and looks at you, worried. "Johanna, are you sure that's what
+    you meant?"
+  - '"Absolutely! You and I have accomplished great things today, and will accomplish
+    even more tomorrow. It only makes sense for the two of us to go out and celebrate."
+    She replies, but her voice sounds less certain than it did before'
+  - '"That isn''t what we..." Armand gives an exhasperated sigh. "We''ll discuss this
+    back at the house.'
+  - '"You''re right." She says levelly to Armand, but her eyes stay focused on you.
+    "We have a lot to discuss."'
+  - "With that, Johanna turns and leaves, just leaving you and Armand as things filter
+    out. J\xE9r\xF4me starts cleaning up, but you studiously ignore him."
+  - '"I''m so sorry. Johanna and I have spent so long working together, I guess that..."'
+  - '"While I''ll always take your generous compliments, I''m still worried. She is
+    absolutely smarter than that. She founded this whole society, recruited most of
+    its members, and got it all to this point. Then again, intellect has a way of
+    failing at the worst possible time."'
+  - '"That''s what worries me," Armand agrees. "She is absolutely smarter than that.
+    She founded this whole society, recruited most of its members, and got it all
+    to this point. Then again, intellect has a way of failing at the worst possible
+    time."'
+  - '"Is it odd to say that I''m not?"'
+  - '"There''s nothing that I find particularly unattractive about her, but the thought
+    simply never crossed my mind." He says with a shrug.'
+  - He shakes his head. "It's so strange, I almost feel guilty for saying it like
+    that."
+  - He sighs, then gives you a quick kiss on your forehead. "I'm sorry, but I must
+    go. At this time of night, the patrols are going to start picking up soon, and
+    I can't risk getting questioned by any kind of authorities."
+  - '"Please, visit me soon. I want to do something together with you. Just you and
+    me, no politics, I swear it."'
+  - (Foreign Powers is now available for you to visit on the Paris Map)
+  - After one last embrace, the two of you part ways and you head home, for you the
+    walk will be short.
+  - All this progress, if feels like something is coming to a head, but what?
+  - The two of you stand around together, just watching the party continue to disperse,
+    holding eachother's hand.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - '"I am Yvette Decaux. I''m told that I''ve been expected."'
+  - '"You can see who I am, let me in and stop wasting my time."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"<i>Merci beaucoup</i>. Where may I find Armand? We have much to discuss."'
+  - '"Out of my way, you buffoon, I have business to attend to."'
+  - '"You''re here? I thought Marcelle hated Armand''s Hapsburgian ideas..."'
+  - '"You''re here? I thought Maximin hated Armand''s Hapsburgian ideas..."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Oh, but of course! Just tell me where to go!"'
+  - '"So I''ve already been demoted to Johanna''s assistant, then? Lovely."'
+  - '"A special meeting, you say? Sounds interesting."'
+  - 
+  - '"Yes darling, you do look nervous. Take a moment to gather your wits."'
+  - '"Nervous? You? You''re Baron Armand de Marbo, you were made for this very moment!"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"All of a nobleman''s power extends from their lord. Having a strong lord makes
+    you stronger by proxy."'
+  - '"Joseph II is strong, and King Louis XVI is weak. When the time comes, whose
+    side would you rather be on?"'
+  - '"It''s not about helping yourself it''s about helping France."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"We already live like that under His Majesty Louis XVI. This would let us choose
+    a better man, today."'
+  - '"France is marching off a cliff, and you''re concerned with problems that''ll
+    arise thirty years from now?"'
+  - '"There''s no such thing as a guaranteed future. Some things require faith."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Trust me, I understand how easy it is to fall in love wtih you."'
+  - '"She''s smart enough to know better."'
+  - '"What about you? Are you interested in her?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

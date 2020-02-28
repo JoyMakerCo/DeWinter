@@ -1,6 +1,5 @@
 ﻿using Core;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace Ambition
@@ -11,7 +10,15 @@ namespace Ambition
         public void Initialize()
         {
             IncidentConfig [] incidents = UnityEngine.Resources.LoadAll<IncidentConfig>("PerilIncidents");
+<<<<<<< Updated upstream
             PerilIncidents = incidents.Select(i => i.GetIncident()).ToList();
+=======
+            PerilIncidents = new List<IncidentVO>();
+            Array.ForEach(incidents, (i)=>PerilIncidents.Add(i.GetIncident()));
+
+			IncidentConfig gettingCaught = UnityEngine.Resources.Load("Incidents/Getting Caught") as IncidentConfig;
+            GettingCaughtIncident = gettingCaught.GetIncident();
+>>>>>>> Stashed changes
         }
 
         public List<IncidentVO> IncidentQueue = new List<IncidentVO>();
@@ -19,6 +26,21 @@ namespace Ambition
 
         public List<IncidentVO> PerilIncidents;
 
+<<<<<<< Updated upstream
+=======
+        public IncidentVO GettingCaughtIncident;
+
+        public int GetPlayCount( string incidentID )
+        {
+            var _game = AmbitionApp.GetModel<GameModel>();
+            if (_game.IncidentHistory.ContainsKey(incidentID))
+            {
+                return _game.IncidentHistory[incidentID];
+            }
+            return 0;
+        }
+
+>>>>>>> Stashed changes
         [UnityEngine.SerializeField]
         private int _moment = -1;
         public MomentVO Moment

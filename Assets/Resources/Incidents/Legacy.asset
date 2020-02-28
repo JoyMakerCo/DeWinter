@@ -27,12 +27,12 @@ MonoBehaviour:
   - {x: -130, y: 349}
   - {x: 98, y: 397}
   - {x: -36, y: 472}
-  - {x: -36, y: 527}
-  - {x: -42, y: 582}
-  - {x: -44, y: 640}
-  - {x: -48, y: 694}
-  - {x: -48, y: 748}
-  - {x: -49, y: 800}
+  - {x: -36, y: 518}
+  - {x: -34, y: 567}
+  - {x: -33, y: 613}
+  - {x: -34, y: 661}
+  - {x: -38, y: 710}
+  - {x: -36, y: 757}
   - {x: -49, y: 853}
   - {x: -270, y: 925}
   - {x: -52, y: 923}
@@ -91,6 +91,7 @@ MonoBehaviour:
   - {x: 169, y: 1565}
   - {x: -281, y: 2523}
   - {x: -38, y: 2800}
+  - {x: -42, y: 806}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -111,7 +112,6 @@ MonoBehaviour:
     - {x: 14, y: 15}
     - {x: 15, y: 16}
     - {x: 16, y: 17}
-    - {x: 17, y: 18}
     - {x: 18, y: 19}
     - {x: 18, y: 20}
     - {x: 19, y: 22}
@@ -176,6 +176,8 @@ MonoBehaviour:
     - {x: 74, y: 60}
     - {x: 66, y: 75}
     - {x: 75, y: 67}
+    - {x: 17, y: 76}
+    - {x: 76, y: 18}
     Nodes:
     - Text: You draw your shawl a little closer as you're buffetted by another gust
         of wind. Checking the notes in your journal, you see that you're close to
@@ -228,7 +230,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -250,7 +252,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -272,7 +274,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -293,7 +295,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -337,7 +339,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Thomas-AlexandreDumas
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -359,7 +361,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -386,7 +388,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: Thomas-Alexandre
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -401,9 +406,9 @@ MonoBehaviour:
         wasn''t as clear as it should have been."'
       Background: {fileID: 0}
       Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -417,7 +422,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: Taking a deep breath, he gestures to the cemetary gate nearby. "This...
         is where my father is buried."
@@ -425,7 +430,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -446,7 +451,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -469,7 +474,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -492,7 +497,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -514,7 +519,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -535,7 +540,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -558,12 +563,12 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music:
         Name: 
@@ -579,7 +584,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -600,7 +605,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -621,7 +626,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -643,7 +648,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -689,7 +694,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -712,12 +717,12 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music:
         Name: 
@@ -733,7 +738,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -754,7 +759,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -779,7 +784,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -802,7 +807,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -823,7 +828,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -848,7 +853,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -870,7 +875,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -892,7 +897,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -914,7 +919,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -936,7 +941,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -957,7 +962,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -978,7 +983,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1002,7 +1007,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1026,7 +1031,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1051,7 +1056,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1073,7 +1078,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1087,7 +1092,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: '"Today, I am Thomas-Alexandre Dumas. I am a man who will help the downtrodden.
         One who will use his might, in service of right."'
@@ -1095,7 +1100,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1117,7 +1122,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1139,7 +1144,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1160,7 +1165,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1183,7 +1188,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1204,7 +1209,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1225,7 +1230,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1247,7 +1252,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1269,7 +1274,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1290,7 +1295,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1338,7 +1343,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1363,7 +1368,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1385,7 +1390,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1406,7 +1411,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1427,7 +1432,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1450,7 +1455,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1471,7 +1476,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1494,7 +1499,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1515,7 +1520,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1541,7 +1546,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1563,7 +1568,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1584,7 +1589,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1609,7 +1614,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1630,7 +1635,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: Camille
         Pose: neutral
@@ -1653,7 +1658,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: Camille
         Pose: happy
@@ -1761,7 +1766,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1783,7 +1788,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1805,7 +1810,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1827,7 +1832,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: 
         Pose: 
@@ -1848,7 +1853,7 @@ MonoBehaviour:
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happpy
-        Name: Alexandre
+        Name: Alex
       Character2:
         AvatarID: Camille
         Pose: happy
@@ -1864,419 +1869,529 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: 'Camille laughs, but you''re not sure if she gets the joke. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Approach him>
+    - index: 0
+      Text: <Approach him>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Watch him first>
+    - index: 0
+      Text: <Watch him first>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: '"Alexandre, he''s the one who made those decisions, not you."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Alexandre, he''s the one who made those decisions, not you."'
+    - index: 0
+      Text: '"You feel like you benefitted from their loss?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"You feel like you benefitted from their loss?"'
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: '"Take the advantages he gave you, and use them to right his wrongs."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Take the advantages he gave you, and use them to right his wrongs."'
+    - index: 0
+      Text: '"That doesn''t matter. You must be your own person."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"That doesn''t matter. You must be your own person."'
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: '"Then be the man you always imagined your father to be. Be the better
+    - index: 0
+      Text: '"Then be the man you always imagined your father to be. Be the better
         version."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Please, I was glad to do it."'
+    - index: 0
+      Text: '"Please, I was glad to do it."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I just wish you''d warned me what I was getting into."'
+    - index: 0
+      Text: '"I just wish you''d warned me what I was getting into."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"<i>De rien</i>, think nothing of it."'
+    - index: 0
+      Text: '"<i>De rien</i>, think nothing of it."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Kiss him>
+    - index: 0
+      Text: <Kiss him>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Embrace him>
+    - index: 0
+      Text: <Embrace him>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Absolutely! It was a lovely evening."'
+    - index: 0
+      Text: '"Absolutely! It was a lovely evening."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"All in all, it was rather morbid, to be honest."'
+    - index: 0
+      Text: '"All in all, it was rather morbid, to be honest."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Have you tried to go back for them, to free them?"'
+    - index: 0
+      Text: '"Have you tried to go back for them, to free them?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -2286,6 +2401,7 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
     Requirements: []
   _factions: 000000000000
@@ -2294,3 +2410,229 @@ MonoBehaviour:
   _localizationKey: Assets/Resources/Incidents/Legacy.asset.
   _nodeText: []
   _linkText: []
+=======
+    LocalizationKey: Legacy.asset.f49021d36ed614ce4a55b5d08103da7a
+    Political: 0
+    _date: -1
+    Requirements:
+    - Type: 8
+      ID: A Storied Lineage
+      Value: 1
+      Operator: 4
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _nodeText:
+  - You draw your shawl a little closer as you're buffetted by another gust of wind.
+    Checking the notes in your journal, you see that you're close to the graveyard
+    where Alex wanted to meet you. However, you still have no idea what you're really
+    here for.
+  - You spot Alex before he sees you. He looks pensive.
+  - You walk up to him with no hesitation, but he has still yet to notice you.
+  - Hanging back, you watch him for a while. He paces back and forth in the street
+    like a caged tiger, wearing an expression of deep concern.
+  - With his powerful strides, he still looks ever the man of action, even when he's
+    worried. You feel as if you understand him a little better.
+  - (You have gained a little credibility)
+  - He looks up at you and approaches. His face wearing the same stony expression
+    of concern.
+  - Seeing no other way to get his attention, you playfully tap him on the shoulder.
+  - '"Ah, you''re here! I''m so glad you came." He admits, with no small amount of
+    relief. '
+  - (You have gained a little favor with Alex)
+  - '"I see you chose to observe me before deciding to engage. I can certainly respect
+    that. I admit, I would have done the same in your position. My letter wasn''t
+    as clear as it should have been."'
+  - Taking a deep breath, he gestures to the cemetary gate nearby. "This... is where
+    my father is buried."
+  - '"I''ve never been here before."'
+  - Together, you walk through the open gates. Off, in one corner, you see a family
+    gathered together for a funeral. You keep your distance from them, and in return
+    they pay you no mind.
+  - '"Like so many little boys growing up, my father was my hero. A dashing rogue,
+    a secret aristocrat hiding away with my mother in the distant mountains of a tropical
+    paradise. He sacrificed so much, to give me everything."'
+  - '"... but when I said he sold me to afford his passage to France, I wasn''t telling
+    you the whole truth."'
+  - '"I wasn''t an only child, and my mother never made it to this country."'
+  - "His next words are difficult, a creaking wheeze. \n\n\"My father sold my three
+    siblings, and my mother.\""
+  - '"It''s nice being your father''s favorite, but sometimes..."'
+  - '"That''s true, I suppose. I never asked him for any of this." He admits.'
+  - '"Yes, I do feel that," he sighs. "I''m glad you understand."'
+  - '"... because they''re thousands of miles away, where simple messages take months
+    arrive."'
+  - (You have gained a little favor with Alex)
+  - '"What am I saying?" He growls, to himself more than anyone else. "It''s not a
+    feeling, it''s an objective fact."'
+  - Seeing your confused expression, the anger leaves him, replaced only by melancholy.
+    "The average lifespan of a working slave in <i>Saint Domingue</i>... is around
+    ten years."
+  - '"... and because this all hapened nearly a decade ago!"'
+  - (You have lost a little favor with Alex)
+  - '"I wouldn''t be here, with all of my advantages, if he hadn''t condemned them
+    to that suffering."'
+  - You arrive at a gravestone. It's carved from fine marble, but already marred with
+    dirth and soot. It says 'Marquis Alexandre Antoine Davy de la Pailleterie'. A
+    series of battles are listed under the name.
+  - (You have gained some favor with Alex)
+  - '"He served in the army as well. I joined up to make him proud, but when he died
+    I realized that there was nobody left to be proud of me."'
+  - '"I thought that I should honor his memory, but now I''m starting to think that''s
+    wrong too."'
+  - '"I''ve been trying to live up to a great legacy... that isn''t great at all."'
+  - '"You''re absolutely right. I must fight for others. I must do the things he would
+    have never thought to do."'
+  - '"No." He replies flatly. "I cannot live selfishly. I cannot live, as he lived."'
+  - '"I like that idea." He smiles thinly, eyes still fixed on the headstone. '
+  - (You have lost a little favor with Alex)
+  - (You have gained some favor with Alex)
+  - (You have gained a little favor with Alex)
+  - He leans back his head and shouts "I am Thomas-Alexandre Davy de la Pailleterie,
+    true heir to the title of the Marquis de la Pailleterie!"
+  - He sighs contentedly, as if letting down a great weight. "But none of that matters..."
+  - '"Today, I am Thomas-Alexandre Dumas. I am a man who will help the downtrodden.
+    One who will use his might, in service of right."'
+  - He looks at you and grins. "And I am so fortunate, to have people with me, who
+    could help me when I was lost."
+  - He kneels down, and with a handkerchief, cleans the smudges of dirt from the headstone.
+    "Farewell father. I shall not return."
+  - '"Yvette, I think we should be on our way."'
+  - You walk outside with him, and notice that the funeral party from before has also
+    finished up. While they still look somber, you can tell that they're also ready
+    to move forward with their lives.
+  - '"Thank you again. I don''t think I could have done that by myself."'
+  - He gives you a theatrical bow "I am in your debt."
+  - '"I''m sorry, but you should be able to understand why I wasn''t comfortable putting
+    some of this in a letter. This has not been easy."'
+  - He laughs loudly. "Yvette, if that's nothing to you, I can't wait to see what
+    you think a real favor for your friends is."
+  - (You have gained some favor with Alex)
+  - (You have lost some favor with Alex)
+  - (You have gained a little favor with Alex)
+  - 'You look to the horizon and realize that the sun is setting. You glimpse beautiful
+    oranges and purples between the buildings of the Paris skyline. '
+  - '"Another day in the place that''s been kinder to me than anywhere else in the
+    world. It''s given me freedom, education, excitement..."'
+  - He loops his arm around your waist.
+  - '"...and love."'
+  - As you crane your neck to bring your lips closer to his, you feel one of his arms
+    sweep behind your knees and he lifts towards himself, almost like a dancer's dip.
+  - You wraps your arms around him and he hugs you close. Tightly and fiercely.
+  - 'Your lips meet. You fling your arms around his neck and he only holds you closer.
+    Between throes of passion, your eyes open for but a moment, and you glimpse a
+    single tear rolling down his cheek. '
+  - (You have earned a lot of favor with Alex)
+  - 'Love is, of course, bigger than its grand romatnic gestures. The two of you spend
+    the next hour watching the sunset, laughing and joking with each other. He regales
+    with stories of daring that grow more improbable with every new telling. '
+  - His body is as still and powerful as a tree, but as you rest your head against
+    his chest, you can hear his heart beating at a furious tempo.
+  - (You have gained some favor with Alex)
+  - The sun sets and with nightfall, he walks you home. You find Camille waiting for
+    you outside.
+  - '"<i>Bonsoir</i> madame! <i>Bonsoir</i> monsieur! Did you enjoy your evening?"'
+  - '"I think Madame Decaux here is going to be a little more cautious when agreeing
+    to mysterious invitations from now on, but otherwise I think things went well!"
+    Alex jests. '
+  - With that, Alex excuses himself and heads off into the night.
+  - '"And you enjoyed yourself as well, madame?"'
+  - With memories of the happy evening still in your mind, you head upstairs to record
+    the details in your journal, before getting ready for bed.
+  - Trying to ignore the mental images of the lost souls that you so frequently discussed
+    tonight, you trudge upstairs to record the details in your journal, before getting
+    ready for bed.
+  - '"No... I have not..."'
+  - '"... because my father had made powerful enemies when he left <i>Saint Domingue</i>..."'
+  - '"Once the rose colored lenses are lifted from your eyes, they can never be put
+    back on, but that''s alright. I can still be inspired by my memories."'
+  - Love is joy, love is comfort, love is passion, but sometimes love is also catharsis.
+  - 'Camille laughs, but you''re not sure if she gets the joke. '
+  - '"There was no policy set in place to buy them back. He never intended to see
+    them again."'
+  _linkText:
+  - 
+  - <Approach him>
+  - <Watch him first>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Alexandre, he''s the one who made those decisions, not you."'
+  - '"You feel like you benefitted from their loss?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Take the advantages he gave you, and use them to right his wrongs."'
+  - '"That doesn''t matter. You must be your own person."'
+  - '"Then be the man you always imagined your father to be. Be the better version."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Please, I was glad to do it."'
+  - '"I just wish you''d warned me what I was getting into."'
+  - '"<i>De rien</i>, think nothing of it."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - <Kiss him>
+  - <Embrace him>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Absolutely! It was a lovely evening."'
+  - '"All in all, it was rather morbid, to be honest."'
+  - '"Have you tried to go back for them, to free them?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes

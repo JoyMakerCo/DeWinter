@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: An Amorous Inquiry
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 09000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -24,7 +24,7 @@ MonoBehaviour:
   - {x: 267, y: 604}
   - {x: 186, y: 688}
   - {x: 393, y: 686}
-  - {x: 415, y: 787}
+  - {x: 415, y: 789}
   - {x: -426, y: 326}
   - {x: -546, y: 410}
   - {x: -300, y: 423}
@@ -47,8 +47,8 @@ MonoBehaviour:
   - {x: -5, y: 426}
   - {x: -25, y: 547}
   - {x: -27, y: 616}
-  - {x: 225, y: 434}
-  - {x: 473, y: 413}
+  - {x: 225, y: 435}
+  - {x: 474, y: 413}
   Incident:
     Links:
     - {x: 3, y: 1}
@@ -887,17 +887,20 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Oh, you are so kind! Please do!"'
+    - index: 0
+      Text: '"Oh, you are so kind! Please do!"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"<i>Non</i> monsieur, you may not. I am fine by myself."'
+    - index: 0
+      Text: '"<i>Non</i> monsieur, you may not. I am fine by myself."'
       xor: 0
       Rewards: []
       Requirements: []
@@ -905,10 +908,12 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 0
-    - Text: '"<i>Oui</i>, I think it is."'
+    - index: 0
+      Text: '"<i>Oui</i>, I think it is."'
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: '"What happened to be unable to refuse a woman in need?"'
       xor: 0
@@ -916,14 +921,33 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: 
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: '"What happened to be unable to refuse a woman in need?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Oh, nowhere in particular, just around the tavern with you."'
+    - index: 0
+      Text: '"Oh, nowhere in particular, just around the tavern with you."'
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: '"I am trying to find my fiance, Baron Armand de Marbo. Can you help?"'
       xor: 0
@@ -931,24 +955,45 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: 
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: '"I am trying to find my fiance, Baron Armand de Marbo. Can you help?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Perhaps, in a moment."'
+    - index: 0
+      Text: '"Perhaps, in a moment."'
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: '"I''m fine for now, thank you."'
       xor: 0
@@ -956,46 +1001,71 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: 
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: '"I''m fine for now, thank you."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Monsieur, I''m so glad to hear you can''t refuse a woman in need! I
+    - index: 0
+      Text: '"Monsieur, I''m so glad to hear you can''t refuse a woman in need! I
         need you to help me find my fiance."'
       xor: 0
       Rewards: []
@@ -1003,13 +1073,15 @@ MonoBehaviour:
       Flags:
       - Type: 2
         Phrase: incidents.transitions.credibilitycheck.easytooltip
-        Value: 0
-    - Text: 
+        Value: 1
+    - index: 0
+      Text: 
       xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 1
       Rewards: []
       Requirements:
@@ -1018,47 +1090,56 @@ MonoBehaviour:
         Value: 50
         Operator: 4
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -1068,11 +1149,144 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
+=======
+    LocalizationKey: An Amorous Inquiry.asset.3beb41070766e4c49ac47982f26c4153
+    Political: 0
+    _date: -1
+>>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
+<<<<<<< Updated upstream
   _localizationKey: Assets/Resources/Incidents/An Amorous Inquiry.asset.
   _nodeText: []
   _linkText: []
+=======
+  _nodeText:
+  - 'You look around the unfamiliar tavern, trying to find Armand. Your eyes scan
+    for his chestnut hair, your ears strain to hear the sound of his infectious laugh. '
+  - '"May I... escort you?" His smile is broad and cocky.'
+  - '"... something I offered to help you do." The man grimaces, and begrudgingly
+    holds out his arm. You take it happily as he conducts you about the tavern, visiting
+    all the places that you suspect Armand might be. A few of the patrons smirk at
+    your clever ploy.'
+  - 'Your turn around to find yourself face to face with an unfamiliar young man.
+    He''s well dressed and handsome enough, but it''s the middle of day and he already
+    smells like two bottles of wine.
+
+
+    "<i>Pardonne-moi</i> madame, but I can never ignore the sight of a woman in need,
+    and you appear to be lost."'
+  - "The surprised man'\x19s face broadens into a happy grin as you reach out and
+    take his arm. \"Why it appears that I arrived just in time!\""
+  - His brow furrows and he turns up his nose. "Madame, I'm just trying to help. There's
+    no need to be so rude."
+  - '"Madame, I believe this is where we part ways." Your newfound guide says, gently
+    pulling away from you. '
+  - With a wave that is barely as polite as decorum requires, he departs to seek the
+    affection of a different young woman.
+  - '"Madame, I have escorted you up and down. We have sought your Armand to no avail.
+    I have done my duty." He says simply, and shrugs. "Now if you excuse me, I must
+    return to my compatriots."'
+  - He walks away to rejoin his friends, who appear to be even deeper into the wine
+    than he is.
+  - '"Now, where are you looking to go?"'
+  - This isn't the first time you've flirted with strangers since you were engaged.
+    Armand often got so wrapped up in his political endeavours that you'd feel ignored.
+    A few coy glances in the wrong direction were usually enough to get Armand to
+    remember that you, and a world outside his furious letter writing, existed.
+  - '"Well, that is what I offered to help you do." The man grimaces, and begrudgingly
+    holds out his arm. You take it happily as he conducts you about the tavern, visiting
+    all the places that you suspect Armand might be.'
+  - Once that happened, Armand would woo you back from the hapless object of your
+    deception and life would go on. Nobody ever got hurt, and there was simply something
+    fun about it.
+  - 'With that in mind, you stroll around the tavern looking for Armand, arm in arm
+    with a stranger. Eventually, you realize that Armand is nowhere to be found and
+    that your playful deception has been a waste.
+
+
+    Or, at least, simply practice.'
+  - '"I''m thinking about grabbing another bottle of wine, care to join me?"'
+  - '"Oh madame, you know where to find me when you''re ready!" He says with a happy
+    grin before going to request another bottle from the tavern keeper.'
+  - "Sensing the shift in the conversation, he tries to win you over, but the drinks
+    he's had finally seem to be catching up with him. \n\n\"But madame, we can, escort...
+    there.\" He points towards a table that's crowded with some of his friends. One
+    of them waves awkwardly to you."
+  - 'However, after a few minutes searching the tavern, it starts to become clear
+    that Armand is nowhere to be found.
+
+
+    "Madame, I believe this is where we part ways." Your newfound guide says, gently
+    pulling away from you. '
+  - Before you can respond, with a wave that is barely as polite as decorum requires,
+    he departs to seek the affection of a different young woman.
+  - 'You take this opportunity to explore the rest of the tavern. Flirting with strangers
+    isn''t half as fun if there''s nobody there to see you do it.
+
+
+    Besides, finding Armand is your real priority.'
+  - 'You politely slip away from him, and his increasingly desperate suggestions.
+    You take this opportunity to explore the rest of the tavern. Flirting with strangers
+    isn''t half as fun if there''s nobody there to see you do it.
+
+
+    Besides, finding Armand is your real priority.'
+  - He scowls and turns on his heel, muttering something ungentlemanly under his breath.
+    Just when you thought yourself rid of him, he shoots you a glance that's surprisingly
+    threatening.
+  - Someone clears their throat behind you.
+  - However, after a few minutes searching the tavern, it starts to become clear that
+    Armand is nowhere to be found.
+  - '"Oh, that is..."'
+  - '"... not what I meant at all, and you know it, madame!" he replies with surprising
+    venom.'
+  - With a wave that is barely as polite as decorum requires, he departs to seek the
+    affection of a different young woman.
+  - You didn't think that refusing an invitation from a stranger was rude, but perhaps
+    he was raised to think otherwise. Judging by the stares of the other patrons in
+    the tavern, they seem to feel the same way as yourself.
+  - (You have gained some credibility)
+  - (You have gained a little peril)
+  - Now you're truly glad that you refused to go anywhere with him.
+  - (You have gained a little credibility)
+  - (You have lost a little credibility)
+  _linkText:
+  - 
+  - '"Oh, you are so kind! Please do!"'
+  - '"<i>Non</i> monsieur, you may not. I am fine by myself."'
+  - '"<i>Oui</i>, I think it is."'
+  - '"What happened to be unable to refuse a woman in need?"'
+  - 
+  - '"Oh, nowhere in particular, just around the tavern with you."'
+  - '"I am trying to find my fiance, Baron Armand de Marbo. Can you help?"'
+  - 
+  - 
+  - 
+  - '"Perhaps, in a moment."'
+  - '"I''m fine for now, thank you."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I''m so glad to hear that! Can you help me find my fiance?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes

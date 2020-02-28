@@ -4,6 +4,11 @@ namespace Ambition
 {
     public class OpenMessageDialogState : UState
     {
-        public override void OnEnterState(string[] args) => AmbitionApp.OpenMessageDialog(args[0]);
+        private string _message;
+        public override void Initialize(object[] parameters)
+        {
+            _message = parameters[0] as string;
+        }
+        public override void OnEnterState() => AmbitionApp.OpenMessageDialog(_message);
     }
 }

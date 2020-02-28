@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
 namespace Ambition
 {
     public class PickMapState : UFlow.UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             PartyVO party = model.Party;

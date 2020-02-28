@@ -4,7 +4,7 @@ namespace Ambition
 {
     public class DrinkState : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
 			PartyModel model = AmbitionApp.GetModel<PartyModel>();
 			if (model.Drink > 0)

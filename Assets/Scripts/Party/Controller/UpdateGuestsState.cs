@@ -5,7 +5,7 @@ namespace Ambition
 {
     public class UpdateGuestsState : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
             PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();

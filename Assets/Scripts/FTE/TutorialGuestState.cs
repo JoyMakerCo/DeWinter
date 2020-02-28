@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,9 +9,9 @@ namespace Ambition
     public class TutorialGuestState : TutorialState
     {
         private TutorialFlashSpot _flash=null;
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
-            base.OnEnterState(args);
+            base.OnEnterState();
             if (_flash != null) GameObject.Destroy(_flash);
             GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Canvas>() != null);
             if (canvas != null)
@@ -30,10 +30,10 @@ namespace Ambition
             }
         }
 
-        override public void Cleanup()
+        override public void Dispose()
         {
             if (_flash != null) GameObject.Destroy(_flash);
-            base.Cleanup();
+            base.Dispose();
         }
     }
 }

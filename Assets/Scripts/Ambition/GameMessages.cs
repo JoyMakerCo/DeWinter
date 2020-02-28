@@ -17,7 +17,6 @@ namespace Ambition
         public static string RESTORE_GAME = "RESTORE_GAME";
         public static string NEW_GAME = "NEW_GAME";
         public static string EXIT_MENU = "EXIT_MENU";
-        public static string START_GAME = "NEW_GAME";
         public static string END_GAME = "END_GAME";
         public static string START_TUTORIAL = "START_TUTORIAL";
 		public static string SKIP_TUTORIAL = "SKIP_TUTORIAL";
@@ -30,7 +29,6 @@ namespace Ambition
         public static string LOCK_UI = "LOCK_UI";
         public static string UNLOCK_UI = "UNLOCK_UI";
 
-        public static string SET_TITLE = "SET_TITLE";
         public static string COMPLETE = "COMPLETE"; // All-Purpose "Complete" event
 
         public static string INIT_CHARACTER = "INIT_CHARACTER";

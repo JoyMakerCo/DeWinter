@@ -5,6 +5,7 @@ using Core;
 using UnityEditor;
 
 
+// Deprecated, unless needed
 namespace UFlow
 {
     public class UController : MonoBehaviour
@@ -25,9 +26,9 @@ namespace UFlow
         void Start()
         {
             _UFlow = App.Service<UFlowSvc>();
-            _UFlow.Activate(this);
-            if (_Machine != null) _Machine.Start();
-            else _Machine = _UFlow.InvokeMachine(MachineID);
+            //_UFlow.Activate(this);
+            //if (_Machine != null) _Machine.Start();
+            //else _Machine = _UFlow.InvokeMachine(MachineID);
         }
 
         internal void Invoke(string stateID)
@@ -42,6 +43,6 @@ namespace UFlow
             map?.Delegate?.Invoke();
         }
 
-        void OnDestroy() => _UFlow?.Remove(this);
+//        void OnDestroy() => _UFlow?.Remove(this);
     }
 }

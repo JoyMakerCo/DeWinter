@@ -9,8 +9,7 @@ namespace Ambition
         public float FadeInSeconds = 1f;
         public float FadeOutSeconds = 1f;
         public OnStartAction OnStart = OnStartAction.Nothing;
-
-        private CanvasGroup _canvasGroup;
+        public CanvasGroup CanvasGroup;
 
         public enum OnStartAction
         {
@@ -21,14 +20,9 @@ namespace Ambition
 
         private void Start()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
-            if (_canvasGroup == null)
-            {
-                _canvasGroup = gameObject.AddComponent<CanvasGroup>();
-                _canvasGroup.blocksRaycasts = false;
-                _canvasGroup.interactable = true;
-                _canvasGroup.ignoreParentGroups = false;
-            }                 
+            CanvasGroup.blocksRaycasts = false;
+            CanvasGroup.interactable = true;
+            CanvasGroup.ignoreParentGroups = false;
             switch (OnStart)
             {
                 case OnStartAction.FadeIn:

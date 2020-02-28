@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: A Certain Notoriety
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   _Nodes: 
+=======
+  _Nodes: 17000000
+>>>>>>> Stashed changes
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -38,6 +42,10 @@ MonoBehaviour:
   - {x: 273, y: 605}
   - {x: 276, y: 706}
   - {x: 263, y: 943}
+<<<<<<< Updated upstream
+=======
+  - {x: 150, y: 1043}
+>>>>>>> Stashed changes
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -576,31 +584,81 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+<<<<<<< Updated upstream
+=======
+    - Text: "\u201C... but I\u2019m getting off topic, madame. I think that these
+        invitations are your chance to meet good people in the city who don\u2019t
+        hate you and Armand.\u201D \r"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards:
+      - Type: 7
+        ID: BEGIN_RANDOM_INVITATIONS
+        Value: 1
+      - Type: 10
+        ID: M. de Boulainvillier's Trivial Opera Galla
+        Value: 0
+      - Type: 10
+        ID: M. Mariotte's Trivial Choir Recital
+        Value: 0
+      - Type: 10
+        ID: M. de Launay's Trivial Military Ball
+        Value: 0
+      - Type: 10
+        ID: Mme. Reveillon's Trivial Wine Tasting
+        Value: 0
+      - Type: 10
+        ID: Mme. Bailly's Trivial Salon
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+>>>>>>> Stashed changes
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: "\u201CNever mind what?\u201D"
+    - index: 0
+      Text: "\u201CNever mind what?\u201D"
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: "\u201CYes, let us never mind that. Never mind it again.\u201D"
       xor: 0
@@ -608,29 +666,59 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: "\u201C<i>Merci</i> Camille, I really hope that\u2019s true.\u201D"
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201CYes, let us never mind that. Never mind it again.\u201D"
       xor: 0
       Rewards: []
       Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201C<i>Merci</i> Camille, I really hope that\u2019s true.\u201D"
+>>>>>>> Stashed changes
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"That''s all well and good, but how does any of this work?" <Tutorial>'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CWhy would anyone invite me to a party?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: '"That''s all well and good, but how does any of this work?" <Tutorial>'
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: '"That''s all well and good, but how does any of this work?" <Tutorial>'
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: "\u201CWhy would anyone invite me to a party?\u201D"
+    - index: 0
+      Text: <Take a letter>
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
-    - Text: '"That''s all well and good, but how does any of this work?" <Tutorial>'
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: <Take a letter>
-      xor: 0
-      Rewards: []
-      Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: "\u201CAre they for me, or are they for Armand?\u201D"
       xor: 0
@@ -648,68 +736,147 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: 
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201CAre they for me, or are they for Armand?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201CWhy would anyone invite me to a party?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: "\u201COh great, more chances to be humiliated by someone I don\u2019t
+    - index: 0
+      Text: "\u201COh great, more chances to be humiliated by someone I don\u2019t
         even know.\u201D"
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: "\u201COh great, more chances to be humiliated by someone I don\u2019t
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201COh great, more chances to be humiliated by someone I don\u2019t
+>>>>>>> Stashed changes
         even know.\u201D"
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: 
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: "\u201CI think you\u2019re right.\u201D"
+    - index: 0
+      Text: "\u201CI think you\u2019re right.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+<<<<<<< Updated upstream
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201CYes! Wait\u2026 we?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+>>>>>>> Stashed changes
+      Flags: []
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
+<<<<<<< Updated upstream
     - Text: "\u201CYes! Wait\u2026 we?\u201D"
+=======
+    - index: 0
+      Text: 
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -719,11 +886,98 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
+=======
+    LocalizationKey: A Certain Notoriety.asset.f81362dfc977c49dfb8bf01088e567e7
+    Political: 0
+    _date: 564309504000000000
+>>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: 564309504000000000
+<<<<<<< Updated upstream
   _localizationKey: Assets/Resources/Incidents/A Certain Notoriety.asset.
   _nodeText: []
   _linkText: []
+=======
+  _nodeText:
+  - "You wake up the next morning to a polite knock on your bedroom\u2019s door frame."
+  - "Camille enters, carrying a small armload of letters.\n\n\u201CUh\u2026 madame.\u201D
+    Camille starts, both confused and hesitant."
+  - "\u201CThey\u2019re for you, madame! Every single one!\u201D Camille beams."
+  - "You\u2019re don\u2019t think that\u2019s exactly how it happened, but decide
+    against fretting over the details."
+  - "Camille starts to talk faster and faster. \u201CThen, when all was lost, you
+    were saved by a beautiful stranger who escorted you home in the moonlit night!
+    It\u2019s so romantic, <i>non</i>?\u201D"
+  - "\u201COh, the rumors are already running rampant! Why, just in the market the
+    other day I heard someone say that you\u2019ve taken a liking to-\u201D"
+  - "Camille stops, stares into space, and blushes. \u201CActually, nevermind that.\u201D"
+  - "\u201C...it\u2019s just rumors from the marketplace madame, nothing you should
+    dignify.\u201D"
+  - "\u201CConsider it... un-minded, madame.\u201D"
+  - "\u201CIn fact, I\u2019m sure that anyone who really judges you fairly is going
+    to love you.\u201D"
+  - With that, your day begins.
+  - '"Don''t worry, madame! It''s quite simple!"'
+  - "\u201CThere\u2019s a lot of letters for you here.\u201D"
+  - "The letter, written in elaborate calligraphy and sealed in stamped wax, appears
+    to be an invitation to a party. The other letters cradled in Camille\u2019s arms
+    appear to be the same."
+  - "\u201CWell madame, you\u2019re a little famous right now,\u201D Camille replies.
+    \u201CEveryone\u2019s heard about your run-in with that dreadful party host a
+    few days ago. How they preyed upon your honor, and spirited away your carriage
+    driver, leaving you trapped and alone.\u201D"
+  - "\u201CIn any case, this is your chance to meet people in the city who don\u2019t
+    hate you and Armand.\u201D"
+  - "\u201CWell, yes madame. These could go badly,\u201D Camille admits. \u201CNot
+    everyone in the city is particularly honest. In fact, most people of your station
+    tend to have a lot of enemies.\u201D"
+  - "\u201CHowever...\u201D she continues. \u201CThat dreadful host must have enemies
+    too!\u201D"
+  - "\u201CAll these invitations must come from people who hate that vile person as
+    much as we do!\u201D"
+  - "\u201CI\u2019m certain of it, madame. This is your chance to meet people in the
+    city who don\u2019t hate you and Armand.\u201D \r"
+  - "\u201CMadame, you\u2019re the mistress of this house,\u201D Camille states matter
+    of factly. \u201CI can\u2019t allow any insult against your honor to go unchallenged.\u201D\r"
+  - "\u201CI know that you hate them, so I hate them as well. In fact, I have already
+    sworn to never speak their name again!\u201D"
+  - "\u201C... but I\u2019m getting off topic, madame. I think that these invitations
+    are your chance to meet good people in the city who don\u2019t hate you and Armand.\u201D
+    \r"
+  - '(You have recieved many party invitations)
+
+    (You can now recieve party invitations from all over Paris)'
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - "\u201CNever mind what?\u201D"
+  - "\u201CYes, let us never mind that. Never mind it again.\u201D"
+  - "\u201C<i>Merci</i> Camille, I really hope that\u2019s true.\u201D <No Tutorial>"
+  - '"That''s all well and good, but how does any of this work?" <Tutorial>'
+  - "\u201CWhy would anyone invite me to a party?\u201D"
+  - 
+  - <Take a letter>
+  - "\u201CAre they for me, or are they for Armand?\u201D"
+  - "\u201CWhy would anyone invite me to a party?\u201D"
+  - 
+  - 
+  - 
+  - "\u201COh great, more chances to be humiliated by someone I don\u2019t even know.\u201D"
+  - "\u201COh great, more chances to be humiliated by someone I don\u2019t even know.\u201D"
+  - 
+  - 
+  - "\u201CI think you\u2019re right.\u201D"
+  - "\u201CYes! Wait\u2026 we?\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes

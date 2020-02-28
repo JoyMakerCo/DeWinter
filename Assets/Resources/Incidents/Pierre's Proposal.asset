@@ -17,8 +17,8 @@ MonoBehaviour:
   _Positions:
   - {x: 0, y: 0}
   - {x: -1, y: 79}
-  - {x: -232, y: 154}
-  - {x: 3, y: 167}
+  - {x: -231, y: 154}
+  - {x: 2, y: 167}
   - {x: 233, y: 177}
   - {x: -20, y: 456}
   - {x: -232, y: 226}
@@ -109,7 +109,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_gasp
         Parameters: []
     - Text: "\u201CWell Madame, I would say that in times of uncertainty, you should
         always seek the truth,\u201D Pierre replies quietly, leaning closer. \u201CThe
@@ -132,7 +132,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: "Pierre notes your confusion and for a moment, almost looks sympathetic
         \u201CWell Madame, perhaps it\u2019s time that you learned as much as you
@@ -155,7 +155,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: "\u201CYou see, I\u2019m looking to run a comprehensive social piece,
         something that will capture the imagination of the public,\u201D Pierre favors
@@ -203,7 +203,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "You look Pierre up and down, not really certain if anybody has described
         him in that way\u2026 ever."
@@ -341,21 +341,33 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: "\u201CI know Armand better than anyone, and I know he\u2019s a good man.\u201D"
+    - index: 0
+      Text: "\u201CI know Armand better than anyone, and I know he\u2019s a good man.\u201D"
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: "\u201CSomething\u2019s not right with Armand. I just don\u2019t feel
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201CSomething\u2019s not right with Armand. I just don\u2019t feel
+>>>>>>> Stashed changes
         like I can trust him entirely.\u201D"
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: "\u201CPerhaps I don\u2019t know him as well as I thought.\u201D"
       xor: 0
@@ -363,51 +375,77 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - Text: 
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201CPerhaps I don\u2019t know him as well as I thought.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -417,7 +455,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
+=======
+    LocalizationKey: Pierre's Proposal.asset.f297205b9d62847b6be50b6f41af4591
+    Political: 0
+    _date: -1
+>>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000

@@ -29,7 +29,10 @@ namespace Ambition
             AmbitionApp.RegisterModel<MapModel>();
             AmbitionApp.RegisterModel<ParisModel>();
             AmbitionApp.RegisterModel<ConsoleModel>();
-
+            AmbitionApp.RegisterModel<IncidentModel>();
+#if DEBUG
+            AmbitionApp.Execute<LocalizeAssetsCmd>();
+#endif
             AmbitionApp.RegisterCommand<SellItemCmd, ItemVO>(InventoryMessages.SELL_ITEM);
             AmbitionApp.RegisterCommand<BuyItemCmd, ItemVO>(InventoryMessages.BUY_ITEM);
             AmbitionApp.RegisterCommand<GrantRewardCmd, CommodityVO>();
@@ -54,8 +57,15 @@ namespace Ambition
             AmbitionApp.RegisterCommand<ResetGameCmd>(GameMessages.EXIT_MENU);
             AmbitionApp.RegisterCommand<CreateGossipCmd, FactionType>(InventoryMessages.CREATE_GOSSIP); 
 
+            // Incidents
+            AmbitionApp.RegisterCommand<UpdateIncidentsCmd>(CalendarMessages.UPDATE_CALENDAR);
+            AmbitionApp.RegisterCommand<ScheduleIncidentCmd, IncidentVO>(CalendarMessages.SCHEDULE);
+            AmbitionApp.RegisterCommand<CompleteIncidentCmd, IncidentVO>(CalendarMessages.CALENDAR_EVENT_COMPLETED);
+
             // Party
             AmbitionApp.RegisterCommand<InitPartyCmd, PartyVO>(PartyMessages.INITIALIZE_PARTY);
+            AmbitionApp.RegisterCommand<AcceptInvitationCmd, PartyVO>(PartyMessages.ACCEPT_INVITATION);
+            AmbitionApp.RegisterCommand<DeclineInvitationCmd, PartyVO>(PartyMessages.DECLINE_INVITATION);
             AmbitionApp.RegisterCommand<TargetGuestCmd, CharacterVO>(PartyMessages.TARGET_GUEST);
             AmbitionApp.RegisterCommand<SelectGuestCmd, CharacterVO>(PartyMessages.SELECT_GUEST);
             AmbitionApp.RegisterCommand<GuestSelectedCmd, CharacterVO>(PartyMessages.GUEST_SELECTED);
@@ -118,10 +128,8 @@ namespace Ambition
             AmbitionApp.RegisterRequirement(CommodityType.FactionPower, FactionPowerReq.Check);
 
             AmbitionApp.Execute<RegisterPartyControllerCmd>();
-            AmbitionApp.Execute<RegisterConversationControllerCmd>();
             AmbitionApp.Execute<RegisterEstateControllerCmd>();
             AmbitionApp.Execute<RegisterIncidentControllerCmd>();
-            AmbitionApp.Execute<RegisterGuestActionControllerCmd>();
             AmbitionApp.Execute<RegisterParisControllerCmd>();
             AmbitionApp.Execute<RegisterDayFlowControllerCommand>();
 

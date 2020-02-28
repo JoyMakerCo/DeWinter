@@ -55,6 +55,80 @@ namespace Core
 			log(string.Format(format,args));
 		}
 
+<<<<<<< Updated upstream
+=======
+		public static void warn( string text )
+		{
+			_instance._view?.Add(text,ConsoleStyle.Warning);
+		}
+
+		public static void warn(string format, params object[] args)
+		{
+			warn(string.Format(format,args));
+		}
+
+		public static void error( string text )
+		{
+			_instance._view?.Add(text,ConsoleStyle.Error);
+		}
+
+		public static void error(string format, params object[] args)
+		{
+			error(string.Format(format,args));
+		}
+
+		public static void logInput( string text )
+		{
+			_instance._view?.Add(text,ConsoleStyle.Input);
+		}
+
+		public static void logInput(string format, params object[] args)
+		{
+			logInput(string.Format(format,args));
+		}
+
+		Dictionary<string, IConsoleEntity> ActiveEntities()
+		{
+			var transientEntities = _entities.ToDictionary(entry => entry.Key,
+                                               entry => entry.Value);
+
+			// Add entities that are likely to change here, like currently active UFlow machines
+
+			// Live UFlow machines
+			var ufs = AmbitionApp.GetService<UFlowSvc>();
+            foreach (UMachine machine in ufs.GetMachines())
+			{
+                if (machine != null)
+                {
+                    transientEntities[ "machine."+machine.MachineID ] = machine;
+                }
+			}
+
+			// Servants, on staff or otherwise
+			foreach (var servant in AmbitionApp.GetModel<ServantModel>().GetAllServants())
+			{
+				///transientEntities[ "servant."+servant.Name ] = servant;
+				transientEntities[ servant.ID ] = servant;
+			}
+
+			// Characters
+
+			foreach (var ckv in AmbitionApp.GetModel<CharacterModel>().Characters)
+			{
+				transientEntities["character."+ckv.Value.Name] = ckv.Value;
+			}
+
+			// party, if live
+			var pm = AmbitionApp.GetModel<PartyModel>();
+			if (pm != null)
+			{
+				transientEntities["party"] = pm;
+			}
+
+			return transientEntities;
+		}
+
+>>>>>>> Stashed changes
 		public void ParseInput(string input)
 		{
 			// tokenize into command and parameters
@@ -261,10 +335,6 @@ namespace Core
 		{
 			switch (args[0])
 			{
-				case IncidentMessages.END_INCIDENT:
-					AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, AmbitionApp.GetModel<IncidentModel>().Incident);
-					break;
-
 				default:
 					SendOtherMessage(args);
 					break;

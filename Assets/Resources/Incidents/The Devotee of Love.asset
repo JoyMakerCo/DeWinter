@@ -57,29 +57,29 @@ MonoBehaviour:
   - {x: 3, y: 1421}
   - {x: -248, y: 1433}
   - {x: 5, y: 1477}
-  - {x: 1, y: 1601}
-  - {x: 11, y: 1658}
+  - {x: 5, y: 1587}
+  - {x: 15, y: 1701}
   - {x: -252, y: 1508}
   - {x: 246, y: 1422}
   - {x: 243, y: 1470}
   - {x: 240, y: 1526}
   - {x: 246, y: 1654}
-  - {x: 14, y: 1713}
+  - {x: 15, y: 1750}
   - {x: -249, y: 1570}
-  - {x: 13, y: 1771}
+  - {x: 16, y: 1794}
   - {x: -479, y: 1466}
   - {x: -466, y: 1707}
-  - {x: 10, y: 1827}
+  - {x: 17, y: 1842}
   - {x: 19, y: 1895}
   - {x: 17, y: 1964}
-  - {x: -242, y: 1967}
+  - {x: -244, y: 1964}
   - {x: -548, y: 1903}
   - {x: 529, y: 1901}
   - {x: 258, y: 1968}
   - {x: 549, y: 1965}
   - {x: 20, y: 2161}
-  - {x: 947, y: 1903}
-  - {x: -840, y: 1918}
+  - {x: 961, y: 1853}
+  - {x: -852, y: 1854}
   - {x: -579, y: 1971}
   - {x: 955, y: 1968}
   - {x: 949, y: 2051}
@@ -104,6 +104,10 @@ MonoBehaviour:
   - {x: 244, y: 1590}
   - {x: 2, y: 1535}
   - {x: 228, y: 1108}
+  - {x: 11, y: 1649}
+  - {x: -852, y: 1933}
+  - {x: 955, y: 1913}
+  - {x: -458, y: 1575}
   Incident:
     Links:
     - {x: 0, y: 2}
@@ -151,16 +155,13 @@ MonoBehaviour:
     - {x: 38, y: 39}
     - {x: 39, y: 40}
     - {x: 39, y: 41}
-    - {x: 42, y: 43}
     - {x: 40, y: 44}
     - {x: 39, y: 45}
     - {x: 45, y: 46}
     - {x: 46, y: 47}
-    - {x: 48, y: 43}
     - {x: 43, y: 49}
     - {x: 44, y: 50}
     - {x: 36, y: 52}
-    - {x: 52, y: 53}
     - {x: 49, y: 51}
     - {x: 51, y: 54}
     - {x: 54, y: 55}
@@ -174,7 +175,6 @@ MonoBehaviour:
     - {x: 59, y: 63}
     - {x: 58, y: 64}
     - {x: 58, y: 65}
-    - {x: 63, y: 66}
     - {x: 66, y: 67}
     - {x: 67, y: 68}
     - {x: 68, y: 69}
@@ -182,7 +182,6 @@ MonoBehaviour:
     - {x: 69, y: 70}
     - {x: 56, y: 62}
     - {x: 58, y: 62}
-    - {x: 64, y: 71}
     - {x: 71, y: 72}
     - {x: 72, y: 73}
     - {x: 73, y: 74}
@@ -203,13 +202,22 @@ MonoBehaviour:
     - {x: 79, y: 84}
     - {x: 53, y: 49}
     - {x: 50, y: 85}
-    - {x: 85, y: 43}
     - {x: 47, y: 86}
     - {x: 86, y: 48}
     - {x: 41, y: 87}
     - {x: 87, y: 42}
     - {x: 28, y: 88}
     - {x: 88, y: 33}
+    - {x: 48, y: 89}
+    - {x: 89, y: 43}
+    - {x: 85, y: 89}
+    - {x: 42, y: 89}
+    - {x: 64, y: 90}
+    - {x: 90, y: 71}
+    - {x: 63, y: 91}
+    - {x: 91, y: 66}
+    - {x: 52, y: 92}
+    - {x: 92, y: 53}
     Nodes:
     - Text: Your awoken by the sound of a knock at the front door.
       Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
@@ -338,7 +346,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
     - Text: '"I don''t think he''d be here this early, if it wasn''t important, madame."'
       Background: {fileID: 0}
@@ -359,7 +367,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: '"I don''t know, but he''s carrying a lot of bags with him. He looks like
         he''s ready to go somewhere."'
@@ -381,7 +389,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: '"Which makes sense. The city''s been a little tense lately, and I have
         some friends who''ve already left for the countryside."'
@@ -607,7 +615,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: He grits his teeth and whispers "You must have the patience of a saint."
       Background: {fileID: 0}
@@ -628,7 +636,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_negative
         Parameters: []
     - Text: '"Now that I''m here, I suppose I should tell you the news."'
       Background: {fileID: 0}
@@ -811,7 +819,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_charmed
         Parameters: []
     - Text: She sighs, and looks at the floor. "Believe me, I don't want to."
       Background: {fileID: 0}
@@ -853,7 +861,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: You hear the door open, and the muffled murmurings of Hansel conversing
         with whoever it is.
@@ -1118,7 +1126,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: '"I was afraid of that," he sighs. "I understand your reasons, but I was
         still dreading this possibility."'
@@ -1200,7 +1208,7 @@ MonoBehaviour:
       Speaker: 3
       Rewards:
       - Type: 5
-        ID: 
+        ID: Ludovico
         Value: 1
       Music:
         Name: 
@@ -1230,7 +1238,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_charmed
         Parameters: []
     - Text: (You have gained some favor with Ludovico)
       Background: {fileID: 0}
@@ -1243,7 +1251,10 @@ MonoBehaviour:
         Pose: happy
         Name: Ludovico
       Speaker: 3
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: Ludovico
+        Value: 2
       Music:
         Name: 
         Parameters: []
@@ -1380,7 +1391,7 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
-      Speaker: 3
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -1459,7 +1470,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/sfx_open_letter
         Parameters: []
     - Text: He's recommending that the Church stay neutral, between the Crown and
         the Revolution.
@@ -1712,7 +1723,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: -20
       Music:
         Name: 
         Parameters: []
@@ -1824,7 +1838,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: 20
       Music:
         Name: 
         Parameters: []
@@ -1914,7 +1931,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 0
       Music:
         Name: 
         Parameters: []
@@ -2027,7 +2047,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: -20
       Music:
         Name: 
         Parameters: []
@@ -2185,7 +2208,7 @@ MonoBehaviour:
       Speaker: 3
       Rewards:
       - Type: 5
-        ID: 
+        ID: Ludovico
         Value: -4
       Music:
         Name: 
@@ -2221,304 +2244,447 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: '"However, I have my orders and I need to follow them. If I left now,
+        the consequences wouldn''t fall on me, but they would fall on my family."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Ludovico - Epilogue
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"However, I have my orders and I need to follow them. If I left now,
+        the consequences wouldn''t fall on me, but they would fall on my family."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"However, I have my orders and I need to follow them. If I left now,
+        the consequences wouldn''t fall on me, but they would fall on my family."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"However, I have my orders and I need to follow them. If I left now,
+        the consequences wouldn''t fall on me, but they would fall on my family."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: '"He is? Send him up, right away."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"He is? Send him up, right away."'
+    - index: 0
+      Text: '"He''s here, this early in the morning? Please tell me this is a joke."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"He''s here, this early in the morning? Please tell me this is a joke."'
+    - index: 0
+      Text: '"Ludovico? What''s he doing here?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Ludovico? What''s he doing here?"'
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: '"Trust me, Camille is a very a sweet girl. You just need to know her."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: '"Honestly, I don''t know how I manage."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Trust me, Camille is a very a sweet girl. You just need to know her."'
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Honestly, I don''t know how I manage."'
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: '"Where are you leaving from? I want to be there, on the docks, when you
+    - index: 0
+      Text: '"Where are you leaving from? I want to be there, on the docks, when you
         cast off."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"What? No! Don''t leave!"'
+    - index: 0
+      Text: '"What? No! Don''t leave!"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Is there nothing you can do about this? Is there anything I can do?"'
+    - index: 0
+      Text: '"Is there nothing you can do about this? Is there anything I can do?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: Hansel
+        Value: 1
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: '"I don''t want to lose this either."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I don''t want to lose this either."'
+    - index: 0
+      Text: '"Ludovico, If you''re leaving, I don''t know how this can continue."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Ludovico, If you''re leaving, I don''t know how this can continue."'
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: '"What if I came with you?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"What if I came with you?"'
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
+    - index: 0
+      Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: <Change the letter to support the Crown>
+    - index: 0
+      Text: <Change the letter to support the Crown>
       xor: 0
       Rewards: []
       Requirements: []
@@ -2526,17 +2692,28 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - Text: 
-      xor: 0
+    - index: 0
+      Text: 
+      xor: 1
       Rewards: []
-      Requirements: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: 20
+        Operator: 4
       Flags: []
-    - Text: 
-      xor: 0
+    - index: 0
+      Text: 
+      xor: 1
       Rewards: []
-      Requirements: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: -20
+        Operator: 3
       Flags: []
-    - Text: <Change the letter to support the Revolution>
+    - index: 0
+      Text: <Change the letter to support the Revolution>
       xor: 0
       Rewards: []
       Requirements: []
@@ -2544,7 +2721,8 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - Text: <Change the letter to support the Crown>
+    - index: 0
+      Text: <Change the letter to support the Crown>
       xor: 0
       Rewards: []
       Requirements: []
@@ -2552,12 +2730,14 @@ MonoBehaviour:
       - Type: 1
         Phrase: incidents.transitions.perilgain.mediumtooltip
         Value: 1
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Change the letter to intensify its support for the Revolution>
+    - index: 0
+      Text: <Change the letter to intensify its support for the Revolution>
       xor: 0
       Rewards: []
       Requirements: []
@@ -2565,7 +2745,8 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - Text: <Change the letter to intensify its support for the Crown>
+    - index: 0
+      Text: <Change the letter to intensify its support for the Crown>
       xor: 0
       Rewards: []
       Requirements: []
@@ -2573,7 +2754,8 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - Text: <Change the letter to support the Revolution>
+    - index: 0
+      Text: <Change the letter to support the Revolution>
       xor: 0
       Rewards: []
       Requirements: []
@@ -2581,182 +2763,260 @@ MonoBehaviour:
       - Type: 1
         Phrase: incidents.transitions.perilgain.mediumtooltip
         Value: 1
-    - Text: <Change it to support the Revolution> <Big Peril>
+    - index: 0
+      Text: <Change it to support the Revolution> <Big Peril>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Change it to support the Revolution> <Big Peril>
+    - index: 0
+      Text: <Change it to support the Revolution> <Big Peril>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Change it to support the Revolution> <Big Peril>
+    - index: 0
+      Text: <Change it to support the Revolution> <Big Peril>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Change it to support the Revolution> <Big Peril>
+    - index: 0
+      Text: <Change it to support the Revolution> <Big Peril>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Change it to support the Revolution> <Big Peril>
+    - index: 0
+      Text: <Change it to support the Revolution> <Big Peril>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Change it to support the Revolution> <Big Peril>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: <Leave the letter alone>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Leave the letter alone>
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -2766,11 +3026,331 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
     Requirements: []
+=======
+    LocalizationKey: The Devotee of Love.asset.621061297e3f7d94985a3f3a9a23174e
+    Political: 0
+    _date: 564422688000000000
+    Requirements:
+    - Type: 5
+      ID: Ludovico
+      Value: 20
+      Operator: 4
+>>>>>>> Stashed changes
   _factions: 000000000000
-  _chapters: 00000000
+  _chapters: 00000001
   _date: -1
+<<<<<<< Updated upstream
   _localizationKey: Assets/Resources/Incidents/The Devotee of Love.asset.
   _nodeText: []
   _linkText: []
+=======
+  _nodeText:
+  - You're awoken by the sound of a knock at the front door. Given the chaos of the
+    last few weeks, your blood runs cold at the thought of what new danger this could
+    bring.
+  - Ludovico enters the room, dragging some bags and cases with him. He smiles, but
+    he looks exhausted.
+  - You hear the door open, and the muffled murmurings of Camille conversing with
+    whoever it is.
+  - Camille carefully enters your room, shutting the door gently behind her.
+  - '"Father Sidotti is here to see you. He looks nervous."'
+  - '"Certainly madame! I''ve already taken him to the sitting room for some tea and
+    refreshments. That should give you a little time to get ready."'
+  - '"I don''t think he''d be here this early, if it wasn''t important, madame."'
+  - '"I don''t know, but he''s carrying a lot of bags with him. He looks like he''s
+    ready to go somewhere."'
+  - '"Which makes sense. The city''s been a little tense lately, and I have some friends
+    who''ve already left for the countryside."'
+  - '"If you need time to get ready, I can stall him with silly questions!"'
+  - Before you can even attempt to stop her, Camille has already disappeared to do
+    just that.
+  - 'After a few rushed minutes, you''re ready to receive company. You''re not perfect,
+    but you''re certainly presentable.
+
+
+    Of course, your standards for ''presentable'' are admittedly more stringent than
+    most, but that''s neither here nor there.'
+  - As you settle into place, Ludovico finally makes his way in. He's trailed by Camille,
+    who is still peppering the poor priest with questions at a breakneck pace.
+  - '"...but if all the animals started in the garden of Eden with us, how did they
+    get out? Were they supposed to stay there, or were they allowed to leave whenever
+    they wanted to? Did all the animals eat the forbidden fruit too, and they didn''t
+    write it down because animals can''t read?"'
+  - '"Th- that would be an ecumenical matter." Ludovico desperately replies, as he
+    manages to get her out of the bedroom and into the hallway. "Please take any further
+    questions to your parish priest."'
+  - Right before the door shuts, you catch a glimpse of Camille giving you a knowing
+    wink.
+  - '"Do you... do you live with that? Do you listen to that every day?"'
+  - Ludovico pauses for a moment to compose himself. "I'll take your word for it."
+  - He grits his teeth and whispers "You must have the patience of a saint."
+  - '"Now that I''m here, I suppose I should tell you the news."'
+  - '"Would you believe some of them even asked me to come with them? They said it''s
+    not safe to be in Paris anymore."'
+  - '"Of course, I told them that was ridiculous! After all, I should be here with
+    you."'
+  - '"Anyway madame, I''ll take Father Sidotti to the sitting room for some tea and
+    refreshments. That should give you a little time to get ready."'
+  - 'She leaves and after a few rushed minutes, you''re ready to receive company.
+    You''re not perfect, but you''re certainly presentable.
+
+
+    Of course, your standards for ''presentable'' are admittedly more stringent than
+    most, but that''s neither here nor there.'
+  - As if exhaling a great breath, he slumps forward. "Well Yvette, I wish I had a
+    better way to tell you this, but I've been recalled to Rome by the Vatican."
+  - '"They''ve read my findings, and they want me to board a ship out of Paris, tonight."'
+  - 'He doesn''t say anything for a while. He just stares at you, and only you.
+
+
+    Like you''re the only thing in all of creation.'
+  - She sighs, and looks at the floor. "Believe me, I don't want to."
+  - '"I wish there was."'
+  - You hear the door open, and the muffled murmurings of Hansel conversing with whoever
+    it is.
+  - As if exhaling a great breath, he slumps forward. "I wish I had a better way to
+    tell you this, but I've been recalled to Rome by the Vatican."
+  - He rubs the edge of one of this eyes. "I haven't slept properly in days. I just
+    lay awake, thinking about this. Sometimes, I think about discarding my vows altogether.
+  - '"But I know that wouldn''t be right. I can''t just abandon this now."'
+  - '"And, as much as they pushed me into this life, I still can''t do something to
+    hurt them."'
+  - He gives you a smile, but it feels forced. "So, unless you find out how to talk
+    your way into becoming the next Pope, I don't think this isn't going to change."
+  - '"There is nothing in this world I would like more than that."'
+  - (You have gained quite of a bit of favor with Ludovico)
+  - '"You have to understand, I never wanted to have to make this choice, but we don''t
+    always get to control the broad strokes of our own fate. Sometimes, all we can
+    do is choose to confront it with grace."'
+  - '"You''ve shown me wonderful things, Yvette. Things that I''m not ready to give
+    up on, just yet."'
+  - '"Please tell me you''re not willing to give up on them either."'
+  - He sighs with relief "I'm so glad to hear that."
+  - '"I was afraid of that," he sighs. "I understand your reasons, but I was still
+    dreading this possibility."'
+  - He pulls a piece of paper from his bag and scribbles on it before handing it off
+    to you. You see an address on it. "Those are the docks I'll be leaving from tonight."
+  - '"Now, I''m sorry, but I must leave. I have a few loose ends I need to tie up
+    in Paris before I go."'
+  - (You have gained a little favor with Ludovico)
+  - '"Really? You would actually do that?"'
+  - (You have gained some favor with Ludovico)
+  - He stares at the floor and frowns. "Let's see... we can't leave on same ship together,
+    as I'm not the only member of the clergy travelling on that vessel. It'd be too
+    dangerous."
+  - He pulls a piece of paper from his bag and scribbles on it before handing it off
+    to you. You see a pair of addresses on it. "The first one is the docks I'll be
+    leaving from tonight. The second one is where I'll be staying in Rome. I'll write
+    letters to you whenever I can."
+  - With that, he kisses you tenderly on the cheek, grabs his bags and leaves.
+  - He pulls a piece of paper from his bag and scribbles on it before handing it off
+    to you. You see a pair of addresses on it. "The first one is the docks I'll be
+    leaving from tonight. The second one is where I'll be staying in Rome. I'll write
+    letters to you whenever I can."
+  - You're not sure how long you stand there, thinking about what just happened. About
+    what this all means.
+  - Returning to his senses, he pulls a piece of paper from his bag and scribbles
+    on it before handing it off to you. You see a pair of addresses on it.
+  - He steps close to you and puts his arms around your shoulders. "I promise this
+    isn't the end. It's merely a delay."
+  - Camille slowly peaks her head into the room, clutching a rolled up peice of paper,
+    sealed in wax. "Madame, I think Father Sidotti left something on the floor. It
+    looks like a letter." She hands it to you.
+  - You gingerly open the letter, trying to keep the wax seal intact, and read it.
+    This is his last correspondance to the Vatican before he leaves Paris.
+  - He's recommending that the Church stay neutral, between the Crown and the Revolution.
+  - You take out some new paper and a quill and write a new letter, mimicing his handwriting.
+    This new letter is demand that the Church intervene on the Crown's behalf. You
+    smirk and feel pretty good about some of your more evocative turns of phrase.
+  - He's recommending that the Church side with the Crown.
+  - He's recommending that the Church side with the Revolutionaries.
+  - You take out some new paper and a quill and write a new letter, mimicing his handwriting.
+    This new letter is demand that the Church intervene on the Revolution's behalf.
+    You smirk and feel pretty good about some of your more evocative turns of phrase.
+  - 'You take out some new paper and a quill and write a new letter, mimicing his
+    handwriting. This new letter has Ludovico completely changing his position, and  demanding
+    that the Church immediately cease its current support for the Revolution, and
+    to put all of its power behind the Crown instead.
+
+
+    You smirk, and take the time to admire some of your more evocative turns of phrase
+    regarding loyalty and divine right.'
+  - "With a sigh, you leave the letter as it is. The risk of tampering with it is
+    simply too great. \n\nBesides, you wouldn't want to do that to Ludovico."
+  - 'You take out some new paper and a quill and write a new letter, mimicing his
+    handwriting. This new letter is far stronger in its language, imploring the Church
+    to intervene on the Revolution''s behalf wherever possible. '
+  - 'You take out some new paper and a quill and write a new letter, mimicing his
+    handwriting. This new letter is far stronger in its language, imploring the Church
+    to intervene on the Crown''s behalf wherever possible. '
+  - 'You take out some new paper and a quill and write a new letter, mimicing his
+    handwriting. This new letter has Ludovico completely changing his position, and  demanding
+    that the Church immediately cease its current support for the Crown, and to put
+    all of its power behind the Revolution instead.
+
+
+    You smirk, and take the time to admire some of your more evocative turns of phrase
+    regarding innocent souls, and the ''true children of the Lord''.'
+  - (The Church's allegiance has moved towards the Revolution by quite a bit)
+  - You light a candle, and work delicately with a small knife to gently heat and
+    remove Ludovico's seal from his old letter. You then carefully transplant his
+    seal onto your new letter.
+  - "Is this risky? Yes. \n\nAre you willing to just sit idly by and let the situation
+    in France play out according to random chance? No. Not at all."
+  - (You have gained some peril)
+  - You hand the letter off to Camille. Without a word, she curtsies and leaves to
+    send the letter to be delivered.
+  - (The Church's allegiance has moved towards the Crown by quite a bit)
+  - You light a candle, and work delicately with a small knife to gently heat and
+    remove Ludovico's seal from his old letter. You then carefully transplant his
+    seal onto your new letter.
+  - "Is this risky? Yes. \n\nAre you willing to just sit idly by and let the situation
+    in France play out according to random chance? No. Not at all."
+  - (You have gained some peril)
+  - (The Church's allegiance has moved towards the Crown by quite a bit)
+  - You light a candle, and work delicately with a small knife to gently heat and
+    remove Ludovico's seal from his old letter. You then carefully transplant his
+    seal onto your new letter.
+  - "Is this risky? Yes. \n\nWill someone be suspicious of Ludovico's sudden change
+    of heart? Yes. \n\nIs the situation in Paris dire enough for you to just sit idly
+    by and let things play out by random chance? No. Not at all."
+  - (You have gained quit a bit of peril)
+  - You look out your bedroom window, at a city in turmoil. You look down at Ludovico's
+    note. Even with his hasty writing, his penmanship is immaculate.
+  - (The Church's allegiance has moved towards the Revolution by quite a bit)
+  - You light a candle, and work delicately with a small knife to gently heat and
+    remove Ludovico's seal from his old letter. You then carefully transplant his
+    seal onto your new letter.
+  - "Is this risky? Yes. \n\nWill someone be suspicious of Ludovico's sudden change
+    of heart? Yes. \n\nIs the situation in Paris dire enough for you to just sit idly
+    by and let things play out by random chance? No. Not at all."
+  - (You have gained quit a bit of peril)
+  - If you make it to the docks today, you'll be able to see him one last time.
+  - '"I promise this isn''t the end. It''s merely a delay."'
+  - '"However, if you were to find your way to Rome, I would welcome you with open
+    arms."'
+  - (You have lost quite a bit of favor with Ludovico)
+  - '"However, I have my orders and I need to follow them. If I left now, the consequences
+    wouldn''t fall on me, but they would fall on my family."'
+  - ('Ludovico - Epilogue' is now available to visit on the Paris Map, but not for
+    long...)
+  - You smirk, and take the time to admire some of your more evocative turns of phrase
+    regarding loyalty and divine right.
+  - You smirk, and take the time to admire some of your more evocative turns of phrase
+    regarding innocent souls, and the 'true children of the Lord'.
+  - '"The first one is the docks I''ll be leaving from tonight. The second one is
+    where I''ll be staying in Rome. I''ll write letters to you whenever I can."'
+  _linkText:
+  - 
+  - 
+  - 
+  - '"He is? Send him up, right away."'
+  - '"He''s here, this early in the morning? Please tell me this is a joke."'
+  - '"Ludovico? What''s he doing here?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Trust me, Camille is a very a sweet girl. You just need to know her."'
+  - '"Honestly, I don''t know how I manage."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Where are you leaving from? I want to be there, on the docks, when you cast
+    off."'
+  - '"What? No! Don''t leave!"'
+  - '"Is there nothing you can do about this? Is there anything I can do?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I don''t want to lose this either."'
+  - '"Ludovico, If you''re leaving, I don''t know how this can continue."'
+  - 
+  - '"What if I came with you?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - <Change the letter to support the Crown>
+  - 
+  - 
+  - <Change the letter to support the Revolution>
+  - <Change the letter to support the Crown>
+  - <Leave the letter alone>
+  - <Change the letter to intensify its support for the Revolution>
+  - <Change the letter to intensify its support for the Crown>
+  - <Change the letter to support the Revolution>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - <Leave the letter alone>
+  - <Leave the letter alone>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - <Leave the letter alone>
+  - <Leave the letter alone>
+  - <Leave the letter alone>
+  - <Leave the letter alone>
+  - <Leave the letter alone>
+  - <Leave the letter alone>
+  - <Leave the letter alone>
+  - <Leave the letter alone>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes

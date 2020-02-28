@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: The Limits of Taste
   m_EditorClassIdentifier: 
-  _Nodes: 07000000
+  _Nodes: 
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -36,7 +36,7 @@ MonoBehaviour:
     - Text: Today, you decide to explore the <i>Boulevard du Temple</i> between the
         11th and 3rd <i>arrondisments</i>. It's the place in the city best known for
         its theaters.
-      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -88,7 +88,7 @@ MonoBehaviour:
         The frantic energy is only amplified by the sight of a hapless young man trying
         to corral a dancing monkey back into its cage. The monkey doesn''t seem interested
         in cooperating.'
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 21300000, guid: 13d9a5880d0e2fa4d90cefecde0f01ee, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -233,37 +233,44 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"This is absolutely delightful. I can''t wait to see it in full swing."'
+    - index: 0
+      Text: '"This is absolutely delightful. I can''t wait to see it in full swing."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"This just feels like vulgarity for the sake of it. I''d rather not."'
+    - index: 0
+      Text: '"This just feels like vulgarity for the sake of it. I''d rather not."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"This just feels like vulgarity for the sake of it. I''d rather not."'
+    - index: 0
+      Text: '"This just feels like vulgarity for the sake of it. I''d rather not."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"This just feels like vulgarity for the sake of it. I''d rather not."'
+    - index: 0
+      Text: '"This just feels like vulgarity for the sake of it. I''d rather not."'
       xor: 0
       Rewards: []
       Requirements: []
@@ -273,11 +280,67 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 00000000
+<<<<<<< Updated upstream
     LocalizationKey: 
+=======
+    LocalizationKey: The Limits of Taste.asset.bc0f68689b6f7c64685f187f4972f7b7
+    Political: 0
+    _date: -1
+>>>>>>> Stashed changes
     Requirements: []
   _factions: 010000000000
   _chapters: 00000000
   _date: -1
+<<<<<<< Updated upstream
   _localizationKey: Assets/Collections/Incidents/The Limits of Taste.asset.
   _nodeText: []
   _linkText: []
+=======
+  _nodeText:
+  - Today, you decide to explore the <i>Boulevard du Temple</i> between the eleventh
+    and third <i>arrondisments</i>. It's the place in the city best known for its
+    theaters.
+  - "Strolling down the wide, tree lined street, you finally find what you're looking
+    for. \n\n<i>Les Grands-Danseurs du Roi</i>. It's the best known theater in the
+    city, specializing two things: comedies, and skirting the absolute limits of good
+    taste. "
+  - 'Out of sheer curiosity, you step inside. There isn''t a production going on at
+    the moment, but you see actors and carpenters rushing around to ready the theater
+    for its next show tonight.
+
+
+    The frantic energy is only amplified by the sight of a hapless young man trying
+    to corral a dancing monkey back into its cage. The monkey doesn''t seem interested
+    in cooperating.'
+  - 'When you finally tire of watching the monkey shreik at is handler and pelt them
+    with scraps of fruit, you take out your pencil and journal to jot down the address
+    of the theater.
+
+
+    (<i>Les Grands-Danseurs du Roi</i> is now an available rendezvous location)'
+  - 'With the address noted down, you start the walk home, already eager to see one
+    of their shows. Maybe they''ll have figured out how to control the monkey by then.
+
+
+    Part of you hopes not. '
+  - This feels like the perfect place to visit with someone that loves to laugh. Someone
+    that isn't afraid of liking things that are a little bawdy or lowbrow.
+  - 'With the address noted down, you hurry home before the crowds start forming outside.
+    You wonder if they''ll ever figure out how to control that monkey.
+
+
+    Probably not. '
+  - 'With the address noted down, you hurry home before the crowds start forming outside.
+    You wonder if they''ll ever figure out how to control that monkey.
+
+
+    Probably not. '
+  _linkText:
+  - 
+  - 
+  - 
+  - '"This is absolutely delightful. I can''t wait to see it in full swing."'
+  - '"This just feels like vulgarity for the sake of it. I''d rather not."'
+  - '"This just feels like vulgarity for the sake of it. I''d rather not."'
+  - 
+>>>>>>> Stashed changes

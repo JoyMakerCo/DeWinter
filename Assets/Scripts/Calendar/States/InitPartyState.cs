@@ -9,7 +9,7 @@ namespace Ambition
 {
     public class InitPartyState : UState
 	{
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             PartyModel model = AmbitionApp.RegisterModel<PartyModel>();
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();

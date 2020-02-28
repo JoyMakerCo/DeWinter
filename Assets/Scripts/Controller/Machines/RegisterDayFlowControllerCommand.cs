@@ -7,34 +7,35 @@ namespace Ambition
     {
         public void Execute()
         {
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "InitCharacter", GameMessages.INIT_CHARACTER);
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "InitUpdate", CalendarMessages.UPDATE_CALENDAR);
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "UpdateCalendar", CalendarMessages.UPDATE_CALENDAR);
-            AmbitionApp.RegisterState<LoadSceneState, string>("DayFlowController", "Chapter", SceneConsts.CHAPTER_PLACARD);
-            AmbitionApp.RegisterState<LoadSceneState, string>("DayFlowController", "InitChapter", SceneConsts.CHAPTER_PLACARD);
-            AmbitionApp.RegisterState<LoadSceneState, string>("DayFlowController", "DayPlacard", SceneConsts.DAILY_PLACARD);
-            AmbitionApp.RegisterMachineState("DayFlowController", "StartIncident", "IncidentController");
+            AmbitionApp.RegisterState<SendMessageState>("DayFlowController", "InitCharacter", GameMessages.INIT_CHARACTER);
+            AmbitionApp.RegisterState<SendMessageState>("DayFlowController", "InitUpdate", CalendarMessages.UPDATE_CALENDAR);
+            AmbitionApp.RegisterState<SendMessageState>("DayFlowController", "UpdateCalendar", CalendarMessages.UPDATE_CALENDAR);
+            AmbitionApp.RegisterState<LoadSceneState>("DayFlowController", "Chapter", SceneConsts.CHAPTER_PLACARD);
+            AmbitionApp.RegisterState<MessageInputState>("DayFlowController", "ChapterInput", GameMessages.COMPLETE);
+            AmbitionApp.RegisterState<LoadSceneState>("DayFlowController", "InitChapter", SceneConsts.CHAPTER_PLACARD);
+            AmbitionApp.RegisterState<MessageInputState>("DayFlowController", "InitChapterInput", GameMessages.COMPLETE);
+            AmbitionApp.RegisterState<LoadSceneState>("DayFlowController", "DayPlacard", SceneConsts.DAILY_PLACARD);
+            AmbitionApp.RegisterState<UMachine>("DayFlowController", "StartIncident", "IncidentController");
             AmbitionApp.RegisterState("DayFlowController", "RequiredPartyDecision");
-            AmbitionApp.RegisterMachineState("DayFlowController", "Estate", "EstateController");
+            AmbitionApp.RegisterState<UMachine>("DayFlowController", "Estate", "EstateController");
             AmbitionApp.RegisterState("DayFlowController", "PartyDecision");
-            AmbitionApp.RegisterMachineState("DayFlowController", "Party", "PartyController");
-            AmbitionApp.RegisterMachineState("DayFlowController", "Paris", "ParisMapController");
+            AmbitionApp.RegisterState<UMachine>("DayFlowController", "Party", "PartyController");
+            AmbitionApp.RegisterState<UMachine>("DayFlowController", "Paris", "ParisMapController");
             AmbitionApp.RegisterState("DayFlowController", "LocationDecision");
             AmbitionApp.RegisterState("DayFlowController", "EndIncidentDecision");
-            AmbitionApp.RegisterState("DayFlowController", "RestDecision");
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "RestState", ParisMessages.REST);
-            AmbitionApp.RegisterMachineState("DayFlowController", "EndIncident", "IncidentController");
+            AmbitionApp.RegisterState<UMachine>("DayFlowController", "EndIncident", "IncidentController");
             AmbitionApp.RegisterState("DayFlowController", "EndGameDecision");
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "NextDayState", CalendarMessages.NEXT_DAY);
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "EndGameState", GameMessages.END_GAME);
+            AmbitionApp.RegisterState<SendMessageState>("DayFlowController", "NextDayState", CalendarMessages.NEXT_DAY);
+            AmbitionApp.RegisterState<SendMessageState>("DayFlowController", "EndGameState", GameMessages.END_GAME);
 
             AmbitionApp.RegisterLink("DayFlowController", "InitCharacter", "InitUpdate");
             AmbitionApp.RegisterLink("DayFlowController", "InitUpdate", "InitChapter");
-            AmbitionApp.RegisterLink<MessageLink, string>("DayFlowController", "InitChapter", "StartIncident", GameMessages.COMPLETE);
+            AmbitionApp.RegisterLink("DayFlowController", "InitChapter", "InitChapterInput");
+            AmbitionApp.RegisterLink("DayFlowController", "InitChapterInput", "StartIncident");
             AmbitionApp.RegisterLink<CheckChapterLink>("DayFlowController", "UpdateCalendar", "Chapter");
             AmbitionApp.RegisterLink("DayFlowController", "UpdateCalendar", "DayPlacard");
-            AmbitionApp.RegisterLink<MessageLink, string>("DayFlowController", "Chapter", "DayPlacard", GameMessages.COMPLETE);
-            AmbitionApp.RegisterLink<MessageLink, string>("DayFlowController", "DayPlacard", "StartIncident", GameMessages.COMPLETE);
+            AmbitionApp.RegisterLink("DayFlowController", "Chapter", "ChapterInput");
+            AmbitionApp.RegisterLink("DayFlowController", "ChapterInput", "DayPlacard");
 
             AmbitionApp.RegisterLink("DayFlowController", "StartIncident", "RequiredPartyDecision");
             AmbitionApp.RegisterLink<CheckRequiredPartyLink>("DayFlowController", "RequiredPartyDecision", "Party");
@@ -43,11 +44,8 @@ namespace Ambition
             AmbitionApp.RegisterLink<CheckPartyLink>("DayFlowController", "PartyDecision", "Party");
             AmbitionApp.RegisterLink("DayFlowController", "PartyDecision", "Paris");
             AmbitionApp.RegisterLink("DayFlowController", "Paris", "LocationDecision");
-            AmbitionApp.RegisterLink<CheckLocationLink>("DayFlowController", "LocationDecision", "RestDecision");
-            AmbitionApp.RegisterLink("DayFlowController", "LocationDecision", "Estate");
-            AmbitionApp.RegisterLink<RestAtHomeLink>("DayFlowController", "RestDecision", "RestState");
-            AmbitionApp.RegisterLink("DayFlowController", "RestDecision", "RestState");
-            AmbitionApp.RegisterLink("DayFlowController", "RestState", "EndIncident");
+            AmbitionApp.RegisterLink<CheckLocationLink>("DayFlowController", "Paris", "EndIncident");
+            AmbitionApp.RegisterLink("DayFlowController", "Paris", "Estate");
             AmbitionApp.RegisterLink("DayFlowController", "Party", "EndIncident");
             AmbitionApp.RegisterLink("DayFlowController", "EndIncident", "EndGameDecision");
             AmbitionApp.RegisterLink<CheckGameEndLink>("DayFlowController", "EndGameDecision", "EndGameState");

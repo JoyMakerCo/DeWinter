@@ -70,7 +70,8 @@ namespace Ambition
                 SetParam(_partyMusic, "LOSE", 0);
                 AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, _partyMusic);
                 _partyStarted = true;
-            } 
+            }
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, model.Map.Value?.Name);
         }
 
         //This is is for conversation music, sfx is handled via the HandleRoomSFX method

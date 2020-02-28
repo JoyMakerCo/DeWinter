@@ -16,11 +16,19 @@ MonoBehaviour:
   _Links: 
   _Positions:
   - {x: 0, y: 0}
+<<<<<<< Updated upstream:Assets/Resources/Incidents/Alexandre's Letter.asset
   - {x: 0, y: 81}
   - {x: 0, y: 155}
   - {x: 11, y: 226}
   - {x: 8, y: 300}
   - {x: 19, y: 386}
+=======
+  - {x: 232, y: 181}
+  - {x: 212, y: 79}
+  - {x: -3, y: 324}
+  - {x: -214, y: 84}
+  - {x: -219, y: 195}
+>>>>>>> Stashed changes:Assets/Collections/Incidents/Rest At Home.asset
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -90,7 +98,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 7
+        ID: UPDATE_EXHAUSTION
+        Value: 0
       Music:
         Name: 
         Parameters: []
@@ -138,7 +149,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 7
+        ID: UPDATE_EXHAUSTION
+        Value: 0
       Music:
         Name: 
         Parameters: []
@@ -171,27 +185,51 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
+<<<<<<< Updated upstream:Assets/Resources/Incidents/Alexandre's Letter.asset
     - Text: 
+=======
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 18
+        ID: 
+        Value: -1
+        Operator: 0
+      Flags: []
+    - index: 0
+      Text: 
+>>>>>>> Stashed changes:Assets/Collections/Incidents/Rest At Home.asset
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
+<<<<<<< Updated upstream:Assets/Resources/Incidents/Alexandre's Letter.asset
     - Text: 
+      xor: 0
+=======
+    - index: 2
+      Text: 
+      xor: 1
+>>>>>>> Stashed changes:Assets/Collections/Incidents/Rest At Home.asset
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 3
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 4
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -201,11 +239,35 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream:Assets/Resources/Incidents/Alexandre's Letter.asset
     LocalizationKey: 
+=======
+    LocalizationKey: Rest At Home.asset.4b737911cedfc4bf9ad106b86c401f84
+    Political: 0
+    _date: -1
+>>>>>>> Stashed changes:Assets/Collections/Incidents/Rest At Home.asset
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
+<<<<<<< Updated upstream:Assets/Resources/Incidents/Alexandre's Letter.asset
   _localizationKey: Assets/Resources/Incidents/Alexandre's Letter.asset.
   _nodeText: []
   _linkText: []
+=======
+  _nodeText:
+  - You decide to take the day off, and spend some time at home, resting and recuperating.
+  - (You are now well rested)
+  - Determined to be truly prepared for the tasks ahead, you stay in and fully unwind.
+    Already, you feel like you'll perform better at your next party or rendezvous.
+  - With that complete, you turn your focus upon the other matters that demand your
+    attention.
+  - After spending the day in, taking care of yourself and doing some light reading,
+    you finally feel recharged. The exhaustion that had been affecting you before
+    has passed.
+  - (You no longer have any levels of exhaustion)
+  _linkText:
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes:Assets/Collections/Incidents/Rest At Home.asset

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Coffee Run
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 14000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -540,7 +540,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -592,32 +592,38 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 1
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 2
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 3
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Marguerite, over here! Why don''t you use the stove at my home?"'
+    - index: 4
+      Text: '"Marguerite, over here! Why don''t you use the stove at my home?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Please! Can anyone let us use your stove? She needs it for work!"'
+    - index: 5
+      Text: '"Please! Can anyone let us use your stove? She needs it for work!"'
       xor: 0
       Rewards: []
       Requirements: []
@@ -625,7 +631,8 @@ MonoBehaviour:
       - Type: 2
         Phrase: incidents.transitions.credibilitycheck.easytooltip
         Value: 1
-    - Text: '"I will pay ten livres to the first person that lets us borrow their
+    - index: 6
+      Text: '"I will pay ten livres to the first person that lets us borrow their
         stove for the day!"'
       xor: 0
       Rewards: []
@@ -638,17 +645,20 @@ MonoBehaviour:
       - Type: 4
         Phrase: incidents.transitions.livres.costtooltip
         Value: 10
-    - Text: 
+    - index: 7
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 8
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 1
       Rewards: []
       Requirements:
@@ -657,22 +667,26 @@ MonoBehaviour:
         Value: 50
         Operator: 4
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 12
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Please! Can anyone let us use your stove? She needs it for work!"'
+    - index: 13
+      Text: '"Please! Can anyone let us use your stove? She needs it for work!"'
       xor: 0
       Rewards: []
       Requirements: []
@@ -680,7 +694,8 @@ MonoBehaviour:
       - Type: 2
         Phrase: incidents.transitions.credibilitycheck.easytooltip
         Value: 1
-    - Text: '"I will pay ten livres to the first person that lets us borrow their
+    - index: 14
+      Text: '"I will pay ten livres to the first person that lets us borrow their
         stove for the day!"'
       xor: 0
       Rewards: []
@@ -693,57 +708,68 @@ MonoBehaviour:
       - Type: 4
         Phrase: 
         Value: 10
-    - Text: 
+    - index: 15
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 16
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 17
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Give up>
+    - index: 0
+      Text: <Give up>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 20
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 21
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 22
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 23
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I''m sorry Marguerite, I can''t think of anything else."'
+    - index: 24
+      Text: '"I''m sorry Marguerite, I can''t think of anything else."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -753,6 +779,7 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
     Requirements: []
   _factions: 000000000000
@@ -761,3 +788,97 @@ MonoBehaviour:
   _localizationKey: Assets/Resources/Incidents/Coffee Run.asset.
   _nodeText: []
   _linkText: []
+=======
+    LocalizationKey: Coffee Run.asset.5052c1dc200d00d4e9932c1768943ac8
+    Political: 0
+    _date: -1
+    Requirements:
+    - Type: 8
+      ID: Coffee and Conversation
+      Value: 1
+      Operator: 4
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _nodeText:
+  - Wandering around town, you realize that you're near Cafe Principe, but you can't
+    smell the familiar scent of roasting coffee beans. Which is a quite a shame, because
+    the scent is absolutely heavenly.
+  - "You are momentarily lost in a reverie imagining what life would be like if coffee
+    tasted as good as it smelled. Would we ever drink anything else? \n\nIt would
+    be a jittery world, indeed."
+  - Behind you and to the right, you hear a commotion, you turn and spot a familiar
+    face.
+  - "\"Does anyone have a stove I can use? This is an emergency!\" It's Margueritte,
+    from the cafe! She's holding a bunch of kettles and looks absolutely frantic.
+    \n\nNobody is rushing to help, in fact they're trying to stay out of her way."
+  - "She's happy to hear this until you start giving her directions. Her face falls
+    and replies. \"<i>Non</i> madame, I'm sorry but that won't work. You live too
+    far away. The water will be cold by the time I reach the caf\xE9. It has to be
+    somewhere nearby!\""
+  - Some members of the crowd turn to listen as you make an impassioned plea for this
+    poor working woman beset by misfortune. She needs no money, no supplies, merely
+    a stove with which to heat her water!
+  - It's amazing how indecisive everyone in the crowd was, until money entered the
+    equation.
+  - "\"The stove in the caf\xE9 is broken and I have a lot of thirsty customers!\""
+  - All the same, she smiles warmly to you "Thank you for trying. That's already more
+    than anyone else here has done."
+  - (You have gained a little credibility)
+  - Hearing your impassioned plea, someone in the crowd hurriedly escorts you into
+    a tavern where they work. Immediately, Margueritte sets up her kettles on a roaring
+    stove.
+  - Your impassioned plea falls on deaf ears, as people in the crowd simply shuffle
+    by. Admittedly, it is an odd situation, but you still curse the strangers for
+    their inaction. It doesn't take long for you to notice that some of the people
+    nearby have even grown suspicious of you.
+  - (You have lost some credibility)
+  - Perhaps there's something else that you can do...
+  - Someone in the crowd hurriedly escorts you into a tavern where they work. Immediately,
+    Margueritte sets up her kettles on a roaring stove.
+  - You're not exactly sure how you get caught up in everything, but you're soon helping
+    Marguerite ferry kettles of boiling water back and forth from the cafe for a few
+    hours. It's exhausting, but you're met with a cheer from the patrons every time
+    the two of you burst in the door with a new pair of kettles.
+  - Someone jokingly calls you two 'The Angels of Steam'. The nickname sticks, at
+    least for the day.
+  - (You have gained a decent amount of credibility)
+  - "The caf\xE9 waitress shrugs. \"Don't worry madame, I'll think of something.\"
+    \n\nHer eyes don't portray the same optimism as her words."
+  - '"Thanks again for your help." Marguerite says to you for the umpteenth time as
+    she passes you during one of your deliveries.'
+  - Eventually, the day winds down and you head home. You're tired, but glad that
+    things managed to work out.
+  - (You have spent 10 Livres)
+  - Out of options, you part ways and head home. Things didn't work out today, but
+    perhaps they'll go more smoothly tomorrow.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - '"Marguerite, over here! Why don''t you use the stove at my home?"'
+  - '"Please! Can anyone let us use your stove? She needs it for work!"'
+  - '"I will pay ten livres to the first person that lets us borrow their stove for
+    the day!"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Please! Can anyone let us use your stove? She needs it for work!"'
+  - '"I will pay ten livres to the first person that lets us borrow their stove for
+    the day!"'
+  - 
+  - 
+  - 
+  - <Give up>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I''m sorry Marguerite, I can''t think of anything else."'
+  - 
+>>>>>>> Stashed changes

@@ -16,6 +16,7 @@ MonoBehaviour:
   _Links: 
   _Positions:
   - {x: 0, y: 0}
+<<<<<<< Updated upstream
   - {x: -270, y: 103}
   - {x: -266, y: 157}
   - {x: -270, y: 265}
@@ -53,6 +54,47 @@ MonoBehaviour:
   - {x: 463, y: 1120}
   - {x: 3, y: 569}
   - {x: -254, y: 433}
+=======
+  - {x: -275, y: 158}
+  - {x: -271, y: 212}
+  - {x: -275, y: 320}
+  - {x: -265, y: 618}
+  - {x: 1, y: 214}
+  - {x: 246, y: 539}
+  - {x: 351, y: 755}
+  - {x: 353, y: 825}
+  - {x: 0, y: 159}
+  - {x: 0, y: 268}
+  - {x: -272, y: 679}
+  - {x: -266, y: 747}
+  - {x: -133, y: 824}
+  - {x: -1, y: 319}
+  - {x: -1, y: 368}
+  - {x: -4, y: 570}
+  - {x: -10, y: 745}
+  - {x: -267, y: 428}
+  - {x: 225, y: 895}
+  - {x: 466, y: 895}
+  - {x: 347, y: 976}
+  - {x: 458, y: 1050}
+  - {x: 181, y: 1121}
+  - {x: 460, y: 1238}
+  - {x: 2, y: 466}
+  - {x: 348, y: 155}
+  - {x: 459, y: 1119}
+  - {x: 182, y: 1049}
+  - {x: -270, y: 374}
+  - {x: -4, y: 678}
+  - {x: 1, y: 518}
+  - {x: -271, y: 262}
+  - {x: 9, y: 419}
+  - {x: -266, y: 554}
+  - {x: 458, y: 1175}
+  - {x: -2, y: 624}
+  - {x: -259, y: 488}
+  - {x: 353, y: 669}
+  - {x: 3, y: 78}
+>>>>>>> Stashed changes
   Incident:
     Links:
     - {x: 1, y: 2}
@@ -632,7 +674,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: "The barmaid pauses to think. \"I haven\u2019t heard that name before,
         but I just started working today. If you ask around, some of our patrons might
@@ -778,7 +820,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: "While you understood the significant benefits your common family would
         receive from your marriage into a noble one, you couldn\x19t help but be a
@@ -1049,8 +1091,18 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: 
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 15
+      Text: '"This is my first time here, is there anything I should know to help
+        me find my fiance?" <Tutorial>'
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -1201,11 +1253,175 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
+=======
+    LocalizationKey: Yvette's Prologue.asset.14fad81114a8b054ab0dc9b55e8b588b
+    Political: 0
+    _date: 564306048000000000
+>>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: 564306048000000000
+<<<<<<< Updated upstream
   _localizationKey: Assets/Collections/Incidents/Yvette's Prologue.asset.
   _nodeText: []
   _linkText: []
+=======
+  _nodeText:
+  - "The carriage rumbles and bounces along the cobbles as you approach Paris. It\u2019s
+    taken over a week to get here, even carrying just yourself and your luggage. "
+  - "You must have read the brief letter over a hundred times, but you always found
+    new details to puzzle over. Armand\u2019s letters were usually so long, a habit
+    would you often tease him for, in your own missives."
+  - "\u2018<i>Ch\xE8re</i> Yvette, \r\n\r\n\u2018I know it may be sudden, but I want
+    to invite you to live with me in Paris.\u2019\r"
+  - "Not that your parents cared much about the romance. At first you\u2019d been
+    afraid to tell them their youngest daughter wanted to move far away. Instead,
+    they nearly threw you onto the carriage to follow Armand to Paris. "
+  - "After all, \u2018Baroness Yvette de Marbo\u2019 has a certain ring to it..."
+  - "You crane your neck out the window to peer at Paris. It\u2019s even more than
+    you imagined. The streets are a riot of color and energy as people go about their
+    days. Elegant persons of fashion strut like brilliant peacocks. Students stumble
+    under the weight of their books. Beggars alternate between pleading for alms,
+    and shouting invectives at passers-by. \n\nEverything feels significant, like
+    world\u2019s next act hinges on all of their choices. "
+  - "After a quiet sigh, the coachman obediently flicks at the reins and the horses
+    up their pace to a brisk trot. The city blurs by as you quickly make your way
+    towards The Orphan\u2019s Feast, the tavern where Armand said he would meet you. "
+  - "When you arrive, the coachman helps you out of the carriage and you find yourself
+    outside a glowing, friendly looking tavern. \r"
+  - The sign shows a grubby looking child, holding with a plate piled high with fresh
+    bread and roasted meats.
+  - "For now though, you\u2019ve already finished all of your books and Armand's letter
+    is your only entertainment, other than staring out the window. "
+  - Though part of you is worried by your unfamiliar surroundings, you mostly feel
+    excited. This place is to be the stage for your new life.
+  - "You crane your neck out the window to peer at Paris. It\u2019s even more than
+    you imagined. The streets are a riot of color and energy as people go about their
+    days. Elegant persons of fashion strut like brilliant peacocks. Students stumble
+    under the weight of their books. Beggars alternate between pleading for alms,
+    and shouting invectives at passers-by. \n\nEverything feels significant, like
+    world\u2019s next act hinges on all of their choices. "
+  - Though part of you is worried by your unfamiliar surroundings, you mostly feel
+    excited. This place is to be the stage for your new life.
+  - "Before you know it, the carriage starts slowing down. You must be here!\n\nArmand
+    arranged to meet you at tavern named The Orphan\u2019s Feast. As tired and rumpled
+    as you are, you\u2019re glad that he planned to meet you in a place with ample
+    food and wine.\r"
+  - "You must have read the brief letter over a hundred times, but you always found
+    new details to puzzle over. Armand\u2019s letters were usually so long, a habit
+    would you often tease him for, in your own missives."
+  - "'<i>Ch\xE8re</i> Yvette, \r\n\r\n\u2018I know it may be sudden, but I want to
+    invite you to live with me in Paris.\u2019\r"
+  - "\u2018I can\u2019t wait for you to see it. It\u2019s unlike anything back home.
+    A truly vital place, where anyone can be anything.\r'"
+  - "After all, \u2018Baroness Yvette de Marbo\u2019 has a certain ring to it..."
+  - "\u2018I can\u2019t wait for you to see it. It\u2019s unlike anything back home.
+    A truly vital place, where anyone can be anything.\r'"
+  - "Inside, a woman polishing a lantern looks up at you as you enter, and her face
+    breaks into a bright smile. \"<i>Bonjour</i> Madame and welcome to the Orphan's
+    Feast!\" Her eyes linger expectantly on the door for a moment, before settling
+    on you. You're suddenly reminded of how rare it is for women to travel by themselves.\r"
+  - "Inside, a woman polishing a lantern looks up at you as you enter, and her face
+    breaks into a bright smile. \"\x1C<i>Bonjour</i> Madame and welcome to the Orphan's
+    Feast!\x1D\" Her eyes linger expectantly on the door for a moment, before settling
+    on you. You\x19're suddenly reminded of how rare it is for women to travel by
+    themselves.\r"
+  - "\u201CHow may I be of service?\u201D She asks.\r"
+  - "\u201CDon\u2019t worry, while the rest of the city can be rather\u2026 cutthroat,
+    the Orphan\u2019s Feast is a relaxed place for getting your feet under you.\u201D
+    The woman puts down the lantern she was polishing. "
+  - "The barmaid pauses to think. \"I haven\u2019t heard that name before, but I just
+    started working today. If you ask around, some of our patrons might know where
+    to find your fiance.\""
+  - "When she puts it that way, it suddenly sounds so easy\u2026"
+  - Not that your parents cared much about the romance. At first you'd been afraid
+    to tell them their youngest daughter wanted to move far away. Instead, they nearly
+    threw you onto the carriage to follow Armand to Paris.
+  - With a grunt of irritation, the coachman flicks at his reins and the carriage
+    surges forward, sending you lurching back into your seat. The city blurs by as
+    you wind your way towards The Orphan's Feast, a tavern where Armand said he would
+    meet you.
+  - "She favors you with a devious smile \"\x1CFind guests worth talking to, and try
+    to say the right things to the right people. You'll never have time to talk to
+    everyone, so try to use your time wisely.\""
+  - '"Ohhh a missing person. That actually sounds interesting." She says with a devious
+    smile.'
+  - "While you understood the significant benefits your common family would receive
+    from your marriage into a noble one, you couldn\x19t help but be a little annoyed
+    at their eagerness to see you off.\r"
+  - 'That was something you were looking forward to. A chance to be something more. '
+  - While you understood the significant benefits your common family would receive
+    from your marriage to a noble one, you couldn't help but be a little annoyed at
+    their eagerness to see you off.
+  - "Back in your provincial hometown, you were engaged to Armand, before he moved
+    north to Paris to participate in the Estates General. He dreamed of changing the
+    country, and this was the political event of the century. You mailed love letters
+    soaked in perfume, he replied with volumes about how much he missed you. The romance
+    of it all helped make up for the inconvenience.\r"
+  - "Back in your provincial hometown, you were engaged to Armand, before he moved
+    north to Paris to participate in the Estates General. He dreamed of changing the
+    country, and this was the political event of the century. You mailed love letters
+    soaked in perfume, he replied with volumes about how much he missed you. The romance
+    of it all helped make up for the inconvenience.\r"
+  - "That was something you were looking forward to. A chance to be something more.
+    \r"
+  - '"I''m sure that if you ask around, you''ll be able to find your fiance in no
+    time!"'
+  - "'<i>Je t'embrasse</i>,\r\n\r\nArmand\x19\r'"
+  - "'<i>Je t'embrasse</i>,\r\n\r\nArmand\x19\r'"
+  - "As tired and rumpled as you are, you\x19're glad that he arranged to meet you
+    in a place with ample food and wine.\r"
+  - Your fiance, Armand, arranged for the carriage to take you from your small village
+    to a tavern he enjoys called 'The Orphan's Feast'. There, he'll meet up with you,
+    you'll likely take dinner together, and then he'll show you to your new home in
+    Paris.
+  _linkText:
+  - 
+  - '"Hmm... might as well take in the sights."'
+  - 
+  - '"Coachman, can we pick up the pace, please?"'
+  - 
+  - '"Coachman, can we pick up the pace, please?"'
+  - '"Reading the letter one more time wouldn''t hurt..."'
+  - '"Hmm... might as well take in the sights."'
+  - 
+  - 
+  - 
+  - <Read Armand's letter>
+  - 
+  - '"This must be the place!"'
+  - '"Here goes nothing..."'
+  - '"This is my first time here, is there anything I should know to help me find
+    my fiance?" <Tutorial>'
+  - 
+  - 
+  - 
+  - '"Coachman, let''s go! I don''t have all day!"'
+  - 
+  - "\u201CI\u2019m looking for my fiance Baron Armand de Marbo.\u201D <No Tutorial>"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes

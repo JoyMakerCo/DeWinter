@@ -21,7 +21,7 @@ namespace Ambition
 		private Dictionary<int[], RoomVO[]> _walls = new Dictionary<int[], RoomVO[]>();
 		private MapModel _model;
 
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
 /*			MapVO map;
 			RoomVO room;

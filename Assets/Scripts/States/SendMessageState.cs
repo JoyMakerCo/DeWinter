@@ -1,24 +1,35 @@
-using UFlow;
+﻿using UFlow;
 
 namespace Ambition
 {
-    public class SendMessageState : UState<string>
+    public class SendMessageState : UState
     {
-        string message;
-        public override void SetData(string data) => message = data;
-        public override void OnEnterState(string[] args)
+        protected string _message;
+        public override void Initialize(object[] parameters)
         {
+<<<<<<< Updated upstream
 AmbitionApp.SendMessage(message);
+=======
+            _message = parameters[0] as string;
+        }
+        public override void OnEnterState()
+        {
+            AmbitionApp.SendMessage(_message);
+        }
+    }
+>>>>>>> Stashed changes
 
-            if (args != null) switch (args.Length)
-            {
-                case 1:
-                    AmbitionApp.SendMessage(args[0]);
-                    break;
-                case 2:
-                    AmbitionApp.SendMessage(args[0], args[1]);
-                    break;
-            }
+    public class SendMessageState<M> : SendMessageState where M:class
+    {
+        private M _payload;
+        public override void Initialize(object[] parameters)
+        {
+            base.Initialize(parameters);
+            _payload = parameters.Length > 1 ? parameters[1] as M : null;
+        }
+        public override void OnEnterState()
+        {
+            AmbitionApp.SendMessage(_message, _payload);
         }
     }
 }

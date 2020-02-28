@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UFlow;
 namespace Ambition
 {
@@ -6,13 +7,11 @@ namespace Ambition
     {
         public void Execute()
         {
-            UFlowSvc uflow = AmbitionApp.GetService<UFlowSvc>();
             AmbitionApp.CloseAllDialogs();
             AmbitionApp.Save();
             AmbitionApp.GetService<ModelTrackingSvc>().Reset();
+            AmbitionApp.GetService<UFlowSvc>().Reset();
 
-            string[] machines = uflow.GetActiveMachines();
-            Array.ForEach(machines, m => uflow.GetMachine(m)?.Cleanup());
             AmbitionApp.RegisterCommand<FadeToMenuCmd>(GameMessages.FADE_OUT_COMPLETE);
             AmbitionApp.SendMessage(AudioMessages.STOP_AMBIENT);
             AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);

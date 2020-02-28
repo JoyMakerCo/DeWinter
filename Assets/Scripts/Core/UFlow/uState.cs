@@ -1,14 +1,16 @@
 ﻿using System;
 namespace UFlow
 {
-	public class UState : UNode
+	public class UState : IDisposable
 	{
-        // Overload for instructions
-        public virtual void OnExitState() {}
-	}
+        public string ID { get; internal set; }
+        internal UFlowSvc _UFlow;
+        internal UMachine _Machine;
 
-    public abstract class UState<T> : UState
-    {
-        public abstract void SetData(T data);
+    // Overload for instructions
+        public virtual void Initialize(object[] parameters) {}
+        public virtual void OnEnterState() {}
+        public virtual void OnExitState() {}
+        public virtual void Dispose() {}
     }
 }

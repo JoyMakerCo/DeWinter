@@ -21,6 +21,9 @@ namespace Ambition
         [JsonProperty("chapter")]
         public int Chapter = 0;
 
+        [JsonProperty("political_chance")]
+        public int PoliticalChance = 20;
+
         [JsonProperty("party_intro_incident")]
         public string DefaultIntroIncident;
 
@@ -28,7 +31,6 @@ namespace Ambition
         public Observable<int> Exhaustion;
         public Observable<int> Credibility;
         public Observable<int> Peril;
-
 
         private int _livre
         {
@@ -102,7 +104,17 @@ namespace Ambition
 
         public int Level => _reputation.Level;
 
+<<<<<<< Updated upstream
         public GameModel() : base("GameData") {}
+=======
+        [JsonProperty("num_paris_dailies")]
+        public int NumParisDailies = 5;
+
+        public GameModel() : base("GameData")
+        {
+            IncidentHistory = new Dictionary<string, int>();
+        }
+>>>>>>> Stashed changes
 
         private void HandleLivre(int livre) => AmbitionApp.SendMessage(GameConsts.LIVRE, livre);
         private void HandleCred(int cred) => AmbitionApp.SendMessage(GameConsts.CRED, cred);

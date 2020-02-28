@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UFlow;
 using Util;
 namespace Ambition
@@ -8,61 +7,100 @@ namespace Ambition
     public class PickIncidentsState : UState
     {
         private PartyModel _model;
+        private List<string> _guests;
+        private List<IncidentVO> _incidents;
+
         public override void OnEnterState()
         {
             _model = AmbitionApp.GetModel<PartyModel>();
-            List<IncidentVO> result = new List<IncidentVO>();
-            if (_model.RequiredIncident != null) result.Add(_model.RequiredIncident);
-            if (_model.RequiredIncident == null || _model.TurnsLeft > (_model.Party.RequiredIncidents.Length - _model.IncidentIndex))
+            if (_model.RequiredIncident != null)
             {
-                int count = (int)(_model.Party.Size);
-                IEnumerable<IncidentVO> added = TakeRandom(_model.Party.SupplementalIncidents, result.Count, count - result.Count);
-                result.AddRange(added.Where(i=>!i.IsComplete));
+                AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, new IncidentVO[] { _model.RequiredIncident });
+                return; // Early out for required incident
+            }
 
-                // TODO: NEED RANDOM PARTIES
-                if (false)
-                //if (result.Count < count)
+            int max = (int)(_model.Party.Size);
+            int[] shuffle = new int[_model.Party.SupplementalIncidents?.Length ?? 0];
+            IncidentVO incident;
+            _incidents = new List<IncidentVO>();
+            _guests = new List<string>();
+
+            for (int i = shuffle.Length - 1; i > 0; --i)
+            {
+                shuffle[i] = RNG.Generate(i);
+                shuffle[shuffle[i]] = i;
+            }
+            for (int i = shuffle.Length - 1; i >= 0; --i)
+            {
+                incident = _model.Party.SupplementalIncidents[shuffle[i]];
+                if (!incident.IsComplete
+                    && AddIncident(incident)
+                    && _incidents.Count == max)
                 {
-                    added = (from i in AmbitionApp.GetModel<CalendarModel>().GetUnscheduledEvents<IncidentVO>()
-                              where !i.IsComplete
-                                 && (Array.IndexOf(i.Factions, _model.Party.Faction) >= 0 || Array.IndexOf(i.Factions, FactionType.Neutral) >= 0)
-                                 && (i.Chapters == null || i.Chapters.Length == 0 || Array.IndexOf(i.Chapters, AmbitionApp.GetModel<GameModel>().Chapter) >= 0)
-                                 && AmbitionApp.CheckRequirements(i.Requirements)
-                              select i);
-                    IEnumerable<IncidentVO> characterIncidents = added.Where(i => i.GetCharacters().Intersect(_model.Party.Guests.Select(g => g.Name)).Count() >= 1);
-                    added = TakeRandom(characterIncidents, result.Count, count - result.Count);
-                    result.AddRange(added);
-                    if (added.Count() < count)
-                    {
-                        added = added.Except(characterIncidents);
-                        added = TakeRandom(added, result.Count, count - result.Count);
-                        result.AddRange(added);
-                    }
+                    AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, _incidents.ToArray());
+                    return; // Early out for supplemental incident
                 }
             }
-            _model.Incidents = result.ToArray();
-            AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, _model.Incidents);
+
+            IncidentVO[] unscheduled = AmbitionApp.GetModel<CalendarModel>().GetUnscheduledEvents<IncidentVO>();
+            shuffle = new int[unscheduled.Length];
+            for (int i = shuffle.Length - 1; i > 0; --i)
+            {
+                shuffle[i] = RNG.Generate(i);
+                shuffle[shuffle[i]] = i;
+            }
+            for (int i = shuffle.Length - 1; i >= 0; --i)
+            {
+                incident = unscheduled[shuffle[i]];
+                if (!incident.IsComplete
+                    && CheckFaction(incident)
+                    && AddIncident(incident)
+                    && _incidents.Count == max)
+                {
+                    AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, _incidents.ToArray());
+                    return; // Early out for random incidents
+                }
+            }
+
+            AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, _incidents.ToArray());
         }
 
-        private IEnumerable<IncidentVO> TakeRandom(IEnumerable<IncidentVO> incidents, int from, int count)
+        private bool CheckFaction(IncidentVO incident)
         {
-            List<IncidentVO> result = new List<IncidentVO>();
-            if (incidents == null) return result;
-            IncidentVO[] arr = incidents.ToArray();
-            int numIncidents = arr.Length;
-            if (numIncidents - from < count) count = numIncidents - from;
-            int index;
-            IncidentVO temp;
-            for (int i = 0; i < numIncidents && result.Count < count; i++)
+            if (incident == null) return false;
+            foreach (FactionType faction in incident.Factions)
             {
-                index = RNG.Generate(i, numIncidents);
-                temp = arr[index];
-                arr[index] = arr[i];
-                arr[i] = temp;
-                if (temp != null && !temp.IsComplete)
-                    result.Add(temp);
+                if (faction == _model.Party.Faction) return true;
             }
-            return result;
+            return false;
+        }
+
+        private bool AddIncident(IncidentVO incident)
+        {
+            if (incident == null) return false;
+            List<string> currentGuests = new List<string>();
+            foreach(MomentVO moment in incident.Nodes)
+            {
+                if (!AddValidName(moment?.Character1.Name, currentGuests) || !AddValidName(moment?.Character2.Name, currentGuests))
+                {
+                    return false;
+                }
+            }
+            _guests.AddRange(currentGuests);
+            _incidents.Add(incident);
+            return true;
+        }
+
+        private bool AddValidName(string guest, List<string> currentGuests)
+        {
+            if (!string.IsNullOrEmpty(guest)) return true;
+            if (!currentGuests.Contains(guest))
+            {
+                if (_guests.Contains(guest)) return false;
+                _guests.Add(guest);
+                currentGuests.Add(guest);
+            }
+            return true;
         }
     }
 }

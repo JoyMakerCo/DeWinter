@@ -1,44 +1,83 @@
 ﻿using Core;
+using System.Collections.Generic;
+using UFlow;
 
 namespace Ambition
 {
     public class RegisterIncidentControllerCmd : ICommand
     {
+        private string FLOW_ID = "IncidentController";
+        private string _lastState = null;
+        private List<string> _registeredStates = new List<string>();
+
         public void Execute()
         {
-            AmbitionApp.RegisterModel<IncidentModel>();
-            AmbitionApp.RegisterCommand<UpdateIncidentsCmd>(CalendarMessages.UPDATE_CALENDAR);
-            AmbitionApp.RegisterCommand<ScheduleIncidentCmd, IncidentVO>(CalendarMessages.SCHEDULED);
-            AmbitionApp.RegisterCommand<CompleteIncidentCmd, IncidentVO>(CalendarMessages.CALENDAR_EVENT_COMPLETED);
+            Decision<CheckIncidentLink>("StartIncidentDecision", "StartIncidents", "NoIncidents");
+            State<StartIncidentState>("StartIncident");
+            State<MomentState>("Moment");
+            State<TransitionInput>("Transition");
+            _lastState = null;
+            Link("Transition", "Moment");
+            State<MessageInputState>("EndIncidentInput", IncidentMessages.END_INCIDENT);
+            Link("Moment", "EndIncidentInput");
+            State<EndIncidentState>("EndIncident");
+            Decision<CheckIncidentLink>("CheckNextIncident", "NextIncident", "EndIncidents");
+            Link("NextIncident", "StartIncident");
 
-            // INCIDENT MACHINE
-            AmbitionApp.RegisterState("IncidentController", "StartIncidentDecision"); // If there are no transitions, don't bother chaging scenes
-            AmbitionApp.RegisterState("IncidentController", "StartIncidents"); // Fade out to the first incident
-            AmbitionApp.RegisterState<LoadSceneState, string>("IncidentController", "LoadIncidentScene", SceneConsts.INCIDENT_SCENE); // Fade out to the first incident
-            AmbitionApp.RegisterState<SendMessageState, string>("IncidentController", "ShowHeader", GameMessages.SHOW_HEADER); // Fade out to the first incident
-            AmbitionApp.RegisterState<StartIncidentState>("IncidentController", "StartIncident"); // Start the incident and fade in
-            AmbitionApp.RegisterState<MomentState>("IncidentController", "Moment"); // Send out moment and transition data
-            AmbitionApp.RegisterState("IncidentController", "Transition"); // Multiple options; advance to the selected moment
-            AmbitionApp.RegisterState<EndIncidentState>("IncidentController", "EndIncident"); // No more moments; end the incident
-            AmbitionApp.RegisterState("IncidentController", "CheckNextIncident");
-            AmbitionApp.RegisterState<SendMessageState, string>("IncidentController", "EndIncidents", IncidentMessages.EXIT_INCIDENTS);
-            AmbitionApp.RegisterState<FadeInState>("IncidentController", "ExitIncidents");
+            AmbitionApp.BindState<FadeOutInState>(FLOW_ID, "NextIncident");
+            AmbitionApp.BindState<LoadSceneState>(FLOW_ID, "StartIncidents", SceneConsts.INCIDENT_SCENE);
+        }
 
-            AmbitionApp.RegisterLink<CheckIncidentLink>("IncidentController", "StartIncidentDecision", "StartIncidents");
-            AmbitionApp.RegisterLink("IncidentController", "StartIncidentDecision", "EndIncidents"); // Don't bother transitioning if there are no incidents
-            AmbitionApp.RegisterLink("IncidentController", "EndIncidents", "ExitIncidents");
+        private void State(string StateID)
+        {
+            if (!_registeredStates.Contains(StateID))
+            {
+                AmbitionApp.RegisterState(FLOW_ID, StateID);
+                _registeredStates.Add(StateID);
+            }
+            Link(_lastState, StateID);
+        }
 
-            AmbitionApp.RegisterLink<FadeOutLink>("IncidentController", "StartIncidents", "LoadIncidentScene");
-            AmbitionApp.RegisterLink("IncidentController", "LoadIncidentScene", "ShowHeader");
-            AmbitionApp.RegisterLink("IncidentController", "ShowHeader", "StartIncident");
-            AmbitionApp.RegisterLink<FadeInLink>("IncidentController", "StartIncident", "Moment");
-            AmbitionApp.RegisterLink<CheckTransitionLink>("IncidentController", "Moment", "Transition");
-            AmbitionApp.RegisterLink<CheckEndIncidentLink>("IncidentController", "Moment", "EndIncident");
-            AmbitionApp.RegisterLink("IncidentController", "Transition", "Moment");
+        private void State<S>(string StateID, params object[] parameters) where S:UState, new()
+        {
+            if (!_registeredStates.Contains(StateID))
+            {
+                AmbitionApp.RegisterState<S>(FLOW_ID, StateID, parameters);
+                _registeredStates.Add(StateID);
+            }
+            Link(_lastState, StateID);
+        }
 
-            AmbitionApp.RegisterLink<FadeOutLink>("IncidentController", "EndIncident", "CheckNextIncident");
-            AmbitionApp.RegisterLink<CheckIncidentLink>("IncidentController", "CheckNextIncident", "StartIncident");
-            AmbitionApp.RegisterLink("IncidentController", "CheckNextIncident", "EndIncidents");
+        private void Decision<L>(string StateID, string Yes, string No) where L : ULink, new()
+        {
+            State(StateID);
+            if (!_registeredStates.Contains(Yes))
+            {
+                AmbitionApp.RegisterState(FLOW_ID, Yes);
+                _registeredStates.Add(Yes);
+            }
+            if (!_registeredStates.Contains(No))
+            {
+                AmbitionApp.RegisterState(FLOW_ID, No);
+                _registeredStates.Add(No);
+            }
+            Link<L>(StateID, Yes);
+            Link(StateID, No);
+            _lastState = Yes;
+        }
+
+        private void Link(string state0, string state1)
+        {
+            if (!string.IsNullOrEmpty(state0) && !string.IsNullOrEmpty(state1))
+                AmbitionApp.RegisterLink(FLOW_ID, state0, state1);
+            _lastState = state1;
+        }
+
+        private void Link<L>(string state0, string state1) where L : ULink, new()
+        {
+            if (!string.IsNullOrEmpty(state0) && !string.IsNullOrEmpty(state1))
+                AmbitionApp.RegisterLink<L>(FLOW_ID, state0, state1);
+            _lastState = state1;
         }
     }
 }

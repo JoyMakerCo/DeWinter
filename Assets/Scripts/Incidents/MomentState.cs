@@ -7,7 +7,7 @@ namespace Ambition
 {
 	public class MomentState : UState
 	{
-		public override void OnEnterState(string[] args)
+		public override void OnEnterState()
 		{
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			MomentVO moment = model.Moment;

@@ -9,6 +9,7 @@ namespace Ambition
     [Saveable]
     public class ParisModel : Model, IResettable
     {
+<<<<<<< Updated upstream
         public int NumExploreLocations = 5;
 
         [JsonIgnore]
@@ -24,26 +25,37 @@ namespace Ambition
 
         [JsonIgnore] // List of explorable locations and their requirements
         public Dictionary<string, RequirementVO[]> Explorable = new Dictionary<string, RequirementVO[]>();
+=======
+        public LocationVO Location;
+
+        [JsonProperty("location")]
+        public string LocationID;
+>>>>>>> Stashed changes
 
         [JsonProperty("daily")] // Explorable locations available "Today"
-        public List<string> Daily = new List<string>();
+        public string[] Dailies = null; // This will be populated when Daily locations have been selected
 
-        [JsonIgnore]
-        // Locations that are unlocked via requirements and directly added to Known locations
-        public Dictionary<string, RequirementVO[]> Locations = new Dictionary<string, RequirementVO[]>();
+        [JsonProperty("new")] // New recently discoved locations
+        public List<string> New = new List<string>(); // These locations will animate in, and then be appended to the Known list
 
-        [JsonProperty("known")] // Known locations
-        public List<string> Known = new List<string>();
+        [JsonProperty("locations")] // Known locations
+        public List<string> Locations = new List<string>();
 
+<<<<<<< Updated upstream
         [JsonProperty("visited")] // One-Shot locations that have been visited
+=======
+        [JsonProperty("visited")] // Locations that have been visited. This prevents one-shot locations from redisplaying.
+>>>>>>> Stashed changes
         public List<string> Visited = new List<string>();
 
         public void Reset()
         {
             Location = null;
+            LocationID = null;
+            Dailies = null;
+            New = null;
             Locations.Clear();
             Visited.Clear();
-            Daily.Clear();
         }
     }
 }

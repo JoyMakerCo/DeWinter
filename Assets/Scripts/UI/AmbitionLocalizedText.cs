@@ -11,6 +11,8 @@ namespace Ambition
     // Otherwise, the stored generated key for the element will be used instead.
     public class AmbitionLocalizedText : MonoBehaviour
     {
+        [SerializeField] private string _localizationKey;
+
         [Serializable]
         public struct Substitution
         {
@@ -28,10 +30,17 @@ namespace Ambition
         private Dictionary<string, string> _substitutions;
 
 #if UNITY_EDITOR
+<<<<<<< Updated upstream
         private LocalizationConfig _config;
 #endif
 
         private void Awake()
+=======
+    [CustomPropertyDrawer(typeof(AmbitionLocalizedText.LocalizedTextField))]
+    public class LocalizationRowDrawer : PropertyDrawer
+    {
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+>>>>>>> Stashed changes
         {
             _text = GetComponent<Text>();
             _substitutions = new Dictionary<string, string>();

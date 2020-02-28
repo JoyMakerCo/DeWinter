@@ -768,7 +768,10 @@ GameObject:
   - component: {fileID: 224793949982282544}
   - component: {fileID: 222480454843146658}
   - component: {fileID: 114439342563710696}
+<<<<<<< Updated upstream
   - component: {fileID: 9023600012131716571}
+=======
+>>>>>>> Stashed changes
   m_Layer: 5
   m_Name: YvettePaperDoll
   m_TagString: Untagged
@@ -817,7 +820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -833,6 +836,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< Updated upstream
 --- !u!114 &9023600012131716571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,6 +850,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DressConfig: {fileID: 11400000, guid: 0e51a123bf2be44d391d80d5b3f8b26a, type: 2}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1074370867239112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,17 +3164,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2484654749456712402}
-        m_MethodName: SendGameMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: EXIT_SCENE
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1493079344117226
@@ -3365,6 +3360,11 @@ GameObject:
   m_Component:
   - component: {fileID: 224228714540193760}
   - component: {fileID: 222424115031423564}
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 3410875830914675957}
+  - component: {fileID: 8770244328014507980}
+>>>>>>> Stashed changes
   m_Layer: 5
   m_Name: PartyLoadOut
   m_TagString: Untagged
@@ -3408,6 +3408,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522327123172190}
   m_CullTransparentMesh: 0
+<<<<<<< Updated upstream
+=======
+--- !u!114 &3410875830914675957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522327123172190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: 
+  LocalizedText:
+  - TextField: {fileID: 114333357804493272}
+    LocalizationKey: wardrobe.go_to_party
+  - TextField: {fileID: 114202741490571446}
+    LocalizationKey: wardrobe.outfits
+  - TextField: {fileID: 114712335786714984}
+    LocalizationKey: wardrobe.accessories
+  - TextField: {fileID: 114543794899940950}
+    LocalizationKey: wardrobe.sort_by
+  - TextField: {fileID: 114678956465849826}
+    LocalizationKey: luxury
+  - TextField: {fileID: 114896910634922942}
+    LocalizationKey: modesty
+  - TextField: {fileID: 114758701411357118}
+    LocalizationKey: novelty
+  - TextField: {fileID: 114736898186625060}
+    LocalizationKey: wardrobe.tonights_party
+--- !u!114 &8770244328014507980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522327123172190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921437b6b8c22446984afc7f08a6eea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExitButton: {fileID: 2696265123134136493}
+  OutfitConfig: {fileID: 11400000, guid: 5f1f8c74112074f1fa8472f34419b8ac, type: 2}
+  Doll: {fileID: 114439342563710696}
+>>>>>>> Stashed changes
 --- !u!1 &1598387275275044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,6 +3871,23 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.95686275, b: 0.78431374, a: 0.5882353}
   m_EffectDistance: {x: 1, y: -0.5}
   m_UseGraphicAlpha: 1
+<<<<<<< Updated upstream
+=======
+--- !u!114 &3737349358119860596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676218252831890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _localizationKey: 
+  LocalizedText: []
+>>>>>>> Stashed changes
 --- !u!1 &1677780789314138
 GameObject:
   m_ObjectHideFlags: 0

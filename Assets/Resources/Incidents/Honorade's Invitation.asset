@@ -16,10 +16,10 @@ MonoBehaviour:
   _Links: 
   _Positions:
   - {x: 0, y: 0}
-  - {x: 2, y: 76}
-  - {x: 1, y: 142}
+  - {x: 2, y: 75}
+  - {x: 2, y: 142}
   - {x: 4, y: 213}
-  - {x: 4, y: 293}
+  - {x: 4, y: 292}
   - {x: -5, y: 366}
   - {x: -4, y: 434}
   - {x: -5, y: 506}
@@ -122,7 +122,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/sfx_open_letter
         Parameters: []
     - Text: "\x18'<i>Ch\uBCE5</i> Yvette,\n\nAs of late, I've been feeling even even
         better than I did at the beginning of our last fateful encounter. My gardens
@@ -202,7 +202,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 8
+        ID: The Mistress of Command
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -236,42 +239,50 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -281,11 +292,48 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
     Requirements: []
+=======
+    LocalizationKey: Honorade's Invitation.asset.c2c85d81043254a4989f3edbb9bd2968
+    Political: 0
+    _date: 564423552000000000
+    Requirements:
+    - Type: 8
+      ID: The Eyes of Society
+      Value: 1
+      Operator: 4
+    - Type: 5
+      ID: Honorade
+      Value: 20
+      Operator: 4
+>>>>>>> Stashed changes
   _factions: 000000000000
-  _chapters: 00000000
+  _chapters: 00000001
   _date: 0
+<<<<<<< Updated upstream
   _localizationKey: Assets/Resources/Incidents/Honorade's Invitation.asset.
   _nodeText: []
+=======
+  _nodeText:
+  - You wake up and stretch, feeling a twinge in your back as you curse whatever contorted
+    position you manage to fall asleep in last night. Judging from the noise outside,
+    Paris has yet to become anymore peaceful during your night's rest.
+  - Just as you wonder what Camille has prepared for your breakfast, you notice the
+    faint smell of perfume. It's both floral and bitter.
+  - There's a letter on the bedside table. Judging from the rich purple of the wax
+    seal, as well as the scent of the perfume, it was definitely sent by Madame Gazel.
+  - You open it, and begin the read the letter. The flowing cursive of her handwriting
+    is both beautiful and familiar.
+  - "\x18'<i>Ch\xE8re</i> Yvette,\n\nAs of late, I've been feeling even even better
+    than I did at the beginning of our last fateful encounter. My gardens are doing
+    especially well, and I'd love for you to see them.'"
+  - '''Here, there will be no chance of us being interrupted. I await your arrival.'''
+  - "<i>Bien affectueusement</i>,\n\nMadame Gazel\x19"
+  - (The Mistress of Command is now available to visit in the Paris map)
+  - Fanning yourself with the letter to drive away some of the summer heat, you can't
+    help but notice the smell of her perfume on the letter again. You idly realize
+    that you could go there tonight if you were willing to brave the streets of Paris.
+>>>>>>> Stashed changes
   _linkText: []

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Le Petit Mogol
   m_EditorClassIdentifier: 
   _Nodes: 
-  _Links: 
+  _Links: 00000000
   _Positions:
   - {x: 0, y: 0}
   - {x: 1, y: 96}
@@ -317,68 +317,89 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 1
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 2
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 3
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 4
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 5
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I have an important party soon, and I need to look amazing." <No Tutorial>'
+    - index: 6
+      Text: '"I have an important party soon, and I need to look amazing." <No Tutorial>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"All of this is so new... what can you tell me about outfits and fashion?"
+    - index: 7
+      Text: '"All of this is so new... what can you tell me about outfits and fashion?"
         <Tutorial>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"What is that smell?"'
+    - index: 8
+      Text: '"What is that smell?"'
       xor: 0
       Rewards: []
       Requirements: []
+<<<<<<< Updated upstream
       Flags: []
     - Text: 
+=======
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 9
+      Text: 
+>>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 10
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I have an important party soon, and I need to look amazing." <No Tutorial>'
+    - index: 11
+      Text: '"I have an important party soon, and I need to look amazing." <No Tutorial>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"All of this is so new... what can you tell me about outfits and fashion?"
+    - index: 12
+      Text: '"All of this is so new... what can you tell me about outfits and fashion?"
         <Tutorial>'
       xor: 0
       Rewards: []
@@ -389,7 +410,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 00000000
+<<<<<<< Updated upstream
     LocalizationKey: 
+=======
+    LocalizationKey: Le Petit Mogol.asset.fc67e03194391d7419a362652b77d8c3
+    Political: 0
+    _date: -1
+>>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000

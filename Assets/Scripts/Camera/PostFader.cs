@@ -5,15 +5,21 @@ namespace Ambition
 {
     public class PostFader : MonoBehaviour
     {
-        private const float DEFAULT_TIME = 1.0f;
         public Shader Effect;
+        public CanvasGroup Blocker; // Assigned from the main Canvas
+        private const float DEFAULT_TIME = 1.0f;
         private Material _material;
         private float _fade = 1f;
-        private bool _fadeIn;
+        private bool _fadeIn = true;
+        private bool _fading = false;
 
         // Creates a private material used to the effect
         void Awake ()
         {
+            Blocker.interactable = true;
+            Blocker.blocksRaycasts = true;
+            Blocker.ignoreParentGroups = true;
+
             _material = new Material(Effect);
             AmbitionApp.Subscribe(GameMessages.FADE_OUT, HandleFadeOut);
             AmbitionApp.Subscribe(GameMessages.FADE_IN, HandleFadeIn);
@@ -38,38 +44,47 @@ namespace Ambition
 
         private void HandleFade(bool fadeIn, float time)
         {
-            StopAllCoroutines();
+            if (_fading)
+            {
+                if (fadeIn == _fadeIn) return;
+                else
+                {
+                    StopAllCoroutines();
+                    Blocker.interactable = false;
+                    AmbitionApp.SendMessage(_fadeIn ? GameMessages.FADE_IN_COMPLETE : GameMessages.FADE_OUT_COMPLETE);
+                }
+            }
             _fadeIn = fadeIn;
-            if (_fadeIn) StartCoroutine(FadeIn(time*(1f-_fade)));
-            else StartCoroutine(FadeOut(time * _fade));
-        }
-
-        // Postprocess the image
-       IEnumerator FadeOut(float time)
-       {
-            for (float d = _fade / time; _fade > 0f; _fade -= d*Time.deltaTime)
-            {
-                yield return null;
-            }
-            _fade = 0f;
-           AmbitionApp.SendMessage(GameMessages.FADE_OUT_COMPLETE);
-        }
-
-        // Postprocess the image
-        IEnumerator FadeIn(float time)
-        {
-            for (float d = (1f-_fade) / time; _fade < 1f; _fade += d * Time.deltaTime)
-            {
-                yield return null;
-            }
-            _fade = 1f;
-            AmbitionApp.SendMessage(GameMessages.FADE_IN_COMPLETE);
+            StartCoroutine(Fade(time));
         }
 
         private void HandleInterruptFade()
         {
             StopAllCoroutines();
             _fade = _fadeIn ? 1f : 0f;
+            AmbitionApp.SendMessage(_fadeIn ? GameMessages.FADE_IN_COMPLETE : GameMessages.FADE_OUT_COMPLETE);
+        }
+
+        // Postprocess the image
+        IEnumerator Fade(float time)
+       {
+            if (_fadeIn)
+            {
+                for (float d = 1f / time; _fade < 1f; _fade += d * Time.deltaTime)
+                {
+                    yield return null;
+                }
+                _fade = 1f;
+            }
+            else
+            {
+                for (float d = 1f / time; _fade > 0f; _fade -= d * Time.deltaTime)
+                {
+                    yield return null;
+                }
+                _fade = 0f;
+            }
+            Blocker.interactable = _fadeIn;
             AmbitionApp.SendMessage(_fadeIn ? GameMessages.FADE_IN_COMPLETE : GameMessages.FADE_OUT_COMPLETE);
         }
 

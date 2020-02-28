@@ -31,6 +31,9 @@ namespace Ambition
         [JsonProperty("complete")]
         public bool IsComplete { set; get; }
 
+        [JsonProperty("political")]
+        public bool Political = false;
+
         [JsonIgnore]
         public DateTime Date { set; get; }
 
@@ -64,6 +67,11 @@ namespace Ambition
             this.Name = incident.Name;
             this.Date = incident.Date;
             this.OneShot = incident.OneShot;
+<<<<<<< Updated upstream
+=======
+            this.LocalizationKey = incident.LocalizationKey;
+            this.Political = incident.Political;
+>>>>>>> Stashed changes
         }
 
         public string[] Dump()

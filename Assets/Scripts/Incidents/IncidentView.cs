@@ -12,34 +12,31 @@ namespace Ambition
 	{
 	    public Text descriptionText;
 		public Text SpeakerName;
-
 	    public AvatarView Character1;
 		public AvatarView Character2;
-		private Image _background;
-        private IncidentVO _incident;
+		public RawImage Background;
+
+        private string _localizationKey;
 
 	    void Awake ()
 		{
-            _background = gameObject.GetComponent<Image>();
             AmbitionApp.Subscribe<MomentVO>(HandleMoment);
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Subscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
         void OnDestroy ()
 		{
             AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Unsubscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
-        private void HandleIncident(IncidentVO incident) => _incident = incident;
-        private void HandleEndIncident() => _incident = null;
+        private void HandleIncident(IncidentVO incident) => _localizationKey = incident?.LocalizationKey;
 
         private void HandleMoment(MomentVO moment)
 		{
             if (moment != null)
             {
+<<<<<<< Updated upstream
                 string result = null;
                 if (_incident?.Nodes != null)
                 {
@@ -51,6 +48,10 @@ namespace Ambition
                 }
                 descriptionText.text = result;
                 if (moment.Background != null) _background.sprite = moment.Background;
+=======
+                descriptionText.text = AmbitionApp.Localize(_localizationKey + ".node." + moment.Index.ToString());
+                if (moment.Background != null) Background.texture = moment.Background.texture;
+>>>>>>> Stashed changes
                 Character1.ID = moment.Character1.AvatarID;
                 Character1.Pose = moment.Character1.Pose;
                 Character2.ID = moment.Character2.AvatarID;
@@ -77,6 +78,10 @@ namespace Ambition
                         break;
                 }
             }
-		}
+            else
+            {
+                Debug.Log("How did I get here??");
+            }
+        }
 	}
 }

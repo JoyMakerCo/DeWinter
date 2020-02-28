@@ -15,13 +15,13 @@ namespace Ambition
 		{
 			_animator = GetComponent<Animator>();
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleStartIncident);
-            AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.Subscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
         void OnDestroy ()
 		{
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleStartIncident);
-            AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.Unsubscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
         private void HandleStartIncident(IncidentVO incident)
@@ -29,7 +29,7 @@ namespace Ambition
             _animator.SetBool(ACTIVE, true);
 		}
 
-        private void HandleEndIncident(IncidentVO incident)
+        private void HandleEndIncident()
         {
             _animator.SetBool(ACTIVE, false);
         }

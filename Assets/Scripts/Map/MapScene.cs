@@ -30,8 +30,6 @@ namespace Ambition
 
                 if (_loadedMap != null)
                     GameObject.Instantiate(_loadedMap.gameObject, this.transform, false);
-
-                AmbitionApp.SendMessage(GameMessages.SET_TITLE, map?.Name ?? "");
             }
         }
     }

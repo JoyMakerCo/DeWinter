@@ -74,7 +74,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/sfx_open_letter
         Parameters: []
     - Text: '''<i>Chere<i> Yvette,
 
@@ -180,27 +180,32 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -210,11 +215,56 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
+<<<<<<< Updated upstream
     LocalizationKey: 
     Requirements: []
+=======
+    LocalizationKey: Antoine's Invitation.asset.c05c5d68149367e4e9276586f9a964b3
+    Political: 0
+    _date: 0
+    Requirements:
+    - Type: 5
+      ID: Antoine
+      Value: 8
+      Operator: 4
+    - Type: 8
+      ID: Internal Divisions
+      Value: 1
+      Operator: 4
+>>>>>>> Stashed changes
   _factions: 000000000000
-  _chapters: 00000000
+  _chapters: 00000101
   _date: 0
+<<<<<<< Updated upstream
   _localizationKey: Assets/Resources/Incidents/Antoine's Invitation.asset.
   _nodeText: []
+=======
+  _nodeText:
+  - This morning, it takes you a touch longer than usual to leave the warm cocoon
+    of your blankets. When you do, you notice that Camille has left a letter on your
+    nightstand. The wax seal shines red like fresh blood.
+  - 'You break the seal with a deft slice from your letter opener. You can immediately
+    tell that the handwriting is Antoine''s. He writes quickly enough that you can
+    find small spatters of ink at the top of his compressed, precise letters. '
+  - '''<i>Chere<i> Yvette,
+
+
+    I''ve grown dissatisfied with the ceaseless inaction of my peers and have decided
+    to do something myself. I would like you to join me, should you find yourself
+    inclined to the cause of liberty''
+
+
+    The letter goes on to describe a location where you could meet him.'
+  - '''Fear not. I''m certain that you will enjoy this as much as the royalists will
+    hate it.
+
+
+    <i>Affectueusement</i>,
+
+
+    - Antoine'''
+  - (Direct Action is now available to visit in the Paris map)
+  - You check his directions against your map. If you head out now, it might be possible
+    to meet up with Antoine today.
+>>>>>>> Stashed changes
   _linkText: []
