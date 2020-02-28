@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: A Certain Notoriety
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  _Nodes: 
-=======
   _Nodes: 17000000
->>>>>>> Stashed changes
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -24,13 +20,13 @@ MonoBehaviour:
   - {x: 137, y: 221}
   - {x: -88, y: 389}
   - {x: -88, y: 460}
-  - {x: -89, y: 542}
+  - {x: -89, y: 543}
   - {x: -91, y: 611}
   - {x: -209, y: 735}
   - {x: 40, y: 734}
-  - {x: 145, y: 1016}
-  - {x: -7, y: 1098}
-  - {x: 299, y: 1103}
+  - {x: 154, y: 1116}
+  - {x: 2, y: 1213}
+  - {x: 297, y: 1208}
   - {x: 1, y: 147}
   - {x: -86, y: 223}
   - {x: -86, y: 320}
@@ -42,10 +38,7 @@ MonoBehaviour:
   - {x: 273, y: 605}
   - {x: 276, y: 706}
   - {x: 263, y: 943}
-<<<<<<< Updated upstream
-=======
   - {x: 150, y: 1043}
->>>>>>> Stashed changes
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -64,17 +57,18 @@ MonoBehaviour:
     - {x: 14, y: 3}
     - {x: 7, y: 15}
     - {x: 8, y: 15}
-    - {x: 15, y: 9}
     - {x: 13, y: 16}
     - {x: 2, y: 16}
     - {x: 16, y: 17}
     - {x: 17, y: 18}
     - {x: 18, y: 19}
-    - {x: 19, y: 9}
     - {x: 18, y: 20}
     - {x: 20, y: 21}
     - {x: 21, y: 22}
-    - {x: 22, y: 9}
+    - {x: 22, y: 23}
+    - {x: 19, y: 23}
+    - {x: 15, y: 23}
+    - {x: 23, y: 9}
     Nodes:
     - Text: "You wake up the next morning to a polite knock on your bedroom\u2019s
         door frame."
@@ -93,10 +87,10 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/door_knock_soft
         Parameters: []
     - Text: "Camille enters, carrying a small armload of letters.\n\n\u201CUh\u2026
         madame.\u201D Camille starts, both confused and hesitant."
@@ -139,7 +133,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
     - Text: "You\u2019re don\u2019t think that\u2019s exactly how it happened, but
         decide against fretting over the details."
@@ -250,7 +244,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: "\u201CConsider it... un-minded, madame.\u201D"
       Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
@@ -271,7 +265,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: "\u201CIn fact, I\u2019m sure that anyone who really judges you fairly
         is going to love you.\u201D"
@@ -305,7 +299,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -403,7 +397,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
     - Text: "\u201CIn any case, this is your chance to meet people in the city who
         don\u2019t hate you and Armand.\u201D"
@@ -448,7 +442,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_bored
         Parameters: []
     - Text: "\u201CHowever...\u201D she continues. \u201CThat dreadful host must have
         enemies too!\u201D"
@@ -514,7 +508,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: "\u201CMadame, you\u2019re the mistress of this house,\u201D Camille states
         matter of factly. \u201CI can\u2019t allow any insult against your honor to
@@ -537,7 +531,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: "\u201CI know that you hate them, so I hate them as well. In fact, I have
         already sworn to never speak their name again!\u201D"
@@ -584,8 +578,6 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-<<<<<<< Updated upstream
-=======
     - Text: "\u201C... but I\u2019m getting off topic, madame. I think that these
         invitations are your chance to meet good people in the city who don\u2019t
         hate you and Armand.\u201D \r"
@@ -627,7 +619,6 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
->>>>>>> Stashed changes
     LinkData:
     - index: 0
       Text: 
@@ -658,15 +649,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: "\u201CYes, let us never mind that. Never mind it again.\u201D"
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: "\u201C<i>Merci</i> Camille, I really hope that\u2019s true.\u201D"
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
@@ -682,7 +664,6 @@ MonoBehaviour:
         Value: 1
     - index: 0
       Text: "\u201C<i>Merci</i> Camille, I really hope that\u2019s true.\u201D"
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -698,17 +679,12 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: '"That''s all well and good, but how does any of this work?" <Tutorial>'
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 0
       Text: '"That''s all well and good, but how does any of this work?" <Tutorial>'
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -718,25 +694,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: "\u201CAre they for me, or are they for Armand?\u201D"
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: "\u201CWhy would anyone invite me to a party?\u201D"
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
@@ -761,7 +718,6 @@ MonoBehaviour:
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -784,32 +740,22 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: "\u201COh great, more chances to be humiliated by someone I don\u2019t
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 0
       Text: "\u201COh great, more chances to be humiliated by someone I don\u2019t
->>>>>>> Stashed changes
         even know.\u201D"
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -825,8 +771,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
@@ -845,7 +789,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
->>>>>>> Stashed changes
       Flags: []
     - index: 0
       Text: 
@@ -853,12 +796,8 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: "\u201CYes! Wait\u2026 we?\u201D"
-=======
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -886,22 +825,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: A Certain Notoriety.asset.f81362dfc977c49dfb8bf01088e567e7
     Political: 0
     _date: 564309504000000000
->>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: 564309504000000000
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/A Certain Notoriety.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - "You wake up the next morning to a polite knock on your bedroom\u2019s door frame."
   - "Camille enters, carrying a small armload of letters.\n\n\u201CUh\u2026 madame.\u201D
@@ -980,4 +910,3 @@ MonoBehaviour:
   - 
   - 
   - 
->>>>>>> Stashed changes

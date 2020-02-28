@@ -16,27 +16,6 @@ MonoBehaviour:
   _Links: 01000000
   _Positions:
   - {x: 0, y: 0}
-<<<<<<< Updated upstream
-  - {x: 0, y: 105}
-  - {x: -172, y: 188}
-  - {x: 180, y: 185}
-  - {x: -312, y: 279}
-  - {x: -58, y: 277}
-  - {x: 188, y: 273}
-  - {x: 190, y: 521}
-  - {x: -117, y: 600}
-  - {x: -48, y: 357}
-  - {x: 80, y: 422}
-  - {x: -258, y: 432}
-  - {x: -114, y: 525}
-  - {x: 190, y: 579}
-  - {x: 38, y: 810}
-  - {x: 39, y: 871}
-  - {x: 197, y: 694}
-  - {x: 200, y: 640}
-  - {x: 201, y: 752}
-  - {x: -106, y: 687}
-=======
   - {x: -26, y: 687}
   - {x: -198, y: 770}
   - {x: 154, y: 767}
@@ -73,10 +52,8 @@ MonoBehaviour:
   - {x: 260, y: 345}
   - {x: 487, y: 268}
   - {x: 485, y: 346}
->>>>>>> Stashed changes
   Incident:
     Links:
-    - {x: 0, y: 1}
     - {x: 2, y: 4}
     - {x: 2, y: 5}
     - {x: 3, y: 6}
@@ -95,13 +72,10 @@ MonoBehaviour:
     - {x: 1, y: 2}
     - {x: 1, y: 3}
     - {x: 13, y: 17}
-    - {x: 17, y: 16}
     - {x: 16, y: 18}
     - {x: 18, y: 14}
     - {x: 8, y: 19}
     - {x: 19, y: 14}
-<<<<<<< Updated upstream
-=======
     - {x: 17, y: 20}
     - {x: 20, y: 16}
     - {x: 21, y: 22}
@@ -125,16 +99,15 @@ MonoBehaviour:
     - {x: 26, y: 35}
     - {x: 35, y: 36}
     - {x: 36, y: 21}
->>>>>>> Stashed changes
     Nodes:
     - Text: "Immediately upon entering the vestibule, you\u2019re greeted by a doorman
         holding a small ledger. While he isn\u2019t physically barring your entry,
         his manner certainly is.\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
       Character1:
-        AvatarID: Valet
-        Pose: neutral
-        Name: Doorman
+        AvatarID: 
+        Pose: 
+        Name: 
       Character2:
         AvatarID: 
         Pose: 
@@ -151,13 +124,13 @@ MonoBehaviour:
         - Name: Conversation Start
           Value: 0
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Name: event:/Ambient SFX/Amb_SmallParty_outdoor
         Parameters: []
       OneShotSFX:
-        Name: event:/One Shot SFX/door_latch
+        Name: 
         Parameters: []
     - Text: "\u201CName, Madame?\u201D he asks expectantly."
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -179,7 +152,7 @@ MonoBehaviour:
         Parameters: []
     - Text: "The doorman looks perplexed at you for a moment, flipping through his
         ledger.\r \u201CI do not see your name here, madame\u2026\u201D\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -200,7 +173,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "The valet looks shocked. \u201CBaron? Why are you dressed-\u201D"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: afraid
@@ -223,7 +196,7 @@ MonoBehaviour:
     - Text: "\u201CAh, that is most unfortunate.\u201D the footman replies, surprisingly
         disappointed. \u201CViscountess de Foix was so looking forward to seeing him
         tonight. Please convey our deepest regrets at his absence.\u201D\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -247,7 +220,7 @@ MonoBehaviour:
         back and forth between the pages of his ledger before his finds what he\u2019s
         looking for. \u201CAh yes! You are the date to Baron Armand de Marbo. If I
         so remember, you are his fianc\xE9e, <i>non</i>?\u201D\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -269,7 +242,7 @@ MonoBehaviour:
         Parameters: []
     - Text: "A moment later he composes himself. \r\u201CAh, I see, you are the Baron\u2019s
         date. My apologies.\u201D"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -290,7 +263,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "\u201CIs there anything I can get you?\u201D"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -314,7 +287,7 @@ MonoBehaviour:
         of it myself.\u201D\r\n\r\nYou hear some murmurs from other guests in the
         Vestibule. Your gratitude and enthusiasm seem to have made an impression on
         them, though the Doorman seems rather unphased.\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -336,7 +309,7 @@ MonoBehaviour:
         Parameters: []
     - Text: "He glances about the room expectantly. \u201CAnd\u2026 where may I find
         the good Baron?\u201D\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -360,7 +333,7 @@ MonoBehaviour:
         disappointed. \u201CThe good Viscountess de Foix was so looking forward to
         seeing him tonight. Please convey our deepest regrets at his absence, our
         our well-wishes to his health.\u201D\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -383,7 +356,7 @@ MonoBehaviour:
     - Text: "The doorman\u2019s eyes widen in surprise, that was certainly not the
         sort of answer he was expecting. \u201COh my Madame, what an unfortunate turn
         of events.\u201D\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: afraid
@@ -404,7 +377,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "\u201CYou must be quite upset, is there anything I can get you?\u201D"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -430,7 +403,7 @@ MonoBehaviour:
         of your generosity.\u201D Turning from you, he waves imperiously to another
         servant nearby, who takes the bottle from you. Afterwards, the servant dutifully
         scurries away.\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -439,7 +412,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -453,7 +426,7 @@ MonoBehaviour:
     - Text: "Before you can ask any other questions, he bows deeply you to you.\r\n\n\u201C<i>Pardon
         moi, Madame</i>. Viscountess de Foix instructed me specifically, to inform
         her as soon as you had arrived. We\u2019ve heard so much about you.\u201D"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -474,7 +447,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "\u201CEnjoy the party.\u201D He says with a smile, before leaving."
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: sly
@@ -498,7 +471,7 @@ MonoBehaviour:
         Your gratitude and enthusiasm seem to have made an impression on them, doing
         away with some of the tension in the air.\r\n\r\nSurprisingly, the doorman
         himself seems rather unphased.\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -519,7 +492,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "(You have spent 5 Livres)\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -543,7 +516,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "(You have reduced your peril)\r\n(You have gained a littled credibility)"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -570,7 +543,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "(You have gained a little of credibility)\r"
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Valet
         Pose: neutral
@@ -593,25 +566,6 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-<<<<<<< Updated upstream
-    LinkData:
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: "\u201CI am Baron Armand de Marbo\u2019s date. He could not attend.\u201D"
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: "\u201CWell then, look harder.\u201D"
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-=======
     - Text: "(You have gained a little of credibility)\r"
       Background: {fileID: 0}
       Character1:
@@ -993,7 +947,6 @@ MonoBehaviour:
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -1028,17 +981,12 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -1048,17 +996,12 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -1079,14 +1022,9 @@ MonoBehaviour:
       Flags:
       - Type: 4
         Phrase: incidents.transitions.livres.costtooltip
-<<<<<<< Updated upstream
-        Value: 0
-    - Text: "\u201CWould you be able to take this gift to our hostess? I thought she
-=======
         Value: 1
     - index: 0
       Text: "\u201CWould you be able to take this gift to our hostess? I thought she
->>>>>>> Stashed changes
         might appreciate some wine.\u201D"
       xor: 0
       Rewards: []
@@ -1094,14 +1032,9 @@ MonoBehaviour:
       Flags:
       - Type: 4
         Phrase: incidents.transitions.livres.costtooltip
-<<<<<<< Updated upstream
-        Value: 0
-    - Text: 
-=======
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -1111,10 +1044,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: "\u201CBaron Armand de Marbo\u201D"
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
@@ -1166,7 +1095,6 @@ MonoBehaviour:
       Flags: []
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -1326,22 +1254,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: Marcelle's Doorman.asset.73974ed19142f5747bc476f35b35452e
     Political: 0
     _date: -1
->>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/Marcelle's Doorman.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - 'When your carriage drops you off at the party, you find yourself waiting in line
     for quite some time. Looking at the other guests, you wonder if you''re underdressed...
@@ -1462,4 +1381,3 @@ MonoBehaviour:
   - 
   - 
   - 
->>>>>>> Stashed changes

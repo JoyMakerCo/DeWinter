@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,10 +17,7 @@ namespace Ambition
             _animator = GetComponent<Animator>();
             HandleIntroAnimation();
             AmbitionApp.Subscribe(CalendarMessages.NEXT_DAY, HandleLeaveLocation);
-<<<<<<< Updated upstream
-=======
             AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, title);
->>>>>>> Stashed changes
         }
 
         void OnDestroy()

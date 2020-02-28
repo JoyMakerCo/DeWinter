@@ -1,0 +1,1201 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: The Cardinal Sin
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 2, y: 59}
+  - {x: 0, y: 118}
+  - {x: 2, y: 189}
+  - {x: 0, y: 298}
+  - {x: -324, y: 337}
+  - {x: -22, y: 400}
+  - {x: 200, y: 407}
+  - {x: -24, y: 475}
+  - {x: -25, y: 545}
+  - {x: -24, y: 608}
+  - {x: -23, y: 673}
+  - {x: -20, y: 745}
+  - {x: -15, y: 885}
+  - {x: -16, y: 943}
+  - {x: -12, y: 1072}
+  - {x: -320, y: 492}
+  - {x: -319, y: 584}
+  - {x: -447, y: 660}
+  - {x: -227, y: 664}
+  - {x: -457, y: 732}
+  - {x: -468, y: 804}
+  - {x: -347, y: 935}
+  - {x: -224, y: 734}
+  - {x: -226, y: 808}
+  - {x: -328, y: 416}
+  - {x: -770, y: 334}
+  - {x: -772, y: 410}
+  - {x: -772, y: 540}
+  - {x: -10, y: 821}
+  - {x: -17, y: 1006}
+  - {x: -774, y: 471}
+  - {x: -349, y: 872}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 4, y: 6}
+    - {x: 4, y: 7}
+    - {x: 6, y: 8}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 11, y: 12}
+    - {x: 13, y: 14}
+    - {x: 16, y: 17}
+    - {x: 17, y: 18}
+    - {x: 17, y: 19}
+    - {x: 18, y: 20}
+    - {x: 20, y: 21}
+    - {x: 19, y: 23}
+    - {x: 23, y: 24}
+    - {x: 5, y: 25}
+    - {x: 25, y: 16}
+    - {x: 5, y: 26}
+    - {x: 26, y: 27}
+    - {x: 12, y: 29}
+    - {x: 29, y: 13}
+    - {x: 14, y: 30}
+    - {x: 30, y: 15}
+    - {x: 27, y: 31}
+    - {x: 31, y: 28}
+    - {x: 21, y: 32}
+    - {x: 32, y: 22}
+    - {x: 24, y: 32}
+    Nodes:
+    - Text: "You happen upon a pair of men whispering in a corner together. They\u2019re
+        trying to look as happy and engaged as the other guests, but they\u2019re
+        movements are too stiff. They seem concerned."
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Revolution - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The younger one sighs, and gestures to the crowd with his wine glass.
+        \u201CEveryone\u2019s talking about reforming the estates as if it\u2019s
+        going to be as simple as making a request. Does nobody remember what happened
+        in Grenoble? They sent soldiers into that town just for trying to hold a meeting.\u201D"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The older man replies wearily \u201CAgreed, and the bloodshed was monstrous.
+        Did you hear about their Bishop?\u201D\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CThat he'd killed himself after the riots. Yes, even I found that
+        distressing.\u201D\r\n\r\nYou\u2019d heard that too, but it was only a rumor.
+        The Church never confirmed this, but why would they? \r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "If you could learn more, this might be some truly valuable gossip.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: They turn, noticing you for the first time.
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The men are speaking to each other in low voices, and it\u2019s difficult
+        to hear them over the din of the party. You edge a little closer to listen
+        to them, pretending to scan the party as if you were looking for a friend
+        that got lost in the crowd.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You decide against engaging them in conversation, or listening in. While
+        it\u2019s nice to have some reliable gossip, you don\u2019t need it that badly
+        right now. Instead, you spend some time wandering about the party, sipping
+        at your wine, taking in the sights and the sounds."
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CHe must have felt some guilt for everything that happened.\u201D
+        The older man ventures.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CFor a many of the cloth to commit the cardinal sin? It is the only
+        explanation.\u201D"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CI hear that he loaded two bullets in his pistol before he\u2026
+        did it.\u201D\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CWell that would certainly explain why it was a closed casket affair.
+        There mustn\u2019t have been much of him left, after that.\u201D \n\nYour
+        mind conjures up a gruesome image, entirely against your will, and you wretch
+        internally at it.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "However, this does give you the level of detail you were hoping for.
+        A rumor, by itself isn\u2019t valuable. Details, on the other hand, make for
+        fine gossip. This should be valuable to someone.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You hear a throat clear.\r\n\r\n\u201CCan we help you, madame?\u201D
+        The younger man asks you, with a suspicious scowl.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: "Before you can answer, his older friend chimes in. \u201CPerhaps we should
+        take our conversation elsewhere. I doubt that we\u2019ll find any privacy
+        here.\u201D\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Doubtful Guest
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: "The two of them disappear to a more secluded section of the party, watching
+        you carefully all the while. \r\n\r\nYou have a feeling that you\u2019ll be
+        watched more closely from now on.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The older guest stops his friend mid sentence. \u201CI\u2019m not sure
+        if we should continue.\u201D\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CI would not want to offend the madame\u2019s sensibilities with
+        such dreadful details.\u201D\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "After a long pause, the older man relents. \u201CFine, if you must know...\u201D"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CDon\u2019t worry, such details are unnecessary to understanding
+        the bigger picture.\u201D The older man says in an a patronizing tone.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CThe archbishop of Grenoble shot himself.\u201D The younger man
+        says flatly. \u201CIt was a suicide, and a particularly gruesome one at that.
+        That\u2019s why he was in a closed casket instead of being laid out properly.
+        It was also why the church was so unwilling to divulge the details of his
+        death.\u201D"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "This is exactly the level of detail you were hoping for. A rumor, by
+        itself, isn\u2019t of any consequence. Gruesome details, on the other hand,
+        make for fine gossip. This should be valuable to someone.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'You continue your hushed conversation with the two men, and manage to
+        tease out a few more specifics. The three of you eventually go your separate
+        ways. '
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CI suppose he\u2019s right.\u201D The younger man admits. \u201CWhat\u2019s
+        most important is that archbishop\u2019s death was a suicide, and this made
+        the church extremely uncomfortable. This is why they were so quiet about his
+        passing.\u201D\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "During your conversation, you manage to get a few more details about
+        the time of death, who discovered the body, and more. This is exactly what
+        you were hoping for. A rumor, by itself, isn\u2019t of any consequence. Specific
+        details add an air of truthfulness which is necessary for quality gossip.
+        This should be valuable to someone.\r \r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\"\x1CI can understand why, madame. It was grizzly enough that the church
+        didn\x19t make any official announcements. The archbishop\x19s funeral was
+        closed casket because-\x1D\r\""
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "The younger man examines you carefully before he says \u201CThat\u2019s
+        quite an unusual accent you have, for someone who grew up in Grenoble.\u201D\r\n\r\nYour
+        mind races, and you\u2019re not sure if you can remember what a Grenoble accent
+        even sounds like.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CWell, if you did actually grow up there, you must be more familiar
+        with the facts than us.\u201D The older man demures, already pulling his friend
+        away by the elbow. \u201CWe would hate to supply you with any misinformation.\u201D\r\n\r\nHe
+        puts a strong emphasis on the word \u2018supply\u2019.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: putout
+        Name: Doubtful Guest
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: "The two of them disappear to a more secluded section of the party, watching
+        you carefully all the while. \r\n\r\nYou have a feeling they didn\u2019t believe
+        you.\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have acquired some gossip. This will be useful later.) \r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: church
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have gained a little peril)\r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (You have lost some credibility)
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: putout
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have acquired some gossip. This will be useful later.) \r"
+      Background: {fileID: 21300000, guid: b9548945edc598c46856bff0f9c6b8be, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Tired Guest
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Doubtful Guest
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: church
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201C<i>Pardon monsieurs</i>, but I grew up in Grenoble and I never
+        found out what happened. Do you know?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 0
+    - index: 0
+      Text: <Eavesdrop>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 0
+    - index: 0
+      Text: <Leave them alone>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CPlease monsieur, I need to know.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CPerhaps you are right. It may be too much for me.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
+    OneShot: 1
+    Chapters: 
+    Tags: []
+    Factions: 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+    LocalizationKey: 
+=======
+=======
+>>>>>>> Stashed changes
+    LocalizationKey: The Cardinal Sin.asset.b96e207d2cae30646b062dae31e251cb
+    Political: 0
+    _date: -1
+>>>>>>> Stashed changes
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  _localizationKey: Assets/Resources/Incidents/The Cardinal Sin.asset.
+  _nodeText: []
+  _linkText: []
+=======
+=======
+>>>>>>> Stashed changes
+  _nodeText:
+  - "You happen upon a pair of men whispering in a corner together. They\u2019re trying
+    to look as happy and engaged as the other guests, but they\u2019re movements are
+    too stiff. They seem concerned."
+  - "The younger one sighs, and gestures to the crowd with his wine glass. \u201CEveryone\u2019s
+    talking about reforming the estates as if it\u2019s going to be as simple as making
+    a request. Does nobody remember what happened in Grenoble? They sent soldiers
+    into that town just for trying to hold a meeting.\u201D"
+  - "The older man replies wearily \u201CAgreed, and the bloodshed was monstrous.
+    Did you hear about their Bishop?\u201D\r"
+  - "\u201CThat he'd killed himself after the riots. Yes, even I found that distressing.\u201D\r\n\r\nYou\u2019d
+    heard that too, but it was only a rumor. The Church never confirmed this, but
+    why would they? \r"
+  - "If you could learn more, this might be some truly valuable gossip.\r"
+  - They turn, noticing you for the first time.
+  - "The men are speaking to each other in low voices, and it\u2019s difficult to
+    hear them over the din of the party. You edge a little closer to listen to them,
+    pretending to scan the party as if you were looking for a friend that got lost
+    in the crowd.\r"
+  - "You decide against engaging them in conversation, or listening in. While it\u2019s
+    nice to have some reliable gossip, you don\u2019t need it that badly right now.
+    Instead, you spend some time wandering about the party, sipping at your wine,
+    taking in the sights and the sounds."
+  - "\u201CHe must have felt some guilt for everything that happened.\u201D The older
+    man ventures.\r"
+  - "\u201CFor a many of the cloth to commit the cardinal sin? It is the only explanation.\u201D"
+  - "\u201CI hear that he loaded two bullets in his pistol before he\u2026 did it.\u201D\r"
+  - "\u201CWell that would certainly explain why it was a closed casket affair. There
+    mustn\u2019t have been much of him left, after that.\u201D \n\nYour mind conjures
+    up a gruesome image, entirely against your will, and you wretch internally at
+    it.\r"
+  - "However, this does give you the level of detail you were hoping for. A rumor,
+    by itself isn\u2019t valuable. Details, on the other hand, make for fine gossip.
+    This should be valuable to someone.\r"
+  - "You hear a throat clear.\r\n\r\n\u201CCan we help you, madame?\u201D The younger
+    man asks you, with a suspicious scowl.\r"
+  - "Before you can answer, his older friend chimes in. \u201CPerhaps we should take
+    our conversation elsewhere. I doubt that we\u2019ll find any privacy here.\u201D\r"
+  - "The two of them disappear to a more secluded section of the party, watching you
+    carefully all the while. \r\n\r\nYou have a feeling that you\u2019ll be watched
+    more closely from now on.\r"
+  - "The older guest stops his friend mid sentence. \u201CI\u2019m not sure if we
+    should continue.\u201D\r"
+  - "\u201CI would not want to offend the madame\u2019s sensibilities with such dreadful
+    details.\u201D\r"
+  - "After a long pause, the older man relents. \u201CFine, if you must know...\u201D"
+  - "\u201CDon\u2019t worry, such details are unnecessary to understanding the bigger
+    picture.\u201D The older man says in an a patronizing tone.\r"
+  - "\u201CThe archbishop of Grenoble shot himself.\u201D The younger man says flatly.
+    \u201CIt was a suicide, and a particularly gruesome one at that. That\u2019s why
+    he was in a closed casket instead of being laid out properly. It was also why
+    the church was so unwilling to divulge the details of his death.\u201D"
+  - "This is exactly the level of detail you were hoping for. A rumor, by itself,
+    isn\u2019t of any consequence. Gruesome details, on the other hand, make for fine
+    gossip. This should be valuable to someone.\r"
+  - 'You continue your hushed conversation with the two men, and manage to tease out
+    a few more specifics. The three of you eventually go your separate ways. '
+  - "\u201CI suppose he\u2019s right.\u201D The younger man admits. \u201CWhat\u2019s
+    most important is that archbishop\u2019s death was a suicide, and this made the
+    church extremely uncomfortable. This is why they were so quiet about his passing.\u201D\r"
+  - "During your conversation, you manage to get a few more details about the time
+    of death, who discovered the body, and more. This is exactly what you were hoping
+    for. A rumor, by itself, isn\u2019t of any consequence. Specific details add an
+    air of truthfulness which is necessary for quality gossip. This should be valuable
+    to someone.\r \r"
+  - "\"\x1CI can understand why, madame. It was grizzly enough that the church didn\x19t
+    make any official announcements. The archbishop\x19s funeral was closed casket
+    because-\x1D\r\""
+  - "The younger man examines you carefully before he says \u201CThat\u2019s quite
+    an unusual accent you have, for someone who grew up in Grenoble.\u201D\r\n\r\nYour
+    mind races, and you\u2019re not sure if you can remember what a Grenoble accent
+    even sounds like.\r"
+  - "\u201CWell, if you did actually grow up there, you must be more familiar with
+    the facts than us.\u201D The older man demures, already pulling his friend away
+    by the elbow. \u201CWe would hate to supply you with any misinformation.\u201D\r\n\r\nHe
+    puts a strong emphasis on the word \u2018supply\u2019.\r"
+  - "The two of them disappear to a more secluded section of the party, watching you
+    carefully all the while. \r\n\r\nYou have a feeling they didn\u2019t believe you.\r"
+  - "(You have acquired some gossip. This will be useful later.) \r"
+  - "(You have gained a little peril)\r"
+  - (You have lost some credibility)
+  - "(You have acquired some gossip. This will be useful later.) \r"
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - "\u201C<i>Mon dieu</i>! I grew up in Grenoble, but never found out the truth.
+    What happened?\u201D"
+  - <Eavesdrop>
+  - <Leave them alone>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "\u201CPlease monsieur, I need to know.\u201D"
+  - "\u201CPerhaps you are right. It may be too much for me.\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+>>>>>>> Stashed changes

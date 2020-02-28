@@ -16,27 +16,6 @@ MonoBehaviour:
   _Links: 03000000
   _Positions:
   - {x: 0, y: 0}
-<<<<<<< Updated upstream
-  - {x: -6, y: 120}
-  - {x: -5, y: 185}
-  - {x: -216, y: 264}
-  - {x: -2, y: 263}
-  - {x: 227, y: 264}
-  - {x: -215, y: 356}
-  - {x: 1, y: 342}
-  - {x: 12, y: 432}
-  - {x: -209, y: 432}
-  - {x: -96, y: 559}
-  - {x: 143, y: 559}
-  - {x: 147, y: 635}
-  - {x: 20, y: 710}
-  - {x: 21, y: 786}
-  - {x: 23, y: 850}
-  - {x: 20, y: 923}
-  - {x: -100, y: 1004}
-  - {x: -7, y: 57}
-  - {x: 149, y: 1000}
-=======
   - {x: -2, y: 252}
   - {x: -1, y: 318}
   - {x: -212, y: 396}
@@ -62,7 +41,6 @@ MonoBehaviour:
   - {x: 0, y: 104}
   - {x: -6, y: 154}
   - {x: -8, y: 202}
->>>>>>> Stashed changes
   Incident:
     Links:
     - {x: 1, y: 2}
@@ -82,12 +60,9 @@ MonoBehaviour:
     - {x: 11, y: 12}
     - {x: 13, y: 14}
     - {x: 14, y: 15}
-    - {x: 15, y: 16}
     - {x: 16, y: 17}
     - {x: 0, y: 18}
     - {x: 16, y: 19}
-<<<<<<< Updated upstream
-=======
     - {x: 15, y: 20}
     - {x: 20, y: 16}
     - {x: 10, y: 21}
@@ -98,7 +73,6 @@ MonoBehaviour:
     - {x: 23, y: 24}
     - {x: 24, y: 25}
     - {x: 25, y: 1}
->>>>>>> Stashed changes
     Nodes:
     - Text: 'You awaken the next morning, in a bed that still feels unfamiliar. In
         the process of waking up, you start to recall the last nights humiliations,
@@ -346,7 +320,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/wine_drink
         Parameters: []
     - Text: "A few minutes later, Camille returns with a decanter of red wine and
         the least chipped wine glass in the house. \u201CPor vous, Madame.\u201D She
@@ -369,7 +343,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/wine_pour
         Parameters: []
     - Text: "You drink the wine slowly, taking in the aroma between sips. Armand was
         always the sort to keep a few, particularly nice bottles on hand to impress
@@ -394,7 +368,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/wine_drink
         Parameters: []
     - Text: "You take a few moments to finish your drink in silence and collect your
         thoughts. Something that keeps coming to mind is all the gossip you\u2019ve
@@ -458,10 +432,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards:
-      - Type: 9
-        ID: La Trompette du Peuple
-        Value: 1
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -494,7 +465,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: With that, your day begins.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -557,8 +528,6 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-<<<<<<< Updated upstream
-=======
     - Text: With that, your day begins.
       Background: {fileID: 0}
       Character1:
@@ -694,7 +663,6 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
->>>>>>> Stashed changes
     LinkData:
     - index: 0
       Text: 
@@ -707,30 +675,16 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: "\u201CI\u2019m not sure\u2026 do you know how to make a murder look like
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 2
       Text: "\u201CI\u2019m not sure\u2026 do you know how to make a murder look like
->>>>>>> Stashed changes
         an accident?\u201D"
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: "*Sigh* \u201CSome kind of refreshment, please.\u201D"
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
@@ -746,7 +700,6 @@ MonoBehaviour:
         Value: 1
     - index: 4
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -841,9 +794,6 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: 
-=======
     - index: 20
       Text: '"I''ve gone from Baroness-to-be, to gossip monger. Great. Just great."'
       xor: 0
@@ -855,34 +805,22 @@ MonoBehaviour:
         Value: 1
     - index: 21
       Text: '"I''ve gone from Baroness-to-be, to gossip monger. Great. Just great."'
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: '"<i>Merci</i>, Camille. I think I''ll do just that."'
-=======
     - index: 22
       Text: '"I''ve gone from Baroness-to-be, to gossip monger. Great. Just great."'
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: 
-=======
     - index: 23
       Text: '"I''ve gone from Baroness-to-be, to gossip monger. Great. Just great."'
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: 
-=======
     - index: 24
       Text: '"I''ve gone from Baroness-to-be, to gossip monger. Great. Just great."'
       xor: 0
@@ -909,7 +847,6 @@ MonoBehaviour:
       Flags: []
     - index: 0
       Text: '"I''ve gone from Baroness-to-be, to gossip monger. Great. Just great."'
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -931,16 +868,6 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-    Requirements: []
-  _factions: 000000000000
-  _chapters: 00000000
-  _date: -1
-  _localizationKey: Assets/Resources/Incidents/The Morning, After Disaster.asset.
-  _nodeText: []
-  _linkText: []
-=======
     LocalizationKey: The Morning, After Disaster.asset.8c284f68dd764064795310467bb8feca
     Political: 0
     _date: 564308640000000000
@@ -1043,4 +970,3 @@ MonoBehaviour:
   - 
   - 
   - 
->>>>>>> Stashed changes

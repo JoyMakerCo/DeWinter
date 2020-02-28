@@ -82,7 +82,7 @@ MonoBehaviour:
         - Name: Arrive Home
           Value: 0
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -210,7 +210,7 @@ MonoBehaviour:
         but you\u2019re worried that if you breathe too hard on the building, it\u2019ll
         fall over. A well kept woman in the attire of a maid opens the door and approaches
         you.\r"
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -391,7 +391,7 @@ MonoBehaviour:
         of the house isn\u2019t much better than the outside. Camille keeps the place
         tidy, but she can only do such much. Still, you don\u2019t care about that
         right now, you\u2019re just happy to have a roof over your head."
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -406,7 +406,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -574,15 +574,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: '"Is this where he lives? Oh God, the rats in there ate him, didn''t they?"'
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
@@ -598,7 +589,6 @@ MonoBehaviour:
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -609,20 +599,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: "\"\x1CUh... thank you Camille. Do you think Armand\x19's alright?\x1D\""
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: "\u201CHe has a lot of explaining to do.\u201D"
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
@@ -647,7 +623,6 @@ MonoBehaviour:
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -691,12 +666,8 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: 
-=======
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -712,22 +683,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: Home, Sweet Home.asset.e5a168b74f4399f458aba5a263cacf5f
     Political: 0
     _date: -1
->>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/Home, Sweet Home.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - "After waiting around for a few hours, you leave the Orphan\u2019s Feast, dragging
     your small mountain of luggage behind you. After all, the coach was only hired
@@ -809,4 +771,3 @@ MonoBehaviour:
   - 
   - 
   - 
->>>>>>> Stashed changes

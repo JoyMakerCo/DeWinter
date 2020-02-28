@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -36,22 +36,8 @@ namespace Ambition
 		{
             if (moment != null)
             {
-<<<<<<< Updated upstream
-                string result = null;
-                if (_incident?.Nodes != null)
-                {
-                    int index = Array.IndexOf(_incident.Nodes, moment);
-                    if (index >= 0)
-                    {
-                        result = AmbitionApp.GetString(_incident.LocalizationKey + "node." + index.ToString());
-                    }
-                }
-                descriptionText.text = result;
-                if (moment.Background != null) _background.sprite = moment.Background;
-=======
                 descriptionText.text = AmbitionApp.Localize(_localizationKey + ".node." + moment.Index.ToString());
                 if (moment.Background != null) Background.texture = moment.Background.texture;
->>>>>>> Stashed changes
                 Character1.ID = moment.Character1.AvatarID;
                 Character1.Pose = moment.Character1.Pose;
                 Character2.ID = moment.Character2.AvatarID;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 namespace Ambition
@@ -9,11 +9,8 @@ namespace Ambition
         {
             AmbitionApp.GetModel<CalendarModel>().Day++;
             AmbitionApp.GetModel<ParisModel>().Location = null;
-<<<<<<< Updated upstream
-=======
             AmbitionApp.GetModel<ParisModel>().Dailies = null;
             AmbitionApp.GetModel<InventoryModel>().Market = null;
->>>>>>> Stashed changes
             AmbitionApp.SendMessage(GameMessages.FADE_OUT, 3f);
         }
     }

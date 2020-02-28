@@ -1,4 +1,4 @@
-﻿using UFlow;
+using UFlow;
 
 namespace Ambition
 {
@@ -7,9 +7,6 @@ namespace Ambition
         protected string _message;
         public override void Initialize(object[] parameters)
         {
-<<<<<<< Updated upstream
-AmbitionApp.SendMessage(message);
-=======
             _message = parameters[0] as string;
         }
         public override void OnEnterState()
@@ -17,7 +14,6 @@ AmbitionApp.SendMessage(message);
             AmbitionApp.SendMessage(_message);
         }
     }
->>>>>>> Stashed changes
 
     public class SendMessageState<M> : SendMessageState where M:class
     {

@@ -16,56 +16,6 @@ MonoBehaviour:
   _Links: 
   _Positions:
   - {x: 0, y: 0}
-<<<<<<< Updated upstream
-  - {x: 3, y: 86}
-  - {x: 3, y: 86}
-  - {x: -4, y: 160}
-  - {x: -198, y: 256}
-  - {x: 21, y: 256}
-  - {x: 262, y: 255}
-  - {x: -199, y: 326}
-  - {x: -200, y: 391}
-  - {x: -202, y: 455}
-  - {x: -202, y: 455}
-  - {x: 22, y: 328}
-  - {x: 24, y: 395}
-  - {x: 26, y: 457}
-  - {x: 26, y: 457}
-  - {x: 262, y: 321}
-  - {x: 255, y: 394}
-  - {x: 262, y: 456}
-  - {x: 262, y: 456}
-  Incident:
-    Links:
-    - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    - {x: 1, y: 3}
-    - {x: 0, y: 0}
-    - {x: 3, y: 4}
-    - {x: 0, y: 0}
-    - {x: 3, y: 5}
-    - {x: 0, y: 0}
-    - {x: 3, y: 6}
-    - {x: 0, y: 0}
-    - {x: 4, y: 7}
-    - {x: 0, y: 0}
-    - {x: 7, y: 8}
-    - {x: 0, y: 0}
-    - {x: 8, y: 9}
-    - {x: 0, y: 0}
-    - {x: 5, y: 11}
-    - {x: 0, y: 0}
-    - {x: 11, y: 12}
-    - {x: 0, y: 0}
-    - {x: 12, y: 13}
-    - {x: 0, y: 0}
-    - {x: 6, y: 15}
-    - {x: 0, y: 0}
-    - {x: 15, y: 16}
-    - {x: 0, y: 0}
-    - {x: 16, y: 17}
-    - {x: 0, y: 0}
-=======
   - {x: 0, y: 141}
   - {x: -5, y: 75}
   - {x: -190, y: 314}
@@ -100,7 +50,6 @@ MonoBehaviour:
     - {x: 1, y: 3}
     - {x: 1, y: 4}
     - {x: 1, y: 5}
->>>>>>> Stashed changes
     Nodes:
     - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
         he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
@@ -125,18 +74,10 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-<<<<<<< Updated upstream
-    - Text: "You spend a few moments waiting around in the entryway before Pierre
-        arrives, and he seems quite enthused by your presence. \u201CWhy, if it isn\u2019t
-        my newest confidant! Please come in! Have you come back with more delicious
-        information, or perhaps\u2026\u201D"
-      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
-=======
     - Text: "\u201C...you are trying to find someone, <i>non</i>?\u201D"
       Background: {fileID: 0}
->>>>>>> Stashed changes
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: happy
         Name: Pierre
       Character2:
@@ -154,41 +95,13 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-<<<<<<< Updated upstream
-    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
-        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
-        it\u2019s hard to tell. "
-      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
-        Parameters: []
-      OneShotSFX:
-        Name: event:/One Shot SFX/door_latch
-        Parameters: []
-    - Text: "\u201C...you are trying to find someone, <i>non</i>?\u201D"
-      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
-=======
     - Text: "You spend a few moments waiting around in the entryway before Pierre
         arrives, and he seems quite enthused by your presence. \u201CWhy, if it isn\u2019t
         my newest confidant! Please come in! Have you come back with more delicious
         information, or perhaps\u2026\u201D"
       Background: {fileID: 0}
->>>>>>> Stashed changes
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: happy
         Name: Pierre
       Character2:
@@ -210,7 +123,7 @@ MonoBehaviour:
         newfound notoriety.\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -226,13 +139,13 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: Pierre cocks an eyebrow at your response and rummages around in his snuff
         box while he examines you more closely.
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -248,12 +161,12 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: "\u201COh, playing your cards carefully? I admire that, madame.\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: happy
         Name: Pierre
       Character2:
@@ -269,13 +182,13 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CSuspicions, which you have been so kind as to confirm for me.\u201D
         Pierre favors you with a short and elegant bow. \u201C<i>Merci beaucoups</i>\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: happy
         Name: Pierre
       Character2:
@@ -300,7 +213,7 @@ MonoBehaviour:
         for him.\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -322,7 +235,7 @@ MonoBehaviour:
         curiosity. How well do you really know your beloved Armand?\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Peirre
       Character2:
@@ -343,35 +256,12 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
-        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
-        it\u2019s hard to tell. "
-      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
-        Parameters: []
-      OneShotSFX:
-        Name: event:/One Shot SFX/door_latch
-        Parameters: []
     - Text: "\u201CAh yes, the sting of desertion can certainly sour one\u2019s opinion.
         Your Armand has been so thoughtless as to abandon you in this cruel city,
         this den of vipers, and now you seek to chart your own course, <i>non</i>?\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -393,7 +283,7 @@ MonoBehaviour:
         instead of chasing his.\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -414,14 +304,14 @@ MonoBehaviour:
     - Text: "\u201CNow then, to business?\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music:
         Name: 
@@ -431,36 +321,13 @@ MonoBehaviour:
         Parameters: []
       OneShotSFX:
         Name: 
-        Parameters: []
-    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
-        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
-        it\u2019s hard to tell. "
-      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
-        Parameters: []
-      OneShotSFX:
-        Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: "\u201CI am referring to your absent fiance, the Baron Armand de Marbo.\u201D
         He pauses to snort a small pinch of snuff, carefully examining your face for
         any hint of reaction. "
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -483,7 +350,7 @@ MonoBehaviour:
         Armand was quite the social butterfly, and he mentioned you often.\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -505,7 +372,7 @@ MonoBehaviour:
         how much did you really know about him?\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: Pierre
+        AvatarID: PierreRenaudot
         Pose: neutral
         Name: Pierre
       Character2:
@@ -526,28 +393,55 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
-        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
-        it\u2019s hard to tell. "
+    - Text: "\u201CIn fact, like any good lover, he knew quite a lot about you. But
+        how much did you really know about him?\u201D"
       Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
       Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
-      Rewards: []
+      Speaker: 2
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
       Music:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: 
         Parameters: []
       OneShotSFX:
-        Name: event:/One Shot SFX/door_latch
+        Name: 
+        Parameters: []
+    - Text: "\u201CIn fact, like any good lover, he knew quite a lot about you. But
+        how much did you really know about him?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
         Parameters: []
     LinkData:
     - index: 0
@@ -562,13 +456,9 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: 
-=======
     - index: 2
       Text: "\u201CWhere is Armand, and how do you know that I\u2019m looking for
         him?\u201D"
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -585,14 +475,9 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: "\u201CWhere is Armand, and how do you know that I\u2019m looking for
-        him?\u201D"
-=======
     - index: 4
       Text: "\u201CI\u2019m done trying to find Armand, he can seek me out if he cares
         so much.\u201D"
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -603,13 +488,8 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: "\u201CI\u2019m done trying to find Armand, he can seek me out if he cares
-        so much.\u201D"
-=======
     - index: 7
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -620,12 +500,8 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: "\u201CWhat, exactly, are you talking about?\u201D"
-=======
     - index: 6
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -767,22 +643,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: Pierre's Inquiry.asset.8466471e9e7264e829781363d6711059
     Political: 0
     _date: -1
->>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
-  _chapters: 00000000
+  _chapters: 00010101
   _date: -1
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/Pierre's Inquiry.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - "Pierre\u2019s office either looks marginally cleaner than before, or he\u2019s
     managed to shuffle the mess into differently shaped piles. Honestly, it\u2019s
@@ -868,4 +735,3 @@ MonoBehaviour:
   - "\"\x1CWhere is Armand, and how do you know that I'\x19m looking for him?\x1D\r\""
   - "\"\x1CI'\x19m done trying to find Armand, he can seek me out if he cares so much.\x1D\""
   - "\"\x1CWhat, exactly, are you talking about?\x1D\""
->>>>>>> Stashed changes

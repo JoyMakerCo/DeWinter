@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +10,9 @@ namespace Ambition
     public class Pin : MonoBehaviour
     {
         public IncidentConfig IntroIncidentConfig;
-        public GameObject Scene;
+
+        public IncidentConfig[] StoryIncidentConfigs;
+        public string SceneID;
         public bool OneShot;
         public string LocationWindowDescription;
         public Sprite LocationModalSprite;
@@ -18,22 +20,6 @@ namespace Ambition
         public bool Discoverable;
         public RequirementVO[] Requirements;
 
-<<<<<<< Updated upstream
-        private void Awake()
-        {
-            AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
-            AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
-            Name = LabelText.text;
-        }
-
-        private void OnDestroy()
-        {
-            AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
-            AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
-        }
-
-        public void Select()
-=======
         public LocationVO GetLocation()
         {
             RequirementVO[] requirements = new RequirementVO[Requirements.Length];
@@ -54,7 +40,6 @@ namespace Ambition
         }
 
         public void HandleClick()
->>>>>>> Stashed changes
         {
             AmbitionApp.SendMessage<Pin>(ParisMessages.SELECT_LOCATION, this);
         }

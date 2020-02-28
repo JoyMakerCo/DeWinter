@@ -212,8 +212,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 147.2305, y: -41.19703}
-  m_SizeDelta: {x: 244.46098, y: 46.394054}
+  m_AnchoredPosition: {x: 343, y: -41.5}
+  m_SizeDelta: {x: 636, y: 47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222410115536089184
 CanvasRenderer:
@@ -256,7 +256,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Le Petit Mogul
+  m_Text: parismap.locationlabel.le_petit_mogul
 --- !u!114 &114183186593369518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,7 +484,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: La Place Royale
+  m_Text: parismap.locationlabel.la_place_royale
 --- !u!114 &114647533340110064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,8 +555,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a1ef2d747b341fe96c03fd61ac7ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntroIncidentConfig: {fileID: 0}
-  Scene: {fileID: 0}
+  IntroIncidentConfig: {fileID: 11400000, guid: 25f013a0d931a420db98dc6902e1b996,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'A coffee house frequented by philosophers, artists and
     academics. Get coffee, test the political waters, and speak your mind. '
@@ -1106,7 +1108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: fc67e03194391d7419a362652b77d8c3,
     type: 2}
-  Scene: {fileID: 1322629131161042, guid: f3f136c9faba7e448a1f0f8ac198e543, type: 3}
+  StoryIncidentConfigs: []
+  SceneID: LE_PETIT_MOGOL
   OneShot: 0
   LocationWindowDescription: A small shop run by the dressmaker Fatima Shenna. Spend
     your day here to buy and sell wardrobe items.
@@ -1480,11 +1483,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: db5d06c047909af47aaed69be52876ac,
     type: 2}
-  Scene: {fileID: 0}
+  StoryIncidentConfigs: []
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: Out in the suburbs of Paris, Guingette Paradis is a perfect
     spot for drinking, dancing, and cabaret entertainments.
-  LocationModalSprite: {fileID: 21300000, guid: f2c66087255ef4e469d3c6cf5f7bb209,
+  LocationModalSprite: {fileID: 21300000, guid: fa0a7901fcce546acb6de00ad641fc4d,
     type: 3}
   Label: {fileID: 1819929516821616}
   Discoverable: 1
@@ -1605,7 +1609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &224025291874878814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1637,7 +1641,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301918836101392}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &114940530891147232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1650,8 +1654,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a1ef2d747b341fe96c03fd61ac7ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntroIncidentConfig: {fileID: 0}
-  Scene: {fileID: 0}
+  IntroIncidentConfig: {fileID: 11400000, guid: 4b737911cedfc4bf9ad106b86c401f84,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'Spend the day resting at home. This will remove all
     levels of exhaustion, if you have any. '
@@ -1659,10 +1665,6 @@ MonoBehaviour:
     type: 3}
   Label: {fileID: 1654631311403842}
   Discoverable: 0
-<<<<<<< Updated upstream
-  LabelText: {fileID: 114797086653622438}
-=======
->>>>>>> Stashed changes
   Requirements: []
 --- !u!1 &1330188479931974
 GameObject:
@@ -1802,7 +1804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Jardin des plantes
+  m_Text: parismap.locationlabel.jardin_des_plantes
 --- !u!114 &114573903801446716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,7 +2029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &224118607379478992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2428,6 +2430,7 @@ GameObject:
   - component: {fileID: 222360025149882416}
   - component: {fileID: 114797086653622438}
   - component: {fileID: 114328303301845696}
+  - component: {fileID: 6719853513969840650}
   m_Layer: 5
   m_Name: LocalizedText
   m_TagString: Untagged
@@ -2449,17 +2452,10 @@ RectTransform:
   m_Father: {fileID: 224399179502351474}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 74.07063, y: -41.19703}
-  m_SizeDelta: {x: 98.141266, y: 46.394054}
-=======
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 260.5, y: 0}
   m_SizeDelta: {x: 471, y: 0}
->>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222360025149882416
 CanvasRenderer:
@@ -2502,7 +2498,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Home
+  m_Text: parismap.locationlabel.home
 --- !u!114 &114328303301845696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,6 +2513,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &6719853513969840650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378420877909946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText: []
 --- !u!1 &1383575359691086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,7 +3469,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: 0be96f5877e61c34993e5e43c8ab4faf,
     type: 2}
-  Scene: {fileID: 1935741580273956, guid: 1a6b275d35d21354391b1ca36f182890, type: 3}
+  StoryIncidentConfigs:
+  - {fileID: 11400000, guid: 8466471e9e7264e829781363d6711059, type: 2}
+  - {fileID: 11400000, guid: fc0313f0d3f6845a09d540af549680a7, type: 2}
+  - {fileID: 11400000, guid: 61854a253b1b545a1b58bf79cf93b7f6, type: 2}
+  SceneID: LA_TROMPETTE
   OneShot: 0
   LocationWindowDescription: A popular, if unscrupulous newspaper. Spend the day here
     to sell gossip and manipulate public opinion.
@@ -3876,7 +3889,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Les Grands-Danseurs du Roi
+  m_Text: parismap.locationlabel.les_grands-danseurs_du_roi
 --- !u!114 &114767859858856324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4354,7 +4367,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Parc Monceau
+  m_Text: parismap.locationlabel.parc_monceau
 --- !u!114 &114137619366934074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4683,7 +4696,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Cafe Principe
+  m_Text: parismap.locationlabel.cafe_principe
 --- !u!114 &114437632765629648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4873,11 +4886,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: cb72e81bea7cb214c940ca971dbe1e76,
     type: 2}
-  Scene: {fileID: 1265684544818456, guid: b12b1c36b8a76d8498193e6145c95fd5, type: 3}
+  StoryIncidentConfigs: []
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: "A great square where great and powerful socialize. Here,
     you\u2019ll spend the day trawling for gossip."
-  LocationModalSprite: {fileID: 21300000, guid: 54b0ec29e16439b408d57add78f97707,
+  LocationModalSprite: {fileID: 21300000, guid: a4fb2eae9eb3f47f484d0ef867fbed73,
     type: 3}
   Label: {fileID: 1576983516447964}
   Discoverable: 1
@@ -5094,7 +5108,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 294.461, y: 82.39406}
+  m_SizeDelta: {x: 686, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222803878722218046
 CanvasRenderer:
@@ -5252,7 +5266,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: La Trompette du Peuple
+  m_Text: parismap.locationlabel.la_trompette_du_peuple
 --- !u!114 &114096417809684738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5286,7 +5300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &224399179502351474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5305,7 +5319,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 148.14127, y: 82.39406}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222750909660355420
 CanvasRenderer:
@@ -5597,7 +5611,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: La Grande Taverne de Londres
+  m_Text: parismap.locationlabel.la_grande_taverne_de_londres
 --- !u!114 &114246631563617774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6379,7 +6393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: a9d6698b65088294ea4837bc3bd668b8,
     type: 2}
-  Scene: {fileID: 0}
+  StoryIncidentConfigs: []
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'Relax and promenade with your liaison in these popular
     gardens in order to see and be seen. '
@@ -6524,8 +6539,6 @@ RectTransform:
   - {fileID: 224736583350363998}
   - {fileID: 224902947770593934}
   - {fileID: 224547774828270060}
-<<<<<<< Updated upstream
-=======
   - {fileID: 4231713076083880057}
   - {fileID: 3472464993936554307}
   - {fileID: 5572281908894064750}
@@ -6564,7 +6577,6 @@ RectTransform:
   - {fileID: 4772511049139514442}
   - {fileID: 2714990742228817790}
   - {fileID: 7001416007666231190}
->>>>>>> Stashed changes
   m_Father: {fileID: 224679227687745328}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6661,6 +6673,7 @@ GameObject:
   - component: {fileID: 114685241772827386}
   - component: {fileID: 114740895488808446}
   - component: {fileID: 2690090603194522340}
+  - component: {fileID: 4288545960440313114}
   m_Layer: 5
   m_Name: Paris
   m_TagString: Untagged
@@ -6767,8 +6780,6 @@ MonoBehaviour:
   Music:
     Name: event:/Music/Paris Map
     Parameters: []
-<<<<<<< Updated upstream
-=======
 --- !u!114 &4288545960440313114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6880,7 +6891,6 @@ MonoBehaviour:
     LocalizationKey: parismap.locationlabel.a_wish_for_deliverance
   - TextField: {fileID: 114280861967491058}
     LocalizationKey: parismap.btn.estate
->>>>>>> Stashed changes
 --- !u!1 &1819929516821616
 GameObject:
   m_ObjectHideFlags: 0
@@ -7365,7 +7375,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Guinguette Paradis
+  m_Text: parismap.locationlabel.guinguette_paradis
 --- !u!114 &114323614441087078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7812,7 +7822,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: 7a97732d60414964488c95e51c794a06,
     type: 2}
-  Scene: {fileID: 0}
+  StoryIncidentConfigs: []
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'A luxurious restaurant serving some of the finest food
     in Paris. Try the lamb! '
@@ -7978,7 +7989,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: 7db5316b7cbb21a40907fafaa16a0c01,
     type: 2}
-  Scene: {fileID: 0}
+  StoryIncidentConfigs: []
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: "Created by the infamous libertine, Louis Philippe d'Orl\xE9ans,
     these bustling gardens are filled with strange and exotic attractions."
@@ -8262,7 +8274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IntroIncidentConfig: {fileID: 11400000, guid: bc0f68689b6f7c64685f187f4972f7b7,
     type: 2}
-  Scene: {fileID: 0}
+  StoryIncidentConfigs: []
+  SceneID: 
   OneShot: 0
   LocationWindowDescription: 'The premiere theater in Paris, Les Grands-Danseurs du
     Roi is known for its coarse, but lively comedies. '
@@ -8429,8 +8442,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1 &123512237444348375
 GameObject:
   m_ObjectHideFlags: 0
@@ -35240,4 +35251,4 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
->>>>>>> Stashed changes
+                                                                                                                                                                                                                                                                                                                                    

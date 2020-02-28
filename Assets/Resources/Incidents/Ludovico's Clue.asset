@@ -22,23 +22,28 @@ MonoBehaviour:
   - {x: -4, y: 289}
   - {x: -4, y: 360}
   - {x: -4, y: 430}
-  - {x: -158, y: 502}
-  - {x: 123, y: 503}
-  - {x: -162, y: 581}
+  - {x: -242, y: 437}
+  - {x: 241, y: 478}
+  - {x: -251, y: 616}
   - {x: -15, y: 650}
-  - {x: 136, y: 568}
+  - {x: 247, y: 569}
   - {x: -14, y: 714}
   - {x: -11, y: 779}
   - {x: -12, y: 844}
-  - {x: -121, y: 914}
+  - {x: -240, y: 850}
   - {x: 249, y: 845}
-  - {x: -121, y: 976}
+  - {x: -244, y: 1029}
   - {x: 0, y: 1040}
   - {x: 250, y: 903}
-  - {x: 247, y: 970}
-  - {x: 249, y: 1030}
+  - {x: 247, y: 969}
+  - {x: 254, y: 1090}
   - {x: 4, y: 1100}
   - {x: 5, y: 1161}
+  - {x: 244, y: 638}
+  - {x: -241, y: 521}
+  - {x: 246, y: 1024}
+  - {x: 9, y: 1226}
+  - {x: 12, y: 1320}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -48,10 +53,8 @@ MonoBehaviour:
     - {x: 5, y: 6}
     - {x: 6, y: 7}
     - {x: 6, y: 8}
-    - {x: 7, y: 9}
     - {x: 9, y: 10}
     - {x: 8, y: 11}
-    - {x: 11, y: 10}
     - {x: 10, y: 12}
     - {x: 12, y: 13}
     - {x: 13, y: 14}
@@ -61,10 +64,17 @@ MonoBehaviour:
     - {x: 17, y: 18}
     - {x: 16, y: 19}
     - {x: 19, y: 20}
-    - {x: 20, y: 21}
     - {x: 21, y: 18}
     - {x: 18, y: 22}
     - {x: 22, y: 23}
+    - {x: 11, y: 24}
+    - {x: 24, y: 10}
+    - {x: 7, y: 25}
+    - {x: 25, y: 9}
+    - {x: 20, y: 26}
+    - {x: 26, y: 21}
+    - {x: 23, y: 27}
+    - {x: 27, y: 28}
     Nodes:
     - Text: "You leave the house earlier than usual that morning, uncertain of how
         long it\u2019ll take you to walk to the fountain that Ludovico mentioned in
@@ -246,7 +256,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CThat\u2026\u201D"
       Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
@@ -337,7 +347,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_bored
         Parameters: []
     - Text: "\u201CStrangely enough, the moment I actually started looking into Marcelle\u2019s
         wealth and position, something didn\u2019t feel right. She claims that her
@@ -432,7 +442,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: "Ludovico leans in close and whispers in your ear, his voice barely audible.
         \u201CMadame, Rome chose me as their eyes and ears in France. You didn\u2019t
@@ -545,7 +555,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_positive
         Parameters: []
     - Text: "\u201CHonestly, it\u2019s been a nice change of pace. Normally I just
         spend a lot of time listening to bishops and writing letters back to the Vatican.
@@ -582,6 +592,133 @@ MonoBehaviour:
         Name: 
       Speaker: 2
       Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. Marcelle is a wealthy aristocrat,
+        but her fortune appears to be younger than she claims. It seems like this
+        knowledge could be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. Marcelle is a wealthy aristocrat,
+        but her fortune appears to be younger than she claims. It seems like this
+        knowledge could be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: sad
+        Name: Ludovico
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Ludovico
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. Marcelle is a wealthy aristocrat,
+        but her fortune appears to be younger than she claims. It seems like this
+        knowledge could be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Ludovico
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. Marcelle is a wealthy aristocrat,
+        but her fortune appears to be younger than she claims. It seems like this
+        knowledge could be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Ludovico
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You stop to think about this new information. Marcelle is a wealthy aristocrat,
+        but her fortune appears to be younger than she claims. It seems like this
+        knowledge could be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Researching Marcelle
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -689,9 +826,6 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: 
-=======
     - index: 0
       Text: "\u201C<i>Merci</i> Ludovico, your help means a lot to me.\u201D"
       xor: 0
@@ -724,7 +858,6 @@ MonoBehaviour:
       Flags: []
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -735,22 +868,14 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: "\u201C<i>Merci</i> Ludovico, your help means a lot to me.\u201D"
-=======
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: "\u201CYou\u2019re a lot more devious than I expected you to be.\u201D"
-=======
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -808,22 +933,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: Ludovico's Clue.asset.6bad6de94a8984191b0a8a1de829f055
     Political: 0
     _date: -1
->>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/Ludovico's Clue.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - "You leave the house earlier than usual that morning, uncertain of how long it\u2019ll
     take you to walk to the fountain that Ludovico mentioned in his letter to you."
@@ -925,4 +1041,3 @@ MonoBehaviour:
   - 
   - 
   - 
->>>>>>> Stashed changes

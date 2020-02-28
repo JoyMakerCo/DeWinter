@@ -1,0 +1,23 @@
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+namespace Ambition
+{
+    public class AdvanceDayCmd : Core.ICommand
+    {
+        public void Execute()
+        {
+            AmbitionApp.GetModel<CalendarModel>().Day++;
+            AmbitionApp.GetModel<ParisModel>().Location = null;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+            AmbitionApp.GetModel<ParisModel>().Dailies = null;
+            AmbitionApp.GetModel<InventoryModel>().Market = null;
+>>>>>>> Stashed changes
+            AmbitionApp.SendMessage(GameMessages.FADE_OUT, 3f);
+        }
+    }
+}

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace Ambition
         public string LocalizationKey;
 
         [JsonIgnore]
-        public bool IsScheduled => Date > default(DateTime);
+        public bool IsScheduled => Date > DateTime.MinValue;
 
         [JsonProperty("complete")]
         public bool IsComplete { set; get; }
@@ -35,7 +35,14 @@ namespace Ambition
         public bool Political = false;
 
         [JsonIgnore]
-        public DateTime Date { set; get; }
+        public DateTime Date
+        {
+            set => _date = value.Ticks;
+            get => _date > 0 ? new DateTime(_date) : default;
+        }
+
+        [JsonProperty("Date"), SerializeField]
+        private long _date;
 
         public RequirementVO[] Requirements;
 
@@ -54,11 +61,6 @@ namespace Ambition
             return result.ToArray();
         }
 
-        private string CharName(IncidentCharacterConfig config)
-        {
-            return string.IsNullOrWhiteSpace(config.Name) ? null : config.Name;
-        }
-
         public IncidentVO() : base() {}
         public IncidentVO(DirectedGraph<MomentVO, TransitionVO> graph) : base(graph) { }
 
@@ -67,11 +69,8 @@ namespace Ambition
             this.Name = incident.Name;
             this.Date = incident.Date;
             this.OneShot = incident.OneShot;
-<<<<<<< Updated upstream
-=======
             this.LocalizationKey = incident.LocalizationKey;
             this.Political = incident.Political;
->>>>>>> Stashed changes
         }
 
         public string[] Dump()
@@ -84,7 +83,7 @@ namespace Ambition
             var charz = string.Join(", ", GetCharacters() );
             return new string[] 
             {
-                "incident "+Name,
+                "Incident: "+Name+":",
                 "characters "+charz,
                 "chapters "+ chapz,
                 "tags "+ tagz ,
@@ -97,11 +96,17 @@ namespace Ambition
             // TODO dump requirements, characters...?
         }
 
+        public override string ToString()
+        {
+            return "Incident: "+Name;
+        }
+
     }
 
     [Serializable]
     public class TransitionVO
     {
+        public int index;
         public string Text;
         public bool xor=false;
         public CommodityVO[] Rewards;

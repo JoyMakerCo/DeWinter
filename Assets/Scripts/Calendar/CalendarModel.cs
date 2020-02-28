@@ -1,4 +1,4 @@
-﻿using Core;
+using Core;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +12,7 @@ using System.Linq;
 namespace Ambition
 {
     [Saveable]
-    public class CalendarModel : Model, IResettable, IInitializable
+    public class CalendarModel : Model, IResettable, IInitializable, IConsoleEntity
     {
         [JsonIgnore]
         public DateTime StartDate;
@@ -23,30 +23,30 @@ namespace Ambition
         [JsonIgnore]
         public List<ICalendarEvent> Unscheduled = new List<ICalendarEvent>();
 
-        [JsonProperty("timeline")]
         private List<ICalendarEvent> _events
-        {
+        private List<ICalendarEvent> _events
             set
             {
-                Timeline.Clear();
+            {
                 Unscheduled.Clear();
+                foreach(ICalendarEvent e in value)
                 foreach(ICalendarEvent e in value)
                 {
                     if (e.Date == default) Unscheduled.Add(e);
-                    else
                     {
                         if (!Timeline.ContainsKey(e.Date))
-                            Timeline.Add(e.Date, new List<ICalendarEvent>());
+                        if (!Timeline.ContainsKey(e.Date))
                         Timeline[e.Date].Add(e);
                     }
                 }
-            }
+                }
             get
+            {
             {
                 List<ICalendarEvent> events = new List<ICalendarEvent>(Unscheduled);
                 foreach (List<ICalendarEvent> scheduled in Timeline.Values)
                     events.AddRange(scheduled);
-                return events;
+            }
             }
         }
 
@@ -77,7 +77,7 @@ namespace Ambition
             AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, e);
             AmbitionApp.SendMessage(e);
         }
-
+        public void Schedule<T>(T e) where T : ICalendarEvent => Schedule(e, (e == default || e.Date == DateTime.MinValue) ? Today : e.Date);
         public void Schedule<T>(T e) where T : ICalendarEvent => Schedule(e, (e == default || e.Date == DateTime.MinValue) ? Today : e.Date);
 
         public bool Delete(ICalendarEvent e)
@@ -85,7 +85,7 @@ namespace Ambition
             bool result = Unscheduled.Remove(e);
             return (Timeline.TryGetValue(e.Date, out List<ICalendarEvent> events) && events.Remove(e)) || result;
         }
-
+        public bool Unschedule(ICalendarEvent e)
         public bool Unschedule(ICalendarEvent e)
         {
             return Timeline.ContainsKey(e.Date) && Timeline[e.Date].Remove(e);
@@ -131,9 +131,6 @@ namespace Ambition
             return default;
         }
 
-<<<<<<< Updated upstream
-        public T[] FindUnscheduled<T>(Func<T, bool> predicate) => Unscheduled.OfType<T>().Where(predicate).ToArray();
-=======
         public T[] FindUnscheduled<T>(Func<T, bool> predicate)
         {
             List<T> result = new List<T>();
@@ -146,7 +143,6 @@ namespace Ambition
             }
             return result.ToArray();
         }
->>>>>>> Stashed changes
 
         public ICalendarEvent Find(string EventID)
         {
@@ -208,14 +204,14 @@ namespace Ambition
             }
             return result.ToArray();
         }
-
         public void Initialize()
+        {
         {
             IncidentConfig[] incidents = Resources.LoadAll<IncidentConfig>("Incidents");
             StartDate = DateTime.Today;
             IncidentVO incident;
             foreach (IncidentConfig config in incidents)
-            {
+                incident = config.GetIncident();
                 incident = new IncidentVO(config.Incident);
                 if (incident.IsScheduled)
                 {
@@ -232,24 +228,24 @@ namespace Ambition
         }
 
         public void Complete<T>(T e) where T : ICalendarEvent
+            Debug.Log("CalendarModel completing event");
         {
             if (!IsComplete(e))
             {
                 e.IsComplete = true;
+
+                Debug.Log("CalendarModel sending CALENDAR_EVENT_COMPLETED");
+
                 Unscheduled.Remove(e);
                 AmbitionApp.SendMessage(CalendarMessages.CALENDAR_EVENT_COMPLETED, e);
             }
         }
-
+        public bool IsComplete(ICalendarEvent e) => e == null || e.IsComplete || ((e.Date > DateTime.MinValue) && (e.Date < Today));
         public bool IsComplete(ICalendarEvent e) => e == null || e.IsComplete || e.Date < Today;
-
         public void Reset()
         {
+        {
             Timeline.Clear();
-            _day = 0;
-<<<<<<< Updated upstream
-            StartDate = default;
-        }
 =======
             StartDate = default;
         }
@@ -288,7 +284,6 @@ namespace Ambition
         public void Invoke( string[] args )
         {
             ConsoleModel.warn("CalendarModel has no invocation.");
-        }    
 >>>>>>> Stashed changes
     }
 }

@@ -16,18 +16,32 @@ MonoBehaviour:
   _Links: 
   _Positions:
   - {x: 0, y: 0}
-  - {x: -2, y: 75}
-  - {x: 0, y: 150}
-  - {x: -2, y: 230}
-  - {x: -1, y: 310}
-  - {x: 1, y: 395}
+  - {x: -102, y: 77}
+  - {x: -100, y: 152}
+  - {x: -104, y: 226}
+  - {x: -107, y: 402}
+  - {x: -104, y: 476}
+  - {x: 110, y: 74}
+  - {x: 116, y: 152}
+  - {x: 120, y: 223}
+  - {x: 122, y: 298}
+  - {x: 125, y: 407}
+  - {x: 126, y: 490}
+  - {x: -108, y: 296}
   Incident:
     Links:
     - {x: 0, y: 1}
     - {x: 1, y: 2}
     - {x: 2, y: 3}
-    - {x: 3, y: 4}
     - {x: 4, y: 5}
+    - {x: 0, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 3, y: 12}
+    - {x: 12, y: 4}
     Nodes:
     - Text: "The next morning, you find a letter on your nightstand. Camille must
         have brought it in while you were still asleep. It\u2019s sealed with a rich
@@ -73,7 +87,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/sfx_open_letter
         Parameters: []
     - Text: "\u2018<i>Ch\xE8re</i> Yvette,\n\nIt was truly a pleasure to have your
         company in the ride home from that otherwise dreary party. Still, I seethe
@@ -136,10 +150,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards:
-      - Type: 9
-        ID: Secret Meeting
-        Value: 0
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -171,10 +182,167 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: "Using your map, it doesn\u2019t take long to figure out where this particular
+        fountain is. In fact, you could visit it today if you like."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/sfx_open_letter
+        Parameters: []
+    - Text: "Using your map, it doesn\u2019t take long to figure out where this particular
+        fountain is. In fact, you could visit it today if you like."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Using your map, it doesn\u2019t take long to figure out where this particular
+        fountain is. In fact, you could visit it today if you like."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Using your map, it doesn\u2019t take long to figure out where this particular
+        fountain is. In fact, you could visit it today if you like."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Honorade's Clue
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Using your map, it doesn\u2019t take long to figure out where this particular
+        fountain is. In fact, you could visit it today if you like."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Using your map, it doesn\u2019t take long to figure out where this particular
+        fountain is. In fact, you could visit it today if you like."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Using your map, it doesn\u2019t take long to figure out where this particular
+        fountain is. In fact, you could visit it today if you like."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Honorade's Lead
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
-<<<<<<< Updated upstream
-    - Text: 
-=======
     - index: 0
       Text: 
       xor: 1
@@ -223,7 +391,6 @@ MonoBehaviour:
       Flags: []
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -257,15 +424,6 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-    Requirements: []
-  _factions: 000000000000
-  _chapters: 00000000
-  _date: -1
-  _localizationKey: Assets/Resources/Incidents/Honorade's Letter.asset.
-  _nodeText: []
-=======
     LocalizationKey: Honorade's Letter.asset.19571fca8a9384a7692646dbde04fbf7
     Political: 0
     _date: 564318144000000000
@@ -315,5 +473,4 @@ MonoBehaviour:
   - "Using your map, it doesn\u2019t take long to figure out where this particular
     fountain is. In fact, you could visit it today if you like."
   - (Honorade's Lead is now available to visit in the Paris map)
->>>>>>> Stashed changes
   _linkText: []

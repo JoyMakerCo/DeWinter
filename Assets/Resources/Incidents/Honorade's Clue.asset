@@ -24,11 +24,11 @@ MonoBehaviour:
   - {x: 10, y: 456}
   - {x: 22, y: 530}
   - {x: -100, y: 604}
-  - {x: 128, y: 602}
-  - {x: -106, y: 671}
+  - {x: 272, y: 589}
+  - {x: -126, y: 750}
   - {x: 21, y: 817}
-  - {x: 135, y: 673}
-  - {x: 135, y: 748}
+  - {x: 268, y: 669}
+  - {x: 265, y: 810}
   - {x: 29, y: 887}
   - {x: 32, y: 962}
   - {x: 31, y: 1033}
@@ -39,10 +39,15 @@ MonoBehaviour:
   - {x: 300, y: 1235}
   - {x: -80, y: 1379}
   - {x: 23, y: 1436}
-  - {x: 297, y: 1315}
-  - {x: 274, y: 1434}
+  - {x: 357, y: 1379}
+  - {x: 355, y: 1466}
   - {x: 79, y: 1504}
   - {x: 78, y: 1559}
+  - {x: 267, y: 740}
+  - {x: -121, y: 668}
+  - {x: 361, y: 1309}
+  - {x: 87, y: 1620}
+  - {x: 87, y: 1695}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -54,10 +59,8 @@ MonoBehaviour:
     - {x: 6, y: 7}
     - {x: 7, y: 8}
     - {x: 7, y: 9}
-    - {x: 8, y: 10}
     - {x: 10, y: 11}
     - {x: 9, y: 12}
-    - {x: 12, y: 13}
     - {x: 13, y: 11}
     - {x: 11, y: 14}
     - {x: 14, y: 15}
@@ -69,11 +72,18 @@ MonoBehaviour:
     - {x: 19, y: 21}
     - {x: 20, y: 22}
     - {x: 22, y: 23}
-    - {x: 21, y: 24}
     - {x: 24, y: 25}
     - {x: 25, y: 26}
     - {x: 23, y: 26}
     - {x: 26, y: 27}
+    - {x: 12, y: 28}
+    - {x: 28, y: 13}
+    - {x: 8, y: 29}
+    - {x: 29, y: 10}
+    - {x: 21, y: 30}
+    - {x: 30, y: 24}
+    - {x: 27, y: 31}
+    - {x: 31, y: 32}
     Nodes:
     - Text: "You leave the house earlier than usual that morning, uncertain of how
         long it\u2019ll take you to walk to the fountain that Honorade mentioned in
@@ -279,7 +289,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
     - Text: "Honorade laughs with an unexpected snort. \u201CI\u2019m sure that it\u2019s
         not. However, anyone who wishes to spy upon us already knows who we are. The
@@ -371,7 +381,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_bored
         Parameters: []
     - Text: You take her hand and get into the carriage. As with before, it takes
         a few moments for your eyes to adjust to the oppressive gloom within.
@@ -559,7 +569,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_neutral
         Parameters: []
     - Text: "\u201COh my, yes.\u201D She answers, making no attempt to hide how much
         she is relishing the current situation."
@@ -581,7 +591,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_positive
         Parameters: []
     - Text: "\u201CNow you pursue this lead, hatch a plan, and get your revenge. What
         that requires is really up to you. I\u2019m more than happy to provide you
@@ -725,6 +735,143 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: "Honorade helps you down from the carriage, and with a crack of Ren\xE9\u2019s
+        whip, her carriage departs and winds its way into the city. You stop to think
+        about this new information. Marcelle is a wealthy aristocrat, but her fortune
+        appears to be younger than she claims. It seems like this knowledge could
+        be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Honorade helps you down from the carriage, and with a crack of Ren\xE9\u2019s
+        whip, her carriage departs and winds its way into the city. You stop to think
+        about this new information. Marcelle is a wealthy aristocrat, but her fortune
+        appears to be younger than she claims. It seems like this knowledge could
+        be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Honorade
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Honorade helps you down from the carriage, and with a crack of Ren\xE9\u2019s
+        whip, her carriage departs and winds its way into the city. You stop to think
+        about this new information. Marcelle is a wealthy aristocrat, but her fortune
+        appears to be younger than she claims. It seems like this knowledge could
+        be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Honorade
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Honorade helps you down from the carriage, and with a crack of Ren\xE9\u2019s
+        whip, her carriage departs and winds its way into the city. You stop to think
+        about this new information. Marcelle is a wealthy aristocrat, but her fortune
+        appears to be younger than she claims. It seems like this knowledge could
+        be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: Researching Marcelle
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Honorade helps you down from the carriage, and with a crack of Ren\xE9\u2019s
+        whip, her carriage departs and winds its way into the city. You stop to think
+        about this new information. Marcelle is a wealthy aristocrat, but her fortune
+        appears to be younger than she claims. It seems like this knowledge could
+        be useful, but you\u2019ll have to dig deeper first."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
     - index: 0
       Text: 
@@ -834,9 +981,6 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: 
-=======
     - index: 0
       Text: "\"I think you\u2019re right, what now?\u201D"
       xor: 0
@@ -863,7 +1007,6 @@ MonoBehaviour:
       Flags: []
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -874,9 +1017,6 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: "\"I think you\u2019re right, what now?\u201D"
-=======
     - index: 0
       Text: 
       xor: 0
@@ -885,17 +1025,12 @@ MonoBehaviour:
       Flags: []
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-<<<<<<< Updated upstream
-    - Text: "\u201CYou\u2019re enjoying this, aren\u2019t you?\u201D"
-=======
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -947,22 +1082,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: Honorade's Clue.asset.df6f4cb0e7c9f4cfd8bfd00f30b67ca3
     Political: 0
     _date: -1
->>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/Honorade's Clue.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - "You leave the house earlier than usual that morning, uncertain of how long it\u2019ll
     take you to walk to the fountain that Honorade mentioned in her letter to you."
@@ -1090,4 +1216,3 @@ MonoBehaviour:
   - 
   - 
   - 
->>>>>>> Stashed changes

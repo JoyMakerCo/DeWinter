@@ -1,0 +1,1493 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: A Reason for Travel
+  m_EditorClassIdentifier: 
+  _Nodes: 21000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 84}
+  - {x: 10, y: 162}
+  - {x: -217, y: 249}
+  - {x: -2, y: 253}
+  - {x: 461, y: 599}
+  - {x: -235, y: 309}
+  - {x: -235, y: 365}
+  - {x: -463, y: 450}
+  - {x: -214, y: 510}
+  - {x: 17, y: 509}
+  - {x: 17, y: 434}
+  - {x: 38, y: 568}
+  - {x: 163, y: 861}
+  - {x: 29, y: 699}
+  - {x: -204, y: 572}
+  - {x: -464, y: 511}
+  - {x: 315, y: 1023}
+  - {x: 541, y: 1029}
+  - {x: 341, y: 1158}
+  - {x: 499, y: 1225}
+  - {x: -460, y: 642}
+  - {x: -288, y: 732}
+  - {x: -290, y: 844}
+  - {x: -291, y: 917}
+  - {x: -163, y: 1008}
+  - {x: -47, y: 1287}
+  - {x: 343, y: 756}
+  - {x: -160, y: 1184}
+  - {x: 174, y: 940}
+  - {x: 93, y: 1015}
+  - {x: 66, y: 1122}
+  - {x: -462, y: 579}
+  - {x: -219, y: 656}
+  - {x: 45, y: 631}
+  - {x: -280, y: 784}
+  - {x: -159, y: 1089}
+  - {x: 325, y: 1090}
+  - {x: 537, y: 1104}
+  - {x: -387, y: 1019}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 2, y: 4}
+    - {x: 2, y: 5}
+    - {x: 3, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 7, y: 10}
+    - {x: 4, y: 11}
+    - {x: 11, y: 8}
+    - {x: 11, y: 10}
+    - {x: 11, y: 9}
+    - {x: 10, y: 12}
+    - {x: 9, y: 15}
+    - {x: 8, y: 16}
+    - {x: 13, y: 18}
+    - {x: 21, y: 22}
+    - {x: 21, y: 5}
+    - {x: 14, y: 5}
+    - {x: 23, y: 24}
+    - {x: 14, y: 22}
+    - {x: 13, y: 25}
+    - {x: 5, y: 27}
+    - {x: 27, y: 13}
+    - {x: 28, y: 26}
+    - {x: 13, y: 29}
+    - {x: 29, y: 17}
+    - {x: 29, y: 30}
+    - {x: 30, y: 31}
+    - {x: 19, y: 20}
+    - {x: 31, y: 26}
+    - {x: 16, y: 32}
+    - {x: 32, y: 21}
+    - {x: 15, y: 33}
+    - {x: 33, y: 14}
+    - {x: 12, y: 34}
+    - {x: 34, y: 14}
+    - {x: 22, y: 35}
+    - {x: 35, y: 23}
+    - {x: 25, y: 36}
+    - {x: 36, y: 28}
+    - {x: 17, y: 37}
+    - {x: 37, y: 19}
+    - {x: 18, y: 38}
+    - {x: 38, y: 20}
+    - {x: 24, y: 39}
+    Nodes:
+    - Text: "You approach a man standing by himself. His wig is slightly dishevelled,
+        and he has fresh mud on his boots.\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Orphan's Feast - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CAh, <i>bonjour</i> madame! You must have just arrived in Paris
+        as well.\u201D He says affably."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CWhere did you journey from?\u201D \r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CDo not worry madame, I\u2019m sure you\u2019ll be able to return
+        there soon enough!\u201D He replies with a warm laugh. \u201CI myself came
+        a few months ago from similar, idyllic surroundings in Brittany.\u201D \r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "\u201CWell, madame you are in luck, for you have arrived in the most
+        significant city in all the world.\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: charmed
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: '"The Baron de Marbo?" He pauses to think, scratching his chin. "Why does
+        that name sound so familiar?"'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "\u201CBut of course, the harvest has not been so good this year, which
+        is what brings me to Paris. I\u2019m searching for a way to revitalize our
+        estate. Back home, I tried new farming techniques, imported tools, and I even
+        built a shrine to Saint Isidore himself! Yet, it was to no avail. So I am
+        here, in search of a solution.\u201D\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201C<i>Et vous, madame</i>? What has brought you to Paris, so far from
+        home?\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\"You've travelled all the way here for your fiance? Such love and devotion
+        remind me of when I was your age.\" His eyes have a far off look for a moment.
+        \n\n\"Never let yourself lose sight of such things.\""
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: '"Ambition, advancement, and glory? Such things are not easy for a commoner
+        like yourself. However, you are correct, Paris is the place best for those
+        looking to raise their station."'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: "\u201CSeeking the finer things in life? Well, you\u2019re in the right
+        place for it. Fashion is a way of life here.\"  He gestures around the tavern
+        and you can see that even the people of more humble means have chosen their
+        attire carefully."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: "\u201CAnd what has brought you to this bustling metropolis?\u201D"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\"I think you'll fit in well with the merchants, lawyers, and physicians
+        of the Bourgeoisie.\" \n\n(You've gained a little favor with members of the
+        Bourgeoisie)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Sorry, madame. I simply... haven''t been here long enough to know enough
+        about him." '
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Are you here in the city alone?"'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards:
+      - Type: 5
+        ID: MadameHonoradeGazel
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\"Allow me to suggest that you take some time to speak with members of
+        the army, and their supporters. They come from backgrounds both high and low,
+        yet they're all willing to sacrifice so much to raise their station just a
+        little.\" \n\n(You've gained a little favor with members of the Military)"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"If that is why you are here, you might want to seek out those associated
+        with the church. Love and tradition are very much on their minds."
+
+
+'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I''m sorry madame, I must go. I have an urgent appointment." He says
+        very brusquely. '
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: '"Thank you for your understanding madame." He says with a polite nod
+        before he drains his wineglass. "Now it appears that, I must go. I have an
+        urgent appointment."'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: Without another word, he drains his wineglass and leaves.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: He departs, leaving you with your thoughts, and more questions.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"So, this Armand of yours, what brought him to Paris?"'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'He nods his head affably. "My apologies madame, I didn''t mean to pry.
+        Discretion is such a rare virtue in this day and age, that I''d almost forgotten
+        it entirely."
+
+
+        (You have gained a little credibility)'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 'The two of you spend the next few minutes exchanging small talk and pleasant
+        travel stories. It''s nice to talk with another person again, even if it''s
+        about nothing in particular. '
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Eventually he excuses himself, as he needs to make it to some sort of
+        appointment.
+
+
+        A pleasant diversion, but you''re no closer to finding Armand than when you
+        started.'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'The traveller startles at your sudden forwardness, and you can feel the
+        weight of eyes in the tavern watching the next moments. "Madame, please understand
+        that I cannot say much more. Your fiance has made some powerful enemies, and
+        if you don''t know how he did that, then you might want to reconsider him
+        entirely."
+
+
+        (You have gained a little peril)'
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: While you may have learned something, you feel like you still have more
+        questions than answers. You should be able to clear all of this up when you
+        find Armand.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: His eyes go wide for a moment before settling into an expression of discomfort.
+        Gathering up his things, he starts preparing to leave.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Without another word, he pulls free of your grasp, drains his wineglass
+        and leaves.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: He sighs and looks from side to side, obviously torn on what to do.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Getting close to you, he whispers. "If you must know madame, your fiance
+        has made some powerful enemies, and if you don't know how he did that, then
+        you might want to reconsider him entirely."
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: Without another word, he drains his wineglass and leaves.
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (You've gained a little favor with members of the Church)
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Ludovico
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Thomas-Alexandre
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Honorade
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Enthusiastic Traveller
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CAn idyllic farming town to the south, I\u2019m a little sorry I
+        left it behind.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CIt was nowhere significant, I\u2019m happier to be here.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"I''m actually looking for someone. Do you know where I could find the
+        Baron de Marbo?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CI\u2019m here because my fiance, Armand, is here. I'd follow him
+        anywhere.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CThis is the only place where I can achieve the status that I deserve.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CParis is a hub of trade, wealth, and craftsmen. It\u2019s where
+        I can get the lifestyle I want.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\"\x1CI'\x19m in Paris because my fiance, Armand, is here.\""
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CParis is a hub of trade, wealth, and craftsmen. It\u2019s where
+        I can get the lifestyle I want.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: "\u201CThis is the only place where I can achieve the status that I deserve.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"That''s understandable."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"His business isn''t mine to discuss."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Well, he''s the Baron de Marbo, and he''s here for the Estates General."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"No, I''m here to see my fiance, the Baron de Marbo."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"I''m not, but I''d like to keep some business to myself."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: <Grab his wrist> "Please monsieur, you have to tell me where he is."
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Are you sure you can''t remember anything?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
+    OneShot: 1
+    Chapters: 
+    Tags: []
+    Factions: 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+    LocalizationKey: 
+=======
+=======
+>>>>>>> Stashed changes
+    LocalizationKey: A Reason for Travel.asset.b8f092e619ba0d14fba1b3b4e7fac380
+    Political: 0
+    _date: -1
+>>>>>>> Stashed changes
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  _localizationKey: Assets/Resources/Incidents/A Reason for Travel.asset.
+  _nodeText: []
+  _linkText: []
+=======
+=======
+>>>>>>> Stashed changes
+  _nodeText:
+  - "You approach a man standing by himself. His wig is slightly dishevelled, and
+    he has fresh mud on his boots.\r"
+  - "\u201CAh, <i>bonjour</i> madame! You must have just arrived in Paris as well.\u201D
+    He says affably."
+  - "\u201CWhere did you journey from?\u201D \r"
+  - "\u201CDo not worry madame, I\u2019m sure you\u2019ll be able to return there
+    soon enough!\u201D He replies with a warm laugh. \u201CI myself came a few months
+    ago from similar, idyllic surroundings in Brittany.\u201D \r"
+  - "\u201CWell, madame you are in luck, for you have arrived in the most significant
+    city in all the world.\u201D"
+  - '"The Baron de Marbo?" He pauses to think, scratching his chin. "Why does that
+    name sound so familiar?"'
+  - "\u201CBut of course, the harvest has not been so good this year, which is what
+    brings me to Paris. I\u2019m searching for a way to revitalize our estate. Back
+    home, I tried new farming techniques, imported tools, and I even built a shrine
+    to Saint Isidore himself! Yet, it was to no avail. So I am here, in search of
+    a solution.\u201D\r"
+  - "\u201C<i>Et vous, madame</i>? What has brought you to Paris, so far from home?\u201D"
+  - "\"You've travelled all the way here for your fiance? Such love and devotion remind
+    me of when I was your age.\" His eyes have a far off look for a moment. \n\n\"Never
+    let yourself lose sight of such things.\""
+  - '"Ambition, advancement, and glory? Such things are not easy for a commoner like
+    yourself. However, you are correct, Paris is the place best for those looking
+    to raise their station."'
+  - "\u201CSeeking the finer things in life? Well, you\u2019re in the right place
+    for it. Fashion is a way of life here.\"  He gestures around the tavern and you
+    can see that even the people of more humble means have chosen their attire carefully."
+  - "\u201CAnd what has brought you to this bustling metropolis?\u201D"
+  - '"I think you''ll fit in well with the merchants, lawyers, and physicians of the
+    Bourgeoisie." '
+  - '"Sorry, madame. I simply... haven''t been here long enough to know enough about
+    him." '
+  - '"Are you here in the city alone?"'
+  - '"Allow me to suggest that you take some time to speak with members of the army,
+    and their supporters. They come from backgrounds both high and low, yet they''re
+    all willing to sacrifice so much to raise their station just a little." '
+  - '"If that is why you are here, you might want to seek out those associated with
+    the church. Love and tradition are very much on their minds."
+
+
+'
+  - '"I''m sorry madame, I must go. I have an urgent appointment." He says very brusquely. '
+  - '"Thank you for your understanding madame." He says with a polite nod before he
+    drains his wineglass. "Now it appears that, I must go. I have an urgent appointment."'
+  - Without another word, he drains his wineglass and leaves.
+  - He departs, leaving you with your thoughts, and more questions.
+  - '"So, this Armand of yours, what brought him to Paris?"'
+  - He nods his head affably. "My apologies madame, I didn't mean to pry. Discretion
+    is such a rare virtue in this day and age, that I'd almost forgotten it entirely."
+  - 'The two of you spend the next few minutes exchanging small talk and pleasant
+    travel stories. It''s nice to talk with another person again, even if it''s about
+    nothing in particular. '
+  - Eventually he excuses himself, as he needs to make it to some sort of appointment.
+  - The traveller startles at your sudden forwardness, and you can feel the weight
+    of eyes in the tavern watching the next moments. "Madame, please understand that
+    I cannot say much more. Your fiance has made a powerful enemy, and if you don't
+    know how he did that, then you might want to reconsider him entirely."
+  - While you may have learned something, you feel like you still have more questions
+    than answers. You should be able to clear all of this up when you find Armand.
+  - His eyes go wide for a moment before settling into an expression of discomfort.
+    Gathering up his things, he starts preparing to leave.
+  - Without another word, he pulls free of your grasp, drains his wineglass and leaves.
+  - He sighs and looks from side to side, obviously torn on what to do.
+  - Getting close to you, he whispers. "If you must know madame, your fiance has made
+    a powerful enemy, and if you don't know how he did that, then you might want to
+    reconsider him entirely."
+  - Without another word, he drains his wineglass and leaves.
+  - (You've gained a little favor with members of the Church)
+  - (You've gained a little favor with members of the Military)
+  - (You've gained a little favor with members of the Bourgeoisie)
+  - (You've gained a little credibility)
+  - (You've gained a little peril)
+  - (You've lost some credibility)
+  - (You've gained a little credibility)
+  - A pleasant diversion, but you're no closer to finding Armand than when you started.
+  _linkText:
+  - 
+  - 
+  - "\u201CAn idyllic farming town to the south, I\u2019m a little sorry I left it
+    behind.\u201D"
+  - "\u201CIt was nowhere significant, I\u2019m happier to be here.\u201D"
+  - '"I''m actually looking for someone. Do you know where I could find the Baron
+    de Marbo?"'
+  - 
+  - 
+  - "\u201CI\u2019m here because my fiance, Armand, is here. I'd follow him anywhere.\u201D"
+  - "\u201CThis is the only place where I can achieve the status that I deserve.\u201D"
+  - "\u201CParis is a hub of trade, wealth, and craftsmen. It\u2019s where I can get
+    the lifestyle I want.\u201D"
+  - 
+  - "\"\x1CI'\x19m in Paris because my fiance, Armand, is here.\""
+  - "\u201CParis is a hub of trade, wealth, and craftsmen. It\u2019s where I can get
+    the lifestyle I want.\u201D"
+  - "\u201CThis is the only place where I can achieve the status that I deserve.\u201D"
+  - 
+  - 
+  - 
+  - '"I see... very well."'
+  - '"His business isn''t mine to discuss."'
+  - '"Well, he''s the Baron de Marbo, and he''s here for the Estates General."'
+  - '"I''m actually looking for someone. Do you know where I could find the Baron
+    de Marbo?"'
+  - 
+  - '"I''d prefer not to discuss that, if you don''t mind."'
+  - <Grab his wrist> "Please monsieur, you have to tell me where he is."
+  - 
+  - 
+  - 
+  - '"Monsieur, please. You have to at least tell me something."'
+  - '"Are you sure you can''t remember anything?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes

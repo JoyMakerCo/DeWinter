@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +6,12 @@ namespace Ambition
 {
     public class CharacterConfig : ScriptableObject, AmbitionEditor.ILocalizedAsset
     {
-        public string Title;
+        public string DisplayName;
+        public string FullName;
+        public string FormalName;
         public string Background;
         public FactionType Faction;
-        public AvatarVO Avatar;
+        public string AvatarID;
 
         [Range(1, 100)]
         public int Favor;
@@ -17,27 +19,23 @@ namespace Ambition
         public CharacterConfig Spouse;
         public bool Celibate;
 
-<<<<<<< Updated upstream
-        CharacterVO GetCharacter() => new CharacterVO()
-=======
         [SerializeField] private string _localizationKey;
 
         public string GetLocalizationKey() => _localizationKey;
 
         public CharacterVO GetCharacter() => new CharacterVO()
->>>>>>> Stashed changes
         {
-            Name = name,
-            Title = Title,
-            Avatar = this.Avatar,
+            ID = this.name,
+            Name = this.DisplayName,
+            FullName = _FullName,
+            FormalName = _FormalName,
+            AvatarID = this.AvatarID,
             Favor = Favor,
-            Spouse = Spouse?.name, //TODO: Connect these characters in the model
+            Spouse = Spouse?.name,
             Faction = Faction,
             Background = Background,
             Celibate = Celibate,
         };
-<<<<<<< Updated upstream
-=======
 
         private string _FullName => string.IsNullOrWhiteSpace(FullName) ? this.DisplayName : FullName;
         private string _FormalName => string.IsNullOrWhiteSpace(FormalName) ? _FullName : FormalName;
@@ -62,6 +60,5 @@ namespace Ambition
             Util.ScriptableObjectUtil.CreateScriptableObject<CharacterConfig>("New Character");
         }
 #endif
->>>>>>> Stashed changes
     }
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Ambition
@@ -40,9 +40,6 @@ namespace Ambition
             gameObject.SetActive(false);
         }
 
-<<<<<<< Updated upstream
-        public void GoToLocation() => AmbitionApp.SendMessage(ParisMessages.GO_TO_LOCATION, _location);
-=======
         private void OnDestroy()
         {
             _pin = null;
@@ -59,6 +56,5 @@ namespace Ambition
                 AmbitionApp.SendMessage(ParisMessages.GO_TO_LOCATION);
             }
         }
->>>>>>> Stashed changes
     }
 }

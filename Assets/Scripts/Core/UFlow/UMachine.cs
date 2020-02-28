@@ -1,22 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Core;
 using Util;
 using UGraph;
 
-<<<<<<< Updated upstream
-namespace UFlow
-{
-    [Serializable]
-	public sealed class UMachine
-=======
 using UnityEngine;
 
 namespace UFlow
 {
     [Serializable]
 	public sealed class UMachine : UInputState, IConsoleEntity, IDisposable
->>>>>>> Stashed changes
 	{
 		public string MachineID { get; private set; }
 
@@ -266,8 +259,6 @@ Debug.Log("Entering State " + node.ID);
 			ln.Initialize();
 			return ln;
 		}
-<<<<<<< Updated upstream
-=======
 
 
         public string[] Dump()
@@ -284,6 +275,5 @@ Debug.Log("Entering State " + node.ID);
         {
             ConsoleModel.warn("UMachine has no invocation.");
         }  
->>>>>>> Stashed changes
 	}
 }

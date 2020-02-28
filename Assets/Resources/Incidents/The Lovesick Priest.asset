@@ -59,7 +59,7 @@ MonoBehaviour:
   - {x: 233, y: 1081}
   - {x: 196, y: 1207}
   - {x: 197, y: 1266}
-  - {x: 408, y: 1327}
+  - {x: 490, y: 1211}
   - {x: 347, y: 1396}
   - {x: 193, y: 1329}
   - {x: 228, y: 222}
@@ -152,7 +152,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: LudovicoCarriage
+        Value: 1
       Music:
         Name: event:/Music/Prologue - Intimate Conversation - Church
         Parameters:
@@ -354,7 +357,7 @@ MonoBehaviour:
         darting between you and the small stack of books on the seat next to him.\r\n\r\nHe
         signals the coachman by tapping the ceiling of the carriage, and you head
         off towards Paris.\r"
-      Background: {fileID: 21300000, guid: db7f5ac67fe45804a938b164b0638fbb, type: 3}
+      Background: {fileID: 21300000, guid: 14eb3d2b4ab374fb89ce583fa14f85a6, type: 3}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: neutral
@@ -967,7 +970,7 @@ MonoBehaviour:
         into the street, Father Sidotti leans out of the carriage to look at your
         home. \r\n\r\n\u201CAh, I see you have chosen to live humbly. It\u2019s good
         for the soul.\u201D He muses aloud.\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -982,7 +985,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -990,7 +993,7 @@ MonoBehaviour:
     - Text: "\u201CUntil we meet again, madame!\u201D He calls cheerily before the
         carriage drives off into the night. \r\n\r\nYou realize that Camille is already
         waiting for you at the door.\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1000,10 +1003,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards:
-      - Type: 7
-        ID: Church
-        Value: 0
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -1014,7 +1014,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "\u201CWho was that?\u201D she asks."
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -1043,7 +1043,7 @@ MonoBehaviour:
     - Text: You step inside and head upstairs, your mind still reeling from the day's
         events. Slowly, you get undressed and open your journal to record exactly
         what transpired tonight.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1058,7 +1058,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -1066,7 +1066,7 @@ MonoBehaviour:
     - Text: Your mind brimming with new possibilities, you step inside and head upstairs.
         Slowly, you get undressed and open your journal to record exactly what transpired
         tonight.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1081,7 +1081,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -1091,7 +1091,7 @@ MonoBehaviour:
         door, but Father Sidotti opens it first. He steps down and offers you his
         hand.\r\n\r\n\u201CThis has been a rare pleasure madame,\u201D he says as
         you step into the street. \r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: happy
@@ -1106,13 +1106,13 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: "\u201CHopefully, we\u2019ll meet again under better circumstances.\u201D\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: neutral
@@ -1134,7 +1134,7 @@ MonoBehaviour:
         Parameters: []
     - Text: "\u201CPlease, call me Ludovico.\u201D He says with a nod before stepping
         into his carriage and disappearing into the night.\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: happy
@@ -1156,7 +1156,7 @@ MonoBehaviour:
         Parameters: []
     - Text: "\u201CHeaven help you, if you do,\u201D he chuckles, \u201CAnd please
         madame, call me Ludovico.\u201D\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: happy
@@ -1182,7 +1182,7 @@ MonoBehaviour:
 
         You turn to your home find that Camille is already there, holding the door
         open for you.'
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -1204,7 +1204,7 @@ MonoBehaviour:
         Parameters: []
     - Text: You turn to your home and see what Camille is already there, holding the
         door open for you.
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -1668,15 +1668,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: '"A most intriguing young priest. Hopefully someone I''ll see again."'
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
@@ -1692,7 +1683,6 @@ MonoBehaviour:
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -1702,32 +1692,22 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: '"Are you sure, Father Sidotti? I can always make more enemies, if you''d
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 0
       Text: '"Are you sure, Father Sidotti? I can always make more enemies, if you''d
->>>>>>> Stashed changes
         like."'
       xor: 0
       Rewards: []
       Requirements: []
-<<<<<<< Updated upstream
-      Flags: []
-    - Text: 
-=======
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 0
       Text: 
->>>>>>> Stashed changes
       xor: 0
       Rewards: []
       Requirements: []
@@ -1871,22 +1851,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: The Lovesick Priest.asset.2ff7300068f05444d8dd7756df3d1e81
     Political: 0
     _date: -1
->>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/The Lovesick Priest.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - You reach out and knock on the door of the carriage. The silhouetted figure jumps
     in surprise.
@@ -2086,4 +2057,3 @@ MonoBehaviour:
   - 
   - 
   - 
->>>>>>> Stashed changes

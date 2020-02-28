@@ -322,7 +322,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Crowd_bark_gasp
         Parameters: []
     - Text: "The crowd is no longer making a secret of observing your conversation.
         They\u2019re gawking. \r"
@@ -440,7 +440,7 @@ MonoBehaviour:
         - Name: Stage 1
           Value: 0
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_HushedParty_indoor
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/Male_bark_negative
@@ -472,10 +472,10 @@ MonoBehaviour:
         - Name: Stage 5
           Value: 0
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_HushedParty_indoor
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_bored
         Parameters: []
     - Text: "You hear a collective intake of breath from the gawking crowd. Maximin
         seems on the verge of a retort, but he stutters for a moment instead.\r"
@@ -504,10 +504,10 @@ MonoBehaviour:
         - Name: Stage 5
           Value: 0
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_HushedParty_indoor
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Crowd_bark_gasp
         Parameters: []
     - Text: "Maximin narrows his eyes until they\u2019re barely more than slits. \u201CIn
         fact, you can practice this virtue now and make sure that he hears this, should
@@ -557,10 +557,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards:
-      - Type: 11
-        ID: 
-        Value: -5
+      Rewards: []
       Music:
         Name: event:/Music/Prologue - Betrayal
         Parameters:
@@ -888,7 +885,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: Maximin
+        Value: -1
       Music:
         Name: event:/Music/Prologue - Betrayal
         Parameters:
@@ -1108,7 +1108,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Crowd_bark_gasp
         Parameters: []
     - Text: "\u201CIt\u2019s been weeks since anyone\u2019s heard from the Baron de
         Marbo. Originally, I\u2019d taken it as a blessing that we no longer had to
@@ -1195,7 +1195,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Crowd_bark_gasp
         Parameters: []
     - Text: "\u201CYour cowardly fiance could have spent his time doing something
         useful, like echoing the views of his betters. Instead he chose to waste our
@@ -1393,7 +1393,10 @@ MonoBehaviour:
       Rewards:
       - Type: 11
         ID: 
-        Value: 10
+        Value: 20
+      - Type: 5
+        ID: Elisabeth
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -1809,22 +1812,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: Maximin Appears.asset.7327864d51f371847a5e43de68fcfe39
     Political: 0
     _date: -1
->>>>>>> Stashed changes
     Requirements: []
-  _factions: 000000000000
+  _factions: 000000010000
   _chapters: 00000000
   _date: -1
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/Maximin Appears.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - "Out of the corner of your eye, you notice a tall, thin man dressed in somber,
     serious colors. The way people are clustered around him, you get the feeling that
@@ -2006,4 +2000,3 @@ MonoBehaviour:
   - 
   - 
   - 
->>>>>>> Stashed changes

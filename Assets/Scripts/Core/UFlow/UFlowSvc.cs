@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Core;
 using Util;
@@ -6,7 +6,7 @@ using UGraph;
 
 namespace UFlow
 {
-	public class UFlowSvc : IAppService
+	public class UFlowSvc : IAppService, IConsoleEntity 
 	{
         // Explicitly invoked machines.
         private List<UMachine> _machines = new List<UMachine>();
@@ -37,19 +37,6 @@ namespace UFlow
             return result;
         }
 
-<<<<<<< Updated upstream
-        internal UController GetController(UMachine machine) => _controllers.Find(c => c._Machine == machine);
-
-		public string[] GetActiveMachines()
-		{
-			return _active.Select(m=>m.MachineID).ToArray();
-		}
-
-		public bool IsActiveState(string stateID)
-		{
-			return _active.Exists(m=>m.GetActiveStates().Contains(stateID));
-		}
-=======
         public List<string> GetMachineIDs()
         {
             List<UMachine> machines = GetMachines();
@@ -59,7 +46,6 @@ namespace UFlow
         }
 
         public bool IsActiveMachine(string machineID) => GetMachineIDs().Contains(machineID);
->>>>>>> Stashed changes
 
         public void BindState<S>(string machineID, string stateID, params object[] parameters) where S:UState, new()
         {
@@ -219,8 +205,6 @@ namespace UFlow
             }
             return false;
         }
-<<<<<<< Updated upstream
-=======
 
         public string[] Dump()
         {
@@ -248,6 +232,5 @@ namespace UFlow
         {
             ConsoleModel.warn("UFlowSvc has no invocation.");
         }    
->>>>>>> Stashed changes
     }
 }

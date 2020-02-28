@@ -115,7 +115,7 @@ MonoBehaviour:
   - {x: 124, y: 3735}
   - {x: 374, y: 3731}
   - {x: 256, y: 3871}
-  - {x: 255, y: 3814}
+  - {x: 254, y: 3797}
   - {x: 259, y: 4006}
   - {x: 266, y: 4067}
   - {x: 143, y: 4141}
@@ -134,7 +134,7 @@ MonoBehaviour:
   - {x: -484, y: 2903}
   - {x: -32, y: 2904}
   - {x: -115, y: 3448}
-  - {x: 261, y: 3932}
+  - {x: 257, y: 3937}
   - {x: 634, y: 3610}
   - {x: 643, y: 3688}
   - {x: 638, y: 3761}
@@ -297,7 +297,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: HonoradeCarriage
+        Value: 1
       Music:
         Name: event:/Music/Prologue - Intimate Conversation - Bourgeoise
         Parameters:
@@ -428,7 +431,7 @@ MonoBehaviour:
         woman in front of you. She\u2019s older than yourself, but still younger than
         you\u2019d expect. Dressed in luxurious mourning clothes, she reclines easily
         in her seat, clutching a fine glass filled with water.\r"
-      Background: {fileID: 21300000, guid: db7f5ac67fe45804a938b164b0638fbb, type: 3}
+      Background: {fileID: 21300000, guid: 14eb3d2b4ab374fb89ce583fa14f85a6, type: 3}
       Character1:
         AvatarID: HonoradeGazel
         Pose: neutral
@@ -1925,10 +1928,10 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/One Shot SFX/Female_bark_charmed
+        Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Female_bark_charmed
         Parameters: []
     - Text: Until now.
       Background: {fileID: 0}
@@ -2164,7 +2167,7 @@ MonoBehaviour:
         it for you. As you\u2019re helping yourself down into the streets, Honorade
         peers out at your shabby home and simply shrugs to you.\r\n\n\u201CDon't worry.
         Everyone has to start somewhere.\u201D\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2176,7 +2179,7 @@ MonoBehaviour:
       Speaker: 2
       Rewards: []
       Music:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       AmbientSFX:
         Name: 
@@ -2189,7 +2192,7 @@ MonoBehaviour:
         With a crack of his whip overhead, Ren\xE9, the coachman spurs the horses
         into action, and the carriage winds through the streets and disappears into
         the night.\r"
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2211,7 +2214,7 @@ MonoBehaviour:
         Parameters: []
     - Text: You turn to your home and see that Camille is already there, holding the
         door open for you.
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -2232,7 +2235,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "\u201CWho was that?\u201D she asks."
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -2261,7 +2264,7 @@ MonoBehaviour:
     - Text: You step inside and head upstairs, your mind still reeling from the day's
         events. Slowly, you get undressed and open your journal to record exactly
         what transpired tonight.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2276,7 +2279,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -2284,7 +2287,7 @@ MonoBehaviour:
     - Text: Your mind brimming with new possibilities, you step inside and head upstairs.
         Slowly, you get undressed and open your journal to record exactly what transpired
         tonight.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2299,7 +2302,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -2365,7 +2368,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: 
@@ -2462,7 +2465,7 @@ MonoBehaviour:
     - Text: "\u201CWould you be comfortable with that?\u201D"
       Background: {fileID: 0}
       Character1:
-        AvatarID: Guest02
+        AvatarID: HonoradeGazel
         Pose: neutral
         Name: Honorade
       Character2:
@@ -2527,7 +2530,7 @@ MonoBehaviour:
         She says to you before Ren\xE9 closes the carriage door. Soon, with a crack
         of his whip overhead, the coachman spurs the horses into action, and the carriage
         winds through the streets and disappears into the night."
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2542,14 +2545,14 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: 
         Parameters: []
     - Text: She helps you down from the carriage and into the street in front of your
         house.
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: HonoradeGazel
         Pose: neutral
@@ -2564,14 +2567,14 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: You turn to your home and see that Camille is already there, holding the
         door open for you.
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -2592,7 +2595,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "\u201CWho was that?\u201D she asks."
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: Camille
         Pose: neutral
@@ -2621,7 +2624,7 @@ MonoBehaviour:
     - Text: You step inside and head upstairs, your mind still reeling from the day's
         events. Slowly, you get undressed and open your journal to record exactly
         what transpired tonight.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2636,7 +2639,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -2644,7 +2647,7 @@ MonoBehaviour:
     - Text: Your mind brimming with new possibilities, you step inside and head upstairs.
         Slowly, you get undressed and open your journal to record exactly what transpired
         tonight.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2659,7 +2662,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -4043,22 +4046,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-<<<<<<< Updated upstream
-    LocalizationKey: 
-=======
     LocalizationKey: The Wealthy Widow.asset.6cdf06cb1e2e9224393ba335c52d9bc0
     Political: 0
     _date: -1
->>>>>>> Stashed changes
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-<<<<<<< Updated upstream
-  _localizationKey: Assets/Resources/Incidents/The Wealthy Widow.asset.
-  _nodeText: []
-  _linkText: []
-=======
   _nodeText:
   - The coachman pays you no heed as you approach the sumptuously decorated carriage.
     Normally, you find yourself to be quite fearless in social situations, but something
@@ -4475,4 +4469,3 @@ MonoBehaviour:
   - 
   - '"Yes, I do. Madame Gazel."'
   - '"I don''t think I''m comfortable with seeing you that way, Honorade."'
->>>>>>> Stashed changes
