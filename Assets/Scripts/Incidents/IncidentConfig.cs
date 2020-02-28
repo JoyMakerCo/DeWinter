@@ -140,6 +140,7 @@ namespace Ambition
             }
             return phrases;
         }
+
 #endif
 
         public override void RenderNodeUI(SerializedProperty moment, int nodeIndex)
@@ -164,7 +165,6 @@ namespace Ambition
                 list = GetLinkTextProperty(obj);
                 for (int i=list.arraySize-1; i>=0; i--)
                 {
-                    link = list.GetArrayElementAtIndex(i);
                     if (link != null)
                     {
                         ends = link.vector2IntValue;
@@ -172,13 +172,16 @@ namespace Ambition
                         else if (ends.x == 0) ends.x = nodeIndex;
                         if (ends.y == nodeIndex) ends.y = 0;
                         else if (ends.y == 0) ends.y = nodeIndex;
+
+                        else if (ends.y == 0) ends.y = nodeIndex;
                         link.vector2IntValue = ends;
                     }
                 }
                 nodeIndex = 0;
                 list = obj.FindProperty("_Nodes");
                 if (list != null)
-                {
+                    list.GetArrayElementAtIndex(0).intValue = 0;
+
                     list.arraySize = 1;
                     list.GetArrayElementAtIndex(0).intValue = 0;
                 }
@@ -279,9 +282,6 @@ namespace Ambition
         public bool Render(SerializedProperty node, int index, Rect rect, bool selected)
         {
             if (node == null) return false;
-            SerializedProperty list = GetNodeTextProperty(node.serializedObject);
-            if (list == null
-                || !list.isArray
                 || index >= node.serializedObject.FindProperty("_Positions")?.arraySize)
             {
                 return false;
@@ -292,6 +292,9 @@ namespace Ambition
                 list.arraySize = index + 1;
             }
 
+            if (index >= list.arraySize)
+            {
+                list.arraySize = index + 1;
             if (index >= list.arraySize)
             {
                 list.arraySize = index + 1;

@@ -35,6 +35,7 @@ namespace Ambition
         private void HandleMoment(MomentVO moment)
 		{
             if (moment != null)
+
             {
                 descriptionText.text = AmbitionApp.Localize(_localizationKey + ".node." + moment.Index.ToString());
                 if (moment.Background != null) Background.texture = moment.Background.texture;
@@ -42,7 +43,7 @@ namespace Ambition
                 Character1.Pose = moment.Character1.Pose;
                 Character2.ID = moment.Character2.AvatarID;
                 Character2.Pose = moment.Character2.Pose;
-
+                if (moment.Music.Name.Length > 0)
                 if (moment.Music.Name.Length > 0)
                     AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, moment.Music);
                 if (moment.AmbientSFX.Name.Length > 0)

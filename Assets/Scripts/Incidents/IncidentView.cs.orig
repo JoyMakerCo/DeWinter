@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -36,30 +36,18 @@ namespace Ambition
 		{
             if (moment != null)
             {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                string result = null;
-                if (_incident?.Nodes != null)
-                {
-                    int index = Array.IndexOf(_incident.Nodes, moment);
-                    if (index >= 0)
-                    {
-                        result = AmbitionApp.GetString(_incident.LocalizationKey + "node." + index.ToString());
-                    }
-                }
-                descriptionText.text = result;
-                if (moment.Background != null) _background.sprite = moment.Background;
-=======
                 descriptionText.text = AmbitionApp.Localize(_localizationKey + ".node." + moment.Index.ToString());
+<<<<<<< Updated upstream
                 if (moment.Background != null) Background.texture = moment.Background.texture;
->>>>>>> Stashed changes
-=======
-                descriptionText.text = AmbitionApp.Localize(_localizationKey + ".node." + moment.Index.ToString());
-                if (moment.Background != null) Background.texture = moment.Background.texture;
->>>>>>> Stashed changes
                 Character1.ID = moment.Character1.AvatarID;
                 Character1.Pose = moment.Character1.Pose;
                 Character2.ID = moment.Character2.AvatarID;
+=======
+                if (moment.Background != null) Background.texture = moment.Background.texture;
+                Character1.ID = moment.Character1.AvatarID;
+                Character1.Pose = moment.Character1.Pose;
+                Character2.ID = moment.Character2.AvatarID;
+>>>>>>> Stashed changes
                 Character2.Pose = moment.Character2.Pose;
 
                 if (moment.Music.Name.Length > 0)
@@ -69,6 +57,7 @@ namespace Ambition
                 if (moment.OneShotSFX.Name.Length > 0)
                     AmbitionApp.SendMessage(AudioMessages.PLAY, moment.OneShotSFX);
 
+<<<<<<< Updated upstream
                 SpeakerName.enabled = (moment.Speaker != SpeakerType.None);
                 switch (moment.Speaker)
                 {
@@ -87,6 +76,26 @@ namespace Ambition
             {
                 Debug.Log("How did I get here??");
             }
+=======
+                SpeakerName.enabled = (moment.Speaker != SpeakerType.None);
+                switch (moment.Speaker)
+                {
+                    case SpeakerType.Player:
+                        SpeakerName.text = AmbitionApp.GetModel<GameModel>().PlayerName;
+                        break;
+                    case SpeakerType.Character1:
+                        SpeakerName.text = moment.Character1.Name;
+                        break;
+                    case SpeakerType.Character2:
+                        SpeakerName.text = moment.Character2.Name;
+                        break;
+                }
+            }
+            else
+            {
+                Debug.Log("How did I get here??");
+            }
+>>>>>>> Stashed changes
         }
 	}
 }

@@ -1,28 +1,19 @@
+<<<<<<< Updated upstream
+using System;
+=======
 ﻿using System;
+>>>>>>> Stashed changes
 using System.Collections.Generic;
 using Core;
 using Util;
 using UGraph;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-namespace UFlow
-{
-    [Serializable]
-	public sealed class UMachine
-=======
-=======
->>>>>>> Stashed changes
 using UnityEngine;
 
 namespace UFlow
 {
     [Serializable]
 	public sealed class UMachine : UInputState, IConsoleEntity, IDisposable
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 	{
 		public string MachineID { get; private set; }
 
@@ -167,7 +158,6 @@ namespace UFlow
         {
             if (_queue == null || _nodes == null || index < 0 || index >= _nodes.Length) return;
             if (_queue.Count > 1)
-<<<<<<< Updated upstream
             {
                 _queue.Enqueue(index);
                 return;
@@ -175,15 +165,6 @@ namespace UFlow
             UState node;
             do
             {
-=======
-            {
-                _queue.Enqueue(index);
-                return;
-            }
-            UState node;
-            do
-            {
->>>>>>> Stashed changes
                 node = BuildNode(index);
 Debug.Log("Entering State " + node.ID);
                 node.OnEnterState();
@@ -282,8 +263,6 @@ Debug.Log("Entering State " + node.ID);
 			ln.Initialize();
 			return ln;
 		}
-<<<<<<< Updated upstream
-=======
 
 
         public string[] Dump()
@@ -300,6 +279,5 @@ Debug.Log("Entering State " + node.ID);
         {
             ConsoleModel.warn("UMachine has no invocation.");
         }  
->>>>>>> Stashed changes
 	}
 }
