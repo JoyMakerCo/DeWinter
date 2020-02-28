@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 using UnityEngine;
+=======
+﻿using UnityEngine;
+>>>>>>> Stashed changes
 using UnityEngine.UI;
 
 namespace Ambition
@@ -15,6 +19,7 @@ namespace Ambition
 
         public void Show(Pin location)
         {
+<<<<<<< Updated upstream
             _pin = location;
             gameObject.SetActive(_pin != null);
             if (_pin != null)
@@ -49,6 +54,42 @@ namespace Ambition
 
         private void HandleClick()
         {
+=======
+            _pin = location;
+            gameObject.SetActive(_pin != null);
+            if (_pin != null)
+            {
+                LocationNameText.text = _pin.name;
+                LocationDescriptionText.text = location.LocationWindowDescription;
+                LocationImage.sprite = location.LocationModalSprite;
+            }
+        }
+
+        /************************************************************************************************
+        Private/Protected methods
+        ************************************************************************************************/
+
+        private void Awake()
+        {
+            GoButton.onClick.AddListener(HandleClick);
+            CloseButton.onClick.AddListener(OnClose);
+        }
+
+        private void OnClose()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            _pin = null;
+            GoButton.onClick.RemoveAllListeners();
+            CloseButton.onClick.RemoveAllListeners();
+        }
+
+        private void HandleClick()
+        {
+>>>>>>> Stashed changes
             LocationVO location = _pin?.GetLocation();
             if (location != null)
             {

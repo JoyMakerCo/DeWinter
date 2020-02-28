@@ -55,8 +55,6 @@ namespace Core
 			log(string.Format(format,args));
 		}
 
-<<<<<<< Updated upstream
-=======
 		public static void warn( string text )
 		{
 			_instance._view?.Add(text,ConsoleStyle.Warning);
@@ -128,7 +126,6 @@ namespace Core
 			return transientEntities;
 		}
 
->>>>>>> Stashed changes
 		public void ParseInput(string input)
 		{
 			// tokenize into command and parameters

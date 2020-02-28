@@ -72,6 +72,11 @@ namespace Ambition
             AmbitionApp.RegisterCommand<ScheduleIncidentCmd, IncidentVO>(CalendarMessages.SCHEDULE);
             AmbitionApp.RegisterCommand<CompleteIncidentCmd, IncidentVO>(CalendarMessages.CALENDAR_EVENT_COMPLETED);
 
+            // Incidents
+            AmbitionApp.RegisterCommand<UpdateIncidentsCmd>(CalendarMessages.UPDATE_CALENDAR);
+            AmbitionApp.RegisterCommand<ScheduleIncidentCmd, IncidentVO>(CalendarMessages.SCHEDULE);
+            AmbitionApp.RegisterCommand<CompleteIncidentCmd, IncidentVO>(CalendarMessages.CALENDAR_EVENT_COMPLETED);
+
             // Party
             AmbitionApp.RegisterCommand<InitPartyCmd, PartyVO>(PartyMessages.INITIALIZE_PARTY);
             AmbitionApp.RegisterCommand<AcceptInvitationCmd, PartyVO>(PartyMessages.ACCEPT_INVITATION);

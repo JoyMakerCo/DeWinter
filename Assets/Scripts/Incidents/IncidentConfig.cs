@@ -79,9 +79,17 @@ namespace Ambition
         public string GetLocalizationKey() => Incident?.LocalizationKey;
 
 
+        public string GetLocalizationKey() => Incident?.LocalizationKey;
+
+
 #if (UNITY_EDITOR)
         private const string NODE_KEY = "node.";
         private const string LINK_KEY = "link.";
+
+        private readonly string[] MONTHS = new string[]{
+            "January","February","March","April","May","June",
+            "July","August","September","October","November","December"
+        };
 
         private readonly string[] MONTHS = new string[]{
             "January","February","March","April","May","June",
@@ -113,7 +121,6 @@ namespace Ambition
         }
 
         public override void CleanupEditor(SerializedObject serializedObject) { }
-
 #if DEBUG
         public Dictionary<string, string> Localize()
         {
@@ -140,7 +147,6 @@ namespace Ambition
             }
             return phrases;
         }
-
 #endif
 
         public override void RenderNodeUI(SerializedProperty moment, int nodeIndex)
@@ -180,8 +186,7 @@ namespace Ambition
                 nodeIndex = 0;
                 list = obj.FindProperty("_Nodes");
                 if (list != null)
-                    list.GetArrayElementAtIndex(0).intValue = 0;
-
+                {
                     list.arraySize = 1;
                     list.GetArrayElementAtIndex(0).intValue = 0;
                 }
@@ -282,6 +287,9 @@ namespace Ambition
         public bool Render(SerializedProperty node, int index, Rect rect, bool selected)
         {
             if (node == null) return false;
+            SerializedProperty list = GetNodeTextProperty(node.serializedObject);
+            if (list == null
+                || !list.isArray
                 || index >= node.serializedObject.FindProperty("_Positions")?.arraySize)
             {
                 return false;

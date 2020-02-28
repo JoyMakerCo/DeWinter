@@ -38,10 +38,17 @@ namespace Ambition
 
             {
                 descriptionText.text = AmbitionApp.Localize(_localizationKey + ".node." + moment.Index.ToString());
+<<<<<<< Updated upstream
                 if (moment.Background != null) Background.texture = moment.Background.texture;
                 Character1.ID = moment.Character1.AvatarID;
                 Character1.Pose = moment.Character1.Pose;
                 Character2.ID = moment.Character2.AvatarID;
+=======
+                if (moment.Background != null) Background.texture = moment.Background.texture;
+                Character1.ID = moment.Character1.AvatarID;
+                Character1.Pose = moment.Character1.Pose;
+                Character2.ID = moment.Character2.AvatarID;
+>>>>>>> Stashed changes
                 Character2.Pose = moment.Character2.Pose;
                 if (moment.Music.Name.Length > 0)
                 if (moment.Music.Name.Length > 0)
@@ -51,6 +58,7 @@ namespace Ambition
                 if (moment.OneShotSFX.Name.Length > 0)
                     AmbitionApp.SendMessage(AudioMessages.PLAY, moment.OneShotSFX);
 
+<<<<<<< Updated upstream
                 SpeakerName.enabled = (moment.Speaker != SpeakerType.None);
                 switch (moment.Speaker)
                 {
@@ -69,6 +77,26 @@ namespace Ambition
             {
                 Debug.Log("How did I get here??");
             }
+=======
+                SpeakerName.enabled = (moment.Speaker != SpeakerType.None);
+                switch (moment.Speaker)
+                {
+                    case SpeakerType.Player:
+                        SpeakerName.text = AmbitionApp.GetModel<GameModel>().PlayerName;
+                        break;
+                    case SpeakerType.Character1:
+                        SpeakerName.text = moment.Character1.Name;
+                        break;
+                    case SpeakerType.Character2:
+                        SpeakerName.text = moment.Character2.Name;
+                        break;
+                }
+            }
+            else
+            {
+                Debug.Log("How did I get here??");
+            }
+>>>>>>> Stashed changes
         }
 	}
 }

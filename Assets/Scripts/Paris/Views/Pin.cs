@@ -28,7 +28,11 @@ namespace Ambition
             IncidentVO[] storyIncidents = StoryIncidentConfigs.Select( x => x.GetIncident() ).ToArray();
 
             return new LocationVO()
+<<<<<<< Updated upstream
             {
+=======
+            {
+>>>>>>> Stashed changes
                 ID = name,
                 IntroIncident = IntroIncidentConfig.GetIncident(),
                 StoryIncidents = storyIncidents,
@@ -37,8 +41,13 @@ namespace Ambition
                 Discoverable = Discoverable,
                 Requirements = requirements
             };
+<<<<<<< Updated upstream
         }
 
+=======
+        }
+
+>>>>>>> Stashed changes
         public void HandleClick()
         {
             AmbitionApp.SendMessage<Pin>(ParisMessages.SELECT_LOCATION, this);
@@ -55,7 +64,11 @@ namespace Ambition
         }
 
         public string Name { get; private set; }
+<<<<<<< Updated upstream
 
+=======
+
+>>>>>>> Stashed changes
         /******************************************************
          Private/Protected      
          *******************************************************/      

@@ -267,7 +267,7 @@ namespace Ambition
             {
                 lines.Add( string.Format( "  {0}", ev.Name ));
             }
-#if UNITY_EDITORsys
+#if UNITY_EDITOR
 
             lines.Add( "Timeline Events: " + Timeline.Count.ToString() );
             foreach (var eventList in Timeline.OrderBy(kv => kv.Key).Select(kv => kv.Value))
