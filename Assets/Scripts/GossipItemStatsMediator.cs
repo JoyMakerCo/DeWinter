@@ -26,22 +26,23 @@ namespace Ambition
         // Use this for initialization
         void Awake()
         {
-            BlankStats();
+            BlankStats(null);
             SetUpDictionary();
             AmbitionApp.Subscribe<ItemVO>(InventoryMessages.DISPLAY_GOSSIP, HandleGossipStats);
-            AmbitionApp.Subscribe(InventoryMessages.PEDDLE_GOSSIP, BlankStats); //Gotta wipe the slate once the item's been moved
-            AmbitionApp.Subscribe(InventoryMessages.SELL_GOSSIP, BlankStats);
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.PEDDLE_GOSSIP, BlankStats); //Gotta wipe the slate once the item's been moved
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.SELL_GOSSIP, BlankStats);
         }
 
         void OnDestroy()
         {
             AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.DISPLAY_GOSSIP, HandleGossipStats);
-            AmbitionApp.Unsubscribe(InventoryMessages.PEDDLE_GOSSIP, BlankStats); //Gotta wipe the slate once the item's been moved
-            AmbitionApp.Unsubscribe(InventoryMessages.SELL_GOSSIP, BlankStats);
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.PEDDLE_GOSSIP, BlankStats); //Gotta wipe the slate once the item's been moved
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.SELL_GOSSIP, BlankStats);
         }
 
-        void BlankStats()
+        void BlankStats( ItemVO soldItem )
         {
+            Debug.Log("GossipItemStatsMediator.BlankStats");
             GossipFactionSymbol.color = Color.clear;
             GossipNameText.text = "";
             GossipDescriptionText.text = "";
@@ -52,16 +53,17 @@ namespace Ambition
 
         void HandleGossipStats(ItemVO gossip)
         {
-            //Sprite factionSprite;
+            Debug.Log("GossipItemStatsMediator.HandleGossipStats");
+            Sprite factionSprite;
             //System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
-            //_factionSymbolList.TryGetValue(gossip.Faction.ToString(), out factionSprite);
-            //GossipFactionSymbol.color = Color.white;
-            //GossipFactionSymbol.sprite = factionSprite;
-            //GossipNameText.text = gossip.Name;
-            //GossipDescriptionText.text = gossip.DescriptionText; //To Do: Make gossip items generate description text properly
+            _factionSymbolList.TryGetValue(gossip.ID.ToString(), out factionSprite);
+            GossipFactionSymbol.color = Color.white;
+            GossipFactionSymbol.sprite = factionSprite;
+            GossipNameText.text = gossip.Name;
+            GossipDescriptionText.text = GossipWrapperVO.GetDescription(gossip); //To Do: Make gossip items generate description text properly
             //GossipEffectText.text = gossip.PoliticalEffectDescriptionText();
-            //FreshnessSlider.value = gossip.GetRelevance(today);
-            //GossipValue.text = "£" + gossip.GetLivreValue(today).ToString("### ###");
+            FreshnessSlider.value = GossipWrapperVO.GetRelevanceSliderValue(gossip);
+            GossipValue.text = "£ " + GossipWrapperVO.GetValue( gossip ).ToString("### ###");
         }
 
         private void SetUpDictionary()

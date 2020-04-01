@@ -1,4 +1,4 @@
-using UFlow;
+﻿using UFlow;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -6,7 +6,7 @@ namespace Ambition
 {
     public class CheckMissedPartiesState : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             PartyVO[] parties = calendar.GetEvents<PartyVO>(calendar.Yesterday).Where(p=>p.RSVP == RSVP.New).ToArray();

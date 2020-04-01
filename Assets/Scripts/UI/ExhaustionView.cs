@@ -11,7 +11,7 @@ namespace Ambition
         public Sprite[] ExhaustionIcons;
         public Sprite RestedIcon;
         public Image Indicator;
-        public AmbitionLocalizedText Tooltip;
+        public Text Tooltip;
 
         private GameModel _Model => AmbitionApp.GetModel<GameModel>();
 
@@ -26,12 +26,12 @@ namespace Ambition
             {
                 if (exhaustion > ExhaustionIcons.Length) exhaustion = ExhaustionIcons.Length;
                 Indicator.sprite = ExhaustionIcons[exhaustion - 1];
-                Tooltip.Localize("exhaustion_level_" + exhaustion.ToString());
+                Tooltip.text = AmbitionApp.Localize("exhaustion_level_" + exhaustion.ToString());
             }
             else if (exhaustion < 0)
             {
                 Indicator.sprite = RestedIcon;
-                Tooltip.Localize("well_rested");
+                Tooltip.text = AmbitionApp.Localize("well_rested");
             }
             LayoutRebuilder.ForceRebuildLayoutImmediate(Tooltip?.GetComponentInParent<ContentSizeFitter>()?.GetComponent<RectTransform>());
         }

@@ -172,7 +172,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Novelty
@@ -486,7 +486,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Modesty
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 224793949982282544}
   - component: {fileID: 222480454843146658}
   - component: {fileID: 114439342563710696}
-  - component: {fileID: 9023600012131716571}
+  - component: {fileID: 5013175230624692867}
   m_Layer: 5
   m_Name: YvettePaperDoll
   m_TagString: Untagged
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9023600012131716571
+--- !u!114 &5013175230624692867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -842,10 +842,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1047644698391826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947c2962be9664c0c83d0909531b3913, type: 3}
+  m_Script: {fileID: 11500000, guid: 57340e7deefedde47af8145e178180b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DressConfig: {fileID: 11400000, guid: 0e51a123bf2be44d391d80d5b3f8b26a, type: 2}
+  OutfitConfig: {fileID: 11400000, guid: 5f1f8c74112074f1fa8472f34419b8ac, type: 2}
+  Doll: {fileID: 114439342563710696}
 --- !u!1 &1074370867239112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1443,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Luxury
@@ -2948,7 +2949,6 @@ GameObject:
   - component: {fileID: 222428072246331890}
   - component: {fileID: 114446589004785268}
   - component: {fileID: 114538814430832756}
-  - component: {fileID: 114799297714366546}
   - component: {fileID: 2484654749456712402}
   - component: {fileID: 114470483973308130}
   - component: {fileID: 2696265123134136493}
@@ -3066,19 +3066,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &114799297714366546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486853201196430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc26278e01314e608b4e18af7f14afe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TutorialStep: TutorialGoStep
 --- !u!114 &2484654749456712402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3365,6 +3352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224228714540193760}
   - component: {fileID: 222424115031423564}
+  - component: {fileID: 3410875830914675957}
   m_Layer: 5
   m_Name: PartyLoadOut
   m_TagString: Untagged
@@ -3408,6 +3396,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522327123172190}
   m_CullTransparentMesh: 0
+--- !u!114 &3410875830914675957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522327123172190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText:
+  - TextField: {fileID: 114333357804493272}
+    LocalizationKey: wardrobe.go_to_party
+  - TextField: {fileID: 114202741490571446}
+    LocalizationKey: wardrobe.outfits
+  - TextField: {fileID: 114712335786714984}
+    LocalizationKey: wardrobe.accessories
+  - TextField: {fileID: 114543794899940950}
+    LocalizationKey: wardrobe.sort_by
+  - TextField: {fileID: 114678956465849826}
+    LocalizationKey: luxury
+  - TextField: {fileID: 114896910634922942}
+    LocalizationKey: modesty
+  - TextField: {fileID: 114758701411357118}
+    LocalizationKey: novelty
+  - TextField: {fileID: 114736898186625060}
+    LocalizationKey: wardrobe.tonights_party
 --- !u!1 &1598387275275044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,7 +3650,7 @@ MonoBehaviour:
   LuxuryStatText: {fileID: 114363397238489064}
   ModestyStatText: {fileID: 114778693978006716}
   NoveltyStatText: {fileID: 114699734642935496}
-  DressCollection: {fileID: 11400000, guid: 0e51a123bf2be44d391d80d5b3f8b26a, type: 2}
+  DressCollection: {fileID: 0}
 --- !u!1 &1671282751607862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,7 +3744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FactionSymbols: {fileID: 11400000, guid: 40dcf6421b6bc4e8b909a0099a4063c6, type: 2}
   FactionSymbol: {fileID: 114488595989005222}
-  TooltipText: {fileID: 114598277098791932}
+  TooltipText: {fileID: 0}
 --- !u!1 &1676218252831890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,6 +3757,7 @@ GameObject:
   - component: {fileID: 222519942850285604}
   - component: {fileID: 114333357804493272}
   - component: {fileID: 114387568727550410}
+  - component: {fileID: 3737349358119860596}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3823,6 +3841,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.95686275, b: 0.78431374, a: 0.5882353}
   m_EffectDistance: {x: 1, y: -0.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &3737349358119860596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676218252831890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizedText: []
 --- !u!1 &1677780789314138
 GameObject:
   m_ObjectHideFlags: 0
@@ -5715,7 +5746,6 @@ GameObject:
   - component: {fileID: 222307319078762280}
   - component: {fileID: 114555719019475662}
   - component: {fileID: 114410469724726372}
-  - component: {fileID: 114598277098791932}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -5799,18 +5829,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &114598277098791932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898857451744414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb45b82374044427ab05e67885ed5d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1902904343935398
 GameObject:
   m_ObjectHideFlags: 0

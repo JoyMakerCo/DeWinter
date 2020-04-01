@@ -15,5 +15,6 @@ namespace Ambition
         public const string CURRENT_MONTH = "CURRENT_MONTH";
         public const string NEXT_MONTH = "NEXT_MONTH";
         public const string PREV_MONTH = "PREV_MONTH";
+        public const string BEGIN_RANDOM_INVITATIONS = "BEGIN_RANDOM_INVITATIONS";
     }
 }

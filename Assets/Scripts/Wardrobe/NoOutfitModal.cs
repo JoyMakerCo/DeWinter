@@ -19,8 +19,8 @@ namespace Ambition
 	    public override void OnOpen ()
 		{
 			base.OnOpen ();
-			BodyText.text = AmbitionApp.GetString(DIALOG_PHRASE + DialogConsts.BODY);
-			TitleText.text = AmbitionApp.GetString(DIALOG_PHRASE + DialogConsts.TITLE);
+			BodyText.text = AmbitionApp.Localize(DIALOG_PHRASE + DialogConsts.BODY);
+			TitleText.text = AmbitionApp.Localize(DIALOG_PHRASE + DialogConsts.TITLE);
 
 	        tabsController = GameObject.Find("MainScreenTabsContainer").GetComponent<MainScreenTabsController>();
 	    }

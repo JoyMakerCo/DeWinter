@@ -40,9 +40,9 @@ namespace Ambition
             AmbitionApp.RegisterState<SendMessageState, string>("ConversationController", "FleeConversation", PartyMessages.FLEE_CONVERSATION);
 
             AmbitionApp.RegisterLink<GuestSelectedLink>("ConversationController", "StartRound", "SelectGuests");
-            AmbitionApp.RegisterLink<MessageLink, string>("ConversationController", "StartRound", "Drink", PartyMessages.DRINK);
-            AmbitionApp.RegisterLink<MessageLink, string>("ConversationController", "StartRound", "TimeExpired", PartyMessages.TIME_EXPIRED);
-            AmbitionApp.RegisterLink<MessageLink, string>("ConversationController", "StartRound", "DrawCard", PartyMessages.DRAW_REMARK);
+            AmbitionApp.RegisterLink<InputLink, string>("ConversationController", "StartRound", "Drink", PartyMessages.DRINK);
+            AmbitionApp.RegisterLink<InputLink, string>("ConversationController", "StartRound", "TimeExpired", PartyMessages.TIME_EXPIRED);
+            AmbitionApp.RegisterLink<InputLink, string>("ConversationController", "StartRound", "DrawCard", PartyMessages.DRAW_REMARK);
 
             AmbitionApp.RegisterLink("ConversationController", "DrawCard", "EndRound");
             AmbitionApp.RegisterLink("ConversationController", "SelectGuests", "EndRound");

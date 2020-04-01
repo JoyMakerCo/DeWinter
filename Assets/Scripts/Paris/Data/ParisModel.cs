@@ -9,41 +9,31 @@ namespace Ambition
     [Saveable]
     public class ParisModel : Model, IResettable
     {
-        public int NumExploreLocations = 5;
-
-        [JsonIgnore]
-        public Pin Location;
-
         [JsonProperty("location")]
-        private string _Location
-        {
-            get => Location?.name;
-            //set => 
-            // TODO: On Restore, load the Paris Scenefab and consume the pin Prefab
-        }
+        public LocationVO Location;
 
-        [JsonIgnore] // List of explorable locations and their requirements
-        public Dictionary<string, RequirementVO[]> Explorable = new Dictionary<string, RequirementVO[]>();
+        public uint NumDailies = 5;
 
         [JsonProperty("daily")] // Explorable locations available "Today"
-        public List<string> Daily = new List<string>();
+        public string[] Daily = null; // This will be populated when Daily locations have been selected
 
-        [JsonIgnore]
-        // Locations that are unlocked via requirements and directly added to Known locations
-        public Dictionary<string, RequirementVO[]> Locations = new Dictionary<string, RequirementVO[]>();
+        [JsonProperty("new")] // New recently discoved locations
+        public string[] New = null; // These locations will animate in, and then be appended to the Known list
 
-        [JsonProperty("known")] // Known locations
-        public List<string> Known = new List<string>();
+        [JsonProperty("locations")] // Known locations
+        public List<string> Locations = new List<string>();
 
-        [JsonProperty("visited")] // One-Shot locations that have been visited
+        [JsonProperty("visited")] // Locations that have been visited. This prevents one-shot locations from redisplaying.
         public List<string> Visited = new List<string>();
 
         public void Reset()
         {
             Location = null;
+            Daily = null;
+            New = null;
+            NumDailies = 0;
             Locations.Clear();
             Visited.Clear();
-            Daily.Clear();
         }
     }
 }

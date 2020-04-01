@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,9 +7,9 @@ namespace Ambition
     public class TutorialRemarkState : TutorialState
     {
         private TutorialBounce _bounz=null;
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
-            base.OnEnterState(args);
+            base.OnEnterState();
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
             GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Canvas>() != null);
             if (canvas != null) 

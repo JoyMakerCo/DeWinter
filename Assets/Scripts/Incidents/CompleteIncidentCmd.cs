@@ -1,6 +1,7 @@
 ﻿using System;
 using Core;
 using UFlow;
+using UnityEngine;
 
 namespace Ambition
 {
@@ -8,6 +9,9 @@ namespace Ambition
 	{
 		public void Execute(IncidentVO incident)
 		{
+            Debug.Log("CompleteIncidentCmd.Execute");
+            AmbitionApp.GetModel<GameModel>().MarkCompleteIncident(incident);
+
             IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
             if (incident == model.Incident)
             {

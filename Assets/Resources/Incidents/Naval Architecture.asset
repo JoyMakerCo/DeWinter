@@ -1,0 +1,903 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: Naval Architecture
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 7, y: 84}
+  - {x: 8, y: 171}
+  - {x: 12, y: 250}
+  - {x: 4, y: 340}
+  - {x: -273, y: 419}
+  - {x: 3, y: 425}
+  - {x: 272, y: 414}
+  - {x: 272, y: 517}
+  - {x: 9, y: 561}
+  - {x: -275, y: 510}
+  - {x: 7, y: 501}
+  - {x: 14, y: 676}
+  - {x: -247, y: 725}
+  - {x: 11, y: 734}
+  - {x: 298, y: 724}
+  - {x: -242, y: 823}
+  - {x: 20, y: 815}
+  - {x: 297, y: 810}
+  - {x: -114, y: 906}
+  - {x: 166, y: 895}
+  - {x: 190, y: 963}
+  - {x: -106, y: 982}
+  - {x: -103, y: 1048}
+  - {x: -105, y: 1112}
+  - {x: 7, y: 615}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 4, y: 6}
+    - {x: 4, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 5, y: 10}
+    - {x: 10, y: 9}
+    - {x: 6, y: 11}
+    - {x: 11, y: 9}
+    - {x: 12, y: 13}
+    - {x: 12, y: 14}
+    - {x: 12, y: 15}
+    - {x: 13, y: 16}
+    - {x: 14, y: 17}
+    - {x: 15, y: 18}
+    - {x: 18, y: 19}
+    - {x: 16, y: 19}
+    - {x: 17, y: 20}
+    - {x: 20, y: 21}
+    - {x: 19, y: 22}
+    - {x: 22, y: 23}
+    - {x: 23, y: 24}
+    - {x: 9, y: 25}
+    - {x: 25, y: 12}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outsideWfountain
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: happy
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: happy
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: happy
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: happy
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Stranger
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: happy
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: happy
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: StephaneDeFer
+        Pose: neutral
+        Name: Stephane
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    AssetPath: 
+    OneShot: 1
+    Chapters: 
+    Tags: []
+    Factions: 
+    LocalizationKey: Assets/Resources/Incidents/Naval Architecture.asset
+    Political: 0
+    _date: -1
+    Requirements: []
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - You decide to spend the day walking around in a fountain square, simply to cool
+    off. It's sweltering outdoors, stifling indoors, and most people are just trying
+    not to lose their tempers with eachother. You swear you can see steam rising up
+    from off the fountain.
+  - 'At the moment, you''re walking easy circles around the fountain, giggling to
+    yourself at a pack of children playing in it. The situation becomes even more
+    amusing when their parents notice, and desperatly try to shepherd them out of
+    it.
+
+
+    It doesn''t work, and at least one adult falls in during the chase.'
+  - Your street theater is suddenly interrupted by a man hurtling around a corner
+    and colliding with you. You manage to keep your balance, but are still a little
+    disoriented.
+  - '"Oh! My apologies, madame!" The man sputters as he collects himself.'
+  - '"Are you hurt, at all?"'
+  - '"Oh, I''m so sorry to hear that!"'
+  - '"Oh, that''s the spirit!" He replies with an encouraging smile. '
+  - He straightens up and adjusts his disheveled specatacles. "You see, madame, I'm
+    lost in the city and terribly late for a meeting. I normally work on the coast
+    in <i>La Rochelle</i>, and this is my first time in Paris."
+  - '"I had originaly planned to orienteer my way across the city with my handy compass."
+    He says, holding up a well polished brass compass, and a paper map of Paris. "But
+    that plan seems to have been less effective than I''d have hoped."'
+  - He stops to check his pocketwatch, then sighs. "I'm supposed to be meeting with
+    a draftsman to get the plans for the sunken fortresses at <i>Cherbourg</i>, but
+    at this rate I'll miss my appointment at the naval department entirely."
+  - "Without any hesitation, he pulls a handercheif from his pocket, soaks it in the
+    fountain, and presses the cold damp cloth to your forehead. \n\nYou have to admit,
+    it helps with the shock and heat at least."
+  - '"I''m in a touch of a hurry, and I must have stopped paying attention to where
+    I was going."'
+  - '"Do you know where I can find the naval department?"'
+  - '"Capital! Let us be off. Our mission begins anew!"'
+  - '"I see. How troubling."'
+  - '"A capital idea! Let us find someone knowledgable, post-haste!"'
+  - Combining your knowledge of the city and his map, you manage to locate the naval
+    office, and hurry towards it.
+  - '"It seems that I''ll have to continue my efforts on my own. All the same, I appreciate
+    your honesty."'
+  - After spending a few minutes asking around, you find someone who seems more familiar
+    with the area, and he gives you some directions. Together, the two of you hurry
+    towards your destination.
+  - 'A few blocks later, you find yourself outside the stately building. It doesn''t
+    look nearly as nautical as you would imagine a naval office to be.
+
+
+    There should simply be a stronger nauticual theme.'
+  - (You have gained a little credibilty)
+  - With that, he disappears into the crowd, and you return to your day spent trying
+    to overcome the stiffling heat.
+  - '"Thank you again for your help, madame!" He says with a deep bow. "If not for
+    you, this entire journey would have been a complete waste."'
+  - (You have gained a decent amount of credibility)
+  - He departs inside, and you're left to your own devices. It's more than likely
+    that you'll return to the fountain square to spend the rest of your day trying
+    to overcome the stiffling heat.
+  - '"The fortresses are leaking terribly, you see. We made them out of wood, which
+    is apparently quite appetizing to all of the sea worms in the port. It was probably
+    something that should have been looked into before we made them."'
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - '"I''m afraid that I''m still a little shaken, monsieur."'
+  - '"It was nothing. I''m sure I''ll be fine."'
+  - '"My word, what has you in such a hurry?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I know the city well enough, I can at least help you search for it."'
+  - '"Monsieur, I have frankly no idea."'
+  - '"I don''t, but perhaps we can find someone who does know?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

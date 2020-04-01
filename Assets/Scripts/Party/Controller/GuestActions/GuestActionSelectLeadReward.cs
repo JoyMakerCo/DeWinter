@@ -6,7 +6,7 @@ namespace Ambition
 {
     public class GuestActionSelectLeadReward : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             UController controller = _Machine._UFlow.GetController(_Machine);
             if (controller != null)

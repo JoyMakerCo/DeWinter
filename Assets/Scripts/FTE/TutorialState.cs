@@ -1,11 +1,11 @@
-using UFlow;
+﻿using UFlow;
 using Core;
 
 namespace Ambition
 {
     public class TutorialState : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             AmbitionApp.SendMessage(TutorialMessage.TUTORIAL_STEP, ID);
         }

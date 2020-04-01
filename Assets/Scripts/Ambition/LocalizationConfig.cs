@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEditor;
+using ILocalizedAsset = AmbitionEditor.ILocalizedAsset;
 
 namespace Ambition
 {
@@ -13,147 +14,113 @@ namespace Ambition
     {
         public TextAsset DefaultLocalizationFile;
 
-        [SerializeField, HideInInspector]
-        private Dictionary<string, string> _phrases = null;
+        public static string GOOGLE_LOCALIZATION_SHEET_ID = "1YNtdQCWlgGjg0ruRC5XPlwQIXYaKmx4bs6f2bW2j9jA";
 
-        private bool Pull(bool overwrite = false)
+        private static LocalizationConfig _instance = null;
+
+        private void OnEnable()
         {
-            if (DefaultLocalizationFile != null && (overwrite || _phrases == null))
-            {
-                _phrases = JsonConvert.DeserializeObject<Dictionary<string, string>>(DefaultLocalizationFile.text);
-            }
-            return _phrases != null;
+            _instance = _instance ?? this;
         }
 
-        public string GenerateLocalizationKey(ScriptableObject obj) => AssetDatabase.GetAssetPath(obj) + ".";
-        public string GenerateLocalizationKey(MonoBehaviour obj) => obj.GetInstanceID() + obj.name + ".";
-
-        public bool Post(UnityEngine.Object obj, Dictionary<string, string> phrases, bool removeUnused = false)
+        public static bool Post(Dictionary<string, string> phrases, IEnumerable<string> remove = null)
         {
-            if (phrases == null || !Pull()) return false;
-            string key = (obj is MonoBehaviour)
-                ? GenerateLocalizationKey(obj as MonoBehaviour)
-                : GenerateLocalizationKey(obj as ScriptableObject);
-            if (removeUnused)
+            Dictionary<string, string> localizations = _instance?._GetLocalizationsFromFile();
+            if (localizations == null) return false;
+
+            if (remove != null)
             {
-                int len = key.Length;
-                string[] keys = _phrases.Keys.Where(k => k.StartsWith(key) && !phrases.ContainsKey(k.Substring(len))).ToArray();
-                foreach(string lkey in keys)
+                foreach (string removal in remove)
                 {
-                    _phrases.Remove(lkey);
+                    localizations.Remove(removal);
                 }
             }
-            foreach (KeyValuePair<string, string> k in phrases)
-                _phrases[key + k.Key.ToString()] = k.Value;
-            return true;
-        }
 
-        public bool Post(string key, string phrase)
-        {
-            if (!Pull()) return false;
-            _phrases[key] = phrase;
-            return true;
-        }
-
-        public bool Post(UnityEngine.Object obj, string phrase)
-        {
-            if (!Pull()) return false;
-            string key = obj is MonoBehaviour
-                ? GenerateLocalizationKey(obj as MonoBehaviour)
-                : GenerateLocalizationKey(obj as ScriptableObject);
-            _phrases[key] = phrase;
-            return true;
-        }
-
-        public void RemovePhrases(string localizationKey)
-        {
-            if (Pull())
+            if (phrases != null)
             {
-                string[] keys = _phrases.Keys.Where(k => k.StartsWith(localizationKey)).ToArray();
-                foreach (string key in keys)
+                foreach(KeyValuePair<string, string> kvp in phrases)
                 {
-                    _phrases.Remove(key);
+                    if (kvp.Value != null)
+                    {
+                        localizations[kvp.Key] = kvp.Value;
+                    }
+                    else
+                    {
+                        localizations.Remove(kvp.Key);
+                    }
                 }
             }
+
+            localizations = localizations.Where(k => k.Key != null && k.Value != null).OrderBy(k => k.Key).ToDictionary(k => k.Key, k => k.Value);
+            string fileText = JsonConvert.SerializeObject(localizations, Formatting.Indented);
+            string path = AssetDatabase.GetAssetPath(_instance.DefaultLocalizationFile);
+            File.WriteAllText(path, fileText);
+            return true;
         }
 
-        public Dictionary<string, string> GetPhrases(UnityEngine.Object obj)
-        {
-            if (!Pull()) return null;
-            string key = obj is MonoBehaviour
-                ? GenerateLocalizationKey(obj as MonoBehaviour)
-                : GenerateLocalizationKey(obj as ScriptableObject);
-            int count = key.Length;
-            return _phrases.Where(k => k.Key.StartsWith(key)).ToDictionary(k => k.Key.Substring(count), k => k.Value);
-        }
+        public static bool Remove(IEnumerable<string> keys) => Post(null, keys);
+        public static bool Post(string key, string value) => Post(new Dictionary<string, string>() { { key, value } });
+        public static bool Post(string key, Dictionary<string, string> phrases) => Post(phrases.ToDictionary(k => k.Key + ".", k => k.Value));
+        public static Dictionary<string, string> GetPhrases() => _instance?._GetLocalizationsFromFile();
+        public static Dictionary<string, string> GetPhrases(string key) => _instance?._GetLocalizationsFromFile()?.Where(s => s.Key?.StartsWith(key) ?? false).ToDictionary(s => s.Key, s => s.Value);
 
-        public string GetPhrase(UnityEngine.Object obj)
-        {
-            if (!Pull()) return null;
-            string key = obj is MonoBehaviour
-                ? GenerateLocalizationKey(obj as MonoBehaviour)
-                : GenerateLocalizationKey(obj as ScriptableObject);
-            _phrases.TryGetValue(key, out string phrase);
-            return phrase?.Substring(key.Length);
-        }
+        public static void Post(ILocalizedAsset obj, string phrase) => Post(obj.LocalizationKey, phrase);
+        public static Dictionary<string, string> GetPhrases(ILocalizedAsset obj) => GetPhrases(obj.LocalizationKey);
 
-        public void MoveKey(string fromKey, string toKey)
-        {
-            if (fromKey == toKey
-                || string.IsNullOrWhiteSpace(fromKey)
-                || string.IsNullOrWhiteSpace(toKey)
-                || !Pull()) return;
-
-            int len = fromKey.Length;
-            if (_phrases.ContainsKey(fromKey))
-            {
-                _phrases[toKey] = _phrases[fromKey];
-            }
-            _phrases.Remove(fromKey);
-            KeyValuePair<string, string>[] phrases = _phrases
-                .Where(p => p.Key.StartsWith(fromKey)).ToArray();
-            foreach (KeyValuePair<string, string> kvp in phrases)
-            {
-                _phrases.Remove(kvp.Key);
-                _phrases[toKey + kvp.Key.Substring(len)] = kvp.Value;
-            }
-        }
-
-        public string UpdateLocalizationKey(UnityEngine.Object obj, string previousKey)
-        {
-            string key = obj is MonoBehaviour
-                ? GenerateLocalizationKey(obj as MonoBehaviour)
-                : GenerateLocalizationKey(obj as ScriptableObject);
-            MoveKey(previousKey, key);
-            return key;
-        }
-
-        public void SerializeAll()
-        {
-            if (_phrases != null && DefaultLocalizationFile != null)
-            {
-                string fileText = JsonConvert.SerializeObject(_phrases, Formatting.Indented);
-                string path = AssetDatabase.GetAssetPath(DefaultLocalizationFile);
-                File.WriteAllText(path, fileText);
-            }
-        }
-
-        [UnityEditor.MenuItem("Assets/Create/Localization Config")]
+        [UnityEditor.MenuItem("Ambition/Create/Localization Config")]
         public static void CreateLocalizationConfig()
         {
-            Util.ScriptableObjectUtil.CreatUniqueInstance<LocalizationConfig>("Localization Config");
+            _instance = Util.ScriptableObjectUtil.GetUniqueInstance<LocalizationConfig>("Localization Config");
         }
 
-
-        public static void UpdateLocalizationFile()
+        [UnityEditor.MenuItem("Ambition/Sync Localizations")]
+        public static void SyncLocalization()
         {
-            string[] assets = AssetDatabase.FindAssets("t:" + typeof(LocalizationConfig).ToString());
-            foreach (string asset in assets)
-            {
-                string path = AssetDatabase.GUIDToAssetPath(asset);
-                AssetDatabase.LoadAssetAtPath<LocalizationConfig>(path)?.SerializeAll();
-            }
+            // TODO: Pull localizations from Database; store in "File"
+            //GoogleUtil.Get(GOOGLE_LOCALIZATION_SHEET_ID, "Sheet1!A2:E", OnReceivedJSON);
+            //GoogleUtil.Post(GOOGLE_LOCALIZATION_SHEET_ID, )
+            OnReceivedJSON(false, null);
         }
+
+        private static void OnReceivedJSON(bool success, Dictionary<string, string> remote)
+        {
+            if (!success)
+            {
+                Debug.LogError("GOOGLE ERROR: Could not retrieve Localizations from Google Doc! Updating Local file only");
+                return;
+            }
+
+            _instance = _instance ?? Util.ScriptableObjectUtil.GetUniqueInstance<LocalizationConfig>("Localization Config");
+            if (_instance == null)
+            {
+                Debug.LogError("LOCALIZATION ERROR: Could not find a localization file");
+                return;
+            }
+
+            // TODO: Conflict resolution
+            Post(remote);
+        }
+
+        private static void ResolveConflicts(Dictionary<string, string[]> conflicts, Action<Dictionary<string, string>> onConflictsResolved)
+        {
+            if (conflicts.Count == 0) onConflictsResolved(new Dictionary<string, string>());
+            else { } // OpenDialog(ConflictResolutionEditor(conflicts, onConflictsResolved));
+        }
+
+        private Dictionary<string, string> _GetLocalizationsFromFile()
+        {
+            return DefaultLocalizationFile != null
+                ? JsonConvert.DeserializeObject<Dictionary<string, string>>(DefaultLocalizationFile.text)
+                : null;
+        }
+    }
+
+    public class ConflictResolutionEditor : Editor
+    {
+        private Action<Dictionary<string, string>> _onCloseDelegate = null;
+        private Dictionary<string, string[]> _conflicts = null;
+
+
     }
 }
 #endif

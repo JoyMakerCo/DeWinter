@@ -5,9 +5,9 @@ namespace Ambition
 {
     public class EndTutorialState : TutorialState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
-            base.OnEnterState(args);
+            base.OnEnterState();
             AmbitionApp.UnregisterCommand<TutorialFleeConversationCmd>(PartyMessages.FLEE_CONVERSATION);
             AmbitionApp.RegisterCommand<FleeConversationCmd>(PartyMessages.FLEE_CONVERSATION);
         }

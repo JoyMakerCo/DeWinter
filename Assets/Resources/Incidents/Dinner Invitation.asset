@@ -16,18 +16,18 @@ MonoBehaviour:
   _Links: 
   _Positions:
   - {x: 0, y: 0}
-  - {x: 1, y: 80}
-  - {x: -1, y: 150}
-  - {x: -1, y: 216}
-  - {x: 1, y: 380}
-  - {x: 1, y: 288}
+  - {x: -1, y: 80}
+  - {x: -4, y: 149}
+  - {x: -3, y: 215}
+  - {x: -1, y: 380}
+  - {x: 0, y: 288}
   Incident:
     Links:
-    - {x: 0, y: 1}
     - {x: 1, y: 2}
     - {x: 2, y: 3}
     - {x: 3, y: 5}
     - {x: 5, y: 4}
+    - {x: 0, y: 1}
     Nodes:
     - Text: New Moment
       Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
@@ -69,7 +69,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/sfx_open_letter
         Parameters: []
     - Text: New Moment
       Background: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
       Speaker: 0
       Rewards:
       - Type: 9
-        ID: The Archangel
+        ID: The Ascendant Revolutionary
         Value: 1
       Music:
         Name: 
@@ -159,27 +159,32 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -189,11 +194,41 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: 
-    Requirements: []
+    LocalizationKey: Assets/Resources/Incidents/Dinner Invitation.asset
+    Political: 0
+    _date: 564424416000000000
+    Requirements:
+    - Type: 5
+      ID: Antoine
+      Value: 20
+      Operator: 4
+    - Type: 8
+      ID: Taking Risks
+      Value: 1
+      Operator: 4
   _factions: 000000000000
-  _chapters: 00000000
+  _chapters: 00000001
   _date: -1
-  _localizationKey: Assets/Resources/Incidents/Dinner Invitation.asset.
-  _nodeText: []
+  _nodeText:
+  - You wake up to find a letter on your nightstand, sealed in wax the color of fresh
+    blood.
+  - You open the letter and immediately recognize Antoine's furious handwriting.
+  - '''<i>Chere<i> Yvette,
+
+
+    Something momentous has come to pass and I can''t think of anyone I''d rather
+    celebrate it with than you. To that end, you shall join me for a fine dinner at
+    <i>Les Grande Tavernes Londres</i>.'''
+  - (The Ascendant Revolutionary is now available to visit on the Paris Map)
+  - You put down the letter and think it over. While you're loathe to brave the streets
+    of Paris at the moment, You could probably meet Antoine for dinner tonight if
+    you'd like.
+  - '''I know it''s not our usual idea of fun, but I think that you''ll enjoy what
+    I have planned.
+
+
+    <i>Affectueusement</i>,
+
+
+    - Antoine'''
   _linkText: []

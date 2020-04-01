@@ -20,7 +20,7 @@ namespace Ambition
                 AmbitionApp.SendMessage(AudioMessages.PLAY, chapter.Sting.Name);
             Splash.sprite = chapter?.Splash;
             AmbitionApp.SendMessage(GameMessages.INHIBIT_MENU);
-            Title.text = AmbitionApp.GetString(chapter.Name);
+            Title.text = AmbitionApp.Localize(chapter.Name);
         }
     }
 }

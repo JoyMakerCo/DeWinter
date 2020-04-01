@@ -21,12 +21,12 @@ namespace Ambition
             AmbitionApp.RegisterState<TutorialGuestState>(TutorialConsts.TUTORIAL_MACHINE, "EndConversationTutorial");
             AmbitionApp.RegisterState<EndTutorialState>(TutorialConsts.TUTORIAL_MACHINE, "EndTutorialParty");
 
-            AmbitionApp.RegisterLink<MessageLink, string>(TutorialConsts.TUTORIAL_MACHINE, "TutorialStart", "ShowTutorialView", PartyMessages.SHOW_MAP);
-            AmbitionApp.RegisterLink<MessageLink, string>(TutorialConsts.TUTORIAL_MACHINE, "ShowTutorialView", "TutorialDisableClock", PartyMessages.SHOW_ROOM);
-            AmbitionApp.RegisterLink<MessageLink, string>(TutorialConsts.TUTORIAL_MACHINE, "TutorialDisableClock", "TutorialRemarkStep", PartyMessages.START_ROUND);
+            AmbitionApp.RegisterLink<InputLink, string>(TutorialConsts.TUTORIAL_MACHINE, "TutorialStart", "ShowTutorialView", PartyMessages.SHOW_MAP);
+            AmbitionApp.RegisterLink<InputLink, string>(TutorialConsts.TUTORIAL_MACHINE, "ShowTutorialView", "TutorialDisableClock", PartyMessages.SHOW_ROOM);
+            AmbitionApp.RegisterLink<InputLink, string>(TutorialConsts.TUTORIAL_MACHINE, "TutorialDisableClock", "TutorialRemarkStep", PartyMessages.START_ROUND);
             AmbitionApp.RegisterLink<TutorialRemarkLink>(TutorialConsts.TUTORIAL_MACHINE, "TutorialRemarkStep", "TutorialGuestStep");
             AmbitionApp.RegisterLink<TutorialRemarkLink>(TutorialConsts.TUTORIAL_MACHINE, "TutorialGuestStep", "TutorialGuestStep");
-            AmbitionApp.RegisterLink<MessageLink, string>(TutorialConsts.TUTORIAL_MACHINE, "TutorialGuestStep", "EndConversationTutorial", PartyMessages.END_ROUND);
+            AmbitionApp.RegisterLink<InputLink, string>(TutorialConsts.TUTORIAL_MACHINE, "TutorialGuestStep", "EndConversationTutorial", PartyMessages.END_ROUND);
             AmbitionApp.RegisterLink<CheckEndTutorialLink>(TutorialConsts.TUTORIAL_MACHINE, "EndConversationTutorial", "EndTutorialParty");
 
             App.Service<UFlow.UFlowSvc>().InvokeMachine(TutorialConsts.TUTORIAL_MACHINE);

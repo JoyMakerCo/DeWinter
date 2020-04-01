@@ -1,15 +1,18 @@
 ﻿using Core;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
 using Util;
 
+#if UNITY_EDITOR
+using System.Linq;
+#endif
+
 namespace Ambition
 {
     [Saveable]
-    public class CalendarModel : Model, IResettable, IInitializable
+    public class CalendarModel : Model, IResettable, IInitializable, IConsoleEntity
     {
         [JsonIgnore]
         public DateTime StartDate;
@@ -103,32 +106,104 @@ namespace Ambition
         [JsonIgnore]
         public DateTime Yesterday => DaysFromNow(-1);
 
-        public T FindUnscheduled<T>(string eventID) where T:ICalendarEvent
+        public T[] FindUnscheduled<T>() where T:ICalendarEvent
         {
-            return Unscheduled.OfType<T>().FirstOrDefault(e => e.Name == eventID);
+            List<T> result = new List<T>();
+            foreach (ICalendarEvent e in Unscheduled)
+            {
+                if (e is T)
+                {
+                    result.Add((T)e);
+                }
+            }
+            return result.ToArray();
         }
 
-        public T[] FindUnscheduled<T>(Func<T, bool> predicate) => Unscheduled.OfType<T>().Where(predicate).ToArray();
+        public T FindUnscheduled<T>(string eventID) where T:ICalendarEvent
+        {
+            foreach(ICalendarEvent e in Unscheduled)
+            {
+                if (e is T && e.Name == eventID)
+                {
+                    return (T)e;
+                }
+            }
+            return default;
+        }
 
-        public ICalendarEvent Find(string EventID) => Unscheduled.FirstOrDefault(e => e.Name == EventID);
+        public T[] FindUnscheduled<T>(Func<T, bool> predicate)
+        {
+            List<T> result = new List<T>();
+            foreach(ICalendarEvent e in Unscheduled)
+            {
+                if (e is T && predicate((T)e))
+                {
+                    result.Add((T)e);
+                }
+            }
+            return result.ToArray();
+        }
+
+        public ICalendarEvent Find(string EventID)
+        {
+            foreach(ICalendarEvent e in Unscheduled)
+            {
+                if (e.Name == EventID)
+                {
+                    return e;
+                }
+            }
+            return default;
+        }
 
         public T[] GetEvents<T>(DateTime date) where T : ICalendarEvent
         {
             if (!Timeline.TryGetValue(date, out List<ICalendarEvent> events)) return new T[0];
-            if (date < Today) return events.OfType<T>().ToArray();
-            return events.OfType<T>().Where(e => !e.IsComplete).ToArray();
+            List<T> result = new List<T>();
+            if (date < Today)
+            {
+                foreach(ICalendarEvent e in events)
+                {
+                    if (e is T)
+                    {
+                        result.Add((T)e);
+                    }
+                }
+            }
+            else
+            {
+                foreach (ICalendarEvent e in events)
+                {
+                    if (e is T && !e.IsComplete)
+                    {
+                        result.Add((T)e);
+                    }
+                }
+            }
+            return result.ToArray();
         }
 
         public T GetEvent<T>(DateTime date) where T : class, ICalendarEvent
         {
-            return (Timeline.TryGetValue(date, out List<ICalendarEvent> items))
-                ? items.OfType<T>().FirstOrDefault()
-                : null;
+            if (!Timeline.TryGetValue(date, out List<ICalendarEvent> items)) return default;
+            foreach(ICalendarEvent e in items)
+            {
+                if (e is T) return (T)e;
+            }
+            return default;
         }
 
         public T GetEvent<T>() where T : class, ICalendarEvent => GetEvent<T>(Today);
         public T[] GetEvents<T>() where T : class, ICalendarEvent => GetEvents<T>(Today);
-        public T[] GetUnscheduledEvents<T>() where T : ICalendarEvent => Unscheduled.OfType<T>().ToArray();
+        public T[] GetUnscheduledEvents<T>() where T : ICalendarEvent
+        {
+            List<T> result = new List<T>();
+            foreach(ICalendarEvent e in Unscheduled)
+            {
+                if (e is T) result.Add((T)e);
+            }
+            return result.ToArray();
+        }
 
         public void Initialize()
         {
@@ -137,7 +212,7 @@ namespace Ambition
             IncidentVO incident;
             foreach (IncidentConfig config in incidents)
             {
-                incident = new IncidentVO(config.Incident);
+                incident = config.GetIncident();
                 if (incident.IsScheduled)
                 {
                     Schedule(incident);
@@ -154,15 +229,19 @@ namespace Ambition
 
         public void Complete<T>(T e) where T : ICalendarEvent
         {
+            Debug.Log("CalendarModel completing event");
             if (!IsComplete(e))
             {
                 e.IsComplete = true;
                 Unscheduled.Remove(e);
+
+                Debug.Log("CalendarModel sending CALENDAR_EVENT_COMPLETED");
+
                 AmbitionApp.SendMessage(CalendarMessages.CALENDAR_EVENT_COMPLETED, e);
             }
         }
 
-        public bool IsComplete(ICalendarEvent e) => e == null || e.IsComplete || e.Date < Today;
+        public bool IsComplete(ICalendarEvent e) => e == null || e.IsComplete || ((e.Date > DateTime.MinValue) && (e.Date < Today));
 
         public void Reset()
         {
@@ -170,5 +249,41 @@ namespace Ambition
             _day = 0;
             StartDate = default;
         }
+
+        public string[] Dump()
+        {
+            var dateFormat = "MMMM d, yyyy";
+
+            var lines = new List<string>()
+            {
+                "CalendarModel:",
+                string.Format( "Today {0} (day {1})", Today.ToString(dateFormat), Day ),
+                "Started: " + StartDate.ToString(dateFormat),
+                "Next Style Switch: " + NextStyleSwitchDay.ToString(dateFormat),
+            };
+
+            lines.Add( "Unscheduled Events: " + Unscheduled.Count.ToString() );
+            foreach (var ev in Unscheduled)
+            {
+                lines.Add( string.Format( "  {0}", ev.Name ));
+            }
+#if UNITY_EDITORsys
+
+            lines.Add( "Timeline Events: " + Timeline.Count.ToString() );
+            foreach (var eventList in Timeline.OrderBy(kv => kv.Key).Select(kv => kv.Value))
+            {
+                foreach (var ev in eventList)
+                {
+                    lines.Add( string.Format( "  {0}: {1}", ev.Date.ToString(dateFormat), ev.Name ));
+                }
+            }
+#endif
+            return lines.ToArray();
+        }
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("CalendarModel has no invocation.");
+        }    
     }
 }

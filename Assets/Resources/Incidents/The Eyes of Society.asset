@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: The Eyes of Society
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 09000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
     Nodes:
     - Text: You wander around the party, scanning the room for someone interesting
         to talk to. You hear some shuffling behind you.
-      Background: {fileID: 21300000, guid: 8d37c5a6e98984de68f6859ef31ef817, type: 3}
+      Background: {fileID: 21300000, guid: 0074eaf4adfaa2445a2a65e39d3e4428, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -243,7 +243,7 @@ MonoBehaviour:
         Parameters: []
     - Text: '"Armand? Really?" The voice asks, as they drop their hands from your
         eyes.'
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 0074eaf4adfaa2445a2a65e39d3e4428, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -703,7 +703,7 @@ MonoBehaviour:
         Parameters: []
     - Text: She drops her hands from your eyes and you turn around to find yourself
         face to face with none other but Madame Gazel.
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 0074eaf4adfaa2445a2a65e39d3e4428, type: 3}
       Character1:
         AvatarID: HonoradeGazel
         Pose: happy
@@ -1745,7 +1745,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 7
+        ID: LEAVE_PARTY
+        Value: 0
       Music:
         Name: 
         Parameters: []
@@ -1888,155 +1891,185 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Crowd_bark_gasp
         Parameters: []
     LinkData:
-    - Text: '"Honorade?"'
+    - index: 0
+      Text: '"Honorade?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Armand?"'
+    - index: 0
+      Text: '"Armand?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"You''re very bold to play this game in front of so many strangers."'
+    - index: 0
+      Text: '"You''re very bold to play this game in front of so many strangers."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Sit on the floor>
+    - index: 0
+      Text: <Sit on the floor>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Sit on her lap>
+    - index: 0
+      Text: <Sit on her lap>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Pull over a chair>
+    - index: 0
+      Text: <Pull over a chair>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: Are you sure we should be doing this?
+    - index: 0
+      Text: Are you sure we should be doing this?
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: Are you sure we should be doing this?
+    - index: 0
+      Text: Are you sure we should be doing this?
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Honorade?"'
+    - index: 0
+      Text: '"Honorade?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Armand?"'
+    - index: 0
+      Text: '"Armand?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Armand?"'
+    - index: 0
+      Text: '"Armand?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Armand?"'
+    - index: 0
+      Text: '"Armand?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Armand?"'
+    - index: 0
+      Text: '"Armand?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Armand?"'
+    - index: 0
+      Text: '"Armand?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Us? Nothing... absolutely nothing."'
+    - index: 0
+      Text: '"Us? Nothing... absolutely nothing."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Pardon me, we''re in the middle of a romantic moment here. Do you mind?"'
+    - index: 0
+      Text: '"Pardon me, we''re in the middle of a romantic moment here. Do you mind?"'
       xor: 0
       Rewards: []
       Requirements: []
@@ -2044,7 +2077,8 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.mediumtooltip
         Value: 1
-    - Text: '"I fell, and Madame Gazel was good enough to help me up. I think I''ve
+    - index: 0
+      Text: '"I fell, and Madame Gazel was good enough to help me up. I think I''ve
         had too much wine."'
       xor: 0
       Rewards: []
@@ -2053,7 +2087,8 @@ MonoBehaviour:
       - Type: 2
         Phrase: incidents.transitions.credibilitycheck.mediumtooltip
         Value: 1
-    - Text: 
+    - index: 0
+      Text: 
       xor: 1
       Rewards: []
       Requirements:
@@ -2062,72 +2097,86 @@ MonoBehaviour:
         Value: 70
         Operator: 4
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
+    - index: 0
+      Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
+    - index: 0
+      Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
+    - index: 0
+      Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
+    - index: 0
+      Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
+    - index: 0
+      Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
+    - index: 0
+      Text: '"I just happened to fall. It was the weirdest thing." <Credibility>'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Let it go>
+    - index: 0
+      Text: <Let it go>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Find. That. Woman.>
+    - index: 0
+      Text: <Find. That. Woman.>
       xor: 0
       Rewards: []
       Requirements: []
@@ -2135,182 +2184,218 @@ MonoBehaviour:
       - Type: 1
         Phrase: incidents.transitions.perilgain.largetooltip
         Value: 1
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Find that fucking woman>
+    - index: 0
+      Text: <Find that fucking woman>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Find that fucking woman>
+    - index: 0
+      Text: <Find that fucking woman>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Find that fucking woman>
+    - index: 0
+      Text: <Find that fucking woman>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Find that fucking woman>
+    - index: 0
+      Text: <Find that fucking woman>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Find that fucking woman>
+    - index: 0
+      Text: <Find that fucking woman>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Find that fucking woman>
+    - index: 0
+      Text: <Find that fucking woman>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -2320,11 +2405,248 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: 
-    Requirements: []
-  _factions: 000000000000
-  _chapters: 00000000
+    LocalizationKey: Assets/Resources/Incidents/The Eyes of Society.asset
+    Political: 0
+    _date: -1
+    Requirements:
+    - Type: 5
+      ID: Honorade
+      Value: 16
+      Operator: 4
+    - Type: 8
+      ID: Wise Investments
+      Value: 1
+      Operator: 4
+  _factions: 000000000100
+  _chapters: 00000101
   _date: 0
-  _localizationKey: Assets/Resources/Incidents/The Eyes of Society.asset.
-  _nodeText: []
-  _linkText: []
+  _nodeText:
+  - You wander around the party, scanning the room for someone interesting to talk
+    to. You hear some shuffling behind you.
+  - '"Guess who?" A sultry voice whispers in your ear.'
+  - '"Mmm... a mere lucky guess." She replies, but you can hear the smile in her voice.'
+  - '"Armand? Really?" The voice asks, as they drop their hands from your eyes.'
+  - '"Ignoring my request? How disobedient." The low voice replies. "Now, guess who?"'
+  - (You have gained a little favor with Madame Gazel)
+  - (You have lost a little favor with Madame Gazel)
+  - '"I''m in a great mood, and I''d like to celebrate it with you. First, however,
+    we''ll need to find somewhere quiet."'
+  - She grabs you by the hand, and leads you away to a distant corner of the party.
+  - Your progress through the crowds of the party is surprisingly slow. People keep
+    stopping the two of you to pay their respects to Madame Gazel, and ask her for
+    her opinion on various matters particular to the bourgeoisie.
+  - You also can't help but notice how many guests' eyes linger on the way she's holding
+    your hand. Nobody says a word, but they do watch.
+  - Finally, the two of you manage to find an empty room in the party, forgotten by
+    the other guests. A low fire burns in the fireplace, but nobody is here. She slowly
+    shuts the door behind you, and takes a seat in a big, overstuffed chair.
+  - '"Sit." She commands, pointing to a spot on the floor in front of her.'
+  - Careful to make sure that you don't step on your own dress, you sit on the floor
+    infront of her, your legs curled off to one side and your body propped up on one
+    hand. She looms over you, and she smiles.
+  - Undaunted, you stride up to her, and in a smooth motion you sit on her lap. Surprised,
+    she leans back and lets a wide grin blossom across her face. Her features flicker
+    in the firelight.
+  - Walking off to the side, you grab one of the chairs and drag it in front of her.
+    Comfortably, you take a seat. All Madame Gazel can do is roll her eyes.
+  - (You have lost a little favor with Madame Gazel)
+  - She entwines her fingers in the hair on the back of your head, and slowly but
+    firmly, Madame Gazel pulls your face close to hers. "And I ever love instilling
+    obedience in you."
+  - (You have gained a little favor with Madame Gazel)
+  - The two of you engage in little snippets of conversation, all of them meaningless.
+    Instead, the both of you are focused on each other. The entire party going on
+    in the other rooms fades into the background as you slowly let go of yourself.
+    Let yourself be made lesser than another. Let yourself be controlled.
+  - 'The room goes dark as someone comes up behind you and places their hands over
+    your eyes.
+
+
+    <Black Background>'
+  - Turning yourself around, you find yourself face to face with none other than Madame
+    Gazel. "In what world do I sound like Armand?"
+  - '"Fortunately for you, I''m already in a great mood, and I''d like to celebrate
+    it with you. First, however, we''ll need to find somewhere quiet."'
+  - She drops her hands from your eyes and you turn around to find yourself face to
+    face with none other but Madame Gazel.
+  - '"Oh, you ever remain full of surprises."'
+  - Suddenly, your spine goes stiff at the sound of the door opening. A woman walks
+    into the room, and the both of you go as still as statues.
+  - She looks disgusted by what she sees, but also completely unsurprised. As if she
+    was looking for something.
+  - '"What, exactly are the two of you doing?"'
+  - After a pause, Madame Gazel agrees. "She's right. It's nothing at all."
+  - The room goes silent, and even you are taken aback by the audacity of the woman
+    who just said that. That is, until you remember that the woman who made that comment
+    is you.
+  - '"You fell?"'
+  - She glares suspicously at you and mumbles "Well, you do look rather flushed."
+  - '"Oh don''t bother with those preposterous lies."'
+  - Madame Gazel stands up her chair, still holding onto one of your hands. "It's
+    true! My dear friend here is so clumsy. I just have no idea what she'd do without
+    me."
+  - '(You have lost some credibility)
+
+    (You have gained some peril)'
+  - She sneers at you both. "You disgusting people can't evade the eyes of society
+    forever."
+  - The two of you sit together in stony silence. Even the crackling of the fire seems
+    muted.
+  - This interloper seems surprised, yet also smugly satisfied. Like weilding this
+    power is what fulfills her.
+  - '"Good... I thought as much."'
+  - With that, this person leaves as suddenly as they arrived. Yet, the pall they
+    cast over the room remains. Madame Gazel sighs, and stares at the ceiling.
+  - '"I know I said that I was in a great mood before, but this is... that was..."
+    She trails off, never completing the sentence. She doesn''t need to.'
+  - Suddenly, she stands up, the shine of tears just starting to well up in her eyes.
+    "I'm sorry Yvette... I just need to.. I just-"
+  - With that, Honorade leaves, and you are alone.
+  - (You have lost a little favor with Madame Gazel... Don't worry, it's not really
+    your fault.)
+  - You glance around the room. There's nothing here except a low fire, and a sense
+    of heartache.
+  - Alone, you just sit in the room by yourself for a while. You lose track of time
+    as you relive every detail of what just transpired, over and over again. You can't
+    help it. All you can do it relive the moments, picking apart the flaws of every
+    exchange.
+  - Unable to stand this indignity anymore, you stand up in a whirl of finery and
+    fury. You rush out the door to find this interloper and tell her exactly what
+    you think of her disgust.
+  - Outwardly she looks calm, but she's squeezing your hand so hard that your fingers
+    are starting to tingle.
+  - '"I suppose that''s reasonable." She says, with a strange sense of disappointment
+    about her.'
+  - The suspicious woman leaves, glancing back at the two of you one last time before
+    she disappears from your sight.
+  - After a few moments, the two of you finally exhale in unison.
+  - '"Well, that certainly got my heart racing." Madame Gazel giggles.'
+  - '"W-well, this is disgusting. In fact, both of you are." The interloper replies
+    with with venom, but far quieter than she intended. The lack of volume seems to
+    rob her of the intended gravitas.'
+  - '"You are at least partly correct." Honorade chimes in. "I too am absolutely disgusted."'
+  - '"But you''re free to leave at any time."'
+  - '"This isn''t over." She sneers at you both. "You people can''t evade the eyes
+    of society forever."'
+  - With that she leaves, and tries to slam the door on her way out. Unfortunately
+    for her, the door gets caught on the carpet and just lazily drifts shut.
+  - (You have gained some peril)
+  - '"I must admit that I never expected you to be the one to defending me, Yvette.
+    In fact, I never really expected anyone to defend me at all."'
+  - (You have gained quite a bit of favor with Madame Gazel)
+  - (You have lost a little credibility)
+  - Taking the time to lock the door this time, the two of you resume your same positions
+    as before, and spend some more time together, whispering meaningless nothings
+    and drawing ever closer. The time slips away from the both of you.
+  - '"You know that''s not what I meant."'
+  - It's not a good feeling.
+  - Realizing that you've already drawn your fair share of suspicion, the two of you
+    eventually part ways. If nothing else, this has ensured that you've had a lovely
+    evening.
+  - You can't hear anything other than your own breathing and the blood pumping in
+    your ears. The anger is so overwhelming that it's become intoxicating.
+  - Hurtling from room to room, you come upon her, merrily talking with other guests
+    as if nothing had ever happened. As if she was innocent.
+  - Words of purest venom issue forth from your mouth, with such speed and violence
+    that you don't even remember what you said. What you do remember, is the looks
+    on the faces of everyone who heard you say it.
+  - '(You have gained quite a bit of peril)
+
+    (You have gained quite a bit of credibility)'
+  - The rest of the evening is a blur. You're not even sure if you did anything else
+    at the party before you headed home. You spend a few hours trying to piece the
+    events together in your journal.
+  - '"Good girl."'
+  - (You have gained some favor with Madame Gazel)
+  - You can't even remember when the conversation stopped, but both of your wrists
+    are in Madame Gazel's hands, and her lips are drifting so close to yours.
+  - 'She''s not wrong. You can feel how red your cheeks are. '
+  - Still, some part of this stranger remains unconvinced, which makes sense. Your
+    lie was absolutely preposterous.
+  - None of the other guests have any context for this display of fury. All they know
+    is that you were willing to come to Madame Gazel's defense in a most spectacular
+    fashion. Even if they don't approve of it, they do seem to respect it.
+  _linkText:
+  - '"Honorade?"'
+  - '"Armand?"'
+  - '"You''re very bold to play this game in front of so many strangers."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - <Sit on the floor>
+  - <Sit on her lap>
+  - <Pull over a chair>
+  - 
+  - 
+  - Are you sure we should be doing this?
+  - Are you sure we should be doing this?
+  - '"Honorade?"'
+  - '"Armand?"'
+  - '"Armand?"'
+  - '"Armand?"'
+  - '"Armand?"'
+  - '"Armand?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Us? Nothing... absolutely nothing."'
+  - '"Pardon me, we''re in the middle of a romantic moment here. Do you mind?"'
+  - '"I fell, and Madame Gazel was good enough to help me up. I think I''ve had too
+    much wine."'
+  - 
+  - 
+  - 
+  - 
+  - '"I just happened to fall. It was the weirdest thing." <Credibility>'
+  - '"I just happened to fall. It was the weirdest thing." <Credibility>'
+  - 
+  - 
+  - 
+  - '"I just happened to fall. It was the weirdest thing." <Credibility>'
+  - '"I just happened to fall. It was the weirdest thing." <Credibility>'
+  - '"I just happened to fall. It was the weirdest thing." <Credibility>'
+  - '"I just happened to fall. It was the weirdest thing." <Credibility>'
+  - <Let it go>
+  - <Find. That. Woman.>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - <Find that fucking woman>
+  - <Find that fucking woman>
+  - 
+  - <Find that fucking woman>
+  - <Find that fucking woman>
+  - <Find that fucking woman>
+  - 
+  - <Find that fucking woman>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

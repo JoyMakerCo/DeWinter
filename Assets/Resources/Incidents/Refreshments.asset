@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Refreshments
   m_EditorClassIdentifier: 
-  _Nodes: 27000000
+  _Nodes: 21000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -35,12 +35,12 @@ MonoBehaviour:
   - {x: -696, y: 391}
   - {x: -705, y: 468}
   - {x: -708, y: 545}
-  - {x: -481, y: 454}
+  - {x: -481, y: 453}
   - {x: -484, y: 526}
   - {x: -490, y: 598}
   - {x: 375, y: 952}
   - {x: 147, y: 1028}
-  - {x: 379, y: 1025}
+  - {x: 379, y: 1026}
   - {x: 760, y: 1018}
   - {x: 659, y: 1082}
   - {x: 907, y: 1083}
@@ -190,7 +190,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: 
@@ -236,7 +236,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/wine_pour
@@ -672,10 +672,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards:
-      - Type: 12
-        ID: 
-        Value: 3
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -879,10 +876,7 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards:
-      - Type: 11
-        ID: 
-        Value: 5
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -890,7 +884,7 @@ MonoBehaviour:
         Name: event:/Ambient SFX/Amb_MediumParty_indoor
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/wine_drink
         Parameters: []
     - Text: With a shaky sigh, she picks up the note she gave you before, and starts
         scribbling.
@@ -918,7 +912,7 @@ MonoBehaviour:
       Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
       Character1:
         AvatarID: Chambermaid
-        Pose: afraid
+        Pose: neutral
         Name: Barmaid
       Character2:
         AvatarID: 
@@ -933,7 +927,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: 
@@ -1011,17 +1005,20 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I''ll take some of the house wine please."'
+    - index: 0
+      Text: '"I''ll take some of the house wine please."'
       xor: 0
       Rewards: []
       Requirements: []
@@ -1029,123 +1026,142 @@ MonoBehaviour:
       - Type: 4
         Phrase: incidents.transitions.livres.costtooltip
         Value: 5
-    - Text: '"Just some water please, I''m parched."'
+    - index: 0
+      Text: '"Just some water please, I''m parched."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Actually, could you help me find my fiance? He''s supposed to be here."'
+    - index: 0
+      Text: '"Actually, could you help me find my fiance? He''s supposed to be here."'
       xor: 0
       Rewards: []
-      Requirements:
-      - Type: 0
-        ID: 
-        Value: 0
-        Operator: 0
+      Requirements: []
       Flags: []
-    - Text: '"He''s intelligent, wears a blue coat, and always has a book or pamphlet
+    - index: 0
+      Text: '"He''s intelligent, wears a blue coat, and always has a book or pamphlet
         with him."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"He''s tall, and handsome, with chestnut brown hair."'
+    - index: 0
+      Text: '"He''s tall, and handsome, with chestnut brown hair."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"He''s funny, wears his hair in a ponytail, and always has a big grin
+    - index: 0
+      Text: '"He''s funny, wears his hair in a ponytail, and always has a big grin
         on his face."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I''d like to be left alone, if that''s alright."'
+    - index: 0
+      Text: '"I''d like to be left alone, if that''s alright."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I''d like to be left alone, if that''s alright."'
+    - index: 0
+      Text: '"I''d like to be left alone, if that''s alright."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Say Nothing>
+    - index: 0
+      Text: <Say Nothing>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Please, you have to tell me something about Armand."'
+    - index: 0
+      Text: '"Please, you have to tell me something about Armand."'
       xor: 0
       Rewards: []
       Requirements: []
@@ -1153,7 +1169,8 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - Text: '"<i>Pardon</i>, this receipt must be ''missing some items'', can you
+    - index: 0
+      Text: '"<i>Pardon</i>, this receipt must be ''missing some items'', can you
         jot them down?"'
       xor: 0
       Rewards: []
@@ -1161,8 +1178,9 @@ MonoBehaviour:
       Flags:
       - Type: 2
         Phrase: incidents.transitions.credibilitycheck.easytooltip
-        Value: 0
-    - Text: 
+        Value: 1
+    - index: 0
+      Text: 
       xor: 1
       Rewards: []
       Requirements:
@@ -1171,82 +1189,98 @@ MonoBehaviour:
         Value: 50
         Operator: 4
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -1256,11 +1290,148 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: 
+    LocalizationKey: Assets/Resources/Incidents/Refreshments.asset
+    Political: 0
+    _date: -1
     Requirements: []
   _factions: 010000000000
   _chapters: 01000000
   _date: -1
-  _localizationKey: Assets/Resources/Incidents/Refreshments.asset.
-  _nodeText: []
-  _linkText: []
+  _nodeText:
+  - You sweep your gaze over the crowded tavern, and strain your ears for the sound
+    of Armand's voice, but have yet to find anything. It's hard to walk around with
+    all of your luggage, which only slows your progress further.
+  - 'The other patrons don''t look particularly happy with you either. You bump into
+    yet countless patrons with your bags, and your searching is starting to give the
+    impression that you''re eavesdropping.
+
+
+    Just as you start to feel a little frustrated by this, the barmaid from before
+    approaches you.'
+  - '"Madame, you look parched, can I get you anything?"'
+  - With a smile she seats you at a nearby table before heading to the basement to
+    fetch your drink.
+  - With a barely concealed frown, she seats you at a nearby table before excusing
+    herself to fetch your drink.
+  - 'She returns and presents you with the bottle, before pouring a dram into your
+    glass. You sample the wine and signal your approval by placing a few livres on
+    the table. The barmaid scoops up the coins with a grateful smile. '
+  - "She returns with a metal pitcher and fills up a clay cup for you. You take a
+    sip and note how even the water tastes different here. \n\nYou try to relax but
+    to no avail. You can't help but notice that nobody else is drinking water, which
+    only makes you feel more out of place."
+  - '"Is there anything else I can get you, madame?"'
+  - '"Now that you have your free water, do you want anything else?"'
+  - '"Oh, a missing person? That sounds interesting! What''s he like?"'
+  - '"Well, if he''s funny then he should be popular with the patrons. I''ll ask around
+    for him, madame."'
+  - '"A smart fellow like that shouldn''t be too hard to notice." '
+  - '"Oh, I''ll definitely be on the lookout for him then!" The barmaid replies with
+    a wink and a cheeky laugh. '
+  - '"You just stay here, and I''ll see what I can find."'
+  - "She leaves your table to inquire with the other patrons about Armand. You're
+    not sure if your description was enough to go off of, but she knows the place
+    better than you do. \n\nPerhaps she'll have better luck."
+  - She returns a few minutes later and gives you a shrug. "Madame, I'm sorry to tell
+    you this, but I simply can't find your Armand anywhere."
+  - She slips a piece of paper to you. You glance down and see a hastily written note.
+  - '"<i>Oui</i>, madame" She says with a curtsey.'
+  - She leaves you to your drink, and you take this time to examine your fellow patrons.
+    Now that you're not taking up too much space, people seem to have lost interest
+    in you.
+  - You spend the next hour sipping your wine and taking in the room, but can't seem
+    to find any trace of Armand, even the sound of his laugh.
+  - '"<i>Oui</i>, madame" She says with a curtsey.'
+  - She leaves you to your drink, and you take this time to examine your fellow patrons.
+    Now that you're not taking up too much space, people seem to have lost interest
+    in you.
+  - You spend the next hour sipping your water and taking in the room, but can't seem
+    to find any trace of Armand, even the sound of his laugh.
+  - '''Don''t know what''s going on. Patrons get upset when I mention your fiance.
+    Even the owner won''t talk.'''
+  - The Barmaid gives you a tiny shrug, but otherwise remains silent.
+  - The Barmaid startles at your sudden forwardness, and you can feel the weight of
+    eyes in the tavern scrutinizing you both. "Madame, please understand that I can't
+    help you." She replies, a little too loudly.
+  - You stare at her expectantly, hoping that she'll grasp your intent.
+  - Understanding your implication, the Barmaid sighs, and picks up the note. She
+    scribbles for a while.
+  - '"No madame, I believe your receipt has everything on it that we can put on it."
+    She replies flatly.'
+  - She leaves you, and you take this time to examine your fellow patrons. Now that
+    you're not taking up too much space, people seem to have lost interest in you.
+  - You spend the next hour taking in the room, but can't seem to find any trace of
+    Armand, even the sound of his laugh.
+  - 'When you get it back, it reads.
+
+
+    ''I think your fiance has made a powerful enemy. Don''t know who. Don''t know
+    why. You''ll have to get the rest from him.'''
+  - By the time you look up from her note, she's already gone.
+  - She gives you a quick curtsey and shuffles away, taking care to avoid any eye
+    contact with you as she leaves.
+  - Now that you're seated and sipping some of the house wine, you can see that the
+    other patrons relax more around you. You're just another person stopping in for
+    some rest and a quick drink.
+  - The Barmaid sighs, and picks up the note. She scribbles on it for a while.
+  - (You have spent 5 Livres)
+  - (You have gained a little credibility)
+  - (You have gained a little peril)
+  - (You have gained some peril)
+  - 'Surveying the room again, you can see that some of the curiosity about you has
+    abated. You''re just another traveller, looking for rest and refreshement.
+
+
+    (You have gained a little Credibility)'
+  - With a shaky sigh, she picks up the note she gave you before, and starts scribbling.
+  _linkText:
+  - 
+  - 
+  - '"I''ll take some of the house wine please."'
+  - '"Just some water please, I''m parched."'
+  - 
+  - 
+  - 
+  - '"My fiance Armand is supposed to be here. Could you help me find him?"'
+  - '"He''s funny, wears his hair in a ponytail, and always has a big grin on his
+    face."'
+  - '"He''s intelligent, wears a blue coat, and always has a book or pamphlet with
+    him."'
+  - '"He''s tall, and handsome, with chestnut brown hair."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I''d like to be left alone, if that''s alright."'
+  - 
+  - 
+  - '"I''d like to be left alone, if that''s alright."'
+  - 
+  - 
+  - 
+  - <Say Nothing>
+  - '"Please, you have to help me find him!"'
+  - '"<i>Pardonne-moi</i>, but it appears that you left something off of my receipt."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Actually, could you help me find my fiance? He''s supposed to be here."'
+  - '"Actually, could you help me find my fiance? He''s supposed to be here."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

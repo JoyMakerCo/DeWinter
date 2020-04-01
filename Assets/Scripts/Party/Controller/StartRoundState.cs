@@ -8,7 +8,7 @@ namespace Ambition
 {
 	public class StartRoundState : UState
 	{
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
             if (model.Round%model.FreeRemarkCounter == 0)

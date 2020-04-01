@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Frivolous Follies
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 02000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -21,7 +21,7 @@ MonoBehaviour:
   - {x: -3, y: 354}
   - {x: -123, y: 433}
   - {x: 144, y: 431}
-  - {x: 2, y: 204}
+  - {x: 2, y: 205}
   - {x: 7, y: 278}
   Incident:
     Links:
@@ -36,7 +36,7 @@ MonoBehaviour:
     - Text: Travelling the northern section of the 8th <i>arrondisement</i>, the sky
         is clear and the sun is shining. The crowds in this part of the city are picking
         up and, out of curiosity, you head in the same general direction.
-      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -48,16 +48,16 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
+        Name: event:/Music/Paris Map
         Parameters: []
       AmbientSFX:
         Name: event:/Ambient SFX/Amb_ParisStreets_outside
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: The sight that greets your eyes is nothing short of surreal.
-      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -84,7 +84,7 @@ MonoBehaviour:
 
 
         Still, it looks like everyone is having fun.'
-      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
+      Background: {fileID: 21300000, guid: b93fab0b0ed684f01a108c2328e93cf0, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -106,7 +106,7 @@ MonoBehaviour:
         Parameters: []
     - Text: It's fun and tacky, the kind of place to take someone that doesn't take
         themselves too seriously.
-      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -129,7 +129,7 @@ MonoBehaviour:
     - Text: After a quick loop around the gardens, you head home. Already you're dreaming
         of excuse to head back, and trying to figure out who else you know that might
         appreciate <i>Parc Monceau</i> as much as you do.
-      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -152,7 +152,7 @@ MonoBehaviour:
     - Text: 'Turning on your heel, you head home. While you''re not particularly enthralled
         by the gardens and the gaudy attractions therein, you wonder who you know
         that would possibly be interested in that sort of thing. '
-      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -178,7 +178,7 @@ MonoBehaviour:
 
 
         (<i>Parc Monceau</i> is now an available rendezvous location)'
-      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -223,37 +223,44 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"This is absolutely ridiculous, and I can''t wait to come back."'
+    - index: 0
+      Text: '"This is absolutely ridiculous, and I can''t wait to come back."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I don''t think I could take too much of this for very long."'
+    - index: 0
+      Text: '"I don''t think I could take too much of this for very long."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I hate this"'
+    - index: 0
+      Text: '"I hate this"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I hate this"'
+    - index: 0
+      Text: '"I hate this"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"I hate this"'
+    - index: 0
+      Text: '"I hate this"'
       xor: 0
       Rewards: []
       Requirements: []
@@ -263,11 +270,41 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 00000000
-    LocalizationKey: 
+    LocalizationKey: Assets/Collections/Incidents/Frivolous Follies.asset
+    Political: 0
+    _date: -1
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: Assets/Collections/Incidents/Frivolous Follies.asset.
-  _nodeText: []
-  _linkText: []
+  _nodeText:
+  - Travelling the northern section of the eighth <i>arrondisement</i>, the sky is
+    clear and the sun is shining. The crowds in this part of the city are picking
+    up and, out of curiosity, you head in the same general direction.
+  - The sight that greets your eyes next, is nothing short of surreal.
+  - 'A massive garden, dotted with all sorts of fantastic buildings. Small Egyptian
+    pyramids, Roman columns, Turkish tents, and more all cluster around a sparkling
+    lake. People in costume strut about the different buildings, enthralling tourists
+    with fantastic tales of dubious authenticity.
+
+
+    Still, it looks like everyone is having fun.'
+  - It's fun and tacky, the kind of place to take someone that doesn't take themselves
+    too seriously.
+  - After a quick loop around the gardens, you head home. Already you're dreaming
+    of excuse to head back, and trying to figure out who else you know that might
+    appreciate <i>Parc Monceau</i> as much as you do.
+  - 'Turning on your heel, you head home. While you''re not particularly enthralled
+    by the gardens and the gaudy attractions therein, you wonder who you know that
+    would possibly be interested in that sort of thing. '
+  - This must be <i>Parc Monceau</i>, created by the fabulously wealthy Duke of Chartres.
+    Taking note of your surroundings, you jot the location down in your journal.
+  - (<i>Parc Monceau</i> is now an available rendezvous location)
+  _linkText:
+  - 
+  - 
+  - '"This is absolutely ridiculous, and I can''t wait to come back."'
+  - '"I don''t think I could take too much of this for very long."'
+  - 
+  - 
+  - 

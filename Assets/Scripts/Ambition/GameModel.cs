@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using UnityEngine;
 
 namespace Ambition
 {
     [Saveable]
-    public class GameModel : DocumentModel, IDisposable
+    public class GameModel : DocumentModel, IDisposable, IConsoleEntity
     {
         [JsonProperty("allegiance")]
         public FactionType Allegiance;
@@ -15,11 +16,14 @@ namespace Ambition
         [JsonIgnore]
         public int GameID = 0;
 
-        public string PlayerName => AmbitionApp.GetString(PlayerPhrase + ".name");
+        public string PlayerName => AmbitionApp.Localize(PlayerPhrase + ".name");
         public string PlayerPhrase = null;
 
         [JsonProperty("chapter")]
         public int Chapter = 0;
+
+        [JsonProperty("political_chance")]
+        public int PoliticalChance = 20;
 
         [JsonProperty("party_intro_incident")]
         public string DefaultIntroIncident;
@@ -29,6 +33,7 @@ namespace Ambition
         public Observable<int> Credibility;
         public Observable<int> Peril;
 
+        public bool IsResting = false;
 
         private int _livre
         {
@@ -96,13 +101,20 @@ namespace Ambition
             }
         }
 
+        [JsonProperty("incident_history")]
+        public Dictionary<string,int> IncidentHistory;
+
+
         [JsonProperty("vip")]
         private readonly int[] _vip;
         public int PartyInviteImportance => _vip[Level];
 
         public int Level => _reputation.Level;
 
-        public GameModel() : base("GameData") {}
+        public GameModel() : base("GameData")
+        {
+            IncidentHistory = new Dictionary<string, int>();
+        }
 
         private void HandleLivre(int livre) => AmbitionApp.SendMessage(GameConsts.LIVRE, livre);
         private void HandleCred(int cred) => AmbitionApp.SendMessage(GameConsts.CRED, cred);
@@ -112,6 +124,17 @@ namespace Ambition
             if (exhaustion < 0) AmbitionApp.SendMessage(GameConsts.WELL_RESTED);
             else AmbitionApp.SendMessage(GameConsts.EXHAUSTION,
             exhaustion);
+        }
+
+        public void MarkCompleteIncident( IncidentVO ivo )
+        {
+            Debug.LogFormat("GameModel.MarkCompleteIncident {0}", ivo.Name);
+            if (!IncidentHistory.ContainsKey( ivo.Name ))
+            {
+                IncidentHistory[ivo.Name] = 0;
+            }
+
+            IncidentHistory[ivo.Name]++;
         }
 
         [JsonProperty("levels")]
@@ -130,5 +153,37 @@ namespace Ambition
                 : Exhaustion.Value < _exhaustionPenalty.Length
                 ? _exhaustionPenalty[Exhaustion.Value]
                 : _exhaustionPenalty[_exhaustionPenalty.Length - 1];
+
+        public string[] Dump()
+        {
+            var lines = new List<string>()
+            {
+                "GameModel:",
+                "Allegiance: " + Allegiance.ToString(),
+                "Player: " + PlayerName,
+                "Chapter: " + Chapter,
+                "Livre: " + Livre.Value.ToString(),
+                "Exhaustion: " + Exhaustion.Value.ToString(),
+                "Credibility: " + Credibility.Value.ToString(),
+                "Peril: " + Peril.Value.ToString(),
+                "Reputation: " + Reputation.ToString(),
+                "Level: " + Level.ToString(),
+            };
+                
+            lines.Add( "Play Counts: ");
+
+            foreach (var kv in IncidentHistory)
+            {
+                lines.Add( string.Format("  {0}: {1}", kv.Key, kv.Value ) );
+            }
+
+            return lines.ToArray();
+        }
+
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("GameModel has no invocation.");
+        }
     }
 }

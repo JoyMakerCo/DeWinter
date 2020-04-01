@@ -21,8 +21,8 @@ namespace Ambition
             _lastState = null;
             State("MapTransition");
             State("PickMap");
-            AmbitionApp.RegisterLink<MessageLink, string>(FLOW_ID, "HideHeader", "MapTransition", GameMessages.EXIT_SCENE);
-            AmbitionApp.RegisterLink<FadeOutLink>(FLOW_ID, "MapTransition", "PickMap");
+            AmbitionApp.RegisterLink<InputLink, string>(FLOW_ID, "HideHeader", "MapTransition", GameMessages.EXIT_SCENE);
+            AmbitionApp.RegisterLink(FLOW_ID, "MapTransition", "PickMap");
             State("Intro");
             Decision<CheckTurnsLink>("Turns Left", "Map", "Outtro");
             State("Conversation");
@@ -32,7 +32,7 @@ namespace Ambition
             AmbitionApp.RegisterState<SendMessageState, string>(FLOW_ID, "Broadcast Map", PartyMessages.SHOW_MAP);
             Link("Show Map", "Broadcast Map");
             State("Pick Incidents");
-            AmbitionApp.RegisterLink<MessageLink, string>(FLOW_ID, "Pick Incidents", "Conversation", PartyMessages.SHOW_ROOM);
+            AmbitionApp.RegisterLink<InputLink, string>(FLOW_ID, "Pick Incidents", "Conversation", PartyMessages.SHOW_ROOM);
             AmbitionApp.RegisterState<LoadSceneState, string>(FLOW_ID, "After Party", SceneConsts.AFTER_PARTY_SCENE);
             Link("Exit Conversation", "Turns Left");
             _lastState = null;
@@ -42,7 +42,7 @@ namespace Ambition
             AmbitionApp.RegisterState<SendMessageState, string>(FLOW_ID, "Hide Header", GameMessages.HIDE_HEADER);
             Link("After Party", "Hide Header");
             State("Exit Party");
-            AmbitionApp.RegisterLink<MessageLink, string>(FLOW_ID, "Hide Header", "Exit Party", PartyMessages.END_PARTY);
+            AmbitionApp.RegisterLink<InputLink, string>(FLOW_ID, "Hide Header", "Exit Party", PartyMessages.END_PARTY);
 
             AmbitionApp.BindState<InitPartyState>(FLOW_ID, "InitParty");
             AmbitionApp.BindState<PickIncidentsState>(FLOW_ID, "Pick Incidents");

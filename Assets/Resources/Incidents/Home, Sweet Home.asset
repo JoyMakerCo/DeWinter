@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Home, Sweet Home
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 0b000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -28,13 +28,13 @@ MonoBehaviour:
   - {x: 236, y: 744}
   - {x: -188, y: 760}
   - {x: 255, y: 830}
-  - {x: -183, y: 902}
-  - {x: -203, y: 981}
-  - {x: -206, y: 1061}
-  - {x: 256, y: 908}
-  - {x: 267, y: 982}
+  - {x: -170, y: 981}
+  - {x: -180, y: 1128}
+  - {x: -185, y: 1186}
+  - {x: 255, y: 909}
   - {x: 28, y: 827}
   - {x: 44, y: 907}
+  - {x: -176, y: 1058}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -51,14 +51,14 @@ MonoBehaviour:
     - {x: 8, y: 11}
     - {x: 8, y: 12}
     - {x: 11, y: 13}
-    - {x: 13, y: 14}
     - {x: 14, y: 15}
     - {x: 12, y: 16}
-    - {x: 16, y: 17}
-    - {x: 17, y: 14}
-    - {x: 10, y: 18}
-    - {x: 18, y: 19}
-    - {x: 19, y: 13}
+    - {x: 10, y: 17}
+    - {x: 17, y: 18}
+    - {x: 18, y: 13}
+    - {x: 13, y: 19}
+    - {x: 19, y: 14}
+    - {x: 16, y: 13}
     Nodes:
     - Text: "After waiting around for a few hours, you leave the Orphan\u2019s Feast,
         dragging your small mountain of luggage behind you. After all, the coach was
@@ -82,7 +82,7 @@ MonoBehaviour:
         - Name: Arrive Home
           Value: 0
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -210,7 +210,7 @@ MonoBehaviour:
         but you\u2019re worried that if you breathe too hard on the building, it\u2019ll
         fall over. A well kept woman in the attire of a maid opens the door and approaches
         you.\r"
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -376,7 +376,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -391,7 +391,7 @@ MonoBehaviour:
         of the house isn\u2019t much better than the outside. Camille keeps the place
         tidy, but she can only do such much. Still, you don\u2019t care about that
         right now, you\u2019re just happy to have a roof over your head."
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -406,7 +406,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -437,29 +437,6 @@ MonoBehaviour:
     - Text: "While you\u2019re still processing this latest disappointment, Camille
         seems to notice your mountain of luggage for the first time. \u201C<i>Mon
         Dieu, Madame!</i> Did you carry this all yourself? You must be exhausted!\u201D"
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: Camille
-        Pose: neutral
-        Name: Camille
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "She\u2019s not wrong. You\u2019re not certain how you\u2019re still upright
-        and awake right now. \r\n\u201CI\u2019ve already made up your bed Madame,
-        please go inside and let me take care of this.\u201D Camille insists.\r"
       Background: {fileID: 0}
       Character1:
         AvatarID: Camille
@@ -526,114 +503,177 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: Glancing around, Camille seems to notice your mountain of luggage for
+        the first time. "<i>Mon dieu Madame!</i> Did you carry this all yourself?
+        You must be exhausted!"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"<i>Merci</i> Camille, please take me to Armand."'
+    - index: 0
+      Text: '"<i>Merci</i> Camille, please take me to Armand."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: '"Is this where he lives? Oh God, the rats in there ate him, didn''t they?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Is this where he lives? Oh God, the rats in there ate him, didn''t they?"'
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: "\u201CFine. When I\u2019m done, Armand is simply going to wish the rats
+    - index: 0
+      Text: "\u201CFine. When I\u2019m done, Armand is simply going to wish the rats
         had eaten him.\u201D"
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
-    - Text: "\"\x1CUh... thank you Camille. Do you think Armand\x19's alright?\x1D\""
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\"\x1CUh... thank you Camille. Do you think Armand\x19's alright?\x1D\""
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: "\u201CHe has a lot of explaining to do.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: "\u201CHe has a lot of explaining to do.\u201D"
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: "\u201CUh\u2026 thank you Camille. Do you think Armand\u2019s alright?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: "\u201CUh\u2026 thank you Camille. Do you think Armand\u2019s alright?\u201D"
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -643,11 +683,91 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: 
+    LocalizationKey: Assets/Resources/Incidents/Home, Sweet Home.asset
+    Political: 0
+    _date: -1
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: Assets/Resources/Incidents/Home, Sweet Home.asset.
-  _nodeText: []
-  _linkText: []
+  _nodeText:
+  - "After waiting around for a few hours, you leave the Orphan\u2019s Feast, dragging
+    your small mountain of luggage behind you. After all, the coach was only hired
+    to take you to the tavern. Armand may not have been waiting for you like he said
+    he would, but you memorized his address from all of the times you wrote it on
+    your letters to him.\r"
+  - "It\u2019s the middle of the night, but the street is still teeming with life.
+    The light from the windows and the street lamps sparkle like the stars. You\u2019re
+    tired and your feet hurt, but still, you can\u2019t help but smile.\r\n\r\nThis
+    is it. This is Paris. No matter what happens, you\u2019re still here. \r"
+  - "For a brief moment, you\u2019re not a country girl dragging luggage through the
+    streets. You\u2019re the person you feel that you are, when you close your eyes,
+    alone."
+  - "You\u2019re overseeing a grand salon, surrounded by poets, musicians, scientists,
+    philosophers, and artists. You are elegant, sophisticated, and respected.   "
+  - "You\u2019re getting close to the address. Armand never described his living conditions
+    much, but he\u2019s the son of a Baron and his family was always well to-do, especially
+    compared to yours. You\u2019ve spent a lot of time in that carriage wondering
+    about the home you\u2019d spend your new life in.\r"
+  - "Still, you didn\u2019t expect this..."
+  - "Calling the house \u2018rustic\u2019 would imply that you were out in the country,
+    not in the center of a city. The neighborhood is nice enough, but you\u2019re
+    worried that if you breathe too hard on the building, it\u2019ll fall over. A
+    well kept woman in the attire of a maid opens the door and approaches you.\r"
+  - "\u201C<i>Ah, bonsoir!</i> I assume you must be Madame Yvette! My name is Camille,
+    Monsieur Armand told me to expect you.\u201D\r"
+  - "\u201CI\u2026 I was hoping that he was with you.\u201D Camille replies hesitantly.
+    \u201CI haven\u2019t seen him in days.\u201D"
+  - "\u201CImpossible, Madame! I\u2019ve taken care of all the rats myself.\u201D
+    Camille replies, emphasizing her point with a playful stomp of her foot. \r"
+  - "Eyeing her worn shoes, you have a feeling the rats didn\u2019t go quietly."
+  - "\u201CI\u2019m sure he\u2019s fine Madame,\u201D Camille replies with a tone
+    of voice that doesn\u2019t fill you with confidence. Glancing around, Camille
+    seems to notice your mountain of luggage for the first time. \u201C<i>Mon Dieu,
+    Madame!</i> Did you carry this all yourself? You must be exhausted!\u201D\r"
+  - "At this, Camille takes a deep, nervous breath. \u201CI\u2019m afraid to tell
+    you that you\u2019ll have to wait, Madame. It\u2019s been days since I\u2019ve
+    seen Monsieur Armand. I was hoping that he was with you.\u201D "
+  - "She\u2019s not wrong. You\u2019re not certain how you\u2019re still upright and
+    awake right now. \r"
+  - "You take your diary and leave the heavy lifting to Camille. The inside of the
+    house isn\u2019t much better than the outside. Camille keeps the place tidy, but
+    she can only do such much. Still, you don\u2019t care about that right now, you\u2019re
+    just happy to have a roof over your head."
+  - "You flop down on a nearby couch, open your diary, and start to write. You\u2019re
+    tired, disappointed, and perhaps abandoned, but writing things down always helps
+    you make sense of a situation."
+  - "While you\u2019re still processing this latest disappointment, Camille seems
+    to notice your mountain of luggage for the first time. \u201C<i>Mon Dieu, Madame!</i>
+    Did you carry this all yourself? You must be exhausted!\u201D"
+  - '"I''m sure he''s fine Madame," Camille replies with a tone of voice that doesn''t
+    fill you with confidence. "I''m sorry to tell you this, but I haven''t seen Monsieur
+    Armand in days. I was hoping he was with you."'
+  - Glancing around, Camille seems to notice your mountain of luggage for the first
+    time. "<i>Mon dieu Madame!</i> Did you carry this all yourself? You must be exhausted!"
+  - "\x1CI\x19ve already made up your bed Madame, please go inside and let me take
+    care of this.\x1D\r"
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"<i>Merci</i> Camille, please take me to Armand."'
+  - '"Is this where he lives? Oh God, the rats in there ate him, didn''t they?"'
+  - 
+  - "\u201CFine. When I\u2019m done, Armand is simply going to wish the rats had eaten
+    him.\u201D"
+  - "\"\x1CUh... thank you Camille. Do you think Armand\x19's alright?\x1D\""
+  - "\u201CHe has a lot of explaining to do.\u201D"
+  - 
+  - 
+  - 
+  - "\u201CUh\u2026 thank you Camille. Do you think Armand\u2019s alright?\u201D"
+  - "\u201CUh\u2026 thank you Camille. Do you think Armand\u2019s alright?\u201D"
+  - "\u201CUh\u2026 thank you Camille. Do you think Armand\u2019s alright?\u201D"
+  - 
+  - 
+  - 

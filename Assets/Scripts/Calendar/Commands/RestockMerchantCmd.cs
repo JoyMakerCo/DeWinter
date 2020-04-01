@@ -4,23 +4,26 @@ using Core;
 
 namespace Ambition
 {
-	public class RestockMerchantCmd : ICommand<DateTime>
+	public class RestockMerchantCmd : ICommand
 	{
-		public void Execute(DateTime day)
+		public void Execute()
 		{
-			//InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-			//int count = model.Items.Length;
-   //         FactionVO bourgeoisie = AmbitionApp.GetModel<FactionModel>()[FactionType.Bourgeoisie];
-   //         ItemVO item;
-   //         if (model.Market != null) model.Market.Clear();
-   //         else model.Market = new Dictionary<ItemType, List<ItemVO>>();
-   //         model.Market.Add(ItemType.Outfit, new List<ItemVO>());
-			//for (int i= model.NumMarketSlots - model.Market.Count + (bourgeoisie.Level >= 3 ? 1 : 0); i>=0; i--)
-			//{
-   //             item = new ItemVO();
-   //             AmbitionApp.SendMessage(InventoryMessages.GENERATE_OUTFIT, item);
-			//	model.Market[ItemType.Outfit].Add(item);
-			//}
-		} 
-	}
+			InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            // Ensure that the same market values persist throughout the day
+            if (inventory.Market != null) return;
+
+            FactionVO bonus = AmbitionApp.GetModel<FactionModel>()[FactionType.Bourgeoisie];
+            int count = inventory.NumMarketSlots + (bonus?.Level >= 3 ? 1 : 0);
+            ItemVO item;
+            inventory.Market = new Dictionary<ItemType, List<ItemVO>>();
+            inventory.Market[ItemType.Outfit] = new List<ItemVO>();
+			for (int i=0; i<count; i++)
+			{
+                item = new ItemVO();
+                AmbitionApp.SendMessage(InventoryMessages.GENERATE_OUTFIT, item);
+                inventory.Market[ItemType.Outfit].Add(item);
+			}
+        }
+    }
 }
+	

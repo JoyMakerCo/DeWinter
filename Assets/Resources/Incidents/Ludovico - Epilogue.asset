@@ -16,41 +16,42 @@ MonoBehaviour:
   _Links: 
   _Positions:
   - {x: 0, y: 0}
-  - {x: 0, y: 72}
-  - {x: 0, y: 143}
-  - {x: -1, y: 209}
-  - {x: 0, y: 261}
-  - {x: -4, y: 321}
-  - {x: 0, y: 384}
-  - {x: 0, y: 461}
-  - {x: -230, y: 479}
-  - {x: 244, y: 462}
-  - {x: -227, y: 537}
-  - {x: 238, y: 522}
-  - {x: 240, y: 574}
-  - {x: 243, y: 630}
-  - {x: -227, y: 592}
-  - {x: 245, y: 691}
-  - {x: 247, y: 752}
-  - {x: -231, y: 651}
-  - {x: 123, y: 916}
-  - {x: 141, y: 1080}
-  - {x: -238, y: 711}
-  - {x: -366, y: 766}
-  - {x: -370, y: 822}
-  - {x: -366, y: 880}
-  - {x: -365, y: 935}
-  - {x: -371, y: 994}
-  - {x: -384, y: 1048}
-  - {x: -396, y: 1111}
-  - {x: -140, y: 1046}
-  - {x: -136, y: 960}
-  - {x: 244, y: 825}
+  - {x: 2, y: 67}
+  - {x: -2, y: 115}
+  - {x: 1, y: 229}
+  - {x: 2, y: 281}
+  - {x: -2, y: 341}
+  - {x: 2, y: 404}
+  - {x: 2, y: 481}
+  - {x: -228, y: 499}
+  - {x: 261, y: 434}
+  - {x: -225, y: 557}
+  - {x: 240, y: 542}
+  - {x: 242, y: 594}
+  - {x: 245, y: 650}
+  - {x: -225, y: 612}
+  - {x: 247, y: 711}
+  - {x: 249, y: 772}
+  - {x: -229, y: 671}
+  - {x: 125, y: 936}
+  - {x: 143, y: 1100}
+  - {x: -236, y: 731}
+  - {x: -364, y: 786}
+  - {x: -368, y: 842}
+  - {x: -364, y: 900}
+  - {x: -363, y: 955}
+  - {x: -369, y: 1014}
+  - {x: -382, y: 1068}
+  - {x: -394, y: 1131}
+  - {x: -138, y: 1066}
+  - {x: -134, y: 980}
+  - {x: 246, y: 845}
+  - {x: 250, y: 491}
+  - {x: 17, y: 173}
   Incident:
     Links:
     - {x: 0, y: 1}
     - {x: 1, y: 2}
-    - {x: 2, y: 3}
     - {x: 3, y: 4}
     - {x: 4, y: 5}
     - {x: 5, y: 6}
@@ -58,7 +59,6 @@ MonoBehaviour:
     - {x: 7, y: 8}
     - {x: 7, y: 9}
     - {x: 8, y: 10}
-    - {x: 9, y: 11}
     - {x: 11, y: 12}
     - {x: 12, y: 13}
     - {x: 10, y: 14}
@@ -79,6 +79,10 @@ MonoBehaviour:
     - {x: 29, y: 18}
     - {x: 16, y: 30}
     - {x: 30, y: 18}
+    - {x: 9, y: 31}
+    - {x: 31, y: 11}
+    - {x: 2, y: 32}
+    - {x: 32, y: 3}
     Nodes:
     - Text: You hurry south through the city, trying to make sure that you make it
         to the docks in time.
@@ -219,7 +223,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_charmed
         Parameters: []
     - Text: 'However, his joy quickly fades, as he remembers what you''re both here
         to do. '
@@ -446,7 +450,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: '"I love you." He says, one last time before boarding his boat.'
       Background: {fileID: 0}
@@ -558,7 +562,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: With a downcast gaze, he boards his boat.
       Background: {fileID: 0}
@@ -781,158 +785,245 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: True to his word, the captain casts off in three minutes. Just like that,
+        it starts to leave Paris behind.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: True to his word, the captain casts off in three minutes. Just like that,
+        it starts to leave Paris behind.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: <Kiss him>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: <Kiss him>
+    - index: 0
+      Text: '"This isn''t ''goodbye''. Just ''see you soon''."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"This isn''t ''goodbye''. Just ''see you soon''."'
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -942,11 +1033,110 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: 
+    LocalizationKey: Assets/Resources/Incidents/Ludovico - Epilogue.asset
+    Political: 0
+    _date: -1
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: Assets/Resources/Incidents/Ludovico - Epilogue.asset.
-  _nodeText: []
-  _linkText: []
+  _nodeText:
+  - You hurry south through the city, trying to make sure that you make it to the
+    docks in time.
+  - You've already lost a lot of time from having to double back and find new routes.
+    It looks like new barricades are going up every day, and the streets simply don't
+    feel safe anymore.
+  - Finally, you make it to the docks. Instead of the normal bevy of merchant vessels,
+    you only see barges taking on passengers, laden with their world possessions.
+    The barges will take them via the river to a proper port city. Most people with
+    the means to leave Paris, are leaving France altogether.
+  - You spot Ludovico walking down from a gangplank, and peering into the crowd. When
+    he spots you, his face blossoms into an exuberant smile.
+  - (You have gained a little favor with Ludovico)
+  - He pushes through the crowd to get to you. "Yvette! I'm so glad you came. You
+    have no idea how much this means to me."
+  - 'However, his joy quickly fades, as he remembers what you''re both here to do. '
+  - '"I guess, this is goodbye."'
+  - Unable to restrain yourself further, you grab Ludovico by the wrist and lead him
+    behind a nearby building for one last embrace.
+  - The two of you sit on a the edge of the dock together. You laugh and joke, you
+    talk about which books you've been reading recently. Together, you pretend that
+    nothing is ever going to change.
+  - You kiss with that passion which can only come from desperation. You drink deep
+    of each other, unsure if this will be your last chance to ever do so.
+  - It isn't a painful delusion, because you both know it isn't real. You feel at
+    peace. You feel some of the danger of the last few days slip away, and gain a
+    sort of clarity.
+  - (You have lost some peril)
+  - '"<i>Attention</i>!" Shouts the captain of Ludovico''s boat above the din of the
+    crowd. "We''re getting ready to cast off. Those who are not on this vessel in
+    three minutes will be left behind." He says with the finality of someone who has
+    actually abandoned passengers before.'
+  - You stop for a moment, not because you want to, but because you both need to beathe
+    in order to live.
+  - "\"This is it. <i>\rArrivederci, Yvette.</i>\""
+  - '"I love you." He says, one last time before boarding his boat.'
+  - '"<i>Attention</i>!" Shouts the captain of Ludovico''s boat above the din of the
+    crowd. "We''re getting ready to cast off. Those who are not on this vessel in
+    three minutes will be left behind." He says with the finality of someone who has
+    actually abandoned passengers before.'
+  - You stay on the dock for a while, and watch his boat disappear into the distance.
+    Part of you wants to watch him for as long as you can, and another part of you
+    simply isn't ready for the trials of getting home through all of this chaos.
+  - You wonder to yourself, is this something lost, or is this just another reason
+    to make sure you survive?
+  - '"This is it. <i>Addio</i>, Yvette."'
+  - With a downcast gaze, he boards his boat.
+  - True to his word, the captain casts off in three minutes, and soon it starts to
+    leave Paris behind.
+  - As the boat starts to leave, you're about to turn and head home, until you see
+    Ludovico run to the back of the boat. He starts shouting, loud enough for everyone
+    to hear.
+  - '"Yvette! Please stay safe! You''re the best woman I''ve ever met!"'
+  - '"You''re the greatest blessing I''ve ever had!"'
+  - There's a hesitation in his voice, as he realizes that the entire dock is watching
+    you both. He chooses his next words carefully.
+  - '"I''ll pray for you, every day!"'
+  - The dock is awash in murmurs as the assembled crowd tries to understand what they
+    just bore witness to. Tensing up, waiting for the sudden backlash, you realize
+    that the people around you think that you must be an extremely loyal and devout
+    Christian, in order to get a priest to react this way.
+  - (You have gained quite a bit of credibility)
+  - True to his word, the captain casts off in three minutes. Just like that, it starts
+    to leave Paris behind.
+  - You pretend as if this moment will last forever.
+  - You wonder if they have the right idea.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - <Kiss him>
+  - '"This isn''t ''goodbye''. Just ''see you soon''."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

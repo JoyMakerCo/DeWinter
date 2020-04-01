@@ -630,132 +630,158 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - Text: asdfasdf
+    - index: 0
+      Text: asdfasdf
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Just tell me the problem, and I''ll handle the rest."'
+    - index: 0
+      Text: '"Just tell me the problem, and I''ll handle the rest."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Excuse me? I don''t work for you, Antoine."'
+    - index: 0
+      Text: '"Excuse me? I don''t work for you, Antoine."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"What, exactly, do you need me to do?"'
+    - index: 0
+      Text: '"What, exactly, do you need me to do?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"For liberty? I''ll see what I can do."'
+    - index: 0
+      Text: '"For liberty? I''ll see what I can do."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Antoine, I''m not ready to commit crimes for a man I''ve never met."'
+    - index: 0
+      Text: '"Antoine, I''m not ready to commit crimes for a man I''ve never met."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -765,11 +791,88 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: 
-    Requirements: []
-  _factions: 000000000000
-  _chapters: 00000000
+    LocalizationKey: Assets/Resources/Incidents/Taking Risks.asset
+    Political: 0
+    _date: -1
+    Requirements:
+    - Type: 5
+      ID: Antoine
+      Value: 16
+      Operator: 4
+    - Type: 8
+      ID: Old Wounds
+      Value: 1
+      Operator: 4
+  _factions: 000000000001
+  _chapters: 00000101
   _date: -1
-  _localizationKey: Assets/Resources/Incidents/Taking Risks.asset.
-  _nodeText: []
-  _linkText: []
+  _nodeText:
+  - As you walk around the party, sipping your wine, you notice Antoine is walking
+    directly towards you. He look concerned.
+  - He gently takes you by the elbow and leads you to a corner of the room, away from
+    everyone else.
+  - '"Yvette, something dire has happened, and there is something I will need you
+    to do." He says in a low voice.'
+  - '"<i>Fantastique</i>!" He replies with a wolfish grin. '
+  - He pauses to glower at you. "Fine, let me explain the problem first."
+  - He sighs and nods. "Your caution is understandable."
+  - (You have gained a little favor with Antoine)
+  - (You have lost a little favor with Antoine)
+  - (You have gained a little credibility)
+  - '"Do you remember those posters we put up?"'
+  - "\"While we may have gotten away unscathed, it appears that the printmaker who
+    made the posters wasn't so lucky. One of his apprentices betrayed him to the archers,
+    and now our friend is imprisoned in <i>Ch\xE2teau de Vincennes</i>, and awaiting
+    a very one-sided trial.\""
+  - '"Normally, I would do something myself, but I have reason to believe the archers
+    have been told to keep an eye on me." He continues, eyeing certain guests at the
+    party suspiciously.'
+  - '"This man, Monsieur Clet, he has taken risks for us. It''s time for us to repay
+    the favor."'
+  - '"Can you try to help him?"'
+  - '"I knew I could count on you."'
+  - '"Really, that''s where you draw your line?" He asks, incredulous. "This man helped
+    us. We should help him."'
+  - (You have lost some favor with Antoine)
+  - '"Ugh... if you can''t help then I''ll find someone who can."'
+  - (You have gained some favor with Antoine)
+  - "He takes a few moments explaining where Ch\xE2teau de Vincennes is, and everything
+    you'd need to know about the location. It used to be a fortress, but one half
+    of it was converted into a prison, and the other half into a nunnery. Usually,
+    it's used to hold criminals who the Crown consider a real threat, but doesn't
+    want to abuse, yet."
+  - With dismissive gesture, he turns from you and stalks away, back towards the other
+    party guests.
+  - '"I don''t exactly what you can do for him, but it will do great things for the
+    Revolution if we can show people that we defend those who aid us."'
+  - He bends low and kisses the back of your hand. "I'm sorry, but I should step away,
+    before anyone gets suspicious. We have to keep this secret, for now."
+  - With that, he turns from you and strolls away, towards the other party guests.
+  - "(<i>Ch\xE2teau de Vincennes</i> is now available to visit in the Paris map)"
+  _linkText:
+  - asdfasdf
+  - 
+  - '"Just tell me the problem, and I''ll handle the rest."'
+  - '"Excuse me? I don''t work for you, Antoine."'
+  - '"What, exactly, do you need me to do?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"For liberty? I''ll see what I can do."'
+  - '"Antoine, I''m not ready to commit crimes for a man I''ve never met."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

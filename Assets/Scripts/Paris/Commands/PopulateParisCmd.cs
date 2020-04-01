@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using Util;
 
 namespace Ambition
 {
@@ -9,14 +9,16 @@ namespace Ambition
         public void Execute()
         {
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
-            model.Visited.ForEach(l => model.Locations.Remove(l));
-            IEnumerable<string> newLocations =
-                (from location in model.Locations
-                 where !model.Known.Contains(location.Key) && AmbitionApp.CheckRequirements(location.Value)
-                 select location.Key);
-            model.Known.AddRange(newLocations);
-            model.Known.ForEach(l => AmbitionApp.SendMessage(ParisMessages.ADD_LOCATION, l));
-            model.Daily.ForEach(l => AmbitionApp.SendMessage(ParisMessages.ADD_LOCATION, l));
+            foreach (string location in model.Locations)
+            {
+                if (!model.Locations.Contains(location)) // Todo: Check requirements
+                {
+                    model.Locations.Add(location);
+                }
+            }
+
+            model.Locations.ForEach(l => AmbitionApp.SendMessage(ParisMessages.ADD_LOCATION, l));
+            Array.ForEach(model.Daily, l => AmbitionApp.SendMessage(ParisMessages.ADD_LOCATION, l));
         }
     }
 }

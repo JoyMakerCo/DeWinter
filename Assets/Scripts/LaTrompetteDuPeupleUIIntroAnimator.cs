@@ -13,9 +13,11 @@ namespace Ambition
 
         void Awake()
         {
+            string title = AmbitionApp.Localize("parismap.locationlabel.la_trompette_du_peuple");
             _animator = GetComponent<Animator>();
             HandleIntroAnimation();
             AmbitionApp.Subscribe(CalendarMessages.NEXT_DAY, HandleLeaveLocation);
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, title);
         }
 
         void OnDestroy()

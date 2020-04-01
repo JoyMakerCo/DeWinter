@@ -1,4 +1,4 @@
-using UFlow;
+﻿using UFlow;
 using System;
 using System.Linq;
 
@@ -6,7 +6,7 @@ namespace Ambition
 {
     public class SelectGuestActionState : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             // Using Sibling Index is hacky as fuck, but this should work for our purposes FRN.
             // VERY dependent on the view.

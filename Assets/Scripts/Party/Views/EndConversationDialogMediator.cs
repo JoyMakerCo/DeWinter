@@ -29,7 +29,7 @@ namespace Ambition
             
         protected void SetPhrase(string phrase)
         {
-            TitleText.text = AmbitionApp.GetString(phrase + ".title");
+            TitleText.text = AmbitionApp.Localize(phrase + ".title");
             SubText.text = GetBodyText(phrase);
         }
     
@@ -50,17 +50,17 @@ namespace Ambition
             }
             if (offendedTally == 0)
             {
-                return AmbitionApp.GetString(phrase + ".body_charmed_all");
+                return AmbitionApp.Localize(phrase + ".body_charmed_all");
             }
             else
             {
                 Dictionary<string, string> dialogSubstitutions = new Dictionary<string, string>();
                 dialogSubstitutions.Add("$CHARMEDAMOUNT", charmedTally.ToString());
-                if (charmedTally == 1) dialogSubstitutions.Add("$CHARMEDSINGULARORPLURAL", AmbitionApp.GetString("guest_was"));
-                else dialogSubstitutions.Add("$CHARMEDSINGULARORPLURAL", AmbitionApp.GetString("guests_were"));
+                if (charmedTally == 1) dialogSubstitutions.Add("$CHARMEDSINGULARORPLURAL", AmbitionApp.Localize("guest_was"));
+                else dialogSubstitutions.Add("$CHARMEDSINGULARORPLURAL", AmbitionApp.Localize("guests_were"));
                 dialogSubstitutions.Add("$OFFENDEDAMOUNT", offendedTally.ToString());
-                if (offendedTally == 1) dialogSubstitutions.Add("$OFFENDEDSINGULARORPLURAL", AmbitionApp.GetString("guest_was"));
-                else dialogSubstitutions.Add("$OFFENDEDSINGULARORPLURAL", AmbitionApp.GetString("guests_were"));
+                if (offendedTally == 1) dialogSubstitutions.Add("$OFFENDEDSINGULARORPLURAL", AmbitionApp.Localize("guest_was"));
+                else dialogSubstitutions.Add("$OFFENDEDSINGULARORPLURAL", AmbitionApp.Localize("guests_were"));
                 return AmbitionApp.GetString(phrase + ".body_charmed_some", dialogSubstitutions);
             }
 

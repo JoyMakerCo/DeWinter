@@ -8,6 +8,6 @@ namespace Ambition
 	{
         string dialogID;
         public override void SetData(string data) => dialogID = data;
-        public override void OnEnterState(string[] args) => AmbitionApp.OpenDialog(dialogID);// args[0]);
+        public override void OnEnterState() => AmbitionApp.OpenDialog(dialogID);// args[0]);
     }
 }

@@ -1,34 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Ambition
 {
-    public class ChooseExploreLocationsCmd : Core.ICommand
+    public class ChooseExploreLocationsCmd : Core.ICommand<Pin[]>
     {
         // Chooses all of the new Daily locations whose requirements have been met
         // This ensures that the same locations aren't available on two consecutive days
-        public void Execute()
+        public void Execute(Pin[] pins)
         {
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
-            List<string> explorable =
-                (from loc in model.Explorable
-                where !model.Daily.Contains(loc.Key) && AmbitionApp.CheckRequirements(loc.Value)
-                select loc.Key).ToList();
-            if (explorable.Count <= model.NumExploreLocations)
+            int length = pins.Length;
+            uint max = model.NumDailies;
+            int[] random = new int[length];
+
+            // Shuffle the pin indices (stop short of shuffling within the results)
+            for (int i = length - 1; i >= max; i--)
             {
-                model.Daily = explorable;
+                random[i] = Util.RNG.Generate(i);
+                random[random[i]] = i;
             }
-            else
+            model.Daily = new string[max];
+            // Build a list from the first N shiffled indices
+            for (int i = 0; i < max; i++)
             {
-                int index;
-                model.Daily.Clear();
-                for (int i= model.NumExploreLocations; i>0; i--)
-                {
-                    index = Util.RNG.Generate(explorable.Count);
-                    model.Daily.Add(explorable[index]);
-                    explorable.RemoveAt(index);
-                }
+                model.Daily[i] = pins[random[i]].name;
             }
         }
     }

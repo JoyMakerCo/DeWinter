@@ -19,10 +19,10 @@ namespace Ambition
 
 
             AmbitionApp.RegisterLink("EstateController", "LoadEstate", "HideHeader");
-            AmbitionApp.RegisterLink<MessageLink, string>("EstateController", "HideHeader", "CreateInvitations", GameMessages.FADE_IN_COMPLETE);
+            AmbitionApp.RegisterLink<InputLink, string>("EstateController", "HideHeader", "CreateInvitations", GameMessages.FADE_IN_COMPLETE);
             AmbitionApp.RegisterLink("EstateController", "CreateInvitations", "CheckMissedParties");
             AmbitionApp.RegisterLink("EstateController", "CheckMissedParties", "Estate");
-            AmbitionApp.RegisterLink<MessageLink, string>("EstateController", "Estate", "LeaveEstate", EstateMessages.LEAVE_ESTATE);
+            AmbitionApp.RegisterLink<InputLink, string>("EstateController", "Estate", "LeaveEstate", EstateMessages.LEAVE_ESTATE);
         }
     }
 }

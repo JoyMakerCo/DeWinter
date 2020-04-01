@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: A Lively Place
   m_EditorClassIdentifier: 
-  _Nodes: 06000000
+  _Nodes: 
   _Links: 
   _Positions:
   - {x: 0, y: 0}
   - {x: 4, y: 77}
   - {x: 6, y: 155}
-  - {x: 7, y: 215}
-  - {x: -110, y: 419}
+  - {x: 8, y: 215}
+  - {x: -110, y: 420}
   - {x: 0, y: 350}
   - {x: 141, y: 415}
   - {x: 10, y: 279}
@@ -36,7 +36,7 @@ MonoBehaviour:
     - Text: Feeling like you could use some fresh air, you decide to take your travels
         to the edge of the Paris. As much as you like the city, the change of pace
         is appreciated.
-      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -48,7 +48,7 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: 
+        Name: event:/Music/Paris Map
         Parameters: []
       AmbientSFX:
         Name: event:/Ambient SFX/Amb_ParisStreets_outside
@@ -58,7 +58,7 @@ MonoBehaviour:
         Parameters: []
     - Text: Passing through a checkpoint at the city's outer wall, you hear the sounds
         of music and raucous laughter.
-      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -106,7 +106,7 @@ MonoBehaviour:
 
 
         (<i>Guinguette Paradis</i> is now an available rendezvous location)'
-      Background: {fileID: 21300000, guid: 6608eece59829498aa0a0c044ed2cff3, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -151,7 +151,7 @@ MonoBehaviour:
         Parameters: []
     - Text: The entertainment may be on the coarse side for some, but it's perfect
         for those that just want to relax and have fun.
-      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -166,7 +166,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: 
@@ -195,7 +195,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: New Moment
-      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -213,46 +213,53 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: 
         Parameters: []
       OneShotSFX:
         Name: 
         Parameters: []
     LinkData:
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: 
+    - index: 0
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"Everyone here seems to be having a great time, and I can''t blame them.
+    - index: 0
+      Text: '"Everyone here seems to be having a great time, and I can''t blame them.
         This is a lot of fun."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
+    - index: 0
+      Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
         back in the village."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
+    - index: 0
+      Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
         back in the village."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
+    - index: 0
+      Text: '"If I wanted drunk strangers and rustic music, then I would have stayed
         back in the village."'
       xor: 0
       Rewards: []
@@ -263,12 +270,13 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: 
+    LocalizationKey: Assets/Collections/Incidents/A Lively Place.asset
+    Political: 0
+    _date: -1
     Requirements: []
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _localizationKey: Assets/Collections/Incidents/A Lively Place.asset.
   _nodeText:
   - Feeling like you could use some fresh air, you decide to take your travels to
     the edge of the Paris. As much as you like the city, the change of pace is appreciated.

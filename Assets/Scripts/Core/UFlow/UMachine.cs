@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using Core;
 using Util;
 using UGraph;
 
+
+using UnityEngine;
+
 namespace UFlow
 {
     [Serializable]
-	public sealed class UMachine
+	public sealed class UMachine : IConsoleEntity
 	{
 		public string MachineID { get; private set; }
         internal UMachineState _State;
@@ -47,7 +49,18 @@ namespace UFlow
         }
 
         // Current active states
-        public string[] GetActiveStates() => _nodes?.Where(s => s != null).Select(s => s.ID).ToArray();
+        public string[] GetActiveStates()
+        {
+            List<string> result = new List<string>();
+            foreach(UNode n in _nodes)
+            {
+                if (n != null)
+                {
+                    result.Add(n.ID);
+                }
+            }
+            return result.ToArray();
+        }
 
         // TODO: Links no longer activate, only states
         internal void Activate(ULink link)
@@ -62,13 +75,24 @@ namespace UFlow
         internal void ActivateLinks(UNode state)
         {
             int index = Array.IndexOf(_nodes, state);
-            if (index >= 0)
+            if (index >= 0 && _links?[index] != null)
             {
                 // Find all links that are valid
-                ULink[] links = Array.FindAll(_links[index], l => l.Validate());
+                ULink[] links = Array.FindAll(_links[index], l => l?.Validate() ?? false);
                 if (Array.TrueForAll(links, l => l is UDefaultLink))
+                {
                     Array.ForEach(links, Activate);
-                else Array.ForEach(links, l => { if (!(l is UDefaultLink)) Activate(l); });
+                }
+                else
+                {
+                    foreach (ULink link in links)
+                    {
+                        if (!(link is UDefaultLink))
+                        {
+                            Activate(link);
+                        }
+                    }
+                }
             }
         }
 
@@ -87,8 +111,8 @@ namespace UFlow
                 do
                 {
                     node = BuildNode(index);
-UnityEngine.Debug.Log(MachineID + "(" + _UFlow.GetActiveMachines().Count(m=>m==MachineID).ToString() +  "): " + string.Join("; ", GetActiveStates()));
-                    node.OnEnterState(_graph.Nodes[index].Tags);
+                    node.OnEnterState();
+Debug.Log(node._Machine?.MachineID + " " + node.ID);
                     // Exit the machine if the current node is marked as an exit state.
                     if (isExitState(index))
                     {
@@ -115,13 +139,24 @@ UnityEngine.Debug.Log(MachineID + "(" + _UFlow.GetActiveMachines().Count(m=>m==M
                 // - In the UI, outgoing links are shown in a reorderable list where list order = execution order
 
                 // Exit the machine if nothing else is happening.
-                if (_nodes != null && Array.TrueForAll(_nodes, n => n == null)) ExitMachine();
+                if (_nodes != null && Array.TrueForAll(_nodes, n => n == null))
+                {
+                    ExitMachine();
+                }
             }
         }
 
         private UNode BuildNode(int index)
         {
-            _links[index] = _links[index] ?? _graph.GetLinks(index).Select(BuildLink).ToArray();
+            if (_links[index] == null)
+            {
+                UGraphLink[] links = _graph.GetLinks(index);
+                _links[index] = new ULink[links.Length];
+                for (int i=links.Length-1; i>=0; --i)
+                {
+                    _links[index][i] = BuildLink(links[i]);
+                }
+            }
             if (_nodes[index] == null)
             {
                 UNode node = _UFlow.BuildNode(_graph.Nodes[index]);
@@ -144,7 +179,7 @@ UnityEngine.Debug.Log(MachineID + "(" + _UFlow.GetActiveMachines().Count(m=>m==M
             ULink[] links = _links?[index];
             if (links != null)
             {
-                Array.ForEach(links, l => l.Dispose());
+                Array.ForEach(links, l => l?.Dispose());
                 _links[index] = null;
             }
 
@@ -193,5 +228,29 @@ UnityEngine.Debug.Log(MachineID + "(" + _UFlow.GetActiveMachines().Count(m=>m==M
 			ln.Initialize();
 			return ln;
 		}
+
+
+        public string[] Dump()
+        {
+            var stateId = "null";
+            if (_State != null)
+            {
+                stateId = _State.ID;
+            }
+
+            var lines = new List<string>()
+            {
+                "UMachine "+MachineID+":",
+                "state: "+stateId
+            };
+
+            return lines.ToArray();
+        }
+
+        
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("UMachine has no invocation.");
+        }  
 	}
 }

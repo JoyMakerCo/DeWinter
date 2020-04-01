@@ -27,7 +27,7 @@ namespace Ambition
         {
             ServantModel smod = AmbitionApp.GetModel<ServantModel>();
             Dictionary<string, string> dialogsubs = new Dictionary<string, string>(){
-                {"$PARTYSIZE", AmbitionApp.GetString("party_importance." + ((int)party.Size).ToString())}};
+                {"$PARTYSIZE", AmbitionApp.Localize("party_importance." + ((int)party.Size).ToString())}};
 
             _party = party;
             TitleTxt.text = party.Host;
@@ -55,8 +55,8 @@ namespace Ambition
                 dialogsubs.Add("$PROMPT", AmbitionApp.GetString("party_prompt"));
             }
 */
-            ObjectiveText.text = AmbitionApp.GetString("party_objectives");
-            HostText.text = AmbitionApp.GetString("rsvp");
+            ObjectiveText.text = AmbitionApp.Localize("party_objectives");
+            HostText.text = AmbitionApp.Localize("rsvp");
             Seal.sprite = InvitationConfig.GetSprite("seal." + party.Faction);
             Stamp.sprite = InvitationConfig.GetSprite(party.Faction.ToString());
             BodyTxt.text = party.Invitation;

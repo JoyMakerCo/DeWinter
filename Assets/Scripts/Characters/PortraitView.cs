@@ -10,23 +10,5 @@ namespace Ambition
         [HideInInspector]
         public string Tooltip;
         public Image Portrait;
-
-        public CharacterVO Character
-        {
-            set
-            {
-                Avatar = value?.Avatar ?? default;
-                Tooltip = value.Name;
-            }
-        }
-
-        public AvatarVO Avatar
-        {
-            set
-            {
-                gameObject.SetActive(value.Portrait != null);
-                Portrait.sprite = value.Portrait;
-            }
-        }
     }
 }

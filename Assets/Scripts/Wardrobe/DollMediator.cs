@@ -1,40 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class DollMediator : MonoBehaviour
-	{
-		public SpriteConfig DressConfig;
+    public class DollMediator : MonoBehaviour
+    {
+        public OutfitConfig OutfitConfig;
+        public Image Doll;
 
-		private Image _dollImage;
-
-		void Awake()
-		{
-            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-			_dollImage = GetComponent<Image>();
-            HandleOutfit(inventory.GetEquippedItem(ItemType.Outfit));
-		}
-
-		void OnEnable()
-		{
-			AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
-		}
-
-		void OnDisable()
-		{
-			AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
-		}
-
-		private void HandleOutfit(ItemVO item)
-		{
-            if (item.Type == ItemType.Outfit)
-            {
-                string style = OutfitWrapperVO.GetStyle(item);
-                _dollImage.sprite = DressConfig.GetSprite(style) ?? DressConfig.Sprites[0].Sprite;
-            }
+        void Awake()
+        {
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.DISPLAY_ITEM, HandleOutfit);
         }
-	}
+
+        void OnDestroy()
+        {
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.DISPLAY_ITEM, HandleOutfit);
+        }
+
+        void HandleOutfit(ItemVO outfit)
+        {
+            if (outfit.Asset == null)
+            {
+                OutfitConfig.GetOutfit(outfit);
+            }
+            Doll.sprite = outfit.Asset;
+        }
+
+        private IEnumerator LoadAssetBundle(Action<AssetBundle> onComplete)
+        {
+            AssetBundleCreateRequest req = AssetBundle.LoadFromFileAsync(AmbitionApp.GetModel<GameModel>().PlayerPhrase.ToLower() + "_outfits");
+            yield return req;
+            onComplete(req?.assetBundle);
+        }
+    }
 }

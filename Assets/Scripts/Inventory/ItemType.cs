@@ -3,6 +3,6 @@ namespace Ambition
 {
     public enum ItemType
     {
-        Outfit, Accessory, Gossip, Servant
+        Outfit, Accessory, Gossip, Servant, Token
     }
 }

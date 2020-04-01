@@ -40,7 +40,7 @@ namespace Ambition
         {
             StopAllCoroutines();
             _fadeIn = fadeIn;
-            if (_fadeIn) StartCoroutine(FadeIn(time*(1f-_fade)));
+            if (_fadeIn) StartCoroutine(FadeIn(time * (1f - _fade)));
             else StartCoroutine(FadeOut(time * _fade));
         }
 
@@ -78,7 +78,7 @@ namespace Ambition
             if (_fade >= 1f) Graphics.Blit (source, destination);
             else
             {
-                _material.SetFloat("_fade", (float)_fade);
+                _material.SetFloat("_fade", _fade);
                 Graphics.Blit (source, destination, _material);
             }
         }

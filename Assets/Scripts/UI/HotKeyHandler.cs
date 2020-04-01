@@ -21,7 +21,6 @@ namespace Ambition
 			}
             if (Input.GetKeyDown(KeyCode.F10))
             {
-				Debug.Log("F10");
             	AmbitionApp.SendMessage(GameMessages.TOGGLE_CONSOLE);
             }
         }

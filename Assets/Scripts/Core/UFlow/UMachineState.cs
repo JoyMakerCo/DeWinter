@@ -17,14 +17,14 @@ namespace UFlow
             _subMachine = null;
         }
 
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             if (_subMachine == null)
             {
                 _subMachine = _UFlow.BuildMachine(MachineID);
                 _subMachine._State = this;
             }
-            if (_subMachine != null) _subMachine?.Start();
+            if (_subMachine != null) _subMachine.Start();
             else _Machine?.Activate(this);
         }
     }

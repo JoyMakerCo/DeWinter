@@ -7,13 +7,12 @@ namespace Ambition
         {
             FactionModel factions = AmbitionApp.GetModel<FactionModel>();
             if (reward.ID != null
-                && Enum.TryParse<FactionType>(reward.ID, out FactionType factionType)
-                && factions.Factions.TryGetValue(factionType, out FactionVO faction))
+                && Enum.TryParse<FactionType>(reward.ID, ignoreCase:true, out FactionType factionType))
             {
-                faction.Reputation += reward.Value;
-                AmbitionApp.SendMessage(faction);
+                AmbitionApp.SendMessage(FactionMessages.ADJUST_FACTION,AdjustFactionVO.MakeReputationVO(factionType, reward.Value));
             }
             else AmbitionApp.GetModel<GameModel>().Reputation += reward.Value;
         }
     }
 }
+

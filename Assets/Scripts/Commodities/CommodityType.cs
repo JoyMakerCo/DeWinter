@@ -23,6 +23,10 @@
         Date,       // Amount = ticks value of Date (Requirement Only)
         Mark,       // In party objctives, when the Mark's room is cleared (value and ID ignored)
         Chance,      // Value = Chance out of 100 of success
-        Exhaustion  // Value = Exhaustion level; ID = null
+        Exhaustion,  // Value = Exhaustion level; ID = null
+        ActiveQuest, // Value = 1 if quest is active
+        Random,      // Value = number to test against
+
+        OutfitReaction,      // Outfit credibility shift
     }
 }

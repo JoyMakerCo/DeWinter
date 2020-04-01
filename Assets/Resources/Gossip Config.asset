@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d3d903a7d484c3187bfcd94637ac4c, type: 3}
+  m_Name: Gossip Config
+  m_EditorClassIdentifier: 
+  Fresh:
+    DaysThreshold: 5
+    PriceMod: 1
+    EffectMod: 1
+  Relevant:
+    DaysThreshold: 10
+    PriceMod: 0.5
+    EffectMod: 0.5
+  Old:
+    DaysThreshold: 15
+    PriceMod: 0.1
+    EffectMod: 0.1
+  Irrelevant:
+    DaysThreshold: 60
+    PriceMod: 0
+    EffectMod: 0
+  Cheap:
+    EffectBase: 2
+    PriceBase: 30
+  Shocking:
+    EffectBase: 4
+    PriceBase: 60
+  Outrageous:
+    EffectBase: 6
+    PriceBase: 90

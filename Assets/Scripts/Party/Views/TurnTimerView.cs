@@ -20,16 +20,16 @@ namespace Ambition
         void Awake()
         {
             AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, HandleMap);
-            AmbitionApp.Subscribe(GameMessages.SHOW_HEADER, OnShow);
-            AmbitionApp.Subscribe(GameMessages.HIDE_HEADER, OnShow);
+            AmbitionApp.Subscribe<string>(GameMessages.SHOW_HEADER, OnShow);
+            AmbitionApp.Subscribe(GameMessages.HIDE_HEADER, OnHide);
             gameObject.SetActive(false);
         }
 
         void OnDestroy()
         {
             AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, HandleMap);
-            AmbitionApp.Unsubscribe(GameMessages.SHOW_HEADER, OnShow);
-            AmbitionApp.Unsubscribe(GameMessages.HIDE_HEADER, OnShow);
+            AmbitionApp.Unsubscribe<string>(GameMessages.SHOW_HEADER, OnShow);
+            AmbitionApp.Unsubscribe(GameMessages.HIDE_HEADER, OnHide);
         }
 
         private void HandleMap()
@@ -44,6 +44,7 @@ namespace Ambition
             }
         }
 
-        private void OnShow() => gameObject.SetActive(false);
+        private void OnShow(string title) => gameObject.SetActive(false);
+        private void OnHide() => gameObject.SetActive(false);
     }
 }

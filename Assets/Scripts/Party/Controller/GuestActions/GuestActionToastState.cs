@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using UFlow;
 
 namespace Ambition
 {
     public class GuestActionToastState : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             UController controller = _Machine._UFlow.GetController(_Machine);
             if (controller != null)

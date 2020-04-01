@@ -1,8 +1,8 @@
-namespace Ambition
+﻿namespace Ambition
 {
     public class FadeOutState : UFlow.UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             AmbitionApp.SendMessage(GameMessages.FADE_OUT);
         }
@@ -10,7 +10,7 @@ namespace Ambition
 
     public class FadeInState : UFlow.UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
             AmbitionApp.SendMessage(GameMessages.FADE_IN);
         }

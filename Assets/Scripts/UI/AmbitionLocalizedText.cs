@@ -4,6 +4,10 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Core;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Ambition
 {
     // Component for localizing a Text UI element on the same gameobject
@@ -12,79 +16,44 @@ namespace Ambition
     public class AmbitionLocalizedText : MonoBehaviour
     {
         [Serializable]
-        public struct Substitution
+        public struct LocalizedTextField
         {
-            public string token;
-            public string text;
+            public Text TextField;
+            public string LocalizationKey;
         }
 
-        [Header("Check to use the current value in the Text object as the localization key.")]
-        public bool UseTextAsKey = true;
-        public Substitution[] Substitutions;
+        public LocalizedTextField[] LocalizedText;
 
-        [SerializeField, HideInInspector]
-        private string _localizationKey;
-        private Text _text;
-        private Dictionary<string, string> _substitutions;
-
-#if UNITY_EDITOR
-        private LocalizationConfig _config;
-#endif
-
-        private void Awake()
+        void Awake()
         {
-            _text = GetComponent<Text>();
-            _substitutions = new Dictionary<string, string>();
-            foreach (Substitution sub in Substitutions)
+            foreach (LocalizedTextField row in LocalizedText)
             {
-                _substitutions[sub.token] = sub.text;
+                row.TextField.text = AmbitionApp.Localize(row.LocalizationKey);
             }
-#if DEBUG
-            if (_text == null)
-            {
-                Debug.LogError("Error: No text object to localize on " + gameObject.name);
-            }
-#endif
-#if UNITY_EDITOR
-            _config = _config ?? Resources.Load<LocalizationConfig>("Localization Config");
-            string key = UseTextAsKey
-                ? _text.text
-                : _config.GenerateLocalizationKey(this);
-
-            _config.MoveKey(_localizationKey, key);
-            _localizationKey = key;
-#endif
-            Localize(_localizationKey, _substitutions);
         }
-
-        public string Localize(string key, Dictionary<string,string> substitutions=null)
-        {
-            string str;
-            if (substitutions == null)
-            {
-               str = AmbitionApp.GetString(key);
-            }
-            else
-            {
-                str = AmbitionApp.GetString(key, substitutions);
-            }
-            return _text.text = str ?? _text.text;
-        }
-
-#if UNITY_EDITOR
-        private void OnDisable()
-        {
-            if (_config == null)
-            {
-                Debug.LogError("null _config in LocalizedText on " + gameObject.name);
-            }
-            _config?.Post(_localizationKey, _text?.text);
-        }
-
-        private void OnDestroy()
-        {
-            _config = null;
-        }
-#endif
     }
+
+#if UNITY_EDITOR
+
+    [CustomPropertyDrawer(typeof(AmbitionLocalizedText.LocalizedTextField))]
+    public class LocalizationRowDrawer : PropertyDrawer
+    {
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            float w = position.width * .3f;
+            Rect RefRect = new Rect(position.x, position.y, w, position.height);
+            Rect KeyRect = new Rect(w, position.y, position.width - w, position.height);
+
+            SerializedProperty tf = property.FindPropertyRelative("TextField");
+
+            EditorGUI.BeginProperty(position, label, property);
+
+            EditorGUI.ObjectField(RefRect, tf, GUIContent.none);
+            string key = EditorGUI.TextField(KeyRect, property.FindPropertyRelative("LocalizationKey").stringValue);
+            property.FindPropertyRelative("LocalizationKey").stringValue = key;
+
+            EditorGUI.EndProperty();
+        }
+    }
+#endif  
 }

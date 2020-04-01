@@ -1,4 +1,4 @@
-using UFlow;
+﻿using UFlow;
 
 namespace Ambition
 {
@@ -6,11 +6,11 @@ namespace Ambition
     {
         string message;
         public override void SetData(string data) => message = data;
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
-AmbitionApp.SendMessage(message);
+            AmbitionApp.SendMessage(message);
 
-            if (args != null) switch (args.Length)
+/*            switch (message)
             {
                 case 1:
                     AmbitionApp.SendMessage(args[0]);
@@ -19,6 +19,7 @@ AmbitionApp.SendMessage(message);
                     AmbitionApp.SendMessage(args[0], args[1]);
                     break;
             }
+            */
         }
     }
 }

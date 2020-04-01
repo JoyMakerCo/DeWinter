@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UFlow;
 
 namespace Ambition
@@ -7,12 +7,14 @@ namespace Ambition
     {
         string _sceneID;
 
-        public override void SetData(string data) => _sceneID = data;
-
-        public override void OnEnterState(string[] args)
+        public override void SetData(string data)
         {
-            //_sceneID = args[0];
+            _sceneID = data;
             AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOutComplete);
+        }
+
+        public override void OnEnterState()
+        {
             AmbitionApp.SendMessage(GameMessages.FADE_OUT);
         }
 

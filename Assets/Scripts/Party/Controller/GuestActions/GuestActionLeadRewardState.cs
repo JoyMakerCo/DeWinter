@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UFlow;
 using UnityEngine;
@@ -7,7 +7,7 @@ namespace Ambition
 {
     public class GuestActionLeadRewardState : UState
     {
-        public override void OnEnterState(string[] args)
+        public override void OnEnterState()
         {
 /*            UController controller = _Machine._UFlow.GetController(_Machine);
             if (controller !=  null)

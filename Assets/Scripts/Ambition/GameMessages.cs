@@ -30,7 +30,6 @@ namespace Ambition
         public static string LOCK_UI = "LOCK_UI";
         public static string UNLOCK_UI = "UNLOCK_UI";
 
-        public static string SET_TITLE = "SET_TITLE";
         public static string COMPLETE = "COMPLETE"; // All-Purpose "Complete" event
 
         public static string INIT_CHARACTER = "INIT_CHARACTER";

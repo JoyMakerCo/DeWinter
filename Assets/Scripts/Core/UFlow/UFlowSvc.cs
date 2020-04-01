@@ -7,7 +7,7 @@ using UGraph;
 
 namespace UFlow
 {
-	public class UFlowSvc : IAppService
+	public class UFlowSvc : IAppService, IConsoleEntity 
 	{
         // Active machines.
         private List<UMachine> _active = new List<UMachine>();
@@ -40,6 +40,11 @@ namespace UFlow
 		{
 			return _active.Select(m=>m.MachineID).ToArray();
 		}
+
+        public UMachine[] GetAllMachines()
+        {
+            return _active.ToArray();
+        }
 
 		public bool IsActiveState(string stateID)
 		{
@@ -169,7 +174,7 @@ namespace UFlow
 
 		public void RegisterLink(string machineID, string originState, string targetState)
 		{
-#if (UNITY_EDITOR)
+#if (DEBUG)
             DirectedGraph<UStateNode, UGraphLink> graph;
             if (!_machines.TryGetValue(machineID, out graph)) UnityEngine.Debug.LogError("UFLOW ERROR: No Machine named \"" + machineID + "\" found!");
             else if (!Array.Exists(graph.Nodes, n => n.ID == originState)) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + originState + "\" found in Machine \"" + machineID + "!");
@@ -255,5 +260,33 @@ namespace UFlow
             _instantiators.Clear();
             _decisions.Clear();
         }
+
+        public string[] Dump()
+        {
+            var lines = new List<string>()
+            {
+                "UFlowSvc:",
+                
+            };
+
+            foreach (var machine in _active)
+            {
+                if (machine == null)
+                    continue;
+
+                foreach (var line in machine.Dump())
+                {
+                    lines.Add( "  "+line );
+                }
+            }
+
+            return lines.ToArray();
+        }
+
+        
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("UFlowSvc has no invocation.");
+        }    
     }
 }

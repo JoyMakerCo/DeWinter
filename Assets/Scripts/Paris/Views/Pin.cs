@@ -10,29 +10,36 @@ namespace Ambition
     public class Pin : MonoBehaviour
     {
         public IncidentConfig IntroIncidentConfig;
-        public GameObject Scene;
+
+        public IncidentConfig[] StoryIncidentConfigs;
+        public string SceneID;
         public bool OneShot;
         public string LocationWindowDescription;
         public Sprite LocationModalSprite;
         public GameObject Label;
         public bool Discoverable;
-        public Text LabelText;
         public RequirementVO[] Requirements;
 
-        private void Awake()
+        public LocationVO GetLocation()
         {
-            AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
-            AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
-            Name = LabelText.text;
+            RequirementVO[] requirements = new RequirementVO[Requirements.Length];
+            Array.Copy(Requirements, requirements, requirements.Length);
+
+            IncidentVO[] storyIncidents = StoryIncidentConfigs.Select( x => x.GetIncident() ).ToArray();
+
+            return new LocationVO()
+            {
+                ID = name,
+                IntroIncident = IntroIncidentConfig.GetIncident(),
+                StoryIncidents = storyIncidents,
+                SceneID = SceneID,
+                OneShot = OneShot,
+                Discoverable = Discoverable,
+                Requirements = requirements
+            };
         }
 
-        private void OnDestroy()
-        {
-            AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
-            AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
-        }
-
-        public void Select()
+        public void HandleClick()
         {
             AmbitionApp.SendMessage<Pin>(ParisMessages.SELECT_LOCATION, this);
         }
@@ -47,12 +54,23 @@ namespace Ambition
             Label.SetActive(false);
         }
 
-        private void HandleSelect(string location)
+        public string Name { get; private set; }
+
+        /******************************************************
+         Private/Protected      
+         *******************************************************/      
+
+        private void Awake()
         {
-            //Tooltip.SetActive(location == gameObject.name);
+            AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
+            AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
         }
 
-        public string Name { get; private set; }
+        private void OnDestroy()
+        {
+            AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
+            AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
+        }
 
         private void HandleShow(string locationID)
         {
