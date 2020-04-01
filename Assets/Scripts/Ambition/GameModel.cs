@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Core;
 using Newtonsoft.Json;
@@ -32,6 +32,8 @@ namespace Ambition
         public Observable<int> Exhaustion;
         public Observable<int> Credibility;
         public Observable<int> Peril;
+
+        public bool IsResting = false;
 
         private int _livre
         {
@@ -108,9 +110,6 @@ namespace Ambition
         public int PartyInviteImportance => _vip[Level];
 
         public int Level => _reputation.Level;
-
-        [JsonProperty("num_paris_dailies")]
-        public int NumParisDailies = 5;
 
         public GameModel() : base("GameData")
         {

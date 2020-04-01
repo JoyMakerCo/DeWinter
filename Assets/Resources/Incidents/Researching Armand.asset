@@ -12,26 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Researching Armand
   m_EditorClassIdentifier: 
-  _Nodes: 
-  _Links: 40000000
+  _Nodes: 38000000
+  _Links: 
   _Positions:
-  - {x: 0, y: 0}
-  - {x: -1, y: 88}
+  - {x: 6, y: -37}
+  - {x: 15, y: 23}
   - {x: -3, y: 183}
   - {x: -243, y: 285}
   - {x: -3, y: 287}
   - {x: 216, y: 284}
   - {x: -2, y: 401}
   - {x: -166, y: 480}
-  - {x: 140, y: 470}
+  - {x: 144, y: 477}
   - {x: -10, y: 550}
   - {x: -7, y: 615}
   - {x: -7, y: 680}
   - {x: -7, y: 743}
-  - {x: -5, y: 813}
+  - {x: -4, y: 813}
   - {x: -4, y: 879}
   - {x: -227, y: 977}
-  - {x: -1, y: 973}
+  - {x: -1, y: 972}
   - {x: 223, y: 973}
   - {x: -226, y: 1045}
   - {x: -3, y: 1046}
@@ -48,8 +48,8 @@ MonoBehaviour:
   - {x: 212, y: 1476}
   - {x: -213, y: 1650}
   - {x: 60, y: 1638}
-  - {x: 292, y: 1660}
-  - {x: 293, y: 1738}
+  - {x: 292, y: 1641}
+  - {x: 294, y: 1715}
   - {x: 296, y: 1809}
   - {x: -217, y: 1725}
   - {x: 54, y: 1695}
@@ -62,20 +62,22 @@ MonoBehaviour:
   - {x: 59, y: 1976}
   - {x: 58, y: 2303}
   - {x: 58, y: 2363}
-  - {x: 49, y: 2435}
-  - {x: 55, y: 2500}
+  - {x: 59, y: 2414}
+  - {x: 57, y: 2572}
   - {x: 57, y: 1763}
   - {x: -222, y: 1787}
-  - {x: 54, y: 2567}
-  - {x: 50, y: 2626}
-  - {x: 54, y: 2692}
-  - {x: 52, y: 2755}
-  - {x: -94, y: 2843}
-  - {x: 172, y: 2842}
+  - {x: 56, y: 2641}
+  - {x: 54, y: 2708}
+  - {x: 56, y: 2769}
+  - {x: 56, y: 2832}
+  - {x: -92, y: 2908}
+  - {x: 187, y: 2907}
+  - {x: 9, y: 103}
+  - {x: 60, y: 2468}
+  - {x: 60, y: 2522}
   Incident:
     Links:
     - {x: 0, y: 1}
-    - {x: 1, y: 2}
     - {x: 2, y: 3}
     - {x: 2, y: 4}
     - {x: 2, y: 5}
@@ -129,7 +131,6 @@ MonoBehaviour:
     - {x: 41, y: 45}
     - {x: 45, y: 46}
     - {x: 46, y: 47}
-    - {x: 47, y: 48}
     - {x: 37, y: 49}
     - {x: 49, y: 38}
     - {x: 36, y: 50}
@@ -140,6 +141,11 @@ MonoBehaviour:
     - {x: 53, y: 54}
     - {x: 54, y: 55}
     - {x: 54, y: 56}
+    - {x: 1, y: 57}
+    - {x: 57, y: 2}
+    - {x: 47, y: 58}
+    - {x: 58, y: 59}
+    - {x: 59, y: 48}
     Nodes:
     - Text: 
       Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
@@ -487,7 +493,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music:
         Name: 
@@ -508,7 +514,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music:
         Name: 
@@ -601,7 +607,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music:
         Name: 
@@ -643,7 +649,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
+      Speaker: 2
       Rewards: []
       Music:
         Name: 
@@ -868,7 +874,7 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: ArmandDeMarbo
-        Pose: happy
+        Pose: neutral
         Name: Armand
       Character2:
         AvatarID: 
@@ -889,7 +895,7 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: ArmandDeMarbo
-        Pose: happy
+        Pose: neutral
         Name: Armand
       Character2:
         AvatarID: 
@@ -1147,7 +1153,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: event:/One Shot SFX/Male_bark_negative
+        Name: event:/One Shot SFX/Female_bark_negative
         Parameters: []
     - Text: 
       Background: {fileID: 0}
@@ -1359,13 +1365,70 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    LinkData:
-    - index: 0
-      Text: 
-      xor: 0
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
       Rewards: []
-      Requirements: []
-      Flags: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Character2:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Character2:
+        AvatarID: JohannavonHolbein
+        Pose: neutral
+        Name: Johanna
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
     - index: 0
       Text: 
       xor: 0
@@ -1642,25 +1705,28 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
-    - index: 0
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: 
       xor: 0
@@ -1775,12 +1841,42 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: Researching Armand.asset.f7703e13e88a6764285bae28d8dfdc1a
+    LocalizationKey: Assets/Resources/Incidents/Researching Armand.asset
     Political: 0
     _date: -1
     Requirements: []
@@ -1792,10 +1888,9 @@ MonoBehaviour:
     your journal, determined to find some evidence of where Armand could possibly
     be. The journalist who wrote the article mentioned a nearby bakery. It sounded
     familiar to you, from your various walks about Paris.
-  - "You curse yourself for having to rely on such thin evidence. It's a description
+  - You curse yourself for having to rely on such thin evidence. It's a description
     of a man who might be Armand, reported being seen near a bakery, which might be
-    the one you vaguely remember. \n\nThere's no guarantee that he'll ever come back
-    here. There's barely a guarantee that he was even here at all."
+    the one you vaguely remember.
   - It's utterly maddening, and you struggle to remember what's even motivating you
     right now.
   - You feel a rush of energy as you say this to yourself. You can't stop now, not
@@ -1815,8 +1910,8 @@ MonoBehaviour:
     a nearby tavern with no other patrons. The staff look at the two of you with a
     mixture of confusion and indignation, as if the very idea of customers offends
     them to their core. '
-  - Even after sitting there for a few minutes, nobody approaches either of you, at
-    your table, which might help explain why there are no customers in here.
+  - Even after sitting there for a few minutes, nobody approaches either of you, or
+    your table. This might help explain why there are no other customers in here.
   - '"I''m so glad to see you." He says, his eyes staring deeply into your own.'
   - '"I can assure you, <i>mon cher</i>, that I know exactly how you feel."'
   - '"I understand you anger, <i> mon cher</i>, I really do, but can you at least
@@ -1865,9 +1960,9 @@ MonoBehaviour:
   - (You have lost a little favor with Armand)
   - '"Of course, right now, I still have to risk going to the Esates General, as I
     have many important things to do there. Thankfully, nobody can risk assailing
-    while I''m there, but I have to keep my living situation a secret due to the threat
-    of ambush." He says while he pulls out a peice of paper and begins to write on
-    it.'
+    me while I''m there, but I have to keep my living situation a secret due to the
+    threat of ambush." He says while he pulls out a peice of paper and begins to write
+    on it.'
   - '"While I can''t move back in with you, you''ll at least will be able to to visit
     me where we''re staying."'
   - '"That''s great! I can''t wait to-"'
@@ -1880,15 +1975,14 @@ MonoBehaviour:
   - '"Armand, what the devil are you doing here? We need to-" A woman asks as she
     walks into the tavern.'
   - She freezes in her tracks when she sees you. "... who is this?"
-  - '"Oh! Johanna, this is my fiance, Yvette!" Armand says proudly. "She''s managed
-    to track me down, as you can see."'
-  - '"Well, if someone like her could find you, then we aren''t doing a very good
-    job of hiding. We have to go!"'
+  - '"Oh! I suppose introductions are in order!" '
+  - '"Well, no matter! If someone like her could find you, then we aren''t doing a
+    very good job of hiding. We have to go!"'
   - '"... but I cannot say that I don''t deserve it at least somewhat. Perhaps you''ll
     be able to forgive me with time, when you see that I had good reason for all of
-    this. When you see what''s at stake."'
+    this. When you see what''s at stake for us."'
   - '"I have so much to tell you, and so much to show you. Soon, you''ll understand
-    why I''ve done all of this. You''ll see what''s at stake."'
+    why I''ve done all of this. You''ll see what''s at stake for us."'
   - '"Just when I''ve finally found her again? Absolutely not."'
   - '"The longer we stay on the streets, the more likely it is that some assassin
     runs a blade through your ribs." Johanna replies in a soothing voice, resting
@@ -1904,8 +1998,14 @@ MonoBehaviour:
   - You exit the tavern, your mind swirling with dark possibilities, and heavy with
     a sense of dread. You've found Armand, but now you're wondering if that was for
     the best.
+  - There's no guarantee that he'll ever come back here. There's barely a guarantee
+    that he was even here at all.
+  - '"Yvette, this is Johanna du Jardin. She leads the political society I''ve been
+    working with. Johanna, this is Yvette Decaux, my fiance. She managed to track
+    me down!" Armand says, quite proudly.'
+  - '"Your fiance? After all this time, I just assumed..." Johanna trails off, looking
+    you over carefully.'
   _linkText:
-  - 
   - 
   - '"I must find Armand, because I love him."'
   - '"Armand must rue the day he wronged me, and for that I must find him."'
@@ -1968,6 +2068,10 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
   - '"I''ll go see him as soon as possible, then I''ll get some answers."'
   - '"The more I''m learning about this situation, the less I like it."'
+  - 
+  - 
+  - 
+  - 
+  - 

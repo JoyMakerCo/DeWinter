@@ -1,71 +1,58 @@
-<<<<<<< Updated upstream
-using System;
-=======
 ﻿using System;
->>>>>>> Stashed changes
 using System.Collections.Generic;
 using Core;
 using Util;
 using UGraph;
+
 
 using UnityEngine;
 
 namespace UFlow
 {
     [Serializable]
-	public sealed class UMachine : UInputState, IConsoleEntity, IDisposable
+	public sealed class UMachine : IConsoleEntity
 	{
 		public string MachineID { get; private set; }
+        internal UMachineState _State;
 
-		private DirectedGraph<UStateNode, UGraphLink> _graph;
+		internal UFlowSvc _UFlow;	// Active UFlow Service
+		internal DirectedGraph<UStateNode, UGraphLink> _graph;
+        internal uint _exitStates = 0;
 
-        private UState[] _nodes;
+        private UNode[] _nodes;
         private ULink[][] _links;
         private Queue<int> _queue = new Queue<int>();
+        private bool _activeQueue = false;
         private Dictionary<string, Func<bool>> _decisions = new Dictionary<string, Func<bool>>();
 
-        public UMachine() { }
-        public UMachine(string machineID, DirectedGraph<UStateNode, UGraphLink> graph=null)
+        public UMachine(string machineID=null, DirectedGraph<UStateNode, UGraphLink> graph=null)
         {
+            int length = graph.Nodes.Length;
+
             MachineID = machineID;
-            _graph = graph ?? _UFlow.GetMachineGraph(MachineID);
-            if (_graph != null)
-            {
-                int length = _graph.Nodes.Length;
-                _nodes = new UState[length];
-                _links = new ULink[length][];
-            }
+            _graph = graph;
+
+            _nodes = new UNode[length];
+            _links = new ULink[length][];
+
+            // Temporarily inferring Exit States from links
+            // In the future, the UI will automatically make states with no links
+            //  appear as exit states, and provide the option to toggle this condition off
+            _exitStates = ~(uint)0;
+            Array.ForEach(_graph.Links, l => _exitStates &= ~(uint)(1 << l.x));
         }
 
-        public override void Initialize(params object[] parameters)
+        internal void Start()
         {
-            MachineID = parameters[0] as string;
-            _graph = _UFlow.GetMachineGraph(MachineID);
-            if (_graph != null)
-            {
-                int length = _graph.Nodes.Length;
-                _nodes = new UState[length];
-                _links = new ULink[length][];
-            }
-        }
-
-        public override void OnEnterState()
-        {
-            if (_graph != null && _graph.Nodes.Length > 0)
-            {
+            if (_UFlow.Activate(this))
                 Activate(0);
-            }
-            else
-            {
-                Activate();
-            }
         }
 
         // Current active states
         public string[] GetActiveStates()
         {
             List<string> result = new List<string>();
-            foreach(UState n in _nodes)
+            foreach(UNode n in _nodes)
             {
                 if (n != null)
                 {
@@ -73,47 +60,6 @@ namespace UFlow
                 }
             }
             return result.ToArray();
-        }
-
-        // Current Active Machines
-        public List<UMachine> GetMachines()
-        {
-            List<UMachine> machines = new List<UMachine>();
-            foreach (UState s in _nodes)
-            {
-                if (s is UMachine)
-                {
-                    machines.Add((UMachine)s);
-                    machines.AddRange(GetMachines());
-                }
-            }
-            return machines;
-        }
-
-        public List<UMachine> GetMachines(string machineID)
-        {
-            List<UMachine> machines = new List<UMachine>();
-            foreach (UState s in _nodes)
-            {
-                if (s is UMachine)
-                {
-                    if (((UMachine)s).MachineID == machineID)
-                    {
-                        machines.Add((UMachine)s);
-                        machines.AddRange(GetMachines(machineID));
-                    }
-                }
-            }
-            return machines;
-        }
-
-        public bool IsActiveState(string stateID)
-        {
-            foreach(UState state in _nodes)
-            {
-                if (state?.ID == stateID) return true;
-            }
-            return false;
         }
 
         // TODO: Links no longer activate, only states
@@ -126,63 +72,81 @@ namespace UFlow
         // Builds links for the state and follows the valid ones
         // Called immediately for UDecisions and UStates,
         // and upon an appropriate event for UMachineStates and UDecisions
-        private void ActivateLinks(UState state)
+        internal void ActivateLinks(UNode state)
         {
             int index = Array.IndexOf(_nodes, state);
-            if (index < 0) return;
-
-            if (_links[index]?.Length > 0)
+            if (index >= 0 && _links?[index] != null)
             {
-                List<UDefaultLink> defaults = new List<UDefaultLink>();
-                foreach (ULink link in _links[index])
+                // Find all links that are valid
+                ULink[] links = Array.FindAll(_links[index], l => l?.Validate() ?? false);
+                if (Array.TrueForAll(links, l => l is UDefaultLink))
                 {
-                    if (link is UDefaultLink)
+                    Array.ForEach(links, Activate);
+                }
+                else
+                {
+                    foreach (ULink link in links)
                     {
-                        defaults?.Add((UDefaultLink)link);
+                        if (!(link is UDefaultLink))
+                        {
+                            Activate(link);
+                        }
                     }
-                    else if (link.Validate())
-                    {
-                        Activate(link);
-                        defaults?.Clear();
-                        defaults = null;
-                    }
-                    defaults?.ForEach(Activate);
                 }
             }
-            else ExitState(index);
         }
 
-        internal void ActivateInput(UInputState state) => ActivateLinks(state);
+        private bool isExitState(int index) => (_exitStates & (1 << index)) > 0;
+
+        internal void Activate(UInputState state) => ActivateLinks(state);
+        internal void Activate(UMachineState state) => ActivateLinks(state);
 
         private void Activate(int index)
         {
-            if (_queue == null || _nodes == null || index < 0 || index >= _nodes.Length) return;
-            if (_queue.Count > 1)
+            if (_activeQueue) _queue.Enqueue(index);
+            else
             {
-                _queue.Enqueue(index);
-                return;
-            }
-            UState node;
-            do
-            {
-                node = BuildNode(index);
-Debug.Log("Entering State " + node.ID);
-                node.OnEnterState();
-                if (!(node is UInputState))
+                UNode node;
+                _activeQueue = true;
+                do
                 {
-                    ActivateLinks(node);
-                }
-                index = _queue != null && _queue.Count > 0 ? _queue.Dequeue() : -1;
-            }
-            while (index >= 0);
+                    node = BuildNode(index);
+                    node.OnEnterState();
+Debug.Log(node._Machine?.MachineID + " " + node.ID);
+                    // Exit the machine if the current node is marked as an exit state.
+                    if (isExitState(index))
+                    {
+                        ExitState(index);
+                        ExitMachine();
+                    }
+                    // TODO
+                    //switch(_graph.Nodes[index].Type)
+                    //{
+                        //case UNodeType.Exit:
+                            //ExitState(index);
+                            //ExitMachine();
+                            //break;
+                        //case UNodeType.State:
+                        //case UNodeType.Decision:
+                    else if (node is UState || node is UDecisionState)
+                    {
+                        ActivateLinks(node);
+                    }
+                    _activeQueue = _queue?.Count > 0;
+                    if (_activeQueue) index = _queue.Dequeue();
+                } while (_activeQueue);
+                // TODO:
+                // - In the UI, outgoing links are shown in a reorderable list where list order = execution order
 
-            if (_nodes == null || _queue == null || Array.TrueForAll(_nodes, n => n == null))
-            {
-                Activate();
+                // Exit the machine if nothing else is happening.
+                if (_nodes != null && Array.TrueForAll(_nodes, n => n == null))
+                {
+                    ExitMachine();
+                }
             }
         }
 
-        private UState BuildNode(int index)
+        private UNode BuildNode(int index)
         {
             if (_links[index] == null)
             {
@@ -195,14 +159,19 @@ Debug.Log("Entering State " + node.ID);
             }
             if (_nodes[index] == null)
             {
-                UState node = _UFlow.BuildNode(_graph.Nodes[index]);
+                UNode node = _UFlow.BuildNode(_graph.Nodes[index]);
                 node.ID = _graph.Nodes[index].ID;
                 node._UFlow = _UFlow;
                 node._Machine = this;
                 _nodes[index] = node;
-                node.Initialize(_graph.Nodes[index].Parameters);
             }
             return _nodes[index];
+        }
+
+        private void ExitMachine()
+        {
+            if (_State?._Machine == null) Cleanup();
+            else _State._Machine.Activate(_State);
         }
 
         private void ExitState(int index)
@@ -214,41 +183,37 @@ Debug.Log("Entering State " + node.ID);
                 _links[index] = null;
             }
 
-            if (_nodes != null && _nodes[index] != null)
+            if (_nodes != null)
             {
-                _nodes[index].OnExitState();
-                _nodes[index].Dispose();
+                (_nodes[index] as UState)?.OnExitState();
+                _nodes[index]?.Cleanup();
                 _nodes[index] = null;
             }
 		}
 
         // Deallocate memory and get ready for garbage collection.
         // May be called by the machine itself or by UFlowSvc.
-        override public void Dispose()
+		internal void Cleanup()
 		{
             if (_UFlow.Remove(this))
             {
                 if (_links != null)
-                {
                     foreach (ULink[] links in _links)
-                    {
                         if (links != null)
-                        {
                             Array.ForEach(links, l => l.Dispose());
-                        }
-                    }
-                    _links = null;
-                }
+                _links = null;
 
                 if (_nodes != null)
-                {
-                    Array.ForEach(_nodes, s => s?.Dispose());
-                    _nodes = null;
-                }
+                    Array.ForEach(_nodes, s => s?.Cleanup());
+                _nodes = null;
 
                 _queue?.Clear();
                 _queue = null;
+
                 _graph = null; // Don't destroy the graph! This is a reference from the Machine library
+
+                _activeQueue = false;
+                _State = null;
             }
         }
 
@@ -267,13 +232,21 @@ Debug.Log("Entering State " + node.ID);
 
         public string[] Dump()
         {
-            string stateId = _Machine?.MachineID ?? "null";
-            return new string[]
+            var stateId = "null";
+            if (_State != null)
+            {
+                stateId = _State.ID;
+            }
+
+            var lines = new List<string>()
             {
                 "UMachine "+MachineID+":",
                 "state: "+stateId
             };
+
+            return lines.ToArray();
         }
+
         
         public void Invoke( string[] args )
         {

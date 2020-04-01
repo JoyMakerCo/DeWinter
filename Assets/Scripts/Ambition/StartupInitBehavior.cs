@@ -13,6 +13,7 @@ namespace Ambition
             App.Register<MessageSvc>();
             App.Register<CommandSvc>();
             App.Register<LocalizationSvc>();
+            GetComponent<InputBlocker>().enabled = true;
             Destroy(this);
         }
     }

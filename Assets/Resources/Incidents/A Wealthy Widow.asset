@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: A Wealthy Widow
   m_EditorClassIdentifier: 
-  _Nodes: 03000000
+  _Nodes: 38000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -1733,13 +1733,19 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: '"Interesting, but I don''t know yet what to make of her."'
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: 
       xor: 0
@@ -1877,7 +1883,7 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: A Wealthy Widow.asset.6f05376cb379f7844816a0baaea67ba1
+    LocalizationKey: Assets/Resources/Incidents/A Wealthy Widow.asset
     Political: 0
     _date: -1
     Requirements:
@@ -2022,7 +2028,7 @@ MonoBehaviour:
   - 
   - 
   - 
-  - '"What do you mean, no longer possible?"'
+  - 
   - 
   - 
   - '"I want what I deserve, and I''ll do anything to get it."'

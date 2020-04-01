@@ -223,7 +223,7 @@ namespace Ambition
 	// TODO: Store them in order
 	    private string GetPowerString(int power)
 	    {
-			return AmbitionApp.GetString("power." + power.ToString());
+			return AmbitionApp.Localize("power." + power.ToString());
 	    }
 
 	// TODO: Store them in order
@@ -233,7 +233,7 @@ namespace Ambition
 			int index = fmod.Allegiance.Length-1;
 			while (index >= 0 && allegiance >= fmod.Allegiance[index])
 				index--;
-			return AmbitionApp.GetString("allegiance." + index.ToString());
+			return AmbitionApp.Localize("allegiance." + index.ToString());
 	    }
 
 	    string ConvertKnowledgeTimer(int timer)

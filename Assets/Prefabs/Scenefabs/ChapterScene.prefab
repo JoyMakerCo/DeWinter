@@ -107,8 +107,9 @@ GameObject:
   - component: {fileID: 5437020141703986732}
   - component: {fileID: 5437020141703986731}
   - component: {fileID: 6468229511205658536}
+  - component: {fileID: 962624418985486070}
   - component: {fileID: 3336796647492293813}
-  - component: {fileID: -403117428177870630}
+  - component: {fileID: -8648908974485129975}
   m_Layer: 5
   m_Name: ChapterScene
   m_TagString: Untagged
@@ -190,6 +191,18 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &962624418985486070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5437020141703986729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc493978b0381486c97d543b1563cf83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3336796647492293813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Splash: {fileID: 5437020141703986731}
   Title: {fileID: 5437020141668805084}
---- !u!114 &-403117428177870630
+--- !u!114 &-8648908974485129975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,8 +234,19 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3336796647492293813}
-          m_MethodName: HandleComplete
+        - m_Target: {fileID: 962624418985486070}
+          m_MethodName: SendGameMessage
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: COMPLETE
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 6468229511205658536}
+          m_MethodName: Stop
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

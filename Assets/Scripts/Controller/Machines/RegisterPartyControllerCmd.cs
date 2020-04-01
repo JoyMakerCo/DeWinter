@@ -9,79 +9,71 @@ namespace Ambition
 
         public void Execute()
         {
+            AmbitionApp.RegisterCommand<InitPartyCmd, PartyVO>(PartyMessages.INITIALIZE_PARTY);
+            AmbitionApp.RegisterCommand<AcceptInvitationCmd, PartyVO>(PartyMessages.ACCEPT_INVITATION);
+            AmbitionApp.RegisterCommand<DeclineInvitationCmd, PartyVO>(PartyMessages.DECLINE_INVITATION);
+
             State("InitParty");
-            State("PickOutfit");
-            State("Pick Outfit Input");
+            AmbitionApp.RegisterState<LoadSceneState, string>(FLOW_ID, "PickOutfit", SceneConsts.LOAD_OUT_SCENE);
+            Link("InitParty", "PickOutfit");
+            AmbitionApp.RegisterState<SendMessageState, string>(FLOW_ID, "HideHeader", GameMessages.HIDE_HEADER);
+            Link("PickOutfit", "HideHeader");
+            _lastState = null;
             State("MapTransition");
             State("PickMap");
-            Link<FadeOutLink>("MapTransition", "PickMap");
+            AmbitionApp.RegisterLink<InputLink, string>(FLOW_ID, "HideHeader", "MapTransition", GameMessages.EXIT_SCENE);
+            AmbitionApp.RegisterLink(FLOW_ID, "MapTransition", "PickMap");
             State("Intro");
             Decision<CheckTurnsLink>("Turns Left", "Map", "Outtro");
-            State("Show Map");
-            State("Broadcast Map");
-            State("Pick Incidents");
-            State("Show Room Input");
             State("Conversation");
             State("Exit Conversation");
+            AmbitionApp.RegisterState<LoadSceneState, string>(FLOW_ID, "Show Map", SceneConsts.MAP_SCENE);
+            Link("Map", "Show Map");
+            AmbitionApp.RegisterState<SendMessageState, string>(FLOW_ID, "Broadcast Map", PartyMessages.SHOW_MAP);
+            Link("Show Map", "Broadcast Map");
+            State("Pick Incidents");
+            AmbitionApp.RegisterLink<InputLink, string>(FLOW_ID, "Pick Incidents", "Conversation", PartyMessages.SHOW_ROOM);
+            AmbitionApp.RegisterState<LoadSceneState, string>(FLOW_ID, "After Party", SceneConsts.AFTER_PARTY_SCENE);
             Link("Exit Conversation", "Turns Left");
             _lastState = null;
             State("Exit Incident");
             Link("Outtro", "Exit Incident");
             State("After Party");
-            State("Hide Header");
-            State("Exit Party Input");
+            AmbitionApp.RegisterState<SendMessageState, string>(FLOW_ID, "Hide Header", GameMessages.HIDE_HEADER);
+            Link("After Party", "Hide Header");
             State("Exit Party");
+            AmbitionApp.RegisterLink<InputLink, string>(FLOW_ID, "Hide Header", "Exit Party", PartyMessages.END_PARTY);
 
             AmbitionApp.BindState<InitPartyState>(FLOW_ID, "InitParty");
-            AmbitionApp.BindState<LoadSceneState>(FLOW_ID, "PickOutfit", SceneConsts.LOAD_OUT_SCENE);
-            AmbitionApp.BindState<MessageInputState>(FLOW_ID, "Pick Outfit Input", GameMessages.EXIT_SCENE);
             AmbitionApp.BindState<PickIncidentsState>(FLOW_ID, "Pick Incidents");
             AmbitionApp.BindState<PickMapState>(FLOW_ID, "PickMap");
-            AmbitionApp.BindState<UMachine>(FLOW_ID, "Intro", "IncidentController");
-            AmbitionApp.BindState<UMachine>(FLOW_ID, "Exit Incident", "IncidentController");
+            AmbitionApp.BindMachineState(FLOW_ID, "Intro", "IncidentController");
+            AmbitionApp.BindMachineState(FLOW_ID, "Exit Incident", "IncidentController");
             AmbitionApp.BindState<ExitPartyState>(FLOW_ID, "Outtro");
-            AmbitionApp.BindState<LoadSceneState>(FLOW_ID, "Show Map", SceneConsts.MAP_SCENE);
-            AmbitionApp.BindState<SendMessageState>(FLOW_ID, "Broadcast Map", PartyMessages.SHOW_MAP);
-            AmbitionApp.BindState<MessageInputState>(FLOW_ID, "Show Room Input", PartyMessages.SHOW_ROOM);
-            AmbitionApp.BindState<UMachine>(FLOW_ID, "Conversation", "IncidentController");
-            AmbitionApp.BindState<LoadSceneState>(FLOW_ID, "After Party", SceneConsts.AFTER_PARTY_SCENE);
+            AmbitionApp.BindMachineState(FLOW_ID, "Conversation", "IncidentController");
             AmbitionApp.BindState<ExitRoomState>(FLOW_ID, "Exit Conversation");
-            AmbitionApp.BindState<SendMessageState>(FLOW_ID, "Hide Header", GameMessages.HIDE_HEADER);
-            AmbitionApp.BindState<MessageInputState>(FLOW_ID, "Exit Party Input", PartyMessages.END_PARTY);
-
         }
 
         private void State(string StateID)
         {
             AmbitionApp.RegisterState(FLOW_ID, StateID);
-            Link(_lastState, StateID);
-        }
-         
-        private void Link(string state0, string state1)
-        {
-            if (state0 != null && state1 != null)
-            {
-                AmbitionApp.RegisterLink(FLOW_ID, state0, state1);
-            }
-            _lastState = state1;
+            if (_lastState != null) Link(_lastState, StateID);
+            _lastState = StateID;
         }
 
-        private void Decision<L>(string StateID, string Yes, string No) where L:ULink, new()
+        private void Decision<T>(string StateID, string Yes, string No) where T:ULink, new()
         {
             State(StateID);
             State(No);
             _lastState = null;
             State(Yes);
-            AmbitionApp.RegisterLink<L>(FLOW_ID, StateID, Yes);
-            // _lastState is now the value of Yes.
+            AmbitionApp.RegisterLink<T>(FLOW_ID, StateID, Yes);
+            _lastState = null;
         }
 
-        private void Link<L>(string state0, string state1) where L:ULink, new()
+        private void Link(string state0, string state1)
         {
-            if (state0 != null && state1 != null)
-            {
-                AmbitionApp.RegisterLink<L>(FLOW_ID, state0, state1);
-            }
+            AmbitionApp.RegisterLink(FLOW_ID, state0, state1);
             _lastState = state1;
         }
     }

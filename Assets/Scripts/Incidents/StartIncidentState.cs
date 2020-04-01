@@ -12,9 +12,9 @@ namespace Ambition
             // THis is handled by the machine.
             IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
             AmbitionApp.SendMessage(IncidentMessages.START_INCIDENT, model.Incident);
-            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, model.Incident.Name);
             model.Moment = model.Incident.Nodes[0];
             AmbitionApp.SendMessage(model.Incident.GetLinks(0));
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, model.Incident.Name);
 		}
 	}
 }

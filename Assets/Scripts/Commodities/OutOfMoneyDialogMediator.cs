@@ -16,16 +16,16 @@ namespace Ambition
 		public override void OnOpen ()
 		{
 			base.OnOpen ();
-			TitleTxt.text = AmbitionApp.GetString(PHRASE_ID + DialogConsts.TITLE);
+			TitleTxt.text = AmbitionApp.Localize(PHRASE_ID + DialogConsts.TITLE);
 			if (AmbitionApp.GetModel<GameModel>().Reputation > 20)
 			{
-				BodyTxt.text = AmbitionApp.GetString(PHRASE_ID + DialogConsts.BODY);
-				ButtonLabelTxt.text = AmbitionApp.GetString(DialogConsts.OK);
+				BodyTxt.text = AmbitionApp.Localize(PHRASE_ID + DialogConsts.BODY);
+				ButtonLabelTxt.text = AmbitionApp.Localize(DialogConsts.OK);
 			}
 			else
 			{
-				BodyTxt.text = AmbitionApp.GetString("out_of_money_and_rep_dialog" + DialogConsts.BODY);
-				ButtonLabelTxt.text = AmbitionApp.GetString("out_of_money_and_rep_dialog" + DialogConsts.OK);
+				BodyTxt.text = AmbitionApp.Localize("out_of_money_and_rep_dialog" + DialogConsts.BODY);
+				ButtonLabelTxt.text = AmbitionApp.Localize("out_of_money_and_rep_dialog" + DialogConsts.OK);
 			}
 		}
 

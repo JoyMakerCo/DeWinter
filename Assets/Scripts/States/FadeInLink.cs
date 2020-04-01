@@ -3,10 +3,11 @@ namespace Ambition
 {
     public class FadeInLink:ULink
     {
-        public override bool Validate()
+        public override void Initialize()
         {
             AmbitionApp.SendMessage(GameMessages.FADE_IN);
-            return true;
         }
+
+        public override bool Validate() => true;
     }
 }

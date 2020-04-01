@@ -75,6 +75,7 @@ public class PopUpManager : MonoBehaviour
     	}
     }
 
+    /* 
     //This is used in the Estate Tab to tell Players that Pierre has assigned a new Quest
     void CreateNewPierreQuestModal(object[] objectStorage)
     {
@@ -96,4 +97,5 @@ public class PopUpManager : MonoBehaviour
         bodyText.text = "Madamme, it's urgent! My finely honed journalistic senses are telling me that the public is currently crying out for Gossip concerning the " + quest.Faction + "." +
                 "\n\nIf you can get that to me in " + quest.daysTimeLimit + " Days then I'll be able to get you a reward of " + quest.reward.ID + ". \n\nHow does that sound?";
     }
+    */
 }

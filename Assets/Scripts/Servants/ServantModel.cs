@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core;
 using Newtonsoft.Json;
 
 namespace Ambition
 {
-	public class ServantModel : DocumentModel
+	public class ServantModel : DocumentModel, IConsoleEntity
 	{
 		public ServantModel () : base ("ServantData") {}
 
@@ -97,6 +98,35 @@ namespace Ambition
             return result;
         }
 
+        // used by console only to inspect any servant by name, on staff or not 
+        public ServantVO[] GetAllServants()
+        {
+            List<ServantVO> allServants = new List<ServantVO>();
+
+            foreach (var servant in Servants.Values)
+            {
+                allServants.Add( servant );
+            }
+
+            foreach (var akv in Applicants)
+            {
+                foreach (var applicant in akv.Value)
+                {
+                    allServants.Add(applicant);
+                }
+            }
+
+            foreach (var ukv in Unknown)
+            {
+                foreach (var unknown in ukv.Value)
+                {
+                    allServants.Add(unknown);
+                }
+            }
+
+            return allServants.ToArray(); 
+        }
+
         [JsonProperty("servants")]
 		private ServantVO[] _servants
 		{
@@ -122,5 +152,44 @@ namespace Ambition
 				}
 			}
 		}
+                
+                
+        public string[] Dump()
+        {
+            var dateFormat = "MMMM d, yyyy";
+
+            var lines = new List<string>()
+            {
+                "ServantModel:",
+
+            };
+
+            lines.Add( "Servants: " + Servants.Count.ToString() );
+            foreach (var servant in Servants.Values)
+            {
+                lines.Add( string.Format( "  {0}", servant.ToString() ));
+            }
+
+            lines.Add( "Applicants:" );
+            foreach (var akv in Applicants)
+            {
+                var names = string.Join(", ", akv.Value.Select( s => s.Name).ToArray());
+                lines.Add( string.Format("  {0}: {1} ({2})", akv.Key, akv.Value.Count, names ) );
+            }
+
+            lines.Add( "Unknown:" );
+            foreach (var ukv in Unknown)
+            {
+                var names = string.Join(", ", ukv.Value.Select( s => s.Name).ToArray());
+                lines.Add( string.Format("  {0}: {1} ({2})", ukv.Key, ukv.Value.Count, names ) );
+            } 
+
+            return lines.ToArray();
+        }
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("ServantModel has no invocation.");
+        }  
 	}
 }

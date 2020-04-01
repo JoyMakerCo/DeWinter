@@ -11,7 +11,6 @@ namespace Ambition
         private TutorialFlashSpot _flash=null;
         public override void OnEnterState()
         {
-            base.OnEnterState();
             if (_flash != null) GameObject.Destroy(_flash);
             GameObject canvas = Array.Find(SceneManager.GetActiveScene().GetRootGameObjects(), o=>o.GetComponent<Canvas>() != null);
             if (canvas != null)
@@ -30,10 +29,10 @@ namespace Ambition
             }
         }
 
-        override public void Dispose()
+        override public void Cleanup()
         {
             if (_flash != null) GameObject.Destroy(_flash);
-            base.Dispose();
+            base.Cleanup();
         }
     }
 }

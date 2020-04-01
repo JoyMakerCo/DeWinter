@@ -29,14 +29,14 @@ namespace Ambition
 			{
 				str=AmbitionApp.GetString(phrase + DialogConsts.CANCEL, substitutions);
 				if (str != null && DismissTxt != null) DismissTxt.text = str;
-				else DismissTxt.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CANCEL);
+				else DismissTxt.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CANCEL);
 			}
 			
 			if (ConfirmTxt != null)
 			{
 				str=AmbitionApp.GetString(phrase + DialogConsts.CONFIRM, substitutions);
 				if (str != null && ConfirmTxt != null) ConfirmTxt.text = str;
-				else ConfirmTxt.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CONFIRM);
+				else ConfirmTxt.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);
 			}
 		}
 

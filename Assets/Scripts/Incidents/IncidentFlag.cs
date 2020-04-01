@@ -6,9 +6,11 @@ using UnityEditor;
 namespace Ambition
 {
     [Serializable]
+    // Don't futz with the order of existing flags - enums are serialized as integers
     public enum IncidentFlagType
     {
-        LowPeril, HighPeril, LowCred, HighCred, Cost
+        LowPeril, HighPeril, LowCred, HighCred, Cost,
+        MediumPeril, MediumCred, Characterization
     }
 
     [Serializable]

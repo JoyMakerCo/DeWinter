@@ -768,6 +768,7 @@ GameObject:
   - component: {fileID: 224793949982282544}
   - component: {fileID: 222480454843146658}
   - component: {fileID: 114439342563710696}
+  - component: {fileID: 5013175230624692867}
   m_Layer: 5
   m_Name: YvettePaperDoll
   m_TagString: Untagged
@@ -816,7 +817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -832,6 +833,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5013175230624692867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047644698391826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57340e7deefedde47af8145e178180b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OutfitConfig: {fileID: 11400000, guid: 5f1f8c74112074f1fa8472f34419b8ac, type: 2}
+  Doll: {fileID: 114439342563710696}
 --- !u!1 &1074370867239112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,6 +3145,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2484654749456712402}
+        m_MethodName: SendGameMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: EXIT_SCENE
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1493079344117226
@@ -3327,7 +3353,6 @@ GameObject:
   - component: {fileID: 224228714540193760}
   - component: {fileID: 222424115031423564}
   - component: {fileID: 3410875830914675957}
-  - component: {fileID: 8770244328014507980}
   m_Layer: 5
   m_Name: PartyLoadOut
   m_TagString: Untagged
@@ -3383,7 +3408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localizationKey: 
   LocalizedText:
   - TextField: {fileID: 114333357804493272}
     LocalizationKey: wardrobe.go_to_party
@@ -3401,21 +3425,6 @@ MonoBehaviour:
     LocalizationKey: novelty
   - TextField: {fileID: 114736898186625060}
     LocalizationKey: wardrobe.tonights_party
---- !u!114 &8770244328014507980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522327123172190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 921437b6b8c22446984afc7f08a6eea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ExitButton: {fileID: 2696265123134136493}
-  OutfitConfig: {fileID: 11400000, guid: 5f1f8c74112074f1fa8472f34419b8ac, type: 2}
-  Doll: {fileID: 114439342563710696}
 --- !u!1 &1598387275275044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3844,7 +3853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6e5948414fc43a4bdb44f044d9256f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localizationKey: 
   LocalizedText: []
 --- !u!1 &1677780789314138
 GameObject:

@@ -25,12 +25,12 @@ namespace Ambition
             {
                 case "Reputation": //Reputation is an edge case in terms of naming conventions
                     return (string.IsNullOrWhiteSpace(commodity.ID) || commodity.ID == "null")
-                        ? AmbitionApp.GetString("commodity." + commodity.Type.ToString().ToLower() + ".name")
-                        : AmbitionApp.GetString("commodity.reputation" + commodity.ID.ToLower() + ".name");
+                        ? AmbitionApp.Localize("commodity." + commodity.Type.ToString().ToLower() + ".name")
+                        : AmbitionApp.Localize("commodity.reputation" + commodity.ID.ToLower() + ".name");
                 case "Gossip":
-                    return AmbitionApp.GetString("commodity." + commodity.Type.ToString().ToLower() + ".name");
+                    return AmbitionApp.Localize("commodity." + commodity.Type.ToString().ToLower() + ".name");
             }
-            return AmbitionApp.GetString("commodity." + commodity.ID + ".name");
+            return AmbitionApp.Localize("commodity." + commodity.ID + ".name");
         }
     }
 }

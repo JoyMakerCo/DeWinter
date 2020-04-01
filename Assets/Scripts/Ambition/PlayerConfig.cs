@@ -15,7 +15,7 @@ namespace Ambition
         public FMODEvent Sting;
     }
 
-    public class PlayerConfig : ScriptableObject, AmbitionEditor.ILocalizedAsset
+    public class PlayerConfig : ScriptableObject
     {
         public IncidentConfig[] Incidents;
         public ChapterConfig[] Chapters;
@@ -25,24 +25,7 @@ namespace Ambition
         public Sprite Doll;
         public int Livre;
 
-        [SerializeField] private string _localizationKey;
-
-        public string GetLocalizationKey() => _localizationKey;
-
 #if (UNITY_EDITOR)
-        public void SetLocalizationKey(string value)
-        {
-            SerializedObject obj = new SerializedObject(this);
-            obj.FindProperty("_localizationKey").stringValue = value;
-            obj.ApplyModifiedProperties();
-        }
-
-        public Dictionary<string, string> Localize()
-        {
-            Dictionary<string, string> result = new Dictionary<string, string>();
-            return result;
-        }
-
         [UnityEditor.MenuItem("Assets/Create/Player")]
         public static void CreatePlayer() => Util.ScriptableObjectUtil.CreateScriptableObject<PlayerConfig>("New Player Character");
 #endif

@@ -2,13 +2,10 @@
 using UFlow;
 namespace Ambition
 {
-    public class OpenMessageDialogState : UState
+    public class OpenMessageDialogState : UState<string>
     {
-        private string _message;
-        public override void Initialize(object[] parameters)
-        {
-            _message = parameters[0] as string;
-        }
-        public override void OnEnterState() => AmbitionApp.OpenMessageDialog(_message);
+        private string _dialogID;
+        public override void SetData(string data) => _dialogID = data;
+        public override void OnEnterState() => AmbitionApp.OpenMessageDialog(_dialogID);
     }
 }

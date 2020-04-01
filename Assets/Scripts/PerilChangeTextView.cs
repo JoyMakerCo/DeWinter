@@ -19,12 +19,12 @@ namespace Ambition
         {
             if (peril > _peril)
             {
-                Text.text = AmbitionApp.GetString("rewards.peril_up");
+                Text.text = AmbitionApp.Localize("rewards.peril_up");
                 Animator.SetTrigger("Negative");
             }
             else if (peril < _peril)
             {
-                Text.text = AmbitionApp.GetString("rewards.peril_down");
+                Text.text = AmbitionApp.Localize("rewards.peril_down");
                 Animator.SetTrigger("Charmed");
             }
              _peril = peril;

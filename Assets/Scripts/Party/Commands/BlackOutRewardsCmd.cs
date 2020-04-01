@@ -34,7 +34,7 @@ namespace Ambition
                     // Outfit Ruined
 		            case 3:
                         item = inventory.GetEquippedItem(ItemType.Outfit);
-                        if (item != null) AmbitionApp.SendMessage(InventoryMessages.REMOVE_ITEM, item);
+                        if (item != null) AmbitionApp.SendMessage(InventoryMessages.DELETE_ITEM, item);
 		                break;
                     // Accessory Lost
 		            case 4:

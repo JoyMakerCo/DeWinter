@@ -37,7 +37,7 @@ namespace Ambition
         private void UpdateParty(PartyVO party)
         {
             _party = party;
-            _text.text = (_party != null) ? "Go to the Party!" : "Explore Paris";
+            _text.text = AmbitionApp.Localize("calendar.btn." + (_party == null ? "paris" : "party"));
         }
 
         public void LeaveEstate() => AmbitionApp.SendMessage(EstateMessages.LEAVE_ESTATE);

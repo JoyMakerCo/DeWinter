@@ -11,7 +11,7 @@ namespace Ambition
         {
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
             int length = pins.Length;
-            int max = AmbitionApp.GetModel<GameModel>().NumParisDailies;
+            uint max = model.NumDailies;
             int[] random = new int[length];
 
             // Shuffle the pin indices (stop short of shuffling within the results)
@@ -20,11 +20,11 @@ namespace Ambition
                 random[i] = Util.RNG.Generate(i);
                 random[random[i]] = i;
             }
-            model.Dailies = new string[max];
+            model.Daily = new string[max];
             // Build a list from the first N shiffled indices
             for (int i = 0; i < max; i++)
             {
-                model.Dailies[i] = pins[random[i]].name;
+                model.Daily[i] = pins[random[i]].name;
             }
         }
     }

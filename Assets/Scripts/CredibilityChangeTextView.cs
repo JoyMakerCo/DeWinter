@@ -19,12 +19,12 @@ namespace Ambition
         {
              if (credibility > _cred)
             {
-                Text.text = AmbitionApp.GetString("rewards.credibility_up");
+                Text.text = AmbitionApp.Localize("rewards.credibility_up");
                 Animator.SetTrigger("Neutral");
             }
             else if (credibility < _cred)
             {
-                Text.text = AmbitionApp.GetString("rewards.credibility_down");
+                Text.text = AmbitionApp.Localize("rewards.credibility_down");
                 Animator.SetTrigger("Negative");
             }
             _cred = credibility;

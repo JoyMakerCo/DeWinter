@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using Dialog;
 using UFlow;
@@ -166,25 +165,36 @@ namespace Ambition
             App.Service<DialogSvc>().CloseAll();
         }
 
-        public static void RegisterState<C>(string machineID, string stateID, params object[] parameters) where C : UState, new()
+        public static void RegisterState<C>(string machineID, string stateID) where C : UState, new()
         {
-            App.Service<UFlowSvc>().RegisterState<C>(machineID, stateID, parameters);
+            App.Service<UFlowSvc>().RegisterState<C>(machineID, stateID);
         }
 
-        public static void RegisterState(string machineID, string stateID, params object[] parameters)
+        public static void RegisterState(string machineID, string stateID)
         {
-            App.Service<UFlowSvc>().RegisterState(machineID, stateID, parameters);
+            App.Service<UFlowSvc>().RegisterState(machineID, stateID);
+        }
+
+        public static void RegisterState<C, T>(string machineID, string stateID, T arg) where C : UState<T>, new()
+        {
+            App.Service<UFlowSvc>().RegisterState<C, T>(machineID, stateID, arg);
         }
 
         // Binds an existing state to a new node type
-        public static void BindState<T>(string machineID, string stateID, params object[] parameters) where T:UState, new()
+        public static void BindState<T>(string machineID, string stateID) where T:UNode, new()
         {
-            App.Service<UFlowSvc>().BindState<T>(machineID, stateID, parameters);
+            App.Service<UFlowSvc>().BindState<T>(machineID, stateID);
         }
 
-        public static void BindLink<T>(string machineID, string originState, string targetState, params object[] parameters) where T : ULink, new()
+        // Temp method for binding a state to a sub-machine
+        public static void BindMachineState(string machineID, string stateID, string subMachineID)
         {
-            App.Service<UFlowSvc>().BindLink<T>(machineID, originState, targetState, parameters);
+            App.Service<UFlowSvc>().BindMachineState(machineID, stateID, subMachineID);
+        }
+
+        public static void RegisterMachineState(string machineID, string stateID, string newMachineID)
+        {
+            App.Service<UFlowSvc>().RegisterMachineState(machineID, stateID, newMachineID);
         }
 
         public static void RegisterLink(string machineID, string originState, string targetState)
@@ -197,6 +207,11 @@ namespace Ambition
             App.Service<UFlowSvc>().RegisterLink<T>(machineID, originState, targetState);
 		}
 
+		public static void RegisterLink<T, U>(string machineID, string originState, string targetState, U data) where T : ULink<U>, new()
+		{
+            App.Service<UFlowSvc>().RegisterLink<T, U>(machineID, originState, targetState, data);
+		}
+
         public static bool IsActiveState(string stateID)
 		{
             return App.Service<UFlowSvc>().IsActiveState(stateID);
@@ -207,16 +222,30 @@ namespace Ambition
             return App.Service<UFlowSvc>().IsActiveMachine(machineID);
 		}
 
-        public static string GetString(string key)
+        public static string Localize(string key)
 		{
             LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
-			return App.Service<LocalizationSvc>().GetString(key, model.Substitutions);
-		}
+			string result = App.Service<LocalizationSvc>().GetString(key, model.Substitutions);
+#if DEBUG
+            if (string.IsNullOrEmpty(result))
+            {
+                Debug.LogWarning("Warning: No localizations found for key \"" + key + "\"");
+            }
+#endif
+            return result;
+        }
 
 		public static string GetString(string key, Dictionary<string, string> substitutions)
 		{
             LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
-            return App.Service<LocalizationSvc>().GetString(key, substitutions.Concat(model.Substitutions).GroupBy(k=>k.Key).ToDictionary(k=>k.Key, k=>k.First().Value));
+            foreach (KeyValuePair<string, string> kvp in model.Substitutions)
+            {
+                if (!substitutions.ContainsKey(kvp.Key))
+                {
+                    substitutions[kvp.Key] = kvp.Value;
+                }
+            }
+            return App.Service<LocalizationSvc>().GetString(key, substitutions);
 		}
 
 		public static string[] GetPhrases(string key)

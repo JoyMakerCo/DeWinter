@@ -15,8 +15,8 @@ MonoBehaviour:
   _Nodes: 
   _Links: 
   _Positions:
-  - {x: 0, y: 0}
-  - {x: -3, y: 56}
+  - {x: -11, y: -80}
+  - {x: -8, y: -22}
   - {x: -1, y: 118}
   - {x: -159, y: 187}
   - {x: 114, y: 188}
@@ -46,12 +46,12 @@ MonoBehaviour:
   - {x: 50, y: 1390}
   - {x: 44, y: 1451}
   - {x: 51, y: 1518}
-  - {x: 44, y: 1592}
+  - {x: 45, y: 1592}
   - {x: -152, y: 552}
+  - {x: -2, y: 48}
   Incident:
     Links:
     - {x: 0, y: 1}
-    - {x: 1, y: 2}
     - {x: 2, y: 3}
     - {x: 2, y: 4}
     - {x: 3, y: 5}
@@ -88,6 +88,8 @@ MonoBehaviour:
     - {x: 24, y: 27}
     - {x: 8, y: 32}
     - {x: 32, y: 11}
+    - {x: 1, y: 33}
+    - {x: 33, y: 2}
     Nodes:
     - Text: 
       Background: {fileID: 21300000, guid: d0614ae1779294bdbaa1930e80fcdeee, type: 3}
@@ -753,7 +755,7 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: FatimaShenna
-        Pose: neutral
+        Pose: happy
         Name: Fatima
       Character2:
         AvatarID: 
@@ -793,6 +795,27 @@ MonoBehaviour:
         Parameters: []
       OneShotSFX:
         Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: negative
+        Name: Fatima
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
         Parameters: []
     LinkData:
     - index: 0
@@ -854,12 +877,6 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
-    - index: 0
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
       Flags:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
@@ -885,6 +902,18 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     - index: 0
       Text: 
       xor: 0
@@ -1034,7 +1063,7 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: The Customer is Wrong.asset.8a4b89c7b03c1cc428f69fefb6845245
+    LocalizationKey: Assets/Resources/Incidents/The Customer is Wrong.asset
     Political: 0
     _date: -1
     Requirements:
@@ -1050,11 +1079,10 @@ MonoBehaviour:
     proprietor, you can hear her grumbling from the backroom."
   - "Eventually, Fatima shuffles her way out to meet you in the front of the shop,
     dropping a ledger onto a nearby table. She seems to be lacking in her normal energy
-    or enthusiasm.\r\n\r\n\u201CWelcome back,\u201D she mumbles.\r"
+    or enthusiasm.\r"
   - "\u201CHow can I help you?\u201D"
-  - "\u201CAm I really that obvious?\u201D She asks with a sigh. \u201CI had a big
-    order, a custom project. It took me forever, cost a lot to make, and then just\u2026
-    fell through.\u201D\r"
+  - "\"Am I really that obvious?\" She asks with a sigh. \"I had a big order, a custom
+    project. It took me forever, cost a lot to make, and then just\u2026 fell through.\""
   - "At the mention of Marcelle\u2019s title, Fatima\u2019s sneers for a second, as
     if she\u2019d just smelled something truly foul.\r\n\r\nShe opens one eye, judging
     you carefully.\r"
@@ -1107,8 +1135,8 @@ MonoBehaviour:
   - "\u201CSorry to bore you with my story.\u201D"
   - "\u201CI suppose...\u201D Fatima says with a shrug. \u201CAs long as you don\u2019t
     make fun of me when you see it.\u201D "
-  - "\x1CI suppose...\x1D Fatima says with a shrug. \x1CAs long as you don\x19t make
-    fun of me when you see it.\x1D "
+  - "\"\x1CI suppose...\x1D\" Fatima says with a shrug. \"\x1CAs long as you don\x19't
+    make fun of me when you see it.\x1D\""
   - '(You have gained some credibility)
 
     (You have gained some peril)'
@@ -1123,11 +1151,11 @@ MonoBehaviour:
     cheated all the respectable banks.\u201D"
   - You study the bank note, taking care to memorize the name and address.
   - (Bank and Mistrust is now available to visit in the Paris map)
-  - "After a few moments, she takes the note back. \u201CSo, Madamme Decaux, shall
-    we do business?\u201D "
+  - After a few moments, she takes the note back. "So, Madamme Decaux, shall we do
+    business?"
   - (You have lost some credibility)
+  - "\x1CWelcome back,\x1D she mumbles.\r"
   _linkText:
-  - 
   - 
   - "\u201CYou seem bothered.\u201D"
   - "\u201CFatima, have you ever done business with the Viscountess du Foix?\u201D"
@@ -1154,6 +1182,8 @@ MonoBehaviour:
   - 
   - "\u201CThe bank note, can I see it?\u201D"
   - "\u201CAfter a story like that, I absolutely have to see the bank note!\""
+  - 
+  - 
   - 
   - 
   - 

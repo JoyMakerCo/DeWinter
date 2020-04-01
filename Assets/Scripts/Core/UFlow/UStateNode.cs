@@ -8,43 +8,41 @@ namespace UFlow
     public class UStateNode
     {
         public string ID;
-        public object[] Parameters;
-        public UStateNode(string id, object[] parameters)
-        {
-            ID = id;
-            Parameters = parameters;
-        }
-        virtual internal UState _Instantiate() => new UState();
+        public string[] Tags;
     }
 
-    public class UStateNode<S> : UStateNode where S:UState, new()
+    public class UStateNode<S> : UStateNode where S:UNode, new() {}
+    public class UStateNode<S,D> : UStateNode<S> where S:UState<D>, new()
     {
-        public UStateNode(string id, object[] parameters) : base(id, parameters) { }
-        internal override UState _Instantiate() => new S();
+        public D Data;
+    }
+
+    public class UMachineStateNode : UStateNode
+    {
+        public string MachineID { get; private set; }
+        public UMachineStateNode(string machineID) => MachineID = machineID;
     }
 
     // LinkMap with instructions for initializing a simple UFlow Link
-    public class UGraphLink
-    {
-        internal virtual ULink _Instantiate() => new UDefaultLink();
-    }
-    public class UGraphLink<L> : UGraphLink where L:ULink, new()
-    {
-        internal override ULink _Instantiate() => new L();
-    }
+    public class UGraphLink {}
+    public class UGraphLink<L> : UGraphLink where L:ULink, new() {}
     public class UGraphLink<L,D> : UGraphLink where L:ULink<D>, new()
     {
         public D Data;
-        internal override ULink _Instantiate()
-        {
-            L result = new L();
-            result.SetValue(Data);
-            return result;
-        }
     }
 
     public class UDefaultLink : ULink
     {
         public override bool Validate() => true;
+    }
+
+    public class UDelegateNode : UStateNode
+    {
+        public Delegate OnEnterState;
+    }
+
+    public class UDecisionNode : UStateNode
+    {
+        public Func<bool> Check;
     }
 }

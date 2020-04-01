@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
+using Core;
+
 namespace Ambition
 {
-	public class ServantVO
+	public class ServantVO:  IConsoleEntity
 	{
 		[JsonProperty("id")]
 		public string ID;
@@ -45,5 +47,29 @@ namespace Ambition
 	    {
 			get { return Description + "\n- Costs " + Wage.ToString("£" + "#,##0") + "/Week"; }
 	    }
+
+		public override string ToString()
+		{
+			return string.Format( "{0} type: {1} wage £{2} status {3}", NameAndTitle, Type, Wage, Status );
+		}
+                
+                
+        public string[] Dump()
+        {
+			return new string[]
+			{
+				"id: " + ID,
+				"name: " + NameAndTitle,
+				"description: " + Description,
+				"wage: " + Wage.ToString("£" + "#,##0") + "/week",
+				"status: " + Status
+			};
+        }
+
+        public void Invoke( string[] args )
+        {
+            ConsoleModel.warn("ServantVO has no invocation.");
+        }  
+
 	}
 }

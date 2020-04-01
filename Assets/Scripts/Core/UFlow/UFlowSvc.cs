@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
-using System;
-=======
 ﻿using System;
->>>>>>> Stashed changes
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 using Util;
@@ -12,202 +9,256 @@ namespace UFlow
 {
 	public class UFlowSvc : IAppService, IConsoleEntity 
 	{
-        // Explicitly invoked machines.
-        private List<UMachine> _machines = new List<UMachine>();
+        // Active machines.
+        private List<UMachine> _active = new List<UMachine>();
 
         // Machine definitions.
-		private Dictionary<string, DirectedGraph<UStateNode, UGraphLink>> _graphs = new Dictionary<string, DirectedGraph<UStateNode, UGraphLink>>();
+        private List<UController> _controllers = new List<UController>();
+		private Dictionary<string, DirectedGraph<UStateNode, UGraphLink>> _machines = new Dictionary<string, DirectedGraph<UStateNode, UGraphLink>>();
+		private Dictionary<Type, Delegate> _instantiators = new Dictionary<Type, Delegate>();
+        private Dictionary<string, string[]> _decisions = new Dictionary<string, string[]>();
 
-        public List<UMachine> GetMachines(string MachineID)
+        public UFlowSvc()
         {
-            List<UMachine> result = new List<UMachine>();
-            foreach(UMachine mac in _machines)
-            {
-                if (mac.MachineID == MachineID)
-                {
-                    result.Add(mac);
-                }
-                result.AddRange(mac.GetMachines(MachineID));
-            }
-            return result;
-        }
-        public List<UMachine> GetMachines()
-        {
-            List<UMachine> result = new List<UMachine>(_machines);
-            foreach (UMachine mac in _machines)
-            {
-                result.AddRange(mac.GetMachines());
-            }
-            return result;
+            Func<UMachineStateNode, UMachineState> del = n => new UMachineState(n.ID, n.MachineID);
+            _instantiators.Add(typeof(UMachineStateNode), del);
         }
 
-        public List<string> GetMachineIDs()
-        {
-            List<UMachine> machines = GetMachines();
-            List<string> result = new List<string>();
-            machines.ForEach(mac => result.Add(mac.MachineID));
-            return result;
-        }
-
-        public bool IsActiveMachine(string machineID) => GetMachineIDs().Contains(machineID);
-
-        public void BindState<S>(string machineID, string stateID, params object[] parameters) where S:UState, new()
-        {
-            if (_graphs.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph) && graph.Nodes != null)
-            {
-                int index = Array.FindIndex(graph.Nodes, n => n.ID == stateID);
-                if (index >= 0)
-                {
-                    UStateNode n = graph.Nodes[index];
-                    graph.Nodes[index] = new UStateNode<S>(n.ID, parameters.Length > 0 ? parameters : n.Parameters);
-                };
-            }
-        }
-
-        public void BindLink<L>(string machineID, string originState, string targetState, params object[] parameters) where L : ULink, new()
-        {
-            if (_graphs.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph))
-            {
-                int from = Array.FindIndex(graph.Nodes, n => n.ID == originState);
-                int to = Array.FindIndex(graph.Nodes, n => n.ID == targetState);
-#if (DEBUG)
-                if (from < 0) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + originState + "\" found in Machine \"" + machineID + "!");
-                if (to < 0) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + targetState + "\" found in Machine \"" + machineID + "!");
-#endif
-                graph.Unlink(from, to);
-                graph.Link(from, to, new UGraphLink<L>());
-            }
-#if (DEBUG)
-            else UnityEngine.Debug.LogError("UFLOW ERROR: No Machine named \"" + machineID + "\" found!");
-#endif
-        }
-
-        public void RegisterState(string machineID, string stateID, params object[] parameters)
+        public UMachine GetMachine(string MachineID)
 		{
-            UStateNode node = new UStateNode(stateID, parameters);
-            if (!_graphs.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph))
-            {
-                graph = new DirectedGraph<UStateNode, UGraphLink>();
-                _graphs.Add(machineID, graph);
-            }
-            if (graph.Nodes == null)
-            {
-                graph.Nodes = new UStateNode[] { node };
-            }
-            else
-            {
-                List<UStateNode> ns = new List<UStateNode>(graph.Nodes);
-                ns.Add(node);
-                graph.Nodes = ns.ToArray();
-            }
-        }
+			return _active.Find(m => m.MachineID == MachineID);
+		}
 
-        public void RegisterState<S>(string machineID, string stateID, params object[] parameters) where S:UState, new()
+        public UMachine[] GetMachines(string MachineID)
         {
-            RegisterState(machineID, stateID, parameters);
-            BindState<S>(machineID, stateID);
+            return _active.FindAll(m => m.MachineID == MachineID).ToArray();
         }
 
-        internal UState BuildNode(UStateNode node) => node._Instantiate();
+        internal UController GetController(UMachine machine) => _controllers.Find(c => c._Machine == machine);
 
-        internal ULink BuildLink(UGraphLink ln) => ln._Instantiate();
-
-        public void RegisterLink(string machineID, string originState, string targetState)
-        {
-            RegisterLinkUtil(machineID, originState, targetState, new UGraphLink());
-        }
-
-        public void RegisterLink<L>(string machineID, string originState, string targetState) where L : ULink, new()
+		public string[] GetActiveMachines()
 		{
-            RegisterLinkUtil(machineID, originState, targetState, new UGraphLink<L>());
+			return _active.Select(m=>m.MachineID).ToArray();
+		}
+
+        public UMachine[] GetAllMachines()
+        {
+            return _active.ToArray();
         }
 
-        private void RegisterLinkUtil(string machineID, string originState, string targetState, UGraphLink link)
+		public bool IsActiveState(string stateID)
+		{
+			return _active.Exists(m=>m.GetActiveStates().Contains(stateID));
+		}
+
+		public bool IsActiveMachine(string machineID)
+		{
+			return _active.Exists(m=>m.MachineID == machineID);
+		}
+
+        public bool ExitMachine(string MachineID)
         {
-            if (_graphs.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph))
+            UMachine machine = _active.Find(m => m.MachineID == MachineID);
+            machine?.Cleanup();
+            return _active.Remove(machine);
+        }
+
+        private N AddNodeToGraph<N>(N node, string nodeID, string machineID) where N:UStateNode
+		{
+			if (!_machines.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph))
+			{
+				graph = new DirectedGraph<UStateNode, UGraphLink>();
+				_machines.Add(machineID, graph);
+			}
+			node.ID = nodeID;
+            graph.Nodes = graph.Nodes == null
+                ? new UStateNode[] { node }
+                : graph.Nodes.Append(node).ToArray();
+			return node;
+		}
+
+        public void BindState<T>(string machineID, string stateID) where T:UNode, new()
+        {
+            // Activator uses reflection. This does not.
+            Type t = typeof(UStateNode<T>);
+            if (!_instantiators.TryGetValue(t, out Delegate del))
             {
-                int from = Array.FindIndex(graph.Nodes, n => n.ID == originState);
-                int to = Array.FindIndex(graph.Nodes, n => n.ID == targetState);
-                if (from < 0) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + originState + "\" found in Machine \"" + machineID + "!");
-                if (to < 0) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + targetState + "\" found in Machine \"" + machineID + "!");
-                graph.Link(from, to, link);
+                Func<UStateNode<T>, T> Create = node => new T { ID = stateID };
+                _instantiators[t] = Create;
             }
-            else UnityEngine.Debug.LogError("UFLOW ERROR: No Machine named \"" + machineID + "\" found!");
+            BindNode(machineID, stateID, new UStateNode<T>());
         }
 
-        internal DirectedGraph<UStateNode, UGraphLink> GetMachineGraph(string machineID)
+        public void BindMachineState(string machineID, string stateID, string subMachineID)
         {
-            return _graphs.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph)
-                ? graph
-                : null;
+            BindNode(machineID, stateID, new UMachineStateNode(subMachineID));
+        }
+
+        private void BindNode(string machineID, string stateID, UStateNode node)
+        {
+            if (!_machines.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph)) return;
+            if (graph.Nodes == null) return;
+            int index = Array.FindIndex(graph.Nodes, n=>n.ID == stateID);
+            if (index >= 0) 
+            {
+                node.ID = stateID;
+                node.Tags = graph.Nodes[index].Tags;
+                graph.Nodes[index] = node;
+            };
+
+        }
+
+        public void RegisterState(string machineID, string stateID)
+		{
+			AddNodeToGraph(new UStateNode(), stateID, machineID);
+		}
+
+		public void RegisterState<S>(string machineID, string stateID) where S : UState, new()
+		{
+			AddNodeToGraph(new UStateNode<S>(), stateID, machineID);
+			if (!_instantiators.ContainsKey(typeof(UStateNode<S>)))
+			{
+				Func<UStateNode<S>, S> Create = node => new S { ID = node.ID };
+                _instantiators.Add(typeof(UStateNode<S>), Create);
+			}
+		}
+
+		public void RegisterState<S, T>(string machineID, string stateID, T arg) where S : UState<T>, new()
+		{
+			UStateNode<S,T> n = AddNodeToGraph(new UStateNode<S,T>(), stateID, machineID);
+			n.Data = arg;
+			if (!_instantiators.ContainsKey(typeof(UStateNode<S,T>)))
+			{
+                Func<UStateNode<S, T>, S> Create = node =>
+                 {
+                    S s = new S { ID = node.ID };
+                    s.SetData(node.Data);
+					return s;
+				};
+				_instantiators.Add(typeof(UStateNode<S,T>), Create);
+			}
+		}
+
+        public void RegisterMachineState(string machineID, string stateID, string newMachineID)
+        {
+            AddNodeToGraph(new UMachineStateNode(newMachineID), stateID, machineID);
+        }
+
+        public void RegisterDecision<D>(string machineID, string stateID, string yesState, string noState)
+        {
+
+        }
+
+        internal UNode BuildNode(UStateNode node)
+        {
+            _instantiators.TryGetValue(node.GetType(), out Delegate del);
+            return (del?.DynamicInvoke(node) as UNode) ?? new UState();
+        }           
+
+        internal ULink BuildLink(UGraphLink ln)
+        {
+            _instantiators.TryGetValue(ln.GetType(), out Delegate del);
+            return (del?.DynamicInvoke(ln) as ULink) ?? new UDefaultLink();
+        }
+
+        private UGraphLink AddLinkToGraph(UGraphLink link, string machineID, string originState, string targetState)
+		{
+			DirectedGraph<UStateNode, UGraphLink> graph;
+			if (!_machines.TryGetValue(machineID, out graph)) return null;
+
+			int from = Array.FindIndex(graph.Nodes, n=>n.ID == originState);
+            int to = Array.FindIndex(graph.Nodes, n=>n.ID == targetState);
+            graph.Link(from, to, link);
+			return link;
+		}
+
+		public void RegisterLink(string machineID, string originState, string targetState)
+		{
+#if (DEBUG)
+            DirectedGraph<UStateNode, UGraphLink> graph;
+            if (!_machines.TryGetValue(machineID, out graph)) UnityEngine.Debug.LogError("UFLOW ERROR: No Machine named \"" + machineID + "\" found!");
+            else if (!Array.Exists(graph.Nodes, n => n.ID == originState)) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + originState + "\" found in Machine \"" + machineID + "!");
+            else if (!Array.Exists(graph.Nodes, n => n.ID == targetState)) UnityEngine.Debug.LogError("UFLOW ERROR: No state called \"" + targetState + "\" found in Machine \"" + machineID + "!");
+#endif
+            AddLinkToGraph(new UGraphLink(), machineID, originState, targetState);
+		}
+
+		public void RegisterLink<T>(string machineID, string originState, string targetState) where T : ULink, new()
+		{
+			AddLinkToGraph(new UGraphLink<T>(), machineID, originState, targetState);
+			if (!_instantiators.ContainsKey(typeof(UGraphLink<T>)))
+			{
+				Func<UGraphLink<T>, T> Create = l=> new T();
+				_instantiators.Add(typeof(UGraphLink<T>), Create);
+			}
+		}
+
+		public void RegisterLink<T,D>(string machineID, string originState, string targetState, D data) where T : ULink<D>, new()
+		{
+			UGraphLink<T,D> link = ((UGraphLink<T,D>)AddLinkToGraph(new UGraphLink<T,D>(), machineID, originState, targetState));
+			link.Data = data;
+			if (!_instantiators.ContainsKey(typeof(UGraphLink<T,D>)))
+			{
+				Func<UGraphLink<T,D>, T> Create = l=>
+				{
+					T t = new T();
+					t.SetValue(l.Data);
+					return t;
+				};
+				_instantiators.Add(typeof(UGraphLink<T,D>), Create);
+			}
+		}
+
+        // Build a machine based on machine ID;
+        internal UMachine BuildMachine(string machineID)
+        {
+            DirectedGraph<UStateNode, UGraphLink> graph;
+            if (!_machines.TryGetValue(machineID, out graph)) return null;
+            UMachine machine = new UMachine(machineID, graph);
+            machine._UFlow = this;
+            return machine;
         }
 
         public UMachine InvokeMachine(string machineID)
 		{
-            DirectedGraph<UStateNode, UGraphLink> graph = GetMachineGraph(machineID);
-            if (graph == null) return null;
-            UMachine machine = new UMachine(machineID, graph);
-            machine._UFlow = this;
-            _machines.Add(machine);
-            machine.OnEnterState();
+            UMachine machine = BuildMachine(machineID);
+            machine?.Start();
 			return machine;
 		}
 
         // Remove a machine from the active machines list.
-        internal bool Remove(UMachine machine)
+        // Note that this does not fully dispose of the removed machine.
+        internal bool Remove(UMachine machine) => _active.Remove(machine);
+        internal bool Remove(UController controller)
         {
-            if (_machines.Remove(machine))
-            {
-                machine.Dispose();
-                return true;
-            }
-            return false;
+            controller?._Machine?.Cleanup();
+            return _controllers.Remove(controller);
         }
-
-        override public string ToString() => string.Join("; ", GetMachines());
+        internal bool Activate(UMachine machine)
+        {
+            if (machine == null || _active.Contains(machine)) return false;
+            _active.Add(machine);
+            return true;
+        }
+        internal bool Activate(UController controller)
+        {
+            if (controller == null || _controllers.Contains(controller)) return false;
+            _controllers.Add(controller);
+            return true;
+        }
+        override public string ToString() => string.Join("; ", _active.Select(m => m.MachineID));
 
         public void Dispose()
         {
-            Reset();
-            foreach(DirectedGraph <UStateNode, UGraphLink> graph in _graphs.Values)
+            foreach(DirectedGraph <UStateNode, UGraphLink> graph in _machines.Values)
             {
                 graph.Dispose();
             }
-            _graphs.Clear();
-            _graphs = null;
-        }
-
-        // Disposes of all currently active machines;
-        // Does not clear graph definitions
-        public void Reset()
-        {
-            GetMachines().ForEach(m => m.Dispose());
-            _machines = new List<UMachine>();
-        }
-
-        // Combs over every machine to check for an activre state.
-        // This could bee a potentially expnsive operation...
-        public bool IsActiveState(string stateID)
-        {
-            foreach(UMachine machine in _machines)
-            {
-                if (machine.ID == stateID || FindActiveState(machine, stateID))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private bool FindActiveState(UMachine machine, string stateID)
-        {
-            if (machine.IsActiveState(stateID)) return true;
-            List<UMachine> machines = machine.GetMachines();
-            foreach(UMachine mac in machines)
-            {
-                if (FindActiveState(mac, stateID)) return true;
-            }
-            return false;
+            while (_active.Count > 0) _active[0].Cleanup();
+            _machines.Clear();
+            _controllers.Clear();
+            _instantiators.Clear();
+            _decisions.Clear();
         }
 
         public string[] Dump()
@@ -215,16 +266,17 @@ namespace UFlow
             var lines = new List<string>()
             {
                 "UFlowSvc:",
+                
             };
 
-            foreach (var machine in _machines)
+            foreach (var machine in _active)
             {
-                if (machine != null)
+                if (machine == null)
+                    continue;
+
+                foreach (var line in machine.Dump())
                 {
-                    foreach (var line in machine.Dump())
-                    {
-                        lines.Add("  " + line);
-                    }
+                    lines.Add( "  "+line );
                 }
             }
 

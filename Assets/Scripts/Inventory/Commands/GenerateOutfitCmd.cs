@@ -9,26 +9,44 @@ namespace Ambition
         {
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
             string style = RNG.TakeRandom(AmbitionApp.GetPhrases("outfit.style"));
-            int modesty = GenerateRandom();
-            int luxury = GenerateRandom();
+
+            int modesty = (int)RNG.Tangential(-100.0f,100.0f);
+            int luxury = (int)RNG.Tangential(-100.0f,100.0f);
 
             OutfitWrapperVO.SetState(item, ItemConsts.NOVELTY, 100);
             OutfitWrapperVO.SetState(item, ItemConsts.MODESTY, modesty);
             OutfitWrapperVO.SetState(item, ItemConsts.LUXURY, luxury);
-            OutfitWrapperVO.SetState(item, ItemConsts.STYLE, style);
 
             item.Price = Math.Abs(modesty) + Math.Abs(luxury);
-            if (style != inventory.Style)
-                item.Price = (int)(item.Price * inventory.OutOfStyleMultiplier);
-
             item.Type = ItemType.Outfit;
+
+            var luxuryAdjective = Map(luxury, AmbitionApp.GetPhrases("outfit.luxury"));
+            var modestyAdjective = Map(modesty, AmbitionApp.GetPhrases("outfit.modesty"));
+            
+            var adjective = luxuryAdjective.Length < modestyAdjective.Length ? luxuryAdjective : modestyAdjective;
+
+            // room for both?
+            if ((modestyAdjective.Length + luxuryAdjective.Length < 17) && (luxuryAdjective != modestyAdjective))
+            {
+                adjective = modestyAdjective + " " + luxuryAdjective;
+            }
+
+            // -- option: adjectives without style code
             item.Name = AmbitionApp.GetString("outfit", new System.Collections.Generic.Dictionary<string, string>()
             {
-                {"%s",style},
+                {"%s",adjective},
                 {"%d",RNG.TakeRandom(AmbitionApp.GetPhrases("outfit.dress"))}
             });
+
+            // -- option: adjectives with style code
+            //item.Name = AmbitionApp.GetString("outfit", new System.Collections.Generic.Dictionary<string, string>()
+            //{
+            //    {"%s",adjective + " " + style},
+            //    {"%d",RNG.TakeRandom(AmbitionApp.GetPhrases("outfit.dress"))}
+            //});
         }
 
-        private int GenerateRandom() => (int)(100 * Math.Sin(.01f * RNG.Generate(101)));
+        private string Map(int stat, string[] phrases) => phrases[(int)(phrases.Length * (.5f + stat * .00499f))];
+
     }
 }

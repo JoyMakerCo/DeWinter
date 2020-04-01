@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
@@ -9,6 +9,7 @@ namespace Ambition
 {
     public class ParisView : MonoBehaviour
     {
+        public int MaxExplorable;
         public Transform Pins;
         public GameObject LegendBtn;
         public Text LegendBtnLabel;
@@ -21,24 +22,15 @@ namespace Ambition
         // The model stores the IDs of known and visited one-shot locations
         // The view shows all known locations, up to MaxExplorable locations, and non-explorable locations that meet requirements.
         // Previously visited one-shot locations will not display.
-<<<<<<< Updated upstream
         void Awake()
         {
-=======
-        void Awake()
-        {
->>>>>>> Stashed changes
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
             Pin pin;
             AmbitionApp.Subscribe<Pin>(ParisMessages.SELECT_LOCATION, HandleSelect);
-            if (model.Dailies == null || model.Dailies.Length < AmbitionApp.GetModel<GameModel>().NumParisDailies)
-<<<<<<< Updated upstream
+            if (model.Daily == null || model.Daily.Length < MaxExplorable)
             {
                 List<Pin> dailies = new List<Pin>();
-=======
-            {
-                List<Pin> dailies = new List<Pin>();
->>>>>>> Stashed changes
+                model.NumDailies = (uint)MaxExplorable;
                 foreach (Transform child in Pins)
                 {
                     pin = child.GetComponent<Pin>();
@@ -53,10 +45,9 @@ namespace Ambition
                     }
                 }
                 AmbitionApp.SendMessage(ParisMessages.SELECT_DAILIES, dailies.ToArray());
-<<<<<<< Updated upstream
                 foreach(Pin daily in dailies)
                 {
-                    if (Array.IndexOf(model.Dailies, daily.name) >= 0)
+                    if (Array.IndexOf(model.Daily, daily.name) >= 0)
                     {
                         daily.gameObject.SetActive(true);
                     }
@@ -64,27 +55,11 @@ namespace Ambition
             }
             else
             {
-=======
-                foreach(Pin daily in dailies)
-                {
-                    if (Array.IndexOf(model.Dailies, daily.name) >= 0)
-                    {
-                        daily.gameObject.SetActive(true);
-                    }
-                }
-            }
-            else
-            {
->>>>>>> Stashed changes
                 foreach (Transform child in Pins)
                 {
                     pin = child.GetComponent<Pin>();
-                    pin?.gameObject.SetActive(model.Locations.Contains(pin.name) || Array.IndexOf(model.Dailies, pin.name) >= 0);
-<<<<<<< Updated upstream
+                    pin?.gameObject.SetActive(model.Locations.Contains(pin.name) || Array.IndexOf(model.Daily, pin.name) >= 0);
                 }
-=======
-                }
->>>>>>> Stashed changes
             }
             AmbitionApp.SendMessage<string>(GameMessages.SHOW_HEADER, AmbitionApp.Localize("paris"));
         }

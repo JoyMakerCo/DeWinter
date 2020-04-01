@@ -1,4 +1,4 @@
-#pragma warning disable 0414
+﻿#pragma warning disable 0414
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -38,20 +38,12 @@ namespace Ambition
 
         public IncidentVO GetIncident()
         {
-            IncidentVO result = new IncidentVO(Incident)
+            return new IncidentVO(Incident)
             {
                 Name = name,
                 Chapters = GetChapters(),
                 Factions = GetFactions(),
             };
-            for(int i = result.Nodes.Length-1; i>=0; i--)
-            {
-                if (result.Nodes[i] != null)
-                {
-                    result.Nodes[i].Index = i;
-                }
-            }
-            return result;
         }
 
         FactionType[] GetFactions()
@@ -76,20 +68,23 @@ namespace Ambition
             return chapters.ToArray();
         }
 
-        public string GetLocalizationKey() => Incident?.LocalizationKey;
-
-
-        public string GetLocalizationKey() => Incident?.LocalizationKey;
+        public string LocalizationKey
+        {
+            get => Incident?.LocalizationKey;
+            set
+            {
+#if UNITY_EDITOR
+                SerializedObject obj = new SerializedObject(this);
+                obj.FindProperty("Incident.LocalizationKey").stringValue = value;
+                obj.ApplyModifiedProperties();
+#endif
+            }
+        }
 
 
 #if (UNITY_EDITOR)
         private const string NODE_KEY = "node.";
         private const string LINK_KEY = "link.";
-
-        private readonly string[] MONTHS = new string[]{
-            "January","February","March","April","May","June",
-            "July","August","September","October","November","December"
-        };
 
         private readonly string[] MONTHS = new string[]{
             "January","February","March","April","May","June",
@@ -108,20 +103,13 @@ namespace Ambition
         private SerializedProperty GetNodeTextProperty(SerializedObject obj) => obj.FindProperty("_nodeText");
         private SerializedProperty GetLinkTextProperty(SerializedObject obj) => obj.FindProperty("_linkText");
 
-        public void SetLocalizationKey(string value)
-        {
-            SerializedObject obj = new SerializedObject(this);
-            obj.FindProperty("Incident.LocalizationKey").stringValue = value;
-            obj.ApplyModifiedProperties();
-        }
-
         public override void InitializeEditor(SerializedObject serializedObject)
         {
             Incident = Incident ?? new IncidentVO();
         }
 
         public override void CleanupEditor(SerializedObject serializedObject) { }
-#if DEBUG
+
         public Dictionary<string, string> Localize()
         {
             Dictionary<string, string> phrases = new Dictionary<string, string>();
@@ -147,7 +135,6 @@ namespace Ambition
             }
             return phrases;
         }
-#endif
 
         public override void RenderNodeUI(SerializedProperty moment, int nodeIndex)
         {
@@ -171,14 +158,13 @@ namespace Ambition
                 list = GetLinkTextProperty(obj);
                 for (int i=list.arraySize-1; i>=0; i--)
                 {
+                    link = list.GetArrayElementAtIndex(i);
                     if (link != null)
                     {
                         ends = link.vector2IntValue;
                         if (ends.x == nodeIndex) ends.x = 0;
                         else if (ends.x == 0) ends.x = nodeIndex;
                         if (ends.y == nodeIndex) ends.y = 0;
-                        else if (ends.y == 0) ends.y = nodeIndex;
-
                         else if (ends.y == 0) ends.y = nodeIndex;
                         link.vector2IntValue = ends;
                     }
@@ -251,6 +237,38 @@ namespace Ambition
             SerializedProperty nodeprop = GetNodeTextProperty(serializedObject);
             SerializedProperty linkprop = GetLinkTextProperty(serializedObject);
 
+            if (GUILayout.Button("Import From Localization File"))
+            {
+                string key = incident.FindPropertyRelative("LocalizationKey").stringValue + "."; 
+                Dictionary<string, string> phrases = LocalizationConfig.GetPhrases(key);
+                if (phrases == null)
+                {
+                    throw new Exception(">> ERROR: Could not open localization config!");
+                }
+
+                nodeprop.arraySize = 0;
+                linkprop.arraySize = 0;
+                int len = key.Length + NODE_KEY.Length;
+                int index;
+                foreach(KeyValuePair<string, string> kvp in phrases)
+                {
+                    if (kvp.Key.StartsWith(key+NODE_KEY))
+                    {
+                        index = int.Parse(kvp.Key.Substring(len));
+                        if (nodeprop.arraySize <= index)
+                            nodeprop.arraySize = index + 1;
+                        nodeprop.GetArrayElementAtIndex(index).stringValue = kvp.Value;
+                    }
+                    else if (kvp.Key.StartsWith(key+LINK_KEY))
+                    {
+                        index = int.Parse(kvp.Key.Substring(len));
+                        if (linkprop.arraySize <= index)
+                            linkprop.arraySize = index + 1;
+                        linkprop.GetArrayElementAtIndex(index).stringValue = kvp.Value;
+                    }
+                }
+            }
+
             bool fixedDate = GUILayout.Toggle(dateProperty.longValue >= 0, "Date");
             if (!fixedDate) dateProperty.longValue = -1;
             else
@@ -300,9 +318,6 @@ namespace Ambition
                 list.arraySize = index + 1;
             }
 
-            if (index >= list.arraySize)
-            {
-                list.arraySize = index + 1;
             if (index >= list.arraySize)
             {
                 list.arraySize = index + 1;

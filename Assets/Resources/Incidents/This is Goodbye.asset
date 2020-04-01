@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: This is Goodbye
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 0c000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -20,7 +20,7 @@ MonoBehaviour:
   - {x: -1, y: 170}
   - {x: -4, y: 241}
   - {x: -183, y: 316}
-  - {x: 1, y: 458}
+  - {x: 2, y: 457}
   - {x: -185, y: 382}
   - {x: -4, y: 522}
   - {x: -179, y: 604}
@@ -35,7 +35,7 @@ MonoBehaviour:
   - {x: -22, y: 1165}
   - {x: -20, y: 1237}
   - {x: -23, y: 1294}
-  - {x: -263, y: 1377}
+  - {x: -263, y: 1376}
   - {x: -26, y: 1376}
   - {x: 198, y: 1375}
   - {x: -262, y: 1442}
@@ -46,18 +46,18 @@ MonoBehaviour:
   - {x: -17, y: 1639}
   - {x: -21, y: 1752}
   - {x: -259, y: 1805}
-  - {x: -22, y: 1836}
+  - {x: -20, y: 1836}
   - {x: -19, y: 1937}
   - {x: -19, y: 1985}
   - {x: -15, y: 2038}
-  - {x: -195, y: 2125}
+  - {x: -194, y: 2125}
   - {x: 109, y: 2121}
   - {x: -18, y: 2230}
   - {x: -19, y: 2299}
   - {x: 464, y: 1450}
   - {x: 230, y: 1606}
   - {x: 503, y: 1521}
-  - {x: 535, y: 1595}
+  - {x: 489, y: 1592}
   - {x: 467, y: 1666}
   - {x: -20, y: 1888}
   - {x: -17, y: 1689}
@@ -69,6 +69,7 @@ MonoBehaviour:
   - {x: -256, y: 2582}
   - {x: -34, y: 2579}
   - {x: 187, y: 2582}
+  - {x: -302, y: 1662}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -122,7 +123,6 @@ MonoBehaviour:
     - {x: 43, y: 40}
     - {x: 31, y: 44}
     - {x: 44, y: 32}
-    - {x: 28, y: 45}
     - {x: 45, y: 29}
     - {x: 38, y: 46}
     - {x: 46, y: 47}
@@ -132,6 +132,8 @@ MonoBehaviour:
     - {x: 48, y: 51}
     - {x: 49, y: 52}
     - {x: 50, y: 53}
+    - {x: 28, y: 54}
+    - {x: 54, y: 45}
     Nodes:
     - Text: 
       Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
@@ -365,7 +367,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: 
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 2aad5a7fcda9e4524a7e9fc078173d79, type: 3}
       Character1:
         AvatarID: GuetRoyalSergeant
         Pose: neutral
@@ -1273,6 +1275,27 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/sfx_open_letter
+        Parameters: []
     LinkData:
     - index: 0
       Text: 
@@ -1524,7 +1547,7 @@ MonoBehaviour:
       Flags:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
-        Value: 0
+        Value: 1
     - index: 0
       Text: 
       xor: 0
@@ -1633,13 +1656,28 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: 
       xor: 0
@@ -1675,7 +1713,7 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: This is Goodbye.asset.0eeaedd33634abc4981e8d3882c80338
+    LocalizationKey: Assets/Resources/Incidents/This is Goodbye.asset
     Political: 0
     _date: -1
     Requirements: []
@@ -1710,11 +1748,11 @@ MonoBehaviour:
     he stops.
   - '"This way, Madame." He replies, waving for another watchman to take his post
     while he leads you inside.'
-  - Inside, the holding cells are quiet, dank, and abominably dismal. You'd read of
-    prisons being raucous places, perpetually alive with the din of prisoners banging
+  - Inside, the holding cells are quiet, dank, and abominably dismal. You've read
+    of prisons being raucous places, perpetually alive with the din of prisoners banging
     their cups against the bars, and howling their innocence to anyone who would hear
     them.
-  - Not here. It's as silent as a cemetary. If you strain your ears, you can just
+  - Not here. It's as silent as a cemetery. If you strain your ears, you can just
     make out the creaking of wood as prisoners watch you through the gratings in their
     cell doors, but nobody says a word as you're lead to Armand's cell.
   - '"The traitor is in here." The <i>Guet Royal</i> says, pointing to an unmarked
@@ -1816,6 +1854,9 @@ MonoBehaviour:
     come to the same end.
   - You walk home at a brisk pace, but in your mind your already at work. You're planning,
     calculating.
+  - As you explain this to you, he pulls a letter out of his boot and slips it to
+    you. It's written in german, but you see the name 'Johanna Von Holbein' signed
+    at the bottom of it. You secret the letter under your stays.
   _linkText:
   - 
   - 
@@ -1871,10 +1912,11 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
   - '"<i>Au revoir</i>, Armand... I''ll miss you."'
   - '"What a shame Armand, what a shame, indeed."'
   - '"Johanna von Holbein? It looks like I have some work to do..."'
+  - 
+  - 
   - 
   - 
   - 

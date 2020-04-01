@@ -26,8 +26,8 @@ namespace Ambition
 
         private void Awake()
         {
-            AmbitionApp.Subscribe(InventoryMessages.PEDDLE_GOSSIP, PopulateInventory); //Gotta wipe the slate once the item's been moved
-            AmbitionApp.Subscribe(InventoryMessages.SELL_GOSSIP, PopulateInventory);
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.PEDDLE_GOSSIP, PopulateInventory); //Gotta wipe the slate once the item's been moved
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.SELL_GOSSIP, PopulateInventory);
             AmbitionApp.Subscribe<string>(InventoryMessages.SORT_INVENTORY, SortInventory);
             SetSortTypes();
             HideGossipSortList();
@@ -36,13 +36,14 @@ namespace Ambition
 
         private void OnDestroy()
         {
-            AmbitionApp.Unsubscribe(InventoryMessages.PEDDLE_GOSSIP, PopulateInventory);
-            AmbitionApp.Unsubscribe(InventoryMessages.SELL_ITEM, PopulateInventory);
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.PEDDLE_GOSSIP, PopulateInventory);
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.SELL_GOSSIP, PopulateInventory);
             AmbitionApp.Unsubscribe<string>(InventoryMessages.SORT_INVENTORY, SortInventory);
         }
         
-        void PopulateInventory()
+        void PopulateInventory(ItemVO soldItem)
         {
+            Debug.Log("GossipInventoryController.PopulateInventory");
             DestroyInventoryChildren(); //Gotta start fresh
             if (AmbitionApp.GetModel<InventoryModel>().Inventory.TryGetValue(ItemType.Gossip, out List<ItemVO> gossip))
             {
@@ -132,15 +133,15 @@ namespace Ambition
                         break;
                     case "Freshness":
                         System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
-                        gossip = gossip.OrderBy(g=>GossiptWrapperVO.GetRelevance(g)).ToList();
+                        gossip = gossip.OrderBy(g=>GossipWrapperVO.GetRelevance(g)).ToList();
                         break;
                     default:
-                        gossip = gossip.OrderBy(g => GossiptWrapperVO.GetTier(g)).ToList();
+                        gossip = gossip.OrderBy(g => GossipWrapperVO.GetTier(g)).ToList();
                         break;
                 }
                 inventory.Inventory[ItemType.Gossip] = gossip;
             }
-            PopulateInventory();
+            PopulateInventory(null);
         }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 using Ambition;
 
 namespace Core
@@ -11,6 +12,7 @@ namespace Core
 		public Transform textContainer;
 		public GameObject linePrefab;
 		public InputField input;
+		public ScrollRect scrollRect;
 
 		const int maxTextLines = 2000;
 		List<GameObject> lines;
@@ -40,13 +42,26 @@ namespace Core
 			AmbitionApp.Subscribe(GameMessages.TOGGLE_CONSOLE,ToggleConsole);
 		}
 
-	
+		private Color GetColor( ConsoleStyle style )
+		{
+			switch (style)
+			{
+				case ConsoleStyle.Error:		return Color.red;
+				case ConsoleStyle.Warning:		return Color.yellow;
+				case ConsoleStyle.Log:			return Color.white;
+				case ConsoleStyle.Input:		return Color.blue;
+			}
 
-		public void Add( string textLine )
+			return Color.white;
+		} 
+
+		public void Add( string textLine, ConsoleStyle style = ConsoleStyle.Log )
 		{
 			var line = GameObject.Instantiate(linePrefab);
 
-			line.GetComponent<Text>().text = textLine;
+			var textComponent = line.GetComponent<Text>();
+			textComponent.text = textLine;
+			textComponent.color = GetColor(style);
 			line.transform.SetParent(textContainer, false);
 
 			lines.Add(line);
@@ -61,6 +76,19 @@ namespace Core
 				}
 				lines.RemoveRange(0, excess);
 			}
+
+			// scroll to bottom
+			if (scrollRect != null)
+			{
+				StartCoroutine(ScrollToBottom());
+			}
+		}
+
+		IEnumerator ScrollToBottom()
+		{
+			yield return new WaitForEndOfFrame();
+			scrollRect.verticalNormalizedPosition = 0f;      
+			scrollRect.horizontalNormalizedPosition = 0f;      
 		}
 
 		void ToggleConsole()
@@ -80,7 +108,7 @@ namespace Core
 		public void Show()
 		{	Debug.Log("ConsoleView.Show");
 
-			consoleCanvas.alpha = 0.5f;
+			consoleCanvas.alpha = 0.66f;
 			consoleCanvas.interactable = true;
 			consoleCanvas.blocksRaycasts = true;
 

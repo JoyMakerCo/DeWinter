@@ -18,11 +18,11 @@ namespace UFlow
 		public virtual bool Validate() => false; // Called upon instantiation
 		public virtual void Initialize() {}
 		public virtual void Dispose() {}
-        internal void Activate() => _machine.Activate(this);
+        protected void Activate() => _machine.Activate(this);
     }
 
 	public abstract class ULink<T> : ULink
 	{
-        public abstract void SetValue(T data);
-    } 
+		public abstract void SetValue(T data);
+	} 
 }

@@ -12,8 +12,8 @@ public class PierreQuestInventoryList : MonoBehaviour {
     void Start()
     {
 		_model = AmbitionApp.GetModel<QuestModel>();
-        _model.Quests.ForEach(q => q.daysLeft--);
-        _model.Quests.RemoveAll(q => q.daysLeft <= 0);
+        //_model.Quests.ForEach(q => q.daysLeft--);
+        //_model.Quests.RemoveAll(q => q.daysLeft <= 0); // hmm
         GenerateInventoryButtons();
 		//AmbitionApp.Subscribe<DateTime>(HandleDay);
     }
@@ -21,11 +21,11 @@ public class PierreQuestInventoryList : MonoBehaviour {
     public void GenerateInventoryButtons()
     {
         GameObject button;
-        foreach (PierreQuest quest in _model.Quests)
-        {
+        //foreach (PierreQuest quest in _model.Quests)
+        //{
             button = GameObject.Instantiate(pierreQuestInventoryButtonPrefab, this.transform);
-            button.GetComponent<PierreQuestInventoryButton>().quest = quest;
-        }
+            button.GetComponent<PierreQuestInventoryButton>().quest = _model.CurrentQuest;
+        //}
     }
 
     public void ClearInventoryButtons()

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UFlow;
 
 namespace Ambition
@@ -12,10 +11,33 @@ namespace Ambition
 			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 			MomentVO moment = model.Moment;
 			AmbitionApp.SendMessage(moment.Rewards);
-			List<TransitionVO> transitions = model.Incident.GetLinks(moment).Where(t=>AmbitionApp.CheckRequirements(t.Requirements)).ToList();
-			TransitionVO xor = transitions.Find(t => t.xor && t.Requirements != null && t.Requirements.Length > 0);
-			if (xor != null) transitions.RemoveAll(t => t != xor && t.xor);
-			AmbitionApp.SendMessage(transitions.ToArray());
+            AmbitionApp.GetModel<LocalizationModel>().SetMoment(moment);
+
+            TransitionVO[] links = model.Incident.GetLinks(moment);
+            TransitionVO xor = null;
+            for (int i=0; i<links.Length; i++)
+            {
+                if (!AmbitionApp.CheckRequirements(links[i]?.Requirements))
+                {
+                    links[i] = null;
+                }
+                else
+                {
+                    links[i].index = Array.IndexOf(model.Incident.LinkData, links[i]);
+                    if (links[i].xor)
+                    {
+                        if (xor == null)
+                        {
+                            xor = links[i];
+                        }
+                        else
+                        {
+                            links[i] = null;
+                        }
+                    }
+                }
+            }
+			AmbitionApp.SendMessage(links);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-using Core;
+﻿using Core;
 namespace Ambition
 {
     public class LoadLocationSceneCmd : ICommand

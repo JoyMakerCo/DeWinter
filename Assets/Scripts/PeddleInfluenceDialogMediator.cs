@@ -15,21 +15,29 @@ namespace Ambition
         public Text DismissText; //Text for the cancel button
         private ItemVO _gossip;
 
-        public override void OnOpen(ItemVO gossip) => _gossip = gossip;
+        public override void OnOpen(ItemVO gossip)
+        {
+            _gossip = gossip;
+            SetPhrase();
+        }
 
         //This is how the localized text is put into all of the text boxes in the dialog
         public void SetPhrase()
         {
+            Debug.Log("PeddleInfluenceDialogMediator.SetPhrase");
             //InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
             string phrase = "peddle_influence_dialog";
-            //int shiftValue = _gossip.GetPoliticalEffect(AmbitionApp.GetModel<CalendarModel>().Today);
+            int shiftValue = GossipWrapperVO.GetEffect(_gossip);
+            string locShift = AmbitionApp.Localize("shift_degree." + shiftValue.ToString() );
             ////Setting up the dictionary for the necessary substitutions
             Dictionary<string, string> dialogSubstitutions = new Dictionary<string, string>();
-            //dialogSubstitutions.Add("$GOSSIPNAME", _gossip.Name);
-            //dialogSubstitutions.Add("$FACTION", _gossip.Faction.ToString());
-            //dialogSubstitutions.Add("$SHIFTAMOUNT", shiftValue.ToString());
-            //dialogSubstitutions.Add("$CAUGHTODDS", AmbitionApp.GetString("gossip_caught_odds." + (int)(Mathf.Clamp(inventory.GossipSoldOrPeddled, 0, 9))));
-
+            dialogSubstitutions.Add("$SHIFTAMOUNT", locShift);
+            dialogSubstitutions.Add("$GOSSIPNAME", _gossip.Name);
+            dialogSubstitutions.Add("$GOSSIPPRICE", "£ " + GossipWrapperVO.GetValue(_gossip).ToString("### ###"));
+            var activity = Mathf.Clamp(AmbitionApp.GetModel<InventoryModel>().GossipActivity,0,9);
+            dialogSubstitutions.Add("$CAUGHTODDS", AmbitionApp.Localize("gossip_caught_odds." + activity.ToString() ) );
+            // GossipWrapperVO.GetFaction(_gossip) would just round trip the ID to the enum and back...
+            dialogSubstitutions.Add("$FACTION", AmbitionApp.Localize( _gossip.ID.ToLower() ) ); 
             //Performing the substitutions themselves
             BodyText.text = AmbitionApp.GetString(phrase + DialogConsts.BODY, dialogSubstitutions);
             TitleText.text = AmbitionApp.GetString(phrase + DialogConsts.TITLE, dialogSubstitutions);
@@ -38,73 +46,72 @@ namespace Ambition
             {
                 str = AmbitionApp.GetString(phrase + DialogConsts.CANCEL, dialogSubstitutions);
                 if (str != null && DismissText != null) DismissText.text = str;
-                else DismissText.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CANCEL);
+                else DismissText.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CANCEL);
             }
 
             if (IncreaseStatText != null)
             {
-                //if (_gossip.IsPowerShift)//If it's a power shift
-                //{
-                //    str = AmbitionApp.GetString(phrase + ".increase_power", dialogSubstitutions);
-                //    if (str != null && IncreaseStatText != null) IncreaseStatText.text = str;
-                //    else IncreaseStatText.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CONFIRM);
-                //} else //If it's an allegiance shift
-                //{
-                //    str = AmbitionApp.GetString(phrase + ".increase_allegiance", dialogSubstitutions);
-                //    if (str != null && IncreaseStatText != null) IncreaseStatText.text = str;
-                //    else IncreaseStatText.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CONFIRM);
-                //}
+                if (GossipWrapperVO.IsPowerShift(_gossip))
+                {
+                    str = AmbitionApp.GetString(phrase + ".increase_power", dialogSubstitutions);
+                    if (str != null && IncreaseStatText != null) IncreaseStatText.text = str;
+                    else IncreaseStatText.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);
+                } else // it's an allegiance shift
+                {
+                    str = AmbitionApp.GetString(phrase + ".increase_allegiance", dialogSubstitutions);
+                    if (str != null && IncreaseStatText != null) IncreaseStatText.text = str;
+                    else IncreaseStatText.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);
+                }
             }
 
             if (DecreaseStatText != null)
             {
-                //if (_gossip.IsPowerShift)//If it's a power shift
-                //{
-                //    str = AmbitionApp.GetString(phrase + ".decrease_power", dialogSubstitutions);
-                //    if (str != null && DecreaseStatText != null) DecreaseStatText.text = str;
-                //    else DecreaseStatText.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CONFIRM);
-                //}
-                //else //If it's an allegiance shift
-                //{
-                //    str = AmbitionApp.GetString(phrase + ".decrease_allegiance", dialogSubstitutions);
-                //    if (str != null && DecreaseStatText != null) DecreaseStatText.text = str;
-                //    else DecreaseStatText.text = AmbitionApp.GetString(DialogConsts.DEFAULT_CONFIRM);
-                //}
+                if (GossipWrapperVO.IsPowerShift(_gossip))
+                {
+                    str = AmbitionApp.GetString(phrase + ".decrease_power", dialogSubstitutions);
+                    if (str != null && DecreaseStatText != null) DecreaseStatText.text = str;
+                    else DecreaseStatText.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);
+                }
+                else // it's an allegiance shift
+                {
+                    str = AmbitionApp.GetString(phrase + ".decrease_allegiance", dialogSubstitutions);
+                    if (str != null && DecreaseStatText != null) DecreaseStatText.text = str;
+                    else DecreaseStatText.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);
+                }
             }
         }
 
         public void IncreaseFactionStat()
         {
-            //InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            //int shiftValue = _gossip.GetPoliticalEffect(AmbitionApp.GetModel<CalendarModel>().Today);
-            //if (_gossip.IsPowerShift)//If it's a power shift
-            //{
-            //    AmbitionApp.SendMessage(new AdjustFactionVO(_gossip.Faction, 0, shiftValue));
-            //}
-            //else //If it's an allegiance shift
-            //{
-            //    AmbitionApp.SendMessage(new AdjustFactionVO(_gossip.Faction, 0, 0, shiftValue));
-            //}
-            //inventory.GossipItems.Remove(_gossip);
-            //inventory.GossipSoldOrPeddled++; //Adjust the amount of Gossip Items sold today
-            //AmbitionApp.SendMessage(InventoryMessages.PEDDLE_GOSSIP);
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+
+            int shiftValue = GossipWrapperVO.GetEffect(_gossip);
+            if (GossipWrapperVO.IsPowerShift(_gossip))
+            {
+                AmbitionApp.SendMessage(FactionMessages.ADJUST_FACTION,AdjustFactionVO.MakePowerVO( GossipWrapperVO.GetFaction(_gossip), shiftValue));
+            }
+            else // it's an allegiance shift
+            {
+                AmbitionApp.SendMessage(FactionMessages.ADJUST_FACTION,AdjustFactionVO.MakeAllegianceVO( GossipWrapperVO.GetFaction(_gossip), shiftValue));
+            }
+
+            AmbitionApp.SendMessage(InventoryMessages.PEDDLE_GOSSIP,_gossip);            
         }
 
         public void DecreaseFactionStat()
         {
-            //int shiftValue = _gossip.GetPoliticalEffect(AmbitionApp.GetModel<CalendarModel>().Today);
-            //InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            //if (_gossip.IsPowerShift)//If it's a power shift
-            //{
-            //    AmbitionApp.SendMessage(new AdjustFactionVO(_gossip.Faction, 0, -shiftValue));
-            //}
-            //else //If it's an allegiance shift
-            //{
-            //    AmbitionApp.SendMessage(new AdjustFactionVO(_gossip.Faction, 0, 0, -shiftValue));
-            //}
-            //inventory.GossipItems.Remove(_gossip);
-            //inventory.GossipSoldOrPeddled++; //Adjust the amount of Gossip Items sold today
-            //AmbitionApp.SendMessage(InventoryMessages.PEDDLE_GOSSIP);
+            int shiftValue = GossipWrapperVO.GetEffect(_gossip);
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+
+            if (GossipWrapperVO.IsPowerShift(_gossip))
+            {
+                AmbitionApp.SendMessage(FactionMessages.ADJUST_FACTION,AdjustFactionVO.MakePowerVO( GossipWrapperVO.GetFaction(_gossip), -shiftValue));
+            }
+            else // it's an allegiance shift
+            {
+                AmbitionApp.SendMessage(FactionMessages.ADJUST_FACTION,AdjustFactionVO.MakeAllegianceVO( GossipWrapperVO.GetFaction(_gossip), -shiftValue));
+            }
+            AmbitionApp.SendMessage(InventoryMessages.PEDDLE_GOSSIP,_gossip);
         }
 
         public override void OnOpen()

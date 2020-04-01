@@ -1,4 +1,4 @@
-using UFlow;
+﻿using UFlow;
 using Core;
 
 namespace Ambition
@@ -10,10 +10,10 @@ namespace Ambition
             AmbitionApp.SendMessage(TutorialMessage.TUTORIAL_STEP, ID);
         }
 
-        public override void Dispose()
+        public override void Cleanup()
         {
             AmbitionApp.SendMessage(TutorialMessage.TUTORIAL_STEP_COMPLETE, ID);
-            base.Dispose();
+            base.Cleanup();
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Ambition
     {
         public Image Splash;
         public Text Title;
-
         private void Start()
         {
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
@@ -21,9 +20,7 @@ namespace Ambition
                 AmbitionApp.SendMessage(AudioMessages.PLAY, chapter.Sting.Name);
             Splash.sprite = chapter?.Splash;
             AmbitionApp.SendMessage(GameMessages.INHIBIT_MENU);
-            Title.text = AmbitionApp.GetString(chapter.Name);
+            Title.text = AmbitionApp.Localize(chapter.Name);
         }
-
-        public void HandleComplete() => AmbitionApp.SendMessage(GameMessages.COMPLETE);
     }
 }

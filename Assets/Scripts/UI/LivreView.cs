@@ -38,8 +38,22 @@ namespace Ambition
             else
             {
                 StartCoroutine(Count(_livre, livre));
-                FloatingText.text = (gain ? "+" : "-") + LivreString(System.Math.Abs(livre - _livre));
-                TextAnimator.SetInteger("Amount", livre - _livre);
+                if (FloatingText != null)
+                {
+                    FloatingText.text = (gain ? "+" : "-") + LivreString(System.Math.Abs(livre - _livre));
+                }
+                else
+                {
+                    Debug.LogError("LivreView missing FloatingText");
+                }
+                if (TextAnimator != null)
+                {
+                    TextAnimator.SetInteger("Amount", livre - _livre);
+                }
+                else
+                {
+                    Debug.LogError("LivreView missing TextAnimator");
+                }
             }
             _livre = livre;
         }

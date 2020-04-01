@@ -13,6 +13,7 @@ namespace Ambition
 		{
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
             _button = gameObject.GetComponent<Button>();
+            _button.interactable = false;
             AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIP, HandleEquip);
             AmbitionApp.Subscribe<ItemVO>(InventoryMessages.UNEQUIP, HandleUnequip);
             HandleEquip(inventory.GetEquippedItem(ItemType.Outfit));
@@ -26,14 +27,22 @@ namespace Ambition
 
         private void HandleEquip(ItemVO item)
         {
-            if (_button != null)
-                _button.interactable = item?.Type == ItemType.Outfit;
+            Debug.LogFormat("StartPartyBtn.HandleEquip( {0} )", item );
+            if (item == null)
+            {
+                _button.interactable = false;
+            }
+            else
+            {
+                _button.interactable = item.Type == ItemType.Outfit;
+            }
         }
 
         private void HandleUnequip(ItemVO item)
         {
-            if (_button != null && item?.Type == ItemType.Outfit)
-                _button.interactable = false;
+            Debug.LogFormat("StartPartyBtn.HandleUnequip( {0} )", item );
+
+            _button.interactable = false;
         }
     }
 }

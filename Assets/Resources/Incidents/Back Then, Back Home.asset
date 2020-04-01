@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Back Then, Back Home
   m_EditorClassIdentifier: 
   _Nodes: 
-  _Links: 46000000
+  _Links: 
   _Positions:
   - {x: 0, y: 0}
   - {x: 6, y: 87}
   - {x: -3, y: 171}
-  - {x: -135, y: 295}
+  - {x: -131, y: 241}
   - {x: 294, y: 250}
   - {x: -133, y: 392}
   - {x: -123, y: 510}
@@ -27,7 +27,7 @@ MonoBehaviour:
   - {x: 152, y: 1052}
   - {x: 172, y: 321}
   - {x: 471, y: 322}
-  - {x: 168, y: 396}
+  - {x: 162, y: 379}
   - {x: 473, y: 388}
   - {x: 500, y: 466}
   - {x: 254, y: 530}
@@ -42,16 +42,16 @@ MonoBehaviour:
   - {x: 734, y: 832}
   - {x: 153, y: 1119}
   - {x: 157, y: 1187}
-  - {x: 155, y: 1253}
+  - {x: 157, y: 1242}
   - {x: -58, y: 1263}
   - {x: 375, y: 1293}
-  - {x: 13, y: 1400}
+  - {x: -35, y: 1394}
   - {x: 8, y: 1468}
   - {x: 2, y: 1535}
   - {x: -2, y: 1601}
   - {x: 361, y: 1625}
-  - {x: 345, y: 1403}
-  - {x: 346, y: 1472}
+  - {x: 364, y: 1402}
+  - {x: 354, y: 1466}
   - {x: 354, y: 1534}
   - {x: 2, y: 1667}
   - {x: 0, y: 1717}
@@ -84,18 +84,20 @@ MonoBehaviour:
   - {x: -397, y: 2569}
   - {x: -297, y: 2631}
   - {x: 88, y: 2481}
-  - {x: 338, y: 1344}
+  - {x: 387, y: 1346}
   - {x: 381, y: 1690}
   - {x: -5, y: 1765}
-  - {x: 22, y: 1337}
+  - {x: -47, y: 1328}
   - {x: 164, y: 2247}
+  - {x: -126, y: 308}
+  - {x: 86, y: 438}
+  - {x: 483, y: 1860}
   Incident:
     Links:
     - {x: 0, y: 1}
     - {x: 1, y: 2}
     - {x: 2, y: 3}
     - {x: 2, y: 4}
-    - {x: 3, y: 5}
     - {x: 5, y: 6}
     - {x: 6, y: 7}
     - {x: 7, y: 8}
@@ -103,7 +105,6 @@ MonoBehaviour:
     - {x: 4, y: 10}
     - {x: 4, y: 11}
     - {x: 10, y: 12}
-    - {x: 12, y: 5}
     - {x: 11, y: 13}
     - {x: 13, y: 14}
     - {x: 14, y: 15}
@@ -135,7 +136,6 @@ MonoBehaviour:
     - {x: 37, y: 34}
     - {x: 33, y: 38}
     - {x: 38, y: 39}
-    - {x: 40, y: 41}
     - {x: 41, y: 42}
     - {x: 42, y: 43}
     - {x: 41, y: 44}
@@ -176,6 +176,12 @@ MonoBehaviour:
     - {x: 72, y: 30}
     - {x: 54, y: 73}
     - {x: 73, y: 55}
+    - {x: 3, y: 74}
+    - {x: 74, y: 5}
+    - {x: 12, y: 75}
+    - {x: 75, y: 5}
+    - {x: 40, y: 76}
+    - {x: 76, y: 41}
     Nodes:
     - Text: "February 2nd, 1789\nYou take a seat at your usual spot in <i>\u2018Le
         Cygne\u2019</i>, a small tavern in your hometown. The hood of your cloak is
@@ -981,7 +987,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_neutral
         Parameters: []
     - Text: "He uses his sleeve to sweep the snow off the wide piece of stone, then
         gestures out towards the lake your town is built on the edge of.\n\n\u201COur
@@ -1112,7 +1118,7 @@ MonoBehaviour:
         AvatarID: guest01
         Pose: neutral
         Name: ???
-      Speaker: 3
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -1602,7 +1608,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/Male_bark_gasp
         Parameters: []
     - Text: "\u201CIdeas about modernity, monarchy, and what makes France different
         from the rest of the world.\u201D Armand says, almost automatically, before
@@ -1891,6 +1897,72 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: "\u201CFrance is changing, that cannot be stopped. It\u2019s up to us
+        to make sure that it changes for the better.\u201D"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ArmandDeMarbo
+        Pose: happy
+        Name: Armand
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CFrance is changing, that cannot be stopped. It\u2019s up to us
+        to make sure that it changes for the better.\u201D"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CFrance is changing, that cannot be stopped. It\u2019s up to us
+        to make sure that it changes for the better.\u201D"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ArmandDeMarbo
+        Pose: neutral
+        Name: Armand
+      Character2:
+        AvatarID: guest01
+        Pose: neutral
+        Name: ???
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
     LinkData:
     - index: 0
       Text: 
@@ -1947,12 +2019,6 @@ MonoBehaviour:
       Requirements: []
       Flags: []
     - index: 0
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - index: 0
       Text: "\u201CArmand, please, I was only kidding.\u201D"
       xor: 0
       Rewards: []
@@ -1971,12 +2037,6 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
     - index: 0
       Text: 
       xor: 0
@@ -2176,12 +2236,6 @@ MonoBehaviour:
       Flags: []
     - index: 0
       Text: <Don't kiss him>
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - index: 0
-      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -2438,12 +2492,48 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: Back Then, Back Home.asset.7bf1c084a8a6c40c4a1f5e4da981a49c
+    LocalizationKey: Assets/Resources/Incidents/Back Then, Back Home.asset
     Political: 0
     _date: -1
     Requirements: []
@@ -2459,9 +2549,7 @@ MonoBehaviour:
     it, you hear a set of footsteps approaching your table.
   - "\u201C<i>Bonjour</i> Yvette, I hope you weren\u2019t waiting too long.\u201D"
   - "\u201CExcellent! This is our last night together for a while, so I want to make
-    sure that it\u2019s a memory we\u2019ll treasure.\u201D\n\nHe waves to barmaid,
-    who brings you a bottle of wine and some glasses, along with a loaf of freshly
-    baked bread that\u2019s still steaming when it touches the table. "
+    sure that it\u2019s a memory we\u2019ll treasure.\u201D"
   - "\u201C<i>Je suis d\xE9sol\xE9 mon cher</i>, it\u2019s taken so much longer to
     get my affairs in order than I thought. Now I\u2019m already spoiling our last
     night.\u201D"
@@ -2480,16 +2568,14 @@ MonoBehaviour:
     before saying \u201CThe snow appears to have stopped. Would you\u2026 would you
     like to join me outside? I have something I want to show you.\u201D"
   - "Armand gives an audible sigh of relief, while he usually cares about keeping
-    his appointments, he rarely let\u2019s something like this get to him. \u201CI\u2019m
-    sorry, it\u2019s just\u2026 the general assembly is so important, but so are you.
-    I\u2019m packing and writing letters night and day in order to get ready, but
-    all the time I spend on that is time I\u2019m not spending with you.\u201D"
+    his appointments, he rarely let\u2019s something like this get to him. \"I'm sorry,
+    it\u2019s just\u2026 the Estates General is important, but so are you. I'm packing
+    and writing letters night and day in order to get ready, but all the time I spend
+    on that is time I'm not spending with you.\""
   - "\u201CI knew it...\u201D Armand sighs, defeated."
   - "He pauses, and takes a deep breath. \u201CEnough of that! If I want to feel sorry
     for myself, I can do it on the carriage to Paris. Tonight is for making sweet
-    memories.\u201D\n\nHe waves to barmaid, who brings you a bottle of wine and some
-    glasses, along with a loaf of freshly baked bread that\u2019s still steaming when
-    it touches the table. "
+    memories.\u201D"
   - "Suddenly he begins to perk up, and leans in close to whisper. \u201CYou\u2019ll
     finally leave this place behind, living as a lonely hermit, far from the prying
     eyes of civilization. At night, children will whisper of the beautiful, wicked
@@ -2538,7 +2624,7 @@ MonoBehaviour:
     off into the moonlit night.
   - "Armand smiles, \u201CVery well, Madame!\u201D. \n\nThere\u2019s not much in the
     way of benches outside the tavern, but he finds a stone mounting block a short
-    distance from the tavern."
+    distance away that will serve just as well."
   - "You walk along the edge of a lake, the only sound being the chirping of the crickets,
     the sounds of your footfalls, and the steady rhythm of each other\u2019s breath."
   - "Your head leans on his shoulder. His body feels both warm and familiar.\n\nThe
@@ -2547,12 +2633,14 @@ MonoBehaviour:
   - Without a word, Armand leans in towards you, his eyes closed.
   - 'Your lips meet his and a joyful shiver runs through your body. His hand comes
     up to stroke the side of your face as his other arm hugs you close. '
-  - "You gently pull away and place a finger on his lips. He opens his eyes and blushes.\n\n\u201COf
-    course, we could keep enjoying the view, for a little while longer...\u201D"
-  - "He uses his sleeve to sweep the snow off the wide piece of stone, then gestures
-    out towards the lake your town is built on the edge of.\n\n\u201COur new bench
-    may not be the most prestigious real estate, but the view is quite nice, and the
-    company\u2019s the best in the world.\u201D "
+  - 'You gently pull away and place a finger on his lips. He opens his eyes and blushes.
+
+
+    "Of course, we could keep enjoying the view, for a little while longer..."'
+  - He uses his sleeve to sweep the snow off the wide piece of stone, then gestures
+    out towards the lake your town is built on the edge of. "Our new bench may not
+    be the most prestigious real estate, but the view is quite nice, and the company's
+    the best in the world."
   - "You sit on your newfound bench with Armand, your bodies close together for warmth.
     Side by side, you stare out at the lake. Its water is so still that it almost
     seems like a mirror, the luminous reflection of the full moon is only lightly
@@ -2562,16 +2650,16 @@ MonoBehaviour:
     have failed him. Instead, he leans in towards you, his eyes closed."
   - "You\u2019re not sure how long your kiss lasts, time seems to have lost some of
     its importance. "
-  - "You pull away from each other, and you stare into his eyes. His face is a mixture
-    of excitement and surprise. He whispers to you \u201CI hope every kiss we have
-    is as good as that one.\u201D \n\nArmand breathes deep, preparing himself for
-    his next words."
+  - 'You pull away from each other, and you stare into his eyes. His face is a mixture
+    of excitement and surprise. He whispers to you "I hope every kiss we have is as
+    good as that one."
+
+
+    Armand breathes deep, preparing himself for his next words.'
   - "It\u2019s then that a man stumbles out of the darkness towards you, glancing
-    about himself, and trying to catch his breath. \n\n\u201CArmand, I\u2019ve been
-    looking everywhere for you!\u201D he whisper hoarsely. His accent is foreign and
-    wholly unfamiliar. All you know is that he isn't French, nor is he English."
+    about himself, and trying to catch his breath."
   - "Your town is relatively small, and yet you still don\u2019t recognize this man. "
-  - "Eyes widening for a moment, he seems to notice you for the first time. \n\n\u201CI...
+  - "Eyes widening for a moment, he seems to notice you for the first time. \u201CI...
     am Charles, a good friend of Monsieur Armand,\u201D he states, slowly and carefully.
     \u201CI was afraid he\u2019d already left for the Estates General.\u201D "
   - "Charles places a small leather case in Armand\u2019s hands. \u201CI just wanted
@@ -2588,14 +2676,14 @@ MonoBehaviour:
   - "Charles regards you warily as he continues. \u201CArmand, I\u2019ll keep this
     short. We all knew tensions were going to keep rising after the riots in Grenoble,
     but it\u2019s happening faster than any of us would have ever imagined.\u201D "
-  - "He looks back and forth between the two of you and gives a quick, formal bow.\n\n\u201CYou
-    two are obviously in the middle of something important. Please excuse my intrusion.
-    <i>Bonne nuit</i>.\u201D"
+  - "He looks back and forth between the two of you and gives a quick, formal bow.
+    \u201CYou two are obviously in the middle of something important. Please excuse
+    my intrusion. <i>Bonne nuit</i>.\u201D"
   - With that, Charles leaves. You and Armand stare at each other, silently, for over
     a minute.
-  - "Armand exhales and smiles, but there\u2019s still an air of tension about him.\n\n\u201CNot
-    right now, no. It\u2019s all\u2026 very vague at the moment. There\u2019s so much
-    going on that I don\u2019t want to give you something new to worry about.\u201D"
+  - "Armand exhales and smiles, but there\u2019s still an air of tension about him.
+    \u201CNot right now, no. It\u2019s all\u2026 very vague at the moment. There\u2019s
+    so much going on that I don\u2019t want to give you something new to worry about.\u201D"
   - "\"That\u2026 was Charles.\" Armand says evenly. \"I used to buy books from him
     by letter. However, a few months ago we started a true correspondance between
     myself and some of his associates. We've been discussing politics.\""
@@ -2603,12 +2691,9 @@ MonoBehaviour:
   - "\u201CThe Estates General might be the last chance to keep this country on the
     proper course, which means we can take absolutely no chances.\u201D Charles glances
     significantly to the package now in Armand\u2019s hands. \"You know who to contact
-    when you arrive in Paris, they'll lead you to Johanna.\"\n\n"
-  - 'Charles looks back and forth between the two of you and gives a slow, formal
-    bow.
-
-
-    "Please excuse my intrusion. <i>Bonne nuit</i>."'
+    when you arrive in Paris, they'll lead you to Johanna.\""
+  - Charles looks back and forth between the two of you and gives a slow, formal bow.
+    "Please excuse my intrusion. <i>Bonne nuit</i>."
   - "\u201CArmand, things are changing faster than we could have imagined,\u201D the
     man called Charles says, hurriedly pressing a small satchel into Armand\u2019s
     hands. In the dim light you manage to notice the a few papers sticking out of
@@ -2622,10 +2707,10 @@ MonoBehaviour:
     \u2018We must-\u201D"
   - "\u201CCharles!\u201D Armand barks sharply and suddenly. Even the crickets and
     the birds seem to go silent."
-  - "Breathing deeply, Armand recomposes himself, and gestures in your direction.\n\n\u201CCharles,
-    have you met my fiance Yvette Decaux? We were just enjoying our last night together
-    before I left to prepare for the Estates General.\u201D"
-  - "Charles\u2019 eyes widen and he seemingly notices you for the first time. \n\n\u201COh\u2026
+  - "Breathing deeply, Armand recomposes himself, and gestures in your direction.
+    \u201CCharles, have you met my fiance Yvette Decaux? We were just enjoying our
+    last night together before I left to prepare for the Estates General.\u201D"
+  - "Charles\u2019 eyes widen and he seemingly notices you for the first time. \u201COh\u2026
     hello Madame. I was just giving your fiance some important files that he forgot
     at home. Please excuse my intrusion. <i>Bonne nuit</i>.\u201D"
   - "\u201CIdeas about modernity, monarchy, and what France needs in order to succeed
@@ -2638,8 +2723,8 @@ MonoBehaviour:
   - "\u201CI promise that I\u2019ll explain all of this when it\u2019s over.\u201D"
   - "\u201CI know that isn\u2019t the whole answer, or what you want to hear. However,
     I need you to trust me Yvette, please.\u201D\n\nHis voice is serious. Grave. Pained."
-  - "\u201CFrance is changing, that cannot be stopped. It\u2019s up to us to make
-    sure that it changes for the better.\u201D"
+  - '"France is changing, that cannot be stopped. It''s up to us to make sure that
+    it changes for the better."'
   - (You have gained some favor with Armand)
   - (You have gained a little favor with Armand)
   - (You have gained a little favor with Armand)
@@ -2647,6 +2732,15 @@ MonoBehaviour:
   - (You have gained some favor with Armand)
   - "Your fiance is trying to look positive, but his expression falters slightly in
     the face of Charles\x19s grave expression and warning. "
+  - "He waves to the barmaid, who brings you a bottle of wine and some glasses, along
+    with a loaf of freshly baked bread that\x19's still steaming when it touches the
+    table. "
+  - "He waves to barmaid, who brings you a bottle of wine and some glasses, along
+    with a loaf of freshly baked bread that\x19s still steaming when it touches the
+    table. "
+  - "\"\x1CArmand, I\x19've been looking everywhere for you!\x1D\" He whispers hoarsely.
+    His accent is foreign, and wholly unfamiliar. All you know is that he isn't French,
+    nor is he English."
   _linkText:
   - 
   - 
@@ -2656,11 +2750,9 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
   - "\u201CArmand, please, I was only kidding.\u201D"
   - "\u201CIt\u2019s true, the entire night is ruined. Our engagement is cancelled,
     and I shall now flee to live in the woods.\u201D"
-  - 
   - 
   - 
   - 
@@ -2696,7 +2788,6 @@ MonoBehaviour:
   - <Don't kiss him>
   - 
   - 
-  - 
   - "\u201CArmand, who is this?\u201D"
   - 
   - <Stay silent>
@@ -2721,6 +2812,12 @@ MonoBehaviour:
   - "\"\x1CWhat ideas are those?\x1D\""
   - "\u201CAnd what are you planning on doing with those ideas?\u201D"
   - "\u201CIs there anything I can do to help?\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

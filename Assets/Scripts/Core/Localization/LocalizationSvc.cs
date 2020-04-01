@@ -9,7 +9,7 @@ namespace Core
 	public class LocalizationSvc : IAppService
 	{
 		public const string LOCALIZATIONS_DIRECTORY = "Localization/";
-		public const string DEFAULT_CONFIG = "en";
+		public const string DEFAULT_CONFIG = "Default";
 
 		public string LanguageCode;
 		protected Dictionary<string, string> _localizations;

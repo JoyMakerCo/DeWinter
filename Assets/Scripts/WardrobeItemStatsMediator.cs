@@ -36,33 +36,24 @@ namespace Ambition
         //TO DO: Make this work with Accessories (when they're full implemented)
         void HandleItemDisplay(ItemVO outfit)
         {
+            Debug.Log("WardrobeItemStatsMediator.HandleItemDisplay");
             if (outfit?.Type != ItemType.Outfit) return;
 
-            ItemNameText.text = AmbitionApp.GetString("item." + outfit.Name + ".name");
-            ItemDescriptionText.text = AmbitionApp.GetString("item." + outfit.Name + ".description");
+            ItemNameText.text = outfit.Name;
+            ItemDescriptionText.text = OutfitWrapperVO.GetDescription(outfit);
 
             //To Do: Make the modesty and luxury sliders always work in the right direction
-            LuxurySlider.value = GetIntStat(outfit, ItemConsts.LUXURY);
-            LuxuryStatText.text = Map((int)(LuxurySlider.value), AmbitionApp.GetPhrases("outfit.luxury"));
+            LuxurySlider.value = OutfitWrapperVO.GetLuxury(outfit);
+            LuxuryStatText.text = OutfitWrapperVO.GetLuxuryText(outfit);
 
-            ModestySlider.value = GetIntStat(outfit, ItemConsts.MODESTY);
-            ModestyStatText.text = Map((int)(ModestySlider.value), AmbitionApp.GetPhrases("outfit.modesty"));
+            ModestySlider.value = OutfitWrapperVO.GetModesty(outfit);
+            ModestyStatText.text = OutfitWrapperVO.GetModestyText(outfit);
+            //Debug.LogFormat("luxury slider {0} modesty slider {1}", LuxurySlider.value, ModestySlider.value);
 
-            NoveltySlider.value = GetIntStat(outfit, ItemConsts.NOVELTY);
-            string[] phrases = AmbitionApp.GetPhrases("outfit.novelty");
-            NoveltyStatText.text = phrases[(int)(phrases.Length * NoveltySlider.value * .01f)];
-
-            string style = null;
+            NoveltySlider.value = OutfitWrapperVO.GetNovelty(outfit);
+            NoveltyStatText.text = OutfitWrapperVO.GetNoveltyText(outfit);
         }
 
-        private int GetIntStat(ItemVO outfit, string stat)
-        {
-            return outfit?.State == null
-                ? 0
-                : outfit.State.TryGetValue(ItemConsts.LUXURY, out stat)
-                ? int.Parse(stat)
-                : 0;
-        }
 
         void BlankStats()
         {
@@ -100,6 +91,6 @@ namespace Ambition
             NoveltyStatText.gameObject.SetActive(false);
         }
 
-        private string Map(int stat, string[] phrases) => phrases[(int)(phrases.Length * (.5f + stat * .005f))];
+        private string Map(int stat, string[] phrases) => phrases[(int)(phrases.Length * (.5f + stat * .00499f))]; 
     }
 }

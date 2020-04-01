@@ -1,14 +1,10 @@
-<<<<<<< Updated upstream
-using System;
-=======
 ﻿using System;
->>>>>>> Stashed changes
-using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace Ambition
 {
-    public class CharacterConfig : ScriptableObject, AmbitionEditor.ILocalizedAsset
+    public class CharacterConfig : ScriptableObject
     {
         public string DisplayName;
         public string FullName;
@@ -22,10 +18,6 @@ namespace Ambition
 
         public CharacterConfig Spouse;
         public bool Celibate;
-
-        [SerializeField] private string _localizationKey;
-
-        public string GetLocalizationKey() => _localizationKey;
 
         public CharacterVO GetCharacter() => new CharacterVO()
         {
@@ -45,19 +37,6 @@ namespace Ambition
         private string _FormalName => string.IsNullOrWhiteSpace(FormalName) ? _FullName : FormalName;
 
 #if UNITY_EDITOR
-        public void SetLocalizationKey(string value)
-        {
-            UnityEditor.SerializedObject obj = new UnityEditor.SerializedObject(this);
-            obj.FindProperty("_localizationKey").stringValue = value;
-            obj.ApplyModifiedProperties();
-        }
-
-        public Dictionary<string, string> Localize()
-        {
-            Dictionary<string, string> result = new Dictionary<string, string>();
-            return result;
-        }
-
         [UnityEditor.MenuItem("Ambition/Create/Character")]
         public static void CreateIncident()
         {

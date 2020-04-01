@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Unwanted Advice
   m_EditorClassIdentifier: 
-  _Nodes: 00000000
+  _Nodes: 43000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
   - {x: 96, y: 1961}
   - {x: 105, y: 1772}
   - {x: -171, y: 2251}
-  - {x: 80, y: 2234}
+  - {x: 90, y: 2255}
   - {x: -133, y: 1943}
   - {x: -347, y: 1775}
   - {x: -356, y: 1847}
@@ -2306,13 +2306,19 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: '"That was oddly sinister."'
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: 
       xor: 0
@@ -2408,7 +2414,7 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: Unwanted Advice.asset.5698b27ccda370340a906d913c44480b
+    LocalizationKey: Assets/Resources/Incidents/Unwanted Advice.asset
     Political: 0
     _date: -1
     Requirements:
@@ -2622,7 +2628,22 @@ MonoBehaviour:
   - 
   - 
   - 
-  - Enough business, let's talk about me and you.
-  - Enough business, let's talk about me and you.
+  - 
+  - 
   - '"This just keps getting better and better."'
   - '"That was oddly sinister."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"That was oddly sinister."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

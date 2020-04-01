@@ -6,7 +6,7 @@
         public static bool Check(RequirementVO req)
         {
             ParisModel paris = AmbitionApp.GetModel<ParisModel>();
-            return paris.Locations.Contains(req.ID) || (paris.Dailies != null && System.Array.IndexOf(paris.Dailies, req.ID) >= 0);
+            return paris.Locations.Contains(req.ID) || (paris.Daily != null && System.Array.IndexOf(paris.Daily, req.ID) >= 0);
         }
     }
 }

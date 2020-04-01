@@ -17,6 +17,7 @@ namespace Ambition
         public static string RESTORE_GAME = "RESTORE_GAME";
         public static string NEW_GAME = "NEW_GAME";
         public static string EXIT_MENU = "EXIT_MENU";
+        public static string START_GAME = "NEW_GAME";
         public static string END_GAME = "END_GAME";
         public static string START_TUTORIAL = "START_TUTORIAL";
 		public static string SKIP_TUTORIAL = "SKIP_TUTORIAL";

@@ -3,20 +3,19 @@ using Core;
 
 namespace Ambition
 {
-    // Deprecated (AF)
     public class RegisterGuestActionControllerCmd : ICommand
     {
         public void Execute()
         {
-/*            AmbitionApp.RegisterState("GuestActionController", "GuestActionNone");
+            AmbitionApp.RegisterState("GuestActionController", "GuestActionNone");
             AmbitionApp.RegisterState<GuestActionInterestState>("GuestActionController", "GuestActionInterest");
             AmbitionApp.RegisterState("GuestActionController", "GuestActionComment");
             AmbitionApp.RegisterState("GuestActionController", "GuestActionAside");
             AmbitionApp.RegisterState("GuestActionController", "GuestActionInquiry");
             AmbitionApp.RegisterState("GuestActionController", "GuestActionToast");
-            //AmbitionApp.RegisterState<GuestActionToastState>("GuestActionController", "GuestActionToastAccepted");
+            AmbitionApp.RegisterState<GuestActionToastState>("GuestActionController", "GuestActionToastAccepted");
             AmbitionApp.RegisterState("GuestActionController", "GuestActionEnd");
-            //AmbitionApp.RegisterState<GuestActionSelectLeadReward>("GuestActionController", "GuestActionLead");
+            AmbitionApp.RegisterState<GuestActionSelectLeadReward>("GuestActionController", "GuestActionLead");
             AmbitionApp.RegisterState("GuestActionController", "GuestActionLeadRound");
             AmbitionApp.RegisterState("GuestActionController", "GuestActionLeadUpdate");
             AmbitionApp.RegisterState<GuestActionLeadRewardState>("GuestActionController", "GuestActionLeadReward");
@@ -41,6 +40,6 @@ namespace Ambition
             AmbitionApp.RegisterLink<GuestActionSelectedLink, string>("GuestActionController", "SelectGuestAction", "GuestActionToast", "Toast");
             AmbitionApp.RegisterLink<GuestActionSelectedLink, string>("GuestActionController", "SelectGuestAction", "GuestActionLead", "Lead");
             AmbitionApp.RegisterLink("GuestActionController", "SelectGuestAction", "GuestActionNone");
-*/        }
+        }
     }
 }

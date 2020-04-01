@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +11,7 @@ namespace Ambition
     {
         public SpriteConfig FactionSymbols;
         public Image FactionSymbol;
-        public AmbitionLocalizedText TooltipText;
+        public Text TooltipText;
 
         private List<PartyVO> _parties;
         private int _index;
@@ -27,8 +26,13 @@ namespace Ambition
             for (DateTime date = calendar.Today; date < endDate; date = date.AddDays(1))
             {
                 parties = calendar.GetEvents<PartyVO>(date);
-                parties = parties.Where(p => p.Attending && FactionSymbols.GetSprite(p.Faction.ToString()) != null);
-                _parties.AddRange(parties);
+                foreach(PartyVO party in parties)
+                {
+                    if (party.Attending && FactionSymbols.GetSprite(party.Faction.ToString()) != null)
+                    {
+                        _parties.Add(party);
+                    }
+                }
             }
             bool show = _parties.Count > 0;
             gameObject.SetActive(show);
@@ -48,7 +52,7 @@ namespace Ambition
             }
             else
             {
-                TooltipText.Localize("party_" + faction.ToString().ToLower() + "_likes_and_dislikes");
+                TooltipText.text = AmbitionApp.Localize("party_" + faction.ToString().ToLower() + "_likes_and_dislikes");
             }
             FactionSymbol.sprite = FactionSymbols.GetSprite(faction.ToString());
         }

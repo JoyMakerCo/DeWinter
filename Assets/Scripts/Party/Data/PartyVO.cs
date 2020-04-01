@@ -5,6 +5,8 @@ using System.Linq;
 using Ambition;
 using Newtonsoft.Json;
 
+using Core;
+
 namespace Ambition
 {
     [Serializable]

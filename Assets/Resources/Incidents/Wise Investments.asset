@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Wise Investments
   m_EditorClassIdentifier: 
-  _Nodes: 01000000
+  _Nodes: 
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -31,7 +31,7 @@ MonoBehaviour:
   - {x: -236, y: 773}
   - {x: 3, y: 736}
   - {x: 243, y: 669}
-  - {x: -2, y: 483}
+  - {x: 7, y: 500}
   - {x: 246, y: 738}
   - {x: 4, y: 800}
   - {x: -232, y: 880}
@@ -63,10 +63,10 @@ MonoBehaviour:
   - {x: 581, y: 1307}
   - {x: 429, y: 1365}
   - {x: 643, y: 1438}
-  - {x: 459, y: 1512}
+  - {x: 449, y: 1502}
   - {x: 453, y: 1585}
   - {x: 261, y: 1640}
-  - {x: 671, y: 1519}
+  - {x: 691, y: 1535}
   - {x: 653, y: 1369}
   - {x: 845, y: 1283}
   - {x: -574, y: 1252}
@@ -81,7 +81,7 @@ MonoBehaviour:
   - {x: 17, y: 1907}
   - {x: 264, y: 2044}
   - {x: 19, y: 2054}
-  - {x: 8, y: 2124}
+  - {x: 17, y: 2121}
   - {x: -228, y: 2189}
   - {x: 309, y: 2191}
   - {x: 305, y: 2250}
@@ -104,7 +104,7 @@ MonoBehaviour:
   - {x: -227, y: 2839}
   - {x: 16, y: 2827}
   - {x: 11, y: 2884}
-  - {x: 16, y: 2937}
+  - {x: 9, y: 2944}
   - {x: -246, y: 665}
   - {x: 258, y: 1884}
   - {x: 258, y: 1954}
@@ -1712,7 +1712,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: "Ren\xE9 opens the door, and helps you down, out of the carriage. "
-      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1727,7 +1727,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -1788,9 +1788,9 @@ MonoBehaviour:
         Name: 
       Speaker: 0
       Rewards:
-      - Type: 0
-        ID: 
-        Value: 0
+      - Type: 5
+        ID: Honorade
+        Value: -1
       Music:
         Name: 
         Parameters: []
@@ -1876,7 +1876,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: Honorade
+        Value: 4
       Music:
         Name: 
         Parameters: []
@@ -1933,14 +1936,14 @@ MonoBehaviour:
         box, cracks his whip, and soon her carriage disappears into the night.
       Background: {fileID: 0}
       Character1:
-        AvatarID: HonoradeGazel
-        Pose: neutral
-        Name: Madame Gazel
+        AvatarID: 
+        Pose: 
+        Name: 
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -1975,30 +1978,7 @@ MonoBehaviour:
     - Text: Camille lets you inside and you head upstairs to your bedroom. Passionate
         thoughts drift through your head as you write down the evening's events in
         your journal.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Speaker: 2
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
-        Parameters: []
-      OneShotSFX:
-        Name: event:/One Shot SFX/door_latch
-        Parameters: []
-    - Text: Camille lets you inside and you head upstairs to your bedroom. Discomforting
-        thoughts drift through your head as you write down the evening's events in
-        your journal.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2013,7 +1993,30 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: Camille lets you inside and you head upstairs to your bedroom. Discomforting
+        thoughts drift through your head as you write down the evening's events in
+        your journal.
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -2043,7 +2046,7 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: Camille
-        Pose: sad
+        Pose: neutral
         Name: Camille
       Character2:
         AvatarID: 
@@ -2065,7 +2068,7 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: Camille
-        Pose: happy
+        Pose: sad
         Name: Camille
       Character2:
         AvatarID: 
@@ -2127,7 +2130,7 @@ MonoBehaviour:
         Parameters: []
     - Text: You head upstairs to your bedroom, and passionate thoughts drift through
         your head as you write down the evening's events in your journal.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: HonoradeGazel
         Pose: neutral
@@ -2142,7 +2145,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -2150,7 +2153,7 @@ MonoBehaviour:
     - Text: Camille lets you inside and you head upstairs to your bedroom. Discomforting
         thoughts drift through your head as you write down the evening's events in
         your journal.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: HonoradeGazel
         Pose: neutral
@@ -2165,7 +2168,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -2218,7 +2221,7 @@ MonoBehaviour:
     - Text: Camille lets you inside and you head upstairs to your bedroom. Curious
         thoughts drift through your head as you write down the evening's events in
         your journal.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -2233,7 +2236,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
@@ -2860,31 +2863,46 @@ MonoBehaviour:
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: 
+        Value: 1
     - index: 0
       Text: '"As much as one can enjoy discussion of finance and dead men, I suppose."'
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: 
+        Value: 1
     - index: 0
       Text: '"I did Camille, immensely."'
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: '"I did what needed to be done, nothing more, nothing less."'
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: '"Why Camille! Is that jealousy I hear in your voice?"'
       xor: 0
       Rewards: []
       Requirements: []
-      Flags: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
     - index: 0
       Text: 
       xor: 0
@@ -3010,7 +3028,7 @@ MonoBehaviour:
     Chapters: 
     Tags: []
     Factions: 
-    LocalizationKey: Wise Investments.asset.9af800ae0a3fed740b91ebdbb0824068
+    LocalizationKey: Assets/Resources/Incidents/Wise Investments.asset
     Political: 0
     _date: -1
     Requirements:
@@ -3147,17 +3165,17 @@ MonoBehaviour:
     the dark curtains, you see that you've arrived at your home.
   - "Ren\xE9 opens the door, and helps you down, out of the carriage. "
   - You bend down low, and kiss the back of her hand.
-  - She waves back but seems disappointed. She gives a silent signal to Rene, who
-    remounts his coachman's box, cracks his whip, and soon her carriage disappears
-    into the night.
+  - "She waves back but seems disappointed. She gives a silent signal to Ren\xE9,
+    who remounts his coachman's box, cracks his whip, and soon her carriage disappears
+    into the night."
   - (You have lost a little favor with Madame Gazel)
   - That hand wraps around your chin and pulls your head upwards, and you find yourself
     with Madame Gazel staring down at you.
   - '"Good girl." She murmurs, low.'
   - 'She preses her lips against yours, gently seizing the back of your head with
     her free hand. Her touch is gentle, but firm. '
-  - (You have gained a lot of favor with Madame Gazel)
-  - Turning away, you see that Camille is waiting for your on the doorstep.
+  - (You have gained quite a bit of favor with Madame Gazel)
+  - Turning away, you see that Camille is waiting for you on the doorstep.
   - She lets go of the back of your head, and resumes gently holding you by the chin.
     "You may go for now. I will avail myself of you again, soon enough."
   - Letting go, she gives a silent signal to Rene, who remounts his coachman's box,
@@ -3168,12 +3186,13 @@ MonoBehaviour:
   - Camille lets you inside and you head upstairs to your bedroom. Discomforting thoughts
     drift through your head as you write down the evening's events in your journal.
   - '"D-Did you enjoy yourself, madame?" She stammers.'
-  - '"O-oui Madame." She replies, and lets you inside.'
-  - '"Don''t worry madame! I imagine you won''t have to endure such things for long!"
-    She replies with an unusual amount of enthusiasm.'
+  - '"<i>O-oui</i>, Madame!" She replies, dumbfounded, and lets you inside.'
+  - '"Oh, I see madame... I imagine you won''t have to endure such things for long."
+    She replies nervously.'
   - '"What? N-No, of course not, madame!"'
   - It's then that you turn around and realize that Camille has been standing there
-    the entire time. Standing stock still, she holds the door open for you.
+    the entire time. Standing stock still, she holds the door open for you, her cheeks
+    flushed red.
   - You head upstairs to your bedroom, and passionate thoughts drift through your
     head as you write down the evening's events in your journal.
   - Camille lets you inside and you head upstairs to your bedroom. Discomforting thoughts
@@ -3198,7 +3217,7 @@ MonoBehaviour:
   - '"Establish several income streams, then use the leftovers to bury myself in an
     avalanche of luxury."'
   - '"I''d relax. After all, I could finally stop worrying about money."'
-  - '"Wealthy is influence. With that wealth, I would bend the world to my liking."'
+  - '"Wealth is influence. With that wealth, I would bend the world to my liking."'
   - 
   - 
   - 
@@ -3208,7 +3227,7 @@ MonoBehaviour:
   - 
   - '"You''re afraid that you''re forgetting him?"'
   - '"You should have felt like that to begin with. It was always yours."'
-  - '"You should have felt like that to begin with. It was always yours."'
+  - 
   - 
   - 
   - 

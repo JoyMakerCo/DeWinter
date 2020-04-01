@@ -1,13 +1,12 @@
-﻿using Core;
+using Core;
 
 namespace Ambition
 {
-    // Deprecated
     public class StartTutorialCmd : ICommand
     {
         public void Execute()
         {
-/*            AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
+            AmbitionApp.UnregisterCommand<StartTutorialCmd>(GameMessages.START_TUTORIAL);
             AmbitionApp.UnregisterCommand<SkipTutorialCmd>(GameMessages.SKIP_TUTORIAL);
 
             AmbitionApp.RegisterCommand<TutorialFleeConversationCmd>(PartyMessages.FLEE_CONVERSATION);
@@ -15,7 +14,7 @@ namespace Ambition
 
             AmbitionApp.RegisterState(TutorialConsts.TUTORIAL_MACHINE, "TutorialStart");
             AmbitionApp.RegisterState<TutorialState>(TutorialConsts.TUTORIAL_MACHINE, "ShowTutorialView");
-            AmbitionApp.RegisterState<SendMessageState>(TutorialConsts.TUTORIAL_MACHINE, "TutorialDisableClock", TutorialMessage.DISABLE_TIMER);
+            AmbitionApp.RegisterState<SendMessageState, string>(TutorialConsts.TUTORIAL_MACHINE, "TutorialDisableClock", TutorialMessage.DISABLE_TIMER);
 
             AmbitionApp.RegisterState<TutorialRemarkState>(TutorialConsts.TUTORIAL_MACHINE, "TutorialRemarkStep");
             AmbitionApp.RegisterState<TutorialGuestState>(TutorialConsts.TUTORIAL_MACHINE, "TutorialGuestStep");
@@ -31,6 +30,6 @@ namespace Ambition
             AmbitionApp.RegisterLink<CheckEndTutorialLink>(TutorialConsts.TUTORIAL_MACHINE, "EndConversationTutorial", "EndTutorialParty");
 
             App.Service<UFlow.UFlowSvc>().InvokeMachine(TutorialConsts.TUTORIAL_MACHINE);
-*/        }
+        }
     }
 }

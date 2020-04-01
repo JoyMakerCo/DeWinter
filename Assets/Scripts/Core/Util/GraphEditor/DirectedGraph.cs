@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 #if (UNITY_EDITOR)
@@ -28,22 +27,33 @@ namespace UGraph
         {
             int index = GetLinkIndex(fromIndex, toIndex);
             if (index >= 0) return index;
-            Links = Links.Append(new Vector2Int(fromIndex, toIndex)).ToArray();
+            List<Vector2Int> list = new List<Vector2Int>(Links);
+            list.Add(new Vector2Int(fromIndex, toIndex));
+            Links = list.ToArray();
             return Links.Length - 1;
         }
 
         public bool Unlink(int fromIndex, int toIndex)
         {
             int index = GetLinkIndex(fromIndex, toIndex);
-            if (index >= 0) Links = Links.Take(index).Concat(Links.Skip(index + 1)).ToArray();
-            return index >= 0;
+            if (index < 0) return false;
+            List<Vector2Int> list = new List<Vector2Int>(Links);
+            list.RemoveAt(index);
+            Links = list.ToArray();
+            return true;
         }
 
         public int[] GetNeighbors(int node)
         {
-            return (from l in Links
-                    where l.x == node
-                    select l.y).ToArray();
+            List<int> result = new List<int>();
+            foreach(Vector2Int link in Links)
+            {
+                if (link.x == node)
+                {
+                    result.Add(link.y);
+                }
+            }
+            return result.ToArray();
         }
 
         public int GetLinkIndex(int fromIndex, int toIndex)
@@ -53,7 +63,17 @@ namespace UGraph
 
         public virtual void DeleteNode(int nodeIndex)
         {
-            Links = Links?.Where(l => l.x != nodeIndex && l.y != nodeIndex).ToArray();
+            if (Links == null) return;
+
+            List<Vector2Int> links = new List<Vector2Int>();
+            foreach(Vector2Int link in Links)
+            {
+                if (link.x != nodeIndex && link.y != nodeIndex)
+                {
+                    links.Add(link);
+                }
+            }
+            Links = links.ToArray();
         }
 
         protected K[] DeepCopy<K>(K[] array)
@@ -103,11 +123,16 @@ namespace UGraph
 
 		public T[] GetNeighbors(T node)
 		{
-			int index = Array.IndexOf(Nodes, node);
-			return index < 0 ? new T[0] : (
-				from l in Links
-				where l.x == index
-				select Nodes[l.y]).ToArray();
+            int index = Array.IndexOf(Nodes, node);
+            List<T> result = new List<T>();
+            foreach (Vector2Int link in Links)
+            {
+                if (link.x == index)
+                {
+                    result.Add(Nodes[link.y]);
+                }
+            }
+            return result.ToArray();
 		}
 
 		public int GetLinkIndex(T from, T to)
@@ -122,7 +147,9 @@ namespace UGraph
                 if (Nodes[nodeIndex] is IDisposable)
                     ((IDisposable)Nodes[nodeIndex]).Dispose();
 
-                Nodes = Nodes.Where((source, index) => index != nodeIndex).ToArray();
+                List<T> nodes = new List<T>(Nodes);
+                nodes.RemoveAt(nodeIndex);
+                Nodes = nodes.ToArray();
                 base.DeleteNode(nodeIndex);
             }
         }
@@ -143,8 +170,7 @@ namespace UGraph
             {
                 foreach (T node in Nodes)
                 {
-                    if (node is IDisposable)
-                        ((IDisposable)node).Dispose();
+                    (node as IDisposable)?.Dispose();
                 }
                 Nodes = null;
             }
@@ -168,7 +194,20 @@ namespace UGraph
 
 		public U[] GetLinks(T node) => GetLinks(Array.IndexOf(Nodes, node));
 
-        public U[] GetLinks(int nodeIndex) => LinkData.Where((n, i) => Links[i].x == nodeIndex).ToArray();
+        public U[] GetLinks(int nodeIndex)
+        {
+            if (LinkData == null) return new U[0];
+
+            List<U> result = new List<U>();
+            for(int i=0;  i<Links.Length; i++)
+            {
+                if (Links[i].x == nodeIndex && i<LinkData.Length)
+                {
+                    result.Add(LinkData[i]);
+                }
+            }
+            return result.ToArray();
+        }
 
 		public U GetLink(T from, T to) => GetLink(Array.IndexOf(Nodes, from), Array.IndexOf(Nodes, to));
 
@@ -200,10 +239,11 @@ namespace UGraph
 				return index;
 			}
 
-            Vector2Int link = new Vector2Int(fromIndex, toIndex);
-			Links = Links.Append(link).ToArray();
-			LinkData = LinkData.Append(linkData).ToArray();
-			return LinkData.Length-1;
+            List<U> links = new List<U>(LinkData);
+            index = base.Link(fromIndex, toIndex);
+            links.Insert(index, linkData);
+            LinkData = links.ToArray();
+			return index;
 		}
 
 		public U ExtractLinkData(T from, T to)
@@ -249,8 +289,10 @@ namespace UGraph
             base.Dispose();
             if (LinkData != null)
             {
-                IDisposable[] disposables = LinkData.OfType<IDisposable>().ToArray();
-                Array.ForEach(disposables, l => l.Dispose());
+                foreach(U link in LinkData)
+                {
+                    (link as IDisposable)?.Dispose();
+                }
                 LinkData = null;
             }
         }

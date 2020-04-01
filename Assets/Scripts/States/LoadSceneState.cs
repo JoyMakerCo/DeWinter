@@ -3,28 +3,26 @@ using UFlow;
 
 namespace Ambition
 {
-    public class LoadSceneState : UInputState
+    public class LoadSceneState : UState<string>
     {
-        private string _sceneID;
+        string _sceneID;
 
-        public override void Initialize(params object[] parameters) => _sceneID = parameters[0] as string;
+        public override void SetData(string data)
+        {
+            _sceneID = data;
+            AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOutComplete);
+        }
+
         public override void OnEnterState()
         {
-            AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, HandleFade);
             AmbitionApp.SendMessage(GameMessages.FADE_OUT);
         }
 
-        public override void Dispose()
+        private void HandleFadeOutComplete()
         {
-            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFade);
-        }
-
-        private void HandleFade()
-        {
-            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFade);
-            AmbitionApp.SendMessage(GameMessages.LOAD_SCENE, _sceneID);
+            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOutComplete);
+            AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, _sceneID);
             AmbitionApp.SendMessage(GameMessages.FADE_IN);
-            Activate();
         }
     }
 }

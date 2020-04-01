@@ -13,7 +13,6 @@ namespace Ambition
         public const string LOCATION_LOADED = "LOCATION_LOADED";
         public const string LEAVE_LOCATION = "LEAVE_LOCATION";
         public const string REST = "REST";
-        public const string UPDATE_EXHAUSTION = "UPDATE_EXHAUSTION";
         public const string ESTATE = "ESTATE";
     }
 }

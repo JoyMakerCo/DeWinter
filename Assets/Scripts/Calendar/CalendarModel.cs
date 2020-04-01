@@ -1,4 +1,4 @@
-using Core;
+﻿using Core;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,7 +74,7 @@ namespace Ambition
             if (!Timeline.ContainsKey(date)) Timeline[date] = new List<ICalendarEvent>();
             Timeline[date].Add(e);
             Unscheduled.Remove(e);
-            AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, e);
+            AmbitionApp.SendMessage(CalendarMessages.SCHEDULED, e);
             AmbitionApp.SendMessage(e);
         }
 
@@ -267,7 +267,7 @@ namespace Ambition
             {
                 lines.Add( string.Format( "  {0}", ev.Name ));
             }
-#if UNITY_EDITOR
+#if UNITY_EDITORsys
 
             lines.Add( "Timeline Events: " + Timeline.Count.ToString() );
             foreach (var eventList in Timeline.OrderBy(kv => kv.Key).Select(kv => kv.Value))

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -15,8 +15,6 @@ namespace Ambition
     // Otherwise, the stored generated key for the element will be used instead.
     public class AmbitionLocalizedText : MonoBehaviour
     {
-        [SerializeField] private string _localizationKey;
-
         [Serializable]
         public struct LocalizedTextField
         {
@@ -36,6 +34,7 @@ namespace Ambition
     }
 
 #if UNITY_EDITOR
+
     [CustomPropertyDrawer(typeof(AmbitionLocalizedText.LocalizedTextField))]
     public class LocalizationRowDrawer : PropertyDrawer
     {

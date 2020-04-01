@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Core;
-
+using UnityEngine;
 namespace Ambition
 {
     public class InitPartyCmd : ICommand<PartyVO>
@@ -19,7 +19,7 @@ namespace Ambition
             string reason = GetRandomText("party_reason." + party.Faction.ToString().ToLower());
 
             party.Description = (!string.IsNullOrWhiteSpace(party.LocalizationKey))
-                ? AmbitionApp.GetString("party.description." + party.LocalizationKey)
+                ? AmbitionApp.Localize("party.description." + party.LocalizationKey)
                 : reason;
 
             if (!string.IsNullOrWhiteSpace(party.LocalizationKey))
@@ -27,14 +27,28 @@ namespace Ambition
                 party.Name = AmbitionApp.GetString("party.name." + party.LocalizationKey, 
                     new Dictionary<string, string>(){
                         {"$HOST", party.Host},
-                        {"$IMPORTANCE", AmbitionApp.GetString("party_importance." + ((int)party.Size).ToString())},
+                        {"$IMPORTANCE", AmbitionApp.Localize("party_importance." + ((int)party.Size).ToString())},
                         {"$REASON", reason}});
             }
 
-            if (party.Name == null) // No name = randomly generated party
+            if (party.IntroIncident == null)
             {
-                if (party.IntroIncident == null)
-                    party.IntroIncident = UnityEngine.Resources.Load<IncidentConfig>(model.DefaultIntroIncident)?.GetIncident();            }
+                var introName = model.DefaultIntroIncident;
+                Debug.LogFormat("Intro incident is null, loading default intro incident '{0}'",introName);
+                if (introName != null)
+                {
+                    var incidentConfig = UnityEngine.Resources.Load<IncidentConfig>("Incidents/" + introName);      
+                    if(incidentConfig == null)
+                    {
+                        Debug.LogWarning("Resource not loaded");
+                    } 
+                    else
+                    {
+                        party.IntroIncident = incidentConfig.GetIncident();            
+                        Debug.LogFormat("Loaded incident {0}", party.IntroIncident.ToString());
+                    }
+                }
+            }
 
             string str = AmbitionApp.GetString("party_fluff", new Dictionary<string, string>(){
                 {"$INTRO",GetRandomText("party_fluff_intro")},
@@ -46,12 +60,16 @@ namespace Ambition
                 party.Invitation = AmbitionApp.GetString("party.invitation." + party.LocalizationKey, new Dictionary<string, string>(){
                     {"$PLAYER", AmbitionApp.GetModel<GameModel>().PlayerName},
                     //{"$PRONOUN", AmbitionApp.GetString(party.Host.Gender == Gender.Female ? "her" : "his")},
-                    {"$PRONOUN", AmbitionApp.GetString("their")}, // TODO
+                    {"$PRONOUN", AmbitionApp.Localize("their")}, // TODO
                     {"$PARTY",party.Description},
                     {"$DATE", AmbitionApp.GetModel<LocalizationModel>().Date },
-                    {"$SIZE", AmbitionApp.GetString("party_importance." + ((int)party.Size).ToString())},
+                    {"$SIZE", AmbitionApp.Localize("party_importance." + ((int)party.Size).ToString())},
                     {"$FLUFF", str}});
             }
+
+            // string substitutions for the party
+			AmbitionApp.GetModel<LocalizationModel>().SetPartyFaction( party.Faction );
+			AmbitionApp.GetModel<LocalizationModel>().SetPartyOutfit(AmbitionApp.GetModel<InventoryModel>().GetEquippedItem(ItemType.Outfit));
 
             // Random Faction
             if (party.Faction == FactionType.Neutral)

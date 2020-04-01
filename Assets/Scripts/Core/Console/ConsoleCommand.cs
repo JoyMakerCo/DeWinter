@@ -32,5 +32,9 @@ namespace Core
 			get { return _handler; }
 		}
 
+		public string help {
+			get { return _helpText; }
+		}
+
 	}
 }
