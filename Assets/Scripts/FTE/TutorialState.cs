@@ -10,10 +10,10 @@ namespace Ambition
             AmbitionApp.SendMessage(TutorialMessage.TUTORIAL_STEP, ID);
         }
 
-        public override void Cleanup()
+        public override void Dispose()
         {
             AmbitionApp.SendMessage(TutorialMessage.TUTORIAL_STEP_COMPLETE, ID);
-            base.Cleanup();
+            base.Dispose();
         }
     }
 }

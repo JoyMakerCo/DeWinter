@@ -12,7 +12,7 @@ namespace Ambition
             AmbitionApp.GetService<ModelTrackingSvc>().Reset();
 
             string[] machines = uflow.GetActiveMachines();
-            Array.ForEach(machines, m => uflow.GetMachine(m)?.Cleanup());
+            Array.ForEach(machines, m => uflow.GetMachine(m)?.Dispose());
             AmbitionApp.RegisterCommand<FadeToMenuCmd>(GameMessages.FADE_OUT_COMPLETE);
             AmbitionApp.SendMessage(AudioMessages.STOP_AMBIENT);
             AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);

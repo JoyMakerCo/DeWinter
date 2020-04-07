@@ -59,7 +59,7 @@ namespace UFlow
         public bool ExitMachine(string MachineID)
         {
             UMachine machine = _active.Find(m => m.MachineID == MachineID);
-            machine?.Cleanup();
+            machine?.Dispose();
             return _active.Remove(machine);
         }
 
@@ -231,7 +231,7 @@ namespace UFlow
         internal bool Remove(UMachine machine) => _active.Remove(machine);
         internal bool Remove(UController controller)
         {
-            controller?._Machine?.Cleanup();
+            controller?._Machine?.Dispose();
             return _controllers.Remove(controller);
         }
         internal bool Activate(UMachine machine)
@@ -254,7 +254,7 @@ namespace UFlow
             {
                 graph.Dispose();
             }
-            while (_active.Count > 0) _active[0].Cleanup();
+            while (_active.Count > 0) _active[0].Dispose();
             _machines.Clear();
             _controllers.Clear();
             _instantiators.Clear();

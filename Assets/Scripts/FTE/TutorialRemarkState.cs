@@ -24,11 +24,11 @@ namespace Ambition
             }
         }
 
-        override public void Cleanup()
+        override public void Dispose()
         {
             if (_bounz != null)
                 UnityEngine.Object.Destroy(_bounz);
-            base.Cleanup();
+            base.Dispose();
         }
     }
 }

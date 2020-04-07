@@ -21,12 +21,11 @@ namespace Ambition
             AmbitionApp.RegisterState("IncidentController", "Transition"); // Multiple options; advance to the selected moment
             AmbitionApp.RegisterState<EndIncidentState>("IncidentController", "EndIncident"); // No more moments; end the incident
             AmbitionApp.RegisterState("IncidentController", "CheckNextIncident");
-            AmbitionApp.RegisterState<SendMessageState, string>("IncidentController", "EndIncidents", IncidentMessages.EXIT_INCIDENTS);
+            AmbitionApp.RegisterState("IncidentController", "Exit");
             AmbitionApp.RegisterState<FadeInState>("IncidentController", "ExitIncidents");
 
             AmbitionApp.RegisterLink<CheckIncidentLink>("IncidentController", "StartIncidentDecision", "StartIncidents");
-            AmbitionApp.RegisterLink("IncidentController", "StartIncidentDecision", "EndIncidents"); // Don't bother transitioning if there are no incidents
-            AmbitionApp.RegisterLink("IncidentController", "EndIncidents", "ExitIncidents");
+            AmbitionApp.RegisterLink("IncidentController", "StartIncidentDecision", "Exit"); // Don't bother transitioning if there are no incidents
 
             AmbitionApp.RegisterLink<FadeOutLink>("IncidentController", "StartIncidents", "LoadIncidentScene");
             AmbitionApp.RegisterLink("IncidentController", "LoadIncidentScene", "ShowHeader");
@@ -38,7 +37,7 @@ namespace Ambition
 
             AmbitionApp.RegisterLink<FadeOutLink>("IncidentController", "EndIncident", "CheckNextIncident");
             AmbitionApp.RegisterLink<CheckIncidentLink>("IncidentController", "CheckNextIncident", "StartIncident");
-            AmbitionApp.RegisterLink("IncidentController", "CheckNextIncident", "EndIncidents");
+            AmbitionApp.RegisterLink("IncidentController", "CheckNextIncident", "Exit");
         }
     }
 }

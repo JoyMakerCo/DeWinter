@@ -11,9 +11,9 @@ namespace UFlow
         }
 
         private UMachine _subMachine;
-        public override void Cleanup()
+        public override void Dispose()
         {
-            _subMachine?.Cleanup();
+            _subMachine?.Dispose();
             _subMachine = null;
         }
 

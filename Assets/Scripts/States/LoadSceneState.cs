@@ -24,5 +24,10 @@ namespace Ambition
             AmbitionApp.SendMessage<string>(GameMessages.LOAD_SCENE, _sceneID);
             AmbitionApp.SendMessage(GameMessages.FADE_IN);
         }
+
+        public override void Dispose()
+        {
+            AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, HandleFadeOutComplete);
+        }
     }
 }

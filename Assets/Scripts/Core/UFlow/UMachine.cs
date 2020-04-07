@@ -10,7 +10,7 @@ using UnityEngine;
 namespace UFlow
 {
     [Serializable]
-	public sealed class UMachine : IConsoleEntity
+	public sealed class UMachine : IDisposable, IConsoleEntity
 	{
 		public string MachineID { get; private set; }
         internal UMachineState _State;
@@ -170,7 +170,7 @@ Debug.Log(node._Machine?.MachineID + " " + node.ID);
 
         private void ExitMachine()
         {
-            if (_State?._Machine == null) Cleanup();
+            if (_State?._Machine == null) Dispose();
             else _State._Machine.Activate(_State);
         }
 
@@ -186,14 +186,14 @@ Debug.Log(node._Machine?.MachineID + " " + node.ID);
             if (_nodes != null)
             {
                 (_nodes[index] as UState)?.OnExitState();
-                _nodes[index]?.Cleanup();
+                _nodes[index]?.Dispose();
                 _nodes[index] = null;
             }
 		}
 
         // Deallocate memory and get ready for garbage collection.
         // May be called by the machine itself or by UFlowSvc.
-		internal void Cleanup()
+		public void Dispose()
 		{
             if (_UFlow.Remove(this))
             {
@@ -204,7 +204,7 @@ Debug.Log(node._Machine?.MachineID + " " + node.ID);
                 _links = null;
 
                 if (_nodes != null)
-                    Array.ForEach(_nodes, s => s?.Cleanup());
+                    Array.ForEach(_nodes, s => s?.Dispose());
                 _nodes = null;
 
                 _queue?.Clear();

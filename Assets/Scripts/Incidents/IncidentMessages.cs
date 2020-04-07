@@ -6,6 +6,5 @@ namespace Ambition
 	{
         public const string START_INCIDENT = "START_INCIDENT";
         public const string END_INCIDENT = "END_INCIDENT";
-        public const string EXIT_INCIDENTS = "EXIT_INCIDENTS";
     }
 }
