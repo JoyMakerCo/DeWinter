@@ -246,21 +246,17 @@ namespace UGraph
 			return index;
 		}
 
-		public U ExtractLinkData(T from, T to)
+		public U GetLinkData(T from, T to)
 		{
-			return ExtractLinkData(Array.IndexOf(Nodes, from), Array.IndexOf(Nodes, to));
+			return GetLinkData(Array.IndexOf(Nodes, from), Array.IndexOf(Nodes, to));
 		}
 
-		public U ExtractLinkData(int fromIndex, int toIndex)
+		public U GetLinkData(int fromIndex, int toIndex)
 		{
 			int index = GetLinkIndex(fromIndex, toIndex);
-			if (index >= 0)
-			{
-				U result = LinkData[index];
-				Unlink(fromIndex, toIndex);
-				return result;
-			}
-			return default(U);
+			return index < 0
+                ? default
+                : LinkData[index];
 		}
 
         public override void DeleteNode(int nodeIndex)

@@ -28,8 +28,8 @@ namespace Ambition
 
             GetComponentInChildren<SceneMediator>(true).gameObject.SetActive(true);
 
-            AmbitionApp.Execute<RegisterIncidentControllerCmd>();
-            AmbitionApp.GetService<UFlow.UFlowSvc>().InvokeMachine("IncidentController");
+            AmbitionApp.Execute<RegisterIncidentControllerCmd, string>(FlowConsts.INCIDENT_CONTROLLER);
+            AmbitionApp.GetService<UFlow.UFlowSvc>().InvokeMachine(FlowConsts.INCIDENT_CONTROLLER);
         }
     }
 }

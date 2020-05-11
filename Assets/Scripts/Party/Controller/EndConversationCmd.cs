@@ -33,7 +33,7 @@ namespace Ambition
 		private CommodityVO GenerateRandomReward(int numCharmed, string faction)
     	{
     		int factor = numCharmed < 5 ? numCharmed : 6;
-			switch (Util.RNG.Generate(5))
+			switch ( Util.RNG.Generate(5))
 			{
 				case 0:
 				case 1:

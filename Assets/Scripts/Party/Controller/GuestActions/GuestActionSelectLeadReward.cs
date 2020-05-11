@@ -8,8 +8,8 @@ namespace Ambition
     {
         public override void OnEnterState()
         {
-            UController controller = _Machine._UFlow.GetController(_Machine);
-            if (controller != null)
+            //UController controller = _Machine._UFlow.GetController(_Machine);
+            //if (controller != null)
             {
                 MapModel map = AmbitionApp.GetModel<MapModel>();
                 //CharacterVO guest = map.Room.Value.Guests[controller.transform.GetSiblingIndex()];

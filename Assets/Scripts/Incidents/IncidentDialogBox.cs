@@ -18,14 +18,12 @@ namespace Ambition
 		void Awake ()
 		{
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Subscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
             AmbitionApp.Subscribe<TransitionVO[]>(HandleTransitions);
         }
 
         void OnDestroy ()
 		{
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Unsubscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
             AmbitionApp.Unsubscribe<TransitionVO[]>(HandleTransitions);
         }
 
@@ -33,14 +31,12 @@ namespace Ambition
 		{
             if (_interactive)
             {
-                if (_trans != null) AmbitionApp.SendMessage(_trans);
-                else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, _incident);
+                AmbitionApp.SendMessage(IncidentMessages.TRANSITION, _trans);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/One Shot SFX/Mouse_click"); //Literally only ever plays this sound. It will never need to play anything else.
             }
         }
 
         void HandleIncident(IncidentVO incident) => _incident = incident;
-        void HandleEndIncident() => _incident = null;
         void HandleTransitions(TransitionVO[] transitions)
 		{
             int buttonIndex = 0;

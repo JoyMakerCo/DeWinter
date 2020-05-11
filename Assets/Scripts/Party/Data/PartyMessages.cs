@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace Ambition
 {
@@ -27,7 +27,6 @@ namespace Ambition
         public const string END_PARTY = "END_PARTY";
         public const string END_ROUND = "END_ROUND";
         public const string END_CONVERSATION = "END_CONVERSATION"; //This means the player won
-        public const string EXIT_CONVERSATION = "EXIT_CONVERSATION"; //Message sent when exiting the conversation machine
         public const string FLEE_CONVERSATION = "FLEE_CONVERSATION"; //This means the player lost
         public const string FLEE_PENALTIES = "FLEE_PENALTIES";
         public const string START_DANCING = "StartDancingMsg";

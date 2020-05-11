@@ -11,15 +11,17 @@ namespace Ambition
     {
         public PartyModel() : base("PartyData") { }
         public PartyVO Party;
-
         public int Turns;
         public int Turn = 0;
         public int TurnsLeft => Turns - Turn;
-        public int IncidentIndex = 0;
         public IncidentVO[] Incidents;
         public IncidentVO Incident;
-        public IncidentVO RequiredIncident => ((Party?.RequiredIncidents?.Length ?? 0) > IncidentIndex)
-            ? Party.RequiredIncidents[IncidentIndex]
+
+        [JsonProperty("incident_index")]
+        private int _incidentIndex = 0;
+
+        public IncidentVO RequiredIncident => (_incidentIndex < (Party?.RequiredIncidents?.Length ?? 0))
+            ? Party.RequiredIncidents[_incidentIndex]
             : null;
 
         public ItemVO LastOutfit;
@@ -118,7 +120,13 @@ namespace Ambition
 			}
 		}
 
-		public string[] Dump()
+        public IncidentVO NextRequiredIncident()
+        {
+            _incidentIndex++;
+            return RequiredIncident;
+        }
+
+        public string[] Dump()
 		{
 
 			var lines = new List<string>();
@@ -127,7 +135,7 @@ namespace Ambition
 			lines.Add("Incidents: ");
 			for (int i = 0; i < Incidents.Length; i++)
 			{
-				string prefix = (i == IncidentIndex) ? "> " : "  ";
+				string prefix = (i == _incidentIndex) ? "> " : "  ";
 				lines.Add( prefix + Incidents[i].ToString() );
 			}
 

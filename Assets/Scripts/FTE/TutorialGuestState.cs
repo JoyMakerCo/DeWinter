@@ -6,7 +6,7 @@ using UFlow;
 
 namespace Ambition
 {
-    public class TutorialGuestState : TutorialState
+    public class TutorialGuestState : TutorialState, IDisposable
     {
         private TutorialFlashSpot _flash=null;
         public override void OnEnterState()
@@ -29,7 +29,7 @@ namespace Ambition
             }
         }
 
-        override public void Dispose()
+        public void Dispose()
         {
             if (_flash != null) GameObject.Destroy(_flash);
             base.Dispose();

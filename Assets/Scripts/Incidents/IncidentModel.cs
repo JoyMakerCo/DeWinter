@@ -18,35 +18,22 @@ namespace Ambition
         }
 
         public List<IncidentVO> IncidentQueue = new List<IncidentVO>();
-        public IncidentVO Incident => IncidentQueue.Count > 0 ? IncidentQueue[0] : null;
-
+        public IncidentVO Incident => IsIncidentQueued ? IncidentQueue[0] : null;
+        public bool IsIncidentQueued => IncidentQueue?.Count > 0;
         public List<IncidentVO> PerilIncidents;
-
+        public Dictionary<string, int> PlayCount = new Dictionary<string, int>();
         public IncidentVO GettingCaughtIncident;
-
-        public int GetPlayCount( string incidentID )
-        {
-            var _game = AmbitionApp.GetModel<GameModel>();
-            if (_game.IncidentHistory.ContainsKey(incidentID))
-            {
-                return _game.IncidentHistory[incidentID];
-            }
-
-            return 0;
-        }
 
         [UnityEngine.SerializeField]
         private int _moment = -1;
         public MomentVO Moment
         {
-            set
-            {
-                _moment = value == null ? -1 : (Incident?.GetNodeIndex(value) ?? -1);
-                if (_moment >= 0) AmbitionApp.SendMessage(value);
-            }
             get => Incident?.Nodes != null && _moment >= 0 && _moment < Incident.Nodes.Length
                 ? Incident.Nodes[_moment]
                 : null;
+            set => _moment = (value != null && Incident?.Nodes != null)
+                ? Array.IndexOf(Incident.Nodes, value)
+                : -1;
         }
 
         public void Reset()

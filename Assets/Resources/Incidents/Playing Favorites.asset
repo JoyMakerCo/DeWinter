@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Playing Favorites
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 55000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -1924,7 +1924,10 @@ MonoBehaviour:
         Pose: happy
         Name: "\xC9lisabeth"
       Speaker: 3
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: ElisabethPaintsPortrait
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -2428,7 +2431,10 @@ MonoBehaviour:
         Pose: happy
         Name: "\xC9lisabeth"
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: ElisabethPaintsPortrait
+        Value: 1
       Music:
         Name: 
         Parameters: []
@@ -4182,7 +4188,7 @@ MonoBehaviour:
       ID: Courting Controversy
       Value: 1
       Operator: 4
-  _factions: 000000000001
+  _factions: 000100000000
   _chapters: 00000101
   _date: -1
   _nodeText:
@@ -4333,12 +4339,9 @@ MonoBehaviour:
     Maria having a great portrait to glorify her, the legitimacy of kings and queens
     atrophies, just a little.
   - She frowns and sighs. "I'll just avoid painting that portrait altogether."
-  - 'When Marie Antoinette uses her influence to get her way, she shows that she''s
-    relevant. When Elisabeth paints Princess Maria, she''ll have new art to glorify
+  - When Marie Antoinette uses her influence to get her way, she shows that she's
+    relevant. When Elisabeth paints Princess Maria, she'll have new art to glorify
     her. With this, the legitimacy of kings and queens grows, just a little.
-
-
-    (The Crown has gained some power)'
   - Out on the street, you wave to your coachman to head home without you. Given what
     happened the last time he went home without you, he seems reluctant, but does
     as he's told.

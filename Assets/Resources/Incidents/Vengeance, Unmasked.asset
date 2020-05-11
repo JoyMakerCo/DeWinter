@@ -98,13 +98,14 @@ MonoBehaviour:
   - {x: 436, y: 1934}
   - {x: 432, y: 1984}
   - {x: 445, y: 2041}
-  - {x: 615, y: 2244}
-  - {x: 627, y: 2302}
-  - {x: 643, y: 2368}
-  - {x: 648, y: 2429}
+  - {x: 638, y: 2286}
+  - {x: 649, y: 2347}
+  - {x: 667, y: 2404}
+  - {x: 679, y: 2461}
   - {x: 465, y: 2092}
   - {x: 483, y: 2140}
-  - {x: 527, y: 2186}
+  - {x: 616, y: 2237}
+  - {x: 527, y: 2188}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -207,8 +208,9 @@ MonoBehaviour:
     - {x: 85, y: 86}
     - {x: 82, y: 87}
     - {x: 87, y: 88}
-    - {x: 88, y: 89}
     - {x: 89, y: 83}
+    - {x: 88, y: 90}
+    - {x: 90, y: 89}
     Nodes:
     - Text: 
       Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
@@ -2115,6 +2117,27 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/Female_bark_negative
         Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: neutral
+        Name: Marcelle
+      Character2:
+        AvatarID: Valet
+        Pose: afraid
+        Name: "J\xE9r\xF4me"
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
     LinkData:
     - index: 0
       Text: 
@@ -2767,6 +2790,12 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
@@ -2887,7 +2916,7 @@ MonoBehaviour:
   - '(You have gained a staggering amount of credibility)
 
     (You have lost a staggering amount of peril)'
-  - "The order of events there is a little backwards, but you\x19ll take it."
+  - "The order of events there is a little backwards, but you'\x19ll take it."
   - "\x1C\"Madame, you have down the crown a great service by exposing this impostor.
     We are in your debt.\x1D\""
   - (You have gained a staggering amount of favor with Elisabeth)
@@ -2963,6 +2992,8 @@ MonoBehaviour:
     before I cast him out? What he asked me to do?"'
   - '"Actually... no. I shall let you unravel that particular mystery yourself." She
     sighs with disgust. "Continue, Jerome."'
+  - "At the mention of this, J\xE9r\xF4me shifts uncomfortably, his eyes darting between
+    Marcelle and yourself."
   _linkText:
   - 
   - 
@@ -3058,6 +3089,7 @@ MonoBehaviour:
   - "\u201CDon\u2019t flatter yourself. I have no intention of seeing you again, just
     your money.\u201D"
   - "\u201CI\u2019m going to live an amazing life Marcelle. Enjoy paying for it.\u201D"
+  - 
   - 
   - 
   - 

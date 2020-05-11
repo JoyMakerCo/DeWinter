@@ -1,20 +1,23 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UFlow;
 
 namespace Ambition
 {
-    public class TutorialRemarkLink : ULink
+    public class TutorialRemarkLink : ULink, Util.IInitializable, System.IDisposable
     {
-        override public void Initialize()
+        public override bool Validate() => false;
+
+        public void Initialize()
         {
             AmbitionApp.Subscribe<RemarkVO>(Validate);
         }
+
         protected void Validate(RemarkVO value)
         {
             if (value != null) Activate();
         }
 
-        override public void Dispose()
+        public void Dispose()
         {
             AmbitionApp.Unsubscribe<RemarkVO>(Validate);
         }

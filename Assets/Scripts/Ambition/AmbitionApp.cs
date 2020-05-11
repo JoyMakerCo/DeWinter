@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Dialog;
 using UFlow;
+using Util;
 using Core;
 
 namespace Ambition
@@ -175,26 +176,21 @@ namespace Ambition
             App.Service<UFlowSvc>().RegisterState(machineID, stateID);
         }
 
-        public static void RegisterState<C, T>(string machineID, string stateID, T arg) where C : UState<T>, new()
+        public static void RegisterState<C, T>(string machineID, string stateID, T arg) where C : UState, IInitializable<T>, new()
         {
             App.Service<UFlowSvc>().RegisterState<C, T>(machineID, stateID, arg);
         }
 
         // Binds an existing state to a new node type
-        public static void BindState<T>(string machineID, string stateID) where T:UNode, new()
+        public static void BindState<T>(string machineID, string stateID) where T:UState, new()
         {
             App.Service<UFlowSvc>().BindState<T>(machineID, stateID);
         }
 
-        // Temp method for binding a state to a sub-machine
-        public static void BindMachineState(string machineID, string stateID, string subMachineID)
+        // Binds an existing state to a new node type
+        public static void BindState<S, D>(string machineID, string stateID, D data) where S : UState, IInitializable<D>, new()
         {
-            App.Service<UFlowSvc>().BindMachineState(machineID, stateID, subMachineID);
-        }
-
-        public static void RegisterMachineState(string machineID, string stateID, string newMachineID)
-        {
-            App.Service<UFlowSvc>().RegisterMachineState(machineID, stateID, newMachineID);
+            App.Service<UFlowSvc>().BindState<S,D>(machineID, stateID, data);
         }
 
         public static void RegisterLink(string machineID, string originState, string targetState)
@@ -207,7 +203,7 @@ namespace Ambition
             App.Service<UFlowSvc>().RegisterLink<T>(machineID, originState, targetState);
 		}
 
-		public static void RegisterLink<T, U>(string machineID, string originState, string targetState, U data) where T : ULink<U>, new()
+		public static void RegisterLink<T, U>(string machineID, string originState, string targetState, U data) where T : ULink, IInitializable<U>, new()
 		{
             App.Service<UFlowSvc>().RegisterLink<T, U>(machineID, originState, targetState, data);
 		}

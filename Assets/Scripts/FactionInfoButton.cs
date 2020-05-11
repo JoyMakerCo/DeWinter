@@ -8,7 +8,7 @@ public class FactionInfoButton : MonoBehaviour {
     private Text text;
     private Image image;
 
-    public Ambition.FactionInfoTextController textController;
+    public FactionInfoTextController textController;
     public FactionType faction;
     public enum InfoType {Allegiance, Power};
     public InfoType infoType;

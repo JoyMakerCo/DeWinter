@@ -68,7 +68,7 @@ namespace Core
         }
 
         // Retrieves a model of a particular type.
-        public T GetModel<T>() where T : Model => _models.TryGetValue(typeof(T), out Model m) ? (T)m : default;
+        public T GetModel<T>() where T : Model => _models.TryGetValue(typeof(T), out Model m) ? (T)m : null;
 
 		// Register a unique model to the T service.
 		public T Register<T>() where T : Model, new()

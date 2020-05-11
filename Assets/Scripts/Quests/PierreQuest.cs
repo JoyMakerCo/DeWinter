@@ -32,7 +32,7 @@ public class PierreQuest
 
         RewardKey = "quest.reward.livre.0";
 
-        switch(Util.RNG.Generate(18))
+        switch( Util.RNG.Generate(18))
         {
         	case 0: 
         	case 1: 

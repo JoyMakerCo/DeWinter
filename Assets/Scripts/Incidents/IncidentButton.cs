@@ -21,7 +21,7 @@ namespace Ambition
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            AmbitionApp.SendMessage(_transition);
+            AmbitionApp.SendMessage(IncidentMessages.TRANSITION, _transition);
         }
 
         public string Text

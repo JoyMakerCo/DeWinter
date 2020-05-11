@@ -16,8 +16,6 @@ namespace Ambition
         public GameObject Legend;
         public Animator LegendAnimationController;
         public LocationDialogMediator ParisLocationDialog;
-        public GameObject RestButton;
-        public GameObject EstateButton;
 
         // The model stores the IDs of known and visited one-shot locations
         // The view shows all known locations, up to MaxExplorable locations, and non-explorable locations that meet requirements.
@@ -62,6 +60,11 @@ namespace Ambition
                 }
             }
             AmbitionApp.SendMessage<string>(GameMessages.SHOW_HEADER, AmbitionApp.Localize("paris"));
+        }
+
+        private void OnDestroy()
+        {
+            AmbitionApp.Unsubscribe<Pin>(ParisMessages.SELECT_LOCATION, HandleSelect);
         }
 
         //To Do: Add in the fader (Still needs to be made)

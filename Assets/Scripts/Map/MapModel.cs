@@ -49,12 +49,13 @@ namespace Ambition
 
         public bool LoadMap(PartyVO party)
         {
-            if (!_partyMaps.TryGetValue(party, out MapView map))
-                return false;
-
-            MapObject = map.gameObject;
-            Map.Value = map.CreateMapVO();
-            return true;
+            if (party != null && _partyMaps.TryGetValue(party, out MapView map) && map != null)
+            {
+                MapObject = map.gameObject;
+                Map.Value = map.CreateMapVO();
+                return true;
+            }
+            return false;
         }
 
         public bool Restore(string data)

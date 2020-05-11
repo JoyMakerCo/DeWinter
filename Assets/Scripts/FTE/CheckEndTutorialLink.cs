@@ -3,9 +3,11 @@ using UFlow;
 
 namespace Ambition
 {
-    public class CheckEndTutorialLink : ULink
+    public class CheckEndTutorialLink : ULink, Util.IInitializable, IDisposable
     {
-        public override void Initialize()
+        public override bool Validate() => false;
+
+        public void Initialize()
         {
             AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, CheckMark);
         }
@@ -22,7 +24,7 @@ namespace Ambition
             }
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
             AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, CheckMark);
         }

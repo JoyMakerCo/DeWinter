@@ -35,10 +35,7 @@ namespace Ambition
             CloseButton.onClick.AddListener(OnClose);
         }
 
-        private void OnClose()
-        {
-            gameObject.SetActive(false);
-        }
+        private void OnClose() => gameObject.SetActive(false);
 
         private void OnDestroy()
         {

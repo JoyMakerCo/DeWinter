@@ -101,20 +101,13 @@ namespace Ambition
             }
         }
 
-        [JsonProperty("incident_history")]
-        public Dictionary<string,int> IncidentHistory;
-
-
         [JsonProperty("vip")]
         private readonly int[] _vip;
         public int PartyInviteImportance => _vip[Level];
 
         public int Level => _reputation.Level;
 
-        public GameModel() : base("GameData")
-        {
-            IncidentHistory = new Dictionary<string, int>();
-        }
+        public GameModel() : base("GameData") { }
 
         private void HandleLivre(int livre) => AmbitionApp.SendMessage(GameConsts.LIVRE, livre);
         private void HandleCred(int cred) => AmbitionApp.SendMessage(GameConsts.CRED, cred);
@@ -124,17 +117,6 @@ namespace Ambition
             if (exhaustion < 0) AmbitionApp.SendMessage(GameConsts.WELL_RESTED);
             else AmbitionApp.SendMessage(GameConsts.EXHAUSTION,
             exhaustion);
-        }
-
-        public void MarkCompleteIncident( IncidentVO ivo )
-        {
-            Debug.LogFormat("GameModel.MarkCompleteIncident {0}", ivo.Name);
-            if (!IncidentHistory.ContainsKey( ivo.Name ))
-            {
-                IncidentHistory[ivo.Name] = 0;
-            }
-
-            IncidentHistory[ivo.Name]++;
         }
 
         [JsonProperty("levels")]
@@ -156,7 +138,7 @@ namespace Ambition
 
         public string[] Dump()
         {
-            var lines = new List<string>()
+            return new string[]
             {
                 "GameModel:",
                 "Allegiance: " + Allegiance.ToString(),
@@ -169,15 +151,6 @@ namespace Ambition
                 "Reputation: " + Reputation.ToString(),
                 "Level: " + Level.ToString(),
             };
-                
-            lines.Add( "Play Counts: ");
-
-            foreach (var kv in IncidentHistory)
-            {
-                lines.Add( string.Format("  {0}: {1}", kv.Key, kv.Value ) );
-            }
-
-            return lines.ToArray();
         }
 
 

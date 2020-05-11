@@ -3,50 +3,59 @@ using Core;
 using UFlow;
 namespace Ambition
 {
-    public class RegisterDayFlowControllerCommand : ICommand
+    public class RegisterDayFlowControllerCommand : UFlowConfig
     {
-        public void Execute()
+        public override void Initialize()
         {
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "InitCharacter", GameMessages.INIT_CHARACTER);
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "InitUpdate", CalendarMessages.UPDATE_CALENDAR);
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "UpdateCalendar", CalendarMessages.UPDATE_CALENDAR);
-            AmbitionApp.RegisterState<LoadSceneState, string>("DayFlowController", "Chapter", SceneConsts.CHAPTER_PLACARD);
-            AmbitionApp.RegisterState<LoadSceneState, string>("DayFlowController", "InitChapter", SceneConsts.CHAPTER_PLACARD);
-            AmbitionApp.RegisterState<LoadSceneState, string>("DayFlowController", "DayPlacard", SceneConsts.DAILY_PLACARD);
-            AmbitionApp.RegisterMachineState("DayFlowController", "StartIncident", "IncidentController");
-            AmbitionApp.RegisterState("DayFlowController", "RequiredPartyDecision");
-            AmbitionApp.RegisterMachineState("DayFlowController", "Estate", "EstateController");
-            AmbitionApp.RegisterState("DayFlowController", "PartyDecision");
-            AmbitionApp.RegisterMachineState("DayFlowController", "Party", "PartyController");
-            AmbitionApp.RegisterMachineState("DayFlowController", "Paris", "ParisMapController");
-            AmbitionApp.RegisterState("DayFlowController", "LocationDecision");
-            AmbitionApp.RegisterState("DayFlowController", "EndIncidentDecision");
-            AmbitionApp.RegisterMachineState("DayFlowController", "EndIncident", "IncidentController");
-            AmbitionApp.RegisterState("DayFlowController", "EndGameDecision");
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "NextDayState", CalendarMessages.NEXT_DAY);
-            AmbitionApp.RegisterState<SendMessageState, string>("DayFlowController", "EndGameState", GameMessages.END_GAME);
+            State("InitGame");
+            State("InitChapter");
+            State("StartIncident");
+            State("RequiredPartyDecision");
+            State("Party");
+            State("EndIncident");
+            State("EndGameDecision");
+            State("EndGame");
+            State("NextDayState", false);
+            State("Estate", false);
+            State("PartyDecision");
+            State("Paris");
 
-            AmbitionApp.RegisterLink("DayFlowController", "InitCharacter", "InitUpdate");
-            AmbitionApp.RegisterLink("DayFlowController", "InitUpdate", "InitChapter");
-            AmbitionApp.RegisterLink<InputLink, string>("DayFlowController", "InitChapter", "StartIncident", GameMessages.COMPLETE);
-            AmbitionApp.RegisterLink<CheckChapterLink>("DayFlowController", "UpdateCalendar", "Chapter");
-            AmbitionApp.RegisterLink("DayFlowController", "UpdateCalendar", "DayPlacard");
-            AmbitionApp.RegisterLink<InputLink, string>("DayFlowController", "Chapter", "DayPlacard", GameMessages.COMPLETE);
-            AmbitionApp.RegisterLink<InputLink, string>("DayFlowController", "DayPlacard", "StartIncident", GameMessages.COMPLETE);
+            State("UpdateCalendar", false);
+            State("ChapterDecision");
+            State("Chapter");
+            State("DayDecision", false);
+            State("Day");
 
-            AmbitionApp.RegisterLink("DayFlowController", "StartIncident", "RequiredPartyDecision");
-            AmbitionApp.RegisterLink<CheckRequiredPartyLink>("DayFlowController", "RequiredPartyDecision", "Party");
-            AmbitionApp.RegisterLink("DayFlowController", "RequiredPartyDecision", "Estate");
-            AmbitionApp.RegisterLink("DayFlowController", "Estate", "PartyDecision");
-            AmbitionApp.RegisterLink<CheckPartyLink>("DayFlowController", "PartyDecision", "Party");
-            AmbitionApp.RegisterLink("DayFlowController", "PartyDecision", "Paris");
-            AmbitionApp.RegisterLink("DayFlowController", "Paris", "LocationDecision");
-            AmbitionApp.RegisterLink("DayFlowController", "LocationDecision", "Estate");
-            AmbitionApp.RegisterLink("DayFlowController", "Party", "EndIncident");
-            AmbitionApp.RegisterLink("DayFlowController", "EndIncident", "EndGameDecision");
-            AmbitionApp.RegisterLink<CheckGameEndLink>("DayFlowController", "EndGameDecision", "EndGameState");
-            AmbitionApp.RegisterLink("DayFlowController", "EndGameDecision", "NextDayState");
-            AmbitionApp.RegisterLink("DayFlowController", "NextDayState", "UpdateCalendar");
+            Link("Day", "StartIncident");
+            Link("RequiredPartyDecision", "Estate");
+            Link("UpdateCalendar", "DayDecision");
+            Link("NextDayState", "UpdateCalendar");
+            Link("EndGameDecision", "NextDayState");
+            Link("Paris", "EndIncident");
+            Link("Paris", "Estate");
+
+            Bind<SendMessageState, string>("InitGame", CalendarMessages.UPDATE_CALENDAR);
+            Bind<SendMessageState, string>("UpdateCalendar", CalendarMessages.UPDATE_CALENDAR);
+            Bind<UMachine, string>("StartIncident", FlowConsts.INCIDENT_CONTROLLER);
+            Bind<UMachine, string>("Estate", FlowConsts.ESTATE_CONTROLLER);
+            Bind<UMachine, string>("Party", FlowConsts.PARTY_CONTROLLER);
+            Bind<UMachine, string>("Paris", FlowConsts.PARIS_CONTROLLER);
+            Bind<UMachine, string>("EndIncident", FlowConsts.INCIDENT_CONTROLLER);
+            Bind<SendMessageState, string>("NextDayState", CalendarMessages.NEXT_DAY);
+            Bind<SendMessageState, string>("EndGame", GameMessages.END_GAME);
+
+
+            BindLink<LoadSceneLink, string>("InitGame", "InitChapter", SceneConsts.CHAPTER_PLACARD);
+            BindLink<MessageLink, string>("InitChapter", "StartIncident", GameMessages.COMPLETE);
+            BindLink<CheckChapterLink>("UpdateCalendar", "ChapterDecision");
+            BindLink<MessageLink, string>("Chapter", "DayDecision", GameMessages.COMPLETE);
+            BindLink<MessageLink, string>("Day", "StartIncident", GameMessages.COMPLETE);
+            BindLink<CheckRequiredPartyLink>("RequiredPartyDecision", "Party");
+            BindLink<CheckLocationLink>("Paris", "EndIncident");
+            BindLink<CheckPartyLink>("PartyDecision", "Party");
+            BindLink<CheckGameEndLink>("EndGameDecision", "EndGame");
+            BindLink<LoadSceneLink, string>("ChapterDecision", "Chapter", SceneConsts.CHAPTER_PLACARD);
+            BindLink<LoadSceneLink, string>("DayDecision", "Day", SceneConsts.DAILY_PLACARD);
         }
     }
 }

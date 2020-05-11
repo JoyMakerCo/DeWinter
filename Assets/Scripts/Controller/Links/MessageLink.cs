@@ -1,15 +1,18 @@
-using System;
+﻿using System;
 using UFlow;
 
 namespace Ambition
 {
-    public class MessageLink : ULink<string>
+    public class MessageLink : ULink, Util.IInitializable<string>, IDisposable
     {
         private string _event;
-        override public void SetValue(string data) => _event = data;
+        public void Initialize(string data)
+        {
+            _event = data;
+            AmbitionApp.Subscribe(_event, Activate);
+        }
 
-        public override void Initialize() => AmbitionApp.Subscribe(_event, Activate);
-
-        override public void Dispose() => AmbitionApp.Unsubscribe(_event, Activate);
+        public override bool Validate() => false;
+        public void Dispose() => AmbitionApp.Unsubscribe(_event, Activate);
     }
 }

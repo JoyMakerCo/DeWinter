@@ -18,7 +18,7 @@ namespace Ambition
                 //    if (inventory.Equipped.TryGetValue(ItemConsts.ACCESSORY, out item)
                 //        && item != null && (string)item.State[ItemConsts.STYLE] == style)
                 //    {
-                //        if (Util.RNG.Generate(0, 4) == 0)
+                //        if ( Util.RNG.Generate(0, 4) == 0)
                 //        {
                 //            //Send Out a Relevant Pop-Up
                 //            Dictionary<string, string> substitutions = new Dictionary<string, string>(){

@@ -2,10 +2,10 @@
 
 namespace Ambition
 {
-    public class SendMessageState : UState<string>
+    public class SendMessageState : UState, Util.IInitializable<string>
     {
         string message;
-        public override void SetData(string data) => message = data;
+        public void Initialize(string data) => message = data;
         public override void OnEnterState()
         {
             AmbitionApp.SendMessage(message);

@@ -45,13 +45,12 @@ namespace Ambition
                     {
                         Debug.Log("   "+line);
                     }
-                    int playCount = AmbitionApp.GetModel<IncidentModel>().GetPlayCount(ivo.Name);
-                    Debug.Log("Play Count: "+playCount.ToString()); 
-                    if (ivo.OneShot && (playCount > 0))
+                    if (AmbitionApp.GetModel<IncidentModel>().PlayCount.TryGetValue(ivo.Name, out int count))
                     {
-                        continue;
+                        Debug.Log("Play Count for " + ivo.Name + ": " + count.ToString());
+                        if (count > 0) continue;
                     }
-                    
+
                     if (AmbitionApp.CheckRequirements(ivo.Requirements))
                     {
                         Debug.LogFormat("-  "+ivo.ToString()+ " met requirements");

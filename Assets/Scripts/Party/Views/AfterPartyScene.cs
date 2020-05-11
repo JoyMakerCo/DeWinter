@@ -65,6 +65,7 @@ namespace Ambition
                 ReputationText.text = rep.ToString();
             }
 			LivreText.text = "+ £" + livre.ToString();
+            AmbitionApp.SendMessage(GameMessages.HIDE_HEADER);
 		}
 
 		public void Done() => AmbitionApp.SendMessage(PartyMessages.END_PARTY);

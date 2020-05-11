@@ -4,18 +4,19 @@ using UFlow;
 
 namespace Ambition
 {
-	public class MomentState : UState
-	{
-		public override void OnEnterState()
-		{
-			IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-			MomentVO moment = model.Moment;
-			AmbitionApp.SendMessage(moment.Rewards);
+    public class MomentState : UState
+    {
+        public override void OnEnterState()
+        {
+            IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+            MomentVO moment = model.Moment;
+            AmbitionApp.SendMessage(moment);
+            AmbitionApp.SendMessage(moment.Rewards);
             AmbitionApp.GetModel<LocalizationModel>().SetMoment(moment);
 
             TransitionVO[] links = model.Incident.GetLinks(moment);
             TransitionVO xor = null;
-            for (int i=0; i<links.Length; i++)
+            for (int i = 0; i < links.Length; i++)
             {
                 if (!AmbitionApp.CheckRequirements(links[i]?.Requirements))
                 {
@@ -37,7 +38,7 @@ namespace Ambition
                     }
                 }
             }
-			AmbitionApp.SendMessage(links);
-		}
-	}
+            AmbitionApp.SendMessage(links);
+        }
+    }
 }

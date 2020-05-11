@@ -38,6 +38,21 @@ namespace Ambition
 
             Debug.LogFormat("Scheduling intro incident: {0}",party.IntroIncident?.ToString());
             calendar.Schedule(party.IntroIncident, calendar.Today);
+
+            MapModel mapModel = AmbitionApp.GetModel<MapModel>();
+            if (!mapModel.LoadMap(party))
+            {
+                MapVO[] maps = Array.FindAll(mapModel.Maps,
+                    m => m.Faction == model.Party.Faction || m.Faction == FactionType.Neutral
+                );
+
+                // TODO: Figure out significance of tagging scheme
+                //MapModel.MapConfig[] tagConfigs = Array.FindAll(configs, c=>(
+                //party.Tags == null || party.Tags.Length == 0
+                //Array.TrueForAll(party.Tags, t => Array.IndexOf(c.Tags, t) >= 0)));
+                //party.MapID = Util.RNG.TakeRandom(tagConfigs.Length == 0 ? configs : tagConfigs).Name;
+                mapModel.Map.Value = Util.RNG.TakeRandom(maps);
+            }
         }
     }
 }

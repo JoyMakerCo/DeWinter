@@ -1,10 +1,13 @@
-using UFlow;
+﻿using UFlow;
 namespace Ambition
 {
-    public class WaitForHostTutorialLink : ULink
+    public class WaitForHostTutorialLink : ULink, Util.IInitializable, System.IDisposable
     {
         private RoomVO _room;
-        override public void Initialize()
+
+        public override bool Validate() => false;
+
+        public void Initialize()
         {
             MapModel model = AmbitionApp.GetModel<MapModel>();
             //_room = model.Room;//Array.Find(model.Map.Rooms, r=>r.HostHere);
@@ -12,7 +15,7 @@ namespace Ambition
             HandleMap();
         }
 
-        override public void Dispose()
+        public void Dispose()
         {
             AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, HandleMap);
         }

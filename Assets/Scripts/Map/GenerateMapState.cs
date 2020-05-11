@@ -74,9 +74,9 @@ namespace Ambition
 			// Overall size of the house will be proportional to the "Importance" of the party.
 			int hyphen = (int)party.Size + Util.RNG.Generate(3); // the width of the hyphen in rooms
 			int pavilion = (int)party.Size + Util.RNG.Generate(3); // length of the pavilion in rooms
-			int jut=Util.RNG.Generate(0,2);
-			int spacing = (int)(Util.RNG.Generate(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
-			float curve1 = .1f*Util.RNG.Generate(6,11);
+			int jut= Util.RNG.Generate(0,2);
+			int spacing = (int)( Util.RNG.Generate(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
+			float curve1 = .1f* Util.RNG.Generate(6,11);
 			float delta;
 			RoomVO room;
 
@@ -193,7 +193,7 @@ namespace Ambition
 	    	List<string> result = new List<string>();
 
 			//TODO: make features abstract and configurable
-	    	//if (Util.RNG.Generate(0,100) < _model.PunchbowlChance)
+	    	//if ( Util.RNG.Generate(0,100) < _model.PunchbowlChance)
 	    		//result.Add(PartyConstants.PUNCHBOWL);
 
 	    	return result.ToArray();

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,14 +24,7 @@ namespace Ambition
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
-        private void HandleStartIncident(IncidentVO incident)
-		{
-            _animator.SetBool(ACTIVE, true);
-		}
-
-        private void HandleEndIncident(IncidentVO incident)
-        {
-            _animator.SetBool(ACTIVE, false);
-        }
+        private void HandleStartIncident(IncidentVO incident) => _animator.SetBool(ACTIVE, true);
+        private void HandleEndIncident(IncidentVO incident) => _animator.SetBool(ACTIVE, false);
     }
 }

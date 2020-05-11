@@ -12,42 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Pierre's Information
   m_EditorClassIdentifier: 
-  _Nodes: 15000000
+  _Nodes: 
   _Links: 
   _Positions:
   - {x: 0, y: 0}
   - {x: 4, y: 281}
   - {x: -225, y: 379}
-  - {x: 321, y: 370}
+  - {x: 321, y: 346}
   - {x: -228, y: 472}
-  - {x: -224, y: 710}
-  - {x: -227, y: 559}
-  - {x: -228, y: 632}
-  - {x: 325, y: 447}
-  - {x: 324, y: 516}
+  - {x: -216, y: 789}
+  - {x: -225, y: 536}
+  - {x: -31, y: 645}
+  - {x: 324, y: 411}
+  - {x: 324, y: 517}
   - {x: 326, y: 584}
   - {x: 231, y: 665}
   - {x: 459, y: 663}
   - {x: 459, y: 728}
   - {x: 461, y: 802}
   - {x: 457, y: 865}
-  - {x: -219, y: 800}
-  - {x: -358, y: 864}
-  - {x: -109, y: 860}
-  - {x: -362, y: 928}
+  - {x: -223, y: 846}
+  - {x: -363, y: 927}
+  - {x: -107, y: 918}
+  - {x: -365, y: 1006}
   - {x: 6, y: 73}
   - {x: 5, y: 200}
   - {x: 7, y: 134}
+  - {x: -437, y: 539}
+  - {x: 324, y: 461}
+  - {x: -36, y: 590}
+  - {x: -32, y: 707}
+  - {x: -431, y: 673}
+  - {x: -429, y: 743}
+  - {x: -423, y: 597}
   Incident:
     Links:
     - {x: 1, y: 2}
     - {x: 1, y: 3}
     - {x: 2, y: 4}
     - {x: 4, y: 6}
-    - {x: 6, y: 7}
-    - {x: 7, y: 5}
     - {x: 3, y: 8}
-    - {x: 8, y: 9}
     - {x: 9, y: 10}
     - {x: 10, y: 11}
     - {x: 10, y: 12}
@@ -64,6 +68,17 @@ MonoBehaviour:
     - {x: 21, y: 1}
     - {x: 20, y: 22}
     - {x: 22, y: 21}
+    - {x: 6, y: 23}
+    - {x: 8, y: 24}
+    - {x: 24, y: 9}
+    - {x: 6, y: 25}
+    - {x: 25, y: 7}
+    - {x: 7, y: 26}
+    - {x: 26, y: 5}
+    - {x: 27, y: 28}
+    - {x: 28, y: 5}
+    - {x: 23, y: 29}
+    - {x: 29, y: 27}
     Nodes:
     - Text: "Pierre claps his hands together in delight, \u201CMadame, it appears
         that you have done me a great service! With all of this gossip together, I
@@ -288,7 +303,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -297,7 +312,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
       OneShotSFX:
-        Name: event:/One Shot SFX/Male_bark_negative
+        Name: 
         Parameters: []
     - Text: "\u201CI needed you because most of my sources have taken their business
         to other\u2026 less esteemed publications.\u201D"
@@ -595,6 +610,173 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: "At the mention of God, Pierre makes the sign of the cross, but you\u2019re
+        pretty sure he did it backwards. \u201C<i>Adieu</i> madame, and may our paths
+        cross again!\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "At the mention of God, Pierre makes the sign of the cross, but you\u2019re
+        pretty sure he did it backwards. \u201C<i>Adieu</i> madame, and may our paths
+        cross again!\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: "At the mention of God, Pierre makes the sign of the cross, but you\u2019re
+        pretty sure he did it backwards. \u201C<i>Adieu</i> madame, and may our paths
+        cross again!\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "At the mention of God, Pierre makes the sign of the cross, but you\u2019re
+        pretty sure he did it backwards. \u201C<i>Adieu</i> madame, and may our paths
+        cross again!\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: The Abandoned Studio
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "At the mention of God, Pierre makes the sign of the cross, but you\u2019re
+        pretty sure he did it backwards. \u201C<i>Adieu</i> madame, and may our paths
+        cross again!\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "At the mention of God, Pierre makes the sign of the cross, but you\u2019re
+        pretty sure he did it backwards. \u201C<i>Adieu</i> madame, and may our paths
+        cross again!\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 20
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "At the mention of God, Pierre makes the sign of the cross, but you\u2019re
+        pretty sure he did it backwards. \u201C<i>Adieu</i> madame, and may our paths
+        cross again!\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
     LinkData:
     - index: 0
       Text: "\u201CWhat do you know?\u201D"
@@ -615,24 +797,6 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - index: 0
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - index: 0
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
     - index: 0
       Text: 
       xor: 0
@@ -761,6 +925,76 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: Covering Tracks
+        Value: 1
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
@@ -793,21 +1027,15 @@ MonoBehaviour:
     willing to pay for anything you can bring to me.\u201D "
   - "\"There\u2019s a studio in the seventh <i>arrondissement</i> where he and some
     like minded individuals preferred to discuss the 'proper' course for the country.
-    Painters in the front, planning in the back.\" Pierre starts scribbling on a piece
-    of paper."
-  - "He hands you the paper, it\u2019s an address. \"The <i>Guet Royal</i> raided
-    the studio a month ago and arrested everyone there. While supporting the Queen
-    is certainly not a crime, something about this group's beliefs was making someone
-    in power very uncomfortable. The studio has been abandoned ever since. Go there,
-    and you might find something that leads you to your Armand.\u201D"
+    Painters in the front, planning in the back.\""
+  - "\"While supporting the Queen is certainly no crime, something about this group's
+    beliefs was making someone in power quite uncomfortable. The studio's been abandoned
+    ever since. Go there, and you might find something that leads you to your Armand.\u201D"
   - "\u201CJournals like my own have always existed in one\u2026 unofficial capacity
     or another, but with the end of royal censorship, new papers are opening every
     day! The competition for readership, and for new information, has become ridiculous!\u201D
     Pierre throws up his hands in exasperation."
-  - "\u201CI can\u2019t just print gossip that\u2019s been sold to everyone else.
-    My readers expect something unique in these pages, not the same unoriginal tripe
-    bandied about in those\u2026 lesser papers.\u201D\n\nYou find yourself slightly
-    taken aback by the sincerity in Pierre\u2019s voice. "
+  - "You find yourself slightly taken aback by the sincerity in Pierre\u2019s voice. "
   - "\u201CI needed you because most of my sources have taken their business to other\u2026
     less esteemed publications.\u201D"
   - "\u201C<i>Merci beaucoups</i>, madame\u2026\u201D he sighs, pausing to inhale
@@ -838,6 +1066,19 @@ MonoBehaviour:
   - (You have reached the rank of 'Journalist' at <i>Le Trompette du Peuple</i>. The
     title itself is meaningless, but it certainly sounds nice.)
   - '"Today, you are a journalist!"'
+  - '"I would tell you more about it but..." '
+  - "\x1CI can\x19t just print gossip that\x19s been sold to everyone else. My readers
+    expect something unique in these pages, not the same unoriginal tripe bandied
+    about in those& lesser papers.\x1D"
+  - Pierre starts scribbling on a piece of paper. When he hands it off to you, you
+    find it to be an address. "The <i>Guet Royal</i> raided the studio a month ago
+    and arrested everyone there." Pierre explains.
+  - (The Abandoned Studio is now available for you to visit on the Paris map)
+  - '"So, my apologies madame, but I''m sorry to report that you won''t be able find
+    much there. I hope you''ll find this bonus to be a suitable compensation for this
+    latest difficulty."'
+  - (You have gained 20 Livres)
+  - '"Some made arsonist burned the damned place to the ground!" He screams. '
   _linkText:
   - "\u201CWhat do you know?\u201D"
   - "\u201CBefore we get into that\u2026 why did you need me, specifically, to do
@@ -846,12 +1087,9 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
-  - 
-  - 
   - "\u201CYou have my condolences, Pierre. That sounds difficult.\u201D"
   - "\u201CIf I\u2019m your only real source, shouldn\u2019t I be getting paid more?\u201D"
-  - "\u201CIf I\u2019m your only real source, shouldn\u2019t I be getting paid more?\u201D"
+  - 
   - 
   - 
   - 
@@ -859,7 +1097,18 @@ MonoBehaviour:
   - 
   - "\u201CBut, of course Pierre! This has been a delight.\u201D"
   - "\u201CPierre, this is just business.\u201D"
-  - "\u201CPierre, this is just business.\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: The Full Picture
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 3e000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -95,15 +95,16 @@ MonoBehaviour:
   - {x: 281, y: 1725}
   - {x: 282, y: 1784}
   - {x: 286, y: 1844}
-  - {x: 289, y: 2110}
-  - {x: 284, y: 2178}
-  - {x: 292, y: 2259}
-  - {x: 295, y: 2339}
+  - {x: 288, y: 2183}
+  - {x: 285, y: 2251}
+  - {x: 290, y: 2318}
+  - {x: 298, y: 2374}
   - {x: -245, y: 2041}
   - {x: 284, y: 1895}
-  - {x: 294, y: 1957}
-  - {x: 270, y: 2013}
-  - {x: 287, y: 2062}
+  - {x: 286, y: 1950}
+  - {x: 277, y: 2066}
+  - {x: 285, y: 2124}
+  - {x: 290, y: 2007}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -202,9 +203,10 @@ MonoBehaviour:
     - {x: 84, y: 42}
     - {x: 79, y: 85}
     - {x: 85, y: 86}
-    - {x: 86, y: 87}
     - {x: 87, y: 88}
     - {x: 88, y: 80}
+    - {x: 86, y: 89}
+    - {x: 89, y: 87}
     Nodes:
     - Text: 
       Background: {fileID: 0}
@@ -1905,7 +1907,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: 
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1926,7 +1928,7 @@ MonoBehaviour:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: 
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1947,7 +1949,7 @@ MonoBehaviour:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: 
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -1968,7 +1970,7 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: 
-      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
@@ -2083,6 +2085,27 @@ MonoBehaviour:
         Pose: neutral
         Name: "J\xE9r\xF4me"
       Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MaximindeTermes
+        Pose: neutral
+        Name: Maximin
+      Character2:
+        AvatarID: Valet
+        Pose: afraid
+        Name: "J\xE9r\xF4me"
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -2730,6 +2753,12 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
     AssetPath: 
     OneShot: 1
     Chapters: 
@@ -2852,7 +2881,7 @@ MonoBehaviour:
 
     (You have lost a staggering amount of peril)'
   - "The order of events there is a little backwards, but you\u2019ll take it."
-  - "\u201CMadame, you have down the working people of Paris, and the nation of France
+  - "\u201CMadame, you have done the working people of Paris, and the nation of France
     a great service by exposing this corrupt aristocrat\u2019s vile past. We are in
     your debt.\u201D\r"
   - (You have gained a staggering amount of favor with Antoine)
@@ -2949,6 +2978,8 @@ MonoBehaviour:
   - '"Actually, <i>non</i>..." He sighs bitterly to himself. "If you are so good at
     uncovering secrets, you can figure that one out for yourself."'
   - "\"Proceed, J\xE9r\xF4me.\""
+  - "At the mention of this, J\xE9r\xF4me shifts uncomfortably, his eyes darting between
+    his master and yourself."
   _linkText:
   - 
   - 
@@ -3043,6 +3074,7 @@ MonoBehaviour:
     again, just your money.\u201D"
   - "\u201CMarguerite and Gabriel will finally get to live a happy life, free from
     fear. Enjoy paying for it.\u201D"
+  - 
   - 
   - 
   - 

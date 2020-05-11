@@ -56,7 +56,7 @@ namespace Ambition
 		private void Next()
 		{
 			Debug.LogFormat("ContinueBtn.Next");
-			AmbitionApp.SendMessage(_transition);
+			AmbitionApp.SendMessage(IncidentMessages.TRANSITION, _transition);
 			FMODUnity.RuntimeManager.PlayOneShot("event:/One Shot SFX/Mouse_click"); //Literally only ever plays this sound. It will never need to play anything else.
         }
 	}

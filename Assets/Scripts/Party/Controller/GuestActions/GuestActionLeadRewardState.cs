@@ -20,7 +20,7 @@ namespace Ambition
                     {
                         case "Map":
                             RoomVO[] rooms = Array.FindAll(map.Map.Rooms, r => !r.Revealed);
-                            RoomVO room = rooms[Util.RNG.Generate(rooms.Length)];
+                            RoomVO room = rooms[ Util.RNG.Generate(rooms.Length)];
                             room.Revealed = true;
                             AmbitionApp.SendMessage(room);
                             break;

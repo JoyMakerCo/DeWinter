@@ -24,7 +24,7 @@ namespace Ambition
             }
         }
 
-        override public void Dispose()
+        public override void Dispose()
         {
             if (_bounz != null)
                 UnityEngine.Object.Destroy(_bounz);

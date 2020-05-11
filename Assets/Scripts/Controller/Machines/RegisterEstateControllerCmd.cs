@@ -4,25 +4,25 @@ using UFlow;
 
 namespace Ambition
 {
-    public class RegisterEstateControllerCmd : ICommand
+    public class RegisterEstateControllerCmd : UFlowConfig
     {
-        public void Execute()
+        private string _prev;
+
+        public override void Initialize()
         {
-            AmbitionApp.RegisterCommand<CreateInvitationsCmd>(CalendarMessages.SHOW_INVITATIONS);
+            State("Enter");
+            State("ShowEstate");
+            State("Invitations");
+            State("CheckMissedParties");
+            State("Estate");
+            State("Exit");
 
-            AmbitionApp.RegisterState<LoadSceneState, string>("EstateController", "LoadEstate", SceneConsts.ESTATE_SCENE);
-            AmbitionApp.RegisterState<SendMessageState, string>("EstateController", "HideHeader", GameMessages.HIDE_HEADER); // Temp; more states to come
-            AmbitionApp.RegisterState<SendMessageState, string>("EstateController", "CreateInvitations", CalendarMessages.SHOW_INVITATIONS);
-            AmbitionApp.RegisterState<CheckMissedPartiesState>("EstateController", "CheckMissedParties");
-            AmbitionApp.RegisterState("EstateController", "Estate"); // Temp; more states to come
-            AmbitionApp.RegisterState("EstateController", "LeaveEstate"); // Temp; more states to come
+            BindLink<LoadSceneLink, string>("Enter", "ShowEstate", SceneConsts.ESTATE_SCENE);
+            BindLink<MessageLink, string>("ShowEstate", "Invitations", GameMessages.FADE_IN_COMPLETE);
+            BindLink<MessageLink, string>("Estate", "Exit", EstateMessages.LEAVE_ESTATE);
 
-
-            AmbitionApp.RegisterLink("EstateController", "LoadEstate", "HideHeader");
-            AmbitionApp.RegisterLink<InputLink, string>("EstateController", "HideHeader", "CreateInvitations", GameMessages.FADE_IN_COMPLETE);
-            AmbitionApp.RegisterLink("EstateController", "CreateInvitations", "CheckMissedParties");
-            AmbitionApp.RegisterLink("EstateController", "CheckMissedParties", "Estate");
-            AmbitionApp.RegisterLink<InputLink, string>("EstateController", "Estate", "LeaveEstate", EstateMessages.LEAVE_ESTATE);
+            Bind<CreateInvitationsState>("CreateInvitations");
+            Bind<CheckMissedPartiesState>("CheckMissedParties");
         }
     }
 }

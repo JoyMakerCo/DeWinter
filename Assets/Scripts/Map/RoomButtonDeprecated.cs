@@ -59,7 +59,7 @@ namespace Ambition
 					RectTransform xform = gameObject.GetComponent<RectTransform>();
                     xform.anchoredPosition = new Vector2(value.Bounds[0]*scale, value.Bounds[1]*scale);
 					xform.sizeDelta = new Vector2((value.Bounds[2]-value.Bounds[0])*scale, (value.Bounds[3]-value.Bounds[1])*scale);
-					_graphic.sprite = FloorTexturtes.Sprites[Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
+					_graphic.sprite = FloorTexturtes.Sprites[ Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
 				}
 */				_room = value;
                 //HandleCurrentRoom(map.Room);

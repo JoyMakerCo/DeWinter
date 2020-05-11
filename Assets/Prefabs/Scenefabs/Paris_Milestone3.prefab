@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 114740895488808446}
   - component: {fileID: 2690090603194522340}
   - component: {fileID: 4288545960440313114}
-  - component: {fileID: 8368435736089459604}
   m_Layer: 5
   m_Name: Paris_Milestone3
   m_TagString: Untagged
@@ -177,8 +176,6 @@ MonoBehaviour:
   Legend: {fileID: 5004562386527325987}
   LegendAnimationController: {fileID: 6914287451124957583}
   ParisLocationDialog: {fileID: 8739496432013986524}
-  RestButton: {fileID: 5021647051575680215}
-  EstateButton: {fileID: 7954487088245422736}
 --- !u!114 &2690090603194522340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,36 +273,6 @@ MonoBehaviour:
     LocalizationKey: parismap.btn.legend_open
   - TextField: {fileID: 4037832844750751141}
     LocalizationKey: parismap.btn.legend_close
---- !u!114 &8368435736089459604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817905340190894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8739496432013986524}
-          m_MethodName: Show
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: Ambition.Pin, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &751976877757274690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1004,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4909767193498954803}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5403743222691658233}
+        m_MethodName: HandleClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &5403743222691658233
@@ -2584,6 +2562,7 @@ GameObject:
   - component: {fileID: 7954487088225531624}
   - component: {fileID: 8069336115942861950}
   - component: {fileID: 8208454611659368419}
+  - component: {fileID: 5326463761987761607}
   m_Layer: 5
   m_Name: Return Home Button
   m_TagString: Untagged
@@ -2694,9 +2673,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8069336115942861950}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5326463761987761607}
+        m_MethodName: SendGameMessage
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ESTATE
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &5326463761987761607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7954487088245422736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc493978b0381486c97d543b1563cf83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8509282165886938167
 GameObject:
   m_ObjectHideFlags: 0
@@ -5691,6 +5693,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d054f2b68dfbf4ba7368c55fe57857, type: 3}
+--- !u!224 &2851774373885812918 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224564986130869824, guid: 42d054f2b68dfbf4ba7368c55fe57857,
+    type: 3}
+  m_PrefabInstance: {fileID: 2634140711214419702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2673039995700159504 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114510510850452198, guid: 42d054f2b68dfbf4ba7368c55fe57857,
@@ -5703,12 +5711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2851774373885812918 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 224564986130869824, guid: 42d054f2b68dfbf4ba7368c55fe57857,
-    type: 3}
-  m_PrefabInstance: {fileID: 2634140711214419702}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2785539357256103997
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,7 +6,6 @@ namespace Ambition
 	{
         public static string LOAD_SCENE = "GotoSceneMsg";
 		public static string SCENE_LOADED = "SCENE_LOADED";
-        public static string EXIT_SCENE = "EXIT_SCENE";
         public static string FADE_OUT = "FADE_OUT";
 		public static string FADE_IN = "FADE_IN";
 		public static string FADE_OUT_COMPLETE = "FadeOutCompleteMsg";
@@ -30,9 +29,9 @@ namespace Ambition
         public static string LOCK_UI = "LOCK_UI";
         public static string UNLOCK_UI = "UNLOCK_UI";
 
+        public static string NEXT = "NEXT"; // All-Purpose "Next" event
         public static string COMPLETE = "COMPLETE"; // All-Purpose "Complete" event
 
-        public static string INIT_CHARACTER = "INIT_CHARACTER";
         public static string TIMER_COMPLETE = "TIMER_COMPLETE";
         public static string INHIBIT_MENU = "INHIBIT_MENU"; // Disable the game menu until the next fade in
 

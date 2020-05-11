@@ -1,11 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UFlow;
 
 namespace Ambition
 {
-    public class TutorialGuestLink : ULink
+    public class TutorialGuestLink : ULink, Util.IInitializable, System.IDisposable
     {
-        public override void Initialize()
+        public override bool Validate() => false;
+
+        public void Initialize()
         {
             AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
         }
@@ -15,7 +17,7 @@ namespace Ambition
             Activate();
         }
 
-        override public void Dispose()
+        public void Dispose()
         {
             AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleGuest);
         }

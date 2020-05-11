@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: A Wish For Deliverance
   m_EditorClassIdentifier: 
-  _Nodes: 00000000
+  _Nodes: 4b000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
   - {x: 368, y: 1635}
   - {x: 372, y: 1684}
   - {x: 646, y: 1671}
-  - {x: 865, y: 1779}
+  - {x: 859, y: 1779}
   - {x: 604, y: 1499}
   - {x: 143, y: 1570}
   - {x: 131, y: 1653}
@@ -817,7 +817,7 @@ MonoBehaviour:
         Parameters: []
     - Text: Spotting no other guards in the area, you start searching the cells for
         a man matching the description of Monsieur Clet that Antoine gave you.
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 2aad5a7fcda9e4524a7e9fc078173d79, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1333,7 +1333,7 @@ MonoBehaviour:
     - Text: You breathe deeply as you step inside, savoring the cool air of the stone
         building. Unfortunately, it smells like stagnant water, musty old hay, and
         desperation.
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 2aad5a7fcda9e4524a7e9fc078173d79, type: 3}
       Character1:
         AvatarID: 
         Pose: 
@@ -1957,7 +1957,10 @@ MonoBehaviour:
         Pose: 
         Name: 
       Speaker: 2
-      Rewards: []
+      Rewards:
+      - Type: 5
+        ID: MonsieurCletEscape
+        Value: 1
       Music:
         Name: 
         Parameters: []

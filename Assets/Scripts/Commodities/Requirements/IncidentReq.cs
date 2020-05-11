@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 namespace Ambition
 {
@@ -10,9 +10,11 @@ namespace Ambition
             // req.Value vx number of times incident played
 
             IncidentModel _model = AmbitionApp.GetModel<IncidentModel>();
-            var incidentCount = _model.GetPlayCount(req.ID);
-
-            return RequirementsSvc.Check(req, incidentCount);
+            if (!_model.PlayCount.TryGetValue(req.ID, out int count))
+            {
+                count = 0;
+            }
+            return RequirementsSvc.Check(req, count);
         }
     }
 }

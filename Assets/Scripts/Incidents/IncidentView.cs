@@ -23,18 +23,22 @@ namespace Ambition
             _background = gameObject.GetComponent<Image>();
             AmbitionApp.Subscribe<MomentVO>(HandleMoment);
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Subscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
         void OnDestroy ()
 		{
             AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Unsubscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
         private void HandleIncident(IncidentVO incident) => _incident = incident;
-        private void HandleEndIncident() => _incident = null;
+        private void HandleEndIncident(IncidentVO incident)
+        {
+            if (incident == _incident)
+                _incident = null;
+        }
 
         private void HandleMoment(MomentVO moment)
 		{

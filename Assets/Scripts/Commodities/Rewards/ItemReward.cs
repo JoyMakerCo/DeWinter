@@ -16,7 +16,7 @@ namespace Ambition
                 ItemVO[] itemz = Array.FindAll(inventory.Items, i => i.Type.ToString() == reward.ID);
                 if (itemz.Length > 0)
                 {
-                    item = new ItemVO(itemz[Util.RNG.Generate(itemz.Length)]);
+                    item = new ItemVO(itemz[ Util.RNG.Generate(itemz.Length)]);
                 }
                 else
                 {

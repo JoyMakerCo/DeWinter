@@ -75,7 +75,7 @@ namespace Ambition
             if (party.Faction == FactionType.Neutral)
                 party.Faction = Util.RNG.TakeRandomExcept(AmbitionApp.GetModel<FactionModel>().Factions.Keys.ToArray(), FactionType.Neutral);
 
-            if (party.RequiredIncidents == null) party.RequiredIncidents = new IncidentVO[Util.RNG.Generate(1, 4)];
+            if (party.RequiredIncidents == null) party.RequiredIncidents = new IncidentVO[ Util.RNG.Generate(1, 4)];
 
             AmbitionApp.GetModel<CalendarModel>().Schedule(party);
             AmbitionApp.SendMessage(party);

@@ -5,7 +5,6 @@ namespace Ambition
 	public static class CalendarMessages
 	{
         public const string CALENDAR_EVENT_COMPLETED = "CALENDAR_EVENT_COMPLETED";
-        public const string SHOW_INVITATIONS = "SHOW_INVITATIONS";
         public const string SCHEDULED = "SCHEDULED";
         public const string END_DAY = "END_DAY";
         public const string NEXT_DAY = "NEXT_DAY";

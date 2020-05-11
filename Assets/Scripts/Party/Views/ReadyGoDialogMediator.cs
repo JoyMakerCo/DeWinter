@@ -15,7 +15,7 @@ namespace Ambition
 		void Start()
 		{
 			string[] conversationIntroList = AmbitionApp.GetPhrases("conversation_intro");
-			DialogText.text = conversationIntroList[Util.RNG.Generate(conversationIntroList.Length)];
+			DialogText.text = conversationIntroList[ Util.RNG.Generate(conversationIntroList.Length)];
 		}
 
 		public void OnPointerClick(PointerEventData eventData)
