@@ -28,6 +28,7 @@ namespace Ambition
 
             Link("Day", "StartIncident");
             Link("RequiredPartyDecision", "Estate");
+            Link("PartyDecision", "Party");
             Link("UpdateCalendar", "DayDecision");
             Link("NextDayState", "UpdateCalendar");
             Link("EndGameDecision", "NextDayState");
