@@ -84,8 +84,8 @@ namespace Ambition
 
         private string GetRandomDescriptor(string phrase)
         {
-            string[] descriptors = _phrases.GetList(phrase);
-            return RNG.TakeRandom(descriptors);
+            Dictionary<string, string> descriptors = _phrases.GetPhrases(phrase);
+            return RNG.TakeRandom(descriptors.Values);
         }
 	}
 }

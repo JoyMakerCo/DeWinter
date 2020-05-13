@@ -26,7 +26,6 @@ namespace Ambition
                 gameObject.SetActive(activate);
                 if (activate)
                 {
-                    GuestActionIcon icon;
                     //GuestActionVO action = guest.Action;
                     //foreach (ActionMap map in Actions)
                     //{

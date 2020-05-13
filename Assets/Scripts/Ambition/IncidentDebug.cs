@@ -20,7 +20,9 @@ namespace Ambition
             remove = result.Keys;
             return result;
         }
-
+    }
+}
+/*
         [MenuItem("Ambition/Create Incident Report")]
         public static void CreateIncidentReport()
         {
@@ -29,7 +31,7 @@ namespace Ambition
             SerializedObject obj;
             SerializedProperty list;
 
-            Dictionary<string, string> localizations = LocalizationConfig.GetPhrases();
+            Dictionary<string, string> localizations = LocalizationManager.GetPhrases();
             if (localizations == null)
             {
                 result += "Could not load LocalizationConfig!\n\n";
@@ -144,7 +146,7 @@ namespace Ambition
             }
             if (writeBack.Count > 0)
             {
-                LocalizationConfig.Post(writeBack, remove.ToArray());
+                LocalizationManager.Post(writeBack, remove.ToArray());
                 Debug.Log("Wrote " + writeBack.Count + " phrases");
             }
             System.IO.File.WriteAllText("Assets/Incident Report.txt", result);
@@ -164,5 +166,5 @@ namespace Ambition
             }
         }
     }
-}
+}*/
 #endif

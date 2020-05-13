@@ -22,9 +22,6 @@ namespace Ambition
         public string[] Tags;
         public FactionType[] Factions;
 
-        [JsonProperty("localization_key")]
-        public string LocalizationKey;
-
         [JsonIgnore]
         public bool IsScheduled => Date > DateTime.MinValue;
 
@@ -69,7 +66,7 @@ namespace Ambition
             this.Name = incident.Name;
             this.Date = incident.Date;
             this.OneShot = incident.OneShot;
-            this.LocalizationKey = incident.LocalizationKey;
+            this.Name = incident.Name;
             this.Political = incident.Political;
         }
 

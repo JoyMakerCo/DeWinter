@@ -15,7 +15,7 @@ namespace Ambition
 		{
             Text text = GetComponent<Text>();
             if (text != null)
-			    text.text = AmbitionApp.GetPhrases("month")[t.Month-1];
+			    text.text = AmbitionApp.GetPhrases("month")["month." + (t.Month-1)];
 		}
 	}
 }

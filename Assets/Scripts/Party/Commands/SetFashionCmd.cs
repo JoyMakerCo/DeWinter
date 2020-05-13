@@ -11,7 +11,6 @@ namespace Ambition
             if (AmbitionApp.GetModel<GameModel>().Level > 8)
             {
                 InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-                ItemVO item;
                 //if (inventory.Equipped.TryGetValue(ItemType.Outfit, out item) && item != null)
                 //{
                 //    string style = (item as OutfitVO).Style;

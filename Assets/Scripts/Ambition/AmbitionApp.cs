@@ -244,9 +244,9 @@ namespace Ambition
             return App.Service<LocalizationSvc>().GetString(key, substitutions);
 		}
 
-		public static string[] GetPhrases(string key)
+		public static Dictionary<string, string> GetPhrases(string key)
 		{
-			return App.Service<LocalizationSvc>().GetList(key);
+            return App.Service<LocalizationSvc>().GetPhrases(key);
 		}
 
 		public static void RegisterFactory<Key, Product>(IFactory<Key, Product> factory)

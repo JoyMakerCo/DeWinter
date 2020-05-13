@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Dialog;
 using Core;
 
@@ -14,8 +15,8 @@ namespace Ambition
         public Text DialogText;
 		void Start()
 		{
-			string[] conversationIntroList = AmbitionApp.GetPhrases("conversation_intro");
-			DialogText.text = conversationIntroList[ Util.RNG.Generate(conversationIntroList.Length)];
+			Dictionary<string, string> conversationIntroList = AmbitionApp.GetPhrases("conversation_intro");
+			DialogText.text = conversationIntroList[ Util.RNG.TakeRandom(conversationIntroList.Values)];
 		}
 
 		public void OnPointerClick(PointerEventData eventData)

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
-using System.Linq;
 
 namespace Core
 {
 	public class LocalizationSvc : IAppService
 	{
 		public const string LOCALIZATIONS_DIRECTORY = "Localization/";
-		public const string DEFAULT_CONFIG = "Default";
+		public const string DEFAULT_CONFIG = "en";
 
 		public string LanguageCode;
 		protected Dictionary<string, string> _localizations;
@@ -40,9 +39,16 @@ namespace Core
 			}
 		}
             
-		public string[] GetList(string key)
+		public Dictionary<string, string> GetPhrases(string key)
 		{
-			return _localizations.Where(k=>k.Key.StartsWith(key)).Select(v=>v.Value).ToArray();
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            foreach(string loc in _localizations.Keys)
+            {
+                if (loc.StartsWith(key))
+                    result[loc] = _localizations[loc];
+            }
+            System.Linq.Enumerable.OrderBy(result, r => r.Key);
+            return result;
 		}
 
 		public string GetString(string key)

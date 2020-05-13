@@ -29,7 +29,7 @@ namespace Ambition
             }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             if (_flash != null) GameObject.Destroy(_flash);
             base.Dispose();

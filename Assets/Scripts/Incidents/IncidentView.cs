@@ -50,7 +50,7 @@ namespace Ambition
                     int index = Array.IndexOf(_incident.Nodes, moment);
                     if (index >= 0)
                     {
-                        result = AmbitionApp.Localize(_incident.LocalizationKey + ".node." + index.ToString());
+                        result = AmbitionApp.Localize(_incident.Name + ".node." + index.ToString());
                     }
                 }
                 descriptionText.text = result;

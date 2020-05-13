@@ -83,8 +83,7 @@ namespace Ambition
 
         private string GetRandomText(string phrase)
         {
-            string[] phrases = AmbitionApp.GetPhrases(phrase);
-            return Util.RNG.TakeRandom(phrases);
+            return Util.RNG.TakeRandom(AmbitionApp.GetPhrases(phrase).Values);
         }
     }
 }

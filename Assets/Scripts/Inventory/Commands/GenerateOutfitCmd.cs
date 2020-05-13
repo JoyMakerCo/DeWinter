@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 using Util;
 namespace Ambition
@@ -8,7 +9,8 @@ namespace Ambition
         public void Execute(ItemVO item)
         {
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            string style = RNG.TakeRandom(AmbitionApp.GetPhrases("outfit.style"));
+            Dictionary<string, string> styles = AmbitionApp.GetPhrases("outfit.style");
+            string style = RNG.TakeRandom(styles.Values);
 
             int modesty = (int)RNG.Tangential(-100.0f,100.0f);
             int luxury = (int)RNG.Tangential(-100.0f,100.0f);
@@ -20,9 +22,9 @@ namespace Ambition
             item.Price = Math.Abs(modesty) + Math.Abs(luxury);
             item.Type = ItemType.Outfit;
 
-            var luxuryAdjective = Map(luxury, AmbitionApp.GetPhrases("outfit.luxury"));
-            var modestyAdjective = Map(modesty, AmbitionApp.GetPhrases("outfit.modesty"));
-            
+            var luxuryAdjective = Map(luxury, new List<string>(AmbitionApp.GetPhrases("outfit.luxury").Values).ToArray());
+            var modestyAdjective = Map(modesty, new List<string>(AmbitionApp.GetPhrases("outfit.modesty").Values).ToArray());
+
             var adjective = luxuryAdjective.Length < modestyAdjective.Length ? luxuryAdjective : modestyAdjective;
 
             // room for both?
@@ -35,7 +37,7 @@ namespace Ambition
             item.Name = AmbitionApp.GetString("outfit", new System.Collections.Generic.Dictionary<string, string>()
             {
                 {"%s",adjective},
-                {"%d",RNG.TakeRandom(AmbitionApp.GetPhrases("outfit.dress"))}
+                {"%d",RNG.TakeRandom(AmbitionApp.GetPhrases("outfit.dress").Values)}
             });
 
             // -- option: adjectives with style code

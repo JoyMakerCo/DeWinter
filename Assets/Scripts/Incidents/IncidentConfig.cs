@@ -26,6 +26,8 @@ namespace Ambition
         AmbitionEditor.ILocalizedAsset
     {
         public const int NUM_CHAPTERS = 4;
+        public const string NODE_KEY = ".node.";
+        public const string LINK_KEY = ".link.";
 
         public IncidentVO Incident = new IncidentVO();
 
@@ -68,24 +70,7 @@ namespace Ambition
             return chapters.ToArray();
         }
 
-        public string LocalizationKey
-        {
-            get => Incident?.LocalizationKey;
-            set
-            {
-#if UNITY_EDITOR
-                SerializedObject obj = new SerializedObject(this);
-                obj.FindProperty("Incident.LocalizationKey").stringValue = value;
-                obj.ApplyModifiedProperties();
-#endif
-            }
-        }
-
-
 #if (UNITY_EDITOR)
-        private const string NODE_KEY = "node.";
-        private const string LINK_KEY = "link.";
-
         private readonly string[] MONTHS = new string[]{
             "January","February","March","April","May","June",
             "July","August","September","October","November","December"
@@ -121,7 +106,7 @@ namespace Ambition
                 str = list.GetArrayElementAtIndex(i)?.stringValue;
                 if (!string.IsNullOrWhiteSpace(str))
                 {
-                    phrases[NODE_KEY + i] = str;
+                    phrases[name + NODE_KEY + i] = str;
                 }
             }
             list = GetLinkTextProperty(obj);
@@ -130,7 +115,7 @@ namespace Ambition
                 str = list.GetArrayElementAtIndex(i)?.stringValue;
                 if (!string.IsNullOrWhiteSpace(str))
                 {
-                    phrases[LINK_KEY + i] = str;
+                    phrases[name + LINK_KEY + i] = str;
                 }
             }
             return phrases;
@@ -239,8 +224,8 @@ namespace Ambition
 
             if (GUILayout.Button("Import From Localization File"))
             {
-                string key = incident.FindPropertyRelative("LocalizationKey").stringValue + "."; 
-                Dictionary<string, string> phrases = LocalizationConfig.GetPhrases(key);
+                string key = incident.FindPropertyRelative("LocalizationKey").stringValue + ".";
+                Dictionary<string, string> phrases = null;//LocalizationManager.GetPhrases(key);
                 if (phrases == null)
                 {
                     throw new Exception(">> ERROR: Could not open localization config!");

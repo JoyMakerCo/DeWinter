@@ -8,7 +8,6 @@ namespace Ambition
 		public void Execute()
 		{
             ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
-            int numCharmed = 0; //Array.FindAll(model.Guests, g=>g.State == GuestState.Charmed).Length;
             AmbitionApp.UnregisterModel<ConversationModel>();
 /*
             RoomVO room = AmbitionApp.GetModel<MapModel>();

@@ -9,7 +9,8 @@ namespace Ambition
     [Core.Saveable]
     public class LocalizationModel : Core.Model
     {
-        [JsonProperty("subsitutions")]
+        private const string LOC_DIR = "Localization/";
+
         public Dictionary<string, string> Substitutions = new Dictionary<string, string>();
 
         public void SetPlayerName()
@@ -114,10 +115,10 @@ namespace Ambition
         public string SetDate(DateTime date)
         {
             Dictionary<string, string> subs = new Dictionary<string, string>();
-            Substitutions[LocalizationConsts.MONTH] = AmbitionApp.GetPhrases("month")[date.Month - 1];
+            Substitutions[LocalizationConsts.MONTH] = AmbitionApp.GetPhrases("month")["month." + (date.Month - 1)];
             Substitutions[LocalizationConsts.DAY] = date.Day.ToString();
             Substitutions[LocalizationConsts.YEAR] = date.Year.ToString();
-            Substitutions[LocalizationConsts.WEEKDAY] = AmbitionApp.GetPhrases("weekday")[(int)(date.DayOfWeek)];
+            Substitutions[LocalizationConsts.WEEKDAY] = AmbitionApp.GetPhrases("weekday")["weekday." + (int)(date.DayOfWeek)];
             Substitutions[LocalizationConsts.SHORT_DATE] = AmbitionApp.GetString("short_date", Substitutions);
             return Substitutions[LocalizationConsts.DATE] = AmbitionApp.GetString("date", Substitutions);
         }

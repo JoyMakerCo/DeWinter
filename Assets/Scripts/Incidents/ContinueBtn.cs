@@ -43,7 +43,7 @@ namespace Ambition
                     {
                         _transition = transitions[0];
                         int index = Array.IndexOf(linkdata, _transition);
-                        string txt = AmbitionApp.Localize(_model.Incident.LocalizationKey + ".link." + index.ToString());
+                        string txt = AmbitionApp.Localize(_model.Incident.Name + ".link." + index.ToString());
                         _btn.interactable = string.IsNullOrWhiteSpace(txt);
                     }
                     break;

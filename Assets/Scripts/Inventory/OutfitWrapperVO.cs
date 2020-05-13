@@ -12,29 +12,29 @@ namespace Ambition
 
         public static string GetNoveltyText(ItemVO item )
         {
-            string[] phrases = AmbitionApp.GetPhrases("outfit.novelty");
+            Dictionary<string, string> phrases = AmbitionApp.GetPhrases("outfit.novelty");
             int value = GetIntStat(item, ItemConsts.NOVELTY);
-            int index = Mathf.Clamp( (int)(phrases.Length * value * .01f), 0, phrases.Length-1 );
+            int index = Mathf.Clamp( (int)(phrases.Count * value * .01f), 0, phrases.Count-1 );
 
-            return phrases[index];
+            return phrases["outfit.novelty." + index];
         }
 
         public static string GetLuxuryText(ItemVO item )
         {
-            string[] phrases = AmbitionApp.GetPhrases("outfit.luxury");
+            Dictionary<string, string> phrases = AmbitionApp.GetPhrases("outfit.luxury");
             int value = GetIntStat(item, ItemConsts.LUXURY);
-            int index = Mathf.Clamp( (int)(phrases.Length * (0.5f + (value * .005f))), 0, phrases.Length-1 );
+            int index = Mathf.Clamp( (int)(phrases.Count * (0.5f + (value * .005f))), 0, phrases.Count-1 );
 
-            return phrases[index];
+            return phrases["outfit.luxury." + index];
         }
 
         public static string GetModestyText(ItemVO item )
         {
-            string[] phrases = AmbitionApp.GetPhrases("outfit.modesty");
+            Dictionary<string, string> phrases = AmbitionApp.GetPhrases("outfit.modesty");
             int value = GetIntStat(item, ItemConsts.MODESTY);
-            int index = Mathf.Clamp( (int)(phrases.Length * (0.5f + (value * .005f))), 0, phrases.Length-1 );
+            int index = Mathf.Clamp( (int)(phrases.Count * (0.5f + (value * .005f))), 0, phrases.Count-1 );
 
-            return phrases[index];
+            return phrases["outfit.modesty." + index];
         }
         public static string GetStat(ItemVO item, string stat)
         {

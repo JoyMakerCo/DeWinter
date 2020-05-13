@@ -46,7 +46,7 @@ namespace Ambition
                 {
                     _buttons[buttonIndex].SetTransition(transitions[i]);
                     _buttons[buttonIndex].gameObject.SetActive(true);
-                    _buttons[buttonIndex].Text = AmbitionApp.Localize(_incident.LocalizationKey + ".link." + transitions[i].index.ToString());
+                    _buttons[buttonIndex].Text = AmbitionApp.Localize(_incident.Name + ".link." + transitions[i].index.ToString());
                     buttonIndex++;
                     if (buttonIndex >= _buttons.Length) return;
                 }
