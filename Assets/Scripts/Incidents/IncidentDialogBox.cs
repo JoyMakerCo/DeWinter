@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,65 +7,54 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class IncidentDialogBox : MonoBehaviour, IPointerClickHandler
-	{
+    public class IncidentDialogBox : MonoBehaviour, IPointerClickHandler
+    {
+        [SerializeField] Image _hitTarget;
         TransitionVO _trans;
         IncidentVO _incident;
         int _index;
-        bool _interactive;
 
         public IncidentButton[] _buttons;
 
-		void Awake ()
-		{
+        void Awake()
+        {
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Subscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
             AmbitionApp.Subscribe<TransitionVO[]>(HandleTransitions);
         }
 
-        void OnDestroy ()
-		{
+        void OnDestroy()
+        {
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Unsubscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
             AmbitionApp.Unsubscribe<TransitionVO[]>(HandleTransitions);
         }
 
         public void OnPointerClick(PointerEventData eventData)
-		{
-            if (_interactive)
+        {
+            if (_hitTarget.raycastTarget)
             {
-                if (_trans != null) AmbitionApp.SendMessage(_trans);
-                else AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, _incident);
+                AmbitionApp.SendMessage(IncidentMessages.TRANSITION, _trans);
                 FMODUnity.RuntimeManager.PlayOneShot("event:/One Shot SFX/Mouse_click"); //Literally only ever plays this sound. It will never need to play anything else.
             }
         }
-
+        string Loc(TransitionVO trans) => AmbitionApp.Localize(trans == null ? "" : _incident.ID + ".link." + trans.index.ToString());
         void HandleIncident(IncidentVO incident) => _incident = incident;
-        void HandleEndIncident() => _incident = null;
         void HandleTransitions(TransitionVO[] transitions)
-		{
-            int buttonIndex = 0;
-            for (int i=0; i<transitions.Length; i++)
+        {
+            int len = transitions.Length;
+            bool active;
+            _trans = len > 0 ? transitions[0] : null;
+            _hitTarget.raycastTarget = (_trans == null || transitions.Length == 1);
+            for (int i=_buttons.Length-1; i>=0; --i)
             {
-                if (transitions[i] != null)
-                {
-                    _buttons[buttonIndex].SetTransition(transitions[i]);
-                    _buttons[buttonIndex].gameObject.SetActive(true);
-                    _buttons[buttonIndex].Text = AmbitionApp.Localize(_incident.LocalizationKey + ".link." + transitions[i].index.ToString());
-                    buttonIndex++;
-                    if (buttonIndex >= _buttons.Length) return;
-                }
+                active = i < len;
+                _buttons[i].gameObject.SetActive(active);
+                if (active) _buttons[i].SetTransition(transitions[i], Loc(transitions[i]));
             }
-            while (buttonIndex < _buttons.Length)
+            if (transitions.Length == 1)
             {
-                _buttons[buttonIndex++].gameObject.SetActive(false);
-            }
-            _interactive = transitions.Length <= 1;
-            _trans = transitions.Length > 0 ? transitions[0] : null;
-            if (transitions.Length == 1 && string.IsNullOrWhiteSpace(_buttons[0].Text))
-            {
-                _buttons[0].gameObject.SetActive(false);
+                active = !string.IsNullOrEmpty(_buttons[0].Text);
+                _buttons[0].gameObject.SetActive(active);
             }
         }
-	}
+    }
 }

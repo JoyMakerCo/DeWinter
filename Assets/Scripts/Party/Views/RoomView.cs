@@ -12,7 +12,7 @@ namespace Ambition
         public PortraitView[] PortraitsOdd;
         public Text ButtonText;
 
-        private IncidentVO _incident;
+        private string _incident = null;
         private MapScene _mapView;
 
         [SerializeField]
@@ -26,9 +26,9 @@ namespace Ambition
 
         public void SetIncident(IncidentVO incident)
         {
-            _incident = incident;
-            gameObject.SetActive(_incident != null);
-            if (_incident == null) return;
+            _incident = incident?.ID;
+            gameObject.SetActive(incident != null);
+            if (incident == null) return;
 
             List<CharacterVO> characters = new List<CharacterVO>();
             string name;
@@ -37,7 +37,7 @@ namespace Ambition
             int max = PortraitsEven.Length > PortraitsOdd.Length ? PortraitsEven.Length : PortraitsOdd.Length;
             int i = 0;
 
-            foreach (MomentVO moment in _incident.Nodes)
+            foreach (MomentVO moment in incident.Nodes)
             {
                 name = moment.Character1.Name;
                 if (!string.IsNullOrWhiteSpace(name) && !characters.Exists(c => c.Name == name))

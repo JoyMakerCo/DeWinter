@@ -5,7 +5,9 @@
             <value>Prologue - Paris Streets</value>
         </property>
         <property name="note">
-            <value>FOR REAL VERSION - STEM OFF PIANO PART and make it cut off nearly immediately, while strings have slight crossfade.
+            <value>Pretty sure this is all good now.
+OLD:
+FOR REAL VERSION - STEM OFF PIANO PART and make it cut off nearly immediately, while strings have slight crossfade.
 </value>
         </property>
         <property name="outputFormat">
@@ -183,6 +185,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{ef6fd5fa-54dd-409f-be4b-98bb9644a5ad}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Audio 1</value>
         </property>
@@ -218,6 +223,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{87c005a6-917d-49ba-ba34-210fc0001e27}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Audio 3</value>
         </property>
@@ -245,6 +253,9 @@
         </property>
     </object>
     <object class="EventMixerGroup" id="{94e4d1af-bd7d-4db0-a73f-d5a34cf092d7}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Audio 2</value>
         </property>
@@ -355,20 +366,21 @@
     <object class="MixerBusEffectChain" id="{8c7daf26-3d86-4b2f-9559-01bceec53de7}">
         <relationship name="effects">
             <destination>{f9b930f7-353e-4a51-876a-014e5132be82}</destination>
-            <destination>{c4574e78-0791-4753-bffd-820f4335b274}</destination>
+            <destination>{091bac37-c80f-4b77-9012-f06bd4a3b43c}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{c9457a0c-d4ff-4a9f-aa98-4f4035c062c5}"/>
     <object class="MixerBusEffectChain" id="{af1ecf37-5b33-46de-8007-06b3743b8cfb}">
         <relationship name="effects">
             <destination>{c043d0bc-d39b-47fc-a4ff-2d1423a15212}</destination>
+            <destination>{5ddd2b59-3a14-48f4-8b91-994b454d17da}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{b87e3f7d-1d86-4a29-9ed1-901038508699}"/>
     <object class="MixerBusEffectChain" id="{9cf515a1-fc34-424c-a98f-a8f31e862124}">
         <relationship name="effects">
             <destination>{d86e9575-82a4-4956-a7e8-23d9f96ddd61}</destination>
-            <destination>{bdca6a46-902f-4b96-b94d-853016e2cc42}</destination>
+            <destination>{99f36e63-d2c4-42f3-8d03-053ee4f0b938}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{81662ba6-0534-4a19-a098-2d8744141be2}"/>
@@ -420,16 +432,21 @@
         </property>
     </object>
     <object class="MixerBusFader" id="{f9b930f7-353e-4a51-876a-014e5132be82}"/>
-    <object class="SFXReverbEffect" id="{c4574e78-0791-4753-bffd-820f4335b274}">
+    <object class="SFXReverbEffect" id="{091bac37-c80f-4b77-9012-f06bd4a3b43c}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
     <object class="MixerBusFader" id="{c043d0bc-d39b-47fc-a4ff-2d1423a15212}"/>
-    <object class="MixerBusFader" id="{d86e9575-82a4-4956-a7e8-23d9f96ddd61}"/>
-    <object class="SFXReverbEffect" id="{bdca6a46-902f-4b96-b94d-853016e2cc42}">
+    <object class="SFXReverbEffect" id="{5ddd2b59-3a14-48f4-8b91-994b454d17da}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
+        </property>
+    </object>
+    <object class="MixerBusFader" id="{d86e9575-82a4-4956-a7e8-23d9f96ddd61}"/>
+    <object class="SFXReverbEffect" id="{99f36e63-d2c4-42f3-8d03-053ee4f0b938}">
+        <property name="wetLevel">
+            <value>-22</value>
         </property>
     </object>
 </objects>

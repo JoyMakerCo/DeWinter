@@ -4,32 +4,37 @@ using UFlow;
 
 namespace Ambition
 {
-    public class RegisterParisControllerCmd : ICommand
+    public class RegisterParisControllerCmd : UFlow.UFlowConfig
     {
-        public void Execute()
+        public override void Initialize()
         {
-            AmbitionApp.RegisterCommand<ChooseExploreLocationsCmd, Pin[]>(ParisMessages.SELECT_DAILIES);
-            AmbitionApp.RegisterCommand<ChooseLocationCmd, LocationVO>(ParisMessages.GO_TO_LOCATION);
-            AmbitionApp.RegisterCommand<LoadLocationSceneCmd>(ParisMessages.LOAD_LOCATION);
+            State("EnterMap");
+            State("Map");
+            State("Go to Location");
+            State("Location Incident");
+            State("Location Scene Decision");
+            State("Location Scene"); 
+            State("Exit");
+            State("Return To Estate", false);
 
-            AmbitionApp.RegisterState<LoadSceneState, string>("ParisMapController", "EnterMap", SceneConsts.PARIS_SCENE);
-            AmbitionApp.RegisterState("ParisMapController", "Map");
-            AmbitionApp.RegisterState("ParisMapController", "CheckIncident");
-            AmbitionApp.RegisterMachineState("ParisMapController", "Incident", "IncidentController");
-            AmbitionApp.RegisterState<SendMessageState, string>("ParisMapController", "EnterLocation", ParisMessages.LOAD_LOCATION);
-            AmbitionApp.RegisterState("ParisMapController", "Leave");
-            AmbitionApp.RegisterState("ParisMapController", "BeginScene");
-            AmbitionApp.RegisterState<FadeOutState>("ParisMapController", "ExitMap");
+            Link("Map", "Exit");
+            Link("Map", "Return To Estate");
+            Link("Return To Estate", "Exit");
+            Link("Location Incident", "Exit");
 
-            AmbitionApp.RegisterLink<InputLink, string>("ParisMapController", "EnterMap", "Map", GameMessages.FADE_IN);
-            AmbitionApp.RegisterLink<InputLink, string>("ParisMapController", "Map", "Leave", ParisMessages.LEAVE_LOCATION);
-            AmbitionApp.RegisterLink<InputLink, string>("ParisMapController", "Map", "Incident", ParisMessages.GO_TO_LOCATION);
-            AmbitionApp.RegisterLink<CheckLocationSceneLink>("ParisMapController", "Incident", "EnterLocation");
-            AmbitionApp.RegisterLink("ParisMapController", "Incident", "ExitMap");
+            Bind<SetActivityState, ActivityType>("EnterMap", ActivityType.Location);
+            Bind<PickLocationState>("Go to Location");
+            Bind<UMachine, string>("Location Incident", FlowConsts.INCIDENT_CONTROLLER);
+            Bind<ReturnToEstateState>("Return To Estate");
+            Bind<PopulateParisState>("Map");
 
-            AmbitionApp.RegisterLink<FadeInLink>("ParisMapController", "EnterLocation", "BeginScene");
-            AmbitionApp.RegisterLink<InputLink, string>("ParisMapController", "BeginScene", "Leave", ParisMessages.LEAVE_LOCATION);
-            AmbitionApp.RegisterLink<FadeOutLink>("ParisMapController", "Leave", "ExitMap");
+            BindLink<LoadSceneLink, string>("EnterMap", "Map", SceneConsts.PARIS_SCENE);
+            BindLink<MessageLink, string>("Map", "Go to Location", ParisMessages.GO_TO_LOCATION);
+            BindLink<MessageLink, string>("Map", "Exit", ParisMessages.LEAVE_LOCATION);
+            BindLink<MessageLink, string>("Map", "Return To Estate", ParisMessages.ESTATE);
+            BindLink<CheckLocationSceneLink>("Location Incident", "Location Scene Decision");
+            BindLink<LoadLocationLink>("Location Scene Decision", "Location Scene");
+            BindLink<MessageLink, string>("Location Scene", "Exit", ParisMessages.LEAVE_LOCATION);
         }
     }
 }

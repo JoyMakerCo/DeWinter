@@ -2,42 +2,35 @@
 
 namespace Ambition
 {
-    public class RegisterIncidentControllerCmd : ICommand
+    public class RegisterIncidentControllerCmd : UFlow.UFlowConfig
     {
-        public void Execute()
+        public override void Initialize()
         {
-            AmbitionApp.RegisterModel<IncidentModel>();
-            AmbitionApp.RegisterCommand<UpdateIncidentsCmd>(CalendarMessages.UPDATE_CALENDAR);
-            AmbitionApp.RegisterCommand<ScheduleIncidentCmd, IncidentVO>(CalendarMessages.SCHEDULED);
-            AmbitionApp.RegisterCommand<CompleteIncidentCmd, IncidentVO>(CalendarMessages.CALENDAR_EVENT_COMPLETED);
+            State("StartIncidentsDecision"); // If there are no queued incidents, don't bother chaging scenes
+            State("StartIncidents"); // Fade out to the first incident
+            State("StartIncident"); // Start the incident and fade in
+            State("Moment"); // Send out moment and transition data
+            State("Transition"); // Multiple options; advance to the selected moment
+            State("EndIncident"); // No more moments; end the incident
+            State("CheckNextIncident");
+            State("IncidentTransition");
+            State("Exit", false);
 
-            // INCIDENT MACHINE
-            AmbitionApp.RegisterState("IncidentController", "StartIncidentDecision"); // If there are no transitions, don't bother chaging scenes
-            AmbitionApp.RegisterState("IncidentController", "StartIncidents"); // Fade out to the first incident
-            AmbitionApp.RegisterState<LoadSceneState, string>("IncidentController", "LoadIncidentScene", SceneConsts.INCIDENT_SCENE); // Fade out to the first incident
-            AmbitionApp.RegisterState<SendMessageState, string>("IncidentController", "ShowHeader", GameMessages.SHOW_HEADER); // Fade out to the first incident
-            AmbitionApp.RegisterState<StartIncidentState>("IncidentController", "StartIncident"); // Start the incident and fade in
-            AmbitionApp.RegisterState<MomentState>("IncidentController", "Moment"); // Send out moment and transition data
-            AmbitionApp.RegisterState("IncidentController", "Transition"); // Multiple options; advance to the selected moment
-            AmbitionApp.RegisterState<EndIncidentState>("IncidentController", "EndIncident"); // No more moments; end the incident
-            AmbitionApp.RegisterState("IncidentController", "CheckNextIncident");
-            AmbitionApp.RegisterState("IncidentController", "Exit");
-            AmbitionApp.RegisterState<FadeInState>("IncidentController", "ExitIncidents");
+            Link("StartIncidentsDecision", "Exit"); // Don't bother transitioning if there are no incidents
+            Link("CheckNextIncident", "Exit"); // Don't bother transitioning if there are no incidents
+            Link("Transition", "Moment");
 
-            AmbitionApp.RegisterLink<CheckIncidentLink>("IncidentController", "StartIncidentDecision", "StartIncidents");
-            AmbitionApp.RegisterLink("IncidentController", "StartIncidentDecision", "Exit"); // Don't bother transitioning if there are no incidents
+            BindLink<CheckIncidentLink>("StartIncidentsDecision", "StartIncidents");
+            BindLink<LoadSceneLink, string>("StartIncidents", "StartIncident", SceneConsts.INCIDENT_SCENE);
+            BindLink<MessageLink, string>("Moment", "Transition", IncidentMessages.TRANSITION);
+            BindLink<CheckMomentDecision>("Transition", "Moment");
+            BindLink<FadeOutLink>("EndIncident", "CheckNextIncident");
+            BindLink<CheckIncidentLink>("CheckNextIncident", "IncidentTransition");
+            BindLink<FadeInLink>("IncidentTransition", "StartIncident");
 
-            AmbitionApp.RegisterLink<FadeOutLink>("IncidentController", "StartIncidents", "LoadIncidentScene");
-            AmbitionApp.RegisterLink("IncidentController", "LoadIncidentScene", "ShowHeader");
-            AmbitionApp.RegisterLink("IncidentController", "ShowHeader", "StartIncident");
-            AmbitionApp.RegisterLink<FadeInLink>("IncidentController", "StartIncident", "Moment");
-            AmbitionApp.RegisterLink<CheckTransitionLink>("IncidentController", "Moment", "Transition");
-            AmbitionApp.RegisterLink<CheckEndIncidentLink>("IncidentController", "Moment", "EndIncident");
-            AmbitionApp.RegisterLink("IncidentController", "Transition", "Moment");
-
-            AmbitionApp.RegisterLink<FadeOutLink>("IncidentController", "EndIncident", "CheckNextIncident");
-            AmbitionApp.RegisterLink<CheckIncidentLink>("IncidentController", "CheckNextIncident", "StartIncident");
-            AmbitionApp.RegisterLink("IncidentController", "CheckNextIncident", "Exit");
+            Bind<StartIncidentState>("StartIncident");
+            Bind<MomentState>("Moment");
+            Bind<EndIncidentState>("EndIncident");
         }
     }
 }

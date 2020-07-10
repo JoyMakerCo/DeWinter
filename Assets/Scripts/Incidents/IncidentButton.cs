@@ -21,20 +21,17 @@ namespace Ambition
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            AmbitionApp.SendMessage(_transition);
+            AmbitionApp.SendMessage(IncidentMessages.TRANSITION, _transition);
         }
 
-        public string Text
-        {
-            get => _text.text;
-            set => _text.text = value;
-        }
+        public string Text => _text.text;
 
-        public void SetTransition(TransitionVO transition)
+        public void SetTransition(TransitionVO transition, string text)
         {
-            _transition = transition;
-
             IncidentFlag flag;
+
+            _transition = transition;
+            _text.text = text;
             for (int i=Flags.Length-1; i>=0; i--)
             {
                 bool active = i < (_transition.Flags?.Length ?? 0);

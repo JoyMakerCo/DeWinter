@@ -575,6 +575,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{78428348-3774-4992-96e4-2314e3227c16}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Party Map</value>
         </property>
@@ -751,6 +754,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{458dacfd-db78-426b-87bb-d4e1d10d2173}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Conversation A</value>
         </property>
@@ -924,6 +930,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{648fdf4e-f442-47a2-8733-cc480f821215}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Conversation B</value>
         </property>
@@ -1145,6 +1154,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{f712fcfa-20c1-493b-b516-1326c6493283}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Endings</value>
         </property>
@@ -1764,7 +1776,7 @@
     <object class="MixerBusEffectChain" id="{917ce5c6-18a3-47a8-a20a-6489eed11053}">
         <relationship name="effects">
             <destination>{16caf22e-8a8a-4435-826b-c33ae25200c6}</destination>
-            <destination>{18343150-2275-4c4f-bcd3-b9711c7cf28c}</destination>
+            <destination>{9f20d149-84b0-4e46-8a53-060333c92438}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{587f3f49-bafa-46f4-ac29-8a0bfb7211ce}"/>
@@ -1803,7 +1815,7 @@
     <object class="MixerBusEffectChain" id="{9987533a-f704-494c-85d9-1537bae6f102}">
         <relationship name="effects">
             <destination>{4607b324-f6a0-40a7-a4e5-795da6118d3f}</destination>
-            <destination>{8bd641f2-3b6c-462d-be77-a47daf5d7c7b}</destination>
+            <destination>{15246276-d48c-4429-a598-983b939060f8}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{9a920d7f-e50a-467c-8566-7202247aa16b}"/>
@@ -1834,7 +1846,7 @@
     <object class="MixerBusEffectChain" id="{dc909bb5-9fea-4cb2-8c60-2120b9b74019}">
         <relationship name="effects">
             <destination>{3ec54419-c7df-48bb-9cdd-666750f88bf8}</destination>
-            <destination>{52cb091e-208f-44b3-ba99-9a2e56d09d5c}</destination>
+            <destination>{58d9e260-ea3f-4982-9605-2d12ccbf9618}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{e4c727c2-0238-4baf-822a-78f630c4650d}"/>
@@ -1885,7 +1897,7 @@
     <object class="MixerBusEffectChain" id="{96210e07-a413-4542-8429-1ae118fac555}">
         <relationship name="effects">
             <destination>{99c960b2-5cec-4b9b-8e2b-71e7fb74e805}</destination>
-            <destination>{5430bae0-e35d-464f-ae65-7092ff3b99b6}</destination>
+            <destination>{38d270fd-5dea-462a-9324-4d7372c7f3ea}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{e823478e-ef91-4dcf-a0fc-608f9b309ebd}"/>
@@ -2275,9 +2287,9 @@
         </property>
     </object>
     <object class="MixerBusFader" id="{16caf22e-8a8a-4435-826b-c33ae25200c6}"/>
-    <object class="SFXReverbEffect" id="{18343150-2275-4c4f-bcd3-b9711c7cf28c}">
+    <object class="SFXReverbEffect" id="{9f20d149-84b0-4e46-8a53-060333c92438}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
     <object class="AutomationPoint" id="{95f108e4-5946-4f1e-b296-9eaa2634ef31}">
@@ -2363,9 +2375,9 @@
         </property>
     </object>
     <object class="MixerBusFader" id="{4607b324-f6a0-40a7-a4e5-795da6118d3f}"/>
-    <object class="SFXReverbEffect" id="{8bd641f2-3b6c-462d-be77-a47daf5d7c7b}">
+    <object class="SFXReverbEffect" id="{15246276-d48c-4429-a598-983b939060f8}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
     <object class="AutomationPoint" id="{a0acdfd5-0d6e-4ede-81a5-6b3956c7bc8a}">
@@ -2426,9 +2438,9 @@
         </property>
     </object>
     <object class="MixerBusFader" id="{3ec54419-c7df-48bb-9cdd-666750f88bf8}"/>
-    <object class="SFXReverbEffect" id="{52cb091e-208f-44b3-ba99-9a2e56d09d5c}">
+    <object class="SFXReverbEffect" id="{58d9e260-ea3f-4982-9605-2d12ccbf9618}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
     <object class="AutomationPoint" id="{5bdb2e50-c7a5-4670-8862-9acab3041778}">
@@ -2508,9 +2520,9 @@
         </property>
     </object>
     <object class="MixerBusFader" id="{99c960b2-5cec-4b9b-8e2b-71e7fb74e805}"/>
-    <object class="SFXReverbEffect" id="{5430bae0-e35d-464f-ae65-7092ff3b99b6}">
+    <object class="SFXReverbEffect" id="{38d270fd-5dea-462a-9324-4d7372c7f3ea}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
 </objects>

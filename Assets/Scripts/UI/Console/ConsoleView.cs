@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
@@ -8,7 +8,7 @@ namespace Core
 {
     public class ConsoleView : MonoBehaviour
     {
-		public CanvasGroup consoleCanvas;
+        public CanvasGroup consoleCanvas;
 		public Transform textContainer;
 		public GameObject linePrefab;
 		public InputField input;
@@ -141,8 +141,5 @@ namespace Core
 				Debug.LogWarning("Console model not available, can't do anything with input");
 			}
 		}
-
-
-
     }
 }

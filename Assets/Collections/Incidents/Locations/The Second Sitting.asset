@@ -1,0 +1,1833 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: The Second Sitting
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 1, y: 72}
+  - {x: -234, y: 68}
+  - {x: 230, y: 75}
+  - {x: -248, y: 136}
+  - {x: 229, y: 158}
+  - {x: 30, y: 307}
+  - {x: 286, y: 358}
+  - {x: 24, y: 604}
+  - {x: 24, y: 704}
+  - {x: 25, y: 813}
+  - {x: -230, y: 820}
+  - {x: 25, y: 874}
+  - {x: 270, y: 762}
+  - {x: -238, y: 883}
+  - {x: 29, y: 931}
+  - {x: 281, y: 821}
+  - {x: 33, y: 996}
+  - {x: 34, y: 1055}
+  - {x: 28, y: 1120}
+  - {x: -289, y: 1072}
+  - {x: 279, y: 1106}
+  - {x: -573, y: 1190}
+  - {x: -301, y: 1140}
+  - {x: -91, y: 1175}
+  - {x: -237, y: 1339}
+  - {x: 37, y: 1333}
+  - {x: 31, y: 385}
+  - {x: -277, y: 417}
+  - {x: -237, y: 274}
+  - {x: 226, y: 234}
+  - {x: -238, y: 347}
+  - {x: 24, y: 485}
+  - {x: 28, y: 756}
+  - {x: 251, y: 1233}
+  - {x: -246, y: 205}
+  - {x: 272, y: 300}
+  - {x: -295, y: 490}
+  - {x: -291, y: 550}
+  - {x: 33, y: 431}
+  - {x: 22, y: 539}
+  - {x: 18, y: 653}
+  - {x: 288, y: 895}
+  - {x: 324, y: 984}
+  - {x: -244, y: 949}
+  - {x: -600, y: 1277}
+  - {x: -327, y: 1219}
+  - {x: -105, y: 1235}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 2, y: 4}
+    - {x: 3, y: 5}
+    - {x: 7, y: 8}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 10, y: 13}
+    - {x: 11, y: 14}
+    - {x: 12, y: 15}
+    - {x: 13, y: 16}
+    - {x: 17, y: 18}
+    - {x: 18, y: 19}
+    - {x: 19, y: 20}
+    - {x: 19, y: 21}
+    - {x: 20, y: 22}
+    - {x: 20, y: 23}
+    - {x: 20, y: 24}
+    - {x: 25, y: 26}
+    - {x: 5, y: 30}
+    - {x: 29, y: 31}
+    - {x: 31, y: 6}
+    - {x: 6, y: 28}
+    - {x: 6, y: 7}
+    - {x: 6, y: 27}
+    - {x: 9, y: 33}
+    - {x: 33, y: 10}
+    - {x: 21, y: 34}
+    - {x: 34, y: 26}
+    - {x: 4, y: 35}
+    - {x: 35, y: 29}
+    - {x: 30, y: 36}
+    - {x: 36, y: 6}
+    - {x: 28, y: 37}
+    - {x: 37, y: 38}
+    - {x: 38, y: 8}
+    - {x: 27, y: 39}
+    - {x: 39, y: 32}
+    - {x: 32, y: 40}
+    - {x: 40, y: 8}
+    - {x: 8, y: 41}
+    - {x: 41, y: 9}
+    - {x: 16, y: 42}
+    - {x: 42, y: 17}
+    - {x: 15, y: 43}
+    - {x: 43, y: 17}
+    - {x: 14, y: 44}
+    - {x: 44, y: 17}
+    - {x: 22, y: 45}
+    - {x: 45, y: 25}
+    - {x: 23, y: 46}
+    - {x: 46, y: 25}
+    - {x: 24, y: 47}
+    - {x: 47, y: 25}
+    Nodes:
+    - Text: It's another warm, sunny day as you walk to Elisabeth's studio. A fresh
+        breeze off the river Seine prevents the heat from becoming overwhelming.
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Having been to her studio before, you arrive without any trouble.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You knock lightly on the door, and wait. Listening closely, you hear some
+        frantic movement inside.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_knock_soft
+        Parameters: []
+    - Text: Remembering Elisabeth's need for discretion, you simply walk inside. The
+        studio is exactly how you remember it, though your portrait's canvas has been
+        covered with a cloth.
+      Background: {fileID: 21300000, guid: ccdd2aa8d92d9e947aebfc4128c8a27e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 'The door opens a fraction and you can see Elisabeth through the gap.
+
+
+        "What did I say last time, about staying quiet?" She whispers to you through
+        her teeth. "We need to be discreet."
+
+
+        (You have lost a little favor with Elisabeth)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/OS - Elisabeth - Introduction
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: Entering the room, a startled Elisabeth practically jumps when she sees
+        you. "<i>Mon dieu!</i>"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBren
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/OS - Elisabeth - Introduction
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_gasp
+        Parameters: []
+    - Text: '"Alright, I already have everything I need set up. Let''s begin, shall
+        we?"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Elisabeth heads to her canvas and throws off the covers, while you strip
+        down and position yourself on the couch, the same as you were before. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'This time, she starts with her paints, filling in the colors that define
+        the scene. While you can''t see what she''s doing, she tells you about the
+        process.
+
+
+        Getting the balance of colors is important to making a scene feel authentic,
+        even to an untrained eye. Subtle details like the color of the light reflected
+        off a wall can make all the difference in the world.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: An hour into the sitting, she laughs. "I like how easy it is to talk to
+        you. Much easier than trying to reach out to new patrons. Half of the critics
+        in the city already paint me as a conniving narcisist, and I'd hate to prove
+        any of them right."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"At this point, I don''t even know who would appreciate my work."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"You really think so?" She asks, already considering the idea. "I guess
+        they would, and none of my commisioned work is truly immodest, so maybe they
+        really might like my paintings." '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: '"You really think so?" She asks, already considering the idea. "I guess
+        that makes sense. It''s a lot easier to pitch yourself when you have something
+        different to offer." '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: '"That definitely makes sense." She admits, already considering the idea.
+        "What I need right now is clients, and I''d rather have ones that can pay
+        well than ones that can''t." '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: '"Thanks Yvette! I''ll send out letters to the bishops in Paris tomorrow."
+
+
+        (You have gained a little favor with Elisabeth)
+
+        (The Church''s allegiance to the Crown has been improved)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: '"Thanks Yvette! I''ll send out letters to some of the military officers
+        in Paris tomorrow."
+
+
+        (You have gained a little favor with Elisabeth)
+
+        (The Military''s allegiance to the Crown has been improved)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: '"Thanks Yvette! I''ll send out letters to some of the business leaders
+        in Paris tomorrow."
+
+
+        (You have gained a little favor with Elisabeth)
+
+        (The Bourgeoisie''s allegiance to the Crown has been improved)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 'The conversation trails off and you spend the next hour simply posing
+        and watching Elisabeth paint. She seems more relaxed, as if a weight has been
+        lifted from her mind. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Alright, my hands are starting to cramp up, so I think we''re done for
+        the day."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Do you want to see what I''ve done so far?"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Here it is!" the painter says as she waves you over to her easel. The
+        wooden floor creaks under your bare feet as you walk over. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: '"Oh really? Very interesting."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 'While the painting is obviously unfinished, it''s coming together quite
+        nicely. The colors of the scene are balanced and you can see that Elisabeth
+        has already started on some of your details, but everything is smoother. Cleaner.
+        The kind of unreal beauty that you''ve seen in so many portraits of great
+        men and women.
+
+
+        It''s not you as you are. It''s you as you aspire to be.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'While the painting is obviously unfinished, it''s coming together quite
+        nicely. The colors of the scene are balanced and you can see that Elisabeth
+        has already started on some of the details that make you yourself. A wrinkle
+        here, a childhood scar there. The minor flaws of your body, quite literally
+        laid bare.
+
+
+        Yet still, there''s an honest beauty to it, if you do say so yourself.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'While the painting is obviously unfinished, it''s coming together quite
+        nicely. The colors of the scene are balanced and you can see that Elisabeth
+        has already started on the details of your body. It''s not what you see in
+        the mirror, but it''s a familiar beauty. A lot of time has been spent on your
+        eyes, capturing something that feels passionate, yet calculating and enigmatic.
+
+
+        It''s fascinating to see how you appear through the eyes of another.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Afterwards, Elisabeth provides you with pastries and tea again. You get
+        the feeling that she does this with all of her clients, but it's nice to have
+        all the same. You chat and joke for a while, which is a lot easier to do,
+        now that you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: With things winding down, you decide it's time to head home. With a wave
+        goodbye to Elisabeth, you take your leave.
+      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "You turn your back on the painter and start to disrobe, one article at
+        a time. It's slow, but confident. After all, if you had anything to hide,
+        you wouldn't be here, doing this. \n\nLanguidly, you sit on the couch and
+        remove your stockings, before posing yourself."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "\"Oh, I thought you'd never ask.\" Elisabeth replies with a sly smile.
+        She helps you out of your dress, and slowly unlaces your stays, hands lingering
+        on you all the while. \n\nYou're pretty sure it took longer to undress with
+        her help than it would have taken to do by yourself, but that wasn't the point
+        really, was it?\n\n(You have gained a little favor with Elisabeth)"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: Elisabeth
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: '"No matter, if anyone asks, I''ll just say it was a courier with a message."
+        She says with a sigh. "Come in, come in."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I''m sorry, I just didn''t hear you come in."
+
+
+        She flashes you a smile. "Still, I''m glad you took my request seriously."
+
+
+        (You have gained a little favor with Elisabeth)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Elisabeth
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: You follow her inside and Elisabeth closes the door behind you. The studio
+        is exactly how you remember it, though your portrait's canvas has been covered
+        with a cloth.
+      Background: {fileID: 21300000, guid: ccdd2aa8d92d9e947aebfc4128c8a27e, type: 3}
+      Character1:
+        AvatarID: Elisabeth
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: '"I don''t think I''ll ever get tired of that." Elisabeth sighs.
+
+
+        (You have gained a some favor with Elisabeth)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Elisabeth
+        Pose: happy
+        Name: Elisabeth
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: '"So, instead, I just sit around and wait for work to come to me, even
+        though I know it''s unwise. Artists have to keep reaching out for clients,
+        or we''ll never get anything."
+
+
+        She sighs. "Yet, I''m so out of practice. What if I make a fool of myself?"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Elisabeth
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 1
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 1
+      - Type: 13
+        ID: Military
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 1
+      - Type: 13
+        ID: Church
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Like last time, Elisabeth fetches some pastries and tea. You get the feeling
+        that she does this with all of her clients, but it's nice to have all the
+        same. You chat and joke for a while, which is a lot easier to do, now that
+        you don't have to hold perfectly still.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: <Knock on the door>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: <Just walk in>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Have you considered the Church? They''d value your more natural style."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Try the Military, most of their commisioned artists are men, so you''ll
+        be sure to stand out."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"You''re an artist trying to make a living. The Bourgeoisie have the
+        money, go to them."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Sounds great!"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Actually, I''d rather be surprised by the final product."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: ElisabethPaintingBeauty
+        Value: 1
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: ElisabethPaintingRealism
+        Value: 1
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: ElisabethPaintingPersonal
+        Value: 1
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"I''d appreciate some help getting ready, if you have the time."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: <Get undressed, and into position>
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Of course, just stand back and watch."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    OneShot: 1
+    Chapters: 
+    Factions: 
+    Political: 0
+    Requirements: []
+    _date: -1
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _requirements: []
+  _nodeText:
+  - "It's another warm, sunny day as you walk to \xC9lisabeth's studio. A fresh breeze
+    off the river Seine prevents the heat from becoming overwhelming."
+  - Having been to her studio before, you arrive without any trouble.
+  - You knock lightly on the door, and wait. Listening closely, you hear some frantic
+    movement inside.
+  - "Remembering \xC9lisabeth's need for discretion, you simply walk inside. The studio
+    is exactly how you remember it, though your portrait's canvas has been covered
+    with a cloth."
+  - "The door opens a fraction and you can see \xC9lisabeth through the gap.\n\n\"What
+    did I say last time, about staying quiet?\" She whispers to you through her teeth.
+    \"We need to be discreet.\""
+  - "Entering the room, a startled \xC9lisabeth practically jumps when she sees you.
+    \"<i>Mon dieu!</i>\""
+  - '"Alright, I already have everything I need set up. Let''s begin, shall we?"'
+  - "\xC9lisabeth heads to her canvas and throws off the covers, while you strip down
+    and position yourself on the couch, the same as you were before. "
+  - This time, she starts with her paints, filling in the colors that define the scene.
+    While you can't see what she's doing, she tells you about the process.
+  - An hour into the sitting, she laughs. "I like how easy it is to talk to you. Much
+    easier than trying to reach out to new patrons. Half of the critics in the city
+    already paint me as a conniving narcisist, and I'd hate to prove any of them right."
+  - '"At this point, I don''t even know who would appreciate my work."'
+  - '"You really think so?" She asks, already considering the idea. "I guess they
+    would, and none of my commisioned work is truly immodest, so perhaps they''ll
+    actually appreciate my paintings." '
+  - '"You really think so?" She asks, already considering the idea. "I guess that
+    makes sense. It''s a lot easier to pitch yourself when you have something different
+    to offer." '
+  - '"That feels sensible." She admits, already considering the idea. "What I need
+    right now is clients, and I''d rather have ones that can pay well than ones that
+    can''t." '
+  - '"Thanks Yvette! I''ll send out letters to the bishops in Paris tomorrow."'
+  - '"Thanks Yvette! I''ll send out letters to some of the military officers in Paris
+    tomorrow."'
+  - '"Thanks Yvette! I''ll send out letters to some of the business leaders in Paris
+    tomorrow."'
+  - "The conversation trails off and you spend the next hour simply posing and watching
+    \xC9lisabeth paint. She seems more relaxed, as if a weight has been lifted from
+    her mind. "
+  - '"Alright, my hands are starting to cramp up, so I think we''re done for the day."'
+  - '"Do you want to see what I''ve done so far?"'
+  - '"Here it is!" the painter says as she waves you over to her easel. The wooden
+    floor creaks under your bare feet as you walk over. '
+  - '"Oh really? Very interesting."'
+  - "While the painting is obviously unfinished, the colors of the scene are balanced
+    and you can see that \xC9lisabeth has already started on some of your details,
+    but everything is smoother. Cleaner. The kind of unreal beauty that you've seen
+    in so many portraits of great men and women."
+  - While the painting is obviously unfinished, the colors of the scene are balanced
+    and you can see that Elisabeth has already started on some of the details that
+    make you yourself. A wrinkle here, a childhood scar there. The minor flaws of
+    your body, quite literally laid bare.
+  - While the painting is obviously unfinished, the colors of the scene are balanced
+    and you can already see certain details of your body. It's not what you see in
+    the mirror, but it's a familiar beauty. A lot of time has been spent on your eyes,
+    capturing something that feels passionate, yet calculating and enigmatic.
+  - "Afterwards, \xC9lisabeth provides you with pastries and tea again. You get the
+    feeling that she does this with all of her clients, but it's nice to have all
+    the same. You chat and joke for a while, which is a lot easier to do, now that
+    you don't have to hold perfectly still."
+  - "With things winding down, you decide it's time to head home. With a wave goodbye
+    to \xC9lisabeth, you take your leave."
+  - 'You turn your back on the painter and start to disrobe, one article at a time.
+    It''s slow, but confident. After all, if you had anything to hide, you wouldn''t
+    be here, doing this. '
+  - '"Oh, I thought you''d never ask." Elisabeth replies with a sly smile. She helps
+    you out of your dress, and slowly unlaces your stays, hands lingering on you all
+    the while. '
+  - '"No matter, if anyone asks, I''ll just say it was a courier with a message."
+    She says with a sigh. "Come in, come in."'
+  - '"I''m sorry, I just didn''t hear you come in."
+
+
+    She flashes you a smile. "Still, I''m glad you took my request seriously."'
+  - "You follow her inside and \xC9lisabeth closes the door behind you. The studio
+    is exactly how you remember it, though your portrait's canvas has been covered
+    with a cloth."
+  - "\"I don't think I'll ever tire of that.\" \xC9lisabeth sighs."
+  - '"So, instead, I just sit around and wait for work to come to me, even though
+    I know it''s unwise. Artists have to keep reaching out for clients, or we''ll
+    never get anything."
+
+
+    She sighs. "Yet, I''m so out of practice. What if I make a fool of myself?"'
+  - "Like last time, \xC9lisabeth fetches some pastries and tea. You get the feeling
+    that she does this with all of her clients, but it's nice to have all the same.
+    You chat and joke for a while, which is a lot easier to do, now that you don't
+    have to hold perfectly still."
+  - "(You have lost a little favor with \xC9lisabeth)"
+  - "(You have gained a little favor with \xC9lisabeth)"
+  - You're pretty sure it took longer to undress with her help than it would have
+    taken to do by yourself, but that wasn't the point really, was it?
+  - "(You have gained a little favor with \xC9lisabeth)"
+  - Languidly, you sit on the couch and remove your stockings, before posing yourself.
+  - "(You have gained some favor with \xC9lisabeth)"
+  - Getting the balance of colors is important to making a scene feel authentic, even
+    to an untrained eye. Subtle details like the color of the light reflected off
+    a wall can make all the difference in the world.
+  - "(You have gained a little favor with \xC9lisabeth)\n(The Bourgeoisie has moved
+    towards the Crown some)"
+  - "(You have gained a little favor with \xC9lisabeth)\n(The Military has moved towards
+    the Crown some)"
+  - "(You have gained a little favor with \xC9lisabeth)\n(The Church has moved towards
+    the Crown some)"
+  - It's not you as you are. It's you as you aspire to be.
+  - Yet still, there's an honest beauty to it, if you do say so yourself.
+  - It's fascinating to see how you appear through the eyes of another.
+  _linkText:
+  - 
+  - <Knock on the door>
+  - <Just walk in>
+  - 
+  - 
+  - 
+  - '"Have you considered the Church? They''d value your more natural style."'
+  - '"Try the Military, most of their commisioned artists are men, so you''ll be sure
+    to stand out."'
+  - '"You''re an artist trying to make a living. The Bourgeoisie have the money, go
+    to them."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Sounds great!"'
+  - '"Actually, I''d rather be surprised by the final product."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I''d appreciate some help getting ready, if you have the time."'
+  - <Get undressed, and into position>
+  - '"Of course, just stand back and watch."'
+  - 
+  - '"Of course, just stand back and watch."'
+  - '"Of course, just stand back and watch."'
+  - '"Of course, just stand back and watch."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

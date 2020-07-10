@@ -10,17 +10,15 @@ namespace Ambition
         public Text Title;
         private void Start()
         {
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             GameModel model = AmbitionApp.GetModel<GameModel>();
-            ChapterVO chapter = calendar.GetEvent<ChapterVO>();
             AmbitionApp.SendMessage(GameMessages.HIDE_HEADER);
             AmbitionApp.SendMessage(AudioMessages.STOP_AMBIENT);
             AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);
-            if (!string.IsNullOrWhiteSpace(chapter?.Sting.Name))
-                AmbitionApp.SendMessage(AudioMessages.PLAY, chapter.Sting.Name);
-            Splash.sprite = chapter?.Splash;
+            ChapterVO chapter = Array.Find(model.Chapters, d => d.Date == model.Date);
+            Splash.sprite = chapter.Splash;
+            AmbitionApp.SendMessage(AudioMessages.PLAY, chapter.Sting);
             AmbitionApp.SendMessage(GameMessages.INHIBIT_MENU);
-            Title.text = AmbitionApp.Localize(chapter.Name);
+            Title.text = AmbitionApp.Localize(chapter.ID);
         }
     }
 }

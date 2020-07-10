@@ -1,12 +1,14 @@
 ﻿using System;
+using UFlow;
+
 namespace Ambition
 {
-    public class StyleChangeDecision : UFlow.ULink
+    public class StyleChangeDecision : ULink
     {
         public override bool Validate()
         {
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            return calendar.Today >= calendar.NextStyleSwitchDay;
+            GameModel game = AmbitionApp.GetModel<GameModel>();
+            return game.Date >= game.NextStyleSwitchDay;
         }
     }
 }

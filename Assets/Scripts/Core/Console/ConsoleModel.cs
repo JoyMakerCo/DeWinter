@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -69,8 +69,9 @@ namespace Core
 			// handy quick use tools
 			NewCommand( "inventory", DumpInventory, "dump inventory" );
 			NewCommand( "gossip", UnlockGossip, "unlock gossip features for testing" );
+            NewCommand( "clearsaves", ClearSaves, "clear all saved games");
 
-			ConsoleUtilities.TestLookup();
+            ConsoleUtilities.TestLookup();
 		}
 
 		void configureView()
@@ -331,7 +332,6 @@ namespace Core
 			// Incidents already taken care of
 			
 			_entities["game"] = AmbitionApp.GetModel<GameModel>();
-			_entities["calendar"] = AmbitionApp.GetModel<CalendarModel>();
 			_entities["inventory"] = AmbitionApp.GetModel<InventoryModel>();
 			_entities["quest"] = AmbitionApp.GetModel<QuestModel>();
 
@@ -358,14 +358,13 @@ namespace Core
 
 		string[] DumpIncident( string name )
 		{
-			var ic = UnityEngine.Resources.Load("Incidents/"+name) as IncidentConfig;
+            IncidentConfig ic = UnityEngine.Resources.Load<IncidentConfig>("Incidents/"+name);
 			if (ic == null)
 			{
 				error("Error: couldn't load resource '{0}' as an IncidentConfig", name );
 				return new string[] {};
 			}
-			//IncidentVO ivo = new IncidentVO(ic.Incident);
-			return ic.GetIncident().Dump();
+            return ic?.GetIncident()?.Dump();
 		}
 
 		void InvokeFaction( FactionVO fac, string[] args )
@@ -565,7 +564,7 @@ namespace Core
 			switch (args[0])
 			{
 				case IncidentMessages.END_INCIDENT:
-					AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, AmbitionApp.GetModel<IncidentModel>().Incident);
+					AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT);
 					break;
 
 				default:
@@ -624,12 +623,15 @@ namespace Core
 			}
 		}
 
-		void OpenDialog( string[] args )
+        void ClearSaves( string[] args )
+        {
+            string path = System.IO.Path.Combine(UnityEngine.Application.persistentDataPath, Filepath.SAVE_FILE);
+            System.IO.File.Delete(path);
+        }
+
+        void OpenDialog( string[] args )
 		{	                    
 			AmbitionApp.OpenDialog(args[1]);
 		}
 	}
-
-
-
 }

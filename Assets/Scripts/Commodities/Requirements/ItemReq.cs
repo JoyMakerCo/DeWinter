@@ -1,12 +1,19 @@
-﻿using System.Linq;
-namespace Ambition
+﻿namespace Ambition
 {
     public static class ItemReq
     {
         public static bool Check(RequirementVO req)
         {
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            return inventory.Inventory.Keys.Any(i => i.ToString() == req.ID);
+            foreach (ItemVO item in inventory.Inventory)
+            {
+                if (item.ID == req.ID) return true;
+            }
+            foreach(ItemVO item in inventory.Equipped.Values)
+            {
+                if (item?.ID == req.ID) return true;
+            }
+            return false;
         }
     }
 }

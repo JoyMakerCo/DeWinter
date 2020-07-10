@@ -1,11 +1,11 @@
-using UFlow;
+﻿using UFlow;
 
 namespace Ambition
 {
-    public class GuestActionSelectedLink:ULink<string>
+    public class GuestActionSelectedLink:ULink, Util.IInitializable<string>
     {
         private string _actionType;
-        override public void SetValue(string data)
+        public void Initialize(string data)
         {
             _actionType = data;
         }

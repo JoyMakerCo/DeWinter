@@ -1,14 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 namespace Ambition
 {
     public class PostFader : MonoBehaviour
     {
+        private const string FADE_VAR = "_fade";
         private const float DEFAULT_TIME = 1.0f;
         public Shader Effect;
         private Material _material;
-        private float _fade = 1f;
+        private float _fade = 0f;
         private bool _fadeIn;
 
         // Creates a private material used to the effect
@@ -20,6 +21,11 @@ namespace Ambition
             AmbitionApp.Subscribe<float>(GameMessages.FADE_OUT, HandleFadeOut);
             AmbitionApp.Subscribe<float>(GameMessages.FADE_IN, HandleFadeIn);
             AmbitionApp.Subscribe(GameMessages.INTERRUPT_FADE, HandleInterruptFade);
+        }
+
+        private void OnEnable()
+        {
+            HandleFadeIn();
         }
 
         void OnDestroy()
@@ -39,6 +45,10 @@ namespace Ambition
         private void HandleFade(bool fadeIn, float time)
         {
             StopAllCoroutines();
+            if (_fadeIn != fadeIn && _fade > 0f && _fade < 1f)
+            {
+                AmbitionApp.SendMessage(_fadeIn ? GameMessages.FADE_IN_COMPLETE : GameMessages.FADE_OUT_COMPLETE);
+            }
             _fadeIn = fadeIn;
             if (_fadeIn) StartCoroutine(FadeIn(time * (1f - _fade)));
             else StartCoroutine(FadeOut(time * _fade));
@@ -78,7 +88,7 @@ namespace Ambition
             if (_fade >= 1f) Graphics.Blit (source, destination);
             else
             {
-                _material.SetFloat("_fade", _fade);
+                _material.SetFloat(FADE_VAR, _fade);
                 Graphics.Blit (source, destination, _material);
             }
         }

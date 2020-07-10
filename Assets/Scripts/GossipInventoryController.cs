@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +18,9 @@ namespace Ambition
         public GameObject GossipSortList;
         public Color LightSortTextColor;
         public Color DarkSortTextColor;
+        public IComparer SortByID;
+        public IComparer SortByDate;
+        public IComparer SortByTier;
 
         public GameObject GossipSortLabelButtonPrefab;
 
@@ -45,13 +47,13 @@ namespace Ambition
         {
             Debug.Log("GossipInventoryController.PopulateInventory");
             DestroyInventoryChildren(); //Gotta start fresh
-            if (AmbitionApp.GetModel<InventoryModel>().Inventory.TryGetValue(ItemType.Gossip, out List<ItemVO> gossip))
+            foreach (ItemVO item in AmbitionApp.GetModel<InventoryModel>().Inventory)
             {
-                foreach (ItemVO g in gossip)
+                if (item.Type == ItemType.Gossip)
                 {
                     GameObject gossipButton = Instantiate(GossipButtonPrefab, GossipListContent.transform);
                     GossipButtonMediator gossipButtonMediator = gossipButton.GetComponent<GossipButtonMediator>();
-                    gossipButtonMediator.SetItem(g);
+                    gossipButtonMediator.SetItem(item);
                 }
             }
         }
@@ -124,22 +126,11 @@ namespace Ambition
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
             HideGossipSortList();
             GossipSortText.text = sort;
-            if (inventory.Inventory.TryGetValue(ItemType.Gossip, out List<ItemVO> gossip))
+            switch (sort)
             {
-                switch (sort)
-                {
-                    case "Faction":
-                        gossip = gossip.OrderBy(g => g.ID).ToList();
-                        break;
-                    case "Freshness":
-                        System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
-                        gossip = gossip.OrderBy(g=>GossipWrapperVO.GetRelevance(g)).ToList();
-                        break;
-                    default:
-                        gossip = gossip.OrderBy(g => GossipWrapperVO.GetTier(g)).ToList();
-                        break;
-                }
-                inventory.Inventory[ItemType.Gossip] = gossip;
+                case "Tier": inventory.Inventory.Sort((a, b) => a.Price.CompareTo(b.Price)); break;
+                case "Freshness": inventory.Inventory.Sort((a, b) => a.Created.CompareTo(b.Created)); break;
+                default: inventory.Inventory.Sort((a, b) => a.ID.CompareTo(b.ID)); break;
             }
             PopulateInventory(null);
         }

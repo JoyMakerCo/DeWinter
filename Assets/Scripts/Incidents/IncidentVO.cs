@@ -4,49 +4,46 @@ using System.Collections.Generic;
 using System.Linq;
 using Util;
 using UGraph;
-using Newtonsoft.Json;
 
 namespace Ambition
 {
     [Serializable]
-    public class IncidentVO : DirectedGraph<MomentVO, TransitionVO>, ICalendarEvent
+    public class IncidentVO : DirectedGraph<MomentVO, TransitionVO>
     {
-        public string Name { get; set; }
+        // PUBLIC DATA //////////////////
 
-        public string AssetPath;
-
-        [JsonProperty("one_shot")]
+        public string ID { get; set; }
         public bool OneShot = true;
-
         public int[] Chapters;
-        public string[] Tags;
         public FactionType[] Factions;
-
-        [JsonProperty("localization_key")]
-        public string LocalizationKey;
-
-        [JsonIgnore]
-        public bool IsScheduled => Date > DateTime.MinValue;
-
-        [JsonProperty("complete")]
-        public bool IsComplete { set; get; }
-
-        [JsonProperty("political")]
+        public bool IsScheduled => Date != default;
         public bool Political = false;
-
-        [JsonIgnore]
         public DateTime Date
         {
+            get => new DateTime(_date);
             set => _date = value.Ticks;
-            get => _date > 0 ? new DateTime(_date) : default;
         }
-
-        [JsonProperty("Date"), SerializeField]
-        private long _date;
-
         public RequirementVO[] Requirements;
 
-        public /*CharactetVO*/string [] GetCharacters()
+        // PRIVATE/PROTECTED DATA //////////////////
+        [SerializeField] private long _date = 0;
+
+        // CONSTRUCTOR //////////////////
+
+        public IncidentVO() : base() { }
+        public IncidentVO(DirectedGraph<MomentVO, TransitionVO> graph) : base(graph) { }
+        public IncidentVO(IncidentVO incident) : base(incident as DirectedGraph<MomentVO, TransitionVO>)
+        {
+            this.ID = incident.ID;
+            this._date = incident._date < 0 ? 0 : incident._date;
+            this.OneShot = incident.OneShot;
+            this.ID = incident.ID;
+            this.Political = incident.Political;
+        }
+
+        // PUBLIC METHODS //////////////////
+
+        public string [] GetCharacters()
         {
             if (Nodes == null) return null;
             List<string> result = new List<string>();
@@ -61,36 +58,21 @@ namespace Ambition
             return result.ToArray();
         }
 
-        public IncidentVO() : base() {}
-        public IncidentVO(DirectedGraph<MomentVO, TransitionVO> graph) : base(graph) { }
-
-        public IncidentVO(IncidentVO incident) : base(incident as DirectedGraph<MomentVO, TransitionVO>)
-        {
-            this.Name = incident.Name;
-            this.Date = incident.Date;
-            this.OneShot = incident.OneShot;
-            this.LocalizationKey = incident.LocalizationKey;
-            this.Political = incident.Political;
-        }
-
         public string[] Dump()
         {
             //return new string[] { "incident " + Name };
 
             var chapz = (Chapters == null) ? "null" : (string.Join(", ", Chapters.Select( x => x.ToString() ).ToArray() ));
-            var tagz = Tags == null ? "null" : string.Join(", ", Tags );
             var fax = Factions == null ? "null" : string.Join(", ", Factions.Select( x => x.ToString() ).ToArray() );
             var charz = string.Join(", ", GetCharacters() );
             return new string[] 
             {
-                "Incident: "+Name+":",
+                "Incident: "+ID+":",
                 "characters "+charz,
                 "chapters "+ chapz,
-                "tags "+ tagz ,
                 "factions "+ fax,
                 "scheduled "+ (IsScheduled ? Date.ToString() : "false"),
                 "oneshot "+ (OneShot ? "true" : "false"),
-                "complete "+ (IsComplete ? "true" : "false")
             };
 
             // TODO dump requirements, characters...?
@@ -98,24 +80,7 @@ namespace Ambition
 
         public override string ToString()
         {
-            return "Incident: "+Name;
-        }
-
-    }
-
-    [Serializable]
-    public class TransitionVO
-    {
-        public int index;
-        public string Text;
-        public bool xor=false;
-        public CommodityVO[] Rewards;
-        public RequirementVO[] Requirements;
-        public IncidentFlag[] Flags;
-
-        public override string ToString()
-        {
-			return string.Format( "TransitionVO: {0} {1} rewards, {2} requirements", Text.Truncate( 16 ), Rewards.Length, Requirements.Length );
+            return "Incident: "+ID;
         }
     }
 }

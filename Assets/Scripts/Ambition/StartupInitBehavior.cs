@@ -6,14 +6,16 @@ namespace Ambition
 {
     public class StartupInitBehavior : MonoBehaviour
     {
-        // Use this for initialization
+        public InputBlocker Blocker;
+        public HeaderMediator Header;
+
         void Awake()
         {
-            App.Register<ModelSvc>();
-            App.Register<MessageSvc>();
-            App.Register<CommandSvc>();
+            CommandSvc cmd = App.Register<CommandSvc>();
             App.Register<LocalizationSvc>();
-            GetComponent<InputBlocker>().enabled = true;
+            App.Register<MessageSvc>();
+            Blocker.enabled = true;
+            Header.enabled = true;
             Destroy(this);
         }
     }

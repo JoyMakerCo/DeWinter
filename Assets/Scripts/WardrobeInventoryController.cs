@@ -58,6 +58,10 @@ namespace Ambition
             AmbitionApp.Subscribe(InventoryMessages.SELL_ITEM, PopulateInventory);
             AmbitionApp.Subscribe<string>(InventoryMessages.SORT_INVENTORY, SortInventory);
             SetSortTypes();
+        }
+
+        private void Start()
+        {
             SwitchToOutfitInventory();
             MerchantCheck();
             PopulateInventory();
@@ -119,11 +123,9 @@ namespace Ambition
 
         void PopulateInventory()
         {
-            Dictionary<ItemType, List<ItemVO>> collection = (InventoryOwner == InventoryType.Shop)
-                ? _inventory.Market
-                : _inventory.Inventory;
-            if (!collection.TryGetValue(ItemType.Outfit, out _outfits)) _outfits = new List<ItemVO>();
-            AccessoriesCountCheck(_outfits.Count);
+            _outfits = (InventoryOwner == InventoryType.Shop)
+                ? _inventory.Market.FindAll(i=>i.Type == ItemType.Outfit)
+                : _inventory.GetItems(ItemType.Outfit).ToList();
             DisplayInventory();
         }
 

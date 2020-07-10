@@ -11,14 +11,13 @@ namespace Ambition
             if (AmbitionApp.GetModel<GameModel>().Level > 8)
             {
                 InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-                ItemVO item;
                 //if (inventory.Equipped.TryGetValue(ItemType.Outfit, out item) && item != null)
                 //{
                 //    string style = (item as OutfitVO).Style;
                 //    if (inventory.Equipped.TryGetValue(ItemConsts.ACCESSORY, out item)
                 //        && item != null && (string)item.State[ItemConsts.STYLE] == style)
                 //    {
-                //        if (Util.RNG.Generate(0, 4) == 0)
+                //        if ( Util.RNG.Generate(0, 4) == 0)
                 //        {
                 //            //Send Out a Relevant Pop-Up
                 //            Dictionary<string, string> substitutions = new Dictionary<string, string>(){

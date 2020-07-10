@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Core;
 namespace Ambition
 {
@@ -7,23 +6,32 @@ namespace Ambition
     {
         public void Execute(PartyVO party)
         {
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            if (party != null && party.Date >= calendar.Today)
+            if (party == null) return;
+
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            GameModel game = AmbitionApp.GetModel<GameModel>();
+            ushort day = game.Convert(party.Date);
+            if (day >= game.Day)
             {
-                PartyVO[] parties = calendar.GetEvents<PartyVO>(party.Date).Where(p=>p!=party).ToArray();
-                if (party.RSVP != RSVP.Required && Array.Exists(parties, p => p.RSVP == RSVP.Required))
+                if (party.RSVP != RSVP.Required) party.RSVP = RSVP.Accepted;
+                AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
+                PartyVO[] parties = model.GetParties(day);
+                int required = -1;
+
+                for (int i=parties.Length-1; i>=0; --i)
                 {
-                    AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
-                }
-                else
-                {
+                    if (parties[i].RSVP == RSVP.Required)
+                    {
+                        required = i;
+                        for (int j=parties.Length-1; j>i; --j)
+                        {
+                            AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
+                        }
+                    }
                     if (party.RSVP != RSVP.Required) party.RSVP = RSVP.Accepted;
-                    // TODO: Any benefits for RSVP yes goes here
-                    parties = parties.Where(p => p.RSVP != RSVP.Declined).ToArray();
-                    Array.ForEach(parties, p => AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, p));
-                    calendar.Schedule(party);
                 }
             }
+            model.UpdateParty();
         }
     }
 }

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="Event" id="{1d2716a4-740b-4897-bbc2-76674b1bbccb}">
         <property name="name">
-            <value>Crown - Victory</value>
+            <value>Epilogue - Crown</value>
         </property>
         <property name="outputFormat">
             <value>1</value>
@@ -96,13 +96,16 @@
     <object class="MixerBusPanner" id="{1a309d8d-af56-464b-9751-62bdad633a0c}"/>
     <object class="SingleSound" id="{8759f8bb-1d78-4003-a930-d69faa59e798}">
         <property name="length">
-            <value>201.54164583333332</value>
+            <value>213.33079166666667</value>
         </property>
         <relationship name="audioFile">
-            <destination>{aa79952d-306e-4d54-be40-94246f1e46cb}</destination>
+            <destination>{34e67813-00a0-4126-9c78-ec8c0f574b2c}</destination>
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{dfec4c35-8e7a-4244-b8e2-09c03aea37eb}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Audio 1</value>
         </property>
@@ -157,7 +160,7 @@
     <object class="MixerBusEffectChain" id="{ee7c5266-5718-4425-af6a-853bb7fce079}">
         <relationship name="effects">
             <destination>{c6684b36-2aa2-4120-b73a-06dabe96b5dd}</destination>
-            <destination>{69b20f07-dab4-40d5-ac06-74a000b1c773}</destination>
+            <destination>{0691ddc5-b093-4045-bc66-902fcbc99467}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{852735ae-e3e3-4b71-b7a1-3d47c93bc71c}"/>
@@ -178,21 +181,21 @@
     <object class="MixerBusEffectChain" id="{98fb4e6c-9caa-4657-88b4-ec143f636c1d}">
         <relationship name="effects">
             <destination>{72c28ed8-c4d5-499f-b247-0f8fa7cdd698}</destination>
-            <destination>{8999702c-fdfe-4ee3-b0f8-786b8665cb46}</destination>
+            <destination>{b4c656e7-73e1-4587-ae06-376ce0ac41b2}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{34c28ea8-88b5-4a71-9d5e-41fdf81f25e3}"/>
     <object class="MixerBusFader" id="{e81b34f6-ed57-452d-be01-77e3336ae968}"/>
     <object class="MixerBusFader" id="{c6684b36-2aa2-4120-b73a-06dabe96b5dd}"/>
-    <object class="SFXReverbEffect" id="{69b20f07-dab4-40d5-ac06-74a000b1c773}">
+    <object class="SFXReverbEffect" id="{0691ddc5-b093-4045-bc66-902fcbc99467}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
     <object class="MixerBusFader" id="{72c28ed8-c4d5-499f-b247-0f8fa7cdd698}"/>
-    <object class="SFXReverbEffect" id="{8999702c-fdfe-4ee3-b0f8-786b8665cb46}">
+    <object class="SFXReverbEffect" id="{b4c656e7-73e1-4587-ae06-376ce0ac41b2}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
 </objects>

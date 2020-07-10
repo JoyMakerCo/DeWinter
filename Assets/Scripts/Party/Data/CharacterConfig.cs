@@ -38,7 +38,7 @@ namespace Ambition
 
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("Ambition/Create/Character")]
-        public static void CreateIncident()
+        public static void CreateCharacter()
         {
             Util.ScriptableObjectUtil.CreateScriptableObject<CharacterConfig>("New Character");
         }

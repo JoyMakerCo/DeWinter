@@ -1,4 +1,4 @@
-namespace Ambition
+﻿namespace Ambition
 {
     public enum SpeakerType
     {

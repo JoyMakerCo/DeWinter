@@ -1,51 +1,49 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using UnityEngine;
 namespace Ambition
 {
-    public class InitPlayerCmd : Core.ICommand<PlayerConfig>
+    public class InitPlayerCmd : Core.ICommand<string>
     {
-        public void Execute(PlayerConfig config)
+        public void Execute(string playerID)
         {
+            PlayerConfig config = Resources.Load<PlayerConfig>(Filepath.PLAYERS + playerID);
             if (config == null) return;
 
             GameModel gameModel = AmbitionApp.GetModel<GameModel>();
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
+            ItemVO item;
+            IncidentVO incident;
 
             // Initialize Selected Player
-            gameModel.PlayerPhrase = config.name;
+            gameModel.playerID = config.name;
             gameModel.Livre.Value = config.Livre;
-            IncidentVO incident;
+            gameModel.Chapters = new ChapterVO[config.Chapters.Length];
+            for (int i = config.Chapters.Length - 1; i >= 0; i--)
+            {
+                gameModel.Chapters[i] = new ChapterVO(
+                    config.name + ".chapter." + i,
+                    config.Chapters[i].Date.GetDateTime(),
+                    config.Chapters[i].Splash,
+                    config.Chapters[i].Sting
+                );
+            }
+            gameModel.StartDate = config.Chapters[0].Date.GetDateTime();
+
             foreach (IncidentConfig iconfig in config.Incidents)
             {
-                incident = iconfig.GetIncident();
-                if (incident.IsScheduled) calendar.Schedule(incident);
-                else calendar.Unschedule(incident);
+                incident = iconfig?.GetIncident();
+                incidentModel.Schedule(incident);
             }
 
-            ChapterConfig chapter;
-            for (int i=config.Chapters.Length-1; i>=0; i--)
+            foreach (ItemConfig def in config.Inventory)
             {
-                chapter = config.Chapters[i];
-                ChapterVO vo = new ChapterVO()
-                {
-                    Name = config.name + ".chapter." + (i+1).ToString(),
-                    Date = chapter.Date.GetDateTime(),
-                    IsComplete = false,
-                    Splash = chapter.Splash,
-                    Sting = chapter.Sting
-                };
-                calendar.Schedule(vo);
+                item = inventory.Import(def);
+                inventory.Inventory.Add(item);
             }
-            calendar.StartDate = config.Chapters[0].Date.GetDateTime();
 
-            ItemVO item;
-            foreach (InventoryItem def in config.Inventory)
-            {
-                item = def.GetItem();
-                inventory.Add(item);
-                if (def.Equipped) inventory.Equip(item);
-            }
+            AmbitionApp.GetModel<LocalizationModel>().SetPlayerName(gameModel.PlayerName);
         }
     }
 }

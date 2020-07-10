@@ -7,8 +7,8 @@ namespace Ambition
     {
         public override void OnEnterState()
         {
-            UController controller = _Machine._UFlow.GetController(_Machine);
-            if (controller != null)
+            //UController controller = _Machine._UFlow.GetController(_Machine);
+            //if (controller != null)
             {
                 //ConversationModel model = AmbitionApp.GetModel<ConversationModel>();
                 //CharacterVO guest = model.Guests[controller.transform.GetSiblingIndex()];

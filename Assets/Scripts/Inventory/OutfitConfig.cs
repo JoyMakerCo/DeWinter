@@ -39,8 +39,7 @@ namespace Ambition
             {
                 if (modesty == element.Modesty && luxury == element.Luxury)
                 {
-                    item.Asset = element.Asset;
-                    return item.Asset;
+                    return element.Asset;
                 }
             }
             return null;

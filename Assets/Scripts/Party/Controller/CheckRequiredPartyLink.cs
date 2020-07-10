@@ -6,7 +6,7 @@ namespace Ambition
     {
         public override bool Validate()
         {
-            PartyVO[] parties = AmbitionApp.GetModel<CalendarModel>().GetEvents<PartyVO>();
+            PartyVO[] parties = AmbitionApp.GetModel<PartyModel>().GetParties();
             return Array.Exists(parties, p => p.RSVP == RSVP.Required);
         }
     }

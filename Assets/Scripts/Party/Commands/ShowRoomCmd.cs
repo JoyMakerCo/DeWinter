@@ -2,17 +2,12 @@
 using Core;
 namespace Ambition
 {
-    public class ShowRoomCmd : ICommand<IncidentVO>
+    public class ShowRoomCmd : ICommand<string>
     {
-        public void Execute(IncidentVO incident)
+        public void Execute(string incidentID)
         {
-            if (incident != null)
-            {
-                PartyModel model = AmbitionApp.GetModel<PartyModel>();
-                model.Incident = incident;
-                AmbitionApp.GetModel<CalendarModel>().Schedule(model.Incident);
-                AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM);
-            }
+            AmbitionApp.GetModel<IncidentModel>().Schedule(incidentID);
+            AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM);
         }
     }
 }

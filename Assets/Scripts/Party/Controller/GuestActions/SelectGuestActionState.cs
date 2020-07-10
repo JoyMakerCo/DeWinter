@@ -20,7 +20,7 @@ namespace Ambition
                 int[] chart = guest.State == GuestState.Charmed
                     ? model.CharmedGuestActionChance
                     : model.GuestActionChance;
-                if (Util.RNG.Generate(chart[map.Room.Difficulty - 1]) > 0)
+                if ( Util.RNG.Generate(chart[map.Room.Difficulty - 1]) > 0)
                 {
                     guest.Action = null;
                 }

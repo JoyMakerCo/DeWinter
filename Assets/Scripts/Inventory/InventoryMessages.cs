@@ -17,10 +17,8 @@ namespace Ambition
         public const string SELL_GOSSIP = "SELL_GOSSIP";
         public const string PEDDLE_GOSSIP = "PEDDLE_GOSSIP";
         public const string RESTOCK_MERCHANT = "RESTOCK_MERCHANT";
-
-
         public const string EQUIP = "EQUIP";
-		public const string UNEQUIP = "UNEQUIP";
+        public const string UNEQUIP = "UNEQUIP";
         public const string ITEM_DELETED = "ITEM_DELETED";
     }
 }

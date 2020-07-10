@@ -6,14 +6,12 @@ namespace Ambition
     {
         public void Execute(PartyVO party)
         {
-            // You can't decline a required party.
-            if (party.RSVP != RSVP.Required)
-            {
-                CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-                party.RSVP = RSVP.Declined;
-                calendar.Schedule(party);
-                // TODO: Any penalties for RSVP No goes here
-            }
+            if (party == null || party.RSVP == RSVP.Required) return;
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            GameModel game = AmbitionApp.GetModel<GameModel>();
+            party.RSVP = RSVP.Declined;
+            AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
+            AmbitionApp.SendMessage(PartyMessages.DECLINED, party);
         }
     }
 }

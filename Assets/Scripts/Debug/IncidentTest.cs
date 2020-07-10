@@ -15,7 +15,6 @@ namespace Ambition
         {
             if (Incident == null) return;
             App.Register<ModelSvc>();
-            App.Register<ModelTrackingSvc>();
             App.Register<MessageSvc>();
             App.Register<CommandSvc>();
             App.Register<LocalizationSvc>();
@@ -24,12 +23,13 @@ namespace Ambition
             GetComponent<InputBlocker>().enabled = true;
 
             IncidentModel model = AmbitionApp.RegisterModel<IncidentModel>();
-            model.IncidentQueue.Add(Incident.GetIncident());
+            model.Incidents[Incident.name] = Incident.GetIncident();
+            model.Schedule(Incident.name);
 
             GetComponentInChildren<SceneMediator>(true).gameObject.SetActive(true);
 
-            AmbitionApp.Execute<RegisterIncidentControllerCmd>();
-            AmbitionApp.GetService<UFlow.UFlowSvc>().InvokeMachine("IncidentController");
+            AmbitionApp.Execute<RegisterIncidentControllerCmd, string>(FlowConsts.INCIDENT_CONTROLLER);
+            AmbitionApp.GetService<UFlow.UFlowSvc>().InvokeMachine(FlowConsts.INCIDENT_CONTROLLER);
         }
     }
 }

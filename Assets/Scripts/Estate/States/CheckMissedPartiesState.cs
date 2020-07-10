@@ -1,5 +1,4 @@
 ﻿using UFlow;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace Ambition
@@ -8,15 +7,18 @@ namespace Ambition
     {
         public override void OnEnterState()
         {
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            PartyVO[] parties = calendar.GetEvents<PartyVO>(calendar.Yesterday).Where(p=>p.RSVP == RSVP.New).ToArray();
-            AmbitionApp.GetModel<GameModel>().Reputation -= 40 * parties.Length;
-            foreach (PartyVO party in parties)
-			{                    
-				Dictionary<string, string> subs = new Dictionary<string, string>()
-                {{"$PARTYNAME",party.Name}};
-		    	AmbitionApp.OpenMessageDialog(DialogConsts.MISSED_RSVP_DIALOG, subs);
-			}
+            GameModel game = AmbitionApp.GetModel<GameModel>();
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            PartyVO[] parties = model.GetParties((ushort)(game.Day - 1));
+            foreach(PartyVO party in parties)
+            {
+                if (party.RSVP == RSVP.New)
+                {
+                    game.Reputation -= game.MissedPartyPenalty;
+                    Dictionary<string, string> subs = new Dictionary<string, string>() {{"$PARTYNAME",party.ID}};
+                    AmbitionApp.OpenDialog(DialogConsts.MISSED_RSVP_DIALOG, subs);
+                }
+            }
         }
     }
 }

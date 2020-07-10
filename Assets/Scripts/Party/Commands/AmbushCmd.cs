@@ -21,7 +21,7 @@ namespace Ambition
             while (hand[i] == null)
             {
                 interest = Util.RNG.TakeRandom(party.Interests);
-                hand[i] = new RemarkVO(Util.RNG.Generate(1, 3), interest);
+                hand[i] = new RemarkVO( Util.RNG.Generate(1, 3), interest);
                 i--;
             }
 

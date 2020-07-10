@@ -27,8 +27,7 @@ namespace Ambition
 
 	    public void CreateCancellationModal()
 	    {
-	    	CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-            PartyVO party = Array.Find(calendar.GetEvents<PartyVO>(), p => p.RSVP == RSVP.Accepted);
+            PartyVO party = AmbitionApp.GetModel<PartyModel>().GetParty(true);
             if (party != null) AmbitionApp.OpenDialog(DialogConsts.CANCEL, party);
 	    }
 

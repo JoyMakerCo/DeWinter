@@ -15,6 +15,7 @@ namespace Ambition
 	    void Start ()
 		{
 	        CalendarSelected();
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, AmbitionApp.Localize("parismap.locationlabel.home"));
 		}
 
 		void OnEnable()
@@ -41,14 +42,14 @@ namespace Ambition
 	    {
             //This tab isn't ready yet, and going there causes issues and looks ugly
             //SetTab(EstateTab);
-            AmbitionApp.OpenMessageDialog("feature_incomplete_dialog");
+            AmbitionApp.OpenDialog("feature_incomplete_dialog");
         }
 
 	    public void JournalSelected()
 	    {
             //This tab isn't ready yet, and going there causes issues and looks ugly
             //SetTab(JournalTab);
-            AmbitionApp.OpenMessageDialog("feature_incomplete_dialog");
+            AmbitionApp.OpenDialog("feature_incomplete_dialog");
         }
 
         private void HandleTab(string msg)

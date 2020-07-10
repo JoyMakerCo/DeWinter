@@ -32,7 +32,7 @@ namespace Ambition
             gossip.ID = spec.Faction.ToString();
             bool isPowershift = (spec.Faction == FactionType.Crown || spec.Faction == FactionType.Revolution || 0 == Util.RNG.Generate(0, 2));
             gossip = new ItemVO(gossip);
-            gossip.Created = AmbitionApp.GetModel<CalendarModel>().Today;
+            gossip.Created = AmbitionApp.GetModel<GameModel>().Date;
             gossip.State.Add(ItemConsts.SHIFT, isPowershift ? ItemConsts.POWER : ItemConsts.ALLEGIANCE);
             gossip.Price = (int)spec.Tier; // Price is acting as Tier
 
@@ -41,9 +41,7 @@ namespace Ambition
             var locFaction = AmbitionApp.Localize( spec.Faction.ToString().ToLower() );
             gossip.Name = string.Format( AmbitionApp.Localize( "gossip.name" ), locTier, locFaction );
 
-            if (!inventory.Inventory.ContainsKey(gossip.Type))
-                inventory.Inventory.Add(gossip.Type, new List<ItemVO>());
-            inventory.Inventory[gossip.Type].Add(gossip);
+            inventory.Inventory.Add(gossip);
             inventory.Broadcast();
 
             //TODO: Make this a factory

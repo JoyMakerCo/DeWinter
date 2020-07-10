@@ -6,13 +6,9 @@ namespace Ambition
 {
     public class InputBlocker : MonoBehaviour
     {
-        private bool _interactible=true;
-        private CanvasGroup _blocker;
+        public CanvasGroup Blocker;
 
-        private void Awake()
-        {
-            _blocker = GetComponent<CanvasGroup>();
-        }
+        private bool _interactible=true;
 
         private void OnEnable()
         {
@@ -34,9 +30,9 @@ namespace Ambition
             AmbitionApp.Unsubscribe(GameMessages.FADE_IN_COMPLETE, FadeUnlock);
         }
 
-        private void Lock() => _blocker.blocksRaycasts = (_interactible = true);
-        private void Unlock() => _blocker.blocksRaycasts = (_interactible = false);
-        private void FadeLock() => _blocker.blocksRaycasts = false;
-        private void FadeUnlock() => _blocker.blocksRaycasts = _interactible;
+        private void Lock() => Blocker.blocksRaycasts = (_interactible = true);
+        private void Unlock() => Blocker.blocksRaycasts = (_interactible = false);
+        private void FadeLock() => Blocker.blocksRaycasts = false;
+        private void FadeUnlock() => Blocker.blocksRaycasts = _interactible;
     }
 }

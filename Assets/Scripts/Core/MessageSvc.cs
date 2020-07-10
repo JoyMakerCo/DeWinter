@@ -78,7 +78,7 @@ namespace Core
 		protected Dictionary<string, Dictionary<Type, IMessageEvent>> _messageTypeHandlers;
 		protected Dictionary<string, MessageEvent> _messageHandlers;
 
-		public MessageSvc ()
+        public MessageSvc ()
 		{
 			_typeHandlers = new Dictionary<Type, IMessageEvent>();
 			_messageHandlers = new Dictionary<string, MessageEvent>();
@@ -153,20 +153,20 @@ namespace Core
 			MessageEvent e;
 			if (messageID != null && _messageHandlers.TryGetValue(messageID, out e))
 				e.Send();
-		}
+        }
 
-		public void Send<T>(string messageID, T messageData)
+        public void Send<T>(string messageID, T messageData)
 		{
-			Debug.LogFormat( "MessageSvc.Send {0} <{1}: {2}>", messageID, typeof(T).ToString(), messageData.ToString() );
+            Debug.LogFormat( "MessageSvc.Send {0} <{1}: {2}>", messageID, typeof(T).ToString(), messageData?.ToString() );
 
 			IMessageEvent e;
 			Dictionary<Type, IMessageEvent> d;
 			Type t = typeof(T);
 			if (messageID != null && _messageTypeHandlers.TryGetValue(messageID, out d) && d.TryGetValue(t, out e))
 				(e as TypeEvent<T>).Send(messageData);
-		}
+        }
 
-		public void Send<T>(T messageData)
+        public void Send<T>(T messageData)
 		{
 			Debug.LogFormat( "MessageSvc.Send <{0}: {1}>", typeof(T).ToString(), messageData.ToString() );
 

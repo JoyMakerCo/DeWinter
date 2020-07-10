@@ -9,12 +9,11 @@ namespace Ambition
         // Returns true iff today's date that the query match
         public static bool Check(RequirementVO req)
         {
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             int month = Array.IndexOf(
                 CultureInfo.CurrentCulture.DateTimeFormat.MonthNames,
                 req.ID.ToLower(CultureInfo.CurrentCulture)) + 1;
             DateTime date = new DateTime(month > 7 ? 1788 : 1789, month, req.Value);
-            int target = (int)((date.Ticks - calendar.Today.Ticks)*.00001f);
+            int target = (int)((date.Ticks - AmbitionApp.GetModel<GameModel>().Date.Ticks)*.00001f);
             RequirementVO r = new RequirementVO()
             {
                 Operator = req.Operator,

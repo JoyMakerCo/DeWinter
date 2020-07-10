@@ -1,0 +1,886 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: Tailored To Fit
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 1, y: 66}
+  - {x: 0, y: 129}
+  - {x: -6, y: 202}
+  - {x: -7, y: 265}
+  - {x: -4, y: 327}
+  - {x: -5, y: 390}
+  - {x: 1, y: 458}
+  - {x: -3, y: 530}
+  - {x: 5, y: 586}
+  - {x: -4, y: 651}
+  - {x: -161, y: 734}
+  - {x: 169, y: 738}
+  - {x: -160, y: 789}
+  - {x: 171, y: 807}
+  - {x: 171, y: 888}
+  - {x: 174, y: 998}
+  - {x: -164, y: 944}
+  - {x: -298, y: 1018}
+  - {x: -45, y: 1022}
+  - {x: -300, y: 1078}
+  - {x: -303, y: 1184}
+  - {x: -301, y: 1250}
+  - {x: -302, y: 1321}
+  - {x: -300, y: 1132}
+  - {x: -159, y: 839}
+  - {x: -162, y: 886}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 11, y: 13}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 17, y: 18}
+    - {x: 17, y: 19}
+    - {x: 18, y: 20}
+    - {x: 21, y: 22}
+    - {x: 22, y: 23}
+    - {x: 20, y: 24}
+    - {x: 24, y: 21}
+    - {x: 13, y: 25}
+    - {x: 25, y: 26}
+    - {x: 26, y: 17}
+    - {x: 19, y: 15}
+    - {x: 12, y: 14}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: d0614ae1779294bdbaa1930e80fcdeee, type: 3}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: negative
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Le Petit Mougul
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: negative
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: negative
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: positive
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: positive
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: positive
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: neutral
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 0
+      Rewards:
+      - Type: 6
+        ID: Maurice
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: negative
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: negative
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: neutral
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: FatimaShenna
+        Pose: negative
+        Name: Fatima
+      Character2:
+        AvatarID: Maurice
+        Pose: happy
+        Name: Maurice
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    OneShot: 1
+    Chapters: 
+    Factions: 
+    Political: 0
+    Requirements: []
+    _date: -1
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: 0
+  _requirements: []
+  _nodeText:
+  - You arrive at <i>Le Petit Mogul</i> to find Fatima already engaged with someone
+    else.
+  - '"Please Maurice, you have to understand. This place barely has two spare coins
+    to rub together right now, and I only have a few regular customers left. I simply
+    don''t have enough work to hire on extra help. I''m sorry!"'
+  - '"I understand Fatima, I''ve just been months without work. I''m starting to think
+    that I''ll have to leave town if I can''t find something soon." The man sighs
+    and shakes his head. "Please just tell me that you haven''t found someone better?"'
+  - '"What? You know that''s impossible. I''ve never met a man with more precise stitching
+    than you!"'
+  - '"Oh, Fatima, you flatterer! Please, stop!" He laughs.'
+  - '"... Actually, no. Please keep going."'
+  - '"Fine! I may be great at making garments but you turn them into a second skin.
+    Anything you work on gets new life breathed into it. It''s how you say, uh..."'
+  - '"Fashion comes and goes, but well-fitting clothes never go out of style."'
+  - '"That''s the one!"'
+  - '"Oh! Madame Decaux, you''re here!" Fatima yelps, suddenly noticing your presence.'
+  - '"What may I help you with today?"'
+  - '"Ah yes, you heard correctly madame. I''m a tailor by trade."'
+  - '"Sorry Maurice, but it''s back to work for me!"'
+  - '"If you''re looking to employ me, I can update your outfits to restore some of
+    their novelty and alter their sensibilities in whatever direction you desire."'
+  - '"I understand. The best of luck to you. Please don''t hesitate to reach out soon
+    if you find anything for me to do."'
+  - With that, the tailor leaves the with air of a downcast man trying to seem proud.
+  - '"Now then, to business, Madame Decaux?"'
+  - '"My services cost approximately forty livres per week. Does that feel acceptable?"'
+  - '"Ah yes... I assumed it would be so..."'
+  - '"Well, that is certainly a pity. I should be going then. <i>Au revoir</i>, Fatima!"'
+  - '"Wait, what? You actually want to hire me?" He gasps.'
+  - (You have hired Maurice the Tailor)
+  - '"So, my good friend Fatima, about getting my wonderful employer a discount..."'
+  - '"Ugh, fine! Let''s talk business."'
+  - '"Ah, thank you <i>bon madame</i>! I promise that you shall be the most elegantly
+    styled woman in all of Paris! Your radiance shall glow like a burning sun, and
+    those that dare to approach your majesty shall be destroyed for their hubris,
+    like the wax wings of Icarus!"'
+  - '"I might also be able to help you negotiate a decent discount at a certain provider
+    of elegant finery..."'
+  - '"He... he might be right." Fatima sighs.'
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Did I hear correctly that your friend Maurice is looking for work?"'
+  - '"Yes, I''m here to purchase some clothes from Fatima."'
+  - 
+  - 
+  - 
+  - '"That sounds very reasonable. Welcome to my household." <Hire Maurice>'
+  - '"I''m sorry, but my household has no such openings." <Don''t hire Maurice>'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

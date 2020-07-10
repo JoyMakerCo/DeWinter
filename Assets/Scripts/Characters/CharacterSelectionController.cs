@@ -9,8 +9,6 @@ namespace Ambition
 {
     public class CharacterSelectionController : MonoBehaviour
     {
-        private const string PLAYER_BUNDLE = "PlayerConfigs";
-
         public Image Doll;
         public Text Name;
         public Text Description;
@@ -23,7 +21,7 @@ namespace Ambition
         public void Show()
         {
             //App.Service<AssetBundleSvc>().Load(PLAYER_BUNDLE);
-            _characters = Resources.LoadAll<PlayerConfig>(PLAYER_BUNDLE);
+            _characters = Resources.LoadAll<PlayerConfig>(Filepath.PLAYERS);
             if (_characters.Length > 1) 
             {
                 gameObject.SetActive(true);
@@ -63,7 +61,7 @@ namespace Ambition
             Doll.sprite = config.Doll;
         }
 
-        public void PickCharacter() => AmbitionApp.Execute<StartGameCmd<PlayerConfig>, PlayerConfig>(_selected);
+        public void PickCharacter() => App.Service<CommandSvc>().Execute<NewGameCmd, string>(_selected.name);
 
         public Dictionary<string, string> StockCharacterList()
         {

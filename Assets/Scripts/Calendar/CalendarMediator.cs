@@ -10,11 +10,11 @@ namespace Ambition
 		public CalendarButton[] Days;
 
 		private int _month;
-		private CalendarModel _model;
+		private GameModel _model;
 
-        private void Awake() => _model = AmbitionApp.GetModel<CalendarModel>();
+        private void Awake() => _model = AmbitionApp.GetModel<GameModel>();
 
-        private DateTime Today => _model.Today;
+        private DateTime Today => _model.Date;
 
         void Start()
 		{
@@ -53,7 +53,6 @@ namespace Ambition
 
         private void ViewMonth(int month)
 		{
-            PartyVO[] parties;
             CalendarButton btn;
             _month = month;
             DateTime date = new DateTime(Today.Year, _month, 1);
@@ -63,8 +62,7 @@ namespace Ambition
 			{
                 btn = Days[i];
 				btn.SetDay(startDate.AddDays(i-1), Today, _month);
-                parties = _model.GetEvents<PartyVO>(btn.Date);
-                btn.SetParties(parties);
+                btn.SetParties(GetParties(btn.Date));
             }
             AmbitionApp.SendMessage(CalendarMessages.VIEW_MONTH, date);
         }
@@ -74,8 +72,14 @@ namespace Ambition
             if (party != null)
             {
                 CalendarButton btn = Array.Find(Days, d => d.Date == party.Date);
-                btn?.SetParties(_model.GetEvents<PartyVO>(party.Date));
+                btn?.SetParties(GetParties(party.Date));
             }
         }
-	}
+
+        private PartyVO[] GetParties(DateTime date)
+        {
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            return model.GetParties((ushort)(_model.Date.Subtract(date).Days));
+        }
+    }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 #if (UNITY_EDITOR)
@@ -21,28 +21,7 @@ namespace Ambition
 
         [SerializeField]
         private long _date = -1;
-        public PartyVO GetParty() => new PartyVO()
-        {
-            Name = name,
-            Date = (_date > 0
-                ? DateTime.MinValue.AddTicks(_date)
-                : default),
-            LocalizationKey = this.LocalizationKey,
-            Description = this.Description,
-            Invitation = this.Invitation,
-            Faction = this.Faction,
-            RSVP = this.RSVP,
-            Size = GetSize(),
-//            Guests = Guests.Select(g=>AmbitionApp.GetModel<CharacterModel>().Characters.First(c=>c.Name == g)).ToArray(),
-            IntroIncident = this.IntroIncident?.GetIncident(),
-            ExitIncident = this.ExitIncident?.GetIncident(),
-            Host = this.Host,
-            RequiredIncidents = GetRequiredIncidents(),
-            SupplementalIncidents = this.SupplementalIncidents?.Select(i => i.GetIncident()).ToArray(),
-            Requirements = this.Requirements?.ToArray() ?? new CommodityVO[0],
-            Rewards = this.Rewards?.ToList() ?? new System.Collections.Generic.List<CommodityVO>(),
-            Map = Map?.CreateMapVO()
-        };
+        public long Date => _date;
 
         public FactionType Faction;
         public PartySize Size;
@@ -52,26 +31,10 @@ namespace Ambition
         public MapView Map;
         public IncidentConfig[] RequiredIncidents;
         public IncidentConfig[] SupplementalIncidents;
-        public CommodityVO[] Requirements;
+
+        [SerializeField]
+        public RequirementVO[] Requirements;
         public CommodityVO[] Rewards;
-
-        private PartySize GetSize()
-        {
-            int count = RequiredIncidents?.Length ?? 0;
-            if ((int)Size > count) return Size;
-            return (count <= (int)(PartySize.Trivial)) ? PartySize.Trivial
-                : (count >= (int)(PartySize.Grand)) ? PartySize.Grand
-                : PartySize.Decent;
-        }
-
-        private IncidentVO[] GetRequiredIncidents()
-        {
-            if (RequiredIncidents == null) return new IncidentVO[0];
-            IncidentVO[] result = new IncidentVO[RequiredIncidents.Length];
-            for (int i = RequiredIncidents.Length - 1; i >= 0; i--)
-                result[i] = RequiredIncidents[i]?.GetIncident();
-            return result;
-        }
 
 #if (UNITY_EDITOR)
         [MenuItem("Assets/Create/Create Party")]

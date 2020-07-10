@@ -1,15 +1,17 @@
-using UFlow;
+﻿using UFlow;
 
 namespace Ambition
 {
-    public class GuestSelectedLink : ULink
+    public class GuestSelectedLink : ULink, Util.IInitializable, System.IDisposable
     {
-        override public void Initialize()
+        public override bool Validate() => false;
+
+        public void Initialize()
         {
             AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleSelect);
         }
 
-        override public void Dispose()
+        public void Dispose()
         {
             AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_SELECTED, HandleSelect);
         }

@@ -109,6 +109,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{7c6d54be-a6b0-4e69-bdad-aabea891fbf4}">
+        <property name="volume">
+            <value>1</value>
+        </property>
         <property name="name">
             <value>Audio 1</value>
         </property>
@@ -174,28 +177,28 @@
     <object class="MixerBusEffectChain" id="{4f084c45-b749-4ed3-9d93-63e7fc4484cd}">
         <relationship name="effects">
             <destination>{4527589b-b1d7-4b81-bc24-a4d2fc6bb538}</destination>
-            <destination>{a2f701cc-712c-4e2a-a1e1-d81d8a1b8841}</destination>
+            <destination>{24d3b8a3-5f74-43cb-9bfa-cedaf830f4a8}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{7a6571c7-8429-46a1-a21f-f66e177c7d9e}"/>
     <object class="MixerBusEffectChain" id="{c977222d-998e-4904-b1c6-4fd6ba65fb51}">
         <relationship name="effects">
             <destination>{33529e9d-8dcc-4591-9635-2b20b5fdc572}</destination>
-            <destination>{fc315ab1-0d3a-461a-b795-472b8369bc04}</destination>
+            <destination>{459c2316-87a3-41e4-9cff-de8bc9c2583d}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{9751352c-7fe6-4392-b73a-62c0a7382531}"/>
     <object class="MixerBusFader" id="{e937c322-26fc-46cb-8289-606e488a31e0}"/>
     <object class="MixerBusFader" id="{4527589b-b1d7-4b81-bc24-a4d2fc6bb538}"/>
-    <object class="SFXReverbEffect" id="{a2f701cc-712c-4e2a-a1e1-d81d8a1b8841}">
+    <object class="SFXReverbEffect" id="{24d3b8a3-5f74-43cb-9bfa-cedaf830f4a8}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
     <object class="MixerBusFader" id="{33529e9d-8dcc-4591-9635-2b20b5fdc572}"/>
-    <object class="SFXReverbEffect" id="{fc315ab1-0d3a-461a-b795-472b8369bc04}">
+    <object class="SFXReverbEffect" id="{459c2316-87a3-41e4-9cff-de8bc9c2583d}">
         <property name="wetLevel">
-            <value>-8</value>
+            <value>-22</value>
         </property>
     </object>
 </objects>

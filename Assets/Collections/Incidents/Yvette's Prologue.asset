@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
   m_Name: Yvette's Prologue
   m_EditorClassIdentifier: 
-  _Nodes: 20000000
+  _Nodes: 
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -21,7 +21,7 @@ MonoBehaviour:
   - {x: -275, y: 320}
   - {x: -265, y: 618}
   - {x: 3, y: 178}
-  - {x: 246, y: 539}
+  - {x: 246, y: 538}
   - {x: 351, y: 755}
   - {x: 353, y: 825}
   - {x: 3, y: 131}
@@ -289,13 +289,13 @@ MonoBehaviour:
       Speaker: 0
       Rewards: []
       Music:
-        Name: event:/Music/Prologue - Opening
+        Name: 
         Parameters: []
       AmbientSFX:
         Name: event:/Ambient SFX/Amb_ParisStreets_outside
         Parameters: []
       OneShotSFX:
-        Name: 
+        Name: event:/One Shot SFX/door_latch
         Parameters: []
     - Text: The sign shows a grubby looking child, holding with a plate piled high
         with fresh bread and roasted meats.
@@ -330,7 +330,7 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 2
+      Speaker: 0
       Rewards: []
       Music:
         Name: 
@@ -564,7 +564,11 @@ MonoBehaviour:
       Rewards: []
       Music:
         Name: event:/Music/Orphan's Feast - Party Master
-        Parameters: []
+        Parameters:
+        - Name: LOSE
+          Value: 0
+        - Name: WIN
+          Value: 0
       AmbientSFX:
         Name: event:/Ambient SFX/Amb_SmallParty_indoor
         Parameters: []
@@ -589,7 +593,11 @@ MonoBehaviour:
       Rewards: []
       Music:
         Name: event:/Music/Orphan's Feast - Party Master
-        Parameters: []
+        Parameters:
+        - Name: LOSE
+          Value: 0
+        - Name: WIN
+          Value: 0
       AmbientSFX:
         Name: event:/Ambient SFX/Amb_SmallParty_indoor
         Parameters: []
@@ -1104,7 +1112,16 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 3
+      Text: '"Coachman, can we pick up the pace, please?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - index: 4
       Text: '"Coachman, can we pick up the pace, please?"'
       xor: 0
       Rewards: []
@@ -1114,15 +1131,6 @@ MonoBehaviour:
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
     - index: 5
-      Text: '"Coachman, can we pick up the pace, please?"'
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags:
-      - Type: 7
-        Phrase: incidents.transitions.characterization.tooltip
-        Value: 1
-    - index: 6
       Text: '"Reading the letter one more time wouldn''t hurt..."'
       xor: 0
       Rewards: []
@@ -1131,7 +1139,7 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 0
-    - index: 0
+    - index: 6
       Text: <Look out the window>
       xor: 0
       Rewards: []
@@ -1140,19 +1148,19 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
+    - index: 7
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 10
+    - index: 8
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 11
+    - index: 9
       Text: <Read Armand's letter>
       xor: 0
       Rewards: []
@@ -1161,13 +1169,13 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 12
+    - index: 10
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 13
+    - index: 11
       Text: '"This must be the place!"'
       xor: 0
       Rewards: []
@@ -1176,7 +1184,7 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 14
+    - index: 12
       Text: '"Here goes nothing..."'
       xor: 0
       Rewards: []
@@ -1185,9 +1193,21 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 15
+    - index: 13
       Text: '"This is my first time here, is there anything I should know to help
         me find my fiance?" <Tutorial>'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 14
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 15
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -1198,19 +1218,7 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - index: 18
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - index: 19
+    - index: 17
       Text: '"Coachman, let''s go! I don''t have all day!"'
       xor: 0
       Rewards: []
@@ -1219,14 +1227,26 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 0
-    - index: 0
+    - index: 18
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 19
+      Text: '"I''m looking for my fiance, Baron Armand de Marbo." <No Tutorial>'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 20
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
     - index: 21
-      Text: '"I''m looking for my fiance, Baron Armand de Marbo." <No Tutorial>'
+      Text: 
       xor: 0
       Rewards: []
       Requirements: []
@@ -1237,13 +1257,13 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 23
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 24
       Text: 
       xor: 0
       Rewards: []
@@ -1267,13 +1287,13 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 28
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 29
       Text: 
       xor: 0
       Rewards: []
@@ -1291,19 +1311,19 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 32
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 33
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 34
       Text: 
       xor: 0
       Rewards: []
@@ -1321,13 +1341,13 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 39
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 38
       Text: 
       xor: 0
       Rewards: []
@@ -1339,7 +1359,7 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
+    - index: 40
       Text: 
       xor: 0
       Rewards: []
@@ -1363,42 +1383,28 @@ MonoBehaviour:
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 43
+    - index: 44
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 43
+    - index: 45
       Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 43
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    - index: 43
-      Text: 
-      xor: 0
-      Rewards: []
-      Requirements: []
-      Flags: []
-    AssetPath: 
     OneShot: 1
     Chapters: 
-    Tags: []
     Factions: 
-    LocalizationKey: Assets/Collections/Incidents/Yvette's Prologue.asset
     Political: 0
-    _date: 564306048000000000
     Requirements: []
+    _date: 564306048000000000
   _factions: 000000000000
   _chapters: 00000000
   _date: 564306048000000000
+  _requirements: []
   _nodeText:
   - "The carriage rumbles and bounces along the cobbles as you approach Paris. It\u2019s
     taken over a week to get here, even carrying just yourself and your luggage. "
@@ -1472,18 +1478,18 @@ MonoBehaviour:
     surges forward, sending you lurching back into your seat. The city blurs by as
     you wind your way towards The Orphan's Feast, a tavern where Armand said he would
     meet you.
-  - "She favors you with a devious smile \"\x1CFind guests worth talking to, and try
-    to say the right things to the right people. You'll never have time to talk to
-    everyone, so try to use your time wisely.\""
+  - "She favors you with a devious smile. \"\x1CFind guests worth talking to, and
+    try to say the right things to the right people. You'll never have time to talk
+    to everyone, so try to use your time wisely.\""
   - '"Ohhh a missing person. That actually sounds interesting." She says with a devious
     smile.'
   - "While you understood the significant benefits your common family would receive
-    from your marriage into a noble one, you couldn\x19t help but be a little annoyed
+    from your marriage into a noble one, you couldn't help but be a little annoyed
     at their eagerness to see you off.\r"
   - 'That was something you were looking forward to. A chance to be something more. '
-  - While you understood the significant benefits your common family would receive
-    from your marriage to a noble one, you couldn't help but be a little annoyed at
-    their eagerness to see you off.
+  - "While you understood the significant benefits your common family would receive
+    from your marriage into a noble one, you couldn't help but be a little annoyed
+    at their eagerness to see you off.\r"
   - "Back in your provincial hometown, you were engaged to Armand, before he moved
     north to Paris to participate in the Estates General. He dreamed of changing the
     country, and this was the political event of the century. You mailed love letters
@@ -1506,10 +1512,10 @@ MonoBehaviour:
     to a tavern he enjoys called 'The Orphan's Feast'. There, he'll meet up with you,
     you'll likely take dinner together, and then he'll show you to your new home in
     Paris.
-  - "Everything feels significant, like world\x19s next act hinges on all of their
-    choices. "
-  - "Everything feels significant, like world\x19s next act hinges on all of their
-    choices."
+  - "Everything feels significant, like the world\x19's next act hinges on all of
+    their choices. "
+  - "Everything feels significant, like the world\x19's next act hinges on all of
+    their choices. "
   _linkText:
   - 
   - '"Hmm... might as well take in the sights."'
@@ -1524,14 +1530,14 @@ MonoBehaviour:
   - 
   - '"This must be the place!"'
   - '"Here goes nothing..."'
-  - '"This is my first time here, is there anything I should know to help me find
-    my fiance?" <Tutorial>'
+  - '"This is my first time here. Is there anything I should know to help me find
+    my fiance?"'
   - 
   - 
   - 
   - '"Coachman, let''s go! I don''t have all day!"'
   - 
-  - "\u201CI\u2019m looking for my fiance Baron Armand de Marbo.\u201D <No Tutorial>"
+  - "\"I\u2019m looking for my fiance, Baron Armand de Marbo.\""
   - 
   - 
   - 

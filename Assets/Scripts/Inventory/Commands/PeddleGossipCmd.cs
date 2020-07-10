@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Core;
 using UnityEngine;
@@ -16,7 +16,7 @@ namespace Ambition
 			}
 
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-			if (model.Inventory.ContainsKey(item.Type) && model.Inventory[item.Type].Remove(item))
+			if (model.Inventory.Remove(item))
 			{
 				model.GossipShared(item);
 				model.Broadcast();

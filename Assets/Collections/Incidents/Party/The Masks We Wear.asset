@@ -1,0 +1,846 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: The Masks We Wear
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -3, y: 78}
+  - {x: -222, y: 163}
+  - {x: 0, y: 167}
+  - {x: 383, y: 175}
+  - {x: -297, y: 251}
+  - {x: -93, y: 618}
+  - {x: -300, y: 322}
+  - {x: -499, y: 399}
+  - {x: -282, y: 404}
+  - {x: -503, y: 461}
+  - {x: -315, y: 619}
+  - {x: -289, y: 506}
+  - {x: -6, y: 244}
+  - {x: 38, y: 320}
+  - {x: -53, y: 414}
+  - {x: 159, y: 411}
+  - {x: 146, y: 488}
+  - {x: 410, y: 247}
+  - {x: 538, y: 311}
+  - {x: 425, y: 398}
+  - {x: 291, y: 311}
+  - {x: 569, y: 549}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 1, y: 4}
+    - {x: 2, y: 5}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 8, y: 10}
+    - {x: 10, y: 11}
+    - {x: 9, y: 12}
+    - {x: 12, y: 11}
+    - {x: 3, y: 13}
+    - {x: 13, y: 6}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 14, y: 16}
+    - {x: 15, y: 12}
+    - {x: 16, y: 17}
+    - {x: 17, y: 12}
+    - {x: 4, y: 18}
+    - {x: 18, y: 19}
+    - {x: 19, y: 20}
+    - {x: 18, y: 21}
+    - {x: 21, y: 6}
+    - {x: 20, y: 22}
+    - {x: 19, y: 22}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Rising Peril
+        Parameters:
+        - Name: END A
+          Value: 0
+        - Name: END B
+          Value: 0
+        - Name: END C
+          Value: 0
+        - Name: HIGH PERIL
+          Value: 0
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_LargeParty_outdoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_LargeParty_outdoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_LargeParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_LargeParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: LudovicoCarriage
+        Value: 1
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Thomas-Alexandre
+        Value: 1
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: HonoradeCarriage
+        Value: 1
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Ludovico
+        Value: 4
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Thomas-Alexandre
+        Value: 4
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Honorade
+        Value: 4
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    OneShot: 1
+    Chapters: 
+    Factions: 
+    Political: 0
+    Requirements: []
+    _date: -1
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _requirements: []
+  _nodeText:
+  - "You spend some time waiting in the long line outside. It appears that Marcelle
+    has invited all of the great and the good of Paris. The ones that meet her particular
+    standards, at least.\r\n\r\nYour heart starts to race when you think about all
+    of the people in this line that may have witnessed your humiliation at that fateful
+    party all those nights ago. \r"
+  - "You inhale deeply through your nose in an effort to calm yourself, and realize
+    that this mask still faintly smells like Armand. \r\n\r\nYou slowly regain your
+    composure when you start to note a lack of second glances in your direction. It
+    appears that this mask has really done the trick in terms of concealing your identity.\r"
+  - "Inside, you see the same doorman as before, who seems to be enjoying the opportunity
+    to boss around anyone trying to enter the party.\r"
+  - "Inside, you see the same doorman as before, who seems to be enjoying the opportunity
+    to boss around anyone trying to enter the party.\r"
+  - "Inside, you see the same doorman as before, who seems to be enjoying the opportunity
+    to boss around anyone trying to enter the party.\r"
+  - "\u201CInvitation, madame?\u201D he asks expectantly."
+  - "He looks over the invitation, making a great show of inspecting it for authenticity.
+    After it passes muster, he places the paper inside his coat.\r\n\r\n\u201CYou
+    may enter, Madame.\u201D\r"
+  - "\u201CAh, I didn\u2019t realize the good Father was bringing a date with him.
+    You must be a very\u2026 pious woman to be so close to a man of the clergy.\u201D\r"
+  - Your first instinct is to slap the smug grin off of his presumptive, leering face.
+  - Your first instinct is to slap the smug grin off of his presumptive, leering face.
+  - "However, for better or for worse, your reason wins out. You refrain from hitting
+    him, and maintain your cover by chuckling dryly, as if he was actually funny.
+    \r\n\r\nEven if his rude implications about you and Ludovico are correct, he could
+    still be polite enough to keep his comments to himself.\r"
+  - "After a brief pause, the dooman steps aside and allows you to pass.\r \u201CYou
+    may enter, Madame.\u201D\r"
+  - 'However, for better or for worse, your reason wins out. You refrain from hitting
+    him, and maintain your cover by chuckling dryly, as if he was actually funny. '
+  - "\u201CInvitation, Madame?\u201D he asks expectantly"
+  - "The doorman grins and leans in a little closer before saying \u201CAh, the honorable
+    Corporal must be very lucky to find a date who\u2019s so\u2026 fair.\u201D\r"
+  - "You don\u2019t expect everyone to approve of your liaison with Thomas. However,
+    you also don\u2019t think it\u2019s unreasonable to expect people to keep their
+    insipid witticisms to themselves."
+  - "It takes a moment before you realize what he\u2019s talking about. Once you do,
+    it takes every fiber of your being to resist slapping him. "
+  - "You may not actually be seeing Thomas romantically, but you\u2019re absolutely
+    stunned how glibly this doorman is willing to say such cruel things about him. "
+  - "\u201CInvitation, Madame?\u201D he asks expectantly."
+  - "\u201CAh, I didn\u2019t realize Madame Gazel was bringing one of her friends
+    with her.\u201D"
+  - "You can\u2019t help but smile slightly at the way the doorman so innocently refers
+    to you as Madam Gazel\u2019s \u2018friend\u2019.\r"
+  - "He looks over the invitation, making a great show of inspecting it for authenticity.
+    When he reads the name of the addressee, he looks you up and down for a moment.
+    \r\n\r\n\u201CAh, Madame Gazel! I barely recognized you in these\u2026 uncharacteristically
+    bright colors.\u201D\r"
+  - "He steps aside and bows deeply to you.\r\n\r\n\u201CYou may enter, Madame.\u201D\r"
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "\u201CHere,\u201D <Hand Over the Invitation>"
+  - "\u201CI\u2019m Father Sidotti\u2019s date for the evening.\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "\"\x1CHere,\"\x1D <Hand Over the Invitation>"
+  - "\u201CI\u2019m Corporal Dumas\u2019 date for the evening.\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "\u201CI\u2019m Madame Gazel\u2019s date for the evening.\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 

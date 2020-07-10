@@ -23,18 +23,23 @@ namespace Ambition
             _background = gameObject.GetComponent<Image>();
             AmbitionApp.Subscribe<MomentVO>(HandleMoment);
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Subscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER);
         }
 
         void OnDestroy ()
 		{
             AmbitionApp.Unsubscribe<MomentVO>(HandleMoment);
             AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
-            AmbitionApp.Unsubscribe(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.Unsubscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
         }
 
         private void HandleIncident(IncidentVO incident) => _incident = incident;
-        private void HandleEndIncident() => _incident = null;
+        private void HandleEndIncident(IncidentVO incident)
+        {
+            if (incident == _incident)
+                _incident = null;
+        }
 
         private void HandleMoment(MomentVO moment)
 		{
@@ -46,7 +51,7 @@ namespace Ambition
                     int index = Array.IndexOf(_incident.Nodes, moment);
                     if (index >= 0)
                     {
-                        result = AmbitionApp.Localize(_incident.LocalizationKey + ".node." + index.ToString());
+                        result = AmbitionApp.Localize(_incident.ID + ".node." + index.ToString());
                     }
                 }
                 descriptionText.text = result;

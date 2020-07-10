@@ -1,104 +1,65 @@
-﻿#pragma warning disable 0414
-
-using System;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using System.Collections.Generic;
 using Util;
-using UGraph;
-
-#if (UNITY_EDITOR)
-using UnityEditor;
-using UnityEditor.Callbacks;
-using UnityEngine.Serialization;
-#endif
-
 
 namespace UFlow
 {
-    [Serializable]
-    public struct UConfigNode
+    public abstract class UFlowConfig
+    // TODO: Make this a UFlow-exclusive class for setting up flow bindings
+     : Core.ICommand<string>
     {
-        public string ID;
-        public UNodeType Type;
-        public string[] Tags;
-    }
+        internal UFlowSvc _uFlow;
+        internal string _flowID;
 
-    [Serializable]
-    public class UConfigMachine : DirectedGraph<UConfigNode>
-    {
-        public UConfigMachine() : base(new DirectedGraph<UConfigNode>()) { }
-    }
+        private string _prevState = null;
 
-    [Serializable]
-    public sealed class UFlowConfig : DirectedGraphConfig
-    {
-        [SerializeField]
-        private DirectedGraph<UStateNode, UGraphLink> _Machine = new DirectedGraph<UStateNode, UGraphLink>();
-        public UMachine GetMachine() => new UMachine(name, _Machine)
+        public abstract void Initialize();
+
+        // TODO: Remove when this is no longer a command
+        public void Execute(string flowID)
         {
-
-        };
-
-#if (UNITY_EDITOR)
-        public override string GraphProperty => "_Machine";
-
-        SerializedObject _obj = null;
-        SerializedProperty _prop = null;
-
-        [SerializeField]
-        private int _index = -1;
-
-        [SerializeField]
-        private bool _isNode = false;
-         
-        public void Select(int index, bool isNode)
-        {
-            _index = index;
-            _isNode = isNode;
+            _flowID = flowID;
+            _uFlow = Core.App.Service<UFlowSvc>();
+            Initialize();
         }
 
-        public void InitNodeData(SerializedProperty nodeData)
+        // TODO: Move Bindings into UFlow
+        protected void Bind<S>(string stateID) where S : UState, new()
         {
-            nodeData.FindPropertyRelative("ID").stringValue = "New State";
-            nodeData.FindPropertyRelative("Type").enumValueIndex = 0;
-            nodeData.FindPropertyRelative("Tags").arraySize = 0;
+            _uFlow.BindState<S>(_flowID, stateID);
         }
 
-        public void InitLinkData(SerializedProperty linkData)
+        protected void Bind<S, D>(string stateID, D data) where S : UState, IInitializable<D>, new()
         {
-
+            _uFlow.BindState<S, D>(_flowID, stateID, data);
         }
 
-        public GUIContent GetGUIContent(int nodeIndex) => new GUIContent(this.name);
-
-        //[OnOpenAsset(1)]
-        //public static bool OpenUFlowConfig(int instanceID, int line)
-        //{
-        //    UFlowConfig config = EditorUtility.InstanceIDToObject(instanceID) as UFlowConfig;
-        //    return (config != null) && (GraphEditorWindow.Show(config) != null);
-        //}
-
-        [MenuItem("Assets/Create/UFlow")]
-        public static void CreateUFlow() => ScriptableObjectUtil.CreateScriptableObject<UFlowConfig>("New UFlow");
-    }
-
-    [CustomEditor(typeof(UFlowConfig))]
-    public class IncidentConfigDrawer : Editor
-    {
-        public override void OnInspectorGUI()
+        // TODO: ULinks no longer bindable, just states
+        // For now, Bindlink also creates links if they don't already exist
+        protected void BindLink<L>(string fromState, string toState) where L : ULink, new()
         {
-            if (serializedObject.FindProperty("_isNode").boolValue)
-            {
-                RenderNode(serializedObject.FindProperty("Graph.Nodes").GetArrayElementAtIndex(serializedObject.FindProperty("_index").intValue));
-            }
+            _uFlow.BindLink<L>(_flowID, fromState, toState);
         }
 
-        private void RenderNode(SerializedProperty node)
+        protected void BindLink<L, D>(string fromState, string toState, D data) where L : ULink, IInitializable<D>, new()
         {
-            EditorGUILayout.PropertyField(node.FindPropertyRelative("ID"), true);
-            EditorGUILayout.PropertyField(node.FindPropertyRelative("Type"), true);
-            EditorGUILayout.PropertyField(node.FindPropertyRelative("Tags"), true);
+            _uFlow.BindLink<L, D>(_flowID, fromState, toState, data);
         }
-#endif
+
+        // TODO: Move graph definition into editor
+        private string _prev; 
+        protected void State(string stateID, bool linkPrevState = true)
+        {
+            _uFlow.RegisterState(_flowID, stateID);
+            if (linkPrevState && _prev != null)
+                _uFlow.RegisterLink(_flowID, _prev, stateID);
+            _prev = stateID;
+        }
+
+        protected void Link(string state0, string state1)
+        {
+            _uFlow.RegisterLink(_flowID, state0, state1);
+            _prev = state1;
+        }
     }
 }

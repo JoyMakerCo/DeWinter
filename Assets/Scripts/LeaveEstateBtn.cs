@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,30 +12,18 @@ namespace Ambition
 
 	    void Awake()
 	    {
-            CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
-            _today = model.Today;
+            GameModel model = AmbitionApp.GetModel<GameModel>();
+            _today = model.Date;
             _text = this.GetComponentInChildren<Text>();
-            _party = Array.Find(model.GetEvents<PartyVO>(), p => p.RSVP == RSVP.Accepted || p.RSVP == RSVP.Required);
-            UpdateParty(_party);
-            AmbitionApp.Subscribe<PartyVO>(HandleParty);
+            AmbitionApp.GetModel<PartyModel>().Observe<PartyModel>(HandleParty);
         }
 
-        void OnDestroy() => AmbitionApp.Unsubscribe<PartyVO>(HandleParty);
+        void OnDestroy() => AmbitionApp.GetModel<PartyModel>().Unobserve<PartyModel>(HandleParty);
 
-        private void HandleParty(PartyVO party)
+        private void HandleParty(PartyModel model)
         {
-            if (party != null && party.Date == _today)
-            {
-                if (party.RSVP == RSVP.Accepted || party.RSVP == RSVP.Required)
-                    UpdateParty(party);
-                else if (_party == party && party.RSVP == RSVP.Declined)
-                    UpdateParty(null);
-            }
-        }
-
-        private void UpdateParty(PartyVO party)
-        {
-            _party = party;
+            _party = model.GetParty();
+            if (!_party?.Attending ?? false) _party = null;
             _text.text = AmbitionApp.Localize("calendar.btn." + (_party == null ? "paris" : "party"));
         }
 

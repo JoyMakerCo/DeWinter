@@ -9,7 +9,7 @@ namespace Ambition
         public const string GOSSIP = "Gossip";
 		public const string SERVANT = "Servant";
 
-		public const string PERSONAL = "Personal";
+        public const string PERSONAL = "Personal";
 		public const string MERCHANT = "Merchant";
 
 		public const string GIFT = "gift";

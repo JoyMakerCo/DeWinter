@@ -16,7 +16,7 @@ namespace Ambition
 
 	            Dictionary<string, string> substitutions = new Dictionary<string, string>()
 					{{"$HOSTNAME", model.Party.Host}};
-	            AmbitionApp.OpenMessageDialog(DialogConsts.REPUTATION_WINE_DIALOG, substitutions);
+	            AmbitionApp.OpenDialog(DialogConsts.REPUTATION_WINE_DIALOG, null, substitutions);
 	        }
 		}
 	}

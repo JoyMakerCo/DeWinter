@@ -49,7 +49,11 @@ namespace UGraph
             serializedObject.Update();
             if ((_Nodes?.Length ?? 0) > 0)
             {
-                RenderNodeUI(serializedObject.FindProperty(GraphProperty+".Nodes").GetArrayElementAtIndex(_Nodes[0]), _Nodes[0]);
+                SerializedProperty prop = serializedObject.FindProperty(GraphProperty + ".Nodes");
+                if (_Nodes[0] < prop.arraySize)
+                {
+                    RenderNodeUI(prop.GetArrayElementAtIndex(_Nodes[0]), _Nodes[0]);
+                }
             }
             if ((_Links?.Length ?? 0) > 0)
             {

@@ -39,8 +39,11 @@ namespace Ambition
             get => Created.Ticks;
         }
 
-        [JsonProperty("Asset")]
-        public Sprite Asset;
+        [JsonProperty("config")]
+        public string Config;
+
+        [JsonProperty("asset")]
+        public string AssetID;
 
         public ItemVO() {}
         public ItemVO(ItemVO item) : this(item, item.State) {}
@@ -53,6 +56,8 @@ namespace Ambition
             Price = item.Price;
             Created = item.Created;
             ID = item.ID;
+            Config = item.Config;
+            AssetID = item.AssetID;
         }
 
         public override string ToString()

@@ -7,6 +7,5 @@ namespace AmbitionEditor
 #if UNITY_EDITOR
         Dictionary<string, string> Localize();
 #endif
-        string LocalizationKey { get; set; }
     }
 }

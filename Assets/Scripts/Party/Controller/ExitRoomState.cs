@@ -6,10 +6,7 @@ namespace Ambition
         public override void OnEnterState()
         {
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            if (model.RequiredIncident == null || model.Incident == model.RequiredIncident)
-                model.IncidentIndex++;
-            model.Incident = null;
-            model.Turn++;
+            if (model.GetRequiredIncident() == null) model.NextRequiredIncident();
         }
     }
 }

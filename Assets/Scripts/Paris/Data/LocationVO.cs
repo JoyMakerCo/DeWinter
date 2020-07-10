@@ -7,8 +7,8 @@ namespace Ambition
     public class LocationVO
     {
         public string ID;
-        public IncidentVO IntroIncident;
-        public IncidentVO[] StoryIncidents;
+        public string IntroIncident;
+        public string[] StoryIncidents;
         public String SceneID;
         public bool OneShot;
         public bool Discoverable;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -24,14 +23,32 @@ namespace Ambition
         {
             RequirementVO[] requirements = new RequirementVO[Requirements.Length];
             Array.Copy(Requirements, requirements, requirements.Length);
+            IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
 
-            IncidentVO[] storyIncidents = StoryIncidentConfigs.Select( x => x.GetIncident() ).ToArray();
+            string[] incidents = new string[StoryIncidentConfigs.Length];
+            IncidentVO incident;
+            if (IntroIncidentConfig != null && !model.Incidents.ContainsKey(IntroIncidentConfig.name))
+            {
+                model.Incidents.Add(IntroIncidentConfig.name, IntroIncidentConfig.GetIncident());
+            }
+            for (int i= StoryIncidentConfigs.Length-1; i>=0; --i)
+            {
+                if (StoryIncidentConfigs[i] != null && !model.Incidents.ContainsKey(StoryIncidentConfigs[i].name))
+                {
+                    incident = StoryIncidentConfigs[i].GetIncident();
+                    if (incident != null)
+                    {
+                        model.Incidents[incident.ID] = incident;
+                    }
+                    incidents[i] = incident?.ID;
+                }
+            }
 
             return new LocationVO()
             {
                 ID = name,
-                IntroIncident = IntroIncidentConfig.GetIncident(),
-                StoryIncidents = storyIncidents,
+                IntroIncident = IntroIncidentConfig?.name,
+                StoryIncidents = incidents,
                 SceneID = SceneID,
                 OneShot = OneShot,
                 Discoverable = Discoverable,
@@ -55,33 +72,5 @@ namespace Ambition
         }
 
         public string Name { get; private set; }
-
-        /******************************************************
-         Private/Protected      
-         *******************************************************/      
-
-        private void Awake()
-        {
-            AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
-            AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
-        }
-
-        private void OnDestroy()
-        {
-            AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
-            AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
-        }
-
-        private void HandleShow(string locationID)
-        {
-            if (locationID == name)
-                gameObject?.SetActive(true);
-        }
-
-        private void HandleHide(string locationID)
-        {
-            if (locationID == name)
-                gameObject?.SetActive(false);
-        }
     }
 }

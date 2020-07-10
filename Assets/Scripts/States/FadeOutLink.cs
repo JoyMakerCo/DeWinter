@@ -1,16 +1,18 @@
 ﻿using UFlow;
 namespace Ambition
 {
-    public class FadeOutLink:ULink
+    public class FadeOutLink:ULink, Util.IInitializable, System.IDisposable
     {
-        public override void Initialize()
+        public override bool Validate() => false;
+
+        public void Initialize()
         {
             AmbitionApp.Subscribe(GameMessages.FADE_OUT_COMPLETE, Activate);
             AmbitionApp.Subscribe(GameMessages.FADE_IN, Activate);
             AmbitionApp.SendMessage(GameMessages.FADE_OUT);
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
             AmbitionApp.Unsubscribe(GameMessages.FADE_IN, Activate);
             AmbitionApp.Unsubscribe(GameMessages.FADE_OUT_COMPLETE, Activate);

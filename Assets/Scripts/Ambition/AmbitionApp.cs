@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Dialog;
 using UFlow;
+using Util;
 using Core;
 
 namespace Ambition
@@ -12,21 +13,10 @@ namespace Ambition
     {
         public static T RegisterModel<T>() where T : Model, new()
         {
-            T model = App.Service<ModelSvc>().Register<T>();
-            App.Service<ModelTrackingSvc>().Track(model as IResettable);
-            return model;
+            return App.Service<ModelSvc>().Register<T>();
         }
 
         public static T GetService<T>() where T : IAppService => App.Service<T>();
-
-        public static void Save()
-        {
-            GameModel model = GetModel<GameModel>();
-            string saveID = model.PlayerName + " " + GetModel<CalendarModel>().Today.ToLongDateString();
-            App.Service<ModelSvc>().Save(saveID);
-        }
-
-        public static bool Restore(string savedState) => App.Service<ModelSvc>().Restore(savedState);
 
         public static void UnregisterModel<T>() where T : Model
         {
@@ -137,7 +127,7 @@ namespace Ambition
             return App.Service<DialogSvc>().Open<T>(DialogID, Data);
         }
 
-        public static GameObject OpenMessageDialog(string phrase, Dictionary<string, string> substitutions)
+        public static GameObject OpenDialog(string phrase, Dictionary<string, string> substitutions = null)
         {
             GameObject dialog = OpenDialog<string>(DialogConsts.MESSAGE, phrase);
             MessageViewMediator mediator = dialog.GetComponent<MessageViewMediator>();
@@ -145,10 +135,18 @@ namespace Ambition
             return dialog;
         }
 
-        public static GameObject OpenMessageDialog(string phrase)
+        public static GameObject OpenDialog(string phrase, Action OnConfirm, Dictionary<string, string> substitutions = null)
         {
-            return OpenDialog<string>(DialogConsts.MESSAGE, phrase);
+            GameObject dialog = OpenDialog<string>(DialogConsts.CHOICE, phrase);
+            MessageViewMediator mediator = dialog.GetComponent<MessageViewMediator>();
+            if (mediator)
+            {
+                mediator.SetPhrase(phrase, substitutions);
+                mediator.SetConfirmAction(OnConfirm);
+            }
+            return dialog;
         }
+
 
         public static void CloseDialog(string dialogID)
         {
@@ -175,26 +173,21 @@ namespace Ambition
             App.Service<UFlowSvc>().RegisterState(machineID, stateID);
         }
 
-        public static void RegisterState<C, T>(string machineID, string stateID, T arg) where C : UState<T>, new()
+        public static void RegisterState<C, T>(string machineID, string stateID, T arg) where C : UState, IInitializable<T>, new()
         {
             App.Service<UFlowSvc>().RegisterState<C, T>(machineID, stateID, arg);
         }
 
         // Binds an existing state to a new node type
-        public static void BindState<T>(string machineID, string stateID) where T:UNode, new()
+        public static void BindState<T>(string machineID, string stateID) where T:UState, new()
         {
             App.Service<UFlowSvc>().BindState<T>(machineID, stateID);
         }
 
-        // Temp method for binding a state to a sub-machine
-        public static void BindMachineState(string machineID, string stateID, string subMachineID)
+        // Binds an existing state to a new node type
+        public static void BindState<S, D>(string machineID, string stateID, D data) where S : UState, IInitializable<D>, new()
         {
-            App.Service<UFlowSvc>().BindMachineState(machineID, stateID, subMachineID);
-        }
-
-        public static void RegisterMachineState(string machineID, string stateID, string newMachineID)
-        {
-            App.Service<UFlowSvc>().RegisterMachineState(machineID, stateID, newMachineID);
+            App.Service<UFlowSvc>().BindState<S,D>(machineID, stateID, data);
         }
 
         public static void RegisterLink(string machineID, string originState, string targetState)
@@ -207,7 +200,7 @@ namespace Ambition
             App.Service<UFlowSvc>().RegisterLink<T>(machineID, originState, targetState);
 		}
 
-		public static void RegisterLink<T, U>(string machineID, string originState, string targetState, U data) where T : ULink<U>, new()
+		public static void RegisterLink<T, U>(string machineID, string originState, string targetState, U data) where T : ULink, IInitializable<U>, new()
 		{
             App.Service<UFlowSvc>().RegisterLink<T, U>(machineID, originState, targetState, data);
 		}
@@ -235,9 +228,19 @@ namespace Ambition
             return result;
         }
 
-		public static string GetString(string key, Dictionary<string, string> substitutions)
+        public static string GetString(string key)
+        {
+            return App.Service<LocalizationSvc>().GetString(key);
+        }
+
+        public static string GetString(string key, Dictionary<string, string> substitutions)
 		{
             LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
+            if (substitutions == null)
+            {
+                return App.Service<LocalizationSvc>().GetString(key, model.Substitutions);
+            }
+
             foreach (KeyValuePair<string, string> kvp in model.Substitutions)
             {
                 if (!substitutions.ContainsKey(kvp.Key))
@@ -248,9 +251,9 @@ namespace Ambition
             return App.Service<LocalizationSvc>().GetString(key, substitutions);
 		}
 
-		public static string[] GetPhrases(string key)
+		public static Dictionary<string, string> GetPhrases(string key)
 		{
-			return App.Service<LocalizationSvc>().GetList(key);
+            return App.Service<LocalizationSvc>().GetPhrases(key);
 		}
 
 		public static void RegisterFactory<Key, Product>(IFactory<Key, Product> factory)

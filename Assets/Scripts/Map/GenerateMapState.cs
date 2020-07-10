@@ -19,7 +19,6 @@ namespace Ambition
 
 		private Dictionary<RoomVO, List<RoomVO>> _rooms=new Dictionary<RoomVO, List<RoomVO>>();
 		private Dictionary<int[], RoomVO[]> _walls = new Dictionary<int[], RoomVO[]>();
-		private MapModel _model;
 
         public override void OnEnterState()
         {
@@ -63,7 +62,7 @@ namespace Ambition
             return null;
         }
 
-
+/*
         private MapVO DeprecatedBuildRandomMap(PartyVO party)
 		{
 			MapVO map = new MapVO();
@@ -74,9 +73,9 @@ namespace Ambition
 			// Overall size of the house will be proportional to the "Importance" of the party.
 			int hyphen = (int)party.Size + Util.RNG.Generate(3); // the width of the hyphen in rooms
 			int pavilion = (int)party.Size + Util.RNG.Generate(3); // length of the pavilion in rooms
-			int jut=Util.RNG.Generate(0,2);
-			int spacing = (int)(Util.RNG.Generate(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
-			float curve1 = .1f*Util.RNG.Generate(6,11);
+			int jut= Util.RNG.Generate(0,2);
+			int spacing = (int)( Util.RNG.Generate(faction.Baroque[0], faction.Baroque[1])*.01f*MAX_ROOM_WIDTH); // Median room spacing
+			float curve1 = .1f* Util.RNG.Generate(6,11);
 			float delta;
 			RoomVO room;
 
@@ -134,7 +133,7 @@ namespace Ambition
 			//map.Rooms = _rooms.Keys.ToArray();
 			return map;
 		}
-
+        */
 		private RoomVO MakeRectRoom(int X, int Y, int W, int H)
 		{
 			return MakeRoom(X, Y, X+W, Y, X+W, Y+H, X, Y+H);
@@ -193,7 +192,7 @@ namespace Ambition
 	    	List<string> result = new List<string>();
 
 			//TODO: make features abstract and configurable
-	    	//if (Util.RNG.Generate(0,100) < _model.PunchbowlChance)
+	    	//if ( Util.RNG.Generate(0,100) < _model.PunchbowlChance)
 	    		//result.Add(PartyConstants.PUNCHBOWL);
 
 	    	return result.ToArray();

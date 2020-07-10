@@ -1,13 +1,8 @@
 ﻿using UFlow;
 namespace Ambition
 {
-    public class FadeInLink:ULink
+    public class FadeInLink:ULink, Util.IInitializable
     {
-        public override void Initialize()
-        {
-            AmbitionApp.SendMessage(GameMessages.FADE_IN);
-        }
-
-        public override bool Validate() => true;
+        public void Initialize() => AmbitionApp.SendMessage(GameMessages.FADE_IN);
     }
 }

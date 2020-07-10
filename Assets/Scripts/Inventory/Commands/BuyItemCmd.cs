@@ -11,20 +11,17 @@ namespace Ambition
 		{
             Debug.Log("BuyItemCmd.Execute");
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-            if (model.Market != null && model.Market.TryGetValue(item.Type, out List<ItemVO> list) && list.Remove(item))
+            if (model.Market?.Remove(item) ?? false)
             {
                 Debug.Log("Found item in market and successfully removed it from market");
-                if (!model.Inventory.ContainsKey(item.Type))
-                    model.Inventory.Add(item.Type, new List<ItemVO>());
+                model.Inventory.Add(item);
 
                 Debug.LogFormat("Added {0} to player inventory",item.ToString());
-                model.Inventory[item.Type].Add(item);
-
-                var cost = item.Price;
+                int cost = item.Price;
                 if (item.Created == default)
                 {
-                    item.Price = (int)(item.Price * model.SellbackMultiplier);
-                    item.Created = AmbitionApp.GetModel<CalendarModel>().Today;
+                    item.Price = (int)(cost * model.SellbackMultiplier);
+                    item.Created = AmbitionApp.GetModel<GameModel>().Date;
                 }
                 AmbitionApp.GetModel<GameModel>().Livre.Value -= cost;
                 model.Broadcast();

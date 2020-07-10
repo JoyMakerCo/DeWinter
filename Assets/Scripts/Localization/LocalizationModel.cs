@@ -9,12 +9,15 @@ namespace Ambition
     [Core.Saveable]
     public class LocalizationModel : Core.Model
     {
-        [JsonProperty("subsitutions")]
+        private const string LOC_DIR = "Localization/";
+
         public Dictionary<string, string> Substitutions = new Dictionary<string, string>();
 
-        public void SetPlayerName()
+        public Observable<string> HeaderTitle = new Observable<string>();
+
+        public void SetPlayerName(string name)
         {
-            Substitutions[LocalizationConsts.PLAYER_NAME] = AmbitionApp.GetModel<GameModel>().PlayerName;
+            Substitutions[LocalizationConsts.PLAYER_NAME] = name;
         }
 
         public void SetMoment(MomentVO moment)
@@ -30,7 +33,7 @@ namespace Ambition
                     Substitutions[LocalizationConsts.SPEAKER] = moment.Character1.Name;
                     break;
                 case SpeakerType.Player:
-                    Substitutions[LocalizationConsts.SPEAKER] = AmbitionApp.GetModel<GameModel>().PlayerName;
+                    Substitutions[LocalizationConsts.SPEAKER] = Substitutions[LocalizationConsts.PLAYER_NAME];
                     break;
                 default:
                     Substitutions[LocalizationConsts.SPEAKER] = "";
@@ -92,32 +95,28 @@ namespace Ambition
 
         public void SetPartyOutfit( ItemVO outfit )
         {
-            if (outfit == null)
+            if (outfit?.Type == ItemType.Outfit)
             {
-                Debug.LogError("Going into party but no outfit is equipped!");
-                return;
+                Substitutions[LocalizationConsts.OUTFITNAME] = outfit.Name.ToLower();
+                Substitutions[LocalizationConsts.OUTFITTITLE] = outfit.Name;
+                Substitutions[LocalizationConsts.OUTFITMODESTY] = OutfitWrapperVO.GetModestyText(outfit);
+                Substitutions[LocalizationConsts.OUTFITLUXURY] = OutfitWrapperVO.GetLuxuryText(outfit);
+
+                Debug.LogFormat("SetPartyOutfit name {0} mod {1} lux {2}",
+                    Substitutions[LocalizationConsts.OUTFITNAME],
+                    Substitutions[LocalizationConsts.OUTFITMODESTY],
+                    Substitutions[LocalizationConsts.OUTFITLUXURY]
+                    );
             }
-
-            Substitutions[LocalizationConsts.OUTFITNAME] = outfit.Name.ToLower();
-            Substitutions[LocalizationConsts.OUTFITTITLE] = outfit.Name;
-            Substitutions[LocalizationConsts.OUTFITMODESTY] = OutfitWrapperVO.GetModestyText(outfit);
-            Substitutions[LocalizationConsts.OUTFITLUXURY] = OutfitWrapperVO.GetLuxuryText(outfit);
-
-            Debug.LogFormat( "SetPartyOutfit name {0} mod {1} lux {2}",
-                Substitutions[LocalizationConsts.OUTFITNAME],
-                Substitutions[LocalizationConsts.OUTFITMODESTY],
-                Substitutions[LocalizationConsts.OUTFITLUXURY]
-                );
-            
         }
 
         public string SetDate(DateTime date)
         {
             Dictionary<string, string> subs = new Dictionary<string, string>();
-            Substitutions[LocalizationConsts.MONTH] = AmbitionApp.GetPhrases("month")[date.Month - 1];
+            Substitutions[LocalizationConsts.MONTH] = AmbitionApp.GetPhrases("month")["month." + (date.Month - 1)];
             Substitutions[LocalizationConsts.DAY] = date.Day.ToString();
             Substitutions[LocalizationConsts.YEAR] = date.Year.ToString();
-            Substitutions[LocalizationConsts.WEEKDAY] = AmbitionApp.GetPhrases("weekday")[(int)(date.DayOfWeek)];
+            Substitutions[LocalizationConsts.WEEKDAY] = AmbitionApp.GetPhrases("weekday")["weekday." + (int)(date.DayOfWeek)];
             Substitutions[LocalizationConsts.SHORT_DATE] = AmbitionApp.GetString("short_date", Substitutions);
             return Substitutions[LocalizationConsts.DATE] = AmbitionApp.GetString("date", Substitutions);
         }

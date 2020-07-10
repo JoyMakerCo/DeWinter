@@ -21,7 +21,6 @@ namespace Ambition
 
 	    private Button _button;
 	    private RoomGraphic _graphic;
-        private MapModel _map;
 
 		void Awake()
 		{
@@ -50,7 +49,6 @@ namespace Ambition
 			get { return _room; }
 			set 
 			{
-                MapModel map = AmbitionApp.GetModel<MapModel>();
                 _graphic.Room = value;
 				gameObject.name = value.Name;
 /*				if (_room == null) // This will crash if the room has no walls.
@@ -59,7 +57,7 @@ namespace Ambition
 					RectTransform xform = gameObject.GetComponent<RectTransform>();
                     xform.anchoredPosition = new Vector2(value.Bounds[0]*scale, value.Bounds[1]*scale);
 					xform.sizeDelta = new Vector2((value.Bounds[2]-value.Bounds[0])*scale, (value.Bounds[3]-value.Bounds[1])*scale);
-					_graphic.sprite = FloorTexturtes.Sprites[Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
+					_graphic.sprite = FloorTexturtes.Sprites[ Util.RNG.Generate(0, FloorTexturtes.Sprites.Length)].Sprite;
 				}
 */				_room = value;
                 //HandleCurrentRoom(map.Room);
