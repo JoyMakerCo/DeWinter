@@ -21,7 +21,7 @@ namespace Ambition
             if (!model.Visited.Contains(location.ID))
             {
                 IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
-                GameModel game = AmbitionApp.GetModel<GameModel>();
+                CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
                 incidentModel.Schedule(location.IntroIncident);
                 foreach(string incidentID in location.StoryIncidents)
                 {
@@ -29,7 +29,7 @@ namespace Ambition
                     {
                         if (incident.IsScheduled)
                         {
-                            incidentModel.Schedule(incidentID, incident.Date.Subtract(game.StartDate).Days);
+                            incidentModel.Schedule(incidentID, incident.Date.Subtract(calendar.StartDate).Days);
                         }
                         else incidentModel.Schedule(incidentID);
                     }

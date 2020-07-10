@@ -10,11 +10,7 @@ namespace Ambition
     [Saveable]
     public class PartyModel : DocumentModel, IInitializable, IConsoleEntity, IResettable
     {
-        // CONSTRUCTOR //////////////////////
-
         public PartyModel() : base("PartyData") { }
-
-        // PUBLIC DATA //////////////////////
 
         [JsonProperty("turns")]
         public int Turns;
@@ -25,10 +21,8 @@ namespace Ambition
         [JsonProperty("room")]
         public int Room = -1;
 
-        [JsonIgnore]
         public int NumRooms => Incidents?.Length??0;
 
-        [JsonIgnore]
         public int TurnsLeft => Turns - Turn;
 
         [JsonProperty("parties")]
@@ -37,11 +31,26 @@ namespace Ambition
         [JsonProperty("incidents")]
         public string[] Incidents;
 
-        [JsonIgnore]
-        public string PartyID => Party?.ID;
+        [JsonProperty("incident_index")]
+        private int _incidentIndex = 0;
+
+        [JsonProperty("party")]
+        public string PartyID
+        {
+            get => Party?.ID;
+            set
+            {
+                if (string.IsNullOrEmpty(value)) Party = null;
+                else Parties.TryGetValue(value, out Party);
+            }
+        }
+
+        public string RequiredIncident => (_incidentIndex < (Party?.RequiredIncidents?.Length ?? 0))
+            ? Party.RequiredIncidents[_incidentIndex]
+            : null;
 
         [JsonIgnore]
-        public PartyVO Party { get; private set; }
+        public PartyVO Party;
 
         [JsonProperty("last_outfit")]
         public string LastOutfitID;
@@ -50,7 +59,7 @@ namespace Ambition
         public int CharmedRemarkBonus;
 
         [JsonProperty("free_remark_counter")]
-        public int FreeRemarkCounter;
+		public int FreeRemarkCounter;
 
         [JsonProperty("boredom_penalty")]
         public int BoredomPenalty;
@@ -61,16 +70,8 @@ namespace Ambition
         [JsonProperty("offended_remark_penalty")]
         public int OffendedRemarkPenalty;
 
-        [JsonProperty("guest_difficulty")]
-        public GuestDifficultyVO[] GuestDifficultyStats;
-
-        // PRIVATE DATA //////////////////////
-
-        [JsonProperty("incident_index")]
-        private int _incidentIndex = 0;
-
-        [JsonProperty("calendar")]
-        private Dictionary<ushort, List<PartyVO>> _calendar = new Dictionary<ushort, List<PartyVO>>();
+		[JsonProperty("guest_difficulty")]
+		public GuestDifficultyVO[] GuestDifficultyStats;
 
         [JsonIgnore]
         private Dictionary<string, GameObject> _maps = new Dictionary<string, GameObject>();
@@ -78,74 +79,31 @@ namespace Ambition
         [JsonIgnore]
         private Dictionary<FactionType, List<string>> _genericMaps = new Dictionary<FactionType, List<string>>();
 
-        [JsonIgnore]
-        private ushort _day;
-
-        // PUBLIC METHODS //////////////////////
-
-        public void Schedule(PartyVO party) => Schedule(party, party?.Date ?? default);
-        public void Schedule(PartyVO party, DateTime date)
+        public PartyVO[] GetParties(DateTime date)
         {
-            if (party == null || date.Equals(default)) return;
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            ushort day = (ushort)(date.Subtract(game.StartDate).Days);
-            if (!_calendar.TryGetValue(day, out List<PartyVO> parties))
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            OccasionVO[] occasions = calendar.GetOccasions(OccasionType.Party);
+            List<PartyVO> parties = new List<PartyVO>();
+            foreach(OccasionVO occasion in occasions)
             {
-                _calendar[day] = parties = new List<PartyVO>();
+                if (Parties.TryGetValue(occasion.ID, out PartyVO party))
+                    parties.Add(party);
             }
-            if (!parties.Contains(party)) parties.Add(party);
-            Broadcast();
+            return parties.ToArray();
         }
 
-        public PartyVO SetDay(ushort day)
+        public PartyVO[] GetParties()
         {
-            _day = day;
-            UpdateParty();
-            Broadcast();
-            return Party;
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            return GetParties(calendar.Today);
         }
 
-        public PartyVO UpdateParty()
+        public PartyVO GetParty(DateTime date, bool attendingOnly=false)
         {
-            Party = GetParty(_day, true);
-            Broadcast();
-            return Party;
-        }
-
-        public PartyVO NextDay() => SetDay((ushort)(_day + 1));
-
-        public string GetRequiredIncident()
-        {
-            return (_incidentIndex < (Party?.RequiredIncidents?.Length ?? 0))
-                ? Party.RequiredIncidents[_incidentIndex]
-                : null;
-        }
-
-        public PartyVO[] GetParties(ushort day)
-        {
-            return (_calendar.TryGetValue(day, out List<PartyVO> parties) && parties != null)
-                ? parties.ToArray()
-                : new PartyVO[0];
-        }
-
-        public PartyVO[] GetParties() => GetParties(_day);
-
-        public PartyVO GetParty(ushort day, bool attendingOnly=false)
-        {
-            PartyVO[] parties = GetParties(day);
-            PartyVO result = null;
-            foreach (PartyVO party in parties)
-            {
-                switch (party.RSVP)
-                {
-                    case RSVP.Required:
-                        return party;
-                    case RSVP.Accepted:
-                        result = party;
-                        break;
-                }
-            }
-            return result ?? (!attendingOnly && parties.Length > 0 ? parties[0] : null);
+            PartyVO[] parties = GetParties(date);
+            if (parties.Length == 0) return null;
+            if (attendingOnly) return Array.Find(parties, p => p.Attending);
+            return Array.Find(parties, p => p.Attending) ?? parties[0];
         }
 
         public void Initialize()
@@ -166,15 +124,14 @@ namespace Ambition
                 }
             }
             Resources.UnloadUnusedAssets();
-            Broadcast();
         }
 
-        public PartyVO GetParty(bool attendingOnly = false) => GetParty(_day, attendingOnly);
+        public PartyVO GetParty(bool attendingOnly = false) => GetParty(AmbitionApp.GetModel<CalendarModel>().Today, attendingOnly);
 
         public string NextRequiredIncident()
         {
             _incidentIndex++;
-            return GetRequiredIncident();
+            return RequiredIncident;
         }
 
         public MapView LoadMap(Transform parent)
@@ -194,28 +151,41 @@ namespace Ambition
             rooms = view.GetComponentsInChildren<RoomView>();
             if (Incidents?.Length != rooms.Length)
                 Incidents = new string[rooms.Length];
-            Broadcast();
             return view;
         }
 
-        public PartyVO LoadParty(string partyID)
+        public PartyVO LoadConfig(PartyConfig config)
         {
-            if (!Parties.TryGetValue(partyID, out PartyVO party))
+            if (config == null) return null;
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            PartyVO party = model.Parties[config.name] = new PartyVO()
             {
-                PartyConfig config = Resources.Load<PartyConfig>(Filepath.PARTIES + partyID);
-                IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-                party = LoadConfig(config);
-                model.AddDependency(config.IntroIncident, partyID, IncidentType.Party);
-                model.AddDependency(config.ExitIncident, partyID, IncidentType.Party);
-                Array.ForEach(config.SupplementalIncidents, i => model.AddDependency(i, partyID, IncidentType.Party));
-                Array.ForEach(config.RequiredIncidents, i => model.AddDependency(i, partyID, IncidentType.Party));
-            }
-            if (party != null)
+                Name = config.name,
+                ID = config.name,
+                Date = new DateTime(config.Date),
+                LocalizationKey = config.LocalizationKey,
+                Description = config.Description,
+                Invitation = config.Invitation,
+                Faction = config.Faction,
+                RSVP = config.RSVP,
+                Size = GetSize(config),
+                IntroIncident = config.IntroIncident.name,
+                ExitIncident = config.ExitIncident.name,
+                Host = config.Host,
+                Requirements = config.Requirements,
+                Rewards = config.Rewards != null ? new List<CommodityVO>(config.Rewards) : new List<CommodityVO>(),
+                Map = config.Map?.name
+            };
+            party.RequiredIncidents = new string[config.RequiredIncidents?.Length ?? 0];
+            for (int i= party.RequiredIncidents.Length-1; i>=0; --i)
             {
-                AmbitionApp.SendMessage(PartyMessages.INITIALIZE_PARTY, party);
-                AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
+                party.RequiredIncidents[i] = config.RequiredIncidents[i]?.name;
             }
-            Broadcast();
+            party.SupplementalIncidents = new string[config.SupplementalIncidents?.Length ?? 0];
+            for (int i = party.SupplementalIncidents.Length - 1; i >= 0; --i)
+            {
+                party.SupplementalIncidents[i] = config.SupplementalIncidents[i].name;
+            }
             return party;
         }
 
@@ -225,7 +195,6 @@ namespace Ambition
             Turn = -1;
             _incidentIndex = 0;
             Party = null;
-            Broadcast();
         }
 
         public void Reset()
@@ -262,42 +231,6 @@ namespace Ambition
             return (count <= (int)(PartySize.Trivial)) ? PartySize.Trivial
                 : (count >= (int)(PartySize.Grand)) ? PartySize.Grand
                 : PartySize.Decent;
-        }
-
-        private PartyVO LoadConfig(PartyConfig config)
-        {
-            if (config == null) return null;
-            PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            PartyVO party = model.Parties[config.name] = new PartyVO()
-            {
-                Name = config.name,
-                ID = config.name,
-                Date = new DateTime(config.Date),
-                LocalizationKey = config.LocalizationKey,
-                Description = config.Description,
-                Invitation = config.Invitation,
-                Faction = config.Faction,
-                RSVP = config.RSVP,
-                Size = GetSize(config),
-                IntroIncident = config.IntroIncident.name,
-                ExitIncident = config.ExitIncident.name,
-                Host = config.Host,
-                Requirements = config.Requirements,
-                Rewards = config.Rewards != null ? new List<CommodityVO>(config.Rewards) : new List<CommodityVO>(),
-                Map = config.Map?.name
-            };
-            party.RequiredIncidents = new string[config.RequiredIncidents?.Length ?? 0];
-            for (int i = party.RequiredIncidents.Length - 1; i >= 0; --i)
-            {
-                party.RequiredIncidents[i] = config.RequiredIncidents[i]?.name;
-            }
-            party.SupplementalIncidents = new string[config.SupplementalIncidents?.Length ?? 0];
-            for (int i = party.SupplementalIncidents.Length - 1; i >= 0; --i)
-            {
-                party.SupplementalIncidents[i] = config.SupplementalIncidents[i].name;
-            }
-            Broadcast();
-            return party;
         }
     }
 

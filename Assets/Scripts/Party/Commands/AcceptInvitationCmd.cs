@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Core;
 namespace Ambition
 {
@@ -6,32 +7,29 @@ namespace Ambition
     {
         public void Execute(PartyVO party)
         {
-            if (party == null) return;
-
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            ushort day = game.Convert(party.Date);
-            if (day >= game.Day)
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
+            if (party != null && party.Date >= calendar.Today)
             {
-                if (party.RSVP != RSVP.Required) party.RSVP = RSVP.Accepted;
-                AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
-                PartyVO[] parties = model.GetParties(day);
-                int required = -1;
-
-                for (int i=parties.Length-1; i>=0; --i)
+                PartyVO[] parties = model.GetParties(party.Date);
+                if (party.RSVP != RSVP.Required && Array.Exists(parties, p => p.RSVP == RSVP.Required))
                 {
-                    if (parties[i].RSVP == RSVP.Required)
+                    AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party.Name);
+                }
+                else
+                {
+                    if (party.RSVP != RSVP.Required) party.RSVP = RSVP.Accepted;
+                    // TODO: Any benefits for RSVP yes goes here
+                    foreach(PartyVO p in parties)
                     {
-                        required = i;
-                        for (int j=parties.Length-1; j>i; --j)
+                        if (p != party)
                         {
-                            AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
+                            AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, p.Name);
                         }
                     }
-                    if (party.RSVP != RSVP.Required) party.RSVP = RSVP.Accepted;
                 }
             }
-            model.UpdateParty();
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Ambition
             BodyTxt.text = party.Invitation;
         }
 
-        public void RSVPAccept() => AmbitionApp.SendMessage(PartyMessages.ACCEPT_INVITATION, _party?.ID);
-        public void RSVPDecline() => AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, _party?.ID);
+        public void RSVPAccept() => AmbitionApp.SendMessage(PartyMessages.ACCEPT_INVITATION, _party);
+        public void RSVPDecline() => AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, _party);
     }
 }

@@ -5,10 +5,10 @@ namespace Ambition
     {
         public void Execute(CommodityVO reward)
         {
-            GameModel game = AmbitionApp.GetModel<GameModel>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-            model.LoadIncident(reward.ID, IncidentType.Party);
-            model.Schedule(reward.ID, game.Day + reward.Value - 1);
+            if (reward.Value == 1) model.Schedule(reward.ID);
+            else model.Schedule(reward.ID, calendar.Day + reward.Value - 1);
         }
     }
 }

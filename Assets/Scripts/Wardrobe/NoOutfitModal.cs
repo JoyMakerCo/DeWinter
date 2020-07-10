@@ -27,8 +27,17 @@ namespace Ambition
 
 	    public void CreateCancellationModal()
 	    {
-            PartyVO party = AmbitionApp.GetModel<PartyModel>().GetParty(true);
-            if (party != null) AmbitionApp.OpenDialog(DialogConsts.CANCEL, party);
+	    	CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            PartyModel mdoel = AmbitionApp.GetModel<PartyModel>();
+            OccasionVO[] occasions = calendar.GetOccasions(OccasionType.Party);
+            foreach(OccasionVO occasion in occasions)
+            {
+                if (mdoel.Parties.TryGetValue(occasion.ID, out PartyVO party) && party.Attending)
+                {
+                    AmbitionApp.OpenDialog(DialogConsts.CANCEL, party);
+                    return;
+                }
+            }
 	    }
 
         public void GoToTheMerchant() => tabsController.WardrobeSelected();

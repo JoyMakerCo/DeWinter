@@ -32,7 +32,7 @@ namespace Ambition
             gossip.ID = spec.Faction.ToString();
             bool isPowershift = (spec.Faction == FactionType.Crown || spec.Faction == FactionType.Revolution || 0 == Util.RNG.Generate(0, 2));
             gossip = new ItemVO(gossip);
-            gossip.Created = AmbitionApp.GetModel<GameModel>().Date;
+            gossip.Created = AmbitionApp.GetModel<CalendarModel>().Today;
             gossip.State.Add(ItemConsts.SHIFT, isPowershift ? ItemConsts.POWER : ItemConsts.ALLEGIANCE);
             gossip.Price = (int)spec.Tier; // Price is acting as Tier
 

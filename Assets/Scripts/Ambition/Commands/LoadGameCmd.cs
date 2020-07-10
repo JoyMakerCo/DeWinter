@@ -29,7 +29,7 @@ namespace Ambition
             }
             UFlowSvc uflow = AmbitionApp.GetService<UFlowSvc>();
             IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
-            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             AmbitionApp.GetService<ModelSvc>().Restore(savedGameData);
             AmbitionApp.Execute<InitPlayerCmd, string>(game.playerID);
 
@@ -40,14 +40,13 @@ namespace Ambition
                     switch (loaded.Value.Type)
                     {
                         case IncidentType.Party:
-                            partyModel.LoadParty(loaded.Value.Filepath);
+                            AmbitionApp.Execute<LoadPartyCmd, string>(loaded.Value.Filepath);
                             break;
                     }
                 }
             }
 
-            incidentModel.SetDay(game.Day, false);
-            partyModel.SetDay(game.Day);
+            incidentModel.SetDay(calendar.Day, false);
             uflow.Reset();
             UMachine machine = uflow.Instantiate(FlowConsts.DAY_FLOW_CONTROLLER);
             switch (game.Activity)
@@ -64,6 +63,7 @@ namespace Ambition
                         machine.RestoreState(START_INCIDENT, null);
                     break;
                 case ActivityType.Party:
+                    PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
                     machine.RestoreState(PARTY_STATE, null);
                     machine = uflow.GetMachine(FlowConsts.PARTY_CONTROLLER);
                     if (partyModel.Turn < 0)

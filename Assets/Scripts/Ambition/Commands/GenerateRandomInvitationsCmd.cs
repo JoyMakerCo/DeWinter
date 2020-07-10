@@ -9,23 +9,19 @@ namespace Ambition
             // TODO: Future engagement chance should be a function of faction standing and known associates
             if ( Util.RNG.Generate(0, 3) == 0) // Chance of a random future engagement
             {
-                PartyModel model = AmbitionApp.GetModel<PartyModel>();
-                GameModel game = AmbitionApp.GetModel<GameModel>();
-                ushort day = (ushort)(game.Day + Util.RNG.Generate(1, 8) + Util.RNG.Generate(1, 8));
-                int index = model.GetParties(day).Length;
-                if (index < 2)
+                CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+                DateTime date = calendar.Today;
+                int index = calendar.GetOccasions(OccasionType.Party, true).Length;
+                PartyVO party = new PartyVO
                 {
-                    PartyVO party = new PartyVO
-                    {
-                        Name = null,
-                        LocalizationKey = "default",
-                        InvitationDate = game.Date,
-                        Date = game.Date.AddDays(day), // +2d8 days
-                        RSVP = RSVP.New,
-                        Faction = Util.RNG.TakeRandomExcept(Enum.GetValues(typeof(FactionType)) as FactionType[], FactionType.Neutral)
-                    };
-                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
-                }
+                    Name = null,
+                    LocalizationKey = "default",
+                    InvitationDate = date,
+                    Date = date.AddDays( Util.RNG.Generate(1, 8) + Util.RNG.Generate(1, 8)), // +2d8 days
+                    RSVP = RSVP.New,
+                    Faction = Util.RNG.TakeRandomExcept(Enum.GetValues(typeof(FactionType)) as FactionType[], FactionType.Neutral)
+                };
+                AmbitionApp.SendMessage(PartyMessages.INITIALIZE_PARTY, party);
             }
         }
     }

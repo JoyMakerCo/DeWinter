@@ -15,9 +15,8 @@ namespace Ambition
             IncidentVO incident;
             IncidentVO[] result;
             int i, index;
-            string incidentID = pmodel.GetRequiredIncident();
 
-            if (!string.IsNullOrEmpty(incidentID))
+            if (pmodel.RequiredIncident != null)
             {
                 result = new IncidentVO[pmodel.NumRooms];
                 index = RNG.Generate(pmodel.NumRooms);
@@ -25,8 +24,8 @@ namespace Ambition
                 {
                     if (i == index)
                     {
-                        pmodel.Incidents[i] = incidentID;
-                        imodel.Incidents.TryGetValue(incidentID, out incident);
+                        pmodel.Incidents[i] = pmodel.RequiredIncident;
+                        imodel.Incidents.TryGetValue(pmodel.RequiredIncident, out incident);
                         result[i] = incident;
                     }
                     else

@@ -11,6 +11,7 @@ namespace Ambition
         private void Start()
         {
             Text text = gameObject.GetComponentInChildren<Text>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             AmbitionApp.SendMessage(GameMessages.HIDE_HEADER);
             AmbitionApp.SendMessage(AudioMessages.STOP_AMBIENT);
             AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);

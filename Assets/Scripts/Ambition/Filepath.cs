@@ -7,7 +7,8 @@ namespace Ambition
         public const string INCIDENTS_CAUGHT = "Incidents/Caught/";
         public const string INCIDENTS_PERIL = "Incidents/Peril/";
         public const string INCIDENTS_PARTY = "Incidents/Party/";
-        public const string INCIDENTS_REWARD = "Incidents/Reward/";
+        public const string INCIDENTS_POLITICAL = "Incidents/Political/";
+        public const string LOCALIZATIONS = "Localization/";
         public const string PARTIES = "Parties/";
         public const string PLAYERS = "PlayerConfigs/";
         public const string MAPS = "PartyMaps/";

@@ -7,30 +7,28 @@ namespace Core
 {
 	public class LocalizationSvc : IAppService
 	{
-		public const string LOCALIZATIONS_DIRECTORY = "Localization/";
-		public const string DEFAULT_CONFIG = "en";
-
-		public string LanguageCode;
-		protected Dictionary<string, string> _localizations;
+		public string LanguageCode { get; private set; }
+        protected Dictionary<string, string> _localizations;
 
 		public LocalizationSvc()
 		{
 			LanguageCode = UnityEngine.Application.systemLanguage.ToString();
 			_localizations = new Dictionary<string, string>();
-
-			TextAsset file = Resources.Load<TextAsset>(LOCALIZATIONS_DIRECTORY + LanguageCode);
-			if (file == null)
-			{
-				LanguageCode = DEFAULT_CONFIG;
-				file = Resources.Load<TextAsset>(LOCALIZATIONS_DIRECTORY + DEFAULT_CONFIG);
-			}
-			if (file != null)
-			{
-				JsonConvert.PopulateObject(file.text, _localizations);
-			}
 		}
 
-		public string this[string key]
+        public bool LoadLocFile(string langageCode, string json)
+        {
+            Dictionary<string, string> result = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            if (result != null)
+            {
+                LanguageCode = langageCode;
+                _localizations = result;
+                return true;
+            }
+            return false;
+        }
+
+        public string this[string key]
 		{
 			get
 			{

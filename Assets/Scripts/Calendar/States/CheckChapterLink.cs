@@ -7,7 +7,8 @@ namespace Ambition
         public override bool Validate()
         {
             GameModel model = AmbitionApp.GetModel<GameModel>();
-            return Array.Exists(model.Chapters, c => c.Date == model.Date);
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            return Array.Exists(model.Chapters, c => c.Date == calendar.Today);
         }
     }
 }

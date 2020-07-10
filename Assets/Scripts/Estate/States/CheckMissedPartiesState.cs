@@ -7,15 +7,17 @@ namespace Ambition
     {
         public override void OnEnterState()
         {
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            PartyVO[] parties = model.GetParties((ushort)(game.Day - 1));
-            foreach(PartyVO party in parties)
-            {
-                if (party.RSVP == RSVP.New)
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            GameModel model = AmbitionApp.GetModel<GameModel>();
+            PartyModel partym = AmbitionApp.GetModel<PartyModel>();
+            OccasionVO[] occasions = calendar.GetOccasions(OccasionType.Party, calendar.Day-1, true);
+            foreach (OccasionVO occasion in occasions)
+			{                    
+                if (partym.Parties.TryGetValue(occasion.ID, out PartyVO party) && party.RSVP == RSVP.New)
                 {
-                    game.Reputation -= game.MissedPartyPenalty;
-                    Dictionary<string, string> subs = new Dictionary<string, string>() {{"$PARTYNAME",party.ID}};
+                    model.Reputation -= model.MissedPartyPenalty;
+                    Dictionary<string, string> subs = new Dictionary<string, string>()
+                    {{"$PARTYNAME",occasion.ID}};
                     AmbitionApp.OpenDialog(DialogConsts.MISSED_RSVP_DIALOG, subs);
                 }
             }

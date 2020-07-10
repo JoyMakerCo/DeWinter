@@ -21,7 +21,7 @@ namespace Ambition
                 if (item.Created == default)
                 {
                     item.Price = (int)(cost * model.SellbackMultiplier);
-                    item.Created = AmbitionApp.GetModel<GameModel>().Date;
+                    item.Created = AmbitionApp.GetModel<CalendarModel>().Today;
                 }
                 AmbitionApp.GetModel<GameModel>().Livre.Value -= cost;
                 model.Broadcast();

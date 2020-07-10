@@ -24,7 +24,7 @@ namespace Ambition
         public static int GetRelevance(ItemVO gossip)
         {
             var _cfg = AmbitionApp.GetModel<InventoryModel>().Gossip;
-            DateTime today = AmbitionApp.GetModel<GameModel>().Date;
+            DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
             int result = (today - gossip.Created).Days;
             if (result > _cfg.Old.DaysThreshold) return 0;
             if (result > _cfg.Relevant.DaysThreshold) return 1;
@@ -35,7 +35,7 @@ namespace Ambition
         public static int GetRelevanceSliderValue(ItemVO gossip)
         {
             var _cfg = AmbitionApp.GetModel<InventoryModel>().Gossip;
-            DateTime today = AmbitionApp.GetModel<GameModel>().Date;
+            DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
             return 16-((today - gossip.Created).Days);                 
         }
 

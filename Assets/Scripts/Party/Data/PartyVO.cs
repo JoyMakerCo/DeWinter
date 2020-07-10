@@ -47,6 +47,10 @@ namespace Ambition
 
         public bool Attending => RSVP == RSVP.Accepted || RSVP == RSVP.Required;
 
+        //Drinking and Intoxication
+        public int MaxIntoxication = 4;
+        public int maxPlayerDrinkAmount = 3;
+
         public CommodityVO[] Requirements;
         public List<CommodityVO> Rewards = new List<CommodityVO>();
 
@@ -66,6 +70,8 @@ namespace Ambition
             ExitIncident = party.ExitIncident;
             _invitationDate = party._invitationDate;
             Host = party.Host;
+            MaxIntoxication = party.MaxIntoxication;
+            maxPlayerDrinkAmount = party.maxPlayerDrinkAmount;
             Requirements = this.Requirements?.ToArray();
             Rewards = this.Rewards?.ToList();
         }

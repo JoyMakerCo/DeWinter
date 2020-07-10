@@ -13,21 +13,6 @@ namespace Ambition
     {
         private const string CONFIG = "GameData";
 
-        [JsonIgnore]
-        public DateTime StartDate;
-
-        [JsonIgnore]
-        public DateTime EndDate;
-
-        [JsonProperty("day")]
-        public ushort Day;
-
-        [JsonProperty("resting")]
-        public bool IsResting;
-
-        [JsonIgnore]
-        public DateTime Date => StartDate.AddDays(Day);
-
         [JsonProperty("allegiance")]
         public FactionType Allegiance;
 
@@ -49,6 +34,9 @@ namespace Ambition
         public Observable<int> Exhaustion;
         public Observable<int> Credibility;
         public Observable<int> Peril;
+
+        [JsonProperty("resting")]
+        public bool IsResting = false;
 
         [JsonIgnore]
         public DateTime NextStyleSwitchDay;
@@ -84,6 +72,22 @@ namespace Ambition
             set => Peril.Value = value;
         }
 
+        public void Initialize()
+        {
+            Livre.Observe(HandleLivre);
+            Exhaustion.Observe(HandleExhaustion);
+            Peril.Observe(HandlePeril);
+            Credibility.Observe(HandleCred);
+        }
+
+        public void Dispose()
+        {
+            Livre.Remove(HandleLivre);
+            Exhaustion.Remove(HandleExhaustion);
+            Peril.Remove(HandlePeril);
+            Credibility.Remove(HandleCred);
+        }
+
         [JsonIgnore]
         private ReputationVO _reputation;
 
@@ -105,24 +109,6 @@ namespace Ambition
                 AmbitionApp.SendMessage(_reputation);
             }
         }
-
-        public void Initialize()
-        {
-            Livre.Observe(HandleLivre);
-            Exhaustion.Observe(HandleExhaustion);
-            Peril.Observe(HandlePeril);
-            Credibility.Observe(HandleCred);
-        }
-
-        public void Dispose()
-        {
-            Livre.Remove(HandleLivre);
-            Exhaustion.Remove(HandleExhaustion);
-            Peril.Remove(HandlePeril);
-            Credibility.Remove(HandleCred);
-        }
-
-        public ushort Convert(DateTime date) => (ushort)(date.Subtract(StartDate).Days);
 
         public int Level => _reputation.Level;
 

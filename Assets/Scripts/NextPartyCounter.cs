@@ -18,15 +18,15 @@ namespace Ambition
 
         private void Start()
         {
-            GameModel game = AmbitionApp.GetModel<GameModel>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            ushort endDate = (ushort)(game.EndDate.Subtract(game.StartDate).Days);
+            DateTime endDate = new DateTime(calendar.Today.Year, 7, 14);
             IEnumerable<PartyVO> parties;
             _parties = new List<PartyVO>();
             _index = -1;
-            for (ushort day = game.Day; day < endDate; ++day)
+            for (DateTime date = calendar.Today; date < endDate; date = date.AddDays(1))
             {
-                parties = model.GetParties(day);
+                parties = model.GetParties(date);
                 foreach(PartyVO party in parties)
                 {
                     if (party.Attending && FactionSymbols.GetSprite(party.Faction.ToString()) != null)

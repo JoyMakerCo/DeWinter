@@ -9,11 +9,17 @@ namespace Ambition
 	{
         public override void OnEnterState()
         {
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            PartyVO[] parties = model.GetParties();
-            foreach(PartyVO party in parties)
+            OccasionVO[] occasions = calendar.GetOccasions(OccasionType.Party);
+            foreach(OccasionVO occasion in occasions)
             {
-                AmbitionApp.OpenDialog(RSVPDialog.DIALOG_ID, party);
+                if (model.Parties.TryGetValue(occasion.ID, out PartyVO party) && party.RSVP == RSVP.New)
+                {
+                    // Display Invitations for new parties
+                    // TODO: this needs a way better UI
+                    AmbitionApp.OpenDialog(RSVPDialog.DIALOG_ID, party);
+                }
             }
         }
 	}
