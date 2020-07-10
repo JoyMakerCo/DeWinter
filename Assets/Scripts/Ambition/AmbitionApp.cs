@@ -13,21 +13,10 @@ namespace Ambition
     {
         public static T RegisterModel<T>() where T : Model, new()
         {
-            T model = App.Service<ModelSvc>().Register<T>();
-            App.Service<ModelTrackingSvc>().Track(model as IResettable);
-            return model;
+            return App.Service<ModelSvc>().Register<T>();
         }
 
         public static T GetService<T>() where T : IAppService => App.Service<T>();
-
-        public static void Save()
-        {
-            GameModel model = GetModel<GameModel>();
-            string saveID = model.PlayerName + " " + GetModel<CalendarModel>().Today.ToLongDateString();
-            App.Service<ModelSvc>().Save(saveID);
-        }
-
-        public static bool Restore(string savedState) => App.Service<ModelSvc>().Restore(savedState);
 
         public static void UnregisterModel<T>() where T : Model
         {
@@ -138,7 +127,7 @@ namespace Ambition
             return App.Service<DialogSvc>().Open<T>(DialogID, Data);
         }
 
-        public static GameObject OpenMessageDialog(string phrase, Dictionary<string, string> substitutions)
+        public static GameObject OpenDialog(string phrase, Dictionary<string, string> substitutions = null)
         {
             GameObject dialog = OpenDialog<string>(DialogConsts.MESSAGE, phrase);
             MessageViewMediator mediator = dialog.GetComponent<MessageViewMediator>();
@@ -146,10 +135,18 @@ namespace Ambition
             return dialog;
         }
 
-        public static GameObject OpenMessageDialog(string phrase)
+        public static GameObject OpenDialog(string phrase, Action OnConfirm, Dictionary<string, string> substitutions = null)
         {
-            return OpenDialog<string>(DialogConsts.MESSAGE, phrase);
+            GameObject dialog = OpenDialog<string>(DialogConsts.CHOICE, phrase);
+            MessageViewMediator mediator = dialog.GetComponent<MessageViewMediator>();
+            if (mediator)
+            {
+                mediator.SetPhrase(phrase, substitutions);
+                mediator.SetConfirmAction(OnConfirm);
+            }
+            return dialog;
         }
+
 
         public static void CloseDialog(string dialogID)
         {
@@ -231,9 +228,19 @@ namespace Ambition
             return result;
         }
 
-		public static string GetString(string key, Dictionary<string, string> substitutions)
+        public static string GetString(string key)
+        {
+            return App.Service<LocalizationSvc>().GetString(key);
+        }
+
+        public static string GetString(string key, Dictionary<string, string> substitutions)
 		{
             LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
+            if (substitutions == null)
+            {
+                return App.Service<LocalizationSvc>().GetString(key, model.Substitutions);
+            }
+
             foreach (KeyValuePair<string, string> kvp in model.Substitutions)
             {
                 if (!substitutions.ContainsKey(kvp.Key))

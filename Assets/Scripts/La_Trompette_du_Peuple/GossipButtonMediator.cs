@@ -49,7 +49,7 @@ public class GossipButtonMediator: MonoBehaviour {
     public void SetItem(ItemVO gossip)
     {
         _gossip = gossip;
-        System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
+        System.DateTime today = AmbitionApp.GetModel<GameModel>().Date;
         GossipNameText.text = gossip.Name;
 
         var relevance = GossipWrapperVO.GetRelevance(gossip);

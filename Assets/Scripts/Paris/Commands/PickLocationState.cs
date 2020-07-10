@@ -5,9 +5,16 @@ namespace Ambition
     {
         public override void OnEnterState()
         {
-            ParisModel model = AmbitionApp.GetModel<ParisModel>();
-            AmbitionApp.GetModel<LocalizationModel>().SetLocation(model.Location?.ID);
-            AmbitionApp.GetModel<CalendarModel>().Schedule(model.Location?.IntroIncident);
+            ParisModel paris = AmbitionApp.GetModel<ParisModel>();
+            AmbitionApp.GetModel<LocalizationModel>().SetLocation(paris.Location?.ID);
+            if (!string.IsNullOrEmpty(paris.Location?.IntroIncident))
+            {
+                IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+                if (model.Incidents.TryGetValue(paris.Location.IntroIncident, out IncidentVO incident))
+                {
+                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, incident);
+                }
+            }
         }
     }
 }

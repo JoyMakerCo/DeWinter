@@ -21,6 +21,7 @@ namespace Ambition
             BindLink<MessageLink, string>("ShowEstate", "Invitations", GameMessages.FADE_IN_COMPLETE);
             BindLink<MessageLink, string>("Estate", "Exit", EstateMessages.LEAVE_ESTATE);
 
+            Bind<SetActivityState, ActivityType>("ShowEstate", ActivityType.Estate);
             Bind<CreateInvitationsState>("CreateInvitations");
             Bind<CheckMissedPartiesState>("CheckMissedParties");
         }

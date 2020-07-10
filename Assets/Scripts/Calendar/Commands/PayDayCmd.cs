@@ -12,18 +12,25 @@ namespace Ambition
 			{
 				InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
 				GameModel game = AmbitionApp.GetModel<GameModel>();
-                inventory.Inventory.TryGetValue(ItemType.Servant, out List<ItemVO> servants);
 				float cost = 0;
-                servants?.ForEach(s => cost += s.Price);
+                int count = 0;
+                foreach(ItemVO item in inventory.Inventory)
+                {
+                    if (item.Type == ItemType.Servant)
+                    {
+                        ++count;
+                        cost += item.Price;
+                    }
+                }
 
 	            if (cost > 0)
 	            {
 					game.Livre.Value-=(int)cost;
 					Dictionary<string, string> substitutions = new Dictionary<string, string>(){
-						{"$NUMSERVANTS",servants.Count.ToString()},
+						{"$NUMSERVANTS", count.ToString()},
 						{"$TOTALWAGES", cost.ToString()},
 						{"$LIVRE", game.Livre.ToString()}};
-					AmbitionApp.OpenMessageDialog(DialogConsts.PAY_DAY_DIALOG, substitutions);
+					AmbitionApp.OpenDialog(DialogConsts.PAY_DAY_DIALOG, null, substitutions);
 				}
 			}
 		}

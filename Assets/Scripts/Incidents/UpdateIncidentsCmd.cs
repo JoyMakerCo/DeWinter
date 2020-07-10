@@ -9,23 +9,26 @@ namespace Ambition
     {
         public void Execute()
         {
+/*
             IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
             CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
 
             IEnumerable<IncidentVO> unscheduled = calendar.FindUnscheduled<IncidentVO>(i =>
-                (i.Requirements?.Length ?? 0) > 0
-                && AmbitionApp.CheckRequirements((i as IncidentVO).Requirements));
+                ((i as IncidentVO)?.Requirements?.Length ?? 0) > 0
+                && AmbitionApp.CheckRequirements(((IncidentVO)i).Requirements));
 
 
             Debug.Log("Updating incidents");
-            model.Reset();
 
             if (AmbitionApp.GetModel<InventoryModel>().CheckCaughtTrading())
 			{
-                model.IncidentQueue.Add( model.GettingCaughtIncident );
+                calendar.Schedule(model.GettingCaughtIncident, calendar.Today);
 			}	
-            model.IncidentQueue.AddRange(calendar.GetEvents<IncidentVO>());
-            model.IncidentQueue.AddRange(unscheduled);
+            foreach(IncidentVO incident in unscheduled)
+            {
+                calendar.Schedule(incident, calendar.Today);
+            }
+            */
         }
     }
 }

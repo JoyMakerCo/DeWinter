@@ -10,7 +10,7 @@ namespace Ambition
             {
                 AmbitionApp.SendMessage(transition.Rewards);
             }
-            model.Moment = model.Incident?.GetNextNode(transition);
+            model.Moment = model.Incident.GetNextNode(transition);
             AmbitionApp.SendMessage(IncidentMessages.TRANSITION);
         }
     }

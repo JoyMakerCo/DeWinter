@@ -34,7 +34,8 @@ namespace Ambition
                     _btn.interactable = true;
                     break;
                 case 1:
-                    TransitionVO[] linkdata = _model.Incident?.LinkData;
+                    IncidentVO incident = _model.Incident;
+                    TransitionVO[] linkdata = incident?.LinkData;
                     if (linkdata == null)
                     {
                         _btn.interactable = true;
@@ -43,7 +44,7 @@ namespace Ambition
                     {
                         _transition = transitions[0];
                         int index = Array.IndexOf(linkdata, _transition);
-                        string txt = AmbitionApp.Localize(_model.Incident.Name + ".link." + index.ToString());
+                        string txt = AmbitionApp.Localize(incident.ID + ".link." + index.ToString());
                         _btn.interactable = string.IsNullOrWhiteSpace(txt);
                     }
                     break;

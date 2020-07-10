@@ -84,8 +84,6 @@ public class PierreQuest
 
     void GenerateDeadline()
     {
-    	CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
-
         // rough 5-15 bell curve here
         daysTimeLimit = Util.RNG.Generate(5) + Util.RNG.Generate(4) + Util.RNG.Generate(4) + 5;
     }

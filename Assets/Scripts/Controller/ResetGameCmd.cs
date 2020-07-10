@@ -1,5 +1,6 @@
 ﻿using System;
 using UFlow;
+using Core;
 namespace Ambition
 {
     public class ResetGameCmd : Core.ICommand
@@ -8,8 +9,7 @@ namespace Ambition
         {
             UFlowSvc uflow = AmbitionApp.GetService<UFlowSvc>();
             AmbitionApp.CloseAllDialogs();
-            AmbitionApp.Save();
-            AmbitionApp.GetService<ModelTrackingSvc>().Reset();
+            AmbitionApp.GetService<ModelSvc>().Reset();
 
             string[] machines = uflow.GetActiveMachines();
             Array.ForEach(machines, m => uflow.GetMachine(m)?.Dispose());

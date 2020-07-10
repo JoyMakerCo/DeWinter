@@ -21,7 +21,6 @@ namespace Ambition
 
 	    private Button _button;
 	    private RoomGraphic _graphic;
-        private MapModel _map;
 
 		void Awake()
 		{
@@ -50,7 +49,6 @@ namespace Ambition
 			get { return _room; }
 			set 
 			{
-                MapModel map = AmbitionApp.GetModel<MapModel>();
                 _graphic.Room = value;
 				gameObject.name = value.Name;
 /*				if (_room == null) // This will crash if the room has no walls.

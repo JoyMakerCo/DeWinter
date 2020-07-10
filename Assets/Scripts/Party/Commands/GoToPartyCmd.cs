@@ -8,7 +8,7 @@ namespace Ambition
             if (party != null)
             {
                 InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-                if (model.Inventory.ContainsKey(ItemType.Outfit) || model.Equipped.ContainsKey(ItemType.Outfit))
+                if (model.Equipped.ContainsKey(ItemType.Outfit))
                 {
                     AmbitionApp.SendMessage(PartyMessages.START_PARTY);
                 }

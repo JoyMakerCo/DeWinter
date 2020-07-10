@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using Core;
 using UnityEngine;
@@ -8,8 +7,10 @@ using Newtonsoft.Json;
 namespace Ambition
 {
     [Saveable]
-	public class InventoryModel : DocumentModel, IConsoleEntity
+	public class InventoryModel : DocumentModel, IConsoleEntity, IResettable
 	{
+        // CONSTRUCTORS //////////////
+
 		public InventoryModel() : base ("InventoryData") 
         {
             Gossip = Resources.Load("Gossip Config") as GossipConfig;
@@ -19,19 +20,15 @@ namespace Ambition
                 Gossip = ScriptableObject.CreateInstance<GossipConfig>();
             }
 
-            Debug.LogWarning("MIKE, WHERE ARE THE ITEMS");
-            Items = new ItemVO[] {};
-
-
-            var itemTemplates = Resources.Load("Item Templates") as ItemTemplates;
-            if (itemTemplates == null)
+            ItemConfig[] configs = Resources.LoadAll<ItemConfig>("Items");
+            Items = new ItemVO[configs.Length];
+            for (int i=configs.Length-1; i>=0; --i)
             {
-                Debug.LogError("Missing Item Templates file, you need to create and populate it");
-                itemTemplates = ScriptableObject.CreateInstance<ItemTemplates>();
+                Items[i] = Import(configs[i]);
             }
-
-            Items = itemTemplates.Items.Select( ic => ic.GetItem() ).ToArray(); 
         }
+
+        // PUBLIC DATA //////////////
 
         public GossipConfig Gossip;
 
@@ -68,150 +65,77 @@ namespace Ambition
 		[JsonProperty("modesty")]
 		public Dictionary<int, string> Modesty;
 
-        [JsonProperty("items")]
-        public ItemVO[] Items; // Base Item Definitions, used for instantiation.
+        [JsonIgnore]
+        public ItemVO[] Items; // Library of item definitions
 
         [JsonProperty("gossip_activity")]
         public int GossipActivity;
 
-        [JsonIgnore]
+        [JsonProperty("inventory")]
         // Items owned by the player. Contains customized instances from the Items list.
-        public Dictionary<ItemType, List<ItemVO>> Inventory = new Dictionary<ItemType, List<ItemVO>>();
+        public List<ItemVO> Inventory = new List<ItemVO>();
 
-        [JsonIgnore]
-        // Items currently equipped. Equipped items and Inventory are mutually exclusive.
-        public Dictionary<ItemType, int> Equipped = new Dictionary<ItemType, int>();
+        [JsonProperty("equipped")]
+        public Dictionary<ItemType, ItemVO> Equipped = new Dictionary<ItemType, ItemVO>();
 
         [JsonProperty("market")]
-        public Dictionary<ItemType, List<ItemVO>> Market; // Created On-Demand and persists day-to-day.
+        public List<ItemVO> Market = null; // Created On-Demand and persists throughout the day.
 
-        // List of item instances based on item list and customized in the game context.
-        [JsonProperty("inventory")]
-		private List<ItemVO> _inventory
-		{
-			set
-			{
-                Inventory.Clear();
-                Equipped.Clear();
-                foreach (ItemVO item in value)
-                {
-                    Add(item);
-                    if (item.Equipped) Equip(item);
-                }
-            }
-            get
-            {
-                List<ItemVO> result = new List<ItemVO>();
-                foreach(List<ItemVO> items in Inventory.Values)
-                {
-                    result.AddRange(items);
-                }
-                return result;
-            }
-        }
-
-        public void Add(ItemVO item)
+        public ItemVO Import(ItemConfig config)
         {
-            if (!Inventory.TryGetValue(item.Type, out List<ItemVO> items))
+            ItemVO item = new ItemVO()
             {
-                Inventory[item.Type] = items = new List<ItemVO>() { item };
-            }
-            else if (!items.Contains(item))
+                Name = config.name,
+                Type = config.Type,
+                Price = config.Price,
+                State = new Dictionary<string, string>(),
+                AssetID = config.Asset ? config.Asset.name : null,
+                Config = config.name
+            };
+            if (!string.IsNullOrEmpty(item.AssetID) && !_assets.ContainsKey(item.AssetID))
             {
-                items.Add(item);
+                _assets.Add(item.AssetID, config.Asset);
             }
-            Broadcast();
+            if (config.State != null)
+            {
+                Array.ForEach(config.State, s => item.State[s.Key] = s.Value);
+            }
+            return item;
         }
 
         public bool Remove(ItemVO item)
         {
-            if (item == null || !Inventory.TryGetValue(item.Type, out List<ItemVO> items))
-                return false;
-
-            int index = items.IndexOf(item);
-            if (index < 0) return false;
-
-            if (Equipped.TryGetValue(item.Type, out int equipped) && equipped > index)
-            {
-                Equipped[item.Type]--;
-            }
-            else if (equipped == index) Equipped.Remove(item.Type);
-            Broadcast();
-            return true;
-        }
-
-        public void Equip(ItemVO item)
-        {
-            Add(item);
-            HelpUnequip(item.Type);
-            Equipped[item.Type] = GetItemIndex(item);
-            item.Equipped = true;
-            Broadcast();
-        }
-
-        public bool Unequip(ItemVO item)
-        {
-            if (GetEquippedItem(item.Type) != item) return false;
+            if (Inventory.Remove(item)) return true;
+            if (!Equipped.TryGetValue(item.Type, out ItemVO equipped)) return false;
+            if (equipped != item) return false;
             Equipped.Remove(item.Type);
-            item.Equipped = false;
-            Broadcast();
             return true;
         }
 
-        public ItemVO GetItem( ItemType itemType, string itemID )
+        public ItemVO[] GetItems(ItemType type, bool equipped = false)
         {
-            if (Inventory.ContainsKey(itemType))
+            if (equipped)
             {
-                foreach (var ivo in Inventory[itemType])
-                {
-                    if (ivo.ID == itemID)
-                    {
-                        return ivo;
-                    }
-                }
+                return Equipped.ContainsKey(type)
+                    ? new ItemVO[] { Equipped[type] }
+                    : new ItemVO[0];
             }
-
-            return null;
-        }
-
-        public ItemVO GetItem( string itemID )
-        {
-            foreach (var kv in Inventory)
+            else
             {
-                foreach (var ivo in kv.Value)
-                {
-                    if (ivo.ID == itemID)
-                    {
-                        return ivo;
-                    }
-                }
+               return Inventory.FindAll(i => i.Type == type).ToArray();
             }
-            return null;
-        }
-        public bool HasItem( ItemType itemType, string itemID )
-        {
-            return (GetItem(itemType,itemID) != null);
         }
 
-        public bool HasItem( string itemID )
+        public void Reset()
         {
-            return (GetItem(itemID) != null);
+            Equipped.Clear();
+            Inventory.Clear();
         }
 
-        private bool HelpUnequip(ItemType type) // Unequip helper to reduce redundant Broadcast calls
-        {
-            ItemVO item = GetEquippedItem(type);
-            if (item == null) return false;
-            item.Equipped = false;
-            return Equipped.Remove(type);
-        }
+        // PRIVATE / PROTECTED METHODS ///////////////
 
-        public bool Unequip(ItemType type)
-        {
-            if (!HelpUnequip(type)) return false;
-            Broadcast();
-            return true;
-        }
+        [JsonIgnore]
+        private Dictionary<string, Sprite> _assets = new Dictionary<string, Sprite>();
 
         public void GossipShared(ItemVO gossip)
         {
@@ -267,19 +191,9 @@ namespace Ambition
 
         public ItemVO GetEquippedItem(ItemType slot)
         {
-            if (!Equipped.TryGetValue(slot, out int index)) return null;
-            if (!Inventory.TryGetValue(slot, out List<ItemVO> items)) return null;
-            var result = index < items.Count ? items[index] : null;
-
-            if (result != null)
-            {
-                if (!result.Equipped)
-                {
-                    Debug.LogWarningFormat( "item in equipped list but not marked equipped: {0}",result.ToString());
-                }
-            }
-
-            return result;
+            Equipped.TryGetValue(slot, out ItemVO item);
+            if (item != null) item.Equipped = true;
+            return item;
         }
 
         public int GetCredibilityBonus(ItemVO outfit, FactionType faction)
@@ -308,13 +222,6 @@ namespace Ambition
             return GetCredibilityBonus(outfit,faction) + AmbitionApp.GetModel<GameModel>().ExhaustionPenalty;
         }
 
-        private int GetItemIndex(ItemVO item)
-        {
-            return Inventory.TryGetValue(item.Type, out List<ItemVO> items)
-                ? items.IndexOf(item)
-                : -1;
-        }
-
         public string[] Dump()
         {
             var lines = new List<string>
@@ -330,75 +237,58 @@ namespace Ambition
                 "Gossip Activity: " + GossipActivity.ToString(),
             };
 
-			// base items
+            // base items
             if (Items == null)
             {
-                lines.Add( "Base Items (null) ");
+                lines.Add("Base Items (null) ");
             }
             else
             {
-                lines.Add( "Base Items: ");
+                lines.Add("Base Items: ");
 
                 foreach (var ivo in Items)
                 {
-                    lines.Add( "  " +ivo.ToString() );
+                    lines.Add("  " + ivo.ToString());
                 }
             }
 
-			// player inventory
+            // player inventory
             if (Inventory == null)
             {
-                lines.Add( "Inventory Items (null) ");
-			}
-			else
-			{
-				lines.Add( "Inventory Items: ");
-
-				foreach (var kv in Inventory)
-				{
-					lines.Add( string.Format( "[{0}]", kv.Key ) );
-					for ( int i = 0; i < kv.Value.Count; i++)
-					{
-						string equipt = "  ";
-						if (Equipped != null)
-						{
-                            if (Equipped.ContainsKey(kv.Key))
-                            {
-							    if (Equipped[kv.Key] == i)
-							    {
-								    equipt = " >";
-							    }
-                            }
-						}
-                        foreach (var line in kv.Value[i].Dump() )
-                        {
-    						lines.Add( equipt + line );
-                        }
-					}
-				}
-			}
-
-			// market inventory
-            if (Market == null)
+                lines.Add("Inventory Items (null) ");
+            }
+            else
             {
-                lines.Add( "Market Items (null) ");
-			}
-			else
-			{
-				lines.Add( "Market Items: ");
+                lines.Add("Inventory Items: ");
 
-				foreach (var kv in Market)
-				{
-					lines.Add( string.Format( "[{0}]", kv.Key ) );
-					for ( int i = 0; i < kv.Value.Count; i++)
-					{
-                        foreach (var line in kv.Value[i].Dump() )
-                        {
-    						lines.Add( "  " + line );
-                        }
-					}
-				}
-			}
+                foreach (ItemVO item in Inventory)
+                {
+                    lines.Add(string.Format("[{0}]", item));
+                }
+            }
+            if (Equipped != null)
+            {
+                lines.Add("Equipped Items: ");
+
+                foreach (ItemVO item in Equipped.Values)
+                {
+                    lines.Add(string.Format("[{0} > {1}]", item.Type, item.ID));
+                }
+            }
+            else lines.Add("Equipped Items  (null)");
+
+
+            // market inventory
+            if (Market != null)
+            {
+                lines.Add("Market Items: ");
+
+                foreach (ItemVO item in Market)
+                {
+                    lines.Add(string.Format("[{0}]", item));
+                }
+            }
+            else lines.Add("Market Items (null) ");
 
             return lines.ToArray();
         }

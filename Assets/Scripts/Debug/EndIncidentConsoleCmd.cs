@@ -6,8 +6,7 @@ namespace Ambition
     {
         public void Execute()
         {
-            IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-            AmbitionApp.GetModel<CalendarModel>().Complete(model.Incident);
+            AmbitionApp.GetModel<IncidentModel>().NextIncident();
         }
     }
 }

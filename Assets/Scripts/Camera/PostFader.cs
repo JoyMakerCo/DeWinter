@@ -9,7 +9,7 @@ namespace Ambition
         private const float DEFAULT_TIME = 1.0f;
         public Shader Effect;
         private Material _material;
-        private float _fade = 1f;
+        private float _fade = 0f;
         private bool _fadeIn;
 
         // Creates a private material used to the effect
@@ -21,6 +21,11 @@ namespace Ambition
             AmbitionApp.Subscribe<float>(GameMessages.FADE_OUT, HandleFadeOut);
             AmbitionApp.Subscribe<float>(GameMessages.FADE_IN, HandleFadeIn);
             AmbitionApp.Subscribe(GameMessages.INTERRUPT_FADE, HandleInterruptFade);
+        }
+
+        private void OnEnable()
+        {
+            HandleFadeIn();
         }
 
         void OnDestroy()

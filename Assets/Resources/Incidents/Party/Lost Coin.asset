@@ -1,0 +1,839 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: Lost Coin
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 1, y: 66}
+  - {x: 2, y: 207}
+  - {x: -297, y: 290}
+  - {x: 2, y: 289}
+  - {x: 263, y: 250}
+  - {x: 3, y: 350}
+  - {x: 8, y: 488}
+  - {x: -446, y: 355}
+  - {x: -206, y: 354}
+  - {x: 264, y: 399}
+  - {x: 262, y: 470}
+  - {x: -206, y: 485}
+  - {x: -203, y: 564}
+  - {x: 279, y: 614}
+  - {x: -444, y: 426}
+  - {x: -454, y: 568}
+  - {x: 265, y: 326}
+  - {x: -11, y: 141}
+  - {x: -210, y: 418}
+  - {x: -451, y: 494}
+  - {x: 11, y: 404}
+  - {x: 271, y: 539}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 2, y: 3}
+    - {x: 2, y: 4}
+    - {x: 2, y: 5}
+    - {x: 4, y: 6}
+    - {x: 3, y: 8}
+    - {x: 3, y: 9}
+    - {x: 10, y: 11}
+    - {x: 12, y: 13}
+    - {x: 8, y: 15}
+    - {x: 5, y: 17}
+    - {x: 17, y: 10}
+    - {x: 1, y: 18}
+    - {x: 18, y: 2}
+    - {x: 9, y: 19}
+    - {x: 19, y: 12}
+    - {x: 15, y: 20}
+    - {x: 20, y: 16}
+    - {x: 6, y: 21}
+    - {x: 21, y: 7}
+    - {x: 11, y: 22}
+    - {x: 22, y: 14}
+    Nodes:
+    - Text: Feeling the need to take a quick break, you step into an empty room.
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'While you''re composing yourself, a chambermaid approaches you. She''s
+        holding a small, unmarked wallet.
+
+
+        "<i>Pardonne moi</i>, madame. I found this wallet while I was tidying up.
+        I took it to the master and mistress of the house, but they do not recognize
+        it. I''ve been told not to rest until the owner is found."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Do you know who this might belong to? Otherwise..."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: sly
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '[Credibility Check]'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: '"Oh madame, you''re absolutely right! I can''t believe I forgot!" She
+        replies, with outrageously feigned surprise. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: sly
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: '"Madame, where could you have gotten that idea?" She replies, eyes darting
+        about.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: afraid
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_gasp
+        Parameters: []
+    - Text: 'The two of you split the money found in the wallet, and the chambermaid
+        tucks the emptied article into her bodice. "I can''t imagine anyone careless
+        enough to leave this lying around will mind too much." She says with a shrug.
+
+
+        (You have gained 28 livres)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: sly
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: With an exchange of smiles, the chambermaid curtsies politely and leaves.
+        Feeling reinvigorated, you decide to investigate the rest of the party.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '[Success]
+
+        "Oh, well I''m glad I found you." She mumbles, obviously disappointed.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: '[Failure]
+
+        The Chambermaid glowers at you. "Madame, I must admit that I find this hard
+        to believe, given that this is obviously a man''s wallet."
+
+
+        (You have lost some crediblity)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: angry
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: The two of you check the party together, looking for the owner of the
+        mysterious wallet.
+      Background: {fileID: 21300000, guid: 8d37c5a6e98984de68f6859ef31ef817, type: 3}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Eventually, you come upon a man who recognizes it immediately. "Oh, thank
+        you so much! I hadn''t even realized I''d misplaced it." Some of the nearby
+        guests murmur approvingly of your honesty.
+
+
+        (You have gained a little credibility)
+
+        (You have reduced your peril a tiny bit)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Forgetful Guest
+      Speaker: 3
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      - Type: 12
+        ID: 
+        Value: -3
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: '"However, if I am mistaken, you may consult our host and have it returned
+        to you." A task which you both know that you will not attempt.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: angry
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "With a fake smile, the chambermaid curtsies politely and leaves. \n\nMuttering
+        a choice selection of curses, you decide to investigate the rest of the party."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: With a polite nod, you excuse yourself and leave to check out the rest
+        of the party.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'She hands you the wallet, and curtsies politely. You make a great show
+        of thumbing through this mysterious wallet to make sure that everything is
+        there.
+
+
+        (You have gained 57 livres)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Before the chambermaid can ask you any more questions, you excuse yourself
+        and leave to check out the rest of the party.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: After a few second of bluster, she calms down. "I suppose you're right.
+        If we make a circuit of the party together, we might be able to find the owner
+        this time."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: After a few second of bluster, she calms down. "I suppose you're right.
+        If we make a circuit of the party together, we might be able to find the owner
+        this time."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: After a few second of bluster, she calms down. "I suppose you're right.
+        If we make a circuit of the party together, we might be able to find the owner
+        this time."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: angry
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: After a few second of bluster, she calms down. "I suppose you're right.
+        If we make a circuit of the party together, we might be able to find the owner
+        this time."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 57
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: After a few second of bluster, she calms down. "I suppose you're right.
+        If we make a circuit of the party together, we might be able to find the owner
+        this time."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: sly
+        Name: Chambermaid
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 28
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: After a few second of bluster, she calms down. "I suppose you're right.
+        If we make a circuit of the party together, we might be able to find the owner
+        this time."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Chambermaid
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Forgetful Guest
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      - Type: 12
+        ID: 
+        Value: -3
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"<i>Mon dieu</i>, I''m so glad you found my wallet!" <Credibility Check
+        Icon>'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 0
+    - index: 0
+      Text: '"An unmarked wallet? I can only assume that half of it is mine, and the
+        other half yours."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"While I understand that you''d like to split it, we should find the
+        real owner."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"We should find the real owner."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"We should find the real owner."'
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: '"We should find the real owner."'
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"We should find the real owner."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"We should find the real owner."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    OneShot: 1
+    Chapters: 
+    Factions: 
+    Political: 0
+    Requirements: []
+    _date: -1
+  _factions: 000100000101
+  _chapters: 00010101
+  _date: -1
+  _requirements: []
+  _nodeText:
+  - Feeling the need to take a quick break, you step into an empty room.
+  - While you're composing yourself, a chambermaid approaches you. She's holding a
+    small, unmarked pouch of coins.
+  - '"Do you know who this might belong to? Otherwise..."'
+  - '"The wallet is yours?"'
+  - '"Oh madame, you''re absolutely right! I can''t believe I forgot!" She replies,
+    with outrageously feigned surprise. '
+  - '"Madame, where could you have gotten that idea?" She replies, eyes darting about.'
+  - The two of you split the money found in the wallet, and the chambermaid tucks
+    the emptied article into her bodice. "I can't imagine anyone careless enough to
+    leave this lying around will mind too much." She says with a shrug.
+  - With an exchange of smiles, the chambermaid curtsies politely and leaves. Feeling
+    reinvigorated, you decide to investigate the rest of the party.
+  - '"Oh, well I''m glad I found you." She mumbles, obviously disappointed.'
+  - The Chambermaid glowers at you. "Madame, I must admit that I find this hard to
+    believe, given that this is obviously a man's wallet."
+  - The two of you check the party together, looking for the owner of the mysterious
+    wallet.
+  - Eventually, you come upon a man who recognizes it immediately. "Oh, thank you
+    so much! I hadn't even realized I'd misplaced it." Some of the nearby guests murmur
+    approvingly of your honesty.
+  - '"However, if I am mistaken, you may consult our host and have it returned to
+    you." A task which you both know that you will not attempt.'
+  - "With a fake smile, the chambermaid curtsies politely and leaves. \n\nMuttering
+    a choice selection of curses, you decide to investigate the rest of the party."
+  - With a polite nod, you excuse yourself and leave to explore the rest of the party.
+  - She hands you the wallet, and curtsies politely. You make a great show of thumbing
+    through this mysterious wallet to make sure that everything is there.
+  - Before the chambermaid can ask you any more questions, you excuse yourself and
+    leave to investigate the rest of the party.
+  - After a few second of bluster, she calms down. "I suppose you're right. If we
+    make a circuit of the party together, we might be able to find the owner this
+    time."
+  - '"<i>Pardonne moi</i>, madame. I found this wallet while I was tidying up. I took
+    it to the master and mistress of the house, but they do not recognize it. I''ve
+    been told not to rest until the owner is found."'
+  - (You have gained some peril)
+  - (You have gained 57 Livres)
+  - (You have gained 28 Livres)
+  - '(You have gained a little credibility)
+
+    (You have reduced your peril a tiny bit)'
+  _linkText:
+  - 
+  - '"<i>Mon dieu</i>, I''m so glad you found my wallet!"'
+  - '"I can only assume that half of it is mine, and the other half yours."'
+  - '"I understand that you''d like to split it, but we should find the real owner."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

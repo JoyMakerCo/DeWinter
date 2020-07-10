@@ -10,41 +10,42 @@ using Core;
 namespace Ambition
 {
     [Serializable]
-    public class PartyVO : ICalendarEvent
+    public class PartyVO
     {
         public string LocalizationKey;      // ID corresponds with the localization phrases
-        public string Name { get; set; }
+        public string ID;                   // Unique Key
+        public string Name;
         public string Description;
         public string Invitation;  // Configured or Assigned upon creation
-        public string[] Tags;
-        public CharacterVO[] Guests;
 
         public FactionType Faction;
         public PartySize Size = PartySize.None;
         public RSVP RSVP = RSVP.New;
 
-        [JsonIgnore]
-        public DateTime Date { get; set; }
+        public DateTime Date
+        {
+            get => new DateTime(_date);
+            set => _date = value.Ticks;
+        }
 
         [JsonProperty("complete")]
         public bool IsComplete { get; set; }
 
-        public IncidentVO[] RequiredIncidents;
-        public IncidentVO[] SupplementalIncidents;
-        public IncidentVO IntroIncident;
-        public IncidentVO ExitIncident;
+        public string[] RequiredIncidents;
+        public string[] SupplementalIncidents;
+        public string IntroIncident;
+        public string ExitIncident;
 
-        [JsonProperty("invitation_date")]
-        public DateTime InvitationDate;
+        public DateTime InvitationDate
+        {
+            get => new DateTime(_invitationDate);
+            set => _invitationDate = value.Ticks;
+        }
 
-        public MapVO Map = null;
+        public string Map = null;
         public string Host;
 
         public bool Attending => RSVP == RSVP.Accepted || RSVP == RSVP.Required;
-
-        //Drinking and Intoxication
-        public int MaxIntoxication = 4;
-        public int maxPlayerDrinkAmount = 3;
 
         public CommodityVO[] Requirements;
         public List<CommodityVO> Rewards = new List<CommodityVO>();
@@ -63,13 +64,17 @@ namespace Ambition
             Date = party.Date;
             IntroIncident = party.IntroIncident;
             ExitIncident = party.ExitIncident;
-            InvitationDate = party.InvitationDate;
+            _invitationDate = party._invitationDate;
             Host = party.Host;
-            MaxIntoxication = party.MaxIntoxication;
-            maxPlayerDrinkAmount = party.maxPlayerDrinkAmount;
             Requirements = this.Requirements?.ToArray();
             Rewards = this.Rewards?.ToList();
         }
+
+        [JsonProperty("invitation_date")]
+        private long _invitationDate;
+
+        [JsonProperty("date")]
+        private long _date;
 
         public override string ToString()
         {

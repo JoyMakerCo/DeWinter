@@ -4,23 +4,37 @@ using Core;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using UnityEngine;
+using Util;
 
 namespace Ambition
 {
     [Saveable]
-    public class GameModel : DocumentModel, IDisposable, IConsoleEntity
+    public class GameModel : DocumentModel, IInitializable, IDisposable, IConsoleEntity, IResettable
     {
+        private const string CONFIG = "GameData";
+
+        [JsonIgnore]
+        public DateTime StartDate;
+
+        [JsonIgnore]
+        public DateTime EndDate;
+
+        [JsonProperty("day")]
+        public ushort Day;
+
+        [JsonProperty("resting")]
+        public bool IsResting;
+
+        [JsonIgnore]
+        public DateTime Date => StartDate.AddDays(Day);
+
         [JsonProperty("allegiance")]
         public FactionType Allegiance;
 
-        [JsonIgnore]
-        public int GameID = 0;
+        public string PlayerName => AmbitionApp.Localize(playerID + ".name");
 
-        public string PlayerName => AmbitionApp.Localize(PlayerPhrase + ".name");
-        public string PlayerPhrase = null;
-
-        [JsonProperty("chapter")]
-        public int Chapter = 0;
+        [JsonProperty("playerID")]
+        public string playerID = null;
 
         [JsonProperty("political_chance")]
         public int PoliticalChance = 20;
@@ -28,13 +42,21 @@ namespace Ambition
         [JsonProperty("party_intro_incident")]
         public string DefaultIntroIncident;
 
+        [JsonProperty("missed_party_penalty")]
+        public int MissedPartyPenalty;
+
         public Observable<int> Livre;
         public Observable<int> Exhaustion;
         public Observable<int> Credibility;
         public Observable<int> Peril;
 
-        public bool IsResting = false;
+        [JsonIgnore]
+        public DateTime NextStyleSwitchDay;
 
+        [JsonProperty("activity")]
+        public ActivityType Activity;
+
+        [JsonProperty("livre")]
         private int _livre
         {
             get => Livre.Value;
@@ -48,7 +70,6 @@ namespace Ambition
             set => Exhaustion.Value = value;
         }
 
-
         [JsonProperty("credibility")]
         private int _credibility
         {
@@ -61,22 +82,6 @@ namespace Ambition
         {
             get => Peril.Value;
             set => Peril.Value = value;
-        }
-
-        protected override void OnLoadComplete()
-        {
-            Livre.Observe(HandleLivre);
-            Exhaustion.Observe(HandleExhaustion);
-            Peril.Observe(HandlePeril);
-            Credibility.Observe(HandleCred);
-        }
-
-        public void Dispose()
-        {
-            Livre.Remove(HandleLivre);
-            Exhaustion.Remove(HandleExhaustion);
-            Peril.Remove(HandlePeril);
-            Credibility.Remove(HandleCred);
         }
 
         [JsonIgnore]
@@ -101,13 +106,32 @@ namespace Ambition
             }
         }
 
+        public void Initialize()
+        {
+            Livre.Observe(HandleLivre);
+            Exhaustion.Observe(HandleExhaustion);
+            Peril.Observe(HandlePeril);
+            Credibility.Observe(HandleCred);
+        }
+
+        public void Dispose()
+        {
+            Livre.Remove(HandleLivre);
+            Exhaustion.Remove(HandleExhaustion);
+            Peril.Remove(HandlePeril);
+            Credibility.Remove(HandleCred);
+        }
+
+        public ushort Convert(DateTime date) => (ushort)(date.Subtract(StartDate).Days);
+
+        public int Level => _reputation.Level;
+
         [JsonProperty("vip")]
         private readonly int[] _vip;
         public int PartyInviteImportance => _vip[Level];
 
-        public int Level => _reputation.Level;
 
-        public GameModel() : base("GameData") { }
+        public GameModel() : base(CONFIG) { }
 
         private void HandleLivre(int livre) => AmbitionApp.SendMessage(GameConsts.LIVRE, livre);
         private void HandleCred(int cred) => AmbitionApp.SendMessage(GameConsts.CRED, cred);
@@ -115,8 +139,7 @@ namespace Ambition
         private void HandleExhaustion(int exhaustion)
         {
             if (exhaustion < 0) AmbitionApp.SendMessage(GameConsts.WELL_RESTED);
-            else AmbitionApp.SendMessage(GameConsts.EXHAUSTION,
-            exhaustion);
+            else AmbitionApp.SendMessage(GameConsts.EXHAUSTION, exhaustion);
         }
 
         [JsonProperty("levels")]
@@ -136,6 +159,16 @@ namespace Ambition
                 ? _exhaustionPenalty[Exhaustion.Value]
                 : _exhaustionPenalty[_exhaustionPenalty.Length - 1];
 
+        [JsonIgnore]
+        public ChapterVO[] Chapters = new ChapterVO[0];
+
+        public void Reset()
+        {
+            playerID = null;
+            Chapters = new ChapterVO[0];
+            LoadFile(CONFIG);
+        }
+
         public string[] Dump()
         {
             return new string[]
@@ -143,7 +176,6 @@ namespace Ambition
                 "GameModel:",
                 "Allegiance: " + Allegiance.ToString(),
                 "Player: " + PlayerName,
-                "Chapter: " + Chapter,
                 "Livre: " + Livre.Value.ToString(),
                 "Exhaustion: " + Exhaustion.Value.ToString(),
                 "Credibility: " + Credibility.Value.ToString(),

@@ -22,9 +22,11 @@ namespace Ambition
             Link("Return To Estate", "Exit");
             Link("Location Incident", "Exit");
 
+            Bind<SetActivityState, ActivityType>("EnterMap", ActivityType.Location);
             Bind<PickLocationState>("Go to Location");
             Bind<UMachine, string>("Location Incident", FlowConsts.INCIDENT_CONTROLLER);
             Bind<ReturnToEstateState>("Return To Estate");
+            Bind<PopulateParisState>("Map");
 
             BindLink<LoadSceneLink, string>("EnterMap", "Map", SceneConsts.PARIS_SCENE);
             BindLink<MessageLink, string>("Map", "Go to Location", ParisMessages.GO_TO_LOCATION);

@@ -16,7 +16,7 @@ namespace Ambition
 			}
 
 			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-			if (model.Inventory.ContainsKey(item.Type) && model.Inventory[item.Type].Remove(item))
+			if (model.Inventory.Remove(item))
 			{
                 AmbitionApp.GetModel<GameModel>().Livre.Value += GossipWrapperVO.GetValue(item);
 				model.GossipShared(item);

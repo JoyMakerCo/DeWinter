@@ -13,47 +13,55 @@ namespace Ambition
 		public Text TitleTxt;
 		public Text DismissTxt;
 		public Text ConfirmTxt;
+        public GameObject ConfirmBtn;
 
-		public override void OnOpen(string phrase)
+        private Action _onConfirm = null;
+
+        public override void OnOpen(string phrase)
 		{
 			SetPhrase(phrase);
 		}
 
 		public void SetPhrase(string phrase, Dictionary<string, string> substitutions=null)
 		{
-			string str;
 			BodyTxt.text = AmbitionApp.GetString(phrase + DialogConsts.BODY, substitutions);
 			TitleTxt.text = AmbitionApp.GetString(phrase + DialogConsts.TITLE, substitutions);
 
 			if (DismissTxt != null)
 			{
-				str=AmbitionApp.GetString(phrase + DialogConsts.CANCEL, substitutions);
-				if (str != null && DismissTxt != null) DismissTxt.text = str;
-				else DismissTxt.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CANCEL);
+                DismissTxt.text = AmbitionApp.GetString(phrase + DialogConsts.CANCEL, substitutions)
+                    ?? AmbitionApp.Localize(DialogConsts.DEFAULT_CANCEL);
 			}
 			
 			if (ConfirmTxt != null)
 			{
-				str=AmbitionApp.GetString(phrase + DialogConsts.CONFIRM, substitutions);
-				if (str != null && ConfirmTxt != null) ConfirmTxt.text = str;
-				else ConfirmTxt.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);
+                ConfirmTxt.text = AmbitionApp.GetString(phrase + DialogConsts.CONFIRM, substitutions)
+                    ?? AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);
 			}
 		}
 
-		public override void OnOpen ()
+        public void SetConfirmAction(Action onConfirm)
+        {
+            _onConfirm = onConfirm;
+            ConfirmBtn.SetActive(onConfirm != null);
+        }
+
+        public override void OnOpen ()
 		{
 			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_OPENED, ID);
-		}
+        }
 
-		public override void OnClose ()
+
+
+        public override void OnClose ()
 		{
 			AmbitionApp.SendMessage<string>(GameMessages.DIALOG_CLOSED, ID);
 		}
 
 		public void Confirm ()
 		{
-			AmbitionApp.SendMessage(GameMessages.DIALOG_CONFIRM);
-			Close();
+            _onConfirm?.Invoke();
+            AmbitionApp.SendMessage(GameMessages.DIALOG_CONFIRM);
 		}
 	}
 }

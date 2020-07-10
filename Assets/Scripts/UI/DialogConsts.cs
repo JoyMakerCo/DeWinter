@@ -14,10 +14,12 @@ namespace Ambition
 
 		// GENERIC MESSAGE DIALOG
 		public const string MESSAGE = "MESSAGE";
+        public const string CHOICE = "CHOICE";
 
         // LOADING 
         public const string EXIT_GAME = "EXIT_GAME";
         public const string GAME_MENU = "GAME_MENU";
+        public const string RESTORE_GAME = "RESTORE_GAME";
 
         // ESTATE MODALS & DIALOGS
         public const string RSVP = "RSVP";

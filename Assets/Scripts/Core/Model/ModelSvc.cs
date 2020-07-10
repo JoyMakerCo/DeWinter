@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using Util;
 using UnityEngine;
@@ -22,21 +23,8 @@ namespace Core
 
     public class ModelSvc : IAppService, IDisposable
 	{
-        protected const string PATH = "SaveState";
-
-
         protected Dictionary<Type, Model> _models = new Dictionary<Type, Model>();
         protected Dictionary<Model, List<Delegate>> _observers = new Dictionary<Model, List<Delegate>>();
-
-        protected SaveStateVO LoadSaveStateVO()
-        {
-            return Resources.Load<SaveStateVO>(PATH)
-
-#if UNITY_EDITOR
-                ?? Util.ScriptableObjectUtil.CreateScriptableObject<SaveStateVO>(PATH);
-#endif
-            ;
-        }
 
         // Note this method tracks models that haven't been properly registered.
         public void Observe<T>(T model, Action<T> action) where T:Model
@@ -109,13 +97,19 @@ namespace Core
 			_models = null;
 		}
 
-        public DateTime Save(string saveID)
+        public void Reset()
+        {
+            foreach (Model model in _models.Values)
+            {
+                (model as IResettable)?.Reset();
+            }
+        }
+
+        public string Save()
         {
             Dictionary<string, string> json = new Dictionary<string, string>();
-            string str;
-            DateTime date = DateTime.Now;
             MemberInfo info;
-            SaveableAttribute attribute;
+            SaveableAttribute attribute; // TODO: kill the "saveable" attribute, just idenfity the JSON tags
             foreach (Model model in _models.Values)
             {
                 info = model.GetType();
@@ -131,35 +125,21 @@ namespace Core
                         Debug.LogException(new Exception("Error serializing " + model.GetType().ToString() + ": " + e.Message));
                     }
                 }
-
             }
-            str = JsonConvert.SerializeObject(json);
-            SaveStateVO.SaveRecordVO record = new SaveStateVO.SaveRecordVO(saveID, date, str);
-            LoadSaveStateVO().Records.Add(record);
-            Resources.UnloadUnusedAssets();
-            return date;
+            return JsonConvert.SerializeObject(json);
         }
 
-        public bool Restore(string saveID)
+        public bool Restore(string json)
         {
-            SaveStateVO.SaveRecordVO vo = LoadSaveStateVO().Records.Find(s=>s.SaveID == saveID);
-            if (string.IsNullOrWhiteSpace(vo.SaveData)) return false;
-
-            string str;
-            MemberInfo info;
-            SaveableAttribute attribute;
-            Dictionary<string, string> state = JsonConvert.DeserializeObject<Dictionary<string, string>>(vo.SaveData);
-            List<Model> restored = new List<Model>();
+            Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             foreach (Model model in _models.Values)
             {
-                info = model.GetType();
-                attribute = info.GetCustomAttribute<SaveableAttribute>();
-                if (attribute != null && state.TryGetValue(model.GetType().ToString(), out str))
+                (model as IResettable)?.Reset();
+                if (data.TryGetValue(model.GetType().ToString(), out string str))
                 {
-                    var restore = JsonConvert.DeserializeObject(str, info.ReflectedType);
+                    JsonConvert.PopulateObject(str, model);
                 }
             }
-            Resources.UnloadUnusedAssets();
             return true;
         }
     }

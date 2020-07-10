@@ -14,7 +14,7 @@ namespace Ambition
         //This is how the localized text is put into all of the text boxes in the dialog
         public void SetPhrase()
         {
-            System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
+            System.DateTime today = AmbitionApp.GetModel<GameModel>().Date;
             string phrase = DialogConsts.REDEEM_QUEST_DIALOG;
 
             //Setting up the dictionary for the necessary substitutions
@@ -23,7 +23,6 @@ namespace Ambition
             //Performing the substitutions themselves
             BodyText.text = AmbitionApp.GetString(phrase + DialogConsts.BODY, dialogSubstitutions);
             TitleText.text = AmbitionApp.GetString(phrase + DialogConsts.TITLE, dialogSubstitutions);
-            string str;
             if (OkText != null)
             {
                 OkText.text = AmbitionApp.Localize(DialogConsts.DEFAULT_CONFIRM);

@@ -15,7 +15,6 @@ namespace Ambition
             if (svc != null || Loader == null)
             {
                 AmbitionApp.SendMessage(AudioMessages.ALL_SOUNDS_LOADED);
-                if (Loader != null) Destroy(Loader.gameObject);
             }
             else
             {

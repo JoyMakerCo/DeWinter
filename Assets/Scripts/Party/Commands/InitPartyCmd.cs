@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using Core;
 using UnityEngine;
@@ -10,17 +9,26 @@ namespace Ambition
         public void Execute(PartyVO party)
         {
             CharacterModel characters = AmbitionApp.GetModel<CharacterModel>();
-            GameModel model = AmbitionApp.GetModel<GameModel>();
+            GameModel game = AmbitionApp.GetModel<GameModel>();
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            PartyVO[] parties = model.GetParties(game.Convert(party.Date));
 
             // TODO: Assignable Character Configs for Notables
             if (string.IsNullOrEmpty(party.Host))
-                party.Host = Util.RNG.TakeRandom(characters.Characters.Keys.ToArray());
+                party.Host = Util.RNG.TakeRandom(characters.Characters.Keys);
 
             string reason = GetRandomText("party_reason." + party.Faction.ToString().ToLower());
 
             party.Description = (!string.IsNullOrWhiteSpace(party.LocalizationKey))
                 ? AmbitionApp.Localize("party.description." + party.LocalizationKey)
                 : reason;
+
+            if (string.IsNullOrEmpty(party.ID))
+            {
+                int index = Array.IndexOf(parties, party);
+                if (index < 0) index = parties.Length;
+                party.ID = party.Faction.ToString() + party.Date.ToString() + "S" + party.Size.ToString() + index.ToString();
+            }
 
             if (!string.IsNullOrWhiteSpace(party.LocalizationKey))
             {
@@ -31,29 +39,20 @@ namespace Ambition
                         {"$REASON", reason}});
             }
 
-            if (party.IntroIncident == null)
+            if (string.IsNullOrEmpty(party.IntroIncident))
             {
-                var introName = model.DefaultIntroIncident;
-                Debug.LogFormat("Intro incident is null, loading default intro incident '{0}'",introName);
-                if (introName != null)
-                {
-                    var incidentConfig = UnityEngine.Resources.Load<IncidentConfig>("Incidents/" + introName);      
-                    if(incidentConfig == null)
-                    {
-                        Debug.LogWarning("Resource not loaded");
-                    } 
-                    else
-                    {
-                        party.IntroIncident = incidentConfig.GetIncident();            
-                        Debug.LogFormat("Loaded incident {0}", party.IntroIncident.ToString());
-                    }
-                }
+                party.IntroIncident = game.DefaultIntroIncident;
             }
 
             string str = AmbitionApp.GetString("party_fluff", new Dictionary<string, string>(){
                 {"$INTRO",GetRandomText("party_fluff_intro")},
                 {"$ADJECTIVE",GetRandomText("party_fluff_adjective")},
                 {"$NOUN",GetRandomText("party_fluff_noun")}});
+
+            if (party.InvitationDate.Equals(default))
+            {
+                party.InvitationDate = game.Date;
+            }
 
             if (string.IsNullOrWhiteSpace(party.Invitation))
             {
@@ -69,16 +68,12 @@ namespace Ambition
 
             // string substitutions for the party
 			AmbitionApp.GetModel<LocalizationModel>().SetPartyFaction( party.Faction );
-			AmbitionApp.GetModel<LocalizationModel>().SetPartyOutfit(AmbitionApp.GetModel<InventoryModel>().GetEquippedItem(ItemType.Outfit));
 
             // Random Faction
             if (party.Faction == FactionType.Neutral)
-                party.Faction = Util.RNG.TakeRandomExcept(AmbitionApp.GetModel<FactionModel>().Factions.Keys.ToArray(), FactionType.Neutral);
+                party.Faction = Util.RNG.TakeRandomExcept(AmbitionApp.GetModel<FactionModel>().Factions.Keys, FactionType.Neutral);
 
-            if (party.RequiredIncidents == null) party.RequiredIncidents = new IncidentVO[ Util.RNG.Generate(1, 4)];
-
-            AmbitionApp.GetModel<CalendarModel>().Schedule(party);
-            AmbitionApp.SendMessage(party);
+            model.Schedule(party);
         }
 
         private string GetRandomText(string phrase)

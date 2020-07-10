@@ -1,0 +1,1167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: The Maid and the Archer
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 2, y: 64}
+  - {x: 1, y: 126}
+  - {x: -1, y: 190}
+  - {x: -3, y: 251}
+  - {x: -4, y: 308}
+  - {x: 2, y: 372}
+  - {x: 2, y: 424}
+  - {x: 3, y: 477}
+  - {x: 1, y: 532}
+  - {x: 1, y: 591}
+  - {x: -228, y: 647}
+  - {x: 3, y: 654}
+  - {x: 218, y: 648}
+  - {x: 214, y: 715}
+  - {x: 425, y: 703}
+  - {x: -229, y: 779}
+  - {x: -218, y: 845}
+  - {x: -217, y: 711}
+  - {x: -220, y: 902}
+  - {x: -220, y: 963}
+  - {x: -227, y: 1024}
+  - {x: 1, y: 716}
+  - {x: -3, y: 777}
+  - {x: 6, y: 840}
+  - {x: 7, y: 893}
+  - {x: 215, y: 773}
+  - {x: 455, y: 822}
+  - {x: 235, y: 843}
+  - {x: 471, y: 887}
+  - {x: 444, y: 769}
+  - {x: 484, y: 946}
+  - {x: 484, y: 1007}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 10, y: 13}
+    - {x: 13, y: 14}
+    - {x: 13, y: 15}
+    - {x: 16, y: 17}
+    - {x: 11, y: 18}
+    - {x: 18, y: 16}
+    - {x: 17, y: 19}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 12, y: 22}
+    - {x: 22, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 25, y: 17}
+    - {x: 14, y: 26}
+    - {x: 26, y: 28}
+    - {x: 28, y: 19}
+    - {x: 27, y: 29}
+    - {x: 15, y: 30}
+    - {x: 30, y: 27}
+    - {x: 29, y: 31}
+    - {x: 31, y: 32}
+    - {x: 32, y: 21}
+    Nodes:
+    - Text: You spend the day walking through the city, exploring the neighborhood
+        near a marketplace. The air is pungent, a rush of scents from crisp vegetables,
+        to fresh fruit, to less-than-fresh fish.
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You ears suddenly perk up at the sound of a familiar voice, and you start
+        slipping through the crowd in its direction.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You stumble upon Camille, her arms full with a basket full of the day's
+        gorceries. However, she's been stopped by a member of the Watch, one of the
+        infamous 'archers'. He's berating Camille in the middle of the street.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: neutral
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Where''d you get those?" He demands, gesturing to all of her groceries.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: neutral
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"<i>Quoi</i>? But monsieur, you saw me buy these. I got them over there."
+        She says, pointing in the direction of a market stall.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: neutral
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I saw no such thing!" He says, blistering at the suggestion that he
+        could have been paying attention to his surroundings. "Where''s your receipt?"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Camille''s eyes dart from side to side, and she turns her feet away from
+        him. Something about this line of questioning is making her very uncomfortable.
+        "I... uh... I never get receipts, monsieur." '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"What? That''s ridiculous! Why not?"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Well... I don''t... I can''t..." Camille starts and stops, looking ashamedly
+        at the ground.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"You''re going to have to give me a very good reason not to haul you
+        away." He growls, and one of his hands extends out, low, with his palm up.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Ah... so that's what this is about.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Stepping between the watchman and Camille, you stealthily slip a few coins
+        into his outstretched hand. He glances down, and immediately, his mood changes
+        for the better.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: happy
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Raising yourself to your full height, you step between Camille and the
+        Watchman. You feel a slight tug as Camille starts holding onto the back of
+        your skirts. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: The watchman stares at you, absolutely startled, as you suddenly interpose
+        yourself between him and Camille. "What? You've been robbed?"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: neutral
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Which way did he go? We don''t allow criminals here! Not on my watch!"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: He sighs, somehow angrier than ever. "Do you really think you're the first
+        person to try such a ruse on me?"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: '"Ah, I''m so glad to be of help." He says with an enormous grin as he
+        tips his hat to you. "Now, if you fine ladies may excuse me, I need to find
+        more citizens in need of public service."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: happy
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: With that, he shuffles off into the crowd, leaving you and Camille alone.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (You have paid 5 Livres)
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: happy
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Wow madame, that was amazing!" She gushes. "Normally, I remember to
+        bribe the authorities, but something came over me and I completely forgot."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: (You have gained some credibility)
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You spend the rest of the day escorting Camille about on her daily errands.
+        It takes a few minutes for her to completely feel comfortable again, but it
+        comes eventually.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I''m not harassing anyone." He spits at you. "I''m merely keeping an
+        eye out for known criminals."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: '"I''m not a known criminal! I shop here every week!" Camille yells out,
+        over your shoulder. The watchman''s eye twitches in anger.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Noticing that the crowd is finally starting to pay attention, the watchman
+        simply glares at you. "Fine, I shall trust you for now. However, I swear that
+        I'll be keeping an eye on you two."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (You have gained some peril)
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Suppressing the powerful reflex to comment on the irony of that statement,
+        you point him in a random direction. To sell the illusion, you provide a believable,
+        yet suitably vague description of your imaginary assailant.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: He pinches the bridge of his nose, trying to stifle an impending headache.
+        "Look, I am going to let this drop, but I swear that I'll be keeping an eye
+        on you two."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Musket at the ready, the watchman runs off into the crowd, yelling after
+        an imaginary cutpurse. The moment you lose sight of him, the two of you start
+        hurrying away.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (You have gained some peril)
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (You have lost some credibility)
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+      Character2:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: With that, he stomps away into the crowd, leaving you and Camille alone.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Well madame, at least we didn''t get arrested." She says with a shrug.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+      Character2:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: '"Monsieur! I''m so glad you found her! Please accept this payment for
+        my thanks."'
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 5
+        Operator: 4
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 5
+    - index: 0
+      Text: '"Excuse me monsieur. Don''t you have better things to do than harass
+        my servant?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - index: 0
+      Text: '"Monsieur! Monsieur! A man has stolen my purse!"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 1
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - index: 0
+      Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    OneShot: 1
+    Chapters: 
+    Factions: 
+    Political: 0
+    Requirements: []
+    _date: -1
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: -1
+  _requirements: []
+  _nodeText:
+  - You spend the day walking through the city, exploring the neighborhood near a
+    marketplace. The air is pungent, a rush of scents from crisp vegetables, to fresh
+    fruit, to less-than-fresh fish.
+  - You ears suddenly perk up at the sound of a familiar voice, and you start slipping
+    through the crowd in its direction.
+  - You stumble upon Camille, her arms full with a basket full of the day's gorceries.
+    However, she's been stopped by a watchmen of the <i>Guet Royal</i>, one of the
+    infamous 'archers'. He's berating Camille in the middle of the street.
+  - '"Where''d you get those?" He demands, gesturing to all of her groceries.'
+  - '"<i>Quoi</i>? But monsieur, you saw me buy these. I got them over there." She
+    says, pointing in the direction of a market stall.'
+  - '"I saw no such thing!" He says, blistering at the suggestion that he could have
+    been paying attention to his surroundings. "Where''s your receipt?"'
+  - 'Camille''s eyes dart from side to side, and she turns her feet away from him.
+    Something about this line of questioning is making her very uncomfortable. "I...
+    uh... I never get receipts, monsieur." '
+  - '"What? That''s ridiculous! Why not?"'
+  - '"Well... I don''t... I can''t..." Camille starts and stops, looking ashamedly
+    at the ground.'
+  - '"You''re going to have to give me a very good reason not to haul you away." He
+    growls, and one of his hands extends out, low, with his palm up.'
+  - Ah... so that's what this is about.
+  - Stepping between the watchman and Camille, you stealthily slip a few coins into
+    his outstretched hand. He glances down, and immediately, his mood changes for
+    the better.
+  - 'Raising yourself to your full height, you step between Camille and the watchman.
+    You feel a slight tug as Camille starts holding onto the back of your skirts. '
+  - The watchman stares at you, absolutely startled, as you suddenly interpose yourself
+    between him and Camille. "What? You've been robbed?"
+  - '"Which way did he go? We don''t allow criminals here! Not on my watch!"'
+  - He sighs, somehow angrier than ever. "Do you really think you're the first person
+    to try such a ruse on me?"
+  - '"Ah, I''m so glad to be of help." He says with an enormous grin as he tips his
+    hat to you. "Now, if you fine ladies may excuse me, I need to find more citizens
+    in need of public service."'
+  - With that, he shuffles off into the crowd, leaving you and Camille alone.
+  - (You have paid 5 Livres)
+  - '"Wow madame, that was amazing!" She gushes. "Normally, I remember to bribe the
+    authorities, but something came over me and I completely forgot."'
+  - (You have gained some credibility)
+  - You spend the rest of the day escorting Camille about on her daily errands. It
+    takes a few minutes for her to completely feel comfortable again, but it comes
+    eventually.
+  - '"I''m not harassing anyone." He spits at you. "I''m merely keeping an eye out
+    for known criminals."'
+  - '"I''m not a known criminal! I shop here every week!" Camille yells out, over
+    your shoulder. The watchman''s eye twitches in anger.'
+  - Noticing that the crowd is finally starting to pay attention, the watchman simply
+    glares at you. "Fine, I shall trust you for now. However, I swear that I'll be
+    keeping an eye on you two."
+  - (You have gained some peril)
+  - Suppressing the powerful reflex to comment on the irony of that statement, you
+    point him in a random direction. To sell the illusion, you provide a believable,
+    yet suitably vague description of your imaginary assailant.
+  - He pinches the bridge of his nose, trying to stifle an impending headache. "Look,
+    I am going to let this drop, but I swear that I'll be keeping an eye on you two."
+  - Musket at the ready, the watchman runs off into the crowd, yelling after an imaginary
+    cutpurse. The moment you lose sight of him, the two of you start hurrying away.
+  - (You have gained some peril)
+  - (You have lost some credibility)
+  - With that, he stomps away into the crowd, leaving you and Camille alone.
+  - '"Well madame, at least we didn''t get arrested." She says with a shrug.'
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Monsieur! I''m so glad you found her! Please accept this payment for my thanks."'
+  - '"Excuse me monsieur. Don''t you have better things to do than harass my servant?"'
+  - '"Monsieur! Monsieur! A man has stolen my purse!"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

@@ -67,11 +67,11 @@ public class PopUpManager : MonoBehaviour
     	Dictionary<string,string> subs = new Dictionary<string, string>(){{"$FACTION",faction}};
     	if (AmbitionApp.GetModel<FactionModel>()[FactionType.Revolution].Level >= 2)
     	{
-    		AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, subs);
+    		AmbitionApp.OpenDialog(DialogConsts.CAUGHT_GOSSIPING_THIRD_ESTATE_DIALOG, null, subs);
     	}
     	else
     	{
-			AmbitionApp.OpenMessageDialog(DialogConsts.CAUGHT_GOSSIPING_DIALOG, subs);
+			AmbitionApp.OpenDialog(DialogConsts.CAUGHT_GOSSIPING_DIALOG, null, subs);
     	}
     }
 

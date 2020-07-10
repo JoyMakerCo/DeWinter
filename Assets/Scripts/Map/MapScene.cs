@@ -9,32 +9,16 @@ namespace Ambition
     {
         public AvatarCollection Avatars;
 
-        private MapModel _map;
-        private MapView _loadedMap;
+        public MapView Map { get; private set; }
 
         public Sprite GetPortrait(string avatarID) => Avatars?.GetAvatar(avatarID).Portrait;
 
         private void OnEnable()
         {
-            _map = AmbitionApp.GetModel<MapModel>();
-            _map.Map.Observe(SetMap);
-        }
-
-        private void OnDisable() => _map.Map.Remove(SetMap);
-
-        private void SetMap(MapVO map)
-        {
-            MapView view = _map.MapObject?.GetComponent<MapView>();
-            if (view?.name != _loadedMap?.name)
+            if (Map == null)
             {
-                _loadedMap = view;
-                for(int i=transform.childCount-1; i>=0; i--)
-                {
-                    Destroy(transform.GetChild(i));
-                }
-
-                if (_loadedMap != null)
-                    GameObject.Instantiate(_loadedMap.gameObject, this.transform, false);
+                PartyModel model = AmbitionApp.GetModel<PartyModel>();
+                Map = model.LoadMap(this.transform);
             }
         }
     }

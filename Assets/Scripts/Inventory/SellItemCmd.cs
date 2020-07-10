@@ -17,16 +17,10 @@ namespace Ambition
 				return;
 			}
 
-			if (model.Inventory.ContainsKey(item.Type) && model.Inventory[item.Type].Remove(item))
+			if (model.Inventory.Remove(item))
 			{
-				// make it available to buy back
-				if (model.Market != null)
-				{
-					// Buyback price will be the same, to the user can change her mind to her heart's content
-					if (!model.Market.ContainsKey(item.Type))
-						model.Market.Add(item.Type, new List<ItemVO>());
-					model.Market[item.Type].Add(item);
-				}
+                // make it available to buy back
+                model.Market?.Add(item);
                 AmbitionApp.GetModel<GameModel>().Livre.Value += item.Price;
                 model.Broadcast();
 			}

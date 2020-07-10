@@ -6,11 +6,31 @@ namespace Ambition
 {
 	public class UnequipItemCmd : ICommand<ItemVO>
 	{
-        public void Execute(ItemVO item) => AmbitionApp.GetModel<InventoryModel>().Unequip(item);
+        public void Execute(ItemVO item)
+        {
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            item.Equipped = false;
+            if (inventory.Equipped.TryGetValue(item.Type, out ItemVO equipped) && equipped == item)
+            {
+                inventory.Equipped.Remove(item.Type);
+            }
+            inventory.Inventory.Add(item);
+            inventory.Broadcast();
+        }
     }
 
-	public class UnequipSlotCmd : ICommand<ItemType>
-	{
-        public void Execute(ItemType type) => AmbitionApp.GetModel<InventoryModel>().Unequip(type);
+    public class UnequipItemSlotCmd : ICommand<ItemType>
+    {
+        public void Execute(ItemType type)
+        {
+            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+            if (inventory.Equipped.TryGetValue(type, out ItemVO equipped))
+            {
+                equipped.Equipped = false;
+                inventory.Equipped.Remove(type);
+                inventory.Inventory.Add(equipped);
+                inventory.Broadcast();
+            }
+        }
     }
 }

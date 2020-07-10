@@ -14,7 +14,7 @@ namespace Ambition
             AmbitionApp.SendMessage(IncidentMessages.START_INCIDENT, model.Incident);
             model.Moment = model.Incident.Nodes[0];
             AmbitionApp.SendMessage(model.Incident.GetLinks(0));
-            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, model.Incident.Name);
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, model.Incident.ID);
         }
     }
 }

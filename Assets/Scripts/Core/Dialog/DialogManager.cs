@@ -67,7 +67,7 @@ namespace Dialog
 				}
 				_dialogs.Add(arg);
 				dialog.transform.SetParent(transform, false);
-				dialog.GetComponent<RectTransform>().SetAsLastSibling();
+				//dialog.GetComponent<RectTransform>().SetAsLastSibling();
                 transform.SetAsLastSibling();
                 gameObject.SetActive(true);
 
@@ -122,7 +122,7 @@ namespace Dialog
 		public bool Close(GameObject dialog)
 		{
             if (dialog == null) return false;
-            DialogEventArgs arg = _dialogs.First(a => a.DialogObject == dialog);
+            DialogEventArgs arg = _dialogs.FirstOrDefault(a => a.DialogObject == dialog);
             if (arg == null) return false;
             dialog.GetComponent<DialogView>()?.OnClose();
 			Destroy(dialog);

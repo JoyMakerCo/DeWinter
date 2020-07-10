@@ -5,9 +5,9 @@ namespace Ambition
     {
         public override void OnEnterState()
         {
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            calendar.Schedule(model.Party.ExitIncident);
+            incidentModel.Schedule(model.Party.ExitIncident);
         }
     }
 }

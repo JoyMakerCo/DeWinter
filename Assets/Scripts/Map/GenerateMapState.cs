@@ -19,7 +19,6 @@ namespace Ambition
 
 		private Dictionary<RoomVO, List<RoomVO>> _rooms=new Dictionary<RoomVO, List<RoomVO>>();
 		private Dictionary<int[], RoomVO[]> _walls = new Dictionary<int[], RoomVO[]>();
-		private MapModel _model;
 
         public override void OnEnterState()
         {
@@ -63,7 +62,7 @@ namespace Ambition
             return null;
         }
 
-
+/*
         private MapVO DeprecatedBuildRandomMap(PartyVO party)
 		{
 			MapVO map = new MapVO();
@@ -134,7 +133,7 @@ namespace Ambition
 			//map.Rooms = _rooms.Keys.ToArray();
 			return map;
 		}
-
+        */
 		private RoomVO MakeRectRoom(int X, int Y, int W, int H)
 		{
 			return MakeRoom(X, Y, X+W, Y, X+W, Y+H, X, Y+H);

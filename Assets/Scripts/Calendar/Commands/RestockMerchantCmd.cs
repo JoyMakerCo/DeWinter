@@ -15,13 +15,12 @@ namespace Ambition
             FactionVO bonus = AmbitionApp.GetModel<FactionModel>()[FactionType.Bourgeoisie];
             int count = inventory.NumMarketSlots + (bonus?.Level >= 3 ? 1 : 0);
             ItemVO item;
-            inventory.Market = new Dictionary<ItemType, List<ItemVO>>();
-            inventory.Market[ItemType.Outfit] = new List<ItemVO>();
+            inventory.Market = new List<ItemVO>();
 			for (int i=0; i<count; i++)
 			{
                 item = new ItemVO();
                 AmbitionApp.SendMessage(InventoryMessages.GENERATE_OUTFIT, item);
-                inventory.Market[ItemType.Outfit].Add(item);
+                inventory.Market.Add(item);
 			}
         }
     }

@@ -76,7 +76,7 @@ public class ServantStatsTracker : MonoBehaviour {
             } else if (!attemptedCamilleFiring) //If the Player hasn't attempted to fire Camille yet then throw up this message bubble
             {
                 attemptedCamilleFiring = true;
-                AmbitionApp.OpenMessageDialog(DialogConsts.FIRE_CAMILLE_DIALOG);
+                AmbitionApp.OpenDialog(DialogConsts.FIRE_CAMILLE_DIALOG);
             }
         }
     }

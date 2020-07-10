@@ -4,9 +4,8 @@
     {
         public override void OnEnterState()
         {
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             ParisModel paris = AmbitionApp.GetModel<ParisModel>();
-            calendar.Schedule(paris.Location?.IntroIncident, calendar.Today);
+            AmbitionApp.GetModel<IncidentModel>().Schedule(paris.Location?.IntroIncident);
         }
     }
 }

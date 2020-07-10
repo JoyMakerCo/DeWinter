@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
+using Util;
 namespace Ambition
 {
     public class MapView : MonoBehaviour
@@ -17,18 +18,6 @@ namespace Ambition
             AmbitionApp.Subscribe<IncidentVO[]>(PartyMessages.SELECT_INCIDENTS, HandleIncidents);
         }
 
-        public MapVO CreateMapVO()
-        {
-            return new MapVO()
-            {
-                Name = gameObject.name,
-                AssetID = gameObject.name,
-                Faction = this.Faction,
-                Tags = Tags?.ToArray(),
-                Size = this.Size,
-            };
-        }
-
         private void OnDestroy()
         {
             AmbitionApp.Unsubscribe<IncidentVO[]>(PartyMessages.SELECT_INCIDENTS, HandleIncidents);
@@ -36,16 +25,9 @@ namespace Ambition
 
         private void HandleIncidents(IncidentVO[] incidents)
         {
-            // Shuffle
-            int index;
-            IncidentVO[] results = new IncidentVO[_rooms.Length];
-            Array.Copy(incidents, results, incidents.Length);
-            int count = results.Length;
-            for (int i = 0; i < count; i++)
+            for (int i=_rooms.Length-1; i>=0; --i)
             {
-                index = Util.RNG.Generate(i, count);
-                _rooms[i].SetIncident(results[index]);
-                results[index] = results[i];
+                _rooms[i].SetIncident(incidents[i]);
             }
         }
     }

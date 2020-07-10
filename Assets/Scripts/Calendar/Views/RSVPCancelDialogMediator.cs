@@ -24,7 +24,7 @@ namespace Ambition
 				{"$HOSTNAME", p.Host},
 				{"$FACTION", AmbitionApp.Localize(p.Faction.ToString())}};
 
-			if (p.Date == AmbitionApp.GetModel<CalendarModel>().Today)
+			if (p.Date == AmbitionApp.GetModel<GameModel>().Date)
 			{
 				BodyText.text = AmbitionApp.GetString("rsvp_cancel_dayof_dialog.title", subs);
 			}

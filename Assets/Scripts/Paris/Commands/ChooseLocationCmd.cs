@@ -1,4 +1,5 @@
 ﻿using Core;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,19 +17,21 @@ namespace Ambition
             }
 
             AmbitionApp.GetModel<LocalizationModel>().SetLocation(location?.ID);
-            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
 
             if (!model.Visited.Contains(location.ID))
             {
-                if (location.IntroIncident != null)
+                IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
+                GameModel game = AmbitionApp.GetModel<GameModel>();
+                incidentModel.Schedule(location.IntroIncident);
+                foreach(string incidentID in location.StoryIncidents)
                 {
-                    calendar.Schedule(location.IntroIncident, calendar.Today);
-                }
-                foreach(IncidentVO incident in location.StoryIncidents)
-                {
-                    if (incident != null)
+                    if (incidentModel.Incidents.TryGetValue(incidentID, out IncidentVO incident))
                     {
-                        calendar.Schedule(incident);
+                        if (incident.IsScheduled)
+                        {
+                            incidentModel.Schedule(incidentID, incident.Date.Subtract(game.StartDate).Days);
+                        }
+                        else incidentModel.Schedule(incidentID);
                     }
                 }
                 model.Visited.Add(location.ID);
@@ -41,28 +44,9 @@ namespace Ambition
                 foreach (var ivo in location.StoryIncidents)
                 {
                     Debug.Log(" checking: ");
-                    foreach (var line in ivo.Dump())
+                    foreach (var line in ivo)
                     {
                         Debug.Log("   "+line);
-                    }
-                    if (AmbitionApp.GetModel<IncidentModel>().PlayCount.TryGetValue(ivo.Name, out int count))
-                    {
-                        Debug.Log("Play Count for " + ivo.Name + ": " + count.ToString());
-                        if (count > 0) continue;
-                    }
-
-                    if (AmbitionApp.CheckRequirements(ivo.Requirements))
-                    {
-                        Debug.LogFormat("-  "+ivo.ToString()+ " met requirements");
-
-                        ivo.IsComplete = false; // dunno if this is necessary or a good idea...
-                        calendar.Schedule(ivo, calendar.Today);
-                        break;
-                    }
-                    else
-                    {
-                        Debug.LogFormat("-  "+ivo.ToString()+ " did not meet requirements");
-
                     }
                 }
             }

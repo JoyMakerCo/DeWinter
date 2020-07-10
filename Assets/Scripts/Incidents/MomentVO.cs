@@ -17,6 +17,7 @@ namespace Ambition
 	public class MomentVO
 	{
 		public string Text;
+        [JsonIgnore]
 		public Sprite Background;
 		public IncidentCharacterConfig Character1;
 		public IncidentCharacterConfig Character2;

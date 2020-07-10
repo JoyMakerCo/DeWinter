@@ -3,29 +3,25 @@ using System.Collections.Generic;
 
 namespace Ambition
 {
-    public class ChooseExploreLocationsCmd : Core.ICommand<Pin[]>
+    public class ChooseExploreLocationsCmd : Core.ICommand<string[]>
     {
         // Chooses all of the new Daily locations whose requirements have been met
         // This ensures that the same locations aren't available on two consecutive days
-        public void Execute(Pin[] pins)
+        public void Execute(string[] pins)
         {
             ParisModel model = AmbitionApp.GetModel<ParisModel>();
-            int length = pins.Length;
-            uint max = model.NumDailies;
-            int[] random = new int[length];
-
-            // Shuffle the pin indices (stop short of shuffling within the results)
-            for (int i = length - 1; i >= max; i--)
+            List<string> dailies = new List<string>();
+            if (model.Daily == null || model.Daily.Length < model.NumDailies)
             {
-                random[i] = Util.RNG.Generate(i);
-                random[random[i]] = i;
+                dailies = model.Daily != null ? new List<string>(model.Daily) : new List<string>();
+                Util.RNG.Shuffle(pins);
+                for (int i = pins.Length - 1; dailies.Count < model.NumDailies && i >= 0; --i)
+                {
+                    if (!dailies.Contains(pins[i]))
+                        dailies.Add(pins[i]);
+                }
             }
-            model.Daily = new string[max];
-            // Build a list from the first N shiffled indices
-            for (int i = 0; i < max; i++)
-            {
-                model.Daily[i] = pins[random[i]].name;
-            }
+            model.Daily = dailies.ToArray();
         }
     }
 }

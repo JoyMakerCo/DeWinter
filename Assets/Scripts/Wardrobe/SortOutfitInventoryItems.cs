@@ -61,8 +61,7 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "novelty") && !ascendingOrder;
 		SelectedButton("novelty");
 		sortedBy = "novelty";
-		if((inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).TryGetValue(ItemType.Outfit, out _list))
-    		_list.Sort(sortByNoveltyComparer);
+		(inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).Sort(sortByNoveltyComparer);
 	}
 
 	public void SortByLuxury()
@@ -70,8 +69,7 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "luxury") && !ascendingOrder;
 		SelectedButton("luxury");
 		sortedBy = "luxury";
-		if ((inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).TryGetValue(ItemType.Outfit, out _list))
-    		_list.Sort(sortByLuxuryComparer);
+		(inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).Sort(sortByLuxuryComparer);
 	}
 
     private int sortByNoveltyComparer(ItemVO a, ItemVO b) => Compare(a, b, ItemConsts.NOVELTY);
@@ -91,8 +89,7 @@ public class SortOutfitInventoryItems : MonoBehaviour {
 		ascendingOrder = (sortedBy == "modesty") && !ascendingOrder;
 		SelectedButton("modesty");
 		sortedBy = "modesty";
-		if((inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).TryGetValue(ItemType.Outfit, out _list))
-    		_list.Sort(sortByModestyComparer);
+		(inventoryType == ItemConsts.PERSONAL ? _model.Inventory : _model.Market).Sort(sortByModestyComparer);
 	}
 
     void SelectedButton(string button)

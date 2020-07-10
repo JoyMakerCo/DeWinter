@@ -16,7 +16,6 @@ namespace Ambition
         public PartyMusicCollection MusicCollection;
         public GuestSFXCollection GuestBarkCollection;
 
-        MapModel model = AmbitionApp.GetModel<MapModel>();
         PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
 
         private FMODEvent _partyMusic;
@@ -34,7 +33,6 @@ namespace Ambition
             AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
             AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
             AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
-            AmbitionApp.Subscribe(PartyMessages.END_PARTY, LeaveParty);
             AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, HandleShowMap);
             AmbitionApp.Subscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoomSFX);
             _partyMusic = MusicCollection.GetFMODEvent(partyModel.Party.Faction.ToString());
@@ -71,7 +69,6 @@ namespace Ambition
                 AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, _partyMusic);
                 _partyStarted = true;
             }
-            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, model.Map.Value?.Name);
         }
 
         //This is is for conversation music, sfx is handled via the HandleRoomSFX method
@@ -151,11 +148,6 @@ namespace Ambition
         {
             FMODEvent selectedBark = GuestBarkCollection.GetFMODEvent(guest.Gender, "bored");
             AmbitionApp.SendMessage(AudioMessages.PLAY, selectedBark);
-        }
-
-        public void LeaveParty()
-        {
-            AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);
         }
 
         private void SetParam(FMODEvent e, string id, int value)

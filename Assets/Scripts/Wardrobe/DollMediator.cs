@@ -25,18 +25,7 @@ namespace Ambition
 
         void HandleOutfit(ItemVO outfit)
         {
-            if (outfit.Asset == null)
-            {
-                OutfitConfig.GetOutfit(outfit);
-            }
-            Doll.sprite = outfit.Asset;
-        }
-
-        private IEnumerator LoadAssetBundle(Action<AssetBundle> onComplete)
-        {
-            AssetBundleCreateRequest req = AssetBundle.LoadFromFileAsync(AmbitionApp.GetModel<GameModel>().PlayerPhrase.ToLower() + "_outfits");
-            yield return req;
-            onComplete(req?.assetBundle);
+            Doll.sprite = OutfitConfig.GetOutfit(outfit);
         }
     }
 }

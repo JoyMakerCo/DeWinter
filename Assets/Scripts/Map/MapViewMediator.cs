@@ -14,15 +14,11 @@ namespace Ambition
 
 	    private Dictionary<RoomVO, RoomButtonDeprecated> _buttons;
 
-	    private MapModel _model;
         private Vector4 _bounds;
         private Vector3 _offset;
 
-		public MapVO Map => _model.Map;
-
 		void Awake()
 		{
-			_model = AmbitionApp.GetModel<MapModel>();
 			_buttons = new Dictionary<RoomVO, RoomButtonDeprecated>();
             //AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, Recenter);
             AmbitionApp.Subscribe(GameMessages.FADE_IN_COMPLETE, Unlock);

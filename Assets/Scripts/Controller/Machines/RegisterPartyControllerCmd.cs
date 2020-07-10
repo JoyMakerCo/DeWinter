@@ -8,7 +8,6 @@ namespace Ambition
         {
             State("InitParty");
             State("PickOutfit");
-            State("HideHeader");
             State("Intro");
             State("Turns Left");
             State("Outtro");
@@ -17,7 +16,6 @@ namespace Ambition
             State("Exit");
             State("Map Decision", false);
             State("Map");
-            State("Broadcast Map");
             State("Pick Incidents");
             State("Conversation");
             State("Exit Conversation");
@@ -26,18 +24,17 @@ namespace Ambition
             Link("Exit Conversation", "Turns Left");
 
             BindLink<LoadSceneLink, string>("InitParty", "PickOutfit", SceneConsts.LOAD_OUT_SCENE);
-            BindLink<MessageLink, string>("HideHeader", "Intro", GameMessages.COMPLETE);
+            BindLink<MessageLink, string>("PickOutfit", "Intro", GameMessages.COMPLETE);
             BindLink<CheckTurnsLink>("Turns Left", "Map Decision");
             BindLink<LoadSceneLink, string>("Map Decision", "Map", SceneConsts.MAP_SCENE);
             BindLink<LoadSceneLink, string>("Exit Incident", "After Party", SceneConsts.AFTER_PARTY_SCENE);
-            BindLink<MessageLink, string>("After Party", "Exit", PartyMessages.END_PARTY);
+            BindLink<MessageLink, string>("After Party", "Exit", GameMessages.COMPLETE);
             BindLink<MessageLink, string>("Pick Incidents", "Conversation", PartyMessages.SHOW_ROOM);
 
             Bind<InitPartyState>("InitParty");
-            Bind<SendMessageState, string>("HideHeader", GameMessages.HIDE_HEADER);
             Bind<PickIncidentsState>("Pick Incidents");
             Bind<UMachine, string>("Intro", FlowConsts.INCIDENT_CONTROLLER);
-            Bind<SendMessageState, string>("Broadcast Map", PartyMessages.SHOW_MAP);
+            Bind<SendMessageState, string>("Map", PartyMessages.SHOW_MAP);
             Bind<UMachine, string>("Exit Incident", FlowConsts.INCIDENT_CONTROLLER);
             Bind<ExitPartyState>("Outtro");
             Bind<UMachine, string>("Conversation", FlowConsts.INCIDENT_CONTROLLER);

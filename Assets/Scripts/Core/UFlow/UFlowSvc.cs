@@ -29,43 +29,116 @@ namespace UFlow
             _defs[flowID]._uFlow = this;
         }
 
-        public UMachine GetMachine(string MachineID)
-		{
-			return _active.Find(m => m.MachineID == MachineID);
-		}
+        public string Save()
+        {
+            Dictionary<string, List<UMachine>> machines = new Dictionary<string, List<UMachine>>();
+            List<string> output = new List<string>();
+            List<string> line;
+            string machineID;
+            UMachine umachine;
+            int[] state;
+            Dictionary<int, UMachine> dependencies;
+            foreach (UMachine machine in _active)
+            {
+                machineID = GetAddMachineID(machines, machine);
+                line = new List<string>() { machineID };
+                state = machine.SaveState(out dependencies);
+                foreach (int i in state)
+                {
+                    if (dependencies.TryGetValue(i, out umachine))
+                    {
+                        machineID = GetAddMachineID(machines, umachine);
+                        line.Add(i.ToString() + ":" + machineID);
+                    }
+                    else
+                    {
+                        line.Add(i.ToString());
+                    }
+                    if (line.Count > 1) output.Add(string.Join(",", line));
+                }
+            }
+            return string.Join("@", output);
+        }
+
+        public void Reset()
+        {
+            if (_active == null) _active = new List<UMachine>();
+            else while (_active.Count > 0) _active[0].Dispose();
+        }
+
+        public bool Restore(string uflowState)
+        {
+            bool complete;
+            string[] machineState = uflowState.Split('@');
+            string[][] state = new string[machineState.Length][];
+            Dictionary<string, UMachine> machines = new Dictionary<string, UMachine>();
+            Dictionary<int, UMachine> hash = new Dictionary<int, UMachine>();
+            UMachine serializedMachine;
+
+            for (int i = machineState.Length - 1; i >= 0; --i)
+            {
+                state[i] = machineState[i].Split(',');
+            }
+
+            do
+            {
+                complete = true;
+                foreach (string[] mstate in state)
+                {
+                    if (!machines.ContainsKey(mstate[0]))
+                    {
+                        serializedMachine = RestoreMachine(mstate, machines);
+                        if (serializedMachine != null)
+                        {
+                            machines.Add(mstate[0], serializedMachine);
+                        }
+                        else complete = false;
+                    }
+                }
+            } while (!complete);
+            Reset();
+            _active = new List<UMachine>(machines.Values);
+            return true;
+        }
+
+        public UMachine GetMachine(string MachineID, ushort instance = 0)
+        {
+            List<UMachine> result = _active.FindAll(m => m.MachineID == MachineID);
+            return instance < result.Count ? result[instance] : null;
+        }
 
         public UMachine[] GetMachines(string MachineID)
         {
             return _active.FindAll(m => m.MachineID == MachineID).ToArray();
         }
 
-		public string[] GetActiveMachines()
-		{
+        public string[] GetActiveMachines()
+        {
             string[] result = new string[_active.Count];
             for (int i = _active.Count - 1; i >= 0; i--)
                 result[i] = _active[i]?.MachineID;
             return result;
-		}
+        }
 
         public UMachine[] GetAllMachines()
         {
             return _active.ToArray();
         }
 
-		public bool IsActiveState(string stateID)
-		{
-            foreach(UMachine m in _active)
+        public bool IsActiveState(string stateID)
+        {
+            foreach (UMachine m in _active)
             {
                 if (m.ID == stateID || Array.IndexOf(m.GetActiveStates(), stateID) >= 0)
                     return true;
             }
             return false;
-		}
+        }
 
-		public bool IsActiveMachine(string machineID)
-		{
-			return _active.Exists(m=>m.MachineID == machineID);
-		}
+        public bool IsActiveMachine(string machineID)
+        {
+            return _active.Exists(m => m.MachineID == machineID);
+        }
 
         public bool ExitMachine(string MachineID)
         {
@@ -74,14 +147,14 @@ namespace UFlow
             return _active.Remove(machine);
         }
 
-        private N AddNodeToGraph<N>(N node, string nodeID, string machineID) where N:UStateNode
-		{
-			if (!_machines.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph))
-			{
-				graph = new DirectedGraph<UStateNode, UGraphLink>();
-				_machines.Add(machineID, graph);
-			}
-			node.ID = nodeID;
+        private N AddNodeToGraph<N>(N node, string nodeID, string machineID) where N : UStateNode
+        {
+            if (!_machines.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph))
+            {
+                graph = new DirectedGraph<UStateNode, UGraphLink>();
+                _machines.Add(machineID, graph);
+            }
+            node.ID = nodeID;
             if (graph.Nodes == null) graph.Nodes = new UStateNode[] { node };
             else
             {
@@ -89,10 +162,10 @@ namespace UFlow
                 nodes.Add(node);
                 graph.Nodes = nodes.ToArray();
             }
-			return node;
-		}
+            return node;
+        }
 
-        public void BindState<S>(string machineID, string stateID) where S:UState, new()
+        public void BindState<S>(string machineID, string stateID) where S : UState, new()
         {
             // Activator uses reflection. This does not.
             Type t = typeof(UStateNode<S>);
@@ -112,7 +185,7 @@ namespace UFlow
                 _states[t] = node =>
                 {
                     S state = new S { ID = stateID };
-                    state.Initialize(((UStateNode<S,D>)node).Data);
+                    state.Initialize(((UStateNode<S, D>)node).Data);
                     return state;
                 };
             }
@@ -151,12 +224,77 @@ namespace UFlow
             BindLink(machineID, fromState, toState, new UGraphLink<L, D>() { Data = data });
         }
 
+        // PRIVATE / PROTECTED METHODS //////////////////////
+
+        private string GetAddMachineID(Dictionary<string, List<UMachine>> machines, UMachine machine)
+        {
+            string machineID = machine?.MachineID;
+            if (string.IsNullOrEmpty(machineID) || !_machines.ContainsKey(machineID)) return null;
+            if (!machines.ContainsKey(machineID))
+            {
+                machines.Add(machineID, new List<UMachine>() { machine });
+                return machineID + "#0";
+            }
+            int index = machines[machineID].IndexOf(machine);
+            if (index < 0)
+            {
+                index = machines[machineID].Count;
+                machines[machineID].Add(machine);
+            }
+            return machineID + "#" + index;
+        }
+
+        private UMachine RestoreMachine(string[] state, Dictionary<string, UMachine> machines)
+        {
+            // Corrupted state; early out
+            int len = state?.Length ?? 0;
+            if (len < 1) return null;
+            DirectedGraph<UStateNode, UGraphLink> graph;
+            string[] stateStr = state[0].Split('#');
+
+            // Couldn't find graph; early out
+            if (stateStr.Length < 1 || !_machines.TryGetValue(stateStr[0], out graph))
+            {
+                return null;
+            }
+
+            string machineID = stateStr[0];
+            int[] init = new int[len - 1];
+            Dictionary<int, UMachine> dependencies = new Dictionary<int, UMachine>();
+            UMachine machine;
+            UMachine result = new UMachine(this, graph);
+            result.Initialize(machineID);
+
+            for (int i = 0; i < len - 1; ++i)
+            {
+                stateStr = state[i + 1].Split(':');
+                init[i] = int.Parse(stateStr[0]);
+                if (stateStr.Length > 1)
+                {
+                    if (machines.TryGetValue(stateStr[1], out machine))
+                    {
+                        machine._Machine = result;
+                        machine.ID = graph.Nodes[init[i]].ID;
+                        dependencies[init[i]] = machine;
+                    }
+                    else return null; // Not all machines instantiated; early out
+                }
+            }
+
+            if (result.RestoreState(init, dependencies))
+            {
+                return result;
+            }
+            result.Dispose();
+            return null;
+        }
+
         private void BindNode(string machineID, string stateID, UStateNode node)
         {
             if (!_machines.TryGetValue(machineID, out DirectedGraph<UStateNode, UGraphLink> graph)) return;
             if (graph.Nodes == null) return;
-            int index = Array.FindIndex(graph.Nodes, n=>n.ID == stateID);
-            if (index >= 0) 
+            int index = Array.FindIndex(graph.Nodes, n => n.ID == stateID);
+            if (index >= 0)
             {
                 node.ID = stateID;
                 graph.Nodes[index] = node;
@@ -178,35 +316,42 @@ namespace UFlow
         }
 
         public void RegisterState(string machineID, string stateID)
-		{
-			AddNodeToGraph(new UStateNode(), stateID, machineID);
-		}
+        {
+            AddNodeToGraph(new UStateNode(), stateID, machineID);
+        }
 
-		public void RegisterState<S>(string machineID, string stateID) where S : UState, new()
+        public void RegisterState<S>(string machineID, string stateID) where S : UState, new()
         {
             Type t = typeof(UStateNode<S>);
-			if (!_states.ContainsKey(t))
-			{
-				_states[t] = node => new S { ID = node.ID };
-			}
+            if (!_states.ContainsKey(t))
+            {
+                _states[t] = node => new S { ID = node.ID };
+            }
             AddNodeToGraph(new UStateNode<S>(), stateID, machineID);
         }
 
         public void RegisterState<S, T>(string machineID, string stateID, T arg) where S : UState, IInitializable<T>, new()
-		{
-			UStateNode<S,T> n = AddNodeToGraph(new UStateNode<S,T>(), stateID, machineID);
-			n.Data = arg;
-			if (!_states.ContainsKey(typeof(UStateNode<S,T>)))
-			{
+        {
+            UStateNode<S, T> n = AddNodeToGraph(new UStateNode<S, T>(), stateID, machineID);
+            n.Data = arg;
+            if (!_states.ContainsKey(typeof(UStateNode<S, T>)))
+            {
                 Func<UStateNode, UState> Create = node =>
                  {
-                    S s = new S { ID = node.ID };
-                    s.Initialize((node as UStateNode<S,T>).Data);
-					return s;
-				};
-				_states.Add(typeof(UStateNode<S,T>), Create);
-			}
-		}
+                     S s = new S { ID = node.ID };
+                     s.Initialize((node as UStateNode<S, T>).Data);
+                     return s;
+                 };
+                _states.Add(typeof(UStateNode<S, T>), Create);
+            }
+        }
+
+        public UMachine Instantiate(string machineID, UMachine flow = null)
+        {
+            UMachine result = BuildMachine(machineID);
+            if (result != null) result._Machine = flow;
+            return result;
+        }
 
         internal UState Instantiate(UStateNode node)
         {

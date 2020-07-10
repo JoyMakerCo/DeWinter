@@ -7,43 +7,30 @@ namespace Ambition
     {
         public void Execute(CommodityVO reward)
         {
-            if (reward.ID != null)
+            if (string.IsNullOrEmpty(reward?.ID)) return;
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            PartyVO party = model.LoadParty(reward.ID);
+
+            if (party == null) return;
+
+            switch(reward.Value)
             {
-                PartyConfig config = UnityEngine.Resources.Load<PartyConfig>("Parties/" + reward.ID);
-                PartyVO party = config?.GetParty();
-                if (party != null)
-                {
-                    CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
-                    party.RSVP = (RSVP)reward.Value;
-                    party.InvitationDate = calendar.Today;
-                    party.IntroIncident = config.IntroIncident?.GetIncident();
-                    party.ExitIncident = config.ExitIncident?.GetIncident();
-                    AmbitionApp.GetModel<MapModel>().SaveMap(party, config.Map);
-
-                    if (party.Date == default) party.Date = calendar.Today;
-                    AmbitionApp.SendMessage(PartyMessages.INITIALIZE_PARTY, party);
-
-                    switch (party.RSVP)
-                    {
-                        case RSVP.Accepted:
-                        case RSVP.Required:
-                            AmbitionApp.SendMessage(PartyMessages.ACCEPT_INVITATION, party);
-                            break;
-                        case RSVP.Declined:
-                            AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
-                            break;
-                    }
-                }
-                else
-                {
-                    UnityEngine.Debug.Log("Warning: PartyReward.cs: No party with ID \"" + reward.ID + "\" exists!");
-                }
-                config = null;
-                UnityEngine.Resources.UnloadUnusedAssets();
+                case -1:
+                    party.RSVP = RSVP.Declined;
+                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
+                    AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
+                    break;
+                case 1:
+                    party.RSVP = RSVP.Accepted;
+                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
+                    AmbitionApp.SendMessage(PartyMessages.ACCEPTED, party);
+                    break;
+                case 2:
+                    party.RSVP = RSVP.Required;
+                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
+                    AmbitionApp.SendMessage(PartyMessages.ACCEPTED, party);
+                    break;
             }
-            else
-                UnityEngine.Debug.Log("Warning: PartyReward.cs: No party ID specified!");
-
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Ambition
             AmbitionApp.Subscribe<MomentVO>(HandleMoment);
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.START_INCIDENT, HandleIncident);
             AmbitionApp.Subscribe<IncidentVO>(IncidentMessages.END_INCIDENT, HandleEndIncident);
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER);
         }
 
         void OnDestroy ()
@@ -50,7 +51,7 @@ namespace Ambition
                     int index = Array.IndexOf(_incident.Nodes, moment);
                     if (index >= 0)
                     {
-                        result = AmbitionApp.Localize(_incident.Name + ".node." + index.ToString());
+                        result = AmbitionApp.Localize(_incident.ID + ".node." + index.ToString());
                     }
                 }
                 descriptionText.text = result;

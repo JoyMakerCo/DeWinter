@@ -3353,6 +3353,7 @@ GameObject:
   - component: {fileID: 224228714540193760}
   - component: {fileID: 222424115031423564}
   - component: {fileID: 3410875830914675957}
+  - component: {fileID: 1469340926512322335}
   m_Layer: 5
   m_Name: PartyLoadOut
   m_TagString: Untagged
@@ -3425,6 +3426,46 @@ MonoBehaviour:
     LocalizationKey: novelty
   - TextField: {fileID: 114736898186625060}
     LocalizationKey: wardrobe.tonights_party
+--- !u!114 &1469340926512322335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522327123172190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a286217cce12740438d19b511c1885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AccessoryInventory: {fileID: 1262160850745106}
+  AccessoryListContent: {fileID: 1871779934460006}
+  AccessoryButtonPrefab: {fileID: 1929074182988566, guid: d7d169d046565d543a0502d3a7b9ccad,
+    type: 3}
+  OutfitInventory: {fileID: 1837750364145752}
+  OutfitListContent: {fileID: 1702166207777084}
+  OutfitButtonPrefab: {fileID: 1929074182988566, guid: d7d169d046565d543a0502d3a7b9ccad,
+    type: 3}
+  AccessoryLimitText: {fileID: 114113773282063328}
+  OutfitLimitText: {fileID: 114952383133302062}
+  AccessoryText: {fileID: 114712335786714984}
+  AccessoryTextShadow: {fileID: 114797847428028414}
+  OutfitTextShadow: {fileID: 114527111333017078}
+  EnabledTextColor: {r: 0, g: 0, b: 0, a: 0}
+  DisabledTextColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5882353}
+  InventoryOwner: 2
+  OnClick: {fileID: 114487499034464400}
+  OnDisabled: {fileID: 114827639633706846}
+  OutfitSortText: {fileID: 114760555807925608}
+  OutfitSortImage: {fileID: 114172487900901572}
+  OutfitSortArrowImage: {fileID: 114636318974557422}
+  LightSortBackgroundColor: {r: 0.56078434, g: 0.46274513, b: 0.43529415, a: 1}
+  DarkSortBackgroundColor: {r: 0.227451, g: 0.058823533, b: 0.058823533, a: 1}
+  OutfitSortList: {fileID: 1247060042927958}
+  LightSortTextColor: {r: 1, g: 1, b: 1, a: 1}
+  DarkSortTextColor: {r: 0.227451, g: 0.058823533, b: 0.058823533, a: 1}
+  SortLabelButtonPrefab: {fileID: 1364013056166610, guid: d63fd7b8dfbabde439f4e1c2cf4a549b,
+    type: 3}
 --- !u!1 &1598387275275044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3520,7 +3561,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: SortListMouseOver
           m_Mode: 1
           m_Arguments:
@@ -3548,7 +3589,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: SortListMouseExit
           m_Mode: 1
           m_Arguments:
@@ -3565,7 +3606,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: SortListMouseClick
           m_Mode: 1
           m_Arguments:
@@ -4938,7 +4979,6 @@ GameObject:
   - component: {fileID: 222322804729134106}
   - component: {fileID: 114786480520903390}
   - component: {fileID: 114006979871817350}
-  - component: {fileID: 114455491724595492}
   m_Layer: 5
   m_Name: PlayerInventory
   m_TagString: Untagged
@@ -5019,46 +5059,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &114455491724595492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824973699246646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a286217cce12740438d19b511c1885f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AccessoryInventory: {fileID: 1262160850745106}
-  AccessoryListContent: {fileID: 1871779934460006}
-  AccessoryButtonPrefab: {fileID: 1929074182988566, guid: d7d169d046565d543a0502d3a7b9ccad,
-    type: 3}
-  OutfitInventory: {fileID: 1837750364145752}
-  OutfitListContent: {fileID: 1702166207777084}
-  OutfitButtonPrefab: {fileID: 1929074182988566, guid: d7d169d046565d543a0502d3a7b9ccad,
-    type: 3}
-  AccessoryLimitText: {fileID: 114113773282063328}
-  OutfitLimitText: {fileID: 114952383133302062}
-  AccessoryText: {fileID: 114712335786714984}
-  AccessoryTextShadow: {fileID: 114797847428028414}
-  OutfitTextShadow: {fileID: 114527111333017078}
-  EnabledTextColor: {r: 0, g: 0, b: 0, a: 0}
-  DisabledTextColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5882353}
-  InventoryOwner: 2
-  OnClick: {fileID: 114487499034464400}
-  OnDisabled: {fileID: 114827639633706846}
-  OutfitSortText: {fileID: 114760555807925608}
-  OutfitSortImage: {fileID: 114172487900901572}
-  OutfitSortArrowImage: {fileID: 114636318974557422}
-  LightSortBackgroundColor: {r: 0.56078434, g: 0.46274513, b: 0.43529415, a: 1}
-  DarkSortBackgroundColor: {r: 0.227451, g: 0.058823533, b: 0.058823533, a: 1}
-  OutfitSortList: {fileID: 1247060042927958}
-  LightSortTextColor: {r: 1, g: 1, b: 1, a: 1}
-  DarkSortTextColor: {r: 0.227451, g: 0.058823533, b: 0.058823533, a: 1}
-  SortLabelButtonPrefab: {fileID: 1364013056166610, guid: d63fd7b8dfbabde439f4e1c2cf4a549b,
-    type: 3}
 --- !u!1 &1829917231892462
 GameObject:
   m_ObjectHideFlags: 0
@@ -5289,7 +5289,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: AccessoriesTextHoverStateOn
           m_Mode: 1
           m_Arguments:
@@ -5317,7 +5317,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: AccessoriesTextHoverStateOff
           m_Mode: 1
           m_Arguments:
@@ -5334,7 +5334,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: AccessoriesButtonClickSound
           m_Mode: 1
           m_Arguments:
@@ -5345,7 +5345,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: SwitchToAccessoriesInventory
           m_Mode: 1
           m_Arguments:
@@ -6367,7 +6367,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: OutfitTextHoverStateOn
           m_Mode: 1
           m_Arguments:
@@ -6384,7 +6384,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: OutfitTextHoverStateOff
           m_Mode: 1
           m_Arguments:
@@ -6412,7 +6412,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 114455491724595492}
+        - m_Target: {fileID: 0}
           m_MethodName: SwitchToOutfitInventory
           m_Mode: 1
           m_Arguments:

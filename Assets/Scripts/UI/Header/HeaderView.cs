@@ -9,27 +9,16 @@ namespace Ambition
     {
         public Text HeaderTitle;
 
-        void Awake()
+        void OnEnable()
         {
-            AmbitionApp.Subscribe<string>(GameMessages.SHOW_HEADER, ShowHeader);
-            AmbitionApp.Subscribe(GameMessages.SHOW_HEADER, ShowHeader);
-            AmbitionApp.Subscribe(GameMessages.HIDE_HEADER, HideHeader);
+            AmbitionApp.GetModel<LocalizationModel>().HeaderTitle.Observe(SetHeaderTitle);
         }
 
-        void OnDestroy()
+        private void OnDisable()
         {
-            AmbitionApp.Unsubscribe<string>(GameMessages.SHOW_HEADER, ShowHeader);
-            AmbitionApp.Unsubscribe(GameMessages.SHOW_HEADER, ShowHeader);
-            AmbitionApp.Unsubscribe(GameMessages.HIDE_HEADER, HideHeader);
+            AmbitionApp.GetModel<LocalizationModel>().HeaderTitle.Remove(SetHeaderTitle);
         }
 
-        private void ShowHeader() => gameObject.SetActive(true);
-        private void HideHeader() => gameObject.SetActive(false);
-
-        private void ShowHeader(string title)
-        {
-            ShowHeader();
-            HeaderTitle.text = title;
-        }
+        private void SetHeaderTitle(string title) => HeaderTitle.text = title;
     }
 }

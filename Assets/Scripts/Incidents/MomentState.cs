@@ -14,31 +14,20 @@ namespace Ambition
             AmbitionApp.SendMessage(moment.Rewards);
             AmbitionApp.GetModel<LocalizationModel>().SetMoment(moment);
 
+            List<TransitionVO> result = new List<TransitionVO>(); 
             TransitionVO[] links = model.Incident.GetLinks(moment);
-            TransitionVO xor = null;
-            for (int i = 0; i < links.Length; i++)
+            bool xor = false;
+            foreach(TransitionVO trans in links)
             {
-                if (!AmbitionApp.CheckRequirements(links[i]?.Requirements))
+                if (AmbitionApp.CheckRequirements(trans.Requirements)
+                    && !(trans.xor && xor))
                 {
-                    links[i] = null;
-                }
-                else
-                {
-                    links[i].index = Array.IndexOf(model.Incident.LinkData, links[i]);
-                    if (links[i].xor)
-                    {
-                        if (xor == null)
-                        {
-                            xor = links[i];
-                        }
-                        else
-                        {
-                            links[i] = null;
-                        }
-                    }
+                    trans.index = Array.IndexOf(model.Incident.LinkData, trans);
+                    result.Add(trans);
+                    if (trans.xor) xor = true;
                 }
             }
-            AmbitionApp.SendMessage(links);
+            AmbitionApp.SendMessage(result.ToArray());
         }
     }
 }

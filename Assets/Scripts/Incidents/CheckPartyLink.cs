@@ -4,9 +4,6 @@ namespace Ambition
 {
     public class CheckPartyLink : ULink
     {
-        public override bool Validate()
-        {
-            return Array.Exists(AmbitionApp.GetModel<CalendarModel>().GetEvents<PartyVO>(), p => p.Attending);
-        }
+        public override bool Validate() => AmbitionApp.GetModel<PartyModel>().UpdateParty() != null;
     }
 }

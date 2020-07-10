@@ -13,7 +13,6 @@ namespace Ambition
 		private const float THICKNESS = 0.05f;
 
 		private UIVertex[][] _walls;
-		private MapModel _model;
 		private float _scale;
 /*
 		override protected void Start()

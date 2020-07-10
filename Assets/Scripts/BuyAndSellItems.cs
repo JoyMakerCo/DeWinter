@@ -45,13 +45,12 @@ namespace Ambition
                         Debug.Log("BuyAndSellItems.HandleItemDisplay - outfit confirmed");
 
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            List<ItemVO> items;
             _item = item;
 
 
-            if (inventory.Market.TryGetValue(_item.Type, out items) && items.Contains(_item)) //If the item is in Fatima's shop
+            if (inventory.Market.Contains(_item)) //If the item is in Fatima's shop
             {
-                            Debug.Log("BuyAndSellItems.HandleItemDisplay - market item");
+                Debug.Log("BuyAndSellItems.HandleItemDisplay - market item");
 
                 ItemCostText.text = CostString;
                 BuyOrSellItemText.text = BuyOutfitString;
@@ -92,13 +91,12 @@ namespace Ambition
         public void BuyOrSellItem()
         {
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            List<ItemVO> items;
             if (inventory.Market == null)
             {
                 Debug.LogError("BuyAndSellItems.BuyOrSellItem - inventory.Market is null");
                 return;
             }
-            if (inventory.Market.TryGetValue(_item.Type, out items) && items.Contains(_item)) //If buying the item
+            if (inventory.Market.Contains(_item)) //If buying the item
             {
                 AmbitionApp.SendMessage(InventoryMessages.BUY_ITEM, _item); // Some methods require the Item VO, some don't
                 AmbitionApp.SendMessage(InventoryMessages.BUY_ITEM); //This felt cleaner than making methods that took unnecessary variables just to satisfy the message conditions

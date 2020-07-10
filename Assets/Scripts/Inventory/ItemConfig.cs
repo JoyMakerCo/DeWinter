@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -17,22 +18,6 @@ namespace Ambition
             public string Value;
         };
 
-        public ItemVO GetItem()
-        {
-            ItemVO item = new ItemVO()
-            {
-                Type = this.Type,
-                Price = this.Price,
-                State = new Dictionary<string, string>(),
-                Asset = Asset
-            };
-            if (State != null)
-            {
-                Array.ForEach(State, s => item.State[s.Key] = s.Value);
-            }
-            return item;
-        }
-
         public Sprite Asset;
         public ItemType Type;
         public int Price;
@@ -42,30 +27,6 @@ namespace Ambition
         [MenuItem("Assets/Create/Item")]
         public static void CreateItem() => Util.ScriptableObjectUtil.CreateScriptableObject<ItemConfig>("New Item");
 #endif
-    }
-
-    [Serializable]
-    public class InventoryItem
-    {
-        public ItemVO GetItem()
-        {
-            if (config == null) return null;
-            ItemVO item = config.GetItem();
-            if (State != null)
-            {
-                Array.ForEach(State, s => item.State[s.Key] = s.Value);
-            }
-            if (SellbackPrice >= 0) item.Price = SellbackPrice;
-            item.Name = this.Name;
-            item.Equipped = Equipped;
-            return item;
-        }
-
-        public string Name;
-        public ItemConfig config;
-        public int SellbackPrice = -1;
-        public bool Equipped = false;
-        public ItemConfig.ItemState[] State;
     }
 
 #if UNITY_EDITOR

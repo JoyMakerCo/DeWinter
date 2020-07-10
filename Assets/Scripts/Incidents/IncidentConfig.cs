@@ -38,15 +38,16 @@ namespace Ambition
         [SerializeField]
         private long _date;
 
-        public IncidentVO GetIncident()
+        [SerializeField]
+        private RequirementVO[] _requirements;
+        public RequirementVO[] Requirements => _requirements;
+
+        public IncidentVO GetIncident() => new IncidentVO(Incident)
         {
-            return new IncidentVO(Incident)
-            {
-                Name = name,
-                Chapters = GetChapters(),
-                Factions = GetFactions(),
-            };
-        }
+            ID = name,
+            Chapters = GetChapters(),
+            Factions = GetFactions()
+        };
 
         FactionType[] GetFactions()
         {
@@ -283,7 +284,6 @@ namespace Ambition
             {
                 prop.GetArrayElementAtIndex(i).boolValue = GUILayout.Toggle(prop.GetArrayElementAtIndex(i).boolValue, "Chapter " + i.ToString());
             }
-            EditorGUILayout.PropertyField(incident.FindPropertyRelative("Tags"), true);
             EditorGUILayout.PropertyField(incident.FindPropertyRelative("Requirements"), true);
         }
 

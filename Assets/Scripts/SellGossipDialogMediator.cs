@@ -23,7 +23,7 @@ namespace Ambition
         //This is how the localized text is put into all of the text boxes in the dialog
         public void SetPhrase()
         {
-            System.DateTime today = AmbitionApp.GetModel<CalendarModel>().Today;
+            System.DateTime today = AmbitionApp.GetModel<GameModel>().Date;
             string phrase = "sell_gossip_dialog";
 
             //Setting up the dictionary for the necessary substitutions
