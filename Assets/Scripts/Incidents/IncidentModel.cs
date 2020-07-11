@@ -182,26 +182,34 @@ namespace Ambition
             if (!_schedule.TryGetValue(_day, out List<string> queue) || queue?.Count == 0)
                 return Incident = null;
 
-            string id;
-            for (Incident = null; Incident == null && queue.Count > 0; queue.RemoveAt(0))
+            for (Incident = null; queue.Count > 0; queue.RemoveAt(0))
             {
-                id = queue[0];
-                if (Incidents.TryGetValue(id, out IncidentVO incident) && incident != null)
-                    return Incident = incident;
+                Incident = LoadIncident(queue[0]);
+                if (Incident != null) return Incident;
+            }
+            return null;
+        }
 
-                if (Dependencies.TryGetValue(id, out LoadedIncident loaded))
+        public IncidentVO LoadIncident(string id)
+        {
+            if (id == null) return null;
+
+            if (Incidents.TryGetValue(id, out IncidentVO incident) && incident != null)
+                return incident;
+
+            if (Dependencies.TryGetValue(id, out LoadedIncident loaded))
+            {
+                switch (loaded.Type)
                 {
-                    switch (loaded.Type)
-                    {
-                        case IncidentType.Party:
-                            AmbitionApp.Execute<LoadPartyCmd, string>(loaded.Filepath);
-                            if (Incidents.TryGetValue(id, out incident))
-                                return Incident = incident;
-                            break;
-                    }
+                    case IncidentType.Party:
+
+                        AmbitionApp.Execute<LoadPartyCmd, string>(loaded.Filepath);
+                        if (Incidents.TryGetValue(id, out incident))
+                            return incident;
+                        break;
                 }
             }
-            return Incident = null;
+            return null;
         }
 
         // PRIVATE / PROTECTED METHODS /////////////

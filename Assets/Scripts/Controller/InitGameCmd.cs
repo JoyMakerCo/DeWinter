@@ -76,7 +76,7 @@ namespace Ambition
             AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
             //AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
             AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
-            //AmbitionApp.RegisterCommand<LeavePartyCmd>(PartyMessages.LEAVE_PARTY);
+            AmbitionApp.RegisterCommand<SelectIncidentsCmd, string[]>(PartyMessages.SELECT_INCIDENTS);
             AmbitionApp.RegisterCommand<ShowRoomCmd, string>(PartyMessages.SHOW_ROOM);
 
             AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
