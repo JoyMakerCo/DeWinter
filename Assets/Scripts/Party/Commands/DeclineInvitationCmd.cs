@@ -2,16 +2,17 @@
 using Core;
 namespace Ambition
 {
-    public class DeclineInvitationCmd : ICommand<PartyVO> 
+    public class DeclineInvitationCmd : ICommand<string> 
     {
-        public void Execute(PartyVO party)
+        public void Execute(string partyID)
         {
-            if (party == null || party.RSVP == RSVP.Required) return;
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            party.RSVP = RSVP.Declined;
-            AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
-            AmbitionApp.SendMessage(PartyMessages.DECLINED, party);
+            // You can't decline a required party.
+            if (model.Parties.TryGetValue(partyID, out PartyVO party) && party?.RSVP != RSVP.Required)
+            {
+                party.RSVP = RSVP.Declined;
+                // TODO: Any penalties for RSVP No goes here
+            }
         }
     }
 }

@@ -12,18 +12,30 @@ namespace Ambition
 
 	    void Awake()
 	    {
-            GameModel model = AmbitionApp.GetModel<GameModel>();
-            _today = model.Date;
+            CalendarModel model = AmbitionApp.GetModel<CalendarModel>();
+            _today = model.Today;
             _text = this.GetComponentInChildren<Text>();
-            AmbitionApp.GetModel<PartyModel>().Observe<PartyModel>(HandleParty);
+            _party = AmbitionApp.GetModel<PartyModel>().GetParty();
+            UpdateParty(_party);
+            AmbitionApp.Subscribe<PartyVO>(HandleParty);
         }
 
-        void OnDestroy() => AmbitionApp.GetModel<PartyModel>().Unobserve<PartyModel>(HandleParty);
+        void OnDestroy() => AmbitionApp.Unsubscribe<PartyVO>(HandleParty);
 
-        private void HandleParty(PartyModel model)
+        private void HandleParty(PartyVO party)
         {
-            _party = model.GetParty();
-            if (!_party?.Attending ?? false) _party = null;
+            if (party != null && party.Date == _today)
+            {
+                if (party.RSVP == RSVP.Accepted || party.RSVP == RSVP.Required)
+                    UpdateParty(party);
+                else if (_party == party && party.RSVP == RSVP.Declined)
+                    UpdateParty(null);
+            }
+        }
+
+        private void UpdateParty(PartyVO party)
+        {
+            _party = (party?.Attending ?? false ) ? party : null;
             _text.text = AmbitionApp.Localize("calendar.btn." + (_party == null ? "paris" : "party"));
         }
 

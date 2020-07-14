@@ -8,7 +8,6 @@ namespace Ambition
         {
             AmbitionApp.UnregisterCommand<FinishLoadingCmd>(AudioMessages.ALL_SOUNDS_LOADED);
             App.Service<UFlow.UFlowSvc>().InvokeMachine("DayFlowController");
-            AmbitionApp.GetModel<IncidentModel>().LoadIncident();
             AmbitionApp.SendMessage(GameMessages.START_GAME);
         }
     }

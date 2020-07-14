@@ -14,7 +14,7 @@ namespace Ambition
             {
                 item = new ItemVO(item);
                 if (reward.Value > 0) item.Price = reward.Value;
-                item.Created = AmbitionApp.GetModel<GameModel>().Date;
+                item.Created = AmbitionApp.GetModel<CalendarModel>().Today;
                 inventory.Inventory.Add(item);
                 inventory.Broadcast();
             }

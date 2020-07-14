@@ -7,20 +7,19 @@ namespace Ambition
     {
         public void Execute(string playerID)
         {
-            GameModel game = App.Service<ModelSvc>()?.GetModel<GameModel>();
-            if (game == null)
+            if (App.Service<ModelSvc>()?.GetModel<GameModel>() == null)
             {
                 App.Service<CommandSvc>().Execute<InitGameCmd>();
-                game = App.Service<ModelSvc>().GetModel<GameModel>();
             }
             IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             AmbitionApp.Execute<InitPlayerCmd, string>(playerID);
-            IncidentVO[] incidents = incidentModel.GetIncidents(IncidentType.Timeline);
+            List<IncidentVO> incidents = new List<IncidentVO>(incidentModel.Incidents.Values);
             foreach (IncidentVO incident in incidents)
             {
                 if (incident.IsScheduled)
                 {
-                    incidentModel.Schedule(incident, incident.Date.Subtract(game.StartDate).Days);
+                    incidentModel.Schedule(incident, incident.Date.Subtract(calendar.StartDate).Days);
                 }
             }
 

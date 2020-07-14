@@ -5,11 +5,14 @@ namespace Ambition
     {
         public override void OnEnterState()
         {
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            OccasionVO[] occasions = calendar.GetOccasions(OccasionType.Party);
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
+
+            calendar.Complete(model.Party?.Name, OccasionType.Party);
             model.EndParty();
 
-            //Damage the Outfit's Novelty, now that the Confidence has already been Tallied
             if (inventory.Equipped.TryGetValue(ItemType.Outfit, out ItemVO item))
             {
                 int novelty = OutfitWrapperVO.GetNovelty(item);

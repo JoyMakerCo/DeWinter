@@ -12,14 +12,14 @@ namespace Ambition
 
         public GameObject ListItemPrefab;
 
+        private CalendarModel _calendar;
         private PartyModel _model;
-        private System.DateTime _today;
         private List<GameObject> _pool = new List<GameObject>();
 
         void OnEnable()
         {
+            _calendar = AmbitionApp.GetModel<CalendarModel>();
             _model = AmbitionApp.GetModel<PartyModel>();
-            _today = AmbitionApp.GetModel<GameModel>().Date;
             AmbitionApp.Subscribe<PartyVO>(HandleParty);
             UpdateParties();
         }
@@ -29,7 +29,11 @@ namespace Ambition
             AmbitionApp.Unsubscribe<PartyVO>(HandleParty);
         }
 
-        private void HandleParty(PartyVO party) => UpdateParties();
+        private void HandleParty(PartyVO party)
+        {
+            if (party != null && party.Date >= _calendar.Today)
+                UpdateParties();
+        }
 
         private void UpdateParties()
         {
@@ -46,7 +50,7 @@ namespace Ambition
             bool show;
             foreach(PartyVO party in _model.Parties.Values)
             {
-                if (party.Date >= _today)
+                if (party.Date >= _calendar.Today)
                 {
                     switch(party.RSVP)
                     {

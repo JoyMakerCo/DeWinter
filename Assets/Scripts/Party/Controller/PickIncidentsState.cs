@@ -13,27 +13,16 @@ namespace Ambition
             PartyModel pmodel = AmbitionApp.GetModel<PartyModel>();
             IncidentModel imodel = AmbitionApp.GetModel<IncidentModel>();
             IncidentVO incident;
-            IncidentVO[] result;
             int i, index;
-            string incidentID = pmodel.GetRequiredIncident();
 
-            if (!string.IsNullOrEmpty(incidentID))
+            if (pmodel.RequiredIncident != null)
             {
-                result = new IncidentVO[pmodel.NumRooms];
                 index = RNG.Generate(pmodel.NumRooms);
                 for (i = pmodel.NumRooms - 1; i >= 0; --i)
                 {
-                    if (i == index)
-                    {
-                        pmodel.Incidents[i] = incidentID;
-                        imodel.Incidents.TryGetValue(incidentID, out incident);
-                        result[i] = incident;
-                    }
-                    else
-                    {
-                        pmodel.Incidents[i] = null;
-                        result[i] = null;
-                    }
+                    pmodel.Incidents[i] = (i == index)
+                        ? pmodel.RequiredIncident
+                        : null;
                 }
             }
             else
@@ -45,8 +34,8 @@ namespace Ambition
                 if (temp > 0)
                 {
                     List<string> names = new List<string>();
-                    result = imodel.GetIncidents(IncidentType.Party);
-                    foreach(IncidentVO rand in result)
+                    IncidentVO[] random = imodel.GetIncidents(IncidentType.Party);
+                    foreach(IncidentVO rand in random)
                     {
                         if (!imodel.IsComplete(rand.ID) && AmbitionApp.CheckRequirements(rand.Requirements))
                         {
@@ -73,22 +62,7 @@ namespace Ambition
                     pmodel.Incidents[i] = shuffle[i] < incidents.Count ? incidents[shuffle[i]] : null;
                 }
             }
-
-            result = new IncidentVO[pmodel.Incidents.Length];
-            for (i=result.Length-1; i>=0; --i)
-            {
-                if (pmodel.Incidents[i] != null)
-                {
-                    imodel.Incidents.TryGetValue(pmodel.Incidents[i], out incident);
-                    if (incident == null) pmodel.Incidents[i] = null;
-                    result[i] = incident;
-                }
-                else
-                {
-                    result[i] = null;
-                }
-            }
-            AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, result);
+            AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, pmodel.Incidents);
         }
     }
 }

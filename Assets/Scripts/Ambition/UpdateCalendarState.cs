@@ -1,46 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using UFlow;
-using Util;
 namespace Ambition
 {
     public class UpdateCalendarState : UState
     {
         public override void OnEnterState()
         {
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            OccasionVO[] occasions;
+            DateTime date;
+            AmbitionApp.GetModel<LocalizationModel>().SetDate(calendar.Today);
             GameModel model = AmbitionApp.GetModel<GameModel>();
-            AmbitionApp.GetModel<LocalizationModel>().SetDate(model.Date);
-            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
-            partyModel.SetDay(model.Day);
-            PartyVO party = partyModel.UpdateParty();
-            PartyVO[] parties;
+            PartyModel parties = AmbitionApp.GetModel<PartyModel>();
+            PartyVO party;
             IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
-            incidentModel.SetDay(model.Day);
+
+            model.Activity = ActivityType.Estate;
+            if (model.IsResting)
+            {
+                model.Exhaustion.Value = model.Exhaustion > 0 ? 0 : -1;
+                model.IsResting = false;
+            }
 
             for (int i = 0; i < 14; i++)
             {
-                parties = partyModel.GetParties((ushort)(model.Day + i));
-                foreach (PartyVO vO in parties)
+                occasions = calendar.GetOccasions(OccasionType.Party, calendar.Day + i);
+                foreach (OccasionVO occasion in occasions)
                 {
-                    if (vO.RSVP == RSVP.New)
+                    if (parties.Parties.TryGetValue(occasion.ID, out party) && party.RSVP == RSVP.New)
+                    {
                         AmbitionApp.SendMessage(PartyMessages.INITIALIZE_PARTY, party);
+                    }
                 }
             }
 
-            // If there's no morning incident scheduled, then there's a chance to select one randomly.
-            if (incidentModel.Incident == null && RNG.Generate(100) < model.PoliticalChance)
+            // Schedule all unscheduled incidents that have satisfied requirements
+
+/*            incidents = new List<IncidentVO>(incidentModel.Incidents.Values);
+            int chance = model.PoliticalChance;
+            foreach (IncidentVO incident in incidents)
             {
-                IncidentVO[] incidents = incidentModel.GetIncidents(IncidentType.Timeline);
-                List<IncidentVO> candidates = new List<IncidentVO>();
-                foreach (IncidentVO incident in incidents)
+                if (!incident.Political)
                 {
-                    if (AmbitionApp.CheckRequirements(incident.Requirements))
-                    {
-                        candidates.Add(incident);
-                    }
-                    incidentModel.Schedule(RNG.TakeRandom(candidates));
+                    incident.Date = calendar.Today;
+                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, incident);
+                }
+                else if (chance > 0 && Util.RNG.Generate(100) < chance && Array.IndexOf(incident.Chapters, model.Chapter) >= 0)
+                {
+                    calendar.Schedule(incident, calendar.Today);
+                    chance = -1;
                 }
             }
+
+          .FindUnscheduled<IncidentVO>(i => ((i as IncidentVO)?.Requirements != null && ((IncidentVO)i).Requirements.Length > 0 && AmbitionApp.CheckRequirements(((IncidentVO)i).Requirements)) || ((IncidentVO)i).Political);
+          */
         }
     }
 }

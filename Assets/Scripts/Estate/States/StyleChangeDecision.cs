@@ -7,8 +7,7 @@ namespace Ambition
     {
         public override bool Validate()
         {
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            return game.Date >= game.NextStyleSwitchDay;
+            return AmbitionApp.GetModel<CalendarModel>().Today >= AmbitionApp.GetModel<GameModel>().NextStyleSwitchDay;
         }
     }
 }

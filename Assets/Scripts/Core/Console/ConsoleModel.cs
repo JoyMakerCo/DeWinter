@@ -332,6 +332,7 @@ namespace Core
 			// Incidents already taken care of
 			
 			_entities["game"] = AmbitionApp.GetModel<GameModel>();
+			_entities["calendar"] = AmbitionApp.GetModel<CalendarModel>();
 			_entities["inventory"] = AmbitionApp.GetModel<InventoryModel>();
 			_entities["quest"] = AmbitionApp.GetModel<QuestModel>();
 
@@ -634,4 +635,7 @@ namespace Core
 			AmbitionApp.OpenDialog(args[1]);
 		}
 	}
+
+
+
 }

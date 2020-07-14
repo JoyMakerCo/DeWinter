@@ -19,6 +19,7 @@ namespace Ambition
             AmbitionApp.RegisterModel<FactionModel>();
             AmbitionApp.RegisterModel<InventoryModel>();
             AmbitionApp.RegisterModel<ServantModel>();
+            CalendarModel calendar = AmbitionApp.RegisterModel<CalendarModel>();
             AmbitionApp.RegisterModel<CharacterModel>();
             AmbitionApp.RegisterModel<QuestModel>();
             AmbitionApp.RegisterModel<PartyModel>();
@@ -28,6 +29,8 @@ namespace Ambition
             AmbitionApp.RegisterModel<ConsoleModel>();
 #endif
 
+            AmbitionApp.RegisterCommand<LoadPartyCmd, string>(PartyMessages.LOAD_PARTY);
+            AmbitionApp.RegisterCommand<ScheduleOccasionCmd, OccasionVO>(CalendarMessages.SCHEDULE);
             AmbitionApp.RegisterCommand<SchedulePartyCmd, PartyVO>(CalendarMessages.SCHEDULE);
             AmbitionApp.RegisterCommand<ScheduleIncidentCmd, IncidentVO>(CalendarMessages.SCHEDULE);
             AmbitionApp.RegisterCommand<TransitionInputCmd, TransitionVO>(IncidentMessages.TRANSITION);
@@ -73,7 +76,7 @@ namespace Ambition
             AmbitionApp.RegisterCommand<SetFashionCmd, PartyVO>(PartyMessages.PARTY_STARTED);
             //AmbitionApp.RegisterCommand<FactionTurnModifierCmd, PartyVO>(PartyMessages.PARTY_STARTED);
             AmbitionApp.RegisterCommand<RoomChoiceCmd, RoomVO>();
-            //AmbitionApp.RegisterCommand<LeavePartyCmd>(PartyMessages.LEAVE_PARTY);
+            AmbitionApp.RegisterCommand<SelectIncidentsCmd, string[]>(PartyMessages.SELECT_INCIDENTS);
             AmbitionApp.RegisterCommand<ShowRoomCmd, string>(PartyMessages.SHOW_ROOM);
 
             AmbitionApp.RegisterCommand<PayDayCmd, DateTime>();
@@ -81,7 +84,7 @@ namespace Ambition
 
             AmbitionApp.RegisterCommand<InitPartyCmd, PartyVO>(PartyMessages.INITIALIZE_PARTY);
             AmbitionApp.RegisterCommand<AcceptInvitationCmd, PartyVO>(PartyMessages.ACCEPT_INVITATION);
-            AmbitionApp.RegisterCommand<DeclineInvitationCmd, PartyVO>(PartyMessages.DECLINE_INVITATION);
+            AmbitionApp.RegisterCommand<DeclineInvitationCmd, string>(PartyMessages.DECLINE_INVITATION);
 
 
             // Audio

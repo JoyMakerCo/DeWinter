@@ -2,6 +2,6 @@
 {
     public enum IncidentType
     {
-        Timeline, Party, Player, Reward, Peril, Caught
+        Timeline, Party, Player, Political, Peril, Caught
     }
 }

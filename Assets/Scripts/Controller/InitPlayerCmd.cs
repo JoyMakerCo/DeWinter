@@ -11,6 +11,7 @@ namespace Ambition
             if (config == null) return;
 
             GameModel gameModel = AmbitionApp.GetModel<GameModel>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
             IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
             ItemVO item;
@@ -29,12 +30,13 @@ namespace Ambition
                     config.Chapters[i].Sting
                 );
             }
-            gameModel.StartDate = config.Chapters[0].Date.GetDateTime();
+            calendar.StartDate = config.Chapters[0].Date.GetDateTime();
 
             foreach (IncidentConfig iconfig in config.Incidents)
             {
-                incident = iconfig?.GetIncident();
-                incidentModel.Schedule(incident);
+                incident = iconfig.GetIncident();
+                if (incident != null)
+                    incidentModel.Incidents[iconfig.name] = incident;
             }
 
             foreach (ItemConfig def in config.Inventory)

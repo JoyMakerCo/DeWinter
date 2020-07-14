@@ -10,11 +10,11 @@ namespace Ambition
 		public CalendarButton[] Days;
 
 		private int _month;
-		private GameModel _model;
+		private CalendarModel _model;
 
-        private void Awake() => _model = AmbitionApp.GetModel<GameModel>();
+        private void Awake() => _model = AmbitionApp.GetModel<CalendarModel>();
 
-        private DateTime Today => _model.Date;
+        private DateTime Today => _model.Today;
 
         void Start()
 		{
@@ -78,8 +78,17 @@ namespace Ambition
 
         private PartyVO[] GetParties(DateTime date)
         {
+            int day = date.Subtract(AmbitionApp.GetModel<CalendarModel>().StartDate).Days;
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            return model.GetParties((ushort)(_model.Date.Subtract(date).Days));
+            OccasionVO[] occasions = _model.GetOccasions(OccasionType.Party, day);
+            PartyVO[] parties = new PartyVO[occasions.Length];
+            PartyVO party;
+            for (int i=occasions.Length-1; i>=0; --i)
+            {
+                model.Parties.TryGetValue(occasions[i].ID, out party);
+                parties[i] = party;
+            }
+            return parties;
         }
     }
 }

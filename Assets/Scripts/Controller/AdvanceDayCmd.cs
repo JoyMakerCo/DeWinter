@@ -7,17 +7,18 @@ namespace Ambition
     {
         public void Execute()
         {
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             GameModel game = AmbitionApp.GetModel<GameModel>();
             ParisModel paris = AmbitionApp.GetModel<ParisModel>();
-            string location = paris.Location?.ID;
-            ++game.Day;
 
-            if (game.IsResting || location == ParisConsts.HOME)
+            AmbitionApp.GetModel<IncidentModel>().SetDay(++calendar.Day);
+
+            if (paris.Location?.ID == ParisConsts.HOME)
             {
                 if (game.Exhaustion > 0) game.Exhaustion.Value = 0;
                 else game.Exhaustion.Value = -1;
             }
-            else if (!string.IsNullOrEmpty(location))
+            else if (paris.Location != null)
             {
                 game.Exhaustion.Value++;
             }

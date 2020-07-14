@@ -7,12 +7,11 @@ namespace Ambition
 		public const string SHOW_MAP = "SHOW_MAP";
 		public const string SHOW_ROOM = "SHOW_ROOM";
 
+        public const string LOAD_PARTY = "LOAD_PARTY";
         public const string SELECT_INCIDENTS = "SELECT_INCIDENTS";
         public const string INITIALIZE_PARTY = "INITIALIZE_PARTY";
         public const string ACCEPT_INVITATION = "ACCEPT_INVITATION";
-        public const string ACCEPTED = "ACCEPTED";
         public const string DECLINE_INVITATION = "DECLINE_INVITATION";
-        public const string DECLINED = "DECLINED";
         public const string GO_TO_PARTY = "GO_TO_PARTY";
         public const string START_PARTY = "START_PARTY";
         public const string PARTY_STARTED = "PARTY_STARTED";

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Core;
 using UnityEngine;
@@ -9,13 +10,12 @@ namespace Ambition
         public void Execute(PartyVO party)
         {
             CharacterModel characters = AmbitionApp.GetModel<CharacterModel>();
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            PartyVO[] parties = model.GetParties(game.Convert(party.Date));
+            GameModel model = AmbitionApp.GetModel<GameModel>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
 
             // TODO: Assignable Character Configs for Notables
             if (string.IsNullOrEmpty(party.Host))
-                party.Host = Util.RNG.TakeRandom(characters.Characters.Keys);
+                party.Host = Util.RNG.TakeRandom(characters.Characters.Keys.ToArray());
 
             string reason = GetRandomText("party_reason." + party.Faction.ToString().ToLower());
 
@@ -25,8 +25,8 @@ namespace Ambition
 
             if (string.IsNullOrEmpty(party.ID))
             {
-                int index = Array.IndexOf(parties, party);
-                if (index < 0) index = parties.Length;
+                // <Faction><Date>S<Size>#<Index>
+                int index = calendar.GetOccasions(OccasionType.Party, true).Length;
                 party.ID = party.Faction.ToString() + party.Date.ToString() + "S" + party.Size.ToString() + index.ToString();
             }
 
@@ -41,7 +41,7 @@ namespace Ambition
 
             if (string.IsNullOrEmpty(party.IntroIncident))
             {
-                party.IntroIncident = game.DefaultIntroIncident;
+                party.IntroIncident = model.DefaultIntroIncident;
             }
 
             string str = AmbitionApp.GetString("party_fluff", new Dictionary<string, string>(){
@@ -51,7 +51,7 @@ namespace Ambition
 
             if (party.InvitationDate.Equals(default))
             {
-                party.InvitationDate = game.Date;
+                party.InvitationDate = calendar.Today;
             }
 
             if (string.IsNullOrWhiteSpace(party.Invitation))
@@ -71,9 +71,9 @@ namespace Ambition
 
             // Random Faction
             if (party.Faction == FactionType.Neutral)
-                party.Faction = Util.RNG.TakeRandomExcept(AmbitionApp.GetModel<FactionModel>().Factions.Keys, FactionType.Neutral);
+                party.Faction = Util.RNG.TakeRandomExcept(AmbitionApp.GetModel<FactionModel>().Factions.Keys.ToArray(), FactionType.Neutral);
 
-            model.Schedule(party);
+            AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
         }
 
         private string GetRandomText(string phrase)
