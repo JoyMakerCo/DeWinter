@@ -1,41 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 namespace Core
 {	
-	public delegate string[] DumpableDelegate();  
-
-	public class ConsoleEntity : IConsoleEntity
+	public class ConsoleEntity
 	{
-		string _id;
-		Action<string[]> _invoke;
-		DumpableDelegate _dump;
+        public object Entity { get; private set; }
+        Action<string[]> _invoke;
 
-		public ConsoleEntity( string id, Action<string[]> invoke = null, DumpableDelegate dump = null )
+        public ConsoleEntity( object entity, Action<string[]> invoke=null)
 		{
-			_id = id;
-			_invoke = invoke;
-			_dump = dump;
-		}
+            Entity = entity;
+            _invoke = invoke;
+        }
 
-		public string[] Dump()
-		{
-			if (_dump != null)
-			{
-				return _dump();
-			}
-
-			return new string[0];
-		}
-
-		public void Invoke( string[] args )
-		{
-			if (_invoke != null)
-			{
-				_invoke(args);
-			}
-		}
-	}
+        public void Invoke(string[] args) => _invoke?.Invoke(args);
+        public override string ToString() => Entity?.ToString();
+    }
 }

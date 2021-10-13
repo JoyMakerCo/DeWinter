@@ -4,7 +4,6 @@ namespace Ambition
     [Serializable]
     public class TransitionVO
     {
-        public int index;
         public string Text;
         public bool xor = false;
         public CommodityVO[] Rewards;

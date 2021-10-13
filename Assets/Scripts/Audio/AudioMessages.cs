@@ -9,6 +9,5 @@
         public const string STOP_AMBIENT = "STOP_AMBIENT";
         public const string STOP_AMBIENT_NOW = "STOP_AMBIENT_NOW";
         public const string PLAY = "PLAY_ONESHOTSFX"; //<- One shots don't need a stop command. They just play until they're finished, then disappear. 
-        public const string ALL_SOUNDS_LOADED = "ALL_SOUNDS_LOADED";
     }
 }

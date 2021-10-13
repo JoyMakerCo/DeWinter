@@ -1,0 +1,755 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: anInvitationForArmand
+  m_EditorClassIdentifier: 
+  _Nodes: 07000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -143, y: 127}
+  - {x: -144, y: 257}
+  - {x: 125, y: 248}
+  - {x: -12, y: 419}
+  - {x: 125, y: 323}
+  - {x: -5, y: 484}
+  - {x: -15, y: 557}
+  - {x: -10, y: 627}
+  - {x: 135, y: 125}
+  - {x: -396, y: 17}
+  - {x: 479, y: 170}
+  - {x: -419, y: 87}
+  - {x: -438, y: 156}
+  - {x: 494, y: 34}
+  - {x: 499, y: 107}
+  - {x: -20, y: 683}
+  - {x: -22, y: 741}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 2, y: 4}
+    - {x: 3, y: 5}
+    - {x: 5, y: 4}
+    - {x: 4, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 0, y: 9}
+    - {x: 9, y: 2}
+    - {x: 9, y: 3}
+    - {x: 1, y: 10}
+    - {x: 11, y: 2}
+    - {x: 11, y: 3}
+    - {x: 10, y: 12}
+    - {x: 12, y: 13}
+    - {x: 13, y: 2}
+    - {x: 13, y: 3}
+    - {x: 9, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 11}
+    - {x: 0, y: 1}
+    - {x: 8, y: 16}
+    - {x: 16, y: 17}
+    Nodes:
+    - Text: "Early the next morning, Camille approaches you, occasionally wringing
+        her apron with her hands. She\u2019s obviously nervous.\r\n\n\u201CMadame,
+        there\u2019s something you should know\u2026\u201D \rTaking a deep breath,
+        she continues."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Estate A
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "\u201CYou\u2019re expected to attend a party the day after tomorrow,
+        held by one Viscountess Marcelle de Foix. I mean, Armand replied to the invitation,
+        but you were to be his date.\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 10
+        ID: marcelleDeFoixsExclusiveGathering
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Camille looks visibly relieved. \u201C<i>Parfait!</i> If you need anything
+        washed or prepared, just ask!\u201D "
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "Camille looks nervously at the ground for a second, wringing her apron
+        in her hands again.\r\n\n\u201CWell, after I told you about Monsieur Armand\u2019s
+        absence, you seemed upset. I felt like the last thing I should do was give
+        you an obligation, right after bad news.\u201D\r"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: "\"That reminds me!\" Camille exclaims. \"If you\u2019re going to a party,
+        you should probably make sure you\u2019re dressed appropriately. Fashion
+        moves so quickly here that people retire outfits before they even wear out!\""
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CFortunately, the bad news was yesterday!\u201D"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "At this proclamation, you can\u2019t help but notice that Camille\u2019s
+        uniform has been repaired many, many times."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Camille continues. "Monsieur Armand was always going through clothes
+        so quickly. He said that every outfit had a certain amount of novelty. Every
+        time you wore them, the novelty would go down a bit. In fact, even a little
+        thing like wearing the same thing twice in a row could run the novelty out
+        faster. Can you imagine?"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\"Fortunately, he knew the most delightful clothier on <i>Rue du Faubourg
+        Saint-Honor\xE9</i>. She runs a shop called '<i>Le Petit Mogol</i>'. I\u2019ll
+        draw you some directions.\" Immediately she starts sketching some directions,
+        mostly just simple renderings of local landmarks."
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"You''re expected to attend a party the day after tomorrow, held by
+        one Baron Maximin de Termes. I mean, Armand replied to the invitation, but
+        you were to be his date."'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 10
+        ID: maximinDeTermesPrivateSalon
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I''m sorry Madame, but a Viscountess... it just felt above my station,
+        so I tried not to pay attention whenever she came up." Camille replies with
+        a shrug.'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: '"I hope that helps Madame."'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I know that she never visited the house. Monsieur Armand seemed to
+        like her, but from what I could tell she was a little... how do I put this?"'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Judgemental! She was a little, very judgemental. I hope that helps,
+        Madame."'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I''m sorry Madame, but I don''t know much. It would have been improper
+        for me to pry into Monsieur Armand''s affairs." Camille replies with a surprising
+        earnestness.'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: '"All I know is that this Baron de Termes is a very outspoken political
+        type. Always going on about ''constitutions'' and ''natural law''. Monsieur
+        Armand attended a lot of his salons, but didn''t always look happy when he
+        came back from them."'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (<i>Le Petit Mogol</i> is now available to visit in the Paris map)
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 9
+        ID: locationLePetitMogol
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"If you head out today, you should be well prepared for the party tomorrow
+        night."'
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: '"Splendid! A party!"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"What? Why didn''t you tell me sooner?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Splendid! A party!"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"What? Why didn''t you tell me sooner?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"What do you know about the Viscountess de Foix?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"Well, at least I have a party to go to!"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"Camille, why didn''t you tell me about this invitation sooner?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Well, at least I have a party to go to!"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"Camille, why didn''t you tell me about this invitation sooner?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"Camille, do you know anything about this Baron Maximin?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 20
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements: []
+    _date: 564306912000000000
+  Name: An Invitation for Armand
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: 564306912000000000
+  _nodeText:
+  - "Early the next morning, Camille approaches you, occasionally wringing her apron
+    with her hands. She\u2019s obviously nervous.\r\n\n\u201CMadame, there\u2019s
+    something you should know\u2026\u201D \rTaking a deep breath, she continues."
+  - "\u201CYou\u2019re expected to attend a party the day after tomorrow, held by
+    one Viscountess Marcelle de Foix. I mean, Armand replied to the invitation, but
+    you were to be his date.\u201D"
+  - "Camille looks visibly relieved. \u201C<i>Parfait!</i> If you need anything washed
+    or prepared, just ask!\u201D "
+  - "Camille looks nervously at the ground for a second, wringing her apron in her
+    hands again.\r\n\n\u201CWell, after I told you about Monsieur Armand\u2019s absence,
+    you seemed upset. I felt like the last thing I should do was give you an obligation,
+    right after bad news.\u201D\r"
+  - "\"That reminds me!\" Camille exclaims. \"If you\u2019re going to a party, you
+    should probably make sure you\u2019re dressed appropriately. Fashion moves so
+    quickly here that people retire outfits before they even wear out!\""
+  - "\u201CFortunately, the bad news was yesterday!\u201D"
+  - "At this proclamation, you can\u2019t help but notice that Camille\u2019s uniform
+    has been repaired many, many times."
+  - Camille continues. "Monsieur Armand was always going through clothes so quickly.
+    He said that every outfit had a certain amount of novelty. Every time you wore
+    them to a party, the novelty would go down a bit. In fact, even a little thing
+    like wearing the same thing twice in a row could run the novelty out faster.
+    Can you imagine?"
+  - "\"Fortunately, he knew the most delightful clothier on <i>Rue du Faubourg Saint-Honor\xE9</i>.
+    She runs a shop called '<i>Le Petit Mogol</i>'. I\u2019ll draw you some directions.\"
+    Immediately she starts sketching some directions, mostly just simple renderings
+    of local landmarks."
+  - '"You''re expected to attend a party the day after tomorrow, held by one Baron
+    Maximin de Termes. I mean, Armand replied to the invitation, but you were to
+    be his date."'
+  - '"I''m sorry Madame, but a Viscountess... it just felt above my station, so I
+    tried not to pay attention whenever she came up." Camille replies with a shrug.'
+  - '"I hope that helps Madame."'
+  - '"I know that she never visited the house. Monsieur Armand seemed to like her,
+    but from what I could tell she was a little... how do I put this?"'
+  - '"Judgmental! She was a little, very judgmental. I hope that helps, Madame."'
+  - '"I''m sorry Madame, but I don''t know much. It would have been improper for
+    me to pry into Monsieur Armand''s affairs." Camille replies with a surprising
+    earnestness.'
+  - '"All I know is that this Baron de Termes is a very outspoken political type.
+    Always going on about ''constitutions'' and ''natural law''. Monsieur Armand
+    attended a lot of his salons, but never really looked happy when he came back
+    from them."'
+  - ('<i>Le Petit Mogol</i>' is now available to visit in the Paris map)
+  - '"If you head out today, you should be well prepared for the party tomorrow night."'
+  _linkText:
+  - '"Splendid! A party!"'
+  - '"What? Why didn''t you tell me sooner?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Splendid! A party!"'
+  - '"What? Why didn''t you tell me sooner?"'
+  - '"What do you know about the Viscountess de Foix?"'
+  - '"Well, at least I have a party to go to!"'
+  - '"Camille, why didn''t you tell me about this invitation sooner?"'
+  - 
+  - 
+  - '"Well, at least I have a party to go to!"'
+  - '"Camille, why didn''t you tell me about this invitation sooner?"'
+  - '"Camille, do you know anything about this Baron Maximin?"'
+  - 
+  - 
+  - 
+  - 
+  - 

@@ -1,0 +1,837 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: playingPolitics
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 207, y: 75}
+  - {x: 9, y: 178}
+  - {x: 5, y: 251}
+  - {x: 3, y: 323}
+  - {x: -242, y: 398}
+  - {x: 7, y: 401}
+  - {x: 260, y: 389}
+  - {x: -453, y: 454}
+  - {x: -241, y: 466}
+  - {x: -242, y: 545}
+  - {x: 5, y: 482}
+  - {x: -4, y: 587}
+  - {x: 261, y: 475}
+  - {x: 248, y: 550}
+  - {x: 247, y: 610}
+  - {x: -303, y: 691}
+  - {x: -453, y: 551}
+  - {x: -30, y: 689}
+  - {x: -187, y: 757}
+  - {x: -191, y: 887}
+  - {x: -213, y: 821}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 4, y: 6}
+    - {x: 4, y: 7}
+    - {x: 5, y: 8}
+    - {x: 5, y: 9}
+    - {x: 9, y: 10}
+    - {x: 6, y: 11}
+    - {x: 11, y: 12}
+    - {x: 7, y: 13}
+    - {x: 10, y: 14}
+    - {x: 14, y: 15}
+    - {x: 13, y: 14}
+    - {x: 12, y: 16}
+    - {x: 8, y: 17}
+    - {x: 17, y: 16}
+    - {x: 17, y: 18}
+    - {x: 12, y: 18}
+    - {x: 18, y: 19}
+    - {x: 16, y: 19}
+    - {x: 19, y: 21}
+    - {x: 21, y: 20}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 8d37c5a6e98984de68f6859ef31ef817, type: 3}
+      Character1:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: negative
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -20
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: negative
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: bored
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Political Aspirant
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: revolution
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: revolution
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Introductee
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Political Aspirant
+        Motion: 3
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Introductee
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Political Aspirant
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Introductee
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: maximinAppears
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 70
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: An ambitious Revolutionary is in need of an introduction to someone
+      more well-established than himself. Such need is often a valuable opportunity.
+    Requirements: []
+    _date: -1
+  Name: Playing Politics
+  _factions: 000000000001
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - '"<i>Bonsoir</i>, Madame Decaux. You''re just the woman I''m looking for!" Says
+    an older man that you don''t recognize. "Don''t worry, I''m not here to ask anything
+    that''s too untoward."'
+  - Given that your introduction to the Revolutionaries was meeting Maximin, this
+    declaration is a little surprising.
+  - '"You see, there''s a man I wish to speak with about the political future of
+    the Revolution, but he''s notoriously untrusting of strangers. I was hoping that
+    you could introduce me to him." The man continues, subtly pointing to a man that
+    looks... eerily similar to himself.'
+  - If people are asking you for introductions, perhaps you truly are well settled
+    in Paris, after all.
+  - This man also seems the sort that would know quite a bit of gossip about the
+    Revolution.
+  - '"You need to ask me questions?" He replies.'
+  - '"You''re asking me, a man looking to advance in politics, for a personal favor?
+    This is absolutely unheard of!" He asks, utterly incredulous.'
+  - '"You can''t help? Or you won''t?" He asks with clear disgust.'
+  - '"Ah, but of course!" He laughs. "After all, that man you''re introducing me
+    to is likely to do the same, <i>non</i>? I may as well get warmed up before the
+    main event."'
+  - '"Not having to be interrogated is exactly that I''ve been trying to avoid! This
+    whole conversation has been a waste of my time."'
+  - (You have lost a decent amount of credibility)
+  - (You have gained a decent amount of peril)
+  - '"However, I suppose that if that''s what this takes, then I have no choice but
+    to play along." He sighs.'
+  - (You have lost some credibility)
+  - '"It looks like I''ve have to handle this myself, after all!" He says, already
+    walking directly towards the target of his intentions.'
+  - Seeing an absolute disaster in the making, you decide to leave before you can
+    be associated with whatever horrendous bungling is to come next.
+  - (You have gained a piece of Shocking Revolution Gossip)
+  - 'It takes very little effort on your part to guide this particular conversation.
+    You ask him a few questions about his personal history and aspirations, which
+    he answers gladly. Slowly, it helps fill in the gaps on a rumor that you''d heard
+    earlier. '
+  - (You have gained a piece of Outrageous Revolution Gossip)
+  - As he'd handled his end of the bargain, you decide to hold up your own. Gently
+    leading him by the elbow, you introduce him to the revolutionary he wished to
+    speak with, and the two of them just look... so alike. It's almost concerning.
+  - Regardless, you have what you came for, and you've already fulfilled your own
+    obligations. You politely excuse yourself, and leave them to whatever verbal
+    sparring they have planned next.
+  - Perhaps you've simply been attending too many parties.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Before I risk my reputation, I''ll need to ask you a few questions of my own."'
+  - '"If you want this introduction, I''ll need to hear some rumors concerning the
+    Revolution."'
+  - '"You''re talking to the wrong woman, monsieur. I can''t help you with this."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

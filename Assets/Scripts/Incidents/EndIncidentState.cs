@@ -4,17 +4,13 @@ using UnityEngine;
 
 namespace Ambition
 {
-	public class EndIncidentState : UState
+	public class EndIncidentState : UState, Core.IState
 	{
-        public override void OnEnterState()
+        public override void OnEnter()
         {
-            Debug.Log("EndIncidentState.OnEnterState");
-            IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-            IncidentVO incident = model.Incident;
-            if (incident != null) AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, incident);
-            for (incident = model.NextIncident();
-                !AmbitionApp.CheckRequirements(incident?.Requirements);
-                incident = model.NextIncident());
+            IncidentModel model = AmbitionApp.Story;
+            model.CompleteCurrentIncident();
+            AmbitionApp.SendMessage(IncidentMessages.END_INCIDENT, model.Incident?.ID);
             AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC, 2f);
         }
     }

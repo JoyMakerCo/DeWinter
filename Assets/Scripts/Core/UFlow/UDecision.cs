@@ -1,8 +1,9 @@
 ﻿using System;
 namespace UFlow
 {
-    public class UDecision : UState
+    public class UDecision : UState, Util.IInitializable<Func<bool>>
     {
-        public virtual string Validate() => null;
+        public Func<bool> Validate { get; private set; } = null;
+        public void Initialize(Func<bool> delgate) => Validate = delgate;
     }
 }

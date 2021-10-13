@@ -20,12 +20,13 @@ namespace Ambition
 		{
 			_text = _text ?? GetComponent<Text>();
             _livre = -1;
-            _Model?.Livre.Observe(HandleLivre);
+            AmbitionApp.Subscribe<int>(GameConsts.LIVRE, HandleLivre);
+            HandleLivre(AmbitionApp.Game.Livre);
 		}
 
         void OnDisable()
         {
-            _Model?.Livre.Remove(HandleLivre);
+            AmbitionApp.Unsubscribe<int>(GameConsts.LIVRE, HandleLivre);
             StopAllCoroutines();
         }
 
@@ -69,6 +70,6 @@ namespace Ambition
             _text.text = LivreString(l1);
         }
 
-        private string LivreString(int amount)=> "£" + amount.ToString("### ###");
+        private string LivreString(int amount)=> "£" + (amount == 0 ? "0" : amount.ToString("### ###"));
     }
 }

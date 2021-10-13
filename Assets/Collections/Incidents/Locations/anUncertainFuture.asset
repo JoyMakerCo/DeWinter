@@ -1,0 +1,968 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: anUncertainFuture
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 65}
+  - {x: 3, y: 122}
+  - {x: 4, y: 175}
+  - {x: -2, y: 229}
+  - {x: 1, y: 360}
+  - {x: 0, y: 434}
+  - {x: -1, y: 515}
+  - {x: -229, y: 625}
+  - {x: 2, y: 628}
+  - {x: 257, y: 625}
+  - {x: 259, y: 691}
+  - {x: 259, y: 759}
+  - {x: 3, y: 290}
+  - {x: 2, y: 786}
+  - {x: 261, y: 823}
+  - {x: 5, y: 704}
+  - {x: -228, y: 700}
+  - {x: -225, y: 781}
+  - {x: 8, y: 988}
+  - {x: 4, y: 893}
+  - {x: 479, y: 613}
+  - {x: 481, y: 689}
+  - {x: 490, y: 760}
+  - {x: 481, y: 819}
+  - {x: 472, y: 980}
+  - {x: 475, y: 893}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 7, y: 10}
+    - {x: 10, y: 11}
+    - {x: 11, y: 12}
+    - {x: 4, y: 13}
+    - {x: 13, y: 5}
+    - {x: 5, y: 6}
+    - {x: 12, y: 15}
+    - {x: 16, y: 14}
+    - {x: 8, y: 17}
+    - {x: 17, y: 18}
+    - {x: 15, y: 19}
+    - {x: 18, y: 19}
+    - {x: 14, y: 20}
+    - {x: 20, y: 19}
+    - {x: 9, y: 16}
+    - {x: 7, y: 21}
+    - {x: 21, y: 22}
+    - {x: 22, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 26}
+    - {x: 26, y: 25}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: hansel
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: hansel
+        Value: 1
+        Operator: 4
+      Flags:
+      - Type: 10
+        Phrase: incidents.transition.servant.hansel.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements: []
+    _date: -1
+  Name: An Uncertain Future
+  _factions: 000000000000
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - You decide to spend the day with Camille, keeping her company while she gets
+    some supplies for the house from the markets at <i>Les Halles</i>. Something
+    about her seems unusually tense, today. During the walk, the conversation turns
+    to the state of her family. Specifically, that of her siblings.
+  - There are so many of them... in fact, you've already spent half of this conversation
+    trying to determine how her parents found time to sleep, while producing this
+    battalion of offspring.
+  - '"... and my brother Jean-Pierre was a footman with the Boucher family, before
+    they stopped paying him. Marie just started as a barmaid at a public house, but
+    she''s really just trying to find a reputable husband. Phillipe was going to
+    join the navy, but then he ''found his calling'' as a professional gambler, which
+    apparently involves drinking all day..."'
+  - You can't help but notice that for every one of her siblings that's managed to
+    find some semblance of success, there are two that have either been beset by
+    grave misfortune, succumbed to vice-fueled collapse, or both. An army of people
+    who generally seem to work themselves to the bone, but remain staggeringly poor.
+  - "\"... and Madeline was a maid of all works with the R\xE9veillon family.\" Camille
+    sighs. \"Then the riots happened and she didn't feel safe there anymore. So,
+    yesterday she left to find new work. Which is really a shame, because they actually
+    paid her on time.\""
+  - "\"I know we're different than the R\xE9veillons, but everything feels fragile
+    right now.\" Camille pauses to think for a moment. \"Maybe it's been fragile
+    this whole time, and I just didn't notice.\""
+  - '"It feels like everything is made of glass, and we''ve just gone this whole
+    time agreeing to not to break anything, and..."'
+  - '"... I don''t think anyone agrees anymore."'
+  - '"Well, that doesn''t make me feel that much better, but... it''s better that
+    than a comforting lie, right Madame?"'
+  - '"I guess so, madame! If so many people are unhappy with the state of things,
+    maybe it''s alright if a few things get broken in the meanwhile."'
+  - This answer leaves Camille in a state of uncharacteristic silence, as she contemplates
+    this possibility.
+  - '"I guess that''s true, madame, but I''m not sure if makes me feel any better."'
+  - (You have lost a little credibility)
+  - '"It''s why I''m so glad you decided to join me today, madame. I haven''t really
+    felt that safe either, to be honest."'
+  - '"Besides, they''ve only targeted really wealthy and powerful people, which means
+    we''re safe... begging your pardon, madame."'
+  - Your day of shopping is otherwise uneventful, characterized mostly by a shroud
+    of quiet from the both of you. It's not a peaceful quiet, but a state of fatalistic
+    calm. Whatever happens, will happen.
+  - (You have gained some credibility)
+  - (You have gained some credibility)
+  - Your day of shopping is otherwise uneventful, characterized mostly by a state
+    of heightened vigilance. Camille may still be as tense as she was before, but
+    she seems to have a certain amount of confidence in you, due to the fact that
+    you're taking the city's recent unrest quite seriously.
+  - Eventually, with the day's shopping complete, the two of you head back to your
+    home.
+  - Your day of shopping is otherwise uneventful, characterized mostly by laughter
+    and a general state of relief. Camille seems significantly more carefree than
+    before, and appears to have taken your thoughts to heart.
+  - '"<i>Ja</i>. As long as the good madame keeps paying my bar tabs, I''ll keep
+    staring people down and beating fools within an inch of their life for her."'
+  - '"You will? Oh that''s great!" Camille says with a look of relief. "Madame makes
+    lot of enemies too, so you''ll always have something to do!"'
+  - (You have gained some credibility)
+  - You're not certain if you'd have personally phrased it that way, but at least
+    it seems to have put Camille at ease.
+  - Eventually, with the day's shopping complete, the three of you head back to your
+    home.
+  - Your day of shopping is otherwise uneventful, characterized mostly by laughter
+    and a general state of relief. Camille seems significantly more carefree than
+    before, and appears to have taken your bodyguard's assurances to heart.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"We should be careful. A few sparks can easily turn into an uncontrollable inferno."'
+  - '"Perhaps what''s being broken is something that needs to be broken."'
+  - '"Before, people were starving, now they''re being shot. Does the cause of death
+    matter?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Well, no matter what happens, we still have Hansel with us. So we''ll be fine."'
+  - 
+  - 
+  - 
+  - 
+  - 

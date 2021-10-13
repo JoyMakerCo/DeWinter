@@ -1,65 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
+using UGraph;
 using Util;
+using UnityEngine;
 
 namespace UFlow
 {
-    public abstract class UFlowConfig
     // TODO: Make this a UFlow-exclusive class for setting up flow bindings
-     : Core.ICommand<string>
+    public abstract class UFlowConfig
     {
-        internal UFlowSvc _uFlow;
-        internal string _flowID;
+        private UFlowSvc _uFlow;
+        private string _flowID;
+        private List<UStateNode> _nodes = new List<UStateNode>();
+        private List<Vector2Int> _links = new List<Vector2Int>();
 
-        private string _prevState = null;
+        public abstract void Configure();
 
-        public abstract void Initialize();
-
-        // TODO: Remove when this is no longer a command
-        public void Execute(string flowID)
+        internal DirectedGraph<UStateNode> OnRegister(UFlowSvc svc, string flowID)
         {
+            _uFlow = svc;
             _flowID = flowID;
-            _uFlow = Core.App.Service<UFlowSvc>();
-            Initialize();
+            Configure();
+            return new DirectedGraph<UStateNode>()
+            {
+                Nodes = _nodes.ToArray(),
+                Links = _links.ToArray()
+            };
         }
 
-        // TODO: Move Bindings into UFlow
         protected void Bind<S>(string stateID) where S : UState, new()
         {
-            _uFlow.BindState<S>(_flowID, stateID);
+            int index = _nodes.FindIndex(n => n.ID == stateID);
+            if (index >= 0) _nodes[index] = new UStateNode<S>() { ID = stateID };
         }
 
         protected void Bind<S, D>(string stateID, D data) where S : UState, IInitializable<D>, new()
         {
-            _uFlow.BindState<S, D>(_flowID, stateID, data);
+            int index = _nodes.FindIndex(n => n.ID == stateID);
+            if (index >= 0) _nodes[index] = new UStateNode<S, D>() { ID = stateID, Data = data };
         }
 
-        // TODO: ULinks no longer bindable, just states
-        // For now, Bindlink also creates links if they don't already exist
-        protected void BindLink<L>(string fromState, string toState) where L : ULink, new()
+        protected void Bind<UMachine>(string stateID, string flowID)
         {
-            _uFlow.BindLink<L>(_flowID, fromState, toState);
-        }
-
-        protected void BindLink<L, D>(string fromState, string toState, D data) where L : ULink, IInitializable<D>, new()
-        {
-            _uFlow.BindLink<L, D>(_flowID, fromState, toState, data);
+            int index = _nodes.FindIndex(n => n.ID == stateID);
+            if (index >= 0) _nodes[index] = new UFlowNode() { ID = stateID, Data = flowID };
         }
 
         // TODO: Move graph definition into editor
-        private string _prev; 
         protected void State(string stateID, bool linkPrevState = true)
         {
-            _uFlow.RegisterState(_flowID, stateID);
-            if (linkPrevState && _prev != null)
-                _uFlow.RegisterLink(_flowID, _prev, stateID);
-            _prev = stateID;
+            if (linkPrevState)
+            {
+                _links.Add(new Vector2Int(_nodes.Count - 1, _nodes.Count));
+            }
+            _nodes.Add(new UStateNode() { ID = stateID });
         }
 
         protected void Link(string state0, string state1)
         {
-            _uFlow.RegisterLink(_flowID, state0, state1);
-            _prev = state1;
+            Vector2Int link = new Vector2Int(
+                _nodes.FindIndex(n => n.ID == state0),
+                _nodes.FindIndex(n => n.ID == state1));
+            if (!_links.Exists(l => l.Equals(link)))
+                _links.Add(link);
         }
+
+        protected void Decision(string stateID, Func<bool> delgate) => Bind<UDecision, Func<bool>>(stateID, delgate);
     }
 }

@@ -4,15 +4,12 @@ namespace Ambition
 {
 	public static class PartyMessages
 	{
-		public const string SHOW_MAP = "SHOW_MAP";
 		public const string SHOW_ROOM = "SHOW_ROOM";
 
-        public const string SELECT_INCIDENTS = "SELECT_INCIDENTS";
         public const string INITIALIZE_PARTY = "INITIALIZE_PARTY";
+        public const string SELECT_INCIDENTS = "SELECT_INCIDENTS";
         public const string ACCEPT_INVITATION = "ACCEPT_INVITATION";
-        public const string ACCEPTED = "ACCEPTED";
         public const string DECLINE_INVITATION = "DECLINE_INVITATION";
-        public const string DECLINED = "DECLINED";
         public const string GO_TO_PARTY = "GO_TO_PARTY";
         public const string START_PARTY = "START_PARTY";
         public const string PARTY_STARTED = "PARTY_STARTED";
@@ -59,7 +56,6 @@ namespace Ambition
         public const string REFILL_DRINK = "REFILL_DRINK";
 		public const string TELEGRAPH = "TELEGRAPH";
 		public const string GUEST_REMARK = "GUEST_REMARK";
-		public const string HOST_REMARK = "HOST_REMARK";
         public const string OBJECTIVES_COMPLETE = "OBJECTIVES_COMPLETE";
         public const string START_TUTORIAL_PARTY = "START_TUTORIAL_PARTY";
         public const string END_TUTORIAL_PARTY = "END_TUTORIAL_PARTY";

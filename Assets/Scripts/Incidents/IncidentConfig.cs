@@ -31,16 +31,14 @@ namespace Ambition
 
         public IncidentVO Incident = new IncidentVO();
 
+        public string Name = "";
+
         [SerializeField]
         private bool[] _factions = new bool[Enum.GetValues(typeof(FactionType)).Length];
         [SerializeField]
         private bool[] _chapters = new bool[NUM_CHAPTERS];
         [SerializeField]
         private long _date;
-
-        [SerializeField]
-        private RequirementVO[] _requirements;
-        public RequirementVO[] Requirements => _requirements;
 
         public IncidentVO GetIncident() => new IncidentVO(Incident)
         {
@@ -53,7 +51,7 @@ namespace Ambition
         {
             if (_factions == null || _factions.Length == 0)
             {
-                return new FactionType[] { FactionType.Neutral };
+                return new FactionType[] { FactionType.None };
             }
             List<FactionType> factions = new List<FactionType>();
             for (int i = _factions.Length - 1; i >= 0; i--)
@@ -102,6 +100,8 @@ namespace Ambition
             SerializedObject obj = new SerializedObject(this);
             SerializedProperty list = GetNodeTextProperty(obj);
             string str;
+            phrases[name + ".name"] = Name;
+            phrases[name + ".description"] = GetIncidentProperty(obj).FindPropertyRelative("Description").stringValue;
             for (int i = list.arraySize - 1; i >= 0; i--)
             {
                 str = list.GetArrayElementAtIndex(i)?.stringValue;
@@ -254,7 +254,9 @@ namespace Ambition
                     }
                 }
             }
-
+            serializedObject.FindProperty("Name").stringValue = EditorGUILayout.TextField("Name", serializedObject.FindProperty("Name").stringValue);
+            EditorGUILayout.LabelField("Description:");
+            incident.FindPropertyRelative("Description").stringValue = EditorGUILayout.TextArea(incident.FindPropertyRelative("Description").stringValue);
             bool fixedDate = GUILayout.Toggle(dateProperty.longValue >= 0, "Date");
             if (!fixedDate) dateProperty.longValue = -1;
             else

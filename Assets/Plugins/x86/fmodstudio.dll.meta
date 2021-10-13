@@ -5,29 +5,44 @@ PluginImporter:
   serializedVersion: 2
   iconMap: {}
   executionOrder: {}
+  defineConstraints: []
   isPreloaded: 0
   isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
   platformData:
   - first:
-      '': OSXIntel
+      : Linux
+    second:
+      enabled: 1
+      settings:
+        CPU: x86
+  - first:
+      : LinuxUniversal
     second:
       enabled: 1
       settings:
         CPU: AnyCPU
   - first:
-      '': OSXIntel64
+      : OSXIntel
+    second:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+  - first:
+      : OSXIntel64
     second:
       enabled: 1
       settings:
         CPU: None
   - first:
-      '': SamsungTV
+      : SamsungTV
     second:
       enabled: 0
       settings:
         STV_MODEL: STANDARD_13
   - first:
-      '': WP8
+      : WP8
     second:
       enabled: 0
       settings:
@@ -54,31 +69,7 @@ PluginImporter:
         DefaultValueInitialized: true
         OS: Windows
   - first:
-      Facebook: Win
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-  - first:
-      Facebook: Win64
-    second:
-      enabled: 0
-      settings:
-        CPU: None
-  - first:
-      Standalone: Linux
-    second:
-      enabled: 1
-      settings:
-        CPU: x86
-  - first:
       Standalone: Linux64
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-  - first:
-      Standalone: LinuxUniversal
     second:
       enabled: 1
       settings:

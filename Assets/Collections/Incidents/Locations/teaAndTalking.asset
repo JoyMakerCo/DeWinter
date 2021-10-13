@@ -1,0 +1,2916 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: teaAndTalking
+  m_EditorClassIdentifier: 
+  _Nodes: 39000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 67}
+  - {x: 2, y: 141}
+  - {x: 2, y: 219}
+  - {x: 3, y: 284}
+  - {x: 8, y: 351}
+  - {x: -10, y: 571}
+  - {x: -4, y: 629}
+  - {x: -3, y: 701}
+  - {x: -179, y: 773}
+  - {x: 156, y: 774}
+  - {x: -180, y: 846}
+  - {x: -180, y: 912}
+  - {x: 161, y: 844}
+  - {x: 166, y: 909}
+  - {x: 164, y: 964}
+  - {x: -13, y: 1125}
+  - {x: -290, y: 1202}
+  - {x: -2, y: 1213}
+  - {x: 265, y: 1210}
+  - {x: -852, y: 1168}
+  - {x: -601, y: 1220}
+  - {x: -280, y: 1272}
+  - {x: -602, y: 1272}
+  - {x: 0, y: 1278}
+  - {x: 267, y: 1279}
+  - {x: -962, y: 1240}
+  - {x: -599, y: 1387}
+  - {x: -278, y: 1336}
+  - {x: -266, y: 1404}
+  - {x: -216, y: 425}
+  - {x: -10, y: 429}
+  - {x: 202, y: 428}
+  - {x: 3, y: 485}
+  - {x: -223, y: 501}
+  - {x: -174, y: 983}
+  - {x: -255, y: 1469}
+  - {x: -593, y: 1493}
+  - {x: -597, y: 1555}
+  - {x: -596, y: 1331}
+  - {x: -587, y: 1662}
+  - {x: -590, y: 1718}
+  - {x: -638, y: 1768}
+  - {x: -795, y: 1817}
+  - {x: -984, y: 1863}
+  - {x: -1107, y: 1934}
+  - {x: -268, y: 1535}
+  - {x: -265, y: 1600}
+  - {x: -262, y: 1653}
+  - {x: -265, y: 1705}
+  - {x: -268, y: 1772}
+  - {x: -593, y: 1439}
+  - {x: -593, y: 1609}
+  - {x: -1, y: 1340}
+  - {x: -5, y: 1406}
+  - {x: 0, y: 1472}
+  - {x: -4, y: 1534}
+  - {x: -2, y: 1601}
+  - {x: 1, y: 1670}
+  - {x: 34, y: 1744}
+  - {x: 99, y: 1919}
+  - {x: 270, y: 1353}
+  - {x: 274, y: 1410}
+  - {x: 279, y: 1488}
+  - {x: 288, y: 1543}
+  - {x: 287, y: 1603}
+  - {x: 292, y: 1667}
+  - {x: 290, y: 1813}
+  - {x: 278, y: 1874}
+  - {x: -986, y: 1301}
+  - {x: -1009, y: 1369}
+  - {x: -1020, y: 1435}
+  - {x: -1029, y: 1504}
+  - {x: -1036, y: 1567}
+  - {x: -1048, y: 1621}
+  - {x: -1062, y: 1676}
+  - {x: -1082, y: 1718}
+  - {x: -1142, y: 1775}
+  - {x: -1200, y: 1822}
+  - {x: -1226, y: 1878}
+  - {x: 297, y: 1741}
+  - {x: 510, y: 1445}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 8, y: 10}
+    - {x: 9, y: 11}
+    - {x: 11, y: 12}
+    - {x: 10, y: 13}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 16, y: 17}
+    - {x: 16, y: 18}
+    - {x: 16, y: 19}
+    - {x: 17, y: 20}
+    - {x: 17, y: 21}
+    - {x: 17, y: 22}
+    - {x: 21, y: 20}
+    - {x: 21, y: 23}
+    - {x: 18, y: 24}
+    - {x: 19, y: 25}
+    - {x: 20, y: 26}
+    - {x: 22, y: 28}
+    - {x: 28, y: 29}
+    - {x: 5, y: 30}
+    - {x: 5, y: 31}
+    - {x: 5, y: 32}
+    - {x: 32, y: 6}
+    - {x: 31, y: 33}
+    - {x: 33, y: 6}
+    - {x: 30, y: 34}
+    - {x: 34, y: 6}
+    - {x: 15, y: 17}
+    - {x: 15, y: 18}
+    - {x: 15, y: 19}
+    - {x: 12, y: 35}
+    - {x: 35, y: 16}
+    - {x: 29, y: 36}
+    - {x: 37, y: 38}
+    - {x: 23, y: 39}
+    - {x: 39, y: 27}
+    - {x: 40, y: 41}
+    - {x: 41, y: 42}
+    - {x: 42, y: 43}
+    - {x: 43, y: 44}
+    - {x: 44, y: 45}
+    - {x: 36, y: 46}
+    - {x: 46, y: 47}
+    - {x: 47, y: 48}
+    - {x: 48, y: 49}
+    - {x: 49, y: 50}
+    - {x: 27, y: 51}
+    - {x: 51, y: 37}
+    - {x: 38, y: 52}
+    - {x: 52, y: 40}
+    - {x: 24, y: 53}
+    - {x: 53, y: 54}
+    - {x: 54, y: 55}
+    - {x: 55, y: 56}
+    - {x: 56, y: 57}
+    - {x: 57, y: 58}
+    - {x: 58, y: 59}
+    - {x: 59, y: 60}
+    - {x: 25, y: 61}
+    - {x: 61, y: 62}
+    - {x: 63, y: 64}
+    - {x: 64, y: 65}
+    - {x: 65, y: 66}
+    - {x: 67, y: 68}
+    - {x: 68, y: 60}
+    - {x: 26, y: 69}
+    - {x: 69, y: 70}
+    - {x: 70, y: 71}
+    - {x: 71, y: 72}
+    - {x: 72, y: 73}
+    - {x: 73, y: 74}
+    - {x: 74, y: 75}
+    - {x: 75, y: 76}
+    - {x: 76, y: 77}
+    - {x: 77, y: 78}
+    - {x: 78, y: 79}
+    - {x: 79, y: 45}
+    - {x: 66, y: 80}
+    - {x: 80, y: 67}
+    - {x: 62, y: 81}
+    - {x: 81, y: 63}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outsideWfountain
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 2
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Elisabeth - Introduction
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/wine_drink
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: ???
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Introduction
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 1
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: sad
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: sad
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: sad
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: smolder
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: sad
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: -2
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Military
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Elisabeth - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Elisabeth - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: smolder
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: smolder
+        Name: "\xC9lisabeth"
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Elisabeth - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: sad
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: sad
+        Name: "\xC9lisabeth"
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Elisabeth - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: smolder
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: smolder
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: 2
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 4
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Elisabeth
+        Value: 2
+      - Type: 5
+        ID: Alex
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 70
+        Value: 0
+        Operator: 4
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 28
+      ID: elisabethVigeeLeBrun
+      Value: 1
+      Operator: 4
+    - Type: 28
+      ID: thomasAlexandreDumas
+      Value: 1
+      Operator: 4
+    - Type: 23
+      ID: Thomas-AlexandreDead
+      Value: 0
+      Operator: 3
+    _date: -1
+  Name: Tea and Talking
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - You decide to spend the day in the square near the water fountain. It's so humid
+    today that if you spent any more time inside then you were afraid that you'd
+    suffocate. You have no idea how Camille is managing to keep working in the kitchen,
+    with a fire going, but you're glad that she can do it.
+  - Even sitting on the edge of the fountain, cooled by the light mist, you're sweating
+    like a horse at full gallop, without the breeze to accompany it. You feel disgusting,
+    and secretly dread the idea of someone seeing you like this.
+  - "It's at that moment, that \xC9lisabeth appears at your side, holding a steaming
+    cup of tea in each hand. \"Drink this, it will help with the heat.\" "
+  - You oblige her, and are quickly surprised to find out that she's right. Something
+    about it makes the heat more bearable. "I picked it up from the travelling vendor
+    over there. We'll need to get him his cups back, eventually." She says, pointing
+    out the man carrying the giant, awkward metal tank of tea on his back. The spigot
+    for the tea is sculpted to look like a dragon's mouth.
+  - '"... and before you say anything to the contrary, I don''t think you look disgusting,
+    at all."'
+  - Well, that's good to know.
+  - "\"Yvette, is that you?\r\" Rings out a voice from the other side of a crowd."
+  - Alex strides over to the two of you, having freshly dismounted from his horse
+    and holding the reins in his hand. The crowd easily parts for both him and his
+    animal.
+  - Looking at the two of you Alex suddenly takes half a step backwards. "Ah, <i>mon
+    Dieu</i>! How rude of me! Was I interrupting something?
+  - "\"No, not at all!\" \xC9lisabeth replies. \"In fact, with you here, Yvette and
+    I don't have to worry about strange men barging in to the conversation.\""
+  - '"Oh, joy of joys." Elisabeth replies flatly. "An armed man walking into our
+    conversation. I, in no way, feel threatened."'
+  - '"Don''t worry! I''m on watch!" Alex laughs, stepping closer to the both of you,
+    and scanning the crowd attentively.'
+  - "The three of you spend some time catching up and telling stories, but you get
+    the sense that \xC9lisabeth and Alex don't really know how to act around each
+    other. There's not necessarily a tension between the two of them, but there is
+    a wariness."
+  - '"The dragoons are not a threat." Alex sighs. "The only reason we''ve even been
+    stationed in Paris is for everyone''s protection."'
+  - '"That''s exactly what people who are a threat say!" Elisabeth replies. "Who
+    and what are you even protecting us from? Everyone know the military is just
+    one step away from joining the revolution anyway."'
+  - The two of them glare at each other angrily, occasionally glancing at you.
+  - '"Yvette, would you care to join me for a little while on my patrol?"'
+  - They stop to consider this. Alex shifts his feet, and glances back a few times
+    at his horse.
+  - "\"<i>Bonne chance</i>! Corporal Dumas!\" \xC9lisabeth exclaims in agreement,
+    shifting a little closer to you."
+  - '"<i>Fantastique</i>!" Alex says, helping you up from your seat on the edge of
+    the fountain. "I doubt things will get too ''interesting'', but who knows?"'
+  - '"Well, today has been rather slow." Alex admits, the tension seeming to drain
+    out of him. "There can''t be too many ne''er do wells out in this blasted heat."'
+  - '"Fine, I can wait a touch longer. What would you have us do, then?"'
+  - "\"I-I can't do this.\" \xC9lisabeth sighs in exasperation. \"I finally felt
+    comfortable being... No, this is just ruined. I need to go.\""
+  - '"What would you have me believe, Madame Le Brun?"'
+  - "(You have gained some favor with \xC9lisabeth)"
+  - (You have gained some favor with Alex)
+  - "\"To be completely honest, I rarely know what anyone actually wants from me,
+    so I'm at a loss as to what I should do next.\" \xC9lisabeth sighs. \"Do you
+    have any good stories, Alex?\""
+  - "\xC9lisabeth starts talking, not really about the monarchy per se, but instead
+    about what she personally knows about Marie-Antoinette. How Marie has been disliked
+    by the French people from the very beginning, due to being a foreign born queen.
+    She talks about Marie's desire to help people, including her multiple adopted
+    children, amongst them the former slave Jean Amilcar. "
+  - '"Pardon? What am I ruining?"'
+  - "\"I've just been a fool. I have to go.\" \xC9lisabeth says to nobody in particular,
+    starting to breathe faster and faster. You knew that expressing her affections
+    in public was hard for her, but you didn't expect it to be this bad."
+  - "\"God no!\" \xC9lisabeth laughs. \"I have enough toil and trouble in my life
+    as is. I'll stick to mixing paints and all the cursing that comes with that instead.\""
+  - '"I''ll have you know that your facial expressions are very easy to read when
+    you think that nobody is watching."'
+  - "\"It doesn't make any sense, does it?\" \xC9lisabeth admits. \"It's just an
+    old trick that my mother taught me. I don't understand why it works, but it's
+    yet to fail me.\""
+  - "\"N-not that I watch you a lot.\" \xC9lisabeth suddenly turns away and blushes.
+    \"It's just that examining people's faces is something I do for work. I'm an
+    expert, of sorts...\""
+  - '"Besides, I don''t think I''d look good in black."'
+  - "\"<i>Merde!</i>\" Alex grunts and shakes his head. \"I lost track of time and
+    need to resume my patrol.\" Out of the corner of your eye, you can't help but
+    notice that \xC9lisabeth looks a little excited by the prospect of spending more
+    time alone with you."
+  - "(You have lost some favor with \xC9lisabeth)\n(You have lost some credibility)"
+  - '"The ''Chevalier de Saint-Georges'', as you know him, was my fencing instructor
+    when I first came to France. Joseph is the most capable swordsman I''ve ever
+    in all my life. I used to watch him toy with challengers by slicing buttons,
+    one at a time, off of their coats."'
+  - "\"So you understand, then!\" \xC9lisabeth exclaims. \"Marie is trying to push
+    things forward, but every time she does, the scandal from the public pushes her
+    back. \"Royalty is powerful, but it can't actually overrule the feelings of the
+    people. The Revolutionaries promise so much change, but what happens when their
+    high minded ideas reach a conservative public?\""
+  - '"Well, this isn''t normally something I''m normally asked to speak about, so
+    it might be worthless, but we might as well get it over quickly, no?"'
+  - '"That''s something to certainly think about." Alex admits, rubbing his chin
+    thoughtfully. "None of these things are ever simple."'
+  - (The Military has moved towards the Crown by some)
+  - Alex checks his pocket watch and his eyebrows jump in surprise. "Ah! Now I really
+    must be on my way. However, I have no regrets, today has been both fantastic
+    and enlightening."
+  - With that, Alex leaps a top his horse, tips his hat to you both, and leaves.
+  - You and Elisabeth chat for a while longer, but eventually you part ways with
+    her, and head home.
+  - Today feels like it was a good use of your time.
+  - She leaves before you can say anything to calm her spirits. Instead, you are
+    just left with Alex, who seems both confused and frustrated.
+  - '"What am I ruining?"'
+  - (You have lost some favor with Alex)
+  - Without another word, Alex mounts his horse, and returns to his patrol.
+  - That... that was awful.
+  - '"I know the royal family is often painted as this aloof, uncaring thing, but
+    Marie is so much more than that. She befriends and listens to people from every
+    walk of life, and has even sponsored the works of the Chevalier de Saint-Georges."
+    She says, referring to the accomplished black composer, who has so often been
+    scorned by the general public.'
+  - '"It''s all too easy for them to promise what they could do, when there''s no
+    way for them to follow through on their words. What guarantee is there that all
+    of their promises of liberty and universal brotherhood won''t be cast aside,
+    once they become inconvenient? I certainly wouldn''t believe a single thing those
+    men say about what they''ll do for women. Why should you be different?"'
+  - '"... yes. Thank you." Alex replies, obviously not anticipating this turn of
+    events.'
+  - (You have lost a little favor with Alex)
+  - With that, Alex mounts his horse and returns to his duties.
+  - "You and Elisabeth spend more time together, talking over your tea. It's not
+    that there's anything wrong with Alex, per se, but being alone with just \xC9lisabeth
+    is different. Really, you've found that to be true of any situation where only
+    women were in attendance. It's not to feel like you're struggling to be heard,
+    because everyone already understands the same things."
+  - "You spend your time together catching up, unwinding, and edging closer and closer
+    to each other on the edge of the fountain. \xC9lisabeth is so blas\xE9 about
+    so many things, but there's something extremely cute about how anything close
+    to romantic affection in public makes her nervous. You never do anything more
+    overt than brush your hand against hers, but it's fun to watch her heart race."
+  - "However, right as you're both about to finish up and say your goodbyes, \xC9lisabeth
+    takes your hand in both of hers and says \"This has been wonderful. Thank you,
+    Yvette.\""
+  - With that, she leaves.
+  - Today feels like it was a good use of your time.
+  - "\"<i>Au revoir</i>, I guess.\" Says \xC9lisabeth, picking up the empty tea cups.
+    \"I'll just return these myself.\" "
+  - "You follow Alex as he departs, and \xC9lisabeth stays behind."
+  - You and Alex walk together in the streets. He strolls with one hand around your
+    waist, and the bridle of his horse in the other. His horse seems indifferent
+    to the whole situation. The horse seems indifferent about everything, really.
+  - Alex is telling you a tale of the latest 'intrigue' of the men in his barracks.
+    Specifically, this is the story of several dragoons all trying to court the sister
+    of his comrade, Corporal d'Auvergne. It's a funny story, and it reminds you that
+    it's nice to be with Alex, because while he's never rude, he also never treats
+    you like you're fragile.
+  - Far too many men back in your village treated you like you were made of spun
+    glass, and that you would shatter at the first sight of something indelicate.
+    While you're sure they intended this to be kind and endearing, it merely ended
+    up being frustrating and boring.
+  - Your walk has to stop for a moment because Alex has gotten to the part of the
+    story where his entire barracks of fifty men devolved into an all-out brawl,
+    when it was revealed that not two, or three, but seven different dragoons all
+    had designs on this young woman's heart. Hearing him describe the chaos, the
+    two of you are laughing so hard that you almost feel sick.
+  - Wiping tears of good humor from your eyes, Alex realizes that he must finally
+    part, and that the two of you must say your goodbyes, for now. "Wish me luck
+    out there."
+  - You do, and he leaps atop his horse to resume his patrol.
+  - '"Why, in fact I do!"'
+  - 'Without any further ado, Alex launches into a tale about the latest ''intrigue''
+    of the men in his barracks. Specifically, this is the story of several dragoons
+    all trying to court the sister of his comrade, Corporal d''Auvergne. '
+  - Soon, you all have to pause to catch your breath, because Alex has gotten to
+    the part of the story where his entire barracks of fifty men devolved into an
+    all-out brawl when it was revealed that not two, or three, but seven different
+    dragoons all had designs on the young woman's heart. Hearing him describe the
+    chaos, the three of you are laughing so hard that you almost feel sick.
+  - "Alex can barely finish the story because he's laughing too hard at his own jokes.
+    This, in itself, proves to be so funny that neither you nor \xC9lisabeth can
+    stop laughing either."
+  - It is a complete mess.
+  - "\"So this is what we're up to?\" \xC9lisabeth says, wiping a tear of laughter
+    from her eye. \"Alright, I think I have something you'll all like.\""
+  - "\xC9lisabeth begins telling the story of a private commision she received. It
+    was a client who insisted on having their portrait painted with their prized
+    dog. It was a decent idea, but it was made difficult by the fact that the dog
+    would pee when it was agitated... and it was always agitated."
+  - "\"\"Of course, I'm a professional, so I can't say anything about it.\" \xC9lisabeth
+    says. \"\"Instead I have to sit there with a straight face and paint, pretending
+    that nothing is happening, while this animal is just soaking anything it gets
+    close to. This wasn't a one time occurrence, mind you. This happened in every,
+    single, sitting!\""
+  - The laughter flows freely between you, and good times are had by all.
+  - "(You have gained some favor with \xC9lisabeth)\n(You have gained some favor
+    with Alex)"
+  - "Eventually, you all have to part ways, and Alex returns to his patrol. You and
+    \xC9lisabeth return your cups to the tea vendor, who merrily tips his hat to
+    you both. For a brief moment, all is right with the world."
+  - Alex can barely finish the story because he's laughing too hard at his own story.
+    This, in itself, proves to be so funny that you can't stop laughing either.
+  - "(You have lost a little favor with \xC9lisabeth)"
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I''d actually prefer if you both stayed. You have more in common than you think."'
+  - "\"Actually, \xC9lisabeth and I are going to stay here. Good luck out there!\""
+  - '"That sounds lovely, Alex!"'
+  - 
+  - 
+  - 
+  - '"Not much, I''m just trying to make sure that two people I enjoy very much get
+    along."'
+  - "\"Alex, I think you might be too hostile towards the Crown. Just listen to \xC9lisabeth
+    for a moment.\""
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"You know my thoughts so easily? Have you become a witch in your spare time?"'
+  - '"It''s quite bold of you to assume that I thought I looked disgusting."'
+  - '"How''d you know that hot tea would make me feel better?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"If you two don''t try to get along, I will simply leave."'
+  - "\"\xC9lisabeth and I are going to stay here. Alex, we'd hate to keep you from
+    your duties.\""
+  - '"Alex, you and I should go."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

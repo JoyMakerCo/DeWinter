@@ -1,0 +1,1360 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: peckingOrder
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -163, y: 111}
+  - {x: 157, y: 104}
+  - {x: 0, y: 258}
+  - {x: 2, y: 334}
+  - {x: -1, y: 475}
+  - {x: -232, y: 562}
+  - {x: 2, y: 561}
+  - {x: 238, y: 567}
+  - {x: -501, y: 566}
+  - {x: -234, y: 634}
+  - {x: 3, y: 405}
+  - {x: 161, y: 166}
+  - {x: 3, y: 638}
+  - {x: 6, y: 708}
+  - {x: 8, y: 782}
+  - {x: 2, y: 855}
+  - {x: 5, y: 922}
+  - {x: -232, y: 699}
+  - {x: 5, y: 983}
+  - {x: -1, y: 1043}
+  - {x: -1, y: 1102}
+  - {x: 8, y: 1173}
+  - {x: -143, y: 1271}
+  - {x: 102, y: 1268}
+  - {x: -16, y: 1353}
+  - {x: -15, y: 1411}
+  - {x: 239, y: 644}
+  - {x: 239, y: 701}
+  - {x: -489, y: 842}
+  - {x: -487, y: 912}
+  - {x: -497, y: 646}
+  - {x: -498, y: 705}
+  - {x: -493, y: 776}
+  - {x: -233, y: 774}
+  - {x: -233, y: 845}
+  - {x: -232, y: 923}
+  - {x: -238, y: 984}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 1, y: 3}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 5, y: 8}
+    - {x: 6, y: 9}
+    - {x: 6, y: 10}
+    - {x: 4, y: 11}
+    - {x: 11, y: 5}
+    - {x: 2, y: 12}
+    - {x: 12, y: 3}
+    - {x: 3, y: 4}
+    - {x: 7, y: 13}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 16, y: 17}
+    - {x: 10, y: 18}
+    - {x: 17, y: 19}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 21, y: 22}
+    - {x: 22, y: 23}
+    - {x: 22, y: 24}
+    - {x: 24, y: 25}
+    - {x: 23, y: 25}
+    - {x: 25, y: 26}
+    - {x: 8, y: 27}
+    - {x: 27, y: 28}
+    - {x: 29, y: 30}
+    - {x: 9, y: 31}
+    - {x: 31, y: 32}
+    - {x: 32, y: 33}
+    - {x: 33, y: 29}
+    - {x: 30, y: 21}
+    - {x: 18, y: 34}
+    - {x: 34, y: 35}
+    - {x: 35, y: 36}
+    - {x: 36, y: 37}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Respected Gentleman
+        Motion: 2
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: ba2c05c75417f4f47b47d76ec01cf99a, type: 3}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Fooled Guest
+        Motion: 1
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Respected Gentleman
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: ba2c05c75417f4f47b47d76ec01cf99a, type: 3}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Fooled Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: ba2c05c75417f4f47b47d76ec01cf99a, type: 3}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Fooled Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 20
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Fooled Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -25
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Fooled Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Fooled Guest
+        Motion: 3
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Respected Gentleman
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: ba2c05c75417f4f47b47d76ec01cf99a, type: 3}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: ba2c05c75417f4f47b47d76ec01cf99a, type: 3}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: ba2c05c75417f4f47b47d76ec01cf99a, type: 3}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 2
+        ID: Crown
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: ba2c05c75417f4f47b47d76ec01cf99a, type: 3}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 2
+        ID: Crown
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: ba2c05c75417f4f47b47d76ec01cf99a, type: 3}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 3
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Respected Gentleman
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: happy
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Respected Gentleman
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Respected Gentleman
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AngelosStrassner
+        Pose: neutral
+        Name: Angelos
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: musicToYourEars
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 3
+        Phrase: incidents.transitions.credibilitycheck.hardtooltip
+        Value: 90
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: A composer of some considerable ability is eager to get a chance
+      to speak with the Chevalier de St. Georges, but there appears to be quite the
+      line. Perhaps you can help him with this problem?
+    Requirements: []
+    _date: -1
+  Name: Pecking Order
+  _factions: 000100000000
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - You enter a crowded room and nearly bump into a man who is dressed in far more
+    sober colors than most of the gentlemen at this party.
+  - '"It''s good to see you again, Madame Yvette!" Angelos says, as he looks you
+    over to make sure that you''re alright. "Are you here to see the Chevalier de
+    St. Georges as well?"'
+  - '"Ah, my apologies, madame! Are you here to see the Chevalier de St. Georges
+    as well?"'
+  - '"He''s an accomplished composer, a well regarded poly-math, and even a master
+    fencer! There''s really nothing the man can''t do. It''s no wonder that Her Majesty
+    refers to the man as ''Her favorite American''."'
+  - His voice drops low and he gestures to the expensively dressed gentlemen in the
+    room. "However, as you can imagine, there's a significant waiting period to speak
+    with him. Nothing so gauche as an official list, but you know how people of rank
+    are... these strutting peacocks are quite attached to their established pecking
+    order."
+  - '"I know that you hunt for gossip, and if you help me... I might have something
+    for you."'
+  - '"I''m sorry, you have a what?" Asks a gentleman, regarding you with suspicion.'
+  - With that said, you excuse yourself to an empty room. There, you undo a few ties
+    on your dress so that you can tighten your stays a little bit. This will help
+    you sell the effect of what comes next.
+  - '"I see..." Angelos says, shaking his head. He can be as displeased as he likes,
+    it''s simply too risky to lie to those people. "I suppose that makes you more
+    honorable than myself."'
+  - '"Madame Decaux is correct, monsieur." Angelos chimes in, introducing himself
+    by way of a simple bow. "Normally, I''d hate to interrupt such honorable gentleman,
+    but I simply must not keep a man of Chevalier de St. George''s stature waiting."'
+  - '"I know one thing for certain, it''s that nobody here is taking appointments."
+    He continues, his voice enraged and imperious. You feel the eyes of many important
+    and scandalized men staring at you.'
+  - You glance around and Angelos certainly isn't wrong. You recognize a few guests
+    in the area that come from extremely powerful lineages. Simply put, they're not
+    people one can simply barge ahead of, without dangerous consequences.
+  - '"My name is Angelos Strassner. I''m a composer and mathematician, which is what
+    makes me so excited to meet the man."'
+  - With your clothing settled and everything prepared, you walk back into the crowded
+    room and begin to increase the pace of your breathing. Normally, your stays are
+    quite comfortable, but now you can really feel the effect they have on restricting
+    your breathing.
+  - Just as your vision begins to grow unclear, you pretend to faint, and fall to
+    the ground in front of the highest ranking people in the room. Your sudden collapse
+    causes no small amount of shock.
+  - On second thought... you might be the victim of your own success in this endeavor.
+    Now that you're lying on the ground, you genuinely feel quite light-headed.
+  - (You have gained quite a bit of peril)
+  - When you fully regain your wits, you find yourself being helped to a couch by
+    two gentlemen desperately asking you if they can get you anything. If nothing
+    else, you could get used to this part of things.
+  - '(You have lost a large amount of credibility)
+
+    (You have gained some peril)'
+  - To ensure that Angelos has enough time to finish his meeting, you make sure to
+    exaggerate the symptoms of your sudden fainting spell. Some of the men mutter
+    sagely to themselves about your 'delicate constitution', nodding their heads
+    as if they were a team of expert physicians agreeing on a diagnosis.
+  - Eventually, you manage to find a lull that gives you sufficient opportunity to
+    smoothly extract yourself from the conversation. With some gracious thanks, you
+    leave your two erstwhile caretakers behind.
+  - Angelos finds you a short time later, a great grin plastered on his face. "Ah,
+    you've truly outdone yourself Madame Decaux. My meeting with the Chevalier de
+    St. Georges went so well that we actually plan on meeting for dinner tomorrow
+    night!"
+  - '"Of course, I didn''t forget the payment that I owe you." He says in a low voice
+    and begins to describe the latest intrigues that he''s heard, concerning the
+    aristocracy at Versailles.'
+  - (You have gained a piece of Shocking Crown Gossip)
+  - (You have gained an piece of Outrageous Crown Gossip)
+  - You chat with Angelos for only a moment longer, otherwise there's a good chance
+    that someone seeing the two of you together might catch onto your ruse.
+  - This seems to have gone quite well.
+  - (You have gained a little credibility)
+  - Angelos leaves, and your reputation remains intact. Unfortunately, all of this
+    has still cost you precious time.
+  - The gentleman interrogating you rubs his chin thoughtfully. "It is true that
+    wasting someone's time is the highest form of disrespect. I also have no reason
+    to doubt your character. Very well."
+  - The gentleman steps aside and Angelos goes on ahead. You ask a passing servant
+    for some more wine, and decide to relax by yourself until his 'meeting' is complete.
+  - '"You have business with the Chevalier... and you really needed this woman to
+    speak up for you?" The gentleman narrows his eyes.'
+  - (You have spent a little credibility)
+  - '"Of course not!" Angelos laughs nervously. "My dear friend is just very punctilious.
+    It''s one of her many virtues."'
+  - Angelos maintains a carefully neutral expression, while the two of you slink
+    away from the room to somewhere quieter and less scornful.
+  - '"To the devil with him." Angelos mumbles to himself. "Now I''ll never meet the
+    Chevalier de St. Georges!"'
+  - '"I''m sorry Madame Decaux, but I must come up with a new plan."'
+  - With that, he leaves you to your own devices. Hopefully you can find some way
+    to repair your reputation after that debacle.
+  _linkText:
+  - 
+  - 
+  - 
+  - '"Pardon me monsieurs, but my friend already has an appointment with the Chevalier."'
+  - '"Allow me but a moment, and I''ll create a distraction. Then you can make your
+    move."'
+  - '"I''m sorry, but some gossip isn''t worth the wrath of that many powerful men."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

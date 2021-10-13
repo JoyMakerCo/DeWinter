@@ -42,12 +42,19 @@ namespace UGraph
         public int[] GetNeighbors(int node)
         {
             List<int> result = new List<int>();
-            foreach(Vector2Int link in Links)
+            try
             {
-                if (link.x == node)
+                foreach (Vector2Int link in Links)
                 {
-                    result.Add(link.y);
+                    if (link.x == node)
+                    {
+                        result.Add(link.y);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Data);
             }
             return result.ToArray();
         }

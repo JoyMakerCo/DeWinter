@@ -12,25 +12,37 @@ PluginImporter:
   validateReferences: 1
   platformData:
   - first:
-      '': OSXIntel
+      : Linux
     second:
       enabled: 1
       settings:
         CPU: None
   - first:
-      '': OSXIntel64
+      : LinuxUniversal
     second:
       enabled: 1
       settings:
         CPU: AnyCPU
   - first:
-      '': SamsungTV
+      : OSXIntel
+    second:
+      enabled: 1
+      settings:
+        CPU: None
+  - first:
+      : OSXIntel64
+    second:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+  - first:
+      : SamsungTV
     second:
       enabled: 0
       settings:
         STV_MODEL: STANDARD_13
   - first:
-      '': WP8
+      : WP8
     second:
       enabled: 0
       settings:
@@ -69,19 +81,7 @@ PluginImporter:
       settings:
         CPU: AnyCPU
   - first:
-      Standalone: Linux
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-  - first:
       Standalone: Linux64
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-  - first:
-      Standalone: LinuxUniversal
     second:
       enabled: 1
       settings:

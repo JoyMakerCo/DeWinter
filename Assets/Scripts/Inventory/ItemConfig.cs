@@ -9,8 +9,11 @@ using UnityEditor;
 namespace Ambition
 {
     // The name of the item config acts as the item's unique ID
-    public class ItemConfig : ScriptableObject
+    public class ItemConfig : ScriptableObject, AmbitionEditor.ILocalizedAsset
     {
+        public string Name;
+        public string Description;
+
         [Serializable]
         public struct ItemState
         {
@@ -22,14 +25,22 @@ namespace Ambition
         public ItemType Type;
         public int Price;
         public ItemState[] State;
-
-#if (UNITY_EDITOR)
-        [MenuItem("Assets/Create/Item")]
-        public static void CreateItem() => Util.ScriptableObjectUtil.CreateScriptableObject<ItemConfig>("New Item");
-#endif
-    }
+        public bool Permanent = false;
+        public bool Market = true;
 
 #if UNITY_EDITOR
+        public Dictionary<string, string> Localize()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            result[name + ItemConsts.ITEM_LOC_NAME] = Name;
+            result[name + ItemConsts.ITEM_LOC_DESCRIPTION] = Description;
+            return result;
+        }
+
+        [MenuItem("Assets/Create/Item")]
+        public static void CreateItem() => Util.ScriptableObjectUtil.CreateScriptableObject<ItemConfig>("New Item");
+    }
+
     [CustomPropertyDrawer(typeof(ItemConfig.ItemState))]
     public class ItemDrawer : PropertyDrawer
     {
@@ -48,6 +59,6 @@ namespace Ambition
 
             EditorGUI.EndProperty();
         }
-    }
 #endif
+    }
 }

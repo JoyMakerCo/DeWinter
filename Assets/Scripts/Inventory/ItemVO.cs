@@ -12,7 +12,7 @@ namespace Ambition
     public class ItemVO
     {
         [JsonProperty("name")]
-        public string Name;
+        public string Name; // Override Name (not used, but if the player is ever allowed to rename items, this is where it would go)
 
         [JsonProperty("id")]
         public string ID; // The id of the item's definition
@@ -29,6 +29,12 @@ namespace Ambition
         [JsonProperty("equipped")]
         public bool Equipped = false;
 
+        [JsonProperty("permanent")]
+        public bool Permanent = false;
+
+        [JsonProperty("market")]
+        public bool Market = true;
+        
         [JsonIgnore]
         public DateTime Created;
 
@@ -39,9 +45,6 @@ namespace Ambition
             get => Created.Ticks;
         }
 
-        [JsonProperty("config")]
-        public string Config;
-
         [JsonProperty("asset")]
         public string AssetID;
 
@@ -49,47 +52,28 @@ namespace Ambition
         public ItemVO(ItemVO item) : this(item, item.State) {}
         public ItemVO(ItemVO item, Dictionary<string, string> state)
         {
-            Name = item.Name;
             Type = item.Type;
             Equipped = item.Equipped;
             State = new Dictionary<string, string>(state);
             Price = item.Price;
             Created = item.Created;
             ID = item.ID;
-            Config = item.Config;
             AssetID = item.AssetID;
+            Permanent = item.Permanent;
         }
 
         public override string ToString()
         {
-            // yuck
-            if (Type == ItemType.Gossip)
+            string lines = string.Format( "ItemVO {0} {1} £{2}", Name, Type, Price);
+            if (State != null && State.Count > 0)
             {
-                return GossipWrapperVO.ToString(this);
+                lines += "\n State:";
+                foreach (KeyValuePair<string, string> state in State)
+                {
+                    lines += "\n  " + state.Key + ":" + state.Value;
+                }
             }
-            return string.Format( "ItemVO {0} {1} £{2}", Name, Type, Price);
-        }
-
-        public string[] Dump()
-        {
-            if (Type == ItemType.Gossip)
-            {
-                return new string[] { GossipWrapperVO.ToString(this) };
-            }
-
-            var lines = new List<string>();
-            lines.Add( string.Format( "ItemVO {0} {1} £{2}", Name, Type, Price) );
-
-            if (State.Count > 0)
-            {
-                lines.Add("|"+string.Join( ", ", State.Select(x => x.Key + ":" + x.Value).ToArray() ) );
-            }
-            if (Type == ItemType.Outfit)
-            {
-                lines.Add("|"+OutfitWrapperVO.GetDescription(this));
-            }
-            return lines.ToArray();
-
+            return lines;
         }
     }
 }

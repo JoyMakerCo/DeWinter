@@ -8,14 +8,8 @@ namespace Ambition
 	{
         public void Execute(ItemVO item)
         {
-            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
             item.Equipped = false;
-            if (inventory.Equipped.TryGetValue(item.Type, out ItemVO equipped) && equipped == item)
-            {
-                inventory.Equipped.Remove(item.Type);
-            }
-            inventory.Inventory.Add(item);
-            inventory.Broadcast();
+            AmbitionApp.Inventory.Broadcast();
         }
     }
 
@@ -23,14 +17,8 @@ namespace Ambition
     {
         public void Execute(ItemType type)
         {
-            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            if (inventory.Equipped.TryGetValue(type, out ItemVO equipped))
-            {
-                equipped.Equipped = false;
-                inventory.Equipped.Remove(type);
-                inventory.Inventory.Add(equipped);
-                inventory.Broadcast();
-            }
+            AmbitionApp.Inventory.Inventory.ForEach(i => { if (i.Type == type) i.Equipped = false; });
+            AmbitionApp.Inventory.Broadcast();
         }
     }
 }

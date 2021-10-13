@@ -1,0 +1,970 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: churchPartyRepeatable
+  m_EditorClassIdentifier: 
+  _Nodes: 0e000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 5, y: 63}
+  - {x: 6, y: 131}
+  - {x: 11, y: 310}
+  - {x: -233, y: 395}
+  - {x: 9, y: 406}
+  - {x: 380, y: 366}
+  - {x: 269, y: 443}
+  - {x: 550, y: 517}
+  - {x: -480, y: 478}
+  - {x: -233, y: 484}
+  - {x: -228, y: 571}
+  - {x: -476, y: 553}
+  - {x: -482, y: 648}
+  - {x: -481, y: 722}
+  - {x: -225, y: 700}
+  - {x: 15, y: 471}
+  - {x: 14, y: 542}
+  - {x: 10, y: 612}
+  - {x: 12, y: 677}
+  - {x: 12, y: 740}
+  - {x: 17, y: 810}
+  - {x: 268, y: 509}
+  - {x: 267, y: 572}
+  - {x: 270, y: 644}
+  - {x: 10, y: 183}
+  - {x: 6, y: 239}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 3, y: 4}
+    - {x: 3, y: 5}
+    - {x: 3, y: 6}
+    - {x: 6, y: 7}
+    - {x: 6, y: 8}
+    - {x: 4, y: 9}
+    - {x: 4, y: 10}
+    - {x: 10, y: 11}
+    - {x: 9, y: 12}
+    - {x: 13, y: 14}
+    - {x: 11, y: 15}
+    - {x: 5, y: 16}
+    - {x: 16, y: 17}
+    - {x: 17, y: 18}
+    - {x: 18, y: 19}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 8, y: 11}
+    - {x: 7, y: 22}
+    - {x: 22, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 13}
+    - {x: 2, y: 25}
+    - {x: 12, y: 13}
+    - {x: 25, y: 26}
+    - {x: 26, y: 3}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 62f0aa7874440453a8e55197eddbc499, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Crown - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Pious Lady
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: negative
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: negative
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: negative
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: negative
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      - Type: 12
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: church
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Pious Lady
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: putout
+        Name: Pious Lady
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: negative
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: church
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: putout
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: putout
+        Name: Pious Lady
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: church
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Pious Lady
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 20
+        ID: 
+        Value: 50
+        Operator: 2
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 0
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: A rather run of the mill interaction with a pious woman at a party.
+      You might find yourself having many like it, in the future.
+    Requirements: []
+    _date: -1
+  Name: A Holy Intrigue
+  _factions: 000001000000
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - In your experience, the Church's parties tend to be quieter than most and right
+    now, this one is no exception. You're unsure if it's the guests or the venue,
+    but people simply aren't talking as much as you'd hope.
+  - Right as you're about to give up, you notice someone who looks nearly as bored
+    as you are. She's staring at the other guests with an expression you can only
+    describe as 'barely concealed contempt'. She notices your approach.
+  - '"<i>Bonjour</i>." She sighs. "I assume you''re having trouble starting a conversation
+    as well? I swear, some people seem to think that the moment they align themselves
+    with the Church, that they have to exorcise themselves of any remaining mirth
+    or wit."'
+  - '"I assume your situation is similar, then?"'
+  - '"You? But we''ve just met!"'
+  - '"Are you serious? You really want to threaten me, just to hear what I''ve overheard?
+    I didn''t expect you to be so craven."'
+  - '"Really, you have nothing?"'
+  - '"That''s all the better then! If you have nothing interesting to say, then perhaps
+    you''ll enjoy this!" She says, leaving you uncertain as to whether you''ve just
+    been insulted or not.'
+  - '"Then I don''t know what I''d bother speaking with you." She replies, turning
+    up her nose at you.'
+  - '"Then again, if I can''t talk to you, then who can I speak with?" She laughs,
+    and begins to let you in on a juicy little rumor you''d never heard before.'
+  - '"No, I shouldn''t be spreading such scurrilous rumors, and the fact that you''re
+    clearly trying to pry them out of me only confirms that fact!"'
+  - '(You have lost a decent amount of credibility)
+
+    (You have gained a little
+    peril)'
+  - (You have gained a piece of Cheap Church Gossip)
+  - With said rumor firmly planted in your memory, you stretch the conversation out
+    a little with basic repartee, and just try to be welcoming. The two of you talk
+    for some time, and you briefly forget how quiet and lifeless everything was,
+    but a few moments ago.
+  - Just as things start to slow down, you slip away, to search for other opportunities.
+  - Before you can point out that she's the one who volunteered that she had such
+    a rumor in the first place, she storms off, leaving you to look quite the fool.
+  - (You have gained a decent amount of peril)
+  - '"Yet, I seem to have no other choice." She admits, glancing suspiciously at
+    the guests who she was maligning, but moments ago. "Fine, I''ll tell you what
+    I know."'
+  - She gives up this rumor, distilling it down to its most essential elements. She
+    clearly has no interest in entertaining you with this particular story.
+  - (You have gained a piece of Cheap Church Gossip)
+  - '"If you think there will be no consequences for this behavior, in a house of
+    God, then you are absolutely wrong."'
+  - That being said, she leaves, and you are left to your own infernal devices.
+  - (You have lost a little credibility)
+  - With that, she laughs, and begins to let you in on a juicy little rumor you'd
+    never heard before.
+  - (You have gained a piece of Cheap Church Gossip)
+  - '"I finally have something interesting to talk about, and not a single one of
+    these people will even do me the courtesy of a smile. It''s just so... unwelcoming."'
+  - '"Then again, perhaps this is a sign for me to keep my tongue to myself."'
+  _linkText:
+  - 
+  - 
+  - '"Maybe I''m just the person you should be speaking to."'
+  - '"My situation is that I need to know that rumor. It would be safer for you,
+    if you obliged..."'
+  - '"Not really. I don''t think I have anything to say at all."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

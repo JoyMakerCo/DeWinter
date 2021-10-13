@@ -4,91 +4,99 @@ using UFlow;
 using Util;
 namespace Ambition
 {
-    public class PickIncidentsState : UState
+    public class PickIncidentsState : UState, Core.IState
     {
-        private List<string> _guests;
-
-        public override void OnEnterState()
+        public override void OnEnter()
         {
-            PartyModel pmodel = AmbitionApp.GetModel<PartyModel>();
-            IncidentModel imodel = AmbitionApp.GetModel<IncidentModel>();
-            IncidentVO incident;
-            IncidentVO[] result;
-            int i, index;
-            string incidentID = pmodel.GetRequiredIncident();
-
-            if (!string.IsNullOrEmpty(incidentID))
+            PartyModel model = AmbitionApp.GetModel<PartyModel>();
+            IncidentVO[] incidents = new IncidentVO[model.NumRooms];
+            IncidentModel story = AmbitionApp.Story;
+            if (model.Incidents != null)
             {
-                result = new IncidentVO[pmodel.NumRooms];
-                index = RNG.Generate(pmodel.NumRooms);
-                for (i = pmodel.NumRooms - 1; i >= 0; --i)
+                incidents = new IncidentVO[model.NumRooms];
+                for (int i = model.NumRooms - 1; i >= 0; --i)
                 {
-                    if (i == index)
-                    {
-                        pmodel.Incidents[i] = incidentID;
-                        imodel.Incidents.TryGetValue(incidentID, out incident);
-                        result[i] = incident;
-                    }
-                    else
-                    {
-                        pmodel.Incidents[i] = null;
-                        result[i] = null;
-                    }
+                    incidents[i] = story.GetIncident(model.Incidents[i]);
                 }
             }
             else
-            { 
-                List<string> incidents = new List<string>(pmodel.Party.SupplementalIncidents);
-                int[] shuffle = new int[pmodel.NumRooms];
-                int temp = pmodel.NumRooms - incidents.Count;
-
-                if (temp > 0)
-                {
-                    List<string> names = new List<string>();
-                    result = imodel.GetIncidents(IncidentType.Party);
-                    foreach(IncidentVO rand in result)
-                    {
-                        if (!imodel.IsComplete(rand.ID) && AmbitionApp.CheckRequirements(rand.Requirements))
-                        {
-                            names.Add(rand.ID);
-                        }
-                    }
-                    if (names.Count <= temp) incidents.AddRange(names);
-                    else while (temp > 0)
-                    {
-                        index = RNG.Generate(names.Count);
-                        incidents.Add(names[index]);
-                        names.RemoveAt(index);
-                        --temp;
-                    }
-                }
-
-                for (i = shuffle.Length - 1; i >= 0; --i) shuffle[i] = i;
-                for (i= shuffle.Length - 1; i >= 0; --i)
-                {
-                    temp = shuffle[i];
-                    index = RNG.Generate(i);
-                    shuffle[i] = shuffle[index];
-                    shuffle[index] = temp;
-                    pmodel.Incidents[i] = shuffle[i] < incidents.Count ? incidents[shuffle[i]] : null;
-                }
-            }
-
-            result = new IncidentVO[pmodel.Incidents.Length];
-            for (i=result.Length-1; i>=0; --i)
             {
-                if (pmodel.Incidents[i] != null)
+                HashSet<string> characters = new HashSet<string>();
+                if (model.RequiredIncident != null)
                 {
-                    imodel.Incidents.TryGetValue(pmodel.Incidents[i], out incident);
-                    if (incident == null) pmodel.Incidents[i] = null;
-                    result[i] = incident;
+                    int index = RNG.Generate(model.NumRooms);
+                    incidents[index] = story.GetIncident(model.RequiredIncident);
                 }
                 else
                 {
-                    result[i] = null;
+                    List<IncidentVO> result = new List<IncidentVO>();
+                    IncidentVO incident;
+                    if (model.Party.SupplementalIncidents != null)
+                    {
+                        string[] shuffle = RNG.Shuffle(model.Party.SupplementalIncidents);
+                        foreach (string incidentID in shuffle)
+                        {
+                            incident = story.GetIncident(incidentID);
+                            if (result.Count < model.NumRooms)
+                            {
+                                if (FindCharacters(incident, characters))
+                                {
+                                    result.Add(incident);
+                                }
+                            }
+                        }
+                    }
+
+                    if (result.Count < model.NumRooms)
+                    {
+                        incidents = story.GetIncidents(IncidentType.Party);
+                        incidents = RNG.Shuffle(incidents);
+                        foreach (IncidentVO rand in incidents)
+                        {
+                            if (AmbitionApp.CheckIncidentEligible(rand)
+                                && (rand.Factions?.Length == 0 || Array.IndexOf(rand.Factions, model.Party.Faction) >= 0)
+                                && FindCharacters(rand, characters))
+                            {
+                                result.Add(rand);
+                            }
+                            if (result.Count >= model.NumRooms)
+                                break;
+                        }
+                    }
+                    while (result.Count < model.NumRooms)
+                    {
+                        result.Add(null);
+                    }
+                    incidents = RNG.Shuffle(result);
+                }
+                model.Incidents = new string[model.NumRooms];
+                for (int i = model.NumRooms - 1; i >= 0; --i)
+                {
+                    model.Incidents[i] = incidents[i]?.ID;
                 }
             }
-            AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, result);
+
+            AmbitionApp.SendMessage(PartyMessages.SELECT_INCIDENTS, incidents);
+            string title = AmbitionApp.Localize(PartyConstants.PARTY_NAME + model.Party.ID);
+            if (string.IsNullOrEmpty(title)) title = PartyConstants.PARTY_REASON + model.Party.Faction.ToString().ToLower() + "." + model.Party.phrases[0];
+            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, title);
+        }
+
+        private bool FindCharacters(IncidentVO incident, HashSet<string> characters)
+        {
+            if (incident?.Nodes == null) return false;
+            HashSet<string> local = new HashSet<string>();
+            foreach(MomentVO moment in incident.Nodes)
+            {
+                if (!string.IsNullOrEmpty(moment.Character1.Name) && characters.Contains(moment.Character1.Name))
+                    return false;
+                local.Add(moment.Character1.Name);
+                if (!string.IsNullOrEmpty(moment.Character2.Name) && characters.Contains(moment.Character2.Name))
+                    return false;
+                local.Add(moment.Character2.Name);
+            }
+            characters.UnionWith(local);
+            return true;
         }
     }
 }

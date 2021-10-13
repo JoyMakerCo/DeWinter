@@ -33,7 +33,7 @@ namespace Ambition
             AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
             AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
             AmbitionApp.Subscribe<CharacterVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
-            AmbitionApp.Subscribe(PartyMessages.SHOW_MAP, HandleShowMap);
+            AmbitionApp.Subscribe<string>(GameMessages.SCENE_LOADED, HandleShowMap);
             AmbitionApp.Subscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoomSFX);
             _partyMusic = MusicCollection.GetFMODEvent(partyModel.Party.Faction.ToString());
         }
@@ -49,7 +49,7 @@ namespace Ambition
             AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_CHARMED, GuestCharmedReaction);
             AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_OFFENDED, GuestPutOffReaction);
             AmbitionApp.Unsubscribe<CharacterVO>(PartyMessages.GUEST_REACTION_BORED, GuestBoredReaction);
-            AmbitionApp.Unsubscribe(PartyMessages.SHOW_MAP, HandleShowMap);
+            AmbitionApp.Unsubscribe<string>(GameMessages.SCENE_LOADED, HandleShowMap);
             AmbitionApp.Unsubscribe<RoomVO>(MapMessage.GO_TO_ROOM, HandleRoomSFX);
         }
 
@@ -59,9 +59,9 @@ namespace Ambition
             AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENT, AmbientSFXCollection.GetFMODEvent(/*room.Indoors*/ true, (int)partyModel.Party.Size));
         }
 
-        private void HandleShowMap()
+        private void HandleShowMap(string sceneID)
         {
-            if (!_partyStarted)
+            if (!_partyStarted && sceneID == SceneConsts.PARTY_SCENE)
             {
                 SetParam(_partyMusic, "Conversation Start", 0);
                 SetParam(_partyMusic, "WIN", 0);

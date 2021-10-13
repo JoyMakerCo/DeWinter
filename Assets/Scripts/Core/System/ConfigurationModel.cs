@@ -30,7 +30,6 @@ namespace Core
 
 		public ConfigurationModel()
 		{
-            Debug.Log("ConfigurationModel");
             if (_configData == null)
             {
                 _configData = Resources.Load(_configName) as ConfigurationData;

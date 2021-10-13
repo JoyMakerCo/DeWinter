@@ -1,0 +1,1312 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: ourPeculiarSystem
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 82}
+  - {x: -4, y: 166}
+  - {x: -4, y: 233}
+  - {x: -14, y: 292}
+  - {x: -12, y: 366}
+  - {x: -277, y: 442}
+  - {x: -13, y: 442}
+  - {x: 207, y: 438}
+  - {x: -479, y: 511}
+  - {x: -270, y: 513}
+  - {x: 203, y: 509}
+  - {x: 207, y: 577}
+  - {x: 206, y: 642}
+  - {x: 206, y: 706}
+  - {x: 210, y: 799}
+  - {x: -479, y: 670}
+  - {x: -486, y: 592}
+  - {x: -481, y: 748}
+  - {x: -491, y: 825}
+  - {x: -485, y: 954}
+  - {x: -271, y: 595}
+  - {x: -272, y: 749}
+  - {x: -272, y: 892}
+  - {x: -268, y: 665}
+  - {x: -269, y: 823}
+  - {x: -13, y: 513}
+  - {x: -14, y: 586}
+  - {x: -19, y: 660}
+  - {x: -17, y: 727}
+  - {x: -17, y: 786}
+  - {x: -20, y: 856}
+  - {x: -21, y: 938}
+  - {x: -27, y: 1002}
+  - {x: -27, y: 1058}
+  - {x: -23, y: 1198}
+  - {x: -26, y: 1122}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 5, y: 8}
+    - {x: 6, y: 9}
+    - {x: 6, y: 10}
+    - {x: 8, y: 11}
+    - {x: 11, y: 12}
+    - {x: 12, y: 13}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 9, y: 17}
+    - {x: 17, y: 16}
+    - {x: 16, y: 18}
+    - {x: 18, y: 19}
+    - {x: 19, y: 20}
+    - {x: 10, y: 21}
+    - {x: 21, y: 24}
+    - {x: 24, y: 22}
+    - {x: 23, y: 20}
+    - {x: 22, y: 25}
+    - {x: 25, y: 23}
+    - {x: 7, y: 26}
+    - {x: 26, y: 27}
+    - {x: 27, y: 28}
+    - {x: 29, y: 30}
+    - {x: 30, y: 31}
+    - {x: 31, y: 32}
+    - {x: 32, y: 33}
+    - {x: 33, y: 34}
+    - {x: 34, y: 36}
+    - {x: 36, y: 35}
+    - {x: 35, y: 20}
+    - {x: 28, y: 29}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Proud Traditionalist
+        Motion: 1
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Crown - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 4
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 3
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 3
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 0
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 3
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Proud Traditionalist
+        Motion: 3
+      Character2:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 70
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: The architect, Christophe is locked in a conversation about noble
+      priveleges, that he doesn't want to be in. Perhaps you can rescue him?
+    Requirements:
+    - Type: 28
+      ID: elisabethVigeeLeBrun
+      Value: 1
+      Operator: 4
+    - Type: 8
+      ID: necessaryHonesty
+      Value: 1
+      Operator: 4
+    _date: -1
+  Name: Our Peculiar System
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: 0
+  _nodeText:
+  - You come across the architect Christophe, who's currently talking with some nobleman
+    about taxation. You're not really certain how he was drawn into this particular
+    conversation, but judging from Christophe's barely concealed frustration, you
+    get the feeling it was by no intent of her own.
+  - '"Really, I must go." Christophe insists. "All I was saying earlier is that if
+    the nobility of France have most of the money, but functionally pay little to
+    no taxes... it''s plain to see how such a thing could never last, <i>non</i>?
+    Eventually, something is going to break."'
+  - '"Nonsense, you''ll see soon enough!" The nobleman chuckles, intercepting Christophe
+    as he''s about to leave. "Such arrangements are the bedrock of a just monarchy.
+    Think! How many kingdoms in Europe are balanced in such a way?"'
+  - '"None, Monsieur. No other kingdom in all of Europe still allows their nobility
+    such a privelege. They haven''t, for a very long time. Perhaps there''s a reason
+    for that?"'
+  - "\"Ah well, uh\u2026\""
+  - '"That''s because of our unique situation! You foreigners simply don''t understand.
+    For example-"'
+  - '"You wish to take care of this for me?"'
+  - '"What? You ingrates really think we should be so unfairly burdened, after all
+    we''ve done for the people of France?"'
+  - '"''Simply different'', without an explanation is less of an answer than silence."
+    Christophe says with a shake of his head. "It''s the sort of thing people say
+    to make themselves feel better about being taken advantage of."'
+  - '"Ah, splendid! It''s nice to have someone who knows how important my time is!"
+    He says, suddenly coming to the conclusion that it is he who was the one being
+    inconvenienced all along.'
+  - '"Ah, this is some clumsy ruse intended to push me away. I don''t have to endure
+    such disrespect!"'
+  - (You have lost some credibility)
+  - Christophe leaves, before you can offer any sort of defense.
+  - As the architect disappears from sight, the nobleman tuts disapprovingly. "Ignore
+    such grand pronouncements, madame. He's just another arrogant foreigner, covetous
+    of what we have. At least you understand your place in things."
+  - (You have lost some peril)
+  - You talk with the nobleman a while longer, but the conversation doesn't seem
+    to stretch beyond your ability to flatter him and his ability to take those words
+    at face value. Eventually, you leave to see if you can find a conversation that's
+    more substantial.
+  - The older nobleman disappears to badger someone else, and Christophe waits until
+    he's entirely gone before turning to you.
+  - (You have lost some peril)
+  - '"Normally, I''d relish the opportunity to verbally trounce someone like that,
+    but you''ve probably just saved me from myself, Yvette. So, you have my thanks!"'
+  - (You have gained a little credibility)
+  - You chat with Christophe for a bit, and laugh behind your hands together at your
+    now departed conversational partner, before parting ways.
+  - '(You have lost a decent amount of credibility)
+
+    (You have gained some peril)'
+  - '"Well, if nothing else, I appreciate what you were trying to do." Christophe
+    says with a shrug. "For what little it''s worth, I don''t think anything could
+    change that blowhard''s mind."'
+  - '"After all, a man will never understand something, if his livelihood depends
+    on not understanding it. No matter how you try, he''ll just blame you for not
+    explaining it right."'
+  - The older nobleman storms off to badger someone else, and Christophe waits until
+    he's entirely gone before turning to you.
+  - (You have gained a little credibility)
+  - '"...such as?"'
+  - '"Well, to start, we''ve been at the forefront of the King''s armies, fighting
+    for France for over a millenia!"'
+  - '"Ah, but did you?" Christophe says, searching the nobleman''s jacket for any
+    ribbons or honors, and finding it distinctly barren. "Did you personally fight
+    for France, in any of its many, extremely expensive wars? Wars paid for by taxes."'
+  - '"Well, not me personally, but a cousin of mine..."'
+  - '"Have you personally served in France''s army or navy?"'
+  - '"..."'
+  - '"Your silence answers my question more thoroughly than any words you could speak!
+    Madame Decaux and I have a pressing engagement. Please feel free to join us when
+    you''d like to join the rest of Europe in the modern day."'
+  - (You have gained a decent amount of credibility)
+  - '"This isn''t over, you quarrelsome woman. Nor is it for you, you Austrian cur!"'
+  - (You have gained a decent amount of peril)
+  - The older nobleman storms off, shaking his fist at you both and muttering some
+    impotent oath of vengeance to himself. The nearby crowd whispers worriedly amongst
+    themselves at his departure.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Monsieur, why don''t you leave me alone with Christophe? I''m sure I can convince
+    him."'
+  - '"I think he wants to be in this conversation about as much as I want to be paying
+    your share of taxes."'
+  - '"Christophe, you should listen to the honorable Monsieur, here. Things are simply
+    different in France."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

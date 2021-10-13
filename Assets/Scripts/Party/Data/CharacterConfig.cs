@@ -1,40 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
 namespace Ambition
 {
-    public class CharacterConfig : ScriptableObject
+    public class CharacterConfig : ScriptableObject, AmbitionEditor.ILocalizedAsset
     {
-        public string DisplayName;
+        public string Name;
         public string FullName;
         public string FormalName;
-        public string Background;
+        public string ShortName;
+        public string Description;
+        public string[] FavoredLocations;
+        public string[] OpposedLocations;
         public FactionType Faction;
-        public string AvatarID;
+        public Gender Gender;
+        public AvatarConfig Avatar;
+        public bool Formal = false;
+        public bool Acquainted = false;
 
-        [Range(1, 100)]
+        [Range(0, 100)]
         public int Favor;
-
-        public CharacterConfig Spouse;
-        public bool Celibate;
 
         public CharacterVO GetCharacter() => new CharacterVO()
         {
             ID = this.name,
-            Name = this.DisplayName,
-            FullName = _FullName,
-            FormalName = _FormalName,
-            AvatarID = this.AvatarID,
             Favor = Favor,
-            Spouse = Spouse?.name,
             Faction = Faction,
-            Background = Background,
-            Celibate = Celibate,
+            Avatar = Avatar?.name,
+            Gender = Gender,
+            Acquainted = Acquainted,
+            FavoredLocations = FavoredLocations,
+            OpposedLocations = OpposedLocations,
+            Formal = Formal
         };
 
-        private string _FullName => string.IsNullOrWhiteSpace(FullName) ? this.DisplayName : FullName;
-        private string _FormalName => string.IsNullOrWhiteSpace(FormalName) ? _FullName : FormalName;
+        public Dictionary<string, string> Localize()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            result[CharacterConsts.LOC_NAME + name] = Name;
+            result[CharacterConsts.LOC_SHORT_NAME + name] = string.IsNullOrEmpty(ShortName) ? Name : ShortName;
+            result[CharacterConsts.LOC_FULL_NAME + name] = string.IsNullOrEmpty(FullName) ? Name : FullName;
+            result[CharacterConsts.LOC_FORMAL_NAME + name] = string.IsNullOrEmpty(FormalName) ? Name : FormalName;
+            result[CharacterConsts.LOC_DESCRIPTION + name] = Description;
+            return result;
+        }
 
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("Ambition/Create/Character")]

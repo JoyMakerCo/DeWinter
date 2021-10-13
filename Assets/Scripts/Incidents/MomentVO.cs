@@ -11,9 +11,10 @@ namespace Ambition
 		public string AvatarID;
 		public string Pose;
 		public string Name;
-	}
+        public CharacterMotion Motion;
+    }
 
-	[Serializable]
+    [Serializable]
 	public class MomentVO
 	{
 		public string Text;
@@ -21,7 +22,7 @@ namespace Ambition
 		public Sprite Background;
 		public IncidentCharacterConfig Character1;
 		public IncidentCharacterConfig Character2;
-		public SpeakerType Speaker;
+        public SpeakerType Speaker;
 		public CommodityVO[] Rewards;
         public FMODEvent Music;
         public FMODEvent AmbientSFX;

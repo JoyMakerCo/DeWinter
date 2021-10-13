@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: incidentClearingOnesHead
+  m_EditorClassIdentifier: 
+  Name: Clearing Ones Head
+  LocationWindowDescription: "Taking a break to walk alongside the river with Camille,
+    you come across Alex, who appears to be quite troubled by something he\u2019s
+    seen."
+  IntroIncidentConfig: {fileID: 11400000, guid: 3318ac3b909225d40a7b7a8548deadef,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
+  OneShot: 1
+  IsRendezvous: 0
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: e438efe3d1d34ce428535d5775781deb,
+    type: 3}
+  Requirements:
+  - Type: 8
+    ID: aMysteriousLetter
+    Value: 1
+    Operator: 4
+  - Type: 23
+    ID: Thomas-AlexandreDead
+    Value: 0
+    Operator: 3
+  - Type: 28
+    ID: thomasAlexandreDumas
+    Value: 1
+    Operator: 4
+  - Type: 8
+    ID: researchingArmand
+    Value: 0
+    Operator: 3

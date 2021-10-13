@@ -3,9 +3,6 @@ namespace Ambition
 {
     public class ReturnToEstateState : UFlow.UState
     {
-        public override void OnEnterState()
-        {
-            AmbitionApp.GetModel<ParisModel>().Location = null;
-        }
+        public override void OnEnter() => AmbitionApp.Paris.Location = null;
     }
 }

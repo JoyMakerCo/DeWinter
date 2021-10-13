@@ -24,13 +24,13 @@ namespace Ambition
 				{"$HOSTNAME", p.Host},
 				{"$FACTION", AmbitionApp.Localize(p.Faction.ToString())}};
 
-			if (p.Date == AmbitionApp.GetModel<GameModel>().Date)
+			if (p.Day == AmbitionApp.GetModel<CalendarModel>().Day)
 			{
-				BodyText.text = AmbitionApp.GetString("rsvp_cancel_dayof_dialog.title", subs);
+				BodyText.text = AmbitionApp.Localize("rsvp_cancel_dayof_dialog.title", subs);
 			}
 			else
 			{
-				BodyText.text = AmbitionApp.GetString("rsvp_cancel_dialog.body", subs);
+				BodyText.text = AmbitionApp.Localize("rsvp_cancel_dialog.body", subs);
 			}
 		}
 

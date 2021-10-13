@@ -9,20 +9,16 @@ namespace Ambition
 	{
 		public void Execute (ItemVO item)
 		{
-			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-
-			if (item.Type == ItemType.Gossip)
+            InventoryModel inventory = AmbitionApp.Inventory;
+            int livre = AmbitionApp.Game.Livre;
+			if (item != null && livre + item.Price >= 0 && inventory.Inventory.Remove(item))
 			{
-				Debug.LogError("SellGossipCmd invoked on gossip item: " + item.ToString() );
-				return;
-			}
-
-			if (model.Inventory.Remove(item))
-			{
-                // make it available to buy back
-                model.Market?.Add(item);
-                AmbitionApp.GetModel<GameModel>().Livre.Value += item.Price;
-                model.Broadcast();
+                CommodityVO profit = new CommodityVO(CommodityType.Livre, item.Price);
+                AmbitionApp.SendMessage(profit);
+                // Seller will markup the used price.
+                item.Price = (int)(item.Price / inventory.SellbackMultiplier);
+                inventory.Market?.Add(item);
+                inventory.Broadcast();
 			}
 		}
 	}

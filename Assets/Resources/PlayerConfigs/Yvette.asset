@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Yvette
   m_EditorClassIdentifier: 
   Name: Yvette Decaux
+  ShortName: Yvette
   Incidents:
   - {fileID: 11400000, guid: 14fad81114a8b054ab0dc9b55e8b588b, type: 2}
   Chapters:
@@ -23,6 +24,12 @@ MonoBehaviour:
     Sting:
       Name: 
       Parameters: []
+    EstateMusic:
+      Name: event:/Music/Estate A
+      Parameters: []
+    TrivialPartyChance: 0
+    DecentPartyChance: 0
+    GrandPartyChance: 0
   - Name: Chapter 1 - Establishing Oneself
     Date:
       _ticks: 564308640000000000
@@ -30,26 +37,52 @@ MonoBehaviour:
     Sting:
       Name: event:/Music/OS - Chapter 1
       Parameters: []
+    EstateMusic:
+      Name: event:/Music/Estate A
+      Parameters: []
+    TrivialPartyChance: 1
+    DecentPartyChance: 0
+    GrandPartyChance: 0
   - Name: Chapter 2 - Playing To Win
     Date:
-      _ticks: 564339744000000000
+      _ticks: 564345792000000000
     Splash: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
     Sting:
       Name: event:/Music/OS - Chapter 2
       Parameters: []
+    EstateMusic:
+      Name: event:/Music/Estate B
+      Parameters: []
+    TrivialPartyChance: 3
+    DecentPartyChance: 2
+    GrandPartyChance: 1
   - Name: Chapter 3 - Trials and Tribulations
     Date:
-      _ticks: 564407136000000000
-    Splash: {fileID: 21300000, guid: dd5bdfc98e104604b8b3588520de1eb0, type: 3}
+      _ticks: 564421824000000000
+    Splash: {fileID: 21300000, guid: 72ad06449365c144b8bdaa90293d4b2a, type: 3}
     Sting:
       Name: event:/Music/OS - Chapter 3
       Parameters: []
+    EstateMusic:
+      Name: event:/Music/Estate C
+      Parameters: []
+    TrivialPartyChance: 0
+    DecentPartyChance: 0
+    GrandPartyChance: 0
   Inventory:
   - {fileID: 11400000, guid: 2bcdf24dccb3cf548bb3b790e5ff7246, type: 2}
   Description: A young woman from a small fishing village to the South, Yvette came
-    to Paris with hopes of marrying in the the nobility. Charming and ambitious, she
-    is balanced and perfect for new Players.\n\n-Balanced Character\n-No Advantages
+    to Paris with hopes of marrying in the the nobility. Charming and ambitious,
+    she is balanced and perfect for new Players.\n\n-Balanced Character\n-No Advantages
     or Disadvantages.
   Portrait: {fileID: 0}
   Doll: {fileID: 0}
   Livre: 100
+  InvitationRequirements:
+  - Type: 8
+    ID: aCertainNotoriety
+    Value: 1
+    Operator: 0
+  Characters: []
+  Servants:
+  - {fileID: 11400000, guid: 471de8526a8af455bbb4674860a1254d, type: 2}

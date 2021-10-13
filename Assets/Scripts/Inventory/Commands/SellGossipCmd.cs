@@ -5,23 +5,19 @@ using UnityEngine;
 
 namespace Ambition
 {
-	public class SellGossipCmd : ICommand<ItemVO>
+	public class SellGossipCmd : ICommand<GossipVO>
 	{
-		public void Execute (ItemVO item)
+		public void Execute (GossipVO gossip)
 		{
-			if (item.Type != ItemType.Gossip)
-			{
-				Debug.LogError("SellGossipCmd invoked on non-gossip item: " + item.ToString() );
-				return;
-			}
-
-			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-			if (model.Inventory.Remove(item))
-			{
-                AmbitionApp.GetModel<GameModel>().Livre.Value += GossipWrapperVO.GetValue(item);
-				model.GossipShared(item);
-				model.Broadcast();
-			}
+			if (gossip != null)
+            {
+                int value = AmbitionApp.Gossip.GetValue(gossip, AmbitionApp.Calendar.Day);
+                CommodityVO profit = new CommodityVO(CommodityType.Livre, value);
+                AmbitionApp.SendMessage(profit);
+                AmbitionApp.Gossip.Gossip.Remove(gossip);
+                ++AmbitionApp.Gossip.GossipActivity;
+                AmbitionApp.Gossip.Broadcast();
+            }
 		}
 	}
 }

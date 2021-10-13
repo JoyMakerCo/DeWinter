@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: incidentOldConnections
+  m_EditorClassIdentifier: 
+  Name: Old Connections
+  LocationWindowDescription: "What could Honorade and Pierre, of all people, possibly
+    have to say to each other? Whatever it is, Honorade doesn\u2019t look very interested
+    in hearing it. This might be a good chance to earn the favor of at least one
+    of them."
+  IntroIncidentConfig: {fileID: 11400000, guid: 32a3036a6d435024d95dd8405f5b87f7,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
+  OneShot: 1
+  IsRendezvous: 0
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: 54b0ec29e16439b408d57add78f97707,
+    type: 3}
+  Requirements:
+  - Type: 28
+    ID: honoradeGazel
+    Value: 1
+    Operator: 4
+  - Type: 8
+    ID: thatMostReputablePaper
+    Value: 1
+    Operator: 4
+  - Type: 8
+    ID: aMysteriousLetter
+    Value: 1
+    Operator: 4
+  - Type: 8
+    ID: researchingArmand
+    Value: 0
+    Operator: 3

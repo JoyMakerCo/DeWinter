@@ -5,12 +5,17 @@ using UnityEngine;
 
 namespace Ambition
 {
-	public class FireServantCmd : ICommand<ServantVO>
-	{
-		public void Execute (ServantVO servant)
-		{
-			ServantModel model = AmbitionApp.GetModel<ServantModel>();
-			model.Fire(servant);
-		}
-	}
+    public class FireServantCmd : ICommand<string>
+    {
+        public void Execute(string servantID)
+        {
+            ServantModel model = AmbitionApp.GetModel<ServantModel>();
+            ServantVO servant = model.GetServant(servantID);
+            if (servant != null && servant.Status == ServantStatus.Hired)
+            {
+                servant.Status = ServantStatus.Introduced;
+                model.Broadcast();
+            }
+        }
+    }
 }

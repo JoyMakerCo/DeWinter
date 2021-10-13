@@ -24,7 +24,7 @@ namespace Ambition
 
         public LocalizedTextField[] LocalizedText;
 
-        void Awake()
+        void Start()
         {
             foreach (LocalizedTextField row in LocalizedText)
             {

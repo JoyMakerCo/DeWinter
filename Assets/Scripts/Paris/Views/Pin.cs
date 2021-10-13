@@ -8,69 +8,23 @@ namespace Ambition
 {
     public class Pin : MonoBehaviour
     {
-        public IncidentConfig IntroIncidentConfig;
-
-        public IncidentConfig[] StoryIncidentConfigs;
-        public string SceneID;
-        public bool OneShot;
-        public string LocationWindowDescription;
-        public Sprite LocationModalSprite;
+        public LocationConfig Config;
         public GameObject Label;
-        public bool Discoverable;
-        public RequirementVO[] Requirements;
+        public Text LabelText;
 
-        public LocationVO GetLocation()
-        {
-            RequirementVO[] requirements = new RequirementVO[Requirements.Length];
-            Array.Copy(Requirements, requirements, requirements.Length);
-            IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
-
-            string[] incidents = new string[StoryIncidentConfigs.Length];
-            IncidentVO incident;
-            if (IntroIncidentConfig != null && !model.Incidents.ContainsKey(IntroIncidentConfig.name))
-            {
-                model.Incidents.Add(IntroIncidentConfig.name, IntroIncidentConfig.GetIncident());
-            }
-            for (int i= StoryIncidentConfigs.Length-1; i>=0; --i)
-            {
-                if (StoryIncidentConfigs[i] != null && !model.Incidents.ContainsKey(StoryIncidentConfigs[i].name))
-                {
-                    incident = StoryIncidentConfigs[i].GetIncident();
-                    if (incident != null)
-                    {
-                        model.Incidents[incident.ID] = incident;
-                    }
-                    incidents[i] = incident?.ID;
-                }
-            }
-
-            return new LocationVO()
-            {
-                ID = name,
-                IntroIncident = IntroIncidentConfig?.name,
-                StoryIncidents = incidents,
-                SceneID = SceneID,
-                OneShot = OneShot,
-                Discoverable = Discoverable,
-                Requirements = requirements
-            };
-        }
+        public RequirementVO[] Requirements => Config?.Requirements;
+        public bool IsDiscoverable => Config?.IsDiscoverable ?? false;
+        public bool IsRendezvous => Config?.IsRendezvous ?? false;
 
         public void HandleClick()
         {
-            AmbitionApp.SendMessage<Pin>(ParisMessages.SELECT_LOCATION, this);
+            AmbitionApp.SendMessage(ParisMessages.SELECT_LOCATION, Config);
         }
 
-        public void ShowLabel()
+        public void ShowLabel(bool active)
         {
-            Label.SetActive(true);
+            LabelText.text = AmbitionApp.Localize(ParisConsts.LABEL + Config.name);
+            Label.SetActive(active);
         }
-
-        public void HideLabel()
-        {
-            Label.SetActive(false);
-        }
-
-        public string Name { get; private set; }
     }
 }

@@ -1,54 +1,48 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Ambition
 {
-	public class FactionVO
-	{
+    [Serializable]
+    public class FactionVO
+    {
         public FactionType Type;
+        public int Modesty; //How modest do they like their outfits?
+        public int Luxury; //How luxurious do they like their outfits?
+        public bool Steadfast;
+        public int Allegiance; //-100 means the Faction is devoted to the Third Estate, 100 means they are devoted to the Crown
+        public int Power; //How powerful is this faction in the game?
 
-		[JsonProperty("Name")]
-	    public string Name
+        public FactionVO() { }
+        public FactionVO(FactionVO faction)
         {
-            internal set
-            {
-                if (!System.Enum.TryParse<FactionType>(value, ignoreCase:true, out Type))
-                    Type = FactionType.Neutral; // Not that this makes any sense
-            }
-            get => Type.ToString();
+            Type = faction.Type;
+            Modesty = faction.Modesty;
+            Luxury = faction.Luxury;
+            Steadfast = faction.Steadfast;
+            Allegiance = faction.Allegiance;
+            Power = faction.Power;
         }
 
-        [JsonProperty("Modesty")]
-		public int Modesty; //How modest do they like their outfits?
+        public override string ToString()
+        {
+            return "Faction: " + Type.ToString() +
+                "\n modesty: " + Modesty.ToString() +
+                "\n luxury: " + Luxury.ToString() +
+                "\n steadfast: " + Steadfast.ToString() +
+                "\n allegiance: " + Allegiance.ToString() +
+                "\n power: " + Power.ToString();
+        }
+    }
 
-		[JsonProperty("Luxury")]
-		public int Luxury; //How luxurious do they like their outfits?
-
-		[JsonProperty("Steadfast")]
-		public bool Steadfast //Would this faction change allegiances?
-		{
-			get;
-			private set;
-		}
-
-		[JsonProperty("Baroque")] // "Baroque" is a scale between Rococo (0) and Traditional (100)
-		public int[] Baroque;
-
-		[JsonProperty("Allegiance")]
-		public int Allegiance; //-100 means the Faction is devoted to the Third Estate, 100 means they are devoted to the Crown
-
-		[JsonProperty("Power")]
-		public int Power; //How powerful is this faction in the game?
-
-		public int Level; // Player's Reputation Level with this Faction
-	    public int Reputation=0; //What's the Player's Rep with this faction? Raw Number
-	    public string knownPower = "Unknown"; //Used in the 'Test the Waters' screen
-	    public string knownAllegiance = "Unknown"; //Used in the 'Test the Waters' screen
-
-		public int LargestAllowableParty;
-		public int Priority;
-        public int DeckBonus=0;
-	}
+    [Serializable]
+    public struct FactionStandingsVO
+    {
+        public FactionType Faction;
+        public int Allegiance;
+        public int Power;
+    }
 }

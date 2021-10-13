@@ -9,15 +9,17 @@ namespace Ambition
     {
         public void Execute(CommodityVO reward)
         {
-            //Debug.LogFormat( "FactionAllegianceReward.Execute, {0} {1}", reward.ID, reward.Value);
-            FactionModel factions = AmbitionApp.GetModel<FactionModel>();
-            if (Enum.TryParse(reward.ID, ignoreCase:true, out FactionType factionID))
+            if (Enum.TryParse(reward.ID, ignoreCase: true, out FactionType factionID)
+                && AmbitionApp.Politics.Factions.TryGetValue(factionID, out FactionVO faction)
+                && faction != null
+                && !faction.Steadfast)
             {
-                AmbitionApp.SendMessage(FactionMessages.ADJUST_FACTION,AdjustFactionVO.MakeAllegianceVO(factionID, reward.Value));
-                return;
+                faction.Allegiance += reward.Value;
+                if (faction.Allegiance > 100) faction.Allegiance = 100;
+                else if (faction.Allegiance < -100) faction.Allegiance = -100;
+                AmbitionApp.SendMessage(faction);
+                AmbitionApp.Politics.Broadcast();
             }
-
-            Debug.LogErrorFormat("Couldn't find faction {0} in FactionPowerReward",reward.ID);
         }
     }
 }

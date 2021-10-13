@@ -1,0 +1,991 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: spilledDrinksMilitary
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 09000000
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 124}
+  - {x: 5, y: 235}
+  - {x: -12, y: 330}
+  - {x: 3, y: 522}
+  - {x: -214, y: 585}
+  - {x: 10, y: 595}
+  - {x: 355, y: 649}
+  - {x: -116, y: 667}
+  - {x: 148, y: 778}
+  - {x: 437, y: 813}
+  - {x: 175, y: 1019}
+  - {x: -426, y: 783}
+  - {x: 2, y: 389}
+  - {x: 112, y: 671}
+  - {x: 126, y: 724}
+  - {x: 155, y: 841}
+  - {x: 242, y: 583}
+  - {x: 158, y: 932}
+  - {x: 398, y: 716}
+  - {x: 2, y: 183}
+  - {x: -123, y: 733}
+  - {x: 2, y: 58}
+  - {x: 0, y: 460}
+  - {x: -330, y: 640}
+  Incident:
+    Links:
+    - {x: 2, y: 3}
+    - {x: 4, y: 5}
+    - {x: 4, y: 6}
+    - {x: 6, y: 8}
+    - {x: 3, y: 13}
+    - {x: 6, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 9}
+    - {x: 9, y: 16}
+    - {x: 4, y: 17}
+    - {x: 17, y: 7}
+    - {x: 16, y: 18}
+    - {x: 18, y: 11}
+    - {x: 7, y: 19}
+    - {x: 19, y: 10}
+    - {x: 1, y: 20}
+    - {x: 20, y: 2}
+    - {x: 8, y: 21}
+    - {x: 0, y: 22}
+    - {x: 22, y: 1}
+    - {x: 13, y: 23}
+    - {x: 5, y: 24}
+    - {x: 21, y: 12}
+    - {x: 24, y: 12}
+    - {x: 23, y: 4}
+    Nodes:
+    - Text: 'Relaxing at the party, you feel more comfortable with your new life
+        than before. Sipping from your recently acquired glass of wine, you notice
+        a fresh batch of hors d''oeuvres being brought out from the kitchen.
+
+
+        This
+        feels right. You could get used to this.'
+      Background: {fileID: 21300000, guid: 1d1cd0244eea6d044ba503e4a01a7c2a, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Military - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_outdoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Suddenly, you feel someone barge into you, sending you reeling a few
+        steps. While you manage to catch your balance on a nearby table, your chest
+        feels wet, and your wineglass now appears to be empty.
+
+
+        Oh no.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Looking down, you see an enormous wine stain down your front.
+
+
+        (Your
+        outfit has lost some novelty)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Turning around, you see two women, one of them is obviously deep in
+        their cups. The other appears to be trying to prevent her friend from embarassing
+        themselves too much. \n\n\"Sorry about the stain, we were just leaving.\"
+        The sober one apologizes half-heartedly. "
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: Careful Guest
+        Motion: 1
+      Character2:
+        AvatarID: guest02b
+        Pose: negative
+        Name: Drunk Guest
+        Motion: 2
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Why did we stop? Where are we going?" She slurs, looking confused.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: negative
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Surprised by your patience and mangnanimity, they get some water and
+        help you blot at the stain before it dries completely. It''s enough to get
+        rid of most of the stain, but it''s still noticable to those who look for
+        it.
+
+
+        (You have gained a little credibility back)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: neutral
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: '[Credibility Check]'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: bored
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Before they can even say anything, they''re interrupted with laughter
+        from the other guests in this room, who seem to appreciate your biting wit.
+        The pair of women settle on staring daggers in your direction until the laughter
+        subsides.
+
+
+        (You have gained quite a bit of credibility)
+
+        (You
+        have gained some peril)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: putout
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '[Success]
+
+        Not only are the pair in front of you somewhat taken
+        aback by your firm request, the watching crowd mutters in approval. While
+        the two women don''t seem thrilled about having to apologize, they can tell
+        that the room has turned against them in a serious way.
+
+
+        (You have
+        gained some credibility)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: negative
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: '"Ah yes, we''ll certainly apologize for you being so careless as to
+        spill wine all over yourself at the slightest nudge."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: approval
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: With a mutter of half hearted retorts, the pair skulk away, much to the
+        delight of those present. Your dress may be in worse condition than when
+        you started, but at least you got to have some fun at the expense of those
+        who deserve it.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: Careful Guest
+        Motion: 3
+      Character2:
+        AvatarID: guest02b
+        Pose: putout
+        Name: Drunk Guest
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'With narry a backward glance, the two leave, giggling to themselves.
+
+
+        Looking
+        around at the rest of the guests at the party, hoping to find some sort of
+        aid, you can tell that you''re being studiously ignored. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Careful Guest
+        Motion: 3
+      Character2:
+        AvatarID: guest02b
+        Pose: approval
+        Name: Drunk Guest
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: With a mutter of apology, the pair depart and leave you alone. The crowd
+        takes their focus off of you and returns to the party.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Careful Guest
+        Motion: 3
+      Character2:
+        AvatarID: guest02b
+        Pose: approval
+        Name: Drunk Guest
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Her drunk friend decides that now would be a good time to chime in.
+        "What''s wrong? It''s not like I made that dress look any worse."
+
+
+        You
+        hear a few people in the crowd chuckle at this clumsy barb.
+
+
+        (You
+        have lost some credibility)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: negative
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: The room feels palpably quieter as the two of them stare at you in disbelief.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: negative
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Then, they start to laugh.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: approval
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"What are you, a child?" The inebriated friend manages to ask. You can
+        hear a few chuckles from the crowd around you.
+
+
+        (You have lost a
+        little more credibility)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: approval
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: Eyes frowning, mouths agape, the pair just stares at you in shock.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: putout
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: approval
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: putout
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 15
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: negative
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: negative
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Careful Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest02b
+        Pose: neutral
+        Name: Drunk Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"<i>Pardon</i>, I''m not mad, can you just help me blot this stain before
+        it sets?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"It''s alright, you''re free to go when I get an apology." <Credibility
+        Check Icon>'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 50
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"That''s a good question. Why did you stop? Embarassments like you belong
+        outside." <Peril Icon>'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: It appears that some guest has spilled their drink on you. Surely,
+      an apology is in order for such a glaring misstep, <i>non</i>?
+    Requirements:
+    - Type: 28
+      ID: thomasAlexandreDumas
+      Value: 1
+      Operator: 4
+    - Type: 8
+      ID: spilledDrinksCrown
+      Value: 0
+      Operator: 3
+    - Type: 8
+      ID: spilledDrinksChurch
+      Value: 0
+      Operator: 3
+    - Type: 8
+      ID: spilledDrinksBourgeoisie
+      Value: 0
+      Operator: 3
+    - Type: 8
+      ID: spilledDrinksRevolution
+      Value: 0
+      Operator: 3
+    _date: -1
+  Name: Spilled Drinks
+  _factions: 000000010000
+  _chapters: 00010000
+  _date: -1
+  _nodeText:
+  - Relaxing at the party, you feel more comfortable with your new life than before.
+    Sipping from your recently acquired glass of wine, you notice a fresh batch of
+    hors d'oeuvres being brought out from the kitchen.
+  - Suddenly, you feel someone barge into you, sending you reeling a few steps. While
+    you manage to catch your balance on a nearby table, your chest feels wet, and
+    your wineglass now appears to be empty. Oh no.
+  - Looking down, you see an enormous wine stain down your front.
+  - Turning around, you see two women, one of them is obviously deep in their cups.
+    The other appears to be trying to prevent her friend from embarrassing themselves
+    too much. "Sorry about the stain, we were just leaving." The sober one apologizes
+    half-heartedly.
+  - '"Why did we stop? Where are we going?" She slurs, looking confused.'
+  - Surprised by your patience and mangnanimity, they get some water and help you
+    blot at the stain before it dries completely. It's enough to get rid of most
+    of the stain, but it's still noticeable to those who look for it.
+  - They stare at you, wordlessly for a moment. It's as if they're bewildered by
+    your simple request.
+  - Before they can even say anything, they're interrupted with laughter from the
+    other guests in this room, who seem to appreciate your biting wit. The pair of
+    women settle on staring daggers in your direction until the laughter subsides.
+  - Not only are the pair in front of you somewhat taken aback by your firm request,
+    the watching crowd mutters in approval. While the two women don't seem thrilled
+    about having to apologize, they can tell that the room has turned against them
+    in a serious way.
+  - '"Ah yes, we''ll certainly apologize for you being so careless as to spill wine
+    all over yourself at the slightest nudge."'
+  - With a mutter of half hearted retorts, the pair skulk away, much to the delight
+    of those present. Your dress may be in worse condition than when you started,
+    but at least you got to have some fun at the expense of those who deserve it.
+  - 'With narry a backward glance, the two leave, giggling to themselves.
+
+
+    Looking
+    around at the rest of the guests at the party, hoping to find some sort of aid,
+    you can tell that you''re being studiously ignored. '
+  - With a mutter of apology, the pair depart and leave you alone. The crowd takes
+    their focus off of you and returns to the party.
+  - 'Her drunk friend decides that now would be a good time to chime in. "What''s
+    wrong? It''s not like I made that dress look any worse."
+
+
+    You hear a few
+    people in the crowd chuckle at this clumsy barb.'
+  - The room feels palpably quieter as the two of them stare at you in disbelief.
+  - Then, they start to laugh.
+  - '"What are you, a child?" The inebriated friend manages to ask. You can hear
+    a few chuckles from the crowd around you.'
+  - Eyes frowning, mouths agape, the pair just stares at you in shock.
+  - (You have lost some credibility)
+  - '(You have gained a decent amount of credibility)
+
+    (You have gained some
+    peril)'
+  - Eyes frowning, mouths agape, the pair just stares at you in shock.
+  - (You have gained some credibility)
+  - This feels right. You could get used to this.
+  - (You have lost some credibility)
+  - (You have gained a little credibility)
+  _linkText:
+  - 
+  - '"<i>Pardon</i>, I''m not mad, can you just help me blot this stain before it
+    sets?"'
+  - '"It''s alright, you''re free to go when I get an apology."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"That''s a good question. Why did you stop? Embarrassments like you belong outside."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

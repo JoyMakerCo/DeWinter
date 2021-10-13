@@ -1,0 +1,1743 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: hiddenDepths
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 34000000
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 63}
+  - {x: 0, y: 119}
+  - {x: 1, y: 176}
+  - {x: 3, y: 238}
+  - {x: 1, y: 303}
+  - {x: -243, y: 442}
+  - {x: 8, y: 371}
+  - {x: -258, y: 503}
+  - {x: -265, y: 564}
+  - {x: -26, y: 502}
+  - {x: -27, y: 564}
+  - {x: -29, y: 628}
+  - {x: -267, y: 685}
+  - {x: -272, y: 755}
+  - {x: -28, y: 683}
+  - {x: -263, y: 626}
+  - {x: -32, y: 753}
+  - {x: -34, y: 811}
+  - {x: -277, y: 816}
+  - {x: -8, y: 438}
+  - {x: -275, y: 879}
+  - {x: 404, y: 378}
+  - {x: -272, y: 942}
+  - {x: -273, y: 1008}
+  - {x: -511, y: 1077}
+  - {x: -277, y: 1081}
+  - {x: -50, y: 1073}
+  - {x: -517, y: 1146}
+  - {x: -277, y: 1149}
+  - {x: -50, y: 1142}
+  - {x: -47, y: 1206}
+  - {x: -43, y: 1266}
+  - {x: -400, y: 1246}
+  - {x: -400, y: 1302}
+  - {x: -541, y: 1473}
+  - {x: -296, y: 1376}
+  - {x: -382, y: 1526}
+  - {x: -43, y: 1335}
+  - {x: 407, y: 444}
+  - {x: 408, y: 515}
+  - {x: 216, y: 754}
+  - {x: 407, y: 613}
+  - {x: 613, y: 612}
+  - {x: 214, y: 810}
+  - {x: -43, y: 1400}
+  - {x: -41, y: 1458}
+  - {x: -531, y: 1364}
+  - {x: -554, y: 1415}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 6, y: 8}
+    - {x: 8, y: 9}
+    - {x: 10, y: 11}
+    - {x: 11, y: 12}
+    - {x: 13, y: 14}
+    - {x: 12, y: 15}
+    - {x: 9, y: 16}
+    - {x: 16, y: 13}
+    - {x: 15, y: 17}
+    - {x: 17, y: 18}
+    - {x: 14, y: 19}
+    - {x: 7, y: 20}
+    - {x: 20, y: 10}
+    - {x: 19, y: 21}
+    - {x: 5, y: 22}
+    - {x: 21, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 24, y: 26}
+    - {x: 24, y: 27}
+    - {x: 25, y: 28}
+    - {x: 26, y: 29}
+    - {x: 27, y: 30}
+    - {x: 30, y: 31}
+    - {x: 31, y: 32}
+    - {x: 29, y: 33}
+    - {x: 28, y: 33}
+    - {x: 33, y: 34}
+    - {x: 34, y: 36}
+    - {x: 36, y: 37}
+    - {x: 35, y: 37}
+    - {x: 32, y: 38}
+    - {x: 22, y: 39}
+    - {x: 39, y: 40}
+    - {x: 40, y: 41}
+    - {x: 40, y: 42}
+    - {x: 40, y: 43}
+    - {x: 42, y: 41}
+    - {x: 43, y: 41}
+    - {x: 41, y: 44}
+    - {x: 44, y: 23}
+    - {x: 38, y: 45}
+    - {x: 45, y: 46}
+    - {x: 46, y: 33}
+    - {x: 34, y: 47}
+    - {x: 47, y: 48}
+    - {x: 48, y: 35}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 28d4dbf508ae22f4abf4e8fdf4093df4, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/sfx_outfit_PutON
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 1
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 14
+        ID: revolution
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 2
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royale</i> Sergeant
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 1fde96f416ac54c308a85865516b4086, type: 3}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: happy
+        Name: "Th\xE9r\xE8se"
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: happy
+        Name: "Th\xE9r\xE8se"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: neutral
+        Name: "Th\xE9r\xE8se"
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: neutral
+        Name: "Th\xE9r\xE8se"
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: happy
+        Name: "Th\xE9r\xE8se"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: happy
+        Name: "Th\xE9r\xE8se"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: therese
+        Value: 1
+        Operator: 4
+      Flags:
+      - Type: 9
+        Phrase: incidents.transition.servant.therese.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: 8
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements: []
+    _date: -1
+  Name: Hidden Depths
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - You wander the city for a while, and before you realize it, the sun is already
+    setting and you have accomplished nothing particularly useful. With darkness
+    upon you, you find yourself at the docks, and its normal hustle and bustle is
+    replaced with an eerie quiet.
+  - Paying a little more attention to your surroundings, you spot a figure moving
+    in the darkness. However, this shape seems somewhat familiar.
+  - Is that Antoine? What is he doing here, skulking in the dark?
+  - You hide behind an overturned boat and stare into the inky blackness, watching
+    carefully for any sort of movement. He appears to be furiously rummaging amongst
+    some rocks on the river's edge. Suddenly, you see a glint of reflected moonlight
+    as he retrieves a glass bottle, extracts some rolled-up paper from it, and begins
+    to read it by the light of the moon.
+  - It's then that you see an officer of the <i>Guet Royal</i> approaching Antoine's
+    position. He's not moving directly towards the young revolutionary. Rather, the
+    watchman appears to be stumbling blindly through the dark. However, he is growing
+    dangerously close.
+  - He could be upon Antoine at any moment...
+  - Without a second thought, you pull up the hood of your cloak and rush forward
+    to his position in the dark. Startled, an angry voice yells out "What the devil?
+    You there! Halt, in the name of the King!"
+  - You see the watchman stumble upon Antoine, who seems rather annoyed with this
+    turn of events.
+  - (You have gained a decent amount of peril)
+  - Looking up at the sound of the commotion following you, Antoine stops his reading
+    long enough to frantically stuff the letters into his coat. "Yvette? What are
+    you doing here?"
+  - '"Go tell your king to catch me himself, you blockheaded lout!" Antoine snarls
+    as he takes off running.'
+  - Just as Antoine sprints away, you see the papers flutter from his grasp. The
+    wind takes these errant pages, and scatters them across the river. Even from
+    this distance, you can hear Antoine utter a barrage of curses at this latest
+    turn of fortune.
+  - (The Revolution has lost a little power)
+  - '"<i>Merde!</i>" Antoine snarls while grabbing you by the hand. "We need to leave
+    Yvette, and now!"'
+  - '"Go tell your king to catch us himself, you blockheaded lout!" Antoine laughs,
+    as you both take off running.'
+  - This merry chase between Antoine and the watchman endures for a while, eventually
+    coming to an end when the <i>Guet Royal</i> Sergeant manages to twist his ankle
+    on a stone and fall in the river. Hobbled, waterlogged, and generally defeated,
+    he resorts to flailing around in the water and shouting invectives at the fleeing
+    Antoine. It's not very effective.
+  - '"Alright, you two! I don''t know what''s going on here, but I do know that you''re
+    both coming with me!"'
+  - Antoine runs off into the night, unaware that you were ever even there.
+  - Well, that was interesting. You have no idea what fresh hell Antoine was up to,
+    but you simply don't have the luxury to take those kind of risks, right now.
+    You go home and consider the events of the night.
+  - Running as fast as you can, the two of you manage to lead the warman on a merry
+    chase. This comes to an end when the <i>Guet Royal</i> Sergeant manages to twist
+    his ankle on a stone and fall in the river. Hobbled, waterlogged, and generally
+    defeated, he resorts to flailing around in the water and shouting invectives
+    in your direction. It's not very effective.
+  - '"What the devil are you doing out here, prowling about in the middle of the
+    night? I don''t know what this is, but I know that you''re coming with me, in
+    the name of the King!"'
+  - Once you're certain that you're not being followed anymore, the two of you eventually
+    come to a slow halt. "I must say, I didn't expect you to come to my rescue. You're
+    not half bad, are you?"
+  - "\"Ah, but of course, madame!\" Th\xE9r\xE8se says, stepping out of the shadows."
+  - (You have gained some favor with Antoine)
+  - '"So, Yvette... why, exactly, did you render me that assistance?"'
+  - '"Oh, well, you didn''t have to do that..." Antoine replies, a little stunned.
+    "I''m quite capable on my own..."'
+  - '"Well, I''m still glad that you''re here. I''d hate to have had my work disturbed
+    by one of those loutish, corrupt bullies."'
+  - '"You want the papers?" He asks, and you notice the shine of steel, tucked up
+    one of his sleeves.'
+  - (You have gained a little favor with Antoine)
+  - (You've gained a little credibility)
+  - (You have gained a little peril)
+  - Slowly, relucatantly, he relaxes. "Then again, I suppose you've earned the right
+    to know some of this, at least."
+  - '"In addition to my normal, revolutionary activities, I''ve been keeping track
+    of a variety of fringe political groups. The Jansenists have always been a potential
+    threat, among others. However, it appears that one of my contacts has come across
+    something new... something strange."'
+  - '"Nevertheless you''ve done me a great favor, so I must insist that I be allowed
+    to walk you home, as thanks."'
+  - True to his word, Antoine escorts you home through the dark city, staying extremely
+    close. You can tell from his breathing that, despite his cool demeanor, he's
+    still on edge from having been so close to being apprehended by the authorities.
+  - He turns away from you, and like a spectre, he disappears into the night.
+  - '"<i>Bonne nuit</i>, Yvette." He says with respectful upwards nod, before disappearing
+    into the night.'
+  - With that, you head inside, and go to bed. While your day may have been uneventful,
+    it seems that your night has given you plenty to consider.
+  - '"There''s a small group of intellectuals who have been spreading word of a ''political
+    third option''. Something distinct from both our tyrannical monarchy, and our
+    enlightened future as a republic. What''s worrying is that they''re actually
+    gaining favor among certain disaffected nobles, mayors and judges."'
+  - She then slips away from you and intercepts the officer of the <i>Guet Royale</i>.
+    While he's surprised at first, they begin to have a conversation in hushed tones.
+    Soon, he starts to walk away, laughing merrily all the while. Moments like this
+    are exactly why you employ a Spy Mistress.
+  - '"Now that I''ve taken care of that, I''ll hang back, and remain discreet."'
+  - 'She retreats into the shadows, while you approach Antoine, who is in the process
+    of secreting the retrieved papers in his coat. '
+  - '"Madame, take the credit. After all, two heads cannot wear a crown." She replies
+    with a fleeting hint of a smile. "You''re my employer, and I would be a poor
+    spy mistress indeed, if I sought glory."'
+  - '"Experience is commonly a virtue of age, madame. I''m certain that you''ll be
+    adept at such things, soon enough."'
+  - '"I must say, Yvette, I didn''t expect you to come to my rescue. You''re not
+    half bad, are you?" Antoine says, watching the shadow of the watchman recede
+    into the distance.'
+  - '"I don''t know much else about them, other than the fact that this group is
+    run by a woman named ''Madame du Jardin''... if that''s her real name."'
+  - '"That''s all I know for the moment. The only thing I''m really certain of, is
+    that these people are dangerous. Not just to our dreams of a Republic, but to
+    all of France."'
+  - Without a word, Antoine leans close enough to you that his lips are but a hair's
+    breadth from your own. You can feel the heat of his body, so close to yours,
+    burning like a raging inferno. His eyes look deeply into your own, and you find
+    yourself struggling so as not to shrink away from the intensity of his gaze.
+  - '"I shall have to thank you properly, one day, but for now I must go. <i>Bonne
+    nuit</i>, Yvette."'
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I need to warn Antoine, there''s not a moment to lose!"'
+  - '"Interesting... let''s see how this all plays out."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "\"Th\xE9r\xE8se, can you handle that?\""
+  - 
+  - 
+  - '"I saw you in danger, and leapt to your defense. Does that need further explanation?"'
+  - '"To be honest, I stumbled upon the whole scene by accident."'
+  - '"Antoine, I want to know what''s on those papers you took from the bottles."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "\"<i>Merveilleuse</i>, Th\xE9r\xE8se. I'll take it from here.\""
+  - "\"You're the one who actually did the deed, Th\xE9r\xE8se, you deserve some
+    credit.\""
+  - '"This isn''t your first time doing this sort of thing, is it?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

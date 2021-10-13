@@ -1,56 +1,14 @@
-﻿using Core;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using System;
 namespace Ambition
 {
-    public class ChooseLocationCmd : ICommand<LocationVO>
+    public class ChooseLocationCmd : Core.ICommand<string>
     {
-        public void Execute(LocationVO location)
+        public void Execute(string location)
         {
-            ParisModel model = AmbitionApp.GetModel<ParisModel>();
-            model.Location = location;
-            if (location == null || (location.OneShot && model.Visited.Contains(location.ID)))
+            if (!AmbitionApp.GetModel<CharacterModel>().CreateRendezvousMode)
             {
-                return;
+                AmbitionApp.Paris.Location = location;
             }
-
-            AmbitionApp.GetModel<LocalizationModel>().SetLocation(location?.ID);
-
-            if (!model.Visited.Contains(location.ID))
-            {
-                IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
-                GameModel game = AmbitionApp.GetModel<GameModel>();
-                incidentModel.Schedule(location.IntroIncident);
-                foreach(string incidentID in location.StoryIncidents)
-                {
-                    if (incidentModel.Incidents.TryGetValue(incidentID, out IncidentVO incident))
-                    {
-                        if (incident.IsScheduled)
-                        {
-                            incidentModel.Schedule(incidentID, incident.Date.Subtract(game.StartDate).Days);
-                        }
-                        else incidentModel.Schedule(incidentID);
-                    }
-                }
-                model.Visited.Add(location.ID);
-            }
-#if DEBUG
-            else
-            {
-                Debug.Log("Checking story incidents");
-                // iterate over story incidents until we find one with met requirements
-                foreach (var ivo in location.StoryIncidents)
-                {
-                    Debug.Log(" checking: ");
-                    foreach (var line in ivo)
-                    {
-                        Debug.Log("   "+line);
-                    }
-                }
-            }
-#endif
         }
     }
 }

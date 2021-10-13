@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core;
+using Util;
 using UnityEngine;
 namespace Ambition
 {
@@ -9,76 +10,77 @@ namespace Ambition
         public void Execute(PartyVO party)
         {
             CharacterModel characters = AmbitionApp.GetModel<CharacterModel>();
-            GameModel game = AmbitionApp.GetModel<GameModel>();
+            GameModel game = AmbitionApp.Game;
+            CalendarModel calendar = AmbitionApp.Calendar;
+            IncidentModel story = AmbitionApp.Story;
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            PartyVO[] parties = model.GetParties(game.Convert(party.Date));
 
-            // TODO: Assignable Character Configs for Notables
+            if (string.IsNullOrEmpty(party.ID) || !model.LoadParty(party.ID, out party))
+            {
+                party.ID = null; 
+                if (party.Faction == FactionType.None)
+                {
+                    List<FactionType> factions = new List<FactionType>(AmbitionApp.Politics.Factions.Keys);
+                    factions.Remove(FactionType.None);
+                    party.Faction = RNG.TakeRandom(factions);
+                }
+            }
+
             if (string.IsNullOrEmpty(party.Host))
-                party.Host = Util.RNG.TakeRandom(characters.Characters.Keys);
-
-            string reason = GetRandomText("party_reason." + party.Faction.ToString().ToLower());
-
-            party.Description = (!string.IsNullOrWhiteSpace(party.LocalizationKey))
-                ? AmbitionApp.Localize("party.description." + party.LocalizationKey)
-                : reason;
-
-            if (string.IsNullOrEmpty(party.ID))
             {
-                int index = Array.IndexOf(parties, party);
-                if (index < 0) index = parties.Length;
-                party.ID = party.Faction.ToString() + party.Date.ToString() + "S" + party.Size.ToString() + index.ToString();
+                string gender = RNG.Generate(2) < 1 ? "male" : "female";
+                string[] host = new string[3];
+                IEnumerable<string> locs = AmbitionApp.GetPhrases(gender + "_title").Values;
+                host[0] = RNG.TakeRandom(locs);
+                locs = AmbitionApp.GetPhrases(gender + "_name").Values;
+                host[1] = RNG.TakeRandom(locs);
+                locs = AmbitionApp.GetPhrases("last_name").Values;
+                host[2] = RNG.TakeRandom(locs);
+                party.Host = string.Join(" ", host);
             }
 
-            if (!string.IsNullOrWhiteSpace(party.LocalizationKey))
+            if (party.Size == PartySize.None)
             {
-                party.Name = AmbitionApp.GetString("party.name." + party.LocalizationKey, 
-                    new Dictionary<string, string>(){
-                        {"$HOST", party.Host},
-                        {"$IMPORTANCE", AmbitionApp.Localize("party_importance." + ((int)party.Size).ToString())},
-                        {"$REASON", reason}});
+                ChapterVO chapter = AmbitionApp.Game.GetChapter();
+                int chance = RNG.Generate(chapter.TrivialPartyChance + chapter.DecentPartyChance + chapter.GrandPartyChance);
+                if (chance < chapter.GrandPartyChance)
+                {
+                    party.Size = PartySize.Grand;
+                }
+                else if (chance < chapter.DecentPartyChance + chapter.GrandPartyChance)
+                {
+                    party.Size = PartySize.Decent;
+                }
+                else party.Size = PartySize.Trivial;
             }
 
-            if (string.IsNullOrEmpty(party.IntroIncident))
+            if (party.phrases?.Length != 4)
             {
-                party.IntroIncident = game.DefaultIntroIncident;
+                party.phrases = new int[4];
+                party.phrases[0] = GetRandomPhrase(PartyConstants.PARTY_REASON + party.Faction.ToString().ToLower());
+                party.phrases[1] = GetRandomPhrase(PartyConstants.PARTY_FLUFF_INTRO);
+                party.phrases[2] = GetRandomPhrase(PartyConstants.PARTY_FLUFF_ADJECTIVE);
+                party.phrases[3] = GetRandomPhrase(PartyConstants.PARTY_FLUFF_NOUN);
             }
 
-            string str = AmbitionApp.GetString("party_fluff", new Dictionary<string, string>(){
-                {"$INTRO",GetRandomText("party_fluff_intro")},
-                {"$ADJECTIVE",GetRandomText("party_fluff_adjective")},
-                {"$NOUN",GetRandomText("party_fluff_noun")}});
-
-            if (party.InvitationDate.Equals(default))
+            switch (party.RSVP)
             {
-                party.InvitationDate = game.Date;
+                case RSVP.Accepted:
+                case RSVP.Required:
+                    AmbitionApp.SendMessage(PartyMessages.ACCEPT_INVITATION, party);
+                    break;
+                case RSVP.Declined:
+                    AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
+                    break;
+                default:
+                    if (party.Day >= 0)
+                    {
+                        AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
+                    }
+                    break;
             }
-
-            if (string.IsNullOrWhiteSpace(party.Invitation))
-            {
-                party.Invitation = AmbitionApp.GetString("party.invitation." + party.LocalizationKey, new Dictionary<string, string>(){
-                    {"$PLAYER", AmbitionApp.GetModel<GameModel>().PlayerName},
-                    //{"$PRONOUN", AmbitionApp.GetString(party.Host.Gender == Gender.Female ? "her" : "his")},
-                    {"$PRONOUN", AmbitionApp.Localize("their")}, // TODO
-                    {"$PARTY",party.Description},
-                    {"$DATE", AmbitionApp.GetModel<LocalizationModel>().Date },
-                    {"$SIZE", AmbitionApp.Localize("party_importance." + ((int)party.Size).ToString())},
-                    {"$FLUFF", str}});
-            }
-
-            // string substitutions for the party
-			AmbitionApp.GetModel<LocalizationModel>().SetPartyFaction( party.Faction );
-
-            // Random Faction
-            if (party.Faction == FactionType.Neutral)
-                party.Faction = Util.RNG.TakeRandomExcept(AmbitionApp.GetModel<FactionModel>().Factions.Keys, FactionType.Neutral);
-
-            model.Schedule(party);
         }
 
-        private string GetRandomText(string phrase)
-        {
-            return Util.RNG.TakeRandom(AmbitionApp.GetPhrases(phrase).Values);
-        }
+        private int GetRandomPhrase(string key) => RNG.Generate(AmbitionApp.GetPhrases(key).Count);
     }
 }

@@ -1,0 +1,1751 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: theAmericanProblem
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 07000000
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -3, y: 94}
+  - {x: 2, y: 169}
+  - {x: 0, y: 232}
+  - {x: 3, y: 301}
+  - {x: 1, y: 372}
+  - {x: -656, y: 379}
+  - {x: 8, y: 477}
+  - {x: 426, y: 387}
+  - {x: 434, y: 447}
+  - {x: 446, y: 508}
+  - {x: 452, y: 567}
+  - {x: 451, y: 627}
+  - {x: 12, y: 549}
+  - {x: -650, y: 436}
+  - {x: -864, y: 489}
+  - {x: -645, y: 496}
+  - {x: -404, y: 492}
+  - {x: -154, y: 604}
+  - {x: 15, y: 659}
+  - {x: 206, y: 605}
+  - {x: 227, y: 667}
+  - {x: -407, y: 555}
+  - {x: -403, y: 626}
+  - {x: 234, y: 729}
+  - {x: 232, y: 791}
+  - {x: -385, y: 687}
+  - {x: -396, y: 745}
+  - {x: 251, y: 848}
+  - {x: -1035, y: 552}
+  - {x: -861, y: 610}
+  - {x: -197, y: 692}
+  - {x: -92, y: 764}
+  - {x: -632, y: 568}
+  - {x: -630, y: 643}
+  - {x: 18, y: 726}
+  - {x: 23, y: 798}
+  - {x: -632, y: 713}
+  - {x: -1062, y: 757}
+  - {x: -1058, y: 822}
+  - {x: -1060, y: 876}
+  - {x: -1061, y: 942}
+  - {x: -843, y: 675}
+  - {x: -92, y: 845}
+  - {x: 22, y: 903}
+  - {x: -240, y: 905}
+  - {x: -236, y: 973}
+  - {x: -237, y: 1028}
+  - {x: -238, y: 1092}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 5, y: 8}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 11, y: 12}
+    - {x: 7, y: 13}
+    - {x: 6, y: 14}
+    - {x: 14, y: 15}
+    - {x: 14, y: 16}
+    - {x: 14, y: 17}
+    - {x: 13, y: 18}
+    - {x: 13, y: 19}
+    - {x: 13, y: 20}
+    - {x: 20, y: 21}
+    - {x: 17, y: 22}
+    - {x: 22, y: 23}
+    - {x: 21, y: 24}
+    - {x: 24, y: 25}
+    - {x: 23, y: 26}
+    - {x: 26, y: 27}
+    - {x: 25, y: 28}
+    - {x: 15, y: 29}
+    - {x: 15, y: 30}
+    - {x: 18, y: 31}
+    - {x: 18, y: 32}
+    - {x: 16, y: 33}
+    - {x: 33, y: 34}
+    - {x: 19, y: 35}
+    - {x: 35, y: 36}
+    - {x: 34, y: 37}
+    - {x: 37, y: 38}
+    - {x: 29, y: 38}
+    - {x: 38, y: 39}
+    - {x: 39, y: 40}
+    - {x: 40, y: 41}
+    - {x: 30, y: 42}
+    - {x: 42, y: 23}
+    - {x: 32, y: 43}
+    - {x: 43, y: 24}
+    - {x: 36, y: 44}
+    - {x: 44, y: 45}
+    - {x: 31, y: 45}
+    - {x: 45, y: 46}
+    - {x: 46, y: 47}
+    - {x: 47, y: 48}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 8d37c5a6e98984de68f6859ef31ef817, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Jacobin
+        Motion: 1
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: negative
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: negative
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: bored
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: bored
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: negative
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: negative
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: Revolution
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 3
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: putout
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: bored
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: bored
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 14
+        ID: Revolution
+        Value: 5
+      - Type: 14
+        ID: Crown
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 14
+        ID: Crown
+        Value: 5
+      - Type: 14
+        ID: Revolution
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Jacobin
+        Motion: 3
+      Character2:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Purist
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 3
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: neutral
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: putout
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: negative
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: bored
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: putout
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: bored
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 14
+        ID: Revolution
+        Value: 5
+      - Type: 14
+        ID: Crown
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Jacobin
+        Motion: 3
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Purist
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: negative
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: putout
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: putout
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: negative
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: approval
+        Name: Purist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: approval
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Purist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Jacobin
+        Motion: 0
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Purist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 14
+        ID: Crown
+        Value: 5
+      - Type: 14
+        ID: Revolution
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: charmed
+        Name: Jacobin
+        Motion: 3
+      Character2:
+        AvatarID: guest01a
+        Pose: charmed
+        Name: Purist
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 70
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 70
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 0
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: A pair of men are discussing a diplomat from the Americas. As their
+      conversation runs in circles, an opportunity presents itself.
+    Requirements: []
+    _date: -1
+  Name: The American Problem
+  _factions: 000000000001
+  _chapters: 00010100
+  _date: 0
+  _nodeText:
+  - You find yourself drifting into someone else's conversation, like a ship being
+    pulled in by a tide.
+  - Two men, unnervingly alike in appearance, are having a hushed, intense conversation,
+    as the Revolutionaries are wont to do.
+  - '"If I so remember, Benjamin Franklin, the American ambassador was supposed to
+    go back to the United States for some reason. However, he decided to stay after
+    he made so much headway on religious tolerance with the Edict of Versailles."'
+  - You manage to take their conversation in, but you simply can't get over how similar
+    they look. Are they brothers, or have you attended so many of these parties that
+    everyone is just starting to blur together?
+  - '"Pah! He can speak of tolerance all he wants, but it''s meaningless while he
+    bows and scrapes to every courtier in Versailles. France paid dearly in blood
+    and coin to help these Americans win their Republic, and what do they do in return?
+    They lick the monarchy''s boots!"'
+  - '"It''s outrageous. Something should be done."'
+  - '"Hmph. Are you really certain that''s wise?"'
+  - '"Hmph. Are you really certain that''s wise?"'
+  - '"I-ah... I suppose..." He replies, obviously unhappy that you''ve derailed his
+    conversation.'
+  - (You have lost some credibility)
+  - They direction of the conversation abruptly switches towards gossip and intrigues.
+    With a serious effort, you manage to keep them on task for what you need, but
+    they're obviously unhappy.
+  - (You have gained a piece of Cheap Revolution Gossip)
+  - The conversation essentially dies as soon as you stop putting all of you effort
+    into sustaining it, so you take your leave with your prize. Let them squabble
+    over foreign dignitaries. You have a job to do.
+  - '"Can we really let such a useful ally slip through our fingers?"'
+  - '"Why pursue someone that doesn''t naturally see the value in our cause?"'
+  - '"Solidarity? With those that consort with our enemies?"'
+  - '"I beg your pardon?" The Purist asks indignantly at your blunt assertion.'
+  - '"Then what, exactly, inspired you to butt in on our conversation?"'
+  - '"You truly think that it would be a waste of time to reach out to Monsieur Franklin?"'
+  - '"I beg your pardon?" The Jacobin asks indignantly at your blunt assertion.'
+  - '"Then what, exactly, inspired you to butt in on our conversation?"'
+  - (You have lost a little credibility)
+  - (You have lost a little credibility)
+  - Their conversation continues without you, and it appears that they plan to let
+    Monsieur Franklin languish in Versailles. This will give the Crown exclusive
+    access to the support of a foreign power, albeit a small and distant one.
+  - Their conversation continues without you, and it appears that they plan to court
+    Monsieur Franklin, to attempt to sway him towards the revolutionary cause. This
+    could give the Revolution access to the support of a foreign power, albeit a
+    small and distant one.
+  - '(The Revolution has gained a little power)
+
+    (The Crown has lost a little
+    power)'
+  - '(The Crown has gained a little power)
+
+    (The Revolution has lost a little
+    power)'
+  - The discussion wraps up, and the three of you go your separate ways. You take
+    a moment to clear your head. Hopefully, you won't let a future conversation get
+    away from you like that.
+  - The discussion wraps up, and the three of you go your separate ways. You take
+    a moment to clear your head. Hopefully, you won't let a future conversation get
+    away from you like that.
+  - '"You''re right! If we never stop to build alliances, we shall be forced to face
+    the tyranny of monarchy alone, when our strength comes from when we stand together."'
+  - '"An alliance built on currying favor will splinter at the first sign of conflict.
+    The value of our cause if self-evident! If Monsieur Franklin can''t see that,
+    then the fault lies entirely with him."'
+  - '"You''re right! If we spend our time chasing those that don''t see the use in
+    allying with us then we''ll never built a true union of the willing."'
+  - '"We need every ally we can find against the Crown. This is no small conflict,
+    as we are fighting against thousands of years of so-called ''tradition''. We
+    cannot let pride get in the way of pursuing a new, enlightened age."'
+  - (You have gained a decent amount of peril)
+  - '"<i>Non, non, mon ami</i>, I must admit that this lady is right."'
+  - (You have gained a decent amount of peril)
+  - '"<i>Non, non, mon ami</i>, I must admit that this lady is right."'
+  - '"If we never stop to build alliances, we shall be forced to face the tyranny
+    of monarchy alone, when our strength comes from when we stand together."'
+  - '"We need every ally we can find against the Crown. This is no small conflict,
+    as we are fighting against thousands of years of so-called ''tradition''. We
+    cannot let pride get in the way of pursuing a new, enlightened age."'
+  - Your conversation continues together at a more energized pace, and it appears
+    that they plan to court Monsieur Franklin, to attempt to sway him towards the
+    revolutionary cause. This could give the Revolution access to the support of
+    a foreign power, albeit a small and distant one.
+  - '(The Revolution has gained a little power)
+
+    (The Crown has lost a little
+    power)'
+  - The discussion wraps up, and the three of you go your separate ways. With a sly
+    grin, you take a moment to revel in satisfaction at your efforts. All according
+    to plan.
+  - (You have lost a decent amount of credibility)
+  - (You have lost a decent amount of credibility)
+  - '"If we spend our time chasing those that don''t see the use in allying with
+    us then we''ll never built a true union of the willing."'
+  - '"An alliance built on currying favor will splinter at the first sign of conflict.
+    The value of our cause if self-evident! If Monsieur Franklin can''t see that,
+    then the fault lies entirely with him."'
+  - Your conversation continues together at a more energized pace, and it appears
+    that they plan to let Monsieur Franklin languish in Versailles. This will give
+    the Crown exclusive access to the support of a foreign power, albeit a small
+    and distant one.
+  - '(The Crown has gained a little power)
+
+    (The Revolution has lost a little
+    power)'
+  - The discussion wraps up, and the three of you go your separate ways. With a sly
+    grin, you take a moment to revel in satisfaction at your efforts. All according
+    to plan.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Doesn''t it sound like it''s time to give Monsieur Franklin a better offer?"'
+  - '"He''s merely shown his true colors! Let the monarchists have the old fool!"'
+  - '"Why do anything at all? I''d rather discuss gossip, rumors, and intrigues."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"The work of revolution requires coalition and solidarity."'
+  - '"Well, that''s certainly the correct attitude to have, if you like losing."'
+  - '"Ah, my apologies, I simply don''t know."'
+  - '"Don''t waste your time, when the righteousness of your cause is self-evident!"'
+  - '"Well, that''s certainly the correct attitude to have, if you like losing."'
+  - '"Ah, my apologies, I simply don''t know."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

@@ -4,13 +4,18 @@
 [LOG] SystemI::init                            : Initialize version=11008 (96768), maxchannels=1024, flags=0x00030000
 [LOG] OutputCoreAudio::enumerate               : Enumerating...
 [LOG] OutputCoreAudio::enumerate               : Found output driver: "MacBook Pro Speakers".
+[LOG] OutputCoreAudio::enumerate               : Found output driver: "MorphVOX Audio".
 [LOG] OutputCoreAudio::enumerate               : Done.
 [LOG] OutputCoreAudio::init                    : Output running 2 channels at 48000Hz sample rate.
 [LOG] OutputCoreAudio::init                    : Maximum hardware read size: 1024 samples, Software buffer size: 512 samples, Number of software buffers: 4.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+<<<<<<< Updated upstream
 [LOG] AsyncManager::init                       : manager 0x7fb1b17f7008 isAsync 1 updatePeriod 0.02
+=======
+[LOG] AsyncManager::init                       : manager 0x7fb67f601808 isAsync 1 updatePeriod 0.02
+>>>>>>> Stashed changes
 [LOG] Thread::initThread                       : Init FMOD Studio update thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
@@ -30,20 +35,31 @@
 [LOG] SystemI::createSound                     : filename = Assets/Audio/Build/Desktop/MUS_Gameplay.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
 [LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Priority: 1, Stack Size: 81920, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+<<<<<<< Updated upstream
 [LOG] SystemI::createSound                     : setdata soundi = 0x7fb1b3ccb738 : node = 0x7fb1b22da900
 [LOG] SystemI::createSound                     : add node to async list : head = 0x7fb1b22dab78.  list count = 0
 [LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x7fb1b3ccb738
+=======
+[LOG] SystemI::createSound                     : setdata soundi = 0x7fb67c4895d8 : node = 0x7fb6849608c0
+[LOG] SystemI::createSound                     : add node to async list : head = 0x7fb67c49dc38.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0x7fb67c4895d8
+>>>>>>> Stashed changes
 [LOG] SystemI::createSoundInternal             :     Create name='Assets/Audio/Build/Desktop/MUS_Gameplay.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 232
 [LOG] SystemI::createSoundInternal             :     exinfo->length             = 177712768
 [LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 395168
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+<<<<<<< Updated upstream
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x7fb1b22daa18
+=======
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0x7fb6849609d8
+>>>>>>> Stashed changes
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Ambition - Main Theme - v4', format=2, channels=2, frequency=48000, lengthbytes=3397664, lengthpcm=11980115, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.895623.
 [LOG] Thread::initThread                       :     Init FMOD file thread. Priority: 1, Stack Size: 16384, Semaphore: No, Sleep Time: 10, Looping: Yes.
+<<<<<<< Updated upstream
 [LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x7fb1b3ccb738
 [LOG] SoundI::getSubSound                      : sound 0x7fb1b3ccb738.  Subsound index 0 / 1
 [LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
@@ -2913,3 +2929,7 @@
 [LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
 [LOG] Thread::callback                         : FMOD file thread finished.
 [LOG] SystemI::close                           : Closed.
+=======
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0x7fb67c4895d8
+[LOG] SoundI::getSubSound                      : sound 0x7fb67c4895d8.  Subsound index 0 / 1
+>>>>>>> Stashed changes

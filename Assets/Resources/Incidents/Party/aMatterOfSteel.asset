@@ -1,0 +1,1853 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: aMatterOfSteel
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 12, y: 89}
+  - {x: 16, y: 152}
+  - {x: 20, y: 212}
+  - {x: 24, y: 286}
+  - {x: 25, y: 347}
+  - {x: 29, y: 407}
+  - {x: -165, y: 466}
+  - {x: 47, y: 472}
+  - {x: 265, y: 473}
+  - {x: 518, y: 472}
+  - {x: -384, y: 528}
+  - {x: -165, y: 550}
+  - {x: -165, y: 608}
+  - {x: -159, y: 669}
+  - {x: -156, y: 727}
+  - {x: -385, y: 589}
+  - {x: 266, y: 536}
+  - {x: 267, y: 593}
+  - {x: 266, y: 652}
+  - {x: 262, y: 714}
+  - {x: 48, y: 542}
+  - {x: -387, y: 650}
+  - {x: -385, y: 741}
+  - {x: -371, y: 826}
+  - {x: -376, y: 889}
+  - {x: -362, y: 952}
+  - {x: -339, y: 1016}
+  - {x: -304, y: 1082}
+  - {x: -252, y: 1151}
+  - {x: 524, y: 532}
+  - {x: -154, y: 791}
+  - {x: -147, y: 863}
+  - {x: -138, y: 920}
+  - {x: -210, y: 1223}
+  - {x: 524, y: 592}
+  - {x: 523, y: 652}
+  - {x: 522, y: 719}
+  - {x: 522, y: 782}
+  - {x: 523, y: 842}
+  - {x: 521, y: 909}
+  - {x: -192, y: 1292}
+  - {x: -186, y: 1351}
+  - {x: -183, y: 1410}
+  - {x: -181, y: 1466}
+  - {x: -171, y: 1524}
+  - {x: -167, y: 1588}
+  - {x: -162, y: 1656}
+  - {x: -162, y: 1714}
+  - {x: 47, y: 597}
+  - {x: 49, y: 667}
+  - {x: 50, y: 728}
+  - {x: -611, y: 866}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 6, y: 8}
+    - {x: 6, y: 9}
+    - {x: 6, y: 10}
+    - {x: 7, y: 11}
+    - {x: 7, y: 12}
+    - {x: 12, y: 13}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 11, y: 16}
+    - {x: 9, y: 17}
+    - {x: 17, y: 18}
+    - {x: 18, y: 19}
+    - {x: 19, y: 20}
+    - {x: 8, y: 21}
+    - {x: 16, y: 22}
+    - {x: 22, y: 23}
+    - {x: 24, y: 25}
+    - {x: 25, y: 26}
+    - {x: 26, y: 27}
+    - {x: 27, y: 28}
+    - {x: 28, y: 29}
+    - {x: 0, y: 1}
+    - {x: 10, y: 30}
+    - {x: 15, y: 31}
+    - {x: 31, y: 32}
+    - {x: 32, y: 33}
+    - {x: 29, y: 34}
+    - {x: 30, y: 35}
+    - {x: 35, y: 36}
+    - {x: 36, y: 37}
+    - {x: 37, y: 38}
+    - {x: 38, y: 39}
+    - {x: 39, y: 40}
+    - {x: 40, y: 24}
+    - {x: 34, y: 41}
+    - {x: 41, y: 42}
+    - {x: 42, y: 43}
+    - {x: 43, y: 44}
+    - {x: 44, y: 45}
+    - {x: 45, y: 46}
+    - {x: 46, y: 47}
+    - {x: 47, y: 48}
+    - {x: 21, y: 49}
+    - {x: 49, y: 50}
+    - {x: 50, y: 51}
+    - {x: 51, y: 24}
+    - {x: 24, y: 52}
+    - {x: 52, y: 25}
+    - {x: 23, y: 24}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 1d1cd0244eea6d044ba503e4a01a7c2a, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Military - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: happy
+        Name: Michael
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: happy
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: happy
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: happy
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Quarrelsome Rival
+        Motion: 2
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: negative
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: happy
+        Name: Michael
+        Motion: 3
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: negative
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: negative
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: negative
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      - Type: 12
+        ID: 
+        Value: 25
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 3
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: negative
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: happy
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 3
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: neutral
+        Name: <i>Guet Royal</i>
+        Motion: 1
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: angry
+        Name: <i>Guet Royal</i>
+        Motion: 3
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Hortense
+        Motion: 2
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Hortense
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 1
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 3
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: bored
+        Name: Hortense
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: bored
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: negative
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: negative
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 3
+      Character2:
+        AvatarID: guest03
+        Pose: negative
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: happy
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Hortense
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Hortense
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: happy
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Hortense
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Hortense
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Hortense
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 3
+      Character2:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Hortense
+        Motion: 4
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 20
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: MichaelPelletier
+        Pose: neutral
+        Name: Michael
+        Motion: 3
+      Character2:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: GuetRoyalSergeant
+        Pose: neutral
+        Name: <i>Guet Royal</i>
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: putout
+        Name: Quarrelsome Rival
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 3
+        Phrase: incidents.transitions.credibilitycheck.hardtooltip
+        Value: 90
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: hansel
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: hansel
+        Value: 1
+        Operator: 4
+      Flags:
+      - Type: 10
+        Phrase: incidents.transition.servant.hansel.tooltip
+        Value: 1
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 90
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: apprehended
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 8
+      ID: primedAndReady
+      Value: 1
+      Operator: 4
+    - Type: 23
+      ID: PrimedAndReadySuccess
+      Value: 1
+      Operator: 4
+    _date: -1
+  Name: A Matter of Steel
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: 0
+  _nodeText:
+  - While guests at the party are trying to pretend that nothing is amiss, the tension
+    in the air is palpable. It seems that word has already gotten around that Michael
+    Pelletier's duel against his rival is very soon.
+  - '"Ah, it''s finally happening!" Michael says, with an enthusiasm rarely used
+    by a subject of attempted murder.'
+  - '"I''ve taken the precaution of tipping off someone in the archers about this
+    attempt on my life, and they''re already on their way."'
+  - '"The strangest part was how easy it was to convince them that this was going
+    to happen. All I had to do was mention his name. Once they arrive on the scene,
+    he''ll be dealt with, and the lovely Hortense will be free to shower me with
+    her affections!"'
+  - '"Ah, you''ve not only arrived, but you''ve done so on time? Truly, the Lord''s
+    miracles never cease." Michael''s rival says, while carrying what is clearly
+    a matched set of dueling sabers. "There''s an abandoned churchyard, not far from
+    here. I believe that''d be the ideal place. So, follow me."'
+  - '"Oh! You mean now? In the middle of this party?" Michael asks, looking around,
+    and seeing that the officers of the <i>Guet Royale</i> have yet to make their
+    appearance.'
+  - '"I find that matters of honor are best settled immediately."'
+  - '"A second?" He asks, glancing around.'
+  - '"You dare lecture me on the validity of my methods, or the mysteries of her
+    heart?"'
+  - '"You''re leaving me with this? Now, of all times?" Michael hisses to you from
+    the corner of his mouth.'
+  - '"Yes, please take as long as you like." Michael says as he steps back.'
+  - '"Well, I''m simply without one. For some reason, fate has conspired for me to
+    be without a companion close enough for such a duty... or for any companions
+    at all, really."'
+  - '"<i>Non</i>, I see the obvious gambit you''re playing against me. You conspire
+    against me, thinking me a fool."'
+  - You appear to have earned the ire of a man who is universally known for his short
+    temper. He's also armed, right now.
+  - '(You have lost a little credibility)
+
+    (You have gained a large amount of
+    peril)'
+  - '"You, Monsieur Pelletier are coming with me. My honor shall not be denied."'
+  - A statement that would surely arouse some sort of sympathy, were he not here
+    to kill a man.
+  - (You have lost some credibility)
+  - '"Don''t pester the woman, Pelletier. Most people are shy of blood." His rival
+    chides. "I however, am not."'
+  - (You have lost a little peril)
+  - You hike up your skirts, so as to hasten your retreat before any of this manages
+    to become your problem. Surely, Michael will find a way out of this on his own...
+    surely.
+  - You appear to have earned the ire of a man who is universally known for his short
+    temper. He's also armed, right now.
+  - '"Perhaps we should take the time to find you one? If we''re going through with
+    this, we should do it properly."'
+  - Such a futile exercise is exactly what you need to waste his time while you wait
+    for the <i>Guet Royal</i> to finally arrive. Michael uses this opportunity to
+    slip away.
+  - It's then that your group is approached by a troop of the <i>Guet Royal</i>,
+    in all of their swaggering and dubious glory. "What's this? You again?"
+  - Before the attempted duelist can even reply, the Sergeant plucks the sabers from
+    his hands. "Clearly we need to have a discussion down at the watch post. You
+    will follow us, monsieur."
+  - "The guests whisper to each other as the man is arrested, and marched out of
+    the party. \n\nAre they scandalized? Yes. Surprised? Not really."
+  - It's then, now that the danger has passed, that Michael returns.
+  - '"<i>Mon Dieu</i>! Was he just arrested?"'
+  - '"Ah, Hortense! Yes, I''m afraid to say that his jealousy overwhelmed his reason,
+    and he planned on cutting me down, right here. <i>C''est incroyable, non</i>?"'
+  - '"Of course, Madame." Hansel steps forward, and motions for the sabers.'
+  - '"Well, this isn''t good." Michael mumbles to himself, proving his vast talent
+    for understatement.'
+  - They leave before you can attempt to delay them any further, marching in the
+    direction of that abandoned chuchyard. Surely, Michael will find a way out of
+    this on his own... surely.
+  - You decide to explore the rest of the party before anyone manages to connect
+    you to any of this.
+  - '"A revelation as alarming as it is unsurprising."'
+  - '"That''s seems only reasonable. I think you''ll find everything in order." Michael''s
+    rival says as he hands over the weapons, begrudgingly. '
+  - Hansel unsheathes the swords, much to the consternation of the nearby guests.
+    Heedless of their dismay, he takes some experimental test swings and examines
+    the blades.
+  - He continues to examine the blades... and keeps examining them...
+  - '"Are you quite done?"'
+  - '"Sir, surely you understand that we''re taking your debt of honor very seriously."
+    Hansel says, giving you a twitch of a smile. Suddenly, you hear the growing sounds
+    of tramping boots and general discontent .'
+  - Without even a flourish, Hansel returns the weapons to their owner. "I can see
+    that everything is in order, or at least it will be soon."
+  - '"I suppose, with his absence, you would finally be free to express the desires
+    of your heart."'
+  - '"It''s true, I''m finally out from under the jealous eye of that murderous boor.
+    I''ll sleep much sounder, going forward, and I owe you my thanks."'
+  - 'Michael''s expectant silence at these thanks is as subtle as a firework loosed
+    into a nunnery. '
+  - '"You have my most sincere thanks." Hortense repeats.'
+  - Michael exhales slowly, looking off into the distance, before bowing his head.
+    "<i>Je vous en prie, madame.</i>"
+  - As amusing as other people's disappointments are, this messy intrigue was really
+    about obtaining fantastic gossip, a task you handily succeeded at. Everyone likes
+    to read about the imprisonment of someone powerful.
+  - (You have gained a piece of Outrageous Military Gossip)
+  - You decide to explore the rest of the party before anyone manages to connect
+    you to any of this.
+  - (You have gained quite a of peril)
+  - Michael steps in between the two of you in attempt to calm the situation, but
+    it seems that is not one of his talents, and only serves to agitate his rival
+    further.
+  - It's then that you spot the <i>Guet Royal</i>. More importantly, you spot them
+    see this man threatening the two of you while he holds a pair of sabers. You
+    nudge Michael, and he quickly steps back.
+  - Shockingly, this question isn't aimed at you.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"You plan to duel without a second? Surely, you need to find one first..."'
+  - '"And what makes you think that murder is going to make Hortense love you?"'
+  - '"<i>Pardonne-moi</i>, It appears that I should be anywhere else, right now."'
+  - '"Hansel, can you thoroughly inspect everything, to make sure that it''s all
+    fair?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

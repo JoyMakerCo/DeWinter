@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: incidentAnUncertainFuture
+  m_EditorClassIdentifier: 
+  Name: An Uncertain Future
+  LocationWindowDescription: You take the day to visit the markets at <i>Les Halles</i>
+    with Camille. In addition to learning some things about her sprawling family
+    tree, you also manage to gain some insights into how she feels about the current
+    situation in Paris.
+  IntroIncidentConfig: {fileID: 11400000, guid: 8a52e00a59ce4b244904a6aa43d78d37,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
+  OneShot: 1
+  IsRendezvous: 0
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: 4b588fdb7072ed44481be472979d1537,
+    type: 3}
+  Requirements:
+  - Type: 8
+    ID: theFirstSparks
+    Value: 1
+    Operator: 4

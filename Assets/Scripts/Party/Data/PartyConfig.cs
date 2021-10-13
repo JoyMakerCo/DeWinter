@@ -9,14 +9,13 @@ using UnityEditor;
 namespace Ambition
 {
     [Serializable]
-    public class PartyConfig : ScriptableObject
+    public class PartyConfig : ScriptableObject, AmbitionEditor.ILocalizedAsset
     {
+        public string Name;
         public string Description;
+        public string Invitation;
         public IncidentConfig IntroIncident;
         public IncidentConfig ExitIncident;
-        public string LocalizationKey;
-        public string Invitation;
-        public Sprite EstablishingShot;
         public string[] Guests;
 
         [SerializeField]
@@ -37,6 +36,17 @@ namespace Ambition
         public CommodityVO[] Rewards;
 
 #if (UNITY_EDITOR)
+        public Dictionary<string, string> Localize()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            result[PartyConstants.PARTY_NAME + name] = Name;
+            result[PartyConstants.PARTY_DESCRIPTION + name] = Description;
+            result[PartyConstants.PARTY_INVITATION + name] = Invitation;
+            result[PartyConstants.PARTY_HOST + name] = Host;
+            return result;
+        }
+
+
         [MenuItem("Assets/Create/Create Party")]
         public static void CreateParty()
         {
@@ -70,6 +80,8 @@ namespace Ambition
                 EditorGUILayout.EndHorizontal();
             }
 
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Name"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Description"), true);
             EditorGUILayout.LabelField("Invitation Text (Leave Blank to auto-generate)");
             SerializedProperty text = serializedObject.FindProperty("Invitation");
             text.stringValue = GUILayout.TextArea(text.stringValue);
@@ -82,9 +94,7 @@ namespace Ambition
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Faction"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Size"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("RSVP"), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("LocalizationKey"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Map"), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("EstablishingShot"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Requirements"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Rewards"), true);
             serializedObject.ApplyModifiedProperties();

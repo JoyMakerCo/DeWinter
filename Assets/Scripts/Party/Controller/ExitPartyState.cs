@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace Ambition
 {
     public class ExitPartyState : UFlow.UState
     {
-        public override void OnEnterState()
+        public override void OnEnter()
         {
-            IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            incidentModel.Schedule(model.Party.ExitIncident);
+            AmbitionApp.GetModel<IncidentModel>().Schedule(model.Party?.ExitIncident);
         }
     }
 }

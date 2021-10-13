@@ -1,0 +1,1688 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: unwillingConfessor
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 13000000
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -2, y: 68}
+  - {x: 2, y: 139}
+  - {x: 5, y: 195}
+  - {x: 4, y: 266}
+  - {x: 3, y: 330}
+  - {x: 5, y: 389}
+  - {x: 6, y: 459}
+  - {x: 8, y: 519}
+  - {x: 9, y: 582}
+  - {x: 11, y: 641}
+  - {x: 8, y: 709}
+  - {x: 7, y: 777}
+  - {x: 10, y: 838}
+  - {x: -212, y: 912}
+  - {x: 10, y: 915}
+  - {x: 239, y: 910}
+  - {x: 240, y: 973}
+  - {x: 494, y: 909}
+  - {x: -210, y: 971}
+  - {x: 496, y: 974}
+  - {x: 241, y: 1032}
+  - {x: 7, y: 971}
+  - {x: -210, y: 1038}
+  - {x: -209, y: 1107}
+  - {x: -209, y: 1163}
+  - {x: -207, y: 1226}
+  - {x: -205, y: 1290}
+  - {x: -207, y: 1353}
+  - {x: -202, y: 1410}
+  - {x: -194, y: 1464}
+  - {x: -193, y: 1522}
+  - {x: 498, y: 1038}
+  - {x: 15, y: 1033}
+  - {x: 240, y: 1090}
+  - {x: 247, y: 1155}
+  - {x: 248, y: 1219}
+  - {x: 253, y: 1281}
+  - {x: 252, y: 1336}
+  - {x: 250, y: 1400}
+  - {x: 243, y: 1519}
+  - {x: 249, y: 1456}
+  - {x: 239, y: 1584}
+  - {x: 10, y: 1097}
+  - {x: 6, y: 1157}
+  - {x: 8, y: 1216}
+  - {x: 8, y: 1269}
+  - {x: 5, y: 1330}
+  - {x: 6, y: 1386}
+  - {x: 9, y: 1449}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 11, y: 12}
+    - {x: 12, y: 13}
+    - {x: 13, y: 14}
+    - {x: 13, y: 15}
+    - {x: 13, y: 16}
+    - {x: 16, y: 17}
+    - {x: 16, y: 18}
+    - {x: 14, y: 19}
+    - {x: 18, y: 20}
+    - {x: 17, y: 21}
+    - {x: 15, y: 22}
+    - {x: 19, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 25, y: 26}
+    - {x: 26, y: 27}
+    - {x: 27, y: 28}
+    - {x: 28, y: 29}
+    - {x: 29, y: 30}
+    - {x: 30, y: 31}
+    - {x: 20, y: 32}
+    - {x: 32, y: 24}
+    - {x: 22, y: 33}
+    - {x: 21, y: 34}
+    - {x: 34, y: 35}
+    - {x: 35, y: 36}
+    - {x: 36, y: 37}
+    - {x: 37, y: 38}
+    - {x: 38, y: 39}
+    - {x: 39, y: 41}
+    - {x: 41, y: 40}
+    - {x: 40, y: 42}
+    - {x: 33, y: 43}
+    - {x: 43, y: 44}
+    - {x: 44, y: 45}
+    - {x: 45, y: 46}
+    - {x: 46, y: 47}
+    - {x: 47, y: 48}
+    - {x: 48, y: 49}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outsideWfountain
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 1
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 2
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 3
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 3
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: sad
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 20
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 1
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements: []
+    _date: -1
+  Name: Unwilling Confessor
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - That day, you decide to take a turn around the fountain square, as there's usually
+    interesting something going on there. During your daytime stroll you happen to
+    see two men that you recognize. Then again, you can't imagine what either of
+    these two men would have to say to each other.
+  - '"That''s why I''m saying, good Monsieur Sidotti-"'
+  - '"It''s Father Sidotti." Ludovico interrupts gently.'
+  - '"Of course, Monsieur Father Sidotti!" Pierre replies with a deep bow of deference.
+    "What I''m saying is that you must hear many precious secrets and indiscretions
+    from your parishioners, during the course of your duties."'
+  - '"You mean when I take their confessions?"'
+  - '"Ah, but of course! I''m certain that you see and hear all manner of things
+    during the these tedious duties, and I would like to offer you a simple payment
+    for anything that you might hear."'
+  - "\u201C... Is this a serious question, <i>signore</i>, or the product of some
+    brandy fueled delirium?\u201D"
+  - "\u201C... can it not be both?\u201D"
+  - "\u201CAbsolutely not!\" Ludovico replies. \"I have sworn many solemn vows, and
+    I happen to take some of them quite seriously.\u201D"
+  - '"Let us not be so hasty, Father." Pierre says, the picture of calm. "This is
+    not some untested endeavor. The Cardinal de Rohan himself was among my many suppliers,
+    some years ago."'
+  - "\u201C<i>Signore</i>, I cannot think of a stronger reason to avoid something,
+    than finding out that the Cardinal de Rohan partook of it.\u201D"
+  - '"Well, be that as it may, I''m sure we can find an arrangement that you would
+    find agreeable."'
+  - '"I would agree with you going away, and never speaking to me again."'
+  - '"... I meant something other than that."'
+  - '"Beneath me? Madame, I assure you that no such thing exists!"'
+  - '"Yvette, you cannot possibly be serious." Ludovico gasps.'
+  - '"What? Why would I not? People are confessing their darkest secrets to the Lord
+    himself. Of course I want to know what they''re saying!"'
+  - '"No, Yvette is correct. Most confessions are the petty sins that trouble the
+    hearts of every man and woman, not great scandals."'
+  - '"No, Yvette is correct. Most confessions are the petty sins that trouble the
+    hearts of every man and woman, not great scandals."'
+  - '"<i>Signore</i> Renaudot, I''m not taking part in this despicable scheme and
+    that''s final! In fact, the only good thing to come of this conversation is knowing
+    that Yvette hates this outrageous plan as much as I do."'
+  - '"Confound you both! My search for truth will not be denied!"'
+  - '"Ugh... fine." Pierre huffs. "I shall have to think of something else."'
+  - (You have lost a little favor with Ludovico)
+  - (You have gained some favor with Ludovico)
+  - '"It seems then, that I am betrayed every turn..."'
+  - '"It''s not betrayal if I never liked you to begin with."'
+  - '"... nevertheless, I am betrayed at every turn! I will not forget this, either
+    of you!" Pierre shouts, pointing an accusing finger at you both.'
+  - (You have lost a decent amount of credibility)
+  - Pierre stalks away in an angry huff, leaving you and Ludovico alone together.
+  - '"What an utterly bizarre little man." The priest mutters to himself.'
+  - The two of you spend some time chatting together, laughing about the absurdity
+    of the day's events. On several occasions, he thanks you again for your help.
+  - Eventually, you part ways, and you decide to head home for the day.
+  - '"Yes. It will. By me."'
+  - '"She''s right, Father Sidotti. I can pay you handsomely..." Pierre says while
+    pawing through his coin purse.'
+  - '"Have you considered attending confession yourself, <i>Signore</i> Renaudot?"'
+  - '"Father, I assure you that what minor evils I have committed, have all been
+    in the pursuit of truth, and isn''t that what really matters in the eyes of the
+    Lord?"'
+  - '"Not really, no."'
+  - '"Ah, well. Nevertheless." Pierre says with a shrug. "I must take my leave, <i>au
+    revoir</i> to you both."'
+  - Pierre favors the two of you with a comically formal bow, and then leaves.
+  - '"What an utterly bizarre little man." The priest mutters to himself.'
+  - (You have gained some favor with Ludovico)
+  - The two of you spend some time chatting together, laughing about the absurdity
+    of the day's events. On several occasions, he thanks you again for your help.
+  - Eventually, you part ways, and you decide to head home for the day.
+  - '"... well, I can pay you decently."'
+  - '"It''s not about the pay... I just... I need to think about this." Ludovico
+    says in a rush.'
+  - With that, the young priest leaves, the very picture of apprehension.
+  - '"Oh... he''ll come around." Pierre chuckles to himself. "Thank you Madame Decaux,
+    for I couldn''t have done this without your expert assistance. Please, take this
+    humble gift as a finder''s fee."'
+  - (You have gained 20 Livres)
+  - '"Now, you must excuse me, as I need to take my leave. <i>Au revoir</i>, madame."'
+  - Pierre favors you with a comically formal bow, and then leaves. With that accomplished,
+    you decide to head home for the day.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Come now, Pierre. This is beneath you."'
+  - '"Ludovico, you should consider his offer. You could do a lot of good with that
+    money."'
+  - '"Pierre, trust me, you don''t want to pay good money for such paltry leads."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

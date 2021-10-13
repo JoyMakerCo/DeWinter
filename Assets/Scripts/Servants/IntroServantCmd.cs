@@ -3,12 +3,21 @@ using Core;
 
 namespace Ambition
 {
-	public class IntroServantCmd : ICommand<ServantVO>
+	public class IntroServantCmd : ICommand<string>
 	{
-		public void Execute (ServantVO servant)
+		public void Execute (string servantID)
 		{
 			ServantModel model = AmbitionApp.GetModel<ServantModel>();
-			model.Introduce(servant);
-		}
-	}
+            ServantVO servant = model.GetServant(servantID);
+            if (servant == null)
+            {
+                servant = model.GetServant(servantID);
+                if (servant != null)
+                {
+                    servant.Status = ServantStatus.Introduced;
+                    model.Broadcast();
+                }
+            }
+        }
+    }
 }

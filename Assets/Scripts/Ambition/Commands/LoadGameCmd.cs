@@ -2,100 +2,148 @@
 using System.Collections.Generic;
 using Core;
 using UFlow;
+using UnityEngine;
 namespace Ambition
 {
     public class LoadGameCmd : ICommand<string>
     {
-        private static int[] START_INCIDENT = new int[] {2};
-        private static int[] PARTY_STATE = new int[] {4};
-        private static int[] EVENING_STATE = new int[] {5};
-        private static int[] ESTATE_STATE = new int[] {16};
-        private static int[] ENTER_ESTATE_STATE = new int[] { 1 };
-        private static int[] PARIS_STATE = new int[] {18};
-        private static int[] PARTY_OUTFIT = new int[] { 1 }; // Moment == null; Turn = -1
-        private static int[] PARTY_INTRO = new int[] { 2 }; // Moment != null; Turn = 0
-        private static int[] PARTY_ROOM = new int[] { 12 }; // Moment != null; Room > -1
-        private static int[] PARTY_MAP = new int[] { 10 }; // Moment == null; Room < 0
-        private static int[] PARTY_OUTTRO = new int[] { 4 }; // Moment != null; Room = -1; Turn > 0
-        private static int[] MOMENT = new int[] { 3 }; // Moment != null; Room = -1; Turn > 0
+        // Day Flow
+        private static string MORNING_INCIDENT = "MorningIncident";
+        private static string PARTY_STATE = "Party";
+        private static string PARIS_STATE = "Paris";
+        private static string EVENING_STATE = "Evening";
+        private static string ESTATE_STATE = "Estate";
+        private static string RENDEZVOUS_STATE = "Rendezvous";
+
+        // Location Controller
+        private static string PARIS_INCIDENT = "Location Incident";
+        private static string PARIS_SCENE = "Location Scene";
+
+        // Party Controller
+        private static string PARTY_INTRO = "Intro"; // Moment != null; Turn < 0
+        private static string PARTY_ROOM = "Conversation"; // Moment != null; Turn >= 0
+        private static string PARTY_MAP = "Map"; // Moment == null;
+        private static string PARTY_OUTTRO = "Exit Incident"; // Moment != null; Room = -1; Turn > 0
+        private static string AFTER_PARTY = "AfterPartyInput"; // Moment != null; Room = -1; Turn > 0
+
+        // Incident Controller
+        private static string MOMENT = "OptionInput"; // Any Incident
+
+        // Estate Controller
+        private static string ESTATE_ENTER = "ShowEstate";
+
+        // Rendezvous Controller
+        private static string RENDEZVOUS_INCIDENT = "RendezvousIncident";
 
         public void Execute(string savedGameData)
         {
-            GameModel game = App.Service<ModelSvc>()?.GetModel<GameModel>();
-            if (game == null)
-            {
-                App.Service<CommandSvc>().Execute<InitGameCmd>();
-                game = App.Service<ModelSvc>().GetModel<GameModel>();
-            }
+            GameModel game = AmbitionApp.Game;
+            if (!game.Initialized) AmbitionApp.Execute<InitGameCmd>();
             UFlowSvc uflow = AmbitionApp.GetService<UFlowSvc>();
-            IncidentModel incidentModel = AmbitionApp.GetModel<IncidentModel>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            IncidentModel story = AmbitionApp.Story;
+            ParisModel paris = AmbitionApp.Paris;
             PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
             AmbitionApp.GetService<ModelSvc>().Restore(savedGameData);
-            AmbitionApp.Execute<InitPlayerCmd, string>(game.playerID);
+            PlayerConfig config = Resources.Load<PlayerConfig>(Filepath.PLAYERS + game.playerID);
+            AmbitionApp.Execute<RestorePlayerCmd, PlayerConfig>(config);
+            LocationVO location = paris.GetLocation(paris.Location);
 
-            foreach (KeyValuePair<string, LoadedIncident> loaded in incidentModel.Dependencies)
+            AmbitionApp.CloseAllDialogs();
+            AmbitionApp.SendMessage(AudioMessages.STOP_AMBIENT);
+            AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);
+
+            uflow.Reset();
+            story.RestoreIncident();
+            foreach(string tutorialID in game.Tutorials)
             {
-                if (!incidentModel.Incidents.ContainsKey(loaded.Key))
+                AmbitionApp.Execute<TutorialReward, CommodityVO>(new CommodityVO()
                 {
-                    switch (loaded.Value.Type)
-                    {
-                        case IncidentType.Party:
-                            partyModel.LoadParty(loaded.Value.Filepath);
-                            break;
-                    }
-                }
+                    Type = CommodityType.Tutorial,
+                    ID = tutorialID
+                });
             }
 
-            incidentModel.SetDay(game.Day, false);
-            partyModel.SetDay(game.Day);
-            uflow.Reset();
-            UMachine machine = uflow.Instantiate(FlowConsts.DAY_FLOW_CONTROLLER);
+            UMachine flow = calendar.Day == 0
+                ? uflow.Instantiate(FlowConsts.GAME_CONTROLLER)
+                : uflow.Instantiate(FlowConsts.DAY_FLOW_CONTROLLER);
+            string sceneID = null;
             switch (game.Activity)
             {
                 case ActivityType.Estate:
-                case ActivityType.Location:
-                    if (incidentModel.Moment == null)
+                    if (story.Moment == null)
                     {
-                        machine.RestoreState(ESTATE_STATE, null);
-                        machine = uflow.GetMachine(FlowConsts.ESTATE_CONTROLLER);
-                        machine.RestoreState(ENTER_ESTATE_STATE, null);
+                        flow = RestoreEstate(flow, out sceneID);
                     }
-                    else
-                        machine.RestoreState(START_INCIDENT, null);
+                    else flow = Restore(flow, MORNING_INCIDENT);
                     break;
                 case ActivityType.Party:
-                    machine.RestoreState(PARTY_STATE, null);
-                    machine = uflow.GetMachine(FlowConsts.PARTY_CONTROLLER);
-                    if (partyModel.Turn < 0)
+                    flow = Restore(flow, PARTY_STATE);
+                    if (story.Moment == null)
                     {
-                        if (incidentModel.Moment == null)
-                            machine.RestoreState(PARTY_OUTFIT, null);
+                        if (partyModel.TurnsLeft > 0)
+                        {
+                            Restore(flow, PARTY_MAP);
+                            sceneID = SceneConsts.MAP_SCENE;
+                        }
                         else
-                            machine.RestoreState(PARTY_INTRO, null);
+                        {
+                            Restore(flow, AFTER_PARTY);
+                            sceneID = SceneConsts.AFTER_PARTY_SCENE;
+                        }
                     }
-                    else if (incidentModel.Moment == null)
-                    {
-                        machine.RestoreState(PARTY_MAP, null);
-                    }
-                    else if (partyModel.Room >= 0)
-                    {
-                        machine.RestoreState(PARTY_ROOM, null);
-                    }
-                    else machine.RestoreState(PARTY_OUTTRO, null);
-
+                    else if (partyModel.Turn < 0)
+                        flow = Restore(flow, PARTY_INTRO);
+                    else if (partyModel.TurnsLeft > 0)
+                        flow = Restore(flow, PARTY_ROOM);
+                    else
+                        flow = Restore(flow, PARTY_OUTTRO);
                     break;
                 case ActivityType.Evening:
-                    machine.RestoreState(EVENING_STATE, null);
+                    flow = Restore(flow, EVENING_STATE);
+                    break;
+                case ActivityType.Paris:
+                    flow = Restore(flow, PARIS_STATE);
+                    if (story.Moment != null)
+                    {
+                        flow = Restore(flow, PARIS_INCIDENT);
+                    }
+                    else
+                    {
+                        sceneID = location?.SceneID ?? SceneConsts.PARIS_SCENE;
+                        Restore(flow, sceneID == SceneConsts.PARIS_SCENE ? PARIS_STATE : PARIS_SCENE);
+                    }
+                    break;
+                case ActivityType.Rendezvous:
+                    flow = Restore(flow, RENDEZVOUS_STATE);
+                    flow = Restore(flow, RENDEZVOUS_INCIDENT);
                     break;
             }
-            if (incidentModel.Moment != null)
+            if (story.Moment != null)
             {
-                machine = uflow.GetMachine(FlowConsts.INCIDENT_CONTROLLER);
-                machine.RestoreState(MOMENT, null);
+                Restore(flow, MOMENT);
+                sceneID = SceneConsts.INCIDENT_SCENE;
             }
+            if (!string.IsNullOrEmpty(sceneID))
+            {
+                AmbitionApp.SendMessage(GameMessages.LOAD_SCENE, sceneID);
+            }
+            uflow.Execute();
+            AmbitionApp.SendMessage(GameMessages.GAME_LOADED);
+        }
 
-            if (!FMODUnity.RuntimeManager.AnyBankLoading()) AmbitionApp.Execute<FinishLoadGameCmd>();
-            else AmbitionApp.RegisterCommand<FinishLoadGameCmd>(AudioMessages.ALL_SOUNDS_LOADED);
+        private UMachine RestoreEstate(UMachine flow, out string sceneID)
+        {
+            flow = Restore(flow, ESTATE_STATE);
+            Restore(flow, ESTATE_ENTER);
+            sceneID = SceneConsts.ESTATE_SCENE;
+            return flow;
+        }
+
+        private UMachine Restore(UMachine flow, string state)
+        {
+            flow.RestoreStates(new string[]{state}, new Dictionary<int, UMachine>());
+            return flow.GetState(state) as UMachine;
         }
     }
 }

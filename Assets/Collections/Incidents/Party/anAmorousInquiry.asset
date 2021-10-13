@@ -1,0 +1,1293 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: anAmorousInquiry
+  m_EditorClassIdentifier: 
+  _Nodes: 0b000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 2, y: 231}
+  - {x: 231, y: 348}
+  - {x: 5, y: 156}
+  - {x: -429, y: 235}
+  - {x: -2, y: 307}
+  - {x: 266, y: 604}
+  - {x: 186, y: 689}
+  - {x: 393, y: 687}
+  - {x: 400, y: 778}
+  - {x: -426, y: 326}
+  - {x: -546, y: 410}
+  - {x: -300, y: 423}
+  - {x: -554, y: 495}
+  - {x: -551, y: 558}
+  - {x: -547, y: 625}
+  - {x: -675, y: 685}
+  - {x: -428, y: 686}
+  - {x: -296, y: 493}
+  - {x: -296, y: 555}
+  - {x: -674, y: 754}
+  - {x: -428, y: 755}
+  - {x: -11, y: 484}
+  - {x: 4, y: 77}
+  - {x: 245, y: 498}
+  - {x: 250, y: 240}
+  - {x: 474, y: 349}
+  - {x: 485, y: 482}
+  - {x: 0, y: 364}
+  - {x: -5, y: 426}
+  - {x: -25, y: 547}
+  - {x: -27, y: 616}
+  - {x: 225, y: 435}
+  - {x: 474, y: 413}
+  Incident:
+    Links:
+    - {x: 3, y: 1}
+    - {x: 6, y: 7}
+    - {x: 6, y: 8}
+    - {x: 8, y: 9}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 11, y: 13}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 15, y: 17}
+    - {x: 12, y: 18}
+    - {x: 18, y: 19}
+    - {x: 16, y: 20}
+    - {x: 17, y: 21}
+    - {x: 0, y: 23}
+    - {x: 23, y: 3}
+    - {x: 4, y: 10}
+    - {x: 24, y: 6}
+    - {x: 25, y: 26}
+    - {x: 25, y: 2}
+    - {x: 5, y: 28}
+    - {x: 28, y: 29}
+    - {x: 29, y: 22}
+    - {x: 22, y: 30}
+    - {x: 30, y: 31}
+    - {x: 2, y: 32}
+    - {x: 32, y: 24}
+    - {x: 26, y: 33}
+    - {x: 33, y: 27}
+    - {x: 1, y: 25}
+    - {x: 1, y: 5}
+    - {x: 1, y: 4}
+    Nodes:
+    - Text: 'You look around the unfamiliar tavern, trying to find Armand. Your eyes
+        scan for his chestnut hair, your ears strain to hear the sound of his infectious
+        laugh. '
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Orphan's Feast - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"May I... escort you?" His smile is broad and cocky.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"... something I offered to help you do." The man grimaces, and begrudgingly
+        holds out his arm. You take it happily as he conducts you about the tavern,
+        visiting all the places that you suspect Armand might be. A few of the patrons
+        smirk at your clever ploy.
+
+
+        (You have gained a little credibility)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 'Your turn around to find yourself face to face with an unfamiliar young
+        man. He''s well dressed and handsome enough, but it''s the middle of day
+        and he already smells like two bottles of wine.
+
+
+        "<i>Pardonne-moi</i>
+        madame, but I can never ignore the sight of a woman in need, and you appear
+        to be lost."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Amorous Patron
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "The surprised man'\x19s face broadens into a happy grin as you reach
+        out and take his arm. \"Why it appears that I arrived just in time!\""
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 'His brow furrows and he turns up his nose. "Madame, I''m just trying
+        to help. There''s no need to be so rude."
+
+
+        You didn''t think that
+        refusing an invitation from a stranger was rude, but perhaps he was raised
+        to think otherwise. Judging by the stares of the other patrons in the tavern,
+        they seem to feel the same way as yourself.
+
+
+        (You have gained a
+        little credibility)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: '"Madame, I believe this is where we part ways." Your newfound guide
+        says, gently pulling away from you. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: With a wave that is barely as polite as decorum requires, he departs
+        to seek the affection of a different young woman.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Madame, I have escorted you up and down. We have sought your Armand
+        to no avail. I have done my duty." He says simply, and shrugs. "Now if you
+        excuse me, I must return to my compatriots."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: He walks away to rejoin his friends, who appear to be even deeper into
+        the wine than he is.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Amorous Patron
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Now, where are you looking to go?"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: This isn't the first time you've flirted with strangers since you were
+        engaged. Armand often got so wrapped up in his political endeavours that
+        you'd feel ignored. A few coy glances in the wrong direction were usually
+        enough to get Armand to remember that you, and a world outside his furious
+        letter writing, existed.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Well, that is what I offered to help you do." The man grimaces, and
+        begrudgingly holds out his arm. You take it happily as he conducts you about
+        the tavern, visiting all the places that you suspect Armand might be.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Once that happened, Armand would woo you back from the hapless object
+        of your deception and life would go on. Nobody ever got hurt, and there was
+        simply something fun about it.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 'With that in mind, you stroll around the tavern looking for Armand,
+        arm in arm with a stranger. Eventually, you realize that Armand is nowhere
+        to be found and that your playful deception has been a waste.
+
+
+        Or,
+        at least, simply practice.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"I''m thinking about grabbing another bottle of wine, care to join me?"'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Oh madame, you know where to find me when you''re ready!" He says with
+        a happy grin before going to request another bottle from the tavern keeper.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: "Sensing the shift in the conversation, he tries to win you over, but
+        the drinks he's had finally seem to be catching up with him. \n\n\"But madame,
+        we can, escort... there.\" He points towards a table that's crowded with
+        some of his friends. One of them waves awkwardly to you."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 'However, after a few minutes searching the tavern, it starts to become
+        clear that Armand is nowhere to be found.
+
+
+        "Madame, I believe this
+        is where we part ways." Your newfound guide says, gently pulling away from
+        you. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Before you can respond, with a wave that is barely as polite as decorum
+        requires, he departs to seek the affection of a different young woman.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'You take this opportunity to explore the rest of the tavern. Flirting
+        with strangers isn''t half as fun if there''s nobody there to see you do
+        it.
+
+
+        Besides, finding Armand is your real priority.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Amorous Patron
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'You politely slip away from him, and his increasingly desperate suggestions.
+        You take this opportunity to explore the rest of the tavern. Flirting with
+        strangers isn''t half as fun if there''s nobody there to see you do it.
+
+
+        Besides,
+        finding Armand is your real priority.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Amorous Patron
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'He scowls and turns on his heel, muttering something ungentlemanly under
+        his breath. Just when you thought yourself rid of him, he shoots you a glance
+        that''s surprisingly threatening.
+
+
+        Now you''re truly glad that you
+        refused to go anywhere with him.
+
+
+        (You have gained a tiny amount
+        of peril)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Amorous Patron
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Someone clears their throat behind you.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: However, after a few minutes searching the tavern, it starts to become
+        clear that Armand is nowhere to be found.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Oh, that is..."'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: '"... not what I meant at all, and you know it, madame!" he replies with
+        surprising venom.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: With a wave that is barely as polite as decorum requires, he departs
+        to seek the affection of a different young woman.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Amorous Patron
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: New Moment
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Amorous Patron
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"<i>Oui</i>, I think it is."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"What happened to be unable to refuse a woman in need?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Oh, nowhere in particular, just around the tavern with you."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"I am trying to find my fiance, Baron Armand de Marbo. Can you help?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Perhaps, in a moment."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"I''m fine for now, thank you."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "While you search for Armand, a handsome young man approaches you.
+      Perhaps he\u2019ll be able to help."
+    Requirements: []
+    _date: -1
+  Name: An Amorous Inquiry
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _nodeText:
+  - 'You look around the unfamiliar tavern, trying to find Armand. Your eyes scan
+    for his chestnut hair, your ears strain to hear the sound of his infectious laugh. '
+  - '"May I... escort you?" His smile is broad and cocky.'
+  - '"... something I offered to help you do." The man grimaces, and begrudgingly
+    holds out his arm. You take it happily as he conducts you about the tavern, visiting
+    all the places that you suspect Armand might be. A few of the patrons smirk at
+    your clever ploy.'
+  - 'You turn around to find yourself face to face with an unfamiliar young man.
+    He''s well dressed and handsome enough, but it''s the middle of day and he already
+    smells like two bottles of wine.
+
+
+    "<i>Pardonnez-moi</i> madame, but I can
+    never ignore the sight of a woman in need, and you appear to be lost."'
+  - "The surprised man'\x19s face broadens into a happy grin as you reach out and
+    take his arm. \"Why it appears that I arrived just in time!\""
+  - His brow furrows and he turns up his nose. "Madame, I'm just trying to help.
+    There's no need to be so rude."
+  - '"Madame, I believe this is where we part ways." Your newfound guide says, gently
+    pulling away from you. '
+  - With a wave that is barely as polite as decorum requires, he departs to seek
+    the affection of a different young woman.
+  - '"Madame, I have escorted you up and down. We have sought your Armand to no avail.
+    I have done my duty." He says simply, and shrugs. "Now if you excuse me, I must
+    return to my compatriots."'
+  - He walks away to rejoin his friends, who appear to be even deeper into the wine
+    than he is.
+  - '"Now, where are you looking to go?"'
+  - This isn't the first time you've flirted with strangers since you were engaged.
+    Armand often got so wrapped up in his political endeavors that you'd feel ignored.
+    A few coy glances in the wrong direction were usually enough to get Armand to
+    remember that you, and a world outside his furious letter writing, existed.
+  - '"Well, that is what I offered to help you do." The man grimaces, and begrudgingly
+    holds out his arm. You take it happily as he conducts you about the tavern, visiting
+    all the places that you suspect Armand might be.'
+  - Once that happened, Armand would woo you back from the hapless object of your
+    deception and life would go on. Nobody ever got hurt, and there was simply something
+    fun about it.
+  - 'With that in mind, you stroll around the tavern looking for Armand, arm in arm
+    with a stranger. Eventually, you realize that Armand is nowhere to be found and
+    that your playful deception has been a waste.
+
+
+    Or, at least, simply practice.'
+  - '"I''m thinking about grabbing another bottle of wine, care to join me?"'
+  - '"Oh madame, you know where to find me when you''re ready!" He says with a happy
+    grin before going to request another bottle from the tavern keeper.'
+  - "Sensing the shift in the conversation, he tries to win you over, but the drinks
+    he's had finally seem to be catching up with him. \n\n\"But madame, we can...
+    escort... there.\" He points towards a table that's crowded with some of his
+    friends. One of them waves awkwardly to you."
+  - 'However, after a few minutes searching the tavern, it starts to become clear
+    that Armand is nowhere to be found. "Madame, I believe this is where we part
+    ways." Your newfound guide says, gently pulling away from you. '
+  - Before you can respond, with a wave that is barely as polite as decorum requires,
+    he departs to seek the affection of a different young woman.
+  - 'You take this opportunity to explore the rest of the tavern. Flirting with strangers
+    isn''t half as fun if there''s nobody there to see you do it.
+
+
+    Besides,
+    finding Armand is your real priority.'
+  - 'You politely slip away from him, and his increasingly desperate suggestions.
+    You take this opportunity to explore the rest of the tavern. Flirting with strangers
+    isn''t half as fun if there''s nobody there to see you do it.
+
+
+    Besides,
+    finding Armand is your real priority.'
+  - He scowls and turns on his heel, muttering something ungentlemanly under his
+    breath. Just when you thought yourself rid of him, he shoots you a glance that's
+    surprisingly threatening.
+  - Someone clears their throat behind you.
+  - However, after a few minutes searching the tavern, it starts to become clear
+    that Armand is nowhere to be found.
+  - '"Oh, that is..."'
+  - '"... not what I meant at all, and you know it, madame!" he replies with surprising
+    venom.'
+  - With a wave that is barely as polite as decorum requires, he departs to seek
+    the affection of a different young woman.
+  - You didn't think that refusing an invitation from a stranger was rude, but perhaps
+    he was raised to think otherwise. Judging by the stares of the other patrons
+    in the tavern, they seem to feel the same way as yourself.
+  - (You have gained some credibility)
+  - (You have gained a little peril)
+  - Now you're truly glad that you refused to go anywhere with him.
+  - (You have gained a little credibility)
+  - (You have lost a little credibility)
+  _linkText:
+  - 
+  - '"<i>Oui</i>, I think it is."'
+  - '"What happened to being unable to refuse a woman in need?"'
+  - 
+  - '"Oh, nowhere in particular, just around the tavern with you."'
+  - "\"I am trying to find my fianc\xE9, Baron Armand de Marbo. Can you help?\""
+  - 
+  - 
+  - 
+  - '"Perhaps, in a moment."'
+  - '"I''m fine for now, thank you."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "\"I'm so glad to hear that! Can you help me find my fianc\xE9?\""
+  - '"<i>Non</i> monsieur, you may not. I am fine by myself."'
+  - '"Oh, you are so kind! Please do!"'

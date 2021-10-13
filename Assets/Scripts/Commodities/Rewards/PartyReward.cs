@@ -7,29 +7,11 @@ namespace Ambition
     {
         public void Execute(CommodityVO reward)
         {
-            if (string.IsNullOrEmpty(reward?.ID)) return;
-            PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            PartyVO party = model.LoadParty(reward.ID);
-
-            if (party == null) return;
-
-            switch(reward.Value)
+            if (!string.IsNullOrEmpty(reward.ID))
             {
-                case -1:
-                    party.RSVP = RSVP.Declined;
-                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
-                    AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
-                    break;
-                case 1:
-                    party.RSVP = RSVP.Accepted;
-                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
-                    AmbitionApp.SendMessage(PartyMessages.ACCEPTED, party);
-                    break;
-                case 2:
-                    party.RSVP = RSVP.Required;
-                    AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
-                    AmbitionApp.SendMessage(PartyMessages.ACCEPTED, party);
-                    break;
+                PartyVO party = new PartyVO(reward.ID);
+                if (reward.Value >= 0) party.Day = AmbitionApp.Calendar.Day + reward.Value;
+                AmbitionApp.SendMessage(PartyMessages.INITIALIZE_PARTY, party);
             }
         }
     }

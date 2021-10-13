@@ -1,0 +1,1524 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: maximinsDoorman
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -16, y: 708}
+  - {x: -320, y: 755}
+  - {x: 200, y: 803}
+  - {x: -335, y: 874}
+  - {x: -65, y: 807}
+  - {x: 198, y: 866}
+  - {x: -190, y: 1051}
+  - {x: -194, y: 1140}
+  - {x: 153, y: 1118}
+  - {x: -60, y: 868}
+  - {x: 120, y: 951}
+  - {x: 107, y: 1046}
+  - {x: -81, y: 1369}
+  - {x: -82, y: 1445}
+  - {x: 161, y: 1304}
+  - {x: -188, y: 1225}
+  - {x: 161, y: 1243}
+  - {x: 152, y: 1373}
+  - {x: 164, y: 1176}
+  - {x: -7, y: 468}
+  - {x: -11, y: 650}
+  - {x: -4, y: 418}
+  - {x: -9, y: 179}
+  - {x: -444, y: 286}
+  - {x: -200, y: 287}
+  - {x: 8, y: 282}
+  - {x: 225, y: 281}
+  - {x: 461, y: 283}
+  - {x: 470, y: 359}
+  - {x: 241, y: 350}
+  - {x: -415, y: 353}
+  - {x: -191, y: 350}
+  - {x: 16, y: 354}
+  - {x: -328, y: 525}
+  - {x: -329, y: 586}
+  - {x: -62, y: 526}
+  - {x: -72, y: 589}
+  - {x: 277, y: 558}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 2, y: 4}
+    - {x: 2, y: 5}
+    - {x: 3, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 4, y: 7}
+    - {x: 5, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 4}
+    - {x: 11, y: 12}
+    - {x: 12, y: 8}
+    - {x: 12, y: 9}
+    - {x: 13, y: 14}
+    - {x: 8, y: 16}
+    - {x: 16, y: 13}
+    - {x: 17, y: 15}
+    - {x: 15, y: 18}
+    - {x: 18, y: 13}
+    - {x: 9, y: 19}
+    - {x: 19, y: 17}
+    - {x: 21, y: 1}
+    - {x: 22, y: 20}
+    - {x: 23, y: 24}
+    - {x: 23, y: 25}
+    - {x: 23, y: 26}
+    - {x: 23, y: 27}
+    - {x: 23, y: 28}
+    - {x: 28, y: 29}
+    - {x: 27, y: 30}
+    - {x: 24, y: 31}
+    - {x: 31, y: 22}
+    - {x: 25, y: 32}
+    - {x: 32, y: 22}
+    - {x: 26, y: 33}
+    - {x: 33, y: 22}
+    - {x: 30, y: 22}
+    - {x: 29, y: 22}
+    - {x: 20, y: 34}
+    - {x: 34, y: 35}
+    - {x: 35, y: 21}
+    - {x: 20, y: 36}
+    - {x: 36, y: 37}
+    - {x: 37, y: 21}
+    - {x: 20, y: 38}
+    - {x: 38, y: 21}
+    - {x: 0, y: 23}
+    Nodes:
+    - Text: "Immediately upon entering the vestibule, you\u2019re greeted by a doorman
+        holding a small ledger. While he isn\u2019t physically barring your entry,
+        his manner certainly is."
+      Background: {fileID: 21300000, guid: d29d908b4617f4aebb21fdbab8688ca2, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Revolution - Party Master
+        Parameters:
+        - Name: WIN
+          Value: 0
+        - Name: LOSE
+          Value: 0
+        - Name: Conversation Start
+          Value: 0
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_outdoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CName, Madame?\u201D he asks expectantly."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "The doorman looks perplexed at you for a moment, flipping through his
+        ledger. \u201CI do not see your name here, madame\u2026\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: "The valet looks shocked. \u201CBaron de Marbo? Why are you dressed-\u201D"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: afraid
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: "\u201CAh, that is most unfortunate.\u201D the doorman replies, surprisingly
+        disappointed. \u201CBaron de Termes was so looking forward to seeing him
+        tonight. Please convey our deepest regrets at his absence.\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: "He frowns at your irritation, but only for a moment. The doorman flips
+        back and forth between the pages of his ledger before his finds what he\u2019s
+        looking for. \u201CAh yes! You are the date to Baron Armand de Marbo. If
+        I so remember, you are his fianc\xE9e, <i>non</i>?\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "A moment later he composes himself. \r\u201CAh, I see, you are the Baron\u2019s
+        date. My apologies\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CIs there anything I can get you?\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CAh yes, absolutely madame. The Baron shall hear of it quite soon.\u201D\r\n\r\r\nYou
+        hear some murmurs from other guests in the Vestibule. Your gratitude and
+        enthusiasm seem to have made an impression on them, though the doorman seems
+        rather unphased.\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "With a small flourish, you present a bottle of wine you had the forethought
+        to bring earlier. It wasn\u2019t cheap, but the gesture is more important.\r\n\r\n\u201CAh,
+        <i>merci beaucoups madame</i>, I shall make sure the Baron is aware of your
+        generosity.\u201D Turning from you, the doorman waves imperiously to another
+        servant nearby, who takes the bottle from you. Afterwards, that servant dutifully
+        scurries away.\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: "He glances about the room expectantly. \u201CAnd\u2026 where may I find
+        the good Baron?\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "The doorman\u2019s eyes widen in surprise, that was certainly not the
+        sort of answer he was expecting. \u201COh my Madame, what an unfortunate
+        turn of events.\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: afraid
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: "\u201CYou must be quite upset, is there anything I can get you?\u201D\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Before you can ask any other questions, he bows deeply to you.\r\n\n\u201C<i>Pardon
+        moi, madame</i>. Baron de Termes instructed me specifically, to inform him
+        as soon as you had arrived. We\u2019ve heard so much about you.\u201D"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CEnjoy the party.\u201D He says with a smile, before leaving.\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "You hear some appreciative murmurs from other guests in the Vestibule.
+        Your gratitude and enthusiasm seem to have made an impression on them, eliminating
+        some of the tension in the air.\r\n\r\nSurprisingly, the doorman himself
+        seems rather unphased.\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: sly
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: "(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have spent 5 Livres)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -3
+      - Type: 11
+        ID: 
+        Value: 3
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: Revolution
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 21300000, guid: 4d1c4c77ec2c74feeb3737fb188f0221, type: 3}
+      Character1:
+        AvatarID: Valet
+        Pose: neutral
+        Name: Doorman
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 7
+        ID: OUTFIT_EFFECT
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 7
+        ID: OUTFIT_EFFECT
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 7
+        ID: OUTFIT_EFFECT
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 7
+        ID: OUTFIT_EFFECT
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 7
+        ID: OUTFIT_EFFECT
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 7
+        ID: EXHAUSTION_EFFECT
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 7
+        ID: EXHAUSTION_EFFECT
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have reduced your peril)\n(You have gained a little credibility)\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: '"Yvette Decaux,"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"Baron Armand de Marbo,"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"I am Baron Armand de Marbo''s date. He could not attend."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"Well then, look harder."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Please convey my deepest gratitudes to our host, and tell him that
+        I''m eager to meet him."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\"Would you be able to take this gift to our host? I though they might
+        appreciate some wine.\x1D\x1D\""
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 10
+        Operator: 4
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 10
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"That''s a good question, I wish I knew..."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"He has taken ill, but insisted that I attend in his stead."'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\"\x1CPlease convey my deepest gratitudes to our host, and tell him
+        that I'm eager to meet him.\x1D\""
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Would you be able to take this gift to our host? I though they might
+        appreciate some wine."'
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 10
+        Operator: 4
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 10
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 21
+        ID: 
+        Value: 10
+        Operator: 2
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 21
+        ID: 
+        Value: 10
+        Operator: 3
+      - Type: 21
+        ID: 
+        Value: 5
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 21
+        ID: 
+        Value: -10
+        Operator: 4
+      - Type: 21
+        ID: 
+        Value: -5
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 21
+        ID: 
+        Value: -10
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 18
+        ID: 
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 18
+        ID: 
+        Value: 0
+        Operator: 2
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: N/A
+    Requirements: []
+    _date: -1
+  Name: Maximin's Doorman
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _nodeText:
+  - 'When your carriage drops you off at the party, you find yourself waiting in
+    line for quite some time. Looking at the other guests, you wonder if you''re
+    underdressed... or overdressed, it''s honestly hard to tell. '
+  - "\u201CName, madame?\u201D he asks expectantly."
+  - "The doorman looks perplexed at you for a moment, flipping through his ledger.
+    \u201CI do not see your name here, madame\u2026\u201D\r"
+  - "The valet looks shocked. \u201CBaron de Marbo? Why are you dressed-\u201D"
+  - "\u201CAh, that is most unfortunate.\u201D the doorman replies, surprisingly
+    disappointed. \u201CBaron de Termes was so looking forward to seeing him tonight.
+    Please convey our deepest regrets at his absence.\u201D\r"
+  - "He frowns at your irritation, but only for a moment. The doorman flips back
+    and forth between the pages of his ledger before his finds what he\u2019s looking
+    for. \u201CAh yes! You are the date to Baron Armand de Marbo. If I so remember,
+    you are his fianc\xE9e, <i>non</i>?\u201D\r"
+  - "A moment later he composes himself. \r\u201CAh, I see, you are the Baron\u2019s
+    date. My apologies\u201D\r"
+  - "\u201CIs there anything I can get you?\u201D\r"
+  - "\u201CAh yes, absolutely madame. The Baron shall hear of it quite soon.\u201D\r\n\r\r\nYou
+    hear some murmurs from other guests in the Vestibule. Your gratitude and enthusiasm
+    seem to have made an impression on them, though the doorman seems rather unphased.\r"
+  - "With a small flourish, you present a bottle of wine you had the forethought
+    to bring earlier. It wasn\u2019t cheap, but the gesture is more important.\r"
+  - "He glances about the room expectantly. \u201CAnd\u2026 where may I find the
+    good Baron?\u201D\r"
+  - "The doorman\u2019s eyes widen in surprise, that was certainly not the sort of
+    answer he was expecting. \u201COh my Madame, what an unfortunate turn of events.\u201D\r"
+  - "\u201CYou must be quite upset, is there anything I can get you?\u201D\r"
+  - "Before you can ask any other questions, he bows deeply to you.\r\n\n\u201C<i>Pardonnez-moi
+    , madame</i>. Baron de Termes instructed me specifically, to inform him as soon
+    as you had arrived. We\u2019ve heard so much about you.\u201D"
+  - "\u201CEnjoy the party.\u201D He says with a smile, before leaving.\r"
+  - "You hear some appreciative murmurs from other guests in the vestibule. Your
+    gratitude and enthusiasm seem to have made an impression on them, eliminating
+    some of the tension in the air.\r Surprisingly, the doorman himself seems rather
+    unphased.\r"
+  - "(You have gained a little credibility)\r"
+  - "(You have spent 10 Livres)\r"
+  - "(You have lost a tiny amount of peril)\n(You have gained a tiny amount of credibility)\r"
+  - "\"Ah, <i>merci beaucoups</i> madame, I shall make sure the Baron is aware of
+    your generosity.\" Turning from you, the doorman waves imperiously to another
+    servant nearby, who takes the bottle from you. Afterwards, that servant dutifully
+    scurries away.\r"
+  - (You have gained a piece of Cheap Revolution Gossip. This will be useful later.)
+  - "Immediately upon entering the vestibule, you\x19're greeted by a doorman holding
+    a small ledger. While he isn\x19't physically barring your entry, his manner
+    certainly is."
+  - While you're determining your standing in the world of fashion, you manage to
+    overhear an interesting rumor while in line. You make a mental note of it, just
+    in case.
+  - You look over yourself one last time and confirm that you're wearing your $OUTFITNAME
+    to a party being held by the $PARTYFACTIONNAME.
+  - (The guests greatly approve of your outfit, and your credibility has increased
+    significantly)
+  - (The guests approve of your outfit, and your credibility has increased)
+  - (The guests have no strong feelings on your outfit, and your credibility has
+    not changed much)
+  - (The guests disapprove of your outfit, and your credibility has decreased)
+  - (The guests greatly disapprove of your outfit, and your credibility has decreased
+    significantly)
+  - With preparations like this, tonight could go very poorly indeed.
+  - With preparations like this, tonight could go poorly if you aren't careful.
+  - With preparations like this, tonight is yours for the taking.
+  - With preparations like this, tonight should be a largely positive affair.
+  - With preparations like this, the results of tonight could be a toss-up.
+  - You're thankfully well rested for this particular event, so you manage to feel
+    invigorated, and ready to take on whatever comes your way.
+  - (Being well rested has given you a credibility bonus!)
+  - Unfortunately, you can feel exhaustion set in as soon as you think of the full
+    itinerary ahead of you. Tonight is going to be a long night.
+  - (Being exhausted has given you a credibility penalty)
+  - You're neither well rested, nor exhausted. Nothing is holding you back from doing
+    your best in this game of wits.
+  _linkText:
+  - '"Yvette Decaux."'
+  - '"Baron Armand de Marbo."'
+  - '"I am Baron Armand de Marbo''s date. He could not attend."'
+  - '"Well then, look harder."'
+  - 
+  - 
+  - '"Please convey my deepest gratitude to our host, and that I''m eager to meet
+    him."'
+  - "\"\x1CWould you be able to take this gift of wine to our host?\" <-10 Livres>"
+  - 
+  - 
+  - '"That''s a good question, I wish I knew..."'
+  - '"He has taken ill, but insisted that I attend in his stead."'
+  - 
+  - '"Please convey my deepest gratitude to our host, and that I''m eager to meet
+    him."'
+  - "\"\x1CWould you be able to take this gift of wine to our host?\" <-10 Livres>"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

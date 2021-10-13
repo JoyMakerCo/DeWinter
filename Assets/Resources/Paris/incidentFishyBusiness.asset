@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: incidentFishyBusiness
+  m_EditorClassIdentifier: 
+  Name: Fishy Business
+  LocationWindowDescription: Down by the docks, you run into a certain soldier and
+    widow. They might serve as agreeable company to spend the day with.
+  IntroIncidentConfig: {fileID: 11400000, guid: f9f4bd150df69e34a882ca885a2063d0,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
+  OneShot: 1
+  IsRendezvous: 0
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: e438efe3d1d34ce428535d5775781deb,
+    type: 3}
+  Requirements:
+  - Type: 28
+    ID: honoradeGazel
+    Value: 1
+    Operator: 4
+  - Type: 28
+    ID: thomasAlexandreDumas
+    Value: 1
+    Operator: 4
+  - Type: 23
+    ID: Thomas-AlexandreDead
+    Value: 0
+    Operator: 3

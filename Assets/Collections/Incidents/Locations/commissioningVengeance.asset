@@ -1,0 +1,1333 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: commissioningVengeance
+  m_EditorClassIdentifier: 
+  _Nodes: 15000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -142, y: 301}
+  - {x: -141, y: 390}
+  - {x: 135, y: 303}
+  - {x: 135, y: 399}
+  - {x: -145, y: 561}
+  - {x: 145, y: 569}
+  - {x: -148, y: 653}
+  - {x: -145, y: 756}
+  - {x: 101, y: 760}
+  - {x: 131, y: 646}
+  - {x: -144, y: 822}
+  - {x: 84, y: 826}
+  - {x: -156, y: 887}
+  - {x: 88, y: 892}
+  - {x: -157, y: 951}
+  - {x: -155, y: 1017}
+  - {x: -152, y: 1084}
+  - {x: -147, y: 1141}
+  - {x: -142, y: 1198}
+  - {x: -143, y: 1259}
+  - {x: -23, y: 1326}
+  - {x: -27, y: 1403}
+  - {x: 93, y: 946}
+  - {x: 89, y: 1016}
+  - {x: 92, y: 1088}
+  - {x: 86, y: 1150}
+  - {x: 93, y: 1202}
+  - {x: 90, y: 1262}
+  - {x: -222, y: 94}
+  - {x: 3, y: 99}
+  - {x: 207, y: 89}
+  - {x: 205, y: 149}
+  - {x: 3, y: 210}
+  - {x: -365, y: 649}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 3, y: 4}
+    - {x: 2, y: 5}
+    - {x: 2, y: 6}
+    - {x: 4, y: 5}
+    - {x: 4, y: 6}
+    - {x: 5, y: 7}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 6, y: 10}
+    - {x: 10, y: 8}
+    - {x: 10, y: 9}
+    - {x: 8, y: 11}
+    - {x: 11, y: 13}
+    - {x: 11, y: 14}
+    - {x: 9, y: 12}
+    - {x: 12, y: 13}
+    - {x: 12, y: 14}
+    - {x: 13, y: 15}
+    - {x: 15, y: 16}
+    - {x: 16, y: 17}
+    - {x: 17, y: 18}
+    - {x: 18, y: 19}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 21, y: 22}
+    - {x: 14, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 25, y: 26}
+    - {x: 26, y: 27}
+    - {x: 27, y: 28}
+    - {x: 28, y: 21}
+    - {x: 0, y: 29}
+    - {x: 0, y: 30}
+    - {x: 0, y: 31}
+    - {x: 31, y: 32}
+    - {x: 32, y: 33}
+    - {x: 33, y: 1}
+    - {x: 33, y: 3}
+    - {x: 30, y: 33}
+    - {x: 29, y: 33}
+    - {x: 5, y: 34}
+    - {x: 34, y: 8}
+    - {x: 34, y: 9}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 8038ffce6e720470388f917820ea28dd, type: 3}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/OS - Elisabeth - Introduction
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 8038ffce6e720470388f917820ea28dd, type: 3}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/OS - Elisabeth - Introduction
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 8
+        ID: aPortraitCompleted
+        Value: 2
+      Music:
+        Name: event:/Music/OS - Elisabeth - Select
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 25a2b1ff7adc84706921282868534d90, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: angry
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: neutral
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ElisabethVigeeLeBrun
+        Pose: happy
+        Name: "\xC9lisabeth"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: theFirstSitting
+        Value: 1
+        Operator: 0
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 28
+        ID: elisabethVigeeLeBrun
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 28
+        ID: elisabethVigeeLeBrun
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: herMuse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "The next step of your plan to wreak vengeance upon Baron Maximin
+      de Termes requires you to commission a painting from one \xC9lisabeth Le Brun."
+    Requirements:
+    - Type: 8
+      ID: aFatedConnection
+      Value: 1
+      Operator: 4
+    _date: -1
+  Name: Commissioning Vengeance
+  _factions: 000100000000
+  _chapters: 00010000
+  _date: -1
+  _nodeText:
+  - You waste no time in heading out to go to Madame Le Brun's studio.
+  - Inside, you find her sipping idly on some wine, while she prepares a canvas.
+    The air is thick with the smell of canvas, gesso and paint. Not knowing how else
+    to get her attention, you clear your throat.
+  - She turns to you and nearly jumps out of her skin "Yvette! What are you doing
+    here?"
+  - Inside, you find her sipping idly on some wine, while she prepares a canvas.
+    The air is thick with the smell of canvas, gesso and paint. Not knowing how else
+    to get her attention, you clear your throat.
+  - She turns to you and nearly jumps out of her skin "Who the devil are you?"
+  - "\u201CA very special portrait?\u201D she asks, calming quickly as her curiosity
+    is obviously piqued. \u201CI\u2019ll warn you now, I don\u2019t paint nudes of
+    my clients.\u201D"
+  - '"Nothing, I guess." She replies, slowly calming down. "Just preparing another
+    canvas for when I get some new work."'
+  - "\u201CEven though you\u2019d make a very intriguing subject.\u201D"
+  - "She rubs her chin thoughtfully, then picks up her sketchbook and starts to flip
+    through it, examining old ideas. \u201CA mother with son?\u201D\r"
+  - "\xC9lisabeth tilts back her head and laughs at your proposal. After a while,
+    she pauses to reexamine your expression."
+  - '"What''s this about? Are you looking to commission me?"'
+  - "\u201CI could work with that, but what\u2019s going to make this interesting?\u201D"
+  - "\"Oh, you\u2019re actually serious.\" She realizes aloud."
+  - "\u201CYou mean actual, physical justice? From a painting?\u201D"
+  - "\u201CTHE Baron de Termes? Ugh\u2026\u201D"
+  - "She starts sketching a little. \u201CEvery artist faces the same problem. You
+    spend your whole life making beautiful things, but you\u2019re never sure that
+    anything you\u2019re doing actually matters.\u201D\r"
+  - "\u201CLots of people like my paintings, even important people like the Queen.
+    Still, I\u2019m always wondering if I\u2019m actually making the world a better
+    place.\u201D "
+  - "\u201CA more beautiful one? Definitely. A better one? I\u2019m not sure.\u201D
+    Her sketching starts to speed up."
+  - "\u201CThis, on the other hand. This is exactly what I\u2019ve been looking for!\u201D "
+  - "\u201CA painting that actually solves a problem in someone\u2019s life? Oh,
+    this will be some of my best work...\u201D \r"
+  - "\u201CSorry, I got carried away there. I will absolutely paint this. Where can
+    I find my subjects, and what, exactly, does this painting need to convey to the
+    viewer?\u201D\r"
+  - "You spend a few minutes telling \xC9lisabeth about where to find Marguerite
+    Bonnet, and what exactly the painting needs to display. \rYou don\u2019t know
+    how you\u2019ll use this painting yet, but it still means that you\u2019re a
+    step closer than \ryou were before."
+  - With that, you depart, but your vengeance approaches.
+  - "\u201CUgh!\u201D"
+  - "\u201CUGH!\u201D"
+  - "\u201CSorry, I just hate that man. Did you know that he called one of my self
+    portraits \u2018uninspired and selfish\u2019?\u201D"
+  - "\u201CIt\u2019s a self portrait! People have been painting them for\u2026 forever!
+    It\u2019s a classic display of an artist\u2019s skills!\u201D She shakes her
+    head angrily. \u201CHonestly, why is it that when men paint pictures of themselves
+    they\u2019re \u2018engaging in a serious study\u2019, but when I paint one, it\u2019s
+    suddenly all about my vanity?\u201D "
+  - "\u201C...\u201D"
+  - "\u201CSorry, I got carried away there. I will absolutely paint this, if it means
+    that I get to put that pretentious blowhard in his place. How do you want me
+    to do this?\u201D\r"
+  - Thankfully, you've already visited her before, so it's quite easy for you to
+    find.
+  - "While you know \xC9lisabeth, you've never actually been to her studio before.
+    Hopefully, this isn't overstepping any boundaries too much."
+  - You're planning on showing up unannounced, at the studio of a great painter you've
+    never met, all for the sake of vengeance.
+  - None of the stories about people seeking revenge truly prepared you for how socially
+    awkward some of this business is.
+  - You arrive at her studio, and notice that the door has been left ajar, which
+    is certainly odd. After a minute of waiting to see if anyone is around, you simply
+    let yourself in.
+  - '"Of course, you''re more than a mere client, so I still haven''t broken that
+    rule..."'
+  _linkText:
+  - 
+  - 
+  - "\u201C\xC9lisabeth, I\u2019d like to commission you for a very special portrait.\u201D"
+  - "\u201CWhat were you doing, just now?\u201D"
+  - "\"Madame Le Brun, \x1CI\x19'd like to commission you for a very special portrait.\x1D\""
+  - '"I''m sorry, am I interrupting something?"'
+  - 
+  - "\u201CI\u2019m flattered, but I\u2019m actually hoping you\u2019ll paint my
+    friend and her son.\u201D"
+  - "\u201CHow does \u2018use the art of painting to destroy a wicked man\u2019 sound,
+    for intriguing?\u201D"
+  - 
+  - "\u201CIf you're interested, yes. A friend of mine and her young son.\""
+  - '"Specifically, I''m hoping you can help me use the art of painting to destroy
+    a wicked man."'
+  - 
+  - "\u201CThis painting is going to help my friend Marguerite get the justice she
+    deserves.\u201D"
+  - "\u201CThe main goal of this painting is to destroy the wicked Baron Maximin
+    de Termes.\u201D"
+  - 
+  - "\u201CYes, your painting could help my friend Marguerite get justice.\u201D"
+  - "\u201CAbsolutely. I want you to paint a painting that will destroy Baron Maximin
+    de Termes.\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"In this case, I''m actually hoping you''ll paint my friend and her son."'
+  - '"How does ''use the art of painting to destroy a wicked man'' sound for a subject?"'

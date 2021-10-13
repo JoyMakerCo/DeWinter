@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,87 +8,101 @@ namespace Ambition
 {
     public class EventListView : MonoBehaviour
     {
-        public Transform ListContent;
-        public Text[] Headers;
+        // CONSTANTS
+        private const int TIME_SPAN = 31; // One Month
 
-        public GameObject ListItemPrefab;
+        // PUBLIC DATA
+        public EventListItemView ListItem;
 
-        private PartyModel _model;
-        private System.DateTime _today;
-        private List<GameObject> _pool = new List<GameObject>();
+        // PRIVATE DATA
+        private List<EventListItemView> _pool;
+
+        // PUBLIC METHODS
+
+        // PRIVATE METHODS
+        private void Awake()
+        {
+            if (_pool == null) _pool = new List<EventListItemView>() { ListItem };
+        }
 
         void OnEnable()
         {
-            _model = AmbitionApp.GetModel<PartyModel>();
-            _today = AmbitionApp.GetModel<GameModel>().Date;
             AmbitionApp.Subscribe<PartyVO>(HandleParty);
-            UpdateParties();
+            AmbitionApp.Subscribe<RendezVO>(HandleRendez);
+            AmbitionApp.Calendar.Observe(HandleRefresh);
+        }
+
+        void HandleRefresh(CalendarModel calendar)
+        {
+            PartyVO[] parties;
+            RendezVO[] rendezs;
+            bool showDate;
+            int i = 0;
+            int span = 0;
+            for (int day = calendar.Day; span < TIME_SPAN; ++day)
+            {
+                showDate = true;
+                parties = calendar.GetOccasions<PartyVO>(day);
+                rendezs = calendar.GetOccasions<RendezVO>(day);
+                if (parties.Length == 0 && rendezs.Length == 0) ++span;
+                else
+                {
+                    span = 0;
+                    foreach (PartyVO party in parties)
+                    {
+                        Instantiate(party, i, showDate);
+                        i++;
+                        showDate = false;
+                    }
+                    foreach(RendezVO rendez in rendezs)
+                    {
+                        Instantiate(rendez, i, showDate);
+                        i++;
+                        showDate = false;
+                    }
+                }
+            }
+            while (i < _pool.Count)
+            {
+                _pool[i++].gameObject.SetActive(false);
+            }
         }
 
         void OnDisable()
         {
             AmbitionApp.Unsubscribe<PartyVO>(HandleParty);
+            AmbitionApp.Unsubscribe<RendezVO>(HandleRendez);
+            AmbitionApp.Calendar.Unobserve(HandleRefresh);
         }
 
-        private void HandleParty(PartyVO party) => UpdateParties();
-
-        private void UpdateParties()
+        private void HandleRendez(RendezVO rendez)
         {
-            List<List<PartyVO>> types = new List<List<PartyVO>>()
-            {
-                new List<PartyVO>(),
-                new List<PartyVO>(),
-                new List<PartyVO>(),
-                new List<PartyVO>()
-            };
-            Vector2 xform = Headers[0].rectTransform.anchoredPosition;
-            GameObject item;
-            int itemCount = 0;
-            bool show;
-            foreach(PartyVO party in _model.Parties.Values)
-            {
-                if (party.Date >= _today)
-                {
-                    switch(party.RSVP)
-                    {
-                        case RSVP.Accepted:
-                        case RSVP.Required:
-                            types[1].Add(party);
-                            break;
-                        case RSVP.Declined:
-                            types[2].Add(party);
-                            break;
-                        case RSVP.New:
-                            types[3].Add(party);
-                            break;
-                    }
-                    if (++itemCount > _pool.Count)
-                    {
-                        item = Instantiate(ListItemPrefab, ListContent.transform);
-                        _pool.Add(item);
-                    }
-                }
-            }
+            EventListItemView item = _pool.Find(i => i.Event == rendez);
+            if (item != null) item.Event = rendez;
+        }
 
-            itemCount = 0;
-            for (int i = 0; i < types.Count; i++)
+        private void HandleParty(PartyVO party)
+        {
+            EventListItemView item = _pool.Find(i => i.Event == party);
+            if (item != null) item.Event = party;
+        }
+
+        private void Instantiate(CalendarEvent e, int index, bool showDate)
+        {
+            EventListItemView item;
+            if (index < _pool.Count)
             {
-                Headers[i].rectTransform.anchoredPosition = xform;
-                show = types[i].Count > 0;
-                Headers[i].enabled = show;
-                if (show)
-                {
-                    xform.y -= Headers[i].GetComponent<RectTransform>().rect.height;
-                    foreach (PartyVO party in types[i])
-                    {
-                        item = _pool[itemCount];
-                        item.GetComponent<EventListItemView>().Party = party;
-                        item.GetComponent<RectTransform>().anchoredPosition = xform;
-                        xform.y -= item.GetComponent<RectTransform>().rect.height;
-                        itemCount++;
-                    }
-                }
+                item = _pool[index];
             }
+            else
+            {
+                GameObject obj = Instantiate(ListItem.gameObject, ListItem.transform.parent);
+                item = obj.GetComponent<EventListItemView>();
+                _pool.Add(item);
+            }
+            item.Event = e;
+            item.gameObject.SetActive(true);
+            item.DateText.enabled = showDate;
         }
     }
 }

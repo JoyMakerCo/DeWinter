@@ -6,8 +6,8 @@ namespace Ambition
     {
         public static bool Check(RequirementVO req)
         {
-            // req.ID incident name
-            return AmbitionApp.GetModel<IncidentModel>().IsComplete(req.ID);
+            int isComplete = AmbitionApp.Story.IsComplete(req.ID, false) ? 1 : 0;
+            return RequirementsSvc.Check(req, isComplete);
         }
     }
 }

@@ -12,13 +12,25 @@ PluginImporter:
   validateReferences: 1
   platformData:
   - first:
-      '': OSXIntel
+      : Linux
+    second:
+      enabled: 0
+      settings:
+        CPU: x86
+  - first:
+      : LinuxUniversal
     second:
       enabled: 0
       settings:
         CPU: AnyCPU
   - first:
-      '': OSXIntel64
+      : OSXIntel
+    second:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+  - first:
+      : OSXIntel64
     second:
       enabled: 0
       settings:
@@ -50,19 +62,7 @@ PluginImporter:
       settings:
         CPU: None
   - first:
-      Standalone: Linux
-    second:
-      enabled: 0
-      settings:
-        CPU: x86
-  - first:
       Standalone: Linux64
-    second:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-  - first:
-      Standalone: LinuxUniversal
     second:
       enabled: 0
       settings:

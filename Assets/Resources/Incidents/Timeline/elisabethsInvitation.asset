@@ -1,0 +1,294 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: elisabethsInvitation
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 65}
+  - {x: 7, y: 130}
+  - {x: 13, y: 337}
+  - {x: 11, y: 264}
+  - {x: 17, y: 400}
+  - {x: 9, y: 194}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 4, y: 3}
+    - {x: 3, y: 5}
+    - {x: 2, y: 6}
+    - {x: 6, y: 4}
+    Nodes:
+    - Text: This morning, it takes you a touch longer than usual to leave the warm
+        cocoon of your blankets. When you do, you notice that Camille has left a
+        letter on your nightstand. The wax seal shines red like fresh blood.
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/OS - Elisabeth - Introduction
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'You break the seal with a deft slice from your letter opener. You can
+        immediately tell that the handwriting is Antoine''s. He writes quickly enough
+        that you can find small spatters of ink at the top of his compressed, precise
+        letters. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/sfx_open_letter
+        Parameters: []
+    - Text: '''<i>Chere<i> Yvette,
+
+
+        I''ve grown dissatisfied with the ceaseless
+        inaction of my peers and have decided to do something myself. I would like
+        you to join me, should you find yourself inclined to the cause of liberty''
+
+
+        The
+        letter goes on to describe a location where you could meet him.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '''Fear not. I''m certain that you will enjoy this as much as the royalists
+        will hate it.
+
+
+        <i>Affectueusement</i>,
+
+
+        - Antoine'''
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (Direct Action is now available to visit in the Paris map)
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: missionTheLadyOfFineArts
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You check his directions against your map. If you head out now, it might
+        be possible to meet up with Antoine today.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You check his directions against your map. If you head out now, it might
+        be possible to meet up with Antoine today.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 8
+      ID: playingFavorites
+      Value: 1
+      Operator: 4
+    - Type: 5
+      ID: elisabethVigeeLeBrun
+      Value: 20
+      Operator: 4
+    _date: 564424416000000000
+  Name: Elisabeth's Invitation
+  _factions: 000000000000
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - You notice that Camille has left a letter on your vanity. The wax seal is a deep
+    royal purple, but there are also notice a tiny spatterings of oil paints at the
+    corners of the paper.
+  - "You break the seal with a deft slice from your letter opener. The messy, nearly
+    illegible handwriting is clearly \xC9lisabeth's."
+  - "'<i>Ch\xE8re</i> Yvette,\n\nI know this doesn't come at a convenient time, but
+    with things as they are in the streets, I don't think we'll see something resembling
+    a convenient time for quite a while. I want to see you, and soon.'"
+  - "'You mean a lot to me, and I just want to find the right way to say it.\n\n<i>Bisous</i>,\n\n-
+    \xC9lisabeth'"
+  - ('<i>La Dame Des Beaux-Arts</i>' is now available to visit in the Paris map)
+  - "You check her directions against your map. It might be possible to meet up with
+    \xC9lisabeth tonight."
+  - The letter goes on to describe a location where you could meet her.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

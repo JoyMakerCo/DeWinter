@@ -1,0 +1,1206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: divisionWithinTheRanks
+  m_EditorClassIdentifier: 
+  _Nodes: 07000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -4, y: 93}
+  - {x: 1, y: 178}
+  - {x: -134, y: 247}
+  - {x: 107, y: 253}
+  - {x: -20, y: 321}
+  - {x: -22, y: 380}
+  - {x: -17, y: 439}
+  - {x: -20, y: 503}
+  - {x: -265, y: 584}
+  - {x: -23, y: 596}
+  - {x: 209, y: 591}
+  - {x: 209, y: 645}
+  - {x: 207, y: 703}
+  - {x: -264, y: 650}
+  - {x: -262, y: 713}
+  - {x: -397, y: 768}
+  - {x: -264, y: 819}
+  - {x: -215, y: 874}
+  - {x: -266, y: 947}
+  - {x: -267, y: 1006}
+  - {x: -276, y: 1081}
+  - {x: -275, y: 1159}
+  - {x: -20, y: 655}
+  - {x: -19, y: 716}
+  - {x: -88, y: 770}
+  - {x: -18, y: 827}
+  - {x: 42, y: 890}
+  - {x: 1, y: 949}
+  - {x: -6, y: 1017}
+  - {x: -8, y: 1089}
+  - {x: -21, y: 1156}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 2, y: 4}
+    - {x: 4, y: 5}
+    - {x: 3, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 8, y: 10}
+    - {x: 8, y: 11}
+    - {x: 11, y: 12}
+    - {x: 12, y: 13}
+    - {x: 9, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 15, y: 17}
+    - {x: 15, y: 18}
+    - {x: 18, y: 19}
+    - {x: 17, y: 19}
+    - {x: 16, y: 19}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 21, y: 22}
+    - {x: 10, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 24, y: 26}
+    - {x: 24, y: 27}
+    - {x: 27, y: 28}
+    - {x: 28, y: 29}
+    - {x: 29, y: 30}
+    - {x: 30, y: 31}
+    - {x: 26, y: 28}
+    - {x: 25, y: 28}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 1d1cd0244eea6d044ba503e4a01a7c2a, type: 3}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Waning Royalist
+        Motion: 1
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Reluctant Nationalist
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Reluctant Nationalist
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Waning Royalist
+        Motion: 3
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Waning Royalist
+        Motion: 3
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Reluctant Nationalist
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: crown
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: crown
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: crown
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Waning Royalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Waning Royalist
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: charmed
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: revolution
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: revolution
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: charmed
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: revolution
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Reluctant Nationalist
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Reluctant Nationalist
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: marcelleAppears
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "A pair of former soldiers seem to be quite concerned with the rumors
+      that they\u2019ve overheard lately. It\u2019s unlikely that you\u2019d be able
+      to get them to divulge these rumors while together, but perhaps one could \u2018divide
+      and conquer\u2019, as it were."
+    Requirements: []
+    _date: -1
+  Name: Division Within The Ranks
+  _factions: 000000010000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - Two men without uniforms of any kind are talking with each other next to a cannon.
+    They seem extremely tense, and this disquiet draws you towards them like a bayonet
+    towards a heart.
+  - '"I''ve heard some sincerely disquieting things about the goings on with the
+    aristocracy, and I simply don''t know who else I can talk to."'
+  - '"Then it seems we are in the same boat, <i>mon ami</i>. I have heard similarly
+    distressing things about the revolutionaries from my friends who are closer to
+    such circles. However, it''d bring dishonor upon my name to even voice such a
+    thing. We can''t afford to become enemies of either the Crown or the Revolution."'
+  - You're not entirely sure what it'd mean to be declared a enemy of the Crown,
+    but if your encounters with Viscountess de Foix are any indication, it'd be less
+    than pleasant.
+  - You're not entirely sure what it'd mean to be declared an enemy of the Revolution,
+    but if your encounters with Maximin are any indication, it'd be less than pleasant.
+  - '"Agreed! We shan''t discuss this further, but for the sake of preserving our
+    honor!" The man on the left proclaims, with that outrageous seriousness that
+    men sometimes muster for the smallest of contrivances.'
+  - It's clear that these men are so bursting with the desire to talk, that they
+    can scarcely contain themselves. It'd be trivial to extract the information from
+    them, should you make the attempt. However, there's truth to the danger they
+    spoke of. If you take these secrets, members of either the Crown of the Revolution
+    will surely know.
+  - '"In fact, we should disperse for now." His companion replies. "There is no such
+    thing as too much caution when it comes to preserving one''s honor."
+
+
+    To
+    this, the other nods in stout agreement.'
+  - This is your chance, but who should you follow?
+  - You follow the royalist at a distance until he's far enough from his friend to
+    not be overheard. Specifically, you arrange it so that you 'chance across him'
+    while he's acquiring new refreshments in a tent. He's wisely chosen a glass of
+    white wine, which is a better choice in this heat than a heavy red.
+  - You follow the nationalist at a distance until he's far enough from his friend
+    to not be overheard. Specifically, you arrange it so that you 'chance across
+    him' while he's acquiring new refreshments in a tent. He's wisely chosen a glass
+    of white wine, which is a better choice in this heat than a heavy red.
+  - You turn your back on the two departing gentlemen, in order to make sure that
+    you're not involved in either of their poorly kept secrets. It's simply safer
+    for you, this way.
+  - (You have lost a little peril)
+  - Unsure of the time, you already begin to search to see if there's anything else
+    you can do at this party, before it finishes.
+  - '"Are you as parched as I am, madame?" He asks, when you pick up a glass of the
+    same. It''s a cheap ploy, but identical drinks make an easy conversation starter.'
+  - You find it a little harder to gain his confidence that you'd initially guessed,
+    but you made quick headway once you pretended to be innocently ignorant of politics.
+    Once he no longer viewed you as a threat, he was more than willing to tell you
+    about the rumor that's been bothering him.
+  - (You have gained a piece of Cheap Crown Gossip)
+  - (You have gained a piece of Shocking Crown Gossip)
+  - (You have gained a piece of Outrageous Crown Gossip)
+  - You carefully memorize the details of his gossip, but you're also keenly aware
+    that you're not going to be the last person he talks to about this. Simply put,
+    he's bad at keeping a secret, which means that your part in this is likely to
+    come to light, especially to those connected to the Crown.
+  - (You have lost a little favor with Elisabeth)
+  - The conversation that follows afterwards is a little stilted. Normally, you'd
+    stay in order to chat and make him feel at ease, but you can tell that he's realizing
+    that he's made a grave mistake.
+  - "You leave before you can get drawn into the throes of his growing panic. \n\nUnsure
+    of the time, you're already beginning to search to see if there's anything else
+    you can do at this party, before it finishes."
+  - '"Are you as parched as I am?" He asks, when you pick up a glass of the same.
+    It''s a cheap ploy, but identical drinks make an easy conversation starter.'
+  - You find it a little harder to gain his confidence that you'd initially guessed,
+    but you made quick headway once you pretended to be innocently ignorant of politics.
+    Once he no longer viewed you as a threat, he was more than willing to tell you
+    about the rumor that's been bothering him.
+  - (You have gained a piece of Cheap Revolution Gossip)
+  - (You have gained a piece of Shocking Revolution Gossip)
+  - (You have gained a piece of Outrageous Revolution Gossip)
+  - You carefully memorize the details of his gossip, but you're also keenly aware
+    that you're not going to be the last person he talks to about this. Simply put,
+    he's bad at keeping a secret, which means that your part in this is likely to
+    come to light, especially to those connected to the Revolution.
+  - (You have lost a little favor with Antoine)
+  - The conversation that follows afterwards is a little stilted. Normally, you'd
+    stay in order to chat and make him feel at ease, but you can tell that he's realizing
+    that he's made a grave mistake.
+  - "You leave before you can get drawn into the throes of his growing panic. \n\nUnsure
+    of the time, you're already beginning to search to see if there's anything else
+    you can do at this party, before it finishes."
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"The royalist could tell me some interesting things about the Crown."'
+  - '"I''d like something related to the Revolution, so the nationalist feels like
+    the best choice."'
+  - '"This farce simply isn''t worth it, and neither are either of these men."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

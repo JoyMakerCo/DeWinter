@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
@@ -6,93 +7,80 @@ using Core;
 
 namespace Ambition
 {
-    public class CharacterVO : IConsoleEntity
+    public class CharacterVO
     {
-
-        [JsonProperty("display_name")]
-        public string Name;
-
         [JsonProperty("id")]
         public string ID;
 
-        [JsonProperty("full_name")]
-        public string FullName;
-
-        [JsonProperty("formal_name")]
-        public string FormalName;
-
         [JsonProperty("faction")]
-        public FactionType Faction = FactionType.Neutral;
+        public FactionType Faction = FactionType.None;
 
 		[JsonProperty("Gender")]
 	    public Gender Gender;
 
+        [JsonProperty("favor")]
         public int Favor;
 
-        public string AvatarID;
-
-        [JsonProperty("Reputation")]
-        public int Reputation;
-
-        [JsonProperty("Background")]
-        public string Background;
-
-        [JsonProperty("Wealth")]
-        public int Wealth;
-
-        [JsonProperty("Spouse")]
-        public string Spouse=null;
-
-        [JsonProperty("Celibate")]
-        public bool Celibate = false;
-
-		public CharacterVO() {}
-		public CharacterVO(CharacterVO character)
-		{
-			Name = character.Name;
-            ID = character.ID;
-            FullName = character.FullName;
-            FormalName = character.FormalName;
-            Gender = character.Gender;
-            Spouse = character.Spouse;
-            Reputation = character.Reputation;
-            Background = character.Background;
-            Wealth = character.Wealth;
-            Celibate = character.Celibate;
+        [JsonProperty("dateable")]
+        private bool _dateable;
+        public bool IsDateable
+        {
+            get => Acquainted && _dateable;
+            set => _dateable = value;
         }
 
-        public CharacterVO(string name, AvatarVO avatar)
-        {
-            Name = name;
-            this.AvatarID = avatar.ID;
+        [JsonIgnore]
+        public bool IsRendezvousScheduled => LiaisonDay >= 0;
+
+        [JsonProperty("avatar")]
+        public string Avatar;
+
+        [JsonProperty("liaisonDay")]
+        public int LiaisonDay=-1; // -1 = no liaison scheduled; 0+ = # of days from StartDate
+
+        [JsonProperty("acquainted")]
+        public bool Acquainted = false; // Whether the character is acquainted with the player
+
+        [JsonProperty("locationsFavored")]
+        public string[] FavoredLocations = new string[0];
+
+        [JsonProperty("locationsOpposed")]
+        public string[] OpposedLocations = new string[0];
+
+        [JsonProperty("formal")]
+        public bool Formal=false;
+
+        [JsonProperty("rejections")]
+        public int Rejections = 0;
+
+        public CharacterVO() {}
+		public CharacterVO(CharacterVO character)
+		{
+            ID = character.ID;
+            Gender = character.Gender;
+            Favor = character.Favor;
+            Avatar = character.Avatar;
+            Formal = character.Formal;
+            FavoredLocations = CopyLocations(character.FavoredLocations);
+            OpposedLocations = CopyLocations(character.OpposedLocations);
         }
 
         public override string ToString()
         {
-            return string.Format("CharacterVO: {0}", Name );
+			return "CharacterVO: " + ID +
+                "\n Gender: " + Gender.ToString() +
+                "\n Favor: " + Favor.ToString();
         }
 
-        public string[] Dump()
+        private string[] CopyLocations(string[] array)
         {
-			return new string[]
-			{
-				"CharacterVO: " + ID,
-                "Display Name: " + Name,
-                "FullName: " + FullName,
-                "FormalName: " + FormalName,
-                "Gender: " + Gender.ToString(),
-				"Spouse: " + Spouse,
-				"Reputation: " + Reputation,
-				"Background: " + Background,
-				"Favor: " + Favor.ToString(),
-				"Wealth: " + Wealth.ToString(),
-				"Celibate: " + (Celibate?"true":"false")	
-			};
-        }
-
-        public void Invoke( string[] args )
-        {
-            ConsoleModel.warn("CharacterVO has no invocation.");
+            int length = array?.Length ?? 0;
+            string[] result = new string[length];
+            if (array != null)
+            {
+                Array.Copy(array, result, length);
+            }
+            return result;
         }
     }
 }

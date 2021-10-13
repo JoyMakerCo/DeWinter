@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core;
 namespace Ambition
 {
@@ -6,32 +7,26 @@ namespace Ambition
     {
         public void Execute(PartyVO party)
         {
-            if (party == null) return;
+            CalendarModel calendar = AmbitionApp.Calendar;
+            if (party == null || party.Day < calendar.Day) return;
 
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            ushort day = game.Convert(party.Date);
-            if (day >= game.Day)
+            List<PartyVO> parties = new List<PartyVO>(calendar.GetOccasions<PartyVO>(party.Day));
+            RendezVO[] rendezs = calendar.GetOccasions<RendezVO>(party.Day);
+            parties.Remove(party);
+            if (party.RSVP == RSVP.Required || (!parties.Exists(p=>p.IsAttending) && !Array.Exists(rendezs, r => r.IsAttending)))
             {
+                parties.ForEach(p => AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, p));
+                Array.ForEach(rendezs, p => AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, p));
                 if (party.RSVP != RSVP.Required) party.RSVP = RSVP.Accepted;
-                AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party);
-                PartyVO[] parties = model.GetParties(day);
-                int required = -1;
-
-                for (int i=parties.Length-1; i>=0; --i)
+                if (party.RSVP != RSVP.Required && party.Created == calendar.Day)
                 {
-                    if (parties[i].RSVP == RSVP.Required)
-                    {
-                        required = i;
-                        for (int j=parties.Length-1; j>i; --j)
-                        {
-                            AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
-                        }
-                    }
-                    if (party.RSVP != RSVP.Required) party.RSVP = RSVP.Accepted;
+                    CommodityVO reward = new CommodityVO(CommodityType.Credibility, model.AcceptInvitationBonus);
+                    AmbitionApp.SendMessage(reward);
                 }
+                AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, party); // Dispatches Broadcast()
             }
-            model.UpdateParty();
+            else AmbitionApp.SendMessage(PartyMessages.DECLINE_INVITATION, party);
         }
     }
 }

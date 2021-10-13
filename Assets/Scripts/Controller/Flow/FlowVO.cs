@@ -1,10 +1,9 @@
 ﻿using System;
 namespace Ambition
 {
-    public class CalendarConsts
+    public static class CalendarConsts
     {
-        public CalendarConsts()
-        {
-        }
+        public const string MONTH_LOC = "month.";
+        public const string DATE = "date";
     }
 }

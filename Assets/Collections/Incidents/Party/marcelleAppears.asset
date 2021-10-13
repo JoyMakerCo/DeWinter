@@ -1,0 +1,1850 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: marcelleAppears
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 1, y: 58}
+  - {x: 2, y: 117}
+  - {x: 6, y: 317}
+  - {x: -214, y: 383}
+  - {x: 295, y: 306}
+  - {x: -202, y: 502}
+  - {x: -202, y: 582}
+  - {x: -202, y: 647}
+  - {x: -199, y: 751}
+  - {x: 29, y: 753}
+  - {x: 259, y: 753}
+  - {x: 326, y: 443}
+  - {x: 318, y: 518}
+  - {x: 319, y: 583}
+  - {x: 184, y: 656}
+  - {x: -232, y: 911}
+  - {x: 25, y: 810}
+  - {x: 23, y: 931}
+  - {x: 26, y: 993}
+  - {x: 255, y: 990}
+  - {x: 26, y: 1243}
+  - {x: 28, y: 1112}
+  - {x: -246, y: 316}
+  - {x: -455, y: 379}
+  - {x: -459, y: 435}
+  - {x: -461, y: 557}
+  - {x: -457, y: 696}
+  - {x: -212, y: 803}
+  - {x: 287, y: 864}
+  - {x: 0, y: 181}
+  - {x: 2, y: 245}
+  - {x: 317, y: 377}
+  - {x: -212, y: 439}
+  - {x: -460, y: 498}
+  - {x: -459, y: 625}
+  - {x: -220, y: 856}
+  - {x: -241, y: 967}
+  - {x: 27, y: 867}
+  - {x: 294, y: 805}
+  - {x: 276, y: 922}
+  - {x: 28, y: 1178}
+  - {x: 27, y: 1058}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 3, y: 5}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 8, y: 11}
+    - {x: 12, y: 13}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 9}
+    - {x: 15, y: 10}
+    - {x: 15, y: 11}
+    - {x: 10, y: 17}
+    - {x: 18, y: 19}
+    - {x: 20, y: 19}
+    - {x: 3, y: 23}
+    - {x: 23, y: 4}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 27, y: 9}
+    - {x: 27, y: 10}
+    - {x: 27, y: 11}
+    - {x: 9, y: 28}
+    - {x: 2, y: 30}
+    - {x: 30, y: 31}
+    - {x: 31, y: 3}
+    - {x: 5, y: 32}
+    - {x: 32, y: 12}
+    - {x: 4, y: 33}
+    - {x: 33, y: 6}
+    - {x: 25, y: 34}
+    - {x: 34, y: 26}
+    - {x: 26, y: 35}
+    - {x: 35, y: 27}
+    - {x: 28, y: 36}
+    - {x: 36, y: 16}
+    - {x: 16, y: 37}
+    - {x: 37, y: 19}
+    - {x: 17, y: 38}
+    - {x: 38, y: 18}
+    - {x: 11, y: 39}
+    - {x: 39, y: 29}
+    - {x: 29, y: 40}
+    - {x: 40, y: 20}
+    - {x: 22, y: 41}
+    - {x: 41, y: 21}
+    - {x: 19, y: 42}
+    - {x: 42, y: 22}
+    Nodes:
+    - Text: "You nearly mistake the woman standing in front of you for some kind
+        of walking confection. A pampered dog lounges in her arms. \u201CI don\u2019t
+        believe we had the chance to properly introduce ourselves. I am Viscountess
+        Marcelle de Foix.\u201D "
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: neutral
+        Name: Viscountess de Foix
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Crown - Party Master
+        Parameters:
+        - Name: WIN
+          Value: 0
+        - Name: LOSE
+          Value: 0
+        - Name: Conversation Start
+          Value: 0
+        - Name: Hard Stop
+          Value: 0
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Her voice raises in volume imperceptibly, but it\u2019s enough to draw
+        the attention of the large crowd in the room. \u201CEveryone, this is Yvette,
+        Armand\u2019s fiancee!\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: neutral
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "A murmur of interest washes through the crowd, and you can feel their
+        eyes focus on you.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: neutral
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CWhere is Armand, by the way?\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CThat is so sweet of him!\u201D Marcelle trills and her dog yips
+        happily. \u201CYou\u2019ve barely arrived from the country and he still wants
+        you to meet all the people he\u2019s been so fortunate to associate with.
+        It\u2019s very kind of you to represent him like this, and I\u2019m sure
+        that he\u2019ll be well soon.\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: "Marcelle stares at you, concerned and shocked. \u201CYou don\u2019t
+        know where he is, and yet you still came to this little event of mine?\u201D
+        She gestures a free hand at the most splendid party you\u2019ve ever seen
+        in your life. \u201CThat is so kind of you, of course I\u2019ll help!\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "\u201CI mean, I was hoping he\u2019d show his face here, but you\u2019ll
+        do.\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Crown - Party Master
+        Parameters:
+        - Name: WIN
+          Value: 0
+        - Name: LOSE
+          Value: 0
+        - Name: Conversation Start
+          Value: 0
+        - Name: Hard Stop
+          Value: 1
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_gasp
+        Parameters: []
+    - Text: "\u201CI guess it makes sense that you\u2019re here. Armand could never
+        stop pestering his betters, so it feels rather appropriate that, even when
+        sick, he\u2019d send his peasant fiance to do it for him.\u201D The crowd,
+        which only seems to be growing, murmurs in agreement. \u201CIn fact, I almost
+        thought I was rid of him once and for all\u2026\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: 
+          Value: 0
+        - Name: 
+          Value: 0
+        - Name: 
+          Value: 0
+        - Name: 
+          Value: 0
+        - Name: 
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CYet here you are, with a fresh set of nuisances. Does this ever
+        end?\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CWhy? While those craven nationalists in their dingy salons like
+        to hide behind their pamphlets and newsletters, people of quality must be
+        brave enough to denounce our enemies in person.\u201D "
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_HushedParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: "Marcelle pauses to pet her dog. \u201CI don\u2019t know where he is.
+        In fact, it\u2019s a shame that Armand\u2019s already scurried off somewhere.
+        I was really hoping to tell him this to his face, but then again, he always
+        was so good at disappointing people. You\u2019ll have to do.\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_HushedParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "For a moment, the crowd hushes. You seem to have struck a nerve. Even
+        the dog looks a little undone. \u201CI suppose that when cornered, even a
+        rat will think it\u2019s a lion,\u201D Marcelle whispers, her voice like
+        ice.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: angry
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_HushedParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_gasp
+        Parameters: []
+    - Text: "\u201CAfter all, you\u2019ve already helped me!\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Crown - Party Master
+        Parameters:
+        - Name: WIN
+          Value: 0
+        - Name: LOSE
+          Value: 0
+        - Name: Conversation Start
+          Value: 0
+        - Name: Hard Stop
+          Value: 1
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_gasp
+        Parameters: []
+    - Text: "\u201CArmand, that ambitious little rat, was always reaching above his
+        station. His audacity truly knew no bounds.\u201D Her eyes are focused on
+        you, but she\u2019s speaking to the crowd, who seem to whisper in agreement.
+        Even the dog regards you with malice."
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 0
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CNow, not only do I find out that he\u2019s a coward, who\u2019s
+        fled his fiancee, and his responsibilities\u2026\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 0
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201Cbut now, I have this commoner, who doesn\u2019t know her place
+        either!\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 0
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CYour Armand is a conniving, impish, opportunist who sullies the
+        good name of the entire nobility just by being alive. The only reason he
+        even chose a common girl like you to be his wife, is because any lady of
+        good breeding would see him for the weasel that he is.\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 1
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: "\u201CPlease pay attention, because I hate repeating myself. Your Armand
+        is gone, off somewhere on another one of his foolish little political endeavors.
+        However, if you should ever find him, tell him that he is an impudent weasel,
+        who should go back to whatever backwater he crawled out of, and leave the
+        running of this country to his superiors.\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: "A small cheer rings up from the crowd.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 1
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "Marcelle studies your face intently for a moment and her voice suddenly
+        fills with concern. \u201COh, you poor girl, don\u2019t look so hurt! Think
+        of this as educational. You don\u2019t belong in Paris, the same way that
+        a stray cat doesn\u2019t belong in that dress.\u201D She gestures dismissively
+        at your finery.\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 1
+        - Name: Stage 3
+          Value: 1
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: "\u201CNow pay attention, because I\u2019d hate for you to miss the point.
+        If you should ever find your wandering Armand, tell him that he is an unwelcome,
+        conniving weasel. In fact, both of you should go back to your petty little
+        village, and leave Paris to your superiors.\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 1
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CNow leave my estate, and never show your face here again.\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 1
+        ID: MeetingMarcelle
+        Value: 1
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 1
+        - Name: Stage 3
+          Value: 1
+        - Name: Stage 4
+          Value: 1
+        - Name: Stage 5
+          Value: 1
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '"Trying to look like us? Act like us? Stop. You''re just embarassing
+        yourself."'
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 1
+        - Name: Stage 3
+          Value: 1
+        - Name: Stage 4
+          Value: 1
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "\x1C\"Oh really, he insisted?\"\x1D Marcelle trills and her dog yips
+        happily."
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "\u201CWell I\u2019m so glad you\u2019re here, and I\u2019m sure that
+        he\u2019ll be well soon.\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "\u201CI mean, that\u2019s because we both know Armand\u2019s not sick.\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Crown - Party Master
+        Parameters:
+        - Name: WIN
+          Value: 0
+        - Name: LOSE
+          Value: 0
+        - Name: Conversation Start
+          Value: 0
+        - Name: Hard Stop
+          Value: 1
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_gasp
+        Parameters: []
+    - Text: "\u201CNobody\u2019s heard from your cowardly fiance in weeks, which
+        is especially surprising, since he could never stop pestering his betters.\u201D
+        The crowd, which only seems to be growing, murmurs in agreement. \u201CIn
+        fact, it\u2019s been so long that I thought I was rid of him once and for
+        all\u2026\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 0
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: "\u201Cbut now, I now have his cast off fiancee, who even had the audacity
+        to lie to my face!\u201D"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 0
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "She pauses before speaking to you in a whisper loud enough for the entire
+        room to hear. \u201CDon\u2019t worry, I don\u2019t expect you to understand
+        this.\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: "She advances on you, close enough to feel the heat of her breath. \u201CLet
+        me be clear. You and your grasping fiance are not guests in my home, nor
+        will you ever be. I invited him here so I could express my displeasure to
+        him in person.\u201D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: angry
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Prologue - Betrayal
+        Parameters:
+        - Name: Stage 1
+          Value: 1
+        - Name: Stage 2
+          Value: 0
+        - Name: Stage 3
+          Value: 0
+        - Name: Stage 4
+          Value: 0
+        - Name: Stage 5
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: "\"\x1CI'\x19m so glad to see you. Armand, that ambitious little thing,
+        has told me so much about you. In fact, I\x19'd say that he'\x19s quite infatuated
+        with you. A common girl like yourself... you\x19're so lucky!\"\x1D\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "(You have gained a little credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have gained a little credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have gained a little credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have gained some peril)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: happy
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have lost some credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have lost a little credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have lost a little credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have lost some credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have gained some credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: angry
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 20
+      - Type: 5
+        ID: Antoine
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have gained some peril)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: angry
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (You have lost some credibility)
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "(You have lost a little credibility)\r"
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: MarcelleDeFoix
+        Pose: smirking
+        Name: Viscountess de Foix
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CThat\u2019s actually what I was hoping to find out. Do you know
+        where I could find him?\u201D "
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201C...why did you invite Armand here?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CDo you always bemoan every \u2018nuisance\u2019 you send a handwritten
+        invitation to?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201C...why did you invite Armand here?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CI\u2019m guessing this means you don\u2019t know where he is?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CI may be a commoner, but at least I know how to treat my guests.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CPoor Armand is ill at the moment, but he just insisted that I
+        attend your party.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 0
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201C...why did you invite Armand here?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CI\u2019m guessing this means you don\u2019t know where he is,
+        either?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CI may be audacious, but at least I know how to treat my guests.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: A woman in a staggeringly pink dress is approaching you, carrying
+      her pet dog. Judging by the way other guests are looking at her, you can surmise
+      that this is the Viscountess Marcelle de Foix, the woman who invited you and
+      Armand here.
+    Requirements: []
+    _date: -1
+  Name: Marcelle Appears
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _nodeText:
+  - "You nearly mistake the woman standing in front of you for some kind of walking
+    confection. A pampered dog lounges in her arms. \u201CI don\u2019t believe we
+    had the chance to properly introduce ourselves. I am Viscountess Marcelle de
+    Foix.\u201D "
+  - "Her voice raises in volume imperceptibly, but it\u2019s enough to draw the attention
+    of the large crowd in the room. \u201CEveryone, this is Yvette, Armand\u2019s
+    fianc\xE9e!\u201D"
+  - "A murmur of interest washes through the crowd, and you can feel their eyes focus
+    on you.\r"
+  - "\u201CWhere is Armand, by the way?\u201D"
+  - "\u201CThat is so sweet of him! You\u2019ve barely arrived from the country and
+    he still wants you to meet all the people he\u2019s been so fortunate to associate
+    with. It\u2019s very kind of you to represent him like this, and I\u2019m sure
+    that he\u2019ll be well soon.\u201D\r"
+  - "Marcelle stares at you, concerned and shocked. \u201CYou don\u2019t know where
+    he is, and yet you still came to this little event of mine?\u201D She gestures
+    a free hand at the most splendid party you\u2019ve ever seen in your life. \u201CThat
+    is so kind of you, of course I\u2019ll help!\u201D\r"
+  - "\u201CI mean, I was hoping he\u2019d show his face here, but you\u2019ll do.\u201D"
+  - "\u201CI guess it makes sense that you\u2019re here. Armand could never stop
+    pestering his betters, so it feels rather appropriate that, even when sick, he\u2019d
+    send his peasant fianc\xE9e to do it for him.\u201D The crowd, which only seems
+    to be growing, murmurs in agreement. \u201CIn fact, I almost thought I was rid
+    of him once and for all\u2026\u201D\r"
+  - "\u201CYet here you are, with a fresh set of nuisances. Does this ever end?\u201D"
+  - "\u201CWhy? While those craven nationalists in their dingy salons like to hide
+    behind their pamphlets and newsletters, people of quality must be brave enough
+    to denounce our enemies in person.\u201D "
+  - "Marcelle pauses to pet her dog. \u201CI don\u2019t know where he is. In fact,
+    it\u2019s a shame that Armand\u2019s already scurried off somewhere. I was really
+    hoping to tell him this to his face, but then again, he always was so good at
+    disappointing people. You\u2019ll have to do.\u201D\r"
+  - "For a moment, the crowd hushes. You seem to have struck a nerve. Even the dog
+    looks a little undone. \u201CI suppose that when cornered, even a rat will think
+    it\u2019s a lion,\u201D Marcelle whispers, her voice like ice.\r"
+  - "\u201CAfter all, you\u2019ve already helped me!\u201D"
+  - "\u201CArmand, that ambitious little rat, was always reaching above his station.
+    Always asking for people to listen to ideas that nobody should even dare entertain!
+    His audacity truly knew no bounds.\u201D Her eyes are focused on you, but she\u2019s
+    speaking to the crowd, who seem to whisper in agreement. Even the dog regards
+    you with malice."
+  - "\"Now, not only do I find out that he\u2019s a coward, who\u2019s fled his fianc\xE9,
+    and the consequences of his gall\u2026\""
+  - "\u201Cbut now, I have this commoner, who doesn\u2019t know her place either!\u201D\r"
+  - "\u201CYour Armand is a conniving, traitorous, opportunist who sullies the good
+    name of the entire nobility just by being alive. The only reason he even chose
+    a common girl like you to be his wife, is because any lady of good breeding would
+    see him for the weasel that he is.\u201D\r"
+  - "\u201CPlease pay attention, because I hate repeating myself. Your Armand is
+    gone, off somewhere on another one of his foolish little political endeavors.
+    However, if you should ever find him, tell him that he is an traitorous weasel,
+    who should go back to whatever backwater he crawled out of, and leave the running
+    of this country to his superiors.\u201D\r"
+  - "A small cheer rings up from the crowd.\r"
+  - "Marcelle studies your face intently for a moment and her voice suddenly fills
+    with concern. \u201COh, you poor girl, don\u2019t look so hurt! Think of this
+    as educational. You don\u2019t belong in Paris, the same way that a stray cat
+    doesn\u2019t belong in that dress.\u201D She gestures dismissively at your finery.\r"
+  - "\u201CNow pay attention, because I\u2019d hate for you to miss the point. If
+    you should ever find your wandering Armand, tell him that he is an unwelcome,
+    conniving weasel. In fact, both of you should go back to your petty little village,
+    and leave Paris to your superiors.\u201D"
+  - "\u201CNow leave my estate, and never show your face here again.\u201D"
+  - '"Trying to look like us? Act like us? Stop. You''re just embarrassing yourself."'
+  - "\x1C\"Oh really, he insisted?\"\x1D Marcelle trills and her dog yips happily."
+  - "\u201CWell I\u2019m so glad you\u2019re here, and I\u2019m sure that he\u2019ll
+    be well soon.\u201D\r"
+  - "\u201CI mean, that\u2019s because we both know Armand\u2019s not sick.\u201D\r"
+  - "\"Nobody\u2019s heard from your cowardly fianc\xE9 in weeks, which is especially
+    surprising, since he could never stop pestering his betters.\u201D The crowd,
+    which only seems to be growing, murmurs in agreement. \"In fact, it\u2019s been
+    so long that I thought I was rid of him once and for all\u2026\u201D"
+  - "\u201C...but now, I now have his cast-off fianc\xE9e, who even had the audacity
+    to lie to my face!\u201D"
+  - "She pauses before speaking to you in a whisper loud enough for the entire room
+    to hear. \u201CDon\u2019t worry, I don\u2019t expect you to understand this.\u201D\r"
+  - "She advances on you, close enough to feel the heat of her breath. \u201CLet
+    me be clear. You and your grasping, traitorous fianc\xE9 are not guests in my
+    home, nor will you ever be. I invited him here so I could express my displeasure
+    to him in person.\u201D"
+  - "\"\x1CI'\x19m so glad to see you. Armand, that ambitious little thing, has told
+    me so much about you. In fact, I\x19'd say that he'\x19s quite infatuated with
+    you. A common girl like yourself... you\x19're so lucky!\"\x1D\r"
+  - "(You have gained a little credibility)\r"
+  - "(You have gained a little credibility)\r"
+  - "(You have gained some credibility)\r"
+  - "(You have gained some peril)\r"
+  - "(You have lost some credibility)\r"
+  - "(You have lost a little credibility)\r"
+  - "(You have lost a little credibility)\r"
+  - "(You have lost some credibility)\r"
+  - '(You have gained quite a bit of credibility)
+
+    (You have gained a little
+    favor with members of the Revolution)'
+  - "(You have gained some peril)\r"
+  - (You have lost some credibility)
+  - "(You have lost a little credibility)\r"
+  _linkText:
+  - 
+  - 
+  - "\u201CThat\u2019s actually what I was hoping to find out. Do you know where
+    I could find him?\u201D "
+  - 
+  - 
+  - "\u201C...why did you invite Armand here?\u201D"
+  - "\u201CDo you always bemoan every \u2018nuisance\u2019 you send a handwritten
+    invitation to?\u201D"
+  - 
+  - 
+  - 
+  - "\u201C...why did you invite Armand here?\u201D"
+  - "\u201CI\u2019m guessing this means you don\u2019t know where he is?\u201D"
+  - "\u201CI may be a commoner, but at least I know how to treat my guests.\u201D"
+  - 
+  - 
+  - 
+  - "\u201CPoor Armand is ill at the moment, but he just insisted that I attend your
+    party.\u201D"
+  - 
+  - 
+  - 
+  - "\u201C...why did you invite Armand here?\u201D"
+  - "\u201CI\u2019m guessing this means you don\u2019t know where he is, either?\u201D"
+  - "\u201CI may be audacious, but at least I know how to treat my guests.\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

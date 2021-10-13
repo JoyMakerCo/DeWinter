@@ -8,13 +8,9 @@ namespace Ambition
         public Sprite Splash;
         public FMODEvent Sting;
         public DateTime Date;
-
-        public ChapterVO(string id, DateTime date, Sprite splash, FMODEvent sting)
-        {
-            ID = id;
-            Date = date;
-            Splash = splash;
-            Sting = sting;
-        }
+        public FMODEvent EstateMusic;
+        public int TrivialPartyChance;
+        public int DecentPartyChance;
+        public int GrandPartyChance;
     }
 }

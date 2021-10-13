@@ -1,0 +1,1267 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: outlandishRumors
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 77}
+  - {x: 6, y: 143}
+  - {x: 8, y: 275}
+  - {x: 189, y: 205}
+  - {x: 7, y: 337}
+  - {x: 5, y: 391}
+  - {x: 6, y: 449}
+  - {x: 10, y: 508}
+  - {x: 17, y: 562}
+  - {x: -368, y: 641}
+  - {x: 13, y: 646}
+  - {x: 21, y: 710}
+  - {x: 25, y: 772}
+  - {x: -109, y: 833}
+  - {x: 25, y: 892}
+  - {x: 84, y: 940}
+  - {x: 11, y: 1010}
+  - {x: -86, y: 1071}
+  - {x: 133, y: 1085}
+  - {x: 8, y: 1158}
+  - {x: 11, y: 1218}
+  - {x: 252, y: 626}
+  - {x: 251, y: 692}
+  - {x: 254, y: 766}
+  - {x: -370, y: 708}
+  - {x: -366, y: 774}
+  - {x: -506, y: 835}
+  - {x: -368, y: 884}
+  - {x: -296, y: 937}
+  - {x: -391, y: 1013}
+  - {x: -385, y: 1076}
+  - {x: -374, y: 1150}
+  - {x: -375, y: 1219}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 2, y: 4}
+    - {x: 4, y: 3}
+    - {x: 3, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 9, y: 11}
+    - {x: 11, y: 12}
+    - {x: 12, y: 13}
+    - {x: 13, y: 14}
+    - {x: 13, y: 15}
+    - {x: 13, y: 16}
+    - {x: 16, y: 17}
+    - {x: 15, y: 17}
+    - {x: 14, y: 17}
+    - {x: 17, y: 18}
+    - {x: 17, y: 19}
+    - {x: 19, y: 20}
+    - {x: 18, y: 20}
+    - {x: 20, y: 21}
+    - {x: 9, y: 22}
+    - {x: 22, y: 23}
+    - {x: 23, y: 24}
+    - {x: 10, y: 25}
+    - {x: 25, y: 26}
+    - {x: 26, y: 27}
+    - {x: 26, y: 28}
+    - {x: 26, y: 29}
+    - {x: 29, y: 30}
+    - {x: 28, y: 30}
+    - {x: 27, y: 30}
+    - {x: 30, y: 31}
+    - {x: 31, y: 32}
+    - {x: 32, y: 33}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 0074eaf4adfaa2445a2a65e39d3e4428, type: 3}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Successful Milliner
+        Motion: 1
+      Character2:
+        AvatarID: guest04b
+        Pose: charmed
+        Name: Military Wife
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: approval
+        Name: Military Wife
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: bored
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: bored
+        Name: Military Wife
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: neutral
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: bored
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: bored
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: charmed
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: bored
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: bored
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: approval
+        Name: Military Wife
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: neutral
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: neutral
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: neutral
+        Name: Military Wife
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Successful Milliner
+        Motion: 3
+      Character2:
+        AvatarID: guest04b
+        Pose: neutral
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: approval
+        Name: Military Wife
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: charmed
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: charmed
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: charmed
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: charmed
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: approval
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: approval
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: approval
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: approval
+        Name: Military Wife
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest04b
+        Pose: approval
+        Name: Military Wife
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Successful Milliner
+        Motion: 3
+      Character2:
+        AvatarID: guest04b
+        Pose: neutral
+        Name: Military Wife
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: bourgeoisie
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: bourgeoisie
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: bourgeoisie
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: honoradeGazel
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Successful Milliner
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Successful Milliner
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: gettingCaught
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 23
+        ID: Thomas-AlexandreDead
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 23
+        ID: Thomas-AlexandreDead
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "A pair of women seem to have quite a bit to say to each other,
+      but aren\u2019t doing so. Whatever dangerous rumors they\u2019ve gotten a hold
+      of, they can\u2019t bring themselves to speak it in public. If one were to
+      get one of them alone, however\u2026"
+    Requirements: []
+    _date: -1
+  Name: Outlandish Rumors
+  _factions: 000000000100
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - "You notice two women, apart from everyone else in the room, laughing in that
+    guilty yet carefree way that suggests something is afoot. They've yet to notice
+    you, yet you're drawn to them, like a banker towards an outstanding debt\r."
+  - '"I''ve heard the most outlandish things from my fellow business partners in
+    the Bourgeoisie, but I just know it''ll come back to haunt me if I repeat it
+    here."'
+  - '"Ah, what a familiar feeling. My husband''s told me of what he''s seen in the
+    army and I''m of the same mind. I''m not sure if I could endure the backlash
+    that would result."'
+  - The two women stare at each other in silence...
+  - Given the reprisals you've endured since you started to work with Pierre, you
+    certainly understand. It's not something that anyone would want to be on the
+    receiving end of.
+  - ... which gives way to barely suppressed laughter...
+  - ... then silence again.
+  - '"It''s settled then. Neither of us discuss what we know with anyone, even each
+    other." Even while she says it, you can easily see that it would be trivial to
+    get either of them to talk. It''s just a matter of weathering the consequences.'
+  - As they said, anyone who leaks these particular rumors will face immediate scrutiny
+    from whoever has had their secrets exposed.
+  - They're starting to part from each other. This is your chance to follow one of
+    them.
+  - You follow the milliner as she leaves her companion behind. Together, they were
+    resolute, but divided she'll surely fall.
+  - You follow the woman as she leaves her companion behind. Together, they were
+    resolute, but divided she'll surely fall.
+  - '"Ah, do I know you?" She asks as you approach her, desperately trying to maintain
+    a stony and determined expression.'
+  - As you chat together, it doesn't take long for that facade to fall away. You
+    share a few choice anecdotes of your own, and soon she's eager to tell you what's
+    been burning within her.
+  - (You have gained a piece of Cheap Military Gossip)
+  - (You have gained a piece of Shocking Military Gossip)
+  - (You have gained a piece of Outrageous Military Gossip)
+  - As you guessed previously, it's clear that she has no real sense of discretion.
+    It's likely that, before the night is over, members of the Military will know
+    that you got this information from her.
+  - (You have lost a little favor with Alex)
+  - (You have lost a little favor with those close to the Military)
+  - 'The following conversation is empty but energetic. While there''s nothing of
+    substance, there''s something to be said about enthusiasm making things interesting. '
+  - Some time later, sensing a lull in the discussion, you excuse yourself to pursue
+    other inquiries.
+  - Considering the problems that are likely to come from courting either of them
+    for secrets, you decide to leave them both behind. You spend the rest of your
+    time making an effort to give a harmonious impression to your fellow guests at
+    the party.
+  - (You have lost a little peril)
+  - With any luck, you'll be able to find another goal to pursue at this event.
+  - '"Ah, do I know you?" She asks as you approach her, desperately trying to maintain
+    a stony and determined expression.'
+  - As you chat together, it doesn't take long for that facade to fall away. You
+    share a few choice anecdotes of your own, and soon she's eager to tell you what's
+    been burning within her.
+  - (You have gained a piece of Cheap Bourgeoisie Gossip)
+  - (You have gained a piece of Shocking Bourgeoisie Gossip)
+  - (You have gained a piece of Outrageous Bourgeoisie Gossip)
+  - As you guessed previously, it's clear that she has no real sense of discretion.
+    It's likely that, before the night is over, members of the Bourgeoisie will know
+    that you got this information from her.
+  - (You have lost a little favor with Honorade)
+  - 'The following conversation is empty but energetic. While there''s nothing of
+    substance, there''s something to be said about enthusiasm making things interesting. '
+  - Some time later, sensing a lull in the discussion, you excuse yourself to pursue
+    other inquiries.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I''ll follow the milliner, for information on the Bourgeoisie."'
+  - '"The one that''s connected to the army could give me gossip about the Military."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Neither of them are worth it."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

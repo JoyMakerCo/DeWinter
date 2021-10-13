@@ -6,7 +6,6 @@ namespace Ambition
 	{
 		public const string ACCESSORY = "Accessory";
 		public const string OUTFIT = "Outfit";
-        public const string GOSSIP = "Gossip";
 		public const string SERVANT = "Servant";
 
         public const string PERSONAL = "Personal";
@@ -17,14 +16,13 @@ namespace Ambition
 		public const string MODESTY = "modesty";
 		public const string NOVELTY = "novelty";
 		public const string LUXURY = "luxury";
-		public const string ALTERED = "altered";
+        public const string ALTERED = "altered";
+        public const string TIMES_WORN = "times_worn";
 
-        public const string FRANKISH = "Frankish";
-        public const string VENEZIAN = "Venezian";
-        public const string CATALAN = "Catalan";
+        public const string STYLE_LOC = "style";
 
-        public const string SHIFT = "SHIFT";
-        public const string POWER = "power";
-        public const string ALLEGIANCE = "allegiance";
+        public const string ITEM_LOC = "item";
+        public const string ITEM_LOC_NAME = "." + ITEM_LOC + ".name";
+        public const string ITEM_LOC_DESCRIPTION = "." + ITEM_LOC + ".description";
     }
 }

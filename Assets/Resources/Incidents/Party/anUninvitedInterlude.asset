@@ -1,0 +1,930 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: anUninvitedInterlude
+  m_EditorClassIdentifier: 
+  _Nodes: 0a000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -206, y: 98}
+  - {x: -3, y: 181}
+  - {x: 1, y: 253}
+  - {x: -3, y: 322}
+  - {x: -6, y: 396}
+  - {x: -289, y: 474}
+  - {x: -492, y: 565}
+  - {x: -275, y: 554}
+  - {x: -8, y: 481}
+  - {x: 250, y: 473}
+  - {x: -11, y: 544}
+  - {x: -1, y: 91}
+  - {x: 212, y: 86}
+  - {x: 253, y: 545}
+  - {x: 250, y: 631}
+  - {x: 251, y: 694}
+  - {x: -5, y: 599}
+  - {x: -120, y: 670}
+  - {x: -13, y: 726}
+  - {x: 71, y: 793}
+  - {x: -302, y: 631}
+  - {x: -14, y: 876}
+  - {x: -22, y: 951}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 6, y: 8}
+    - {x: 5, y: 9}
+    - {x: 5, y: 10}
+    - {x: 9, y: 11}
+    - {x: 0, y: 12}
+    - {x: 12, y: 2}
+    - {x: 0, y: 13}
+    - {x: 13, y: 2}
+    - {x: 10, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 11, y: 17}
+    - {x: 17, y: 18}
+    - {x: 17, y: 19}
+    - {x: 17, y: 20}
+    - {x: 7, y: 17}
+    - {x: 8, y: 21}
+    - {x: 20, y: 22}
+    - {x: 19, y: 22}
+    - {x: 18, y: 22}
+    - {x: 21, y: 15}
+    - {x: 22, y: 23}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: a1b02befa27b59a4c9f91afce87e11fc, type: 3}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Interrupting Interloper
+        Motion: 2
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: approval
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: approval
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: approval
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 3
+      Character2:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Interrupting Interloper
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: crown
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: crown
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: charmed
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: crown
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: neutral
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 0
+      Character2:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Interrupting Interloper
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Clever Conversationalist
+        Motion: 3
+      Character2:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Interrupting Interloper
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 0
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "Your conversation with a clever woman could yield some valuable
+      results, but first you\u2019ll have to find a way to divert a certain meddlesome
+      musician."
+    Requirements: []
+    _date: -1
+  Name: An Uninvited Interlude
+  _factions: 000100000000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - In the midst of your latest conversation, you feel the ethereal pull of a lead
+    on gossip. You're absolutely certain that the woman you're speaking with knows
+    something that Pierre would find valuable.
+  - Judging from the way she's speaking, it's likely to be cheap gossip, but it's
+    still about the Crown, so that's still quite good.
+  - Suddenly, just as she's about to finish, a gentleman loudly barges into the middle
+    of the conversation "Ah, good afternoon, madames!"
+  - '"Would you both be interested in joining me at the harpsichord? I have a grand,
+    new composition that I''m about to demonstrate."'
+  - '"Oh, really? You''re a musician?" She asks. "How intriguing!"'
+  - You can feel her focus on your previous discussion slipping away...
+  - '"My story?" She asks, suddenly remembering where she was in her narrative.'
+  - '"Well, I imagine that would be proper. After you, madame." He sighs.'
+  - '"I think that story can wait! Several others are already arriving to hear my
+    work, and I was just inviting you to be polite." He hisses at you, in a way that
+    feels distinctly impolite. '
+  - '"I think that story can wait! Several others are already arriving to hear my
+    work, and I was just inviting you to be polite." He hisses at you, in a way that
+    feels distinctly impolite. '
+  - You exhale slowly, and acquiesce to his demand that you follow him. Though it
+    feels like you've avoided some sort of conflict, you also feel less assured than
+    before. Less confident in yourself.
+  - (You have gained some peril)
+  - Judging from the way she's speaking, it could possibly be rather shocking. Better
+    yet, you know it has something to do with the Crown.
+  - Judging from the way she's speaking, it could possibly be rather outrageous.
+    Better yet, you know it has something to do with the Crown.
+  - '(You have lost a little credibility)
+
+    (You have lost a little peril)'
+  - Your conversation partner follows the musician to his harpsichord and he begins
+    to play for a crowd. The music is good, but the conversation afterwards shifts
+    entirely to musical specifics, and jests that are simply beyond your fields of
+    expertise. It feels like you might as well not even be part of the conversation
+    at all.
+  - Eventually, you give up on this particular lead. It appears you'll have to search
+    somewhere else.
+  - '"<i>Magnifique</i>! Now, where was I?" She asks before delving into the details
+    you''d been so eager to hear.'
+  - (You have gained a piece of Cheap Crown Gossip)
+  - (You have gained a piece of Shocking Crown Gossip)
+  - (You have gained a piece of Outrageous Crown Gossip)
+  - (You have lost a decent amount of credibility)
+  - With her story completed, you and your conversation partner follow the musician
+    to his harpsichord, and he begins to play for a crowd. All the while, he seems
+    extremely pleased with himself, and keeps looking at you like he's won some sort
+    of victory. Men are truly strange, sometimes.
+  - With his songs completed, you leave them both behind to explore the rest of the
+    party.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Before that, you must hear the end of my friends'' story. It''s simply delightful!"'
+  - 
+  - 
+  - '"<i>Pardon</i>, but my friend was in the middle of a lovely story. I''d like
+    to hear the rest."'
+  - '"I suppose we can join you for a while..."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

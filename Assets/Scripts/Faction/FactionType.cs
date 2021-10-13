@@ -1,5 +1,5 @@
 ﻿namespace Ambition
 {
     [System.Serializable]
-    public enum FactionType { Neutral, Crown, Church, Military, Bourgeoisie, Revolution }
+    public enum FactionType { None, Crown, Church, Military, Bourgeoisie, Revolution }
 }

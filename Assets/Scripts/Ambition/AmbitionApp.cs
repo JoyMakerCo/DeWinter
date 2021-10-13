@@ -9,8 +9,18 @@ using Core;
 
 namespace Ambition
 {
-    public static class AmbitionApp
+    public static partial class AmbitionApp
     {
+        public static CalendarModel Calendar => GetModel<CalendarModel>();
+        public static InventoryModel Inventory => GetModel<InventoryModel>();
+        public static ParisModel Paris => GetModel<ParisModel>();
+        public static GameModel Game => GetModel<GameModel>();
+        public static IncidentModel Story => GetModel<IncidentModel>();
+        public static GossipModel Gossip => GetModel<GossipModel>();
+        public static UFlowSvc UFlow => GetService<UFlowSvc>();
+        public static FactionModel Politics => GetModel<FactionModel>();
+        public static LocalizationModel Localization => GetModel<LocalizationModel>();
+
         public static T RegisterModel<T>() where T : Model, new()
         {
             return App.Service<ModelSvc>().Register<T>();
@@ -129,24 +139,16 @@ namespace Ambition
 
         public static GameObject OpenDialog(string phrase, Dictionary<string, string> substitutions = null)
         {
-            GameObject dialog = OpenDialog<string>(DialogConsts.MESSAGE, phrase);
-            MessageViewMediator mediator = dialog.GetComponent<MessageViewMediator>();
-            if (mediator) mediator.SetPhrase(phrase, substitutions);
-            return dialog;
+            return OpenDialog(phrase, null, substitutions);
         }
 
         public static GameObject OpenDialog(string phrase, Action OnConfirm, Dictionary<string, string> substitutions = null)
         {
-            GameObject dialog = OpenDialog<string>(DialogConsts.CHOICE, phrase);
+            GameObject dialog = OpenDialog<string>(DialogConsts.MESSAGE, phrase);
             MessageViewMediator mediator = dialog.GetComponent<MessageViewMediator>();
-            if (mediator)
-            {
-                mediator.SetPhrase(phrase, substitutions);
-                mediator.SetConfirmAction(OnConfirm);
-            }
+            mediator?.SetDialog(phrase, substitutions, OnConfirm);
             return dialog;
         }
-
 
         public static void CloseDialog(string dialogID)
         {
@@ -163,48 +165,6 @@ namespace Ambition
             App.Service<DialogSvc>().CloseAll();
         }
 
-        public static void RegisterState<C>(string machineID, string stateID) where C : UState, new()
-        {
-            App.Service<UFlowSvc>().RegisterState<C>(machineID, stateID);
-        }
-
-        public static void RegisterState(string machineID, string stateID)
-        {
-            App.Service<UFlowSvc>().RegisterState(machineID, stateID);
-        }
-
-        public static void RegisterState<C, T>(string machineID, string stateID, T arg) where C : UState, IInitializable<T>, new()
-        {
-            App.Service<UFlowSvc>().RegisterState<C, T>(machineID, stateID, arg);
-        }
-
-        // Binds an existing state to a new node type
-        public static void BindState<T>(string machineID, string stateID) where T:UState, new()
-        {
-            App.Service<UFlowSvc>().BindState<T>(machineID, stateID);
-        }
-
-        // Binds an existing state to a new node type
-        public static void BindState<S, D>(string machineID, string stateID, D data) where S : UState, IInitializable<D>, new()
-        {
-            App.Service<UFlowSvc>().BindState<S,D>(machineID, stateID, data);
-        }
-
-        public static void RegisterLink(string machineID, string originState, string targetState)
-		{
-            App.Service<UFlowSvc>().RegisterLink(machineID, originState, targetState);
-		}
-
-		public static void RegisterLink<T>(string machineID, string originState, string targetState) where T : ULink, new()
-		{
-            App.Service<UFlowSvc>().RegisterLink<T>(machineID, originState, targetState);
-		}
-
-		public static void RegisterLink<T, U>(string machineID, string originState, string targetState, U data) where T : ULink, IInitializable<U>, new()
-		{
-            App.Service<UFlowSvc>().RegisterLink<T, U>(machineID, originState, targetState, data);
-		}
-
         public static bool IsActiveState(string stateID)
 		{
             return App.Service<UFlowSvc>().IsActiveState(stateID);
@@ -212,7 +172,7 @@ namespace Ambition
 
 		public static bool IsActiveMachine(string machineID)
 		{
-            return App.Service<UFlowSvc>().IsActiveMachine(machineID);
+            return App.Service<UFlowSvc>().IsActiveFlow(machineID);
 		}
 
         public static string Localize(string key)
@@ -228,12 +188,7 @@ namespace Ambition
             return result;
         }
 
-        public static string GetString(string key)
-        {
-            return App.Service<LocalizationSvc>().GetString(key);
-        }
-
-        public static string GetString(string key, Dictionary<string, string> substitutions)
+        public static string Localize(string key, Dictionary<string, string> substitutions)
 		{
             LocalizationModel model = AmbitionApp.GetModel<LocalizationModel>();
             if (substitutions == null)
@@ -278,16 +233,6 @@ namespace Ambition
         public static void Reward(CommodityVO commodity)
         {
             App.Service<RewardFactorySvc>().Reward(commodity);
-        }
-
-        public static void Reward(CommodityType type, int value=0)
-        {
-            App.Service<RewardFactorySvc>().Reward(new CommodityVO(type, value));
-        }
-
-        public static void Reward(CommodityType type, string id, int value = 0)
-        {
-            App.Service<RewardFactorySvc>().Reward(new CommodityVO(type, id, value));
         }
 
         public static void LoadAssetBundle(string bundleID, Action<AssetBundle> onLoad)

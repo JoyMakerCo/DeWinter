@@ -6,20 +6,38 @@ namespace Ambition
     public static class DateReq
     {
         // ID is the query month and Value is the Query date
-        // Returns true iff today's date that the query match
         public static bool Check(RequirementVO req)
         {
-            int month = Array.IndexOf(
-                CultureInfo.CurrentCulture.DateTimeFormat.MonthNames,
-                req.ID.ToLower(CultureInfo.CurrentCulture)) + 1;
-            DateTime date = new DateTime(month > 7 ? 1788 : 1789, month, req.Value);
-            int target = (int)((date.Ticks - AmbitionApp.GetModel<GameModel>().Date.Ticks)*.00001f);
-            RequirementVO r = new RequirementVO()
+            int year = 0;
+            int month = FindMonth(req.ID);
+            int day = req.Value % 100;
+            if (month == 0)
             {
-                Operator = req.Operator,
-                Value = 0
+                month = (int)(req.Value * .01);
+                year = (int)(month * .01);
+                month = month % 100;
+            }
+            if (month == 0) return false;
+            if (year == 0) year = 1789;
+            DateTime date = new DateTime(year, month, day);
+            RequirementVO requirement = new RequirementVO()
+            {
+                Value = date.Subtract(AmbitionApp.Calendar.StartDate).Days,
+                Operator = req.Operator
             };
-            return RequirementsSvc.Check(r, target); // TODO: Bound by dates in play
+            return RequirementsSvc.Check(requirement, AmbitionApp.Calendar.Day);
+        }
+
+        private static int FindMonth(string monthName)
+        {
+            if (string.IsNullOrEmpty(monthName)) return 0;
+            string[] names = CultureInfo.InvariantCulture.DateTimeFormat.MonthNames;
+            monthName = monthName.ToLower();
+            for (int i = names.Length - 1; i >= 0; --i)
+            {
+                if (names[i].ToLower().Equals(monthName)) return i + 1;
+            }
+            return 0;
         }
     }
 }

@@ -1,0 +1,341 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: clandestineInvitations
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 75}
+  - {x: 1, y: 146}
+  - {x: 8, y: 212}
+  - {x: 5, y: 278}
+  - {x: 12, y: 344}
+  - {x: 5, y: 397}
+  - {x: 7, y: 465}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    Nodes:
+    - Text: Waking up with a yawn, you notice that Camille seems to have left a letter
+        on your night stand.
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You pick up and examine the outside of the letter, but it bears neither
+        a sigil, nor a name. It's simply sealed with a blob of unstamped wax.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/sfx_open_letter
+        Parameters: []
+    - Text: However, this mystery is resolved the moment you open the letter, and
+        recognize Ludovico's handwriting. It's certainly well practiced, but he still
+        puts some of the accent marks in the wrong places.
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/OS - Ludovico - Introduction
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/sfx_open_letter
+        Parameters: []
+    - Text: "\x18<i>Ch\xE8re</i> Yvette,\n\nIf I know you as well as I think I do,
+        you've already figured out who wrote this. While I cannot risk too many specifics,
+        it appears that I'll be alone in my chambers for the foreseeable future,
+        as all my fellow occupants will be absent due to a commitment in the countryside.'"
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '''You''ve been so generous with your time these last few weeks, that
+        I would like to repay you with some proper hospitality.
+
+
+        <i>Mes
+        salutations respectueuses, </i>
+
+
+        An Anonymous Lover'''
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Reaching the end, you put down the letter, and consider this unexpected
+        opportunity. You pick up and flip through the meticulous notes in your journal,
+        and quickly deduce his home address. In fact, you could visit him at any
+        time.
+
+
+        (Ludovico''s Quarters are now available to visit in the Paris
+        map)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Reaching the end, you put down the letter, and consider this unexpected
+        opportunity. You pick up and flip through the meticulous notes in your journal,
+        and quickly deduce his home address. In fact, you could visit him at any
+        time.
+
+
+        (Ludovico''s Quarters are now available to visit in the Paris
+        map)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: missionClandestineMeetings
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Reaching the end, you put down the letter, and consider this unexpected
+        opportunity. You pick up and flip through the meticulous notes in your journal,
+        and quickly deduce his home address. In fact, you could visit him at any
+        time.
+
+
+        (Ludovico''s Quarters are now available to visit in the Paris
+        map)'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements: []
+    _date: -1
+  Name: Clandestine Invitations
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _nodeText:
+  - Waking up with a yawn, you notice that Camille seems to have left a letter on
+    your night stand.
+  - You pick up and examine the outside of the letter, but it bears neither a sigil,
+    nor a name. It's simply sealed with a blob of unstamped wax.
+  - However, this mystery is resolved the moment you open the letter, and recognize
+    Ludovico's handwriting. It's certainly well practiced, but he still puts some
+    of the accent marks in the wrong places.
+  - "\x18<i>Ch\xE8re</i> Yvette,\n\nIf I know you as well as I think I do, you've
+    already figured out who wrote this. While I cannot risk too many specifics, it
+    appears that I'll be alone in my chambers for the foreseeable future, as all
+    my fellow occupants will be absent due to a commitment in the countryside.'"
+  - '''You''ve been so generous with your time these last few weeks, that I would
+    like to repay you with some proper hospitality.
+
+
+    <i>Mes salutations respectueuses,
+    </i>
+
+
+    An Anonymous Lover'''
+  - Reaching the end, you put down the letter, and consider this unexpected opportunity.
+    You pick up and flip through the meticulous notes in your journal, and quickly
+    deduce his home address.
+  - ('Clandestine Meetings' are now available to visit in the Paris map)
+  - In fact, you could visit him at any time.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

@@ -1,0 +1,829 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: aSimpleTrade
+  m_EditorClassIdentifier: 
+  _Nodes: 0e000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -1, y: 85}
+  - {x: -3, y: 155}
+  - {x: -7, y: 221}
+  - {x: -6, y: 276}
+  - {x: -270, y: 340}
+  - {x: -2, y: 363}
+  - {x: 253, y: 362}
+  - {x: 252, y: 486}
+  - {x: 255, y: 421}
+  - {x: 256, y: 559}
+  - {x: -10, y: 424}
+  - {x: -519, y: 361}
+  - {x: -273, y: 420}
+  - {x: -526, y: 557}
+  - {x: -273, y: 493}
+  - {x: -274, y: 558}
+  - {x: -10, y: 486}
+  - {x: -242, y: 724}
+  - {x: 50, y: 718}
+  - {x: -77, y: 790}
+  - {x: -78, y: 848}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 4, y: 6}
+    - {x: 4, y: 7}
+    - {x: 7, y: 9}
+    - {x: 9, y: 8}
+    - {x: 8, y: 10}
+    - {x: 6, y: 11}
+    - {x: 5, y: 12}
+    - {x: 5, y: 13}
+    - {x: 12, y: 14}
+    - {x: 13, y: 15}
+    - {x: 15, y: 16}
+    - {x: 16, y: 10}
+    - {x: 11, y: 17}
+    - {x: 14, y: 18}
+    - {x: 14, y: 19}
+    - {x: 17, y: 18}
+    - {x: 17, y: 19}
+    - {x: 19, y: 20}
+    - {x: 18, y: 20}
+    - {x: 20, y: 21}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 0074eaf4adfaa2445a2a65e39d3e4428, type: 3}
+      Character1:
+        AvatarID: guest03b
+        Pose: approval
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: bored
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: putout
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: putout
+        Name: Unsuited Suitor
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -20
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: negative
+        Name: Unsuited Suitor
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: bourgeoisie
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: neutral
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: bourgeoisie
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Unsuited Suitor
+        Motion: 0
+      Character2:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Introductee
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03b
+        Pose: charmed
+        Name: Unsuited Suitor
+        Motion: 3
+      Character2:
+        AvatarID: guest02a
+        Pose: approval
+        Name: Introductee
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "A physician, eager to court a particular young lady, is hoping
+      that you\u2019ll be able to help him make a good first impression. It might
+      be possible to turn this request into valuable information."
+    Requirements: []
+    _date: -1
+  Name: A Simple Trade
+  _factions: 000000000100
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - A man, clearly nervous, approaches you. "<i>Pardon</i>, Madame Decaux. You don't
+    know me, but I... I've come to you to request a favor. I don't know exactly what
+    I could provide in return, but I am a successful physician."
+  - '"I attended this party with the express intent of introducing myself to one
+    particular woman, but I still haven''t managed to do so, and it appears that
+    she''s planning to leave at any minute. Is there any way you could help provide
+    some sort of introduction?"'
+  - '"B-Before you ask, yes, I''ve already realized how strange it is to approach
+    one unfamiliar woman because I''m too nervous to approach a different one. It''s
+    merely that... well, I don''t know. I suppose that fear has always been divorced
+    from reason."'
+  - If a stranger is asking you for this kind of help, it really must mean that you've
+    become well established in Paris. So, at least there's that.
+  - It also seems like he could help you obtain some gossip about the Bourgeoisie.
+  - '"A-About my business? What of it?" He asks.'
+  - '"You want me to just tell you secrets, for this?" He replies, both incredulously,
+    and far too loudly for your liking.'
+  - '"F-Fine then! To the devil with you, as well!" He replies, trying to summon
+    some sense of righteous indignation.'
+  - (You have lost some credibility)
+  - He leaves you, fuming with anger. While the other guests nearby couldn't have
+    overheard your exchange, this sudden display of discord was enough to ignite
+    their thirst for scandal.
+  - If that's the kind of response he gave you, perhaps it was for the best that
+    you didn't introduce him to that poor young woman.
+  - (You have gained a decent amount of peril)
+  - '"What am I saying? Of course I can do that! I only ask that you make haste.
+    It looks like she''s going to leave the party at any minute."'
+  - '"My b-business? As a physician? Absolutely, not!"'
+  - His enthusiasm makes it easy to guide the conversation around. While he can't
+    tell you the exact identities of his clients, it becomes easy to use this information
+    to fill in the gaps in the scraps of a rumor that you heard a few days ago.
+  - (You have lost quite a bit of credibility)
+  - He leaves you, fuming with anger. While the other guests nearby couldn't have
+    overheard your exchange, this sudden display of discord was enough to ignite
+    their thirst for scandal.
+  - '"Fine. You win, madame. I''ll tell you what I know, and once you''ve claimed
+    your prize, please proceed with haste. It looks like she''s going to leave the
+    party at any minute."'
+  - (You have gained a piece of Shocking Bourgeoisie Gossip)
+  - (You have gained a piece of Outrageous Bourgeoisie Gossip)
+  - The moment you've memorized the rumor, you take him by the elbow and glide over
+    to the object of his affections. You do your best to make his introduction as
+    appealing as possible. The opening of their conversation is inept, but earnest.
+  - With your end of the bargain upheld, you take your leave of them both.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - '"Before I make this introduction, I need to ask you a few questions about your
+    business."'
+  - '"It''s simple, monsieur. Tell me some useful rumors about the Bourgeoisie, and
+    I''ll help."'
+  - '"This is a request that I''ll have to turn down. <i>Bonne chance</i>, monsieur."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

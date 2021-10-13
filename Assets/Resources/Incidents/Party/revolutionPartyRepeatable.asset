@@ -1,0 +1,904 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: revolutionPartyRepeatable
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -9, y: 90}
+  - {x: -8, y: 147}
+  - {x: -3, y: 317}
+  - {x: -246, y: 401}
+  - {x: -4, y: 412}
+  - {x: 367, y: 371}
+  - {x: 254, y: 448}
+  - {x: 535, y: 553}
+  - {x: -496, y: 483}
+  - {x: -246, y: 490}
+  - {x: -242, y: 573}
+  - {x: -491, y: 559}
+  - {x: -245, y: 699}
+  - {x: -1, y: 630}
+  - {x: -2, y: 700}
+  - {x: 0, y: 758}
+  - {x: 0, y: 482}
+  - {x: 254, y: 514}
+  - {x: 234, y: 662}
+  - {x: -5, y: 253}
+  - {x: 286, y: 53}
+  - {x: -8, y: 200}
+  - {x: 2, y: 565}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 3, y: 4}
+    - {x: 3, y: 5}
+    - {x: 3, y: 6}
+    - {x: 6, y: 7}
+    - {x: 6, y: 8}
+    - {x: 4, y: 9}
+    - {x: 4, y: 10}
+    - {x: 10, y: 11}
+    - {x: 9, y: 12}
+    - {x: 11, y: 13}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 8, y: 11}
+    - {x: 7, y: 18}
+    - {x: 18, y: 19}
+    - {x: 20, y: 3}
+    - {x: 0, y: 21}
+    - {x: 21, y: 1}
+    - {x: 2, y: 22}
+    - {x: 22, y: 20}
+    - {x: 5, y: 17}
+    - {x: 17, y: 23}
+    - {x: 23, y: 14}
+    - {x: 12, y: 15}
+    - {x: 19, y: 12}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 8d37c5a6e98984de68f6859ef31ef817, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Revolution - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Constitutionalist Woman
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: putout
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: negative
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: negative
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      - Type: 12
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: revolution
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: putout
+        Name: Constitutionalist Woman
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: revolution
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Constitutionalist Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 70
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 20
+        ID: 
+        Value: 50
+        Operator: 2
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: revolutionPartyRepeatable
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 0
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: A rather run of the mill interaction with a lone revolutionary woman
+      at a party. You might find yourself having many like it, in the future.
+    Requirements: []
+    _date: -1
+  Name: A Nationalist Intrigue
+  _factions: 000000000001
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - You find yourself moving among the congested rooms of the party, attempting to
+    find some sort of respite. Everywhere you turn, there's another throng of increasingly
+    agitated people.
+  - 'Just as you''re starting to find it hard to breathe, you find yourself in a
+    dining room that''s surprisingly empty. Perhaps this is the eye of the storm?
+    A woman looks up from her plate of hors d''oeuvres at you. '
+  - '"Ah, are you having trouble navigating the crowds as well? I''m starting to
+    wish I wore something that takes up a little less space, myself." She says, gesturing
+    to her dress. "I know I look the picture of elegance and beauty right now, but
+    that doesn''t stop me from being frustrated at yet another person bumping into
+    me."'
+  - '"Ugh..." She sighs. "I need to spend less time focusing on frustrations and
+    miseries."'
+  - '"You want to help me think a rumor through?" She asks, genuinely caught off
+    guard.'
+  - '"You know what? You''re absolutely right!" She laughs, then begins to regale
+    you with what''s been bothering her. Naturally, you hang onto her every word.'
+  - '"Something to brighten my spirits? Like what?"'
+  - Attempting to distract her, you tell her a story based on one of the latest pieces
+    of Revolution gossip that you've overheard. She laughs politely, but you can
+    tell that she's judging you for freely sharing a story that depicts the Revolution
+    in a negative light.
+  - You launch into what you think to be an entertaining story, but it doesn't seem
+    to hold her attention at all. She's clearly far too anxious to consider anything
+    else, even as a distraction. "No! No! My situation here is tenuous enough already.
+    I don't need to spend my time picking apart every little mistake someone else
+    has made. Nor should you."
+  - '"I suppose I can''t see the harm in that!" She laughs, then begins to regale
+    you with what''s been bothering her. Naturally, you hang onto her every word.'
+  - '""That''s ridiculous! My situation here is tenuous enough already. I don''t
+    need to spend my time picking apart every little mistake someone else has made.
+    Nor should you."'
+  - '(You have lost a decent amount of credibility)
+
+    (You have gained a little
+    peril)'
+  - (You have gained a piece of Cheap Revolution Gossip)
+  - Before you can try to convince her otherwise, she hurries away, clearly trying
+    to distance herself from you both physically and idealogically. Hopefully, you
+    can accomplish something else here tonight.
+  - (You have gained a decent amount of peril)
+  - Once you've unburderened her from the rumor that she's overheard, you converse
+    with her with a little longer, hoping to find any additional valuable information.
+    Unfortunately, nothing else appears to be forthcoming.
+  - As your conversation starts to die down, she decides to rejoin the crowds, and
+    you are left to consider your next move.
+  - (You have gained a piece of Cheap Revolution Gossip)
+  - (You have lost a little credibility)
+  - '"Well, when you put it that way, what I''ve heard doesn''t sound quite so terrible!"
+    She laughs, before starting to explain the rumors about prominent revolutionaries
+    that have been bothering her so much.'
+  - '"I suppose that''s why I''m willing to tolerate some of the less desirable things
+    I''ve recently heard about the Revolution." She continues, nibbling on a small
+    pastry. "Does that make me craven?"'
+  - 'You swear, every time you attend a party for the Revolution, it gets more and
+    more crowded. '
+  - '"That I can even consider this might be why I like the Revolution so much. Everyone''s
+    so fascinated by the powerful women among the aristocracy, but they''re the exception,
+    not the rule. Most of the ladies there still have to content themselves with
+    being a living ornament that sometimes gets spoken at. The Revolution feels willing
+    to upend everything."'
+  - You giggle amongst yourselves for a while as she provides you with all the details,
+    but you slowly realize that you've both been talking a little too loudly about
+    such a sensitive subject. This will surely come back to haunt you at some point.
+  _linkText:
+  - 
+  - 
+  - '"Perhaps you can tell me what you''ve heard, and we can determine if it''s truly
+    awful?"'
+  - '"I must disagree! We should revel in how terrible other people are. What have
+    you heard?"'
+  - '"That sounds lovely! Surely, I have something that''ll brighten your spirits."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

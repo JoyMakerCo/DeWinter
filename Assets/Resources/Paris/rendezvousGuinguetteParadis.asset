@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: rendezvousGuinguetteParadis
+  m_EditorClassIdentifier: 
+  Name: Guinguette Paradis
+  LocationWindowDescription: "Out in the suburbs of Paris, Guingette Paradis is a
+    rendezvous location that\u2019s the perfect spot for drinking, dancing, and cabaret
+    entertainments."
+  IntroIncidentConfig: {fileID: 11400000, guid: db5d06c047909af47aaed69be52876ac,
+    type: 2}
+  StoryIncidentConfigs:
+  - {fileID: 11400000, guid: 4eaebc294ae4b6540a194f44dd764ce2, type: 2}
+  - {fileID: 11400000, guid: 357e6a2aeec000141b91b5563ebcc7d0, type: 2}
+  SceneID: 
+  OneShot: 0
+  IsRendezvous: 1
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: fa0a7901fcce546acb6de00ad641fc4d,
+    type: 3}
+  Requirements:
+  - Type: 8
+    ID: theLastFewDays
+    Value: 0
+    Operator: 3

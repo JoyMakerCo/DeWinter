@@ -2,8 +2,9 @@
 
 namespace Ambition
 {
+    [Serializable]
 	public enum ServantStatus
 	{
-		Unknown, Hired, Introduced, Permanent
+		Unknown=-1, Introduced, Hired, Permanent
 	}
 }

@@ -1,0 +1,857 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: scoutingAhead
+  m_EditorClassIdentifier: 
+  _Nodes: 03000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 57}
+  - {x: -10, y: 174}
+  - {x: -6, y: 241}
+  - {x: -230, y: 312}
+  - {x: -3, y: 330}
+  - {x: 227, y: 317}
+  - {x: -477, y: 315}
+  - {x: -232, y: 397}
+  - {x: -4, y: 403}
+  - {x: 231, y: 457}
+  - {x: -5, y: 462}
+  - {x: 0, y: 521}
+  - {x: 233, y: 385}
+  - {x: 227, y: 552}
+  - {x: -481, y: 399}
+  - {x: -236, y: 475}
+  - {x: -233, y: 560}
+  - {x: -377, y: 703}
+  - {x: -117, y: 711}
+  - {x: -250, y: 803}
+  - {x: -256, y: 880}
+  - {x: -3, y: 119}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 3, y: 5}
+    - {x: 3, y: 6}
+    - {x: 4, y: 7}
+    - {x: 4, y: 8}
+    - {x: 5, y: 9}
+    - {x: 9, y: 11}
+    - {x: 11, y: 12}
+    - {x: 7, y: 15}
+    - {x: 8, y: 16}
+    - {x: 16, y: 17}
+    - {x: 17, y: 14}
+    - {x: 15, y: 18}
+    - {x: 12, y: 18}
+    - {x: 15, y: 19}
+    - {x: 12, y: 19}
+    - {x: 18, y: 20}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 1, y: 22}
+    - {x: 22, y: 2}
+    - {x: 6, y: 13}
+    - {x: 13, y: 10}
+    - {x: 10, y: 14}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 1d1cd0244eea6d044ba503e4a01a7c2a, type: 3}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Nervous Guest
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: event:/Music/Military - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: charmed
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: Nervous Guest
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: Nervous Guest
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: charmed
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03
+        Pose: charmed
+        Name: Introductee
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: charmed
+        Name: Nervous Guest
+        Motion: 3
+      Character2:
+        AvatarID: guest03
+        Pose: charmed
+        Name: Introductee
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: Nervous Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 70
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "The daughter of a retired colonel would like to speak with a particular
+      young man, but propriety prevents her from doing so. However, you\u2019ve bucked
+      such conventions in the past, and may be able to help."
+    Requirements: []
+    _date: -1
+  Name: Scouting Ahead
+  _factions: 000000010000
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - '"<i>Bonjour</i>, Madame Decaux." Says a younger woman as she approaches you.
+    "You are, in fact, Yvette Decaux <i>non</i>?"'
+  - "\"I have a problem, you see.\" She says, opening her fan and talking from behind
+    it. \"My father brought me here, and there\u2019s a gentleman over there who
+    I'd greatly like to speak with. However, my father is a retired colonel, and
+    there are certain... expectations of us. I can't be seen approaching some gentleman
+    that I don't know.\""
+  - If that truly is your reputation now, then perhaps you really have established
+    yourself in Paris.
+  - If her father is a retired Colonel, this is also an opportunity to acquire Military
+    Gossip.
+  - '"Oh, you want to know more about my family?"'
+  - '"You want me to bargain in secrets for this?" She hisses at you through her
+    teeth.'
+  - '"Not possible? You simply just don''t care!" She wails.'
+  - '"I suppose that does make sense!" She agrees happily. "I think you''ll find
+    us quite reputable."'
+  - '"Why, I never!" She wails. "I don''t need to be interrogated on my lineage.
+    I need an introduction!"'
+  - (You have gained a decent amount of peril)
+  - (You have lost some credibility)
+  - Slowly, she pauses to look over your shoulder at the object of her affections.
+  - '"Fine." She sighs. "I''m sure I know something that you''d find valuable, if
+    that''s what you''re really after."'
+  - With that, she stomps away, not exactly presenting the image of ladylike refinement
+    as she does so. Some nearby guests whisper scandalously to each other as she
+    goes.
+  - People, and their presumption towards your time, will never cease to amaze you.
+  - 'The conversation that follows is brief, and easily steered in the directions
+    that you wish. On the surface, your questions appear to be about her family,
+    but they''re also allowing you to piece together elements of an incomplete rumor
+    that you''d heard about earlier. '
+  - (You have lost quite a bit of credibility)
+  - With that, she stomps away, not exactly presenting the image of ladylike refinement
+    as she does so. Some nearby guests whisper scandalously to each other as she
+    goes.
+  - (You have gained a piece of Shocking Military Gossip)
+  - (You have gained a piece of Outrageous Military Gossip)
+  - With your objective secured, you take her gently by the hand and lead her over
+    to the object of her affections. Your introduction is swift and simple, but more
+    than enough to do the job. It doesn't take long before the two of them are chatting
+    happily, but within the stringent rules of propriety.
+  - With your end of the bargain accomplished, you decide to leave. All in all, this
+    appears to have been a success.
+  - '"I''m told that you seem to know everyone in Paris, and that you have no fear
+    of accusations of impropriety. Can you help me?"'
+  _linkText:
+  - 
+  - 
+  - '"I have a reputation to protect as well. Please, tell me about your family,
+    so I can decide."'
+  - '"Nothing is free, madame. Do you know any rumors regarding the Military?"'
+  - '"Such a thing isn''t possible. You''ll need to go this alone, madame."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

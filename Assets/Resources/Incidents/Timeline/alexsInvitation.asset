@@ -1,0 +1,316 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: alexsInvitation
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 1, y: 141}
+  - {x: 3, y: 212}
+  - {x: 3, y: 291}
+  - {x: -6, y: 366}
+  - {x: -5, y: 433}
+  - {x: -6, y: 505}
+  - {x: -9, y: 570}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 0, y: 1}
+    Nodes:
+    - Text: You wake up and stretch languidly. You slept well last night and already
+        feel prepared to conquer yet another day.
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: There's a letter on the bedside table. Judging from the rich purple of
+        the wax seal, as well as the scent of the perfume, it was definitely sent
+        by Madame Gazel.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/OS - Alex - Introduction
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You open it, and begin the read the letter. The flowing cursive of her
+        handwriting is both beautiful and familiar.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/sfx_open_letter
+        Parameters: []
+    - Text: "\x18'<i>Ch\uBCE5</i> Yvette,\n\nAs of late, I've been feeling even even
+        better than I did at the beginning of our last fateful encounter. My gardens
+        are doing especially well, and I'd love for you to see them.'"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: '''Here, there will be no chance of us being interrupted. I await your
+        arrival.'''
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "<i>Bien affectueusement</i>,\n\n- Madam Gazel\x19"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: (<i>La Matresse de Commande</i> is now available to visit in the Paris
+        map)
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 9
+        ID: missionTheChampionOfTheWeak
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Fanning yourself with the letter to drive away some of the summer heat,
+        you can't help but notice the smell of her perfume on the letter again. You
+        idly realize that you could go there today if you wished.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 8
+      ID: legacy
+      Value: 1
+      Operator: 4
+    - Type: 5
+      ID: thomasAlexandreDumas
+      Value: 20
+      Operator: 4
+    _date: 564423552000000000
+  Name: Alex's Invitation
+  _factions: 000000000000
+  _chapters: 00000001
+  _date: 0
+  _nodeText:
+  - The sweltering heat of the last few days continues unabated, as does the discontent
+    that you can hear, even through your shuttered windows. However, you also notice
+    a letter on your vanity, sealed in blue wax.
+  - You're already quite familiar with the seal, and the unassuming quality of the
+    paper. This was most certainly written by Alex.
+  - In your hands, a letter opener is as powerful and deft as a saber, and the wax
+    seal falls easily to your attack. As always, his penmanship on the letter is
+    disciplined and precise.
+  - "\x18'<i>Ch\xE8re</i> Yvette,\n\nI would like to apologize for my absence as
+    of late. As you can imagine, my duties to my unit have kept me busy indeed.'"
+  - '''Still, that''s no excuse, and I would like to make this lapse up to you as
+    soon as possible, if you would let me. Send a signal to me, and I shall whisk
+    you away to a day of enchantment and gallantry, the likes of which you''ve never
+    seen!'''
+  - "<i>Tr\xE8s cordiales salutations</i>,\n\nAlex\x19"
+  - ('<i>Monsieur de L'Humanite</i>' is now available to visit in the Paris map)
+  - You consider his offer, and realize that you could join him for this 'day of
+    enchantment and gallantry' today, should you so desire.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

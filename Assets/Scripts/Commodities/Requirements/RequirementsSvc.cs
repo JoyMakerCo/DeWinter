@@ -25,8 +25,6 @@ namespace Ambition
         }
         public bool Check(RequirementVO[] reqs) 
         {
-            Debug.LogFormat( "Checking {0} requirements", reqs?.Length );
-
             return  (reqs == null)
                     || (reqs.Length == 0)
                     || Array.TrueForAll(reqs, Check);

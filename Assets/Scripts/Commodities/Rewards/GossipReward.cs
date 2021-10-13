@@ -11,16 +11,17 @@ namespace Ambition
     {
         public void Execute(CommodityVO reward)
         {
-            InventoryModel imod = AmbitionApp.GetModel<InventoryModel>();
-            if (reward.ID == null || !Enum.TryParse<FactionType>(reward.ID, ignoreCase:true, out FactionType faction))
+            FactionType faction;
+            if (reward.ID == null || !Enum.TryParse<FactionType>(reward.ID, ignoreCase: true, out faction))
             {
-                faction = AmbitionApp.GetModel<PartyModel>().Party?.Faction ?? FactionType.Neutral;
+                faction = AmbitionApp.GetModel<PartyModel>().Party?.Faction ?? FactionType.None;
             }
-
-            var payload = new GossipRewardSpec();
-            payload.Faction = faction;
-            payload.Tier = reward.Value;
-            AmbitionApp.SendMessage(InventoryMessages.CREATE_GOSSIP, payload);
+            GossipVO gossip = new GossipVO()
+            {
+                Faction = faction,
+                Tier = reward.Value
+            };
+            AmbitionApp.SendMessage(InventoryMessages.CREATE_GOSSIP, gossip);
         }
     }
 }

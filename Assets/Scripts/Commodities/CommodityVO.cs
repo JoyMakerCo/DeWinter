@@ -38,6 +38,8 @@ namespace Ambition
 			Value = value;
 		}
 
+        public CommodityVO Clone() => new CommodityVO(Type, ID, Value);
+
         public override string ToString()
         {
             return string.Format("CommodityVO( {0} {1} {2} )", Type, ID, Value );

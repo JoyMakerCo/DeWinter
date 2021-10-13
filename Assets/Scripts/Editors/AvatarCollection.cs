@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
-
-#if (UNITY_EDITOR)
-using UnityEditor;
-#endif
 
 namespace Ambition
 {  
@@ -20,7 +15,6 @@ namespace Ambition
 	{
         public string ID;
         public PoseMap[] Poses;
-        public string Tags;
         public Gender Gender;
         public Sprite Portrait;
         public Sprite GetPose(string pose)
@@ -31,31 +25,25 @@ namespace Ambition
 
     public class AvatarCollection : ScriptableObject
     {
-        public AvatarVO[] Avatars;
+        public AvatarConfig[] Avatars;
 
-        public AvatarVO GetAvatar(string ID)
+        public Sprite GetPortrait(string id)
         {
-            return Array.Find(Avatars, a => a.ID == ID);
+            return GetAvatar(id)?.Portrait;
+        }
+
+        public AvatarConfig GetAvatar(string ID)
+        {
+            return Array.Find(Avatars, a => a?.name == ID);
         }
 
         public Sprite GetPose(string avatarID, string pose)
         {
-            AvatarVO config = Array.Find(Avatars, a=>a.ID == avatarID);
-            return config.GetPose(pose);
-        }
-
-        public AvatarVO[] Find (Gender gen, params string[] tags)
-        {
-            return Array.FindAll(Avatars, a=> (a.Gender==gen) && Array.TrueForAll(tags, a.Tags.Contains));
-        }
-
-        public AvatarVO[] Find (params string[] tags)
-        {
-            return Array.FindAll(Avatars, a=> Array.TrueForAll(tags, a.Tags.Contains));
+            return GetAvatar(avatarID).GetPose(pose);
         }
 
     #if (UNITY_EDITOR)
-        [MenuItem("Assets/Create/Create Avatar Collection")]
+        [UnityEditor.MenuItem("Assets/Create/Create Avatar Collection")]
         public static void CreateAvatarConfig()
         {
             Util.ScriptableObjectUtil.CreateScriptableObject<AvatarCollection>();

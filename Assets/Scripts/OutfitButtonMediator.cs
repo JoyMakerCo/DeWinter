@@ -1,72 +1,41 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using Ambition;
 
-public class OutfitButtonMediator : MonoBehaviour
+namespace Ambition
 {
-    public Image ChoicePip; // This is the icon that appears next the item to make them all easier to read. Necessary for the event triggers
-    public Sprite ChoicePipUp;
-    public Sprite ChoicePipHover;
-    public Sprite ChoicePipSelected;
-
-    public Text ItemName;
-    public GameObject GiftIndicator;
-    public enum InventoryType { Player, Shop, Loadout };
-    public InventoryType InventoryOwner; //Necessary, because selecting things in the party loadout screen also equips them, not just displays them. 
-    //In theory we could just 'equip' the items in every screen, but I feel like that's just ASKING for a nasty bug, further down the road
-
-    private ItemVO _item;
-    private Button _button;
-
-    void Awake()
+    public class OutfitButtonMediator : SortableItem<OutfitVO>
     {
-        _button = GetComponent<Button>();
-    }
+        public Text ItemName;
+        public Image GiftIcon;
+        public GameObject GiftIndicator;
+        public SpriteConfig FactionSprites;
 
-    public void MouseOver()
-    {
-        ChoicePip.sprite = ChoicePipHover;
-    }
-
-    public void MouseLeaves()
-    {
-        ChoicePip.sprite = ChoicePipUp;
-    }
-
-    public void MouseClick()
-    {
-        ChoicePip.sprite = ChoicePipSelected;
-        if (_item != null)
+        private OutfitVO _outfit;
+        public override OutfitVO Data
         {
-            if (InventoryOwner == InventoryType.Loadout)
+            get => _outfit;
+            set
             {
-                AmbitionApp.SendMessage(InventoryMessages.EQUIP, _item);
+                _outfit = value;
+                if (ItemName != null)
+                {
+                    ItemName.text = AmbitionApp.Localization.GetItemName(_outfit);
+                }
             }
-            AmbitionApp.SendMessage(InventoryMessages.DISPLAY_ITEM, _item);
         }
-    }
 
-    public void SetItem(ItemVO item)
-    {
-        Debug.LogFormat("OutfitButtonMediator.SetItem: {0}",string.Join("\n",item.Dump()));
-        _item = item;
-        ItemName.text = item.Name;
-        GiftIndicator.SetActive(false); //Gifts aren't a thing yet
-    }
-
-    public void SetInventoryOwner(string owner)
-    {
-        switch (owner)
+        public void Browse()
         {
-            case "Player":
-                InventoryOwner = InventoryType.Player;
-                break;
-            case "Shop":
-                InventoryOwner = InventoryType.Shop;
-                break;
-            case "Loadout":
-                InventoryOwner = InventoryType.Loadout;
-                break;
+            if (_outfit != null)
+                AmbitionApp.SendMessage(InventoryMessages.BROWSE, _outfit as ItemVO);
+        }
+
+        public void SetFaction(FactionType faction)
+        {
+            GiftIcon.sprite = FactionSprites.GetSprite(faction.ToString());
+            GiftIndicator.SetActive(GiftIcon.sprite != null);
         }
     }
 }

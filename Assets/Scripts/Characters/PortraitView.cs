@@ -7,8 +7,12 @@ namespace Ambition
 {
     public class PortraitView : MonoBehaviour
     {
+        public Image Portrait;
+
         [HideInInspector]
         public string Tooltip;
-        public Image Portrait;
+
+        [HideInInspector]
+        public Tooltip TooltipObject;
     }
 }

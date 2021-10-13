@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: rendezvousJardinDesPlantes
+  m_EditorClassIdentifier: 
+  Name: Jardin Des Plantes
+  LocationWindowDescription: 'Relax and promenade with your liaison in this rendezvous
+    location. These popular gardens are the ideal place to unwind, and engage in
+    a little people watching. '
+  IntroIncidentConfig: {fileID: 11400000, guid: a9d6698b65088294ea4837bc3bd668b8,
+    type: 2}
+  StoryIncidentConfigs:
+  - {fileID: 11400000, guid: fa7cb6eff9ec4544e8499405ebeab862, type: 2}
+  - {fileID: 11400000, guid: a5abc765a6d7fbf498ff12b2ce57ff43, type: 2}
+  SceneID: 
+  OneShot: 0
+  IsRendezvous: 1
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: 926c62791b3f84f058281608cdaebd69,
+    type: 3}
+  Requirements:
+  - Type: 8
+    ID: theLastFewDays
+    Value: 0
+    Operator: 3

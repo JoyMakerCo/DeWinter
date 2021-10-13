@@ -1,0 +1,857 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: aGracefulExit
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 07000000
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -1, y: 62}
+  - {x: -362, y: 193}
+  - {x: -115, y: 132}
+  - {x: 0, y: 247}
+  - {x: 0, y: 301}
+  - {x: -3, y: 358}
+  - {x: -273, y: 566}
+  - {x: 3, y: 565}
+  - {x: 279, y: 564}
+  - {x: -454, y: 641}
+  - {x: -272, y: 795}
+  - {x: -1, y: 487}
+  - {x: -107, y: 186}
+  - {x: -5, y: 421}
+  - {x: 5, y: 643}
+  - {x: 283, y: 647}
+  - {x: 12, y: 799}
+  - {x: -91, y: 879}
+  - {x: 124, y: 878}
+  - {x: 15, y: 964}
+  - {x: -272, y: 964}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 1, y: 3}
+    - {x: 2, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 7, y: 10}
+    - {x: 7, y: 11}
+    - {x: 12, y: 7}
+    - {x: 12, y: 8}
+    - {x: 12, y: 9}
+    - {x: 0, y: 1}
+    - {x: 1, y: 4}
+    - {x: 3, y: 13}
+    - {x: 13, y: 4}
+    - {x: 6, y: 14}
+    - {x: 14, y: 12}
+    - {x: 8, y: 15}
+    - {x: 9, y: 16}
+    - {x: 17, y: 18}
+    - {x: 17, y: 19}
+    - {x: 19, y: 20}
+    - {x: 18, y: 20}
+    - {x: 10, y: 17}
+    - {x: 15, y: 17}
+    - {x: 16, y: 17}
+    - {x: 11, y: 21}
+    - {x: 21, y: 20}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 62f0aa7874440453a8e55197eddbc499, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: happy
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: happy
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: happy
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: happy
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: happy
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: happy
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: happy
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: happy
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: -20
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: church
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: church
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: AnneDeCroismare
+        Pose: neutral
+        Name: Anne
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 20
+        Operator: 4
+      Flags:
+      - Type: 4
+        Phrase: incidents.transitions.livres.costtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: theFirstSparks
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: theFirstSparks
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "You spot Anne de Crosmaire once again, and she seems to be troubled
+      by having a lead that she can\u2019t possibly use. With some convincing, perhaps
+      you can find a use for such a thing."
+    Requirements:
+    - Type: 8
+      ID: aColleagueInJournalism
+      Value: 1
+      Operator: 4
+    _date: -1
+  Name: A Graceful Exit
+  _factions: 000001000000
+  _chapters: 00010100
+  _date: 0
+  _nodeText:
+  - Moving through the hallowed halls of the party in this particular Cathedral,
+    you come across a familiar face.
+  - '"<i>Bonjour</i>, Yvette. How are you? Has Pierre been murdered by a bookie,
+    yet?"'
+  - '"I''m not sure if there''s enough votive candles in the city to allow for that."'
+  - '"Ah, my mistake!" She laughs. "You''re not wrong. I remember I once watched
+    a pair of ruffians hired by the <i>Duc d''Orleans</i> throw him under the wheels
+    of a moving carriage. Little did they know this wasn''t the first time someone
+    had made such an attempt." '
+  - "\"Truth be told, I wish him the best. Pierre has a certain\u2026 charm to him,
+    as baffling as it can be sometimes.\""
+  - '"I see that you''re also skulking around this party, amongst hoping to find
+    some useful, scandalous news from these beatific souls." She quips, gesturing
+    at the guests around you. "Honestly, it''s too easy. Isn''t it shocking what
+    you hear people say when they think that they''re surrounded by like minds, safe
+    from judgement?"'
+  - '"While I still have my faith, I see the Church as something more akin to a family.
+    You love them all, but sometimes you do wish they''d simply stop talking before
+    they end up embarrassing everyone."'
+  - '"You really just want me to give this to you?"'
+  - '"Ah, of course." She sighs with a scowl that is quickly concealed. "You''re
+    still Pierre''s friend, after all."'
+  - '"Well, a small payment is certainly better than nothing." She replies with a
+    smile.'
+  - '"Yvette, you''re lucky that you''re so charming. If you weren''t..." Anne says,
+    trailing off before she can finish that thought aloud.'
+  - '"Telling you what I overheard still puts me at considerable risk, for nothing.
+    I like you Yvette, but I don''t like you enough to do that."'
+  - '"If I published it through my contacts, it would be traced back to me almost
+    immediately."'
+  - '"Instead Pierre managed to roll past the horses'' hooves, dodge the carriage''s
+    wheels, and grasp the underside of the vehicle. The carriage dragged him away
+    to safety, with him cackling and cursing at his attackers all the way."'
+  - '"As a matter of fast, I heard the Cardinal de Rohan say something particularly
+    egregious, almost too much so." She sighs and shakes her head. "You''d think
+    a man with a reputation like his would learn to be more discreet."'
+  - (You have gained a decent amount of peril)
+  - (You have spent 20 Livres)
+  - '"So, here''s what I know..." She says, as she begins to lay out the details
+    of what she overheard the Cardinal saying.'
+  - (You have gained a piece of Shocking Church Gossip)
+  - (You have gained a piece of Outrageous Church Gossip)
+  - 'You don''t take much additional time to chat with Anne, as you both clearly
+    have a lot to accomplish today. Instead you respect each other''s time, and depart
+    with a simple nod. '
+  - (You have lost a decent amount of credibility)
+  _linkText:
+  - '"Unfortunately, yes. In fact, the reason I''m here is to pray for his poor,
+    departed soul."'
+  - '"You should know better than to think he could be killed so easily."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Well, if you can''t use it, I could always take it. There''s no sense in waste,
+    right?"'
+  - '"Either you tell me what that was, or I can tell him that you''ve been spying
+    on him."'
+  - '"That''s a shame. What if I paid you a small finder''s fee for that gossip?"'
+  - 
+  - '"Do you really wish him ill?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

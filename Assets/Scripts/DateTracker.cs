@@ -9,12 +9,14 @@ namespace Ambition
 	public class DateTracker : MonoBehaviour
 	{
 	    private Text _text;
+	    private CalendarModel _calendar;
 
 	    void Awake()
 	    {
 			_text = GetComponent<Text>();
+			_calendar = AmbitionApp.GetModel<CalendarModel>();
 			AmbitionApp.Subscribe<DateTime>(HandleDate);
-			HandleDate(AmbitionApp.GetModel<GameModel>().Date);
+			HandleDate(_calendar.Today);
 	    }
 
 	    void OnDestroy()

@@ -8,34 +8,44 @@ namespace Ambition
 {
     public class ExhaustionView : MonoBehaviour
     {
+        private const string EXHAUSTION_TOOLTIP = "exhaustion_tooltip";
+        private const string WELL_RESTED_TOOLTIP = "well_rested_tooltip";
+        private const string EXHAUSTION_LEVEL_TOKEN = "%l";
+        private const string EXHAUSTION_VALUE_TOKEN = "%n";
+
         public Sprite[] ExhaustionIcons;
         public Sprite RestedIcon;
         public Image Indicator;
         public Text Tooltip;
 
-        private GameModel _Model => AmbitionApp.GetModel<GameModel>();
-
-        private void OnEnable() => _Model?.Exhaustion.Observe(HandleExhaustion);
-        private void OnDisable() => _Model?.Exhaustion.Remove(HandleExhaustion);
-
-        private void HandleExhaustion(int exhaustion)
+        private void OnEnable()
         {
-            Indicator.gameObject.GetComponent<CanvasRenderer>().SetAlpha(exhaustion != 0 ? 1 : 0);
-            Indicator.raycastTarget = (exhaustion != 0);
-            if (exhaustion > 0)
-            {
-                if (exhaustion > ExhaustionIcons.Length) exhaustion = ExhaustionIcons.Length;
-                Indicator.sprite = ExhaustionIcons[exhaustion - 1];
-                Tooltip.text = AmbitionApp.Localize("exhaustion_level_" + exhaustion.ToString());
-            }
-            else if (exhaustion < 0)
-            {
-                Indicator.sprite = RestedIcon;
-                Tooltip.text = AmbitionApp.Localize("well_rested");
-            }
-            LayoutRebuilder.ForceRebuildLayoutImmediate(Tooltip?.GetComponentInParent<ContentSizeFitter>()?.GetComponent<RectTransform>());
+            AmbitionApp.Subscribe(ParisMessages.REST, UpdateView);
+            UpdateView();
         }
 
-        private void HandleWellRested() => HandleExhaustion(-1);
+        private void OnDisable() => AmbitionApp.Unsubscribe(ParisMessages.REST, UpdateView);
+
+        private void UpdateView()
+        {
+            int exhaustion = AmbitionApp.Game.Exhaustion;
+            int penalty = AmbitionApp.Game.ExhaustionPenalty;
+            Dictionary<string, string> subs = new Dictionary<string, string>();
+            subs[EXHAUSTION_VALUE_TOKEN] = penalty > 0 ? ("+" + penalty) : penalty.ToString();
+            Indicator.enabled = exhaustion != 0;
+            if (exhaustion > 0)
+            {
+                subs[EXHAUSTION_LEVEL_TOKEN] = exhaustion.ToString();
+                Indicator.sprite = exhaustion <= ExhaustionIcons.Length
+                    ? ExhaustionIcons[exhaustion - 1]
+                    : ExhaustionIcons[ExhaustionIcons.Length - 1];
+                Tooltip.text = AmbitionApp.Localize(EXHAUSTION_TOOLTIP, subs);
+            }
+            else
+            {
+                Indicator.sprite = RestedIcon;
+                Tooltip.text = AmbitionApp.Localize(WELL_RESTED_TOOLTIP, subs);
+            }
+        }
     }
 }

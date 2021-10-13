@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d3d903a7d484c3187bfcd94637ac4c, type: 3}
+  m_Name: GossipModel
+  m_EditorClassIdentifier: 
+  Relevance:
+  - Age: 5
+    PriceMultiplier: 1
+    EffectMultiplier: 1
+  - Age: 10
+    PriceMultiplier: 0.5
+    EffectMultiplier: 0.5
+  - Age: 15
+    PriceMultiplier: 0.1
+    EffectMultiplier: 0.1
+  Tiers:
+  - Allegiance: 2
+    Power: 2
+    Price: 30
+  - Allegiance: 4
+    Power: 4
+    Price: 60
+  - Allegiance: 6
+    Power: 6
+    Price: 90
+  ReproachChance: 00000000050000000a000000190000002100000032000000420000004b000000500000005f000000
+  RewardTiers:
+  - Rewards:
+    - Type: 0
+      ID: 
+      Value: 15
+    - Type: 11
+      ID: 
+      Value: 5
+    - Type: 12
+      ID: 
+      Value: -5
+  - Rewards:
+    - Type: 0
+      ID: 
+      Value: 30
+    - Type: 11
+      ID: 
+      Value: 10
+    - Type: 12
+      ID: 
+      Value: -10
+  - Rewards:
+    - Type: 0
+      ID: 
+      Value: 50
+    - Type: 11
+      ID: 
+      Value: 15
+    - Type: 12
+      ID: 
+      Value: -15
+  MaxQuests: 1

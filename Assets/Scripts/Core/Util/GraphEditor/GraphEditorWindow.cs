@@ -36,7 +36,7 @@ namespace UGraph
         public static GraphEditorWindow Show(DirectedGraphConfig config)
         {
             string title = (config == null ? "" : (config.name + " | ")) +  "Graph Editor";
-            GraphEditorWindow window = GetWindow<GraphEditorWindow>(title, true, typeof(SceneView));
+            GraphEditorWindow window = GetWindow<GraphEditorWindow>(title, true, typeof(UnityEditor.SceneView));
             window.SetObject(config);
             EditorApplication.update -= window.UpdateGraphEditorWindow;
             if (config != null) EditorApplication.update += window.UpdateGraphEditorWindow;

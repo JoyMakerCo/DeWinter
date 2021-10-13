@@ -1,5 +1,6 @@
 ﻿using Core;
 using System;
+using System.Runtime.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
@@ -14,241 +15,355 @@ namespace Ambition
         [JsonIgnore] // Loaded upon init
         public readonly Dictionary<string, IncidentVO> Incidents = new Dictionary<string, IncidentVO>();
 
-        [JsonProperty("dependencies")]
-        public Dictionary<string, LoadedIncident> Dependencies = new Dictionary<string, LoadedIncident>();
+        [JsonIgnore]
+        public readonly Dictionary<IncidentType, string[]> Types = new Dictionary<IncidentType, string[]>();
 
         [JsonIgnore]
         public IncidentVO Incident { get; private set; }
 
         [JsonIgnore]
-        public MomentVO Moment
-        {
-            get => Incident?.Nodes != null && _moment >= 0 && _moment < Incident.Nodes.Length
-                    ? Incident.Nodes[_moment]
-                    : null;
-            set => _moment = Incident?.Nodes == null ? -1 : Array.IndexOf(Incident.Nodes, value);
-        }
+        public MomentVO Moment;
+
+        [JsonProperty("dependencies")]
+        public Dictionary<string, LoadedIncident> Dependencies = new Dictionary<string, LoadedIncident>();
 
         // PRIVATE / PROTECTED DATA /////////////
 
         [JsonProperty("completed")]
-        private Dictionary<string, ushort> _completed = new Dictionary<string, ushort>();
+        private List<string> _completed = new List<string>();
 
-        [JsonProperty("moment")]
-        private int _moment = -1;
-
-        [JsonIgnore]
-        private ushort _day = 0;
+        [JsonProperty("visited")]
+        private List<string> _visited = new List<string>();
 
         [JsonProperty("schedule")]
-        private Dictionary<ushort, List<string>> _schedule = new Dictionary<ushort, List<string>>();
+        private IncidentCalendar _schedule = new IncidentCalendar();
 
-        [JsonProperty("loaded")]
-        private Dictionary<string, string> _loaded = new Dictionary<string, string>();
+        [JsonProperty("index")]
+        private int _index;
 
-        [JsonProperty("types")]
-        private Dictionary<IncidentType, string[]> _types = new Dictionary<IncidentType, string[]>();
+        [JsonProperty("savedState", Order = 0)]
+        private IncidentSaveState _saveState = null;
 
         // PUBLIC METHODS /////////////
 
-        public void Initialize()
+        public bool Schedule(string incidentID) => Schedule(GetIncident(incidentID));
+        public bool Schedule(IncidentVO incident)
         {
-            IncidentConfig[] incidents;
-            List<string> values;
-            IncidentVO incident;
-            Dictionary<IncidentType, string> types = new Dictionary<IncidentType, string>
+            if (incident == null) return false;
+            DateTime date = incident.Date.Equals(default) ? _schedule.Today : incident.Date;
+            string[] occasions = _schedule.GetOccasions(date);
+            if (_index > 0 && date.Equals(_schedule.Today))
             {
-                {IncidentType.Timeline, Filepath.INCIDENTS_TIMELINE},
-                {IncidentType.Party, Filepath.INCIDENTS_PARTY},
-                {IncidentType.Caught, Filepath.INCIDENTS_CAUGHT},
-                {IncidentType.Peril, Filepath.INCIDENTS_PERIL}
-            };
-            foreach(KeyValuePair<IncidentType, string> kvp in types)
-            {
-                incidents = Resources.LoadAll<IncidentConfig>(kvp.Value);
-                values = new List<string>();
-                foreach(IncidentConfig config in incidents)
-                {
-                    incident = config?.GetIncident();
-                    if (incident != null)
-                    {
-                        values.Add(incident.ID);
-                        Incidents.Add(incident.ID, incident);
-                    }
-                }
-                _types.Add(kvp.Key, values.ToArray());
+                return Array.LastIndexOf(occasions, incident.ID) < _index && Schedule(incident, date);
             }
-            Resources.UnloadUnusedAssets();
-        }
-
-        public IncidentVO[] GetIncidents(IncidentType type)
-        {
-            if (!_types.TryGetValue(type, out string[] ids)) return new IncidentVO[0];
-            List<IncidentVO> result = new List<IncidentVO>();
-            IncidentVO incident;
-            foreach(string id in ids)
+            else
             {
-                incident = LoadIncident(id);
-                if (incident != null) result.Add(incident);
+                return Array.IndexOf(occasions, incident.ID) < 0 && Schedule(incident, date);
             }
-            return result.ToArray();
         }
 
-        public void SetDay(int day, bool reset=true)
+        public bool Schedule(string incidentID, DateTime date)
         {
-            if (_day != (ushort)day)
-            {
-                if (reset)
-                {
-                    _schedule.Remove(_day);
-                    _moment = -1;
-                }
-                _day = (ushort)day;
-                if (!_schedule.ContainsKey(_day))
-                {
-                    _schedule.Add(_day, new List<string>());
-                }
-            }
-            LoadIncident();
+            if (string.IsNullOrEmpty(incidentID)) return false;
+            _schedule.Schedule(incidentID, date);
+            if (date == _schedule._model.Today) UpdateIncident();
+            return true;
         }
 
-        public bool IsComplete(string incidentId) => _completed.ContainsKey(incidentId);
-
-        public void Reset()
+        public bool Schedule(IncidentVO incident, DateTime date)
         {
-            _day = 0;
-            _moment = -1;
-            _completed.Clear();
-            _schedule.Clear();
-            Incident = null;
-        }
-
-        public void AddDependency(IncidentConfig config, string filepath, IncidentType type)
-        {
-            IncidentVO incident = config?.GetIncident();
-            if (incident == null) return;
-            Dependencies[incident.ID] = new LoadedIncident(filepath, type);
+            if (!Schedule(incident?.ID, date)) return false;
             Incidents[incident.ID] = incident;
+            return true;
+        }
+
+        public IncidentVO Update(bool reset = true)
+        {
+            if (reset) _index = 0;
+            return UpdateIncident();
         }
 
         public IncidentVO NextIncident()
         {
-            if (!_schedule.TryGetValue(_day, out List<string> queue) || _schedule[_day] == null)
-            {
-                _schedule.Remove(_day);
-                return null;
-            }
-
-            if (!string.IsNullOrEmpty(Incident?.ID) && Incident.OneShot)
-            {
-                _completed[Incident.ID] = _day;
-            }
-            Incident = null;
-            queue.RemoveAt(0);
-            return LoadIncident();
+            ++_index;
+            Moment = (Incident?.Nodes?.Length ?? 0) > 1 ? Incident.Nodes[0] : null;
+            _saveState = null;
+            return UpdateIncident();
         }
 
-        public void Schedule(string incidentID, int day = -1)
+        public IncidentVO UpdateIncident()
         {
-            ushort dday = (day < 0) ? _day : (ushort)day;
-            if (!_schedule.TryGetValue(dday, out List<string> queue) || queue == null)
+            string[] occasions = _schedule.GetOccasions(_schedule.Today);
+            if (_index >= 0 && _index < occasions.Length)
             {
-                _schedule[dday] = queue = new List<string>();
+                return Incident = GetIncident(occasions[_index]);
             }
-            if (!_schedule[dday].Contains(incidentID))
-            {
-                _schedule[dday].Add(incidentID);
-                if (dday == _day) LoadIncident();
-            }
+            return Incident = null;
         }
 
-        public void Schedule(IncidentVO incident, int day = -1)
+        public void Initialize()
         {
-            if (incident != null)
-            {
-                Incidents[incident.ID] = incident;
-                Schedule(incident.ID, day);
-            }
+            ResetIncidents();
+            InitSchedule(AmbitionApp.Calendar);
         }
 
-        public IncidentVO LoadIncident()
+        public IncidentVO[] GetIncidents(IncidentType type)
         {
-            if (!_schedule.TryGetValue(_day, out List<string> queue) || queue?.Count == 0)
-                return Incident = null;
-
-            PartyModel partyModel = AmbitionApp.GetModel<PartyModel>();
-            for (Incident = null; Incident == null && queue.Count > 0; queue.RemoveAt(0))
+            if (!Types.TryGetValue(type, out string[] ids)) return new IncidentVO[0];
+            List<IncidentVO> result = new List<IncidentVO>();
+            IncidentVO incident;
+            foreach (string id in ids)
             {
-                Incident = LoadIncident(queue[0]);
-                if (Incident != null) return Incident;
-            }
-            return Incident=null;
-        }
-
-        public IncidentVO LoadIncident(string id)
-        {
-            if (Incidents.TryGetValue(id, out IncidentVO incident) && incident != null)
-                return incident;
-
-            if (_loaded.TryGetValue(id, out string path) && !string.IsNullOrEmpty(path))
-            {
-                IncidentConfig config = Resources.Load<IncidentConfig>(path);
-                incident = config?.GetIncident();
-                if (incident != null) return incident;
-            }
-
-            if (Dependencies.TryGetValue(id, out LoadedIncident loaded))
-            {
-                switch(loaded.Type)
+                if (Incidents.TryGetValue(id, out incident) && incident != null)
                 {
-                    case IncidentType.Party:
-                        AmbitionApp.GetModel<PartyModel>().LoadParty(loaded.Filepath);
-                        break;
+                    result.Add(incident);
                 }
-                Incidents.TryGetValue(id, out incident);
             }
-            return incident;
+            return result.ToArray();
         }
 
-        public IncidentVO LoadIncident(string incidentID, IncidentType type)
+        public bool IsComplete(string incidentId, bool isOneShot)
         {
-            IncidentVO incident = LoadIncident(incidentID);
-            if (incident != null) return incident;
+            if (string.IsNullOrEmpty(incidentId) || _completed.Contains(incidentId)) return true;
+            return !isOneShot && _visited.Contains(incidentId);
+        }
 
+        public void Reset()
+        {
+            Moment = null;
+            _saveState = null;
+            _index = 0;
+            _completed.Clear();
+            _visited.Clear();
+            ResetIncidents();
+            InitSchedule(AmbitionApp.Calendar);
+            Incident = null;
+        }
+
+        public bool SetTestIncident(string incidentID)
+        {
+#if DEBUG
+            Moment = null;
+            _saveState = null;
+            _index = 0;
+            Incident = string.IsNullOrEmpty(incidentID) ? null : GetIncident(incidentID);
+            return Incident != null;
+#else
+            return false;
+#endif
+        }
+
+        public bool AddDependency(IncidentVO incident, string filepath, IncidentType type)
+        {
+            string id = incident?.ID;
+            if (string.IsNullOrEmpty(id) || _completed.Contains(id))
+            {
+                incident?.Dispose();
+                return false;
+            }
+            Dependencies[id] = new LoadedIncident(filepath, type);
+            Incidents[id] = incident;
+            return true;
+        }
+
+        public void InitSchedule(CalendarModel model)
+        {
+            IncidentVO incident;
+            _schedule.Clear();
+            model.RegisterCalendar(_schedule);
+            foreach (string[] incidents in Types.Values)
+            {
+                foreach (string id in incidents)
+                {
+                    Incidents.TryGetValue(id, out incident);
+                    if (incident != null && incident.Date != default)
+                    {
+                        _schedule.Schedule(id, incident.Date);
+                    }
+                }
+            }
+        }
+
+        public void CompleteCurrentIncident()
+        {
+            CompleteIncident(Incident?.ID);
+            NextIncident();
+        }
+
+        public void CompleteIncident(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                if (Incident.OneShot)
+                {
+                    if (!_completed.Contains(id))
+                        _completed.Add(id);
+                    Incidents.Remove(id);
+                    Incident.Dispose();
+                }
+                else if (!_visited.Contains(id))
+                {
+                    _visited.Add(id);
+                }
+            }
+        }
+
+        public IncidentVO GetIncident(string id)
+        {
+            return !string.IsNullOrEmpty(id) && Incidents.TryGetValue(id, out IncidentVO incident)
+                 ? incident
+                 : null;
+        }
+
+        public IncidentVO LoadIncident(string id, IncidentType type)
+        {
+            IncidentVO result = GetIncident(id);
+            if (result != null) return result;
+
+            string path;
             IncidentConfig config;
-            string path = null;
-
             switch (type)
             {
-                case IncidentType.Caught:
-                    path = Filepath.INCIDENTS_CAUGHT + incidentID;
+                case IncidentType.Reward:
+                    path = Filepath.INCIDENTS_REWARD;
                     break;
                 case IncidentType.Party:
-                    path = Filepath.INCIDENTS_PARTY + incidentID;
+                    path = Filepath.INCIDENTS_PARTY;
                     break;
                 case IncidentType.Peril:
-                    path = Filepath.INCIDENTS_PERIL + incidentID;
+                    path = Filepath.INCIDENTS_PERIL;
                     break;
-                case IncidentType.Reward:
-                    path = Filepath.INCIDENTS_REWARD + incidentID;
+                case IncidentType.Caught:
+                    path = Filepath.INCIDENTS_CAUGHT;
+                    break;
+                case IncidentType.PartyIntro:
+                    path = Filepath.INCIDENTS_PARTY_INTRO;
+                    break;
+                case IncidentType.Political:
+                    path = Filepath.INCIDENTS_POLITICAL;
                     break;
                 default:
-                    path = Filepath.INCIDENTS_TIMELINE + incidentID;
+                    path = Filepath.INCIDENTS_TIMELINE;
                     break;
             }
-            config = Resources.Load<IncidentConfig>(path);
-            incident = config?.GetIncident();
-            if (incident != null)
+
+            config = Resources.Load<IncidentConfig>(path + id);
+            result = config?.GetIncident();
+            Resources.UnloadUnusedAssets();
+            return result;
+        }
+
+        public MomentVO UpdateMoment()
+        {
+            if (Moment != null)
             {
-                _loaded.Add(incidentID, path);
-                Incidents.Add(incidentID, incident);
+                if (_saveState == null)
+                    _saveState = new IncidentSaveState();
+                _saveState.Moment = Array.IndexOf(Incident.Nodes, Moment);
+                if (!string.IsNullOrEmpty(Moment.AmbientSFX.Name))
+                    _saveState.Ambient = Moment.AmbientSFX;
+                if (!string.IsNullOrEmpty(Moment.Music.Name))
+                    _saveState.Music = Moment.Music;
+                if (Moment.Background != null)
+                    _saveState.Background = _saveState.Moment;
             }
-            return incident;
+            else _saveState = null;
+            return Moment;
+        }
+
+        public void RestoreIncident()
+        {
+            UpdateIncident();
+            if (Incident?.Nodes != null && _saveState != null && _saveState.Moment >= 0 && _saveState.Moment < Incident.Nodes.Length)
+            {
+                Moment = Incident.Nodes[_saveState.Moment];
+            }
+        }
+
+        public Sprite RestoreSavedState()
+        {
+            if (_saveState == null) return null;
+
+            if (string.IsNullOrEmpty(Moment?.Music.Name) && !string.IsNullOrEmpty(_saveState.Music.Name))
+                AmbitionApp.SendMessage(AudioMessages.PLAY_MUSIC, _saveState.Music);
+
+            if (string.IsNullOrEmpty(Moment?.AmbientSFX.Name) && !string.IsNullOrEmpty(_saveState.Ambient.Name))
+                AmbitionApp.SendMessage(AudioMessages.PLAY_AMBIENT, _saveState.Ambient);
+
+            return (Moment?.Background == null
+                && Incident?.Nodes != null
+                && _saveState.Background >= 0
+                && _saveState.Background < Incident.Nodes.Length)
+                ? Incident.Nodes[_saveState.Background].Background
+                : null;
         }
 
         // PRIVATE / PROTECTED METHODS /////////////
-    }
 
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context)
+        {
+            AmbitionApp.Calendar.RegisterCalendar<string>(_schedule);
+            List<string> parties = new List<string>();
+            List<string> locations = new List<string>();
+            PartyModel party = AmbitionApp.GetModel<PartyModel>();
+            foreach(KeyValuePair<string, LoadedIncident> kvp in Dependencies)
+            {
+                switch (kvp.Value.Type)
+                {
+                    case IncidentType.Party:
+                        parties.Add(kvp.Value.Filepath);
+                        break;
+                    case IncidentType.Location:
+                        locations.Add(kvp.Value.Filepath);
+                        break;
+                }
+            }
+            parties.ForEach(s => party.LoadParty(s, out PartyVO p));
+            locations.ForEach(l=>AmbitionApp.Paris.GetLocation(l));
+        }
+
+        private void ResetIncidents()
+        {
+            Dictionary<IncidentType, string> types = new Dictionary<IncidentType, string>()
+            {
+                { IncidentType.Timeline, Filepath.INCIDENTS_TIMELINE },
+                { IncidentType.Caught, Filepath.INCIDENTS_CAUGHT },
+                { IncidentType.Party, Filepath.INCIDENTS_PARTY },
+                { IncidentType.Peril, Filepath.INCIDENTS_PERIL },
+                { IncidentType.Political, Filepath.INCIDENTS_POLITICAL },
+                { IncidentType.Reward, Filepath.INCIDENTS_REWARD },
+                { IncidentType.PartyIntro, Filepath.INCIDENTS_PARTY_INTRO }
+            };
+            List<string> values = new List<string>();
+            IncidentConfig[] incidents;
+            IncidentVO incident;
+
+            Incidents.Clear();
+            Types.Clear();
+
+            foreach (KeyValuePair<IncidentType, string> kvp in types)
+            {
+                incidents = Resources.LoadAll<IncidentConfig>(kvp.Value);
+                values.Clear();
+                foreach (IncidentConfig config in incidents)
+                {
+                    incident = config.GetIncident();
+                    if (incident != null)
+                    {
+                        incident.Type = kvp.Key;
+                        Incidents[incident.ID] = incident;
+                        values.Add(incident.ID);
+                    }
+                }
+                Types[kvp.Key] = values.ToArray();
+            }
+            Resources.UnloadUnusedAssets();
+        }
+
+        [Serializable]
+        private class IncidentCalendar : Calendar<string> { }
+    }
 
     [Serializable]
     public struct LoadedIncident
@@ -264,5 +379,21 @@ namespace Ambition
             Filepath = filepath;
             Type = type;
         }
+    }
+
+    [Serializable]
+    public class IncidentSaveState
+    {
+        [JsonProperty("moment")]
+        public int Moment = -1;
+
+        [JsonProperty("music")]
+        public FMODEvent Music;
+
+        [JsonProperty("ambient")]
+        public FMODEvent Ambient;
+
+        [JsonProperty("background")]
+        public int Background = -1;
     }
 }

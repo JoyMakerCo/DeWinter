@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using Core;
 
@@ -9,26 +8,41 @@ namespace Ambition
 	{
 		public void Execute (DateTime date)
 		{
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            PartyVO[] parties = model.GetParties((ushort)date.Subtract(game.StartDate).Days);
-            switch (parties.Length)
+            PartyVO[] parties = calendar.GetOccasions<PartyVO>(date);
+            RendezVO[] dates = calendar.GetOccasions<RendezVO>(date);
+            if (parties.Length + dates.Length > 0)
             {
-                case 0: break;
-                case 1: // Decide whether you're staying or going.
-                    AmbitionApp.OpenDialog(parties[0].RSVP == RSVP.Accepted
-                                           ? DialogConsts.CANCEL
-                                           : DialogConsts.RSVP, parties[0]);
-                    break;
-
-                // You must choose
-                // But choose wisely
-                // For while the true Party grants eternal life
-                // A false one will take it from you
-                default:
-                    AmbitionApp.OpenDialog(DialogConsts.RSVP_CHOICE, parties);
-                    break;
+                PartyVO party = Array.Find(parties, p => p.IsAttending);
+                RendezVO rendez = Array.Find(dates, p => p.IsAttending);
+                if (party != null)
+                {
+                    AmbitionApp.OpenDialog(DialogConsts.RSVP, new CalendarEvent[] { party });
+                }
+                else if (rendez != null)
+                {
+                    AmbitionApp.OpenDialog(DialogConsts.RSVP, new CalendarEvent[] { rendez });
+                }
+                else
+                {
+                    List<CalendarEvent> events = new List<CalendarEvent>(parties);
+                    events.AddRange(dates);
+                    AmbitionApp.OpenDialog(DialogConsts.RSVP, events.ToArray());
+                }
+            }
+            else if (date.Subtract(calendar.Today).Days >= 1 && AmbitionApp.Paris.Rendezvous.Count > 0)
+            {
+                CharacterModel cModel = AmbitionApp.GetModel<CharacterModel>();
+                foreach (CharacterVO character in cModel.Characters.Values)
+                {
+                    if (character.IsDateable && !character.IsRendezvousScheduled)
+                    {
+                        AmbitionApp.OpenDialog(DialogConsts.CREATE_RENDEZVOUS, date);
+                        break;
+                    }
+                }
             }
 		}
-	}
+    }
 }

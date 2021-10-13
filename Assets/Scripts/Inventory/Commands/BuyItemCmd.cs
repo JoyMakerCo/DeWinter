@@ -9,22 +9,21 @@ namespace Ambition
 	{
 		public void Execute (ItemVO item)
 		{
-            Debug.Log("BuyItemCmd.Execute");
-			InventoryModel model = AmbitionApp.GetModel<InventoryModel>();
-            if (model.Market?.Remove(item) ?? false)
+            InventoryModel inventory = AmbitionApp.Inventory;
+            if (item != null
+                && AmbitionApp.Game.Livre >= item.Price
+                && inventory.Market != null
+                && inventory.Market.Remove(item))
             {
-                Debug.Log("Found item in market and successfully removed it from market");
-                model.Inventory.Add(item);
-
-                Debug.LogFormat("Added {0} to player inventory",item.ToString());
-                int cost = item.Price;
+                CommodityVO cost = new CommodityVO(CommodityType.Livre, -item.Price);
+                AmbitionApp.SendMessage(cost);
                 if (item.Created == default)
                 {
-                    item.Price = (int)(cost * model.SellbackMultiplier);
-                    item.Created = AmbitionApp.GetModel<GameModel>().Date;
+                    item.Created = AmbitionApp.GetModel<CalendarModel>().Today;
                 }
-                AmbitionApp.GetModel<GameModel>().Livre.Value -= cost;
-                model.Broadcast();
+                item.Price = (int)(item.Price * inventory.SellbackMultiplier);
+                inventory.Inventory.Add(item);
+                inventory.Broadcast();
             }
 		}
 	}

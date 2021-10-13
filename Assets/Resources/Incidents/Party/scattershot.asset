@@ -1,0 +1,906 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: scattershot
+  m_EditorClassIdentifier: 
+  _Nodes: 02000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -213, y: 94}
+  - {x: -11, y: 92}
+  - {x: 212, y: 86}
+  - {x: -21, y: 205}
+  - {x: -22, y: 278}
+  - {x: -27, y: 347}
+  - {x: -270, y: 423}
+  - {x: -29, y: 436}
+  - {x: 221, y: 428}
+  - {x: 224, y: 502}
+  - {x: 223, y: 559}
+  - {x: 221, y: 620}
+  - {x: -36, y: 506}
+  - {x: -505, y: 486}
+  - {x: -285, y: 496}
+  - {x: -39, y: 612}
+  - {x: -144, y: 683}
+  - {x: -45, y: 747}
+  - {x: 74, y: 816}
+  - {x: -42, y: 876}
+  - {x: -301, y: 592}
+  - {x: -41, y: 942}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 0, y: 3}
+    - {x: 1, y: 4}
+    - {x: 3, y: 4}
+    - {x: 2, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 6, y: 8}
+    - {x: 6, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 11, y: 12}
+    - {x: 7, y: 14}
+    - {x: 7, y: 15}
+    - {x: 13, y: 16}
+    - {x: 16, y: 17}
+    - {x: 16, y: 18}
+    - {x: 16, y: 19}
+    - {x: 19, y: 20}
+    - {x: 18, y: 20}
+    - {x: 17, y: 20}
+    - {x: 14, y: 16}
+    - {x: 15, y: 21}
+    - {x: 21, y: 11}
+    - {x: 20, y: 22}
+    - {x: 8, y: 13}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 1d1cd0244eea6d044ba503e4a01a7c2a, type: 3}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Shrewd Sibling
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: approval
+        Name: Distracting Guest
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: approval
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: negative
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Shrewd Sibling
+        Motion: 3
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: neutral
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: negative
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: approval
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: bored
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: bored
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: bored
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: bored
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: charmed
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: bored
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: military
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Shrewd Sibling
+        Motion: 0
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02
+        Pose: bored
+        Name: Shrewd Sibling
+        Motion: 3
+      Character2:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Distracting Guest
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 70
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "The sister of an artilleryman seems to know simply everything that
+      her brother overhears in the barracks, but to learn more, you\u2019ll have
+      to divert a tiresome boor who keeps interrupting."
+    Requirements: []
+    _date: -1
+  Name: Scattershot
+  _factions: 000000010000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - At this moment, you're in the middle of chatting with a woman who seems to be
+    in possession of exactly the kind of rumors you're looking for. Her brother is
+    an artilleryman, who also happens to gamble like a fiend, and loves telling stories
+    about the last indecorous goings-on that he overhears in the process.
+  - While she hasn't gotten to the details yet, you know that whatever cheap rumors
+    she's heard will concern the military.
+  - While she hasn't gotten to the details yet, you know that whatever shocking rumors
+    she's heard will concern the military.
+  - While she hasn't gotten to the details yet, you know that whatever outrageous
+    rumors she's heard will concern the military.
+  - Just as you're about to learn what you need to know, another woman suddenly wanders
+    into your conversation, gesturing to a flower arrangement on a nearby table.
+    "Oh! Have you two heard that these flowers were gifted by the Duchess de Tourzel?"
+  - '"I had no idea! Are they from her personal gardens?" Your conversation partner
+    replies.'
+  - You can feel the conversation pulling away, but you don't yet have what you need.
+  - '"The story I was telling?"'
+  - '"I mean... of course it can wait..." The interloper replies, clearly intent
+    on nurturing this grudge until her dying day.'
+  - You sigh and let the lead slip from your grasp. You tell yourself that the conflict
+    simply isn't worth it, but admitting defeat like this bothers you. It's not that
+    you have a particular distaste for flowers, it's that you let a stranger completely
+    brush you aside like that.
+  - '(You have lost a little credibility)
+
+    (You have lost a little peril)'
+  - "The both of them manage to have a lovely conversation. Unfortunately, it's laden
+    with specific references and secret jests that you\u2019re totally unfamiliar
+    with. You might as well not even be part of the discussion."
+  - 'Eventually, you manage to extract yourself from the conversation without absorbing
+    too many insipid details about the Duchess de Tourzel''s gardener.
+
+
+    Thank.
+    God.'
+  - (You have gained some peril)
+  - '"Oh, I had no idea. Please, do go on..." The interloper replies, almost disoriented
+    by the revelation that other people have interesting things to say. '
+  - '"Oh, don''t worry, it''s not particularly important." Your storytelling acquaintance
+    replies. This disappointment is only worsened by the bizarely triumphant smile
+    you receive from the interloper.'
+  - '"Ah, yes! Where was I?" Your storytelling acquaintance says, before launching
+    into further detail on the latest she''s heard from her brother.'
+  - (You gained a piece of Cheap Military Gossip)
+  - (You gained a piece of Shocking Military Gossip)
+  - (You gained a piece of Outrageous Military Gossip)
+  - While you've carefully committed her story to memory, you still need to remain
+    in this conversation for a little while, as exiting the moment you get what you
+    want would arouse far too much suspicion. Just as you feared, this new interloper
+    is extremely tiresome.
+  - (You have lost a decent amount of credibility)
+  - 'Eventually, you manage to extract yourself from the conversation without absorbing
+    too many insipid details about the Duchess de Tourzel''s gardener.
+
+
+    Thank.
+    God.'
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Ah! That ties in so well to the story that my friend was just telling!"'
+  - '"<i>Pardon</i>, madame, but we were in the middle of something. Can this wait?"'
+  - <Just let them talk about flowers>
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

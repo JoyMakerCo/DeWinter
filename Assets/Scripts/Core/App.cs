@@ -5,14 +5,20 @@ using Util;
 namespace Core {
 	public interface IAppService : IDisposable { }
 
-	public static class App
-	{
-		private static Dictionary<Type, IAppService> _services = new Dictionary<Type, IAppService>();
+    public static class App // This *SHOULD* be replaced by dependency injection. At some point.
+    {
+        private static Dictionary<Type, IAppService> _services = new Dictionary<Type, IAppService>();
 
-        public static T Register<T>() where T:IAppService, new()
+        public static T Register<T>() where T : IAppService, new()
         {
             T svc = Service<T>();
             if (svc == null) _services.Add(typeof(T), svc = new T());
+            return svc;
+        }
+
+        public static S Register<S>(S svc) where S : IAppService
+        {
+            _services[typeof(S)] = svc;
             return svc;
         }
 

@@ -23,10 +23,6 @@ namespace Ambition
 
             switch (commodity.Type.ToString())
             {
-                case "Reputation": //Reputation is an edge case in terms of naming conventions
-                    return (string.IsNullOrWhiteSpace(commodity.ID) || commodity.ID == "null")
-                        ? AmbitionApp.Localize("commodity." + commodity.Type.ToString().ToLower() + ".name")
-                        : AmbitionApp.Localize("commodity.reputation" + commodity.ID.ToLower() + ".name");
                 case "Gossip":
                     return AmbitionApp.Localize("commodity." + commodity.Type.ToString().ToLower() + ".name");
             }

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: incidentUnwillingConfessor
+  m_EditorClassIdentifier: 
+  Name: Unwilling Confessor
+  LocationWindowDescription: It appears that Pierre is trying to convince Father
+    Sidotti to participate in some unsavory scheme of his. This might be a prime
+    opportunity to get on either of their good sides.
+  IntroIncidentConfig: {fileID: 11400000, guid: df2e16141c6c28844ac2f2e076a85cfb,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
+  OneShot: 1
+  IsRendezvous: 0
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: 54b0ec29e16439b408d57add78f97707,
+    type: 3}
+  Requirements:
+  - Type: 8
+    ID: thatMostReputablePaper
+    Value: 1
+    Operator: 4
+  - Type: 8
+    ID: rumorMongers
+    Value: 1
+    Operator: 4
+  - Type: 28
+    ID: ludovicoSidotti
+    Value: 1
+    Operator: 4

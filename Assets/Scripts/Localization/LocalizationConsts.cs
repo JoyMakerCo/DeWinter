@@ -31,5 +31,11 @@ namespace Ambition
         public const string PARTYFACTIONMODESTY = "$PARTYFACTIONMODESTYPREFERENCE";
         public const string PARTYFACTIONLUXURY = "$PARTYFACTIONLUXURYPREFERENCE";
 
+        public const string EXIT_PARTY = "calendar.btn.party";
+        public const string EXIT_PARIS = "calendar.btn.paris";
+        public const string EXIT_RENDEZVOUS = "calendar.btn.rendezvous";
+
+        public const string Day = "day";
+        public const string Days = "days";
     }
 }

@@ -1,0 +1,1633 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: clearingOnesHead
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 193, y: 62}
+  - {x: 8, y: 118}
+  - {x: 13, y: 175}
+  - {x: -10, y: 333}
+  - {x: -30, y: 397}
+  - {x: -207, y: 455}
+  - {x: 147, y: 466}
+  - {x: -39, y: 545}
+  - {x: -430, y: 456}
+  - {x: -37, y: 630}
+  - {x: -276, y: 700}
+  - {x: -36, y: 705}
+  - {x: 185, y: 701}
+  - {x: -489, y: 764}
+  - {x: -273, y: 760}
+  - {x: -269, y: 847}
+  - {x: -488, y: 829}
+  - {x: -488, y: 892}
+  - {x: -48, y: 1065}
+  - {x: -49, y: 1119}
+  - {x: -46, y: 1233}
+  - {x: 10, y: 229}
+  - {x: 1, y: 282}
+  - {x: -35, y: 770}
+  - {x: -29, y: 838}
+  - {x: -270, y: 929}
+  - {x: -267, y: 998}
+  - {x: -284, y: 1072}
+  - {x: -299, y: 1144}
+  - {x: -300, y: 1216}
+  - {x: 201, y: 772}
+  - {x: 202, y: 835}
+  - {x: -46, y: 1175}
+  - {x: -46, y: 1290}
+  - {x: -492, y: 959}
+  - {x: -502, y: 651}
+  - {x: -495, y: 711}
+  - {x: -47, y: 1347}
+  - {x: -49, y: 1411}
+  - {x: -170, y: 1477}
+  - {x: 71, y: 1469}
+  - {x: 72, y: 1528}
+  - {x: -174, y: 1537}
+  - {x: -168, y: 1598}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 2, y: 3}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 6, y: 8}
+    - {x: 5, y: 9}
+    - {x: 9, y: 8}
+    - {x: 8, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 10, y: 13}
+    - {x: 11, y: 15}
+    - {x: 15, y: 16}
+    - {x: 14, y: 17}
+    - {x: 17, y: 18}
+    - {x: 19, y: 20}
+    - {x: 1, y: 2}
+    - {x: 0, y: 2}
+    - {x: 3, y: 22}
+    - {x: 22, y: 23}
+    - {x: 23, y: 4}
+    - {x: 7, y: 10}
+    - {x: 12, y: 24}
+    - {x: 24, y: 25}
+    - {x: 25, y: 17}
+    - {x: 16, y: 26}
+    - {x: 26, y: 27}
+    - {x: 27, y: 28}
+    - {x: 29, y: 30}
+    - {x: 13, y: 31}
+    - {x: 31, y: 32}
+    - {x: 32, y: 19}
+    - {x: 20, y: 33}
+    - {x: 33, y: 21}
+    - {x: 21, y: 34}
+    - {x: 18, y: 35}
+    - {x: 35, y: 19}
+    - {x: 11, y: 36}
+    - {x: 36, y: 37}
+    - {x: 37, y: 14}
+    - {x: 28, y: 29}
+    - {x: 34, y: 38}
+    - {x: 38, y: 39}
+    - {x: 39, y: 40}
+    - {x: 39, y: 41}
+    - {x: 41, y: 42}
+    - {x: 40, y: 43}
+    - {x: 43, y: 44}
+    - {x: 44, y: 42}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: ef95bab0adcb64b40bb571955727dbce, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Introduction
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 4
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 3
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 4
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: smolder
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: hansel
+        Value: 0
+        Operator: 3
+      - Type: 6
+        ID: maurice
+        Value: 0
+        Operator: 3
+      - Type: 6
+        ID: therese
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: theGoodSoldier
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: theGoodSoldier
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 6
+        Operator: 0
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 28
+      ID: thomasAlexandreDumas
+      Value: 1
+      Operator: 4
+    - Type: 23
+      ID: Thomas-AlexandreDead
+      Value: 0
+      Operator: 3
+    - Type: 8
+      ID: researchingArmand
+      Value: 0
+      Operator: 3
+    _date: -1
+  Name: Clearing One's Head
+  _factions: 000000000000
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - You spend the day walking along the river with Camille. You didn't feel like
+    going out along, and he was helpful enough to volunteer.
+  - Then again, it's not like there's anyone else in your house to ask.
+  - The two of you walk side by side as you chat. While this kind of public familiarity
+    with one's servants is certainly a breach of etiquette, it's also much harder
+    to have a conversation with someone walking a respectful distance behind you.
+    Camille was a little uncomfortable with this new arrangement at first, but she's
+    enjoying the change of pace.
+  - '"You know, madame, I''ve been in Paris my whole life and I''ve never once swam
+    in the Seine?" She says, gesturing to the river. "My brothers used to play in
+    it all the time when they were little, but I never really got around to it. Now
+    if I stripped down and went in the river, everyone would think I''d gone mad."'
+  - You find yourself so absorbed in this idea that you nearly walk straight into
+    Alex, who was standing at the water's edge, uncharacteristically quiet.
+  - '"Ah! My apologies Yvette. I didn''t see you there."'
+  - '"Not at the moment. Right now, I''m merely stretching my legs and doing my best
+    to clear my head. To put it simply, I adore this city. It''s been years and I
+    still like to wander its streets for the sake of finding some new sight I''ve
+    missed."'
+  - '"Ah, it''s that obvious then? Yes, I''ve run across something particularly troubling
+    during the course of my duties, and I needed to clear my head."'
+  - '"Today, I was called in to deal with something... extremely unpleasant, and
+    I must admit that it''s disquieted me more than I expected it to."'
+  - '"Not at the moment. Right now, I''m merely stretching my legs and doing my best
+    to clear my head. It''s as I told you when we first met, I truly adore this city.
+    It''s been years and I still like to wander its streets for the sake of finding
+    some new sight I''ve missed."'
+  - "\"Actually, now that I consider the details, I\u2019m not sure you need to hear
+    this\u2026\""
+  - Alex doesn't say anything at first. Instead, he stares out at the river for some
+    time.
+  - '"Yvette, that''s unfair and you know it."'
+  - '"<i>Merci beaucoups</i>, I appreciate your willingness to let this go. As much
+    as I''m delighted by your natural curiosity, I don''t think I could have been
+    comfortable discussing that."'
+  - ' "It was barely dawn when my unit was called in to help search the scene of
+    a murder in the city. The police have been overburdened since that business with
+    Reveillon, so they asked for our assistance."'
+  - '"I''m sorry Yvette, but I just can''t talk about this."'
+  - '"Don''t worry, Monsieur Dumas! I''m certain that Madame Yvette can-"'
+  - '"I saw the body and learned the details of the case. I''ve seen my fair share
+    of violence but this felt different, somehow. The victim, an elderly merchant,
+    was pinned face-down on a table, and had his throat slit like an animal. What
+    distresses me more is that a woman was seen fleeing the scene, carrying a bundle
+    of papers."'
+  - '"The woman that fled the scene was wearing a green dress, and nobody seemed
+    to recognize her. Perhaps it''s naive of me to think this way, but to imagine
+    a woman to be involved in such wanton brutality has been truly unsettling."'
+  - '"Monsieur Dumas, I bumped into your friend, Monsieur d''Auvergne while I was
+    at the market. He told me all of these amazing stories of your adventures in
+    the dragoons together!"'
+  - "At this, Alex's face takes on a suspiciously neutral expression. \"Oh really?
+    It's funny you say that. He\u2019s spoken to me about you, on several occasions.
+    You seem to have made quite the impression on him.\""
+  - '"Well, there''s only one way for us to test that claim!" Alex laughs, holding
+    his arm out at shoulder height. "Grab on!"'
+  - '"It''s kind of funny to think that there are certain things you''re only allowed
+    to do when you''re younger. It''s even funnier when you think the adults are
+    the one who make the rules. We can''t go splashing in the river because it''d
+    be indecent, but we''re the ones who decide if that''s true!"'
+  - '"Can you imagine if there was an Estates General for what''s adult and what''s
+    childish? We could come together and petition the King to declare things like
+    ''Bitter foods aren''t more sophisticated'' and ''Nothing is funnier than watching
+    a mean and angry person fall down while they''re shouting''."'
+  - (You have lost a little favor with Alex)
+  - '"Fine..." He sighs. "If you wish to know so dearly, my unit was called in to
+    help search the scene of a murder in the city. The police have been overburdened
+    since that business with Reveillon, so they asked for our assistance."'
+  - '"No, I will not hear of it!" Alex barks, his decision final. "I appreciate your
+    curiosity, and I''m sorry for bringing it up, but I will not discuss this further."'
+  - '(You have lost a little favor with Alex)
+
+    (You have lost some credibility)'
+  - '"<i>Pardon</i>, but I must take my leave." He says stiffly, leaving before you
+    even get a chance to respond.'
+  - '"Well, we tried madame, and nobody can hold that against us!" Camille says,
+    in a game attempt to lift your spirits.'
+  - You continue with your walk, trying not to over analyze the situation. You manage
+    to be half successful in your efforts, and have a decently relaxing walk.
+  - (You have gained a little favor with Alex)
+  - Alex decides to join the two of you on your walk. While your unusual trio manages
+    to attract a few stares, it's a small price to pay for good company.
+  - "\"He also said that you were the strongest man in all of France! Is that true?\r\""
+  - Without even a moment's hesitation, Camille jumps up and grabs onto Alex's outstretched
+    arm, swinging from it like a child on a treebranch. To his credit, he holds her
+    up with remarkable ease.
+  - You both walk for a while in silence, considering the implications of such a
+    thing. Considering what could motivate someone towards such things. Could you
+    be pushed to do such a thing, by desperation or necessity?
+  - '"...that''s a fair point." He laughs. "I''ve never known you to be one to shrink
+    from difficulty. My apologies, Yvette, for underestimating you so quickly."'
+  - (You have gained some favor with Alex)
+  - Eventually, Camille stops attempting to climb Alex like a tree for long enough
+    that you're all able to continue your walk along the river. The conversation
+    is light, and it seems to do quite a bit for calming the dragoon's nerves.
+  - As your time together comes to a close, Alex insists on walking you back to your
+    home. Camille heads inside, to get dinner started.
+  - '"I just wanted say ''thanks'', Yvette, for helping me take my mind off of today.
+    You always seem to know how to brighten even the dourest of my moods."'
+  - '"I just wanted say ''thanks'', Yvette, for helping me take my mind off of today.
+    I seem to be cursed with a tendency to crawl into my own head, and dwell upon
+    my problems. It''s nice to have someone who can pry me out of such dreadful reveries."'
+  - 'Then, with a bow as formal and precise as always, he departs.
+
+
+    Today seems
+    to have gone quite well.'
+  - '"I hope that you find me to be similarly invigorating." '
+  - '"Unfortunately, I must go, but I hope to see you again, under better circumstances."'
+  _linkText:
+  - 
+  - 
+  - 
+  - '"It''s quite alright. Are you on duty at the moment?"'
+  - '"Alex, you seem troubled."'
+  - 
+  - '"It''s quite alright. Are you on duty at the moment?"'
+  - 
+  - 
+  - '"Alex, I''m made of sterner stuff than that. You can tell me."'
+  - '"Ah, so you don''t think I can withstand the burden of a simple story?"'
+  - '"It''s alright, you don''t need to discuss it, if you don''t want to."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

@@ -2,23 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
 namespace Ambition
 {
     public class HeaderView : MonoBehaviour
     {
-        public Text HeaderTitle;
+        public GameObject Header;
 
-        void OnEnable()
+        public void Start()
         {
-            AmbitionApp.GetModel<LocalizationModel>().HeaderTitle.Observe(SetHeaderTitle);
+            AmbitionApp.Subscribe(GameMessages.SHOW_HEADER, ShowHeader);
+            AmbitionApp.Subscribe<string>(GameMessages.SHOW_HEADER, SetHeaderTitle);
+            AmbitionApp.Subscribe(GameMessages.HIDE_HEADER, HideHeader);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            AmbitionApp.GetModel<LocalizationModel>().HeaderTitle.Remove(SetHeaderTitle);
+            AmbitionApp.Unsubscribe(GameMessages.SHOW_HEADER, ShowHeader);
+            AmbitionApp.Unsubscribe(GameMessages.HIDE_HEADER, HideHeader);
+            AmbitionApp.Unsubscribe<string>(GameMessages.SHOW_HEADER, SetHeaderTitle);
         }
 
-        private void SetHeaderTitle(string title) => HeaderTitle.text = title;
+        private void ShowHeader() => Header.SetActive(true);
+        private void SetHeaderTitle(string title) => Header.SetActive(true);
+        private void HideHeader()
+        {
+            Header.SetActive(false);
+        }
     }
 }

@@ -1,0 +1,750 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: pierresInquiry
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 7, y: 135}
+  - {x: 2, y: 69}
+  - {x: -183, y: 308}
+  - {x: 36, y: 308}
+  - {x: 277, y: 307}
+  - {x: -184, y: 375}
+  - {x: -193, y: 506}
+  - {x: -190, y: 571}
+  - {x: 37, y: 380}
+  - {x: 39, y: 447}
+  - {x: 41, y: 509}
+  - {x: 276, y: 436}
+  - {x: 280, y: 498}
+  - {x: 271, y: 575}
+  - {x: -184, y: 441}
+  - {x: 287, y: 377}
+  Incident:
+    Links:
+    - {x: 3, y: 6}
+    - {x: 7, y: 8}
+    - {x: 4, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 12, y: 13}
+    - {x: 13, y: 14}
+    - {x: 6, y: 15}
+    - {x: 15, y: 7}
+    - {x: 5, y: 16}
+    - {x: 16, y: 12}
+    - {x: 0, y: 2}
+    - {x: 2, y: 1}
+    - {x: 1, y: 3}
+    - {x: 1, y: 4}
+    - {x: 1, y: 5}
+    Nodes:
+    - Text: "Pierre\u2019s office either looks marginally cleaner than before, or
+        he\u2019s managed to shuffle the mess into differently shaped piles. Honestly,
+        it\u2019s hard to tell. "
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Fourth Estate
+        Parameters:
+        - Name: END
+          Value: 0
+        - Name: PlotAct
+          Value: 0
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "\u201C...you are trying to find someone, <i>non</i>?\u201D"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "You spend a few moments waiting around in the entryway before Pierre
+        arrives, and he seems quite enthused by your presence. \u201CWhy, if it isn\u2019t
+        my newest confidant! Please come in! Have you come back with more delicious
+        information, or perhaps\u2026\u201D"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 2
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CMadame, my suspicions about your search were founded in your\u2026
+        newfound notoriety.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: Pierre cocks an eyebrow at your response and rummages around in his snuff
+        box while he examines you more closely.
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: "\u201COh, playing your cards carefully? I admire that, madame.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: "\u201CSuspicions, which you have been so kind as to confirm for me.\u201D
+        Pierre favors you with a short and elegant bow. \u201C<i>Merci beaucoups</i>\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CAs for your fiance\u2019s whereabouts, I don\u2019t know his exact
+        address, or I would probably be a wealthier man by now.\u201D Pierre admits,
+        pausing to examine your reaction. \u201CHowever, I happen to have some leads,
+        and I can say that I already like you more than some of the men that are
+        looking for him.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CHowever, before I lay out my terms, I must satisfy my own professional
+        curiosity. How well do you really know your beloved Armand?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Peirre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 8
+        ID: backThenBackHome
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CAh yes, the sting of desertion can certainly sour one\u2019s opinion.
+        Your Armand has been so thoughtless as to abandon you in this cruel city,
+        this den of vipers, and now you seek to chart your own course, <i>non</i>?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CI doubt anyone could blame you for wanting to seize your own destiny,
+        instead of chasing his.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: "\u201CNow then, to business?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CI am referring to your absent fiance, the Baron Armand de Marbo.\u201D
+        He pauses to snort a small pinch of snuff, carefully examining your face
+        for any hint of reaction. "
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CEver since making your acquaintance, I knew something about you
+        was familiar, and my keen journalistic senses are never wrong! Your beloved
+        Armand was quite the social butterfly, and he mentioned you often.\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CIn fact, like any good lover, he knew quite a lot about you. But
+        how much did you really know about him?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 8
+        ID: backThenBackHome
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CIn fact, like any good lover, he knew quite a lot about you. But
+        how much did you really know about him?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "\u201CIn fact, like any good lover, he knew quite a lot about you. But
+        how much did you really know about him?\u201D"
+      Background: {fileID: 21300000, guid: fe1b3ca70b0292b428534f2f0b3d0c84, type: 3}
+      Character1:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CWhere is Armand, and how do you know that I\u2019m looking for
+        him?\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: "\u201CI\u2019m done trying to find Armand, he can seek me out if he
+        cares so much.\u201D"
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 8
+      ID: bedRest
+      Value: 1
+      Operator: 4
+    _date: -1
+  Name: Pierre's Inquiry
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: -1
+  _nodeText:
+  - "Pierre\u2019s office either looks marginally cleaner than before, or he\u2019s
+    managed to shuffle the mess into differently shaped piles. Honestly, it\u2019s
+    hard to tell. "
+  - "\"\x1C...you are trying to find someone, <i>non</i>?\x1D\""
+  - "You spend a few moments waiting around in the entryway before Pierre arrives,
+    and he seems quite enthused by your presence. \u201CWhy, if it isn\u2019t my
+    newest confidant! Please come in! Have you come back with more delicious information,
+    or perhaps\u2026\u201D"
+  - "\u201CMadame, my suspicions about your search were founded in your\u2026 newfound
+    notoriety.\u201D\r"
+  - "Pierre cocks an eyebrow at your response and rummages around in his snuff box
+    while he examines you more closely.\r"
+  - "\u201COh, playing your cards carefully? I admire that, Madame.\u201D\r"
+  - "\u201CSuspicions, which you have been so kind as to confirm for me.\u201D Pierre
+    favors you with a short and elegant bow. \u201C<i>Merci beaucoups</i>\u201D\r"
+  - "\u201CAs for your fianc\xE9\u2019s whereabouts, I don\u2019t know his exact
+    address, or I would probably be a wealthier man by now.\u201D Pierre admits,
+    pausing to examine your reaction. \u201CHowever, I happen to have some leads,
+    and I can say that I already like you more than some of the men that are looking
+    for him.\u201D"
+  - "\u201CHowever, before I lay out my terms, I must satisfy my own professional
+    curiosity. How well do you really know your beloved Armand?\u201D"
+  - "\u201CAh yes, the sting of desertion can certainly sour one\u2019s opinion.
+    Your Armand has been so thoughtless as to abandon you in this cruel city, this
+    den of vipers, and now you seek to chart your own course, <i>non</i>?\u201D\r"
+  - "\u201CI doubt anyone could blame you for wanting to seize your own destiny,
+    instead of chasing his.\u201D"
+  - "\"\x1CNow then, to business?\x1D\""
+  - "\u201CI am referring to your absent fianc\xE9, the Baron Armand de Marbo.\u201D
+    He pauses to snort a small pinch of snuff, carefully examining your face for
+    any hint of reaction."
+  - "\u201CEver since making your acquaintance, I knew something about you was familiar,
+    and my keen journalistic senses are never wrong! Your beloved Armand was quite
+    the social butterfly, and he mentioned you often.\u201D\r"
+  - "\u201CIn fact, like any good lover, he knew quite a lot about you. But how much
+    did you really know about him?\u201D"
+  - (You have lost a little credibility)
+  - (You have gained a little credibility)
+  - "\u201CIn fact, like any good lover, he knew quite a lot about you. But how much
+    did you really know about him?\u201D"
+  - "Pierre\u2019s office either looks marginally cleaner than before, or he\u2019s
+    managed to shuffle the mess into differently shaped piles. Honestly, it\u2019s
+    hard to tell. "
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - ' '
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Where is Armand, and how do you know that I''m looking for him?"'
+  - '"I''m done trying to find Armand, he can seek me out if he cares so much."'
+  - '"What, exactly, are you talking about?"'
+  - 
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - 
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - 
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - 
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - 
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - 
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - 
+  - "\u201CWhat, exactly, are you talking about?\u201D"
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "\"\x1CWhere is Armand, and how do you know that I'\x19m looking for him?\x1D\r\""
+  - "\"\x1CI'\x19m done trying to find Armand, he can seek me out if he cares so
+    much.\x1D\""
+  - "\"\x1CWhat, exactly, are you talking about?\x1D\""

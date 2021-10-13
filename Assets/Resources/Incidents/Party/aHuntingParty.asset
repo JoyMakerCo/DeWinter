@@ -1,0 +1,1822 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: aHuntingParty
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 1b000000
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -2, y: 119}
+  - {x: 1, y: 185}
+  - {x: -206, y: 267}
+  - {x: 2, y: 348}
+  - {x: 140, y: 260}
+  - {x: 430, y: 260}
+  - {x: -1, y: 55}
+  - {x: -1, y: 414}
+  - {x: -1, y: 484}
+  - {x: -1, y: 555}
+  - {x: -242, y: 626}
+  - {x: 6, y: 645}
+  - {x: 234, y: 627}
+  - {x: 22, y: 776}
+  - {x: 17, y: 835}
+  - {x: 13, y: 703}
+  - {x: 18, y: 892}
+  - {x: 20, y: 944}
+  - {x: 17, y: 1001}
+  - {x: -213, y: 1064}
+  - {x: 19, y: 1067}
+  - {x: 240, y: 999}
+  - {x: 312, y: 1109}
+  - {x: 257, y: 1181}
+  - {x: 400, y: 1249}
+  - {x: -420, y: 1119}
+  - {x: -214, y: 1167}
+  - {x: 18, y: 1133}
+  - {x: 18, y: 1192}
+  - {x: 403, y: 1316}
+  - {x: 406, y: 1378}
+  - {x: 22, y: 1256}
+  - {x: 24, y: 1343}
+  - {x: 24, y: 1429}
+  - {x: 23, y: 1491}
+  - {x: -219, y: 1683}
+  - {x: 307, y: 1050}
+  - {x: -208, y: 1233}
+  - {x: -213, y: 1299}
+  - {x: -216, y: 1365}
+  - {x: -220, y: 1440}
+  - {x: 262, y: 805}
+  - {x: -424, y: 1177}
+  - {x: -433, y: 1245}
+  - {x: -443, y: 1304}
+  - {x: -447, y: 1362}
+  - {x: -438, y: 1420}
+  - {x: -433, y: 1494}
+  - {x: -445, y: 1555}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 2, y: 4}
+    - {x: 2, y: 5}
+    - {x: 5, y: 4}
+    - {x: 3, y: 4}
+    - {x: 2, y: 6}
+    - {x: 6, y: 4}
+    - {x: 0, y: 7}
+    - {x: 7, y: 1}
+    - {x: 4, y: 8}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 10, y: 13}
+    - {x: 11, y: 14}
+    - {x: 12, y: 16}
+    - {x: 13, y: 14}
+    - {x: 16, y: 14}
+    - {x: 15, y: 17}
+    - {x: 17, y: 18}
+    - {x: 18, y: 19}
+    - {x: 19, y: 20}
+    - {x: 19, y: 21}
+    - {x: 19, y: 22}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 24, y: 20}
+    - {x: 24, y: 21}
+    - {x: 20, y: 26}
+    - {x: 20, y: 27}
+    - {x: 21, y: 28}
+    - {x: 28, y: 29}
+    - {x: 25, y: 30}
+    - {x: 30, y: 31}
+    - {x: 29, y: 32}
+    - {x: 33, y: 34}
+    - {x: 34, y: 35}
+    - {x: 35, y: 36}
+    - {x: 32, y: 33}
+    - {x: 22, y: 37}
+    - {x: 37, y: 23}
+    - {x: 27, y: 38}
+    - {x: 38, y: 39}
+    - {x: 39, y: 40}
+    - {x: 40, y: 41}
+    - {x: 41, y: 36}
+    - {x: 14, y: 42}
+    - {x: 42, y: 15}
+    - {x: 26, y: 43}
+    - {x: 43, y: 44}
+    - {x: 44, y: 45}
+    - {x: 45, y: 46}
+    - {x: 46, y: 47}
+    - {x: 47, y: 48}
+    - {x: 48, y: 49}
+    - {x: 49, y: 36}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 0074eaf4adfaa2445a2a65e39d3e4428, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: The Bait
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: The Switch
+        Motion: 2
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: The Switch
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: approval
+        Name: The Switch
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: charmed
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: charmed
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: charmed
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: charmed
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: approval
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: neutral
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: The Switch
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: The Bait
+        Motion: 3
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: bored
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: putout
+        Name: The Bait
+        Motion: 3
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: approval
+        Name: The Switch
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: The Bait
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04a
+        Pose: negative
+        Name: The Bait
+        Motion: 3
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: The Switch
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: Bourgeoisie
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 24
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: honoradeGazel
+        Value: 6
+        Operator: 1
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: 6
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Honorade
+        Value: 6
+        Operator: 1
+      - Type: 5
+        ID: Elisabeth
+        Value: 6
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: honoradeGazel
+        Value: 6
+        Operator: 4
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: 6
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: honoradeGazel
+        Value: 6
+        Operator: 4
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: 6
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 0
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "You notice a woman approaching you, and you sense some sort of
+      amorous intent from her, but something about the whole situation feels\u2026
+      off. Something scandalous, to be sure, but you\u2019re not certain if you want
+      to be so close to it."
+    Requirements: []
+    _date: -1
+  Name: A Hunting Party
+  _factions: 000000000100
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - 'You find yourself in a relatively secluded room, stealthily surveying the area
+    to see if there''s anyone particularly important that you should be introducing
+    yourself too. '
+  - Your ears perk up at the sounds of someone whispering behind you. While you can't
+    make out the words themselves, it almost sounds like an frantic argument, one
+    with a sudden resolution.
+  - A woman suddenly approaches you appearing at the corner of your vision. "<i>B-bonsoir</i>,
+    Madame Decaux! I'm sorry to approach you so suddenly, but I was wondering something..."
+  - '"You see, I''ve heard some utterly fascinating rumors about you and the painter,
+    Madame Le Brun."'
+  - '"B-by ''I'', I of course mean to say ''we''." She adds quite hurriedly.'
+  - '"You see, I''ve heard some utterly fascinating rumors about you and that mysterious
+    woman, Madame Gazel..."'
+  - '"You see, I''ve heard the most tantalizing rumors about you, the painter Madame
+    Le Brun, and that mysterious Madame Gazel..."'
+  - Introducing yourself is, of course, a mild breach of decorum. However, you have
+    neither the time nor the patience for such things when there's work to be done.
+  - Of course? How does any of this strange rambling even resemble something that
+    ends with 'of course'?
+  - '"Have you two come to a decision?" A man asks impatiently, also entering the
+    conversation from outside of your field of vision. '
+  - '"I was just getting to that!" She hisses at her partner.'
+  - '"Ah well, you see, my husband I are a lively but discreet married couple, and
+    you''re an interesting wom-."'
+  - '"No, wait! Please, at least listen to our proposition." He replies before you
+    can turn away.'
+  - '"Ah, well that man is my husband. You might describe us as a lively but discreet
+    married couple, and you''re an interesting wom-."'
+  - '"And very attractive." Her husband interjects over her.'
+  - '"Where was I? You see, we have been looking for a woman like yourself to...
+    join us."'
+  - '"You see, my husband I are a lively but discreet married couple, and you''re
+    an interesting wom-."'
+  - "It takes a moment for you to put their insinuations together, not because you've
+    never heard of a <i>m\xE9nage \xE0 trois</i>, it's just that you didn't think
+    that you'd be approached about one by a pair of desperate strangers."
+  - In a way, the proposal is almost adorable. Most well-to-do couples that grow
+    this tired of each other usually just skip straight to silent, furious adultery.
+  - Still, you don't know why you'd want to act as a stand-in just to rekindle their
+    flagging desire.
+  - '"What... what exactly would you want?"'
+  - '"P-paltry? What? How dare you?"'
+  - As the two of them stumble over each other to find the right way to be more direct,
+    you feel a strange, relaxing pleasure in watching the two of them squirm. In
+    making them explain themselves to you.
+  - (You have lost a little peril)
+  - '"Have we made our intentions clear?"'
+  - '"Oh, I understand. Perhaps we were a little-"'
+  - '"Ah, <i>fantastique</i>! I''ll go find our coachman, we''ll retreat to our home
+    and-"'
+  - '"No! How dare you try to treat us like this. People aren''t just objects you
+    can toy with as you please."'
+  - (You have gained a little peril)
+  - Your only reply is a stony glare. You're a woman who knows their own worth, and
+    it's simply a lot more than whatever it is that they think they're doing right
+    now.
+  - '"Wait, please reconsider!" Her husband yelps, interrupting what you can only
+    assume was going to be an extremely awkward apology.'
+  - She shushes him and drags him away before he can manage to embarrass the both
+    of them any further. Left to your own devices once more, you stop to wonder how
+    these sorts of things keep happening to you.
+  - You've been approached by suitors of many stripes since you came to Paris, and
+    they all had the common sense to actually show interest in who you are, not just
+    what they want you to do.
+  - As the man opens his mouth to continue his response, his wife shushes him and
+    drags him away before he can manage to embarrass the both of them any further.
+    You sigh in relief until you notice that several party guests had been observing
+    this interaction.
+  - With a few chuckles and titters, they whisper excitedly about your rebuff and
+    seem generally impressed.
+  - (You have gained some credibility)
+  - Left to your own devices once more, you stop to wonder how these sorts of things
+    keep happening to you.
+  - There's something almost clarifying about this feeling of power.
+  - You consider repeating his statement back to him, just to see if he heard himself
+    correctly, but decide against it.
+  - '"Y-you have no idea what you''ve decided to miss out on. No idea, at all! <i>Mon
+    Dieu</i>, do you know who we are?"'
+  - '(You have gained some peril)
+
+    (You have lost some credibility)'
+  - You consider telling him '<i>non</i>' to both questions, but by that time they've
+    already left in a huff, muttering about how rude you are.
+  - '"I don''t know why you had to bring that up right this second." She replies
+    irately, and the two of them pause to bicker amongst each other in whispers for
+    a minute or so, while you sip your wine in silence.'
+  - '"What, you want to leave, right now? We haven''t even greeted the host yet,
+    or determined what she... ugh! You''re doing this again!"'
+  - '"I''m doing what? Please, pray tell, what am I doing?"'
+  - An argument between the two of them flares up almost instantly, and they hastily
+    excuse themselves for a moment. You sigh as they disappear into another room.
+    If nothing else, this particular type of scandalous foolishness makes for great
+    gossip.
+  - (You have gained a piece of Cheap Bourgeoisie Gossip)
+  - Before you walk away, you catch the glint of something shiny on the floor. Did
+    one of them drop their coin purse?
+  - (You have gained 24 Livres)
+  - You swiftly tuck the money into your pockets. You consider feeling guilty but
+    the recent memory of their presumption removes such thoughts from your mind.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I don''t know what you two are plotting, but you have my attention."'
+  - '"Whatever foolishness this is, I really don''t have time for it."'
+  - '"<i>Excusez moi</i> but who is this man, and why are we listening to him?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"What, exactly, am I going to get out of this?"'
+  - '"After such a paltry attempt at winning my heart? No."'
+  - '"I must confess, I have no idea what you two are talking about."'
+  - 
+  - '"I think you two should go."'
+  - '"I do, but what exactly am I getting out of this?"'
+  - '"After such a paltry attempt at winning my heart? No."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

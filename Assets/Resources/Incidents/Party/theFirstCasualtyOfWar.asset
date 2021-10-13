@@ -1,0 +1,1316 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: theFirstCasualtyOfWar
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 09000000
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 0, y: 66}
+  - {x: -4, y: 127}
+  - {x: -2, y: 190}
+  - {x: -4, y: 261}
+  - {x: -3, y: 335}
+  - {x: 0, y: 394}
+  - {x: -1, y: 505}
+  - {x: 0, y: 573}
+  - {x: -236, y: 648}
+  - {x: -1, y: 660}
+  - {x: 310, y: 667}
+  - {x: -437, y: 724}
+  - {x: -209, y: 735}
+  - {x: 2, y: 448}
+  - {x: 0, y: 721}
+  - {x: -434, y: 986}
+  - {x: -434, y: 1045}
+  - {x: -4, y: 785}
+  - {x: -4, y: 843}
+  - {x: -4, y: 899}
+  - {x: -1, y: 960}
+  - {x: -2, y: 1015}
+  - {x: 0, y: 1084}
+  - {x: -155, y: 1152}
+  - {x: 116, y: 1155}
+  - {x: -13, y: 1220}
+  - {x: -207, y: 800}
+  - {x: -207, y: 856}
+  - {x: -207, y: 918}
+  - {x: -435, y: 850}
+  - {x: -205, y: 983}
+  - {x: -438, y: 782}
+  - {x: -435, y: 913}
+  - {x: -430, y: 1104}
+  - {x: 317, y: 729}
+  - {x: 313, y: 785}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 7, y: 8}
+    - {x: 8, y: 9}
+    - {x: 8, y: 10}
+    - {x: 8, y: 11}
+    - {x: 9, y: 12}
+    - {x: 9, y: 13}
+    - {x: 6, y: 14}
+    - {x: 14, y: 7}
+    - {x: 10, y: 15}
+    - {x: 16, y: 17}
+    - {x: 15, y: 18}
+    - {x: 18, y: 19}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 21, y: 22}
+    - {x: 22, y: 23}
+    - {x: 23, y: 24}
+    - {x: 23, y: 25}
+    - {x: 25, y: 26}
+    - {x: 24, y: 26}
+    - {x: 13, y: 27}
+    - {x: 27, y: 28}
+    - {x: 28, y: 29}
+    - {x: 29, y: 31}
+    - {x: 12, y: 32}
+    - {x: 30, y: 33}
+    - {x: 32, y: 30}
+    - {x: 33, y: 16}
+    - {x: 17, y: 34}
+    - {x: 11, y: 35}
+    - {x: 35, y: 36}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 8d37c5a6e98984de68f6859ef31ef817, type: 3}
+      Character1:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Pragmatic Nationalist
+        Motion: 1
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Revolution - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: bored
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: bored
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: bored
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: putout
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: approval
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: approval
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: crown
+        Value: 2
+      - Type: 14
+        ID: crown
+        Value: -10
+      - Type: 14
+        ID: revolution
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 3
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 73
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: happy
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 4
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: putout
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -20
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: bored
+        Name: Pragmatic Nationalist
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: neutral
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: neutral
+        Name: Pierre
+        Motion: 4
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: approval
+        Name: Pragmatic Nationalist
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 0
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03
+        Pose: negative
+        Name: Pragmatic Nationalist
+        Motion: 3
+      Character2:
+        AvatarID: PierreRenaudot
+        Pose: angry
+        Name: Pierre
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 70
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: A man is trying to convince Pierre to do something that he absolutely
+      cannot. Perhaps this requires your intervention.
+    Requirements:
+    - Type: 8
+      ID: thatMostReputablePaper
+      Value: 1
+      Operator: 4
+    _date: -1
+  Name: The First Casualty of War
+  _factions: 000000000001
+  _chapters: 00000101
+  _date: 0
+  _nodeText:
+  - You stumble across something strange. Not only do you see Pierre at this party,
+    it looks like he was actually invited! However, instead of his normal routine
+    of stealing wine and stuffing hors d'oeuvres into his coat, he's engaged in a
+    serious conversation with a young revolutionary.
+  - '"Royal censors controlled newspapers like yours for years, dictating what they
+    couldn''t say. All I''m asking you to do is to turn their own tools against them.
+    We can pay you to publish our own stories, sympathetic to the people''s cause."'
+  - '"I must refuse, Monsieur." Pierre replies flatly. "Royal censors were the enemy
+    of truth when the Crown used them, and I won''t bow to another such order again,
+    no matter who holds their reins."'
+  - '"We''re not asking you to devote all of your pages to the stories we create,
+    just a few. This isn''t anything you''ve done before!"'
+  - "\"Is that what they say of me now?\" Pierre growls, clutching his snuff box
+    in a tight fist. \"That I\u2019m a liar?\""
+  - "\"If I was a liar for pay, I wouldn\u2019t be out in the street, enduring slings
+    and arrows just to find a story! If I was a liar, I would be comfortable in my
+    office, dreaming up new fabrications!\""
+  - "\"In fact, I\u2019d probably be wealthier too, sipping fine brandy every night
+    instead of the gutter swill I content myself with. I'd clothe myself in finery,
+    instead of repairing the same rat-eaten rags! Perhaps such trappings would even
+    make me seem \u2018respectable\u2019 in all your eyes, eh?\""
+  - '"Listen here! You know that we can pay handsomely. You also know that our cause
+    is just. Is one newspaper editor''s ability to sleep easily at night truly too
+    great a price to pay for the good we can bring to the common people''s lives?
+    Are you really so important, that your reputation is worth more than their freedom?"'
+  - Pierre falls silent, furrowing his brow.
+  - The furrow in Pierre's brow only grows deeper, and a bead of sweat forms on his
+    brow.
+  - "At this, the revolutionary steps forward, standing dangerously close to you
+    and Pierre. \"You really think you can dismiss us so easily, over some hopped
+    up sense of honor? People like you two, so full of faux concern, are the reason
+    the <i>Ancien R\xE9gime</i> stays in power.\""
+  - Simultaneously, the two of them look at you accusingly, as if they both expected
+    you to weigh in on their behalf.
+  - Pierre looks at you and shakes his head. "Ugh, fine. I'll publish your fictions.
+    Just give me the money and let's get on with it."
+  - '"No! Absolutely not! I will not sacrifice everything I''ve made, in the name
+    of people who clearly don''t give a wit about me, or my work!"'
+  - '"No man worth his salt is without sin. I''ve stolen, I''ve skulked in the dark,
+    and I''ve swum deeper in the sea of mankind''s vulgarity than the worst scoundrels
+    imaginable, but my paper has never lied!"'
+  - (You have gained a decent amount of peril)
+  - '"Thank you for making him see sense." The revolutionary says with a smile. "In
+    fact, let me give you one of our latest stories as payment for your efforts."'
+  - '(You have gained a piece of Outrageous Crown Gossip)
+
+    (The Crown has lost
+    some power)
+
+    (The Revolution has gained some power)'
+  - Cursing under his breath, he storms away from the two of you.
+  - '"<i>Merci beaucoup</i>, Yvette. It''s nice to have allies, for once."'
+  - (You have gained a little credibility)
+  - '"Also, one would think that man would be smart enough to stand further away
+    from me. Especially after I''d confessed to a long history of theft." Pierre
+    says with a wide grin, before tossing you a hefty pouch of stolen coins.'
+  - (You have gained 73 Livres)
+  - You look down at the purse of coins in your hand.
+  - '"Consider it payment for the service you''ve rendered to me."'
+  - '"I''m sure. I swore to myself that I''d never accept that man''s money, the
+    moment he presumed to call me a liar. Consider it payment for the service you''ve
+    rendered to me."'
+  - With that, Pierre gives you an overly formal bow before he leaves, and you are
+    left to your own devices.
+  - (You have lost quite a bit of credibility)
+  - Before either you or the nationalist can say a word, Pierre storms away in an
+    uncharacteristic silence.
+  - '"Ugh, an obstinate fool to the end." The young revolutionary sighs in disgust
+    as he walks away.'
+  - 'The revolutionary hands Pierre a purse of coins. "Here''s your advance. I''ll
+    send someone over with our requests in the morning."
+
+
+    The editor takes the
+    money, but he doesn''t even look the revolutionary in the eye.'
+  - With the two of them gone, you are left to your own devices. Perhaps you'll find
+    success elsewhere.
+  - (You have lost some credibility)
+  - '"Now, if you two can excuse me, I''m going to go drink myself into a gutter."
+    Pierre mumbles before walking away from the two of you.'
+  - With that, the revolutionary excuses himself, and you are left to your own devices.
+  - (You have lost some credibility)
+  - You turn your back on the two of them, and leave before they can drag you into
+    this any further. Hopefully, you'll have better luck elsewhere in the party.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Pierre, sometimes the ends justify the means. You''re even getting paid."'
+  - '"If your cause is as just as you say, then it has no need of lies. I think we''re
+    done here."'
+  - '"This is clearly beyond me. Good luck, monsieurs."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"<i>Merci</i>, Pierre."'
+  - '"Are you sure you want to give me this?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

@@ -1,0 +1,2700 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: fishyBusiness
+  m_EditorClassIdentifier: 
+  _Nodes: 14000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 4, y: 60}
+  - {x: 2, y: 118}
+  - {x: -12, y: 514}
+  - {x: -14, y: 600}
+  - {x: -182, y: 683}
+  - {x: 119, y: 680}
+  - {x: -183, y: 816}
+  - {x: 118, y: 818}
+  - {x: -175, y: 897}
+  - {x: -171, y: 979}
+  - {x: 119, y: 897}
+  - {x: 119, y: 979}
+  - {x: -41, y: 1063}
+  - {x: -43, y: 1136}
+  - {x: -40, y: 1225}
+  - {x: -261, y: 1312}
+  - {x: -38, y: 1317}
+  - {x: 184, y: 1309}
+  - {x: 2, y: 222}
+  - {x: -257, y: 278}
+  - {x: -12, y: 284}
+  - {x: 217, y: 275}
+  - {x: -4, y: 355}
+  - {x: -7, y: 409}
+  - {x: -15, y: 461}
+  - {x: -527, y: 1315}
+  - {x: -274, y: 1384}
+  - {x: -37, y: 1385}
+  - {x: -40, y: 1447}
+  - {x: 185, y: 1367}
+  - {x: 183, y: 1434}
+  - {x: 180, y: 1493}
+  - {x: -49, y: 1494}
+  - {x: -54, y: 1551}
+  - {x: 186, y: 1548}
+  - {x: -49, y: 1614}
+  - {x: 187, y: 1621}
+  - {x: 190, y: 1675}
+  - {x: 200, y: 1743}
+  - {x: 204, y: 1805}
+  - {x: 78, y: 1870}
+  - {x: -46, y: 1676}
+  - {x: -46, y: 1737}
+  - {x: -42, y: 1795}
+  - {x: -747, y: 1242}
+  - {x: -526, y: 1385}
+  - {x: -527, y: 1449}
+  - {x: -828, y: 1524}
+  - {x: -544, y: 1509}
+  - {x: -712, y: 1592}
+  - {x: -437, y: 1554}
+  - {x: -1099, y: 1509}
+  - {x: -1103, y: 1645}
+  - {x: -1105, y: 1722}
+  - {x: -280, y: 1444}
+  - {x: -279, y: 1501}
+  - {x: -279, y: 1592}
+  - {x: -1098, y: 1568}
+  - {x: -436, y: 1642}
+  - {x: -859, y: 1641}
+  - {x: -716, y: 1686}
+  - {x: -862, y: 1759}
+  - {x: -722, y: 1813}
+  - {x: -862, y: 1878}
+  - {x: -719, y: 1926}
+  - {x: -439, y: 1734}
+  - {x: -432, y: 1891}
+  - {x: -546, y: 1605}
+  - {x: -546, y: 1681}
+  - {x: -551, y: 1781}
+  - {x: -290, y: 1235}
+  - {x: -5, y: 172}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 4, y: 5}
+    - {x: 4, y: 6}
+    - {x: 5, y: 7}
+    - {x: 6, y: 7}
+    - {x: 5, y: 8}
+    - {x: 6, y: 8}
+    - {x: 7, y: 9}
+    - {x: 9, y: 10}
+    - {x: 8, y: 11}
+    - {x: 11, y: 12}
+    - {x: 12, y: 13}
+    - {x: 10, y: 13}
+    - {x: 13, y: 14}
+    - {x: 15, y: 16}
+    - {x: 15, y: 17}
+    - {x: 15, y: 18}
+    - {x: 19, y: 20}
+    - {x: 19, y: 21}
+    - {x: 19, y: 22}
+    - {x: 20, y: 23}
+    - {x: 21, y: 23}
+    - {x: 22, y: 23}
+    - {x: 23, y: 24}
+    - {x: 24, y: 25}
+    - {x: 25, y: 3}
+    - {x: 3, y: 4}
+    - {x: 16, y: 26}
+    - {x: 16, y: 27}
+    - {x: 14, y: 15}
+    - {x: 17, y: 28}
+    - {x: 28, y: 29}
+    - {x: 18, y: 30}
+    - {x: 30, y: 31}
+    - {x: 31, y: 32}
+    - {x: 29, y: 33}
+    - {x: 33, y: 34}
+    - {x: 32, y: 35}
+    - {x: 34, y: 36}
+    - {x: 35, y: 37}
+    - {x: 37, y: 38}
+    - {x: 38, y: 39}
+    - {x: 39, y: 40}
+    - {x: 40, y: 41}
+    - {x: 36, y: 42}
+    - {x: 42, y: 43}
+    - {x: 43, y: 44}
+    - {x: 44, y: 41}
+    - {x: 26, y: 45}
+    - {x: 26, y: 46}
+    - {x: 46, y: 47}
+    - {x: 47, y: 48}
+    - {x: 47, y: 49}
+    - {x: 47, y: 50}
+    - {x: 47, y: 51}
+    - {x: 47, y: 52}
+    - {x: 45, y: 52}
+    - {x: 53, y: 54}
+    - {x: 27, y: 55}
+    - {x: 55, y: 56}
+    - {x: 56, y: 57}
+    - {x: 52, y: 58}
+    - {x: 58, y: 53}
+    - {x: 51, y: 59}
+    - {x: 48, y: 60}
+    - {x: 50, y: 61}
+    - {x: 60, y: 62}
+    - {x: 61, y: 63}
+    - {x: 62, y: 64}
+    - {x: 63, y: 65}
+    - {x: 64, y: 54}
+    - {x: 65, y: 54}
+    - {x: 59, y: 66}
+    - {x: 66, y: 67}
+    - {x: 67, y: 54}
+    - {x: 49, y: 68}
+    - {x: 68, y: 69}
+    - {x: 69, y: 70}
+    - {x: 70, y: 54}
+    - {x: 15, y: 71}
+    - {x: 71, y: 45}
+    - {x: 71, y: 26}
+    - {x: 71, y: 27}
+    - {x: 16, y: 45}
+    - {x: 2, y: 72}
+    - {x: 72, y: 19}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: ef95bab0adcb64b40bb571955727dbce, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Introduction
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 2
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Honorade - Introduction
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: sad
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: sad
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 5
+        ID: honoradeGazel
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: sad
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: honoradeGazel
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: sad
+        Name: Madame Gazel
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Honorade - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: smolder
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Honorade - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: smolder
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 2
+      - Type: 5
+        ID: honoradeGazel
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      - Type: 5
+        ID: honoradeGazel
+        Value: -1
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: d57f284bf326f3042a1bd46a22c2b167, type: 3}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 3
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Military
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Military
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 1
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 4
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 28
+      ID: honoradeGazel
+      Value: 1
+      Operator: 4
+    - Type: 28
+      ID: thomasAlexandreDumas
+      Value: 1
+      Operator: 4
+    - Type: 23
+      ID: Thomas-AlexandreDead
+      Value: 0
+      Operator: 3
+    _date: -1
+  Name: Fishy Business
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - It's another day of sweltering heat, so you decide to spend the day exploring
+    the area around the docks. If nothing else, it's an excuse to catch the cool
+    breeze coming off the water, and the smell today isn't particularly offputting.
+  - '"Yvette! Is that you?" Alex asks as he approaches you. Judging from the sweat
+    on his brow, he appears to have had the same idea as yourself.'
+  - 'The two of you walk and talk together as you walk along the river. He''s just
+    finished up his daily patrol, and regales you with the story of their unit being
+    accosted by an elderly man claiming to be Julius Caesar. '
+  - It's then that you nearly run into Madame Gazel. Which is especially surprising,
+    given how easily she stands out. "Oh! <i>Bonjour</i>, Yvette. It's delightful
+    to see you." Her eyes flicker between yourself and Alex, and you can see that
+    she's assessing something.
+  - '"I''ll warn you now that I might be a little rushed, as I''m actually here on
+    business. Apparently, one of my former husband''s investments was in a small
+    fleet of fishing boats. I''ve only just realized this, because the owner hasn''t
+    sent me an update... ever. Which, I''m learning, is a reason for concern."'
+  - "\"Given the dire situation concerning food, he should be making a fine profit
+    every single day, so I can't imagine a positive reason for any secrecy on his
+    part. As you can tell, he's been acting in a rather undisciplined fashion, and
+    that\u2019s something I simply cannot allow.\""
+  - "\"Given the dire situation concerning food, he should be making a fine profit
+    every single day, so I can't imagine a positive reason for any secrecy on his
+    part. As you can tell, he'\x19s been acting in a rather undisciplined fashion,
+    and that\x19s something I simply cannot allow.\""
+  - "Honorade sighs. \"<i>Je suis d\xE9sol\xE9</i> for the unnecessary aside. I'm
+    merely tired of not being taken seriously. Perhaps, I'm overreacting.\""
+  - '"I''m not certain it''s all that sinister. It could simply be a misunderstanding."
+    Alex suggests with a sigh.'
+  - '"Well, if stern words don''t get his attention, I could always try holding him
+    by the collar and shaking him like a rat." Alex says with a smile.'
+  - "\"Oh, aren\u2019t you sweetest thing?\" Honorade laughs, with the faintest hint
+    of a snort at the end of it."
+  - "Honorade glances at Alex's uniform and frowns. \"Pardon me, but I don\u2019t
+    need you to explain my business to me, nor did I ask for your advice.\""
+  - Glancing betwee the two of them, you get a sense that there's some kind of underlying
+    tension here. Perhaps something of a political nature between where the respective
+    loyalties of the Bourgeoisie and the Military lie.
+  - '"Oh, I suppose I must depart." Honorade sighs, pointing towards the water. "This
+    errant fishing captain isn''t going to mercilessly berate himself, so the task
+    has fallen to me." '
+  - '"I see. I''m destined for the opposite direction." Alex replies. "I still haven''t
+    cleaned all of my kit, and there''s likely to be an inspection tomorrow."'
+  - Both of them glance at you and there's an obvious tension in the air.
+  - '"Madame Gazel and I have a lot in common? You really think that?"'
+  - '"That would be lovely! Even the dullest march can be made better with good company."'
+  - '"Ah, <i>merveilleuse</i>! I''d love to hear your thoughts, while I get ready."'
+  - '"He was just following us around, getting in the way, and trying to issue imperial
+    decrees."'
+  - '"Well, it became obvious that my Lieutenant was about to lose his patience with
+    the situation, so I volunteered to resolve the problem."'
+  - '"Ah, you sound like my Lieutenant. The man already has a short temper, and even
+    less time for someone who''s no longer in their right mind. Sensing this, I volunteered
+    to resolve the problem, before he decided to assault an elderly man."'
+  - '"Delusion takes many forms, I guess." Alex shrugs. "However, it didn''t take
+    long for me to realize that my Lieutenant was about to lose his patience, so
+    I volunteered to resolve the problem."'
+  - '"Without any other ideas, I did what any reasonable man would do in that situation.
+    I got down off my horse, knelt in front of a madman, and swore my fealty to both
+    Julius Caesar and the Roman Empire. <i>Ave Imperator</i>!"'
+  - '"Our strange old man was quite elated by this display, and I asked his permission
+    to continue our duties safeguarding the citizens of his empire. He gave his imperial
+    assent, and promoted me to the rank of centurion on the spot!"'
+  - '"Of course, I informed my superiors of this development, but they were quite
+    insistent that promotions from wandering madmen don''t count. Ah, <i>c''est la
+    vie</i>, I suppose." Alex chuckles, shaking his head at the memory.'
+  - The two of the pause to examine each other again.
+  - '"I must sincerely disagree, Yvette. That simply doesn''t seem possible."'
+  - (You have gained some favor with Alex)
+  - '"Ah, I see. <i>Au revoir</i>, Yvette. I should see to my own affairs anyway."'
+  - (You have gained some favor with Madame Gazel)
+  - '"That is your decision, then? I understand. I hope you ladies have a pleasant
+    day."'
+  - (You have lost a little favor with Alex)
+  - (You have lost a little favor with Madame Gazel)
+  - Madame Gazel takes her leave, heading towards the water and casting a dark cloud
+    as she goes.
+  - Alex nods to both of you, and leaves with a neutral, but tense expression on
+    his face.
+  - While you and Alex don't spend that much additional time together as you stroll
+    to his barracks together, it's still a pleasant journey. To be fair, you sensed
+    that this decision may have been more symbolic than anything else.
+  - Madame Gazel explains her situation in greater detail as you walk along the docks.
+    You offer your own insights, and she listens closely to you, weighing your thoughts
+    equally against her own. All in all, you don't spend that much additional time
+    together, but you get the feeling that your earlier decision may have been more
+    symbolic than anything else.
+  - We all have such limited time in this world, and our choice of who we spend our
+    time with is the surest sign of devotion. Under the right auspices, those decisions
+    can yield equal devotion in turn.
+  - '"Ah, as much as this pains me, I believe this is where we must part ways. Now
+    excuse me, darling Yvette, I must remind a delinquent man of his place in the
+    order of things."'
+  - Honorade leaves, and you can already see her fully summoning the extent of her
+    cold fury. It's almost enough to make you feel sympathy for a stranger.
+  - With that, you head home.
+  - We all have such limited time in this world, and our choice of who we spend our
+    time with is the surest sign of devotion. Under the right auspices, those decisions
+    can yield equal devotion in turn.
+  - '"Ah, unfortunately, this is where our paths must diverge, Yvette. I''ll spare
+    you the sight of our barracks. It''s both more boring, and more ghastly a place
+    than you deserve to see. <i>Adieu</i>, Yvette, and I hope to see you again soon."'
+  - Alex favors you with a polite bow and leaves. One's duty is never truly done,
+    you suppose.
+  - '"Well, our first impression was quite a pleasant one, so perhaps you''re right!"'
+  - '"That''s certainly possible, Yvette, but I''m not holding out a lot of hope."'
+  - Honorade gives you a look that suggests she's thinking the exact same thing.
+  - '"Alright, Yvette. For you, I''ll do that. Speak your piece, Madame Gazel."'
+  - '"If you say so, Yvette. For you, I''ll listen to what the good Corporal has
+    to say."'
+  - '"Alright, Yvette. For you, I''ll do that. Speak your piece, Madame Gazel."'
+  - '"If you say so, Yvette. For you, I''ll listen to what the good Corporal has
+    to say."'
+  - You focus your efforts on making certain that the two of them simply enjoy each
+    other's company. The situation doesn't allow for enough time to do anything of
+    much substance, but it's good when people you like get along.
+  - '(You have gained some favor with Alex)
+
+    (You have gained some favor with
+    Madame Gazel)'
+  - Your additional time with them soon comes to an end, and you part ways with them
+    both. Heading home, you safely conclude that things went quite well.
+  - '"I suppose Honorade and I agree on one thing, I will grant you that. However,
+    that appears to be the limit."'
+  - '(You have lost a little favor with Alex)
+
+    (You have lost a little favor
+    with Madame Gazel)
+
+    (You have lost a little credibility)'
+  - Unsure of what to do with this suddenly rising tension here, you excuse yourself,
+    and part ways with both of them. You head home, thinking that it all certainly
+    could have gone better.
+  - As it happens, it appears that Alex and Madame Gazel have quite a bit in common
+    when it comes to cuisine. The two of them have extremely adventurous palettes,
+    and they both spend the time giving each other increasingly obscure recommendations
+    for taverns and chefs across the city.
+  - '"Worry not, madame. I know that your time is precious, so I will keep things
+    brief, and to the point."'
+  - '"With pleasure."'
+  - '"With pleasure."'
+  - Your additional time together is brief but they still talk, and Alex seems quite
+    receptive. Honorade makes some shrewd arguments in favor of the Crown, and Alex
+    seems swayed. Nobody's loyalties truly change overnight, but it's still progress.
+  - Your additional time together is brief but they still talk, and Alex seems quite
+    receptive. Honorade makes some shrewd arguments in favor of the Revolution, and
+    Alex seems swayed. Nobody's loyalties truly change overnight, but it's still
+    progress.
+  - (The Military has moved towards the Crown by some)
+  - (The Military has moved towards the Revolution by some)
+  - Your additional time together is brief but they still talk, and Madame Gazel
+    seems quite receptive. Alex makes some persuasive arguments in favor of the Revolution,
+    and Madame Gazel seems swayed. Nobody's loyalties truly change overnight, but
+    it's still progress.
+  - (The Revolution has moved towards the Crown by some)
+  - '"Worry not, madame. I know that your time is precious, so I will keep things
+    brief, and to the point."'
+  - Your additional time together is brief but they still talk, and Madame Gazel
+    seems quite receptive. Alex makes some persuasive arguments in favor of the Crown,
+    and Madame Gazel seems swayed. Nobody's loyalties truly change overnight, but
+    it's still progress.
+  - (The Bourgeoisie has moved towards the Crown by some)
+  - '"Madame Gazel and I have a lot in common? You really think that?"'
+  - '"The man was clearly mad, but there''s also nothing illegal about wandering
+    around in the street, wrapped up in a bedsheet, claiming to be the Emperor of
+    Rome."'
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Can''t you both stay here for a touch longer? You have more in common than
+    you think."'
+  - '"Alex, I''d love to join you for the journey, if you''d have me."'
+  - '"Madame Gazel, may I join you, if you have a spare moment?"'
+  - '"<i>Mon Dieu</i>! What did you do?"'
+  - '"In your defense, if you wanted to just throw him out of the way, who was to
+    stop you?"'
+  - '"Surely you jest! He thought he was Julius Caesar? As in the Emperor of ancient
+    Rome?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I just think the two of you would enjoy each other''s company if you tried.
+    Do it for me."'
+  - '"I know there''s some tension between you two, politically. We can talk our
+    way through it."'
+  - 
+  - '"Alex, just let Honorade explain her side of things, and why she supports the
+    Crown."'
+  - '"Madame Gazel, please allow Alex to explain why he supports the Crown."'
+  - '"Alex, just let Honorade explain her side of things, and why she supports the
+    Revolution."'
+  - '"Madame Gazel, please allow Alex to explain why he supports the Revolution."'
+  - '"This isn''t life or death, it''s just about enjoying each others company."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Can''t you both stay here for a touch longer? You have more in common than
+    you think."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

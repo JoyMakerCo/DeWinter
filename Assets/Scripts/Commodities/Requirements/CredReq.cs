@@ -5,7 +5,7 @@ namespace Ambition
     {
         public static bool Check(RequirementVO req)
         {
-            int value = AmbitionApp.GetModel<GameModel>().Credibility.Value;
+            int value = AmbitionApp.GetModel<GameModel>().Credibility;
             int roll = Util.RNG.Generate(100);
             return (roll >= 95) ? true
                 : (roll < 5) ? false

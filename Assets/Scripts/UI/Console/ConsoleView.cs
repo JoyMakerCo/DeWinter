@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+#if DEBUG
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
@@ -143,3 +144,12 @@ namespace Core
 		}
     }
 }
+#else
+namespace Core
+{
+    public class ConsoleView : MonoBehaviour
+    {
+        void Awake() => Destroy(gameObject);
+    }
+}
+#endif

@@ -5,12 +5,12 @@ namespace Ambition
     {
         public void Execute(TransitionVO transition)
         {
-            IncidentModel model = AmbitionApp.GetModel<IncidentModel>();
+            IncidentModel model = AmbitionApp.Story;
             if (transition?.Rewards?.Length > 0)
             {
                 AmbitionApp.SendMessage(transition.Rewards);
             }
-            model.Moment = model.Incident.GetNextNode(transition);
+            model.Moment = model.Incident?.GetNextNode(transition);
             AmbitionApp.SendMessage(IncidentMessages.TRANSITION);
         }
     }

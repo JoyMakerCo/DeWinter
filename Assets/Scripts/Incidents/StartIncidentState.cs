@@ -6,7 +6,7 @@ namespace Ambition
 {
     public class StartIncidentState : UState
     {
-        public override void OnEnterState()
+        public override void OnEnter()
         {
             // This will throw an exception if there's no incident.
             // THis is handled by the machine.
@@ -14,7 +14,6 @@ namespace Ambition
             AmbitionApp.SendMessage(IncidentMessages.START_INCIDENT, model.Incident);
             model.Moment = model.Incident.Nodes[0];
             AmbitionApp.SendMessage(model.Incident.GetLinks(0));
-            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, model.Incident.ID);
         }
     }
 }

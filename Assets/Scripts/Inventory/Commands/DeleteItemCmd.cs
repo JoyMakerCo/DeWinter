@@ -6,11 +6,9 @@ namespace Ambition
     {
         public void Execute(ItemVO item)
         {
-            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            inventory.Equipped.Remove(item.Type);
-            inventory.Inventory.Remove(item);
+            AmbitionApp.Inventory.Inventory.Remove(item);
             AmbitionApp.SendMessage(InventoryMessages.ITEM_DELETED, item);
-            inventory.Broadcast();
+            AmbitionApp.Inventory.Broadcast();
         }
     }
 }

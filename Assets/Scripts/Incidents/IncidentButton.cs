@@ -18,6 +18,13 @@ namespace Ambition
         public Text _text;
 
         private TransitionVO _transition;
+        private Font _baseFont;
+
+        private void Awake()
+        {
+            _baseFont = _text.font;
+            _text.font = AmbitionApp.GetService<LocalizationSvc>().GetFont(_baseFont);
+        }
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -25,27 +32,46 @@ namespace Ambition
         }
 
         public string Text => _text.text;
+        public TransitionVO Transition => _transition;
 
         public void SetTransition(TransitionVO transition, string text)
         {
-            IncidentFlag flag;
-
             _transition = transition;
             _text.text = text;
-            for (int i=Flags.Length-1; i>=0; i--)
+            if (transition.Flags == null)
             {
-                bool active = i < (_transition.Flags?.Length ?? 0);
-                Flags[i].gameObject.SetActive(active);
-                if (active)
+                Array.ForEach(Flags, f => gameObject.SetActive(false));
+            }
+            else
+            {
+                IncidentFlag flag;
+                int len = _transition.Flags.Length;
+                Dictionary<string, string> subs = new Dictionary<string, string>();
+                for (int i = Flags.Length - 1; i >= 0; i--)
                 {
-                    flag = _transition.Flags[i];
-                    Flags[i].sprite = Array.Find(Icons, f => f.Type == flag.Type).Icon;
-                    Flags[i].SetNativeSize();
-                    Tooltips[i].text = AmbitionApp.GetString(
-                        string.IsNullOrWhiteSpace(flag.Phrase) ? flag.Type.ToString() : flag.Phrase,
-                        new Dictionary<string, string>() { { "#", flag.Value.ToString() } }
-                    );
+                    bool active = i < len;
+                    Flags[i].gameObject.SetActive(active);
+                    if (active)
+                    {
+                        flag = _transition.Flags[i];
+                        Flags[i].sprite = Array.Find(Icons, f => f.Type == flag.Type).Icon;
+                        Flags[i].SetNativeSize();
+                        subs["#"] = flag.Value.ToString();
+                        Tooltips[i].text = AmbitionApp.Localize((string.IsNullOrWhiteSpace(flag.Phrase)
+                            ? flag.Type.ToString()
+                            : flag.Phrase), subs);
+                    }
                 }
+                StartCoroutine(ForceUpdate());
+            }
+        }
+
+        IEnumerator ForceUpdate()
+        {
+            yield return new WaitForEndOfFrame();
+            foreach(Text tooltip in Tooltips)
+            {
+                UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(tooltip.transform.parent as RectTransform);
             }
         }
     }

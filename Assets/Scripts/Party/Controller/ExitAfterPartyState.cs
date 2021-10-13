@@ -1,28 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace Ambition
 {
     public class ExitAfterPartyState : UFlow.UState
     {
-        public override void OnEnterState()
+        public override void OnEnter()
         {
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            model.EndParty();
-
-            //Damage the Outfit's Novelty, now that the Confidence has already been Tallied
-            if (inventory.Equipped.TryGetValue(ItemType.Outfit, out ItemVO item))
+            OutfitVO outfit;
+            foreach(ItemVO item in AmbitionApp.Inventory.Inventory)
             {
-                int novelty = OutfitWrapperVO.GetNovelty(item);
-                OutfitWrapperVO.SetState(item, ItemConsts.NOVELTY, novelty - 1);
+                outfit = item as OutfitVO;
+                if (outfit != null)
+                {
+                    if (outfit.Equipped)
+                    {
+                        outfit.Novelty -= model.BaseNoveltyLoss + outfit.TimesWorn * model.CumulativeNoveltyLoss;
+                        if (outfit.Novelty < 0) outfit.Novelty = 0;
+                        ++outfit.TimesWorn;
+                    }
+                    else outfit.TimesWorn = 0;
+                }
             }
-            AmbitionApp.SendMessage(InventoryMessages.UNEQUIP, ItemType.Outfit);
-
-            // Add exhaustion
-            GameModel game = AmbitionApp.GetModel<GameModel>();
-            game.Exhaustion.Value = game.Exhaustion.Value++;
-
-            AmbitionApp.UnregisterCommand<PartyRewardCmd, CommodityVO>();
-            AmbitionApp.UnregisterCommand<PartyRewardsCmd, CommodityVO[]>();
+            model.ResetParty();
+            AmbitionApp.SendMessage(InventoryMessages.UNEQUIP, ItemType.Outfit); // Sends broadcast
+            AmbitionApp.SendMessage(GameMessages.ADD_EXHAUSTION);
         }
     }
 }

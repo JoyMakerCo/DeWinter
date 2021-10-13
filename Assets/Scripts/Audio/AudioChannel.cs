@@ -1,8 +1,9 @@
 ﻿using System;
 namespace Ambition
 {
+    [Serializable]
     public enum AudioChannel
     {
-        Music, Ambient
+        Music, Sfx, Ambient, Master
     }
 }

@@ -1,11 +1,7 @@
-﻿using System;
-using UnityEngine;
-using Util;
-
-namespace Dialog
+﻿namespace Dialog
 {
-	public class DialogView : MonoBehaviour
-	{
+	public class DialogView : UnityEngine.MonoBehaviour
+    {
         internal DialogManager Manager;
         public string ID { get; internal set; }
 		public void Close() => Manager.Close(this.gameObject);

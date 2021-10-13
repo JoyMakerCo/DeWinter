@@ -1,0 +1,1533 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: aStructuralDisagreement
+  m_EditorClassIdentifier: 
+  _Nodes: 19000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 9, y: 60}
+  - {x: 14, y: 177}
+  - {x: 13, y: 239}
+  - {x: -115, y: 294}
+  - {x: 171, y: 292}
+  - {x: -110, y: 352}
+  - {x: 40, y: 522}
+  - {x: -203, y: 571}
+  - {x: 35, y: 581}
+  - {x: 321, y: 576}
+  - {x: 322, y: 655}
+  - {x: 562, y: 650}
+  - {x: 322, y: 722}
+  - {x: 565, y: 722}
+  - {x: 13, y: 117}
+  - {x: 174, y: 346}
+  - {x: -203, y: 641}
+  - {x: 35, y: 716}
+  - {x: 326, y: 781}
+  - {x: 333, y: 853}
+  - {x: 331, y: 911}
+  - {x: 328, y: 969}
+  - {x: 568, y: 781}
+  - {x: -205, y: 704}
+  - {x: 25, y: 404}
+  - {x: 28, y: 460}
+  - {x: -208, y: 763}
+  - {x: -208, y: 832}
+  - {x: -203, y: 896}
+  - {x: -203, y: 960}
+  - {x: -221, y: 1028}
+  - {x: -542, y: 1131}
+  - {x: -224, y: 1124}
+  - {x: 40, y: 1119}
+  - {x: -217, y: 1198}
+  - {x: -214, y: 1289}
+  - {x: 41, y: 775}
+  - {x: 42, y: 645}
+  - {x: 37, y: 835}
+  - {x: 39, y: 897}
+  - {x: 38, y: 980}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 2, y: 3}
+    - {x: 3, y: 4}
+    - {x: 3, y: 5}
+    - {x: 4, y: 6}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 7, y: 10}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 11, y: 13}
+    - {x: 12, y: 14}
+    - {x: 1, y: 15}
+    - {x: 15, y: 2}
+    - {x: 5, y: 16}
+    - {x: 8, y: 17}
+    - {x: 13, y: 19}
+    - {x: 19, y: 20}
+    - {x: 20, y: 21}
+    - {x: 21, y: 22}
+    - {x: 14, y: 23}
+    - {x: 17, y: 24}
+    - {x: 16, y: 25}
+    - {x: 6, y: 25}
+    - {x: 25, y: 26}
+    - {x: 26, y: 7}
+    - {x: 24, y: 27}
+    - {x: 27, y: 28}
+    - {x: 28, y: 29}
+    - {x: 29, y: 30}
+    - {x: 30, y: 31}
+    - {x: 31, y: 32}
+    - {x: 31, y: 33}
+    - {x: 31, y: 34}
+    - {x: 34, y: 35}
+    - {x: 33, y: 35}
+    - {x: 32, y: 35}
+    - {x: 35, y: 36}
+    - {x: 18, y: 37}
+    - {x: 9, y: 38}
+    - {x: 38, y: 18}
+    - {x: 37, y: 39}
+    - {x: 39, y: 40}
+    - {x: 40, y: 41}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 0074eaf4adfaa2445a2a65e39d3e4428, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_MediumParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 1
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Masonry Magnate
+        Motion: 2
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: bored
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -20
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: neutral
+        Name: Masonry Magnate
+        Motion: 4
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 10
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 3
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 1
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: negative
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: putout
+        Name: Masonry Magnate
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: Bourgeoisie
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: Bourgeoisie
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: happy
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: Bourgeoisie
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: ChristopheVonMayendorf
+        Pose: neutral
+        Name: Christophe
+        Motion: 3
+      Character2:
+        AvatarID: guest01b
+        Pose: approval
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: charmed
+        Name: Masonry Magnate
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: guest01b
+        Pose: charmed
+        Name: Masonry Magnate
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 3
+        Phrase: incidents.transitions.credibilitycheck.hardtooltip
+        Value: 1
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 90
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      - Type: 8
+        ID: theEstatesGeneral
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: theEstatesGeneral
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: theEstatesGeneral
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "Monsieur von Mayendorf, who you\u2019ve spoken with earlier, appears
+      to be having quite the disagreement with one of his supplies. It\u2019s considered
+      rather gauche to air such grievances in public, so this must be serious indeed..."
+    Requirements:
+    - Type: 8
+      ID: necessaryHonesty
+      Value: 1
+      Operator: 4
+    _date: -1
+  Name: A Structural Disagreement
+  _factions: 000000000100
+  _chapters: 00000100
+  _date: 0
+  _nodeText:
+  - You find yourself drawn to the telltale sounds of an argument. If nothing else,
+    it should be entertaining.
+  - '"Me, monsieur? You''re blaming me for the collapse of that bridge? I visited
+    the worksite myself, and I saw the supplies that you''d sold the builders. The
+    stones had enough cracks in them to resemble a spider''s web! Of course my design
+    didn''t hold up. The angels themselves couldn''t succeed with such shoddy materials."'
+  - '"Are you even listening to yourself? You''d trade your very soul to the devil
+    for a few coins, and I think you''d still have struck the better bargain." Monsieur
+    Von Mayendorf replies, his expression calm, but his voice white hot with anger.'
+  - "\u201CListen here, you Austrian cur! You do not have the right to speak to me
+    like that. I may not hold a title, but I am still far above your station. I am
+    a regular guest of the Lords and Ladies at Versailles, and I will be treated
+    as such.\""
+  - "\u201CAm I supposed to be impressed by the fact that the Courtiers at Versailles
+    have misjudged your character? You're a pretender at being nobility, just like
+    you're a pretender at being competent.\""
+  - '"I''m sure the nobles adore you and your refusal to take responsiblity for your
+    own failings. However, if you''d actually paid any attention, you would have
+    noticed that the Court at Versailles doesn''t quite have the favor of the people
+    in this room. Then again, I can''t expect you to notice that, it would require
+    you to pay attention to something other than yourself!"'
+  - Some of the observing guests whisper amongst each other reprovingly. Even if
+    Monsieur Von Mayendorf has a point, this is not how one does things in France.
+  - You see both of them sharply inhaling, about to deliver their next verbal blows.
+  - The crowd of onlookers gasps at your snide question. Both of the men involved
+    freeze in place.
+  - '"You should listen to the good woman, Christophe." The masonry magnate chuckles,
+    his eyes twinkling with good humor. "You''re stepping a little above your station,
+    don''t you think?"'
+  - '"Are you really suggesting that we should just ''live and let live'' over something
+    this serious?" Christophe asks you flatly.'
+  - "\u201CPerhaps... we can part ways, and simply be icily polite to each other
+    from now on?\""
+  - '"I shall ask you to leave us to our own business, madame. Now is not the time
+    for peacemaking!" The Masonry Magnate growls between his teeth. '
+  - '"I can find these terms agreeable, as long as I never have to work with you
+    again" The Austrian architect replies, receiving only a polite nod in response.'
+  - '(You have lost quite a bit of credibility)
+
+    (Gain some peril)'
+  - "\"You exaggerate, <i>gar\xE7on</i>. The materials my company supplied weren't
+    as poor as you say. Even if they were, every business has a right to save itself
+    money wherever possible...\""
+  - Some of the observing guests whisper amongst each other reprovingly. Even if
+    the Bourgeoisie is unhappy with the Crown at the moment, one still has to give
+    a certain amount of respect to powerful men like this Masonry Magnate.
+  - (You have gained some peril)
+  - '(You have gained a little credibility)
+
+    (You have lost some peril)'
+  - The Magnate leaves, and Christophe turns to you. "Well, that was vaguely satisfactory,
+    and I suppose it prevented us from causing a scene. So, thank you, Madame Decaux."
+  - '(You have gained some credibility)
+
+    (You have lost a little peril)'
+  - '"Now, if you might excuse me, I have some other business to attend to. My reputation
+    has been damaged enough by that loathsome blockhead that I must find a new project
+    to save my reputation."'
+  - Christophe leaves, and you're left there without much in the way of reward, but
+    at least you've prevented their argument from degenerating into a complete embarrassment.
+  - The two of them begin to raise their voices at each other, growing ever louder,
+    until they both step outside together. Some of the more brazen members of the
+    crowd follow them outside, but you'd much rather not watch whatever mess is going
+    to happen next, just in case it blows back against you again. So, you go back
+    to your own business at the party.
+  - The older man whirls on you. "I shall ask you to leave us to our own business,
+    madame. Now is not the time for interlopers to inject their opinions where they
+    don't belong."
+  - "\"You're treading on dangerous ground, <i>gar\xE7on</i>.\""
+  - '"Are you sure that I''m the one that''s in danger?" Christophe replies, smiling
+    for the first time. "I''ve learned a lot while having the unpleasurable experience
+    of working with you. If you''re not careful, some of your indiscretions could
+    become more... public."'
+  - '"Are you certain about that? If you were to ask me, I''d say that Madame Decaux
+    is extremely welcome right now."'
+  - '"To the devil with you both, then!"'
+  - The masonry magnate storms away from the conversation, his face frozen into a
+    permanent sneer.
+  - '"Thank you for your assistance. Seeing self-important boors get their comeuppance
+    always puts a smile on my face. In fact, maybe you could use this rumor I''ve
+    heard to ensure that his reputation more accurately reflects his character. After
+    all, anything that can be destroyed by the truth, should be."'
+  - 'Christophe steps closer and whispers a few choice details to you. You listen
+    carefully, memorizing as much as possible. '
+  - (You've gained a piece of Cheap Bourgeoisie Gossip)
+  - (You've gained a piece of Shocking Bourgeoisie Gossip)
+  - (You've gained a piece of Outrageous Bourgeoisie Gossip)
+  - '"Now, if you might excuse me, I have some other business to attend to. My reputation
+    has been damaged enough by that loathsome blockhead that I must find a new project
+    to save my reputation."'
+  - Christophe leaves, and you carefully step into a corner, so that you can write
+    down what you've just learned. Overall, this has been a good use of your time.
+  - '"Are you quite serious, Madame Decaux?" Christophe says, looking at you with
+    barely concealed disgust. "Fine, then. To the devil with you both!"'
+  - The crowd of onlookers whispers, and seem to approve of your decision to step
+    in and enforce the existing social order.
+  - Shaking his head, Christophe leaves the room. The crowd parts before him, sensing
+    the danger lurking behind his quiet anger.
+  - You speak a while longer with the older gentleman, but it yields you little in
+    the way of information, other than learning that the man absolutely adores talking
+    about himself.
+  - Thinking quickly, you manage to provide some socially acceptable excuses and
+    part leave the conversation before you find yourself sucked in any further. This
+    feels like it's been a decent use of your time.
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Esteemed monsieur, did you make your entire fortune shifting blame, or just
+    most of it?"'
+  - '"A poor craftsman blames his tools, Christophe. Surely, this esteemed gentleman
+    is right."'
+  - '"Now now, Messieurs. Perhaps this isn''t so bad? Let''s not take this a bridge
+    too far..."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

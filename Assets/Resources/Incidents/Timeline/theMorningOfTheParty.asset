@@ -1,0 +1,312 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: theMorningOfTheParty
+  m_EditorClassIdentifier: 
+  _Nodes: 04000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 1, y: 120}
+  - {x: -136, y: 186}
+  - {x: -24, y: 265}
+  - {x: 128, y: 177}
+  - {x: -164, y: 350}
+  - {x: 98, y: 350}
+  - {x: -4, y: 61}
+  Incident:
+    Links:
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 1, y: 4}
+    - {x: 4, y: 3}
+    - {x: 3, y: 5}
+    - {x: 3, y: 6}
+    - {x: 0, y: 7}
+    - {x: 7, y: 1}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: sad
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: happy
+        Name: Camille
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards:
+      - Type: 27
+        ID: TUTORIAL_WARDROBE
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Camille
+        Pose: neutral
+        Name: Camille
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements: []
+    _date: 564307776000000000
+  Name: The Morning of the Party
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: 0
+  _nodeText:
+  - You awaken to the vision of sunlight filtering through the shutters, scattering
+    sunbeams across this dusty bedroom. It takes a few minutes before you groggily
+    remember the events that brought you here. You also remember that tonight, you
+    have a party to attend.
+  - '"Madame, when would you like to start getting ready?"'
+  - '"That''s good to hear! These preparations always seem to take all day. On days
+    where you have a party, you won''t really have time to spend exploring Paris."'
+  - '"Once you go to your wardrobe, we can get started!"'
+  - Camille winces at this statement, and looks at the floor. "I don't know how to
+    tell you this, madame, but party preparations for a woman of your station usually
+    take all day. On days where you have a party, you won't really have time to spend
+    exploring Paris."
+  - '"Ah, but of course you are, madame!" Camille laughs, following you as you start
+    to get ready for the party tonight.'
+  - '"Don''t worry, madame! A glamorous woman, like yourself, is sure to catch on
+    quickly!"'
+  - 'Camille enters your bedroom, already full of cheer. '
+  _linkText:
+  - '"If this is as important as the invitation makes it seem, I should start preparing
+    now."'
+  - 
+  - '"Not yet, Camille. I still have some things that I need to take care of, today."'
+  - 
+  - '"Don''t worry, Camille, I''m already quite good at this." <No Tutorial>'
+  - '"I''ve never really done anything like this. Is there anything I should know?"
+    <Tutorial>'
+  - 
+  - 

@@ -5,7 +5,7 @@ namespace Ambition
     {
         public static bool Check(RequirementVO req)
         {
-            int value = AmbitionApp.GetModel<GameModel>().Livre.Value;
+            int value = AmbitionApp.GetModel<GameModel>().Livre;
             return RequirementsSvc.Check(req, value);
         }
     }

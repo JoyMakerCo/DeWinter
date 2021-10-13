@@ -1,14 +1,16 @@
-﻿using System;
-using Core;
+﻿using Core;
 namespace Ambition
 {
     public class PerilReward : ICommand<CommodityVO>
     {
-        public  void Execute (CommodityVO peril)
+        public  void Execute (CommodityVO reward)
         {
-            GameModel model = AmbitionApp.GetModel<GameModel>();
-            if (model.Peril.Value + peril.Value > 0) model.Peril.Value += peril.Value;
-            else model.Peril.Value = 0;
+            int peril = AmbitionApp.Game.Peril + reward.Value;
+            if (peril < 0) AmbitionApp.Game.Peril = 0;
+            else if (peril > 100) AmbitionApp.Game.Peril = 100;
+            else AmbitionApp.Game.Peril = peril;
+            AmbitionApp.SendMessage(GameConsts.PERIL, AmbitionApp.Game.Peril);
+            AmbitionApp.Game.Broadcast();
         }
     }
 }

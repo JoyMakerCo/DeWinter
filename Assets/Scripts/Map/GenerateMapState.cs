@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class GenerateMapState : UState
-	{
+	public class GenerateMapState : UState, Core.IState
+    {
 		// TODO: Make this configurable
 		private const int ENEMY_CHANCE = 50;
 		private const float PHI = 1.6f;
@@ -20,7 +20,7 @@ namespace Ambition
 		private Dictionary<RoomVO, List<RoomVO>> _rooms=new Dictionary<RoomVO, List<RoomVO>>();
 		private Dictionary<int[], RoomVO[]> _walls = new Dictionary<int[], RoomVO[]>();
 
-        public override void OnEnterState()
+        public override void OnEnter()
         {
 /*			MapVO map;
 			RoomVO room;

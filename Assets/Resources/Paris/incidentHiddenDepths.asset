@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: incidentHiddenDepths
+  m_EditorClassIdentifier: 
+  Name: Hidden Depths
+  LocationWindowDescription: "While going for a late night stroll, you come across
+    a vague shadow rooting around in the dark. Is that a familiar, fiery revolutionary?
+    What shadowy intrigues could he be up to at this hour? Perhaps it\u2019s time
+    for you to find out."
+  IntroIncidentConfig: {fileID: 11400000, guid: e0d44706109411e47a9368af0d1464c1,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
+  OneShot: 1
+  IsRendezvous: 0
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: e438efe3d1d34ce428535d5775781deb,
+    type: 3}
+  Requirements:
+  - Type: 5
+    ID: louisAntoineLeonDeSaintJust
+    Value: 4
+    Operator: 4
+  - Type: 28
+    ID: louisAntoineLeonDeSaintJust
+    Value: 1
+    Operator: 4
+  - Type: 8
+    ID: aMysteriousLetter
+    Value: 1
+    Operator: 4
+  - Type: 8
+    ID: researchingArmand
+    Value: 0
+    Operator: 3

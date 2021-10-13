@@ -1,0 +1,1610 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: perilousConsequences
+  m_EditorClassIdentifier: 
+  _Nodes: 19000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -523, y: 129}
+  - {x: 7, y: 133}
+  - {x: 587, y: 30}
+  - {x: -965, y: 214}
+  - {x: -321, y: 182}
+  - {x: 586, y: 176}
+  - {x: -519, y: 228}
+  - {x: -523, y: 333}
+  - {x: -524, y: 402}
+  - {x: -523, y: 466}
+  - {x: 10, y: 253}
+  - {x: 9, y: 333}
+  - {x: 9, y: 398}
+  - {x: 10, y: 479}
+  - {x: -963, y: 311}
+  - {x: -312, y: 344}
+  - {x: 227, y: 92}
+  - {x: 222, y: 413}
+  - {x: 220, y: 495}
+  - {x: -753, y: 217}
+  - {x: -203, y: 231}
+  - {x: 450, y: 254}
+  - {x: 582, y: 343}
+  - {x: 592, y: 471}
+  - {x: 591, y: 612}
+  - {x: 226, y: 339}
+  - {x: 216, y: 557}
+  - {x: 214, y: 617}
+  - {x: 221, y: 734}
+  - {x: 215, y: 800}
+  - {x: 216, y: 855}
+  - {x: 588, y: 94}
+  - {x: 231, y: 225}
+  - {x: 231, y: 283}
+  - {x: 585, y: 409}
+  - {x: 232, y: 158}
+  - {x: 591, y: 536}
+  - {x: 223, y: 930}
+  - {x: 222, y: 670}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 0, y: 3}
+    - {x: 1, y: 4}
+    - {x: 2, y: 5}
+    - {x: 8, y: 9}
+    - {x: 9, y: 10}
+    - {x: 11, y: 12}
+    - {x: 12, y: 13}
+    - {x: 13, y: 14}
+    - {x: 1, y: 7}
+    - {x: 4, y: 15}
+    - {x: 15, y: 8}
+    - {x: 7, y: 8}
+    - {x: 2, y: 11}
+    - {x: 5, y: 16}
+    - {x: 16, y: 12}
+    - {x: 18, y: 19}
+    - {x: 1, y: 20}
+    - {x: 20, y: 7}
+    - {x: 2, y: 21}
+    - {x: 21, y: 11}
+    - {x: 6, y: 17}
+    - {x: 6, y: 22}
+    - {x: 6, y: 23}
+    - {x: 22, y: 23}
+    - {x: 26, y: 18}
+    - {x: 19, y: 27}
+    - {x: 27, y: 28}
+    - {x: 29, y: 30}
+    - {x: 30, y: 31}
+    - {x: 3, y: 32}
+    - {x: 32, y: 6}
+    - {x: 33, y: 34}
+    - {x: 34, y: 26}
+    - {x: 23, y: 35}
+    - {x: 35, y: 24}
+    - {x: 17, y: 36}
+    - {x: 36, y: 33}
+    - {x: 24, y: 37}
+    - {x: 37, y: 25}
+    - {x: 31, y: 38}
+    - {x: 28, y: 39}
+    - {x: 39, y: 29}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Rising Peril
+        Parameters:
+        - Name: END A
+          Value: 0
+        - Name: END B
+          Value: 0
+        - Name: END C
+          Value: 0
+        - Name: HIGH PERIL
+          Value: 0
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -20
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: -2
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: -2
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -2
+      - Type: 5
+        ID: honoradeGazel
+        Value: -2
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: -2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -75
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Rising Peril
+        Parameters:
+        - Name: END A
+          Value: 1
+        - Name: END B
+          Value: 0
+        - Name: END C
+          Value: 0
+        - Name: HIGH PERIL
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -30
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: -4
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: -4
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -4
+      - Type: 5
+        ID: honoradeGazel
+        Value: -4
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: -4
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -50
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Rising Peril
+        Parameters:
+        - Name: END A
+          Value: 1
+        - Name: END B
+          Value: 0
+        - Name: END C
+          Value: 0
+        - Name: HIGH PERIL
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: -1
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: -1
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      - Type: 5
+        ID: honoradeGazel
+        Value: -1
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -20
+      - Type: 5
+        ID: elisabethVigeeLeBrun
+        Value: -2
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: -2
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -2
+      - Type: 5
+        ID: honoradeGazel
+        Value: -2
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: -2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thief
+        Pose: angry
+        Name: Assassin
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thief
+        Pose: neutral
+        Name: Assassin
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 5a92459cdb68743bf86daed16daa32b1, type: 3}
+      Character1:
+        AvatarID: Thief
+        Pose: angry
+        Name: Assassin
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 8
+        ID: epilogue
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: angry
+        Name: Hansel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: neutral
+        Name: Hansel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: -25
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Rising Peril
+        Parameters:
+        - Name: END A
+          Value: 1
+        - Name: END B
+          Value: 0
+        - Name: END C
+          Value: 0
+        - Name: HIGH PERIL
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Rising Peril
+        Parameters:
+        - Name: END A
+          Value: 0
+        - Name: END B
+          Value: 0
+        - Name: END C
+          Value: 0
+        - Name: HIGH PERIL
+          Value: 1
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_knock_hard
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
+      Character1:
+        AvatarID: Thief
+        Pose: angry
+        Name: Assassin
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: angry
+        Name: Hansel
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
+      Character1:
+        AvatarID: Thief
+        Pose: angry
+        Name: Assassin
+        Motion: 0
+      Character2:
+        AvatarID: Hansel
+        Pose: angry
+        Name: Hansel
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
+      Character1:
+        AvatarID: Thief
+        Pose: angry
+        Name: Assassin
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
+      Character1:
+        AvatarID: Thief
+        Pose: angry
+        Name: Assassin
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 6
+        ID: hansel
+        Value: -2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: theFirstSparks
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: bastilleDay
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: theFirstSparks
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: bastilleDay
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 23
+        ID: SkippedPay
+        Value: 0
+        Operator: 3
+      - Type: 6
+        ID: hansel
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 23
+        ID: SkippedPay
+        Value: 0
+        Operator: 3
+      - Type: 6
+        ID: hansel
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: hansel
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: hansel
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 23
+        ID: SkippedPay
+        Value: 1
+        Operator: 4
+      - Type: 6
+        ID: hansel
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 23
+        ID: SkippedPay
+        Value: 1
+        Operator: 4
+      - Type: 6
+        ID: hansel
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 23
+        ID: SkippedPay
+        Value: 0
+        Operator: 3
+      - Type: 6
+        ID: hansel
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 23
+        ID: SkippedPay
+        Value: 1
+        Operator: 4
+      - Type: 6
+        ID: hansel
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: hansel
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 0
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements: []
+    _date: -1
+  Name: Perilous Consequences
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: 0
+  _nodeText:
+  - It appears that your life has taken a sharp turn, as the consequences for the
+    peril that you have accumulated so far, have finally come home to roost.
+  - Your various social missteps and misdeeds have earned you much scorn, and the
+    rumor mill you yourself make use of has been turned against you. It appears that
+    there are those in Paris that despise you, an indiscreet upstart, and seek to
+    make sure that you know your place.
+  - Your various social missteps and misdeeds have earned you much scorn, and the
+    rumor mill you yourself make use of has been turned against you. It appears that
+    there are those in Paris that despise you, and now understand that you represent
+    a serious threat to both their positions and their own ambitions.
+  - After the bloodshed at the Bastille, life has gotten even more dangerous. Every
+    day, there is chaos in the streets, and people have begun to settle their enmities
+    with more than censure and stinging words.
+  - Having Hansel, a terrifying man of immediate violence, in your employ, has done
+    something to prevent the targeted rumors and attacks from hurting your reputation
+    too badly. However, threats cannot stop everything.
+  - Having Hansel, a terrifying man of immediate violence, in your employ, has done
+    something to prevent the targeted rumors and attacks from hurting your reputation
+    too badly. However, threats cannot stop everything.
+  - Someone is advancing up the stairs. You can tell that they're trying to move
+    quickly and quietly, but this house is too old and creaky to allow for such peacful
+    niceties. Instead, you can hear their every tread as they creep closer.
+  - '(You have lost quite a bit of credibility)
+
+    (You have lost some favor with
+    everyone)'
+  - With their wrath expended upon you, you have managed to gain some breathing room.
+    However, they have not forgotten all of your transgressions against them.
+  - (You have lost most of your Peril)
+  - Remember, it is still early days in your story. As time goes on, the consequences
+    of rising peril will become more dire.
+  - '(You have lost a staggering amount of credibility)
+
+    (You have lost quite
+    a bit of favor with everyone)'
+  - With their wrath expended upon you, you have managed to gain some breathing room.
+    However, they have not forgotten all of your transgressions against them. In
+    fact, your established position in the powerful social circles of Paris have
+    made you even more difficult to forget, in this chapter of your life.
+  - (You have lost an extremely large amount of Peril)
+  - Remember, as time goes on, the consequences of rising peril will grow ever more
+    dire. Paris may be the City of Lights, but the shadows it casts are long and
+    dark indeed.
+  - '(You have lost some credibility)
+
+    (You have lost a little favor with everyone)'
+  - '(You have lost quite a bit of credibility)
+
+    (You have lost some favor with
+    everyone)'
+  - A masked man suddenly bursts into your room. Candlelight reflects off the muzzle
+    of his pistol. "My employer sends their regards, madame!"
+  - '"... I don''t think he''ll survive a cut like that..." Hansel says, a little
+    woozily. "No need to hunt him down. It''s better to just let his anchor weigh
+    him."'
+  - That is when, in the darkness, you notice the blood blooming out from the hole
+    in Hansel's chest. His shirt is already soaked in it.
+  - Normally, this would be a time when Hansel could use his skills of immediate
+    violence to help suppress such problems. However, you also haven't paid him this
+    week, so it seems that he's dragging his feet on the issue.
+  - Normally, this would be a time when Hansel could use his skills of immediate
+    violence to help suppress such problems. However, you also haven't paid him this
+    week, so it seems that he's dragging his feet on the issue.
+  - 'Your heart rises at the possibility that Hansel will be able to intercept this
+    interloper... but you also remember that you haven''t paid him recently.
+
+
+    That''s
+    not good. That''s not good at all.'
+  - A masked man suddenly bursts into your room. Candlelight reflects off the muzzle
+    of his pistol. "My employer sends their regards, madame!"
+  - "The gunshot is loud. So loud that you almost don't notice the sudden pain in
+    your breast. You try to scream, but only manage to cough. \n\nIt's so hard to
+    breathe. It's so hard to think. "
+  - This... this is not where it's all supposed to end... is it?
+  - Suddenly, it all resolves at once. Hansel manages to slash your attacker in the
+    shoulder. The pistol goes off, nearly blinding you with the flash of gunpowder,
+    and the wounded assassin flees both your room and your house.
+  - "\"<i>Ich denke das mein Gl\xFCck ausgegangen</i>.\" He mumbles slowly as he
+    notices the gunshot wound, almost dumbfounded by what he's seeing."
+  - It's then that your bodyguard collapses on the floor. Dead.
+  - Still in bed, you draw your feet up closer to yourself and feel a shocked numbness
+    take over. Obviously, you're glad to be alive, but you also get the uneasy feeling
+    that whatever danger has struck you hasn't passed. With things as they currently
+    are, the thirst for blood never really goes away.
+  - (You have lost a large amount of peril)
+  - Nothing can be done for Hansel now, and you'll have to help Camille dispose of
+    the body somehow. None of these thoughts are pleasant, but it's a little hard
+    to focus on them with your heart still hammering in your chest.
+  - You wake up in the middle of the night to the sound of someone forcing your door
+    open. You don't recognize the voice muttering downstairs, but you do recognize
+    the sound of malicious intent.
+  - '"Not today, wretch!" Roars Hansel as he bursts into your room, saber at the
+    ready.'
+  - The two men collide and begin to struggle in the dark. Hansel grunts in anger
+    as he attempts to wrestle the pistol from the assassin, while also try to land
+    a killing blow with his sword. It's hard to follow any of the details, and this
+    display of violence is anything but graceful.
+  - His finger tightens around the trigger.
+  - His finger tightens around the trigger.
+  - Your vision swims, and things slowly fade to black.
+  - And so, Paris continues to burn.
+  - (You have lost your bodyguard, Hansel)
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

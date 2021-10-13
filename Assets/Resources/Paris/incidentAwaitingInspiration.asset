@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f23821514d3445db8d0d241238203c, type: 3}
+  m_Name: incidentAwaitingInspiration
+  m_EditorClassIdentifier: 
+  Name: Awaiting Inspiration
+  LocationWindowDescription: "A famous painter is looking for inspiration. Perhaps
+    you can help her find it\u2026 perhaps you can help her find more than that?"
+  IntroIncidentConfig: {fileID: 11400000, guid: 16d376043321d4f2bb4afa2f681e1440,
+    type: 2}
+  StoryIncidentConfigs: []
+  SceneID: 
+  OneShot: 1
+  IsRendezvous: 0
+  IsDiscoverable: 1
+  LocationModalSprite: {fileID: 21300000, guid: 4b588fdb7072ed44481be472979d1537,
+    type: 3}
+  Requirements:
+  - Type: 28
+    ID: elisabethVigeeLeBrun
+    Value: 1
+    Operator: 4
+  - Type: 5
+    ID: elisabethVigeeLeBrun
+    Value: 4
+    Operator: 4

@@ -1,0 +1,931 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: businessAsUsual
+  m_EditorClassIdentifier: 
+  _Nodes: 14000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -115, y: 71}
+  - {x: -8, y: 134}
+  - {x: 108, y: 191}
+  - {x: -10, y: 282}
+  - {x: -14, y: 350}
+  - {x: -12, y: 423}
+  - {x: -14, y: 500}
+  - {x: -320, y: 528}
+  - {x: -12, y: 578}
+  - {x: 271, y: 580}
+  - {x: 269, y: 646}
+  - {x: 268, y: 713}
+  - {x: 259, y: 778}
+  - {x: -15, y: 651}
+  - {x: -13, y: 713}
+  - {x: -131, y: 778}
+  - {x: -13, y: 827}
+  - {x: 92, y: 874}
+  - {x: -13, y: 949}
+  - {x: -17, y: 1018}
+  - {x: -529, y: 614}
+  - {x: -322, y: 616}
+  - {x: -327, y: 715}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 0, y: 2}
+    - {x: 0, y: 3}
+    - {x: 3, y: 4}
+    - {x: 2, y: 4}
+    - {x: 1, y: 4}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 6, y: 7}
+    - {x: 7, y: 8}
+    - {x: 7, y: 9}
+    - {x: 7, y: 10}
+    - {x: 10, y: 11}
+    - {x: 11, y: 12}
+    - {x: 12, y: 13}
+    - {x: 9, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 15, y: 17}
+    - {x: 15, y: 18}
+    - {x: 18, y: 19}
+    - {x: 17, y: 19}
+    - {x: 16, y: 19}
+    - {x: 19, y: 20}
+    - {x: 8, y: 21}
+    - {x: 8, y: 22}
+    - {x: 22, y: 23}
+    - {x: 23, y: 12}
+    - {x: 21, y: 15}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 0074eaf4adfaa2445a2a65e39d3e4428, type: 3}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Gregarious Guest
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Entrepeneur
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/wine_drink
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -5
+      - Type: 12
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Gregarious Guest
+        Motion: 3
+      Character2:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Entrepeneur
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: bourgeoisie
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: bourgeoisie
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: charmed
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 2
+        ID: bourgeoisie
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Gregarious Guest
+        Motion: 3
+      Character2:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Entrepeneur
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: bored
+        Name: Gregarious Guest
+        Motion: 0
+      Character2:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Entrepeneur
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 0
+        Phrase: incidents.transitions.perilgain.smalltooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: anImpasse
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: anImpasse
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "A gregarious woman seems to have exactly the sort of rumors you\u2019re
+      looking for, but first you\u2019ll have to stave off the blundering boasts
+      of a young sugar magnate.\r"
+    Requirements: []
+    _date: -1
+  Name: Business As Usual
+  _factions: 000000000100
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - You find yourself in the middle of a conversation with a particularly energetic
+    guest. She flits easily between social circles, and has a disarming laugh that
+    seems to make people feel comfortable enough to just trust her implicitly. Perhaps
+    you can practice such a laugh, later.
+  - She's currently in the middle of regaling you with a rumor that she's heard over
+    the course of her various dalliances. It feels likely to be of the cheap sort,
+    but relevant to the Bourgeoisie.
+  - She's currently in the middle of regaling you with a rumor that she's heard over
+    the course of her various dalliances. It feels likely to be of the shocking sort,
+    but relevant to the Bourgeoisie.
+  - She's currently in the middle of regaling you with a rumor that she's heard over
+    the course of her various dalliances. It feels likely to be of the outrageous
+    sort, but relevant to the Bourgeoisie.
+  - Just as she's about to reach the story's climax, a man suddenly enters your conversation.
+    "Good afternoon, madames! Allow me to interrupt you for a moment to propose a
+    toast..."
+  - '"... to my sugar importing company! We''re having a very successful year, you
+    see."'
+  - '"Ah, you''ll both be so excited to hear what we have planned for the next season."
+    He says, not even waiting for either of you to respond.'
+  - If this boor keeps talking, you'll never get to hear the end of her story...
+  - '"Ah yes, where was I?" Your storytelling companion says, trying to remember
+    where she''d left off.'
+  - '"<i>Excusez moi</i>?" He asks, taken absolutely aback.'
+  - Obligingly, you raise your glass and toast to his success, but even this fine
+    wine merely tastes of ashes. You didn't want to cause a scene, but allowing this
+    stranger to talk over the both of you is enough to sap your spirits.
+  - '(You have lost a little credibility)
+
+    (You have lost a little peril)'
+  - Without any other options available, you stay and listen to the encroaching entrepreneur's
+    various boasts about his company's success. He is every bit as unbearable as
+    you initially suspected. Sometimes, it's awful to be right.
+  - Thankfully, you manage to find a way to tactfully excuse yourself, and get as
+    far away from him as possible.
+  - (You have gained some peril)
+  - '"Now I remember!" She says, and resumes the telling of her story.'
+  - (You have gained a piece of Cheap Bourgeoisie Gossip)
+  - (You have gained a piece of Shocking Bourgeoisie Gossip)
+  - (You have gained a piece of Outrageous Bourgeoisie Gossip)
+  - With her story told, and its relevant details memorized, you stay and listen
+    to the encroaching entrepreneur's various boasts about his company's success.
+    He is every bit as unbearable as you initially suspected. Sometimes, it's awful
+    to be right.
+  - Thankfully, you manage to find a way to tactfully excuse yourself, and get as
+    far away from him as possible.
+  - '"Well, if you say so, I don''t see the harm in it..." The intruder mumbles.'
+  - '"I don''t think that''s relevant." He says brusquely. "She and I have spoken
+    earlier."'
+  - (You have lost a decent amount of credibility)
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I''m glad to see you in such high spirits. If that''s true, you''ll love to
+    hear my friend''s story."'
+  - '"I''m sorry madame, what were you saying before you were interrupted?"'
+  - '"Ah... yes... to your sugar importing company."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

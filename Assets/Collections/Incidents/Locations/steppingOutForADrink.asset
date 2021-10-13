@@ -1,0 +1,2582 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: steppingOutForADrink
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -2, y: 61}
+  - {x: 11, y: 177}
+  - {x: 1, y: 352}
+  - {x: -1, y: 410}
+  - {x: -12, y: 532}
+  - {x: -249, y: 490}
+  - {x: 214, y: 493}
+  - {x: 211, y: 640}
+  - {x: 210, y: 715}
+  - {x: -250, y: 580}
+  - {x: -259, y: 686}
+  - {x: -257, y: 772}
+  - {x: 215, y: 783}
+  - {x: -13, y: 777}
+  - {x: -17, y: 836}
+  - {x: -13, y: 905}
+  - {x: -219, y: 974}
+  - {x: -8, y: 1001}
+  - {x: 362, y: 981}
+  - {x: -483, y: 979}
+  - {x: -248, y: 1047}
+  - {x: 12, y: 118}
+  - {x: -205, y: 236}
+  - {x: 10, y: 235}
+  - {x: 222, y: 236}
+  - {x: 5, y: 297}
+  - {x: -4, y: 467}
+  - {x: 209, y: 563}
+  - {x: -9, y: 1069}
+  - {x: -8, y: 1134}
+  - {x: 367, y: 1063}
+  - {x: 362, y: 1137}
+  - {x: -9, y: 1195}
+  - {x: 368, y: 1199}
+  - {x: -7, y: 1260}
+  - {x: -138, y: 1323}
+  - {x: 85, y: 1324}
+  - {x: 88, y: 1411}
+  - {x: -140, y: 1409}
+  - {x: -137, y: 1470}
+  - {x: 88, y: 1475}
+  - {x: -19, y: 1552}
+  - {x: -22, y: 1611}
+  - {x: -20, y: 1680}
+  - {x: 169, y: 1788}
+  - {x: 367, y: 1256}
+  - {x: 367, y: 1321}
+  - {x: 363, y: 1395}
+  - {x: 366, y: 1469}
+  - {x: 366, y: 1546}
+  - {x: 365, y: 1605}
+  - {x: 364, y: 1667}
+  - {x: 358, y: 1724}
+  - {x: -258, y: 1108}
+  - {x: -305, y: 1181}
+  - {x: -335, y: 1254}
+  - {x: -366, y: 1324}
+  - {x: -812, y: 901}
+  - {x: -510, y: 1033}
+  - {x: -550, y: 1172}
+  - {x: -836, y: 1052}
+  - {x: -836, y: 1133}
+  - {x: -834, y: 1207}
+  - {x: -568, y: 1244}
+  - {x: -580, y: 1324}
+  - {x: -585, y: 1380}
+  - {x: -591, y: 1437}
+  - {x: -667, y: 1493}
+  - {x: -836, y: 1279}
+  - {x: -841, y: 1346}
+  - {x: -529, y: 1092}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 3, y: 4}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 8, y: 9}
+    - {x: 6, y: 10}
+    - {x: 10, y: 11}
+    - {x: 11, y: 12}
+    - {x: 9, y: 13}
+    - {x: 13, y: 14}
+    - {x: 12, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 16, y: 17}
+    - {x: 16, y: 18}
+    - {x: 16, y: 19}
+    - {x: 17, y: 20}
+    - {x: 17, y: 21}
+    - {x: 1, y: 22}
+    - {x: 22, y: 2}
+    - {x: 2, y: 23}
+    - {x: 2, y: 24}
+    - {x: 2, y: 25}
+    - {x: 25, y: 26}
+    - {x: 24, y: 26}
+    - {x: 23, y: 26}
+    - {x: 26, y: 3}
+    - {x: 4, y: 27}
+    - {x: 27, y: 5}
+    - {x: 7, y: 28}
+    - {x: 28, y: 8}
+    - {x: 18, y: 29}
+    - {x: 29, y: 30}
+    - {x: 19, y: 31}
+    - {x: 31, y: 32}
+    - {x: 30, y: 33}
+    - {x: 32, y: 34}
+    - {x: 33, y: 35}
+    - {x: 35, y: 36}
+    - {x: 35, y: 37}
+    - {x: 37, y: 38}
+    - {x: 36, y: 39}
+    - {x: 36, y: 38}
+    - {x: 39, y: 40}
+    - {x: 38, y: 41}
+    - {x: 41, y: 42}
+    - {x: 40, y: 42}
+    - {x: 42, y: 43}
+    - {x: 43, y: 44}
+    - {x: 44, y: 45}
+    - {x: 34, y: 46}
+    - {x: 46, y: 47}
+    - {x: 47, y: 48}
+    - {x: 48, y: 49}
+    - {x: 49, y: 50}
+    - {x: 50, y: 51}
+    - {x: 51, y: 52}
+    - {x: 52, y: 53}
+    - {x: 53, y: 45}
+    - {x: 21, y: 54}
+    - {x: 54, y: 55}
+    - {x: 55, y: 56}
+    - {x: 56, y: 57}
+    - {x: 20, y: 58}
+    - {x: 20, y: 59}
+    - {x: 58, y: 61}
+    - {x: 61, y: 62}
+    - {x: 62, y: 63}
+    - {x: 60, y: 64}
+    - {x: 64, y: 65}
+    - {x: 65, y: 66}
+    - {x: 66, y: 67}
+    - {x: 67, y: 68}
+    - {x: 63, y: 69}
+    - {x: 69, y: 70}
+    - {x: 70, y: 68}
+    - {x: 59, y: 71}
+    - {x: 71, y: 60}
+    - {x: 17, y: 58}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: ???
+        Motion: 0
+      Character2:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bad Maid
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Introduction
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/sfx_clinking_coins
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Antoine - Introduction - ALT
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/wine_pour
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 1
+      Character2:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 1
+      Character2:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 1
+      Character2:
+        AvatarID: Chambermaid
+        Pose: neutral
+        Name: Bar Maid
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: Chambermaid
+        Pose: angry
+        Name: Bar Maid
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 6868f433c470d9b4dadeb50b51f0efab, type: 3}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outsideWfountain
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: -3
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 0
+        ID: 
+        Value: 3
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: smolder
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: smolder
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: sad
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Alex - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: Alex
+        Value: -1
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: -1
+      - Type: 11
+        ID: 
+        Value: -5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 5d47a98eaef994c6bb2c2bf9267baac8, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: neutral
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: smolder
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Military
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 25a2b1ff7adc84706921282868534d90, type: 3}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: angry
+        Name: Alex
+        Motion: 3
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: angry
+        Name: Antoine
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: happy
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: thomasAlexandreDumas
+        Value: 2
+      - Type: 5
+        ID: louisAntoineLeonDeSaintJust
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 0
+      Character2:
+        AvatarID: LouisAntoinedeSaint-Just
+        Pose: happy
+        Name: Antoine
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 3
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 0
+        ID: 
+        Value: 3
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 20
+        ID: 
+        Value: 50
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 20
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Military
+        Value: 0
+        Operator: 1
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 28
+      ID: louisAntoineLeonDeSaintJust
+      Value: 1
+      Operator: 4
+    - Type: 28
+      ID: thomasAlexandreDumas
+      Value: 1
+      Operator: 4
+    - Type: 23
+      ID: Thomas-AlexandreDead
+      Value: 0
+      Operator: 3
+    _date: -1
+  Name: Stepping Out For A Drink
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - Despite the availability of wine in your own house, you find yourself with powerful
+    yearning for a change of scenery. With that, you take a walk to find a public
+    house of decent repute.
+  - You see several people glance up at you when you enter, and are keenly aware
+    of the implications of a woman entering such a place without an escort. However,
+    said curious strangers manage to keep their accusations confined to stares, so
+    you find a seat. Even if they can't manage to be polite, at least they can manage
+    to be silent.
+  - '"Is this seat taken?" Asks a voice from deep, familiar voice from behind you.'
+  - Alex laughs, and drops a few coins in her hand, motioning for her to bring him
+    a glass as well. Satisfied, the barmaid leaves.
+  - Just as the two of you are about to toast to each other's health, you're interrupted
+    by the feeling of an intense stare from a few tables over. It almost feels warm
+    on your skin. Alex seems to notice it as well.
+  - '"... and you must be Corporal Dumas." Antoine says, turning to Alex. "Your reputation
+    travels very quickly."'
+  - Alex looks at Antoine and slowly starts to relax, but you can tell that something
+    about Antoine still puts him on edge. "You're correct, and you are?"
+  - '"You have guessed correctly." Alex replies tersely. "... and that would make
+    you?"'
+  - '"Yes, I''ve heard of you." Alex says, narrowing his eyes. "However, I must admit
+    the things I''ve heard have not been complimentary. I do not appreciate your...
+    willingness to rush towards bloodshed."'
+  - Antoine shoots Alex a flippant smile. "A quick death in the name of liberty,
+    is a far nobler end than a slow death groveling under a tyrant's heel."
+  - '"Please, call me Antoine. It''s nice to see a brother in arms, eager to seize
+    liberty from tyrants."'
+  - '"It''s true, my heart beats in time with the same fervent drum of any patriot
+    that yearns for a new republic, but my true duty will always lie in protecting
+    the innocent from any danger that comes their way."'
+  - '"A lasting republic, by any means." Antoine toasts, raising a wineglass of his
+    own.'
+  - The tension at your table is oppressive, and you're starting to wish that you'd
+    ordered something stronger than wine.
+  - Alex turns to you and smiles. "I was thinking about going somewhere, to play
+    cards for a while. How would you feel about joining me? I bet you can bluff with
+    the absolute best of them."
+  - '"Well, if the good corporal is going to leave, then you could also stay here,
+    Yvette. I wouldn''t mind your presence."'
+  - You flick your eyes back and forth between the two men.
+  - The two of them look at you, almost in disbelief, before looking back at each
+    other.
+  - '"Ah, <i>magnifique</i>! I was hoping you''d say that."'
+  - '"As I suspected, you''re no fool."'
+  - '"What, exactly, did you have in mind?" asks Alex'
+  - '"A foolish assumption, Yvette. You clearly don''t understand how deep this divide
+    lies."'
+  - Once seated, you gesture to one of the barmaids to bring you some wine. It's
+    a task she quickly accomplishes, to your satisfaction. The wine is a young red,
+    and still relatively sweet.
+  - '"It''s great to see you, Yvette!" Alex says with a smile, taking a seat across
+    from you.'
+  - '"Don''t worry, I can stand! Honestly, I already spend too much time sitting
+    in a saddle." Alex laughs, as he steps in front of you and across the table from
+    you.'
+  - '"Ah, my apologies for sneaking up on you, Yvette." Alex says with a nod as he
+    steps in front of you.'
+  - Your conversation is interrupted by the sound of the barmaid angrily tapping
+    her foot, and holding her hand out expectantly.
+  - '"Yvette, what are the odds of us choosing to spend the evening in the same public
+    house?" Antoine says as he strides over to your table, closing a book in his
+    hand as he does so.'
+  - '"I''m Louis Antoine de Saint-Just, but you may simply call me Antoine." Antoine
+    replies, his voice equally tense. "Perhaps you''ve heard of me?" '
+  - (You have gained some favor with Alex)
+  - '"So, that''s your decision. Go ahead."'
+  - (You have gained some favor with Antoine)
+  - '"Ah, I shall be going then." Alex sighs. "<i>Adieu</i>, to you both.'
+  - (You have lost a little favor with Antoine)
+  - (You have lost a little favor with Alex)
+  - 'Alex drains his glass and the two of you leave together. Soon, you find yourself
+    sitting outside with him in the fountain square near Pierre''s office. Alex commandeers
+    an unattended table left outside at a nearby cafe and you sit down to play a
+    few rounds of <i>brusquembille</i>. '
+  - To make things interesting, you both engage in some petty gambling with minimal
+    stakes. Of course, that doesn't stop you both from pretending like you're risking
+    staggering fortunes with every wager. The theatrics are really what make the
+    game work.
+  - To make things interesting, you both engage in some petty gambling with minimal
+    stakes. Of course, that doesn't stop you both from pretending like you're risking
+    staggering fortunes with every wager. The theatrics are really what make the
+    game work.
+  - You win more hands than you lose, and feel a surge of triumph, despite the petty
+    amounts of coin at risk. Sometimes, it's the little victories that make life
+    worth it.
+  - You lose a few hands, but it hopefully won't be enough to deter any of your carefully
+    laid plans.
+  - (You have lost 3 Livres)
+  - (You have gained 3 Livres)
+  - A church bell rings in the distance, drawing your attention to the waning hours.
+    "Unfortunately, I must take my leave. Regardless, this was great, Yvette. With
+    all of the furor and strife going on, I truly needed something likes this."
+  - As he rises from his seat, Alex leans forward and gives you a kiss upon your
+    forehead.
+  - With a theatrical bow, Alex leaves.
+  - You head home yourself, and consider the day's events. The wine may have been
+    sweet, but not nearly as sweet as your success today.
+  - Alex drains his wineglass, and leaves the public house. Antoine stares at you,
+    intensely.
+  - '"I shall return to my table. You may join me, if you like."'
+  - You take advantage of this offer to join Antoine, who is in the process of writing
+    a political treatise. The whole thing is concerned with the idea of 'natural
+    laws'. Essentially pointing out that all the laws of our society have been made
+    by men with their own interests at heart, no matter their claims about fairness
+    or "divine inspiration".
+  - He tests a few of his arguments on you, and you dissect them as best as you can.
+    You're no fool, but these are difficult questions, and this is an extremely ambitious
+    project on his part. If we were to abandon all of our thoughts and prejudices
+    from the past, what would we even be left with? How would we stop ourselves from
+    immediately making the exact same mistakes, all over again?
+  - The candlelight dances in Antoine's eyes as he writes faster and faster. Eventually,
+    he slams down his pen, and stares at you. It feels like he's looking into your
+    soul.
+  - '"It was a prudent decision for you to join me. Make no mistake, you have quite
+    the insightful mind, but it''s not just that. You''re inspiring, Yvette."'
+  - '"Unfortunately, I must take my leave. We should do this again, sometime."'
+  - You both leave the bar, with different destinations in mind.
+  - '"I hate to agree with this fiend, but he''s right. In fact, this reminds me
+    that I have some other, pressing business that I should attend to."'
+  - '(You have lost a little favor with Alex)
+
+    (You have lost a little favor
+    with Antoine)
+
+    (You have lost a little credibility)'
+  - With a polite nod, Alex gets up and leaves. Shortly afterwards, Antoine stalks
+    back to his own table.
+  - You wait around a touch longer to finish your wine before leaving. However, no
+    amount of wine will drive away the bitter taste that this has left in your mouth.
+  - Alex looks Antoine up and down, before slowly extending his hand. "A truce?"
+  - '"I will... reserve my judgement until he''s said his piece."'
+  - Antoine launches into a speech explaining that a constitution is a contract between
+    their people and their government. Despite all of its promises of stability,
+    monarchy is ultimately subject to the whims of whoever sits on the throne. Even
+    with a good leader, monarchy is a system dependent on tyranny.
+  - Antoine shakes his hand across the table. "I can tolerate such an alliance."
+  - They shake hands. Jesus, guys.
+  - Now that these two have actually let their guards down a little around each other
+    they get along decently well. There's still a tension in the air, but you're
+    not worried that a fight is going to break out while they talk.
+  - '"I see what you''re saying, Antoine, and would like to you note that I''m quite
+    familiar with this problem. Even ''benevolent'' masters are no such thing."'
+  - '"Then you are uniquely positioned to understand how important this is!" Antoine
+    replies.'
+  - Alex smiles, and though you can tell that he's still wary of Antoine as a person,
+    you can also tells that he's coming around to the Revolution's ideas.
+  - (The Military has moved towards the Revolution some)
+  - As the evening winds down, you all end up heading your separate ways. The wine
+    may have been sweet, but not nearly as sweet as your success today.
+  - They each buy a bottle of wine for the table and spend their time trading death
+    defying stories. Between Alex's adventures fighting bandits in the countryside
+    and Antoine's various run ins with the law, it's a miracle that both them are
+    alive.
+  - '(You have gained some favor with Alex)
+
+    (You have gained some favor with
+    Antoine)'
+  - '"Don''t worry. The value of my words shall prove self-evident in but a moment."'
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Gentlemen, this tension is overwhelming! Let''s please just relax together,
+    for a moment."'
+  - '"Alex, I would love to join you for some cards. It''s been too long since I
+    last played."'
+  - '"Antoine, allow me to stay with you, for a while."'
+  - 
+  - 
+  - 
+  - 
+  - '"Please, have a seat, <i>monsieur</i>."'
+  - '"Correct, they''re all taken. I need every single one."'
+  - '"Depends, is it someone I know, or a skulking stranger?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"I merely wish to drink my wine without a bloodbath. Try to be civil, for me."'
+  - '"Please, just listen to Antoine''s thoughts on a constitution. You both want
+    the same things."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

@@ -1,0 +1,714 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: aCountryWoman
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: -6, y: 78}
+  - {x: -7, y: 162}
+  - {x: -227, y: 247}
+  - {x: -266, y: 534}
+  - {x: -11, y: 626}
+  - {x: -249, y: 722}
+  - {x: -16, y: 722}
+  - {x: -17, y: 813}
+  - {x: -20, y: 951}
+  - {x: -9, y: 435}
+  - {x: -11, y: 534}
+  - {x: 237, y: 535}
+  - {x: -6, y: 249}
+  - {x: 218, y: 248}
+  - {x: -8, y: 343}
+  - {x: 213, y: 720}
+  - {x: -9, y: 875}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 4, y: 5}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 6, y: 8}
+    - {x: 7, y: 8}
+    - {x: 10, y: 4}
+    - {x: 11, y: 5}
+    - {x: 10, y: 11}
+    - {x: 10, y: 12}
+    - {x: 12, y: 5}
+    - {x: 2, y: 13}
+    - {x: 2, y: 14}
+    - {x: 13, y: 15}
+    - {x: 15, y: 10}
+    - {x: 14, y: 15}
+    - {x: 3, y: 15}
+    - {x: 5, y: 16}
+    - {x: 16, y: 8}
+    - {x: 8, y: 17}
+    - {x: 17, y: 9}
+    Nodes:
+    - Text: "After hours of questioning and searching, it's late in the evening,
+        and you've still yet to find Armand. You're not even sure why, but you feel
+        exhausted.\r\n\r\nWho knew talking to people was such hard work?\r"
+      Background: {fileID: 21300000, guid: c8e90f4327bb7464e8b64c5fe7d0275e, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Orphan's Feast - Party Master
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_SmallParty_indoor
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: Now that you're warmed up, this may be your chance to finally find out
+        where Armand is.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: You approach a woman who you had spotted glancing your way earlier.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: neutral
+        Name: Observant Woman
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: "At the mention of Armand\x19's name she laughs nervously."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Observant Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: He looks at you, glances over to the woman who you spoke with earlier,
+        then quickens his pace as he walks by.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Guest
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: "The room is emptying out even faster now. You manage to get the attention
+        of another woman.\r"
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02b
+        Pose: neutral
+        Name: Guest
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: "She doesn\u2019t even slow down before she leaves."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02b
+        Pose: neutral
+        Name: Guest
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: "She doesn\u2019t even slow down before she leaves."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02b
+        Pose: neutral
+        Name: Guest
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: "After a third person gives you the cold shoulder, you start to wonder
+        what happened. Are you really that out of place? Is it something about Armand?
+        What is going on here? \r\n\r\nStill, you check around The Orphan\u2019s
+        Feast, one last time."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: event:/Music/Orphan's Feast - Party Master
+        Parameters:
+        - Name: LOSE
+          Value: 1
+        - Name: WIN
+          Value: 0
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "There\u2019s no sign of Armand, not even an open tab with the tavernkeep."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: A gentleman you remember seeing earlier walks by, he might prove a little
+        more useful.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: neutral
+        Name: Guest
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: He looks at you, glances over to the woman who you spoke with earlier,
+        then quickens his pace as he walks by.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Guest
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: He looks at you, glances over to the woman who you spoke with earlier,
+        then quickens his pace as he walks by.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest01
+        Pose: bored
+        Name: Guest
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: "At the mention of Armand\x19's full title, she laughs nervously."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Observant Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: She laughs nervously at your request, shifting from foot to foot.
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Observant Woman
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 'She makes small talk for a brief moment before excusing herself, and
+        disappearing into the crowd.
+
+
+        The room appears to be emptying out.'
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest04
+        Pose: approval
+        Name: Observant Woman
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "She doesn'\x19t even slow down before she leaves."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest02b
+        Pose: neutral
+        Name: Guest
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: "She doesn'\x19t even slow down before she leaves."
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"I''m looking for my fiance, Armand. Have you seen him?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Excu-"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"Hello I-"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Monsieur, a moment of your time?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Have you seen my fiance, the Baron de Marbo?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"Excuse me, can you help a woman in need? Do you know a man named Armand?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Pardon me, have you seen the Baron de Marbo?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: '"My name is Yvette and I''m looking for someone. Can you help me?"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: '"Could you-"'
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "Now that you\u2019re more acclimated to the guests and travelers
+      of the Orphan\u2019s Feast, you should be able to find someone that can lead
+      you to Armand."
+    Requirements: []
+    _date: -1
+  Name: A Country Woman
+  _factions: 000000000000
+  _chapters: 00000000
+  _date: -1
+  _nodeText:
+  - "After hours of questioning and searching, it's late in the evening, and you've
+    still yet to find Armand. You're not even sure why, but you feel exhausted.\r\n\r\nWho
+    knew talking to people was such hard work?\r"
+  - Now that you're warmed up, this may be your chance to finally find out where
+    Armand is.
+  - You approach a woman who you had spotted glancing your way earlier.
+  - "At the mention of Armand\x19's name she laughs nervously."
+  - He looks at you, glances over to the woman who you spoke with earlier, then quickens
+    his pace as he walks by.
+  - "The room is emptying out even faster now. You manage to get the attention of
+    another woman.\r"
+  - "She doesn\u2019t even slow down before she leaves."
+  - "She doesn\u2019t even slow down before she leaves."
+  - "After a third person gives you the cold shoulder, you start to wonder what happened.
+    Are you really that out of place? Is it something about Armand? What is going
+    on here? \r"
+  - "There\u2019s no sign of Armand, not even an open tab with the tavernkeep."
+  - A gentleman you remember seeing earlier walks by, he might prove a little more
+    useful.
+  - He looks at you, glances over to the woman who you spoke with earlier, then quickens
+    his pace as he walks by.
+  - He looks at you, glances over to the woman who you spoke with earlier, then quickens
+    his pace as he walks by.
+  - "At the mention of Armand\x19's full title, she laughs nervously."
+  - She laughs nervously at your request, shifting from foot to foot.
+  - 'She makes small talk for a brief moment before excusing herself, and disappearing
+    into the crowd.
+
+
+    The room appears to be emptying out.'
+  - "She doesn'\x19t even slow down before she leaves."
+  - Still, you check around The Orphan's Feast, one last time.
+  - "$PARTYFACTIONNAME - The name of the faction hosting the party the player is
+    currently attending.\r\n$PARTYFACTIONMODESTYPREFERENCE - If the player is attending
+    a party, this will display a string representing the faction\u2019s modesty preference.\r\n$PARTYFACTIONLUXURYPREFERENCE
+    - If the player is attending a party, this will display a string representing
+    the faction\u2019s luxury preference."
+  _linkText:
+  - 
+  - 
+  - "\"I'm looking for my fianc\xE9, Armand. Have you seen him?\""
+  - 
+  - '"Excu-"'
+  - '"Hello I-"'
+  - 
+  - 
+  - '"Monsieur, a moment of your time?"'
+  - 
+  - "\"Have you seen my fianc\xE9, the Baron de Marbo?\""
+  - '"Excuse me, can you help a woman in need? Do you know a man named Armand?"'
+  - 
+  - '"Pardon me, have you seen the Baron de Marbo?"'
+  - '"My name is Yvette and I''m looking for someone. Can you help me?"'
+  - 
+  - 
+  - 
+  - 
+  - '"Could you-"'
+  - 
+  - 
+  - 

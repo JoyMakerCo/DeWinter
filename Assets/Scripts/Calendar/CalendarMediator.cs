@@ -1,85 +1,111 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Ambition
 {
 	public class CalendarMediator : MonoBehaviour
 	{
-		public CalendarButton[] Days;
+        public CalendarButton[] Days;
+        public Text MonthText;
+        public Text YearText;
+        public GameObject BackBtn;
+        public Transform SelectionFrame;
 
 		private int _month;
-		private GameModel _model;
+        private Dictionary<string, string> _monthNames = null;
 
-        private void Awake() => _model = AmbitionApp.GetModel<GameModel>();
+        public void CurrentMonth() => SetMonth(AmbitionApp.Calendar.Today.Month);
+        public void PrevMonth() => SetMonth(_month - 1);
+        public void NextMonth() => SetMonth(_month + 1);
+        public void UpdateFrame(Transform content)
+        {
+            SelectionFrame.position = content.position;
+            SelectionFrame.gameObject.SetActive(true);
+        }
 
-        private DateTime Today => _model.Date;
+        void OnEnable()
+        {
+            _month = AmbitionApp.Calendar.Today.Month;
+            AmbitionApp.Subscribe<PartyVO>(HandlePartyUpdated);
+            AmbitionApp.Calendar.Observe(HandleRefresh);
+            AmbitionApp.Subscribe<RendezVO>(HandleRendezvous);
+        }
 
-        void Start()
-		{
-            AmbitionApp.Subscribe(CalendarMessages.PREV_MONTH, HandlePrevMonth);
-            AmbitionApp.Subscribe(CalendarMessages.NEXT_MONTH, HandleNextMonth);
-            AmbitionApp.Subscribe(CalendarMessages.CURRENT_MONTH, HandleCurrentMonth);
-			AmbitionApp.Subscribe<PartyVO>(HandlePartyUpdated);
-			ViewMonth(Today.Month);
-		}
 
-		void OnDestroy()
-		{
-            AmbitionApp.Unsubscribe(CalendarMessages.PREV_MONTH, HandlePrevMonth);
-            AmbitionApp.Unsubscribe(CalendarMessages.NEXT_MONTH, HandleNextMonth);
-            AmbitionApp.Unsubscribe(CalendarMessages.CURRENT_MONTH, HandleCurrentMonth);
+        void OnDisable()
+        {
             AmbitionApp.Unsubscribe<PartyVO>(HandlePartyUpdated);
-		}
-
-        private void HandleCurrentMonth()
-        {
-            ViewMonth(Today.Month);
+            AmbitionApp.Calendar.Unobserve(HandleRefresh);
+            AmbitionApp.Unsubscribe<RendezVO>(HandleRendezvous);
         }
 
-        private void HandlePrevMonth()
+        private void SetMonth(int month)
         {
-            if (_month > 1)
-                ViewMonth(_month - 1);
-        }
-
-        private void HandleNextMonth()
-        {
-            if (_month < 7)
-                ViewMonth(_month + 1);
-        }
-
-
-        private void ViewMonth(int month)
-		{
-            CalendarButton btn;
             _month = month;
-            DateTime date = new DateTime(Today.Year, _month, 1);
-            DateTime startDate = date.AddDays(-(int)(date.DayOfWeek));
-
-			for (int i = Days.Length-1; i>=0; i--)
-			{
-                btn = Days[i];
-				btn.SetDay(startDate.AddDays(i-1), Today, _month);
-                btn.SetParties(GetParties(btn.Date));
+            while (_month < 1)
+            {
+                _month += 12;
             }
-            AmbitionApp.SendMessage(CalendarMessages.VIEW_MONTH, date);
+            while (_month > 12)
+            {
+                _month -= 12;
+            }
+            HandleRefresh(AmbitionApp.Calendar);
+        }
+
+        private void HandleRefresh(CalendarModel model)
+        {
+            CalendarButton btn;
+            DateTime today = model.Today;
+            DateTime date = new DateTime(today.Year, _month, 1);
+            if (!date.Equals(default)) // Immediately after reset
+            {
+                DateTime startDate = date.AddDays(-(int)(date.DayOfWeek));
+                if (_monthNames == null) 
+                    _monthNames = AmbitionApp.GetPhrases("month");
+
+                BackBtn.SetActive(_month > model.StartDate.Month);
+
+                _monthNames.TryGetValue(CalendarConsts.MONTH_LOC + (_month - 1), out string monthName);
+                MonthText.text = monthName;
+                YearText.text = "A.D. " + today.Year.ToString();
+
+                for (int i = Days.Length - 1; i >= 0; i--)
+                {
+                    btn = Days[i];
+                    date = startDate.AddDays(i - 1);
+                    btn.SetDay(date, today, _month);
+                    UpdateButtonEvents(btn, date);
+                }
+            }
         }
 
         private void HandlePartyUpdated(PartyVO party)
 		{
             if (party != null)
             {
-                CalendarButton btn = Array.Find(Days, d => d.Date == party.Date);
-                btn?.SetParties(GetParties(party.Date));
+                DateTime sd = AmbitionApp.Calendar.StartDate;
+                CalendarButton btn = Array.Find(Days, b => b.Date.Subtract(sd).Days == party.Day);
+                if (btn != null) UpdateButtonEvents(btn, btn.Date);
             }
         }
 
-        private PartyVO[] GetParties(DateTime date)
+        private void HandleRendezvous(RendezVO rendez)
         {
-            PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            return model.GetParties((ushort)(_model.Date.Subtract(date).Days));
+            CalendarButton btn = Array.Find(Days, b => b.Date == AmbitionApp.Calendar.StartDate.AddDays(rendez.Day));
+            UpdateButtonEvents(btn, btn.Date);
+        }
+
+        private void UpdateButtonEvents(CalendarButton btn, DateTime date)
+        {
+            if (btn != null)
+            {
+                PartyVO[] parties = AmbitionApp.Calendar.GetOccasions<PartyVO>(date);
+                RendezVO[] liaisons = AmbitionApp.Calendar.GetOccasions<RendezVO>(date);
+                btn.SetEvents(parties, liaisons);
+            }
         }
     }
 }

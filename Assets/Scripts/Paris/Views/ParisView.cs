@@ -5,18 +5,52 @@ using System;
 using System.Collections.Generic;
 using Util;
 
+using UnityEditor;
+
+
 namespace Ambition
 {
-    public class ParisView : MonoBehaviour
+    public class ParisView : SceneView, IButtonInputHandler, IAnalogInputHandler, ISubmitHandler
     {
         public Transform Pins;
-        public GameObject LegendBtn;
-        public Text LegendBtnLabel;
-        public GameObject Legend;
-        public Animator LegendAnimationController;
-        public LocationDialogMediator ParisLocationDialog;
+
+        private LocationConfig _selected = null;
 
         private Dictionary<string, Pin> _pins = new Dictionary<string, Pin>();
+        private Dictionary<string, Vector2> _locations = new Dictionary<string, Vector2>();
+
+        public void HandleInput(Vector2 [] input)
+        {
+        }
+
+        public void Submit()
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        public void Cancel()
+        {
+#if UNITY_STANDALONE
+            AmbitionApp.OpenDialog(DialogConsts.GAME_MENU);
+#else
+#endif
+        }
+
+        public void HandleInput(string btn, bool holding)
+        {
+            if (!holding)
+            {
+                switch (btn)
+                {
+                    case "x":
+
+                        break;
+                    case "y":
+
+                        break;
+                }
+            }
+        }
 
         // The model stores the IDs of known and visited one-shot locations
         // The view shows all known locations, several random locations, and non-explorable locations that meet requirements.
@@ -27,46 +61,41 @@ namespace Ambition
             string pinId;
             List<string> dailies = new List<string>();
 
-            AmbitionApp.Subscribe<Pin>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            AmbitionApp.Subscribe<LocationConfig>(ParisMessages.SELECT_LOCATION, HandleSelect);
             AmbitionApp.Subscribe<string>(ParisMessages.SHOW_LOCATION, HandleShow);
-            AmbitionApp.Subscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
-            AmbitionApp.Subscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
 
-            foreach(Transform child in Pins)
+            foreach (Transform child in Pins)
             {
                 pin = child.GetComponent<Pin>();
                 pinId = pin?.name;
-                if (pinId != null)
+                if (!string.IsNullOrEmpty(pinId))
                 {
                     _pins[pinId] = pin;
-                    if (pin.Discoverable) dailies.Add(pinId);
+                    if (pin.IsDiscoverable) dailies.Add(pinId);
                 }
             }
             AmbitionApp.SendMessage(ParisMessages.SELECT_DAILIES, dailies.ToArray());
-            AmbitionApp.SendMessage<string>(GameMessages.SHOW_HEADER, AmbitionApp.Localize("paris"));
         }
 
         private void OnDestroy()
         {
-            AmbitionApp.Unsubscribe<Pin>(ParisMessages.SELECT_LOCATION, HandleSelect);
+            AmbitionApp.Unsubscribe<LocationConfig>(ParisMessages.SELECT_LOCATION, HandleSelect);
             AmbitionApp.Unsubscribe<string>(ParisMessages.SHOW_LOCATION, HandleShow);
-            AmbitionApp.Unsubscribe<string>(ParisMessages.ADD_LOCATION, HandleShow);
-            AmbitionApp.Unsubscribe<string>(ParisMessages.REMOVE_LOCATION, HandleHide);
         }
 
         //To Do: Add in the fader (Still needs to be made)
-        private void HandleSelect(Pin location) => ParisLocationDialog?.Show(location);
+        private void HandleSelect(LocationConfig location)
+        {
+            _selected = location;
+            AmbitionApp.OpenDialog(DialogConsts.PARIS_LOCATION, _selected);
+        }
 
         private void HandleShow(string locationID)
         {
             if (_pins.TryGetValue(locationID, out Pin pin))
-                pin.gameObject?.SetActive(true);
-        }
-
-        private void HandleHide(string locationID)
-        {
-            if (_pins.TryGetValue(locationID, out Pin pin))
-                pin.gameObject?.SetActive(false);
+            {
+                pin?.gameObject?.SetActive(true);
+            }
         }
     }
 }

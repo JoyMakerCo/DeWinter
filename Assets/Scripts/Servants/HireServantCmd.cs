@@ -5,24 +5,21 @@ using UnityEngine;
 
 namespace Ambition
 {
-	public class HireServantCmd : ICommand<ServantVO>
+	public class HireServantCmd : ICommand<string>
 	{
-		public void Execute (ServantVO servant)
+		public void Execute (string servantID)
 		{
 			ServantModel model = AmbitionApp.GetModel<ServantModel>();
-
-			// Block if the position is filled
-			if (!model.Servants.ContainsKey(servant.Slot))
-			{
-				List<ServantVO> servants;
-				model.Servants.Add(servant.Slot, servant);
-				servant.Status = ServantStatus.Hired;
-				if (model.Applicants.TryGetValue(servant.Slot, out servants))
-					servants.Remove(servant);
-				if (model.Unknown.TryGetValue(servant.Slot, out servants))
-					servants.Remove(servant);
-				AmbitionApp.GetModel<GameModel>().Livre.Value -= servant.Wage;
-			}
+            ServantVO servant = model.LoadServant(servantID);
+            if (servant != null && !servant.IsHired)
+            {
+                if (model.GetServant(servant.Type)?.ID != servant.ID)
+                {
+                    AmbitionApp.SendMessage(ServantMessages.FIRE_SERVANT, servant.Type);
+                }
+                servant.Status = ServantStatus.Hired;
+                model.Broadcast();
+            }
 		}
 	}
 }

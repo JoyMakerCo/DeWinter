@@ -73,51 +73,6 @@ namespace Ambition
             }
         }
 
-        /*
-        public static bool Post(Dictionary<string, string> phrases, IEnumerable<string> remove = null)
-        {
-            Dictionary<string, string> localizations = _instance?._GetLocalizationsFromFile();
-            if (localizations == null) return false;
-
-            if (remove != null)
-            {
-                foreach (string removal in remove)
-                {
-                    localizations.Remove(removal);
-                }
-            }
-
-            if (phrases != null)
-            {
-                foreach(KeyValuePair<string, string> kvp in phrases)
-                {
-                    if (kvp.Value != null)
-                    {
-                        localizations[kvp.Key] = kvp.Value;
-                    }
-                    else
-                    {
-                        localizations.Remove(kvp.Key);
-                    }
-                }
-            }
-
-            localizations = localizations.Where(k => k.Key != null && k.Value != null).OrderBy(k => k.Key).ToDictionary(k => k.Key, k => k.Value);
-            string fileText = JsonConvert.SerializeObject(localizations, Formatting.Indented);
-            string path = AssetDatabase.GetAssetPath(_instance.DefaultLocalizationFile);
-            File.WriteAllText(path, fileText);
-            return true;
-        }
-
-        public static bool Remove(IEnumerable<string> keys) => Post(null, keys);
-        public static bool Post(string key, string value) => Post(new Dictionary<string, string>() { { key, value } });
-        public static bool Post(string key, Dictionary<string, string> phrases) => Post(phrases.ToDictionary(k => k.Key + ".", k => k.Value));
-        public static Dictionary<string, string> GetPhrases() => _instance?._GetLocalizationsFromFile();
-        public static Dictionary<string, string> GetPhrases(string key) => _instance?._GetLocalizationsFromFile()?.Where(s => s.Key?.StartsWith(key) ?? false).ToDictionary(s => s.Key, s => s.Value);
-
-        public static void Post(ILocalizedAsset obj, string phrase) => Post(obj.LocalizationKey, phrase);
-        public static Dictionary<string, string> GetPhrases(ILocalizedAsset obj) => GetPhrases(obj.LocalizationKey);
-        */
         [UnityEditor.MenuItem("Ambition/Create/Localization Manager")]
         public static void CreateLocalizationConfig()
         {
@@ -154,14 +109,6 @@ namespace Ambition
                 ? JsonConvert.DeserializeObject<Dictionary<string, string>>(DefaultLocalizationFile.text)
                 : null;
         }
-    }
-
-    public class ConflictResolutionEditor : Editor
-    {
-        private Action<Dictionary<string, string>> _onCloseDelegate = null;
-        private Dictionary<string, string[]> _conflicts = null;
-
-
     }
 
     [CustomEditor(typeof(LocalizationManager))]

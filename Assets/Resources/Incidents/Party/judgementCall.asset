@@ -1,0 +1,1281 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: judgementCall
+  m_EditorClassIdentifier: 
+  _Nodes: 22000000
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 2, y: 69}
+  - {x: 0, y: 128}
+  - {x: 2, y: 193}
+  - {x: 12, y: 483}
+  - {x: 5, y: 276}
+  - {x: -212, y: 364}
+  - {x: -3, y: 357}
+  - {x: 209, y: 359}
+  - {x: 4, y: 546}
+  - {x: -520, y: 596}
+  - {x: -2, y: 629}
+  - {x: 414, y: 614}
+  - {x: -765, y: 671}
+  - {x: -519, y: 672}
+  - {x: -516, y: 732}
+  - {x: -507, y: 795}
+  - {x: -510, y: 853}
+  - {x: -9, y: 747}
+  - {x: -5, y: 685}
+  - {x: -9, y: 809}
+  - {x: -221, y: 949}
+  - {x: -5, y: 947}
+  - {x: 205, y: 938}
+  - {x: -218, y: 882}
+  - {x: -8, y: 879}
+  - {x: 205, y: 876}
+  - {x: 413, y: 674}
+  - {x: -507, y: 921}
+  - {x: 415, y: 736}
+  - {x: -7, y: 1025}
+  - {x: 415, y: 806}
+  - {x: 418, y: 871}
+  - {x: -8, y: 1086}
+  - {x: -762, y: 736}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 5, y: 6}
+    - {x: 5, y: 7}
+    - {x: 5, y: 8}
+    - {x: 8, y: 4}
+    - {x: 7, y: 4}
+    - {x: 6, y: 4}
+    - {x: 4, y: 9}
+    - {x: 9, y: 10}
+    - {x: 9, y: 11}
+    - {x: 9, y: 12}
+    - {x: 10, y: 13}
+    - {x: 10, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 16, y: 17}
+    - {x: 11, y: 19}
+    - {x: 19, y: 18}
+    - {x: 18, y: 20}
+    - {x: 20, y: 24}
+    - {x: 24, y: 21}
+    - {x: 20, y: 25}
+    - {x: 25, y: 22}
+    - {x: 20, y: 26}
+    - {x: 26, y: 23}
+    - {x: 12, y: 27}
+    - {x: 17, y: 28}
+    - {x: 27, y: 29}
+    - {x: 21, y: 30}
+    - {x: 22, y: 30}
+    - {x: 23, y: 30}
+    - {x: 29, y: 31}
+    - {x: 31, y: 32}
+    - {x: 30, y: 33}
+    - {x: 13, y: 34}
+    - {x: 34, y: 20}
+    - {x: 3, y: 5}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 8d37c5a6e98984de68f6859ef31ef817, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Sycophantic Guest
+        Motion: 1
+      Character2:
+        AvatarID: Judge
+        Pose: neutral
+        Name: Judge
+        Motion: 2
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: approval
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: neutral
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: neutral
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: bored
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: neutral
+        Name: Judge
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: neutral
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: angry
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: angry
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: neutral
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: neutral
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: angry
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: angry
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: angry
+        Name: Judge
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: angry
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 12
+        ID: 
+        Value: 15
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 2
+        ID: Revolution
+        Value: 0
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 2
+        ID: Revolution
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 2
+        ID: Revolution
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: angry
+        Name: Judge
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: putout
+        Name: Sycophantic Guest
+        Motion: 3
+      Character2:
+        AvatarID: Judge
+        Pose: angry
+        Name: Judge
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Crowd_bark_whispers
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: negative
+        Name: Sycophantic Guest
+        Motion: 3
+      Character2:
+        AvatarID: Judge
+        Pose: neutral
+        Name: Judge
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: neutral
+        Name: Sycophantic Guest
+        Motion: 3
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: guest03a
+        Pose: charmed
+        Name: Sycophantic Guest
+        Motion: 0
+      Character2:
+        AvatarID: Judge
+        Pose: happy
+        Name: Judge
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 7
+        Phrase: incidents.transitions.characterization.tooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 2
+        Phrase: incidents.transitions.credibilitycheck.easytooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags:
+      - Type: 5
+        Phrase: incidents.transitions.perilgain.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 50
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 0
+        Operator: 3
+      - Type: 8
+        ID: theNationalAssembly
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: theNationalAssembly
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 8
+        ID: aMysteriousLetter
+        Value: 1
+        Operator: 4
+      - Type: 8
+        ID: theNationalAssembly
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: "A self satisfied judge and his sycophantic companion are openly
+      discussing the details of a case. If that doesn\u2019t sound like good gossip
+      fodder, then nothing does."
+    Requirements: []
+    _date: -1
+  Name: Judgement Call
+  _factions: 000000000001
+  _chapters: 00010100
+  _date: 0
+  _nodeText:
+  - Making your usual rounds, you come across a man who appears to be attempting
+    to win the good favor of a local judge.
+  - '"...which is, of course, why we''re glad to have a man of such august reputation
+    amongst us. Though I must ask, why are you still wearing your judiciary robes?"'
+  - '"Oh, don''t worry about this." The judge laughs as he tugs at the edges of his
+    robe. "My final trial of the day was running quite late, and I didn''t want to
+    disappoint our host. I know she was very eager to see me."'
+  - You're not certain that's completely true. In fact, you're certain that this
+    judge is the sort of person that requires a naval uniform, just to take a bath.
+  - '"It''s funny that I was almost late." He chuckles. "As it happens, my last case
+    of the day involved some prominent revolutionaries, though neither the charges
+    against them, nor the verdict, have yet to be made public."'
+  - '"Oh, and who might you be, Madame?" The Judge asks, as he notices your approach.'
+  - '"I''m sure the honor is all mine." The Judge says quickly, not paying much attention
+    to your introduction.'
+  - '"I''m sure the honor is all mine." The Judge says quickly, not paying much attention
+    to your introduction. The guest seems to shuffle from foot to foot. The mention
+    of Armand bothers him in some way, but he doesn''t voice his discomfort.'
+  - '"Ah, well it''s a pleasure to meet you none-the-less."'
+  - '"I''d explain further, but this case requires discretion, and I''d hate to confuse
+    the young lady."'
+  - '"It''s difficult?" He asks, while you lie through a vapid smile.'
+  - '"Are you seeking to goad me, madame?" He replies, his tone accusatory and officious.'
+  - '"Well, then I shall refrain from discussing this case any further!" He replies
+    with a sudden vehemence that is, quite frankly, baffling.'
+  - '"Yes, I suppose you could have trouble following the basics, so I can provide
+    you a few details without violating my duties as a judge."'
+  - '"Hold on for just a moment, your honor." Says the guest, interrupting the judge
+    before he can continue. "I have a feeling that the woman before us is more than
+    she appears."'
+  - '"Now that you mention it, I see what you mean..."'
+  - '"... In fact, I''ve been onto her clever ruse this whole time!" He shouts, loud
+    enough for other guests to look in your direction.'
+  - (You have lost some credibility)
+  - '"I shall have you know, that the honorable judge is made of sterner stuff than
+    that." The guest laughs, but his face shows no trace of amusement.'
+  - (You have gained a decent amount of peril)
+  - '"He''s quite right. There''s no way I''d do something so indiscreet, such as
+    explaining the details of this entire case."'
+  - (You have gained a piece of Cheap Revolution Gossip)
+  - (You have gained a piece of Shocking Revolution Gossip)
+  - (You have gained a piece of Outrageous Revolution Gossip)
+  - As he proceeds to explain the details of this entire case to you, you find that
+    it's not nearly as serious as he made it out to be. While all gossip has some
+    value to it, it's still a touch disappointing.
+  - As he proceeds to explain the details of this entire case to you, you find the
+    case in question to be decently serious. This could be quite useful to you.
+  - As he proceeds to explain the details of this entire case to you, you carefully
+    mask your facial expression to ensure that you don't betray your interest. If
+    what he's saying is true, it could be quite valuable indeed.
+  - '"Well said! It''s good to be around such keen and sharp minds, your honor." '
+  - They leave without another word, while you find yourself buried in a cloud of
+    suspicious whispers. It appears they were more canny than you thought. Not by
+    much, but still too much.
+  - The two of them leave, congratulating each other on their shared intelligence.
+    While it means that you don't get any gossip related to that case, at least it
+    means that you've been able to preserve your dignity.
+  - With that knowledge safely stored away in your mind, you give them both a pleasant
+    yet empty smile, and pretend that you didn't pick up on any of the details. Instead,
+    you steer the conversation towards agreeable small talk. So assured of their
+    superiority, they don't seem to notice what they've revealed to you.
+  - (You have gained a little credibility)
+  - You move on, to see if there's anything else you can do at this party.
+  - It doesn't take long for you to realized that this gossip is the best you'll
+    get out of them, so you wish them well, and leave to see if there's anything
+    else you can do at this party.
+  - '"It''s true! It''s good to be around such keen and sharp minds, your honor." '
+  _linkText:
+  - 
+  - 
+  - 
+  - '"Yvette Decaux, it''s a pleasure to meet you."'
+  - '"Who am I? I''m the soon-to-be Baroness de Marbo."'
+  - '"Oh don''t you worry yourself, monsieur. I''m nobody of any particular import."'
+  - 
+  - 
+  - 
+  - 
+  - '"Could you possibly explain further? I''m having SUCH a difficult time following
+    this..."'
+  - '"Your honor, I didn''t take you to be such a fearful man. Have you forgotten
+    the details?"'
+  - '"I can assure you both, that I''m not easily confused, by any of this."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

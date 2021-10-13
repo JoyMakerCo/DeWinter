@@ -10,7 +10,8 @@ namespace Ambition
     public enum IncidentFlagType
     {
         LowPeril, HighPeril, LowCred, HighCred, Cost,
-        MediumPeril, MediumCred, Characterization
+        MediumPeril, MediumCred, Characterization,
+        ServantTailor, ServantSpymaster, ServantBodyguard
     }
 
     [Serializable]

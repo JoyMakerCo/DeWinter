@@ -1,0 +1,3206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
+  m_Name: turnedAround
+  m_EditorClassIdentifier: 
+  _Nodes: 
+  _Links: 
+  _Positions:
+  - {x: 0, y: 0}
+  - {x: 3, y: 70}
+  - {x: 1, y: 136}
+  - {x: 1, y: 194}
+  - {x: 5, y: 315}
+  - {x: -216, y: 453}
+  - {x: 262, y: 457}
+  - {x: -341, y: 553}
+  - {x: 263, y: 553}
+  - {x: -212, y: 625}
+  - {x: 263, y: 633}
+  - {x: 263, y: 714}
+  - {x: -217, y: 694}
+  - {x: 24, y: 796}
+  - {x: 16, y: 860}
+  - {x: 15, y: 927}
+  - {x: 16, y: 991}
+  - {x: -245, y: 1058}
+  - {x: 15, y: 1063}
+  - {x: 325, y: 1061}
+  - {x: -248, y: 1136}
+  - {x: 13, y: 1132}
+  - {x: 325, y: 1125}
+  - {x: -744, y: 951}
+  - {x: -743, y: 1106}
+  - {x: -87, y: 552}
+  - {x: -1300, y: 973}
+  - {x: -1066, y: 1184}
+  - {x: -858, y: 1183}
+  - {x: -653, y: 1182}
+  - {x: -447, y: 1184}
+  - {x: -108, y: 247}
+  - {x: 141, y: 246}
+  - {x: 11, y: 373}
+  - {x: 263, y: 793}
+  - {x: -219, y: 800}
+  - {x: 14, y: 1198}
+  - {x: 9, y: 1265}
+  - {x: 14, y: 1326}
+  - {x: 321, y: 1198}
+  - {x: 8, y: 1388}
+  - {x: 3, y: 1451}
+  - {x: 1, y: 1510}
+  - {x: 4, y: 1572}
+  - {x: -2, y: 1632}
+  - {x: -356, y: 1763}
+  - {x: 314, y: 1263}
+  - {x: 312, y: 1331}
+  - {x: 316, y: 1392}
+  - {x: 315, y: 1452}
+  - {x: 318, y: 1510}
+  - {x: 316, y: 1575}
+  - {x: 315, y: 1633}
+  - {x: -261, y: 948}
+  - {x: -1318, y: 1033}
+  - {x: -240, y: 1193}
+  - {x: -241, y: 1254}
+  - {x: -236, y: 1321}
+  - {x: -229, y: 1393}
+  - {x: -236, y: 1470}
+  - {x: -1329, y: 1094}
+  - {x: -1066, y: 1245}
+  - {x: -863, y: 1249}
+  - {x: -655, y: 1242}
+  - {x: -450, y: 1242}
+  - {x: -1347, y: 1157}
+  - {x: -1362, y: 1224}
+  - {x: -1373, y: 1286}
+  - {x: -1381, y: 1349}
+  - {x: -1386, y: 1422}
+  - {x: -1380, y: 1492}
+  - {x: -1375, y: 1565}
+  - {x: -1065, y: 1306}
+  - {x: -1065, y: 1367}
+  - {x: -1061, y: 1428}
+  - {x: -1055, y: 1493}
+  - {x: -656, y: 1302}
+  - {x: -661, y: 1367}
+  - {x: -663, y: 1423}
+  - {x: -639, y: 1478}
+  - {x: -860, y: 1310}
+  - {x: -851, y: 1376}
+  - {x: -858, y: 1430}
+  - {x: -846, y: 1508}
+  - {x: -460, y: 1300}
+  - {x: -472, y: 1366}
+  - {x: -471, y: 1422}
+  - {x: -433, y: 1500}
+  Incident:
+    Links:
+    - {x: 0, y: 1}
+    - {x: 1, y: 2}
+    - {x: 2, y: 3}
+    - {x: 5, y: 7}
+    - {x: 6, y: 8}
+    - {x: 5, y: 8}
+    - {x: 7, y: 9}
+    - {x: 8, y: 10}
+    - {x: 10, y: 11}
+    - {x: 9, y: 12}
+    - {x: 13, y: 14}
+    - {x: 14, y: 15}
+    - {x: 15, y: 16}
+    - {x: 16, y: 17}
+    - {x: 16, y: 18}
+    - {x: 16, y: 19}
+    - {x: 17, y: 20}
+    - {x: 18, y: 21}
+    - {x: 19, y: 22}
+    - {x: 6, y: 25}
+    - {x: 25, y: 9}
+    - {x: 24, y: 26}
+    - {x: 24, y: 27}
+    - {x: 24, y: 28}
+    - {x: 23, y: 26}
+    - {x: 24, y: 29}
+    - {x: 24, y: 30}
+    - {x: 3, y: 31}
+    - {x: 31, y: 4}
+    - {x: 3, y: 32}
+    - {x: 32, y: 4}
+    - {x: 4, y: 33}
+    - {x: 33, y: 5}
+    - {x: 33, y: 6}
+    - {x: 11, y: 34}
+    - {x: 34, y: 13}
+    - {x: 12, y: 35}
+    - {x: 35, y: 13}
+    - {x: 21, y: 36}
+    - {x: 36, y: 37}
+    - {x: 37, y: 38}
+    - {x: 22, y: 39}
+    - {x: 38, y: 40}
+    - {x: 40, y: 41}
+    - {x: 41, y: 42}
+    - {x: 42, y: 43}
+    - {x: 43, y: 44}
+    - {x: 44, y: 45}
+    - {x: 39, y: 46}
+    - {x: 46, y: 47}
+    - {x: 47, y: 48}
+    - {x: 48, y: 49}
+    - {x: 49, y: 50}
+    - {x: 50, y: 51}
+    - {x: 51, y: 52}
+    - {x: 52, y: 45}
+    - {x: 16, y: 53}
+    - {x: 53, y: 20}
+    - {x: 53, y: 23}
+    - {x: 53, y: 24}
+    - {x: 17, y: 23}
+    - {x: 17, y: 24}
+    - {x: 26, y: 54}
+    - {x: 20, y: 55}
+    - {x: 55, y: 56}
+    - {x: 56, y: 57}
+    - {x: 57, y: 58}
+    - {x: 58, y: 59}
+    - {x: 54, y: 60}
+    - {x: 27, y: 61}
+    - {x: 28, y: 62}
+    - {x: 29, y: 63}
+    - {x: 30, y: 64}
+    - {x: 60, y: 65}
+    - {x: 65, y: 66}
+    - {x: 66, y: 67}
+    - {x: 67, y: 68}
+    - {x: 68, y: 69}
+    - {x: 69, y: 70}
+    - {x: 70, y: 71}
+    - {x: 71, y: 45}
+    - {x: 61, y: 72}
+    - {x: 72, y: 73}
+    - {x: 73, y: 74}
+    - {x: 74, y: 75}
+    - {x: 75, y: 70}
+    - {x: 63, y: 76}
+    - {x: 76, y: 77}
+    - {x: 77, y: 78}
+    - {x: 78, y: 79}
+    - {x: 79, y: 70}
+    - {x: 62, y: 80}
+    - {x: 80, y: 81}
+    - {x: 81, y: 82}
+    - {x: 82, y: 83}
+    - {x: 64, y: 84}
+    - {x: 84, y: 85}
+    - {x: 85, y: 86}
+    - {x: 86, y: 87}
+    - {x: 87, y: 70}
+    - {x: 83, y: 70}
+    Nodes:
+    - Text: 
+      Background: {fileID: 21300000, guid: 25a2b1ff7adc84706921282868534d90, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Honorade - Introduction
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 2
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Ludovico - Introduction
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: sad
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: honoradeGazel
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_gasp
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: sad
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_bored
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: sad
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: sad
+        Name: Ludovico
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Ludovico - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: smolder
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: smolder
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: smolder
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 14eb3d2b4ab374fb89ce583fa14f85a6, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_carriagev2
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Honorade - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: honoradeGazel
+        Value: -1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 3
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Honorade - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: smolder
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_charmed
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: smolder
+        Name: Ludovico
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/Music/OS - Ludovico - Select
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_negative
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards:
+      - Type: 5
+        ID: honoradeGazel
+        Value: -1
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: -1
+      - Type: 11
+        ID: 
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: angry
+        Name: Madame Gazel
+        Motion: 3
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: angry
+        Name: Ludovico
+        Motion: 4
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 5
+        ID: honoradeGazel
+        Value: 2
+      - Type: 5
+        ID: ludovicoSidotti
+        Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 21300000, guid: 14eb3d2b4ab374fb89ce583fa14f85a6, type: 3}
+      Character1:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: event:/Ambient SFX/Amb_carriagev2
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: neutral
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: happy
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: 10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 3
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Male_bark_neutral
+        Parameters: []
+    - Text: 
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: HonoradeGazel
+        Pose: happy
+        Name: Madame Gazel
+        Motion: 0
+      Character2:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 13
+        ID: Church
+        Value: -10
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    LinkData:
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: 0
+        Operator: 1
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Honorade
+        Value: 8
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 5
+        ID: Honorade
+        Value: 8
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 13
+        ID: Church
+        Value: 0
+        Operator: 4
+      Flags:
+      - Type: 6
+        Phrase: incidents.transitions.credibilitycheck.mediumtooltip
+        Value: 1
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 1
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 11
+        ID: 
+        Value: 70
+        Operator: 4
+      - Type: 13
+        ID: Bourgeoisie
+        Value: 0
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
+    OneShot: 1
+    Chapters: 
+    Type: 0
+    Factions: 
+    Political: 0
+    Description: 
+    Requirements:
+    - Type: 28
+      ID: ludovicoSidotti
+      Value: 1
+      Operator: 4
+    - Type: 28
+      ID: honoradeGazel
+      Value: 1
+      Operator: 4
+    _date: -1
+  Name: Turned Around
+  _factions: 000000000000
+  _chapters: 00010101
+  _date: 0
+  _nodeText:
+  - You don't go out to explore the city until later in the evening, mostly for a
+    simple change of pace. There's also less crowding, which is nice.
+  - "As you walk through the emptier streets, you happen across Madame Gazel, who
+    is walking the streets. Her servant, Ren\xE9, is not far behind her."
+  - '"<i>Bonsoir</i>, little Yvette. "I see you''re taking in some fresh air, as
+    well?"'
+  - '"Please, join me as I wander aimlessly through the city." She says with a smile.
+    "I would hate for this to become dull."'
+  - As you turn a corner, you nearly bump into the priest, Ludovico. As he stumbles
+    away from this close call, you notice that he has a book about the pirates of
+    the Barbary Coast tucked under his arm.
+  - After it's been confirmed that none of you have been put in mortal peril, he
+    looks around and asks "You are all out here, wandering the streets at dusk? Are
+    you two lost?"
+  - After it's been confirmed that none of you have been put in mortal peril, he
+    looks around and asks "You are all out here, wandering the streets at dusk? Are
+    you two lost?"
+  - '"We''re not lost, merely wandering. In fact, you should join us, Father. I think
+    we''d both appreciate the company. I know the Church has proven quite trustworthy,
+    given their support of the Crown."'
+  - '"We''re not lost, priest. Nor are we in need of your help. In fact, I would
+    ask that you stay out of our business altogether."'
+  - '"Don''t worry, Yvette and I can protect you from any ne''er-do-wells that come
+    your way."'
+  - '"How disappointing." Ludovico replies. "When presented with a chance to choose
+    grace and kindness, you instead dismiss it outright. Disappointing, but not surprising."'
+  - It doesn't take long to see that this quarrel is not merely romantic in nature.
+    It seems that the Church and the Bourgeoisie don't agree on something important.
+  - '"I had no idea I was such a valuable prize," Ludovico laughs. "Coming from you
+    madame, that assessment is a high compliment indeed."'
+  - '"Well, it is now truly reaching a late hour and I should actually head home.
+    Would you care to join me, Yvette?"'
+  - '"Oh, do you mind if I join you? I have something to ask Yvette, as well." Ludovico
+    asks, seemingly oblivious.'
+  - '"Ah, you see... I was hoping to speak with Yvette alone." Madame Gazel mumbles,
+    a rare occasion where her words have begun to fail her.'
+  - You notice them both glancing frantically back to you, waiting for an answer.
+  - '"Perhaps... perhaps..." Honorade mumbles to herself, deep in thought.'
+  - '"<i>Merveilleuse</i>." Madame Gazel replies. "Please excuse us, Father Sidotti,
+    Yvette and I have some business to attend to."'
+  - '"Oh, you would? That''s fantastic! I''m only halfway through it, but I already
+    think you''d love it."'
+  - '"No, I have neither the time nor the inclination to dignify this." Honorade
+    says icily.'
+  - (You have gained some favor with Madame Gazel)
+  - (You have gained some favor with Ludovico)
+  - '"Yvette has it right. We''re already on the same side, politically. That''s
+    a start, is it not?" Ludovico volunteers.'
+  - They look to you, listening carefully, but continuing to eye each other distrustfully.
+  - '"We''re not lost, merely wandering. In fact, you should join us, Father. I think
+    we''d both appreciate the company. I know the Church has proven quite magnanimous,
+    given their support of the Revolution."'
+  - '"It appers that I am well and truly defeated." Madame Gazel sighs. "Fine, we''ll
+    do things your way."'
+  - '"If that''s what you wish, then fine. Speak, Priest."'
+  - '"Alright Yvette, I''m willing to be open minded about this." Ludovico replies.'
+  - '"If that''s what you wish, then fine. Speak, Priest."'
+  - '"Alright Yvette, I''m willing to be open minded about this." Ludovico replies.'
+  - The two of you walk closely together, taking in the city, and talking about the
+    events of the last few weeks. As always, Madame Gazel is composed, but extremely
+    opinionated.
+  - Arm in arm, the two of you walk together, taking in the city, and talking about
+    the events of the last few weeks. As always, Madame Gazel is composed, but extremely
+    opinionated.
+  - '"Oh, <i>mi dispiace</i>! Are you two alright?"'
+  - The walk continues, under a cloud of tension and awkward silence.
+  - With a new addition to your group, you all continue you walk through the city,
+    chatting and laughing together.
+  - '"Ah, I see." Ludovico replies, defeated. "Hopefully, our paths will cross again,
+    later."'
+  - (You have lost a little favor with Ludovico)
+  - After Ludovico leaves, you and Madame Gazel start to walk back to her estate,
+    together.
+  - '"Really? That''s your decision?" Madame Gazel asks, failing to hide her incredulity.'
+  - The night air is unexpectedly cool tonight, and you feel a chill run across your
+    skin. Noticing your shiver, Honorade pulls you closer.
+  - As you talk, it becomes quite obvious to you that Madame Gazel had no special
+    business with you. Getting you alone, all to herself was a more symbolic action
+    of devotion than anything else.
+  - "Eventually, you find yourself in front of her estate. It's an elaborate, fashionable
+    rococo building that sits back from the street and behind a gate. The windows
+    are shrouded by gauzy black curtains. \"This is where we part ways for tonight,
+    little Yvette. Don't worry, Ren\xE9 will make sure you get home safely.\""
+  - "As she heads inside, Madame Gazel directs Ren\xE9 to ready her personal carriage
+    to provide you with a suitable way home. It certainly beats walking."
+  - A short time later, you find yourself arriving at your charming, yet dilapidated
+    home. It serves as a strong contrast to Madame Gazel's sumptuous, yet sepulchral
+    carriage.
+  - Today may not have been too eventful overall, but it still feels like a day well
+    spent.
+  - (You have lost a little favor with Madame Gazel)
+  - "Honorade turns away from the both of you in a whirl of black taffeta, and leaves
+    in a huff. Her silent servant, Ren\xE9, desperately trails behind her."
+  - You and Ludovico continue to walk together, talking about his latest find. Apparently,
+    he's had an obsession with pirates, as of late, and has already finished three
+    books on the subject. He thinks that this one is the best, so far.
+  - '"I''ll make sure to send you my copy, as soon as I''m done with it."'
+  - 'The two of you spend the second half of your walk talking about what it would
+    it be like to run your own pirate vessel. A floating wooden kingdom, defined
+    by absolute freedom, and the plunderous pursuit of profit. '
+  - '"It certainly sounds special, doesn''t it? To run away, and discard anything
+    that''s ever held you back? To do whatever thrills your heart?"'
+  - Eventually, dusk turns into night, you and Ludovico part ways, and you head home.
+  - '"Perhaps... perhaps..." Honorade mumbles to herself, deep in thought.'
+  - '"Well, what is your story then, priest? It''s obvious that you''re quite different
+    from most men of your calling."'
+  - '"Well, if she has no interest in trying to be friendly company, then it is out
+    of my hands."'
+  - The two of them glare at each other for a while, in stony silence.
+  - '(You have lost a little favor with Madame Gazel)
+
+    (You have lost a little
+    favor with Ludovico)
+
+    (You have lost some credibility)'
+  - After several awkward attempts to restart the conversation, you decide to part
+    ways with them. This is currently beyond your ability to fix.
+  - You head home, and can't help but feel utterly infuriated.
+  - '"I''m not really sure how to answer such a broad question, but I can tell you
+    that my only real calling is helping those in need and seeking adventures. Being
+    a man of the of the cloth was more my parents'' decision than it was my own."'
+  - '"I see..." Ludovico replies, frantically collecting his thoughts. "Please, consider
+    this..."'
+  - '"Don''t worry, I won''t waste your time."'
+  - '"I see..." Ludovico replies, frantically collecting his thoughts. "Please, consider
+    this..."'
+  - '"Don''t worry, I won''t waste your time."'
+  - '"Obviously, I respect the power and the mystery of faith, but it doesn''t quite
+    stir one''s blood." Ludovico adds hastily after that last statement.'
+  - '"As someone who has spent much of their life focused on what stirs their blood,
+    I completely understand." Madame Gazel says with an indulgent smile. "Please,
+    tell me more."'
+  - With that, they seem to open up to each other quite easily. Madame Gazel seems
+    to make a concerted effort on keeping the conversation focused on Ludovico and
+    his love of adventure novels. Of medieval romances, pirates, spies, and free
+    spirits flouting social norms in the name of personal freedom, but still doing
+    what they consider to be right.
+  - Of course, you're quite aware that most pirates are probably awful people, but
+    you keep this to yourself, for the time being. Right now, who are you to get
+    in the way of a fun and romantic idea? That being said, both Madame Gazel and
+    Ludovico seem to be having a good time.
+  - '(You have gained some favor with Madame Gazel)
+
+    (You have gained some favor
+    with Ludovico)'
+  - "Eventually, you find yourself in front of Honorade's estate. It's an elaborate,
+    fashionable rococo building that sits back from the street and behind a gate.
+    The windows are shrouded by gauzy black curtains. \"This is where we part ways
+    for tonight. Don't worry Yvette, Ren\xE9 will make sure you get home safely.\""
+  - "With a polite nod, Ludovico departs and Madame Gazel directs Ren\xE9o ready
+    her personal carriage, so as to provide you with a suitable way home. It certainly
+    beats walking."
+  - Ludovico launches into his defense of the Crown, mostly by focusing on key issues
+    with the Revolution. Things like how the real problem isn't the aristocracy,
+    it's how there's a famine, most acutely in France but all over Europe as well.
+    He explains that disempowering the King won't solve the famine, but it will likely
+    cause more bloodshed.
+  - Listening to all of this makes you realize that Ludovico is, most likely, a better
+    public speaker than he knows. He never goes so far as to say that the Monarchy
+    is the best possible thing, but instead stays focused on what he understands
+    the most. That being the needs and suffering of the people who he works with
+    every single day.
+  - '"I shall take this under consideration." Honorade replies, her voice quick and
+    clipped. This may seem harsh to most people, but you know her too well to think
+    that. If she wasn''t convinced, she simply would have said as much.'
+  - (The Bourgeoisie has moved towards the Crown by some)
+  - Ludovico starts talking, and focuses on key issues with the Crown. Things like
+    how there's too many issues being solved by people who have no stake in solving
+    them. Aristocrats are starving, they don't pay the taxes, and they aren't the
+    ones dying in the wars. Doesn't it make sense to have the decisions made by those
+    who actually have skin in the game?
+  - Listening to all of this makes you realize that Ludovico is, most likely, a better
+    public speaker than he knows. He never goes so far as to say that the Monarchy
+    is the best possible thing, but instead stays focused on what he understands
+    the most. That being the needs and suffering of the people who he works with
+    every single day.
+  - '"I shall take this under consideration." Honorade replies, her voice quick and
+    clipped. This may seem harsh to most people, but you know her too well to think
+    that. If she wasn''t convinced, she simply would have said as much.'
+  - (The Bourgeoisie has moved towards the Revolution by some)
+  - Honorade gets to the point, incisively. The Revolution is overflowing with good
+    ideas, but many of them conflict and there's simply no cohesive plan. So much
+    of their rhetoric is phrased as vague promises like 'nationalism', 'republic',
+    and 'liberty', but every Revolutionary will describe those promises differently.
+    That isn't a movement, that's a mess.
+  - Honorade wraps up her thoughts quickly. It all centers on the idea of fixing
+    problems, and there's simply nothing that shows the Revolution can actually fix
+    them. France is most certainly in a state of crisis, but that's a terrible time
+    to engage in high-minded experiments.
+  - '"Your point is well taken..." Ludovico replies, thinking, and staring off into
+    space for a while, turning it all over in his mind.'
+  - (The Church has moved towards the Crown by some)
+  - Honorade gets to the point, incisively. The Crown has failed, for decades, to
+    pay their own debts. Aristocratic families are excused from paying taxes of any
+    sort, and yet they routinely fall into destitution, all the same. To her, that
+    doesn't sound like people to leave in charge of a country. The Revolution isn't
+    perfect, but at least they provide a chance of leaders who actually know what
+    they're doing.
+  - Honorade wraps up her thoughts quickly. It all centers on the idea of fixing
+    problems, and the Crown has repeatedly shown that they're not up to the task.
+    France is most certainly in a state of crisis. Now is not the time to keep giving
+    failures second chances.
+  - '"Your point is well taken..." Ludovico replies, thinking, and staring off into
+    space for a while, turning it all over in his mind.'
+  - (The Church has moved towards the Revolution by some)
+  _linkText:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Madame Gazel, please let him join us. You two have more in common than you
+    think."'
+  - '"Madame Gazel, I''d love to join you. I''m sorry Ludovico, we can talk later."'
+  - '"Ludovico, I''d love to join you. Can you tell me more about that book on pirates?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"All I want is for you two to try to get along. Please, Madame Gazel, do this
+    for me."'
+  - '"Honorade, please listen what Ludovico has to say about the Crown."'
+  - '"Ludovico, you''re an open minded person. Honorade has some good points about
+    the Crown."'
+  - 
+  - '"Honorade, please listen what Ludovico has to say about the Revolution."'
+  - '"Ludovico, you''re an open minded person. Honorade has some good points about
+    the Revolution."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - '"Madame Gazel, please let him join us. You two have more in common than you
+    think."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

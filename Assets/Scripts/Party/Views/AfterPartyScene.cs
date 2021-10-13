@@ -7,107 +7,63 @@ using Dialog;
 
 namespace Ambition
 {
-    public class AfterPartyScene : MonoBehaviour
+    public class AfterPartyScene : SceneView, ISubmitHandler
     {
         public const string DIALOG_ID = "AFTER_PARTY_DIALOG";
+        public const string HOST_TOKEN = "$HOST";
+
         public SpriteConfig FactionIconConfig;
         public Image FactionIcon;
         public Text PartyText;
-        public Transform RewardContainer;
-        public GameObject RewardItem;
-        public SpriteConfig RewardIcons;
+        public RewardItem listItem;
         public Text OutfitText;
         public Slider NoveltySlider;
         public Text NoveltySliderText;
+        public Text PartyHostText;
 
-        private Dictionary<string, AfterPartyRewardItem> _items = new Dictionary<string, AfterPartyRewardItem>();
+        private Dictionary<string, RewardItem> _items = new Dictionary<string, RewardItem>();
         private InventoryModel _inventory;
-        private 
 
         void Start()
         {
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
             _inventory = AmbitionApp.GetModel<InventoryModel>();
-            ItemVO[] gossipList = _inventory.GetItems(ItemType.Gossip);
-            int gossipIndex = gossipList.Length;
-            PartyText.text = model.Party.Name;
+            List<GossipVO> gossipList = AmbitionApp.Gossip.Gossip;
+            int gossipIndex = gossipList.Count-1;
+            PartyText.text = AmbitionApp.Localize(PartyConstants.PARTY_NAME + model.Party.ID);
             FactionIcon.sprite = FactionIconConfig.GetSprite(model.Party.Faction.ToString());
-            model.Party.Rewards.Sort((r1, r2) => r1.Type.CompareTo(r2.Type));
-
-            foreach (CommodityVO reward in model.Party.Rewards)
+            List<RewardItem> rewards = AmbitionApp.CreateRewardListItems(model.Rewards, listItem);
+            OutfitVO outfit = _inventory.GetEquippedItem(ItemType.Outfit) as OutfitVO;
+            if (outfit != null)
             {
-                switch (reward.Type)
+                int novelty = outfit.Novelty - model.BaseNoveltyLoss - model.CumulativeNoveltyLoss * outfit.TimesWorn;
+                if (novelty < 0) novelty = 0;
+                OutfitText.text = AmbitionApp.Localization.GetItemName(outfit);
+                NoveltySlider.value = novelty;
+                NoveltySliderText.text = novelty.ToString();
+            }
+            string host = AmbitionApp.Localize(PartyConstants.PARTY_HOST + model.Party.Host);
+            if (string.IsNullOrEmpty(host)) host = model.Party.Host;
+            Dictionary<string, string> subs = new Dictionary<string, string>() { { HOST_TOKEN, host } };
+            PartyHostText.text = AmbitionApp.Localize("after_party_dialog.host", subs);
+            for (int i=rewards.Count-1; i>=0; --i)
+            {
+                if (rewards[i].Data.Type == CommodityType.Gossip)
                 {
-                    case CommodityType.Reputation:
-                        if (!string.IsNullOrEmpty(reward.ID))
-                        {
-                            AddTotal(reward.ID, reward.Value);
-                        }
-                        else AddTotal(reward.Type.ToString(), reward.Value);
-                        break;
-                    case CommodityType.Item:
-                        break;
-                    case CommodityType.Gossip:
-                        if (--gossipIndex >= 0)
-                            GetGossipItem(gossipList[gossipIndex]);
-                        break;
-                    case CommodityType.Livre:
-                    case CommodityType.Peril:
-                    case CommodityType.Credibility:
-//                    case CommodityType.Favor:
-                        AddTotal(reward.Type.ToString(), reward.Value);
-                        break;
+                    rewards[i].SetGossip(gossipList[gossipIndex]);
+                    --gossipIndex;
                 }
             }
-            foreach(AfterPartyRewardItem rewardItem in _items.Values)
-            {
-                rewardItem.UpdateView();
-            }
-            ItemVO item = _inventory.GetEquippedItem(ItemType.Outfit);
-            if (item != null)
-            {
-                OutfitText.text = item.Name;
-                NoveltySlider.value = OutfitWrapperVO.GetNovelty(item);
-                NoveltySliderText.text = NoveltySlider.value.ToString();
-            }
-
-            string headetTxt = AmbitionApp.GetString("after_party_dialog.title");
-            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, headetTxt);
         }
 
-        private void AddTotal(string key, int value)
+        public void Cancel()
         {
-            if (_items.ContainsKey(key))
-            {
-                _items[key].Value += value;
-            }
-            else
-            {
-                GameObject obj = _items.Count == 0 ? RewardItem : Instantiate<GameObject>(RewardItem, RewardContainer);
-                obj.SetActive(true);
-                _items[key] = obj.GetComponent<AfterPartyRewardItem>();
-                _items[key].Value = value;
-                _items[key].ShowValue = true;
-                _items[key].Text = AmbitionApp.Localize(key) ?? key;
-                _items[key].IconImage.sprite = RewardIcons.GetSprite(key.ToString());
-            }
-        }
-
-        private void GetGossipItem(ItemVO item)
-        {
-            GameObject obj = Instantiate<GameObject>(RewardItem, RewardContainer);
-            AfterPartyRewardItem reward = obj.GetComponent<AfterPartyRewardItem>();
-            obj.SetActive(true);
-            reward.ShowValue = false;
-            reward.Text = item.Name;
-            reward.Fluff = GossipWrapperVO.GetDescription(item);
-            reward.UpdateView();
-        }
-
-        public void Done()
-        {
-            AmbitionApp.SendMessage(AudioMessages.STOP_MUSIC);
+#if UNITY_STANDALONE
+            AmbitionApp.OpenDialog(DialogConsts.GAME_MENU);
+#else
             AmbitionApp.SendMessage(GameMessages.COMPLETE);
+#endif
         }
+        public void Submit() => AmbitionApp.SendMessage(GameMessages.COMPLETE);
     }
 }

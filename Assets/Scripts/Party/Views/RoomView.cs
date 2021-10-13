@@ -8,69 +8,63 @@ namespace Ambition
 {
     public class RoomView : MonoBehaviour
     {
-        public PortraitView[] PortraitsEven;
-        public PortraitView[] PortraitsOdd;
+        private int MAX_PORTRAITS = 4;
+
+        public PortraitView Portrait;
         public Text ButtonText;
 
-        private string _incident = null;
-        private MapScene _mapView;
+        private IncidentVO _incident = null;
 
         [SerializeField]
         private AvatarCollection avatarCollection;
 
-        void Awake()
-        {
-            _mapView = GetComponentInParent<MapScene>();
-            ButtonText.text = AmbitionApp.Localize("party.btn.room");
-        }
-
         public void SetIncident(IncidentVO incident)
         {
-            _incident = incident?.ID;
-            gameObject.SetActive(incident != null);
-            if (incident == null) return;
+            _incident = incident;
+            gameObject.SetActive(incident?.Nodes != null);
+            if (incident?.Nodes == null) return;
 
-            List<CharacterVO> characters = new List<CharacterVO>();
-            string name;
-            AvatarVO avatar;
-            PortraitView[] portraits;
-            int max = PortraitsEven.Length > PortraitsOdd.Length ? PortraitsEven.Length : PortraitsOdd.Length;
-            int i = 0;
+            int nodeCount = incident.Nodes.Length;
+            List<string> characters = new List<string>();
+            MomentVO moment;
 
-            foreach (MomentVO moment in incident.Nodes)
+            for (int i=0; i<nodeCount && characters.Count < MAX_PORTRAITS; ++i)
             {
-                name = moment.Character1.Name;
-                if (!string.IsNullOrWhiteSpace(name) && !characters.Exists(c => c.Name == name))
-                {
-                    avatar = avatarCollection.GetAvatar(moment.Character1.AvatarID);
-                    if (avatar.Portrait != null)
-                        characters.Add(new CharacterVO(name, avatar));
-                }
-                name = moment.Character2.Name;
-                if (!string.IsNullOrWhiteSpace(name) && !characters.Exists(c=>c.Name == name) && characters.Count<max)
-                {
-                    avatar = avatarCollection.GetAvatar(moment.Character2.AvatarID);
-                    if (avatar.Portrait != null)
-                        characters.Add(new CharacterVO(name, avatar));
-                }
-
-                if (characters.Count == max) break;
+                moment = incident.Nodes[i];
+                SetAvatar(moment.Character1, characters);
+                SetAvatar(moment.Character2, characters);
             }
-            portraits = characters.Count % 2 == 0 ? PortraitsEven : PortraitsOdd;
-            foreach(CharacterVO character in characters)
-            {
-                portraits[i].Tooltip = character.FullName;
-                portraits[i].Portrait.sprite = _mapView.GetPortrait(character.AvatarID);
-                i++;
-            }
-            while (i<portraits.Length)
-            {
-                portraits[i++].gameObject.SetActive(false);
-            }
-            portraits = (portraits == PortraitsEven) ? PortraitsOdd : PortraitsEven;
-            Array.ForEach(portraits, p => p.gameObject.SetActive(false));
         }
 
-        public void ShowRoom() => AmbitionApp.SendMessage(PartyMessages.SHOW_ROOM, _incident);
+        public void ShowRoom() => AmbitionApp.OpenDialog(RoomDialog.DIALOG_ID, _incident);
+
+        private void SetAvatar(IncidentCharacterConfig character, List<string> characters)
+        {
+            string characterName = character.Name;
+            if (characters.Count < MAX_PORTRAITS
+                && !string.IsNullOrWhiteSpace(characterName)
+                && !string.IsNullOrWhiteSpace(character.AvatarID)
+                && !characters.Contains(characterName))
+            {
+                AvatarConfig avatar = avatarCollection.GetAvatar(character.AvatarID);
+                if (avatar?.Portrait != null)
+                {
+                    PortraitView view;
+                    characters.Add(characterName);
+                    if (characters.Count > 1)
+                    {
+                        GameObject obj = GameObject.Instantiate<GameObject>(Portrait.gameObject, Portrait.transform.parent);
+                        view = obj.GetComponent<PortraitView>();
+                    }
+                    else
+                    {
+                        view = Portrait;
+                    }
+                    view.gameObject.SetActive(true);
+                    view.Tooltip = characterName;
+                    view.Portrait.sprite = avatar.Portrait;
+                }
+            }
+        }
     }
 }

@@ -8,19 +8,37 @@ namespace UFlow
     public class UStateNode
     {
         public string ID;
+        internal virtual UState Instantiate(UMachine flow) => new UState() { ID = this.ID, _Flow = flow };
     }
 
-    public class UStateNode<S> : UStateNode where S:UState, new() {}
+    public class UStateNode<S> : UStateNode where S:UState, new()
+    {
+        internal override UState Instantiate(UMachine flow)
+        {
+            S s = new S() { ID = this.ID, _Flow = flow };
+            (s as Util.IInitializable)?.Initialize();
+            return s;
+        }
+    }
+
     public class UStateNode<S,D> : UStateNode<S> where S:UState, Util.IInitializable<D>, new()
     {
         public D Data;
+        internal override UState Instantiate(UMachine flow)
+        {
+            S s = new S() { ID = this.ID, _Flow = flow };
+            (s as Util.IInitializable<D>)?.Initialize(Data);
+            return s;
+        }
     }
 
-    // LinkMap with instructions for initializing a simple UFlow Link
-    public class UGraphLink {}
-    public class UGraphLink<L> : UGraphLink where L:ULink, new() {}
-    public class UGraphLink<L,D> : UGraphLink where L:ULink, Util.IInitializable<D>, new()
+    public class UFlowNode : UStateNode<UMachine, string>
     {
-        public D Data;
+        internal override UState Instantiate(UMachine flow)
+        {
+            UMachine result = flow._UFlow.Instantiate(Data, flow);
+            result.ID = this.ID;
+            return result;
+        }
     }
 }

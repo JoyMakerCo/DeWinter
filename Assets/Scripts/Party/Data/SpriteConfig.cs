@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Util;
 
@@ -37,9 +36,15 @@ namespace Ambition
 
 		public Sprite[] GetSpritesByTag(params string[] tags) //Candidates must match all criteria
 		{
-			return (from s in Sprites
-				where tags.All(t => s.Tags.Contains(t))
-				select s.Sprite).ToArray();
+            List<Sprite> spirtes = new List<Sprite>();
+            foreach(SpriteMap s in Sprites)
+            {
+                if (Array.TrueForAll(tags, t=>Array.IndexOf(s.Tags, t) >= 0))
+                {
+                    spirtes.Add(s.Sprite);
+                }
+            }
+            return spirtes.ToArray();
 		}
 
 #if (UNITY_EDITOR)

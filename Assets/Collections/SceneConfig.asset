@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42fb605fc20a4262aed3561c260176b, type: 3}
+  m_Name: SceneConfig
+  m_EditorClassIdentifier: 
+  Scenefabs:
+  - ID: AFTER_PARTY_SCENE
+    Prefab: {fileID: 1375144807633314, guid: 96b9559bcabdad44bbe54d0f193024da, type: 3}
+    ShowHeader: 1
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: After Party Report
+    Music:
+      Name: event:/Music/Party Debrief
+      Parameters: []
+    Ambient:
+      Name: 
+      Parameters: []
+  - ID: CHAPTER_PLACARD
+    Prefab: {fileID: 5437020141703986729, guid: c4ac24076a5924105b47df607a7ba6d3,
+      type: 3}
+    ShowHeader: 0
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: 
+    Music:
+      Name: 
+      Parameters: []
+    Ambient:
+      Name: 
+      Parameters: []
+  - ID: ESTATE_SCENE
+    Prefab: {fileID: 1533563845697554, guid: 80ca86239eadd44c280d87aad08fce26, type: 3}
+    ShowHeader: 0
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: 
+    Music:
+      Name: 
+      Parameters: []
+    Ambient:
+      Name: event:/Ambient SFX/Amb_ParisStreets_inside
+      Parameters: []
+  - ID: INCIDENT_SCENE
+    Prefab: {fileID: 7605793439027809235, guid: 3998fa4b8cf39e64a9ef8df721ca9814,
+      type: 3}
+    ShowHeader: 1
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: 
+    Music:
+      Name: 
+      Parameters: []
+    Ambient:
+      Name: 
+      Parameters: []
+  - ID: LA_PLACE_ROYALE
+    Prefab: {fileID: 1265684544818456, guid: b12b1c36b8a76d8498193e6145c95fd5, type: 3}
+    ShowHeader: 1
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: La Place Royale
+    Music:
+      Name: 
+      Parameters: []
+    Ambient:
+      Name: 
+      Parameters: []
+  - ID: LA_TROMPETTE
+    Prefab: {fileID: 1935741580273956, guid: 1a6b275d35d21354391b1ca36f182890, type: 3}
+    ShowHeader: 1
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: La Trompette Du Peuple
+    Music:
+      Name: event:/Music/Fourth Estate
+      Parameters: []
+    Ambient:
+      Name: event:/Ambient SFX/Amb_ParisStreets_inside
+      Parameters: []
+  - ID: LE_PETIT_MOGOL
+    Prefab: {fileID: 1322629131161042, guid: afa44d9eb83f7cc47a122afe289e5b19, type: 3}
+    ShowHeader: 1
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: Le Petit Mogol
+    Music:
+      Name: event:/Music/Le Petit Mougul
+      Parameters: []
+    Ambient:
+      Name: event:/Ambient SFX/Amb_ParisStreets_inside
+      Parameters: []
+  - ID: MAP_SCENE
+    Prefab: {fileID: 4567159796894665872, guid: d239c0cf5b13348f7a12d3c737444287,
+      type: 3}
+    ShowHeader: 1
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: 
+    Music:
+      Name: 
+      Parameters: []
+    Ambient:
+      Name: 
+      Parameters: []
+  - ID: PARIS_SCENE
+    Prefab: {fileID: 1817905340190894, guid: b7cc8d9cbcbdaa1439b86b443ca1f54e, type: 3}
+    ShowHeader: 1
+    FadeInTime: 1
+    FadeOutTime: 1
+    HeaderTitle: Paris
+    Music:
+      Name: event:/Music/Paris Map
+      Parameters: []
+    Ambient:
+      Name: event:/Ambient SFX/Amb_ParisStreets_inside
+      Parameters: []
+  - ID: START_SCENE
+    Prefab: {fileID: 680423117067803756, guid: 35974bd5f5e7e8d47b1c4508dd1efa84, type: 3}
+    ShowHeader: 0
+    FadeInTime: 2
+    FadeOutTime: 2
+    HeaderTitle: 
+    Music:
+      Name: 
+      Parameters: []
+    Ambient:
+      Name: 
+      Parameters: []
+  - ID: CREDITS_SCENE
+    Prefab: {fileID: 6549890690197397432, guid: 4d1148a053fa94b04bb752309cd214c7,
+      type: 3}
+    ShowHeader: 0
+    FadeInTime: 1.5
+    FadeOutTime: 1.5
+    HeaderTitle: 
+    Music:
+      Name: 
+      Parameters: []
+    Ambient:
+      Name: 
+      Parameters: []

@@ -4,31 +4,15 @@ using UnityEngine;
 using Util;
 namespace Ambition
 {
-    public class MapView : MonoBehaviour
+    public class MapView : SceneView, IAnalogInputHandler
     {
-        public FactionType Faction = FactionType.Neutral;
+        public FactionType Faction = FactionType.None;
         public string[] Tags;
         public PartySize Size;
+        public FMODEvent Music;
 
-        private RoomView[] _rooms;
-
-        private void Awake()
+        public void HandleInput(Vector2[] input)
         {
-            _rooms = transform.GetComponentsInChildren<RoomView>();
-            AmbitionApp.Subscribe<IncidentVO[]>(PartyMessages.SELECT_INCIDENTS, HandleIncidents);
-        }
-
-        private void OnDestroy()
-        {
-            AmbitionApp.Unsubscribe<IncidentVO[]>(PartyMessages.SELECT_INCIDENTS, HandleIncidents);
-        }
-
-        private void HandleIncidents(IncidentVO[] incidents)
-        {
-            for (int i=_rooms.Length-1; i>=0; --i)
-            {
-                _rooms[i].SetIncident(incidents[i]);
-            }
         }
     }
 }

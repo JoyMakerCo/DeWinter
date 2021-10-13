@@ -6,8 +6,7 @@ namespace Ambition
         // Checks the Paris model for known locations or currently available explorable locations
         public static bool Check(RequirementVO req)
         {
-            int value = AmbitionApp.GetModel<GameModel>().Exhaustion.Value;
-            return RequirementsSvc.Check(req, value);
+            return RequirementsSvc.Check(req, AmbitionApp.Game.Exhaustion);
         }
     }
 }

@@ -3,10 +3,11 @@ namespace Ambition
 {
     public class ExitRoomState : UFlow.UState
     {
-        public override void OnEnterState()
+        public override void OnEnter()
         {
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            if (model.GetRequiredIncident() == null) model.NextRequiredIncident();
+            if (model.RequiredIncident == null) model.NextRequiredIncident();
+            model.Incidents = null;
         }
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
-  m_Name: Legacy
+  m_Name: legacy
   m_EditorClassIdentifier: 
   _Nodes: 
   _Links: 
@@ -43,7 +43,7 @@ MonoBehaviour:
   - {x: 174, y: 1033}
   - {x: 173, y: 1185}
   - {x: -50, y: 1087}
-  - {x: -50, y: 1185}
+  - {x: -50, y: 1184}
   - {x: -56, y: 972}
   - {x: -48, y: 1242}
   - {x: -50, y: 1295}
@@ -75,23 +75,28 @@ MonoBehaviour:
   - {x: -268, y: 2394}
   - {x: 109, y: 2397}
   - {x: -269, y: 2463}
-  - {x: -268, y: 2581}
+  - {x: -268, y: 2582}
   - {x: -35, y: 2593}
   - {x: 112, y: 2458}
   - {x: 113, y: 2517}
   - {x: -37, y: 2643}
   - {x: -36, y: 2693}
   - {x: -32, y: 2742}
-  - {x: -36, y: 2843}
-  - {x: -35, y: 2888}
+  - {x: -36, y: 2844}
+  - {x: -34, y: 2888}
   - {x: -194, y: 2953}
-  - {x: 101, y: 2952}
+  - {x: 100, y: 2954}
   - {x: 185, y: 851}
   - {x: 183, y: 972}
   - {x: 170, y: 1559}
   - {x: -280, y: 2517}
   - {x: -37, y: 2794}
   - {x: -41, y: 800}
+  - {x: -33, y: 3017}
+  - {x: -32, y: 3078}
+  - {x: -31, y: 3139}
+  - {x: -32, y: 3198}
+  - {x: -33, y: 3255}
   Incident:
     Links:
     - {x: 0, y: 1}
@@ -178,6 +183,12 @@ MonoBehaviour:
     - {x: 75, y: 67}
     - {x: 17, y: 76}
     - {x: 76, y: 18}
+    - {x: 70, y: 77}
+    - {x: 69, y: 77}
+    - {x: 77, y: 78}
+    - {x: 78, y: 79}
+    - {x: 79, y: 80}
+    - {x: 80, y: 81}
     Nodes:
     - Text: You draw your shawl a little closer as you're buffetted by another gust
         of wind. Checking the notes in your journal, you see that you're close to
@@ -188,10 +199,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -209,10 +222,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -231,10 +246,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 1
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -253,10 +270,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 1
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -275,10 +294,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -296,12 +317,17 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
-      Rewards: []
+      Rewards:
+      - Type: 11
+        ID: 
+        Value: 5
       Music:
         Name: 
         Parameters: []
@@ -318,10 +344,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alexandre
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -340,10 +368,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -355,17 +385,19 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: '"Ah, you''re here! I''m so glad you came." He admits, with no small amount
-        of relief. '
+    - Text: '"Ah, you''re here! I''m so glad you came." He admits, with no small
+        amount of relief. '
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -383,14 +415,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alexandre
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 1
       Music:
         Name: 
@@ -409,10 +443,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -431,10 +467,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -452,10 +490,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -470,15 +510,17 @@ MonoBehaviour:
     - Text: Together, you walk through the open gates. Off, in one corner, you see
         a family gathered together for a funeral. You keep your distance from them,
         and in return they pay you no mind.
-      Background: {fileID: 0}
+      Background: {fileID: 21300000, guid: 37af759436a2147a1a1a8f0341241282, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -498,10 +540,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -520,10 +564,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -541,10 +587,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -564,10 +612,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -585,10 +635,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -606,10 +658,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -627,10 +681,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -649,10 +705,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -670,14 +728,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alexandre
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 1
       Music:
         Name: 
@@ -695,10 +755,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -710,18 +772,20 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: Seeing your confused expression, the anger leaves him, replaced only by
-        melancholy. "The average lifespan of a working slave in <i>Saint Domingue</i>...
+    - Text: Seeing your confused expression, the anger leaves him, replaced only
+        by melancholy. "The average lifespan of a working slave in <i>Saint Domingue</i>...
         is around ten years."
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -739,10 +803,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -760,10 +826,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
@@ -785,10 +853,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -808,10 +878,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -829,14 +901,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 2
       Music:
         Name: 
@@ -854,10 +928,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -869,17 +945,19 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: '"I thought that I should honor his memory, but now I''m starting to think
-        that''s wrong too."'
+    - Text: '"I thought that I should honor his memory, but now I''m starting to
+        think that''s wrong too."'
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -898,10 +976,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -920,10 +1000,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -942,10 +1024,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -963,10 +1047,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -984,14 +1070,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: -1
       Music:
         Name: 
@@ -1008,14 +1096,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 2
       Music:
         Name: 
@@ -1032,14 +1122,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 1
       Music:
         Name: 
@@ -1057,10 +1149,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1079,10 +1173,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1101,10 +1197,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1123,10 +1221,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1145,10 +1245,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1166,10 +1268,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1189,10 +1293,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1210,10 +1316,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1231,10 +1339,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1253,10 +1363,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1268,17 +1380,19 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: He laughs loudly. "Yvette, if that's nothing to you, I can't wait to see
-        what you think a real favor for your friends is."
+    - Text: He laughs loudly. "Yvette, if that's nothing to you, I can't wait to
+        see what you think a real favor for your friends is."
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1296,14 +1410,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 2
       Music:
         Name: 
@@ -1320,14 +1436,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alexandre
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: -2
       Music:
         Name: 
@@ -1344,14 +1462,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 1
       Music:
         Name: 
@@ -1369,10 +1489,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1391,10 +1513,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1410,12 +1534,14 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
-        Pose: happy
+        Pose: smolder
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1431,12 +1557,14 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
-        Pose: happy
+        Pose: smolder
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1449,17 +1577,19 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: As you crane your neck to bring your lips closer to his, you feel one
-        of his arms sweep behind your knees and he lifts towards himself, almost like
-        a dancer's dip.
+        of his arms sweep behind your knees and he lifts towards himself, almost
+        like a dancer's dip.
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1477,10 +1607,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1500,10 +1632,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1521,14 +1655,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 5
       Music:
         Name: 
@@ -1540,17 +1676,20 @@ MonoBehaviour:
         Name: 
         Parameters: []
     - Text: 'Love is, of course, bigger than its grand romatnic gestures. The two
-        of you spend the next hour watching the sunset, laughing and joking with each
-        other. He regales with stories of daring that grow improbably with every telling. '
+        of you spend the next hour watching the sunset, laughing and joking with
+        each other. He regales with stories of daring that grow improbably with every
+        telling. '
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1569,10 +1708,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1590,14 +1731,16 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Thomas-Alexandre
+        ID: thomasAlexandreDumas
         Value: 2
       Music:
         Name: 
@@ -1608,38 +1751,43 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: The sun sets and with nightfall, he walks you home. You find Camille waiting
-        for you outside.
-      Background: {fileID: 21300000, guid: 335c3cc6f29a07445ba1dd1a4c5fbf21, type: 3}
+    - Text: The sun sets and with nightfall, he walks you home. You find Camille
+        waiting for you outside.
+      Background: {fileID: 21300000, guid: 0e83ccf7f1049422c97576b46e1a39b1, type: 3}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: 
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_outside
         Parameters: []
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: '"<i>Bonsoir</i> madame! <i>Bonsoir</i> monsieur! Did you enjoy your evening?"'
+    - Text: '"<i>Bonsoir</i> madame! <i>Bonsoir</i> monsieur! Did you enjoy your
+        evening?"'
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: Camille
         Pose: neutral
         Name: Camille
+        Motion: 2
       Speaker: 3
       Rewards: []
       Music:
@@ -1659,10 +1807,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: Camille
         Pose: happy
         Name: Camille
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1677,13 +1827,15 @@ MonoBehaviour:
     - Text: With that, Alexandre excuses himself and heads off into the night.
       Background: {fileID: 0}
       Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
+        AvatarID: Thomas-AlexandreDumas
+        Pose: neutral
+        Name: Alex
+        Motion: 3
       Character2:
         AvatarID: Camille
         Pose: neutral
         Name: Camille
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1701,10 +1853,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: Camille
         Pose: neutral
         Name: Camille
+        Motion: 0
       Speaker: 3
       Rewards: []
       Music:
@@ -1718,48 +1872,52 @@ MonoBehaviour:
         Parameters: []
     - Text: With memories of the happy evening still in your mind, you head upstairs
         to record the details in your journal, before getting ready for bed.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
-        Name: event:/One Shot SFX/door_latch
+        Name: event:/One Shot SFX/stairs_ascend
         Parameters: []
     - Text: Trying to ignore the mental images of the lost souls that you so frequently
         discussed tonight, you trudge upstairs to record the details in your journal,
         before getting ready for bed.
-      Background: {fileID: 21300000, guid: f0abd5a48ddfdda4db48289ab6e6f602, type: 3}
+      Background: {fileID: 21300000, guid: 2ce181645a6b84a53af6209d8a82ff14, type: 3}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
         Name: 
         Parameters: []
       AmbientSFX:
-        Name: event:/Ambient SFX/Amb_ParisStreets_inside
+        Name: event:/Ambient SFX/Amb_ParisStreets_night_inside
         Parameters: []
       OneShotSFX:
-        Name: event:/One Shot SFX/door_latch
+        Name: event:/One Shot SFX/stairs_ascend
         Parameters: []
     - Text: '"No... I have not..."'
       Background: {fileID: 0}
@@ -1767,10 +1925,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1789,10 +1949,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: angry
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1811,10 +1973,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1826,17 +1990,19 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: Love is joy, love is comfort, love is passion, but sometimes love is also
-        catharsis.
+    - Text: Love is joy, love is comfort, love is passion, but sometimes love is
+        also catharsis.
       Background: {fileID: 0}
       Character1:
         AvatarID: Thomas-AlexandreDumas
         Pose: neutral
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1854,10 +2020,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: happpy
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: Camille
         Pose: happy
         Name: Camille
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1875,10 +2043,12 @@ MonoBehaviour:
         AvatarID: Thomas-AlexandreDumas
         Pose: sad
         Name: Alex
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1890,528 +2060,596 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
+    - Text: 'Camille laughs, but you''re not sure if she gets the joke. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: neutral
+        Name: "Th\xE9r\xE8se"
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
+    - Text: 'Camille laughs, but you''re not sure if she gets the joke. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: happy
+        Name: "Th\xE9r\xE8se"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: 'Camille laughs, but you''re not sure if she gets the joke. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: neutral
+        Name: "Th\xE9r\xE8se"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_neutral
+        Parameters: []
+    - Text: 'Camille laughs, but you''re not sure if she gets the joke. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: neutral
+        Name: "Th\xE9r\xE8se"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 2
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: 'Camille laughs, but you''re not sure if she gets the joke. '
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: neutral
+        Name: "Th\xE9r\xE8se"
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/door_latch
+        Parameters: []
     LinkData:
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: <Approach him>
+    - Text: <Approach him>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: <Watch him first>
+    - Text: <Watch him first>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"Alexandre, he''s the one who made those decisions, not you."'
+    - Text: '"Alexandre, he''s the one who made those decisions, not you."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"You feel like you benefitted from their loss?"'
+    - Text: '"You feel like you benefitted from their loss?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"Take the advantages he gave you, and use them to right his wrongs."'
+    - Text: '"Take the advantages he gave you, and use them to right his wrongs."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"That doesn''t matter. You must be your own person."'
+    - Text: '"That doesn''t matter. You must be your own person."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"Then be the man you always imagined your father to be. Be the better
+    - Text: '"Then be the man you always imagined your father to be. Be the better
         version."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"Please, I was glad to do it."'
+    - Text: '"Please, I was glad to do it."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"I just wish you''d warned me what I was getting into."'
+    - Text: '"I just wish you''d warned me what I was getting into."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"<i>De rien</i>, think nothing of it."'
+    - Text: '"<i>De rien</i>, think nothing of it."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: <Kiss him>
+    - Text: <Kiss him>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: <Embrace him>
+    - Text: <Embrace him>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"Absolutely! It was a lovely evening."'
+    - Text: '"Absolutely! It was a lovely evening."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"All in all, it was rather morbid, to be honest."'
+    - Text: '"All in all, it was rather morbid, to be honest."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"Have you tried to go back for them, to free them?"'
+    - Text: '"Have you tried to go back for them, to free them?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: therese
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: therese
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 0
+      Rewards: []
+      Requirements: []
+      Flags: []
+    ID: 
     OneShot: 1
     Chapters: 
+    Type: 0
     Factions: 
     Political: 0
-    Requirements:
-    - Type: 8
-      ID: A Storied Lineage
-      Value: 1
-      Operator: 4
+    Description: 
+    Requirements: []
     _date: -1
+  Name: Legacy
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _requirements: []
   _nodeText:
-  - You draw your shawl a little closer as you're buffetted by another gust of wind.
+  - You draw your shawl a little closer as you're buffeted by another gust of wind.
     Checking the notes in your journal, you see that you're close to the graveyard
     where Alex wanted to meet you. However, you still have no idea what you're really
     here for.
@@ -2438,8 +2676,8 @@ MonoBehaviour:
     gathered together for a funeral. You keep your distance from them, and in return
     they pay you no mind.
   - '"Like so many little boys growing up, my father was my hero. A dashing rogue,
-    a secret aristocrat hiding away with my mother in the distant mountains of a tropical
-    paradise. He sacrificed so much, to give me everything."'
+    a secret aristocrat hiding away with my mother in the distant mountains of a
+    tropical paradise. He sacrificed so much, to give me everything."'
   - '"... but when I said he sold me to afford his passage to France, I wasn''t telling
     you the whole truth."'
   - '"I wasn''t an only child, and my mother never made it to this country."'
@@ -2451,26 +2689,26 @@ MonoBehaviour:
   - '"... because they''re thousands of miles away, where simple messages take months
     arrive."'
   - (You have gained a little favor with Alex)
-  - '"What am I saying?" He growls, to himself more than anyone else. "It''s not a
-    feeling, it''s an objective fact."'
+  - '"What am I saying?" He growls, to himself more than anyone else. "It''s not
+    a feeling, it''s an objective fact."'
   - Seeing your confused expression, the anger leaves him, replaced only by melancholy.
     "The average lifespan of a working slave in <i>Saint Domingue</i>... is around
     ten years."
-  - '"... and because this all hapened nearly a decade ago!"'
+  - '"... and because this all happened nearly a decade ago!"'
   - (You have lost a little favor with Alex)
   - '"I wouldn''t be here, with all of my advantages, if he hadn''t condemned them
     to that suffering."'
-  - You arrive at a gravestone. It's carved from fine marble, but already marred with
-    dirth and soot. It says 'Marquis Alexandre Antoine Davy de la Pailleterie'. A
-    series of battles are listed under the name.
+  - You arrive at a gravestone. It's carved from fine marble, but already marred
+    with dirt and soot. It says 'Marquis Alexandre Antoine Davy de la Pailleterie'.
+    A series of battles are listed under the name.
   - (You have gained some favor with Alex)
   - '"He served in the army as well. I joined up to make him proud, but when he died
     I realized that there was nobody left to be proud of me."'
   - '"I thought that I should honor his memory, but now I''m starting to think that''s
     wrong too."'
   - '"I''ve been trying to live up to a great legacy... that isn''t great at all."'
-  - '"You''re absolutely right. I must fight for others. I must do the things he would
-    have never thought to do."'
+  - '"You''re absolutely right. I must fight for others. I must do the things he
+    would have never thought to do."'
   - '"No." He replies flatly. "I cannot live selfishly. I cannot live, as he lived."'
   - '"I like that idea." He smiles thinly, eyes still fixed on the headstone. '
   - (You have lost a little favor with Alex)
@@ -2483,16 +2721,16 @@ MonoBehaviour:
     One who will use his might, in service of right."'
   - He looks at you and grins. "And I am so fortunate, to have people with me, who
     could help me when I was lost."
-  - He kneels down, and with a handkerchief, cleans the smudges of dirt from the headstone.
-    "Farewell father. I shall not return."
+  - He kneels down, and with a handkerchief, cleans the smudges of dirt from the
+    headstone. "Farewell father. I shall not return."
   - '"Yvette, I think we should be on our way."'
-  - You walk outside with him, and notice that the funeral party from before has also
-    finished up. While they still look somber, you can tell that they're also ready
-    to move forward with their lives.
+  - You walk outside with him, and notice that the funeral party from before has
+    also finished up. While they still look somber, you can tell that they're also
+    ready to move forward with their lives.
   - '"Thank you again. I don''t think I could have done that by myself."'
   - He gives you a theatrical bow "I am in your debt."
-  - '"I''m sorry, but you should be able to understand why I wasn''t comfortable putting
-    some of this in a letter. This has not been easy."'
+  - '"I''m sorry, but you should be able to understand why I wasn''t comfortable
+    putting some of this in a letter. This has not been easy."'
   - He laughs loudly. "Yvette, if that's nothing to you, I can't wait to see what
     you think a real favor for your friends is."
   - (You have gained some favor with Alex)
@@ -2504,21 +2742,22 @@ MonoBehaviour:
     world. It''s given me freedom, education, excitement..."'
   - He loops his arm around your waist.
   - '"...and love."'
-  - As you crane your neck to bring your lips closer to his, you feel one of his arms
-    sweep behind your knees and he lifts towards himself, almost like a dancer's dip.
-  - You wraps your arms around him and he hugs you close. Tightly and fiercely.
+  - As you crane your neck to bring your lips closer to his, you feel one of his
+    arms sweep behind your knees and he lifts you towards him, almost like a dancer's
+    dip.
+  - You wrap your arms around him and he hugs you close. Tightly and fiercely.
   - 'Your lips meet. You fling your arms around his neck and he only holds you closer.
     Between throes of passion, your eyes open for but a moment, and you glimpse a
     single tear rolling down his cheek. '
   - (You have earned a lot of favor with Alex)
-  - 'Love is, of course, bigger than its grand romatnic gestures. The two of you spend
-    the next hour watching the sunset, laughing and joking with each other. He regales
-    with stories of daring that grow more improbable with every new telling. '
+  - 'Love is, of course, bigger than its grand romantic gestures. The two of you
+    spend the next hour watching the sunset, laughing and joking with each other.
+    He regales with stories of daring that grow more improbable with every new telling. '
   - His body is as still and powerful as a tree, but as you rest your head against
     his chest, you can hear his heart beating at a furious tempo.
   - (You have gained some favor with Alex)
-  - The sun sets and with nightfall, he walks you home. You find Camille waiting for
-    you outside.
+  - The sun sets and with nightfall, he walks you home. You find Camille waiting
+    for you outside.
   - '"<i>Bonsoir</i> madame! <i>Bonsoir</i> monsieur! Did you enjoy your evening?"'
   - '"I think Madame Decaux here is going to be a little more cautious when agreeing
     to mysterious invitations from now on, but otherwise I think things went well!"
@@ -2532,12 +2771,26 @@ MonoBehaviour:
     ready for bed.
   - '"No... I have not..."'
   - '"... because my father had made powerful enemies when he left <i>Saint Domingue</i>..."'
-  - '"Once the rose colored lenses are lifted from your eyes, they can never be put
+  - '"Once the rose-colored lenses are lifted from your eyes, they can never be put
     back on, but that''s alright. I can still be inspired by my memories."'
   - Love is joy, love is comfort, love is passion, but sometimes love is also catharsis.
   - 'Camille laughs, but you''re not sure if she gets the joke. '
   - '"There was no policy set in place to buy them back. He never intended to see
     them again."'
+  - "Not long after you sit down and begin to write, Th\xE9r\xE8se enters your bedroom,
+    as quietly as a shadow."
+  - '"The mystery of the young dragoon''s origins is solved at last, is it? Seeing
+    someone who has grown to be more virtuous than their lineage... it''s almost
+    enough to make one have faith in their fellow man."'
+  - '"He''ll likely be occupied for some time, after a revelation like that. However,
+    if you stay on his good side, he''ll likely call upon you again." She continues,
+    squinting out the window at some detail that you can''t see.'
+  - '"A soldier is always a valuable asset to have. Not just for their capacity for
+    violence, but also because they tend to be told about dangerous changes in the
+    world before anyone else. Keep that in mind, as the situation in Paris continues
+    to deteriorate."'
+  - 'With her wisdom dispensed, she leaves, and you return to writing down your notes
+    for the day. '
   _linkText:
   - 
   - <Approach him>
@@ -2612,6 +2865,12 @@ MonoBehaviour:
   - '"Absolutely! It was a lovely evening."'
   - '"All in all, it was rather morbid, to be honest."'
   - '"Have you tried to go back for them, to free them?"'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

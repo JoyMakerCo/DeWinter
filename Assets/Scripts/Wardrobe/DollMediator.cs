@@ -8,24 +8,24 @@ namespace Ambition
 {
     public class DollMediator : MonoBehaviour
     {
-        public OutfitConfig OutfitConfig;
         public Image Doll;
+
+        private Sprite _default;
 
         void Awake()
         {
-            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
-            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.DISPLAY_ITEM, HandleOutfit);
+            _default = Doll.sprite;
+            AmbitionApp.Subscribe<ItemVO>(InventoryMessages.BROWSE, HandleOutfit);
         }
 
         void OnDestroy()
         {
-            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.EQUIP, HandleOutfit);
-            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.DISPLAY_ITEM, HandleOutfit);
+            AmbitionApp.Unsubscribe<ItemVO>(InventoryMessages.BROWSE, HandleOutfit);
         }
 
         void HandleOutfit(ItemVO outfit)
         {
-            Doll.sprite = OutfitConfig.GetOutfit(outfit);
+            Doll.sprite = AmbitionApp.Inventory.GetAsset(outfit);
         }
     }
 }

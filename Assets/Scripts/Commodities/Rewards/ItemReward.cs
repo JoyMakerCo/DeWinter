@@ -9,12 +9,17 @@ namespace Ambition
         public void Execute(CommodityVO reward)
         {
             InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            ItemVO item = Array.Find(inventory.Items, i => i.ID == reward.ID);
+            ItemVO item = inventory.Instantiate(reward.ID);
+            if (item == null)
+            {
+                ItemConfig config = Resources.Load<ItemConfig>(Filepath.Items + reward.ID);
+                inventory.Import(config);
+                item = inventory.Instantiate(reward.ID);
+            }
             if (item != null)
             {
-                item = new ItemVO(item);
                 if (reward.Value > 0) item.Price = reward.Value;
-                item.Created = AmbitionApp.GetModel<GameModel>().Date;
+                item.Created = AmbitionApp.GetModel<CalendarModel>().Today;
                 inventory.Inventory.Add(item);
                 inventory.Broadcast();
             }

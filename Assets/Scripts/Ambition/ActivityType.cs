@@ -3,6 +3,6 @@ namespace Ambition
 {
     public enum ActivityType
     {
-        Estate, Party, Location, Evening
+        Estate, Party, Location, Evening, Rendezvous, Paris, Title
     }
 }

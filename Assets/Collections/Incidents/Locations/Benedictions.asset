@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ae1823d76704427919aa54bd9e42dc, type: 3}
-  m_Name: Benedictions
+  m_Name: benedictions
   m_EditorClassIdentifier: 
-  _Nodes: 
+  _Nodes: 1c000000
   _Links: 
   _Positions:
   - {x: 0, y: 0}
@@ -22,8 +22,8 @@ MonoBehaviour:
   - {x: -214, y: 253}
   - {x: 1, y: 123}
   - {x: 261, y: 125}
-  - {x: 29, y: 398}
-  - {x: 19, y: 537}
+  - {x: 29, y: 397}
+  - {x: 19, y: 538}
   - {x: 26, y: 655}
   - {x: -148, y: 468}
   - {x: 151, y: 474}
@@ -32,7 +32,7 @@ MonoBehaviour:
   - {x: 28, y: 786}
   - {x: -218, y: 860}
   - {x: 30, y: 838}
-  - {x: 294, y: 764}
+  - {x: 295, y: 764}
   - {x: 297, y: 981}
   - {x: 33, y: 890}
   - {x: 25, y: 1019}
@@ -42,27 +42,31 @@ MonoBehaviour:
   - {x: 243, y: 1163}
   - {x: 261, y: 1308}
   - {x: 31, y: 1248}
-  - {x: 26, y: 1469}
-  - {x: 20, y: 1534}
-  - {x: -96, y: 1605}
-  - {x: 146, y: 1599}
+  - {x: 163, y: 1510}
+  - {x: 20, y: 1572}
+  - {x: -218, y: 1637}
+  - {x: 29, y: 1642}
   - {x: 1, y: 65}
   - {x: 254, y: 321}
   - {x: 256, y: 390}
-  - {x: -224, y: 397}
-  - {x: -226, y: 334}
+  - {x: -224, y: 398}
+  - {x: -222, y: 325}
   - {x: 24, y: 591}
   - {x: 25, y: 721}
   - {x: 293, y: 877}
-  - {x: 27, y: 1075}
-  - {x: 27, y: 1411}
-  - {x: 24, y: 1336}
+  - {x: 28, y: 1076}
+  - {x: 163, y: 1456}
+  - {x: 141, y: 1381}
   - {x: 296, y: 932}
   - {x: 295, y: 819}
   - {x: 286, y: 1044}
   - {x: 36, y: 946}
   - {x: 259, y: 1226}
   - {x: -199, y: 1200}
+  - {x: -97, y: 1377}
+  - {x: 268, y: 1577}
+  - {x: 271, y: 1635}
+  - {x: 269, y: 1692}
   Incident:
     Links:
     - {x: 2, y: 3}
@@ -118,6 +122,13 @@ MonoBehaviour:
     - {x: 46, y: 25}
     - {x: 22, y: 47}
     - {x: 47, y: 1}
+    - {x: 25, y: 48}
+    - {x: 48, y: 40}
+    - {x: 26, y: 48}
+    - {x: 1, y: 48}
+    - {x: 27, y: 49}
+    - {x: 49, y: 50}
+    - {x: 50, y: 51}
     Nodes:
     - Text: 'Getting up a little earlier than usual, you walk south to the 14th <i>arrondisement</i>,
         so you can attend Ludovico''s sermon. Much as he said, the neighborhood is
@@ -131,10 +142,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -146,20 +159,23 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: '"In fact, you may reach out to me whenever you like." He manages to cough
-        while he hands you a piece of paper with his address on it.
+    - Text: '"In fact, you may reach out to me whenever you like." He manages to
+        cough while he hands you a piece of paper with his address on it.
 
 
-        (You may now go on rendezvous with Ludovico)'
+        (You
+        may now go on rendezvous with Ludovico)'
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -173,15 +189,17 @@ MonoBehaviour:
         Parameters: []
     - Text: 'Stopping to greet the parisioners still exchanging pleasantries outside,
         you enter the church and make your way to an unoccupied chair, near the front. '
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 21300000, guid: 62f0aa7874440453a8e55197eddbc499, type: 3}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -195,17 +213,19 @@ MonoBehaviour:
         Parameters: []
     - Text: You sit down just as mass is about to begin. While you were raised Catholic,
         you found yourself to be a touch less zealous than most. In fact, you realize
-        that this is the first time you've even attended a church since arriving in
-        Paris.
+        that this is the first time you've even attended a church since arriving
+        in Paris.
       Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -217,18 +237,20 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: Still, as the service progresses, you find yourself participating as if
-        you'd never stopped. You know when to stand up, when to sit down, when to
-        sing, and when to be silent.
+    - Text: Still, as the service progresses, you find yourself participating as
+        if you'd never stopped. You know when to stand up, when to sit down, when
+        to sing, and when to be silent.
       Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -247,10 +269,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -265,15 +289,17 @@ MonoBehaviour:
     - Text: 'Slinking by the parisioners still exchanging pleasantries outside, you
         enter the church and make your way to an unoccupied chair, far from everyone
         else. '
-      Background: {fileID: 21300000, guid: 10e71d1ac02fa3c429ed7b45ef7219dd, type: 3}
+      Background: {fileID: 21300000, guid: 62f0aa7874440453a8e55197eddbc499, type: 3}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -292,10 +318,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -314,10 +342,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -337,10 +367,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -359,10 +391,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -381,10 +415,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -405,10 +441,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -428,10 +466,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -443,17 +483,19 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: '"You may kneel," He says, gesturing with his free hand to the floor in
-        front of him.'
+    - Text: '"You may kneel," He says, gesturing with his free hand to the floor
+        in front of him.'
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -473,10 +515,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -496,10 +540,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -516,16 +562,19 @@ MonoBehaviour:
         sign of the cross, you look up and kiss his thumb.
 
 
-        The holy water drips down your lips and across your chin.'
+        The holy water
+        drips down your lips and across your chin.'
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
-        Pose: neutral
+        Pose: smolder
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -545,12 +594,14 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
-        Pose: happy
+        Pose: smolder
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -572,10 +623,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: happy
         Name: Ludvico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -595,10 +648,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -616,10 +671,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -635,16 +692,19 @@ MonoBehaviour:
         of the crowd around the two of you.
 
 
-        (You have gained some favor with Ludovico)'
+        (You have gained some favor
+        with Ludovico)'
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
-        Pose: happy
+        Pose: smolder
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -662,10 +722,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -687,10 +749,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: happy
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -706,16 +770,19 @@ MonoBehaviour:
         piece of paper with his address on it.
 
 
-        (You may now go on rendezvous with Ludovico)'
+        (You may now go on rendezvous
+        with Ludovico)'
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -731,16 +798,19 @@ MonoBehaviour:
         you a piece of paper with his address on it.
 
 
-        (You may now go on rendezvous with Ludovico)'
+        (You may now go on
+        rendezvous with Ludovico)'
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -759,10 +829,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -774,17 +846,19 @@ MonoBehaviour:
       OneShotSFX:
         Name: event:/One Shot SFX/door_latch
         Parameters: []
-    - Text: Walking home, through the 14th <i>arrondisement</i>, you puzzle over the
-        morning's events.
+    - Text: Walking home, through the 14th <i>arrondisement</i>, you puzzle over
+        the morning's events.
       Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -804,10 +878,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -819,18 +895,20 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: You hurry home, feeling like the eyes of the entire neighborhood are upon
-        you. While the actual walk home is safe, every shadow seems like it contains
-        a new threat, ready to spring forth and be your undoing.
+    - Text: You hurry home, feeling like the eyes of the entire neighborhood are
+        upon you. While the actual walk home is safe, every shadow seems like it
+        contains a new threat, ready to spring forth and be your undoing.
       Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -850,10 +928,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -874,10 +954,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -896,10 +978,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -918,10 +1002,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -936,17 +1022,19 @@ MonoBehaviour:
     - Text: "At one point, a procession brings forth a reliquary containing the forearm
         bone of a martyred saint. You look at the people around you, and they seem
         transfixed by it. It's amazing to think that such a thing could still carry
-        so much meaning for so many people. \n\nDid that saint ever imagine that this
-        would happen? That they would affect so many, long after their death?"
+        so much meaning for so many people. \n\nDid that saint ever imagine that
+        this would happen? That they would affect so many, long after their death?"
       Background: {fileID: 0}
       Character1:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -964,10 +1052,12 @@ MonoBehaviour:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -983,16 +1073,19 @@ MonoBehaviour:
         every part the humble priest, his thumb annointed with holy water.
 
 
-        "Approach, Madame Decaux."'
+        "Approach,
+        Madame Decaux."'
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 1
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 2
       Rewards: []
       Music:
@@ -1004,20 +1097,23 @@ MonoBehaviour:
       OneShotSFX:
         Name: 
         Parameters: []
-    - Text: 'While none of the other parisioners dare speak a word about it, you hear
-        a collective intake of breath. Wind tensely whistling between their teeth.
+    - Text: 'While none of the other parisioners dare speak a word about it, you
+        hear a collective intake of breath. Wind tensely whistling between their
+        teeth.
 
 
         (You have gained a little peril)'
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
-        Pose: neutral
+        Pose: smolder
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1037,32 +1133,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
-      Speaker: 0
-      Rewards: []
-      Music:
-        Name: 
-        Parameters: []
-      AmbientSFX:
-        Name: 
-        Parameters: []
-      OneShotSFX:
-        Name: 
-        Parameters: []
-    - Text: "With a polite nod you take your leave before anyone becomes suspicious.
-        \n\nWell, even more suspicious, really. "
-      Background: {fileID: 0}
-      Character1:
-        AvatarID: 
-        Pose: 
-        Name: 
-      Character2:
-        AvatarID: 
-        Pose: 
-        Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1081,10 +1157,12 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 3
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1103,10 +1181,39 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: neutral
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 22
+        ID: ludovicoSidotti
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "With a polite nod you take your leave before anyone becomes suspicious.
+        \n\nWell, even more suspicious, really. "
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: smolder
+        Name: Ludovico
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 12
@@ -1126,12 +1233,14 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
-        Pose: neutral
+        Pose: smolder
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards: []
       Music:
@@ -1148,16 +1257,18 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
-        Pose: happy
+        Pose: smolder
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Ludovico
+        ID: ludovicoSidotti
         Value: 2
       Music:
         Name: 
@@ -1175,14 +1286,16 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: happy
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Ludovico
+        ID: ludovicoSidotti
         Value: 1
       Music:
         Name: 
@@ -1200,14 +1313,16 @@ MonoBehaviour:
         AvatarID: LudovicoSidotti
         Pose: happy
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Ludovico
+        ID: ludovicoSidotti
         Value: 1
       Music:
         Name: 
@@ -1223,17 +1338,118 @@ MonoBehaviour:
       Background: {fileID: 0}
       Character1:
         AvatarID: LudovicoSidotti
-        Pose: happy
+        Pose: smolder
         Name: Ludovico
+        Motion: 0
       Character2:
         AvatarID: 
         Pose: 
         Name: 
+        Motion: 0
       Speaker: 0
       Rewards:
       - Type: 5
-        ID: Ludovico
+        ID: ludovicoSidotti
         Value: 2
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "With a polite nod you take your leave before anyone becomes suspicious.
+        \n\nWell, even more suspicious, really. "
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: LudovicoSidotti
+        Pose: neutral
+        Name: Ludovico
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards:
+      - Type: 22
+        ID: ludovicoSidotti
+        Value: 1
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "With a polite nod you take your leave before anyone becomes suspicious.
+        \n\nWell, even more suspicious, really. "
+      Background: {fileID: 21300000, guid: 0b25e726760d4460cac58edf6d6ccfb6, type: 3}
+      Character1:
+        AvatarID: Therese
+        Pose: neutral
+        Name: "Th\xE9r\xE8se"
+        Motion: 1
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: 
+        Parameters: []
+    - Text: "With a polite nod you take your leave before anyone becomes suspicious.
+        \n\nWell, even more suspicious, really. "
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: happy
+        Name: "Th\xE9r\xE8se"
+        Motion: 0
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
+      Music:
+        Name: 
+        Parameters: []
+      AmbientSFX:
+        Name: 
+        Parameters: []
+      OneShotSFX:
+        Name: event:/One Shot SFX/Female_bark_positive
+        Parameters: []
+    - Text: "With a polite nod you take your leave before anyone becomes suspicious.
+        \n\nWell, even more suspicious, really. "
+      Background: {fileID: 0}
+      Character1:
+        AvatarID: Therese
+        Pose: neutral
+        Name: "Th\xE9r\xE8se"
+        Motion: 3
+      Character2:
+        AvatarID: 
+        Pose: 
+        Name: 
+        Motion: 0
+      Speaker: 0
+      Rewards: []
       Music:
         Name: 
         Parameters: []
@@ -1244,20 +1460,17 @@ MonoBehaviour:
         Name: 
         Parameters: []
     LinkData:
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"Well, at least these people still have a beautiful place to pray."'
+    - Text: '"Well, at least these people still have a beautiful place to pray."'
       xor: 0
       Rewards: []
       Requirements: []
@@ -1265,8 +1478,7 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
-      Text: '"How many people sleep on the streets, in the shadow of this oppulence?"'
+    - Text: '"How many people sleep on the streets, in the shadow of this oppulence?"'
       xor: 0
       Rewards: []
       Requirements: []
@@ -1274,8 +1486,7 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
-      Text: '"Well, this is cutest sermon I''ve ever seen."'
+    - Text: '"Well, this is cutest sermon I''ve ever seen."'
       xor: 0
       Rewards: []
       Requirements: []
@@ -1283,8 +1494,7 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
-      Text: '"He wasn''t kidding when he said public speaking made him uncomfortable.
+    - Text: '"He wasn''t kidding when he said public speaking made him uncomfortable.
         What a mess."'
       xor: 0
       Rewards: []
@@ -1293,38 +1503,32 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: <Kneel for the blessing>
+    - Text: <Kneel for the blessing>
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"My heart is in your hands, Father Sidotti."'
+    - Text: '"My heart is in your hands, Father Sidotti."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: <Kiss his hand whien he blesses you> <Peril Icon>
+    - Text: <Kiss his hand whien he blesses you> <Peril Icon>
       xor: 0
       Rewards: []
       Requirements: []
@@ -1332,46 +1536,39 @@ MonoBehaviour:
       - Type: 0
         Phrase: incidents.transitions.perilgain.smalltooltip
         Value: 1
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"I might need more than simple counsel, Father Sidotti. What are you
+    - Text: '"I might need more than simple counsel, Father Sidotti. What are you
         prepared to do?"'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"If you insist, Father Sidotti."'
+    - Text: '"If you insist, Father Sidotti."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"My circumstances are most vexing, Father Sidotti. I think this will
+    - Text: '"My circumstances are most vexing, Father Sidotti. I think this will
         take more than one meeting."'
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
-      xor: 0
+    - Text: 
+      xor: 1
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: '"Charm, intrigue, and a hint of taboo. If nothing else, it''s exciting."'
+    - Text: '"Charm, intrigue, and a hint of taboo. If nothing else, it''s exciting."'
       xor: 0
       Rewards: []
       Requirements: []
@@ -1379,8 +1576,7 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
-      Text: '"I''m about to start seeing a Catholic priest. I don''t know if this
+    - Text: '"I''m about to start seeing a Catholic priest. I don''t know if this
         is a good idea."'
       xor: 0
       Rewards: []
@@ -1389,246 +1585,315 @@ MonoBehaviour:
       - Type: 7
         Phrase: incidents.transitions.characterization.tooltip
         Value: 1
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements: []
+      Flags: []
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 9
+        ID: rendezvousGuinguetteParadis
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousJardinDesPlantes
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousLaGrandeTaverneDeLondres
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousLesGrandsDanseursDuRoi
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousParcMonceau
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 9
+        ID: rendezvousGuinguetteParadis
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousJardinDesPlantes
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousLaGrandeTaverneDeLondres
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousLesGrandsDanseursDuRoi
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousParcMonceau
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 9
+        ID: rendezvousGuinguetteParadis
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousJardinDesPlantes
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousLaGrandeTaverneDeLondres
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousLesGrandsDanseursDuRoi
+        Value: 0
+        Operator: 3
+      - Type: 9
+        ID: rendezvousParcMonceau
+        Value: 0
+        Operator: 3
+      Flags: []
+    - Text: 
+      xor: 1
+      Rewards: []
+      Requirements:
+      - Type: 6
+        ID: therese
+        Value: 1
+        Operator: 4
+      Flags: []
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
-    - index: 0
-      Text: 
+    - Text: 
       xor: 0
       Rewards: []
       Requirements: []
       Flags: []
+    ID: 
     OneShot: 1
     Chapters: 
+    Type: 0
     Factions: 
     Political: 0
+    Description: 
     Requirements: []
     _date: -1
+  Name: Benedictions
   _factions: 000000000000
   _chapters: 00000000
   _date: -1
-  _requirements: []
   _nodeText:
-  - Getting up a little earlier than usual, you walk south to the 14th <i>arrondisement</i>,
+  - Getting up a little earlier than usual, you walk to the southern reaches of Paris,
     so you can attend Ludovico's sermon. Much as he said, the neighborhood is poorer
-    than most, and many of the houses are in even worse condition than your own. Which
-    is saying something.
+    than most, and many of the houses are in even worse condition than your own.
+    Which is saying something.
   - '"In fact, you may reach out to me whenever you like." He manages to cough while
     he hands you a piece of paper with his address on it.'
-  - 'Stopping to greet the parisioners still exchanging pleasantries outside, you
-    enter the church and make your way to an unoccupied chair, near the front. '
-  - You sit down just as mass is about to begin. While you were raised Catholic, you
-    found yourself to be a touch less zealous than most. In fact, you realize that
-    this is the first time you've even attended a church since arriving in Paris.
+  - Stopping to greet the parishioners still exchanging pleasantries outside, you
+    enter the church and make your way to an unoccupied chair, near the front.
+  - You sit down just as mass is about to begin. While you were raised Catholic,
+    you found yourself to be a touch less zealous than most. In fact, you realize
+    that this is the first time you've even attended a church since arriving in Paris.
   - Still, as the service progresses, you find yourself participating as if you'd
     never stopped. You know when to stand up, when to sit down, when to sing, and
     when to be silent.
-  - It's a beauitful building, meaning that it was built when this neighborhood was
+  - It's a beautiful building, meaning that it was built when this neighborhood was
     still prosperous.
-  - 'Slinking by the parisioners still exchanging pleasantries outside, you enter
-    the church and make your way to an unoccupied chair, far from everyone else. '
+  - Slinking by the parishioners still exchanging pleasantries outside, you enter
+    the church and make your way to an unoccupied chair, far from everyone else.
   - 'It''s a good sermon, though he tends to stammer when he makes eye contact with
     you. '
-  - '"<i>Benedicamus Domino</i>" Ludovico intones to the crowd, signalling the end
+  - '""<i>Benedicamus Domino</i>" Ludovico intones to the crowd, signaling the end
     of the service.'
   - While most get up to leave, getting ready to go about their work day, you stand
-    as the last in line, behind some of the other parisioners to be blessed.
+    as the last in line, behind some of the other parishioners to be blessed.
   - Someone behind you shushes your musings, but you ignore them. There's nothing
     wrong with enjoying yourself.
-  - Someone behind you shushes your musings, but you ignore them. If they didn't like
-    the truth then shouldn't have sat near you.
-  - You sit down just as mass is about to begin. While you were raised Catholic, you
-    found yourself to be far less zealous than most. This is the first time you've
-    ever attended a church out for anything other than simple religious obligation.
+  - Someone behind you shushes your musings, but you ignore them. If they didn't
+    like the truth then shouldn't have sat near you.
+  - You sit down just as mass is about to begin. While you were raised Catholic,
+    you found yourself to be far less zealous than most. This is the first time you've
+    ever attended a church out of anything other than simple religious obligation.
   - Still, as the service progresses, you find yourself participating effortlessly.
     You know when to stand up, when to sit down, when to sing, and when to shut up.
   - '"You may kneel," He says, gesturing with his free hand to the floor in front
@@ -1637,32 +1902,32 @@ MonoBehaviour:
     The cool water drips down your brow and the bridge of your nose.
   - You lower yourself to one knee, and he draws the sign of the cross on your forehead.
     The cool water drips down your brow and the bridge of your nose.
-  - Slowly, you lower yourself to one knee, and the young priest reaches out his hand.
-    Right as Ludovico is about to annoint your forehead with the sign of the cross,
-    you look up and kiss his thumb.
-  - Ludovico says nothing, but you can tell the gesture has had quite the effect on
-    him.
-  - Ludovico says nothing, but you glance up at him and can tell your words have touched
-    him.
+  - Slowly, you lower yourself to one knee, and the young priest reaches out his
+    hand. Right as Ludovico is about to anoint your forehead with the sign of the
+    cross, you look up and kiss his thumb, lightly running your tongue along its
+    underside.
+  - Ludovico says nothing, but you can tell the gesture has had quite the effect
+    on him.
+  - Ludovico says nothing, but you glance up at him and can tell your words have
+    touched him.
   - '"I''m glad to see you here, Madame Decaux," he says just loud enough for the
-    lingering parisionsers to hear. "I''ve head that your circumstances have left
+    lingering parishioners to hear. "I''ve heard that your circumstances have left
     you with quite the troubled soul."'
   - '"If you''d like, we could meet at a later time, for spiritual council."'
   - '"I''m prepared to go to any lengths you desire." He says, suddenly forgetful
     of the crowd around the two of you.'
   - '"I cannot force you to do anything you don''t want to do, Madame Decaux."'
-  - '"I suppose we will." Ludovico manages to cough, trying to hide his flushing cheeks
-    from the crowd.'
+  - '"I suppose we will." Ludovico manages to cough, trying to hide his flushing
+    cheeks from the crowd.'
   - '"In fact, you may reach out to me whenever you like." He hands you a piece of
     paper with his address on it.'
   - '"However, you may reach out to me whenever you like." He says, handing you a
     piece of paper with his address on it.'
   - Outside the church, standing in the day's sun, you realize that you are absolutely
-    exhausted. You decide head home.
-  - Walking home, through the fourteenth <i>arrondisement</i>, you puzzle over the
-    morning's events.
+    exhausted. You decide to head home.
+  - Walking home, you puzzle over the morning's events.
   - You take your time, during your stroll home. The weather is lovely, and everything
-    feels brighter than usual. If feels like the start of something special.
+    feels brighter than usual. In fact, it feels like the start of something special.
   - You hurry home, feeling like the eyes of the entire neighborhood are upon you.
     While the actual walk home is safe, every shadow seems like it contains a new
     threat, ready to spring forth and be your undoing.
@@ -1673,9 +1938,9 @@ MonoBehaviour:
     of a martyred saint. You look at the people around you, and they seem so moved.
     Moved by the parts of a corpse of a man that died hundreds of years before they
     were even born.
-  - Ludovico presides over everything from his lectern, speaking latin as if it was
+  - Ludovico presides over everything from his lectern, speaking Latin as if it was
     his native tongue.
-  - Ludovico presides over everything from his lectern, speaking latin as if it was
+  - Ludovico presides over everything from his lectern, speaking Latin as if it was
     his native tongue.
   - "At one point, a procession brings forth a reliquary containing the forearm bone
     of a martyred saint. You look at the people around you, and they seem transfixed
@@ -1684,30 +1949,42 @@ MonoBehaviour:
     they would affect so many, long after their death?"
   - '"<i>Deo gratias</i>," The crowd replies reflexively, yourself included.'
   - 'You finally reach the front of the line, and see Ludovico there, looking every
-    part the humble priest, his thumb annointed with holy water.
+    part the humble priest, his thumb anointed with holy water.
 
 
-    "Approach, Madame Decaux."'
-  - While none of the other parisioners dare speak a word about it, you hear a collective
+    "Approach,
+    Madame Decaux."'
+  - While none of the other parishioners dare speak a word about it, you hear a collective
     intake of breath. Wind tensely whistling between their teeth.
-  - It's all an absurd performance, for the sake of gossipping parisioners who will
-    carry your imagined circumstances far and wide. Yet, you can't help but appreciate
+  - It's all an absurd performance, for the sake of gossiping parishioners who will
+    all carry your imagined circumstances far and wide. Yet, you can't help but appreciate
     the thought he's put into this.
   - "With a polite nod you take your leave before anyone becomes suspicious. \n\nWell,
     even more suspicious, really. "
   - (You may now go on rendezvous with Ludovico)
   - (You have gained a little peril)
-  - The holy water drips down your lips and across your chin.
+  - The holy water slowly drips down your lips and across your chin.
   - (You have gained some favor with Ludovico)
   - (You have gained a little favor with Ludovico)
   - (You have gained a little favor with Ludovico)
   - (You have gained some favor with Ludovico)
+  - '(Rendezvous with Ludovico are now available)
+
+    (Discover some suitable locations
+    on the Paris Map, so you can invite him out)'
+  - "You return home to find Th\xE9r\xE8se waiting for you outside. She looks up
+    from her black book at your approach."
+  - '"I imagine things went well?" She asks. "Now that you can meet with Father Sidotti
+    in public, you should take advantage of that fact. He''s likely to speak more
+    openly with you after a Rendezvous."'
+  - '"Now, if you may excuse me, I have a contact to meet." She says with a brief
+    curtsy before heading off into the city, leaving you with your thoughts.'
   _linkText:
   - 
   - 
   - '"Well, at least these people still have a beautiful place to pray."'
-  - '"How many people sleep on the streets, in the shadow of this oppulence?"'
-  - '"Well, this is cutest sermon I''ve ever seen."'
+  - '"How many people sleep on the streets, in the shadow of this opulence?"'
+  - '"Well, this is the cutest sermon I''ve ever seen."'
   - '"He wasn''t kidding when he said public speaking made him uncomfortable. What
     a mess."'
   - 
@@ -1715,7 +1992,7 @@ MonoBehaviour:
   - 
   - <Kneel for the blessing>
   - '"My heart is in your hands, Father Sidotti."'
-  - <Kiss his hand whien he blesses you>
+  - <Kiss his hand when he blesses you>
   - 
   - '"I might need more than simple counsel, Father Sidotti. What are you prepared
     to do?"'
@@ -1727,40 +2004,30 @@ MonoBehaviour:
   - '"Charm, intrigue, and a hint of taboo. If nothing else, it''s exciting."'
   - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
     idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
-  - '"I''m about to start seeing a Catholic priest. I don''t know if this is a good
-    idea."'
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

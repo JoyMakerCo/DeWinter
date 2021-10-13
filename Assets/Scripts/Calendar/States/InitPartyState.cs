@@ -6,31 +6,49 @@ using UFlow;
 
 namespace Ambition
 {
-    public class InitPartyState : UState
-	{
-        public override void OnEnterState()
+    public class InitPartyState : UState, Core.IState
+    {
+        public override void OnEnter()
         {
-            Debug.LogFormat("InitPartyState.OnEnterState");
             PartyModel model = AmbitionApp.GetModel<PartyModel>();
-            PartyVO party = model.UpdateParty();
-
-            IncidentModel incidents = AmbitionApp.GetModel<IncidentModel>();
-            InventoryModel inventory = AmbitionApp.GetModel<InventoryModel>();
-            ItemVO outfit = inventory.GetEquippedItem(ItemType.Outfit);
-            AmbitionApp.GetModel<GameModel>().Activity = ActivityType.Party;
-            AmbitionApp.RegisterCommand<PartyRewardCmd, CommodityVO>();
-            AmbitionApp.RegisterCommand<PartyRewardsCmd, CommodityVO[]>();
+            CalendarModel calendar = AmbitionApp.GetModel<CalendarModel>();
+            IncidentModel story = AmbitionApp.Story;
+            PartyVO party = AmbitionApp.GetModel<PartyModel>().Party;
+            IncidentVO incident = story.GetIncident(party?.IntroIncident);
+            LocalizationModel loc = AmbitionApp.GetModel<LocalizationModel>();
+            AmbitionApp.Game.Activity = ActivityType.Party;
 
             model.Turn = -1;
-            model.Turns = (int)(party?.Size ?? 0);
-            if (model.Turns < (party?.RequiredIncidents?.Length ?? 0))
-                model.Turns = party?.RequiredIncidents.Length ?? 0;
+            model.Incidents = null;
+            if (party == null) model.Turns = 0;
+            else
+            {
+                string[] names = Enum.GetNames(typeof(PartySize));
+                int index = Array.IndexOf(names, party.Size.ToString());
+                if (index < 0) index = 0;
+                if (index < model.NumTurnsByPartySize.Length)
+                    model.Turns = model.NumTurnsByPartySize[index];
+                else
+                    model.Turns = model.NumTurnsByPartySize[model.NumTurnsByPartySize.Length - 1];
+                if (party.RequiredIncidents?.Length > model.Turns)
+                    model.Turns = party.RequiredIncidents.Length;
+            }
 
-            Debug.LogFormat("Scheduling intro incident: {0}",party.IntroIncident?.ToString());
+            if (incident == null)
+            {
+                IncidentVO[] incidents = AmbitionApp.Story.GetIncidents(IncidentType.PartyIntro);
+                IncidentVO[] candidates = Array.FindAll(incidents, i => Array.IndexOf(i.Factions, party.Faction) >= 0);
+                if (candidates.Length == 0)
+                {
+                    candidates = Array.FindAll(incidents, i => ((i.Factions?.Length ?? 0) == 0 || (i.Factions.Length == 1 && i.Factions[0] == FactionType.None)));
+                }
+                incident = Util.RNG.TakeRandom(candidates);
+            }
 
-            incidents.Schedule(party.IntroIncident);
-            AmbitionApp.SendMessage(InventoryMessages.UNEQUIP, ItemType.Outfit);
-            AmbitionApp.SendMessage(GameMessages.SHOW_HEADER, party.Name);
+            loc.SetPartyOutfit(AmbitionApp.Inventory.GetEquippedItem(ItemType.Outfit) as OutfitVO);
+            loc.SetParty(party);
+
+            AmbitionApp.SendMessage(CalendarMessages.SCHEDULE, incident);
         }
     }
 }

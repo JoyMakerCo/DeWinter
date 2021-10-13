@@ -1,88 +1,114 @@
 ﻿using System;
 using UnityEngine;
-using System.Linq;
 using UnityEngine.UI;
 
 namespace Ambition
 {
-	public class CalendarButton : MonoBehaviour
-	{
+    public class CalendarButton : MonoBehaviour
+    {
+        private const string DECLINED = "declined";
+        private const string ACCEPTED = "accepted";
 
-	    public Image currentDayOutline;
-	    public Text dateText;
-	    public Image pastDayXImage;
+        public Text dateText;
+        public Image pastDayXImage;
+        public Image liaisonIcon;
+        public Image liaisonResponse;
+        public GameObject RespondIndicator;
 
-		public SpriteConfig CalendarSpriteConfig;
+        public SpriteConfig CalendarSpriteConfig;
+        public SpriteConfig LiaisonConfig;
 
-	    //Party Indicators
-	    public Image Party1Icon;
-	    public Image NewParty1Icon;
-	    public Image Party1RSVPIcon;
+        public Sprite TodaySprite;
+        public Sprite WeekSprite;
+        public Sprite MonthSprite;
+        public Sprite OtherMonthSprite;
 
-		public Image Party2Icon;
-	    public Image NewParty2Icon;
-	    public Image Party2RSVPIcon;
+        //Party Indicators
+        public Image Party1Icon;
+        public Image Party1RSVPIcon;
 
-	    private Image _image;
-	    private Color _defaultColor;
-		private Button _btn;
+        public Image Party2Icon;
+        public Image Party2RSVPIcon;
+
+        public Image CalendarBgImage;
 
         public DateTime Date { get; private set; }
 
-        void Awake()
+        public void SetDay(DateTime day, DateTime today, int viewMonth)
         {
-            _image = GetComponent<Image>();
-            _defaultColor = _image.color;
-            _btn = GetComponent<Button>();
-            _btn.onClick.AddListener(HandleClick);
-            Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite("declined");
-            Party1RSVPIcon.enabled = false;
-            Party2RSVPIcon.enabled = false;
+            Date = day;
+            Party1Icon.gameObject.SetActive(false);
+            Party1RSVPIcon.gameObject.SetActive(false);
+            Party2Icon.gameObject.SetActive(false);
+            Party2RSVPIcon.gameObject.SetActive(false);
+            liaisonIcon.gameObject.SetActive(false);
+
+            dateText.text = day.Day.ToString();
+
+            CalendarBgImage.raycastTarget = (day >= today);
+            pastDayXImage.gameObject.SetActive(day < today);
+
+            if (day.Month != viewMonth) CalendarBgImage.sprite = OtherMonthSprite;
+            else if (today.Month != viewMonth) CalendarBgImage.sprite = MonthSprite;
+            else if (day.Day == today.Day) CalendarBgImage.sprite = TodaySprite;
+            else if ((((int)(day.DayOfWeek + 1) % 7) - ((int)(today.DayOfWeek) + 1) % 7) == (day.Day - today.Day))
+            { // Weekdays start on Monday for some reason, so shift the index by 1
+                CalendarBgImage.sprite = WeekSprite;
+            }
+            else CalendarBgImage.sprite = MonthSprite;
         }
 
-        public void SetDay(DateTime day, DateTime today, int viewMonth)
-		{
-            Date = day;
-			Party1Icon.enabled = false;
-			NewParty1Icon.enabled = false;
-			Party1RSVPIcon.enabled = false;
-			Party2Icon.enabled = false;
-			NewParty2Icon.enabled = false;
-			Party2RSVPIcon.enabled = false;
+        public void SetEvents(PartyVO[] parties, RendezVO[] liaisons)
+        {
+            RendezVO rendez = liaisons.Length == 0
+                ? null
+                : Array.Find(liaisons, l => l.IsAttending)
+                ?? Array.Find(liaisons, l => l.RSVP == RSVP.New)
+                ?? liaisons[0];
+            PartyVO party1 = parties.Length == 0
+                ? null
+                : Array.Find(parties, p => p.IsAttending)
+                ?? Array.Find(parties, p => p.RSVP == RSVP.New)
+                ?? parties[0];
+            PartyVO party2 = rendez != null
+                ? party1
+                : Array.Find(parties, p => p != party1);
+            bool showRespond = !Array.Exists(parties, p => p.IsAttending)
+                && !Array.Exists(liaisons, r => r.IsAttending)
+                && (Array.Exists(parties, p => p.RSVP == RSVP.New) || Array.Exists(liaisons, p => p.RSVP == RSVP.New && !p.IsCaller));
+            if (rendez != null) party1 = null;
 
-			_image.color = (day.Month == viewMonth)
-				? _defaultColor
-				: Color.Lerp(_defaultColor, Color.black, .5f);
-			dateText.text = day.Day.ToString();
+            RespondIndicator.gameObject.SetActive(showRespond);
 
-			currentDayOutline.enabled = (day == today);
-            // By setting this at the last sibling in the holder parent object, the 'current day' frame doesn't get blocked by the other days around it.
-            if (day == today) transform.SetAsLastSibling();
-
-			_btn.interactable = (day >= today);
-			pastDayXImage.enabled = day < today;
-		}
-
-		public void SetParties(PartyVO[] parties)
-		{
-            PartyVO party1 = null;
-            PartyVO party2 = null;
-            if (parties != null && parties.Length > 0)
+            // Party2 Icon is centered
+            Party2Icon.gameObject.SetActive(party1 != null);
+            if (party1 != null)
             {
-                party1 = Array.Find(parties, p => p.Attending || p.RSVP != RSVP.Declined) ?? parties[0];
-                party2 = Array.Find(parties, p => p != party1 && !p.Attending);
+                Party2Icon.sprite = CalendarSpriteConfig.GetSprite(party1.Faction.ToString());
+                Party2RSVPIcon.gameObject.SetActive(party1.RSVP != RSVP.New);
+                Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(party1.IsAttending ? ACCEPTED : DECLINED);
             }
 
-            Party2Icon.enabled = party1 != null;
-            Party2Icon.sprite = CalendarSpriteConfig.GetSprite(party1?.Faction.ToString());
-            Party2RSVPIcon.enabled = party1?.Attending ?? false;
-            Party2RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(party1?.RSVP == RSVP.Declined ? "declined" : "accepted");
+            // Party1 Icon is in corner
+            Party1Icon.gameObject.SetActive(party2 != null);
+            if (party2 != null)
+            {
+                Party1Icon.sprite = CalendarSpriteConfig.GetSprite(party2.Faction.ToString());
+                Party1RSVPIcon.gameObject.SetActive(party2.RSVP != RSVP.New);
+                Party1RSVPIcon.sprite = CalendarSpriteConfig.GetSprite(party2.IsAttending ? ACCEPTED : DECLINED);
+            }
 
-            Party1Icon.enabled = party2 != null;
-            Party1Icon.sprite = CalendarSpriteConfig.GetSprite(party2?.Faction.ToString());
-            Party1RSVPIcon.enabled = party2?.RSVP == RSVP.Declined;
-		}
+            // Liaison is centered
+            liaisonIcon.gameObject.SetActive(rendez != null);
+            if (rendez != null)
+            {
+                CharacterVO character = AmbitionApp.GetModel<CharacterModel>().GetCharacter(rendez.Character);
+                liaisonIcon.sprite = LiaisonConfig.GetSprite(character?.Faction.ToString());
+                liaisonResponse.gameObject.SetActive(rendez.RSVP != RSVP.New);
+                liaisonResponse.sprite = CalendarSpriteConfig.GetSprite(rendez.IsAttending ? ACCEPTED : DECLINED);
+            }
+        }
 
-		private void HandleClick() => AmbitionApp.SendMessage(CalendarMessages.SELECT_DATE, Date);
-	}
+		public void OnClick() => AmbitionApp.SendMessage(CalendarMessages.SELECT_DATE, Date);
+    }
 }
